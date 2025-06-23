@@ -1,0 +1,708 @@
+﻿# promote_gaelic_settlement_decision_scripted_effect = {
+#     #This part needs a lot more testing 
+# 	if = {
+# 		limit = {
+# 		 	root.primary_title.tier =  tier_empire
+# 		}
+# 		root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+# 				#set_county_culture = culture:irish
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_gaelic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						98 = {
+# 							# Nothing happens
+# 						}
+# 						1= {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:gaelic_polytheism
+# 							set_county_culture = culture:irish
+# 						}
+# 						1 = {
+# 							trigger = {
+	
+# 								faith = faith:gaelic_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:gaelic_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:gaelic_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# 	else_if = {
+# 		limit = {
+# 		 	root.primary_title.tier =  tier_kingdom
+# 		}
+# 		root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+				
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_gaelic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						90 = {
+# 							# Nothing happens
+# 						}
+# 						5 = {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:gaelic_polytheism
+# 							set_county_culture = culture:irish
+# 						}
+# 						5 = {
+# 							trigger = {
+	
+# 								faith = faith:gaelic_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:gaelic_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:gaelic_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# 	else_if = {
+# 		limit = {
+# 			root.primary_title.tier =  tier_duchy
+# 	   }
+# 	   root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+# 				#set_county_culture = culture:irish
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_gaelic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						60 = {
+# 							# Nothing happens
+# 						}
+# 						20 = {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:gaelic_polytheism
+# 							set_county_culture = culture:irish
+# 						}
+# 						20 = {
+# 							trigger = {
+	
+# 								faith = faith:gaelic_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:gaelic_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:gaelic_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+		
+# 	}
+# }
+
+# promote_brythonic_settlement_decision_scripted_effect = {
+#     #This part needs a lot more testing 
+# 	if = {
+# 		limit = {
+# 		 	root.primary_title.tier =  tier_empire
+# 		}
+# 		root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+# 				#set_county_culture = culture:irish
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_gaelic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						98 = {
+# 							# Nothing happens
+# 						}
+# 						1= {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:brythonic_polytheism
+# 							set_county_culture = culture:welsh
+# 						}
+# 						1 = {
+# 							trigger = {
+	
+# 								faith = faith:brythonic_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:brythonic_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:brythonic_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# 	else_if = {
+# 		limit = {
+# 		 	root.primary_title.tier =  tier_kingdom
+# 		}
+# 		root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+				
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_brythonic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						90 = {
+# 							# Nothing happens
+# 						}
+# 						5 = {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:brythonic_polytheism
+# 							set_county_culture = culture:welsh
+# 						}
+# 						5 = {
+# 							trigger = {
+	
+# 								faith = faith:brythonic_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:brythonic_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:brythonic_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# 	else_if = {
+# 		limit = {
+# 			root.primary_title.tier =  tier_duchy
+# 	   }
+# 	   root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+# 				#set_county_culture = culture:irish
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_brythonic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						60 = {
+# 							# Nothing happens
+# 						}
+# 						20 = {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:brythonic_polytheism
+# 							set_county_culture = culture:welsh
+# 						}
+# 						20 = {
+# 							trigger = {
+	
+# 								faith = faith:brythonic_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:brythonic_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:brythonic_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+		
+# 	}
+# }
+
+# promote_gaulish_settlement_decision_scripted_effect = {
+#     #This part needs a lot more testing 
+# 	if = {
+# 		limit = {
+# 		 	root.primary_title.tier =  tier_empire
+# 		}
+# 		root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+# 				#set_county_culture = culture:irish
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_gaelic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						98 = {
+# 							# Nothing happens
+# 						}
+# 						1= {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:gaulish_polytheism
+# 							set_county_culture = culture:gaulish
+# 						}
+# 						1 = {
+# 							trigger = {
+	
+# 								faith = faith:gaulish_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:gaulish_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:gaulish_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# 	else_if = {
+# 		limit = {
+# 		 	root.primary_title.tier =  tier_kingdom
+# 		}
+# 		root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+				
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_brythonic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						90 = {
+# 							# Nothing happens
+# 						}
+# 						5 = {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:gaulish_polytheism
+# 							set_county_culture = culture:gaulish
+# 						}
+# 						5 = {
+# 							trigger = {
+	
+# 								faith = faith:gaulish_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:gaulish_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:gaulish_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# 	else_if = {
+# 		limit = {
+# 			root.primary_title.tier =  tier_duchy
+# 	   }
+# 	   root.primary_title = {
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					tier = tier_county
+					
+# 					#title_province = { geographical_region = custom_hungary }
+# 					holder = {
+# 						OR = {
+# 							this = root
+# 							target_is_liege_or_above = root
+# 						}
+# 					}
+# 				}
+# 				#set_county_culture = culture:irish
+# 				#  add_county_modifier = {
+# 				#  	modifier = hungarian_resettlement_modifier
+# 				#  	years = 100
+# 				#  }
+# 				#custom_tooltip = promote_hungarian_settlement_decision_increased_development
+# 				custom_tooltip = promote_brythonic_settlement_decision_convert_county
+# 				hidden_effect = {
+					
+# 					random_list = {
+# 						60 = {
+# 							# Nothing happens
+# 						}
+# 						20 = {
+# 							trigger = {
+# 									religion = religion:christianity_religion
+# 							}
+# 							set_county_faith = faith:gaulish_polytheism
+# 							set_county_culture = culture:french
+# 						}
+# 						20 = {
+# 							trigger = {
+	
+# 								faith = faith:gaulish_polytheism
+								
+# 								any_neighboring_county = {
+# 									faith = faith:gaulish_polytheism
+# 								}
+# 							}
+# 							random_neighboring_county = {
+# 								limit = {
+# 									faith = faith:gaulish_polytheism
+# 								}
+# 								save_scope_as = neighboring_county
+# 							}
+# 							set_county_faith = scope:neighboring_county.faith
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+		
+# 	}
+# }
+#PR research ancient religion event effects 
+pr_research_ancient_religion_events_great_library_effect = {
+	if = {
+		limit = {
+			has_global_variable = research_great_library
+			#learning >= 12 
+		}
+		trigger_event = {
+			on_action = pr_research_ancient_religion_events_great_library
+		}
+	}
+}
+
+pr_research_ancient_religion_events_small_library_effect = {
+	if = {
+		limit = {
+			has_global_variable = research_small_library
+			#learning >= 12 
+		}
+		trigger_event = {
+			on_action = pr_research_ancient_religion_events_small_library
+		}
+	}
+
+}
+
+pr_research_ancient_religion_events_debate_effect = {
+	if = {
+		limit = {
+			has_global_variable = learning_good
+		}
+		trigger_event ={
+			on_action = pr_research_ancient_religion_events_debate
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_global_variable = learning_good
+			}
+		}
+		trigger_event ={
+	 		on_action = pr_research_ancient_religion_events_debate_moderate_bad
+	 	}
+	}
+}
+pr_bought_book_event_effect = {
+	if ={
+		limit = {
+			has_global_variable = bought_book
+		}
+	}
+	trigger_event = {
+		on_action = pr_bought_book_event
+	}
+}
+#Augur auspice event effects 
+pr_augur_auspice_effect = {
+	if = {
+		limit = {
+			OR = {
+				var:pr_augur_auspice = flag:pr_sacred_hens
+				var:pr_augur_auspice = flag:pr_eagle
+				var:pr_augur_auspice = flag:pr_crows
+			}
+		}
+		trigger_event = {
+			on_action = pr_augur_auspice_event
+		}
+	}
+}
+#Buy good auspice effect 
+pr_buy_good_auspice_effect = {
+	if = {
+		limit = {
+			OR = {
+				var:pr_augur_auspice = flag:pr_sacred_hens
+				var:pr_augur_auspice = flag:pr_eagle
+				var:pr_augur_auspice = flag:pr_crows
+			}
+		}
+		trigger_event = {
+			on_action = pr_chance_augur_bribe
+		}
+	}
+}
+
+#Augur council position
+#Recruit court Augur effects 
+court_augur_title_accepted_effect = {
+	basic_gained_court_position_effect = yes
+}
+court_augur_title_revoked_effect = {
+	basic_revoked_court_position_effect = yes
+}
+court_augur_title_invalidated_effect = {
+	basic_invalidated_court_position_effect = yes
+}
+
+#Augur scope scripted effect 
+save_court_augur_as_effect = {
+	hidden_effect = {
+		if = { 	
+			limit = { exists = court_owner }
+			court_owner = {
+				random_court_position_holder = {
+					type = pr_court_augur_court_position
+					limit = {
+						is_physically_able = yes
+					}
+					save_scope_as = $SCOPE_NAME$
+				}
+			}
+		}
+	}
+}
+#Save Head of Mithras cult as scope
+save_court_pater_mithras_as_effect = {
+	hidden_effect = {
+		if = { 	
+			limit = { exists = court_owner }
+			court_owner = {
+				random_court_position_holder = {
+					type = pr_court_pater_mithras_court_position
+					limit = {
+						is_physically_able = yes
+					}
+					save_scope_as = $SCOPE_NAME$
+				}
+			}
+		}
+	}
+}
+
+#Envoy handeling scripted effect 
+#Could be it needs some minor changes
+decide_fate_off_envoy = {
+	if = {
+		limit = {
+			scope:envoy = {
+				learning = {15 20}
+			}
+		}
+		trigger_event = zoroastrianism.005
+	}
+	if = {
+		limit = {
+			scope:envoy = {
+				learning = {10 15}
+			}
+		}
+		trigger_event = zoroastrianism.006
+	}
+	if = {
+		limit = {
+			scope:envoy = {
+				learning = {0 10}
+			}
+		}
+		trigger_event = zoroastrianism.007
+	}
+}
+

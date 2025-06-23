@@ -1,0 +1,418 @@
+﻿
+restore_carthago ={
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/carthago.dds"
+	}
+	decision_group_type = major
+	desc =  restore_carthago_desc
+	ai_check_interval = 4
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_game_rule = pr_ancient_kingdoms_decisions_on
+		OR = {
+			faith = faith:punic_polytheism
+			faith = { has_doctrine_parameter = special_doctrine_punic_patron_god_active }
+			culture = culture:punic
+		}
+		#culture = { has_cultural_pillar = heritage_berber }
+
+		is_imprisoned = no	
+		is_at_war = no
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_recreated_carthago
+			}
+		}
+		
+	}
+
+	is_valid = {
+		AND = {
+			completely_controls = title:d_kairouan
+			completely_controls = title:d_tunis
+			completely_controls = title:d_kroumerie	
+			completely_controls = title:d_gabes
+			completely_controls = title:d_tripolitania
+			completely_controls = title:d_syrte
+			OR = {
+				faith = faith:punic_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_punic_patron_god_active }
+				culture = culture:punic
+			}
+			
+		}
+		is_imprisoned = no	
+		is_at_war = no
+						
+	}
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_recreated_carthago
+		}
+		custom_tooltip = restore_carthago_effect_tooltip
+		title:d_kairouan = { save_scope_as = kairouan }
+		title:d_tunis = { save_scope_as = tunis }
+		title:d_kroumerie = { save_scope_as = kroumerie }
+		title:d_gabes  = { save_scope_as = gabes }
+		title:d_tripolitania = { save_scope_as = tripolitania }
+		title:d_syrte = { save_scope_as = syrte }
+		title:d_jerid = { save_scope_as = jarid}
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_carthago={
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		title:d_kairouan = { set_de_jure_liege_title = title:k_carthago }
+		title:d_tunis = { set_de_jure_liege_title = title:k_carthago }
+		title:d_kroumerie = { set_de_jure_liege_title = title:k_carthago }
+		title:d_gabes  = { set_de_jure_liege_title = title:k_carthago }
+		title:d_tripolitania = { set_de_jure_liege_title = title:k_carthago }
+		title:d_syrte = { set_de_jure_liege_title = title:k_carthago }
+		title:d_jerid = { set_de_jure_liege_title = title:k_carthago }
+		hidden_effect = {
+			trigger_event =  rc.001
+		}
+	}
+
+
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 0.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 0.5
+			round = yes
+		}
+	}
+
+	ai_potential = {
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+set_capital_tunis_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/carthago.dds"
+	} 
+
+	desc = set_capital_tunis_decision_desc
+	selection_tooltip = set_capital_tunis_decision_tooltip
+	decision_group_type = major 
+
+	ai_check_interval = 12
+
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_title = title:k_carthago
+		NOT = { capital_county = { this = title:c_tunis } }
+		OR = {
+			title:c_tunis.holder = { 	
+				any_liege_or_above = { this = root }
+			}
+			title:c_tunis.holder = { this = root }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	effect = {
+		if = { #Usurp if not held personally.
+			limit = {
+				NOT = { title:c_tunis.holder = { this = root } }
+			}
+			create_title_and_vassal_change = {
+				type = returned
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			title:c_tunis = {
+				change_title_holder = {
+					holder = root
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+
+		}
+		set_realm_capital = title:c_tunis
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = { #Do it always, for coherence.
+		base = 100
+	}
+}
+
+#Choose main deity Punic Polytheism 
+choose_main_deity_punic_decision = {
+	picture = { 
+		reference = "gfx/interface/illustrations/decisions/fp1_decisons_hold_bolt.dds"
+	}
+	decision_group_type = polytheism
+	#desc = choose_main_deity_celtic_decision_desc
+	desc = select_personal_deity_germanic_decision_desc
+	selection_tooltip = choose_main_deity_punic_decision_tooltip
+	
+	is_shown = {
+		# DLC check.
+		has_fp1_dlc_trigger = yes
+		# Following a valid religion & faith.
+		OR = {
+			faith = faith:punic_polytheism
+			faith = { has_doctrine_parameter = special_doctrine_punic_patron_god_active }
+
+		}
+	}
+
+	is_valid = {
+	}
+
+	is_valid_showing_failures_only = {
+		# Have to at _least_ not be in piety debt.
+		piety >= 0
+	}
+
+	cooldown = { years = 2 }
+
+	effect = {
+		# Show the possible options.
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_punic_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_punic_decision.select_baal
+						add_character_modifier = punic_baal
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_punic_decision.select_astarte
+						add_character_modifier = punic_astarte
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_punic_decision.select_tanit
+						add_character_modifier = punic_tanit
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_punic_decision.select_kusor
+						add_character_modifier = punic_kusor
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_punic_decision.select_melqart
+						add_character_modifier = punic_melqart
+					}
+				}
+			}
+			trigger_event = pcmd.001
+	}
+	ai_check_interval = 96
+	
+	ai_potential = {
+		piety >= minor_piety_value
+		 NOR = {
+		 	has_character_modifier = punic_baal
+		 	has_character_modifier = punic_astarte
+		 	has_character_modifier = punic_tanit
+			has_character_modifier = punic_kusor
+			has_character_modifier = punic_melqart
+			
+		 }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+#Choose main deity Semitic Polytheism 
+choose_main_deity_semitic_decision = {
+	picture = { 
+		reference = "gfx/interface/illustrations/decisions/fp1_decisons_hold_bolt.dds"
+	}
+	decision_group_type = polytheism
+	#desc = choose_main_deity_celtic_decision_desc
+	desc = select_personal_deity_germanic_decision_desc
+	selection_tooltip = choose_main_deity_semitic_decision_tooltip
+
+	is_shown = {
+		# DLC check.
+		has_fp1_dlc_trigger = yes
+		# Following a valid religion & faith.
+		OR = {
+			faith = faith:semitic_polytheism
+			faith = { has_doctrine_parameter = special_doctrine_semitic_patron_god_active }
+
+		}
+	}
+
+	is_valid = {
+	}
+
+	is_valid_showing_failures_only = {
+		# Have to at _least_ not be in piety debt.
+		piety >= 0
+	}
+
+	cooldown = { years = 2 }
+
+	effect = {
+		# Show the possible options.
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_semitic_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_semitic_decision.select_ba_al_hadad
+						add_character_modifier = semitic_ba_al_hadad
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_semitic_decision.select_ashera
+						add_character_modifier = semitic_ashera
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_semitic_decision.select_dagan
+						add_character_modifier = semitic_dagan
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_semitic_decision.select_el_elyon
+						add_character_modifier = semitic_el_elyon
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_semitic_decision.select_ashtart
+						add_character_modifier = semitic_ashtart
+					}
+				}
+			}
+			trigger_event = pcmd.001
+	}
+	ai_check_interval = 96
+	
+	ai_potential = {
+		piety >= minor_piety_value
+		 NOR = {
+		 	has_character_modifier = semitic_ba_al_hadad
+		 	has_character_modifier = semitic_ashera
+		 	has_character_modifier = semitic_dagan
+			has_character_modifier = semitic_el_elyon
+			has_character_modifier = semitic_ashtart
+			
+		 }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+#embrace punic culture 
+embrace_punic_culture_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/carthago.dds"
+	} 
+	decision_group_type = polytheism
+	desc =  embrace_punic_culture_decision_desc
+	is_shown = {
+		is_ai = no
+		is_landed = yes
+		religion = religion:canaanite_religion
+		NOR = { 
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_restored_punic_culture
+			}
+			culture = culture:punic
+		}
+	}
+	is_valid = {
+		is_adult = yes
+		is_imprisoned = no
+		completely_controls = title:c_tunis
+		OR = {
+			has_title = title:k_carthago
+		}
+	}
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+		is_independent_ruler = yes
+	}
+	cost = {
+		prestige = 1000 
+	}
+	ai_check_interval = 90
+	
+	ai_potential = {
+		always = yes
+
+	}
+	ai_will_do = {
+		base = 100
+	}
+	effect = {
+		set_culture = culture:punic
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_restored_punic_culture
+			}
+		}
+	} 
+}
+
+#Build the temple of Tanit 
+build_temple_of_tanit = {
+	decision_group_type = major
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	}
+	is_shown = {
+		NOT = { has_global_variable = pr_temple_of_tanit }
+		religion = religion:canaanite_religion
+	}
+	is_valid = {
+		completely_controls = title:d_tunis
+	}
+	cost = {
+		gold = 2000
+	}
+	effect = {
+		set_global_variable = {
+			name = pr_temple_of_tanit
+			value = yes
+		}
+		trigger_event = punic.001
+	}
+}

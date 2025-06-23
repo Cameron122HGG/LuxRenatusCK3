@@ -1,0 +1,342 @@
+﻿
+defenders_of_highgod_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+	desc = defenders_of_highgod_decision_desc
+
+	is_shown = {
+		OR = {
+			religion = religion:baltic_religion
+			religion = religion:slavic_religion
+			religion = religion:finno_ugric_religion
+		}
+		#Only once per faith
+		NOR = {
+			AND = {
+				religion = religion:baltic_religion
+				is_target_in_global_variable_list = {
+					name = unavailable_unique_decisions
+					target = flag:defenders_of_highgod_baltic_decision
+				}
+			}
+			AND = {
+				religion = religion:slavic_religion
+				is_target_in_global_variable_list = {
+					name = unavailable_unique_decisions
+					target = flag:defenders_of_highgod_slavic_decision
+				}
+			}
+			AND = {
+				religion = religion:finno_ugric_religion
+				is_target_in_global_variable_list = {
+					name = unavailable_unique_decisions
+					target = flag:defenders_of_highgod_finnish_decision
+				}
+			}
+		}
+	}
+
+	is_valid = {
+		#Holds a holy site
+		faith = {
+			any_holy_site = {
+				county = {
+					holder = root
+					title_province = { has_special_building = no  }
+				}
+			}
+		}
+		piety_level >= 3
+ 		#Have loyal powerful vassals
+		trigger_if = {
+			limit = {
+				OR = {
+					highest_held_title_tier = tier_county
+					highest_held_title_tier = tier_duchy
+				}
+			}
+			any_vassal = {
+				count >= 3 #Counts/dukes need 3
+				is_powerful_vassal = yes
+				opinion = {
+					target = root
+					value >= high_positive_opinion
+				}
+			}
+		}
+		trigger_if = {
+			limit = { highest_held_title_tier = tier_kingdom }
+			any_vassal = {
+				count >= 4 #Kings need 4
+				is_powerful_vassal = yes
+				opinion = {
+					target = root
+					value >= high_positive_opinion
+				}
+			}
+		}
+		trigger_if = {
+			limit = { highest_held_title_tier = tier_empire }
+			any_vassal = {
+				count >= 5 #Emperor need 5
+				is_powerful_vassal = yes
+				opinion = {
+					target = root
+					value >= high_positive_opinion
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_independent_ruler = yes
+	}
+
+
+	effect = {
+		save_scope_as = defender_of_highgod
+
+		show_as_tooltip = { defenders_of_highgod_decision_effects = yes } #Actually applied in east_europe.0010 - prestige, laws, title, innovation effects
+
+		#Events
+		if = {
+			limit = {
+				faith = {
+					any_holy_site = {
+						count > 1
+						county.holder = root
+						title_province = { has_special_building = no  }
+					}
+				}
+			}	
+			trigger_event = east_europe.0015
+		}
+		else = {
+			faith = {
+				random_holy_site = {
+					limit = {
+						county.holder = root
+						title_province = { has_special_building = no  }
+					}
+					save_scope_as = holy_site
+				}
+			}
+			trigger_event = east_europe.0016
+		}
+		#Event to every player (east_europe.0017) is actually send through east_europe.0016 to make sure the right holy site scope is set
+
+		#Can only happen once per faith
+		if = {
+			limit = { religion = religion:baltic_religion }
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:defenders_of_highgod_baltic_decision
+			}
+		}
+		else_if = {
+			limit = { religion = religion:slavic_religion }
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:defenders_of_highgod_slavic_decision
+			}
+		}
+		else_if = {
+			limit = { religion = religion:finno_ugric_religion }
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:defenders_of_highgod_finnish_decision
+			}
+		}
+	}
+
+	cost = { gold = { value = 100 } }
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+#Choose main deity Celtic Polytheism 
+choose_main_deity_baltic_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decisons_hold_bolt.dds"
+	}
+	decision_group_type = polytheism
+	#desc = choose_main_deity_celtic_decision_desc
+	desc = select_personal_deity_germanic_decision_desc
+	selection_tooltip = choose_main_deity_baltic_decision_tooltip
+
+	is_shown = {
+		# DLC check.
+		has_fp1_dlc_trigger = yes
+		# Following a valid religion & faith.
+		religion = religion:baltic_religion
+		
+	}
+
+	is_valid = {
+	}
+
+	is_valid_showing_failures_only = {
+		# Have to at _least_ not be in piety debt.
+		piety >= 0
+	}
+
+	cooldown = { years = 2 }
+
+	effect = {
+		# Show the possible options.
+		if ={
+			limit={
+					OR = {
+						faith = faith:baltic_pagan
+						faith = { has_doctrine_parameter = special_doctrine_lithuanian_patron_god_active  }
+					}
+			}
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_baltic_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_dievas
+						add_character_modifier = lithuanian_dievas
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_dalia
+						add_character_modifier = lithuanian_dalia
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_perkunas
+						add_character_modifier = lithuanian_perkunas
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_zemyna
+						add_character_modifier = lithuanian_zemyna
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_saule
+						add_character_modifier = baltic_saule
+					}
+				}
+			}
+			trigger_event = pr_baltic.001
+		}
+		else_if ={
+			limit ={
+					OR = {
+						faith = faith:latvian_pagan
+						faith = { has_doctrine_parameter = special_doctrine_latvian_patron_god_active }
+					}
+			}
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_baltic_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_dievs
+						add_character_modifier = latvian_dievs
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_jumis
+						add_character_modifier = latvian_jumis
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_perkons
+						add_character_modifier = latvian_perkons
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_ceroklis
+						add_character_modifier = latvian_ceroklis
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_saule
+						add_character_modifier = baltic_saule
+					}
+				}
+			}
+			trigger_event = pr_baltic.002
+		}
+		else_if = {
+			limit ={
+				OR = {
+					faith = faith:prussian_pagan
+					faith = { has_doctrine_parameter = special_doctrine_prussian_patron_god_active }
+				}
+			}
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_baltic_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_deiws
+						add_character_modifier = prussian_deiws
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_pilwits
+						add_character_modifier = prussian_pilwits
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_perkuns
+						add_character_modifier = prussian_perkuns
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_patrimps 
+						add_character_modifier = prussian_patrimps 
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_baltic_decision.select_ausauts
+						add_character_modifier = prussian_ausauts
+					}
+				}
+			}
+			trigger_event = pr_baltic.003
+		}
+	
+	}
+
+	ai_check_interval = 96
+	
+	ai_potential = {
+		piety >= minor_piety_value
+		NOR = {
+			has_character_modifier = lithuanian_dievas
+			has_character_modifier = lithuanian_dalia
+			has_character_modifier = lithuanian_perkunas 
+			has_character_modifier = lithuanian_zemyna
+			has_character_modifier = baltic_saule
+			has_character_modifier = latvian_dievs 
+			has_character_modifier = latvian_jumis
+			has_character_modifier = latvian_perkons
+			has_character_modifier = latvian_ceroklis
+			has_character_modifier = prussian_deiws
+			has_character_modifier = prussian_pilwits
+			has_character_modifier = prussian_perkuns
+			has_character_modifier = prussian_patrimps 
+			has_character_modifier = prussian_ausauts
+		}
+	}
+
+	ai_will_do = {
+		base = 100
+		
+	}
+}

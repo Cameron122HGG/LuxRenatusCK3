@@ -1,0 +1,2147 @@
+﻿demand_gaelic_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:gaelic_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:gaelic_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:gaelic_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#Brythonic
+demand_brythonic_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:brythonic_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:brythonic_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:brythonic_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#Gaulish
+demand_gaulish_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:gaulish_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:gaulish_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:gaulish_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+#Cultus Deorum
+demand_cultus_deorum_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:cdr_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:cdr_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:cdr_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+
+#Hellenism
+demand_hellenism_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:hellenic_pagan
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:hellenic_pagan
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:hellenic_pagan
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#Kemetic
+demand_kemetic_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:kemetic_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:kemetic_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:kemetic_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+#Atenism
+demand_atenism_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:atenism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:atenism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:atenism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+#Dacian
+demand_dacian_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:dacian_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:dacian_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:dacian_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+#Zalmoxism
+demand_zalmoxism_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:zalmoxism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:zalmoxism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:zalmoxism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+#Mesopotamian
+#Babylonian
+demand_babylonian_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:babylonian_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:babylonian_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:babylonian_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+#Assyrian
+demand_assyrian_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:assyrian_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:assyrian_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:assyrian_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#Sumerian
+demand_sumerian_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:sumerian_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:sumerian_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:sumerian_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#Canaanite
+#Punic
+demand_punic_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:punic_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:punic_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:punic_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#semitic
+demand_semitic_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:semitic_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:semitic_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:semitic_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#Hittite
+demand_hittite_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:hittite_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:hittite_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:hittite_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#Georgian
+demand_georgian_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:georgian_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:georgian_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:georgian_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+#Armenian
+demand_armenian_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:armenian_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:armenian_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:armenian_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+
+ #Etruscan
+ demand_etruscan_conversion_interaction_effect = {
+ 	# Spouses convert
+ 	scope:recipient = {
+ 		every_spouse = {
+ 			limit = {
+ 				OR = {
+ 					is_courtier_of = scope:actor
+ 					is_courtier_of = scope:recipient
+ 					is_vassal_of = scope:actor
+ 					is_vassal_of = scope:recipient
+ 				}
+ 			}
+ 			set_character_faith = faith:etc_polytheism
+ 			hidden_effect = {
+ 				add_character_flag = {
+ 					flag = converted_by_forced_conversion_interaction
+ 					years = 5
+ 				}
+ 			}
+ 		}
+ 	}
+ 	# Family in recipient's court also convert
+ 	if = {
+ 		limit = {
+ 			scope:recipient = {
+ 				is_ruler = yes
+ 				any_close_or_extended_family_member = {
+ 					exists = employer
+ 					employer = scope:recipient
+ 					faith = scope:recipient.faith
+ 					NOT = { faith = scope:actor.faith }
+ 					is_ai = yes
+ 				}	
+ 			}	
+ 		}
+ 		scope:recipient = {
+			every_close_or_extended_family_member = {
+ 				custom = all_family_members_at_court
+ 				limit = {
+ 					exists = employer
+ 					employer = scope:recipient
+ 					faith = scope:recipient.faith
+ 					NOT = { faith = scope:actor.faith }
+ 					is_ai = yes
+ 				}
+ 				set_character_faith = faith:etc_polytheism
+ 				hidden_effect = {
+ 					add_character_flag = {
+ 						flag = converted_by_forced_conversion_interaction
+ 						years = 5
+ 					}
+ 				}
+ 			}
+ 		}
+ 	}
+ 	scope:recipient = {
+ 		bastard_to_wild_oat_conversion_interaction_effect = yes
+ 		set_character_faith = faith:etc_polytheism
+ 		hidden_effect = {
+ 			add_character_flag = {
+ 				flag = converted_by_forced_conversion_interaction
+ 				years = 5
+ 			}
+ 		}
+ 	}
+ 	# Struggle Catalysts.
+ 	if = {
+ 		limit = {
+ 			scope:recipient = { is_important_or_vip_struggle_character = yes }
+ 			scope:actor = {
+ 				any_character_struggle = {
+ 					involvement = involved
+ 					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+ 						CATALYST = catalyst_demanding_important_conversion
+ 						CHAR = scope:recipient
+ 					}
+ 				}
+ 			}
+ 		}
+ 		scope:actor = {
+ 			every_character_struggle = {
+ 				involvement = involved
+ 				limit = {
+ 					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+ 						CATALYST = catalyst_demanding_important_conversion
+ 						CHAR = scope:recipient
+ 					}
+ 				}
+ 				activate_struggle_catalyst = {
+ 					catalyst = catalyst_demanding_important_conversion
+ 					character = scope:actor
+ 				}
+ 			}
+ 		}
+ 	}
+ }
+
+ #Germanic
+ #Norse
+ demand_norse_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:norse_pagan
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:norse_pagan
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:norse_pagan
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+ #Anglo Saxon
+ demand_anglo_saxon_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:anglo_saxon_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:anglo_saxon_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:anglo_saxon_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#German
+demand_german_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:german_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:german_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:german_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}
+#Scythian
+demand_scythian_conversion_interaction_effect = {
+	# Spouses convert
+	scope:recipient = {
+		every_spouse = {
+			limit = {
+				OR = {
+					is_courtier_of = scope:actor
+					is_courtier_of = scope:recipient
+					is_vassal_of = scope:actor
+					is_vassal_of = scope:recipient
+				}
+			}
+			set_character_faith = faith:scythian_polytheism
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 5
+				}
+			}
+		}
+	}
+	# Family in recipient's court also convert
+	if = {
+		limit = {
+			scope:recipient = {
+				is_ruler = yes
+				any_close_or_extended_family_member = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}	
+			}	
+		}
+		scope:recipient = {
+			every_close_or_extended_family_member = {
+				custom = all_family_members_at_court
+				limit = {
+					exists = employer
+					employer = scope:recipient
+					faith = scope:recipient.faith
+					NOT = { faith = scope:actor.faith }
+					is_ai = yes
+				}
+				set_character_faith = faith:scythian_polytheism
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_forced_conversion_interaction
+						years = 5
+					}
+				}
+			}
+		}
+	}
+	scope:recipient = {
+		bastard_to_wild_oat_conversion_interaction_effect = yes
+		set_character_faith = faith:scythian_polytheism
+		hidden_effect = {
+			add_character_flag = {
+				flag = converted_by_forced_conversion_interaction
+				years = 5
+			}
+		}
+	}
+	# Struggle Catalysts.
+	if = {
+		limit = {
+			scope:recipient = { is_important_or_vip_struggle_character = yes }
+			scope:actor = {
+				any_character_struggle = {
+					involvement = involved
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+			}
+		}
+		scope:actor = {
+			every_character_struggle = {
+				involvement = involved
+				limit = {
+					activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+						CATALYST = catalyst_demanding_important_conversion
+						CHAR = scope:recipient
+					}
+				}
+				activate_struggle_catalyst = {
+					catalyst = catalyst_demanding_important_conversion
+					character = scope:actor
+				}
+			}
+		}
+	}
+}

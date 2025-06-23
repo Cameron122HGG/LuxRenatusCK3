@@ -1,0 +1,133 @@
+﻿# standard costs
+@maa_buy_cost = 150
+@maa_low_maintenance_cost = 1.0
+@maa_high_maintenance_cost = 5.0
+@cultural_maa_extra_ai_score = 80 # Equivalent to having 8 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
+
+# Must be synced between files with the values located at "# Provisions Costs #".
+@provisions_cost_infantry_cheap = 3
+@provisions_cost_infantry_moderate = 7
+@provisions_cost_infantry_expensive = 12
+@provisions_cost_infantry_bankrupting = 15
+
+@provisions_cost_cavalry_cheap = 7
+@provisions_cost_cavalry_moderate = 15
+@provisions_cost_cavalry_expensive = 21
+@provisions_cost_cavalry_bankrupting = 30
+
+@provisions_cost_special_cheap = 6
+@provisions_cost_special_moderate = 12
+@provisions_cost_special_expensive = 18
+@provisions_cost_special_bankrupting = 24
+hoplite = {
+	type = pikemen
+
+	damage = 10
+	toughness = 14
+	pursuit = 12
+	screen = 18
+
+	terrain_bonus = {
+		mountains = { damage = 10 toughness = 10 }
+		desert_mountains = { damage = 6 toughness = 6 }
+		hills = { damage = 6 toughness = 6 }
+		forest = { toughness = 4 }
+		wetlands = { toughness = 4 }
+	}
+
+	counters = {
+		heavy_infantry = 1
+	}
+
+	can_recruit = {
+		valid_for_maa_trigger = { PARAMETER = unlock_maa_hoplite }
+	}
+
+	buy_cost = { gold = akritai_recruitment_cost }
+	low_maintenance_cost = { gold = akritai_low_maint_cost }
+	high_maintenance_cost = { gold = akritai_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_cheap
+
+	stack = 256
+	ai_quality = { value = @[cultural_maa_extra_ai_score - 90] }
+	icon = akritai
+}
+
+peltast = {
+	type = skirmishers
+
+	damage = 22
+	toughness = 26
+	pursuit = 0
+	screen = 20
+
+	terrain_bonus = {
+		mountains = { toughness = 8 }
+		desert_mountains = { toughness = 8 }
+		hills = { toughness = 8 }
+		plains = { damage = 8 }
+	}
+
+	counters = {
+		light_cavalry = 1
+		heavy_cavalry = 1
+		camel_cavalry = 1
+		elephant_cavalry = 1
+	}
+
+	can_recruit = {
+		valid_for_maa_trigger = { PARAMETER = unlock_maa_peltast }
+	}
+
+	buy_cost = { gold = skoutatoi_recruitment_cost }
+	low_maintenance_cost = { gold = skoutatoi_low_maint_cost }
+	high_maintenance_cost = { gold = skoutatoi_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_moderate
+
+	stack = 100
+	ai_quality = {
+		value = @[cultural_maa_extra_ai_score + 20]
+		add = counter_synergy_ai_weight_pikemen
+	}
+	icon = skoutatoi
+}
+
+companion_guards = {
+	type = heavy_infantry
+
+	damage = 45
+	toughness = 32
+	pursuit = 10
+	screen = 5
+	can_recruit = {
+			valid_for_maa_trigger = { PARAMETER = unlock_maa_companion_guards }
+		}
+
+	terrain_bonus = {
+		farmlands = { damage = 12 toughness = 8 }
+		plains = { damage = 6 toughness = 4 }
+		hills = { damage = 6 toughness = 4 }
+	}
+
+	counters = {
+		pikemen = 1
+		heavy_cavalry = 1
+	}
+
+	winter_bonus = {
+		normal_winter = { toughness = 6 screen = 6 }
+		harsh_winter = { toughness = 6 screen = 6 }
+	}
+
+	buy_cost = { gold = varangian_guards_recruitment_cost }
+	low_maintenance_cost = { gold = varangian_guards_low_maint_cost }
+	high_maintenance_cost = { gold = varangian_guards_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_moderate
+
+	stack = 100
+	ai_quality = {
+		value = @[cultural_maa_extra_ai_score + 40]
+		add = counter_synergy_ai_weight_heavy_infantry
+	}
+	icon = varangian_guard
+}

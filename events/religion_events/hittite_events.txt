@@ -1,0 +1,109 @@
+﻿namespace = ht
+
+ht.001 = {
+	type = character_event
+	title = ht.001.t
+	desc = ht.001.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Tarhunna
+	option = {
+		name = ht.001.tarhunna
+		trigger = {
+			NOT = { has_character_modifier = hittite_tarhunna }
+		}
+		set_bhakti_effect = { BHAKTI = hittite_tarhunna  }
+	}
+
+	 #Telipinu
+	 option = {
+	 	name = ht.001.telipinu
+	 	trigger = {
+	 		NOT = { has_character_modifier = hittite_telipinu }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = hittite_telipinu }
+	 }
+
+	#Halki
+	option = {
+		name = ht.001.halki
+		trigger = {
+			NOT = { has_character_modifier = hittite_halki }
+		}
+		set_bhakti_effect = { BHAKTI = hittite_halki }
+	}
+
+	# A'as
+	option = {
+		name = ht.001.a_as
+		trigger = {
+			NOT = { has_character_modifier = hittite_a_as}
+		}
+		set_bhakti_effect = { BHAKTI = hittite_a_as}
+	}
+
+
+	 # Tashmishu
+	 option = {
+	 	name = ht.001.tashmishu
+	 	trigger = {
+	 		NOT = { has_character_modifier = hittite_tashmishu }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = hittite_tashmishu }
+	 }
+
+	# Opt-Out
+	option = {
+		name = ht.001.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+
+ht.002 = {
+	type = character_event
+	title = ht.002.t
+	desc = ht.002.desc
+	theme = learning
+
+
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ht.002.a
+		save_scope_as = owner
+		set_artifact_rarity_illustrious  = yes
+		create_artifact = {
+			name = treaty_of_kadesh
+			description = treaty_of_kadesh_description
+			type = miscellaneous
+			modifier = pr_treaty_of_kadesh
+			visuals = pr_treaty_of_kadesh
+			save_scope_as = pr_treaty_of_kadesh
+			quality = scope:quality
+		}
+		# hidden_effect = {
+		# 	scope:pr_treaty_of_kadesh = {
+				
+		# 	}
+		# }
+		# create_artifact = {	
+		# 	name = pr_treaty_of_kadesh
+		# 	description = pr_treaty_of_kadesh_description
+		# 	#type = pedestal
+		# 	visuals = book
+		# 	modifier = pr_treaty_of_kadesh
+		# }
+	}
+
+}

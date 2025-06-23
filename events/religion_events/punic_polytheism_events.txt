@@ -1,0 +1,368 @@
+﻿#Punic
+namespace = punic
+namespace = punic_sr
+namespace = rc
+namespace = pcmd
+namespace = semitic
+namespace = canaanite
+
+#punic
+
+#Return Punic polytheism
+punic.001 = {
+	type = character_event
+	title = punic.001.t
+	desc = punic.001.desc
+	theme =  hunt_activity
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = punic.001.a
+		trigger_event = punic.002
+	}
+}
+
+punic.002 = { 
+	type = character_event
+	title = punic.002.t
+	desc = punic.002.desc
+	theme = learning_scholarship_focus
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	option = { #Proceed
+		name = punic.002.a
+		trigger_event = punic.003
+	}
+	option = { #Stop
+		name = punic.002.b
+		hidden_effect ={
+			clear_global_variable_list = unavailable_unique_decisions_convert
+			remove_trait = pilgrim 
+		}
+	}
+}
+
+punic.003 = { 
+	type = character_event
+	title = punic.003.t
+	desc = punic.003.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	#proceed
+	option = {
+		name = punic.003.a
+		trigger_event = punic.004
+	}
+	#stop
+	option = {
+		name = punic.003.b
+		trigger_event = punic.004
+		add_piety = 500 
+		hidden_effect ={
+			clear_global_variable_list = unavailable_unique_decisions_convert
+			remove_trait = pilgrim 
+		}
+	}	
+}
+
+punic.004 = {
+	type = character_event
+	title = punic.004.t
+	desc = punic.004.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	option = {
+		name = punic.004.a
+		trigger_event = punic.005
+	}
+}
+
+punic.005 = {
+	type = character_event
+	title = punic.005.t
+	desc = punic.005.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_zealous
+		
+	}
+	option = {
+		name = punic.005.a
+		# trigger_event = {
+		# 	id = punic_sr.001
+		# 	months = 2 
+		# }
+		set_character_faith = faith:punic_polytheism
+	}
+	option = {
+		name = punic.005.b
+		add_trait = zealous
+		add_piety = 500
+		hidden_effect ={
+			clear_global_variable_list = unavailable_unique_decisions_convert
+			remove_trait = pilgrim 
+		}
+	}
+}
+
+
+
+#make state religion events 
+
+#Reinstate Punic polytheism as state religion 
+scripted_effect punic_sr_notify_players_effectt = {
+	every_player = {
+		limit = {
+			Not = {this = root}  
+			capital_province = {
+			geographical_region = world_africa_north_west
+			}
+		}
+		trigger_event = punic_sr.002
+	}
+}
+
+punic_sr.001 = {
+	type = character_event
+	title = punic_sr.001.t
+	desc = punic_sr.001.desc
+	theme = faith
+	right_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous	
+		}
+		override_background = { reference = throne_room }
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		faith = { save_scope_as = old_faith }
+		return_punic_sr_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = punic_sr.001.a
+		#Get a nice reward for your adherence to the true faith.
+		add_piety_level = 1
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = punic_return
+			value = flag:vanilla
+		}
+		punic_sr_notify_players_effect = yes 
+		
+	}	
+}
+
+punic_sr.002 = {
+	type = character_event
+	title = punic_sr.002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { top_liege = root }
+				desc = punic_sr.002.desc.vassals
+			}
+			desc = punic_sr.002.desc.outsiders
+		}
+		desc = punic_sr.002.desc.intro
+		triggered_desc = {
+			trigger = { scope:punic_return = flag:vanilla }
+			desc = punic_sr.002.desc_vanilla
+		}
+	}
+	theme = faith
+	left_portrait = scope:scoped_ruler
+	override_background = { reference = throne_room }
+	#Roman polyteist are happy about this unexpected turn of events!
+	option = {
+		name = punic_sr.002.a
+		trigger = { religion = religion:punic_religion}
+		add_stress = minor_stress_loss
+	}
+	#Vassals who do not follow the faith may decide to convert after all.
+	option = {
+		name = punic_sr.002.b
+		trigger = {
+			top_liege = root
+			NOT = { religion = religion:punic_religion}
+		}
+		set_character_faith_with_conversion = faith:punic_polytheism
+		
+	}
+	#Those who aren't polytheist are probably horrified.
+	option = {
+		name = punic_sr.002.c
+		trigger = {
+			NOT = {
+				religion = { is_in_family = rf_punic}
+			}
+		}
+	}
+	#And, as a fallback, some people just won't care.
+	option = { 
+		name = punic_sr.002.d 
+	}
+}
+
+
+rc.001 = {
+	type = character_event
+	title = rc.001.t
+	desc = rc.001.desc
+	theme = claim_throne_scheme
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = rc.001.a
+
+	}
+}
+
+pcmd.001 = {
+	type = character_event
+	title = pcmd.001.t
+	desc = pcmd.001.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Baal
+	option = {
+		name = pcmd.001.baal
+		trigger = {
+			NOT = { has_character_modifier = punic_baal}
+		}
+		set_bhakti_effect = { BHAKTI = punic_baal }
+	}
+
+	 #Kusor
+	 option = {
+	 	name = pcmd.001.kusor
+	 	trigger = {
+	 		NOT = { has_character_modifier = punic_kusor }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = punic_kusor}
+	 }
+
+	#Astarte
+	option = {
+		name = pcmd.001.astarte
+		trigger = {
+			NOT = { has_character_modifier = punic_astarte }
+		}
+		set_bhakti_effect = { BHAKTI = punic_astarte }
+	}
+
+	# Tanit
+	option = {
+		name = pcmd.001.tanit
+		trigger = {
+			NOT = { has_character_modifier = punic_tanit }
+		}
+		set_bhakti_effect = { BHAKTI = punic_tanit }
+	}
+
+
+	 # Melqart
+	 option = {
+	 	name = pcmd.001.melqart
+	 	trigger = {
+	 		NOT = { has_character_modifier = punic_melqart }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = punic_melqart }
+	 }
+
+	# Opt-Out
+	option = {
+		name = pcmd.001.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+
+semitic.001 = {
+	type = character_event
+	title = semitic.001.t
+	desc = semitic.001.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Ba al hadad
+	option = {
+		name = semitic.001.ba_al_hadad
+		trigger = {
+			NOT = { has_character_modifier = semitic_ba_al_hadad }
+		}
+		set_bhakti_effect = { BHAKTI = semitic_ba_al_hadad  }
+	}
+
+	 #Ashera
+	 option = {
+	 	name = semitic.001.ashera
+	 	trigger = {
+	 		NOT = { has_character_modifier = semitic_ashera }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = semitic_ashera}
+	 }
+
+	#Dagan
+	option = {
+		name = semitic.001.dagan
+		trigger = {
+			NOT = { has_character_modifier = semitic_dagan }
+		}
+		set_bhakti_effect = { BHAKTI = semitic_dagan }
+	}
+
+	# Tanit
+	option = {
+		name = semitic.001.el_elyon
+		trigger = {
+			NOT = { has_character_modifier = semitic_el_elyon }
+		}
+		set_bhakti_effect = { BHAKTI = semitic_el_elyon }
+	}
+
+
+	 # Ashtart
+	 option = {
+	 	name = semitic.001.ashtart
+	 	trigger = {
+	 		NOT = { has_character_modifier = semitic_ashtart }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = semitic_ashtart }
+	 }
+
+	# Opt-Out
+	option = {
+		name = semitic.001.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+

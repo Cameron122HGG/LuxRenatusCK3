@@ -1,0 +1,389 @@
+﻿namespace = caucasus
+
+#Choose main deity Georgian
+caucasus.001 = {
+	type = character_event
+	title = caucasus.001.t
+	desc = caucasus.001.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Armzi
+	option = {
+		name = caucasus.001.armzi
+		trigger = {
+			NOT = { has_character_modifier = georgian_armzi}
+		}
+		set_bhakti_effect = { BHAKTI = georgian_armzi }
+	}
+
+	 #Adgilis Deda
+	 option = {
+	 	name = caucasus.001.adgilis_deda
+	 	trigger = {
+	 		NOT = { has_character_modifier = georgian_adgilis_deda }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = georgian_adgilis_deda}
+	 }
+
+	#Kopala
+	option = {
+		name = caucasus.001.kopala
+		trigger = {
+			NOT = { has_character_modifier = georgian_kopala }
+		}
+		set_bhakti_effect = { BHAKTI = georgian_kopala }
+	}
+
+	#Barbale 
+	option = {
+		name = caucasus.001.barbale 
+		trigger = {
+			NOT = { has_character_modifier = georgian_the_barbale }
+		}
+		set_bhakti_effect = { BHAKTI = georgian_the_barbale }
+	}
+
+	# Opt-Out
+	option = {
+		name = caucasus.001.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+#Choose main deity Armenian
+caucasus.002 = {
+	type = character_event
+	title = caucasus.002.t
+	desc = caucasus.002.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Aramazd
+	option = {
+		name = caucasus.002.aramazd
+		trigger = {
+			NOT = { has_character_modifier = armenian_aramazd}
+		}
+		set_bhakti_effect = { BHAKTI = armenian_aramazd }
+	}
+
+	 #Astlik
+	 option = {
+	 	name = caucasus.002.astlik
+	 	trigger = {
+	 		NOT = { has_character_modifier = armenian_astlik }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = armenian_astlik}
+	 }
+
+	#Nane
+	option = {
+		name = caucasus.002.nane
+		trigger = {
+			NOT = { has_character_modifier = armenian_nane }
+		}
+		set_bhakti_effect = { BHAKTI = armenian_nane }
+	}
+
+	#Nvard
+	option = {
+		name = caucasus.002.nvard 
+		trigger = {
+			NOT = { has_character_modifier = armenian_nvard }
+		}
+		set_bhakti_effect = { BHAKTI = armenian_nvard }
+	}
+
+	# Opt-Out
+	option = {
+		name = caucasus.002.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+
+#Combined return story Georgian and Armenian
+caucasus.003 = {
+	type = character_event
+	title = caucasus.003.t
+	desc = caucasus.003.desc
+	theme =  hunt_activity
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = caucasus.003.a
+		trigger_event = caucasus.004
+	}
+}
+
+caucasus.004 = { 
+	type = character_event
+	title = caucasus.004.t
+	desc = caucasus.004.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	option = {
+		name = caucasus.004.georgian
+		trigger_event = caucasus.005
+	}
+	option = {
+		name = caucasus.004.armenian
+		trigger_event = caucasus.006
+	}
+	option = {
+		name = caucasus.004.optout
+		add_trait = zealous
+		hidden_effect ={
+			clear_global_variable_list = unavailable_unique_decisions_convert
+			remove_trait = pilgrim 
+		}
+	}
+}
+
+caucasus.005 = { 
+	type = character_event
+	title = caucasus.005.t
+	desc = caucasus.005.desc
+	theme = hunt_activity
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	#proceed
+	option = {
+		name = caucasus.005.georgian
+		trigger_event = {
+			id = caucasus.007
+			months = 2 
+		}
+	}	
+}
+caucasus.006 = { 
+	type = character_event
+	title = caucasus.006.t
+	desc = caucasus.006.desc
+	theme = hunt_activity
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	#proceed
+	option = {
+		name = caucasus.006.armenian
+		trigger_event = {
+			id = caucasus.009
+			months = 2 
+		}
+	}
+}
+
+#Return Georgian religion
+scripted_effect georgian_sr_notify_players_effectt = {
+	every_player = {
+		limit = {
+			Not = {this = root}  
+			capital_province = {
+			geographical_region = world_asia_minor
+			}
+		}
+		trigger_event = caucasus.008
+	}
+}
+
+caucasus.007= {
+	type = character_event
+	title = caucasus.007.t
+	desc = caucasus.007.desc
+	theme = faith
+	right_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous	
+		}
+		override_background = { reference= throne_room }
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		faith = { save_scope_as = old_faith }
+		return_georgian_sr_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = caucasus.007.a
+		#Get a nice reward for your adherence to the true faith.
+		add_piety_level = 1
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = d_return
+			value = flag:vanilla
+		}
+		georgian_sr_notify_players_effect = yes 
+		
+	}	
+}
+
+caucasus.008 = {
+	type = character_event
+	title = caucasus.008.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { top_liege = root }
+				desc = caucasus.008.desc.vassals
+			}
+			desc = caucasus.008.desc.outsiders
+		}
+		desc = caucasus.008.desc.intro
+		triggered_desc = {
+			trigger = { scope:d_return = flag:vanilla }
+			desc = caucasus.008.desc_vanilla
+		}
+	}
+	theme = faith
+	left_portrait = scope:scoped_ruler
+	override_background = { reference= throne_room }
+	#Roman polyteist are happy about this unexpected turn of events!
+	option = {
+		name = caucasus.008.a
+		trigger = { religion = religion:georgian_polytheism}
+		add_stress = minor_stress_loss
+	}
+	#Vassals who do not follow the faith may decide to convert after all.
+	option = {
+		name = caucasus.008.b
+		trigger = {
+			top_liege = root
+			NOT = { religion = religion:georgian_polytheism}
+		}
+		set_character_faith_with_conversion = faith:georgian_polytheism
+		
+	}
+	#Those who aren't polytheist are probably horrified.
+	option = {
+		name = caucasus.008.c
+		trigger = {
+			NOT = {
+				religion = { is_in_family = rf_pagan}
+			}
+		}
+	}
+	#And, as a fallback, some people just won't care.
+	option = { 
+		name = caucasus.008.d 
+	}
+}
+
+#Return Armenian religion
+scripted_effect armenian_sr_notify_players_effectt = {
+	every_player = {
+		limit = {
+			Not = {this = root}  
+			capital_province = {
+			geographical_region = world_asia_minor
+			}
+		}
+		trigger_event = caucasus.010
+	}
+}
+
+caucasus.009= {
+	type = character_event
+	title = caucasus.009.t
+	desc = caucasus.009.desc
+	theme = faith
+	right_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous	
+		}
+		override_background = { reference= throne_room }
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		faith = { save_scope_as = old_faith }
+		return_armenian_sr_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = caucasus.009.a
+		#Get a nice reward for your adherence to the true faith.
+		add_piety_level = 1
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = d_return
+			value = flag:vanilla
+		}
+		armenian_sr_notify_players_effect = yes 
+		
+	}	
+}
+
+caucasus.010 = {
+	type = character_event
+	title = caucasus.010.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { top_liege = root }
+				desc = caucasus.010.desc.vassals
+			}
+			desc = caucasus.010.desc.outsiders
+		}
+		desc = caucasus.010.desc.intro
+		triggered_desc = {
+			trigger = { scope:d_return = flag:vanilla }
+			desc = caucasus.010.desc_vanilla
+		}
+	}
+	theme = faith
+	left_portrait = scope:scoped_ruler
+	override_background = { reference= throne_room }
+	#Roman polyteist are happy about this unexpected turn of events!
+	option = {
+		name = caucasus.010.a
+		trigger = { religion = religion:armenian_polytheism}
+		add_stress = minor_stress_loss
+	}
+	#Vassals who do not follow the faith may decide to convert after all.
+	option = {
+		name = caucasus.010.b
+		trigger = {
+			top_liege = root
+			NOT = { religion = religion:armenian_polytheism}
+		}
+		set_character_faith_with_conversion = faith:armenian_polytheism
+		
+	}
+	#Those who aren't polytheist are probably horrified.
+	option = {
+		name = caucasus.010.c
+		trigger = {
+			NOT = {
+				religion = { is_in_family = rf_pagan}
+			}
+		}
+	}
+	#And, as a fallback, some people just won't care.
+	option = { 
+		name = caucasus.010.d 
+	}
+}
+

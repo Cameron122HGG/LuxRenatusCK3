@@ -1,0 +1,114 @@
+﻿#Choose main deity Caucasus Polytheism 
+choose_main_deity_caucasus_decision = {
+	picture = { 
+		reference = "gfx/interface/illustrations/decisions/fp1_decisons_hold_bolt.dds"
+	}
+	decision_group_type = polytheism
+	desc = select_personal_deity_germanic_decision_desc
+	selection_tooltip = choose_main_deity_celtic_decision_tooltip
+
+	is_shown = {
+		# DLC check.
+		has_fp1_dlc_trigger = yes
+		# Following a valid religion & faith.
+		religion = religion:caucasus_religion
+		
+	}
+
+	is_valid = {
+	}
+
+	is_valid_showing_failures_only = {
+		# Have to at _least_ not be in piety debt.
+		piety >= 0
+	}
+
+	cooldown = { years = 2 }
+
+	effect = {
+		# Show the possible options.
+
+		 if ={
+		 	limit={
+		 		faith = faith:georgian_polytheism
+		 	}
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_caucasus_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_caucasus_decision.select_armzi
+						add_character_modifier = georgian_armzi
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_caucasus_decision.select_adgilis_deda
+						add_character_modifier = georgian_adgilis_deda
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_caucasus_decision.select_kopala
+						add_character_modifier = georgian_kopala
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_caucasus_decision.select_barbale
+						add_character_modifier = georgian_the_barbale
+					}
+				}
+			}
+			trigger_event = caucasus.001
+		}
+		 else_if ={
+		 	limit ={
+		 		faith = faith:armenian_polytheism
+		 	}
+		 	show_as_tooltip = {
+		 		random_list = {
+		 			desc = choose_main_deity_caucasus_decision_tt
+		 			100 = {
+		 				show_chance = no
+		 				desc = select_main_deity_caucasus_decision.select_aramazd
+		 				add_character_modifier = armenian_aramazd
+		 			}
+		 			100 = {
+		 				show_chance = no
+		 				desc = select_main_deity_caucasus_decision.select_astlik
+		 				add_character_modifier = armenian_astlik
+		 			}
+		 			100 = {
+		 				show_chance = no
+		 				desc = select_main_deity_caucasus_decision.select_nane
+		 				add_character_modifier = armenian_nane
+		 			}
+		 			100 = {
+		 				show_chance = no
+		 				desc = select_main_deity_caucasus_decision.select_nvard
+		 				add_character_modifier = armenian_nvard
+		 			}
+		 		}
+		 	}
+		 	trigger_event = caucasus.002
+		 }
+	}
+
+	ai_check_interval = 96
+	
+	ai_potential = {
+		piety >= minor_piety_value
+		NOR = {
+			has_character_modifier = georgian_armzi
+			has_character_modifier = georgian_adgilis_deda
+			has_character_modifier = georgian_kopala
+			has_character_modifier = georgian_the_barbale
+			has_character_modifier = armenian_aramazd
+			has_character_modifier = armenian_astlik
+			has_character_modifier = armenian_nane
+			has_character_modifier = armenian_nvard
+		}
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

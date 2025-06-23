@@ -1,0 +1,338 @@
+﻿kay_khosrow = {
+	type = legitimizing
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = khosrow_legend
+		}
+		OR = {
+			culture = { has_cultural_pillar = heritage_iranian }
+			#dynasty = dynasty:25061 # Karling
+			#dynasty = dynasty:743 # Capet
+
+			dynasty = dynasty:1029100 #Sassanid
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = must_own_persia_tt
+			has_title = e_persia
+			religion = religion:zoroastrianism_religion
+		}
+		prestige_level >= high_prestige_level
+	}
+
+	chronicle = pr_ancestral_glory_not_in_history
+	chronicle_properties = {
+		ancestor_flag = flag:kay_khosrow
+		title = title:e_persia
+	}
+}
+ambiorix = {
+	type = legitimizing
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = ambiorix_legend
+		}
+		OR = {
+			culture = culture:eburones
+			culture = culture:belgae
+			#dynasty = dynasty:25061 # Karling
+			#dynasty = dynasty:743 # Capet
+			#culture = culture:gaulish
+			#dynasty_house = house_bavandid
+		}
+		#culture = culture:eburones
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = must_own_belgae_tt
+			title = title:k_belgica
+			religion = faith:gaulish_polytheism
+		}
+		prestige_level >= high_prestige_level
+	}
+
+	chronicle = pr_ancestral_glory_not_in_history
+	chronicle_properties = {
+		ancestor_flag = flag:ambiorix
+		title = title:k_belgica
+	}
+}
+
+# aeneas = {
+# 	type = heroic
+# 	quality = famed
+# 	is_shown = {
+# 		has_dlc_feature = legends
+# 		NOT = {
+# 			has_global_variable = aeneas_legend
+# 		}
+# 		culture = culture:roman
+# 		# AND = {
+# 		# 	title = title:k_high_kingdom_of_ireland
+# 		# 	culture = { has_cultural_pillar = heritage_goidelic }
+# 		# }
+
+# 	}
+# 	is_valid = {
+# 		custom_tooltip = {
+# 			text = must_own_roman_empire_tt
+# 			OR = {
+# 				has_title = title:e_pr_western_roman_empire
+# 				has_title = title:e_roman_empire
+# 				has_title = title:e_byzantium
+# 			}
+# 			has_title = title:e_byzantium
+# 			# culture = culture:roman
+# 			# religion = religion:roman_religion
+# 		}
+	
+# 	}
+# 	is_landed = yes
+#  	has_title = title:e_byzantium
+
+# 	chronicle = pr_mythical_descent
+# 	chronicle_properties = {
+# 		ancestor_flag = flag:flag:aeneas
+# 		title = title:e_roman_empire 
+# 	}
+# }
+
+achilles  = {
+	#type = legitimizing
+	type = heroic
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = achilles_legend
+		}
+		# OR = {
+		# 	has_title = title:e_pr_western_roman_empire
+		# 	has_title = title:e_roman_empire
+		# 	has_title = title:e_byzantium
+		# }
+		has_title = title:e_byzantium
+		culture = culture:greek
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = must_own_byzantine_empire_tt
+			has_title = title:e_byzantium
+			culture = culture:greek
+			religion = religion:hellenism_religion
+		}
+		is_landed = yes
+		culture = culture:greek
+		religion = religion:hellenism_religion
+		has_title = title:e_byzantium
+		prestige_level >= high_prestige_level
+	}
+
+	#chronicle = pr_godly_descent
+	chronicle = pr_mythical_descent
+	chronicle_properties = {
+		beast = flag:demigod_achilles
+		title = title:e_byzantium
+	}
+}
+
+venus  = {
+	#type = legitimizing
+	type = legitimizing
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = venus_legend
+		}
+		# OR = {
+		# 	has_title = title:e_pr_western_roman_empire
+		# 	has_title = title:e_roman_empire
+		# 	has_title = title:e_byzantium
+		# }
+		culture = culture:roman
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = must_own_roman_empire_tt
+			OR = {
+				has_title = title:e_pr_western_roman_empire
+				has_title = title:e_roman_empire
+				has_title = title:e_byzantium
+			}
+			has_title = title:e_byzantium
+			culture = culture:roman
+			religion = religion:roman_religion
+		}
+		is_landed = yes
+		has_title = title:e_byzantium
+		culture = culture:roman
+		religion = religion:roman_religion
+		OR = {
+			has_title = title:e_pr_western_roman_empire
+			has_title = title:e_roman_empire
+			has_title = title:e_byzantium
+		}
+		prestige_level >= high_prestige_level
+	}
+
+	#chronicle = pr_godly_descent
+	chronicle = pr_godly_descent
+	chronicle_properties = {
+		god = flag:roman_pagan_fertility_god_name
+		title = title:e_roman_empire
+	}
+}
+
+
+# aeneas  = {
+# 	#type = legitimizing
+# 	type = heroic
+# 	quality = famed
+# 	is_shown = {
+# 		has_dlc_feature = legends
+# 		NOT = {
+# 			has_global_variable = aeneas_legend
+# 		}
+# 		# OR = {
+# 		# 	has_title = title:e_pr_western_roman_empire
+# 		# 	has_title = title:e_roman_empire
+# 		# 	has_title = title:e_byzantium
+# 		# }
+# 		culture = culture:roman
+# 	}
+# 	is_valid = {
+# 		custom_tooltip = {
+# 			text = must_own_roman_empire_tt
+# 			OR = {
+# 				has_title = title:e_pr_western_roman_empire
+# 				has_title = title:e_roman_empire
+# 				has_title = title:e_byzantium
+# 			}
+# 			has_title = title:e_byzantium
+# 			culture = culture:roman
+# 			religion = religion:roman_religion
+# 		}
+# 		is_landed = yes
+# 		has_title = title:e_byzantium
+# 			culture = culture:roman
+# 		religion = religion:roman_religion
+# 		OR = {
+# 			has_title = title:e_pr_western_roman_empire
+# 			has_title = title:e_roman_empire
+# 			has_title = title:e_byzantium
+# 		}
+# 		prestige_level >= high_prestige_level
+# 		religion = religion:roman_religion
+# 	}
+
+# 	#chronicle = pr_godly_descent
+# 	chronicle = pr_mythical_descent
+# 	chronicle_properties = {
+# 		beast = flag:demigod_aeneas
+# 		title = title:e_roman_empire
+# 	}
+# }
+
+slaine_mac_dela = {
+	type = legitimizing
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = slaine_mac_dela_legend
+		}
+		#culture = { has_cultural_pillar = heritage_goidelic }
+		culture = { has_cultural_pillar = heritage_goidelic }
+		# AND = {
+		# 	title = title:k_high_kingdom_of_ireland
+		# 	culture = { has_cultural_pillar = heritage_goidelic }
+		# }
+
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = must_own_irish_high_kingdom_tt
+			culture = { has_cultural_pillar = heritage_goidelic }
+			has_title = title:k_high_kingdom_of_ireland
+			faith = faith:gaelic_polytheism
+			culture = { has_cultural_pillar = heritage_goidelic }
+		}
+		is_landed = yes
+		has_title = title:k_high_kingdom_of_ireland
+		prestige_level >= high_prestige_level
+		faith = faith:gaelic_polytheism
+	
+	}
+
+	chronicle_properties = {
+		ancestor_flag = flag:slaine_mac_dela
+		title = title:k_high_kingdom_of_ireland 
+	}
+}
+
+vercingetorix = {
+	type = heroic
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = vercingetorix_legend
+		}
+		# Bretons
+		culture = culture:gaulish
+		NOR = { # You must think Rome is kinda cringe
+			has_title = title:e_roman_empire
+			has_title = title:e_byzantium
+			has_title = title:e_hre
+		}
+	}
+	is_valid = {
+		is_landed = yes
+		capital_province = { geographical_region = world_europe_west_francia }
+		prestige_level >= high_prestige_level
+
+	}
+
+	chronicle = ancestral_glory_not_in_history
+	chronicle_properties = {
+		ancestor_flag = flag:vercingetorix
+		title = title:k_celtica
+	}
+}
+
+hannibal = {
+	type = heroic
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = hannibal_legend
+		}
+		# Bretons
+		culture = culture:punic
+		NOR = { # You must think Rome is kinda cringe
+			has_title = title:e_roman_empire
+			has_title = title:e_byzantium
+			has_title = title:e_hre
+		}
+	}
+	is_valid = {
+		is_landed = yes
+		has_title = title:k_carthago
+		faith = faith:punic_polytheism
+		prestige_level >= high_prestige_level
+
+	}
+
+	chronicle = pr_ancestral_glory_not_in_history
+	chronicle_properties = {
+		ancestor_flag = flag:hannibal
+		title = title:k_carthago
+	}
+}
