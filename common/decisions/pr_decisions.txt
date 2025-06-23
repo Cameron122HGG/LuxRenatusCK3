@@ -1,0 +1,1717 @@
+﻿################################
+#Reconstruct polytheism decision
+################################
+reconstruct_polytheism_decision = {
+	desc = reconstruct_polytheism_decision_desc
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/room_with_scrolls.tga"
+	}
+	decision_group_type = polytheism
+	is_shown = {
+		#current_date >= 769.1.1
+		AND = {
+			OR = {
+				learning >= 1
+				has_trait = cynical
+			}
+			NAND = {
+				is_ai = no
+				OR = {
+					has_character_flag = converted_pr_religion_this_lifetime	
+				}
+			}
+		    NOT = {
+					has_trait = pr_secret_faith
+		    }
+		}
+
+	}
+	cooldown = {years = 2}
+	is_valid = {
+	}
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+
+		custom_description = {
+			text = can_only_change_religion_once
+			NOT = { has_character_flag = converted_pr_religion_this_lifetime}
+		}
+		is_imprisoned = no
+		#is_independent_ruler = yes
+		is_at_war = no
+		NOT = {
+			has_trait = zealous
+			
+		}
+		
+	}
+	effect = {
+		# if = {
+		# 	limit = {
+		# 		faith = {
+		# 			any_holy_site = {
+		# 				squared_distance = {
+		# 					target = root.capital_province
+		# 					value <= medium_pilgrimage_max_length
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	custom_tooltip = pilgrimage_effect_4
+		# }
+		
+		trigger_event = pr.018
+		save_scope_as = actor
+		hidden_effect = {
+			add_to_global_variable_list ={
+				name = unavailable_unique_decisions_reconstruct_polytheism_decision
+				target = flag:flag_restored_reconstruct_polytheism_decision
+			}
+		}
+	}
+}
+################################
+# return_polytheism_decision={
+# 	picture = "gfx/interface/illustrations/decisions/constantinople.dds"
+# 	major = yes
+# 	is_shown ={
+# 		current_date < 769.1.1
+# 		is_adult = yes
+# 		is_imprisoned = no
+#  		is_at_war = no
+# 		OR={
+# 			culture = culture:latin
+# 			culture = culture:roman
+# 			culture = culture:greek
+# 			culture = culture:dalmatian
+# 			culture = culture:cisalpine
+# 			culture = culture:italian
+# 			culture = culture:sardinian
+# 			culture = culture:sicilian
+# 			culture = culture:butr
+# 			culture = culture:baranis
+# 			culture = culture:zaghawa
+# 			culture = culture:nubian
+# 			culture = culture:egyptian
+# 			culture = culture:beja
+# 			culture = culture:coptic
+# 			culture = culture:irish
+# 			culture = culture:pictish
+# 			culture = culture:gaelic
+# 			culture = culture:welsh
+# 			culture = culture:breton
+# 			culture = culture:cornish
+# 			culture = culture:cumbrian
+# 			culture = culture:french
+# 			culture = culture:occitan
+# 			culture = culture:castilian
+# 			culture = culture:catalan
+# 			culture = culture:portuguese
+# 			culture = culture:catalan
+# 			culture = culture:galician
+# 			culture = culture:asturleonese 
+# 			culture = culture:aragonese
+# 			culture = culture:frankish
+# 			culture = culture:franconian
+# 			culture = culture:swabian
+# 			culture = culture:bavarian
+# 			culture = culture:frisian
+# 			culture = culture:dutch 
+# 			culture = culture:anglo_saxon
+# 			culture = culture:old_saxon
+# 			culture = culture:saxon 
+# 			culture = culture:persian
+# 			culture = culture:bulgarian
+# 			culture = culture:vlach
+# 			culture = culture:pecheneg
+# 			culture = culture:georgian
+# 			culture = culture:armenian
+# 		}
+# 		AND={
+# 			OR={			
+# 				has_religion = religion:christianity_religion
+# 				has_religion = religion:islam_religion
+# 				has_religion = religion:tengrism_religion
+# 			}
+# 		}
+# 		NOR = {
+# 			OR = {
+# 				is_target_in_global_variable_list = {
+# 					name = unavailable_unique_decisions_convert
+# 					target = flag:flag_restored_convert
+# 				}
+# 			}
+
+# 		}
+# 	}
+# 	is_valid ={
+# 		OR={
+# 			has_religion = religion:christianity_religion
+# 			has_religion = religion:islam_religion
+# 			has_religion = religion:tengrism_religion
+# 		}
+# 	}
+# 	cost = {
+# 		piety = 500
+# 		prestige = 25
+# 		gold = 20
+# 	}
+# 	effect = {
+		
+# 		if ={
+# 			limit={
+# 					OR = {
+# 						culture = culture:latin
+# 						culture = culture:roman
+# 						culture = culture:greek
+# 						culture = culture:dalmatian
+# 						culture = culture:cisalpine
+# 						culture = culture:italian
+# 						culture = culture:sardinian
+# 						culture = culture:sicilian
+# 					}
+# 			}
+# 			trigger_event = hellenismos.001
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit={
+# 				OR = {
+					
+# 					culture = culture:butr
+# 					culture = culture:baranis
+# 					culture = culture:zaghawa
+# 				}
+# 			}
+# 			trigger_event = punic.001
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit={
+# 				OR = {
+					
+# 					culture = culture:nubian
+# 					culture = culture:egyptian
+# 					culture = culture:beja
+# 					culture = culture:coptic
+# 				}
+# 			}
+# 			trigger_event = kemetic.001 
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit={
+# 				OR = {
+# 					culture = culture:irish
+# 					culture = culture:pictish
+# 					culture = culture:gaelic
+# 				}
+# 			}
+# 			trigger_event = gp.001
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit={
+# 				OR={
+# 					culture = culture:welsh
+# 					culture = culture:breton
+# 					culture = culture:cornish
+# 					culture = culture:cumbrian
+# 				}
+# 			}
+# 			trigger_event = bp.001
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit={
+# 				OR={#gaulish polytheism
+# 					culture = culture:french
+# 					culture = culture:occitan
+# 				}
+# 			}
+# 			trigger_event = gl.001
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit={
+# 				OR={ #Celtic Iberean
+# 					culture = culture:castilian
+# 					culture = culture:catalan
+# 					culture = culture:portuguese
+# 					culture = culture:catalan
+# 					culture = culture:galician
+# 					culture = culture:asturleonese 
+# 					culture = culture:aragonese
+# 				}
+# 			}
+# 			trigger_event = ci.001
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit={
+# 				OR={ # anglo saxon polytheism
+# 					culture = culture:anglo_saxon
+# 					culture = culture:old_saxon	
+# 					culture = culture:english 		
+# 				}
+# 			}
+# 			trigger_event = anglo_saxon_return.001 
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit={ # german polytheism
+# 				OR={
+# 					culture = culture:frankish
+# 					culture = culture:franconian
+# 					culture = culture:swabian
+# 					culture = culture:bavarian
+# 					culture = culture:frisian
+# 					culture = culture:dutch 
+# 					culture = culture:saxon 
+# 				}
+# 			}
+# 			trigger_event = g_r.001 
+# 			add_trait = pilgrim
+# 		}
+# 		else_if={
+# 			limit={
+# 				OR ={
+# 					culture = culture:persian
+# 					culture = culture:babylonian
+# 					culture = culture:assyrian
+# 					culture = culture:sumerian
+# 				}
+# 			}
+# 			trigger_event = m_r.001 
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if={
+# 			limit = {
+# 				OR ={
+# 					culture = culture:bulgarian
+# 					culture = culture:vlach
+# 					culture = culture:pecheneg
+# 				}
+# 			}
+# 			trigger_event = d_r.001 
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				OR ={
+# 					culture = culture:georgian
+# 					culture = culture:armenian
+# 				}
+# 			}
+# 			trigger_event = caucasus.003
+# 			add_trait = pilgrim
+# 			save_scope_as = actor
+# 		}
+
+# 		hidden_effect = {
+# 			add_to_global_variable_list ={
+# 				name = unavailable_unique_decisions_convert
+# 				target = flag:flag_restored_convert
+# 			}
+# 		}
+# 	}
+# 	ai_potential = {
+# 		faith={
+# 			fervor <= 50
+# 		}
+# 	}
+# 	#Needs testing and further defining for ai when to start decision, for time being no Ai
+# 	ai_check_interval = 90
+# 	ai_chance={
+# 		base = 100
+# 	}
+	
+# }
+
+
+#Decision for fast conversion 
+return_polytheism_short_decision={
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = polytheism
+	desc = return_polytheism_short_decision_desc
+	is_shown ={
+		is_adult = yes
+		is_imprisoned = no
+ 		is_at_war = no
+	}
+	is_valid ={ }
+
+	effect={
+		trigger_event = rps.001
+	}
+	ai_potential = {
+	
+	}
+	#Ai doesn't need this decision
+	ai_check_interval = 0
+	ai_chance={
+		base = 0
+	}
+}
+#Decision for fast culture conversion
+return_culture_short_decision = {
+	decision_group_type = polytheism
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	is_shown = {
+		is_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+	is_valid = {}
+
+	effect = {
+		trigger_event = rpcs.001
+	}
+	ai_potential = {
+		
+	}
+	#Ai doesn't need this decision
+	ai_check_interval = 0
+	ai_chance={
+		base = 0
+	}
+}
+####################################################################################################################################
+#Update decision from infromation from link below -> engough information to make a decision for the earliest bookmark of bookmarks+
+#https://forum.paradoxplaza.com/forum/threads/the-sassanids-in-charlemagne-one-final-love-letter.1429937/
+#dynasty id of the sassanids 1029100 
+####################################################################################################################################
+ invite_sassanid_relatives_decision ={
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/Sassanid.dds"
+	}
+	decision_group_type = major
+ 	is_shown ={
+ 		is_adult = yes
+		is_landed = yes
+ 		is_imprisoned = no
+  		is_at_war = no
+		
+ 		culture = { has_cultural_pillar = heritage_iranian }
+		current_date <= 790.1.1
+		NOR={
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions_invite_relative
+				target = flag:flag_restored_pr_invite_relative
+			}
+			has_dlc_feature = roads_to_power #As adventurer you can conquer the realm yourself so that would make more sense 
+		}
+ 	}	
+ 	is_valid ={
+		custom_description = {
+			text = invite_sassanid_relatives_decision_before_last_date
+			current_date <= 790.1.1
+		}
+		#exists = character:180643
+		# AND={
+		# 	scope:mahrzad={
+		# 		character = character:180643
+		# 	}
+		# 	is_alive = yes
+		# }
+		has_religion = religion:zoroastrianism_religion
+ 		OR={	
+			dynasty = dynasty:1042112
+			dynasty = dynasty:7331
+			dynasty = dynasty:100685
+ 		}
+ 	}
+	cost={#The remaining sassanids are already above 50 so no to high costs 
+		piety = 100
+		gold = 25
+	}
+	effect={
+		trigger_event = prsr.001
+
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions_invite_relative
+				target = flag:flag_restored_pr_invite_relative
+			}
+		}
+	}
+ }
+
+ #Decisions to make the reconquest of the sassanid empire more fun, Keeping in mind the age of the last recorded Sassanids 
+ #If Mehrzad get's children who can continue the reconquest will be fine. 
+ sassanid_reconquest={
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/Sassanid.dds"
+	}
+	decision_group_type = major
+	is_shown={
+		OR = {
+			dynasty = dynasty:1029100
+			dynasty = dynasty:100685
+		}
+		NOR={
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions_reconquest
+				target = flag:flag_restored_pr_reconquest
+			}
+		}
+	}
+	is_valid={
+		OR = {
+			dynasty = dynasty:1029100
+			dynasty = dynasty:100685
+		}
+		has_religion = religion:zoroastrianism_religion
+	    OR={
+			has_title = title:d_merv
+			has_title = title:d_guzgan
+		}
+	} # Note needs some more work, if this doesn't work more decisions are needed.
+	effect={
+		if={
+			limit={#First reconquest goal
+				has_title = title:d_merv
+				has_title = title:d_guzgan 
+			}
+			trigger_event = sassanid_reconquest.001
+			hidden_effect = {
+				add_to_global_variable_list = {
+					name = unavailable_unique_decisions_reconquest
+					target = flag:flag_restored_pr_reconquest
+				}
+			}
+		}
+	}
+	
+ }
+
+ close_temple_of_vesta_decision ={
+
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/temple_of_vesta.dds"
+	}
+	decision_group_type = major
+	is_shown={
+		OR={
+			religion = religion:christianity_religion
+			religion = religion:islam_religion
+		}
+		AND={ 
+			title:c_roma = {has_county_modifier = open_temple_of_vesta }
+			has_title = title:c_roma
+		} 
+		NOR={
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions_close_temple_of_vesta
+				target = flag:flag_restored_prctv
+			}
+		}
+	}
+	is_valid={}
+	effect={
+		trigger_event = {
+			id = prctv.001
+		}
+		hidden_effect={
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions_close_temple_of_vesta
+				target = flag:flag_restored_prctv
+			}
+		}
+	}
+ }
+ 
+ #Test decision promote Gaelic settlers based on vanilla promote christian settlers 
+#  promote_gaelic_settlement_decision = {
+# 	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+
+# 	desc = promote_gaelic_settlement_decision_desc
+# 	selection_tooltip = promote_gaelic_settlement_decision_tooltip
+# 	major = yes
+# 	ai_goal = yes
+
+# 	is_shown = {
+# 		is_ruler = yes
+# 		is_landed = yes
+# 		 NOT = {  #Can only do it once.
+# 		 	is_target_in_global_variable_list = {
+# 		 		name = unavailable_unique_decisions
+# 		 		target = flag:flag_promoted_gaelic_settlement
+# 		 	}
+# 		 }
+# 		OR = {
+# 			root.primary_title.tier =  tier_empire
+# 			root.primary_title.tier =  tier_kingdom
+# 			root.primary_title.tier =  tier_duchy
+# 		}
+# 		any_neighboring_top_liege_realm_owner = { #There are same reli neighboring Realms/Empires to take people from.
+# 			religion = religion:celtic_religion
+# 			count >= 1
+# 		}
+# 	}
+	
+# 	 is_valid = {
+# 	 	#any_neighboring_top_liege_realm_owner = { #There are same reli neighboring Realms/Empires to take people from.
+# 	 	#religion = religion:celtic_religion
+# 	 	#count >= 1
+		
+# 	 #}
+
+		
+# 	}
+
+
+# 	is_valid_showing_failures_only = {
+# 		is_capable_adult = yes
+# 		is_imprisoned = no
+# 		is_independent_ruler = yes
+# 		is_at_war = no
+# 	}
+
+# 	cost = {
+# 		prestige = 100
+# 		piety = 200
+# 	}
+
+# 	effect = {
+# 		show_as_tooltip = {
+# 			promote_gaelic_settlement_decision_scripted_effect = yes
+# 		}
+# 		trigger_event = {
+# 			id = pr.001
+# 		}
+# 		save_scope_as = actor
+# 		hidden_effect = {
+# 			add_to_global_variable_list = {
+# 				name = unavailable_unique_decisions
+# 				target = flag:flag_promoted_gaelic_settlement
+# 			}
+# 		}
+# 	}
+	
+# 	ai_potential = {
+# 		always = yes
+# 	}
+
+# 	ai_will_do = {
+# 		base = 50
+# 		ai_value_modifier = {
+# 			ai_zeal = 1.0
+# 			ai_greed = 1.0
+# 		}
+# 	}
+# }
+
+ #Brythonic
+#  promote_brythonic_settlement_decision = {
+# 	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+
+# 	desc = promote_gaelic_settlement_decision_desc
+# 	selection_tooltip = promote_gaelic_settlement_decision_tooltip
+# 	major = yes
+# 	ai_goal = yes
+
+# 	is_shown = {
+# 		is_ruler = yes
+# 		is_landed = yes
+# 		 NOT = {  #Can only do it once.
+# 		 	is_target_in_global_variable_list = {
+# 		 		name = unavailable_unique_decisions
+# 		 		target = flag:flag_promoted_brythonic_settlement
+# 		 	}
+# 		 }
+# 		OR = {
+# 			root.primary_title.tier =  tier_empire
+# 			root.primary_title.tier =  tier_kingdom
+# 			root.primary_title.tier =  tier_duchy
+# 		}
+# 		any_neighboring_top_liege_realm_owner = { #There are same reli neighboring Realms/Empires to take people from.
+# 			religion = religion:celtic_religion
+# 			count >= 1
+# 		}
+# 	}
+	
+# 	 is_valid = {
+# 	 	#any_neighboring_top_liege_realm_owner = { #There are same reli neighboring Realms/Empires to take people from.
+# 	 	#religion = religion:celtic_religion
+# 	 	#count >= 1
+		
+# 	 #}
+
+		
+# 	}
+
+# 	is_valid_showing_failures_only = {
+# 		is_capable_adult = yes
+# 		is_imprisoned = no
+# 		is_independent_ruler = yes
+# 		is_at_war = no
+# 	}
+
+# 	cost = {
+# 		prestige = 100
+# 		piety = 200
+# 	}
+
+# 	effect = {
+# 		show_as_tooltip = {
+# 			promote_brythonic_settlement_decision_scripted_effect = yes
+# 		}
+# 		trigger_event = {
+# 			id = pr.014
+# 		}
+# 		save_scope_as = actor
+# 		hidden_effect = {
+# 			add_to_global_variable_list = {
+# 				name = unavailable_unique_decisions
+# 				target = flag:flag_promoted_brythonic_settlement
+# 			}
+# 		}
+# 	}
+	
+# 	ai_potential = {
+# 		always = yes
+# 	}
+
+# 	ai_will_do = {
+# 		base = 50
+# 		ai_value_modifier = {
+# 			ai_zeal = 1.0
+# 			ai_greed = 1.0
+# 		}
+# 	}
+# }
+
+ #Gaulish
+#  promote_gaulish_settlement_decision = {
+# 	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+
+# 	desc = promote_gaelic_settlement_decision_desc
+# 	selection_tooltip = promote_gaulish_settlement_decision_tooltip
+# 	major = yes
+# 	ai_goal = yes
+
+# 	is_shown = {
+# 		is_ruler = yes
+# 		is_landed = yes
+# 		 NOT = {  #Can only do it once.
+# 		 	is_target_in_global_variable_list = {
+# 		 		name = unavailable_unique_decisions
+# 		 		target = flag:flag_promoted_gaulish_settlement
+# 		 	}
+# 		 }
+# 		OR = {
+# 			root.primary_title.tier =  tier_empire
+# 			root.primary_title.tier =  tier_kingdom
+# 			root.primary_title.tier =  tier_duchy
+# 		}
+# 		any_neighboring_top_liege_realm_owner = { #There are same reli neighboring Realms/Empires to take people from.
+# 			religion = religion:celtic_religion
+# 			count >= 1
+# 		}
+# 	}
+	
+# 	 is_valid = {
+# 	 	#any_neighboring_top_liege_realm_owner = { #There are same reli neighboring Realms/Empires to take people from.
+# 	 	#religion = religion:celtic_religion
+# 	 	#count >= 1
+		
+# 	 #}
+
+		
+# 	}
+
+
+# 	is_valid_showing_failures_only = {
+# 		is_capable_adult = yes
+# 		is_imprisoned = no
+# 		is_independent_ruler = yes
+# 		is_at_war = no
+# 	}
+
+# 	cost = {
+# 		prestige = 100
+# 		piety = 200
+# 	}
+
+# 	effect = {
+# 		show_as_tooltip = {
+# 			promote_gaulish_settlement_decision_scripted_effect = yes
+# 		}
+# 		trigger_event = {
+# 			id = pr.016
+# 		}
+# 		save_scope_as = actor
+# 		hidden_effect = {
+# 			add_to_global_variable_list = {
+# 				name = unavailable_unique_decisions
+# 				target = flag:flag_promoted_gaulish_settlement
+# 			}
+# 		}
+# 	}
+	
+# 	ai_potential = {
+# 		always = yes
+# 	}
+
+# 	ai_will_do = {
+# 		base = 50
+# 		ai_value_modifier = {
+# 			ai_zeal = 1.0
+# 			ai_greed = 1.0
+# 		}
+# 	}
+# }
+
+
+
+ #Inspire other countries to return to their old Polytheistic ways
+ #It's a bit of a far fetch as polytheistic religions didn't realy send religious emissaries to others(as far as I know) 
+ #just to make the game play more fun and with lower religious fervor it could happen just like the neo polytheistic(pagan) religions 4
+
+
+ dismantle_papacy_decision = { #For Muslims and Pagans.
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	}
+	decision_group_type = polytheism
+	desc = dismantle_papacy_decision_desc
+	selection_tooltip = dismantle_papacy_decision_tooltip
+
+	ai_check_interval = 60
+
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		faith:catholic = {
+			has_doctrine = doctrine_spiritual_head
+		}
+		OR = { #Must have historical grudge with Christianity
+			faith.religion = faith:hellenic_pagan.religion
+			faith.religion = faith:ashari.religion
+			faith.religion = faith:norse_pagan.religion
+			faith.religion = faith:slavic_pagan.religion
+			faith.religion = faith:baltic_pagan.religion
+			faith.religion = faith:roman_pagan.religion
+			faith.religion = faith:eluesinian_mysteries.religion
+			faith.religion = faith:mithraic_mysteries.religion
+			faith.religion = faith:mysteries_of_isis.religion
+			faith.religion = faith:cult_of_serapis.religion
+			faith.religion = faith:sol_invictus_cult.religion
+			faith.religion = faith:imperial_cult.religion
+			faith.religion = faith:gaelic_polytheism.religion
+			faith.religion = faith:brythonic_polytheism.religion
+			faith.religion = faith:gaulish_polytheism.religion
+			faith.religion = faith:celtic_iberian_polytheism.religion
+			faith.religion = faith:punic_polytheism.religion
+			faith.religion = faith:etc_polytheism.religion
+			faith.religion = faith:anglo_saxon_polytheism.religion
+			faith.religion = faith:german_polytheism.religion
+			faith.religion = faith:kemetic_polytheism.religion
+			faith.religion = faith:atenism.religion
+			faith.religion = faith:armenian_polytheism.religion
+			faith.religion = faith:georgian_polytheism.religion
+			faith.religion = faith:babylonian_polytheism.religion
+			faith.religion = faith:assyrian_polytheism.religion
+			faith.religion = faith:sumerian_polytheism.religion
+			faith.religion = faith:hittite_polytheism.religion
+			faith.religion = faith:semitic_polytheism.religion
+			faith.religion = faith:romano_british_polytheism.religion
+			faith.religion = faith:gallo_roman_polytheism.religion
+			faith.religion = faith:roman_illyrian_polytheism.religion
+			faith.religion = faith:romano_germanic_polytheism.religion
+		}
+		highest_held_title_tier > 3 #Only Kings and Emperors
+		capital_province = { #Indians could not possibly care...
+			OR = {
+				geographical_region = world_europe
+				geographical_region = world_middle_east
+				geographical_region = world_africa_north
+			}
+		}
+		NOT = {
+			current_date < 600.1.1
+		}
+	}
+
+	is_valid = {
+		trigger_if = {
+			limit = {
+				exists = title:k_papal_state.holder
+			}
+			title:k_papal_state.holder = { is_landed = no } #If he fled elsewhere, it cannot be done, the Pope must be landless.
+			title:k_papal_state.holder = { is_at_war = no } #Shouldn't be possible during a Crusade
+		}
+		completely_controls_region = world_europe_south_italy
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	effect = {
+		custom_tooltip = dismantle_papacy_decision_effect_tooltip
+		show_as_tooltip = {
+			destroy_papacy_scripted_effect = yes
+		}
+		trigger_event = {
+			id = roman_restoration.0130
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = { #Do it always.
+		base = 100
+	}
+}
+
+dismantle_patriarchate_decision = { #For Muslims and Pagans.
+		picture = {
+			reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+		}
+		decision_group_type = polytheism
+		desc = dismantle_patriarchate_decision_desc
+		selection_tooltip = dismantle_patriarchate_decision_tooltip
+		major = yes
+
+		ai_check_interval = 60
+
+		is_shown = {
+			is_ruler = yes
+			is_landed = yes
+			faith:orthodox = {
+				has_doctrine = doctrine_spiritual_head
+			}
+			OR = { #Must have historical grudge with Christianity
+				faith.religion = faith:hellenic_pagan.religion
+				faith.religion = faith:ashari.religion
+				faith.religion = faith:norse_pagan.religion
+				faith.religion = faith:slavic_pagan.religion
+				faith.religion = faith:baltic_pagan.religion
+				faith.religion = faith:roman_pagan.religion
+				faith.religion = faith:eluesinian_mysteries.religion
+				faith.religion = faith:mithraic_mysteries.religion
+				faith.religion = faith:mysteries_of_isis.religion
+				faith.religion = faith:cult_of_serapis.religion
+				faith.religion = faith:sol_invictus_cult.religion
+				faith.religion = faith:imperial_cult.religion
+				faith.religion = faith:gaelic_polytheism.religion
+				faith.religion = faith:brythonic_polytheism.religion
+				faith.religion = faith:gaulish_polytheism.religion
+				faith.religion = faith:celtic_iberian_polytheism.religion
+				faith.religion = faith:punic_polytheism.religion
+				faith.religion = faith:etc_polytheism.religion
+				faith.religion = faith:anglo_saxon_polytheism.religion
+				faith.religion = faith:german_polytheism.religion
+				faith.religion = faith:kemetic_polytheism.religion
+				faith.religion = faith:atenism.religion
+				faith.religion = faith:armenian_polytheism.religion
+				faith.religion = faith:georgian_polytheism.religion
+				faith.religion = faith:babylonian_polytheism.religion
+				faith.religion = faith:assyrian_polytheism.religion
+				faith.religion = faith:sumerian_polytheism.religion
+				faith.religion = faith:hittite_polytheism.religion
+				faith.religion = faith:semitic_polytheism.religion
+				faith.religion = faith:romano_british_polytheism.religion
+				faith.religion = faith:gallo_roman_polytheism.religion
+				faith.religion = faith:roman_illyrian_polytheism.religion
+				faith.religion = faith:romano_germanic_polytheism.religion
+				faith.religion = faith:illyrian_polytheism.religion
+				faith.religion = faith:scythian_polytheism.religion
+			}
+			highest_held_title_tier > 3 #Only Kings and Emperors
+			capital_province = { #Indians could not possibly care...
+				OR = {
+					geographical_region = world_europe
+					geographical_region = world_middle_east
+					geographical_region = world_africa_north
+				}
+			}
+			NOT = {
+				current_date < 600.1.1
+			}
+		}
+
+		is_valid = {
+			trigger_if = {
+				limit = {
+					exists = title:k_orthodox.holder
+				}
+				title:k_orthodox.holder = { is_landed = no } #If he fled elsewhere, it cannot be done, the Patriarch must be landless.
+				title:k_orthodox.holder = { is_at_war = no } #Shouldn't be possible during a Crusade
+			}
+			completely_controls = title:k_hellas
+			completely_controls = title:k_epirus
+			completely_controls = title:k_thessalonika
+			completely_controls = title:k_nikaea
+			completely_controls = title:k_krete
+		}
+		is_valid_showing_failures_only = {
+			is_capable_adult = yes
+			is_imprisoned = no
+			is_independent_ruler = yes
+		}
+
+		effect = {
+			custom_tooltip = dismantle_patriarchate_decision_effect_tooltip
+			show_as_tooltip = {
+				destroy_patriarchate_scripted_effect = yes
+			}
+			trigger_event = {
+				id = pr.044
+			}
+		}
+
+		ai_potential = {
+			always = yes
+		}
+
+		ai_will_do = { #Do it always.
+			base = 100
+		}
+}
+
+#Gaulish stuff Also usable for roman culture but need to rework that a bit so that they get their own custom event
+create_celtica_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	desc = create_celtica_decision_desc
+	ai_check_interval = 4
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_game_rule = pr_ancient_kingdoms_decisions_on
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_recreated_celtica
+			}
+		}
+		
+	}
+
+	is_valid = {
+		completely_controls = title:d_valois
+		# completely_controls = title:d_upper_lorraine
+		# completely_controls = title:d_lower_lorraine
+		completely_controls = title:d_bar
+		completely_controls = title:d_savoie
+		completely_controls = title:d_berry
+		completely_controls = title:d_transjurania
+		completely_controls = title:d_upper_burgundy
+		completely_controls = title:d_anjou 
+		completely_controls = title:d_normandy
+		completely_controls = title:d_orleans
+		completely_controls = title:d_champagne
+		completely_controls = title:d_burgundy
+		completely_controls = title:d_brittany
+		completely_controls = title:d_aquitaine
+		completely_controls = title:d_poitou
+		completely_controls = title:d_auvergne
+		completely_controls = title:d_bourbon
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+		is_imprisoned = no	
+		is_at_war = no
+	}
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_recreated_celtica
+		}
+		custom_tooltip = restore_celtica_effect_tooltip
+
+		title:d_valois = { save_scope_as = valois }
+		title:d_bar = { save_scope_as = bar}
+		# title:d_upper_lorraine = { save_scope_as = upper_lorraine }
+		# title:d_lower_lorraine = { save_scope_as = lower_lorraine }
+		title:d_savoie = { save_scope_as = savoie }
+		title:d_berry = { save_scope_as = berry }
+		title:d_transjurania = { save_scope_as = transjurania }
+		title:d_upper_burgundy = { save_scope_as = upper_burgundy }
+		title:d_anjou  = { save_scope_as = anjou }
+		title:d_normandy  = { save_scope_as = normandy }
+		title:d_orleans = { save_scope_as = orleans }
+		title:d_champagne = { save_scope_as = champagne }
+		title:d_burgundy = { save_scope_as = burgundy }
+		title:d_brittany = { save_scope_as = brittany }
+		title:d_aquitaine = { save_scope_as = aquitane }
+		title:d_poitou = { save_scope_as = poitou }
+		title:d_auvergne = { save_scope_as = auvergne }
+		title:d_bourbon = { save_scope_as = bourbon }
+		#title:d_bihar = { save_scope_as = bihar }
+
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_celtica = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		title:d_valois = { set_de_jure_liege_title = title:k_celtica}
+		title:d_bar = { set_de_jure_liege_title = title:k_celtica}
+		
+		# title:d_upper_lorraine = { set_de_jure_liege_title = title:k_celtica}
+		# title:d_lower_lorraine = { set_de_jure_liege_title = title:k_celtica}
+		title:d_savoie = { set_de_jure_liege_title = title:k_celtica}
+		title:d_berry = { set_de_jure_liege_title = title:k_celtica}
+		title:d_transjurania = { set_de_jure_liege_title = title:k_celtica}
+		title:d_upper_burgundy = { set_de_jure_liege_title = title:k_celtica}
+		title:d_anjou  = { set_de_jure_liege_title = title:k_celtica}
+		title:d_normandy  = { set_de_jure_liege_title = title:k_celtica}
+		title:d_orleans = { set_de_jure_liege_title = title:k_celtica}
+		title:d_champagne = { set_de_jure_liege_title = title:k_celtica}
+		title:d_burgundy = { set_de_jure_liege_title = title:k_celtica}
+		title:d_brittany = { set_de_jure_liege_title = title:k_celtica}
+		title:d_aquitaine = { set_de_jure_liege_title = title:k_celtica}
+		title:d_poitou = { set_de_jure_liege_title = title:k_celtica}
+		title:d_auvergne = { set_de_jure_liege_title = title:k_celtica}
+		title:d_bourbon = { set_de_jure_liege_title = title:k_celtica}
+
+	}
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 0.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 0.5
+			round = yes
+		}
+	}
+
+	ai_potential = {
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+ create_belgica_decision = { 
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_game_rule = pr_ancient_kingdoms_decisions_on
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				religion = religion:roman_religion
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+				
+			}
+		}
+
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_recreated_belgica
+			}
+		}
+	}
+	is_valid = {
+		completely_controls = title:d_julich 
+		completely_controls = title:b_geldern
+		completely_controls = title:d_brabant
+		completely_controls = title:d_luxembourg
+		completely_controls = title:c_zeeland
+		completely_controls = title:d_flanders
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				religion = religion:roman_religion
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+				
+			}
+		}
+		is_imprisoned = no	
+		is_at_war = no
+	}
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_recreated_belgica
+		}
+		custom_tooltip = restore_celtica_effect_tooltip
+		title:d_brabant = { save_scope_as = brabant }
+		title:d_luxembourg = { save_scope_as = lexembourg }
+		title:d_flanders = { save_scope_as = flanders }
+		title:d_julich = { save_scope_as = julich }
+
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_belgica = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		title:d_brabant = { set_de_jure_liege_title = title:k_belgica }
+		title:d_luxembourg = { set_de_jure_liege_title = title:k_belgica }
+		title:d_flanders = { set_de_jure_liege_title = title:k_belgica }
+		title:d_julich = { set_de_jure_liege_title = title:k_belgica }
+	}
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 0.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 0.5
+			round = yes
+		}
+	}
+
+	ai_potential = {
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+ }
+
+
+
+ create_narbonensis_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 4
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_game_rule = pr_ancient_kingdoms_decisions_on
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_recreated_narbonensis
+			}
+		}
+	}
+	is_valid = {
+		completely_controls = title:d_provence
+		completely_controls = title:d_septimania
+		completely_controls = title:d_toulouse
+		completely_controls = title:d_dauphine
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+		is_imprisoned = no	
+		is_at_war = no
+	}
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_recreated_narbonensis
+		}
+		custom_tooltip = restore_narbonensis_effect_tooltip
+		title:d_provence = { save_scope_as = provence }
+		title:d_septimania = { save_scope_as = languedoc }
+		title:d_toulouse = { save_scope_as = toulouse }
+		title:d_dauphine = { save_scope_as = dauphine }
+
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_narbonensis = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		title:d_provence = { set_de_jure_liege_title = title:k_narbonensis}
+		title:d_septimania = { set_de_jure_liege_title = title:k_narbonensis }
+		title:d_toulouse = { set_de_jure_liege_title = title:k_narbonensis }
+		title:d_dauphine = { set_de_jure_liege_title = title:k_narbonensis }
+	}
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 0.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 0.5
+			round = yes
+		}
+	}
+
+	ai_potential = {
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+ }
+
+ create_aquitania_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 4
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_game_rule = pr_ancient_kingdoms_decisions_on
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+
+		is_imprisoned = no	
+		is_at_war = no
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_recreated_aquitania
+			}
+		}
+		
+	}
+	is_valid = {
+		completely_controls = title:d_gascogne
+		completely_controls = title:d_armagnac
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+		is_imprisoned = no	
+		is_at_war = no
+	}
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_recreated_aquitania
+		}
+		custom_tooltip = restore_aquitania_effect_tooltip
+		title:d_gascogne = { save_scope_as = gascogne }
+		title:d_armagnac = { save_scope_as = armagnac }
+
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_aquitania= {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		title:d_gascogne = { set_de_jure_liege_title = title:k_aquitania }
+		title:d_armagnac = { set_de_jure_liege_title = title:k_aquitania }
+
+	}
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 0.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 0.5
+			round = yes
+		}
+	}
+
+	ai_potential = {
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+ }
+
+ create_empire_gaul_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 4
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_game_rule = pr_ancient_kingdoms_decisions_on
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+
+		is_imprisoned = no	
+		is_at_war = no
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_recreated_empire_gaul
+			}
+		}
+		
+	}
+	is_valid = {
+		has_title = title:k_aquitania
+		has_title = title:k_belgica
+		has_title = title:k_narbonensis
+		has_title = title:k_celtica
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+		is_imprisoned = no	
+		is_at_war = no
+	}
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_recreated_empire_gaul
+		}
+		custom_tooltip = restore_empire_gaul_effect_tooltip
+		title:k_aquitania = { save_scope_as = aquitania }
+		title:k_belgica = { save_scope_as = belgica }
+		title:k_narbonensis = { save_scope_as = narbonensis }
+		title:k_celtica= { save_scope_as = celtica }
+
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:e_gaul = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		title:k_aquitania = { set_de_jure_liege_title = title:e_gaul}
+		title:k_belgica = { set_de_jure_liege_title = title:e_gaul}
+		title:k_narbonensis = { set_de_jure_liege_title = title:e_gaul}
+		title:k_celtica = { set_de_jure_liege_title = title:e_gaul}
+	}
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 0.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 0.5
+			round = yes
+		}
+	}
+
+	ai_potential = {
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+ }
+
+
+
+ create_cisalpine_gaul_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 4
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_game_rule = pr_ancient_kingdoms_decisions_on
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+
+		is_imprisoned = no	
+		is_at_war = no
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_recreated_cisalpine_gaul
+			}
+		}
+		
+	}
+	is_valid = {
+		completely_controls = title:d_genoa
+		completely_controls = title:d_piedmonte
+		completely_controls = title:d_lombardia
+		completely_controls = title:d_emilia
+		completely_controls = title:d_verona
+		completely_controls = title:d_venice
+		completely_controls = title:d_friuli
+		AND = {
+			OR = {
+				faith = faith:gaulish_polytheism
+				faith = { has_doctrine_parameter = special_doctrine_gaulish_patron_god_active }
+				religion = religion:roman_religion
+				culture = culture:roman
+				culture = { has_cultural_pillar = heritage_gaulish }
+			}
+		}
+		is_imprisoned = no	
+		is_at_war = no
+	}
+
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_recreated_cisalpine_gaul
+		}
+		custom_tooltip = restore_cisalpine_gaul_effect_tooltip
+		title:d_genoa = { save_scope_as = genoa }
+		title:d_piedmonte = { save_scope_as = piedmonte }
+		title:d_lombardia = { save_scope_as = lombardia }
+		title:d_emilia = { save_scope_as = emilia }
+		title:d_verona = { save_scope_as = verona }
+		title:d_venice = { save_scope_as = venice }
+		title:d_friuli = { save_scope_as = friuli }
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_cisalpina = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		title:d_genoa = { set_de_jure_liege_title = title:k_cisalpina }
+		title:d_piedmonte = { set_de_jure_liege_title = title:k_cisalpina }
+		title:d_lombardia = { set_de_jure_liege_title = title:k_cisalpina }
+		title:d_emilia = { set_de_jure_liege_title = title:k_cisalpina }
+		title:d_verona = { set_de_jure_liege_title = title:k_cisalpina }
+		title:d_venice= { set_de_jure_liege_title = title:k_cisalpina }
+		title:d_friuli = { set_de_jure_liege_title = title:k_cisalpina }
+		
+	}
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 0.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 0.5
+			round = yes
+		}
+	}
+
+	ai_potential = {
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+ }
+
+ #Only for ai based on fervor of either christian or muslim faith 
+ #No event text needed as only ai uses it 
+ pr_ai_polyteism_reconstruction_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	is_shown = {
+		#is_ai = yes
+		is_ruler = yes
+		is_landed = yes
+		AND = {
+			has_game_rule = reconstruct_polytheism_ai__on
+			is_ai = yes 
+			OR = {
+				religion = religion:christianity_religion
+				religion = religion:islam_religion
+			}
+		}
+		NAND = {
+			OR = {
+				has_character_flag = converted_pr_religion_this_lifetime	
+			}
+		}
+	}
+
+	is_valid = {
+		faith = { fervor <= 40 } 
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+		is_at_war = no
+	}
+
+	effect = {
+		trigger_event = pr.050
+	}
+	ai_check_interval = 90
+	ai_potential = {
+
+	}
+	ai_will_do = {
+		base = 80
+	}
+ }
+
+ pr_ai_polyteism_more_variety_religions_in_realm_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	is_shown = {
+		is_ai = yes
+		is_ruler = yes
+		is_landed = yes
+		faith = { has_doctrine = pagan_hostility_doctrine }
+		has_game_rule = pr_polytheis_variety_ai_on
+		# AND = {
+		# 	has_game_rule = reconstruct_polytheism_ai__on
+		# 	#is_ai = yes 
+		# 	culture = root.culture
+		# }
+		NAND = {
+			OR = {
+				has_character_flag = converted_pr_religion_this_lifetime	
+			}
+		}
+	}
+
+	is_valid = {
+		faith = { has_doctrine = pagan_hostility_doctrine }
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		#is_independent_ruler = yes
+		is_at_war = no
+	}
+
+	effect = {
+		trigger_event = pr.051
+	}
+	ai_check_interval = 90
+	ai_potential = {
+
+	}
+	ai_will_do = {
+		base = 80
+	}
+ }

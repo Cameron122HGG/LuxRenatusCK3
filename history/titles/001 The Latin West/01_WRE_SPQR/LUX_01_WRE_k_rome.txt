@@ -1,0 +1,339 @@
+k_rome = {
+	867.1.1 = { change_development_level = 7 }
+	1066.1.1 = { change_development_level = 10 }
+	1178.1.1 = { change_development_level = 14 }
+	
+	1066.1.1 = {
+		holder = 0
+	}
+}
+
+d_toscana = {
+	1065.1.1 = {
+		holder = 275
+		liege = k_titular_etruria
+		government = classical_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_government }
+				}
+				set_state_faith = faith:solar_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
+	}
+}
+
+c_firenze = {
+	1065.1.1 = {
+		holder = 275
+		liege = d_toscana
+		government = classical_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_government }
+				}
+				set_state_faith = faith:solar_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
+	}
+}
+
+d_ravenna = {
+	1065.1.1 = {
+		holder = 274
+		liege = k_titular_ravenna
+		government = classical_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_government }
+				}
+				set_state_faith = faith:solar_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
+	}
+}
+
+c_ravenna = {
+	1065.1.1 = {
+		holder = 274
+		liege = d_ravenna
+		government = classical_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_government }
+				}
+				set_state_faith = faith:solar_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
+	}
+}
+
+c_bologna = {
+	1178.1.1 = { change_development_level = 32 }
+
+	750.1.1 = {
+		liege = k_lombardy
+	}
+	750.1.1 = {
+		holder = 190268 #Ursus
+	}
+	772.1.1 = {
+		holder = 190269 #John
+	}
+	776.1.1 = {
+		holder = 190270 #Ursus
+	}
+	855.9.20 = {
+		liege = "d_spoleto"
+	}
+	855.9.20 = {
+		holder = 167976
+	}
+	
+	893.3.1 = {
+		holder = 167981
+	}
+	953.12.1 = {
+		holder = 167982
+	}
+	957.1.1 = {
+		holder = 167985
+	}
+	1011.1.1 = {
+		holder = 167987
+	}
+	1012.1.1 = {
+		holder = 167991
+	}
+	1056.1.14 = {
+		holder = 167994
+	}	
+	1066.1.1 = {
+	}
+	1091.12.10 = {
+		holder = 167999
+	}
+	1139.1.1 = {
+		holder = 73513
+	}
+	1141.1.1 = {
+		holder = 73514
+	}
+	1170.1.1 = {
+		holder = 73515
+	}
+	1174.1.1 = {
+		holder = asinelli_1 # Pietro Asinelli, consul in 1174
+		government = republic_government
+	}
+	1177.8.1 = {
+		liege = 0 # Treaty of Venice
+	}
+	1185.1.1 = {
+		holder = 213011
+	}
+	1190.1.1 = {
+		holder = cisalpine0781 # Orlando Rossi II of Parma, Podest� 
+	}
+	1212.1.1 = {
+		holder = 73516
+	}
+	1220.1.1 = {
+		liege = d_ravenna
+	}
+	1230.1.1 = {
+		holder = 73517
+	}
+	1255.1.1 = {
+		holder = 73518
+	liege = 0
+	}
+	1259.1.1 = {
+		holder = cisalpine0156 # Jacopino Rangoni
+		liege = k_papal_state
+	}
+	1260.1.1 = {
+		holder = 73518
+		liege = 0
+	}
+	1272.1.1 = {
+		holder = 73519
+		liege = k_papal_state
+	}
+	1287.1.1 = {
+		holder = cisalpine0789 # Ugolino Rossi of Lucca
+	}
+	1307.1.1 = {
+		holder = 73520
+	}
+	1324.1.1 = {
+		holder = 463300
+	liege = 0
+	}
+
+}
+
+d_latium = {
+	867.1.1 = { change_development_level = 10 }
+	1066.1.1 = { change_development_level = 14 }
+	1178.1.1 = { change_development_level = 19 }
+	
+	1066.1.1 = {
+		holder = 0
+	}
+}
+
+c_roma = {
+	867.1.1 = { change_development_level = 25 }
+	1066.1.1 = { change_development_level = 30 }
+	1178.1.1 = { change_development_level = 34 }
+	
+	1066.1.1 = {
+		holder = 501
+	}
+
+}
+
+d_ancona = {
+	1060.1.1 = {
+		holder = 72
+		liege = 0
+		government = tyrant_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_government }
+				}
+				set_state_faith = faith:solar_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
+	}
+}
+
+d_spoleto = {
+	1060.1.1 = {
+		holder = 28
+		liege = 0
+		government = feudal_government
+	}
+
+}

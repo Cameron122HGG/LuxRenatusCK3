@@ -1,0 +1,292 @@
+﻿namespace = etc
+namespace = etc_sr
+
+
+
+#Return Etruscan
+etc.001 = {
+	type = character_event
+	title = etc.001.t
+	desc = etc.001.desc
+	theme =  hunt_activity
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = etc.001.a
+		trigger_event = etc.002
+	}
+}
+
+etc.002 = { 
+	type = character_event
+	title = etc.002.t
+	desc = etc.002.desc
+	theme = learning_scholarship_focus
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	option = { #Proceed
+		name = etc.002.a
+		trigger_event = etc.003
+	}
+	option = { #Stop
+		name = etc.002.b
+		hidden_effect ={
+			clear_global_variable_list = unavailable_unique_decisions_etc
+			remove_trait = pilgrim 
+		}
+	}
+}
+
+etc.003 = { 
+	type = character_event
+	title = etc.003.t
+	desc = etc.003.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	#proceed
+	option = {
+		name = etc.003.a
+		trigger_event = etc.004
+	}	
+}
+
+etc.004 = {
+	type = character_event
+	title = etc.004.t
+	desc = etc.004.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	option = {
+		name = etc.004.a
+		trigger_event = etc.005
+	}
+}
+
+etc.005 = {
+	type = character_event
+	title = etc.005.t
+	desc = etc.005.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	option = {
+		name = etc.005.a
+		trigger_event = etc.006
+	}
+	option = {
+		name = etc.005.b
+		hidden_effect ={
+			clear_global_variable_list = unavailable_unique_decisions_etc
+			remove_trait = pilgrim 
+		}
+	}
+}
+etc.006 = {
+	type = character_event
+	title = etc.006.t
+	desc = etc.006.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_zealous
+		
+	}
+	option = {
+		name = etc.006.a
+		trigger_event = {
+			id = etc_sr.001
+			months = 2 
+		}
+	}
+	
+}
+
+#Reinstate Cultus Deorum as state religion 
+scripted_effect etc_sr_notify_players_effectt = {
+	every_player = {
+		limit = {
+			Not = {this = root}  
+			capital_province = {
+			geographical_region = world_europe_south_east
+			}
+		}
+		trigger_event = etc_sr.002
+	}
+}
+
+etc_sr.001 = {
+	type = character_event
+	title = etc_sr.001.t
+	desc = etc_sr.001.desc
+	theme = faith
+	right_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous	
+		}
+		override_background = { reference = throne_room }
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		faith = { save_scope_as = old_faith }
+		return_etc_sr_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = etc_sr.001.a
+		#Get a nice reward for your adherence to the true faith.
+		add_piety_level = 1
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = etc_return
+			value = flag:vanilla
+		}
+		etc_sr_notify_players_effect = yes 
+		
+	}	
+}
+
+etc_sr.002 = {
+	type = character_event
+	title = etc_sr.002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { top_liege = root }
+				desc = etc_sr.002.desc.vassals
+			}
+			desc = etc_sr.002.desc.outsiders
+		}
+		desc = etc_sr.002.desc.intro
+		triggered_desc = {
+			trigger = { scope:etc_return = flag:vanilla }
+			desc = etc_sr.002.desc_vanilla
+		}
+	}
+	theme = faith
+	left_portrait = scope:scoped_ruler
+	override_background = { reference = throne_room }
+	#Roman polyteist are happy about this unexpected turn of events!
+	option = {
+		name = etc_sr.002.a
+		trigger = { religion = religion:etruscan_religion}
+		add_stress = minor_stress_loss
+	}
+	#Vassals who do not follow the faith may decide to convert after all.
+	option = {
+		name = etc_sr.002.b
+		trigger = {
+			top_liege = root
+			NOT = { religion = religion:etruscan_religion}
+		}
+		set_character_faith_with_conversion = faith:etc_polytheism
+		
+	}
+	#Those who aren't polytheist are probably horrified.
+	option = {
+		name = etc_sr.002.c
+		trigger = {
+			NOT = {
+				religion = { is_in_family = rf_pagan}
+			}
+		}
+	}
+	#And, as a fallback, some people just won't care.
+	option = { 
+		name = etc_sr.002.d 
+	}
+}
+
+
+etc.007 = {
+	type = character_event
+	title = etc.007.t
+	desc = etc.007.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Tinia
+	option = {
+		name = etc.007.tinia
+		trigger = {
+			NOT = { has_character_modifier = etruscan_tinia }
+		}
+		set_bhakti_effect = { BHAKTI = etruscan_tinia }
+	}
+
+	 #Norti
+	 option = {
+	 	name = etc.007.nortia
+	 	trigger = {
+	 		NOT = { has_character_modifier = etruscan_nortia }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = etruscan_nortia }
+	 }
+
+	#Turms
+	option = {
+		name = etc.007.turms
+		trigger = {
+			NOT = { has_character_modifier = etruscan_turms}
+		}
+		set_bhakti_effect = { BHAKTI = etruscan_turms}
+	}
+
+	# Menvra
+	option = {
+		name = etc.007.menvra
+		trigger = {
+			NOT = { has_character_modifier = etruscan_menrva }
+		}
+		set_bhakti_effect = { BHAKTI = etruscan_menrva }
+	}
+
+
+	 # Maris
+	 option = {
+	 	name = etc.007.maris
+	 	trigger = {
+	 		NOT = { has_character_modifier = etruscan_maris }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = etruscan_maris }
+	 }
+
+	# Opt-Out
+	option = {
+		name = etc.007.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+#Etruria
+etc.008 = {
+	type = character_event
+	title = etc.008.t
+	desc = etc.008.desc
+	theme = claim_throne_scheme
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = etc.008.a
+	}
+}

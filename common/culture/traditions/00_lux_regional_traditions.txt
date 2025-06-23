@@ -1,0 +1,206 @@
+﻿################################
+# LUX RENATUS REGIONAL CULTURAL TRADITIONS #
+################################
+tradition_lux_diadochi_phalanx = {
+	category = regional
+
+	layers = {
+		0 = martial
+		1 = mediterranean
+		4 = imperial_tagmata.dds 
+	}
+
+	is_shown = {
+		OR = {
+			this = culture:hellenistic
+			any_parent_culture_or_above = {
+				this = culture:hellenistic
+			}
+			has_cultural_pillar = heritage_ancient_greek
+		}
+		# DLC check.
+		has_ep3_dlc_trigger = yes
+		NOT = {
+			has_cultural_tradition = tradition_roman_legacy
+		}
+	}
+	can_pick = {
+	}
+	
+	parameters = {
+		unlock_maa_hoplite = yes
+		unlock_maa_peltast = yes
+		unlock_maa_companion_guards = yes
+		frontier_themes_borrow_neighbor_troops = yes
+	}
+	character_modifier = {
+		heavy_cavalry_max_size_add = 2
+		counter_efficiency = 0.1
+		knight_effectiveness_mult = -0.25
+		men_at_arms_title_limit = 1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_or_bureaucratic_desc
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						scope:character = {
+							any_held_title = {
+								tier = tier_county
+								count >= 8
+								any_county_province = {
+									has_building_or_higher = stables_01
+								}
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = domain_counties_with_stables_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 400
+		if = {
+			limit = { # Admin should be more into this
+				scope:character = {
+					government_allows = administrative
+				}
+			}
+			multiply = 2
+		}
+		else_if = {
+			limit = {
+				scope:character ?= {
+					ai_has_warlike_personality = yes
+				}
+			}
+			multiply = 4
+		}
+	}
+}
+
+tradition_lux_diadochi_kingship = {
+	category = regional
+
+	layers = {
+		0 = diplo
+		1 = mediterranean
+		4 = roman_ceremonies.dds
+	}
+
+	is_shown = {
+		OR = {
+			this = culture:hellenistic
+			any_parent_culture_or_above = {
+				this = culture:hellenistic
+			}
+			has_cultural_pillar = heritage_ancient_greek
+			scope:character = {
+				OR = {
+					has_title = title:e_byzantium
+					has_title = title:e_roman_empire
+				}
+			}
+		}
+		# DLC check.
+		has_ep3_dlc_trigger = yes
+		NOT = {
+			has_cultural_tradition = tradition_byzantine_succession
+		}
+	}
+	can_pick = {
+	}
+	
+	parameters = {
+		holds_triumphs = yes
+		hosts_chariot_races = yes
+		children_can_be_born_in_the_purple = yes
+		# We use the co-emperors parameter for most things...
+		unlock_co_emperors = yes
+		# ... which means the junior emperor parameter is _mostly_ just here for the loc.
+		unlock_junior_emperors = yes
+		#byzantine_faction_preffered_claimants = yes
+	}
+	county_modifier = {
+		county_opinion_add = -10
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
+						culture_pillar:ethos_courtly = { is_in_list = traits }
+						culture_pillar:ethos_egalitarian = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bureaucratic_courtly_or_egalitarian_desc
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_culture_county = {
+							count >= 50
+							any_county_province = {
+								geographical_region = custom_eastern_roman_empire
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = culture_in_roman_empire_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 200
+		if = {
+			limit = { # Admin should be more into this
+				scope:character = {
+					government_allows = administrative
+				}
+			}
+			multiply = 2
+		}
+	}
+}
+

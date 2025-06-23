@@ -1,0 +1,4908 @@
+﻿namespace = rps
+namespace = rpcs
+namespace = prsr
+namespace = sassanid_reconquest
+namespace = prctv
+namespace = pr
+namespace = RICEmisc
+#all return events religions are put here 
+#Polytheism reborn short religion change events
+rps.001={
+	type = character_event
+	title = rps.001.t
+	desc = rps.001.desc
+	theme = learning_scholarship_focus
+	option={ #Hellenic/Roman
+		name = rps.001.greek_roman
+		trigger_event = rps.002
+	}
+	option={ #Etruscan
+	name = rps.001.etruscan
+	trigger_event = rps.003
+	}
+	option={ #Egyptian
+	name = rps.001.egyptian 
+	trigger_event = rps.004
+	}
+	option={ #Celtic
+	name = rps.001.celtic 
+	trigger_event = rps.005
+	}
+	option={ #Germanic
+	name = rps.001.germanic
+	trigger_event = rps.006
+	}
+	option={
+		name = rps.001.next
+		trigger_event = rps.011
+	}
+	option={
+		name = rps.001.optout
+	}
+}
+rps.011={
+	type = character_event
+	title = rps.011.t
+	desc = rps.011.desc
+	theme = learning_scholarship_focus
+	option={ #Canaanite
+	name = rps.011.canaanite
+	trigger_event = rps.007
+	}
+	option={ #Mesopotamian
+	name = rps.011.mesopotamian
+	trigger_event = rps.008
+	}
+	option = {  #Daco Thracian
+	name = rps.011.daco_thracian
+	trigger_event = rps.009
+	}
+	option = {  #Caucasus
+	name = rps.011.caucasus
+	trigger_event = rps.010
+	}
+	option = {  #Hittite
+	name = rps.011.hittite
+	trigger_event = rps.014
+	}
+	option = {  #Scythian
+	name = rps.011.scythian
+	trigger_event = rps.013
+	}
+	
+	option={
+		name = rps.011.back
+		trigger_event = rps.001
+	}
+	option = {
+		name = rps.011.next 
+		trigger_event = rps.015
+	}
+	option={
+		name = rps.011.optout
+	}
+}
+rps.015={
+	type = character_event
+	title = rps.015.t
+	desc = rps.015.desc
+	theme = learning_scholarship_focus
+    
+	option = {
+		name = rps.015.illyrian
+		trigger_event = rps.016
+	}
+	option = {
+		name = rps.015.baltic
+		trigger_event = rps.017
+	}
+	option = {  #Iberian
+	name = rps.015.iberian
+	trigger_event = rps.018
+	}
+	option={
+		name = rps.015.back
+		trigger_event = rps.011
+		
+	}
+	option={
+		name = rps.015.optout
+	}
+}
+
+rps.016={
+	type = character_event
+	title = rps.016.t
+	desc = rps.016.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.016.illyrian
+		set_character_faith = faith:illyrian_polytheism
+	}
+	option={
+		name = rps.016.back
+		trigger_event = rps.015
+	}
+}
+
+rps.017 = {
+	type = character_event
+	title = rps.017.t
+	desc = rps.017.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.017.lithuanian
+		set_character_faith = faith:baltic_pagan
+	}
+	option={
+		name = rps.017.latvian
+		set_character_faith = faith:latvian_pagan
+	}
+	option={
+		name = rps.017.prussian
+		set_character_faith = faith:prussian_pagan
+	}
+	option={
+		name = rps.017.back
+		trigger_event = rps.015
+	}
+}
+
+rps.018 = {
+	type = character_event
+	title = rps.018.t
+	desc = rps.018.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.018.lusitanian
+		set_character_faith = faith:lusitanian_polytheism
+	}
+	option={
+		name = rps.018.back
+		trigger_event = rps.015
+	}
+}
+
+
+
+#Hellenic/Roman
+rps.002={
+	type = character_event
+	title = rps.002.t
+	desc = rps.002.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.002.roman
+		set_character_faith = faith:roman_pagan
+	}
+	option={
+		name = rps.002.greek
+		set_character_faith = faith:hellenic_pagan
+	}
+	option={
+		name = rps.002.mycenaean
+		set_character_faith = faith:mycenaean_polytheism
+	}
+	option={
+		name = rps.002.mithras
+		set_character_faith = faith:mithraic_mysteries
+	}
+	option={
+		name = rps.002.eluesinian
+		set_character_faith = faith:eluesinian_mysteries
+	}
+	option={
+		name = rps.002.serapis
+		set_character_faith = faith:cult_of_serapis
+	}
+	option={
+		name = rps.002.sol_invictus
+		set_character_faith = faith:sol_invictus_cult
+	}
+	option={
+		name = rps.002.next
+		trigger_event = rps.012
+	}
+	option={
+		name = rps.002.back
+		trigger_event = rps.001
+	}
+}
+rps.012 = {
+	type = character_event
+	title = rps.012.t
+	desc = rps.012.desc
+	theme = learning_scholarship_focus
+
+	option={
+		name = rps.012.isis
+		set_character_faith = faith:mysteries_of_isis
+	}
+	option={
+		name = rps.012.imperial
+		set_character_faith = faith:imperial_cult
+	}
+	option={
+		name = rps.012.roman_illyrian
+		set_character_faith = faith:roman_illyrian_polytheism
+	}
+	option={
+		name = rps.012.romano_british
+		set_character_faith = faith:romano_british_polytheism
+	}
+	option={
+		name = rps.012.gallo_roman
+		set_character_faith = faith:gallo_roman_polytheism
+	}
+	option={
+		name = rps.012.romano_germanic
+		set_character_faith = faith:romano_germanic_polytheism 
+	}
+	option={
+		name = rps.012.graeco_egyptian_polytheism
+		set_character_faith = faith:graeco_egyptian_polytheism
+	}
+	option={
+		name = rps.012.hellenic_alexandros
+		set_character_faith = faith:hellenic_alexandros
+	}
+	option={
+		name = rps.012.back
+		trigger_event = rps.002
+	}
+	option={
+		name = rps.012.main
+		trigger_event = rps.001
+	}
+}
+#Etruscan
+rps.003={
+	type = character_event
+	title = rps.003.t
+	desc = rps.003.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.003.etruscan
+		set_character_faith = faith:etc_polytheism
+	}
+	option={
+		name = rps.003.back
+		trigger_event = rps.001
+	}
+}
+#Egyptian
+rps.004={
+	type = character_event
+	title = rps.004.t
+	desc = rps.004.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.004.kemetic
+		set_character_faith = faith:kemetic_polytheism
+	}
+	option={
+		name = rps.004.atenism
+		set_character_faith = faith:atenism
+	}
+	option={
+		name = rps.004.back
+		trigger_event = rps.001
+	}
+}
+#Celtic
+rps.005={
+	type = character_event
+	title = rps.005.t
+	desc = rps.005.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.005.gaelic 
+		set_character_faith = faith:gaelic_polytheism
+	}
+	option={
+		name = rps.005.brythonic 
+		set_character_faith = faith:brythonic_polytheism
+	}
+	option={
+		name = rps.005.gaulish 
+		set_character_faith = faith:gaulish_polytheism
+	}
+	option={
+		name = rps.005.celtic_iberian 
+		set_character_faith = faith:celtic_iberian_polytheism
+	}
+	option={
+		name = rps.005.back
+		trigger_event = rps.001
+	}
+}
+#Germanic
+rps.006={
+	type = character_event
+	title = rps.006.t
+	desc = rps.006.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.006.anglo_saxon
+		set_character_faith = faith:anglo_saxon_polytheism
+	}
+	option={
+		name = rps.006.german
+		set_character_faith = faith:german_polytheism
+	}
+	option={
+		name = rps.006.back
+		trigger_event = rps.001
+	}
+}
+#Punic
+rps.007={
+	type = character_event
+	title = rps.007.t
+	desc = rps.007.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.007.punic
+		set_character_faith = faith:punic_polytheism
+	}
+	option = {
+		name = rps.007.semitic
+		set_character_faith = faith:semitic_polytheism
+	}
+	option={
+		name = rps.007.back
+		trigger_event = rps.001
+	}
+}
+#Mesopotamian
+rps.008={
+	type = character_event
+	title = rps.008.t
+	desc = rps.008.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.008.babylonian
+		set_character_faith = faith:babylonian_polytheism
+	}
+	option={
+		name = rps.008.sumerian
+		set_character_faith = faith:sumerian_polytheism
+	}
+	option = {
+		name = rps.008.assyrian
+		set_character_faith = faith:assyrian_polytheism
+	}
+	option={
+		name = rps.008.back
+		trigger_event = rps.001
+	}
+}
+
+#Paleo Balkan
+rps.009={
+	type = character_event
+	title = rps.009.t
+	desc = rps.009.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.009.dacian
+		set_character_faith = faith:dacian_polytheism
+	}
+	option={
+		name = rps.009.zalmoxism
+		set_character_faith = faith:zalmoxism
+	}
+	option={
+		name = rps.009.back
+		trigger_event = rps.001
+	}
+}
+
+#Caucasus
+rps.010={
+	type = character_event
+	title = rps.010.t
+	desc = rps.010.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.010.georgian
+		set_character_faith = faith:georgian_polytheism
+	}
+	option = {
+		name = rps.010.armenian
+		set_character_faith = faith:armenian_polytheism
+	}
+	option={
+		name = rps.010.back
+		trigger_event = rps.001
+	}
+}
+
+#Hittite
+rps.014={
+	type = character_event
+	title = rps.014.t
+	desc = rps.014.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.014.hittite
+		set_character_faith = faith:hittite_polytheism
+	}
+	option={
+		name = rps.014.back
+		trigger_event = rps.001
+	}
+}
+#Scythian
+rps.013={
+	type = character_event
+	title = rps.013.t
+	desc = rps.013.desc
+	theme = learning_scholarship_focus
+	option={
+		name = rps.013.scythian
+		set_character_faith = faith:scythian_polytheism
+	}
+	option={
+		name = rps.013.back
+		trigger_event = rps.001
+	}
+}
+
+#Short menu polytheism reborn cultures 
+rpcs.001= {
+	type = character_event
+	title = rpcs.001.t
+	desc = rpcs.001.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.001.greek_roman
+		trigger_event = rpcs.003
+	}
+	option = {
+		name = rpcs.001.celtic
+		trigger_event = rpcs.004
+	}
+	option = {
+		name = rpcs.001.illyrian
+		trigger_event = rpcs.006
+	}
+	option = {
+		name = rpcs.001.daco_thracian
+		trigger_event = rpcs.007
+	}
+	option = {
+		name  = rpcs.001.next
+		trigger_event = rpcs.002
+	}
+	option = {
+		name = rpcs.001.optout
+	}
+}
+
+rpcs.002= {
+	type = character_event
+	title = rpcs.002.t
+	desc = rpcs.002.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.002.egyptian
+		trigger_event = rpcs.008
+	}
+	option = {
+		name = rpcs.002.mesopotamian
+		trigger_event = rpcs.009
+	}
+	option = {
+		name = rpcs.002.etruscan
+		trigger_event = rpcs.010
+	}
+	option = {
+		name = rpcs.002.punic
+		trigger_event = rpcs.011
+	}
+	option = {
+		name = rpcs.002.hittite
+		trigger_event = rpcs.012
+	}
+	option = {
+		name = rpcs.002.iberian
+		trigger_event = rpcs.013
+	}
+	option = {
+		name = rpcs.002.back
+		
+		trigger_event = rpcs.001
+	}
+	option = {
+		name = rcps.002.optout
+	}
+}
+
+rpcs.003 = {
+	type = character_event
+	title = rpcs.003.t
+	desc = rpcs.003.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.003.mycenaean
+		set_culture = culture:mycenaean
+	}
+	option = {
+		name = rpcs.003.roman
+		set_culture = culture:roman
+	}
+	option = {
+		name = rpcs.003.graeco_persian
+		set_culture = culture:graeco_persian
+
+	}
+	option = {
+		name = rpcs.003.graeco_egyptian
+		set_culture = culture:pr_graeco_egyptian
+
+	}
+	option = {
+		name = rpcs.003.greek
+		set_culture = culture:greek
+	}
+	option = {
+		name = rpcs.003.back
+		trigger_event = rpcs.001
+	}
+}
+
+rpcs.004 = {
+	type = character_event
+	title = rpcs.004.t
+	desc = rpcs.004.desc
+	theme = learning_scholarship_focus
+	
+	option = {
+		name = rpcs.004.manx
+		set_culture = culture:manx
+	}
+	option = {
+		name = rpcs.004.irish
+		set_culture = culture:irish
+
+	}
+	option = {
+		name = rpcs.004.gaelic
+		set_culture = culture:gaelic
+	}
+	option = {
+		name = rpcs.004.next
+		trigger_event = rpcs.005
+	}
+	option = {
+		name = rpcs.004.back
+		trigger_event = rpcs.001
+	}
+}
+
+rpcs.005 = {
+	type = character_event
+	title = rpcs.005.t
+	desc = rpcs.005.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.005.gaulish
+		set_culture = culture:gaulish
+	}
+	option = {
+		name = rpcs.005.belgae
+		set_culture = culture:belgae
+	}
+	option = {
+		name = rpcs.005.eburones
+		set_culture = culture:eburones
+	}
+	option = {
+		name = rpcs.005.celtiberian
+		set_culture = culture:celtic_berian
+	}
+	option = {
+		name = rpcs.005.back
+		trigger_event = rpcs.004
+	}
+}
+
+rpcs.006 = {
+	type = character_event
+	title = rpcs.006.t
+	desc = rpcs.006.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.006.illyrian
+		set_culture = culture:illyrian
+	}
+	option = {
+		name = rpcs.006.back
+		trigger_event = rpcs.001
+	}
+}
+
+rpcs.007 = {
+	type = character_event
+	title = rpcs.007.t
+	desc = rpcs.007.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.007.dacian
+		set_culture = culture:dacian
+	}
+	option = {
+		name = rpcs.007.thracian
+		set_culture = culture:thracian
+	}
+	option = {
+		name = rpcs.007.back
+		trigger_event = rpcs.001
+	}
+}
+rpcs.008 = {
+	type = character_event
+	title = rpcs.008.t
+	desc = rpcs.008.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.008.kemetic
+		set_culture = culture:kemetic
+	}
+	option = {
+		name = rpcs.008.back
+		trigger_event = rpcs.002
+	}
+}
+
+rpcs.009 = {
+	type = character_event
+	title = rpcs.009.t
+	desc = rpcs.009.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.009.babylonian
+		set_culture = culture:babylonian
+	}
+	option = {
+		name = rpcs.009.assyrian
+		set_culture = culture:pr_assyrian
+	}
+	option = {
+		name = rpcs.009.sumerian
+		set_culture = culture:sumerian
+	}
+	option = {
+		name = rpcs.009.back
+		trigger_event = rpcs.002
+	}
+}
+
+rpcs.010 = {
+	type = character_event
+	title = rpcs.010.t
+	desc = rpcs.010.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.010.etruscan
+		set_culture = culture:etruscan
+	}
+	option = {
+		name = rpcs.010.back
+		trigger_event = rpcs.002
+	}
+}
+
+rpcs.011 = {
+	type = character_event
+	title = rpcs.011.t
+	desc = rpcs.011.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.011.punic
+		set_culture = culture:punic
+	}
+	option = {
+		name = rpcs.011.back
+		trigger_event = rpcs.002
+	}
+}
+
+rpcs.012 = {
+	type = character_event
+	title = rpcs.012.t
+	desc = rpcs.012.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.012.hittite
+		set_culture = culture:hittite
+	}
+	option = {
+		name = rpcs.012.back
+		trigger_event = rpcs.002
+	}
+}
+
+rpcs.013 = {
+	type = character_event
+	title = rpcs.013.t
+	desc = rpcs.013.desc
+	theme = learning_scholarship_focus
+
+	option = {
+		name = rpcs.013.iberian
+		set_culture = culture:iberian
+	}
+	option = {
+		name = rpcs.013.back
+		trigger_event = rpcs.002
+	}
+}
+
+#Polytheism reborn sassanid relative
+prsr.001 ={
+	type = character_event
+	title = prsr.001.t
+	desc = prsr.001.desc
+	theme = learning_scholarship_focus
+	immediate = {
+		hidden_effect = {
+			add_courtier = character:180643
+			add_courtier = character:1059969
+		}
+	}
+	lower_center_portrait = {
+		character = root
+		animation = idle
+	}
+	lower_left_portrait = {
+		character = character:180643
+		animation = idle
+	}
+	lower_right_portrait = {
+		character = character:1059969
+		animation = idle
+	}
+	option={
+		name = prsr.001.stay
+		add_prestige = 300
+	}
+	option = {
+		name = prsr.001.abdicate_samani
+		trigger = {
+			completely_controls = title:c_balkh
+		}
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:d_balkh= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_balkh= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_guzgan= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+
+				
+			}
+		}
+		title:c_marvarrud= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_rivsharan= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_west-tokharestan= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_east-tokharestan= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_wakhsh= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_rasht= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_wakhsh= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_khuttal= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		
+		set_player_character = character:180643
+		ai_chance = {
+			base = 50 
+		}
+
+	}
+	option = {
+		name = prsr.001.abdicate_afrighid
+		trigger = {
+			completely_controls = title:c_gurganj
+		}
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_khwarezmia= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_gurganj= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+
+				
+			}
+		}
+		title:c_kurdar= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_sarykamysh= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_uzboy= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_kath= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_khiva= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+		title:c_darghan= {
+			change_title_holder ={
+				holder = character:180643
+				change = scope:title_change
+				#liege = root
+				
+			}
+		}
+
+		resolve_title_and_vassal_change = scope:title_change
+		set_player_character = character:180643
+		ai_chance = {
+			base = 50 
+		}
+	}
+	option={
+		name = prsr.001.send_away
+		remove_courtier_or_guest = character:180643
+		remove_courtier_or_guest = character:180642
+		ai_chance={
+			base=50
+		}
+	}
+}
+
+sassanid_reconquest.001={
+	type = character_event
+	title = sassanid_reconquest.001.t
+	desc = sassanid_reconquest.001.desc
+	theme = learning_scholarship_focus
+	right_portrait ={
+		character = root
+		animation = idle
+	}
+	option={
+		name = sassanid_reconquest.001.a
+		add_prestige = 100
+	}
+}
+
+prctv.001={
+	type = character_event
+	title = prctv.001.t
+	desc = prctv.001.desc
+	theme = faith
+	
+	option={
+		name = prctv.001.a 
+		title:c_roma ={
+			remove_county_modifier = open_temple_of_vesta
+		}
+		remove_character_modifier = burning_flame_of_vesta
+		clear_global_variable_list = unavailable_unique_decisions_open_temple_of_vesta
+		
+	}
+}
+
+
+pr.001 = { 
+	type = character_event
+	title = pr.001.t
+	desc = pr.001.desc
+	theme = faith
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_rational
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		promote_gaelic_settlement_decision_scripted_effect = yes
+	}
+	
+	option = {
+		name = pr.001.a
+		every_player = {
+			limit = {
+				NOT = { this = root }
+			}
+			trigger_event = pr.002
+		}
+	}
+}
+#Gaelic Settlers
+pr.002 = { 
+	type = character_event
+	title = pr.002.t
+	desc = {
+		first_valid = {
+			# Vassal reaction.
+			triggered_desc = {
+				trigger = {
+					target_is_liege_or_above = scope:scoped_ruler
+				}
+				desc = pr.002.desc.vassals
+			}
+			desc = pr.002.desc.others
+		}
+	}
+	theme = faith
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_rational
+	}
+	
+	option = {
+		name = {
+			trigger = {
+				target_is_liege_or_above = scope:scoped_ruler
+			}	
+			text = pr.002.a
+		}
+		name = {
+			trigger = {
+				NAND = {
+					target_is_liege_or_above = scope:scoped_ruler
+				}
+			}
+			text = pr.002.b
+		}
+	}
+}
+#Brythonic Settlers
+pr.014 = { 
+	type = character_event
+	title = pr.014.t
+	desc = pr.014.desc
+	theme = faith
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_rational
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		promote_brythonic_settlement_decision_scripted_effect = yes
+	}
+	
+	option = {
+		name = pr.014.a
+		every_player = {
+			limit = {
+				NOT = { this = root }
+			}
+			trigger_event = pr.015
+		}
+	}
+}
+
+pr.015 = { 
+	type = character_event
+	title =  pr.015.t
+	desc = {
+		first_valid = {
+			# Vassal reaction.
+			triggered_desc = {
+				trigger = {
+					target_is_liege_or_above = scope:scoped_ruler
+				}
+				desc =  pr.015.desc.vassals
+			}
+			desc =  pr.015.desc.others
+		}
+	}
+	theme = faith
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_rational
+	}
+	
+	option = {
+		name = {
+			trigger = {
+				target_is_liege_or_above = scope:scoped_ruler
+			}	
+			text = pr.015.a
+		}
+		name = {
+			trigger = {
+				NAND = {
+					target_is_liege_or_above = scope:scoped_ruler
+				}
+			}
+			text = pr.015.b
+		}
+	}
+}
+
+#Gaulish Settlers
+pr.016 = { 
+	type = character_event
+	title = pr.016.t
+	desc = pr.016.desc
+	theme = faith
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_rational
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		promote_gaulish_settlement_decision_scripted_effect = yes
+	}
+	
+	option = {
+		name = pr.016.a
+		every_player = {
+			limit = {
+				NOT = { this = root }
+			}
+			trigger_event = pr.017
+		}
+	}
+}
+
+pr.017 = { 
+	type = character_event
+	title =  pr.017.t
+	desc = {
+		first_valid = {
+			# Vassal reaction.
+			triggered_desc = {
+				trigger = {
+					target_is_liege_or_above = scope:scoped_ruler
+				}
+				desc =  pr.017.desc.vassals
+			}
+			desc =  pr.017.desc.others
+		}
+	}
+	theme = faith
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_rational
+	}
+	
+	option = {
+		name = {
+			trigger = {
+				target_is_liege_or_above = scope:scoped_ruler
+			}	
+			text = pr.017.a
+		}
+		name = {
+			trigger = {
+				NAND = {
+					target_is_liege_or_above = scope:scoped_ruler
+				}
+			}
+			text = pr.017.b
+		}
+	}
+}
+
+#Celtica
+pr.003 = {
+	type = character_event
+	title = pr.003.t
+	desc = pr.003.desc
+	theme = claim_throne_scheme
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = pr.003.a
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_celtica = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+}
+#Belgica
+pr.004 = {
+	type = character_event
+	title = pr.004.t
+	desc = pr.004.desc
+	theme = claim_throne_scheme
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = pr.004.a
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_belgica = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+}
+#Narbonensis
+pr.005 = {
+	type = character_event
+	title = pr.005.t
+	desc = pr.005.desc
+	theme = claim_throne_scheme
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = pr.005.a
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_narbonensis = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+}
+#Aquitania
+pr.006 = {
+	type = character_event
+	title = pr.006.t
+	desc = pr.006.desc
+	theme = claim_throne_scheme
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = pr.006.a
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_aquitania = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+}
+#Gaulish empire
+pr.007 = {
+	type = character_event
+	title = pr.007.t
+	desc = pr.007.desc
+	theme = claim_throne_scheme
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = pr.007.a
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:e_gaul = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+}
+#Liguria/Cisalpine 
+pr.008 = {
+	type = character_event
+	title = pr.008.t
+	desc = pr.008.desc
+	theme = claim_throne_scheme
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = pr.008.a
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_cisalpina = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+}
+#Reconstruct polytheistic religion
+pr.018 = {
+	type = character_event
+	title = pr.018.t
+	desc = pr.018.desc
+	theme = learning_scholarship_focus
+	option={ #Hellenic/Roman
+		name = pr.018.greek_roman 
+		trigger_event = pr.020
+	}
+	option={ #Etruscan
+	name = pr.018.etruscan
+	trigger_event = pr.021
+	}
+	option={ #Egyptian
+	name = pr.018.egyptian
+	trigger_event = pr.022
+	}
+	option={ #Celtic
+	name = pr.018.celtic
+	trigger_event = pr.023
+
+	}
+	option={ #Germanic
+	name = pr.018.germanic
+	trigger_event = pr.024
+	}
+	option = {
+		name = pr.018.iberian
+		trigger_event = pr.052
+	}
+	option={
+		name = pr.018.next
+		trigger_event = pr.019
+	}
+	option={
+		name = pr.018.optout
+	}
+}
+
+pr.019={
+	type = character_event
+	title = pr.019.t
+	desc = pr.019.desc
+	theme = learning_scholarship_focus
+	option={ #Punic
+	name = pr.019.canaanite
+	trigger_event = pr.025
+	}
+	option={ #Mesopotamian
+	name = pr.019.mesopotamian
+	trigger_event = pr.026
+	}
+	option = {  #Daco Thracian
+	name = pr.019.daco_thracian
+	trigger_event = pr.027
+	}
+	option = {  #Caucasus
+	name = pr.019.caucasus
+	trigger_event = pr.028
+	}
+	option = {  #hittite
+	name = pr.019.hittite
+	trigger_event = pr.029
+	}
+	option = {
+		name = pr.019.scythian
+		trigger_event = pr.047
+	}
+	option = {
+		name = pr.019.illyrian
+		trigger_event = pr.048
+	}
+	option = {
+		name = pr.019.baltic
+		trigger_event = pr.049
+	}
+	option={
+		name = pr.019.back
+		trigger_event = pr.018
+	}
+	option={
+		name = pr.019.optout
+	}
+}
+#Set religion scopes 
+#Hellenic/Roman
+pr.020={
+	type = character_event
+	title = pr.020.t
+	desc = pr.020.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.020.roman
+		#set_character_faith = faith:roman_pagan
+		trigger_event = pr.030
+	
+		add_to_global_variable_list ={
+			name = research_roman
+			target = flag:flag_research_roman
+		}
+	}
+	option={
+		name = pr.020.greek
+		#set_character_faith = faith:hellenic_pagan
+		trigger_event = pr.030
+
+		add_to_global_variable_list ={
+			name = research_greek
+			target = flag:flag_research_greek
+		}
+	}
+	option={
+		name = pr.020.mycenaean
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_mycenaean
+			target = flag:flag_research_mycenaean
+		}
+	}
+	option={
+		name = pr.020.graeco_egyptian
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_graeco_egyptian
+			target = flag:flag_research_graeco_egyptian
+		}
+	}
+	option={
+		name = pr.020.back
+		trigger_event = pr.018
+	}
+}
+#Etruscan
+pr.021={
+	type = character_event
+	title = pr.021.t
+	desc = pr.021.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.021.etruscan
+		#set_character_faith = faith:etc_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_etruscan
+			target = flag:flag_research_etruscan
+		}
+	}
+	option={
+		name = pr.021.back
+		trigger_event = pr.018
+		
+	}
+}
+#Egyptian
+pr.022={
+	type = character_event
+	title = pr.022.t
+	desc = pr.022.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.022.kemetic
+		#set_character_faith = faith:kemetic_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_kemetic
+			target = flag:flag_research_kemetic
+		}
+	}
+	option={
+		name = pr.022.atenism
+		#set_character_faith = faith:atenism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_atenism
+			target = flag:flag_research_atenism
+		}
+	}
+	option={
+		name = pr.022.back
+		trigger_event = pr.018
+	}
+}
+#Celtic
+pr.023={
+	type = character_event
+	title = pr.023.t
+	desc = pr.023.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.023.gaelic
+		#set_character_faith = faith:gaelic_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_gaelic
+			target = flag:flag_research_gaelic
+		}
+
+	}
+	option={
+		name = pr.023.brythonic
+		#set_character_faith = faith:brythonic_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_brythonic
+			target = flag:flag_research_brythonic
+		}
+	}
+	option={
+		name = pr.023.gaulish
+		#set_character_faith = faith:gaulish_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_gaulish
+			target = flag:flag_research_gaulish
+		}
+	}
+	option={
+		name = pr.023.celtic_iberian
+		#set_character_faith = faith:celtic_iberian_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_celtic_iberian
+			target = flag:flag_research_celtic_iberian
+		}
+	}
+	option={
+		name = pr.023.back
+		trigger_event = pr.018
+	}
+}
+#Germanic
+pr.024={
+	type = character_event
+	title = pr.024.t
+	desc = pr.024.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.024.anglo_saxon
+		#set_character_faith = faith:anglo_saxon_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_anglo_saxon
+			target = flag:flag_research_anglo_saxon
+		}
+	}
+	option={
+		name = pr.024.german
+		#set_character_faith = faith:german_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_german
+			target = flag:flag_research_german
+		}
+	}
+	option={
+		name = pr.024.back
+		trigger_event = pr.018
+	}
+}
+
+#Iberian
+pr.052={
+	type = character_event
+	title = pr.052.t
+	desc = pr.052.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.052.lusitanian
+		#set_character_faith = faith:anglo_saxon_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_lusitanian
+			target = flag:flag_research_lusitanian
+		}
+	}
+	option={
+		name = pr.052.back
+		trigger_event = pr.018
+	}
+}
+#Punic
+pr.025={
+	type = character_event
+	title = pr.025.t
+	desc = pr.025.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.025.punic
+		#set_character_faith = faith:punic_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_punic
+			target = flag:flag_research_punic
+		}
+	}
+	option = {
+		name = pr.025.semitic
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_semitic
+			target = flag:flag_research_semitic
+		}
+	}
+	option={
+		name = pr.025.back
+		trigger_event = pr.019
+	}
+}
+#Mesopotamian
+pr.026={
+	type = character_event
+	title = pr.026.t
+	desc = pr.026.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.026.babylonian
+		#set_character_faith = faith:babylonian_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_babylonian
+			target = flag:flag_research_babylonian
+		}
+	}
+	option={
+		name = pr.026.sumerian
+		#set_character_faith = faith:sumerian_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_sumerian
+			target = flag:flag_research_sumerian
+		}
+	}
+	option={
+		name = pr.026.assyrian
+		#set_character_faith = faith:sumerian_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_assyrian
+			target = flag:flag_research_assyrian
+		}
+	}
+	option={
+		name = pr.026.back
+		trigger_event = pr.019
+	}
+}
+
+#Daco Thracian
+pr.027={
+	type = character_event
+	title = pr.027.t
+	desc = pr.027.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.027.dacian
+		#set_character_faith = faith:dacian_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_dacian
+			target = flag:flag_research_dacian
+		}
+	}
+	option={
+		name = pr.027.zalmoxism
+		#set_character_faith = faith:zalmoxism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_zalmoxism
+			target = flag:flag_research_zalmoxism
+		}
+	}
+	option={
+		name = pr.027.back
+		trigger_event = pr.019
+	}
+}
+
+#Caucasus
+pr.028={
+	type = character_event
+	title = pr.028.t
+	desc = pr.028.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.028.georgian
+		#set_character_faith = faith:georgian_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_georgian
+			target = flag:flag_research_georgian
+		}
+	}
+	option = {
+		name = pr.028.armenian
+		#set_character_faith = faith:armenian_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_armenian
+			target = flag:flag_research_armenian
+		}
+	}
+	option={
+		name = pr.028.back
+		trigger_event = pr.001
+	}
+}
+#Hittite
+pr.029 = {
+	type = character_event
+	title = pr.029.t
+	desc = pr.029.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.029.hittite
+		#set_character_faith = faith:hittite_polytheism
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_hittite
+			target = flag:flag_research_hittite
+		}
+	}
+	option={
+		name = pr.029.back
+		trigger_event = pr.019
+	}
+}
+
+pr.047={
+	type = character_event
+	title = pr.047.t
+	desc = pr.047.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.047.scythian
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_scythian
+			target = flag:flag_research_scythian
+		}
+	}
+	option={
+		name = pr.047.back
+		trigger_event = pr.019
+		
+	}
+}
+
+pr.048={
+	type = character_event
+	title = pr.048.t
+	desc = pr.048.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.048.illyrian
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_illyrian
+			target = flag:flag_research_illyrian
+		}
+	}
+	option={
+		name = pr.048.back
+		trigger_event = pr.019
+		
+	}
+}
+
+pr.049={
+	type = character_event
+	title = pr.049.t
+	desc = pr.049.desc
+	theme = learning_scholarship_focus
+	option={
+		name = pr.049.lithuanian
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_lithuanian
+			target = flag:flag_research_lithuanian
+		}
+	}
+	option = {
+		name = pr.049.latvian
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_latvian
+			target = flag:flag_research_latvian
+		}
+	}
+	option = {
+		name = pr.049.prussian
+		trigger_event = pr.030
+		add_to_global_variable_list ={
+			name = research_prussian
+			target = flag:flag_research_prussian
+		}
+	}
+	option={
+		name = pr.048.back
+		trigger_event = pr.019
+		
+	}
+}
+
+
+pr.030 = {#Choose library
+	type = character_event
+	title = pr.030.t
+	desc = pr.030.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	immediate = { 
+		hidden_effect = {
+			create_character = {
+				employer = root
+				random_traits = no
+				dynasty = generate
+				age = 50	
+				save_scope_as = historian
+				learning = 20
+				trait = education_learning_4
+				}
+			create_character = {
+				employer = root
+				random_traits = no
+				dynasty = generate
+				age = 40	
+				save_scope_as = book_merchant
+				stewardship = 26
+			}
+			cp:councillor_court_chaplain = {
+				save_scope_as = realm_priest
+			}
+		}
+	}
+	option = {
+		name = pr.030.alexandria
+		remove_short_term_gold = 250
+		set_global_variable = {
+			name = research_great_library
+			value = yes
+		}
+		pr_research_ancient_religion_events_great_library_effect = yes
+	}
+	option = {
+		name = pr.030.athens
+		remove_short_term_gold = 250
+		set_global_variable = {
+			name = research_great_library
+			value = yes
+		}
+		pr_research_ancient_religion_events_great_library_effect = yes
+	}
+	option = {
+		name = pr.030.vatican
+		remove_short_term_gold = 250
+		set_global_variable = {
+			name = research_great_library
+			value = yes
+		}
+		pr_research_ancient_religion_events_great_library_effect = yes
+	}
+	option = {
+		name = pr.030.minor_library
+		remove_short_term_gold = 100
+		set_global_variable = {
+			name = research_small_library
+			value = yes
+		}
+		pr_research_ancient_religion_events_small_library_effect = yes
+	}
+
+}
+pr.031 = {#Historian finds information
+	type = character_event
+	title = pr.031.t
+	desc = pr.031.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	left_portrait = {
+			character = scope:historian
+			animation = personality_content
+	}
+	option={
+		name = pr.031.a #Talk with Historian
+		trigger_event = pr.033
+	}
+}
+pr.032 = {#Historian didn't find information
+	type = character_event
+	title = pr.032.t
+	desc = pr.032.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option={
+		name = pr.032.a #Invite a book merchant 
+		 trigger_event = {
+		 	id = pr.034
+		 	days = 5 
+		 } 
+	}
+	option={
+		name = pr.032.b #Leave it as it is 
+		
+	}
+}
+pr.033 = {#Talk with historian
+	type = character_event
+	title = pr.033.t
+	desc = pr.033.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	left_portrait = {
+		character = scope:historian
+		animation = personality_content
+	}
+	option={
+		name = pr.033.a #
+		trigger_event = pr.035
+	}
+	option={
+		name = pr.033.b 	
+		add_character_modifier = { 
+			modifier = knowledge_of_ancient_religion
+	    } 
+	}
+}
+
+pr.035 = {#Court chaplain finds out
+	type = character_event
+	title = pr.035.t
+	desc = pr.035.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = shock
+	}
+	left_portrait = {
+		character = scope:realm_priest
+		animation = anger
+	}
+	immediate = {
+		hidden_effect = { 
+			if = {
+				limit = {
+					learning >= 18 
+				}
+				set_global_variable = {
+					name = learning_good
+					value = yes
+				}
+			}
+		}
+	}
+	option={
+		name = pr.035.a #Start debate
+		#Need to make a random event that checks if learning is >= as 18 
+		#learning >=18 convert court chaplain 100% good outcome
+		#learning < 18 60% chance you win the debate but you imprison the court chaplain 
+		pr_research_ancient_religion_events_debate_effect = yes
+	}
+	option={
+		name = pr.035.b #Just repent
+		trigger_event = pr.043
+	}
+}
+
+pr.036 = {#Outcome debate good
+	type = character_event
+	title = pr.036.t
+	desc = pr.036.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	left_portrait = {
+		character = scope:realm_priest
+		animation = personality_content
+	}
+	option={
+		name = pr.036.a #Won the debate
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_roman
+					target = flag:flag_research_roman
+				}
+			}
+			#set_character_faith = faith:roman_pagan
+			#add_trait = pr_secret_faith_roman
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:roman_pagan }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:roman_pagan }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_roman
+					target = flag:flag_research_roman
+				}
+			}
+			# trigger_event = pr.039
+		}
+		if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_greek
+					target = flag:flag_research_greek
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hellenic_pagan }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hellenic_pagan }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_greek
+					target = flag:flag_research_greek
+				}
+			}
+
+			# trigger_event = pr.039
+		}
+		if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_mycenaean
+					target = flag:flag_research_mycenaean
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:mycenaean_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:mycenaean_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_mycenaean
+					target = flag:flag_research_mycenaean
+				}
+			}
+			# trigger_event = pr.039
+		}
+				if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_graeco_egyptian
+					target = flag:flag_research_graeco_egyptian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:graeco_egyptian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:graeco_egyptian_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_graeco_egyptian
+					target = flag:flag_research_graeco_egyptian
+				}
+			}
+			# trigger_event = pr.039
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_gaelic
+					target = flag:flag_research_gaelic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaelic_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaelic_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_gaelic
+					target = flag:flag_research_gaelic
+				}
+			}
+			# trigger_event = pr.039
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_brythonic
+					target = flag:flag_research_brythonic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:brythonic_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:brythonic_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_brythonic
+					target = flag:flag_research_brythonic
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_gaulish
+					target = flag:flag_research_gaulish
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaulish_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaulish_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_gaulish
+					target = flag:flag_research_gaulish
+				}
+			}
+
+			# trigger_event = pr.039
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_celtic_iberian
+					target = flag:flag_research_celtic_iberian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:celtic_iberian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:celtic_iberian_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_celtic_iberian
+					target = flag:flag_research_celtic_iberian
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_anglo_saxon
+						target = flag:flag_research_anglo_saxon
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:anglo_saxon_polytheism }
+				scope:realm_priest = {
+					make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:anglo_saxon_polytheism }
+				}
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_anglo_saxon
+						target = flag:flag_research_anglo_saxon
+					}
+				}
+				# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_german
+						target = flag:flag_research_german
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:german_polytheism }
+				scope:realm_priest = {
+					make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:german_polytheism }
+				}
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_german
+						target = flag:flag_research_german
+					}
+				}
+				# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_lusitanian
+						target = flag:flag_research_lusitanian
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:lusitanian_polytheism }
+				scope:realm_priest = {
+					make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:lusitanian_polytheism }
+				}
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_lusitanian
+						target = flag:flag_research_lusitanian
+					}
+				}
+				# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_etruscan
+						target = flag:flag_research_etruscan
+					}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:etc_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:etc_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_etruscan
+					target = flag:flag_research_etruscan
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_kemetic
+					target = flag:flag_research_kemetic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:kemetic_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:kemetic_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_kemetic
+					target = flag:flag_research_kemetic
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_atenism
+					target = flag:flag_research_atenism
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:atenism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:atenism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_atenism
+					target = flag:flag_research_atenism
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_punic
+					target = flag:flag_research_punic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:punic_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:punic_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_punic
+					target = flag:flag_research_punic
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_semitic
+					target = flag:flag_research_semitic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:semitic_polytheisme }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:semitic_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_semitic
+					target = flag:flag_research_semitic
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_babylonian
+					target = flag:flag_research_babylonian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:babylonian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:babylonian_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_babylonian
+					target = flag:flag_research_babylonian
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_sumerian
+					target = flag:flag_research_sumerian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:sumerian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:sumerian_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_sumerian
+					target = flag:flag_research_sumerian
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_assyrian
+					target = flag:flag_research_assyrian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:assyrian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:assyrian_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_assyrian
+					target = flag:flag_research_assyrian
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_dacian
+					target = flag:flag_research_dacian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:dacian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:dacian_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_dacian
+					target = flag:flag_research_dacian
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_zalmoxism
+					target = flag:flag_research_zalmoxism
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:zalmoxism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:zalmoxism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_zalmoxism
+					target = flag:flag_research_zalmoxism
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_georgian
+					target = flag:flag_research_georgian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:georgian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:georgian_polytheism }
+			
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_georgian
+					target = flag:flag_research_georgian
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_armenian
+					target = flag:flag_research_armenian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:armenian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:armenian_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_armenian
+					target = flag:flag_research_armenian
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_hittite
+					target = flag:flag_research_hittite
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hittite_polytheism }
+			
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hittite_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_hittite
+					target = flag:flag_research_hittite
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_scythian
+					target = flag:flag_research_scythian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:scythian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:scythian_polytheism }
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_scythian
+					target = flag:flag_research_scythian
+				}
+			}
+			# trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_illyrian
+					target = flag:flag_research_illyrian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:illyrian_polytheism }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:illyrian_polytheism }
+			}
+			# trigger_event = pr.039
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_illyrian
+					target = flag:flag_research_illyrian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_lithuanian
+					target = flag:flag_research_lithuanian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:baltic_pagan }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:baltic_pagan }
+			}
+			# trigger_event = pr.039
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_lithuanian
+					target = flag:flag_research_lithuanian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_latvian
+					target = flag:flag_research_latvian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:latvian_pagan }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:latvian_pagan }
+			}
+			# trigger_event = pr.039
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_latvian
+					target = flag:flag_research_latvian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_prussian
+					target = flag:flag_research_prussian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:prussian_pagan }
+			scope:realm_priest = {
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:prussian_pagan }
+			}
+			# trigger_event = pr.039
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_prussian
+					target = flag:flag_research_prussian
+				}
+			}
+
+		}
+	}
+}
+pr.037 = {#Outcome debate medium
+	type = character_event
+	title = pr.037.t
+	desc = pr.037.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	left_portrait = {
+		character = scope:realm_priest
+		animation = personality_angry
+	}
+	option={
+		name = pr.037.a #A small win
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_roman
+					target = flag:flag_research_roman
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:roman_pagan }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_roman
+					target = flag:flag_research_roman
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_greek
+					target = flag:flag_research_greek
+				}
+			}
+			#set_character_faith = faith:hellenic_pagan
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hellenic_pagan }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_greek
+					target = flag:flag_research_greek
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_mycenaean
+					target = flag:flag_research_mycenaean
+				}
+			}
+			#set_character_faith = faith:mycenaean_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:mycenaean_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_mycenaean
+					target = flag:flag_research_mycenaean
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_graeco_egyptian
+					target = flag:flag_research_graeco_egyptian
+				}
+			}
+			#set_character_faith = faith:mycenaean_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:graeco_egyptian_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_graeco_egyptian
+					target = flag:flag_research_graeco_egyptian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_gaelic
+					target = flag:flag_research_gaelic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaelic_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_gaelic
+					target = flag:flag_research_gaelic
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_gaulish
+					target = flag:flag_research_gaulish
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaulish_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_gaulish
+					target = flag:flag_research_gaulish
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_brythonic
+					target = flag:flag_research_brythonic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:brythonic_polytheism }
+			
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_brythonic
+					target = flag:flag_research_brythonic
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_celtic_iberian
+					target = flag:flag_research_celtic_iberian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:celtic_iberian_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_celtic_iberian
+					target = flag:flag_research_celtic_iberian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_anglo_saxon
+						target = flag:flag_research_anglo_saxon
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:anglo_saxon_polytheism }
+				imprison_character_effect = {
+					TARGET = scope:realm_priest
+					IMPRISONER = root
+				}
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_anglo_saxon
+						target = flag:flag_research_anglo_saxon
+					}
+				}
+				trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_german
+						target = flag:flag_research_german
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:german_polytheism }
+				imprison_character_effect = {
+					TARGET = scope:realm_priest
+					IMPRISONER = root
+				}
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_german
+						target = flag:flag_research_german
+					}
+				}
+				trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_lusitanian
+						target = flag:flag_research_lusitanian
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:lusitanian_polytheism }
+				imprison_character_effect = {
+					TARGET = scope:realm_priest
+					IMPRISONER = root
+				}
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_lusitanian
+						target = flag:flag_research_lusitanian
+					}
+				}
+				trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_etruscan
+					target = flag:flag_research_etruscan
+				}
+			}
+			#set_character_faith = faith:etc_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:etc_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_etruscan
+					target = flag:flag_research_etruscan
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_kemetic
+					target = flag:flag_research_kemetic
+				}
+			}
+			#set_character_faith = faith:kemetic_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:kemetic_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_kemetic
+					target = flag:flag_research_kemetic
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_atenism
+					target = flag:flag_research_atenism
+				}
+			}
+			#set_character_faith = faith:atenism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:atenism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_atenism
+					target = flag:flag_research_atenism
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_punic
+					target = flag:flag_research_punic
+				}
+			}
+			#set_character_faith = faith:punic_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:punic_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_punic
+					target = flag:flag_research_punic
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_semitic
+					target = flag:flag_research_semitic
+				}
+			}
+			#set_character_faith = faith:semitic_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:semetic_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_semitic
+					target = flag:flag_research_semitic
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_babylonian
+					target = flag:flag_research_babylonian
+				}
+			}
+			#set_character_faith = faith:babylonian_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:babylonian_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_babylonian
+					target = flag:flag_research_babylonian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_sumerian
+					target = flag:flag_research_sumerian
+				}
+			}
+			#set_character_faith = faith:sumerian_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:sumerian_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_sumerian
+					target = flag:flag_research_sumerian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_assyrian
+					target = flag:flag_research_assyrian
+				}
+			}
+			#set_character_faith = faith:asresearch_assyrian_polytheism
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:assyrian_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_assyrian
+					target = flag:flag_research_assyrian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_dacian
+					target = flag:flag_research_dacian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:dacian_polytheism }
+			
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_dacian
+					target = flag:flag_research_dacian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_zalmoxism
+					target = flag:flag_research_zalmoxism
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:zalmoxism }
+			
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_zalmoxism
+					target = flag:flag_research_zalmoxism
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_georgian
+					target = flag:flag_research_georgian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:georgian_polytheism }
+			
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_georgian
+					target = flag:flag_research_georgian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_armenian
+					target = flag:flag_research_armenian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:armenian_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_armenian
+					target = flag:flag_research_armenian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_hittite
+					target = flag:flag_research_hittite
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hittite_polytheism }
+			
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_hittite
+					target = flag:flag_research_hittite
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_scythian
+					target = flag:flag_research_scythian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:scythian_polytheism }
+			
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_scythian
+					target = flag:flag_research_scythian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_illyrian
+					target = flag:flag_research_illyrian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:illyrian_polytheism }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_illyrian
+					target = flag:flag_research_illyrian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_lithuanian
+					target = flag:flag_research_lithuanian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:baltic_pagan }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_lithuanian
+					target = flag:flag_research_lithuanian
+				}
+			}
+			trigger_event = pr.039
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_latvian
+					target = flag:flag_research_latvian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:latvian_pagan }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_latvian
+					target = flag:flag_research_latvian
+				}
+			}
+			trigger_event = pr.039
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_prussian
+					target = flag:flag_research_prussian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:prussian_pagan }
+			imprison_character_effect = {
+				TARGET = scope:realm_priest
+				IMPRISONER = root
+			}
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_prussian
+					target = flag:flag_research_prussian
+				}
+			}
+			trigger_event = pr.039
+
+		}
+	}
+	option={
+		name = pr.037.b #Repent 
+		trigger_event = pr.043
+		remove_list_global_variable = {
+			name = research_lithuanian
+			target = flag:flag_research_lithuanian
+		}
+		remove_list_global_variable = {
+			name = research_latvian
+			target = flag:flag_research_latvian
+		}
+		remove_list_global_variable = {
+			name = research_prussian
+			target = flag:flag_research_prussian
+		}
+		remove_list_global_variable = {
+			name = research_illyrian
+			target = flag:flag_research_illyrian
+		}
+		remove_list_global_variable = {
+			name = research_scythian
+			target = flag:flag_research_scythian
+		}
+		remove_list_global_variable = {
+			name = research_hittite
+			target = flag:flag_research_hittite
+		}
+		remove_list_global_variable = {
+			name = research_armenian
+			target = flag:flag_research_armenian
+		}
+		remove_list_global_variable = {
+			name = research_georgian
+			target = flag:flag_research_georgian
+		}
+		remove_list_global_variable = {
+			name = research_zalmoxism
+			target = flag:flag_research_zalmoxism
+		}
+		remove_list_global_variable = {
+			name = research_dacian
+			target = flag:flag_research_dacian
+		}
+		remove_list_global_variable = {
+			name = research_assyrian
+			target = flag:flag_research_assyrian
+		}
+		remove_list_global_variable = {
+			name = research_sumerian
+			target = flag:flag_research_sumerian
+		}
+		remove_list_global_variable = {
+				name = research_babylonian
+				target = flag:flag_research_babylonian
+			}
+		remove_list_global_variable = {
+			name = research_punic
+			target = flag:flag_research_punic
+		}
+		remove_list_global_variable = {
+			name = research_atenism
+			target = flag:flag_research_atenism
+		}
+		remove_list_global_variable = {
+			name = research_kemetic
+			target = flag:flag_research_kemetic
+		}
+					remove_list_global_variable = {
+			name = research_etruscan
+			target = flag:flag_research_etruscan
+		}
+		remove_list_global_variable = {
+			name = research_german
+			target = flag:flag_research_german
+		}
+		remove_list_global_variable = {
+			name = research_lusitanian
+			target = flag:flag_research_lusitanian
+		}
+		remove_list_global_variable = {
+			name = research_anglo_saxon
+			target = flag:flag_research_anglo_saxon
+		}
+		remove_list_global_variable = {
+			name = research_celtic_iberian
+			target = flag:flag_research_celtic_iberian
+		}
+		remove_list_global_variable = {
+			name = research_brythonic
+			target = flag:flag_research_brythonic
+		}
+		remove_list_global_variable = {
+			name = research_gaulish
+			target = flag:flag_research_gaulish
+		}
+		remove_list_global_variable = {
+			name = research_gaelic
+			target = flag:flag_research_gaelic
+		}
+		remove_list_global_variable = {
+			name = research_graeco_egyptian
+			target = flag:flag_research_graeco_egyptian
+		}
+		remove_list_global_variable = {
+			name = research_mycenaean
+			target = flag:flag_research_mycenaean
+		}
+		remove_list_global_variable = {
+			name = research_greek
+			target = flag:flag_research_greek
+		}
+		remove_list_global_variable = {
+			name = research_roman
+			target = flag:flag_research_roman
+		}
+	}
+}
+pr.038 = {#Outcome debate bad
+	type = character_event
+	title = pr.038.t
+	desc = pr.038.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	left_portrait = {
+		character = scope:realm_priest
+		animation = personality_angry
+	}
+	option={
+		name = pr.038.a #Lost the debate repending is the only solution
+		trigger_event = pr.043
+	}
+}
+pr.039 = {#after debate moderate
+	type = character_event
+	title = pr.039.t
+	desc = pr.039.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = dungeon }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	left_portrait = {
+		character = scope:realm_priest
+		animation = personality_content
+	}
+	option={
+		name = pr.039.a #The end 
+		
+		
+	}
+}
+pr.034 = {#Book merchant 
+	type = character_event
+	title = pr.034.t
+	desc = pr.034.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	left_portrait = {
+		character = scope:book_merchant
+		animation = personality_content
+	}
+	option={
+		name = pr.034.a #Buy the book from the merchant 
+		remove_short_term_gold = 70
+		set_global_variable = {
+			name = bought_book
+			value = yes
+		} 
+		pr_bought_book_event_effect = yes
+	}
+	option={
+		name = pr.034.b #Don't buy the book
+		clear_global_variable_list = reconstruct_polytheism_decision
+	}
+}
+
+pr.040 = {#Bought book good  
+	type = character_event
+	title = pr.040.t
+	desc = pr.040.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	immediate = {
+		#First artifact, for now no problems 
+		create_artifact = {	
+			name = ancient_religions_book
+			description = ancient_religions_book_description
+			type = miscellaneous
+			visuals = book
+			modifier = ancient_religions_book_modifier 
+		}
+	}
+	option={
+		name = pr.040.a 
+		trigger_event = pr.042
+	}
+	option={
+		name = pr.040.b #this is all I want to know
+		clear_global_variable_list = reconstruct_polytheism_decision
+	}
+}
+
+pr.041 = {#Bought book bad  
+	type = character_event
+	title = pr.041.t
+	desc = pr.041.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_angry
+	}
+	immediate = {
+		create_artifact = {	
+			name = pr_worthless_book
+			description = pr_worthless_book_description
+			type = miscellaneous
+			visuals = book
+			modifier = pr_worthless_book_modifier 
+		}
+	}
+	option={
+		name = pr.041.a #Better luck next time I hope
+		clear_global_variable_list = reconstruct_polytheism_decision
+		remove_list_global_variable = {
+			name = research_lithuanian
+			target = flag:flag_research_lithuanian
+		}
+		remove_list_global_variable = {
+			name = research_latvian
+			target = flag:flag_research_latvian
+		}
+		remove_list_global_variable = {
+			name = research_prussian
+			target = flag:flag_research_prussian
+		}
+		remove_list_global_variable = {
+			name = research_illyrian
+			target = flag:flag_research_illyrian
+		}
+		remove_list_global_variable = {
+			name = research_scythian
+			target = flag:flag_research_scythian
+		}
+		remove_list_global_variable = {
+			name = research_hittite
+			target = flag:flag_research_hittite
+		}
+		remove_list_global_variable = {
+			name = research_armenian
+			target = flag:flag_research_armenian
+		}
+		remove_list_global_variable = {
+			name = research_georgian
+			target = flag:flag_research_georgian
+		}
+		remove_list_global_variable = {
+			name = research_zalmoxism
+			target = flag:flag_research_zalmoxism
+		}
+		remove_list_global_variable = {
+			name = research_dacian
+			target = flag:flag_research_dacian
+		}
+		remove_list_global_variable = {
+			name = research_assyrian
+			target = flag:flag_research_assyrian
+		}
+		remove_list_global_variable = {
+			name = research_sumerian
+			target = flag:flag_research_sumerian
+		}
+		remove_list_global_variable = {
+				name = research_babylonian
+				target = flag:flag_research_babylonian
+			}
+		remove_list_global_variable = {
+			name = research_punic
+			target = flag:flag_research_punic
+		}
+		remove_list_global_variable = {
+			name = research_atenism
+			target = flag:flag_research_atenism
+		}
+		remove_list_global_variable = {
+			name = research_kemetic
+			target = flag:flag_research_kemetic
+		}
+					remove_list_global_variable = {
+			name = research_etruscan
+			target = flag:flag_research_etruscan
+		}
+		remove_list_global_variable = {
+			name = research_german
+			target = flag:flag_research_german
+		}
+		remove_list_global_variable = {
+			name = research_lusitanian
+			target = flag:flag_research_lusitanian
+		}
+		remove_list_global_variable = {
+			name = research_anglo_saxon
+			target = flag:flag_research_anglo_saxon
+		}
+		remove_list_global_variable = {
+			name = research_celtic_iberian
+			target = flag:flag_research_celtic_iberian
+		}
+		remove_list_global_variable = {
+			name = research_brythonic
+			target = flag:flag_research_brythonic
+		}
+		remove_list_global_variable = {
+			name = research_gaulish
+			target = flag:flag_research_gaulish
+		}
+		remove_list_global_variable = {
+			name = research_gaelic
+			target = flag:flag_research_gaelic
+		}
+		remove_list_global_variable = {
+			name = research_graeco_egyptian
+			target = flag:flag_research_graeco_egyptian
+		}
+		remove_list_global_variable = {
+			name = research_mycenaean
+			target = flag:flag_research_mycenaean
+		}
+		remove_list_global_variable = {
+			name = research_greek
+			target = flag:flag_research_greek
+		}
+		remove_list_global_variable = {
+			name = research_roman
+			target = flag:flag_research_roman
+		}
+	}
+}
+
+pr.042 = {#
+	type = character_event
+	title = pr.042.t
+	desc = pr.042.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = council_chamber }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option={
+		name = pr.042.a #It's time to convert to the true faith
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_roman
+					target = flag:flag_research_roman
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:roman_pagan }
+			
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_roman
+					target = flag:flag_research_roman
+				}
+			}
+
+		}
+		if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_greek
+					target = flag:flag_research_greek
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hellenic_pagan }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_greek
+					target = flag:flag_research_greek
+				}
+			}
+
+		}
+		if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_mycenaean
+					target = flag:flag_research_mycenaean
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:mycenaean_polytheism }
+			
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_mycenaean
+					target = flag:flag_research_mycenaean
+				}
+			}
+
+		}
+		if = {
+			limit ={
+				is_target_in_global_variable_list = {
+					name = research_graeco_egyptian
+					target = flag:flag_research_graeco_egyptian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:graeco_egyptian_polytheism }
+			
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_graeco_egyptian
+					target = flag:flag_research_graeco_egyptian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_gaelic
+					target = flag:flag_research_gaelic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaelic_polytheism }
+			
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_gaelic
+					target = flag:flag_research_gaelic
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_brythonic
+					target = flag:flag_research_brythonic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:brythonic_polytheism }
+			
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_brythonic
+					target = flag:flag_research_brythonic
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_celtic_iberian
+					target = flag:flag_research_celtic_iberian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:celtic_iberian_polytheism }
+			
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_celtic_iberian
+					target = flag:flag_research_celtic_iberian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_anglo_saxon
+						target = flag:flag_research_anglo_saxon
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:anglo_saxon_polytheism }
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_anglo_saxon
+						target = flag:flag_research_anglo_saxon
+					}
+				}
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_german
+						target = flag:flag_research_german
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:german_polytheism }
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_german
+						target = flag:flag_research_german
+					}
+				}
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_lusitanian
+						target = flag:flag_research_lusitanian
+					}
+				}
+				make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:lusitanian_polytheism }
+				hidden_effect = {
+					add_character_flag = converted_pr_religion_this_lifetime
+					remove_list_global_variable = {
+						name = research_lusitanian
+						target = flag:flag_research_lusitanian
+					}
+				}
+
+		}
+		if = {
+			limit = {
+					is_target_in_global_variable_list = {
+						name = research_etruscan
+						target = flag:flag_research_etruscan
+					}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:etc_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_etruscan
+					target = flag:flag_research_etruscan
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_kemetic
+					target = flag:flag_research_kemetic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:kemetic_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_kemetic
+					target = flag:flag_research_kemetic
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_atenism
+					target = flag:flag_research_atenism
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:atenism }		
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_atenism
+					target = flag:flag_research_atenism
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_punic
+					target = flag:flag_research_punic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:punic_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_punic
+					target = flag:flag_research_punic
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_semitic
+					target = flag:flag_research_semitic
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:semitic_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_semitic
+					target = flag:flag_research_semitic
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_babylonian
+					target = flag:flag_research_babylonian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:babylonian_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_babylonian
+					target = flag:flag_research_babylonian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_sumerian
+					target = flag:flag_research_sumerian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:sumerian_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_sumerian
+					target = flag:flag_research_sumerian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_assyrian
+					target = flag:flag_research_assyrian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:assyrian_polytheism }
+			
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_assyrian
+					target = flag:flag_research_assyrian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_dacian
+					target = flag:flag_research_dacian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:dacian_polytheism }			
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_dacian
+					target = flag:flag_research_dacian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_zalmoxism
+					target = flag:flag_research_zalmoxism
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:zalmoxism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_zalmoxism
+					target = flag:flag_research_zalmoxism
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_georgian
+					target = flag:flag_research_georgian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:georgian_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_georgian
+					target = flag:flag_research_georgian
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_armenian
+					target = flag:flag_research_armenian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:armenian_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_armenian
+					target = flag:flag_research_armenian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_hittite
+					target = flag:flag_research_hittite
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hittite_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_hittite
+					target = flag:flag_research_hittite
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_scythian
+					target = flag:flag_research_scythian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:scythian_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_scythian
+					target = flag:flag_research_scythian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_illyrian
+					target = flag:flag_research_illyrian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:illyrian_polytheism }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_illyrian
+					target = flag:flag_research_illyrian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_lithuanian
+					target = flag:flag_research_lithuanian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:baltic_pagan }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_lithuanian
+					target = flag:flag_research_lithuanian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_latvian
+					target = flag:flag_research_latvian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:latvian_pagan }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_latvian
+					target = flag:flag_research_latvian
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				is_target_in_global_variable_list = {
+					name = research_prussian
+					target = flag:flag_research_prussian
+				}
+			}
+			make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:prussian_pagan }
+			hidden_effect = {
+				add_character_flag = converted_pr_religion_this_lifetime
+				remove_list_global_variable = {
+					name = research_prussian
+					target = flag:flag_research_prussian
+				}
+			}
+
+		}
+		
+	}
+}
+
+pr.043 = {#after debate moderate
+	type = character_event
+	title = pr.043.t
+	desc = pr.043.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = temple_generic }
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	left_portrait = {
+		character = scope:realm_priest
+		animation = personality_content
+	}
+	option={
+		name = pr.043.a #The end 
+		add_trait = zealous
+		add_piety = 100 
+	}
+}
+
+pr.044 = {
+	type = character_event
+	title = pr.044.t
+	desc = {
+		first_valid = {
+			# Muslim Reaction
+			triggered_desc = {
+				trigger = {
+					root.faith.religion = faith:ashari.religion
+				}
+				desc = pr.044.desc.muslim
+			}
+			# Hellenic Reaction
+			triggered_desc = {
+				trigger = {
+					OR = {
+						root.faith.religion = faith:hellenic_pagan.religion
+						root.religion = religion:roman_religion
+					}
+				}
+				desc = pr.044.desc.hellenic
+			}
+			# And the rest
+			triggered_desc = {
+				trigger = {
+					NOR = {
+						root.faith.religion = faith:ashari.religion
+						root.faith.religion = faith:hellenic_pagan.religion
+						root.religion = religion:roman_religion
+					}
+				}
+				desc = pr.044.desc.fallback
+			}
+		}
+		first_valid = {
+			# No current patriarch
+			triggered_desc = {
+				trigger = {
+					NOT = {
+						exists = scope:scoped_patriarch
+					}
+				}
+				desc = pr.044.desc.no_patriarch
+			}
+			# Current patriarch is crucified
+			triggered_desc = {
+				trigger = {
+					OR = {
+						root.faith.religion = faith:hellenic_pagan.religion
+						root.religion = religion:roman_religion
+					}
+				}
+				desc = pr.044.desc.patriarch.crucifixion
+			}
+			# Current patriarch is sacrificed
+			triggered_desc = {
+				trigger = {
+					root.faith = {
+						has_doctrine_parameter = human_sacrifice_active
+					}
+				}
+				desc = pr.044.desc.patriarch.sacrificed
+			}
+			# Current patriarch converts
+			desc = pr.044.desc.patriarch.submission
+		}
+	}
+	theme = faith
+	override_background = {
+		trigger = {	
+			root.faith = {
+				OR = {
+					religion = faith:hellenic_pagan.religion
+					has_doctrine_parameter = human_sacrifice_active
+				}
+			}
+		}
+		reference = burning_building
+	}
+	left_portrait = {
+		character = scope:scoped_destroyer
+		animation = schadenfreude
+	}
+	right_portrait = {
+		character = scope:scoped_patriarch
+		animation = fear
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_sacredrite"
+		save_scope_as = scoped_destroyer
+		if = {
+			limit = { exists = title:k_orthodox.holder }
+			title:k_orthodox.holder = { save_scope_as = scoped_patriarch }
+		}
+		faith:orthodox = { save_scope_as = orthodox }
+		destroy_patriarchate_scripted_effect = yes
+	}
+
+	option = {
+		name = {
+			trigger = {
+				faith.religion = faith:ashari.religion
+			}
+			text = pr.044.a.a
+		}
+		name = {
+			trigger = {
+				OR = {
+					faith.religion = faith:hellenic_pagan.religion
+					religion = religion:roman_religion
+				}
+			}
+			text = pr.044.a.b
+		}
+		name = {
+			trigger = {
+				NOR = {
+					faith.religion = faith:ashari.religion
+					faith.religion = faith:hellenic_pagan.religion
+					religion = religion:roman_religion
+				}
+			}
+			text = pr.044.a.c
+		}
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				OR = {
+					faith.religion = faith:orthodox.religion
+					faith.religion = root.faith.religion
+				}
+			}
+			trigger_event = pr.045 # Notification.
+		}
+	}
+}
+
+# Other players notified.
+pr.045 = {
+	type = character_event
+	title = pr.044.t
+	desc = {
+		first_valid = {
+			# Muslim/Pagan Reaction
+			triggered_desc = {
+				trigger = {
+					root.faith.religion = scope:scoped_destroyer.faith.religion
+				}
+				desc = pr.045.desc.faithful
+			}
+			# Christian Reaction
+			triggered_desc = {
+				trigger = {
+					root.faith.religion = faith:orthodox.religion
+				}
+				desc = pr.045.desc.christians
+			}
+			# Fallback
+			triggered_desc = {
+				trigger = {
+					NOR = {
+						root.faith.religion = faith:orthodox.religion
+						root.faith.religion = scope:scoped_destroyer.faith.religion
+					}
+				}
+				desc = pr.045.desc.fallback
+			}
+		}
+	}
+	theme = faith
+	override_background = {
+		trigger = {	
+			scope:scoped_destroyer.faith = {
+				OR = {
+					religion = faith:hellenic_pagan.religion
+					religion = religion:roman_religion
+					has_doctrine_parameter = human_sacrifice_active
+				}
+			}
+		}
+		reference = burning_building
+	}
+	left_portrait = {
+		character = scope:scoped_destroyer
+		animation = schadenfreude
+	}
+	right_portrait = {
+		character = scope:scoped_pope
+		animation = fear
+	}
+
+	immediate = { play_music_cue = "mx_cue_combat_2" }
+
+	option = {
+		name = {
+			trigger = {
+				faith.religion = scope:scoped_destroyer.faith.religion
+			}
+			text = pr.045.a.a
+		}
+		name = {
+			trigger = {
+				faith.religion = faith:orthodox.religion
+			}
+			text = pr.045.a.b
+		}
+		name = {
+			trigger = {
+				NOR = {
+					faith.religion = faith:orthodox.religion
+					faith.religion = scope:scoped_destroyer.faith.religion
+				}
+			}
+			text = pr.045.a.c
+		}
+		if = {
+			limit = {
+				root.faith = faith:orthodox
+				NOT = { has_trait = cynical }
+			}
+			add_opinion = {
+				target = scope:scoped_destroyer
+				modifier = destroyed_patriarch_opinion
+			}
+			stress_impact = {
+				base = minor_stress_impact_gain
+				zealous = minor_stress_impact_gain
+			}
+		}
+	}
+}
+
+pr.046 = {
+	type = character_event
+	desc = pr.046.desc
+	title = pr.046.t 
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = pr.046.a
+		set_character_faith = faith:roman_pagan
+	}
+
+}
+
+#Credits cybrxkhan needed for the pilgrimages
+RICEmisc.0010 = {
+	type = character_event
+	title = RICEmisc.0010.t 
+	desc = {
+		triggered_desc = {
+			trigger = {
+				root = scope:host
+			}
+			desc = RICEmisc.0010.desc.host
+		}
+		desc = RICEmisc.0010.desc.not_host
+	}
+	theme = faith
+	override_background = { reference = terrain } 
+
+	left_portrait = {
+		character = root 
+		animation = bored
+	}
+
+	immediate = {
+		scope:activity.activity_host = { save_scope_as = host }
+		capital_province = {
+			save_scope_as = home
+		}
+	}
+
+	option = {
+		name = RICEmisc.0010.a
+		show_as_tooltip = {
+			current_travel_plan = {
+				reroute_to_home = yes
+			}
+		}
+	}
+}
+
+
+pr.050 = { #For Ai reconstruct polytheism
+	type = character_event
+	desc = pr.050.desc
+	title = pr.050.t 
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = pr.050.german
+		trigger = {
+			OR = {
+				culture = { has_cultural_pillar = heritage_central_germanic }
+				culture = { has_cultural_pillar = heritage_frankish }
+			}
+				
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:german_polytheism}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.anglo_saxon
+		trigger = {
+				AND = {
+					culture = { has_cultural_pillar = heritage_central_germanic }
+					culture = { has_cultural_pillar = language_saxon }
+				}
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:anglo_saxon_polytheism}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.norse
+		trigger = {
+			
+				culture = { has_cultural_pillar = heritage_north_germanic }
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:norse_pagan}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.roman
+		trigger = {
+			
+				culture = { has_cultural_pillar = heritage_latin }
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:roman_pagan}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.hellenic
+		trigger = {
+				AND = {
+					culture = { has_cultural_pillar = heritage_byzantine }
+					culture = { has_cultural_pillar = language_greek }
+				}
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:hellenic_pagan}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.goidelic
+		trigger = {
+			
+				culture = { has_cultural_pillar = heritage_goidelic }
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaelic_polytheism}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.brythonic
+		trigger = {
+			culture = { has_cultural_pillar = heritage_brythonic}
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:brythonic_polytheism}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.gaulish
+		trigger = {
+			#OR = {
+				culture = { has_cultural_pillar = heritage_gaulish}
+				#culture = { has_cultural_pillar = heritage_celtic}
+			#}
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:gaulish_polytheism}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.latvian
+		trigger = {
+			culture = {  has_name_list = name_list_latgalian } 
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:latvian_pagan}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.latvian
+		trigger = {
+			culture = {  has_name_list = name_list_lithuanian } 
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:baltic_pagan}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.prussian
+		trigger = {
+			culture = {  has_name_list = name_list_prussian } 
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:prussian_pagan}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = {
+		name = pr.050.armenian
+		trigger = {
+				AND = {
+					culture = { has_cultural_pillar = heritage_byzantine }
+					culture = { has_cultural_pillar = language_armenian }
+				}
+		}
+		make_character_crypto_religionist_effect = { CRYPTO_RELIGION = faith:armenian_polytheism}
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+	}
+	option = { #debuging option only
+		name = pr.050.debug
+		trigger = {
+			is_ai = no
+		}
+	}
+}
+
+
+pr.051 = { #For Ai to get more variety in polytheistic religions within realm
+	type = character_event
+	desc = pr.051.desc
+	title = pr.051.t 
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = pr.051.german
+		trigger = {
+
+
+				AND = {
+					culture = { has_cultural_pillar = language_high_german }
+					OR = {
+						culture = { has_cultural_pillar = heritage_central_germanic }
+						culture = { has_cultural_pillar = heritage_frankish }
+					}
+				}
+			}	
+		set_character_faith_with_conversion = faith:german_polytheism
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.anglo_saxon
+		trigger = {
+				AND = {
+					culture = { has_cultural_pillar = heritage_central_germanic }
+					culture = { has_cultural_pillar = language_saxon }
+				}
+		}
+		set_character_faith_with_conversion = faith:anglo_saxon_polytheism
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.norse
+		trigger = {
+			
+				culture = { has_cultural_pillar = heritage_north_germanic }
+		}
+		set_character_faith_with_conversion = faith:norse_pagan
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.roman
+		trigger = {
+			
+				culture = { has_cultural_pillar = heritage_latin }
+		}
+		set_character_faith_with_conversion = faith:roman_pagan
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.hellenic
+		trigger = {
+				AND = {
+					culture = { has_cultural_pillar = heritage_byzantine }
+					culture = { has_cultural_pillar = language_greek }
+				}
+		}
+		set_character_faith_with_conversion = faith:hellenic_pagan
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.hellenic_roman
+		trigger = {
+				AND = {
+					culture = { has_cultural_pillar = heritage_byzantine }
+					culture = { has_cultural_pillar = language_greek }
+				}
+		}
+		set_character_faith_with_conversion = faith:roman_pagan
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.goidelic
+		trigger = {
+			
+			culture = { has_cultural_pillar = heritage_goidelic }
+		}
+		set_character_faith_with_conversion = faith:gaelic_polytheism
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 35
+		}
+	}
+	option = {
+		name = pr.051.brythonic
+		trigger = {
+			culture = { has_cultural_pillar = heritage_brythonic}
+		}
+		set_character_faith_with_conversion = faith:brythonic_polytheism
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.gaulish
+		trigger = {
+			#OR = {
+				culture = { has_cultural_pillar = heritage_gaulish}
+				#culture = { has_cultural_pillar = heritage_celtic}
+			#}
+		}
+		set_character_faith_with_conversion = faith:gaulish_polytheism
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.latvian
+		trigger = {
+			culture = {  has_name_list = name_list_latgalian } 
+		}
+		set_character_faith_with_conversion = faith:latvian_pagan
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.latvian
+		trigger = {
+			culture = {  has_name_list = name_list_lithuanian } 
+		}
+		set_character_faith_with_conversion = faith:baltic_pagan
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.prussian
+		trigger = {
+			culture = {  has_name_list = name_list_prussian } 
+		}
+		set_character_faith_with_conversion = faith:prussian_pagan
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.armenian
+		trigger = {
+				AND = {
+					culture = { has_cultural_pillar = heritage_byzantine }
+					culture = { has_cultural_pillar = language_armenian }
+				}
+		}
+		set_character_faith_with_conversion = faith:armenian_polytheism
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.georgian
+		trigger = {
+				AND = {
+					culture = { has_cultural_pillar = heritage_byzantine }
+					culture = { has_cultural_pillar = language_georgian }
+				}
+		}
+		set_character_faith_with_conversion = faith:georgian_polytheism
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		name = pr.051.kemetic
+		trigger = {
+				OR = {
+					culture = {  has_name_list = name_list_egyptian }
+					culture = {  has_name_list = name_list_kemetic }
+				}
+		}
+		set_character_faith_with_conversion = faith:kemetic_polytheism
+		hidden_effect = {
+			add_character_flag = converted_pr_religion_this_lifetime
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = { #Most chance of not doing as we otherwise get to much people that change religion
+			   #Needs play testing
+		name = pr.051.debug
+		ai_chance = {
+			base = 70
+		}
+	}
+}

@@ -1,0 +1,39 @@
+﻿cloak_special = {
+
+	usage = game
+	selection_behavior = weighted_random
+	priority = 6
+
+
+	no_cloak = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				
+				gene = cloaks
+				template = no_cloak
+				range = { 0 1 }
+			}
+		}   
+		outfit_tags = { no_clothes nightgown no_cloak beggar_rags }
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				OR = {
+					government_has_flag = government_is_theocracy
+					is_theocratic_lessee = yes
+					is_clergy = yes
+					has_character_modifier = vow_of_poverty_modifier
+					# Deliberately not the "fully naked" one since dropping your cloak's intended even if nudity is disabled
+					should_be_naked_trigger = yes
+					portrait_sickness_trigger = yes
+				}
+			}   
+			modifier = {
+				add = 200
+				activity_tournament_shirtless_trigger = yes
+			}
+		}
+	}
+}
