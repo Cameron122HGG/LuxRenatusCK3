@@ -2,7 +2,7 @@
 tags={
 	"Alternative History"
 }
-name="Lux Renatus Dev"
+name="Lux Renatus Religion Rework"
 replace_path="history/characters"
 replace_path="history/titles"
 replace_path="history/provinces"

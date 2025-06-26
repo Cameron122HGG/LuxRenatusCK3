@@ -1,0 +1,447 @@
+﻿namespace = m_r
+namespace = m_sr
+namespace = z_r
+namespace = mspt
+namespace = embrace_culture
+#Return Cultus Deorum
+m_r.001 = {
+	type = character_event
+	title = m_r.001.t
+	desc = m_r.001.desc
+	theme =  hunt_activity
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = m_r.001.a
+		trigger_event = m_r.002
+	}
+}
+
+m_r.002 = { 
+	type = character_event
+	title = m_r.002.t
+	desc = m_r.002.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	option = {
+		name = m_r.002.mesopotamian
+		trigger_event = m_r.003
+	}
+	option = { 
+		name = m_r.002.zoroastrianism
+		trigger_event = z_r.001
+	}
+	option = {
+		name = m_r.002.optout
+		add_trait = zealous
+		hidden_effect ={
+			clear_global_variable_list = unavailable_unique_decisions_convert
+			remove_trait = pilgrim 
+			
+		}
+	}
+}
+#Rewrite from here just make it a convert character event, so no state religion events as those need to be reworked anyway 
+#options Babylonian, Assyrian or Sumerian 
+m_r.003 = { 
+	type = character_event
+	title = m_r.003.t
+	desc = m_r.003.desc
+	theme = hunt_activity
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	#proceed
+	# option = {
+	# 	name = m_r.003.a
+	# 	trigger_event = {
+	# 		id = m_sr.001
+	# 		months = 2 
+	# 	}
+	# }	
+	option = {
+		name = m_r.003.babylonian
+		set_character_faith = faith:babylonian_polytheism
+	}
+	option = {
+		name = m_r.003.assyrian
+		set_character_faith = faith:assyrian_polytheism
+	}
+	option = {
+		name = m_r.003.sumerian
+		set_character_faith = faith:sumerian_polytheism
+	}
+}
+
+
+#Not in use for now as it needs to be rewritten 
+#Reinstate mesopotamian as state religion 
+scripted_effect m_sr_notify_players_effectt = {
+	every_player = {
+		limit = {
+			Not = {this = root}  
+			capital_province = {
+			geographical_region = world_middle_east_persia
+			}
+		}
+		trigger_event = m_sr.002
+	}
+}
+
+m_sr.001 = {
+	type = character_event
+	title = m_sr.001.t
+	desc = m_sr.001.desc
+	theme = faith
+	right_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous	
+		}
+		override_background = { reference = throne_room }
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		faith = { save_scope_as = old_faith }
+		return_m_sr_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = m_sr.001.a
+		#Get a nice reward for your adherence to the true faith.
+		add_piety_level = 1
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = m_return
+			value = flag:vanilla
+		}
+		m_sr_notify_players_effect = yes 
+		
+	}	
+}
+
+m_sr.002 = {
+	type = character_event
+	title = m_sr.002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { top_liege = root }
+				desc = m_sr.002.desc.vassals
+			}
+			desc = m_sr.002.desc.outsiders
+		}
+		desc = m_sr.002.desc.intro
+		triggered_desc = {
+			trigger = { scope:m_return = flag:vanilla }
+			desc = m_sr.002.desc_vanilla
+		}
+	}
+	theme = faith
+	left_portrait = scope:scoped_ruler
+	override_background = { reference = throne_room }
+	#Roman polyteist are happy about this unexpected turn of events!
+	option = {
+		name = m_sr.002.a
+		trigger = { religion = religion:mesopotamian_polytheism}
+		add_stress = minor_stress_loss
+	}
+	#Vassals who do not follow the faith may decide to convert after all.
+	option = {
+		name = m_sr.002.b
+		trigger = {
+			top_liege = root
+			NOT = { religion = religion:mesopotamian_polytheism}
+		}
+		set_character_faith_with_conversion = faith:mesopotamian_polytheism
+		
+	}
+	#Those who aren't polytheist are probably horrified.
+	option = {
+		name = m_sr.002.c
+		trigger = {
+			NOT = {
+				religion = { is_in_family = rf_pagan}
+			}
+		}
+	}
+	#And, as a fallback, some people just won't care.
+	option = { 
+		name = m_sr.002.d 
+	}
+}
+
+mspt.001 = {
+	type = character_event
+	title = mspt.001.t
+	desc = mspt.001.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Marduk
+	option = {
+		name = mspt.001.marduk
+		trigger = {
+			NOT = { has_character_modifier = babylonian_marduk }
+		}
+		set_bhakti_effect = { BHAKTI = babylonian_marduk }
+	}
+
+	 #Ishtar
+	 option = {
+	 	name = mspt.001.ishtar
+	 	trigger = {
+	 		NOT = { has_character_modifier = mesopotamian_ishtar }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = mesopotamian_ishtar }
+	 }
+
+	#Ninhegal
+	option = {
+		name = mspt.001.ninhegal
+		trigger = {
+			NOT = { has_character_modifier = mesopotamian_ninhegal }
+		}
+		set_bhakti_effect = { BHAKTI = mesopotamian_ninhegal }
+	}
+
+	# Nabu
+	option = {
+		name = mspt.001.nergal
+		trigger = {
+			NOT = { has_character_modifier = mesopotamian_nabu }
+		}
+		set_bhakti_effect = { BHAKTI = mesopotamian_nabu }
+	}
+
+
+	 # Nergal
+	 option = {
+	 	name = mspt.001.nergal
+	 	trigger = {
+	 		NOT = { has_character_modifier = babylonian_nergal }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = babylonian_nergal }
+	 }
+
+	# Opt-Out
+	option = {
+		name = mspt.001.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+
+mspt.002 = {
+	type = character_event
+	title = mspt.002.t
+	desc = mspt.002.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Ashur
+	option = {
+		name = mspt.002.ashur
+		trigger = {
+			NOT = { has_character_modifier = assyrian_ashur }
+		}
+		set_bhakti_effect = { BHAKTI = assyrian_ashur }
+	}
+
+	 #Ishtar
+	 option = {
+	 	name = mspt.002.ishtar
+	 	trigger = {
+	 		NOT = { has_character_modifier = mesopotamian_ishtar }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = mesopotamian_ishtar }
+	 }
+
+	#Ninhegal
+	option = {
+		name = mspt.002.ninhegal
+		trigger = {
+			NOT = { has_character_modifier = mesopotamian_ninhegal }
+		}
+		set_bhakti_effect = { BHAKTI = mesopotamian_ninhegal }
+	}
+
+	# Nabu
+	option = {
+		name = mspt.002.nabu
+		trigger = {
+			NOT = { has_character_modifier = mesopotamian_nabu }
+		}
+		set_bhakti_effect = { BHAKTI = mesopotamian_nabu }
+	}
+
+
+	 # Ninkarrak
+	 option = {
+	 	name = mspt.002.ninkarrak
+	 	trigger = {
+	 		NOT = { has_character_modifier = assyrian_ninkarrak }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = assyrian_ninkarrak }
+	 }
+
+	# Opt-Out
+	option = {
+		name = mspt.002.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+
+mspt.003 = {
+	type = character_event
+	title = mspt.003.t
+	desc = mspt.003.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Enlil
+	option = {
+		name = mspt.003.enlil
+		trigger = {
+			NOT = { has_character_modifier = sumerian_enlil }
+		}
+		set_bhakti_effect = { BHAKTI = sumerian_enlil  }
+	}
+
+	 #Inanna
+	 option = {
+	 	name = mspt.003.inanna
+	 	trigger = {
+	 		NOT = { has_character_modifier = sumerian_inanna }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = sumerian_inanna }
+	 }
+
+	#Ninhegal
+	option = {
+		name = mspt.003.ninhegal
+		trigger = {
+			NOT = { has_character_modifier = mesopotamian_ninhegal }
+		}
+		set_bhakti_effect = { BHAKTI = mesopotamian_ninhegal }
+	}
+
+	# Nisaba
+	option = {
+		name = mspt.003.nisaba
+		trigger = {
+			NOT = { has_character_modifier = sumerian_nisaba }
+		}
+		set_bhakti_effect = { BHAKTI = sumerian_nisaba }
+	}
+
+
+	 # Ninurta
+	 option = {
+	 	name = mspt.003.ninurta
+	 	trigger = {
+	 		NOT = { has_character_modifier = sumerian_ninurta }
+	 	}
+	 	set_bhakti_effect = { BHAKTI = sumerian_ninurta }
+	 }
+
+	# Opt-Out
+	option = {
+		name = mspt.003.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+
+embrace_culture.005 = {
+	type = character_event
+	title = embrace_culture.005.t
+	desc = embrace_culture.005.desc
+	theme = learning
+
+	lower_right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	option = {
+		name = embrace_culture.005.a
+		set_culture = culture:babylonian
+	}
+
+}
+
+
+embrace_culture.006 = {
+	type = character_event
+	title = embrace_culture.006.t
+	desc = embrace_culture.006.desc
+	theme = learning
+
+
+	lower_right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	option = {
+		name = embrace_culture.006.a
+		set_culture = culture:assyrian
+	}
+
+}
+
+embrace_culture.007 = {
+	type = character_event
+	title = embrace_culture.007.t
+	desc = embrace_culture.007.desc
+	theme = learning
+
+	lower_right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	option = {
+		name = embrace_culture.007.a
+		set_culture = culture:sumerian
+	}
+
+}
+
+#Open the first brewery
+mspt.004 = {
+	type = character_event
+	title = mspt.004.t
+	desc = mspt.004.desc
+	theme = faith
+	option={
+		name = mspt.004.a
+		title:c_batiha ={
+			add_county_modifier = open_1st_beer_brewery
+		}
+		clear_global_variable_list = unavailable_unique_decisions_open_first_brewery
+	}
+}
