@@ -1,0 +1,139 @@
+﻿decisions = {
+	become_bretwalda = {
+		is_high_prio = yes
+		potential = {
+			is_ruler = yes
+			age = 16
+			prisoner = no
+			NOR = {
+				trait = incapable
+				has_global_flag = englaland_unified
+			}
+			culture = saxon
+		}
+		allow = {
+			completely_controls = k_wessex
+			completely_controls = k_mercia
+			completely_controls = k_northumbria
+			has_landed_title = k_england
+			has_landed_title = k_eanglia
+			has_landed_title = k_essex
+			has_landed_title = k_kent
+			has_landed_title = k_sussex
+			prestige = 1000
+		}
+		effect = {
+			wealth = -250
+			prestige = 500
+			activate_title = { title = k_saxons status = yes }
+			hidden_tooltip = {
+				d_bernicia = { de_jure_liege = k_saxons }
+				d_derenrice = { de_jure_liege = k_saxons }
+				d_hwicce = { de_jure_liege = k_saxons }
+				d_magonsaete = { de_jure_liege = k_saxons }
+				d_lindsey = { de_jure_liege = k_saxons }
+				d_middle_angles = { de_jure_liege = k_saxons }
+				d_norfolk = { de_jure_liege = k_saxons }
+				d_middlesex = { de_jure_liege = k_saxons }
+				d_canterbury = { de_jure_liege = k_saxons }
+				d_belgarum = { de_jure_liege = k_saxons }
+			}
+			primary_title = {
+				k_saxons = {
+					grant_title = ROOT
+					copy_title_laws = PREV
+					copy_title_history = PREV
+				}
+			}
+			hidden_tooltip = { k_saxons = { make_primary_title = yes } }
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_wessex
+						k_wessex = { has_holder = no }
+					}
+				}
+				k_wessex = { destroy_landed_title = THIS }
+				activate_title = { title = k_wessex status = no }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_mercia
+						k_mercia = { has_holder = no }
+					}
+				}
+				k_mercia = { destroy_landed_title = THIS }
+				activate_title = { title = k_mercia status = no }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_northumbria
+						k_northumbria = { has_holder = no }
+					}
+				}
+				k_northumbria = { destroy_landed_title = THIS }
+				activate_title = { title = k_northumbria status = no }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_england
+						k_england = { has_holder = no }
+					}
+				}
+				k_england = { destroy_landed_title = THIS }
+				activate_title = { title = k_england status = no }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_eanglia
+						k_eanglia = { has_holder = no }
+					}
+				}
+				k_eanglia = { destroy_landed_title = THIS }
+				activate_title = { title = k_eanglia status = no }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_essex
+						k_essex = { has_holder = no }
+					}
+				}
+				k_essex = { destroy_landed_title = THIS }
+				activate_title = { title = k_essex status = no }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_kent
+						k_kent = { has_holder = no }
+					}
+				}
+				k_kent = { destroy_landed_title = THIS }
+				activate_title = { title = k_kent status = no }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_landed_title = k_sussex
+						k_sussex = { has_holder = no }
+					}
+				}
+				k_sussex = { destroy_landed_title = THIS }
+				activate_title = { title = k_sussex status = no }
+			}
+			set_global_flag = englaland_unified
+			narrative_event = { id = li_titular.1 tooltip = become_bretwalda_tooltip }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
