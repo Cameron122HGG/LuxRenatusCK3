@@ -302,9 +302,113 @@ mpo_the_great_steppe.0002 = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				any_character_situation = {
+					any_situation_sub_region = {
+						sub_region_current_phase = situation_steppe_havsarsan_zud_season
+						situation_sub_region_has_county = root.capital_county
+					}
+				}
+			}
+			every_held_county = {
+				limit = { is_nomad_title = no }
+				change_county_control = -25
+			}
+			domicile = {
+				change_herd = {
+					value = root.domicile.herd
+					multiply = -0.2
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_character_situation = {
+					any_situation_sub_region = {
+						sub_region_current_phase = situation_steppe_white_zud_season
+						situation_sub_region_has_county = root.capital_county
+					}
+				}
+			}
+			every_held_county = {
+				limit = { is_nomad_title = no }
+				change_county_control = -25
+			}
+			domicile = {
+				change_herd = {
+					value = root.domicile.herd
+					multiply = -0.1
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_character_situation = {
+					any_situation_sub_region = {
+						sub_region_current_phase = situation_steppe_cold_zud_season
+						situation_sub_region_has_county = root.capital_county
+					}
+				}
+			}
+			every_held_county = {	
+				limit = { is_nomad_title = no }
+				change_county_control = -10
+			}
+		}
 		
 		ai_chance = {
 			base = 100
+		}
+	}
+}
+
+mpo_the_great_steppe.0003 = {
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				any_character_situation = {
+					any_situation_sub_region = {
+						sub_region_current_phase = situation_steppe_white_zud_season
+						situation_sub_region_has_county = root.capital_county
+					}
+				}
+			}
+			every_held_county = {	
+				limit = { is_nomad_title = no }
+				change_county_fertility = -50
+			}
+		}
+		if = {
+			limit = {
+				any_character_situation = {
+					any_situation_sub_region = {
+						sub_region_current_phase = situation_steppe_cold_zud_season
+						situation_sub_region_has_county = root.capital_county
+					}
+				}
+			}
+			every_held_county = {	
+				limit = { is_nomad_title = no }
+				change_county_fertility = -25
+			}
+		}
+		if = {
+			limit = {
+				any_character_situation = {
+					any_situation_sub_region = {
+						sub_region_current_phase = situation_steppe_severe_drought_season
+						situation_sub_region_has_county = root.capital_county
+					}
+				}
+			}
+			every_held_county = {	
+				limit = { is_nomad_title = no }
+				change_county_fertility = -10
+			}
 		}
 	}
 }

@@ -2,170 +2,6 @@
 	group = "core_tenets"
 	number_of_picks = 3
 
-		############################
-	# Polytheism Reborn Tenets #
-	############################
-	tenet_sacrificial_appeasement = {
-		# name = {
-		# 	first_valid = {
-		# 		triggered_desc = {
-		# 			trigger = { religion_tag = germanic_religion }
-		# 			desc = tenet_gruesome_festivals_blot_name
-		# 		}
-		# 		desc = tenet_gruesome_festivals_name
-		# 	}
-		# }
-		desc = tenet_sacrificial_appeasement_desc
-
-		icon = core_tenet_gruesome_festivals
-
-		piety_cost = {
-			# If you've already got human sacrifice, this is a nice and easy jump.
-			if = {
-				limit = { 
-					has_doctrine = tenet_human_sacrifice
-				}
-				value = faith_tenet_cost_low
-			}
-			# Otherwise, follow the same pricing tiers as tenet_human_sacrifice.
-			else_if = {
-				limit = {
-					has_doctrine = pagan_hostility_doctrine
-				}
-				value = faith_tenet_cost_mid
-			}
-			else_if = {
-				limit = {
-					religion_tag = hinduism_religion
-				}
-				value = faith_tenet_cost_high
-			}
-			else = {
-				value = faith_tenet_cost_massive
-			}
-
-			# Multiplier for keeping same tenet
-			if = {
-				limit = { has_doctrine = tenet_gruesome_festivals }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
-		}
-
-		is_shown = {
-			# No HumSac for Abrahamics: 'tis literally the religion-namer.
-			NOR = {
-				religion_tag = christianity_religion
-				religion_tag = judaism_religion
-				religion_tag = islam_religion
-			}
-			# And DLC required.
-			has_fp1_dlc_trigger = yes
-		}
-
-		can_pick = {
-			custom_description = {
-				text = incompatible_tenet_pacifism_trigger
-				NOT = {
-					doctrine:tenet_pacifism = { is_in_list = selected_doctrines }
-				}
-			}
-			custom_description = {
-				text = incompatible_tenet_dharmic_pacifism_trigger
-				NOT = {
-					doctrine:tenet_dharmic_pacifism = { is_in_list = selected_doctrines }
-				}
-			}
-			custom_description = {
-				text = incompatible_tenet_human_sacrifice_trigger
-				NOT = {
-					doctrine:tenet_human_sacrifice = { is_in_list = selected_doctrines }
-				}
-			}
-			custom_description = {
-				text = incompatible_tenet_sacrificial_ceremonies_trigger
-				NOT = {
-					doctrine:tenet_sacrificial_ceremonies = { is_in_list = selected_doctrines }
-				}
-			}
-		}
-
-		parameters = {
-			#human_sacrifice_active = yes
-			gruesome_festivals_active = yes
-		}
-		
-	}
-
-	tenet_animal_sacrifice = {
-
-		desc = tenet_animal_sacrifice_desc
-
-		icon = core_tenet_gruesome_festivals
-
-		piety_cost = {
-			# If you've already got human sacrifice, this is a nice and easy jump.
-			if = {
-				limit = { 
-					has_doctrine = tenet_human_sacrifice
-				}
-				value = faith_tenet_cost_low
-			}
-			# Otherwise, follow the same pricing tiers as tenet_human_sacrifice.
-			else_if = {
-				limit = {
-					has_doctrine = pagan_hostility_doctrine
-				}
-				value = faith_tenet_cost_mid
-			}
-			else = {
-				value = faith_tenet_cost_massive
-			}
-
-			# Multiplier for keeping same tenet
-			if = {
-				limit = { has_doctrine = tenet_gruesome_festivals }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
-		}
-
-		is_shown = {
-			# No HumSac for Abrahamics: 'tis literally the religion-namer.
-			NOR = {
-				religion_tag = christianity_religion
-				religion_tag = judaism_religion
-				religion_tag = islam_religion
-			}
-			# And DLC required.
-			has_fp1_dlc_trigger = yes
-		}
-
-		can_pick = {
-			custom_description = {
-				text = incompatible_tenet_pacifism_trigger
-				NOT = {
-					doctrine:tenet_pacifism = { is_in_list = selected_doctrines }
-				}
-			}
-			custom_description = {
-				text = incompatible_tenet_dharmic_pacifism_trigger
-				NOT = {
-					doctrine:tenet_dharmic_pacifism = { is_in_list = selected_doctrines }
-				}
-			}
-			custom_description = {
-				text = incompatible_tenet_human_sacrifice_trigger
-				NOT = {
-					doctrine:tenet_human_sacrifice = { is_in_list = selected_doctrines }
-				}
-			}
-		}
-
-		parameters = {
-			gruesome_festivals_active = yes
-		}
-	}
-
-
 	############################
 	# Christian Faith Tenets	#
 	############################
@@ -478,7 +314,7 @@
 			custom_description = {
 				text = incompatible_tenet_sacred_shadows_trigger
 				NOT = {
-					has_doctrine = tenet_sacred_shadows
+					doctrine:tenet_sacred_shadows = { is_in_list = selected_doctrines }
 				}
 			}
 		}
@@ -728,6 +564,7 @@
 		parameters = {
 			mendicant_preachers_conversion_active = yes
 			pilgrimage_decision_active = yes
+			unlock_voluntary_laampdom_faith = yes
 		}
 		traits = {
 			virtues = { temperate }
@@ -1018,6 +855,7 @@
 
 		parameters = {
 			vows_of_poverty_active = yes
+			unlock_voluntary_laampdom_faith = yes
 		}
 
 		traits = {
@@ -1055,6 +893,7 @@
 			is_christian_faith_pastoral_isolation_loc_override = 0
 			sanctioned_false_conversion = yes
 			unattractive_for_character_conversions = yes
+			tenet_unlocks_t3_withdraw_from_view = yes
 		}
 
 		character_modifier = {
@@ -1571,6 +1410,10 @@
 		name = {
 			first_valid = {
 				triggered_desc = {
+					trigger = { this = faith:quranist }
+					desc = tenet_religious_legal_pronouncements_hisbah
+				}
+				triggered_desc = {
 					trigger = {
 						religion_tag = islam_religion
 					}
@@ -1624,6 +1467,7 @@
 			ghw_no_hof_conversion_buffs_active = yes
 			bonus_holy_war_piety_active = yes
 			pilgrimage_decision_active = yes
+			unlock_voluntary_laampdom_faith = yes
 		}
 	}
 
@@ -1790,6 +1634,7 @@
 
 		parameters = {
 			meditation_mechanics_active = yes
+			unlock_voluntary_laampdom_faith = yes
 		}
 
 		#name = { #FP3 - Removed and saved for posterity. Zurvanism would fit a future hypotetical "Fatalism" tenet, but Asceticism isn't a good fit, per beta input. Ola's note. 
@@ -2719,6 +2564,46 @@
 		}
 	}
 
+	tenet_household_gods = {
+		icon = core_tenet_household_gods
+
+		name = tenet_household_gods_name
+
+		desc = tenet_household_gods_desc
+
+		piety_cost = faith_tenet_cost_mid
+
+		is_shown = {
+			religion_tag = hellenism_religion
+		}
+
+		can_pick = {
+			custom_description = {
+				text = rome_must_be_faithfully_restored_trigger
+				has_global_variable = household_gods_tenet_unlocked
+			}
+		}
+
+		parameters = {
+			same_culture_conversion_bonus_active = yes
+			same_faith_promote_culture_bonus_active = yes
+		}
+
+		character_modifier = {
+			monthly_influence = 0.5
+			ignore_opinion_of_different_faith = yes
+			different_faith_county_opinion_mult = -0.1
+			levy_reinforcement_rate_same_faith = 0.25
+			faith_conversion_piety_cost_mult = -0.15
+			# TODO_CD_EP3: Uncomment when this no longer causes startup errors (TIT-53560)
+			# christianity_religion_opinion = -20
+		}
+
+		traits = {
+			virtues = { augustus born_in_the_purple }
+		}
+	}
+
 	#############################
 	# Syncretic Faith Tenets	#
 	#############################
@@ -3047,6 +2932,7 @@
 		traits = {
 			virtues = {
 				sadistic
+				flagellant
 			}
 			sins = {
 				compassionate
@@ -3253,7 +3139,7 @@
 			custom_description = {
 				text = incompatible_tenet_communion_trigger
 				NOT = {
-					has_doctrine = tenet_communion
+					doctrine:tenet_communion = { is_in_list = selected_doctrines }
 				}
 			}
 		}
@@ -3261,6 +3147,7 @@
 		parameters = {
 			piety_gain_from_successful_intrigue_schemes = yes
 			adherents_more_likely_to_join_schemes = yes
+			tenet_unlocks_t4_bounties_for_whispers = yes
 		}
 
 		traits = {
@@ -3522,7 +3409,8 @@
 		parameters = {
 			master_assassin_court_position_unlocked = yes 
 			death_is_glory = yes
-			sanctioned_assassinations = yes 
+			sanctioned_assassinations = yes
+			unlock_voluntary_laampdom_faith = yes
 		}
 
 		character_modifier = {

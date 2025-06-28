@@ -327,6 +327,23 @@ mpo_jamukha_flavor.0010 = {
 			base = 0
 		}
 	}
+	
+	on_trigger_fail = { # Jamukha becomes your rival anyways if you've migrated away
+		if = {
+			limit = {
+				is_independent_ruler = yes
+				NOT = { is_tributary_of = scope:temujin }
+			}
+			hidden_effect = {
+				scope:temujin = {
+					trigger_event = {
+						days = { 360 420 }
+						id = mpo_temujin_flavor.0020
+					}
+				}
+			}
+		}
+	}
 }
 
 #######################
