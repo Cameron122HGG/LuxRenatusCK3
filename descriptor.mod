@@ -5,7 +5,6 @@ tags={
 name="Lux Renatus Religious Rework"
 replace_path="history/characters"
 replace_path="history/titles"
-replace_path="history/provinces"
 replace_path="history/wars"
 replace_path="common/landed titles"
 replace_path="common/flavorization"
