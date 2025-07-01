@@ -1,0 +1,850 @@
+﻿join_vestal_virgins_interaction = {
+	category = interaction_category_friendly
+
+	ai_maybe = yes
+	ai_min_reply_days = 4
+	ai_max_reply_days = 9
+	#can_send_despite_rejection = yes
+	popup_on_receive = yes
+	pause_on_receive = yes
+	
+	common_interaction = yes
+	cooldown_against_recipient = { years = 10 }
+
+	desc = join_vestal_virgins_interaction_desc
+
+	on_decline_summary = take_vows_decline_summary
+
+	greeting = negative
+	notification_text = REQUEST_TO_JOIN_VESTAL_VIRGINS
+
+	is_shown = {
+		title:c_roma = {has_county_modifier = open_temple_of_vesta }
+		scope:recipient = {
+			is_courtier_of = scope:actor
+			NOR = { 
+				has_trait = devoted 
+				has_trait = order_member 
+			}
+		}
+		NOT = { #Not your bishop
+			scope:actor = {
+				any_learning_councillor = { this = scope:recipient }
+			}
+		}
+		scope:actor.faith = {
+			#has_doctrine_parameter = take_vows_active # Faith has Monastery order that recipient can be sent to
+			
+		}
+	}
+	
+	is_valid_showing_failures_only = {
+
+		scope:recipient = {
+			age >= 9
+			#age <= 19
+			can_take_religious_vows_trigger = yes #Triggers that applies to both Monastery or Holy Order requirements
+			is_female = yes
+		}
+	}
+	
+	#Use hook
+	auto_accept = {
+		custom_description = {
+			text = "spending_hook"
+			subject = scope:actor
+			object = scope:recipient
+			scope:hook = yes
+			scope:actor = { has_strong_hook = scope:recipient }
+		}
+	}
+
+	send_option = {
+		is_valid = {
+			scope:actor = {
+				has_usable_hook = scope:recipient
+			}
+		}
+		flag = hook
+		localization = SCHEME_HOOK
+	}
+	should_use_extra_icon = {
+		scope:actor = { has_usable_hook = scope:recipient }
+	}
+	extra_icon = "gfx/interface/icons/character_interactions/hook_icon.dds"
+
+	send_options_exclusive = no
+
+	cost = {
+		piety = scope:recipient.ask_to_take_vows_piety_cost
+	}
+
+	on_send = {
+		scope:recipient = {
+			set_variable = {
+				name = vows_piety_spent
+				value = ask_to_take_vows_piety_cost
+				days = 10
+ 			}
+ 		}
+ 	}
+
+	on_accept = {
+		scope:actor = {
+			if = {
+				limit = { scope:hook = yes }
+				use_hook = scope:recipient
+			}
+			
+			show_as_tooltip = {
+				send_child_to_clergy_effect = yes
+			}
+			scope:recipient = {
+				if = {
+					limit = {
+						scope:actor.top_liege = {
+							any_vassal_or_below = {
+								has_government = theocracy_government
+								primary_title.tier > tier_barony
+								faith = scope:actor.faith
+							}
+						}
+					}
+					scope:actor.top_liege = {
+						random_vassal_or_below = {
+							limit = {
+								has_government = theocracy_government
+								primary_title.tier > tier_barony
+								faith = scope:actor.faith
+							}
+							save_scope_as = theocratic_travel_target
+						}
+					}
+					visit_court_of = scope:theocratic_travel_target
+				}
+				else_if = {
+					limit = {
+						exists = scope:actor.capital_province
+					}
+					move_to_pool_at = scope:actor.capital_province
+				}
+				kick_from_court_interaction_warning_tooltip_effect = yes
+			}
+			trigger_event = accepted_to_join_vestal_vergins.001
+			if = {
+				limit = {
+					exists = cp:councillor_court_chaplain
+					scope:recipient = {
+						is_close_family_of = scope:actor
+					}
+				}
+				cp:councillor_court_chaplain = {
+					add_opinion = {
+						target = scope:actor
+						modifier = pious_opinion
+						opinion = 25
+					}
+				}
+			}
+			if = {
+				limit = {
+					exists = faith.religious_head
+					scope:recipient = {
+						is_close_family_of = scope:actor
+					}
+				}
+				faith.religious_head = {
+					add_opinion = {
+						target = scope:actor
+						modifier = pious_opinion
+						opinion = 10
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			scope:recipient = {
+				remove_variable = vows_piety_spent
+			}
+		}
+	}
+
+	on_decline = {
+		scope:recipient = {
+			add_opinion = {
+				target = scope:actor
+				modifier = asked_me_to_take_vows_opinion
+				years = 10
+			}
+		}
+		#Letter event informing the character about the rejection.
+		scope:actor = {
+			trigger_event = {
+				id = rejected_to_join_vestal_vergins.001
+			}
+		}
+
+		# Refund piety cost
+		show_as_tooltip = {
+			scope:actor = {
+				add_piety_no_experience = {
+					value = scope:recipient.ask_to_take_vows_piety_cost
+				}
+			}
+		}
+		# Refund piety cost
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:recipient = {
+						has_variable = vows_piety_spent
+ 					}
+ 				}
+				scope:actor = {
+					add_piety_no_experience = {
+						value = scope:recipient.var:vows_piety_spent
+ 					}
+				}
+				scope:recipient = {
+					remove_variable = vows_piety_spent
+ 				}
+ 			}
+ 		}
+ 	}
+
+	auto_accept = no
+
+	ai_accept = {
+		base = 0 # Try to make it 0 for most interactions
+
+		modifier = {
+			scope:hook = yes
+			add = 50
+			desc = SCHEME_WEAK_HOOK_USED
+		}
+		opinion_modifier = { # Opinion Factor
+			who = scope:recipient
+			opinion_target = scope:actor
+			multiplier = 0.25
+			desc = AI_SIMPLE_OPINION_REASON
+		}
+		modifier = {
+			add = ai_zeal
+			ai_zeal < 0
+			desc = TAKE_THE_VOWS_SKEPTIC
+		}
+		modifier = {
+			add = {
+				value = ai_zeal
+				divide = 2
+			}
+			ai_zeal > 0
+			desc = TAKE_THE_VOWS_ZEALOUS
+		}
+		modifier = {
+			add = {
+				value = ai_greed
+				multiply = -1
+			}
+			ai_greed > 0
+			desc = TAKE_THE_VOWS_GREED
+		}
+		modifier = {
+			add = 50
+			scope:recipient = {
+				age >= 45
+				is_visibly_fertile = no
+				NOT = {
+					any_heir_title = {
+						exists = holder
+					}
+				}
+			}
+			desc = TAKE_THE_VOWS_RETIRE_IN_CHURCH
+		}
+		modifier = {
+			add = 50
+			exists = scope:actor.cp:councillor_court_chaplain
+			scope:recipient = {
+				OR = {
+					has_relation_lover = scope:actor.cp:councillor_court_chaplain
+					has_relation_friend = scope:actor.cp:councillor_court_chaplain
+					has_secret_relation_lover = scope:actor.cp:councillor_court_chaplain
+					has_relation_soulmate = scope:actor.cp:councillor_court_chaplain
+					has_relation_best_friend = scope:actor.cp:councillor_court_chaplain
+					opinion = {
+						target = scope:actor.cp:councillor_court_chaplain
+						value >= very_high_positive_opinion
+					}
+				}
+			}
+			desc = TAKE_THE_VOWS_INSPIRING_COURT_CHAPLAIN
+		}
+		modifier = {
+			add = 50
+			scope:recipient = {
+				OR = {
+					any_relation = {
+						type = friend
+						is_clergy = yes
+					}
+					any_relation = {
+						type = best_friend
+						is_clergy = yes
+					}
+					any_relation = {
+						type = lover
+						is_clergy = yes
+					}
+					any_relation = {
+						type = soulmate
+						is_clergy = yes
+					}
+					any_relation = {
+						type = crush
+						is_clergy = yes
+					}
+					any_secret = {
+						secret_type = secret_lover
+						secret_target = {	
+							is_clergy = yes
+						}
+					}
+				}
+			}
+			desc = TAKE_THE_VOWS_INSPIRING_CLERGY
+		}
+		modifier = {
+			add = 50
+			scope:recipient = {
+				has_education_learning_trigger = yes
+			}
+			desc = TAKE_THE_VOWS_LEARNING_EDUCATION
+		}
+		
+		modifier = {
+			add = {
+				add = 20
+				multiply = scope:recipient.num_virtuous_traits
+			}
+			scope:recipient.num_virtuous_traits > 0
+			desc = TAKE_THE_VOWS_VIRTUOUS
+		}
+		
+		modifier = {
+			add = {
+				add = -20
+				multiply = scope:recipient.num_sinful_traits
+			}
+			scope:recipient.num_sinful_traits > 0
+			desc = TAKE_THE_VOWS_SINFUL
+		}
+
+		#Positive Personality Modifiers
+		modifier = { # Wants to help people
+			add = {
+				value = ai_compassion
+				divide = 2
+			}
+			scope:recipient = {
+				ai_compassion > 0
+				has_trait = lifestyle_physician
+			}
+			desc = TAKE_THE_VOWS_PHYSICIAN_WANTS_TO_HELP
+		}
+		modifier = {
+			add = 1200
+			scope:recipient = {
+				has_trait = reclusive
+			}
+			desc = TAKE_THE_VOWS_RECLUSIVE
+		}
+		modifier = {
+			add = 25
+			scope:recipient = {
+				has_trait = curious
+			}
+			desc = TAKE_THE_VOWS_CURIOUS
+		}
+		modifier = {
+			add = 50
+			scope:recipient = {
+				has_trait = pensive
+			}
+			desc = TAKE_THE_VOWS_PENSIVE
+		}
+		modifier = { # Loves books & knowledge!
+			add = 20
+			scope:recipient = {
+				has_trait = lifestyle_mystic
+			}
+			desc = TAKE_THE_VOWS_MYSTIC
+		}
+		modifier = { # Loves books & knowledge!
+			add = 20
+			scope:recipient = {
+				has_trait = scholar
+			}
+			desc = TAKE_THE_VOWS_SCHOLAR
+		}
+		modifier = { # Loves books & knowledge!
+			add = 20
+			scope:recipient = {
+				has_trait = theologian
+			}
+			desc = TAKE_THE_VOWS_THEOLOGIAN
+		}
+		modifier = { # Plants!
+			add = 20
+			scope:recipient = {
+				has_trait = lifestyle_herbalist
+			}
+			desc = TAKE_THE_VOWS_HERBALIST
+		}
+		modifier = {
+			add = 25
+			scope:recipient = {
+				has_trait = temperate
+			}
+			desc = TAKE_THE_VOWS_TEMPERATE
+		}
+		modifier = {
+			add = 50
+			scope:recipient = {
+				has_trait = celibate
+			}
+			desc = TAKE_THE_VOWS_CELIBATE
+		}
+		modifier = {
+			add = 25
+			scope:recipient = {
+				has_trait = chaste
+			}
+			desc = TAKE_THE_VOWS_CHASTE
+		}
+		modifier = {
+			add = 25
+			scope:recipient = {
+				has_trait = content
+			}
+			desc = TAKE_THE_VOWS_CONTENT
+		}
+		modifier = {
+			add = 25
+			scope:recipient = {
+				has_trait = humble
+			}
+			desc = TAKE_THE_VOWS_HUMBLE
+		}
+		modifier = {
+			add = 10
+			scope:recipient = {
+				has_trait = drunkard
+			}
+			desc = TAKE_THE_VOWS_DRUNKARD
+		}
+		modifier = {
+			add = 10
+			scope:recipient = {
+				has_trait = hashishiyah
+			}
+			desc = TAKE_THE_VOWS_HASHISHIYAH
+		}
+		modifier = {
+			add = 50
+			scope:recipient = {
+				has_trait = trusting
+			}
+			desc = TAKE_THE_VOWS_TRUSTING
+		}
+
+		#Negative Personality Modifiers
+		modifier = {
+			add = -50
+			scope:recipient = {
+				has_trait = rowdy
+			}
+			desc = TAKE_THE_VOWS_ROWDY
+		}
+		modifier = {
+			add = -25
+			scope:recipient = {
+				has_trait = bossy
+			}
+			desc = TAKE_THE_VOWS_BOSSY
+		}
+		modifier = {
+			add = -20
+			scope:recipient = {
+				has_trait = gluttonous
+			}
+			desc = TAKE_THE_VOWS_GLUTTONOUS
+		}
+		modifier = {
+			add = -20
+			scope:recipient = {
+				has_trait = lustful
+			}
+			desc = TAKE_THE_VOWS_LUSTFUL
+		}
+		modifier = {
+			add = -500
+			scope:recipient = {
+				has_trait = pregnant
+			}
+			desc = TAKE_THE_VOWS_PREGNANT
+		}
+		modifier = {
+			add = -500
+			scope:recipient = {
+				has_trait = ambitious
+			}
+			desc = TAKE_THE_VOWS_AMBITIOUS
+		}
+		
+		modifier = {
+			add = -50
+			scope:recipient = {
+				OR = {
+					is_married = yes
+					exists = betrothed
+				}
+			}
+			desc = TAKE_THE_VOWS_MARRIED_OR_BETROTHED
+		}
+		
+		modifier = {
+			add = -150
+			scope:recipient = {
+				is_primary_heir_of = scope:actor
+			}
+			desc = TAKE_THE_VOWS_PRIMARY_HEIR
+		}
+		
+		modifier = {
+			add = -75
+			scope:recipient = {
+				NOT = {
+					is_primary_heir_of = scope:actor
+				}
+			}
+			scope:actor.primary_title = {
+				place_in_line_of_succession = {
+					target = prev
+					value == 2
+				}
+			}
+			desc = TAKE_THE_VOWS_SECOND_HEIR
+		}
+		
+		modifier = {
+			add = -50
+			scope:recipient = {
+				NOT = {
+					is_primary_heir_of = scope:actor
+				}
+			}
+			scope:actor.primary_title = {
+				place_in_line_of_succession = {
+					target = prev
+					value == 3
+				}
+			}
+			desc = TAKE_THE_VOWS_THIRD_HEIR
+		}
+		
+		modifier = {
+			add = -25
+			scope:recipient = {
+				NOT = {
+					is_primary_heir_of = scope:actor
+				}
+			}
+			scope:actor.primary_title = {
+				place_in_line_of_succession = {
+					target = prev
+					value >= 4
+				}
+			}
+			desc = TAKE_THE_VOWS_HEIR
+		}
+		
+		modifier = {
+			add = -100
+			scope:recipient = {
+				NOT = { is_heir_of = scope:actor }
+				any_heir_title = {
+					exists = holder
+					NOT = {
+						holder = scope:actor
+					}
+					place_in_line_of_succession = {
+						target = scope:recipient
+						value < 2
+					}
+				}
+				NOT = {
+					is_primary_heir_of = scope:actor
+				}
+			}
+			desc = TAKE_THE_VOWS_HEIR_TO_OTHER_TITLE
+		}
+		
+		modifier = {
+			add = -50
+			scope:recipient = {
+				NOT = { is_heir_of = scope:actor }
+				any_heir_title = {
+					exists = holder
+					NOT = {
+						holder = scope:actor
+					}
+					place_in_line_of_succession = {
+						target = scope:recipient
+						value < 5
+					}
+					NOT = {
+						place_in_line_of_succession = {
+							target = scope:recipient
+							value < 2
+						}
+					}
+				}
+				NOT = {
+					is_primary_heir_of = scope:actor
+				}
+			}
+			desc = TAKE_THE_VOWS_IN_LINE_TO_OTHER_TITLE
+		}
+		
+		modifier = { #Rivalry modifier.
+			desc = offer_vassalization_interaction_aibehavior_rival_tt
+			trigger = {
+				scope:recipient = {
+					has_relation_rival = scope:actor
+					NOT = { has_relation_nemesis = scope:actor }
+				}
+			}
+			add = -50
+		}
+		modifier = { #Nemesis modifier.
+			desc = offer_vassalization_interaction_aibehavior_nemesis_tt
+			trigger = {
+				scope:recipient = {
+					has_relation_nemesis = scope:actor
+				}
+			}
+			add = -100
+		}
+		
+		#Dread modifiers
+		modifier = {
+			add = 25
+			scope:recipient = {
+				has_dread_level_towards = {
+					target = scope:actor
+					level = 1
+				}
+			}
+			desc = INTIMIDATED_REASON
+		}
+		modifier = {
+			add = 50
+			scope:recipient = {
+				has_dread_level_towards = {
+					target = scope:actor
+					level = 2
+				}
+			}
+			desc = COWED_REASON
+		}
+
+		# Culture Tradition modifiers
+		
+		modifier = {
+			add = {
+				value = 25
+				if = {
+					limit = {
+						scope:recipient = {
+							is_adult = no
+							is_child_of = scope:actor
+						}
+					}
+					add = 100
+				}
+			}
+			scope:actor.culture = { has_cultural_parameter = monastic_expectations }
+			desc = MONASTIC_EXPECTATIONS_REASON
+		}
+	}
+	
+	# AI will do
+	
+	ai_potential = {
+		is_adult = yes
+		piety >= major_piety_value
+	}
+	
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+
+	ai_targets = {
+		ai_recipients = courtiers
+		max = 5
+	}
+
+	ai_targets = {
+		ai_recipients = children
+	}
+	
+	ai_frequency = 72
+
+	ai_will_do = {
+		base = 0
+		
+		modifier = { # The AI will always use a Hook
+			scope:hook = yes
+			add = 1
+		}
+		
+		modifier = { # Try to send rivals
+			add = 100
+			scope:actor = {
+				OR = {
+					has_relation_rival = scope:recipient
+					has_relation_nemesis = scope:recipient
+				}
+			}
+		}
+		
+		modifier = { # Try to send people who would make poor heirs
+			add = 50
+			scope:recipient = {
+				OR = {
+					has_trait = murderer
+					has_trait = incestuous
+					has_trait = sodomite
+					has_trait = cannibal
+					has_trait = deviant
+					has_trait = kinslayer
+					has_trait = adulterer
+					has_trait = fornicator
+					has_trait = maimed
+					has_trait = drunkard
+					has_trait = hashishiyah
+					has_trait = flagellant
+					has_trait = reclusive
+					num_of_bad_genetic_traits >= 1
+					num_sinful_traits >= 2
+				}
+				scope:actor.primary_title = {
+					place_in_line_of_succession = {
+						target = prev
+						value <= 7
+					}
+				}
+			}
+		}
+		
+		modifier = { # Try to send people who would make poor heirs
+			add = 25
+			scope:recipient = {
+				is_adult = yes
+				calc_true_if = {
+					amount >= 3
+					
+					diplomacy < 8
+					stewardship < 8
+					martial < 8
+					intrigue < 8
+					learning < 8
+				}
+				scope:actor.primary_title = {
+					place_in_line_of_succession = {
+						target = prev
+						value <= 7
+					}
+				}
+			}
+		}
+		
+		modifier = { # Sending one of your heirs is almost customary
+			add = 100
+			scope:actor = {
+				any_child = {
+					count >= 3
+				}
+				NOT = {
+					any_child = {
+						OR = {
+							has_trait = devoted
+							has_trait = order_member
+						}
+					}
+				}
+			}
+			scope:recipient = {
+				is_child_of = scope:actor
+				has_education_learning_trigger = yes
+			}
+		}
+		
+		modifier = { # Zealous characters generally want to send characters to the clergy
+			add = 50
+			scope:actor = {
+				ai_zeal >= high_positive_ai_value
+			}
+			scope:recipient = {
+				has_education_learning_trigger = yes
+			}
+		}
+		
+		modifier = { # Greedy characters want to rid their court of potential threats
+			add = 50
+			scope:actor = {
+				ai_greed >= medium_positive_ai_value
+				any_child = {
+					count >= 1
+				}
+			}
+			scope:recipient = {
+				NOT = {
+					is_child_of = scope:actor
+				}
+				any_claim = {
+					exists = holder
+					holder = scope:actor
+				}
+			}
+		}
+		
+		modifier = { # The AI doesn't ask married/betrothed people
+			factor = 0
+			scope:recipient = {
+				OR = {
+					exists = betrothed
+					is_married = yes
+				}
+			}
+		}
+		
+		modifier = { # Never ask Primary Heir
+			factor = 0
+			scope:recipient = {
+				is_primary_heir_of = scope:actor
+			}
+		}
+		
+		modifier = { # Only care about family
+			factor = 0
+			scope:recipient = {
+				NOT = {
+					is_close_or_extended_family_of = scope:actor
+				}
+			}
+		}
+	}
+}

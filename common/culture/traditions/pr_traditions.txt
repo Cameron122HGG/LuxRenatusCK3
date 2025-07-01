@@ -1,0 +1,161 @@
+﻿tradition_celtiberian_legacy = {
+	category = societal
+
+	layers = {
+		0 = intrigue
+		1 = mediterranean
+		4 = battle.dds
+	}
+	
+	can_pick = {
+		has_cultural_pillar = heritage_celtic_iberian
+	}
+	is_shown = {
+		has_cultural_pillar = heritage_celtic_iberian
+	}
+	parameters = {
+		culture_can_raid_over_land_even_if_feudal = yes 
+		automatic_befriend_access = yes
+		may_propose_best_friendship = yes
+		strong_hooks_and_stress_effects_best_friends = yes
+		may_select_friendship_synergy_bonus = yes
+
+	}
+	character_modifier = {
+		hills_travel_danger = hills_medium_danger_reduction
+		max_loot_mult = 0.25
+	}
+	county_modifier = {
+		hills_development_growth_factor = 0.2
+	}
+	province_modifier = {
+		hills_construction_gold_cost = -0.1
+		hills_holding_construction_gold_cost = -0.1
+	}
+
+	# character_modifier = {
+	# 	max_loot_mult = 0.25
+	# }
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			# Ethos requirement.
+			if = {
+				limit = {
+					NOT = {
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 50
+		if = {
+			limit = {
+				has_cultural_pillar = heritage_celtic_iberian
+			}
+			multiply = 5
+		}
+	}
+}
+
+tradition_celtiberian_tactics = {
+	category = combat
+
+	layers = {
+		0 = martial
+		1 = mediterranean
+		4 = soldiers4.dds
+	}
+	
+	is_shown = {
+		has_cultural_pillar = heritage_celtic_iberian
+	}
+	can_pick = {
+		has_cultural_pillar = heritage_celtic_iberian
+	}
+
+	# Iberian: Concurso Tactics
+	character_modifier = {
+		skirmishers_damage_mult = 0.05
+		skirmishers_screen_mult = 0.1
+		light_cavalry_damage_mult = 0.05
+		light_cavalry_screen_mult = 0.1
+		siege_weapon_siege_value_mult = -0.2
+		retreat_losses = -0.1
+		hard_casualty_modifier = -0.1
+		advantage = -2
+		movement_speed = 0.1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_egalitarian = { is_in_list = traits }
+						culture_pillar:ethos_spiritual = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_egalitarian_or_spiritual_desc
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						scope:character = {	
+							number_maa_soldiers_of_base_type = {
+								type = skirmishers
+								value >= 500
+							}	
+							number_maa_soldiers_of_base_type = {
+								type = light_cavalry
+								value >= 500
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = culture_head_skirmishers_and_light_cav_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 100
+		if = {
+			limit = {
+				NOR = {
+					culture_has_skirmisher_maa = yes
+					culture_has_light_cavalry_maa = yes
+				}
+			}
+			multiply = 0.25
+		}
+	}
+}

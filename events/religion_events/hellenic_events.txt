@@ -1,0 +1,847 @@
+﻿#Hellenic
+namespace = hellenismos
+namespace = hellenismos_sr
+namespace = h_cmd
+namespace = cdr_sr
+namespace = embrace_culture
+namespace = mycenaean
+
+#Return Hellenismos
+hellenismos.001 = {
+	type = character_event
+	title = hellenismos.001.t
+	desc = hellenismos.001.desc
+	theme =  hunt_activity
+	right_portrait = {
+			character = root
+			animation = personality_content
+	}
+	option = {
+		name = hellenismos.001.a
+		trigger_event = hellenismos.002
+	}
+}
+
+hellenismos.002 = { 
+	type = character_event
+	title = hellenismos.002.t
+	desc = hellenismos.002.desc
+	theme = learning_scholarship_focus
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	option = { #Proceed
+		name = hellenismos.002.a
+		trigger_event = hellenismos.003
+	}
+	option = { #Stop
+		name = hellenismos.002.b
+		hidden_effect ={
+			clear_global_variable_list = unavailable_unique_decisions_convert
+		   remove_trait = pilgrim 
+	   }
+	}
+}
+
+hellenismos.003 = { 
+	type = character_event
+	title = hellenismos.003.t
+	desc = hellenismos.003.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = idle
+	}
+	#proceed
+	option = {
+		name = hellenismos.003.a
+		trigger_event = hellenismos.004
+	}	
+}
+
+hellenismos.004 = {
+	type = character_event
+	title = hellenismos.004.t
+	desc = hellenismos.004.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = idle
+	}
+	option = {
+		name = hellenismos.004.a
+		trigger_event = hellenismos.005
+	}
+}
+
+hellenismos.005 = {
+	type = character_event
+	title = hellenismos.005.t
+	desc = hellenismos.005.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = admiration
+	}
+	option = {
+		name = hellenismos.005.a
+		trigger_event = hellenismos.006
+	}
+	option = {
+		name = hellenismos.005.b
+		clear_global_variable_list = unavailable_unique_decisions_convert
+		remove_trait = pilgrim
+	}
+}
+hellenismos.006 = {
+	type = character_event
+	title = hellenismos.006.t
+	desc = hellenismos.006.desc
+	theme = learning_scholarship_focus
+	right_portrait = {
+		character = root
+		animation = idle
+	   
+	}
+	option = {
+		name = hellenismos.006.a
+		trigger_event = {
+			id = hellenismos_sr.001
+			months = 2 
+		}
+	}
+   option = {
+	   name = hellenismos.006.b
+		   trigger_event = {
+			id = cdr_sr.001
+			months = 2
+		   }
+
+   }
+   
+}
+
+#Reinstate Hellenism as state religion 
+scripted_effect hellenismos_sr_notify_players_effectt = {
+	every_player = {
+		limit = {
+			Not = {this = root}  
+			capital_province = {
+			geographical_region = world_europe_south_east
+			}
+		}
+		trigger_event = hellenismos_sr.002
+	}
+}
+
+hellenismos_sr.001 = {
+	type = character_event
+	title = hellenismos_sr.001.t
+	desc = hellenismos_sr.001.desc
+	theme = faith
+	right_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous	
+		}
+		override_background = { reference = throne_room }
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		faith = { save_scope_as = old_faith }
+		return_hellenismos_sr_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = hellenismos_sr.001.a
+		#Get a nice reward for your adherence to the true faith.
+		add_piety_level = 1
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = hellenismos_return
+			value = flag:vanilla
+		}
+		hellenismos_sr_notify_players_effect = yes 
+		
+	}	
+}
+
+hellenismos_sr.002 = {
+	type = character_event
+	title = hellenismos_sr.002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { top_liege = root }
+				desc = hellenismos_sr.002.desc.vassals
+			}
+			desc = hellenismos_sr.002.desc.outsiders
+		}
+		desc = hellenismos_pagan_sr.002.desc.intro
+		triggered_desc = {
+			trigger = { scope:hellenismos_return = flag:vanilla }
+			desc = hellenismos_sr.002.desc_vanilla
+		}
+	}
+	theme = faith
+	left_portrait = scope:scoped_ruler
+	override_background = { reference = throne_room }
+	#Roman polyteist are happy about this unexpected turn of events!
+	option = {
+		name = hellenismos_sr.002.a
+		trigger = { religion = religion:hellenic_religion}
+		add_stress = minor_stress_loss
+	}
+	#Vassals who do not follow the faith may decide to convert after all.
+	option = {
+		name = hellenismos_sr.002.b
+		trigger = {
+			top_liege = root
+			NOT = { religion = religion:hellenic_religion}
+		}
+		set_character_faith_with_conversion = faith:hellenic_pagan
+		
+	}
+	#Those who aren't polytheist are probably horrified.
+	option = {
+		name = hellenismos_sr.002.c
+		trigger = {
+			NOT = {
+				religion = { is_in_family = rf_pagan}
+			}
+		}
+	}
+	#And, as a fallback, some people just won't care.
+	option = { 
+		name = hellenismos_sr.002.d 
+	}
+}
+
+#Reinstate Cultus Deorum as state religion 
+scripted_effect cdr_sr_notify_players_effectt = {
+	every_player = {
+		limit = {
+			Not = {this = root}  
+			capital_province = {
+			geographical_region = world_europe_south_east
+			}
+		}
+		trigger_event = cdr_sr.002
+	}
+}
+
+cdr_sr.001 = {
+	type = character_event
+	title = cdr_sr.001.t
+	desc = cdr_sr.001.desc
+	theme = faith
+	right_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous	
+		}
+		override_background = { reference = throne_room }
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		save_scope_as = scoped_ruler
+		faith = { save_scope_as = old_faith }
+		return_cdr_sr_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = cdr_sr.001.a
+		#Get a nice reward for your adherence to the true faith.
+		add_piety_level = 1
+		#Sort notification copy for players.
+		save_scope_value_as = {
+			name = cdr_return
+			value = flag:vanilla
+		}
+		cdr_sr_notify_players_effect = yes 
+		
+		
+
+		#Title creation e_p_roman
+
+		#demolish  e_eastern_roman
+
+	}	
+}
+
+cdr_sr.002 = {
+	type = character_event
+	title = cdr_sr.002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { top_liege = root }
+				desc = cdr_sr.002.desc.vassals
+			}
+			desc = cdr_sr.002.desc.outsiders
+		}
+		desc = cdr_sr.002.desc.intro
+		triggered_desc = {
+			trigger = { scope:cdr_return = flag:vanilla }
+			desc = cdr_sr.002.desc_vanilla
+		}
+	}
+	theme = faith
+	left_portrait = scope:scoped_ruler
+	override_background = { reference = throne_room }
+	#Roman polyteist are happy about this unexpected turn of events!
+	option = {
+		name = cdr_sr.002.a
+		trigger = { religion = religion:hellenism_religion}
+		add_stress = minor_stress_loss
+	}
+	#Vassals who do not follow the faith may decide to convert after all.
+	option = {
+		name = cdr_sr.002.b
+		trigger = {
+			top_liege = root
+			NOT = { religion = religion:hellenism_religion}
+		}
+		set_character_faith_with_conversion = faith:roman_pagan
+		
+	}
+	#Those who aren't polytheist are probably horrified.
+	option = {
+		name = cdr_sr.002.c
+		trigger = {
+			NOT = {
+				religion = { is_in_family = rf_pagan}
+			}
+		}
+	}
+	#And, as a fallback, some people just won't care.
+	option = { 
+		name = cdr_sr.002.d 
+	}
+}
+
+embrace_culture.004= {
+	type = character_event
+	title = embrace_culture.004.t
+	desc = embrace_culture.004.desc
+	theme = learning
+
+	lower_right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	option = {
+		name = embrace_culture.004.a
+		set_culture = culture:mycenaean
+	}
+}
+
+#hellenic main deity
+h_cmd.001 = {
+	type = character_event
+	title = h_cmd.001.t
+	desc = h_cmd.001.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = pr_generic_temple }
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	option = {
+		name = h_cmd.001.a
+		#Zeus
+		trigger = {
+			NOT = { has_trait = h_cmd1_religion }
+		}
+		pr_set_bhakti_effect = { BHAKTI  = h_cmd1_religion }
+	}
+	option = {
+		name = h_cmd.001.b
+		#Hera
+		trigger = {
+			NOT = { has_trait = h_cmd2_religion }
+		}
+		pr_set_bhakti_effect = { BHAKTI  = h_cmd2_religion }
+	}
+	option = {
+		name = h_cmd.001.c
+		#Ares
+		trigger = {
+			NOT = { has_trait = h_cmd3_religion }
+		}
+		pr_set_bhakti_effect = { BHAKTI  = h_cmd3_religion }
+	}
+	option = {
+		name = h_cmd.001.d
+		#Aphrodite
+		trigger = {
+			NOT = { has_trait = h_cmd4_religion }
+		}
+		pr_set_bhakti_effect = { BHAKTI  = h_cmd4_religion }
+	}
+	option = {
+		name = h_cmd.001.e
+		#Hermes
+		trigger = {
+			NOT = { has_trait = h_cmd5_religion }
+		}
+		pr_set_bhakti_effect = { BHAKTI  = h_cmd5_religion }
+	}
+	option = {
+		name = h_cmd.001.f
+		add_piety = 100
+		ai_chance ={
+			base = 0 
+		}
+	}
+	#option for more in the future 
+}
+
+mycenaean.001 = {
+	type = character_event
+	title = mycenaean.001.t
+	desc = mycenaean.001.desc
+	theme = faith
+	override_background = { reference = pr_generic_temple }
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Poseidon
+	option = {
+		name = mycenaean.001.poseidon
+		trigger = {
+			NOT = { has_character_modifier = mycenaean_poseidon }
+		}
+		set_bhakti_effect = { BHAKTI = mycenaean_poseidon }
+	}
+
+	# Hermes
+	option = {
+		name = mycenaean.001.hermes
+		trigger = {
+			NOT = { has_character_modifier = mycenaean_hermes }
+		}
+		set_bhakti_effect = { BHAKTI = mycenaean_hermes}
+	}
+
+	#Aphrodite
+	option = {
+		name = mycenaean.001.aphrodite 
+		trigger = {
+			NOT = { has_character_modifier = mycenaean_aphrodite }
+		}
+		set_bhakti_effect = { BHAKTI = mycenaean_aphrodite }
+	}
+
+	# Athena
+	option = {
+		name = mycenaean.001.athena
+		trigger = {
+			NOT = { has_character_modifier = mycenaean_athena }
+		}
+		set_bhakti_effect = { BHAKTI = mycenaean_athena }
+	}
+
+
+	# Ares
+	option = {
+		name = mycenaean.001.ares
+		trigger = {
+			NOT = { has_character_modifier = mycenaean_ares }
+		}
+		set_bhakti_effect = { BHAKTI = mycenaean_ares }
+	}
+
+	# Opt-Out
+	option = {
+		name = mycenaean.001.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+
+#Visit temple of Zeus 
+hellenismos.007 = {
+	type = character_event
+	title = hellenismos.007.t
+	desc = hellenismos.007.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = pr_temple_jupiter }
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name =hellenismos.007.a
+		hidden_effect = {
+			random_list = {
+				30 = {
+					send_interface_toast = {
+						type = event_toast_effect_good
+						left_icon = ROOT
+						title = hellenismos.007.message.positive
+						add_character_modifier = {
+							modifier = favoured_by_zeus
+							years = 2
+						}
+					}
+				}
+				30 = {
+					send_interface_toast = {
+						type = event_toast_effect_good
+						left_icon = ROOT
+						title = hellenismos.007.message.negative
+						add_character_modifier = {
+							modifier = unfavoured_by_zeus
+							years = 2
+						}
+					}
+				}
+			}
+		}	
+	}
+}
+
+#Buy book about Greek Mythology 
+hellenismos.008= {
+	trigger = {
+		NOT = {
+			any_character_artifact = {
+				has_artifact_modifier = pr_book_about_mythology
+			}
+		}
+	}
+	type = character_event
+	title = hellenismos.008.t
+	desc = hellenismos.008.desc
+	theme = learning_scholarship_focus
+	override_background = { reference = market_west }
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = hellenismos.008.a	
+		remove_short_term_gold = 15
+		create_artifact = {	
+			name = greek_mythology_book
+			description = greek_mythology_book_description
+			type = miscellaneous
+			visuals = book
+			modifier = pr_book_about_mythology
+		}
+
+	}
+}
+
+#Offering to Demeter
+hellenismos.013 = {
+	type = character_event
+	title = hellenismos.013.t
+	desc = hellenismos.013.desc
+	theme = learning
+	override_background = { reference = garden }
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	option = {
+		name = hellenismos.013.a	
+		hidden_effect = {
+			random_list = {
+				30 = {
+					send_interface_toast = {
+						type = event_toast_effect_good
+						left_icon = ROOT
+						title = hellenismos.013.message.positive
+						add_character_modifier = {
+							modifier = favoured_by_demeter
+							years = 2
+						}
+					}
+				}
+				30 = {
+					send_interface_toast = {
+						type = event_toast_effect_good
+						left_icon = ROOT
+						title = hellenismos.013.message.negative
+						add_character_modifier = {
+							modifier = unfavoured_by_demeter
+							years = 2
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#Embrace Hellen culture
+hellenismos.016 = {
+	type = character_event
+	title = hellenismos.016.t
+	desc = hellenismos.016.desc
+	theme = learning
+
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	option = {
+		name = hellenismos.016.a
+		set_culture = culture:pr_greek
+	}
+}
+
+hellenismos.017  = {
+	type = activity_event
+	title = hellenismos.017.t
+	desc = hellenismos.017.desc
+	#override_background = { reference = wilderness_mountains }
+	override_background = { reference = tavern }
+
+	
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	option = {
+		name = hellenismos.017.a
+		trigger_event = {
+			id = hellenismos.018
+			days = { 4 12 }
+		}
+	}
+}
+
+hellenismos.018 = {
+	type = activity_event
+	title = hellenismos.018.t
+	theme = faith
+	#override_background = { reference = wilderness_mountains }
+	override_background = { reference = alley_day }
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_character_modifier = hellenic_apollo_presence
+				}
+				desc = hellenismos.018.desc.zealous
+			}
+			triggered_desc = {
+				trigger = {
+					has_character_modifier = hellenic_delphi
+				}
+				desc = hellenismos.018.desc.delphi
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+	immediate = {
+		play_music_cue = mx_cue_sacredrite
+		random_list = {
+			20 = {
+				modifier = {
+					add = 5
+					has_trait = content
+				}
+				modifier = {
+					add = 5
+					has_trait = temperate
+				}
+				scope:activity = {
+					add_activity_log_entry = {
+						key = Pr_delphi_pilgrimage_inspired_log
+						tags = { good }
+						# this line below adds the entry to the Effects section of the conclusion UI
+						show_in_conclusion = yes
+						character = root
+						scope:host = {
+							add_character_modifier = {
+								modifier = hellenic_delphi
+								years = 10
+							}
+						}
+					}
+				}
+			}
+			20 = {
+				modifier = {
+					add = 5
+					has_trait = just
+				}
+				modifier = {
+					add = 5
+					has_trait = zealous
+				}
+				scope:activity = {
+					add_activity_log_entry = {
+
+						key = Pr_delphi_pilgrimage_inspired_log
+						tags = { good }
+						# this line below adds the entry to the Effects section of the conclusion UI
+						show_in_conclusion = yes
+						character = root
+						scope:host = {
+							add_character_modifier = {
+								modifier = hellenic_apollo_presence
+								years = 10
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	option = { 
+		name = hellenismos.018.a
+		trigger_event = {
+			id = hellenismos.019
+			days = { 4 12 }
+		}
+	}
+}
+
+
+hellenismos.019 = {
+	type = activity_event
+	title = hellenismos.019.t
+	desc = hellenismos.019.desc
+	theme = friendly
+	override_background = { reference = council_chamber }
+	
+	right_portrait = {
+		character = root
+		animation = happiness
+	}
+	
+	option = { 
+		name = hellenismos.019.a
+		pr_activity_kogaionon_pilgrimage_completed_log_entry_effect = yes
+	}
+
+
+	after = {
+		hidden_effect = {
+			scope:activity = {
+				hidden_effect = { skip_activity_phase = yes }
+			}
+		}
+	}
+}
+
+#Choose Graeco Egyptian main deity 
+hellenismos.020 = {
+	type = character_event
+	title = hellenismos.020.t
+	desc = hellenismos.020.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	#Zeus Amon
+	option = {
+		name = hellenismos.020.zeus_amon
+		trigger = {
+			NOT = { has_character_modifier = graeco_egyptian_zeus_amon }
+			AND = {
+				OR = {
+					faith = faith:graeco_egyptian_polytheism
+					faith = { has_doctrine_parameter = special_doctrine_graeco_egyptian_patron_god_active }
+				}
+			}
+
+		}
+		set_bhakti_effect = { BHAKTI = graeco_egyptian_zeus_amon }
+	}
+	#Alexandros Megalos
+	option = {
+		name = hellenismos.020.alexandros_megalos
+		trigger = {
+			NOT = { has_character_modifier = graeco_egyptian_alexander_megalos }
+			AND = {
+				OR = {
+					faith = faith:hellenic_alexandros
+					faith = { has_doctrine_parameter = special_doctrine_alexandrian_cult_patron_god_active }
+				}
+			}
+		}
+		set_bhakti_effect = { BHAKTI = graeco_egyptian_alexander_megalos }
+	}
+	
+	# Hermes Trismegistus
+	option = {
+		name = hellenismos.020.hermes_trismegistus
+		trigger = {
+			NOT = { has_character_modifier = graeco_egyptian_hermes_trismegistus }
+		}
+		set_bhakti_effect = { BHAKTI = graeco_egyptian_hermes_trismegistus}
+	}
+
+	#Isis
+	option = {
+		name = hellenismos.020.isis
+		trigger = {
+			NOT = { has_character_modifier = graeco_egyptian_isis }
+		}
+		set_bhakti_effect = { BHAKTI = graeco_egyptian_isis }
+	}
+
+	# Harpocrates
+	option = {
+		name = hellenismos.020.harpocrates
+		trigger = {
+			NOT = { has_character_modifier = graeco_egyptian_harpocrates }
+		}
+		set_bhakti_effect = { BHAKTI = graeco_egyptian_harpocrates }
+	}
+
+
+	# Ares
+	option = {
+		name = hellenismos.020.ares
+		trigger = {
+			NOT = { has_character_modifier = mycenaean_ares }
+		}
+		set_bhakti_effect = { BHAKTI = mycenaean_ares }
+	}
+
+	# Opt-Out
+	option = {
+		name = hellenismos.020.optout
+		flavor = religious_decision.0102.flavor
+
+		ai_chance = {
+			base = 0
+		}		
+	}
+}
+
+hellenismos.021 = { 
+	type = character_event
+	title = hellenismos.021.t
+	desc = hellenismos.021.desc
+	theme = learning
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	option = {
+		name = hellenismos.021.a
+		set_character_faith = faith:graeco_egyptian_polytheism
+	}
+}

@@ -2206,7 +2206,7 @@ tradition_stand_and_fight = {
 		levy_toughness = 2
 		maa_toughness_mult = 0.1
 		heavy_infantry_toughness_mult = 0.1
-		heavy_cavalry_toughness_mult = 0.1
+		heavy_cavalry_toughness_mult = 1
 		pikemen_toughness_mult = 0.2
 		hard_casualty_modifier = 0.4
 		defender_advantage = 8
@@ -2621,12 +2621,9 @@ tradition_horse_breeder = {
 								type = heavy_cavalry
 								value >= 400
 							}
-							any_maa_regiment = {
-								OR = {
-									is_maa_type = horse_archers
-									is_maa_type = heavy_horse_archers
-								}
-								maa_size >= 8
+							number_maa_soldiers_of_base_type = {
+								type = archer_cavalry
+								value >= 800
 							}
 						}
 					}

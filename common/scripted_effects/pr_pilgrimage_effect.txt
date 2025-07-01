@@ -1,0 +1,49 @@
+﻿#All Credits to cybrxkhan
+pr_activity_kogaionon_pilgrimage_completed_log_entry_effect = {
+	scope:activity = {
+		add_activity_log_entry = {
+			key = Pr_kogaionon_pilgrimage_completed_log
+			
+			tags = { completed }
+			# this line below adds the entry to the Effects section of the conclusion UI
+			show_in_conclusion = yes
+			character = root
+			scope:host = {
+				pr_local_pilgrimage_generic_host_effect = yes
+			}
+			every_attending_character = {
+				limit = { NOT = { this = scope:host } }
+				custom = EVERY_ACTIVITY_PARTICIPANT_EFFECT
+				pr_local_pilgrimage_generic_guest_effect = yes
+			}
+		}
+	}
+}
+
+pr_local_pilgrimage_generic_guest_effect = {
+	add_piety = 50
+}
+
+pr_local_pilgrimage_generic_host_effect = {
+	if = {
+		limit = {
+			has_activity_intent = pr_local_pilgrimage_worship_intent 
+		}
+		add_piety = 150
+		stress_impact = {
+			zealous = miniscule_stress_impact_loss
+			humble = miniscule_stress_impact_loss
+		}
+	}
+	else_if = {
+		limit = {
+			has_activity_intent = pr_local_pilgrimage_model_intent
+		}
+		add_piety = 75
+		add_prestige = 75
+		stress_impact = {
+			ambitious = miniscule_stress_impact_loss
+			diligent = miniscule_stress_impact_loss
+		}
+	}
+}

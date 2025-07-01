@@ -1,5 +1,5 @@
-﻿### TITLE WINDOW
-
+### TITLE WINDOW
+#Polytheism Reborn
 window = {
 	name = "title_view_window"
 	size = { 650 100% }
@@ -7,7 +7,7 @@ window = {
 	movable = no
 	allow_outside = yes
 	layer = middle
-	
+
 	using = Window_Background_Sidebar
 
 	state = {
@@ -777,7 +777,7 @@ window = {
 							expand = {}
 
 							text_single = {
-								text = "TITLE_VIEW_CREATE_TITLE"
+						text = "TITLE_VIEW_CREATE_TITLE"
 								align = nobaseline
 								default_format = "#high"
 							}
@@ -974,9 +974,9 @@ window = {
 								visible = "[Not( TitleViewWindow.ShowAppointment )]"
 								datamodel = "[TitleViewWindow.GetLineOfSuccession]"
 								item = {
-									portrait_head_small = {}
+										portrait_head_small = {}
+									}
 								}
-							}
 
 							hbox_admin_title_successor_candidates_list = {
 								visible = "[TitleViewWindow.ShowAppointment]"
@@ -984,8 +984,8 @@ window = {
 
 								blockoverride "score_breakdown" {
 									datacontext = "[TitleViewWindow.GetSuccessionScoreBreakdown( Character.Self )]" 
-								}
-							}
+				}
+			}
 
 							hbox = {
 								visible = "[TitleViewWindow.ShowAppointment]"
@@ -1001,7 +1001,7 @@ window = {
 								}
 
 								# INVEST IN BEST LOCAL PLAYER CANDIDATE IF THEY EXIST
-								hbox = {
+				hbox = {
 									datacontext = "[TitleViewWindow.GetTitle]"
 									datacontext = "[TitleViewWindow.GetSuccessorCandidateList]"
 									datacontext = "[AdminVassalSuccessorCandidateList.GetBestLocalPlayerCandidate( '(int32)0' )]"
@@ -1017,7 +1017,7 @@ window = {
 										onclick = "[Character.OpenPlayerInteractionWithTargetTitle('influence_candidacy_interaction', Title.Self)]"
 										size = { 180 40 }
 
-										hbox = {
+						hbox = {
 											layoutpolicy_horizontal = expanding
 											margin = { 8 4 }
 
@@ -1035,8 +1035,8 @@ window = {
 								}
 
 								# INVEST IN ANYONE (FALLBACK)
-								hbox = {
-									datacontext = "[TitleViewWindow.GetTitle]"
+						hbox = {
+							datacontext = "[TitleViewWindow.GetTitle]"
 									datacontext = "[TitleViewWindow.GetSuccessorCandidateList]"
 
 									visible = "[And( TitleViewWindow.ShowAppointment, Not( AdminVassalSuccessorCandidateList.ShowBestPlayerCandidateIndependently( '(int32)0' ) ) )]"
@@ -1129,7 +1129,7 @@ types Title
 			text = "TV_TIER_INFO"
 		}
 
-		text_single = {
+		text_multi = {
 			layoutpolicy_horizontal = expanding
 			visible = "[Not(Title.CanHaveClaim)]"
 			text = "[Title.GetSpecialDescription]"

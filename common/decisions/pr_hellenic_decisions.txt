@@ -1,0 +1,475 @@
+﻿choose_main_deity_h_decision = {
+	picture = { 
+		reference = "gfx/interface/illustrations/decisions/greek_temple.dds"
+	}
+	decision_group_type = polytheism
+	desc =  h_cmd_decision_desc
+	#selection_tooltip = choose_main_deity_h_decision_tooltip
+	is_shown = {
+
+		# DLC check.
+		has_fp1_dlc_trigger = yes
+		is_adult = yes
+		religion = religion:hellenism_religion
+	}
+	is_valid = {
+	}
+	cooldown = { years = 2}
+
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					faith = faith:hellenic_pagan
+					faith = { has_doctrine_parameter = special_doctrine_hellenic_patron_god_active }
+				}
+			}
+			trigger_event = h_cmd.001
+		}
+		if = {
+			limit = {
+				OR = {
+					faith = faith:mycenaean_polytheism
+					faith = { has_doctrine_parameter = special_doctrine_mycenaean_patron_god_active }
+				}
+			}
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_mycenaean_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_mycenaean_decision.select_poseidon
+						add_character_modifier = mycenaean_poseidon
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_mycenaean_decision.select_hermes
+						add_character_modifier = mycenaean_hermes
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_mycenaean_decision.select_aphrodite
+						add_character_modifier = mycenaean_aphrodite
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_mycenaean_decision.select_athena
+						add_character_modifier = mycenaean_athena
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_mycenaean_decision.select_ares
+						add_character_modifier = mycenaean_ares
+					}
+				}
+			}
+			trigger_event = mycenaean.001
+		}
+		if ={
+			limit={
+					OR = {
+						faith = faith:graeco_egyptian_polytheism
+						faith = { has_doctrine_parameter = special_doctrine_graeco_egyptian_patron_god_active }
+					}
+			}
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_graeco_egyptian_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_zeus_amon
+						add_character_modifier = graeco_egyptian_zeus_amon
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_hermes_trismegistus
+						add_character_modifier = graeco_egyptian_hermes_trismegistus
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_isis
+						add_character_modifier = graeco_egyptian_isis
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_harpocrates
+						add_character_modifier = graeco_egyptian_harpocrates
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_ares
+						add_character_modifier = mycenaean_ares
+					}
+				}
+			}
+			trigger_event = hellenismos.020
+		}
+		else_if ={
+			limit ={
+					OR = {
+						faith = faith:hellenic_alexandros
+						faith = { has_doctrine_parameter = special_doctrine_alexandrian_cult_patron_god_active }
+					}
+			}
+			show_as_tooltip = {
+				random_list = {
+					desc = choose_main_deity_graeco_egyptian_decision_tt
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_zeus_amon
+						add_character_modifier = alexander_cult_alexander_megalos
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_hermes_trismegistus
+						add_character_modifier = graeco_egyptian_hermes_trismegistus
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_isis
+						add_character_modifier = graeco_egyptian_isis
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_harpocrates
+						add_character_modifier = graeco_egyptian_harpocrates
+					}
+					100 = {
+						show_chance = no
+						desc = select_main_deity_graeco_egyptian_decision.select_ares
+						add_character_modifier = mycenaean_ares
+					}
+				}
+			}
+			trigger_event = hellenismos.020
+		}
+		
+	}
+	ai_check_interval = 90
+	
+
+
+	ai_potential = {
+		piety >= minor_piety_value
+		NOR = {
+			has_character_modifier = mycenaean_poseidon
+			has_character_modifier = mycenaean_hermes
+			has_character_modifier = mycenaean_aphrodite
+			has_character_modifier = mycenaean_athena
+			has_character_modifier = mycenaean_ares
+			has_trait = h_cmd1_religion
+			has_trait = h_cmd2_religion
+			has_trait = h_cmd3_religion
+			has_trait = h_cmd4_religion
+			has_trait = h_cmd5_religion
+			has_character_modifier = graeco_egyptian_zeus_amon
+			has_character_modifier = graeco_egyptian_isis
+			has_character_modifier = graeco_egyptian_hermes_trismegistus
+			has_character_modifier = graeco_egyptian_harpocrates
+			has_character_modifier = mycenaean_ares
+			has_character_modifier = graeco_egyptian_alexander_megalos
+		}
+	}
+	ai_will_do = {
+		base = 100
+	}
+}
+
+#embrace Hellen culture 
+hellen_culture_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/greek_temple.dds"
+	}
+	decision_group_type = polytheism
+	desc =  hellen_culture_decision_desc
+	is_shown = {
+		is_ai = no
+		is_landed = yes
+		is_adult = yes
+		is_imprisoned = no
+		AND = {
+			faith = faith:hellenic_pagan
+		}
+	NOR = { 
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_restored_hellen_culture
+			}
+		}
+		
+	}
+	is_valid = {
+		completely_controls = title:c_attica
+		culture = culture:greek
+
+	}
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+		#is_independent_ruler = yes
+	}
+	cost = {
+		prestige = 1000 
+	}
+	effect = {
+		trigger_event = hellenismos.016 
+		save_scope_as = actor
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_restored_hellen_culture
+			}
+		}
+	}
+	ai_check_interval = 90
+	
+	ai_potential = {
+		always = yes
+
+	}
+	ai_will_do = {
+		base = 100
+	} 
+}
+
+#Pergamese Kingdom 
+pergamon_kingdom_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/greek_temple.dds"
+	}
+	decision_group_type = major
+	desc =  pergamon_kingdom_decision_desc
+	ai_check_interval = 4
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_game_rule = pr_ancient_kingdoms_decisions_on
+		OR = {
+			religion = religion:roman_religion
+			religion = religion:hellenism_religion
+			culture = culture:greek
+			culture = culture:pr_greek
+			culture = culture:roman
+		}
+		is_imprisoned = no	
+		is_at_war = no
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_recreated_pergamon
+			}
+		}
+		
+	}
+	is_valid = {
+		completely_controls = title:c_abydos
+		completely_controls = title:c_aeolis
+		completely_controls = title:d_thracesia
+		completely_controls = title:c_mysia
+		completely_controls = title:c_pacatiana
+
+
+		OR = {
+			culture = culture:greek
+			culture = culture:pr_greek
+			culture = culture:roman
+			
+		}
+		AND = {
+			OR = {
+				religion = religion:roman_religion
+				religion = religion:hellenism_religion
+			}
+		} 
+						
+	}
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:flag_recreated_pergamon
+		}
+		custom_tooltip = create_pergamon_effect_tooltip
+
+		title:d_aegean_islands = { save_scope_as = aegean }
+		title:d_ephese = { save_scope_as = ephese }
+		title:d_thracesia = { save_scope_as = thracesia }
+		title:d_opsikion = { save_scope_as = opsikion }
+		title:d_anatolia = { save_scope_as = anatolia }
+
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = yes
+		}
+		title:k_pergamon = {
+			change_title_holder ={
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		title:d_aegean_islands= { set_de_jure_liege_title = title:k_pergamon }
+		title:d_ephese = { set_de_jure_liege_title = title:k_pergamon }
+		title:d_thracesia = { set_de_jure_liege_title = title:k_pergamon }
+		title:d_opsikion = { set_de_jure_liege_title = title:k_pergamon }
+		title:d_anatolia = { set_de_jure_liege_title = title:k_pergamon }
+		# hidden_effect = {
+		# 	limit = {
+		# 		title:e_bazantium = {
+		# 			change_title_holder ={
+		# 				holder = root
+		# 				change = scope:title_change
+		# 			}
+		# 		}
+		# 	}
+		# 	title:k_pergamon = { set_de_jure_liege_title = title:e_byzantium } 
+		# }
+	}
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 1.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 3
+			round = yes
+		}
+	}
+
+	cost = {
+		gold = {
+			value = major_gold_value
+			multiply = 0.5
+			round = yes
+		}
+		prestige = {
+			value = major_prestige_gain
+			multiply = 0.5
+			round = yes
+		}
+	}
+
+	ai_potential = {
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+set_capital_pergamon_decision = {
+	picture = { 
+		reference = "gfx/interface/illustrations/decisions/greek_temple.dds"
+	}
+	decision_group_type = major
+
+	desc = set_capital_pergamon_decision_desc
+	selection_tooltip = set_capital_pergamon_decision_tooltip
+
+	ai_check_interval = 12
+
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		has_title = title:k_pergamon
+		NOT = { capital_county = { this = title:c_aeolis} }
+		OR = {
+			title:c_aeolis.holder = { 	
+				any_liege_or_above = { this = root }
+			}
+			title:c_aeolis.holder = { this = root }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	effect = {
+		if = { #Usurp if not held personally.
+			limit = {
+				NOT = { title:c_aeolis.holder = { this = root } }
+			}
+			create_title_and_vassal_change = {
+				type = returned
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			title:c_aeolis= {
+				change_title_holder = {
+					holder = root
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+
+		}
+		set_realm_capital = title:c_aeolis
+	}
+	
+	ai_potential = {
+		has_title = title:k_pergamon
+	}
+
+	ai_will_do = { #Do it always, for coherence.
+		base = 100
+	}
+}
+
+convert_to_graeco_egyptian_decision = { 
+	picture = { 
+		reference = "gfx/interface/illustrations/decisions/greek_temple.dds"
+	}
+	decision_group_type = polytheism
+	desc = convert_to_graeco_egyptian_decision_desc
+	is_shown = {
+		#is_ai = no
+		is_landed = yes
+		religion = religion:hellenism_religion
+		AND = {
+			OR = { 
+			culture = culture:kemetic
+			culture = culture:pr_greek
+			culture = culture:pr_graeco_egyptian
+			#More bookmarks/cultures expanded 
+			# culture = culture:dalmatian_ce
+			# culture = culture:illyrian
+			# culture = culture:illyrian_slavic
+			}
+		}
+		NOR = { 
+				faith = faith:graeco_egyptian_polytheism
+			}
+	}
+	is_valid = {
+		religion = religion:hellenism_religion
+		AND ={ 
+			OR = { 
+				culture = culture:kemetic
+				culture = culture:pr_greek
+				culture = culture:pr_graeco_egyptian
+			}
+		}
+
+	}
+	effect = { 
+		trigger_event = hellenismos.021
+	}
+	
+	ai_check_interval = 90
+	
+	ai_potential = {
+		always = yes
+
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+ }
