@@ -33,7 +33,7 @@ mpo_temujin_flavor.0001 = {
 			has_variable = had_mpo_temujin_flavor_0020
 		}
 		is_physically_able = yes
-		character:mpo_mongol_1 = {
+		character:1 = {
 			is_alive = yes
 			is_physically_able = yes
 			NOR = {
@@ -46,7 +46,7 @@ mpo_temujin_flavor.0001 = {
 	immediate = {
 		play_music_cue = "mx_cue_touching_moment"
 		set_variable = had_mpo_temujin_flavor_0001
-		character:mpo_mongol_1 = {
+		character:1 = {
 			save_scope_as = jamukha
 			save_scope_as = blood_bro
 		}
@@ -280,7 +280,7 @@ mpo_temujin_flavor.0010 = {
 		}
 		is_alive = yes
 		is_ruler = yes
-		character:mpo_mongol_1 = {
+		character:1 = {
 			is_alive = yes
 			OR = {
 				is_vassal_of = root
@@ -292,9 +292,9 @@ mpo_temujin_flavor.0010 = {
 	immediate = {
 		set_variable = {
 			name = had_mpo_temujin_flavor_0010
-			value = character:mpo_mongol_1
+			value = character:1
 		}
-		character:mpo_mongol_1 = {
+		character:1 = {
 			save_scope_as = jamukha
 		}
 		mpo_temujin_flavor_0010_jamukha_leaving_effect = yes
@@ -493,7 +493,7 @@ mpo_temujin_flavor.0020 = {
 			has_variable = had_mpo_temujin_flavor_0010
 			AND = {
 				NOT = { has_variable = had_mpo_temujin_flavor_0010 }
-				character:mpo_mongol_1 = {
+				character:1 = {
 					NOR = {
 						is_vassal_of = root
 						is_tributary = root
@@ -503,7 +503,7 @@ mpo_temujin_flavor.0020 = {
 		}
 		is_alive = yes
 		is_ruler = yes
-		character:mpo_mongol_1 = {
+		character:1 = {
 			is_alive = yes
 			in_diplomatic_range = root
 			is_ruler = yes
@@ -515,9 +515,9 @@ mpo_temujin_flavor.0020 = {
 		play_music_cue = "mx_cue_murder"
 		set_variable = {
 			name = had_mpo_temujin_flavor_0020
-			value = character:mpo_mongol_1
+			value = character:1
 		}
-		character:mpo_mongol_1 = {
+		character:1 = {
 			save_scope_as = jamukha
 		}
 		if = {
@@ -699,7 +699,7 @@ mpo_temujin_flavor.0030 = {
 	
 	trigger = {
 		NOT = { has_variable = had_mpo_temujin_flavor_0030 } # To make sure it triggers even if you migrate straight away and lose the event time window
-		character:172004 = {
+		character:1 = {
 			is_alive = yes
 			is_spouse_of = root
 			is_pregnant = no
@@ -712,30 +712,30 @@ mpo_temujin_flavor.0030 = {
 	immediate = {
 		play_music_cue = "mx_cue_personal_negative"
 		set_variable = had_mpo_temujin_flavor_0030
-		character:172004 = {
+		character:1 = {
 			save_scope_as = borte
 		}
 		if = {
 			limit = {
-				character:303116 = {
+				character:1 = {
 					is_alive = yes
 					NOT = { has_relation_rival = root }
 				}
 			}
-			character:303116 = {
+			character:1 = {
 				save_scope_as = mergid
 			}
 		}
 		else_if = {
 			limit = {
 				any_ruler = {
-					dynasty = dynasty:2001144
+					dynasty = dynasty:1
 					NOT = { has_relation_rival = root }
 				}
 			}
 			random_ruler = {
 				limit = {
-					dynasty = dynasty:2001144
+					dynasty = dynasty:1
 					NOT = { has_relation_rival = root }
 				}
 				save_scope_as = mergid

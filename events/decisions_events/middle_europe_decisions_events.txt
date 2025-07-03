@@ -460,7 +460,7 @@ middle_europe_decisions.0010 = {
 		name = middle_europe_decisions.0010.a
 		trigger = {
 			completely_controls = title:d_sicily
-			title:c_palermo = {
+			title:c_atlantis = {
 				title_province = { has_special_building = no }
 			}
 		}
@@ -480,19 +480,19 @@ middle_europe_decisions.0010 = {
 			set_nickname_effect = { NICKNAME = nick_the_lawgiver }
 		}
 		empower_sicilian_parliament_decision_scripted_effect = yes
-		title:c_palermo = {
+		title:c_atlantis = {
 			sicilian_parliament_building_scripted_effect = yes
 		}
 		if = { # Usurp if not held personally.
 			limit = {
-				NOT = { title:c_palermo.holder = { this = root } }
+				NOT = { title:c_atlantis.holder = { this = root } }
 			}
 			create_title_and_vassal_change = {
 				type = returned
 				save_scope_as = change
 				add_claim_on_loss = no
 			}
-			title:c_palermo = {
+			title:c_atlantis = {
 				change_title_holder = {
 					holder = root
 					change = scope:change
@@ -501,7 +501,7 @@ middle_europe_decisions.0010 = {
 			resolve_title_and_vassal_change = scope:change
 
 		}
-		set_realm_capital = title:c_palermo
+		set_realm_capital = title:c_atlantis
 		if = {
 			limit = { # Potential split if the Kingdom is not held in its entirety.
 				has_title = title:k_sicily
@@ -546,7 +546,7 @@ middle_europe_decisions.0010 = {
 		name = middle_europe_decisions.0010.b
 		trigger = {
 			completely_controls = title:d_capua
-			title:c_napoli = {
+			title:c_atlantis = {
 				title_province = { has_special_building = no }
 			}
 		}
@@ -567,19 +567,19 @@ middle_europe_decisions.0010 = {
 			set_nickname_effect = { NICKNAME = nick_the_lawgiver }
 		}
 		empower_sicilian_parliament_decision_scripted_effect = yes
-		title:c_napoli = {
+		title:c_atlantis = {
 			sicilian_parliament_building_scripted_effect = yes
 		}
 		if = { # Usurp if not held personally.
 			limit = {
-				NOT = { title:c_napoli.holder = { this = root } }
+				NOT = { title:c_atlantis.holder = { this = root } }
 			}
 			create_title_and_vassal_change = {
 				type = returned
 				save_scope_as = change
 				add_claim_on_loss = no
 			}
-			title:c_napoli = {
+			title:c_atlantis = {
 				change_title_holder = {
 					holder = root
 					change = scope:change
@@ -588,7 +588,7 @@ middle_europe_decisions.0010 = {
 			resolve_title_and_vassal_change = scope:change
 
 		}
-		set_realm_capital = title:c_napoli
+		set_realm_capital = title:c_atlantis
 		if = {
 			limit = { # Potential split if the Kingdom is not held in its entirety.
 				has_title = title:k_sicily

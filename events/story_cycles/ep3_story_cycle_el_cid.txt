@@ -112,7 +112,7 @@ cid.0001 = {
 	immediate = {		
 		location.county.holder.top_liege = { save_scope_as = liege }
 		if = { #Historical conditions first
-			limit = { scope:liege = character:108500 }
+			limit = { scope:liege = character:1 }
 			hidden_effect = { # We show this in the "after"
 				create_el_cid_story = { ENEMY = alfonso }
 			}
@@ -127,12 +127,12 @@ cid.0001 = {
 		}
 		else_if = { #If Garcia Ordoñez is there then it's him even if he "likes" you
 			limit = {
-				character:106050 ?= {
+				character:1 ?= {
 					is_alive = yes
 					top_liege = scope:liege
 				}
 			}
-			character:106050 = {
+			character:1 = {
 				save_scope_as = bad_courtier
 			}
 			hidden_effect = {

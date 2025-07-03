@@ -1,0 +1,454 @@
+﻿# Smooth over errors involving orphaned events, variables that are set but not used, and variables that are used but not set.
+
+namespace = atlantis
+
+scripted_effect fix_variable_error = { # ERROR = KEY
+	if = {
+		limit = {
+			exists = var:$ERROR$
+			var:$ERROR$ = flag:$ERROR$
+		}
+		set_variable = {
+			name = $ERROR$
+			value = flag:$ERROR$
+		}
+	}
+}
+
+scripted_effect fix_scope_error = {
+	if = {
+		limit = {
+			exists = scope:$ERROR$
+		}
+		save_scope_as = $ERROR$
+	}
+}
+
+atlantis.0001 = {
+
+	hidden = yes
+	orphan = yes
+	
+	trigger = {
+
+		# Variables that are set but not used. These follow the same quasi-random order as error.log (which is annoying).
+
+		religion = { exists = var:religion_invisible }
+
+		has_global_variable = achievement_mother_of_us_all_siguic
+		has_global_variable = achievement_mother_of_us_all_orisha
+		has_global_variable = achievement_mother_of_us_all_bori
+		has_global_variable = achievement_mother_of_us_all_roog_sene
+		has_global_variable = achievement_mother_of_us_all_akom
+		has_global_variable = achievement_mother_of_us_all_kushitism
+		has_global_variable = achievement_mother_of_us_all_waaqism
+		has_global_variable = achievement_mother_of_us_all_achamanism
+
+		exists = global_var:achieved_ahab_achievement
+		exists = global_var:finished_a_thousand_and_one_nights_achievement
+		exists = global_var:ce1_cant_touch_this_achievement_unlocked
+		exists = global_var:finished_imperial_march_achievement
+		exists = global_var:ce1_the_pharaoh_islands_achievement_unlocked
+		exists = global_var:ce1_local_legend_achievement_unlocked
+		has_character_flag = achievement_moving_up_in_the_world_flag
+		exists = global_var:fp2_historys_best_friends_achievement_unlocked
+		exists = global_var:ce1_legendary_achievement_unlocked
+		has_character_flag = fp3_abassid_strong_achievement_unlocked
+		has_character_flag = fp3_challenger_caliphate_achievement_unlocked
+		exists = global_var:fp2_el_cid_achievement_unlocked
+		has_variable = one_of_a_kind_var
+		exists = global_var:achievement_norman_yoke_war_flag
+		exists = global_var:finished_little_william_marshal_achievement
+		exists = global_var:diverged_culture_nobody_comes_to_fika_achievement
+		exists = global_var:finished_black_dinner_achievement
+		exists = var:ep1_03_achievement_unlocked
+		exists = global_var:finished_the_grandest_tour_achievement
+		has_character_flag = achievement_know_your_place_flag
+		exists = global_var:finished_a_knights_tale_achievement
+		has_character_flag = achievement_al_andalus_flag
+		exists = global_var:ce1_not_today_achievement_unlocked
+		exists = global_var:danelaw_became_england
+		has_character_flag = achievement_for_the_faith_flag
+		exists = global_var:ce1_neverending_story_achievement_unlocked
+		has_character_flag = achievement_a_house_of_my_own_flag
+		exists = global_var:fp2_iberian_hostilities_achievement_unlocked
+		has_character_flag = achievement_non_nobis_domine_flag
+		exists = global_var:ce1_canonized_achievement_unlocked
+		exists = global_var:fp2_iberian_conciliation_achievement_unlocked
+		has_character_flag = achievement_bad_blood_flag
+		has_character_flag = achievement_stressful_situation_flag
+		has_character_flag = achievement_the_things_love_does_for_us_flag
+		has_character_flag = achievement_the_things_we_do_for_love_flag
+		has_character_flag = fp3_assassinated_tier1
+		has_character_flag = fp3_assassinated_tier2
+		has_character_flag = fp3_assassinated_tier3
+		has_character_flag = first_of_the_crusader_kings_achievement_flag
+		exists = global_var:player_declared_war
+		has_character_flag = achievement_until_death_do_us_part_flag
+		exists = global_var:finished_your_eternal_reward_achievement
+		has_character_flag = canute_the_greater_achievement_flag
+		has_character_flag = achievement_fine_print_flag
+		has_character_flag = a_dangerous_business_achievement_flag
+		exists = var:ep1_02_achievement_unlocked
+		exists = global_var:fp2_high_stakes_chess_achievement_unlocked
+		has_character_flag = fp3_vassalize_the_caliph_achievement_unlocked
+		is_target_in_variable_list = {
+			name = pathway_to_heaven_achievement_tally
+			target = root
+		}
+		has_character_flag = achievement_its_not_a_cult_flag
+		exists = global_var:diverged_culture_beta_israel_achievement
+		has_character_flag = fp3_mulct_them_dry_achievement_flag
+		has_character_flag = fp3_rekindle_iran_achievement_unlocked
+		has_character_flag = achievement_not_so_feudal_system_flag
+		exists = global_var:ce1_upward_mobility_achievement_unlocked
+		exists = global_var:fp2_basque_in_my_glory_achievement_unlocked
+		exists = global_var:ce1_f_achievement_unlocked
+		has_character_flag = volva_achievement_flag
+		has_character_flag = achievement_an_unfortunate_accident_flag
+		exists = global_var:holy_order_give_a_dog_a_bone_achievement
+		exists = global_var:achieved_sir_lance_a_lot_achievement
+		has_character_flag = achievement_death_did_us_part_flag
+		exists = global_var:finished_hunting_accident_achievement
+		exists = global_var:fp2_iberian_compromise_achievement_unlocked
+	}
+	
+	immediate = {
+		
+		# Variables that are used but not set.
+
+		#  Miscellaneous
+
+		save_scope_as = background_university_scope
+
+		add_character_flag = major_religious_inspiration
+
+		set_variable = { name = block_conversion_till_nebulous_circumstances }
+		add_character_flag = raiktor
+		add_character_flag = intrigue_duel_on_attack
+		set_variable = { name = block_reformation_var }
+		set_variable = struggle_block_dissolution_faction
+		set_variable = { name = block_conversion_till_decision_taken }
+
+		set_variable = { name = university value = yes }
+
+		set_global_variable = deterministic_conquest_of_england_1066
+
+		#  Modifier(s)
+		random_scheme = {
+			limit = {}
+			add_scheme_modifier = {
+				type = massive_extra_success_chance_modifier
+			}
+		}
+
+		#  Bookmark(s)
+
+		add_to_global_variable_list = {
+			name = triggered_bookmark_events
+			target = flag:bookmark_867_northmen_aellas_capture
+		}
+
+		#  Legends
+
+		set_variable = { name = mythical_ancestor_var value = flag:naga }
+		set_variable = { name = mythical_ancestor_var value = flag:afrasiyab }
+		set_variable = { name = mythical_ancestor_var value = flag:noah }
+		set_variable = { name = mythical_ancestor_var value = flag:shibi_chakravarti }
+
+		#  Achievements		
+
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_give_a_dog_a_bone_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_norman_yoke_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_the_grandest_tour_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_your_eternal_reward_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_imperial_march_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_black_dinner_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_a_thousand_and_one_nights_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_a_knights_tale_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_hunting_accident_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_pathway_to_heaven_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_sir_lance_a_lot_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_ahab_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_a_e_i_o_u_and_me_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = ce1_cant_touch_this_achievement_unlocked
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = diverged_culture_nobody_comes_to_fika_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = fp2_iberian_compromise_achievement_unlocked
+			VALUE = yes
+		}
+
+		# Events
+
+		trigger_event = courtier_guest_management.4001
+		trigger_event = roman_restoration.1200
+		trigger_event = diarchy.8021
+		trigger_event = ep3_emperor_yearly.2000
+		trigger_event = ep3_eparch_event.0001
+		trigger_event = ep3_eparch_event.0005
+		trigger_event = ep3_eparch_event.0010
+		trigger_event = ep3_eparch_event.0015
+		trigger_event = ep3_eparch_event.0020
+		trigger_event = ep3_frankokratia_events.0140
+		trigger_event = ep3_laamps.0050
+		trigger_event = ep3_laamps.5999
+		trigger_event = ep3_story_cycle_violet_poet.0001
+		trigger_event = ep3_yearly.3000
+		trigger_event = cid.0001
+		trigger_event = hasan_sabbah.1000
+		trigger_event = yearly.7050
+		
+		trigger_event = game_rule.1011
+		trigger_event = historical_artifacts.0023
+		trigger_event = major_decisions.2001
+		trigger_event = diarchy.0012
+		trigger_event = fp1_scandinavian_adventurers.0004
+		trigger_event = fp1_scandinavian_adventurers.0011
+		trigger_event = fp1_scandinavian_adventurers.0021
+		trigger_event = debug_portraits.1
+		trigger_event = mpo_misc.0002
+		trigger_event = mpo_greatest_of_khans.1001
+		trigger_event = mongol_invasion.1002
+		trigger_event = roman_restoration.1200
+		trigger_event = diarchy.8021
+		trigger_event = game_rule.1151
+		trigger_event = game_rule.1152
+		trigger_event = bookmark.0001
+		trigger_event = bookmark.0003
+		trigger_event = bookmark.0101
+		trigger_event = bookmark.0200
+		trigger_event = bookmark.0211
+		trigger_event = bookmark.0300
+		trigger_event = bookmark.1066
+		trigger_event = bookmark.1067
+		trigger_event = bookmark.1068
+		trigger_event = bookmark.1069
+		trigger_event = bookmark.1070
+		trigger_event = bookmark.1072
+		trigger_event = bookmark.1073
+		trigger_event = ep3_emperor_yearly.2000
+		trigger_event = ep3_laamps.5999
+		trigger_event = ep3_story_cycle_violet_poet.0001
+		trigger_event = cid.0001
+		trigger_event = hasan_sabbah.1000
+
+		save_scope_as = nickname_override 
+		fix_variable_error = { ERROR = game_has_started }
+		fix_variable_error = { ERROR = fully_landlocked_nomad_cultures }
+		fix_variable_error = { ERROR = deterministic_conquest_of_england_1066 }
+		fix_variable_error = { ERROR = started_steppe_by_steppe_achievement }
+		fix_variable_error = { ERROR = steppe_game_start_var }
+		fix_variable_error = { ERROR = mpo_nobodys_business_achievement_unlocked }
+		fix_variable_error = { ERROR = mpo_steppe_by_steppe_achievement_unlocked }
+		fix_variable_error = { ERROR = mpo_shut_up_nerge_achievement_unlocked }
+		fix_variable_error = { ERROR = mpo_settling_in_achievement_unlocked }
+		fix_variable_error = { ERROR = neglected_dungeon }
+		fix_variable_error = { ERROR = ramanuja }
+		fix_variable_error = { ERROR = ezra }
+		fix_variable_error = { ERROR = ibn_khaldun }
+		fix_variable_error = { ERROR = nicetas_choniates }
+		fix_variable_error = { ERROR = gemistus_pletho }
+		fix_variable_error = { ERROR = kshemendra }
+		fix_variable_error = { ERROR = john_tzetzes }
+		fix_variable_error = { ERROR = egil_skallagrimrsson }
+		fix_variable_error = { ERROR = thomas_becket }
+		fix_variable_error = { ERROR = aaron_of_lincoln }
+		fix_variable_error = { ERROR = erik_rode }
+		fix_variable_error = { ERROR = rashi }
+		fix_variable_error = { ERROR = bhaskaracharya }
+		fix_variable_error = { ERROR = hemachandra }
+		fix_variable_error = { ERROR = snorri_sturluson }
+		fix_variable_error = { ERROR = arnaldus_de_villa_nova }
+		fix_variable_error = { ERROR = manuel_moschopoulos }
+		fix_variable_error = { ERROR = bald_head }
+		fix_variable_error = { ERROR = alternative_origin_courtier }
+		fix_variable_error = { ERROR = zawisza }
+		fix_variable_error = { ERROR = michael_psellos }
+		fix_variable_error = { ERROR = medici }
+		fix_variable_error = { ERROR = akka_mahadevi }
+		fix_variable_error = { ERROR = legendary_author }
+		fix_variable_error = { ERROR = giotto_di_bondone }
+		fix_variable_error = { ERROR = omar_khayyam }
+		fix_variable_error = { ERROR = william_of_ockham }
+		fix_variable_error = { ERROR = john_wycliffe }
+		fix_variable_error = { ERROR = gersonides }
+		fix_variable_error = { ERROR = nachmanides }
+		fix_variable_error = { ERROR = gabriol }
+		fix_variable_error = { ERROR = borgia }
+		fix_variable_error = { ERROR = basil_lekapenos }
+		fix_variable_error = { ERROR = mkhitar_gosh }
+		fix_variable_error = { ERROR = arethas_of_caesarea }
+		fix_variable_error = { ERROR = joseph_rabban }
+		fix_variable_error = { ERROR = reformed_dungeon }
+		fix_variable_error = { ERROR = torbjorg_the_seeress }
+		fix_variable_error = { ERROR = gunnlaug_ormstunga }
+		fix_variable_error = { ERROR = ibn_battuta }
+		fix_variable_error = { ERROR = alhazen }
+		fix_variable_error = { ERROR = shaprut }
+		fix_variable_error = { ERROR = yehuda_halevi }
+		fix_variable_error = { ERROR = bridget_of_sweden }
+		fix_variable_error = { ERROR = regino_of_prum }
+		fix_variable_error = { ERROR = theodore_metochites }
+		fix_variable_error = { ERROR = basilios_bessarion }
+		fix_variable_error = { ERROR = sargis_pitsak }
+		fix_variable_error = { ERROR = thomas_aquinas }
+		fix_variable_error = { ERROR = william_wallace }
+		fix_variable_error = { ERROR = joseph_tarchaneiotes }
+		fix_variable_error = { ERROR = sekkilhar }
+		fix_variable_error = { ERROR = giovanni_boccaccio }
+		fix_variable_error = { ERROR = fibonacci }
+		fix_variable_error = { ERROR = heloise_dargenteuil }
+		fix_variable_error = { ERROR = meister_eckhart }
+		fix_variable_error = { ERROR = saadia }
+		fix_variable_error = { ERROR = vidyapati }
+		fix_variable_error = { ERROR = hildegard }
+		fix_variable_error = { ERROR = al_biruni }
+		fix_variable_error = { ERROR = samonas }
+		fix_variable_error = { ERROR = john_axuch }
+		fix_variable_error = { ERROR = grigor_tatevatsi }
+		fix_variable_error = { ERROR = georgius_pachymeres }
+		fix_variable_error = { ERROR = shota_rustaveli }
+		fix_variable_error = { ERROR = michael_choniates }
+		fix_variable_error = { ERROR = atisha }
+		fix_variable_error = { ERROR = dante_alighieri }
+		fix_variable_error = { ERROR = peter_abelard }
+		fix_variable_error = { ERROR = rumi }
+		fix_variable_error = { ERROR = madhvacharya }
+		fix_variable_error = { ERROR = christine_pizan }
+		fix_variable_error = { ERROR = theophylact_of_ohrid }
+		fix_variable_error = { ERROR = marco_polo }
+		fix_variable_error = { ERROR = jangar }
+		fix_variable_error = { ERROR = peter_the_stratopedarches }
+		fix_variable_error = { ERROR = geoffrey_of_monmouth }
+		fix_variable_error = { ERROR = manuel_holobolos }
+		fix_variable_error = { ERROR = bar_sauma }
+		fix_variable_error = { ERROR = demetrios_kydones }
+		fix_variable_error = { ERROR = abhinavagupta }
+		fix_variable_error = { ERROR = no_beard }
+		fix_variable_error = { ERROR = hrotsvitha }
+		fix_variable_error = { ERROR = roger_bacon }
+		fix_variable_error = { ERROR = petrarch }
+		fix_variable_error = { ERROR = show_historical_gui }
+		fix_variable_error = { ERROR = crescas }
+		fix_variable_error = { ERROR = benjamin_of_tudela }
+		fix_variable_error = { ERROR = awkal }
+		fix_variable_error = { ERROR = hodja }
+		fix_variable_error = { ERROR = constantine_the_paphlagonian }
+		fix_variable_error = { ERROR = peter_the_eunuch }
+		fix_variable_error = { ERROR = karunakara }
+		fix_variable_error = { ERROR = roger_de_flor }
+		fix_variable_error = { ERROR = namdev }
+		fix_variable_error = { ERROR = maimonides }
+		fix_variable_error = { ERROR = averroes }
+		fix_variable_error = { ERROR = avicenna }
+		fix_variable_error = { ERROR = nicephorus_blemmydes }
+		fix_variable_error = { ERROR = eustathius_of_thessalonica }
+		fix_variable_error = { ERROR = theophanes_the_greek }
+		fix_variable_error = { ERROR = chretien_de_troyes }
+		fix_variable_error = { ERROR = la_hire }
+		fix_variable_error = { ERROR = widukind_of_corvey }
+		fix_variable_error = { ERROR = john_the_orphanotrophos }
+		fix_variable_error = { ERROR = basava }
+		fix_variable_error = { ERROR = geoffrey_chaucer }
+		fix_variable_error = { ERROR = yazdagird_iii_legend }
+		fix_variable_error = { ERROR = saman_khudah_legend }
+		fix_variable_error = { ERROR = gothic_kings_legend }
+		fix_variable_error = { ERROR = king_arthur_legend }
+		fix_variable_error = { ERROR = kings_of_semien_legend }
+		fix_variable_error = { ERROR = bahram_gur_legend }
+		fix_variable_error = { ERROR = new_troy_london_legend }
+		fix_variable_error = { ERROR = finished_kingdom_of_heaven_achievement }
+		fix_variable_error = { ERROR = finished_rags_to_riches_to_rags_to_riches_achievement }
+		fix_variable_error = { ERROR = hold_court_cooldown }
+		fix_variable_error = { ERROR = the_red_hand_legend }
+		fix_variable_error = { ERROR = corineus_legend }
+		fix_variable_error = { ERROR = sons_of_david_legend }
+		fix_variable_error = { ERROR = achieved_epic_paperwork_achievement }
+		fix_variable_error = { ERROR = edward_the_martyr_legend }
+		fix_variable_error = { ERROR = finished_historically_inaccurate_achievement }
+		fix_variable_error = { ERROR = norwegian_invasion_cb_concluded }
+		fix_variable_error = { ERROR = finished_new_management_achievement }
+		fix_variable_error = { ERROR = shibi_chakravarti_legend }
+		fix_variable_error = { ERROR = alfred_of_wessex_legend }
+		fix_variable_error = { ERROR = borjigin_legend }
+		fix_variable_error = { ERROR = finished_birthright_achievement }
+		fix_variable_error = { ERROR = descendants_of_brahman_legend }
+		fix_variable_error = { ERROR = afrasiyab_legend }
+		fix_variable_error = { ERROR = roman_heritage_legend }
+		fix_variable_error = { ERROR = naga_descent_legend }
+		fix_variable_error = { ERROR = the_wheelwright_legend }
+		fix_variable_error = { ERROR = el_cid_legend }
+		fix_variable_error = { ERROR = pyusawhti_legend }
+		fix_variable_error = { ERROR = finished_the_old_man_of_the_mountain_achievement }
+		fix_variable_error = { ERROR = scota_legend }
+		fix_variable_error = { ERROR = sceafa_legend }
+		fix_variable_error = { ERROR = cadell_legend }
+		fix_variable_error = { ERROR = peasant_emperor_legend }
+		fix_variable_error = { ERROR = hunnic_heritage_legend }
+		fix_variable_error = { ERROR = sons_of_rurik_legend }
+		fix_variable_error = { ERROR = ragnarr_legend }
+		fix_variable_error = { ERROR = hieros_gamos_skirnismal_legend }
+		fix_variable_error = { ERROR = carolingian_legend }
+		fix_variable_error = { ERROR = achieved_against_the_odds_achievement }
+		
+		fix_variable_error = { ERROR = william_gellones_legend }
+		fix_variable_error = { ERROR = finished_mio_cid_achievement }
+		fix_variable_error = { ERROR = started_from_the_bottom_now_were_ere_procure }
+		fix_variable_error = { ERROR = menelik_i_legend }
+		fix_variable_error = { ERROR = court_event_discount_pilgrimage }
+		fix_variable_error = { ERROR = norman_conquest_cb_concluded }
+		fix_variable_error = { ERROR = premysl_legend }
+		fix_variable_error = { ERROR = battle_poi_list }
+		fix_variable_error = { ERROR = vercingetorix_legend }
+		fix_variable_error = { ERROR = achieved_i_got_a_permit_achievement }
+		
+		add_character_modifier = infinite_hostile_schemes_modifier
+		add_character_modifier = infinite_contract_schemes_modifier
+		add_character_modifier = infinite_personal_schemes_modifier
+	}
+}

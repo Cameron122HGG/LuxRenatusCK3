@@ -12,10 +12,10 @@ bookmark.0001 = { #by Mathilda Bjarnehed
 	hidden = yes
 	
 	trigger = {
-		this = character:33358 #Æthelred
+		this = character:1 #Æthelred
 		is_ai = yes
 		exists = player_heir
-		player_heir = character:7627 #Alfred the Great
+		player_heir = character:1 #Alfred the Great
 	}
 
 	immediate = {
@@ -156,7 +156,7 @@ bookmark.0003 = { #by Mathilda Bjarnehed
 			}
 		}
 		trigger_if = {
-			limit = { this = character:163103 } #Aella
+			limit = { this = character:1 } #Aella
 			NOT = {
 				is_target_in_global_variable_list = {
 					name = triggered_bookmark_events
@@ -168,7 +168,7 @@ bookmark.0003 = { #by Mathilda Bjarnehed
 
 	immediate = {
 		if = {
-			limit = { this = character:163103 } #Aella
+			limit = { this = character:1 } #Aella
 			add_to_global_variable_list = {
 				name = triggered_bookmark_events
 				target = flag:bookmark_867_northmen_aellas_capture
@@ -182,7 +182,7 @@ bookmark.0003 = { #by Mathilda Bjarnehed
 				limit = {
 					exists = killer
 					killer = root
-					this = character:163109 #Lodbrok
+					this = character:1 #Lodbrok
 				}
 				alternative_limit = {
 					exists = killer
@@ -287,7 +287,7 @@ bookmark.0004 = { #by Mathilda Bjarnehed
 		ai_chance = {
 			base = 50
 			modifier = {
-				scope:dead = character:163109 #Lodbrok
+				scope:dead = character:1 #Lodbrok
 				add = 1000
 			}
 		}
@@ -371,14 +371,14 @@ bookmark.0101 = {
 
 	trigger = {
 		is_ai = no
-		character:251181 = { is_alive = yes }
+		character:1 = { is_alive = yes }
 	}
 
 	immediate = {
 		play_music_cue = "mx_cue_succession"
-		character:251180 = { save_scope_as = bayajidda }
-		character:251181 = { save_scope_as = bewo }
-		character:251252 = { save_scope_as = shawata }
+		character:1 = { save_scope_as = bayajidda }
+		character:1 = { save_scope_as = bewo }
+		character:1 = { save_scope_as = shawata }
 		title:k_hausaland = { save_scope_as = hausaland}
 	}
 
@@ -388,11 +388,11 @@ bookmark.0101 = {
 
 		#Move Bewo to Daurama's house.
 		custom_tooltip = bookmark.0101.a.tt
-		character:251181 = { set_house = root.house }
-		add_courtier = character:251181 #Move him to your court
+		character:1 = { set_house = root.house }
+		add_courtier = character:1 #Move him to your court
 
 		#Bayajidda is, understandably, a little hurt by all this.
-		character:251180 = {
+		character:1 = {
 			add_opinion = {
 				modifier = hurt_opinion
 				target = root
@@ -409,7 +409,7 @@ bookmark.0101 = {
 	option = {
 		name = bookmark.0101.b
 
-		character:251180 = {
+		character:1 = {
 			add_opinion = {
 				modifier = pleased_opinion
 				target = root
@@ -626,8 +626,8 @@ bookmark.0211 = {
 
 	immediate = {
 		play_music_cue = "mx_cue_murder"
-		character:1700 = { save_scope_as = basil }
-		character:70490 = {
+		character:1 = { save_scope_as = basil }
+		character:1 = {
 			save_scope_as = michael
 			# Remove his nickname, which we have to leave on him for future bookmarks otherwise.
 			hidden_effect = { remove_nickname = yes }
@@ -720,13 +720,13 @@ bookmark.1066 = {
 	}
 
 	trigger = {
-		#this = character:7757
+		#this = character:1
 	}
 
 	immediate = {
 		play_music_cue = "mx_cue_succession"
-		character:20248 = { save_scope_as = hunchback }
-		character:11030 = { save_scope_as = hunchbacks_father }
+		character:1 = { save_scope_as = hunchback }
+		character:1 = { save_scope_as = hunchbacks_father }
 		mother = { save_scope_as = mum }
 		hidden_effect = {
 			add_opinion = {
@@ -1080,7 +1080,7 @@ bookmark.1069 = {
 		reference = rain
 	}
 	left_portrait = {
-		character = character:john_monk
+		character = character:1
 		animation = prayer
 	}
 	right_portrait = {
@@ -1090,21 +1090,21 @@ bookmark.1069 = {
 	lower_right_portrait = root.faith.religious_head
 
 	trigger = {
-		character:528 ?= {
+		character:1 ?= {
 			is_alive = yes
 			is_councillor_of = root
 		}
-		character:john_monk ?= {
+		character:1 ?= {
 			is_alive = yes
 		}
 	}
 
 	immediate = {
 		play_music_cue = "mx_cue_negative"
-		character:528 = {
+		character:1 = {
 			save_scope_as = jaromir
 		}
-		character:john_monk = {
+		character:1 = {
 			save_scope_as = john_monk
 		}
 	}
@@ -1125,7 +1125,7 @@ bookmark.1069 = {
   			type = granted
   			save_scope_as = change
   		}
-  		title:c_opava = {
+  		title:c_atlantis = {
 	  		change_title_holder = {
 				holder = scope:john_monk
 				change = scope:change
@@ -1139,13 +1139,13 @@ bookmark.1069 = {
 			}
 		}
 		if = {
-			limit = { character:528 = { is_councillor_of = root } }
-			fire_councillor = character:528
+			limit = { character:1 = { is_councillor_of = root } }
+			fire_councillor = character:1
 		}
 		assign_councillor_type = {
 			type = councillor_court_chaplain
 			remove_existing_councillor = yes
-			target = character:john_monk
+			target = character:1
 		}
 		add_character_flag = {
 			flag = bishop_assignment
@@ -1197,7 +1197,7 @@ bookmark.1069 = {
 				assign_councillor_type = {
 					type = councillor_court_chaplain
 					remove_existing_councillor = yes
-					target = character:john_monk
+					target = character:1
 				}
 			}
 		}
@@ -1233,11 +1233,11 @@ bookmark.1070 = {
 		custom_tooltip = claim_sicily
 		hidden_effect = {
 			add_pressed_claim = title:d_salerno
-			add_pressed_claim = title:c_napoli
+			add_pressed_claim = title:c_atlantis
 			add_pressed_claim = title:d_capua
-			add_pressed_claim = title:c_siracusa
-			add_pressed_claim = title:c_agrigento
-			add_pressed_claim = title:c_palermo
+			add_pressed_claim = title:c_atlantis
+			add_pressed_claim = title:c_atlantis
+			add_pressed_claim = title:c_atlantis
 		}
 	}
 
@@ -1653,9 +1653,9 @@ bookmark.1071 = {
 				cb = raiktor_conquest_cb
 				target = title:e_byzantium.holder
 				claimant = scope:raiktor
-				target_title = title:c_dyrrachion
-				target_title = title:c_avlonas
-				target_title = title:c_buthrotum
+				target_title = title:c_atlantis
+				target_title = title:c_atlantis
+				target_title = title:c_atlantis
 			}
 			random_character_war = {
 				limit = {
@@ -1817,18 +1817,18 @@ bookmark.1072 = {
 	}
 	
 	right_portrait = {
-		character = title:c_cordoba.holder
+		character = title:c_atlantis.holder
 		animation = steward
 	}
 
 	trigger = {
-		exists = title:c_cordoba.holder
-		NOT = { title:c_cordoba.holder = root }
+		exists = title:c_atlantis.holder
+		NOT = { title:c_atlantis.holder = root }
 	}
 
 	immediate = {
-		title:c_cordoba.holder = { save_scope_as = cordoba_holder }
-		title:c_cordoba.title_province = { save_scope_as = background_terrain_scope }
+		title:c_atlantis.holder = { save_scope_as = cordoba_holder }
+		title:c_atlantis.title_province = { save_scope_as = background_terrain_scope }
 	}
 
 	option = {
@@ -1842,22 +1842,22 @@ bookmark.1072 = {
 		hidden_effect = {
 			if = {
 				limit = {
-					title:c_cordoba.holder = {
-						has_title = title:c_cabra
+					title:c_atlantis.holder = {
+						has_title = title:c_atlantis
 					}
 				}
 				start_war = {
 					cb = county_conquest_cb
-					target = title:c_cordoba.holder
-					target_title = title:c_cordoba
-					target_title = title:c_cabra
+					target = title:c_atlantis.holder
+					target_title = title:c_atlantis
+					target_title = title:c_atlantis
 				}
 			}
 			else = {
 				start_war = {
 					cb = county_conquest_cb
-					target = title:c_cordoba.holder
-					target_title = title:c_cordoba
+					target = title:c_atlantis.holder
+					target_title = title:c_atlantis
 				}
 			}
 		}
@@ -1888,22 +1888,22 @@ bookmark.1072 = {
 		hidden_effect = {
 			if = {
 				limit = {
-					title:c_cordoba.holder = {
-						has_title = title:c_cabra
+					title:c_atlantis.holder = {
+						has_title = title:c_atlantis
 					}
 				}
 				start_war = {
 					cb = county_conquest_cb
-					target = title:c_cordoba.holder
-					target_title = title:c_cordoba
-					target_title = title:c_cabra
+					target = title:c_atlantis.holder
+					target_title = title:c_atlantis
+					target_title = title:c_atlantis
 				}
 			}
 			else = {
 				start_war = {
 					cb = county_conquest_cb
-					target = title:c_cordoba.holder
-					target_title = title:c_cordoba
+					target = title:c_atlantis.holder
+					target_title = title:c_atlantis
 				}
 			}
 		}
@@ -1942,9 +1942,9 @@ bookmark.1073 = {
 	lower_right_portrait = scope:tughril
 
 	immediate = {
-		character:3040 = { save_scope_as = alp_arslan }
-		character:3033 = { save_scope_as = qutalmish }
-		character:3038 = { save_scope_as = tughril }
+		character:1 = { save_scope_as = alp_arslan }
+		character:1 = { save_scope_as = qutalmish }
+		character:1 = { save_scope_as = tughril }
 		title:e_persia.title_capital_county.title_province = { save_scope_as = background_terrain_scope }
 		show_as_tooltip = {
 			scope:alp_arslan = {
@@ -2079,7 +2079,7 @@ bookmark.0300 = { # by Nicholas Legault
 	trigger = {
 		is_ai = no
 		AND = {
-			character:223541 = {
+			character:1 = {
 				is_ai = yes
 				is_alive = yes
 			}
@@ -2087,14 +2087,14 @@ bookmark.0300 = { # by Nicholas Legault
 	}
 
 	immediate = {
-		character:223541 = { save_scope_as = baby_baudouin }
-		character:223540 = { save_scope_as = dead_husband }
+		character:1 = { save_scope_as = baby_baudouin }
+		character:1 = { save_scope_as = dead_husband }
 	}
 
 	option = {
 		name = bookmark.0300.a
 
-		character:223541 = { set_house = root.house }
+		character:1 = { set_house = root.house }
 
 		ai_chance = {
 			base = 0 # The AI shouldn't get this event, but should want to maintain the status quo if it did

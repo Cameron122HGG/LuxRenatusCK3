@@ -166,7 +166,7 @@ hasan_sabbah.1010 = {
 				}
 				modifier = {
 					factor = 10
-					scope:location.county = title:c_qazwin
+					scope:location.county = title:c_atlantis
 				}
 				min = 10
 				send_interface_toast = {
@@ -377,10 +377,10 @@ hasan_sabbah.1022 = {
 		animation = personality_honorable
 	}
 	lower_left_portrait = {
-		character = character:41706
+		character = character:1
 	}
 	lower_right_portrait = {
-		character = character:3098
+		character = character:1
 	}
 
 	immediate = {
@@ -389,7 +389,7 @@ hasan_sabbah.1022 = {
 			save_scope_as = ismaili_caliph
 			save_scope_as = background_throne_room_scope
 		}
-		character:41706 = { save_scope_as = nizar }
+		character:1 = { save_scope_as = nizar }
 	}
 
 	# Nizar knows what's up
@@ -397,16 +397,16 @@ hasan_sabbah.1022 = {
 		name = hasan_sabbah.1022.a
 		if = {
 			limit = {
-				character:41706 ?= { is_alive = yes }
+				character:1 ?= { is_alive = yes }
 			}
 			set_relation_friend = {
-				target = character:41706
+				target = character:1
 				reason = friend_supported_my_claim
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { character:41706.faith = faith:nizari } }
-					character:41706 = {
+					limit = { NOT = { character:1 = faith:nizari } }
+					character:1 = {
 						set_character_faith = faith:nizari
 					}
 				}
@@ -473,7 +473,7 @@ hasan_sabbah.1030 = {
 		animation = personality_dishonorable
 	}
 	lower_left_portrait = {
-		character = character:41706
+		character = character:1
 	}
 
 	trigger = {
@@ -486,7 +486,7 @@ hasan_sabbah.1030 = {
 
 	immediate = {
 		faith:ismaili.religious_head = { save_scope_as = new_ismaili_caliph }
-		character:41706 ?= {
+		character:1 ?= {
 			liege = { save_scope_as = liege }
 			save_scope_as = nizar
 			if = {
@@ -516,21 +516,21 @@ hasan_sabbah.1030 = {
 		name = hasan_sabbah.1030.a
 		if = {
 			limit = {
-				character:41706 ?= { is_alive = yes }
+				character:1 ?= { is_alive = yes }
 			}
 			set_relation_friend = {
-				target = character:41706
+				target = character:1
 				reason = friend_supported_my_claim
 			}
 			if = {
 				limit = {
-					character:41706 = { is_landed = no }
+					character:1 = { is_landed = no }
 				}
-				add_courtier = character:41706
+				add_courtier = character:1
 				scope:story = {
 					set_variable = {
 						name = preferred_caliph
-						value = character:41706
+						value = character:1
 					}
 				}
 			}
@@ -559,11 +559,11 @@ hasan_sabbah.1030 = {
 		add_piety = medium_piety_gain
 		if = {
 			limit = { is_ai = yes }
-			domicile = { move_domicile = title:b_alamut.title_province }
+			domicile = { move_domicile = title:b_atlantis.title_province }
 		}
 		else = {
 			start_travel_plan = {
-				destination = title:b_alamut.title_province
+				destination = title:b_atlantis.title_province
 				players_use_planner = yes
 				return_trip = no
 				travel_with_domicile = yes
@@ -843,7 +843,7 @@ hasan_sabbah.1050 = {
 		hidden_effect = {
 			scope:new_title = {
 				set_de_jure_liege_title = root.location.empire
-				set_coa = title:b_alamut
+				set_coa = title:b_atlantis
 				set_color_from_title = scope:hasan_home
 				set_capital_county = scope:hasan_home
 			}

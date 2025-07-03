@@ -339,11 +339,11 @@ game_rule.1011 = {
 		#launch_immediate
 		if = {
 			limit = { has_game_rule = launch_immediate }
-			character:159137 = {
+			character:1 = {
 				add_character_flag = undertaking_hungarian_migration
 				start_war = {
 					cb = hungarian_migration_cb
-					target = character:70382
+					target = character:1
 					target_title = title:k_hungary
 				}
 			}
@@ -685,7 +685,7 @@ game_rule.1021 = {
 				# Historical settings.
 				## Stamford Bridge.
 				if = {
-					limit = { this = province:1588 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:stamford_bridge
@@ -693,7 +693,7 @@ game_rule.1021 = {
 				}
 				## Hastings.
 				else_if = {
-					limit = { this = province:1509 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:hastings
@@ -702,7 +702,7 @@ game_rule.1021 = {
 				# Likely mechanical spots.
 				## Dover.
 				else_if = {
-					limit = { this = province:1502 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:dover
@@ -710,7 +710,7 @@ game_rule.1021 = {
 				}
 				## Isle of Wight.
 				else_if = {
-					limit = { this = province:1549 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:isle_of_wight
@@ -720,7 +720,7 @@ game_rule.1021 = {
 				## Forest of Dean.
 				### Yes, this belongs at the top.
 				else_if = {
-					limit = { this = province:1580 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:forest_of_dean
@@ -728,7 +728,7 @@ game_rule.1021 = {
 				}
 				## London.
 				else_if = {
-					limit = { this = province:1527 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:london
@@ -736,7 +736,7 @@ game_rule.1021 = {
 				}
 				## Winchester.
 				else_if = {
-					limit = { this = province:1544 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:winchester
@@ -744,7 +744,7 @@ game_rule.1021 = {
 				}
 				## York.
 				else_if = {
-					limit = { this = province:1595 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:york
@@ -752,7 +752,7 @@ game_rule.1021 = {
 				}
 				## Lincoln.
 				else_if = {
-					limit = { this = province:1583 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:lincoln
@@ -760,7 +760,7 @@ game_rule.1021 = {
 				}
 				## Oxford.
 				else_if = {
-					limit = { this = province:1558 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:oxford
@@ -768,7 +768,7 @@ game_rule.1021 = {
 				}
 				## Cirencester.
 				else_if = {
-					limit = { this = province:1582 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:cirencester
@@ -776,7 +776,7 @@ game_rule.1021 = {
 				}
 				## Guildford.
 				else_if = {
-					limit = { this = province:1511 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:guildford
@@ -784,7 +784,7 @@ game_rule.1021 = {
 				}
 				## Lindisfarne.
 				else_if = {
-					limit = { this = province:1610 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:lindisfarne
@@ -792,7 +792,7 @@ game_rule.1021 = {
 				}
 				## Land's End.
 				else_if = {
-					limit = { this = province:1575 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:lands_end
@@ -800,7 +800,7 @@ game_rule.1021 = {
 				}
 				## Stonehenge. Because you're a memelord.
 				else_if = {
-					limit = { this = province:1561 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:stonehenge
@@ -808,7 +808,7 @@ game_rule.1021 = {
 				}
 				## Southwark.
 				else_if = {
-					limit = { this = province:1526 }
+					limit = { this = province:1 }
 					save_scope_value_as = {
 						name = locale
 						value = flag:southwark
@@ -5467,7 +5467,7 @@ scripted_effect game_rule_1131_usurp_england_effect = {
 			}
 			add_to_list = vassals_to_transfer
 		}
-		title:c_middlesex = {
+		title:c_atlantis = {
 			if = {
 				limit = { holder.top_liege = title:k_england.holder }
 				add_to_list = titles_to_transfer
@@ -5548,19 +5548,19 @@ scripted_effect game_rule_1131_rig_english_election_effect = {
 	switch = {
 		trigger = scope:witengamot_choice
 		flag:margaret = {
-			character:113 = { save_scope_as = elect }
+			character:1 = { save_scope_as = elect }
 		}
 		flag:edgar = {
-			character:112 = { save_scope_as = elect }
+			character:1 = { save_scope_as = elect }
 		}
 		flag:svend = {
-			character:101515 = { save_scope_as = elect }
+			character:1 = { save_scope_as = elect }
 		}
 		flag:aelfwine = {
-			character:161260 = { save_scope_as = elect }
+			character:1 = { save_scope_as = elect }
 		}
 		flag:cadoc = {
-			character:161281 = { save_scope_as = elect }
+			character:1 = { save_scope_as = elect }
 		}
 	}
 	## Then save our loser (mostly for convenience).
@@ -7089,11 +7089,11 @@ game_rule.1141 = {
 	left_portrait = {
 		character = scope:elect
 		triggered_animation = {
-			trigger = { this = character:161260 }
+			trigger = { this = character:1 }
 			animation = stress
 		}
 		triggered_animation = {
-			trigger = { this = character:101515 }
+			trigger = { this = character:1 }
 			animation = personality_bold
 		}
 		animation = shock
@@ -7191,11 +7191,11 @@ game_rule.1142 = {
 	right_portrait = {
 		character = scope:elect
 		triggered_animation = {
-			trigger = { this = character:161260 }
+			trigger = { this = character:1 }
 			animation = stress
 		}
 		triggered_animation = {
-			trigger = { this = character:101515 }
+			trigger = { this = character:1 }
 			animation = personality_bold
 		}
 		animation = shock
@@ -7329,6 +7329,7 @@ scripted_trigger game_rule_1151_no_player_vision_on_wars_trigger = {
 
 #	Stamford Bridge teleport.
 game_rule.1151 = {
+
 	hidden = yes
 	scope = none
 
@@ -7351,14 +7352,14 @@ game_rule.1151 = {
 			ordered_army = {
 				order_by = army_size
 				assign_commander = scope:norway
-				set_army_location = province:1588
+				set_army_location = province:1
 			}
 		}
 		scope:england = {
 			ordered_army = {
 				order_by = army_size
 				assign_commander = scope:england
-				set_army_location = province:1588
+				set_army_location = province:1
 			}
 		}
 	}
@@ -7366,6 +7367,7 @@ game_rule.1151 = {
 
 #	Hastings teleport.
 game_rule.1152 = {
+
 	hidden = yes
 	scope = none
 
@@ -7388,14 +7390,14 @@ game_rule.1152 = {
 			ordered_army = {
 				order_by = army_size
 				assign_commander = scope:normandy
-				set_army_location = province:1509
+				set_army_location = province:1
 			}
 		}
 		scope:england = {
 			ordered_army = {
 				order_by = army_size
 				assign_commander = scope:england
-				set_army_location = province:1509
+				set_army_location = province:1
 			}
 		}
 	}

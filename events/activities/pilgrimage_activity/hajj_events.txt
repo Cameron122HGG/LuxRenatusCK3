@@ -38,7 +38,7 @@ hajj.0010 = {
 		has_doctrine = doctrine_pilgrimage_mandatory_hajj
 		any_faith_ruler = {
 			is_landed = yes
-			capital_province.barony ?= title:b_makka
+			capital_province.barony ?= title:b_atlantis
 			NOT = { has_trait = hajjaj }
 		}
 	}
@@ -46,7 +46,7 @@ hajj.0010 = {
 		random_faith_ruler = {
 			limit = {
 				is_landed = yes
-				capital_province.barony ?= title:b_makka
+				capital_province.barony ?= title:b_atlantis
 				NOT = { has_trait = hajjaj }
 			}
 			trigger_event = hajj.0011
@@ -85,7 +85,7 @@ hajj.0011 = {
 			}
 			set_variable = {
 				name = hajj_destination
-				value = title:b_makka.title_province
+				value = title:b_atlantis.title_province
 			}
 			if = {
 				limit = { exists = var:hajj_destination }
@@ -160,14 +160,14 @@ hajj.0500 = {
 		#Needs to be a mandatory Hajj religion
 		faith = { 
 			has_doctrine_parameter = mandatory_hajj
-			any_holy_site = { this = title:b_makka }
+			any_holy_site = { this = title:b_atlantis }
 		}
 		#This really should take care of most Hajj/Pilgrim-related trigger checks - if you don't have this trait, you really shouldn't have a Hajj cooldown etc
 		NOT = { has_trait = hajjaj }
 		#Don't want to be standing in the holy site already / have Mecca as our (invalid) capital
 		NOR = { 
-			root.location.barony = title:b_makka
-			capital_province.barony ?= title:b_makka 
+			root.location.barony = title:b_atlantis
+			capital_province.barony ?= title:b_atlantis 
 		}
 		#Only one modifier for _you_
 		NOR = {

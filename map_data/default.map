@@ -1,77 +1,49 @@
-﻿definitions = "definition.csv"
+#max_provinces = 1466
+definitions = "definition.csv"
 provinces = "provinces.png"
+#positions = "positions.txt"
 rivers = "rivers.png"
+#terrain_definition = "terrain.txt"
 topology = "heightmap.heightmap"
+#tree_definition = "trees.bmp"
 continent = "continent.txt"
 adjacencies = "adjacencies.csv"
+#climate = "climate.txt"
 island_region = "island_region.txt"
-geographical_region = "geographical_region.txt"
 seasons = "seasons.txt"
 
 
+#############
+# SEA ZONES
+#############
 
-sea_zones = RANGE { 632 641 }
-sea_zones = RANGE { 643 649 }
-sea_zones = RANGE { 660 667 }
-sea_zones = RANGE { 683 688 }
-sea_zones = RANGE { 690 700 }
-sea_zones = RANGE { 708 715 }
-sea_zones = RANGE { 722 729 }
-sea_zones = RANGE { 936 942 }
-sea_zones = RANGE { 944 954 }
-sea_zones = RANGE { 964 970 }
-sea_zones = RANGE { 973 978 }
-sea_zones = RANGE { 984 1011 }
-sea_zones = RANGE { 1014 1017 }
-sea_zones = RANGE { 1019 1025 }
-sea_zones = RANGE { 1027 1038 }
-sea_zones = RANGE { 1382 1407 }
-sea_zones = RANGE { 1409 1412 }
-sea_zones = RANGE { 8613 8701 }
-sea_zones = LIST { 958 959 960 980 981 982 1062 1064 1109 1110 1111 1293 1465 1467 1470 3229 3230 8740 }
+sea_zones = RANGE { 10 12 } 
 
-impassable_seas = LIST { 660 976 978 984 998 1293 1465 1467 1470 8690 8691 8701 }
+###############
+# MAJOR RIVERS
+###############
 
-river_provinces = RANGE { 1052 1061 }
-river_provinces = RANGE { 1070 1075 }
-river_provinces = RANGE { 1081 1087 }
-river_provinces = RANGE { 1090 1106 }
-river_provinces = RANGE { 1311 1317 }
-river_provinces = RANGE { 3223 3228 }
-river_provinces = RANGE { 3231 3254 }
-river_provinces = RANGE { 6026 6029 }
-river_provinces = RANGE { 6125 6128 }
-river_provinces = RANGE { 6791 6796 }
-river_provinces = RANGE { 8092 8096 }
-river_provinces = RANGE { 8558 8612 }
-river_provinces = LIST { 456 457 626 628 629 630 689 1063 1065 1066 1067 1077 1078 1079 1307 1308 1309 1487 5510 5511 5855 5856 5857 8702 }
+########
+# LAKES
+########
 
-lakes = RANGE { 1472 1484 }
-lakes = RANGE { 1490 1494 }
-lakes = RANGE { 8519 8525 }
-lakes = LIST { 943 955 956 957 961 962 963 979 983 1012 1018 1026 1069 1076 1080 1088 1107 1108 1305 1348 1486 1488 1496 1497 1498 3265 5854 5858 7208 7513 8736 8737 8738 9000 9001 }
+#####################
+# IMPASSABLE TERRAIN
+#####################
+# Can be colored by whoever owns the most of the province's neighbours.
+# Blocks unit movement.
 
-impassable_mountains = RANGE { 650 659 }
-impassable_mountains = RANGE { 716 721 }
-impassable_mountains = RANGE { 730 734 }
-impassable_mountains = RANGE { 763 807 }
-impassable_mountains = RANGE { 1039 1051 }
-impassable_mountains = RANGE { 3259 3264 }
-impassable_mountains = RANGE { 3289 3314 }
-impassable_mountains = RANGE { 3949 3952 }
-impassable_mountains = RANGE { 5512 5518 }
-impassable_mountains = RANGE { 5685 5688 }
-impassable_mountains = RANGE { 5859 5864 }
-impassable_mountains = RANGE { 6323 6328 }
-impassable_mountains = RANGE { 6416 6426 }
-impassable_mountains = RANGE { 6583 6589 }
-impassable_mountains = RANGE { 6592 6600 }
-impassable_mountains = RANGE { 6603 6607 }
-impassable_mountains = RANGE { 7209 7215 }
-impassable_mountains = RANGE { 7781 7787 }
-impassable_mountains = RANGE { 7936 7943 }
-impassable_mountains = RANGE { 8439 8449 }
-impassable_mountains = RANGE { 8526 8557 }
-impassable_mountains = RANGE { 8703 8711 }
-impassable_mountains = RANGE { 8802 8992 }
-impassable_mountains = LIST { 281 299 642 894 899 902 935 971 972 1068 1080 1088 1089 1107 1108 1280 1320 1322 1326 1330 1332 1334 1335 1343 1344 1347 1373 1379 1380 1408 1417 1428 1429 1436 1437 1464 1466 1468 1469 1471 1485 1489 1495 1501 1550 1614 2484 2486 2539 2580 2601 2667 2668 2702 2716 2718 2734 2740 2754 2881 2884 2908 2929 2930 2944 2974 2996 3002 3011 3022 3026 3029 3031 3036 3037 3071 3104 3123 3150 3179 3222 3255 3256 3257 3390 3612 3970 4059 4255 4281 4282 4898 5755 5795 5796 5797 5852 5853 5913 5997 6114 6115 6123 6124 6142 6167 6173 6202 6256 6277 6318 6319 6320 6788 6789 6790 6902 6903 6904 6998 6999 7055 7056 7352 7353 7354 7452 7453 7454 7512 7796 8089 8090 8091 8097 8098 8099 9566 9567 9621 9660 9661 }
+############
+# WASTELAND
+############
+# These are actually supposed to be Wasteland:
+# Cannot be colored. Blocks unit movement, used for things like Sahara desert.
+
+# IMPASSABLE SEA ZONES
+# These sea provinces cannot be crossed/sailed
+
+impassable_seas = LIST { 13 }
+
+# UNUSED PROVINCES
+# These provinces cause issues because they are passable land, but not part of any title.
+# They are probably not visible anywhere on the map, so feel free to reuse them (after double checking that they are actually missing).

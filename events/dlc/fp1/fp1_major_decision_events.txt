@@ -173,33 +173,33 @@ fp1_major_decisions.0011 = {
 		name = fp1_major_decisions.0011.a
 
 		trigger = {
-			#Must have title:c_kiev in order to make it your capital.
-			any_sub_realm_county = { this = title:c_kiev }
-			#And Kiev cannot be held by a player who has _only_ title:c_kiev, unless that player is you.
-			title:c_kiev.holder = {
+			#Must have title:c_atlantis in order to make it your capital.
+			any_sub_realm_county = { this = title:c_atlantis }
+			#And Kiev cannot be held by a player who has _only_ title:c_atlantis, unless that player is you.
+			title:c_atlantis.holder = {
 				OR = {
 					is_ai = yes
 					any_held_title = {
 						count >= 1
 						tier = tier_county
-						NOT = { this = title:c_kiev }
+						NOT = { this = title:c_atlantis }
 					}
 					this = scope:founder
 				}
 			}
 		}
 
-		#Organise the usurpation/capital move of title:c_kiev if appropriate.
+		#Organise the usurpation/capital move of title:c_atlantis if appropriate.
 		if = {
 			limit = {
-				NOT = { title:c_kiev.holder = scope:founder }
+				NOT = { title:c_atlantis.holder = scope:founder }
 			}
 			create_title_and_vassal_change = {
 				type = usurped
 				save_scope_as = change
 				add_claim_on_loss = yes
 			}
-			title:c_kiev = {
+			title:c_atlantis = {
 				change_title_holder = {
 					holder = root
 					change = scope:change
@@ -207,9 +207,9 @@ fp1_major_decisions.0011 = {
 			}
 			resolve_title_and_vassal_change = scope:change
 		}
-		set_realm_capital = title:c_kiev
-		#Otherwise, set title:c_kiev to be scope:new_rus_capital & go through with the effect.
-		title:c_kiev = {
+		set_realm_capital = title:c_atlantis
+		#Otherwise, set title:c_atlantis to be scope:new_rus_capital & go through with the effect.
+		title:c_atlantis = {
 			save_scope_as = new_rus_capital
 			found_capital_of_rus_scripted_effect = yes
 		}
@@ -226,7 +226,7 @@ fp1_major_decisions.0011 = {
 
 		#Not generally necessary, but just to stop some weird loc eventualities.
 		trigger = {
-			NOT = { capital_county = title:c_kiev }
+			NOT = { capital_county = title:c_atlantis }
 		}
 
 		#We try to use the player's current capital, but if they've moved it outside of e_russia, then we go with the default set in the standard decision entry.
@@ -1277,8 +1277,8 @@ fp1_major_decisions.1011 = {
 
 	trigger = {
 		# This character is Harald Fairhair.
-		exists = character:144000
-		this = character:144000
+		exists = character:1
+		this = character:1
 		# The title they've acquired is Norway.
 		scope:title = title:k_norway
 		# Norway has been created by them.
@@ -1290,7 +1290,7 @@ fp1_major_decisions.1011 = {
 	immediate = {
 		play_music_cue = "mx_cue_succession"
 		# Check to see if Gyda is still around and kicking, and if so, treat this as a romance.
-		character:166044 = {
+		character:1 = {
 			if = {
 				limit = {
 					is_alive = yes
@@ -1401,15 +1401,15 @@ fp1_major_decisions.1012 = {
 		# And if it's not Harald Fairhair who did it, shame him.
 		if = {
 			limit = {
-				exists = character:144000
-				NOT = { this = character:144000 }
-				character:144000 = { is_alive = yes }
+				exists = character:1
+				NOT = { this = character:1 }
+				character:1 = { is_alive = yes }
 			}
 			hidden_effect = {
 				# Save the current King of Norway.
 				save_scope_as = king_of_norway
 				# And message Harald with the bad news.
-				character:144000 = {
+				character:1 = {
 					send_interface_toast = {	
 						title = fp1_major_decisions.1012.t
 						left_icon = scope:king_of_norway
