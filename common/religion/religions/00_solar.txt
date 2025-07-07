@@ -308,6 +308,7 @@
 				ReligiousHeadTitleName = solar_religious_head_title_name				
 			}			
 		}
+		
 		sol_apollo = {
 			color = { 210 235 87 }
 			religious_head = k_sol
@@ -568,5 +569,123 @@
 				ReligiousHeadTitleName = sol_christ_religious_head_title_name
 			}
 			}
+		
+		sol_norse = {
+			color = { 0.4 0.4 0.4 }
+			icon = germanic
+			reformed_icon = germanic_reformed
+
+			holy_site = uppsala
+			holy_site = jorvik
+			holy_site = paderborn
+			holy_site = konugardr
+			holy_site = ranaheim
+
+			doctrine = unreformed_faith_doctrine
+
+			doctrine = tenet_warmonger
+			# Gruesome Festivals, else Human Sacrifice.
+			doctrine_selection_pair = {
+				requires_dlc_flag = the_northern_lords
+				doctrine = tenet_gruesome_festivals
+				fallback_doctrine = tenet_human_sacrifice
+			}
+			# Bhakti, else Ancestor Worship.
+			doctrine_selection_pair = {
+				requires_dlc_flag = the_northern_lords
+				doctrine = tenet_bhakti
+				fallback_doctrine = tenet_ancestor_worship
+			}
+		}
+		
+		mithra_sol = {
+			color = { 210 235 87 }
+			religious_head = k_sol
+			holy_site = alexandria
+			holy_site = jerusalem
+			holy_site = antioch
+			holy_site = carthage
+			holy_site = napata
+			#Special Tolerance
+
+			#Main Group
+			doctrine = doctrine_pluralism_pluralistic
+
+			#Tenets
+			doctrine = tenet_monasticism
+			doctrine = tenet_alexandrian_catechism
+			doctrine = tenet_communal_identity
+
+			holy_order_names = {
+				{ name = "holy_order_order_of_saint_anthony" }
+			}
+
+			localization = { # Utilizes the 'East Christian' Saints, shared by Coptics and Armenians
+				#HealthGod
+				HealthGodName = sol_apollo_health_god_name
+				HealthGodNamePossessive = sol_apollo_health_god_name_possessive
+				HealthGodSheHe = CHARACTER_SHEHE_HE
+				HealthGodHerHis = CHARACTER_HERHIS_HIS
+				HealthGodHerHim = CHARACTER_HERHIM_HIM
+				
+				#FertilityGod
+				FertilityGodName = sol_apollo_fertility_god_name
+				FertilityGodNamePossessive = sol_apollo_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = sol_apollo_wealth_god_name
+				WealthGodNamePossessive = sol_apollo_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = sol_apollo_household_god_name
+				HouseholdGodNamePossessive = sol_apollo_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = sol_apollo_knowledge_god_name
+				KnowledgeGodNamePossessive = sol_apollo_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WarGod
+				WarGodName = sol_apollo_war_god_name
+				WarGodNamePossessive = sol_apollo_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#Popes despite lacking rank
+				ReligiousHeadName = coptic_religious_head_title
+				ReligiousHeadTitleName = coptic_religious_head_title_name
+			}			
+		}
+
+		sol_slav = {
+			color = { 0.7 0.6 0.3 }
+			icon = slavic
+			reformed_icon = slavic_reformed
+
+			holy_site = kiev
+			holy_site = novgorod
+			holy_site = barlad
+			holy_site = plock
+			holy_site = rugen
+
+			doctrine = unreformed_faith_doctrine
+
+			doctrine = tenet_sanctity_of_nature
+			doctrine = tenet_ritual_celebrations
+			doctrine = tenet_communal_identity
+
 		}
 	}
+}
