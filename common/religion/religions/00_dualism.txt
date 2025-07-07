@@ -892,5 +892,35 @@
 				ReligiousText3 = cainite_religious_text_3
 			}
 		}
+		
+		mani_germanic = {
+			color = { 0.4 0.4 0.4 }
+			icon = germanic
+			reformed_icon = germanic_reformed
+
+			holy_site = uppsala
+			holy_site = jorvik
+			holy_site = paderborn
+			holy_site = konugardr
+			holy_site = ranaheim
+
+			doctrine = unreformed_faith_doctrine
+
+			doctrine = tenet_warmonger
+			# Gruesome Festivals, else Human Sacrifice.
+			doctrine_selection_pair = {
+				requires_dlc_flag = the_northern_lords
+				doctrine = tenet_gruesome_festivals
+				fallback_doctrine = tenet_human_sacrifice
+			}
+			# Bhakti, else Ancestor Worship.
+			doctrine_selection_pair = {
+				requires_dlc_flag = the_northern_lords
+				doctrine = tenet_bhakti
+				fallback_doctrine = tenet_ancestor_worship
+			}
+		}
+		
+	
 	}
 }
