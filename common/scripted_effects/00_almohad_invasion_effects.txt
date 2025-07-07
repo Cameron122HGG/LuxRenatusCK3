@@ -1,7 +1,7 @@
 ﻿find_title_for_almohad_spawn_effect = {
 	if = { # The important thing is to not mess too much with players who can't resist
 		limit = {
-			title:c_atlantis = {
+			title:c_roma = {
 				holder = { is_ai = yes }
 				OR = {
 					NOT = { exists = duchy.holder }
@@ -9,7 +9,7 @@
 				}
 			}
 		}
-		title:c_atlantis = {
+		title:c_roma = {
 			save_scope_as = almohad_county
 		}
 	}
@@ -20,7 +20,7 @@
 				limit = {
 					tier = tier_county
 					holder = { is_ai = yes } # Let's not murder players
-					NOT = { this = title:c_atlantis }
+					NOT = { this = title:c_roma }
 					save_temporary_scope_as = potential_almohad_county
 					# If someone holds k_maghreb, put the Almohads in their realm
 					trigger_if = {

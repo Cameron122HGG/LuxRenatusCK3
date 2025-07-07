@@ -28,7 +28,7 @@ Where previous templates deleted all vanilla titles, cultures, and religions, th
  - All cultures and religions are left untouched but hidden through GUI changes. 
     - All holy sites are set to a shared placeholder county.
 
-Like previous templates, Atlantis eliminates all vanilla provinces and counties. To address scripted references to vanilla provinces and counties, Atlantis replaces those references with placeholders except in cases where eliminating references is simpler. To address scripted references to vanilla characters, Atlantis replaces those references with a placeholder except in cases where eliminating references is simpler. The placeholder province is 1, corresponding to b_atlantis. The placeholder county is c_atlantis. The placeholder character is 1, "Atlas."
+Like previous templates, Atlantis eliminates all vanilla provinces and counties. To address scripted references to vanilla provinces and counties, Atlantis replaces those references with placeholders except in cases where eliminating references is simpler. To address scripted references to vanilla characters, Atlantis replaces those references with a placeholder except in cases where eliminating references is simpler. The placeholder province is 1, corresponding to b_atlantis. The placeholder county is c_roma. The placeholder character is 1, "Atlas."
 
 All these deletions and replacements add up to a total conversion that throws no errors through game start.
 
@@ -138,10 +138,10 @@ For each of these steps, see Atlantis files for trivial examples.
 If you replaced Atlantis provinces, etc., instead of adding to them, use your IDE to search and replace several terms:
 
  - Search for b_atlantis. Replace b_atlantis with one of your baronies.
- - Search for c_atlantis. Replace c_atlantis with one of your counties.
+ - Search for c_roma. Replace c_roma with one of your counties.
  - If you'd like placeholder references to point to a province, character, or dynasty besides "1", replace those.
  - Run CK3 through game start. 
-    - Use error.log to check for errors related to replacement of b_atlantis, c_atlantis, etc.
+    - Use error.log to check for errors related to replacement of b_atlantis, c_roma, etc.
 
 # Next Steps
 

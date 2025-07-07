@@ -1393,10 +1393,10 @@ roman_restoration.0199 = {
 			}
 		}
 		OR = {
-			scope:title = title:c_atlantis
-			scope:title = title:c_atlantis
-			scope:title = title:c_atlantis
-			scope:title = title:c_atlantis
+			scope:title = title:c_roma
+			scope:title = title:c_roma
+			scope:title = title:c_roma
+			scope:title = title:c_roma
 		}
 	}
 
@@ -1446,8 +1446,8 @@ roman_restoration.0104 = {
 		}
 		NOT = { has_character_flag = flag_orthodox_patriarchate_cooldown }
 		roman_restoration_0104_is_valid_roman_empire_trigger = yes
-		scope:title = title:c_atlantis
-		#title:c_atlantis.holder.faith = root.faith #Not under an infidel vassal.
+		scope:title = title:c_roma
+		#title:c_roma.holder.faith = root.faith #Not under an infidel vassal.
 	}
 
 	immediate = {
@@ -1490,8 +1490,8 @@ roman_restoration.0105 = {
 		}
 		NOT = { has_character_flag = flag_orthodox_patriarchate_cooldown }
 		roman_restoration_0104_is_valid_roman_empire_trigger = yes
-		scope:title = title:c_atlantis
-		#title:c_atlantis.holder.faith = root.faith #Not under an infidel vassal.
+		scope:title = title:c_roma
+		#title:c_roma.holder.faith = root.faith #Not under an infidel vassal.
 	}
 
 	immediate = {
@@ -1534,8 +1534,8 @@ roman_restoration.0106 = {
 		}
 		NOT = { has_character_flag = flag_orthodox_patriarchate_cooldown }
 		roman_restoration_0104_is_valid_roman_empire_trigger = yes
-		scope:title = title:c_atlantis
-		#title:c_atlantis.holder.faith = root.faith #Not under an infidel vassal.
+		scope:title = title:c_roma
+		#title:c_roma.holder.faith = root.faith #Not under an infidel vassal.
 	}
 
 	immediate = {
@@ -1578,8 +1578,8 @@ roman_restoration.0107 = {
 		}
 		NOT = { has_character_flag = flag_orthodox_patriarchate_cooldown }
 		roman_restoration_0104_is_valid_roman_empire_trigger = yes
-		scope:title = title:c_atlantis
-		#title:c_atlantis.holder.faith = root.faith #Not under an infidel vassal.
+		scope:title = title:c_roma
+		#title:c_roma.holder.faith = root.faith #Not under an infidel vassal.
 	}
 
 	immediate = {
@@ -2395,31 +2395,31 @@ roman_restoration.0140 = {
 		# De jure shifts.
 		hidden_effect = {
 			title:d_istria = { # Bite Croatia.
-				set_de_jure_liege_title = title:k_italy
+				set_de_jure_liege_title = title:k_lombardy
 			}
 			title:d_krain = {
-				set_de_jure_liege_title = title:k_italy
+				set_de_jure_liege_title = title:k_lombardy
 			}
 			title:d_tyrol = {
-				set_de_jure_liege_title = title:k_italy
+				set_de_jure_liege_title = title:k_lombardy
 			}
 			title:d_carinthia = {
-				set_de_jure_liege_title = title:k_italy
+				set_de_jure_liege_title = title:k_lombardy
 			}
-			title:k_sicily = { # Then shift all Kingdoms.
-				set_de_jure_liege_title = title:e_italy
+			title:k_magna_graecia = { # Then shift all Kingdoms.
+				set_de_jure_liege_title = title:e_spqr
 			}
-			title:k_italy = {
-				set_de_jure_liege_title = title:e_italy
+			title:k_lombardy = {
+				set_de_jure_liege_title = title:e_spqr
 			}
 			title:k_venice = {
-				set_de_jure_liege_title = title:e_italy
+				set_de_jure_liege_title = title:e_spqr
 			}
 			title:k_croatia = {
-				set_de_jure_liege_title = title:e_italy
+				set_de_jure_liege_title = title:e_spqr
 			}
 			title:k_serbia = {
-				set_de_jure_liege_title = title:e_italy
+				set_de_jure_liege_title = title:e_spqr
 			}
 		}
 	}
@@ -2539,7 +2539,7 @@ roman_restoration.0150 = {
 	immediate = {
 		play_music_cue = "mx_cue_epic_sacral_moment"
 		save_scope_as = scoped_emperor
-		create_roman_empire_italy_scripted_effect = yes
+		create_roman_empire_spqr_scripted_effect = yes
 	}
 
 	option = {
@@ -3009,7 +3009,7 @@ roman_restoration.1200 = {
 		}
 		scope:county = {
 			# Constantinople only
-			this = title:c_atlantis
+			this = title:c_roma
 			previous_holder = {
 				NOR = {
 					root.primary_title.previous_holder ?= this
@@ -3045,14 +3045,14 @@ roman_restoration.1200 = {
 	option = {
 		name = roman_restoration.1200.a
 		trigger = {
-			NOT = { capital_county = title:c_atlantis }
+			NOT = { capital_county = title:c_roma }
 		}
 		if = {
 			limit = { government_allows = administrative }
 			change_influence = medium_influence_gain
 		}
 		add_legitimacy = minor_legitimacy_gain
-		set_realm_capital = title:c_atlantis
+		set_realm_capital = title:c_roma
 	}
 
 	option = {
@@ -3180,7 +3180,7 @@ roman_restoration.1211 = {
 	option = {
 		name = roman_restoration.1211.a
 
-		title:k_sicily = { set_de_jure_liege_title = title:e_italy }
+		title:k_magna_graecia = { set_de_jure_liege_title = title:e_spqr }
 		save_scope_value_as = {
 			name = new_empire
 			value = flag:italia
@@ -3201,7 +3201,7 @@ roman_restoration.1211 = {
 	option = {
 		name = roman_restoration.1211.b
 
-		title:k_sicily = { set_de_jure_liege_title = title:e_maghreb }
+		title:k_magna_graecia = { set_de_jure_liege_title = title:e_maghreb }
 		save_scope_value_as = {
 			name = new_empire
 			value = flag:maghreb
@@ -3224,7 +3224,7 @@ roman_restoration.1211 = {
 		trigger = { rebuke_roman_revanchism_sicily_controls_unlisted_empire_trigger = yes }
 		show_as_unavailable = { always = yes }
 
-		title:k_sicily = { set_de_jure_liege_title = root.primary_title }
+		title:k_magna_graecia = { set_de_jure_liege_title = root.primary_title }
 		save_scope_value_as = {
 			name = new_empire
 			value = flag:own

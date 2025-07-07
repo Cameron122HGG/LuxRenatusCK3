@@ -1,7 +1,7 @@
 ﻿### This file contains pop-up lessons about Warfare.
 
 
-# Initial gating/Fallback chain (if you're somehow already holding c_atlantis)...
+# Initial gating/Fallback chain (if you're somehow already holding c_roma)...
 lesson_safety_gating = {
 	chain = lesson_chain_war
 	shown_in_encyclopedia = no
@@ -11,7 +11,7 @@ lesson_safety_gating = {
 	trigger = {
 		NOT = { is_tutorial_lesson_completed = lesson_safety_gating }
 		NOT = { is_tutorial_lesson_completed = lesson_declare_war }
-		title:c_atlantis.holder.top_liege = root
+		title:c_roma.holder.top_liege = root
 	}
 
 	## This is actually a CLONE of the last event in the file. For arcane magic/script reasons, consider it a warp zone to the end of the Guided War
@@ -61,7 +61,7 @@ lesson_declare_war = {
 
 		effect = {
 			close_all_views = yes
-			pan_camera_to_title = title:c_atlantis
+			pan_camera_to_title = title:c_roma
 
 			set_global_variable = {
 				name = lesson_chain_war_tutorial_started
@@ -90,7 +90,7 @@ lesson_declare_war = {
 				any_character_war = {
 					casus_belli = {
 						primary_attacker = root
-						title:c_atlantis.holder = primary_defender
+						title:c_roma.holder = primary_defender
 					}
 				}
 			}
@@ -106,7 +106,7 @@ lesson_declare_war = {
 		highlight_widget = "tutorial_highlight_cb_button"
 
 		effect = {
-			pan_camera_to_title = title:c_atlantis
+			pan_camera_to_title = title:c_roma
 		}
 
 		gui_transition = {
@@ -122,11 +122,11 @@ lesson_declare_war = {
 							any_character_war = {
 								casus_belli = {
 									primary_attacker = root
-									title:c_atlantis.holder = primary_defender
+									title:c_roma.holder = primary_defender
 								}
 							}
 						}
-						title:c_atlantis.holder.top_liege = root
+						title:c_roma.holder.top_liege = root
 					}
 				}
 			}
@@ -141,11 +141,11 @@ lesson_declare_war = {
 						any_character_war = {
 							casus_belli = {
 								primary_attacker = root
-								title:c_atlantis.holder = primary_defender
+								title:c_roma.holder = primary_defender
 							}
 						}
 					}
-					title:c_atlantis.holder.top_liege = root
+					title:c_roma.holder.top_liege = root
 				}
 			}
 		}
@@ -267,7 +267,7 @@ lesson_army_movement = {
 		highlight_widget = "soldiers"
 
 		effect = {
-			pan_camera_to_title = title:c_atlantis
+			pan_camera_to_title = title:c_roma
 		}
 
 		gui_transition = {

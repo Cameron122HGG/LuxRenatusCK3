@@ -221,8 +221,8 @@ establish_yamagate_in_samarkand_decision = {
 		NOT = {
 			has_title = title:d_manichean
 		}
-		NOT = { title:c_atlantis.holder = { has_title = title:d_manichean } }
-		NOT = { capital_county = { this = title:c_atlantis } }
+		NOT = { title:c_roma.holder = { has_title = title:d_manichean } }
+		NOT = { capital_county = { this = title:c_roma } }
 		OR = {
 			NOT = {
 				exists = title:d_manichean.holder
@@ -261,10 +261,10 @@ establish_yamagate_in_samarkand_decision = {
 		custom_tooltip = {
 			text = samarkand_held_by_you_or_vassal_tt
 			OR = {
-				title:c_atlantis.holder = { 	
+				title:c_roma.holder = { 	
 					any_liege_or_above = { this = root }
 				}
-				title:c_atlantis.holder = { this = root }
+				title:c_roma.holder = { this = root }
 			}
 		}
 	}
@@ -277,7 +277,7 @@ establish_yamagate_in_samarkand_decision = {
 			save_scope_as = change
 			add_claim_on_loss = no
 		}
-		title:c_atlantis = {
+		title:c_roma = {
 			change_title_holder = {
 				holder = title:d_manichean.holder
 				change = scope:change
@@ -301,7 +301,7 @@ establish_yamagate_in_samarkand_decision = {
 		resolve_title_and_vassal_change = scope:change
 
 		title:d_manichean.holder = {
-			set_realm_capital = title:c_atlantis
+			set_realm_capital = title:c_roma
 			add_opinion = {
 				target = prev
 				modifier = established_samarkand_opinion
@@ -317,7 +317,7 @@ establish_yamagate_in_samarkand_decision = {
 		base = 100
 		modifier = {
 			factor = 0
-			title:c_atlantis.holder = {
+			title:c_roma.holder = {
 				OR = {
 					is_ai = no
 					any_liege_or_above = { is_ai = no }  # AI will never take provinces away from a player.

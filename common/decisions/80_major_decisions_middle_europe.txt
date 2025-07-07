@@ -30,8 +30,8 @@ form_switzerland_kingdom_decision = {
 		any_sub_realm_county = {
 			OR = {
 				title_province = { geographical_region = custom_core_switzerland }
-				this = title:c_atlantis
-				this = title:c_atlantis
+				this = title:c_roma
+				this = title:c_roma
 			}
 		}
 	}
@@ -394,20 +394,20 @@ empower_sicilian_parliament_decision = {
 		learning >= 10
 		NOT = { has_realm_law = crown_authority_0 }
 		OR = {
-			has_title = title:k_sicily
+			has_title = title:k_magna_graecia
 			has_title = title:k_naples
 			has_title = title:k_trinacria
 		}
 		OR = {
 			AND = {
 				completely_controls = title:d_sicily # The Island
-				title:c_atlantis = {
+				title:c_roma = {
 					title_province = { has_special_building = no }
 				}
 			}
 			AND = {
 				completely_controls = title:d_capua # The Boot
-				title:c_atlantis = {
+				title:c_roma = {
 					title_province = { has_special_building = no }
 				}
 			}
@@ -431,14 +431,14 @@ empower_sicilian_parliament_decision = {
 		show_as_tooltip = {
 			if = { #Only for tooltip, player gets to choose in the event when owning both.
 				limit = { completely_controls = title:d_sicily }
-				title:c_atlantis = {
+				title:c_roma = {
 					sicilian_parliament_building_scripted_effect = yes
 				}
 			}
 			else_if = {
 				limit = { completely_controls = title:d_capua }
 				custom_tooltip = middle_europe_decisions.0010.tt_napoli_warning
-				title:c_atlantis = {
+				title:c_roma = {
 					sicilian_parliament_building_scripted_effect = yes
 				}
 			}
@@ -629,14 +629,14 @@ restore_holy_roman_empire_decision = {
 			has_title = title:k_east_francia
 			has_title = title:k_bavaria
 			has_title = title:k_france
-			has_title = title:k_italy
+			has_title = title:k_lombardy
 			has_title = title:k_lotharingia
 			any_vassal = {
 				OR = {
 					has_title = title:k_east_francia
 					has_title = title:k_bavaria
 					has_title = title:k_france
-					has_title = title:k_italy
+					has_title = title:k_lombardy
 					has_title = title:k_lotharingia
 				}
 			}
@@ -820,13 +820,13 @@ restore_holy_roman_empire_decision = {
 			NOR = {
 				has_title = title:k_east_francia
 				has_title = title:k_bavaria
-				has_title = title:k_italy
+				has_title = title:k_lombardy
 				has_title = title:k_lotharingia
 				any_vassal = {
 					OR = {
 						has_title = title:k_east_francia
 						has_title = title:k_bavaria
-						has_title = title:k_italy
+						has_title = title:k_lombardy
 						has_title = title:k_lotharingia
 					}
 				}
@@ -1018,100 +1018,3 @@ establish_norman_culture_decision = {
 	}
 }
 
-######################################
-# Establish the Electorate of Saxony #
-# by James Beaumont			 		 #
-######################################
-
-establish_the_electorate_of_saxony_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	}
-	decision_group_type = major
-
-	ai_check_interval = 120
-
-	desc = establish_the_electorate_of_saxony_decision_desc
-	selection_tooltip = establish_the_electorate_of_saxony_decision_tooltip
-
-	is_shown = {
-		# Temporarily disabled due to stability issues in the HRE.
-		always = no
-		# Can't form Saxony if Saxony already formed.
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_formed_saxony
-			}
-		}
-		# Is in the HRE or is the Emperor
-		OR = {
-			liege = title:e_hre.holder
-			has_primary_title = title:e_hre
-		}
-	}
-
-	is_valid = {
-		OR = {
-			has_primary_title = title:e_hre
-			# Avoid some funky tooltips.
-			AND = {
-				highest_held_title_tier <= tier_kingdom
-				top_liege = { has_title = title:e_hre }
-			}
-		}
-		custom_tooltip = {
-			text = polabia_held_or_nonexistent.tt
-			OR = {
-				has_title = title:k_sorbia
-				NOT = { exists = title:k_sorbia.holder }
-			}
-		}
-		completely_controls = title:d_meissen
-		completely_controls = title:d_lausitz
-		completely_controls = title:d_anhalt
-		completely_controls = title:d_thuringia
-		# Most of the Kingdom of Polabia is at least somewhat pro-HRE
-		custom_tooltip = {
-			text = polabia_must_be_hre_culture_tt
-			any_county_in_region = {
-				region = custom_polabia
-				# At least half.
-				count >= 12
-				OR = {
-					culture = root.culture
-					culture = title:e_hre.holder.culture
-				}
-			}
-		}
-	}
-
-	effect = {
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_formed_saxony
-			}
-			save_scope_as = founder
-			title:e_hre.holder = { save_scope_as = hre_emperor_scope }
-			trigger_event =  middle_europe_decisions.0017
-		}
-		show_as_tooltip = {
-			create_kingdom_of_saxony_effect = { CHARACTER = root }
-		}
-		if = {
-			limit = { has_title = title:e_hre }
-			custom_tooltip = middle_europe_decision.0017.tt
-		}
-	}
-
-	cost = { gold = 200 }
-
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 100
-	}
-}

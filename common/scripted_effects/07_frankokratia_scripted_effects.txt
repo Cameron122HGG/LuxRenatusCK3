@@ -1,6 +1,6 @@
 ﻿ep3_frankokratia_save_financier_effect = {
 	#Start with Venice, then any Italian republic
-	title:e_italy = {
+	title:e_spqr = {
 		random_in_de_jure_hierarchy = {
 			limit = {
 				this = title:k_venice
@@ -25,7 +25,7 @@
 		limit = {
 			NOT = { exists = scope:financier }
 		}
-		title:k_sicily = {
+		title:k_magna_graecia = {
 			random_in_de_jure_hierarchy = {
 				limit = {
 					holder ?= {
@@ -115,7 +115,7 @@
 		limit = {
 			NOT = { exists = scope:financier }
 		}
-		title:e_italy = {
+		title:e_spqr = {
 			random_in_de_jure_hierarchy = {
 				limit = {
 					holder ?= {
@@ -133,7 +133,7 @@
 		limit = {
 			NOT = { exists = scope:financier }
 		}
-		title:k_sicily = {
+		title:k_magna_graecia = {
 			random_in_de_jure_hierarchy = {
 				limit = {
 					holder ?= {
@@ -672,7 +672,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		limit = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -682,7 +682,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		random_realm_county = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -700,7 +700,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		limit = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -710,7 +710,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		random_realm_county = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -728,7 +728,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		limit = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -738,7 +738,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		random_realm_county = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -756,7 +756,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		limit = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -766,7 +766,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		random_realm_county = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -784,7 +784,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		limit = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -794,7 +794,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		random_realm_county = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
-				this = title:c_atlantis
+				this = title:c_roma
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -1469,10 +1469,10 @@ ep3_frankokratia_designate_latin_empire_effect = {
 		limit = {
 			title:e_byzantium.holder = {
 				any_realm_county = {
-					this = title:c_atlantis
+					this = title:c_roma
 				}
 			}
-			title:c_atlantis.holder = {
+			title:c_roma.holder = {
 				is_ai = yes
 				OR = {
 					this = title:e_byzantium.holder
@@ -1482,27 +1482,27 @@ ep3_frankokratia_designate_latin_empire_effect = {
 				}
 			}
 		}
-		title:c_atlantis = { save_scope_as = latin_capital }
+		title:c_roma = { save_scope_as = latin_capital }
 		title:b_atlantis = {
 			save_scope_as = latin_capital_barony
 		}
 		#Try to save thessalonika as the most natural capital kingdom
 		if = {
 			limit = {
-				title:k_thessalonika = {
+				title:k_byzantium = {
 					ep3_frankokratia_latin_kingdom_available_trigger = yes
 				}
 			}
-			title:k_thessalonika = { save_scope_as = latin_kingdom_1 }
+			title:k_byzantium = { save_scope_as = latin_kingdom_1 }
 		}
 		#Start going through other capital kingdoms in order of logic - they really should have one
 		else_if = {
 			limit = {
-				title:k_nikaea = {
+				title:k_pergamon = {
 					ep3_frankokratia_latin_kingdom_available_trigger = yes
 				}
 			}
-			title:k_nikaea = { save_scope_as = latin_kingdom_1 }
+			title:k_pergamon = { save_scope_as = latin_kingdom_1 }
 		}
 		else_if = {
 			limit = {
@@ -1609,15 +1609,15 @@ ep3_frankokratia_designate_latin_empire_effect = {
 			limit = {
 				title:e_byzantium.holder = {
 					any_realm_county = {
-						kingdom = title:k_nikaea
-						title:k_nikaea = {
+						kingdom = title:k_pergamon
+						title:k_pergamon = {
 							NOT = { this = scope:latin_kingdom_1 }
 							ep3_frankokratia_latin_kingdom_available_trigger = yes
 						}
 					}
 				}
 			}
-			title:k_nikaea = { save_scope_as = latin_kingdom_2 }
+			title:k_pergamon = { save_scope_as = latin_kingdom_2 }
 		}
 		#Cyprus, why not
 		else_if = {
@@ -1840,7 +1840,7 @@ ep3_latin_empire_designate_financier_lands_effect = {
 		if = {
 			limit = {
 				scope:latin_capital.kingdom = {
-					this = title:k_thessalonika
+					this = title:k_byzantium
 				}
 				any_realm_county = {
 					NOT = { is_in_list = financier_sate_titles }
@@ -2503,15 +2503,15 @@ ep3_frankokratia_clear_old_lands_change_capital_effect = {
 		if = {
 			limit = {
 				any_realm_county = {
-					this = title:c_atlantis
+					this = title:c_roma
 				}
 				capital_county = {
 					NOT = {
-						this = title:c_atlantis
+						this = title:c_roma
 					}
 				}
 			}
-			set_realm_capital = title:c_atlantis
+			set_realm_capital = title:c_roma
 		}
 	}
 }
@@ -2530,7 +2530,7 @@ ep3_frankokratia_distribute_lands_to_crusaders_effect = {
 					this = scope:financier
 					NOT = { this = scope:latin_emperor }
 				}
-				this = title:c_atlantis
+				this = title:c_roma
 			}
 			tier = tier_county
 			NOT = {
@@ -4124,9 +4124,9 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 						house ?= { is_powerful_family = yes }
 						#Let's just always let Nikaea do this, they special
 						capital_county = {
-							kingdom = title:k_nikaea
+							kingdom = title:k_pergamon
 							NOT = {
-								exists = title:k_nikaea.holder
+								exists = title:k_pergamon.holder
 							}
 						}
 					}
@@ -4262,9 +4262,9 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 								}
 							}
 							capital_county = {
-								kingdom = title:k_nikaea
+								kingdom = title:k_pergamon
 								NOT = {
-									exists = title:k_nikaea.holder
+									exists = title:k_pergamon.holder
 								}
 							}
 						}
@@ -4319,9 +4319,9 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 								}
 							}
 							capital_county = {
-								kingdom = title:k_nikaea
+								kingdom = title:k_pergamon
 								NOT = {
-									exists = title:k_nikaea.holder
+									exists = title:k_pergamon.holder
 								}
 							}
 						}
@@ -4383,9 +4383,9 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 								}
 							}
 							capital_county = {
-								kingdom = title:k_nikaea
+								kingdom = title:k_pergamon
 								NOT = {
-									exists = title:k_nikaea.holder
+									exists = title:k_pergamon.holder
 								}
 							}
 						}

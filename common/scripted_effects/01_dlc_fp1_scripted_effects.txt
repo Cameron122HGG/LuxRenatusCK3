@@ -19,7 +19,7 @@ secure_high_kingdom_north_sea_scripted_effect = {
 			if = {
 				limit = { primary_title = title:k_norway }
 				title:e_north_sea = {
-					set_capital_county = title:c_atlantis.title_capital_county
+					set_capital_county = title:c_roma.title_capital_county
 				}
 			}
 		}
@@ -274,7 +274,7 @@ elevate_mann_and_the_isles_scripted_effect = {
 	}
 	resolve_title_and_vassal_change = scope:title_change
 	# Buff the Isle of Mann.
-	title:c_atlantis = {
+	title:c_roma = {
 		# Give it some extra building slots
 		title_province = { 
 			add_province_modifier = elevate_mann_and_the_isles_modifier
@@ -285,21 +285,21 @@ elevate_mann_and_the_isles_scripted_effect = {
 	# Make it your capital if it wasn't already.
 	if = {
 		limit = {
-			NOT = { capital_county = title:c_atlantis }
+			NOT = { capital_county = title:c_roma }
 		}
-		set_realm_capital = title:c_atlantis
+		set_realm_capital = title:c_roma
 	}
 	# And convert it to your culture if it wasn't some flavour of North Germanic.
 	if = {
 		limit = {
 			NOR = {
-				title:c_atlantis.culture = {
+				title:c_roma.culture = {
 					has_cultural_pillar = heritage_north_germanic
 				}
-				title:c_atlantis.culture = culture:norman
+				title:c_roma.culture = culture:norman
 			}
 		}
-		title:c_atlantis = { set_county_culture = scope:founder.culture }
+		title:c_roma = { set_county_culture = scope:founder.culture }
 	}
 	# Have a huge, terrifying event army.
 	spawn_army = {
@@ -324,11 +324,11 @@ elevate_mann_and_the_isles_scripted_effect = {
 			type = bondi
 			stacks = 5
 		}
-		location = title:c_atlantis.title_province
+		location = title:c_roma.title_province
 		name = fp1_mann_event_troops
 	}
 	# Mann gets a huge modernising boost.
-	title:c_atlantis = {
+	title:c_roma = {
 		add_county_modifier = {
 			modifier = fp1_mann_pirate_capital_modifier
 			years = 100

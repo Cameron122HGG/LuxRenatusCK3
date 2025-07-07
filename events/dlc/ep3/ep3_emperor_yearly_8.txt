@@ -968,7 +968,7 @@ scripted_trigger ep3_emperor_yearly_8030_bosporos_trigger = {
 			duchy = title:d_thrace
 			duchy = title:d_optimatoi
 			duchy = title:d_opsikion
-			this = title:c_atlantis
+			this = title:c_roma
 		}
 	}
 }
@@ -1021,8 +1021,8 @@ ep3_emperor_yearly.8030 = {
 		# Have a marshal
 		cp:councillor_marshal ?= { is_ai = yes }
 		# Ensure you control the Bosporos strait
-		completely_controls = title:c_atlantis # Dytika
-		completely_controls = title:c_atlantis # Anatoli
+		completely_controls = title:c_roma # Dytika
+		completely_controls = title:c_roma # Anatoli
 		# Never twice
 		NOT = { has_character_flag = ep3_porphyrios_cooldown }
 	}
@@ -1034,7 +1034,7 @@ ep3_emperor_yearly.8030 = {
 		province:1 = { add_to_list = sea_provinces }
 		province:1 = { add_to_list = sea_provinces }
 		# Coastal counties scopes
-		title:c_atlantis = { add_to_list = coast_counties }
+		title:c_roma = { add_to_list = coast_counties }
 		title:d_thrace = {
 			every_de_jure_county = {
 				limit = { is_coastal_county = yes }
@@ -1053,7 +1053,7 @@ ep3_emperor_yearly.8030 = {
 				add_to_list = coast_counties
 			}
 		}
-		title:c_atlantis = { add_to_list = coast_counties }
+		title:c_roma = { add_to_list = coast_counties }
 		# Save marshal
 		cp:councillor_marshal = { save_scope_as = marshal }
 		# Complaining character scope
@@ -1253,7 +1253,7 @@ ep3_emperor_yearly.8040 = {
 				trigger = {
 					any_in_list = {
 						variable = formerly_infected_counties
-						this = title:c_atlantis
+						this = title:c_roma
 					}
 				}
 				desc = ep3_emperor_yearly.8040.past_plague

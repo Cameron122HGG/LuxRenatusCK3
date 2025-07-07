@@ -868,7 +868,7 @@ great_holy_war.0005 = {
 #Hidden check event, fired on_faith pulse.
 
 scripted_trigger great_holy_war_0010_jerusalem_reason_trigger = {
-	title:c_atlantis.holder.top_liege = {
+	title:c_roma.holder.top_liege = {
 		NOT = {
 			faith.religion = scope:awakening_faith.religion
 		}
@@ -876,7 +876,7 @@ scripted_trigger great_holy_war_0010_jerusalem_reason_trigger = {
 }
 
 scripted_trigger great_holy_war_0010_rome_reason_trigger = {
-	title:c_atlantis.holder.top_liege = {
+	title:c_roma.holder.top_liege = {
 		NOT = {
 			faith.religion = scope:awakening_faith.religion
 		}
@@ -893,22 +893,22 @@ scripted_trigger great_holy_war_0010_byzantion_reason_trigger = {
 				}
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Constantinople
+		title:c_roma.holder.top_liege.religion = { # Constantinople
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Ankyra
+		title:c_roma.holder.top_liege.religion = { # Ankyra
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Athens
+		title:c_roma.holder.top_liege.religion = { # Athens
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Corinth
+		title:c_roma.holder.top_liege.religion = { # Corinth
 			NOT = {
 				this = religion:christianity_religion
 			}
@@ -918,27 +918,27 @@ scripted_trigger great_holy_war_0010_byzantion_reason_trigger = {
 
 scripted_trigger great_holy_war_0010_europe_reason_trigger = {
 	OR = {
-		title:c_atlantis.holder.top_liege.religion = { # Provence
+		title:c_roma.holder.top_liege.religion = { # Provence
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Toulouse
+		title:c_roma.holder.top_liege.religion = { # Toulouse
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Paris
+		title:c_roma.holder.top_liege.religion = { # Paris
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Cologne
+		title:c_roma.holder.top_liege.religion = { # Cologne
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Halberstadt
+		title:c_roma.holder.top_liege.religion = { # Halberstadt
 			NOT = {
 				this = religion:christianity_religion
 			}
@@ -947,7 +947,7 @@ scripted_trigger great_holy_war_0010_europe_reason_trigger = {
 }
 
 scripted_trigger great_holy_war_0010_mecca_reason_trigger = {
-	title:c_atlantis.holder.top_liege = {
+	title:c_roma.holder.top_liege = {
 		NOT = {
 			faith.religion = scope:awakening_faith.religion
 		}
@@ -956,17 +956,17 @@ scripted_trigger great_holy_war_0010_mecca_reason_trigger = {
 
 scripted_trigger great_holy_war_0010_centre_reason_trigger = {
 	OR = {
-		title:c_atlantis.holder.top_liege.religion = { # Baghdad
+		title:c_roma.holder.top_liege.religion = { # Baghdad
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Damascus
+		title:c_roma.holder.top_liege.religion = { # Damascus
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Cairo
+		title:c_roma.holder.top_liege.religion = { # Cairo
 			NOT = {
 				this = religion:christianity_religion
 			}
@@ -976,17 +976,17 @@ scripted_trigger great_holy_war_0010_centre_reason_trigger = {
 
 scripted_trigger great_holy_war_0010_africa_reason_trigger = {
 	OR = {
-		title:c_atlantis.holder.top_liege.religion = { # Marrakesh
+		title:c_roma.holder.top_liege.religion = { # Marrakesh
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Tunis
+		title:c_roma.holder.top_liege.religion = { # Tunis
 			NOT = {
 				this = religion:christianity_religion
 			}
 		}
-		title:c_atlantis.holder.top_liege.religion = { # Algier
+		title:c_roma.holder.top_liege.religion = { # Algier
 			NOT = {
 				this = religion:christianity_religion
 			}
@@ -1009,7 +1009,7 @@ great_holy_war.0010 = {
 		num_county_followers >= 35 # Faith must have at least SOME legitimacy.
 		OR = {
 			AND = { # Historical setup.
-				title:c_atlantis.holder = {
+				title:c_roma.holder = {
 					NOT = {
 						faith.religion = root.religion
 					}
@@ -1028,7 +1028,7 @@ great_holy_war.0010 = {
 				faith:catholic = root
 			}
 			AND = { # Historical setup.
-				title:c_atlantis.holder.top_liege = {
+				title:c_roma.holder.top_liege = {
 					NOT = {
 						faith.religion = root.religion
 					}
@@ -1082,7 +1082,7 @@ great_holy_war.0010 = {
 		base = 1
 		modifier = { # Historical push for local Christian control.
 			add = 2
-			title:c_atlantis.holder = {
+			title:c_roma.holder = {
 				NOT = { faith.religion = religion:christianity_religion }
 			}
 			current_date >= 1095.1.1
@@ -1090,7 +1090,7 @@ great_holy_war.0010 = {
 		}
 		modifier = { # Historical push for overall Islamic control.
 			add = 2
-			title:c_atlantis.holder.top_liege = {
+			title:c_roma.holder.top_liege = {
 				NOT = { faith.religion = religion:islam_religion }
 			}
 			current_date >= 1095.1.1

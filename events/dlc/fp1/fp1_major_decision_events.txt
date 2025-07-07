@@ -173,33 +173,33 @@ fp1_major_decisions.0011 = {
 		name = fp1_major_decisions.0011.a
 
 		trigger = {
-			#Must have title:c_atlantis in order to make it your capital.
-			any_sub_realm_county = { this = title:c_atlantis }
-			#And Kiev cannot be held by a player who has _only_ title:c_atlantis, unless that player is you.
-			title:c_atlantis.holder = {
+			#Must have title:c_roma in order to make it your capital.
+			any_sub_realm_county = { this = title:c_roma }
+			#And Kiev cannot be held by a player who has _only_ title:c_roma, unless that player is you.
+			title:c_roma.holder = {
 				OR = {
 					is_ai = yes
 					any_held_title = {
 						count >= 1
 						tier = tier_county
-						NOT = { this = title:c_atlantis }
+						NOT = { this = title:c_roma }
 					}
 					this = scope:founder
 				}
 			}
 		}
 
-		#Organise the usurpation/capital move of title:c_atlantis if appropriate.
+		#Organise the usurpation/capital move of title:c_roma if appropriate.
 		if = {
 			limit = {
-				NOT = { title:c_atlantis.holder = scope:founder }
+				NOT = { title:c_roma.holder = scope:founder }
 			}
 			create_title_and_vassal_change = {
 				type = usurped
 				save_scope_as = change
 				add_claim_on_loss = yes
 			}
-			title:c_atlantis = {
+			title:c_roma = {
 				change_title_holder = {
 					holder = root
 					change = scope:change
@@ -207,9 +207,9 @@ fp1_major_decisions.0011 = {
 			}
 			resolve_title_and_vassal_change = scope:change
 		}
-		set_realm_capital = title:c_atlantis
-		#Otherwise, set title:c_atlantis to be scope:new_rus_capital & go through with the effect.
-		title:c_atlantis = {
+		set_realm_capital = title:c_roma
+		#Otherwise, set title:c_roma to be scope:new_rus_capital & go through with the effect.
+		title:c_roma = {
 			save_scope_as = new_rus_capital
 			found_capital_of_rus_scripted_effect = yes
 		}
@@ -226,7 +226,7 @@ fp1_major_decisions.0011 = {
 
 		#Not generally necessary, but just to stop some weird loc eventualities.
 		trigger = {
-			NOT = { capital_county = title:c_atlantis }
+			NOT = { capital_county = title:c_roma }
 		}
 
 		#We try to use the player's current capital, but if they've moved it outside of e_russia, then we go with the default set in the standard decision entry.

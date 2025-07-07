@@ -13,10 +13,10 @@ fp3_story_cycle_zanj_rebellion_events.0001 = {
 			give_nickname = nick_albaghid
 		}
 
-		title:c_atlantis.holder = {
+		title:c_roma.holder = {
 			add_visiting_courtier = scope:zanj_leader
 		}
-		title:c_atlantis.holder.top_liege = {
+		title:c_roma.holder.top_liege = {
 			trigger_event = {
 				id = fp3_story_cycle_zanj_rebellion_events.0002
 			}
@@ -98,14 +98,14 @@ fp3_story_cycle_zanj_rebellion_events.0002 = {
 							add = 4
 						}
 					}
-					title:c_atlantis.holder = {
+					title:c_roma.holder = {
 						hidden_effect = {
-							title:c_atlantis.holder = {
+							title:c_roma.holder = {
 								add_visiting_courtier = scope:outspoken_rebel
 							}
 						}
 					}
-					title:c_atlantis.holder.top_liege = {
+					title:c_roma.holder.top_liege = {
 						trigger_event = {
 							id = fp3_story_cycle_zanj_rebellion_events.0003
 							days = { 30 60 }
@@ -155,11 +155,11 @@ fp3_story_cycle_zanj_rebellion_events.0002 = {
 		}
 		custom_tooltip = fp3_story_cycle_zanj_rebellion_leaves_for_baghdad
 		hidden_effect = {
-			title:c_atlantis.holder = {
+			title:c_roma.holder = {
 				add_visiting_courtier = scope:outspoken_rebel
 			}
 		}
-		title:c_atlantis.holder.top_liege = {
+		title:c_roma.holder.top_liege = {
 			trigger_event = {
 				id = fp3_story_cycle_zanj_rebellion_events.0003
 				days = { 30 60 }
@@ -206,7 +206,7 @@ fp3_story_cycle_zanj_rebellion_events.0003 = {
 					}
 				}
 			}
-			title:c_atlantis.holder.top_liege = {
+			title:c_roma.holder.top_liege = {
 				trigger_event = {
 					id = fp3_story_cycle_zanj_rebellion_events.0004
 				}
@@ -358,7 +358,7 @@ fp3_story_cycle_zanj_rebellion_events.0005 = {
 			}
 			inherit_zanj_rebellion_effect = yes
 		}
-		title:c_atlantis.holder.top_liege = {
+		title:c_roma.holder.top_liege = {
 			trigger_event = {
 				id = fp3_story_cycle_zanj_rebellion_events.0006
 			}
@@ -417,13 +417,13 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 			add_claim_on_loss = no
 		}
 
-		title:c_atlantis = {
+		title:c_roma = {
 			set_county_culture = culture:east_bantu
 			set_county_faith = faith:azariqa
 		}
 
 		show_as_tooltip = { # UI/UX
-			title:c_atlantis = {
+			title:c_roma = {
 				change_title_holder = {
 					holder = scope:outspoken_rebel
 					change = scope:change
@@ -444,17 +444,17 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 
 		if = {
 			limit = {
-				NOT = { title:c_atlantis.holder = root  }
+				NOT = { title:c_roma.holder = root  }
 			}
 			add_tyranny = 30
 			set_relation_rival = {
 				reason = fp3_rival_gave_title_away
-				target = title:c_atlantis.holder
+				target = title:c_roma.holder
 			}
 		}
 
 		hidden_effect = {
-			title:c_atlantis = {
+			title:c_roma = {
 				change_title_holder = {
 					holder = scope:outspoken_rebel
 					change = scope:change
@@ -514,7 +514,7 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 		}
 		custom_tooltip = fp3_story_cycle_zanj_rebellion_events_cause_strengthened_tt
 		hidden_effect = {
-			title:c_atlantis.holder = {
+			title:c_roma.holder = {
 				if = {
 					limit = { NOT = { scope:zanj_leader = scope:outspoken_rebel }}
 					add_visiting_courtier = scope:zanj_leader
@@ -525,16 +525,16 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 
 		if = {
 			limit = {
-				NOT = { title:c_atlantis.holder = root  }
+				NOT = { title:c_roma.holder = root  }
 			}
 			progress_towards_rival_effect = {
 				REASON = fp3_zanj_rebellion_interfered_with_my_workers
-				CHARACTER = title:c_atlantis.holder
+				CHARACTER = title:c_roma.holder
 				OPINION = default_rival_opinion
 			}
 		}
 
-		title:c_atlantis = {
+		title:c_roma = {
 			add_county_modifier = {
 				modifier = fp3_zanj_rebellion_work_concessions_modifier
 				years = 5
@@ -582,7 +582,7 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 		}
 		custom_tooltip = fp3_story_cycle_zanj_rebellion_events_cause_greatly_strengthened_tt
 		hidden_effect = {
-			title:c_atlantis.holder = {
+			title:c_roma.holder = {
 				add_visiting_courtier = scope:zanj_leader
 				add_visiting_courtier = scope:zanj_representative
 			}
@@ -590,12 +590,12 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 
 		if = {
 			limit = {
-				NOT = { title:c_atlantis.holder = root  }
+				NOT = { title:c_roma.holder = root  }
 			}
 
 			progress_towards_friend_effect = {
 				REASON = fp3_rival_stayed_out_of_my_business
-				CHARACTER = title:c_atlantis.holder
+				CHARACTER = title:c_roma.holder
 				OPINION = default_friend_opinion
 			}
 		}
@@ -647,7 +647,7 @@ fp3_story_cycle_zanj_rebellion_events.0007 = {
 			}
 			inherit_zanj_rebellion_effect = yes
 		}
-		title:c_atlantis.holder.top_liege = {
+		title:c_roma.holder.top_liege = {
 			trigger_event = {
 				id = fp3_story_cycle_zanj_rebellion_events.0008
 
@@ -702,7 +702,7 @@ fp3_story_cycle_zanj_rebellion_events.0008 = {
 		}
 		hidden_effect = {
 			fp3_start_zanj_rebellion_effect = {
-				TARGET_COUNTY = title:c_atlantis
+				TARGET_COUNTY = title:c_roma
 				REBEL_LEADER = scope:zanj_leader
 			}
 			create_zanj_courtier_effect = {

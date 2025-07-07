@@ -239,7 +239,7 @@ prepare_greek_fire_dromons_decision = {
 	is_shown = {
 		has_ep3_dlc_trigger = yes
 		has_multiple_players = no
-		title:c_atlantis = {
+		title:c_roma = {
 			holder = root
 		}
 		culture = {
@@ -253,7 +253,7 @@ prepare_greek_fire_dromons_decision = {
 	is_valid = {
 		custom_tooltip = {
 			text = prepare_greek_fire_dromons_constantinople_tt
-			capital_county = title:c_atlantis
+			capital_county = title:c_roma
 		}
 		custom_tooltip = {
 			text = prepare_greek_fire_dromons_capital_unoccupied_tt
@@ -373,9 +373,9 @@ retake_eastern_provinces_decision = {
 			}
 			trigger_if = {
 				limit = {
-					exists = title:k_thessalonika.holder
+					exists = title:k_byzantium.holder
 				}
-				title:k_thessalonika.holder = { liege = root }
+				title:k_byzantium.holder = { liege = root }
 			}
 			trigger_if = {
 				limit = {
@@ -391,15 +391,15 @@ retake_eastern_provinces_decision = {
 			}
 			trigger_if = {
 				limit = {
-					exists = title:k_nikaea.holder
+					exists = title:k_pergamon.holder
 				}
-				title:k_nikaea.holder = { liege = root }
+				title:k_pergamon.holder = { liege = root }
 			}
 			trigger_if = {
 				limit = {
-					exists = title:k_anatolia.holder
+					exists = title:k_isauria.holder
 				}
-				title:k_anatolia.holder = { liege = root }
+				title:k_isauria.holder = { liege = root }
 			}
 			trigger_if = {
 				limit = {
@@ -501,7 +501,7 @@ refound_pandidakterion_decision = {
 				target = flag:refound_pandidakterion_decision
 			}
 			# the pandidakterion already existed at game start
-			title:c_atlantis = { has_county_modifier = pandidakterion_university_modifier }
+			title:c_roma = { has_county_modifier = pandidakterion_university_modifier }
 		}
 	}
 
@@ -510,7 +510,7 @@ refound_pandidakterion_decision = {
 		custom_tooltip = {
 			text = pandidakterion_tt
 			any_sub_realm_county = {
-				this = title:c_atlantis #owns Constantinople
+				this = title:c_roma #owns Constantinople
 			}
 		}
 	}
@@ -529,7 +529,7 @@ refound_pandidakterion_decision = {
 	}
 
 	effect = {
-		title:c_atlantis = { add_county_modifier = pandidakterion_university_modifier }
+		title:c_roma = { add_county_modifier = pandidakterion_university_modifier }
 		found_university_decision_event_effect = yes
 		#Can only be done once
 		add_to_global_variable_list = {
@@ -979,7 +979,7 @@ recreate_byzantine_empire_decision = {
 		
 		realm_size >= 12
 		custom_tooltip = {
-			title:c_atlantis.holder = {
+			title:c_roma.holder = {
 				exists = this
 				OR = {
 					this = root
@@ -1245,8 +1245,8 @@ reinstitute_grain_dole_decision = {
 	is_valid = {
 		government_has_flag = government_is_administrative
 		OR = {
-			capital_county = title:c_atlantis
-			capital_county = title:c_atlantis
+			capital_county = title:c_roma
+			capital_county = title:c_roma
 		}
 		completely_controls_region = custom_roman_aegyptus
 		custom_tooltip = {
@@ -1267,7 +1267,7 @@ reinstitute_grain_dole_decision = {
 		is_imprisoned = no
 		custom_tooltip = {
 			NOT = {
-				title:c_atlantis = { has_county_modifier = panem_et_circenses_county_modifier }
+				title:c_roma = { has_county_modifier = panem_et_circenses_county_modifier }
 			}
 			text = grain_dole_already_active
 		}
@@ -1324,8 +1324,8 @@ reconfirm_grain_dole_decision = {
 	is_valid = {
 		government_has_flag = government_is_administrative
 		OR = {
-			capital_county = title:c_atlantis
-			capital_county = title:c_atlantis
+			capital_county = title:c_roma
+			capital_county = title:c_roma
 		}
 		completely_controls_region = custom_roman_aegyptus
 		custom_tooltip = {
