@@ -1266,17 +1266,34 @@
 	}
 	1060.1.1 = {
 		holder = 1
-}
+	}
 }
 
 
 e_spqr = {
 	1.1.10 = {
 		holder = 12500
-		government = principate_government
+		government = classical_government
 		succession_laws = {
 			acclamation_succession_law
 		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_government }
+				}
+				set_state_faith = faith:roman_pagan    
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_intrigue
+				}
+			}
 			if = {
 				limit = {
 					exists = holder
@@ -1288,6 +1305,7 @@ e_spqr = {
 				}
 			}
 		}
+	}
 	14.1.1 = { holder = 12501 }
 	36.1.1 = { holder = 12502 }
 	69.1.1 = { holder = 12503 } #Year of the Four Emperors should be here
@@ -1373,6 +1391,7 @@ e_spqr = {
 	1019.1.1 = { holder = 11522 }
 	1060.1.1 = { holder = 501 }
 }
+
 e_germany = {
 	20.1.1 = {
 		change_development_level = 4
@@ -1492,19 +1511,7 @@ e_spain = {
 		change_development_level = 14
 	}
 }
-e_britannia = {
-	20.1.1 = {
-		change_development_level = 2
-	}
-	
-	1000.1.1 = {
-		change_development_level = 5
-	}
-	
-	1100.1.1 = {
-		change_development_level = 12
-	}
-}
+
 e_arabia = {
 	20.1.1 = {
 		change_development_level = 2
