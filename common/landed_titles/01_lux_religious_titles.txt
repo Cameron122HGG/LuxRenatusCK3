@@ -1,4 +1,4 @@
-@correct_culture_primary_score = 100
+﻿@correct_culture_primary_score = 100
 @better_than_the_alternatives_score = 50
 @always_primary_score = 1000
 @never_primary_score = -1000
@@ -55,7 +55,6 @@ d_zal_christ = {
 
 d_roman_pontifex_maximus = {
 	color = { 255 249 198 }
-	color2 = { 220 220 0 }
 	definite_form = yes
 	ruler_uses_title_name = no
 	landless = yes
@@ -76,6 +75,30 @@ d_roman_pontifex_maximus = {
 	male_names = { Hadrianus Quintus Maxentius Scipio Gaius Trajanus Marcus Brutus Octavianus Julius }
 	female_names = { Hadriana Trajana Sabine Octavia Agrippina Domitia Hortensia Antonia Augusta Camilla Aurellia Sabina Junia }
 }
+
+d_roman_imperial = {
+	color = { 255 249 198 }
+	definite_form = yes
+	ruler_uses_title_name = no
+	landless = yes
+	
+	capital = c_roma
+	
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = yes
+	no_automatic_claims = yes
+	always_follows_primary_heir = yes
+	de_jure_drift_disabled = yes
+
+	
+
+	male_names = { Hadrianus Quintus Maxentius Scipio Gaius Trajanus Marcus Brutus Octavianus Julius }
+	female_names = { Hadriana Trajana Sabine Octavia Agrippina Domitia Hortensia Antonia Augusta Camilla Aurellia Sabina Junia }
+}
+
 
 # special titles
 k_papal_state = {
