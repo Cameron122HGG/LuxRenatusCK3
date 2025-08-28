@@ -6,10 +6,10 @@
 			position = { 0 0 }
 
 			tax = exempt_tyrant_tax
-			vassal_opinion = 10
+			subject_opinion = 10
 
 			ai_liege_desire = 1
-			ai_vassal_desire = 5
+			ai_subject_desire = 5
 			score = 2
 		}
 		tyrant_tax_low = {
@@ -17,7 +17,7 @@
 			position = { 1 0 }
 
 			tax = low_tyrant_tax
-			vassal_opinion = 5
+			subject_opinion = 5
 
 			ai_liege_desire = {
 				value = 2
@@ -26,7 +26,7 @@
 						scope:liege = {
 							ai_should_focus_on_building_in_their_capital = yes
 						}
-						scope:vassal = {
+						scope:subject = {
 							AND = {
 								government_has_flag = government_is_tyrant
 								vassal_contract_obligation_level:tyrant_government_taxes <= tyrant_tax_exempt_level
@@ -36,7 +36,7 @@
 					add = 8
 				}
 			}
-			ai_vassal_desire = 4
+			ai_subject_desire = 4
 			score = 1
 		}
 		tyrant_tax_normal = {
@@ -53,7 +53,7 @@
 						scope:liege = {
 							ai_should_focus_on_building_in_their_capital = yes
 						}
-						scope:vassal = {
+						scope:subject = {
 							AND = {
 								government_has_flag = government_is_tyrant
 								vassal_contract_obligation_level:tyrant_government_taxes <= tyrant_tax_low_level
@@ -63,7 +63,7 @@
 					add = 7
 				}
 			}
-			ai_vassal_desire = 3
+			ai_subject_desire = 3
 			score = 0
 		}
 		tyrant_tax_high = {
@@ -71,16 +71,16 @@
 			position = { 3 0 }
 			
 			tax = high_tyrant_tax
-			vassal_opinion = -15
+			subject_opinion = -15
 
 			ai_liege_desire = {
-				value = 4
+				value = 5
 				if = {
 					limit = {
 						scope:liege = {
 							ai_should_focus_on_building_in_their_capital = yes
 						}
-						scope:vassal = {
+						scope:subject = {
 							AND = {
 								government_has_flag = government_is_tyrant
 								vassal_contract_obligation_level:tyrant_government_taxes <= tyrant_tax_normal_level
@@ -90,8 +90,8 @@
 					add = 6
 				}
 			}
-			ai_vassal_desire = 2
-			score = -1
+			ai_subject_desire = 2
+			score = -2
 			flag = obligation_high_taxes
 		}
 		tyrant_tax_extortionate = {
@@ -99,16 +99,16 @@
 			position = { 4 0 }
 			
 			tax = extortionate_tyrant_tax
-			vassal_opinion = -25
+			subject_opinion = -25
 
 			ai_liege_desire = {
-				value = 5
+				value = 6
 				if = {
 					limit = {
 						scope:liege = {
 							ai_should_focus_on_building_in_their_capital = yes
 						}
-						scope:vassal = {
+						scope:subject = {
 							AND = {
 								government_has_flag = government_is_tyrant
 								vassal_contract_obligation_level:tyrant_government_taxes <= tyrant_tax_high_level
@@ -118,8 +118,8 @@
 					add = 5
 				}
 			}
-			ai_vassal_desire = 1
-			score = -2
+			ai_subject_desire = 1
+			score = -3
 			flag = obligation_high_taxes
 		}
 	}
@@ -133,10 +133,10 @@ tyrant_government_levies = {
 			position = { 0 0 }
 
 			levies = 0
-			vassal_opinion = 10
+			subject_opinion = 10
 
 			ai_liege_desire = 1
-			ai_vassal_desire = 5
+			ai_subject_desire = 5
 			score = 2
 		}
 		tyrant_levies_low = {
@@ -144,10 +144,10 @@ tyrant_government_levies = {
 			position = { 1 0 }
 
 			levies = 0.1
-			vassal_opinion = 5
+			subject_opinion = 5
 
 			ai_liege_desire = 2
-			ai_vassal_desire = 4
+			ai_subject_desire = 4
 			score = 1
 		}
 		tyrant_levies_normal = {
@@ -158,7 +158,7 @@ tyrant_government_levies = {
 			levies = 0.25
 
 			ai_liege_desire = 3
-			ai_vassal_desire = 3
+			ai_subject_desire = 3
 			score = 0
 		}
 		tyrant_levies_high = {
@@ -166,10 +166,10 @@ tyrant_government_levies = {
 			position = { 3 0 }
 			
 			levies = 0.35
-			vassal_opinion = -15
+			subject_opinion = -15
 
 			ai_liege_desire = 4
-			ai_vassal_desire = 2
+			ai_subject_desire = 2
 			score = -1
 			flag = obligation_high_levies
 		}
@@ -178,12 +178,50 @@ tyrant_government_levies = {
 			position = { 4 0 }
 			
 			levies = 0.5
-			vassal_opinion = -25
+			subject_opinion = -25
 
 			ai_liege_desire = 5
-			ai_vassal_desire = 1
+			ai_subject_desire = 1
 			score = -2
 			flag = obligation_high_levies
+		}
+	}
+}
+
+tyrant_government_prestige = {
+	display_mode = tree
+	icon = prestige_icon
+	obligation_levels = {
+		prestige_transfer_none = {
+			position = { 0 0 }
+
+			prestige = 0
+
+			ai_liege_desire = 1
+			ai_subject_desire = 5
+			score = 2
+		}
+		prestige_transfer_normal = {
+			parent = prestige_transfer_none
+			position = { 1 0 }
+
+			prestige = 0.1
+			subject_opinion = -10
+
+			ai_liege_desire = 5
+			ai_subject_desire = 3
+			score = 1
+		}
+		prestige_transfer_high = {
+			parent = prestige_transfer_normal
+			position = { 2 0 }
+
+			prestige = 0.25
+			subject_opinion = -25
+
+			ai_liege_desire = 7
+			ai_subject_desire = 1
+			score = 1
 		}
 	}
 }
