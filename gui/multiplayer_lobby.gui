@@ -1,4 +1,4 @@
-﻿JominiMultiplayerLobby = {
+JominiMultiplayerLobby = {
 	state = {
 		name = _show
 		on_start = "[GetVariableSystem.Set( 'mp_lobby_tabs', 'show_players' )]"
@@ -474,8 +474,7 @@
 								margin = { 10 5 }
 
 								hbox = {
-									layoutpolicy_horizontal = shrinking
-									layoutpolicy_vertical = shrinking
+									layoutpolicy_horizontal = expanding
 
 									## Traits and modifiers
 									fixedgridbox = {
@@ -483,15 +482,17 @@
 										datamodel = "[Character.GetTraitIndices]"
 										flipdirection = yes
 										addcolumn = 50
-										addrow = 45
-										maxhorizontalslots = 6
+										addrow = 50
+										maxhorizontalslots = 5
 
 										item = {
 											icon_trait = {
 												datacontext = "[GetTraitForIndex(int32.GetInt)]"
+												visible = "[Trait.IsPersonality]"
+
 												blockoverride "icon_size"
 												{
-													size = { 45 45 }
+													size = { 50 50 }
 												}
 											}
 										}
