@@ -1,8 +1,8 @@
-version="1.0"
+﻿version="0.2"
 tags={
 	"Total Conversion"
 }
-name="Lux Renata Venn"
+name="Lux Renata Dev Cameron"
 replace_path="common/bookmarks"
 replace_path="common/dynasties"
 replace_path="common/dynasty_houses"
@@ -14,4 +14,3 @@ replace_path="history/titles"
 replace_path="history/wars"
 replace_path="map_data"
 supported_version="1.16.*"
-path="C:/Users/Camer/Documents/Paradox Interactive/Crusader Kings III/mod/Lux Renata Venn"
