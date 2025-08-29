@@ -2,21 +2,21 @@
 	display_mode = tree
 	icon = gold_icon
 	obligation_levels = {
-		tyrant_tax_exempt = {
+		feudal_tax_exempt = {
 			position = { 0 0 }
 
-			tax = exempt_tyrant_tax
+			tax = exempt_feudal_tax
 			subject_opinion = 10
 
 			ai_liege_desire = 1
 			ai_subject_desire = 5
 			score = 2
 		}
-		tyrant_tax_low = {
-			parent = tyrant_tax_exempt
+		feudal_tax_low = {
+			parent = feudal_tax_exempt
 			position = { 1 0 }
 
-			tax = low_tyrant_tax
+			tax = low_feudal_tax
 			subject_opinion = 5
 
 			ai_liege_desire = {
@@ -29,7 +29,7 @@
 						scope:subject = {
 							AND = {
 								government_has_flag = government_is_tyrant
-								vassal_contract_obligation_level:tyrant_government_taxes <= tyrant_tax_exempt_level
+								vassal_contract_obligation_level:tyrant_government_taxes <= feudal_tax_exempt_level
 							}
 						}
 					}
@@ -39,12 +39,12 @@
 			ai_subject_desire = 4
 			score = 1
 		}
-		tyrant_tax_normal = {
+		feudal_tax_normal = {
 			default = yes
-			parent = tyrant_tax_low
+			parent = feudal_tax_low
 			position = { 2 0 }
 
-			tax = normal_tyrant_tax
+			tax = normal_feudal_tax
 
 			ai_liege_desire = {
 				value = 3
@@ -56,7 +56,7 @@
 						scope:subject = {
 							AND = {
 								government_has_flag = government_is_tyrant
-								vassal_contract_obligation_level:tyrant_government_taxes <= tyrant_tax_low_level
+								vassal_contract_obligation_level:tyrant_government_taxes <= feudal_tax_low_level
 							}
 						}
 					}
@@ -66,11 +66,11 @@
 			ai_subject_desire = 3
 			score = 0
 		}
-		tyrant_tax_high = {
-			parent = tyrant_tax_normal
+		feudal_tax_high = {
+			parent = feudal_tax_normal
 			position = { 3 0 }
 			
-			tax = high_tyrant_tax
+			tax = high_feudal_tax
 			subject_opinion = -15
 
 			ai_liege_desire = {
@@ -83,7 +83,7 @@
 						scope:subject = {
 							AND = {
 								government_has_flag = government_is_tyrant
-								vassal_contract_obligation_level:tyrant_government_taxes <= tyrant_tax_normal_level
+								vassal_contract_obligation_level:tyrant_government_taxes <= feudal_tax_normal_level
 							}
 						}
 					}
@@ -94,11 +94,11 @@
 			score = -2
 			flag = obligation_high_taxes
 		}
-		tyrant_tax_extortionate = {
-			parent = tyrant_tax_high
+		feudal_tax_extortionate = {
+			parent = feudal_tax_high
 			position = { 4 0 }
 			
-			tax = extortionate_tyrant_tax
+			tax = extortionate_feudal_tax
 			subject_opinion = -25
 
 			ai_liege_desire = {
@@ -111,7 +111,7 @@
 						scope:subject = {
 							AND = {
 								government_has_flag = government_is_tyrant
-								vassal_contract_obligation_level:tyrant_government_taxes <= tyrant_tax_high_level
+								vassal_contract_obligation_level:tyrant_government_taxes <= feudal_tax_high_level
 							}
 						}
 					}
@@ -188,7 +188,7 @@ tyrant_government_levies = {
 	}
 }
 
-tyrant_government_prestige = {
+feudal_government_prestige = {
 	display_mode = tree
 	icon = prestige_icon
 	obligation_levels = {
