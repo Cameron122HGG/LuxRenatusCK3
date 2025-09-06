@@ -1,3 +1,0 @@
-﻿ si_cal_year_desc:0 "The current year is #EMP [EmptyScope.ScriptValue('si_xiuhnelpilli_number')|0] [GetPlayer.Custom('si_cal_year_sign')]#!, the [FixedPointToInt(EmptyScope.ScriptValue('si_year_in_cycle'))|O] year of the [FixedPointToInt(EmptyScope.ScriptValue('si_cycle_number'))|O] cycle of the Seventeenth Creation."
- si_cal_month_desc:0 "The current month is #EMP [GetPlayer.Custom('si_cal_current_month')]#!, the [FixedPointToInt(EmptyScope.ScriptValue('si_xiuhpohualli_month_no'))|O] month of #EMP $si_cal_year_name$#!."
- si_cal_day_desc:0 "Today is #EMP [GetPlayer.Custom('si_cal_current_day')]#!, the [FixedPointToInt(EmptyScope.ScriptValue('si_day_in_xiuhpohualli_month'))|O] day of #EMP [GetPlayer.Custom('si_cal_current_month')]#!."
