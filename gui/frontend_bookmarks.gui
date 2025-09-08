@@ -622,7 +622,7 @@
 				divider_light = {
 					size = { 250 5 }
 				}
-				# GH: GROUP
+				# LUX: GROUP
 				scrollbox = {
 					name = "bookmark_groups"
 					size = { 290 75% }
@@ -641,7 +641,7 @@
 							vbox = {
 								datamodel = "[GameSetup.AccessBookmarkGroups]"
 								spacing = -5
-								bottomtotop = yes
+								bottomtotop = no
 
 								item = {
 									widget_bookmark_group_button = {
@@ -2686,7 +2686,7 @@ types BookmarkPortraits
 			onclick = "[GetVariableSystem.Clear( 'show_character_info' )]"
 			down = "[GameSetup.IsBookmarkGroupSelected( BookmarkGroup.Self )]"
 			alwaystransparent = "[GameSetup.IsBookmarkGroupSelected( BookmarkGroup.Self )]"
-			enabled = "[Or(InDebugMode, EqualTo_string( BookmarkGroup.GetName, '1254' ))]"
+			enabled = "[Or(InDebugMode, EqualTo_string( BookmarkGroup.GetName, '11066' ))]"
 
 			state = {
 				name = "_mouse_enter"
@@ -2998,8 +2998,8 @@ types BookmarkPortraits
 						}
 
 						text_single = {
-							name = "year"
-							raw_text = "[BookmarkGroup.GetName]"
+							name = "title"
+							text = "[Localize(Concatenate('bm_group_', Localize(Concatenate(BookmarkGroup.GetName,'_title'))))]"
 							default_format = "#high;bold;glow_color:{0,0,0,1}"
 							using = Font_Size_Big
 							using = Font_Type_Flavor
@@ -3014,7 +3014,7 @@ types BookmarkPortraits
 						}
 						text_single = {
 							name = "bm_group_name"
-							text = "[Localize(Concatenate('bm_group_', Localize(Concatenate(BookmarkGroup.GetName,'_title'))))]"
+							text = "[Localize(Concatenate('bm_group_', Localize(Concatenate(BookmarkGroup.GetName,'_year'))))]"
 							default_format = "#clickable;bold;glow_color:{0.2,0.2,0.2,1}"
 							fontsize = 15
 							using = Font_Type_Flavor
