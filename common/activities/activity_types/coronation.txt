@@ -951,6 +951,9 @@
 					trigger_if = {
 						limit = {
 							highest_held_title_tier >= tier_empire
+							faith = {
+								has_doctrine = doctrine_spiritual_head
+							}
 						}
 						NOT = {
 							faith = {
@@ -972,6 +975,9 @@
 					trigger_if = {
 						limit = {
 							highest_held_title_tier >= tier_empire
+							faith = {
+								has_doctrine = doctrine_spiritual_head
+							}
 						}
 						NOT = {
 							faith = {
@@ -985,6 +991,13 @@
 					if = {
 						limit = {
 							highest_held_title_tier > tier_kingdom
+							faith = {
+								has_doctrine = doctrine_spiritual_head
+								OR = {
+									has_doctrine = doctrine_imperial_anointment
+									has_doctrine = doctrine_anointment_permitted
+								}
+							}
 							faith.religious_head ?= {
 								is_target_in_variable_list = {
 									name = supported_anointments
@@ -1007,99 +1020,11 @@
 									has_any_bad_relationship_with_character_trigger = { CHARACTER = root }
 								}
 							}
-							faith = {
-								OR = {
-									has_doctrine = doctrine_imperial_anointment
-									has_doctrine = doctrine_anointment_permitted
-								}
-							}
 						}
 						multiply = 0
 					}
 				}
 			}
-			# Anointment
-			lux_coronation_type_solar = {
-				default = {
-					trigger_if = {
-						limit = {
-							highest_held_title_tier >= tier_empire
-						}
-						faith = {
-							has_doctrine = doctrine_solar_anointment
-						}
-					}
-					trigger_else = {
-						always = no
-					}
-				}
-				is_valid = {
-					#trigger_ifs are to make player-facing triggers look nice
-					faith = {
-						trigger_if = {
-							limit = {
-								NOT = {
-									has_doctrine = doctrine_anointment_permitted
-								}
-							}
-							has_doctrine = doctrine__anointment
-						}
-						trigger_else = {
-							has_doctrine = doctrine_anointment_permitted
-						}
-						religious_head ?= {
-							save_temporary_scope_as = hof_temp
-						}
-					}
-					trigger_if = {
-						limit = {
-							exists = scope:hof_temp
-						}
-						scope:hof_temp = {
-							is_alive = yes
-							is_imprisoned = no
-							is_ai = yes
-							has_contagious_deadly_disease_trigger = no
-							custom_description = {
-								text = ALREADY_IN_ACTIVITY
-								NOR = {
-									exists = involved_activity
-									has_variable = homage_liege_scope
-									has_character_flag = meditation_character_flag
-									has_character_flag = petition_liege_character_flag
-								}
-							}
-						}
-					}
-					trigger_else = {
-						custom_description = {
-							text = HOF_DOESNT_EXIST
-							exists = scope:hof_temp
-						}
-					}
-					highest_held_title_tier >= tier_empire
-					NOT = { has_trait = excommunicated }
-					piety_level >= 2
-				}
-
-				ai_will_do = {
-					#If valid, the AI should attempt anointment. Unless they hate the pope
-					#They will likely often go for regular coronation regardless because they can't afford this or haven't done the request anointment interaction
-					value = 100
-					if = {
-						limit = {
-							highest_held_title_tier > tier_kingdom
-							AND = {
-								exists = faith.religious_head
-								faith.religious_head ?= { has_any_bad_relationship_with_character_trigger = { CHARACTER = root } }
-							}			
-						}
-						add = -90
-					}
-				}
-			}
-		}
-			
 			# Anointment
 			coronation_type_anointment = {
 				default = {
@@ -1118,6 +1043,7 @@
 				is_valid = {
 					#trigger_ifs are to make player-facing triggers look nice
 					faith = {
+						has_doctrine = doctrine_spiritual_head
 						trigger_if = {
 							limit = {
 								NOT = {
@@ -1140,7 +1066,10 @@
 						scope:hof_temp = {
 							is_alive = yes
 							is_imprisoned = no
-							is_ai = yes
+							custom_description = {
+								text = HOF_is_ai_tt
+								is_ai = yes
+							}
 							has_contagious_deadly_disease_trigger = no
 							custom_description = {
 								text = ALREADY_IN_ACTIVITY
