@@ -893,55 +893,18 @@
 }
 
 estate = {
-	allowed_for_character = {
-		any_held_title = {
-			is_noble_family_title = yes
-		}
-	}
-
 	rename_window = house
 
 	illustration = "gfx/interface/illustrations/event_scenes/ep3_medi_estate.dds"
 	icon = "gfx/interface/icons/flat_icons/estate.dds"
 	map_pin_texture = "gfx/interface/icons/map_icons/map_icon_estate.dds"
-	map_pin_anchor = left
+	map_pin_anchor = up
 	map_pin_lobby = yes
+	travel = yes
+	noble_family = yes
 
-	can_move_manually = yes
-	move_cooldown = { days = estate_move_cooldown_value }
-	move_cost = {
-		gold = {
-			value = {
-				value = 20
-				format = "BASE_VALUE_FORMAT"
-				desc = "BASE_VALUE"
-			}
-			if = {
-				limit = {
-					domicile ?= { has_domicile_building_or_higher = estate_main_05 }
-				}
-				add = 80
-			}
-			else_if = {
-				limit = {
-					domicile ?= { has_domicile_building_or_higher = estate_main_04 }
-				}
-				add = 60
-			}
-			else_if = {
-				limit = {
-					domicile ?= { has_domicile_building_or_higher = estate_main_03 }
-				}
-				add = 40
-			}
-			else_if = {
-				limit = {
-					domicile ?= { has_domicile_building_or_higher = estate_main_02 }
-				}
-				add = 20
-			}
-		}
-	}
+	can_move_manually = no
+	move_with_realm_capital = yes
 
 	base_external_slots = 2
 
