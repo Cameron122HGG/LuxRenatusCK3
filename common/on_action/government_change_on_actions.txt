@@ -27,7 +27,7 @@ on_government_change_start = {
 					change_government = classical_government_ep3
 				}
 				else_if = {
-					change_government = classical_government_ep3
+					change_government = classical_government
 				}
 				every_vassal_or_below = {
 					limit = {
@@ -47,7 +47,7 @@ on_government_change_start = {
 						limit = {
 							highest_held_title_tier >= tier_county
 						}
-						change_government = classical_government_ep3
+						change_government = classical_government
 					}
 				}
 			}
@@ -72,7 +72,7 @@ on_government_change_start = {
 					change_government = classical_government_ep3
 				}
 				else_if = {
-					change_government = classical_government_ep3
+					change_government = classical_government
 				}
 				every_vassal_or_below = {
 					limit = {
@@ -504,188 +504,6 @@ on_roman_government_start = {
 						}
 						change_government = classical_government
 						
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				current_date = 476.9.4
-			}
-			title:k_visigoths.holder ?= {
-				change_government = classical_government
-				every_held_title = {
-					limit = {
-						AND = {
-							tier = tier_county
-		
-						}
-					}
-
-				}
-				every_vassal_or_below = {
-					limit = {
-						has_government = feudal_government
-					}
-					change_government = classical_government
-					every_held_title = {
-						limit = {
-							AND = {
-								tier = tier_county
-
-							}
-						}
-	
-					}
-				}
-			}
-			title:e_spain = {
-				every_in_de_jure_hierarchy = {
-					limit = {
-						AND = {
-							tier = tier_county
-							holder = {
-								OR = {
-								government_has_flag = government_is_classical
-								government_has_flag = government_is_classical_ep3
-								}
-							}
-							holder = {
-								highest_held_title_tier = tier_county
-							}
-						}
-					}
-					holder = {
-						change_government = classical_government
-						every_held_title = {
-							limit = {
-								AND = {
-									tier = tier_county
-
-								}
-							}
-
-						}
-					}
-				}
-			}
-			title:k_italy.holder ?= {
-				change_government = classical_government
-				every_held_title = {
-					limit = {
-						AND = {
-							tier = tier_county
-		
-						}
-					}
-
-				}
-				every_vassal_or_below = {
-					limit = {
-						has_government = feudal_government
-					}
-					change_government = classical_government
-					every_held_title = {
-						limit = {
-							AND = {
-								tier = tier_county
-
-							}
-						}
-	
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				current_date = 532.2.1
-			}
-			title:k_visigoths.holder ?= {
-				change_government = classical_government
-				every_held_title = {
-					limit = {
-						AND = {
-							tier = tier_county
-		
-						}
-					}
-
-				}
-				every_vassal_or_below = {
-					limit = {
-						OR = {
-							has_government = feudal_government
-							has_government = classical_government
-							has_government = classical_government_ep3
-						}
-					}
-					change_government = classical_government
-					every_held_title = {
-						limit = {
-							AND = {
-								tier = tier_county
-
-							}
-						}
-	
-					}
-				}
-			}
-			title:e_spain = {
-				every_in_de_jure_hierarchy = {
-					limit = {
-						AND = {
-							tier = tier_county
-							holder = {
-								OR = {
-								government_has_flag = government_is_classical
-								government_has_flag = government_is_classical_ep3
-								}
-							}
-							holder = {
-								highest_held_title_tier = tier_county
-							}
-						}
-					}
-					holder = {
-						change_government = classical_government
-						every_held_title = {
-							limit = {
-								AND = {
-									tier = tier_county
-
-								}
-							}
-
-						}
-					}
-				}
-			}
-			title:k_ostrogoths.holder ?= {
-				change_government = classical_government
-				every_held_title = {
-					limit = {
-						AND = {
-							tier = tier_county
-		
-						}
-					}
-
-				}
-				every_vassal_or_below = {
-					limit = {
-						has_government = feudal_government
-					}
-					change_government = classical_government
-					every_held_title = {
-						limit = {
-							AND = {
-								tier = tier_county
-
-							}
-						}
-	
 					}
 				}
 			}
