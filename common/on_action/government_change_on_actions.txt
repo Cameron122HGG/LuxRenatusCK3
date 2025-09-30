@@ -1,0 +1,717 @@
+﻿on_game_start = {
+	on_actions = {
+		on_government_change_start
+	}
+}
+
+on_government_change_start = {
+	effect = {
+		if = {
+			limit = {
+				AND = {
+				title:k_croatia = {
+					is_title_created = yes
+				}
+					title:k_croatia.holder ?= {
+						game_start_date = 476.9.4
+					}
+				}
+			}
+			title:k_croatia.holder ?= {
+				if = {
+					limit = {
+						highest_held_title_tier >= tier_kingdom
+						has_dlc_feature = roads_to_power
+					}
+					change_government = classical_government_ep3
+				}
+				else_if = {
+					change_government = classical_government_ep3
+				}
+				every_vassal_or_below = {
+					limit = {
+						OR = {
+						has_government = feudal_government
+						has_government = republic_government
+						}
+					}
+					if = {
+						limit = {
+							highest_held_title_tier >= tier_county
+							has_dlc_feature = roads_to_power
+						}
+						change_government = classical_government_ep3
+					}
+					else_if = {
+						limit = {
+							highest_held_title_tier >= tier_county
+						}
+						change_government = classical_government_ep3
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+				title:k_france = {
+					is_title_created = yes
+				}
+					title:k_france.holder ?= {
+						game_start_date = 476.9.4
+					}
+				}
+			}
+			title:k_france.holder ?= {
+				if = {
+					limit = {
+						highest_held_title_tier >= tier_kingdom
+						has_dlc_feature = roads_to_power
+					}
+					change_government = classical_government_ep3
+				}
+				else_if = {
+					change_government = classical_government_ep3
+				}
+				every_vassal_or_below = {
+					limit = {
+						OR = {
+						has_government = feudal_government
+						has_government = republic_government
+						}
+					}
+					if = {
+						limit = {
+							highest_held_title_tier >= tier_county
+							has_dlc_feature = roads_to_power
+						}
+						change_government = classical_government_ep3
+					}
+					else_if = {
+						limit = {
+							highest_held_title_tier >= tier_county
+						}
+						change_government = classical_government_ep3
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_dlc_feature = khans_of_the_steppe
+				title:e_caspian-pontic_steppe = {
+					is_title_created = yes
+				}
+			}
+			title:e_caspian-pontic_steppe.holder ?= {
+				change_government = nomad_government
+			}
+		}
+		if = {
+			limit = {
+				has_dlc_feature = khans_of_the_steppe
+			}
+			title:e_mongolia = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						is_title_created = yes
+					}
+					holder = {
+						if = {
+							limit = {
+								has_government = tribal_government
+							}
+							change_government = nomad_government
+						}
+					}
+				}
+			}
+			title:e_siberia = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						is_title_created = yes
+					}
+					holder = {
+						if = {
+							limit = {
+								has_government = tribal_government
+							}
+							change_government = nomad_government
+						}
+					}
+				}
+			}
+			title:e_volga-ural = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						is_title_created = yes
+					}
+					holder = {
+						if = {
+							limit = {
+								has_government = tribal_government
+							}
+							change_government = nomad_government
+						}
+					}
+				}
+			}
+			title:e_tartaria = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						is_title_created = yes
+					}
+					holder = {
+						if = {
+							limit = {
+								has_government = tribal_government
+							}
+							change_government = nomad_government
+						}
+					}
+				}
+			}
+			title:k_oghuz_il = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						is_title_created = yes
+					}
+					holder = {
+						if = {
+							limit = {
+								has_government = tribal_government
+							}
+							change_government = nomad_government
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+on_roman_government_start = {
+	effect = {
+		if = {
+			limit = {
+				title:e_spqr = {
+					is_title_created = yes
+				}
+			}
+			title:e_spqr.holder ?= {
+				random_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+							NOT = {
+								THIS = PREV.capital_county
+							}
+		
+						}
+					}
+
+				}
+				random_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+							NOT = {
+								THIS = PREV.capital_county
+							}
+		
+						}
+					}
+
+				}
+				every_vassal_or_below = {
+					limit = {
+						OR = {
+							has_government = feudal_government
+							has_government = republic_government
+							government_has_flag = government_is_administrative
+						}
+					}
+					if = {
+						limit = {
+							highest_held_title_tier > tier_county
+							has_dlc_feature = roads_to_power
+						}
+						change_government = administrative_government
+						if = {
+							limit = { 
+								NOT = { any_held_title = { is_noble_family_title = yes } } 
+								highest_held_title_tier >= tier_duchy
+							}
+							if = {
+								limit = { is_house_head = no }
+								found_cadet_house_decision_effect = { CHARACTER = root }
+							}
+							create_noble_family_effect = yes
+							domicile ?= { set_up_domicile_estate_effect = yes }
+						}
+						random_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+									NOT = {
+										THIS = PREV.capital_county
+									}
+
+								}
+							}
+
+						}
+					}
+					else_if = {
+						limit = {
+							highest_held_title_tier > tier_county
+						}
+						every_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+
+								}
+							}
+
+						}
+						change_government = feudal_government
+						
+					}
+					else_if = {
+						limit = {
+							highest_held_title_tier = tier_county
+						}
+						every_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+
+								}
+							}
+
+						}
+						change_government = classical_government
+						
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				title:e_byzantium = {
+					is_title_created = yes
+				}
+			}
+			title:e_byzantium.holder ?= {
+				random_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+							NOT = {
+								THIS = PREV.capital_county
+							}
+		
+						}
+					}
+
+				}
+				random_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+							NOT = {
+								THIS = PREV.capital_county
+							}
+		
+						}
+					}
+
+				}
+				every_vassal_or_below = {
+					limit = {
+						OR = {
+							has_government = feudal_government
+							has_government = republic_government
+							government_has_flag = government_is_administrative
+						}
+					}
+					if = {
+						limit = {
+							highest_held_title_tier > tier_county
+							has_dlc_feature = roads_to_power
+						}
+						change_government = administrative_government
+						if = {
+							limit = { 
+								NOT = { any_held_title = { is_noble_family_title = yes } } 
+								highest_held_title_tier >= tier_duchy
+							}
+							if = {
+								limit = { is_house_head = no }
+								found_cadet_house_decision_effect = { CHARACTER = root }
+							}
+							create_noble_family_effect = yes
+							domicile ?= { set_up_domicile_estate_effect = yes }
+						}
+						random_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+									NOT = {
+										THIS = PREV.capital_county
+									}
+
+								}
+							}
+
+						}
+					}
+					else_if = {
+						limit = {
+							highest_held_title_tier > tier_county
+						}
+						every_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+
+								}
+							}
+
+						}
+						change_government = classical_government
+						
+					}
+					else_if = {
+						limit = {
+							highest_held_title_tier = tier_county
+						}
+						every_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+
+								}
+							}
+
+						}
+						change_government = classical_government
+						
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				title:e_roman_empire = {
+					is_title_created = yes
+				}
+			}
+			title:e_roman_empire.holder ?= {
+				random_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+							NOT = {
+								THIS = PREV.capital_county
+							}
+		
+						}
+					}
+
+				}
+				random_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+							NOT = {
+								THIS = PREV.capital_county
+							}
+		
+						}
+					}
+
+				}
+				every_vassal_or_below = {
+					limit = {
+						OR = {
+							has_government = feudal_government
+							has_government = republic_government
+							government_has_flag = government_is_administrative
+						}
+					}
+					if = {
+						limit = {
+							highest_held_title_tier > tier_county
+							has_dlc_feature = roads_to_power
+						}
+						change_government = administrative_government
+						if = {
+							limit = { 
+								NOT = { any_held_title = { is_noble_family_title = yes } } 
+								highest_held_title_tier >= tier_duchy
+							}
+							if = {
+								limit = { is_house_head = no }
+								found_cadet_house_decision_effect = { CHARACTER = root }
+							}
+							create_noble_family_effect = yes
+							domicile ?= { set_up_domicile_estate_effect = yes }
+						}
+						random_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+									NOT = {
+										THIS = PREV.capital_county
+									}
+
+								}
+							}
+
+						}
+					}
+					else_if = {
+						limit = {
+							highest_held_title_tier > tier_county
+						}
+						every_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+
+								}
+							}
+
+						}
+						change_government = feudal_government
+						
+					}
+					else_if = {
+						limit = {
+							highest_held_title_tier = tier_county
+						}
+						every_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+
+								}
+							}
+
+						}
+						change_government = classical_government
+						
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				current_date = 476.9.4
+			}
+			title:k_visigoths.holder ?= {
+				change_government = classical_government
+				every_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+		
+						}
+					}
+
+				}
+				every_vassal_or_below = {
+					limit = {
+						has_government = feudal_government
+					}
+					change_government = classical_government
+					every_held_title = {
+						limit = {
+							AND = {
+								tier = tier_county
+								NOT = {
+									title_province = {
+										has_holding_type = estate_holding
+									}
+								}
+							}
+						}
+						title_province = {
+							set_holding_type = estate_holding
+						}
+					}
+				}
+			}
+			title:e_spain = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						AND = {
+							tier = tier_county
+							holder = {
+								OR = {
+								government_has_flag = government_is_classical
+								government_has_flag = government_is_classical_ep3
+								}
+							}
+							holder = {
+								highest_held_title_tier = tier_county
+							}
+						}
+					}
+					holder = {
+						change_government = classical_government
+						every_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+
+								}
+							}
+
+						}
+					}
+				}
+			}
+			title:k_italy.holder ?= {
+				change_government = classical_government
+				every_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+		
+						}
+					}
+
+				}
+				every_vassal_or_below = {
+					limit = {
+						has_government = feudal_government
+					}
+					change_government = classical_government
+					every_held_title = {
+						limit = {
+							AND = {
+								tier = tier_county
+								NOT = {
+									title_province = {
+										has_holding_type = estate_holding
+									}
+								}
+							}
+						}
+						title_province = {
+							set_holding_type = estate_holding
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				current_date = 532.2.1
+			}
+			title:k_visigoths.holder ?= {
+				change_government = classical_government
+				every_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+		
+						}
+					}
+
+				}
+				every_vassal_or_below = {
+					limit = {
+						OR = {
+							has_government = feudal_government
+							has_government = classical_government
+							has_government = classical_government_ep3
+						}
+					}
+					change_government = classical_government
+					every_held_title = {
+						limit = {
+							AND = {
+								tier = tier_county
+								NOT = {
+									title_province = {
+										has_holding_type = estate_holding
+									}
+								}
+							}
+						}
+						title_province = {
+							set_holding_type = estate_holding
+						}
+					}
+				}
+			}
+			title:e_spain = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						AND = {
+							tier = tier_county
+							holder = {
+								OR = {
+								government_has_flag = government_is_classical
+								government_has_flag = government_is_classical_ep3
+								}
+							}
+							holder = {
+								highest_held_title_tier = tier_county
+							}
+						}
+					}
+					holder = {
+						change_government = classical_government
+						every_held_title = {
+							limit = {
+								AND = {
+									tier = tier_county
+
+								}
+							}
+
+						}
+					}
+				}
+			}
+			title:k_ostrogoths.holder ?= {
+				change_government = classical_government
+				every_held_title = {
+					limit = {
+						AND = {
+							tier = tier_county
+		
+						}
+					}
+
+				}
+				every_vassal_or_below = {
+					limit = {
+						has_government = feudal_government
+					}
+					change_government = classical_government
+					every_held_title = {
+						limit = {
+							AND = {
+								tier = tier_county
+								NOT = {
+									title_province = {
+										has_holding_type = estate_holding
+									}
+								}
+							}
+						}
+						title_province = {
+							set_holding_type = estate_holding
+						}
+					}
+				}
+			}
+		}
+	}
+}
