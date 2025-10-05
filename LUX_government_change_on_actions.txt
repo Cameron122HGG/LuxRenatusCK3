@@ -102,7 +102,6 @@ on_roman_government_start = {
 			limit = {
 				OR = {
 					has_government = administrative_government
-					has_government = imperial_government
 				}
 			}
 			if = {
@@ -119,24 +118,6 @@ on_roman_government_start = {
 					}
 					create_noble_family_effect = yes
 					domicile ?= { set_up_domicile_estate_effect = yes }
-				}
-			}
-			every_held_title = {
-				limit = {
-					AND = {
-						tier = tier_county
-						NOT = {
-							THIS = PREV.capital_county
-						}
-						NOT = {
-							title_province = {
-								has_holding_type = estate_holding
-							}
-						}
-					}
-				}
-				title_province = {
-					set_holding_type = estate_holding
 				}
 			}
 			if = {
@@ -161,27 +142,10 @@ on_roman_government_start = {
 						has_government = feudal_government
 						has_government = republic_government
 						has_government = administrative_government
-						has_government = imperial_government
 					}
 				}
-				every_held_title = {
-					limit = {
-						AND = {
-							tier = tier_county
-							NOT = {
-								THIS = PREV.capital_county
-							}
-							NOT = {
-								title_province = {
-									has_holding_type = estate_holding
-								}
-							}
-						}
-					}
-					title_province = {
-						set_holding_type = estate_holding
-					}
-				}
+			}
+
 				if = {
 					limit = {
 						highest_held_title_tier > tier_county
@@ -192,10 +156,6 @@ on_roman_government_start = {
 						limit = { 
 							NOT = { any_held_title = { is_noble_family_title = yes } } 
 							highest_held_title_tier >= tier_duchy
-							NOT = {
-								THIS = character:heraclian_08
-								THIS = character:heraclian_04
-							}
 						}
 						if = {
 							limit = { is_house_head = no }
@@ -209,39 +169,20 @@ on_roman_government_start = {
 					limit = {
 						highest_held_title_tier > tier_county
 					}
-					change_government = imperial_government	
+					change_government = administrative_government	
 				}
 				else_if = {
 					limit = {
 						highest_held_title_tier = tier_county
 					}
-					change_government = roman_government
+					change_government = administrative_government
 				}
 			}
 		}
 		every_independent_ruler = { # Autocratic set up
 			limit = {
 				OR = {
-					has_government = autocratic_government_ep3
-					has_government = autocratic_government
-				}
-			}
-			every_held_title = {
-				limit = {
-					AND = {
-						tier = tier_county
-						NOT = {
-							THIS = PREV.capital_county
-						}
-						NOT = {
-							title_province = {
-								has_holding_type = estate_holding
-							}
-						}
-					}
-				}
-				title_province = {
-					set_holding_type = estate_holding
+					has_government = classical_government
 				}
 			}
 			every_vassal_or_below = {
@@ -249,92 +190,19 @@ on_roman_government_start = {
 					OR = {
 						has_government = feudal_government
 						has_government = republic_government
-						has_government = autocratic_government_ep3
-						has_government = autocratic_government
-					}
-					NOT = {
-						THIS = character:alan_13
-					}
-				}
-				every_held_title = {
-					limit = {
-						AND = {
-							tier = tier_county
-							NOT = {
-								THIS = PREV.capital_county
-							}
-							NOT = {
-								title_province = {
-									has_holding_type = estate_holding
-								}
-							}
-						}
-					}
-					title_province = {
-						set_holding_type = estate_holding
+						has_government = classical_government_ep3
+						has_government = classical_government
 					}
 				}
 				if = {
 					limit = {
 						has_dlc_feature = roads_to_power
 					}
-					change_government = autocratic_government_ep3
+					change_government = classical_government_ep3
 				}
 				else = {
-					change_government = autocratic_government
+					change_government = classical_government
 				}
-			}
-		}
-		every_independent_ruler = { # Latin set up
-			limit = {
-				has_government = roman_government
-			}
-			every_held_title = {
-				limit = {
-					AND = {
-						tier = tier_county
-						NOT = {
-							THIS = PREV.capital_county
-						}
-						NOT = {
-							title_province = {
-								has_holding_type = estate_holding
-							}
-						}
-					}
-				}
-				title_province = {
-					set_holding_type = estate_holding
-				}
-			}
-			every_vassal_or_below = {
-				limit = {
-					OR = {
-						has_government = feudal_government
-						has_government = republic_government
-						has_government = roman_government
-					}
-				}
-				every_held_title = {
-					limit = {
-						AND = {
-							tier = tier_county
-							NOT = {
-								THIS = PREV.capital_county
-							}
-							NOT = {
-								title_province = {
-									has_holding_type = estate_holding
-								}
-							}
-						}
-					}
-					title_province = {
-						set_holding_type = estate_holding
-					}
-				}
-				change_government = roman_government
 			}
 		}
 	}
-}
