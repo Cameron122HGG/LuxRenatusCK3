@@ -4,7 +4,7 @@
 	11178.1.1 = { change_development_level = 24 }
 	
 	11060.1.1 = {
-		liege = 0
+		liege = e_byzantium
 		holder = 66
 		government = classical_government_ep3
 		succession_laws = {
@@ -16,7 +16,7 @@
 					exists = holder
 					holder = { has_government = classical_government_ep3 }
 				}
-				set_state_faith = faith:roman_pagan    
+				set_state_faith = faith:hellenic_pagan    
 			}
 			if = {
 				limit = {
@@ -45,19 +45,19 @@ d_paphlagonia = {
 	11060.1.1 = {
 		liege = k_pontus
 		holder = 66
-		government = classical_government
+		government = classical_government_ep3
 	}
 }
 d_armeniac = {
 	10867.1.1 = {
 		liege = e_byzantium
 		holder = 0
-		government = classical_government
+		government = classical_government_ep3
 	}
 	11060.1.1 = {
 		liege = k_trebizond
 		holder = 55
-		government = classical_government
+		government = classical_government_ep3
 	}
 }
 
@@ -67,23 +67,54 @@ k_trebizond = {
 	11178.1.1 = { change_development_level = 24 }
 	
 	11060.1.1 = {
-		liege = 0
+		liege = e_byzantium
 		holder = 10
-		government = classical_government
+		government = classical_government_ep3
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_government_ep3 }
+				}
+				set_state_faith = faith:roman_imperial    
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_intrigue
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
 	}
 }
 d_chaldia = {
 	11060.1.1 = {
 		liege = k_trebizond
 		holder = 10
-		government = classical_government
+		government = classical_government_ep3
 	}
 }
 d_sebasteia = {
 	11060.1.1 = {
 		liege = k_trebizond
 		holder = 56
-		government = classical_government
+		government = classical_government_ep3
 	}
 }
 
