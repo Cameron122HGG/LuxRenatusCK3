@@ -1,0 +1,37 @@
+pdxmesh = {
+	name = "punic_temple_01_mesh"
+	file = "punic_temple_01.mesh"
+
+	meshsettings = {
+		name = "punic_temple_01"
+		index = 0
+		texture_diffuse = "building_mediterranean_atlas_diffuse.dds"
+		texture_normal = "building_mediterranean_atlas_normal.dds"
+		texture_specular = "building_mediterranean_atlas_properties.dds"
+		texture = { file = "punic_temple_01_unique.dds" index = 5 }
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	meshsettings = {
+		name = "city_decal"
+		index = 0
+		texture_diffuse = "building_mena_city_01_decal_diffuse.dds"
+		texture_normal = "building_mena_city_01_decal_normal.dds"
+		texture_specular = "building_mena_city_01_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+}
+
+entity = {
+	name = "punic_temple_01_entity"
+	pdxmesh = "punic_temple_01_mesh"
+#	default_state = "idle"
+#	state = {
+#		name = "idle"
+#		state_time = 10
+#		start_event = { node = brazier_1 particle = "environment/brazier_fire_01_effect" trigger_once = yes }
+#		start_event = { node = brazier_2 particle = "environment/brazier_fire_01_effect" trigger_once = yes }
+#	}
+}
