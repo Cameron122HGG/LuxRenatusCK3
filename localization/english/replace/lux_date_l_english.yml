@@ -1,11 +1,11 @@
 ﻿l_english:
  ## Era Dates
- ERA_LAMPS_FALLBACK: "'(int32)-15000'"
- ERA_LAMPS_END: "'(int32)1'"
- ERA_TREES_END: "'(int32)2'"
- ERA_FIRST_END: "'(int32)592'"
- ERA_SECOND_END: "'(int32)4033'"
- ERA_THIRD_END: "'(int32)7054'"
+ ERA_LUX_GREG_FALLBACK: "'(int32)-10000'"
+ #ERA_LAMPS_END: "'(int32)1'"
+ #ERA_TREES_END: "'(int32)2'"
+ #ERA_FIRST_END: "'(int32)592'"
+ #ERA_SECOND_END: "'(int32)4033'"
+ #ERA_THIRD_END: "'(int32)7054'"
  ERA_LUX_GREG_AD: "A.D"
  ERA_LUX_GREG_BC: "B.C"
  ### In-Game
@@ -25,13 +25,11 @@
  ### Dynasty Founding Date
  ## DATE Replacements
  # ERA
- ERA_LUX_GREG_DYNFOUND: "[Select_CString(LessThanOrEqualTo_int32( DynastyHouse.GetFoundYear, '(int32)10000'), 'B.C.',Select_CString( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)10001'), 'A.D.', Select_CString( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)592'), 'S.A.', Select_CString( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)2' ), 'F.A.', Select_CString( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)1' ), 'Y.T.', 'Y.L.' ) ) ) ) )]"
+ ERA_LUX_GREG_DYNFOUND: "[Select_CString(LessThanOrEqualTo_int32( DynastyHouse.GetFoundYear, '(int32)10000'), 'B.C.', Select_CString( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)10001'), 'A.D.', '' ))]"
 
 # YEAR
- YEAR_LUX_GREG_DYNFOUND: "[Select_int32(GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)7054'), Subtract_int32( DynastyHouse.GetFoundYear, '(int32)7054' ),Select_int32( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)4033'), Subtract_int32( DynastyHouse.GetFoundYear, '(int32)4033' ) , Select_int32( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)592'), Subtract_int32( DynastyHouse.GetFoundYear, '(int32)592' ) , Select_int32( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)2'), Subtract_int32( DynastyHouse.GetFoundYear, '(int32)2' ) , Select_int32( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)1'), Subtract_int32( DynastyHouse.GetFoundYear, '(int32)1' ) , DynastyHouse.GetFoundYear ) ) ) ) )]"
- ### Ruler Designer Birth Date
- ## DATE Replacements
- 
+ YEAR_LUX_GREG_DYNFOUND: "[Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)]"
+
 
  PICK_ANY_CHARACTER: "Play as any Ruler in $GAME_DATE_STRING_SHORT$"
 
@@ -44,7 +42,7 @@
  HOUSE_LIST_FOUNDATION: "Founded in [Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
 
  
- HOUSE_VIEW_FOUNDED: "Founded in $ERA_LUX_GREG_DYNFOUND$ $YEAR_LUX_GREG_DYNFOUND$ by [DynastyHouse.GetFounder.GetName]"
+ HOUSE_VIEW_FOUNDED: "Founded in $YEAR_LUX_GREG_DYNFOUND$ $ERA_LUX_GREG_DYNFOUND$ by [DynastyHouse.GetFounder.GetName]"
  HOUSE_LIST_FOUNDATION: "Founded in $YEAR_LUX_GREG_DYNFOUND$ $ERA_LUX_GREG_DYNFOUND$"
  
  ERA_LUX_GREG_RULDESBIRTH: "[Select_CString(GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)7054'), 'Fo.A.',Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)4033'), 'T.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)592'), 'S.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)2' ), 'F.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)1' ), 'Y.T.', 'Y.L.' ) ) ) ) )]"
