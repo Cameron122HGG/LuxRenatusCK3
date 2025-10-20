@@ -1,0 +1,56 @@
+﻿l_english:
+ ## Era Dates
+ ERA_LUX_GREG_FALLBACK: "'(int32)-10000'"
+ #ERA_LAMPS_END: "'(int32)1'"
+ #ERA_TREES_END: "'(int32)2'"
+ #ERA_FIRST_END: "'(int32)592'"
+ #ERA_SECOND_END: "'(int32)4033'"
+ #ERA_THIRD_END: "'(int32)7054'"
+ ERA_LUX_GREG_AD: "A.D"
+ ERA_LUX_GREG_BC: "B.C"
+ ### In-Game
+ ## DATE Replacements
+ # ERA 
+ ERA_LUX_GREG_IG: "[Add_int32('(int32)-10000', '(int32)$YEAR$')], [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ ERA_LUX_GREG_IG_FRONTEND_BOOKMARK: "[Add_int32('(int32)-10000', '(int32)$YEAR$')], [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+
+ 
+ # YEAR # 
+ YEAR_LUX_GREG_IG: "[Add_int32('(int32)-10000', '(int32)$YEAR$')] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ YEAR_LUX_GREG_IG_FRONTEND_BOOKMARK: "[Select_int32(GreaterThan_int32( '(int32)$YEAR|q$', '(int32)7054'), Subtract_int32( '(int32)$YEAR|q$', '(int32)7054' ),Select_int32( GreaterThan_int32( '(int32)$YEAR|q$', '(int32)4033'), Subtract_int32( '(int32)$YEAR|q$', '(int32)4033' ) , Select_int32( GreaterThan_int32( '(int32)$YEAR|q$', '(int32)592'), Subtract_int32( '(int32)$YEAR|q$', '(int32)592' ) , Select_int32( GreaterThan_int32( '(int32)$YEAR|q$', '(int32)2'), Subtract_int32( '(int32)$YEAR|q$', '(int32)2' ) , Max_int32( Select_int32( GreaterThan_int32( '(int32)$YEAR|q$', '(int32)1'), Subtract_int32( '(int32)$YEAR|q$', '(int32)1' ) , '(int32)$YEAR|q$' ) , '(int32)1' ) ) ) ) )]"
+
+
+
+ 
+ ### Dynasty Founding Date
+ ## DATE Replacements
+ # ERA
+ ERA_LUX_GREG_DYNFOUND: "[Select_CString(LessThanOrEqualTo_int32( DynastyHouse.GetFoundYear, '(int32)10000'), 'B.C.', Select_CString( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)10001'), 'A.D.', '' ))]"
+
+# YEAR
+ YEAR_LUX_GREG_DYNFOUND: "[Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)]"
+
+
+ PICK_ANY_CHARACTER: "Play as any Ruler in $GAME_DATE_STRING_SHORT$"
+
+ GAME_DATE_STRING: "$DAY|O$ $MONTH$, $ERA_LUX_GREG_IG$ $YEAR_LUX_GREG_IG$"
+ GAME_DATE_STRING_SHORT: "$DAY|O$ $MONTH_SHORT$, $ERA_LUX_GREG_IG$ $YEAR_LUX_GREG_IG$"
+ GAME_DATE_STRING_SHORT_NO_YEAR: "$DAY|O$ $MONTH$"
+ GAME_DATE_STRING_LONG: "$DAY|O$ of $MONTH$, $ERA_LUX_GREG_IG$ $YEAR_LUX_GREG_IG$"
+ BOOKMARK_DATE_STRING: "$DAY|O$ $MONTH$, $ERA_LUX_GREG_IG_FRONTEND_BOOKMARK$ $YEAR_LUX_GREG_IG_FRONTEND_BOOKMARK$"
+ HOUSE_VIEW_FOUNDED: "Founded in [Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')] by [DynastyHouse.GetFounder.GetName]"
+ HOUSE_LIST_FOUNDATION: "Founded in [Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+
+ 
+ HOUSE_VIEW_FOUNDED: "Founded in $YEAR_LUX_GREG_DYNFOUND$ $ERA_LUX_GREG_DYNFOUND$ by [DynastyHouse.GetFounder.GetName]"
+ HOUSE_LIST_FOUNDATION: "Founded in $YEAR_LUX_GREG_DYNFOUND$ $ERA_LUX_GREG_DYNFOUND$"
+ 
+ ERA_LUX_GREG_RULDESBIRTH: "[Select_CString(GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)7054'), 'Fo.A.',Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)4033'), 'T.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)592'), 'S.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)2' ), 'F.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)1' ), 'Y.T.', 'Y.L.' ) ) ) ) )]"
+ YEAR_LUX_GREG_RULDESBIRTH: "[Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)7054'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)7054' ), Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)4033'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)4033' ) , Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)592'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)592' ) , Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)2'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)2' ) , Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)1'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)1' ) , RulerDesignerWindow.GetBirthYear ) ) ) ) )]"
+ RULER_DESIGNER_BIRTH_YEAR: "Born: $YEAR_LUX_GREG_RULDESBIRTH$ $ERA_LUX_GREG_RULDESBIRTH$"
+
+ 
+
+
+  
+
