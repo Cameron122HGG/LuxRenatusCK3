@@ -336,26 +336,19 @@ has_jizya_doctrine = {
 	}
 }
 
-has_thrall_doctrine = {
+immaterial_harmony = {
 	group = "special"
-
+	
 	is_available_on_create = {
-		OR = {
-			has_doctrine = special_doctrine_thrall
-			has_doctrine = special_doctrine_is_eastern_faith
-		}
+		has_doctrine = special_doctrine_immaterial_harmony
 	}
 
-
-	special_doctrine_thrall = {
-		character_modifier = {
-			domain_tax_different_faith_mult = 0.2
-			levy_reinforcement_rate_same_faith = 0.25
-			levy_reinforcement_rate_different_faith = -0.25
-		}
-
+	special_doctrine_immaterial_harmony = {
 		parameters = {
-			unlock_thrall_contract = yes
+			hostility_override_special_doctrine_immaterial_harmony = 0
+			reduced_vassal_religion_discontent = yes
+			immaterial_harmony_conversion_cost_reduced = yes
+			immaterial_harmony_buddhist_take_vows = yes
 		}
 	}
 }
