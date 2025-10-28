@@ -1,4 +1,4 @@
-﻿version="0.5 'DAWN Dev'"
+﻿version="0.5 DAWN Dev"
 tags={
 	"Total Conversion"
 }
