@@ -1,4 +1,4 @@
-﻿l_english:
+﻿l_english: 
  SPOUSE:0 "[spouse|E]"
  FORMER_SPOUSE:0 "Former [spouse|E]"
  SPOUSE_DIARCH:0 "$SPOUSE$-[Character.GetDiarchTitle]"
@@ -14,6 +14,13 @@
  REGULAR_BETROTHAL:0 "[betrothal|E]"
  MATRILINEAL_BETROTHAL:0 "[matrilineal|E]"
  CONCUBINE_MARRIAGE:0 "[concubinage|E]"
+
+ CHARACTER_VIEW_NAME: "[Character.GetUINameNotMeNoTooltip], "
+ CHARACTER_VIEW_NAME_SHORT: "[Character.GetShortUINameNotMeNoTooltip], "
+ CHARACTER_VIEW_NAME_TT: "[Character.GetUINameNotMeNoTooltip]"
+ CHARACTER_VIEW_AGE: " [Character.GetAge]"
+ CHARACTER_VIEW_AGE_TT: "[Character.GetDeathOrBirthDateInfo]"
+ CHARACTER_VIEW_ALIVE_TT: "[Character.GetHealthInfo]"
 
  #HEIR:0 "" delete this
  IMPRISONED_BY:0 "[Concept( 'jailor', 'Jailor @crime_icon!' )|E]"
@@ -85,6 +92,8 @@
  CRUSHES_LABEL:0 "Crushes"
  BULLIES_LABEL:0 "Bullies"
  VICTIMS_LABEL:0 "Victims"
+ DISCIPLE_LABEL:0 "Disciples #weak ([GetDataModelSize( CharacterWindow.GetRelationsOfType( GetRelation( 'disciple' ) ) )]/[Character.MakeScope().ScriptValue('disciples_limit_value')])#!"
+ ELDER_LABEL:0 "Elder"
  CV_SECRETS_HEADER:0 "[CharacterWindow.GetCharacter.GetNamePossessiveOrMy|U] [secrets|E]"
  CV_KNOWN_SECRETS_HEADER:0 "[secrets|E] known by [CharacterWindow.GetCharacter.GetNameOrMe]"
  CV_HOOKS_HEADER:1 "Your [hooks|E]"
@@ -183,6 +192,7 @@
 
  CV_CHILDREN_HEADING:0 "Children #weak ([GetDataModelSize(CharacterWindow.GetChildren)])#!"
  CV_SIBLINGS_HEADING:0 "Siblings #weak ([GetDataModelSize(CharacterWindow.GetSiblings)])#!"
+ CV_CONCUBINES_HEADING:0 "Concubines #weak ([GetDataModelSize(CharacterWindow.GetConcubines)])#!"
  CHARACTER_RELATION_COMBINE:0 "$FIRST$ • $SECOND$"
 
  FAITH_CHARACTER_WINDOW:0 "[Faith.GetAdjectiveNoTooltip]"
@@ -192,8 +202,18 @@
  FIND_SPOUSE:0 "Find [spouse|E]"
  KNOWN_LANGUAGES_TOOLTIP:1 "#T Known [languages|E]#!\n[Character.GetKnownLanguagesString]\n\n#weak Current [language_limit|E]: [Character.MakeScope.ScriptValue('current_extra_languages')|V0] out of [Character.MakeScope.ScriptValue('language_soft_cap')|V0]#!"
 
+ REQUEST_CONTRIBUTION_TOOLTIP: "[AddLocalizationIf(Not(CharacterListItem.IsSelectable),'REQUEST_CONTRIBUTION_ERROR_TOOLTIP')]"
+ REQUEST_CONTRIBUTION_ERROR_TOOLTIP: "@warning_icon! You cannot #v $request_great_project_contribution_interaction$#! until the #bold Recovery#! phase of the [disaster|E]"
  EXTENDED_RELATIONS_TOOLTIP:0 "[Character.GetRelationToStringExtended( GetPlayer )]"
  CHARACTER_WINDOW_LEGITIMACY_LEVEL: "[LegitimacyLevel.GetIndex|V]/[Subtract_int32( GetDataModelSize( LegitimacyType.GetLevels ), '(int32)1' )|V]"
- INFLUENCE_WITH_BALANCE_TOOLTIP: "#T [influence|E]: $VALUE|V0$#!\n$BALANCE|V=1$/month\n\n#T [influence_level|E]: #!$LEVEL$"
 
  DIARCH_ICON_TOOLTIP: "#T Active [power_sharing|E]\n#![Character.GetShortUIName|U] [CharAreIs(Character)] [Character.GetLiege.GetShortUINamePossessive] [Character.GetLiege.GetDiarchTitle]"
+
+ RADIANCE_TOOLTIP_HEADER: "[mandala_radiance|E]: $RADIANCE$/#V [GetDefine( 'NMandala', 'MAX_RADIANCE' )]#!"
+ RADIANCE_TOOLTIP_DISABLED: "@warning_icon! #WARNING Character must have the #HIGH $building_mandala_capital_01$#! [great_building|E] or higher in order to have [mandala_radiance|E]#!"
+ MANDALA_ASPECT_DESC: "[mandala_aspect|E]"
+ ROSE_FROM_THE_ASHES: "[GetModifier('mandala_rise_from_the_ashes_modifier').GetNameWithTooltip]"
+ I_AM_A_TRIBUTARY_OF_A_MANDALA: "[tributary|E] of a God King"
+ I_AM_A_VASSAL: "I am a [vassal|E]"
+ TARNISHED_MANDALA: "Recently lost a war of tyranny"
+ RUINED_MANDALA_CAPITAL: "#WARNING #HIGH $building_type_mandala_capital_01$#! is [ruined|E]#!"
