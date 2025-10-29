@@ -3,31 +3,9 @@
 @always_primary_score = 1000
 @never_primary_score = -1000
 
-h_china = {
-	color = { 230 180 10 }
 
-	capital = c_bianzhou # Kaifeng
 
-	can_create = {
-		custom_tooltip = {
-			text = dynastic_cycle.tt.forbid_title_creation
-			NOT = { exists = situation:dynastic_cycle }
-		}
-	}
-	can_create_on_partition = {
-		custom_tooltip = {
-			text = dynastic_cycle.tt.forbid_title_creation
-			NOT = { exists = situation:dynastic_cycle }
-		}
-	}
-	can_destroy = {
-		custom_tooltip = {
-			text = dynastic_cycle.tt.forbid_title_destruction
-			NOT = { exists = situation:dynastic_cycle }
-		}
-	}
-
-	e_zhongyuan = {
+e_zhongyuan = {
 		capital = c_bianzhou
 
 		color = { 230 200 10 }
@@ -1974,7 +1952,7 @@ h_china = {
 		}
 	}
 
-	e_yongliang = {
+e_yongliang = {
 		color = { 180 180 190 }
 
 		capital = c_jingzhao
@@ -3456,7 +3434,7 @@ h_china = {
 		}
 	}
 
-	e_jingyang = {
+e_jingyang = {
 		color = { 169 40 40 }
 
 		capital = c_jiangning
@@ -5465,7 +5443,7 @@ h_china = {
 		}
 	}
 
-	e_liangyi = {
+e_liangyi = {
 		color = { 60 150 190 }
 
 		capital = c_chengdu
@@ -7278,7 +7256,7 @@ h_china = {
 		}
 	}
 
-	e_lingnan = {
+e_lingnan = {
 		color = { 0 120 31 }
 
 		cultural_names = {
@@ -8598,147 +8576,150 @@ h_china = {
 			}
 		}
 	}
-	e_minister_chancellor = {
-		color = { 228 237 113 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
 
-		capital = c_jingzhao
-	}
 
-	e_minister_censor = {
-		color = { 185 192 35 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
+# LAAMP TITLES
 
-		capital = c_jingzhao
-	}
+# 867
 
-	e_minister_grand_marshal = {
-		color = { 212 150 69 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
+d_laamp_xuanji = { # Yu Xuanji
+	color = { 100 100 100 }
+	capital = c_jingzhao
 
-		capital = c_jingzhao
-	}
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
 
-	e_minister_of_personnel = {
-		color = { 228 237 59 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
+	ai_primary_priority = { add = @never_primary_score }
+}
 
-		capital = c_jingzhao
-	}
+d_laamp_ding_hui = { # Ding Hui, The Wayward Spears
+	color = { 100 100 100 }
+	capital = c_henan
 
-	e_minister_of_revenue = {
-		color = { 206 247 0 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
 
-		capital = c_jingzhao
-	}
+	ai_primary_priority = { add = @never_primary_score }
+}
 
-	e_minister_of_rites = {
-		color = { 248 247 0 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
+d_laamp_liang_zhu_quanzhong = { # Liang Zhu Quanzhong, Zhu's Iron Host
+	color = { 100 100 100 }
+	capital = c_bianzhou
 
-		capital = c_jingzhao
-	}
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
 
-	e_minister_of_war = {
-		color = { 255 168 10 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
+	ai_primary_priority = { add = @never_primary_score }
+}
 
-		capital = c_jingzhao
-	}
+d_laamp_liangshan_band = { # Song Jiang, Liangshan Band
+	color = { 100 100 100 }
+	capital = c_zhongzhou
 
-	e_minister_of_justice = {
-		color = { 255 237 13 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
 
-		capital = c_jingzhao
-	}
+	ai_primary_priority = { add = @never_primary_score }
+}
 
-	e_minister_of_works = {
-		color = { 239 255 13 }
-		landless = yes
-		allow_domicile = no
-		destroy_if_invalid_heir = yes
-		no_automatic_claims = yes
-		de_jure_drift_disabled = yes
-		can_use_nomadic_naming = no
-		can_be_named_after_dynasty = no
-		definite_form = yes
-		ruler_uses_title_name = no
-		enable_regnal_numbers = no
+d_laamp_frontier_guardians = { # Yang Zongbao, Frontier Guardians
+	color = { 100 100 100 }
+	capital = c_shangxi
 
-		capital = c_jingzhao
-	}
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_laamp_companions_of_caodong = { # Furong Daokai, Companions of Caodong
+	color = { 100 100 100 }
+	capital = c_bianzhou
+
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+# 1178
+
+d_laamp_disciples_of_chongyang = { # Wang Chuyi, Disciples of Chongyang
+	color = { 100 100 100 }
+	capital = c_dengzhou
+
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_laamp_wandering_lute = { # Jiang Kui, Wandering Lute
+	color = { 100 100 100 }
+	capital = c_jizhou_3
+
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_laamp_dawn_company = { # Zhu Zhongba, Dawn Company
+	color = { 100 100 100 }
+	capital = c_haozhou
+
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_laamp_eastern_sculptors = { # Chen Heqing, Eastern Sculptors
+	color = { 100 100 100 }
+	capital = c_yuezhou
+
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	ai_primary_priority = { add = @never_primary_score }
 }
