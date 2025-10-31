@@ -52,9 +52,9 @@
 			OR = {
 				government_is_gallic_trigger = yes
 				has_character_flag = tgp_gaul_restore_gallic_government_flag
-				culture = culture:gallic
+				culture = culture:roman
 				culture = {
-					any_parent_culture_or_above = { this = culture:gallic }
+					any_parent_culture_or_above = { this = culture:roman }
 				}
 			}
 		}
@@ -62,7 +62,7 @@
 
 	# The Regent always remains in the same place.
 	can_move_realm_capital = {
-		NOT = { primary_title ?= title:e_gaul }
+		NOT = { primary_title ?= title:e_high_kingdom_gaul }
 	}
 
 	compatible_government_type_succession = { gaul_feudal_government }
@@ -135,7 +135,7 @@ gaul_feudal_government = { # Based on Soryo
 
 	# The Regent always remains in the same place.
 	can_move_realm_capital = {
-		NOT = { primary_title ?= title:e_gaul }
+		NOT = { primary_title ?= title:e_high_kingdom_gaul }
 	}
 
 	compatible_government_type_succession = { gaul_administrative_government }
