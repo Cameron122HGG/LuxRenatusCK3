@@ -3,7 +3,7 @@ tgp_lux_is_gallic_high_king_trigger = {
 	title:k_high_king_gaul_throne.holder ?= this
 }
 
-tgp_lux_is_gallic_mayor_palace_trigger = {
+tgp_lux_is_gallic_majordomo_trigger = {
 	has_title = title:e_high_kingdom_gaul
 	NOR = {
 		has_title = title:k_high_king_gaul_throne
@@ -27,20 +27,20 @@ tgp_lux_is_gallic_governor_trigger = {
 	}
 }
 
-can_have_mayor_palace_acclamation_succession_law_trigger = {
+can_have_majordomo_acclamation_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
 	government_allows = administrative
 	is_independent_ruler = yes
 }
 
-can_keep_mayor_palace_acclamation_succession_law_trigger = {
+can_keep_majordomo_acclamation_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
 	trigger_if = {
 		limit = {
 			has_realm_law = gallic_regency_succession_law
 		}
 		OR = {
-			can_have_mayor_palace_acclamation_succession_law_trigger = yes
+			can_have_majordomo_acclamation_succession_law_trigger = yes
 			has_title = title:e_high_kingdom_gaul
 		}
 	}
@@ -377,7 +377,7 @@ tgp_lux_gaul_defense_mobilization_valid_trigger = {
 
 tgp_lux_gaul_valid_restore_monarchy_scion_trigger = {
 	is_landed = no
-	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:mayor_palace }
+	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:majordomo }
 	is_healthy = yes
 }
 
@@ -405,7 +405,7 @@ tgp_lux_install_regent_faction_can_create_trigger = {
 	has_tgp_dlc_trigger = yes
 	scope:target ?= { tgp_install_regent_faction_target_valid_trigger = yes }
 	custom_tooltip = {
-		text = replace_ceremonial_regent_faction_mayor_palace_trigger
+		text = replace_ceremonial_regent_faction_majordomo_trigger
 		NOR = {
 			has_global_variable = gaul_imperium_established
 			has_global_variable = high_king_gaul_restored
@@ -519,7 +519,7 @@ royal_policy_faction_can_create_trigger = {
 }
 
 tgp_lux_top_liege_is_not_royal_trigger = { # Petition Liege
-	lux_is_gallic_mayor_palace_trigger = yes
+	lux_is_gallic_majordomo_trigger = yes
 }
 
 tgp_lux_gallic_administrative_bloc_house_head_trigger = {
