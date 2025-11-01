@@ -213,7 +213,7 @@ gallic_manor_building_ai_modifier_value = {
 }
 
 ### KAMPAKU
-gallic_mayor_gaul_house_past_mayor_value = {
+gallic_majordomo_gaul_house_past_mayor_value = {
 	value = 0
 	add = {
 		value = 0
@@ -230,7 +230,7 @@ gallic_mayor_gaul_house_past_mayor_value = {
 	}
 }
 
-gallic_mayor_gaul_house_past_mayor_value_actual = {
+gallic_majordomo_gaul_house_past_mayor_value_actual = {
 	value = 0
 	add = {
 		value = 0
@@ -252,13 +252,13 @@ gallic_mayor_gaul_house_past_mayor_value_actual = {
 	}
 }
 
-# Number of House children with Imperial dynasty parents
-gallic_mayor_gaul_house_imperial_parent_score_value = {
+# Number of House children with royal dynasty parents
+gallic_majordomo_gaul_house_royal_parent_score_value = {
 	value = 5
-	multiply = gallic_mayor_gaul_house_imperial_parent_value
+	multiply = gallic_majordomo_gaul_house_royal_parent_value
 }
 
-gallic_mayor_gaul_house_imperial_parent_value = {
+gallic_majordomo_gaul_house_royal_parent_value = {
 	value = 0
 	add = {
 		value = 0
@@ -267,13 +267,13 @@ gallic_mayor_gaul_house_imperial_parent_value = {
 				exists = house
 				exists = top_liege.primary_title.var:administrative_ui_special_title.holder.house
 			}
-			top_liege.primary_title.var:administrative_ui_special_title.holder.house = { save_temporary_scope_as = imperial_house_temp }
+			top_liege.primary_title.var:administrative_ui_special_title.holder.house = { save_temporary_scope_as = royal_house_temp }
 			house = {
 				every_house_member = {
 					limit = {
 						any_parent = {
 							even_if_dead = yes
-							house ?= scope:imperial_house_temp
+							house ?= scope:royal_house_temp
 						}
 					}
 					add = 1
@@ -283,18 +283,18 @@ gallic_mayor_gaul_house_imperial_parent_value = {
 	}
 }
 
-gallic_mayor_gaul_house_imperial_parent_value_actual = {
-	value = gallic_mayor_gaul_house_imperial_parent_value
+gallic_majordomo_gaul_house_royal_parent_value_actual = {
+	value = gallic_majordomo_gaul_house_royal_parent_value
 	multiply = 3
 }
 
-# Number of Imperial dynasty members with House parents
-gallic_mayor_gaul_house_imperial_child_score_value = {
+# Number of royal dynasty members with House parents
+gallic_majordomo_gaul_house_royal_child_score_value = {
 	value = 5
-	multiply = gallic_mayor_gaul_house_imperial_child_value
+	multiply = gallic_majordomo_gaul_house_royal_child_value
 }
 
-gallic_mayor_gaul_house_imperial_child_value = {
+gallic_majordomo_gaul_house_royal_child_value = {
 	value = 0
 	add = {
 		value = 0
@@ -320,12 +320,12 @@ gallic_mayor_gaul_house_imperial_child_value = {
 }
 
 # Number of spouses of Emperor
-gallic_mayor_gaul_imperial_spouse_score_value = {
+gallic_majordomo_gaul_royal_spouse_score_value = {
 	value = 15
-	multiply = gallic_mayor_gaul_imperial_spouse_value
+	multiply = gallic_majordomo_gaul_royal_spouse_value
 }
 
-gallic_mayor_gaul_imperial_spouse_value = {
+gallic_majordomo_gaul_royal_spouse_value = {
 	value = 0
 	add = {
 		value = 0
@@ -346,13 +346,13 @@ gallic_mayor_gaul_imperial_spouse_value = {
 	}
 }
 
-# Number of Imperial dynasty members married to House members
-gallic_mayor_gaul_house_imperial_spouse_score_value = {
+# Number of royal dynasty members married to House members
+gallic_majordomo_gaul_house_royal_spouse_score_value = {
 	value = 5
-	multiply = gallic_mayor_gaul_house_imperial_spouse_value
+	multiply = gallic_majordomo_gaul_house_royal_spouse_value
 }
 
-gallic_mayor_gaul_house_imperial_spouse_value = {
+gallic_majordomo_gaul_house_royal_spouse_value = {
 	value = 0
 	add = {
 		value = 0
@@ -380,12 +380,12 @@ gallic_mayor_gaul_house_imperial_spouse_value = {
 }
 
 # Number of Governorships held by House
-gallic_mayor_gaul_house_governorship_score_value = {
+gallic_majordomo_gaul_house_governorship_score_value = {
 	value = 5
-	multiply = gallic_mayor_gaul_house_governorship_value
+	multiply = gallic_majordomo_gaul_house_governorship_value
 }
 
-gallic_mayor_gaul_house_governorship_value = {
+gallic_majordomo_gaul_house_governorship_value = {
 	value = 0
 	add = {
 		value = 0
@@ -407,12 +407,12 @@ gallic_mayor_gaul_house_governorship_value = {
 }
 
 # Number of Devoted House members
-gallic_mayor_gaul_house_devoted_score_value = {
+gallic_majordomo_gaul_house_devoted_score_value = {
 	value = 3
-	multiply = gallic_mayor_gaul_house_devoted_value
+	multiply = gallic_majordomo_gaul_house_devoted_value
 }
 
-gallic_mayor_gaul_house_devoted_value = {
+gallic_majordomo_gaul_house_devoted_value = {
 	value = 0
 	add = {
 		value = 0
@@ -509,7 +509,7 @@ tgp_bloc_member_count_value = {
 	min = 1
 }
 
-gallic_mayor_gaul_house_bloc_size_score_value = {
+gallic_majordomo_gaul_house_bloc_size_score_value = {
 	value = 0
 	add = {
 		value = 0
@@ -526,7 +526,7 @@ gallic_mayor_gaul_house_bloc_size_score_value = {
 	}
 }
 
-gallic_mayor_gaul_house_bloc_size_heir_score_value = {
+gallic_majordomo_gaul_house_bloc_size_heir_score_value = {
 	value = 0
 	add = {
 		value = 0
