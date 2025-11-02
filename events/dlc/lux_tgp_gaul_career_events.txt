@@ -1,7 +1,7 @@
 ﻿###################################
 # JAPAN CAREER EVENTS
 ###################################
-namespace = tgp_japan_career
+namespace = tgp_lux_gaul_career
 
 ### EVENT LIST ####################################################################
 ## 0001 - Intro in 1066
@@ -10,44 +10,44 @@ namespace = tgp_japan_career
 
 # Intro Event - Who are you playing as and what is your situation
 # Also acts as an introduction when you start playing in Japan
-tgp_japan_career.0001 = {
+tgp_lux_gaul_career.0001 = {
 	type = character_event
     window = big_event_window
-	title = tgp_japan_career.0001.t
+	title = tgp_lux_gaul_career.0001.t
 	desc = {
-		desc = tgp_japan_career.0001.desc
+		desc = tgp_lux_gaul_career.0001.desc
 		first_valid =  {
 			triggered_desc = {
-                trigger = { has_title = title:k_chrysanthemum_throne } #is tenno
-                desc = tgp_japan_career.0001.tenno_desc
+                trigger = { has_title = title:k_high_king_gaul_throne } #is tenno
+                desc = tgp_lux_gaul_career.0001.tenno_desc
             }
 			triggered_desc = {
 				trigger = { has_title = title:e_japan } #is kampaku
-				desc = tgp_japan_career.0001.kampaku_desc
+				desc = tgp_lux_gaul_career.0001.kampaku_desc
 			}
             triggered_desc = {
-                trigger = { government_has_flag = government_is_japan_feudal } #is soryo
-                desc = tgp_japan_career.0001.soryo_desc
+                trigger = { government_has_flag = government_is_gaul_feudal } #is soryo
+                desc = tgp_lux_gaul_career.0001.soryo_desc
             }
             triggered_desc = {
-                trigger = { government_has_flag = government_is_japan_administrative } #is ritsuryo
-                desc = tgp_japan_career.0001.ritsuryo_desc
+                trigger = { government_has_flag = government_is_gaul_administrative } #is ritsuryo
+                desc = tgp_lux_gaul_career.0001.ritsuryo_desc
             }           
 		}
-        desc = tgp_japan_career.0001.desc_2
+        desc = tgp_lux_gaul_career.0001.desc_2
 	}
 	theme = diplomacy
 	override_icon = {
-		trigger = { government_has_flag = government_is_japan_feudal }
+		trigger = { government_has_flag = government_is_gaul_feudal }
 		reference ="gfx/interface/icons/event_types/type_war.dds"
 	}
 	override_header_background = {
-		trigger = { government_has_flag = government_is_japan_feudal } 
+		trigger = { government_has_flag = government_is_gaul_feudal } 
 		reference = "gfx/interface/window_event/event_header_red.dds"
 	}
 	override_background = {
             trigger = {
-            has_title = title:k_chrysanthemum_throne
+            has_title = title:k_high_king_gaul_throne
         }
         reference = tgp_garden_asia
     }
@@ -55,17 +55,17 @@ tgp_japan_career.0001 = {
         trigger = {
 			has_title = title:e_japan
 		}
-		reference = tgp_study_japan
+		reference = tgp_lux_study_gaul
 	}
 	override_background = {
         trigger = {
-            government_has_flag = government_is_japan_feudal
+            government_has_flag = government_is_gaul_feudal
 		}
 		reference = tgp_crossroad_inn_asia
 	}
     override_background = {
             trigger = {
-            government_has_flag = government_is_japan_administrative
+            government_has_flag = government_is_gaul_administrative
         }
         reference = bedchamber
     }
@@ -75,7 +75,7 @@ tgp_japan_career.0001 = {
 		character = root
 		triggered_animation = {
 			trigger = {
-                government_has_flag = government_is_japan_feudal #Soryo ruler should have their sword out
+                government_has_flag = government_is_gaul_feudal #Soryo ruler should have their sword out
 			}
 			animation = inspect_weapon 
 		}
@@ -86,7 +86,7 @@ tgp_japan_career.0001 = {
 		character = player_heir
 		triggered_animation = {
 			trigger = {
-                government_has_flag = government_is_japan_feudal #Soryo ruler should have their sword out
+                government_has_flag = government_is_gaul_feudal #Soryo ruler should have their sword out
 			}
 			animation = horse_archer_aggressive
 			camera = camera_event_scheme_vs_left_look_left
@@ -96,7 +96,7 @@ tgp_japan_career.0001 = {
 	
 	trigger = {
         has_tgp_dlc_trigger = yes
-        government_is_japanese_trigger = yes  
+        government_is_gallic_trigger = yes  
 	}
 
 	immediate = {
@@ -108,17 +108,17 @@ tgp_japan_career.0001 = {
 	}
 
 	option = {
-		name = tgp_japan_career.0001.a
+		name = tgp_lux_gaul_career.0001.a
 		add_character_modifier = {
-			modifier = tgp_japan_peace_modifier
+			modifier = tgp_lux_gaul_peace_modifier
 			years = 20
 		}
 	}
 
 	option = {
-		name = tgp_japan_career.0001.b
+		name = tgp_lux_gaul_career.0001.b
 		add_character_modifier = {
-			modifier = tgp_japan_war_modifier
+			modifier = tgp_lux_gaul_war_modifier
 			years = 20
 		}
 	}
