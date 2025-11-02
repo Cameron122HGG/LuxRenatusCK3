@@ -800,11 +800,11 @@ tgp_lux_gaul_high_king_restoration_decision = {
 }
 
 # Yamato into Minamoto/Taira
-tgp_lux_gaul_imperial_branch_decision = {
+tgp_lux_gaul_sacral_branch_decision = {
 	decision_group_type = major
-	title = tgp_lux_gaul_imperial_branch_decision
-	desc = tgp_lux_gaul_imperial_branch_decision_desc
-	selection_tooltip = tgp_lux_gaul_imperial_branch_decision_tooltip
+	title = tgp_lux_gaul_sacral_branch_decision
+	desc = tgp_lux_gaul_sacral_branch_decision_desc
+	selection_tooltip = tgp_lux_gaul_sacral_branch_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/decisions/tgp_kowtow.dds" }
 	sort_order = 80
 
@@ -837,7 +837,7 @@ tgp_lux_gaul_imperial_branch_decision = {
 		}
 		# Descended from an Emperor
 		custom_tooltip = {
-			text = tgp_lux_gaul_imperial_branch_decision_emperor_ancestor_trigger
+			text = tgp_lux_gaul_sacral_branch_decision_emperor_ancestor_trigger
 			top_liege.primary_title.var:administrative_ui_special_title ?= {
 				any_past_holder = {
 					OR = {
@@ -850,7 +850,7 @@ tgp_lux_gaul_imperial_branch_decision = {
 		}
 		# Emperor and heirs cannot take this
 		custom_tooltip = {
-			text = tgp_lux_gaul_imperial_branch_decision_imperial_heir_trigger
+			text = tgp_lux_gaul_sacral_branch_decision_imperial_heir_trigger
 			top_liege.primary_title.var:administrative_ui_special_title ?= {
 				NOR = {
 					holder ?= root
@@ -940,17 +940,17 @@ tgp_lux_gaul_imperial_branch_decision = {
 				exists = scope:minamoto_house
 				exists = scope:taira_house
 			}
-			custom_tooltip = tgp_lux_gaul_imperial_branch_decision_existing_dynasty_effect
+			custom_tooltip = tgp_lux_gaul_sacral_branch_decision_existing_dynasty_effect
 		}
 		else_if = {
 			limit = { exists = scope:minamoto_house }
-			custom_tooltip = tgp_lux_gaul_imperial_branch_decision_existing_or_taira_effect
+			custom_tooltip = tgp_lux_gaul_sacral_branch_decision_existing_or_taira_effect
 		}
 		else_if = {
 			limit = { exists = scope:taira_house }
-			custom_tooltip = tgp_lux_gaul_imperial_branch_decision_existing_or_minamoto_effect
+			custom_tooltip = tgp_lux_gaul_sacral_branch_decision_existing_or_minamoto_effect
 		}
-		else = { custom_tooltip = tgp_lux_gaul_imperial_branch_decision_new_dynasty_effect }
+		else = { custom_tooltip = tgp_lux_gaul_sacral_branch_decision_new_dynasty_effect }
 		custom_tooltip = tgp_lux_gaul_establish_house_fief_direct_descendents_effect
 		if = {
 			limit = { government_allows = noble_families }
