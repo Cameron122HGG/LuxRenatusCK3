@@ -1665,7 +1665,7 @@ tgp_lux_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 				#scope:new_title ?= { set_title_name_dynamic = japanese_noble_family_name }
 			}
 			establish_house_fief = {
-				japan_establish_house_fief_effect = yes
+				gaul_establish_house_fief_effect = yes
 			}
 			fallback = {
 				found_cadet_house_decision_effect = {
@@ -1778,7 +1778,7 @@ tgp_lux_gaul_decision.9002 = { # SAME CLAN EVENT - NO WIDGET
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_adopting_feudal_government"
 		tgp_establish_house_fief_save_scopes_effect = yes
-		japan_establish_house_fief_effect = yes
+		gaul_establish_house_fief_effect = yes
 	}
 
 	option = {
@@ -1816,7 +1816,7 @@ tgp_lux_gaul_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
 			scope:new_head = {
 				set_house = scope:new_head.house
 				#get_title = scope:new_nf_title
-				change_government = japan_feudal_government
+				change_government = gaul_feudal_government
 				if = {
 					limit = {
 						NOT = { var:petition_liege_house_fief_allowed_flag ?= scope:regent }
@@ -1858,14 +1858,14 @@ tgp_lux_gaul_decision.9101 = {
 	}
 
 	immediate = {
-		save_scope_as = shogun
+		save_scope_as = gaul_imperator
 		tgp_save_realm_ceremonial_liege_effect = yes
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
 		if = {
 			limit = {
 				any_vassal = {
 					is_landed = yes
-					has_government = japan_administrative_government
+					has_government = gaul_administrative_government
 					highest_held_title_tier >= tier_county
 				}
 			}
@@ -1879,7 +1879,7 @@ tgp_lux_gaul_decision.9101 = {
 			trigger_event = tgp_lux_gaul_decision.9102
 		}
 		# Rewards
-		japanese_become_shogun_reward_effect = yes
+		gallic_become_imperator_reward_effect = yes
 	}
 
 	option = {
@@ -1912,7 +1912,7 @@ tgp_lux_gaul_decision.9102 = {
 	}
 
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
 	}
 
 	option = {
@@ -1929,9 +1929,9 @@ tgp_lux_gaul_decision.9102 = {
 		}
 		if = {
 			limit = {
-				government_has_flag = government_is_japan_administrative
+				government_has_flag = government_is_gaul_administrative
 			}
-			change_government = japan_feudal_government
+			change_government = gaul_feudal_government
 		}
 	}
 }
@@ -1995,7 +1995,7 @@ tgp_lux_gaul_decision.9201 = {
 		name = tgp_lux_gaul_decision.9201.a
 		trigger = { exists = scope:minamoto_house }
 		highlight_portrait = scope:minamoto_house.house_head
-		japan_set_house_effect = { NEW_HOUSE = scope:minamoto_house }
+		gaul_set_house_effect = { NEW_HOUSE = scope:minamoto_house }
 		reverse_add_opinion = {
 			target = scope:minamoto_head
 			modifier = respect_opinion
@@ -2014,7 +2014,7 @@ tgp_lux_gaul_decision.9201 = {
 		name = tgp_lux_gaul_decision.9201.b
 		trigger = { exists = scope:taira_house }
 		highlight_portrait = scope:taira_house.house_head
-		japan_set_house_effect = { NEW_HOUSE = scope:taira_house }
+		gaul_set_house_effect = { NEW_HOUSE = scope:taira_house }
 		reverse_add_opinion = {
 			target = scope:taira_head
 			modifier = respect_opinion
@@ -2175,7 +2175,7 @@ tgp_lux_gaul_decision.9301 = {
 
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_restoring_japanese_emperor"
-		save_scope_as = tenno
+		save_scope_as = high_king_gaul
 		add_character_flag = ceremonial_liege_flag
 		# Inform Vassals
 		every_player = {
@@ -2197,14 +2197,14 @@ tgp_lux_gaul_decision.9302 = {
 	theme = realm
 
 	left_portrait = {
-		character = scope:tenno
+		character = scope:high_king_gaul
 		animation = war_over_win
 	}
 
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 		show_as_tooltip = {
-			scope:tenno = { restore_ceremonial_liege_faction_reward_effect = yes }
+			scope:high_king_gaul = { restore_ceremonial_liege_faction_reward_effect = yes }
 		}
 	}
 
@@ -2634,14 +2634,14 @@ tgp_lux_gaul_decision.9604 = { # War setup
 			# Start war
 			scope:leader ?= {
 				start_war = {
-					cb = japan_establish_soryo_administration_cb
+					cb = gaul_establish_soryo_administration_cb
 					target = scope:daijo_daijin
 				}
 				random_character_war = {
 					limit = {
 						primary_attacker = scope:leader
 						primary_defender = scope:daijo_daijin
-						using_cb = japan_establish_soryo_administration_cb
+						using_cb = gaul_establish_soryo_administration_cb
 					}
 					save_scope_as = war
 				}
@@ -2995,9 +2995,9 @@ tgp_lux_gaul_decision.9912 = {
 		name = tgp_lux_gaul_decision.9911.a
 		if = {
 			limit = {
-				NOT = { has_government = japan_administrative_government }
+				NOT = { has_government = gaul_administrative_government }
 			}
-			change_government = japan_administrative_government
+			change_government = gaul_administrative_government
 		}
 	}
 
@@ -3007,7 +3007,7 @@ tgp_lux_gaul_decision.9912 = {
 			is_ai = no
 			NOR = {
 				is_at_war_with = scope:kampaku
-				has_government = japan_administrative_government
+				has_government = gaul_administrative_government
 			}
 		}
 		every_in_list = {
@@ -3043,7 +3043,7 @@ tgp_lux_gaul_decision.9913 = {
 		scope:recipient = {
 			every_character_war = {
 				limit = {
-					using_cb = japan_refused_ritsuryo_cb
+					using_cb = gaul_refused_ritsuryo_cb
 					casus_belli = {
 						primary_attacker = scope:recipient
 						primary_defender = scope:actor

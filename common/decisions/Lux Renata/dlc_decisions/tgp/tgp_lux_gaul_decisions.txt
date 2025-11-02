@@ -42,7 +42,7 @@ tgp_lux_gaul_establish_house_fief_decision = {
 				house = {
 					NOR = {
 						has_house_power_parameter = ceremony_cheaper_feasts
-						has_house_power_parameter = unlocks_japanese_manor_archive
+						has_house_power_parameter = unlocks_gallic_manor_archive
 					}
 				}
 			}
@@ -97,7 +97,7 @@ tgp_lux_gaul_establish_house_fief_decision = {
 			}
 			custom_tooltip = {
 				text = tgp_lux_gaul_establish_house_fief_centralization_trigger
-				NOT = { has_realm_law = japanese_bureaucracy_3 }
+				NOT = { has_realm_law = gallic_bureaucracy_3 }
 			}
 		}
 		# Prevent ai flipflopping back after demand admin gov interaction
@@ -178,7 +178,7 @@ tgp_lux_gaul_establish_house_fief_decision = {
 						limit = {
 							OR = {
 								has_house_power_parameter = ceremony_cheaper_feasts
-								has_house_power_parameter = unlocks_japanese_manor_archive
+								has_house_power_parameter = unlocks_gallic_manor_archive
 							}
 						}
 						random_list = {
@@ -217,7 +217,7 @@ tgp_lux_gaul_establish_house_fief_decision = {
 		has_government = gaul_administrative_government
 		NOT = { # Reluctance to forgo potential to become Kampaku
 			top_liege = {
-				has_realm_law = japanese_regency_succession_law
+				has_realm_law = gallic_regency_succession_law
 				primary_title = { "place_in_line_of_succession(root)" <= 3 }
 			}
 		}
@@ -278,7 +278,7 @@ tgp_lux_gaul_establish_house_fief_decision = {
 			add = -10
 		}
 		modifier = { # Prosperity
-			house ?= { has_house_power_parameter = unlocks_japanese_manor_brewery }
+			house ?= { has_house_power_parameter = unlocks_gallic_manor_brewery }
 			add = 25
 		}
 		modifier = { # Determination
@@ -286,7 +286,7 @@ tgp_lux_gaul_establish_house_fief_decision = {
 			add = 50
 		}
 		modifier = { # Strength
-			house ?= { has_house_power_parameter = unlocks_japanese_manor_armory }
+			house ?= { has_house_power_parameter = unlocks_gallic_manor_armory }
 			add = 100
 		}
 		modifier = { # Reluctance to turn against successful bloc
@@ -358,15 +358,15 @@ tgp_lux_gaul_establish_house_fief_decision = {
 			add = 20
 		}
 		modifier = {
-			has_realm_law = japanese_bureaucracy_1
+			has_realm_law = gallic_bureaucracy_1
 			add = 10
 		}
 		modifier = {
-			has_realm_law = japanese_bureaucracy_2
+			has_realm_law = gallic_bureaucracy_2
 			add = 20
 		}
 		modifier = {
-			has_realm_law = japanese_bureaucracy_3
+			has_realm_law = gallic_bureaucracy_3
 			add = 30
 		}
 		opinion_modifier = { # Opinion of liege
@@ -454,7 +454,7 @@ tgp_lux_gaul_establish_soryo_manor_decision = {
 			}
 			custom_tooltip = {
 				text = tgp_lux_gaul_establish_house_fief_centralization_trigger
-				NOT = { has_realm_law = japanese_bureaucracy_3 }
+				NOT = { has_realm_law = gallic_bureaucracy_3 }
 			}
 		}
 	}
@@ -528,7 +528,7 @@ tgp_lux_gaul_establish_soryo_manor_decision = {
 			add = 50
 		}
 		modifier = {
-			house ?= { has_house_power_parameter = unlocks_japanese_manor_armory }
+			house ?= { has_house_power_parameter = unlocks_gallic_manor_armory }
 			add = 100
 		}
 	}
@@ -540,7 +540,7 @@ tgp_lux_gaul_establish_soryo_administration_decision = {
 	title = tgp_lux_gaul_establish_soryo_administration_decision
 	desc = tgp_lux_gaul_establish_soryo_administration_decision_desc
 	selection_tooltip = tgp_lux_gaul_establish_soryo_administration_decision_tooltip
-	picture = { reference = "gfx/interface/illustrations/event_story/tgp_japanese_shogunate.dds" }
+	picture = { reference = "gfx/interface/illustrations/event_story/tgp_gallic_shogunate.dds" }
 	sort_order = 80
 
 	cost = {
@@ -562,7 +562,7 @@ tgp_lux_gaul_establish_soryo_administration_decision = {
 		government_is_gallic_trigger = yes
 		NOR = { 
 			government_has_flag = government_is_gaul_feudal 
-			has_global_variable = shogunate_established
+			has_global_variable = gaul_imperium_established
 		}
 	}
 
@@ -571,8 +571,8 @@ tgp_lux_gaul_establish_soryo_administration_decision = {
 		has_title = title:e_high_kingdom_gaul
 		is_independent_ruler = yes
 		has_government = gaul_administrative_government
-		has_realm_law = japanese_regency_succession_law
-		has_realm_law = japanese_bureaucracy_3
+		has_realm_law = gallic_regency_succession_law
+		has_realm_law = gallic_bureaucracy_3
 		custom_tooltip = {
 			text = house_head_create_faction_cohesion_tt
 			house.house_confederation ?= {
@@ -599,9 +599,9 @@ tgp_lux_gaul_establish_soryo_administration_decision = {
 			VARIABLE = achieved_ep4_18_yes_i_need_my_samurai_achievement
 			VALUE = yes
 		}
-		custom_tooltip = japanese_establish_soryo_administration_war_start_tt
+		custom_tooltip = gallic_establish_soryo_administration_war_start_tt
 		custom_description_no_bullet = { text = if_you_win_effect }
-		show_as_tooltip = { japanese_establish_soryo_administration_reward_effect = yes }
+		show_as_tooltip = { gallic_establish_soryo_administration_reward_effect = yes }
 		trigger_event = {
 			id = tgp_lux_gaul_decision.9601
 			delayed = yes
@@ -626,7 +626,7 @@ tgp_lux_gaul_become_shogun_decision = {
 	title = tgp_lux_gaul_become_shogun_decision
 	desc = tgp_lux_gaul_become_shogun_decision_desc
 	selection_tooltip = tgp_lux_gaul_become_shogun_decision_tooltip
-	picture = { reference = "gfx/interface/illustrations/event_story/tgp_japanese_shogunate.dds" }
+	picture = { reference = "gfx/interface/illustrations/event_story/tgp_gallic_shogunate.dds" }
 	sort_order = 80
 
 	cost = {
@@ -641,8 +641,8 @@ tgp_lux_gaul_become_shogun_decision = {
 		government_has_flag = government_is_gaul_feudal
 		top_liege = { has_title = title:e_high_kingdom_gaul }
 		NOR = {
-			has_global_variable = shogunate_established
-			has_global_variable = tenno_restored
+			has_global_variable = gaul_imperium_established
+			has_global_variable = high_king_gaul_restored
 		}
 	}
 
@@ -659,19 +659,18 @@ tgp_lux_gaul_become_shogun_decision = {
 		custom_tooltip = {
 			text = tgp_lux_gaul_become_shogun_decision_centralization_trigger
 			OR = {
-				has_realm_law = japanese_bureaucracy_2
-				has_realm_law = japanese_bureaucracy_3
+				has_realm_law = gallic_bureaucracy_2
+				has_realm_law = gallic_bureaucracy_3
 			}
 		}
 		is_at_war = no
 		custom_tooltip = {
 			text = tgp_lux_gaul_become_shogun_decision_land_trigger
 			top_liege = {
-				completely_controls = title:d_kinai
-				completely_controls = title:d_nankaido
-				completely_controls = title:d_hokurikudo
-				completely_controls = title:d_west_bando
-				completely_controls = title:d_north_saikaido
+				completely_controls = title:k_neustria
+				completely_controls = title:k_france
+				completely_controls = title:k_aquitaine
+				completely_controls = title:k_septimania
 			}
 		}
 	}
@@ -682,11 +681,11 @@ tgp_lux_gaul_become_shogun_decision = {
 
 	effect = {
 		trigger_event = tgp_lux_gaul_decision.9101
-		show_as_tooltip = { japanese_become_shogun_reward_effect = yes }
+		show_as_tooltip = { gallic_become_shogun_reward_effect = yes }
 		if = {
 			limit = {
 				is_ai = no
-				this = character:japanese_minamoto_seiwa_10
+				this = character:gallic_minamoto_seiwa_10
 			}
 			add_achievement_global_variable_effect = {
 				VARIABLE = finished_ep4_08_shogun_achievement
@@ -708,11 +707,11 @@ tgp_lux_gaul_become_shogun_decision = {
 }
 
 # Emperor Restoration
-tgp_lux_gaul_emperor_restoration_decision = {
+tgp_lux_gaul_high_king_restoration_decision = {
 	decision_group_type = major
-	title = tgp_lux_gaul_emperor_restoration_decision
-	desc = tgp_lux_gaul_emperor_restoration_decision_desc
-	selection_tooltip = tgp_lux_gaul_emperor_restoration_decision_tooltip
+	title = tgp_lux_gaul_high_king_restoration_decision
+	desc = tgp_lux_gaul_high_king_restoration_decision_desc
+	selection_tooltip = tgp_lux_gaul_high_king_restoration_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/decisions/tgp_kowtow.dds" }
 	sort_order = 80
 
@@ -740,8 +739,8 @@ tgp_lux_gaul_emperor_restoration_decision = {
 		custom_tooltip = {
 			text = tgp_lux_gaul_become_shogun_decision_centralization_trigger
 			OR = {
-				has_realm_law = japanese_bureaucracy_2
-				has_realm_law = japanese_bureaucracy_3
+				has_realm_law = gallic_bureaucracy_2
+				has_realm_law = gallic_bureaucracy_3
 			}
 		}
 		is_at_war = no
@@ -895,7 +894,7 @@ tgp_lux_gaul_imperial_branch_decision = {
 							is_great_grandchild_of = scope:nearest_emperor
 						}
 						dynasty ?= {
-							NOT = { this = dynasty:japanese_yamato }
+							NOT = { this = dynasty:gallic_yamato }
 							exists = var:minamoto_flag
 						}
 						# Filter out dynasties of Emperors further away from you
@@ -919,7 +918,7 @@ tgp_lux_gaul_imperial_branch_decision = {
 							is_great_grandchild_of = scope:nearest_emperor
 						}
 						dynasty ?= {
-							NOT = { this = dynasty:japanese_yamato }
+							NOT = { this = dynasty:gallic_yamato }
 							exists = var:taira_flag
 						}
 						# Filter out dynasties of Emperors further away from you
@@ -1425,7 +1424,7 @@ tgp_lux_gaul_restore_high_kingdom_gaulese_government_decision = {
 		is_independent_ruler = yes
 		has_title = title:e_high_kingdom_gaul
 		is_at_war = no
-		has_realm_law = japanese_bureaucracy_3
+		has_realm_law = gallic_bureaucracy_3
 		prestige_level >= 4
 		completely_controls = title:d_kinai
 		completely_controls = title:d_nankaido
@@ -1468,7 +1467,7 @@ tgp_lux_gaul_assert_regional_dominion_government_decision = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					has_global_variable = shogunate_established
+					has_global_variable = gaul_imperium_established
 				}
 				desc = tgp_lux_gaul_assert_regional_dominion_government_decision_shogun_desc
 			}
@@ -1501,7 +1500,7 @@ tgp_lux_gaul_assert_regional_dominion_government_decision = {
 			custom_tooltip = {
 				text = tgp_lux_gaul_assert_regional_dominion_government_decision_trigger_01
 				domicile ?= {
-					has_domicile_building_or_higher = japanese_manor_main_03
+					has_domicile_building_or_higher = gallic_manor_main_03
 				}
 			}
 			custom_tooltip = {
@@ -1509,8 +1508,8 @@ tgp_lux_gaul_assert_regional_dominion_government_decision = {
 				house = {
 					AND = {
 						OR = {
-							has_house_power_parameter = unlocks_japanese_manor_armory
-							has_house_power_parameter = unlocks_japanese_manor_watch_house
+							has_house_power_parameter = unlocks_gallic_manor_armory
+							has_house_power_parameter = unlocks_gallic_manor_watch_house
 						}
 						has_house_power_parameter = aspiration_level_3
 					}
@@ -1526,8 +1525,8 @@ tgp_lux_gaul_assert_regional_dominion_government_decision = {
 				}
 				house = {
 					OR = {
-						has_house_power_parameter = unlocks_japanese_manor_armory
-						has_house_power_parameter = unlocks_japanese_manor_watch_house
+						has_house_power_parameter = unlocks_gallic_manor_armory
+						has_house_power_parameter = unlocks_gallic_manor_watch_house
 					}
 				}
 			}
@@ -1541,7 +1540,7 @@ tgp_lux_gaul_assert_regional_dominion_government_decision = {
 					house ?= {
 						OR = {
 							has_house_power_parameter = ceremony_cheaper_feasts
-							has_house_power_parameter = unlocks_japanese_manor_archive
+							has_house_power_parameter = unlocks_gallic_manor_archive
 						}
 					}
 				}
@@ -1550,7 +1549,7 @@ tgp_lux_gaul_assert_regional_dominion_government_decision = {
 					house = {
 						NOR = {
 							has_house_power_parameter = ceremony_cheaper_feasts
-							has_house_power_parameter = unlocks_japanese_manor_archive
+							has_house_power_parameter = unlocks_gallic_manor_archive
 						}
 					}
 				}
@@ -1572,22 +1571,22 @@ tgp_lux_gaul_assert_regional_dominion_government_decision = {
 				limit = {
 					OR = {
 						AND = {
-							has_realm_law = japanese_bureaucracy_3
+							has_realm_law = gallic_bureaucracy_3
 							culture = { has_cultural_tradition = tradition_tgp_bushido }
 						}
-						has_realm_law = japanese_bureaucracy_2
+						has_realm_law = gallic_bureaucracy_2
 					}
 				}
 				trigger_if = {
 					limit = {
 						culture = { has_cultural_tradition = tradition_tgp_bushido }
 					}
-					NOT = { has_realm_law = japanese_bureaucracy_3 }
+					NOT = { has_realm_law = gallic_bureaucracy_3 }
 				}
 				trigger_else = {
 					NOR = {
-						has_realm_law = japanese_bureaucracy_0
-						has_realm_law = japanese_bureaucracy_1
+						has_realm_law = gallic_bureaucracy_0
+						has_realm_law = gallic_bureaucracy_1
 					}
 				}
 			}
@@ -1638,7 +1637,7 @@ move_shogunate_court_decision = {
 	is_shown = {
 		has_tgp_dlc_trigger = yes
 		is_landed = yes
-		has_global_variable = shogunate_established
+		has_global_variable = gaul_imperium_established
 		NOT = { has_variable = moved_shogunate_court }
 		domain_size > 1
 		capital_county = title:c_yamashiro
@@ -1680,7 +1679,7 @@ move_shogunate_court_decision = {
 	
 	ai_potential = {
 		is_playable_character = yes
-		has_global_variable = shogunate_established
+		has_global_variable = gaul_imperium_established
 	}
 
 	ai_check_interval_by_tier = {
