@@ -1,0 +1,93 @@
+﻿l_french:
+
+#############################
+# ゲームルール / Game Rules #
+#############################
+ rule_SNAT_name_rule:0 "Affichage du nom du personnage"
+ setting_SNAT_first_name_only:0 "Prénom uniquement"
+ setting_SNAT_first_name_only_desc:0 "par ex.\n#high Roi de Angleterre, Guillaume I#!"
+ setting_SNAT_first_and_last_name:0 "Prénom et Nom de famille"
+ setting_SNAT_first_and_last_name_desc:0 "par ex.\n#high Roi de Angleterre, Guillaume I de Normandie#!" 
+
+#############################################
+# キャラクターウィンドウ / Character Window #
+#############################################
+
+# キャラクター名 / Character Name
+ SNAT_CHARACTER_NAME_TEXT:0 "[Character.Custom('SNAT_CharaName')]"
+
+ CHARACTER_FIRST_NAME_ONLY:0 "[ROOT.Char.GetFirstNameNicknamedNoTooltipRegnal]"
+ CHARACTER_FIRST_AND_LAST_NAME:0 "[ROOT.Char.GetFirstNameNicknamedNoTooltipRegnal] [ROOT.Char.GetDynastyHouseNameNoTooltip]"
+ CHARACTER_F_A_L_NICKNAMED_NAME:0 "[ROOT.Char.GetFirstNameNoTooltipRegnal] '[ROOT.Char.GetNickname]' [ROOT.Char.GetDynastyHouseNameNoTooltip]"
+
+# 称号または立場 / Title or Position
+ SNAT_TITLE_OR_POSITION:0 "[Character.Custom('SNAT_TitleOrPosition')][Character.Custom('SNAT_TitleName')][Character.Custom('SNAT_HofIcon')][Character.Custom('SNAT_TierIcon')][Character.Custom('SNAT_PositionIcon')]"
+
+ SNAT_EMPTY:0 ""
+
+#######################
+# 称号名 / Title Name #
+#######################
+ SNAT_CHARACTER_TITLE:0 " de #high [Select_CString( And( ROOT.Char.IsValid, EqualTo_string( ROOT.Char.GetPrimaryTitle.GetName, ROOT.Char.GetPrimaryTitle.GetBaseName ) ), ROOT.Char.GetPrimaryTitle.GetNameNoTierNoTooltip, ROOT.Char.GetPrimaryTitle.GetNameNoTooltip )]#!"
+ SNAT_CONSORT_TITLE:0 " de #high [Select_CString( And( ROOT.Char.GetPrimarySpouse.IsValid, EqualTo_string( ROOT.Char.GetPrimarySpouse.GetPrimaryTitle.GetName, ROOT.Char.GetPrimarySpouse.GetPrimaryTitle.GetBaseName ) ), ROOT.Char.GetPrimarySpouse.GetPrimaryTitle.GetNameNoTierNoTooltip, ROOT.Char.GetPrimarySpouse.GetPrimaryTitle.GetNameNoTooltip )]#!"
+ SNAT_CHILD_OF_KING_TITLE:0 " de #high [Select_CString( And( ROOT.Char.GetFather.IsValid, EqualTo_string( ROOT.Char.GetFather.GetPrimaryTitle.GetName, ROOT.Char.GetFather.GetPrimaryTitle.GetBaseName ) ), ROOT.Char.GetFather.GetPrimaryTitle.GetNameNoTierNoTooltip, ROOT.Char.GetFather.GetPrimaryTitle.GetNameNoTooltip )]#!"
+ SNAT_CHILD_OF_QUEEN_TITLE:0 " de #high [Select_CString( And( ROOT.Char.GetMother.IsValid, EqualTo_string( ROOT.Char.GetMother.GetPrimaryTitle.GetName, ROOT.Char.GetMother.GetPrimaryTitle.GetBaseName ) ), ROOT.Char.GetMother.GetPrimaryTitle.GetNameNoTierNoTooltip, ROOT.Char.GetMother.GetPrimaryTitle.GetNameNoTooltip )]#!"
+ SNAT_QUEEN_MOTHER_TITLE:0 " de #high [Select_CString( And( ROOT.Char.GetTopLiege.IsValid, EqualTo_string( ROOT.Char.GetTopLiege.GetPrimaryTitle.GetName, ROOT.Char.GetTopLiege.GetPrimaryTitle.GetBaseName ) ), ROOT.Char.GetTopLiege.GetPrimaryTitle.GetNameNoTierNoTooltip, ROOT.Char.GetTopLiege.GetPrimaryTitle.GetNameNoTooltip )]#!"
+ SNAT_FATHER_RULER_TITLE:0 " de [Select_CString( And( ROOT.Char.GetFather.IsValid, EqualTo_string( ROOT.Char.GetFather.GetPrimaryTitle.GetName, ROOT.Char.GetFather.GetPrimaryTitle.GetBaseName ) ), ROOT.Char.GetFather.GetPrimaryTitle.GetNameNoTierNoTooltip, ROOT.Char.GetFather.GetPrimaryTitle.GetNameNoTooltip )]"
+ SNAT_MOTHER_RULER_TITLE:0 " de [Select_CString( And( ROOT.Char.GetMother.IsValid, EqualTo_string( ROOT.Char.GetMother.GetPrimaryTitle.GetName, ROOT.Char.GetMother.GetPrimaryTitle.GetBaseName ) ), ROOT.Char.GetMother.GetPrimaryTitle.GetNameNoTierNoTooltip, ROOT.Char.GetMother.GetPrimaryTitle.GetNameNoTooltip )]"
+ SNAT_COUNCILLOR_TITLE:0 " de #high [Select_CString( And( ROOT.Char.GetLiege.IsValid, EqualTo_string( ROOT.Char.GetLiege.GetPrimaryTitle.GetName, ROOT.Char.GetLiege.GetPrimaryTitle.GetBaseName ) ), ROOT.Char.GetLiege.GetPrimaryTitle.GetNameNoTierNoTooltip, ROOT.Char.GetLiege.GetPrimaryTitle.GetNameNoTooltip )]#!"
+
+################################
+# 称号階位名 / Title tier Name #
+################################
+
+# 統治者（称号持ち） / Ruler (Title Holder)
+ SNAT_CHARACTER_TITLE_TIER:0 "[ROOT.Char.GetTitleTierName]"
+ SNAT_CONSORT_TITLE_TIER:0 "[ROOT.Char.GetTitleTierName]"
+
+# 統治者の家族 / Ruler's family
+ SNAT_FATHER_RULER_FAMILY:0 "Famille du [ROOT.Char.GetFather.GetTitleTierName]"
+ SNAT_MOTHER_RULER_FAMILY:0 "Famille du [ROOT.Char.GetMother.GetTitleTierName]"
+
+# 廷臣（称号なし） / Courtier (No Title) 
+ SNAT_COUNCILLOR:0 "[ROOT.Char.GetCouncilTitle]"
+ SNAT_COURTIER_MALE:0 "$game_concept_courtier$"
+ SNAT_COURTIER_FEMALE:0 "Courtisane"
+
+# 主君なし / No Liege
+ SNAT_PRISONER_MALE:0 "$game_concept_prisoner$"
+ SNAT_PRISONER_FEMALE:0 "Prisonnière"
+ SNAT_WANDERER_MALE:0 "$game_concept_wanderer$"
+ SNAT_WANDERER_FEMALE:0 "Vagabonde"
+
+###################
+# 故人 / Deceased #
+###################
+ SNAT_DECEASED:0 "Décédé"
+ SNAT_FOUNDER_OF_DYNASTY:0 "Fondat[Character.Custom('FR_EurRice')] de la Maison de #high [Character.GetDynasty.GetBaseNameNoTooltip]#!"
+
+####################
+# アイコン / Icons #
+####################
+
+#宗教指導者 / Head of Faith
+ SNAT_IS_HEAD_OF_FAITH:0 " [ROOT.Char.GetFaith.GetTextIcon]"
+
+# 称号階位 / Title Tier
+ SNAT_TIER_BARONY:0 " @barony_icon!"
+ SNAT_TIER_COUNTY:0 " @county_icon!"
+ SNAT_TIER_DUCHY:0 " @duchy_icon!"
+ SNAT_TIER_KINGDOM:0 " @kingdom_icon!"
+ SNAT_TIER_EMPIRE:0 " @empire_icon!"
+
+# 評議会 / Councillor
+ SNAT_COUNCILLOR_SPOUSE:0 " @spouse_icon!"
+ SNAT_COUNCILLOR_COURT_CHAPLAIN:0 " @court_chaplain_icon!"
+ SNAT_COUNCILLOR_CHANCELLOR:0 " @chancellor_icon!"
+ SNAT_COUNCILLOR_STEWARD:0 " @steward_icon!"
+ SNAT_COUNCILLOR_MARSHAL:0 " @marshal_icon!"
+ SNAT_COUNCILLOR_SPYMASTER:0 " @spymaster_icon!"
+
+# 継承順位 / Line of Succession
+ SNAT_FATHER_TITLE_SUCCESSION:0 " ([Character.GetPlaceInSuccession( Character.GetFather.GetPrimaryTitle )|O])"
+ SNAT_MOTHER_TITLE_SUCCESSION:0 " ([Character.GetPlaceInSuccession( Character.GetMother.GetPrimaryTitle )|O])"

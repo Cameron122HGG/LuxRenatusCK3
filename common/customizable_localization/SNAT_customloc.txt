@@ -1,0 +1,207 @@
+﻿# キャラクターの名前 / Character Name
+SNAT_CharaName = {
+	type = character
+
+	text = {
+		trigger = {
+			OR = {
+				NOT = { has_game_rule = SNAT_first_and_last_name }
+				has_dynasty = no
+			}
+		}
+		localization_key = CHARACTER_FIRST_NAME_ONLY
+	}
+	text = {
+		trigger = {
+			has_game_rule = SNAT_first_and_last_name
+			has_dynasty = yes
+			has_any_nickname = no
+		}
+		localization_key = CHARACTER_FIRST_AND_LAST_NAME
+	}
+	text = {
+		trigger = {
+			has_game_rule = SNAT_first_and_last_name
+			has_dynasty = yes
+			has_any_nickname = yes
+		}
+		localization_key = CHARACTER_F_A_L_NICKNAMED_NAME
+	}
+}
+
+# 称号階位 / Title Tier
+SNAT_TierIcon = {
+	type = character
+
+	text = {
+		trigger = { is_ruler = no }
+		fallback = yes
+		localization_key = SNAT_EMPTY
+	}
+	text = {
+		trigger = {
+			primary_title.tier = tier_barony
+		}
+		localization_key = SNAT_TIER_BARONY
+	}
+	text = {
+		trigger = {
+			primary_title.tier = tier_county
+		}
+		localization_key = SNAT_TIER_COUNTY
+	}
+	text = {
+		trigger = {
+			primary_title.tier = tier_duchy
+		}
+		localization_key = SNAT_TIER_DUCHY
+	}
+	text = {
+		trigger = {
+			primary_title.tier = tier_kingdom
+		}
+		localization_key = SNAT_TIER_KINGDOM
+	}
+	text = {
+		trigger = {
+			primary_title.tier = tier_empire
+		}
+		localization_key = SNAT_TIER_EMPIRE
+	}
+}
+
+# 評議員役職 / Councillor Position
+SNAT_PositionIcon = {
+	type = character
+
+	text = {
+		trigger = { is_councillor = no }
+		fallback = yes
+		localization_key = SNAT_EMPTY
+	}
+	text = {
+		trigger = { has_council_position = councillor_spouse }
+		localization_key = SNAT_COUNCILLOR_SPOUSE
+	}
+	text = {
+		trigger = { has_council_position = councillor_court_chaplain }
+		localization_key = SNAT_COUNCILLOR_COURT_CHAPLAIN
+	}
+	text = {
+		trigger = { has_council_position = councillor_chancellor }
+		localization_key = SNAT_COUNCILLOR_CHANCELLOR
+	}
+	text = {
+		trigger = { has_council_position = councillor_steward }
+		localization_key = SNAT_COUNCILLOR_STEWARD
+	}
+	text = {
+		trigger = { has_council_position = councillor_marshal }
+		localization_key = SNAT_COUNCILLOR_MARSHAL
+	}
+	text = {
+		trigger = { has_council_position = councillor_spymaster }
+		localization_key = SNAT_COUNCILLOR_SPYMASTER
+	}
+}
+
+# 宗教指導者 / Head of Faith
+SNAT_HofIcon = {
+	type = character
+
+	# 宗教指導者でない / Not Head of Faith
+	text = {
+		trigger = {
+			NOT = { faith.religious_head = this }
+		}
+		fallback = yes
+		localization_key = SNAT_EMPTY
+	}
+
+	# 宗教指導者である / Is Head of Faith
+	text = {
+		trigger = {
+			faith.religious_head = this
+		}
+		localization_key = SNAT_IS_HEAD_OF_FAITH
+	}
+}
+
+# 継承順位 / Line of Succession
+SNAT_Succession = {
+	type = character
+
+	text = {
+		trigger = {
+			OR = {
+				AND = {
+					child_of_king_trigger = no
+					child_of_queen_trigger = no
+					father_ruler_family_trigger = no
+					mother_ruler_family_trigger = no
+				}
+				trigger_if = {
+					limit = {
+						OR = {
+							child_of_king_trigger = yes
+							father_ruler_family_trigger = yes
+						}
+					}
+					father.primary_title = {
+						place_in_line_of_succession = {
+							target = root
+							value < 1
+						}
+					}
+				}
+				trigger_if = {
+					limit = {
+						OR = {
+							child_of_queen_trigger = yes
+							mother_ruler_family_trigger = yes
+						}
+					}
+					mother.primary_title = {
+						place_in_line_of_succession = {
+							target = root
+							value < 1
+						}
+					}
+				}
+			}
+		}
+		localization_key = SNAT_EMPTY
+	}
+	text = {
+		trigger = {
+			OR = {
+				child_of_king_trigger = yes
+				father_ruler_family_trigger = yes
+			}
+			queen_mother_trigger = no
+			father.primary_title = {
+				place_in_line_of_succession = {
+					target = root
+					value >= 1
+				}
+			}
+		}
+		localization_key = SNAT_FATHER_TITLE_SUCCESSION
+	}
+	text = {
+		trigger = {
+			OR = {
+				child_of_queen_trigger = yes
+				mother_ruler_family_trigger = yes
+			}
+			queen_mother_trigger = no
+			mother.primary_title = {
+				place_in_line_of_succession = {
+					target = root
+					value >= 1
+				}
+			}
+		}
+		localization_key = SNAT_MOTHER_TITLE_SUCCESSION
+	}
+}

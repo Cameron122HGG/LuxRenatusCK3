@@ -1,0 +1,170 @@
+﻿# 称号なしトリガー / No Title Trigger
+no_title_trigger = {
+	is_ruler = no
+	trigger_if = {
+		limit = { exists = primary_spouse }
+		primary_spouse = { is_ruler = no }
+	}
+}
+
+# 王子または王女称号のトリガー / Prince or Princess Title Trigger
+prince_or_princess_trigger = {
+	OR = {
+		child_of_king_trigger = yes
+		child_of_queen_trigger = yes
+	}
+}
+
+# 王室ではないトリガー / Not Royal family Trigger
+not_royal_family_trigger = {
+	child_of_king_trigger = no
+	child_of_queen_trigger = no
+	queen_mother_trigger = no
+}
+
+# 王子または王女称号のトリガー（父の称号） / Prince or Princess Title Trigger (Father's title)
+child_of_king_trigger = {
+	exists = father
+	father.primary_title.tier >= tier_kingdom
+	father.primary_title.holder = {
+		OR = {
+			has_government = feudal_government
+			has_government = clan_government
+		}
+	}
+	trigger_if = {
+		limit = { exists = mother }
+		trigger_if = {
+			limit = {
+				faith = {
+					OR = {
+						has_doctrine = doctrine_gender_male_dominated
+						has_doctrine = doctrine_gender_equal
+					}
+				}
+			}
+			father.primary_title.tier >= mother.primary_title.tier
+		}
+		trigger_if = {
+			limit = {
+				faith = { has_doctrine = doctrine_gender_female_dominated }
+			}
+			father.primary_title.tier > mother.primary_title.tier 
+		}
+	}
+	father.primary_title.tier > primary_title.tier
+	trigger_if = {
+		limit = { exists = primary_spouse }
+		father.primary_title.tier > primary_spouse.primary_title.tier
+	}
+}
+
+# 王子または王女称号のトリガー（母の称号） / Prince or Princess Title Trigger (Mother's title)
+child_of_queen_trigger = {
+	exists = mother
+	mother.primary_title.tier >= tier_kingdom
+	mother.primary_title.holder = {
+		OR = {
+			has_government = feudal_government
+			has_government = clan_government
+		}
+	}
+	trigger_if = {
+		limit = { exists = father }
+		trigger_if = {
+			limit = {
+				faith = {
+					OR = {
+						has_doctrine = doctrine_gender_female_dominated
+						has_doctrine = doctrine_gender_equal
+					}
+				}
+			}
+			mother.primary_title.tier >= father.primary_title.tier
+		}
+		trigger_if = {
+			limit = {
+				faith = { has_doctrine = doctrine_gender_male_dominated }
+			}
+			mother.primary_title.tier > father.primary_title.tier 
+		}
+	}
+	mother.primary_title.tier > primary_title.tier
+	trigger_if = {
+		limit = { exists = primary_spouse }
+		mother.primary_title.tier > primary_spouse.primary_title.tier
+	}
+}
+
+# 王太后称号のトリガー / Queen Mother Title Trigger
+queen_mother_trigger = {
+	is_ruler = no
+	exists = top_liege
+	top_liege = {
+		is_child_of = root
+		primary_title.tier >= tier_kingdom
+		OR = {
+			has_government = feudal_government
+			has_government = clan_government
+		}
+	}
+	trigger_if = {
+		limit = { primary_title.tier >= tier_kingdom }
+		primary_spouse = { is_alive = no }
+	}
+	is_female = yes
+}
+
+# 統治者の家族のトリガー（父の称号） / Ruler's family trigger (Father's title)
+father_ruler_family_trigger = {
+	no_title_trigger = yes
+	exists = father
+	father.primary_title.tier >= tier_barony
+	trigger_if = {
+		limit = { exists = mother }
+		trigger_if = {
+			limit = {
+				faith = {
+					OR = {
+						has_doctrine = doctrine_gender_male_dominated
+						has_doctrine = doctrine_gender_equal
+					}
+				}
+			}
+			father.primary_title.tier >= mother.primary_title.tier
+		}
+		trigger_if = {
+			limit = {
+				faith = { has_doctrine = doctrine_gender_female_dominated }
+			}
+			father.primary_title.tier > mother.primary_title.tier 
+		}
+	}
+}
+
+# 統治者の家族のトリガー（母の称号） / Ruler's family trigger (Mother's title)
+mother_ruler_family_trigger = {
+	no_title_trigger = yes
+	exists = mother
+	mother.primary_title.tier >= tier_barony
+	trigger_if = {
+		limit = { exists = father }
+		trigger_if = {
+			limit = {
+				faith = {
+					OR = {
+						has_doctrine = doctrine_gender_female_dominated
+						has_doctrine = doctrine_gender_equal
+					}
+				}
+			}
+			mother.primary_title.tier >= father.primary_title.tier
+		}
+		trigger_if = {
+			limit = {
+				faith = { has_doctrine = doctrine_gender_male_dominated }
+			}
+			mother.primary_title.tier > father.primary_title.tier 
+		}
+	}
+}
