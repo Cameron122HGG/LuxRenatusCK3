@@ -1,6 +1,6 @@
-﻿namespace = tgp_japan_decision
+﻿namespace = tgp_lux_gaul_decision
 
-# tgp_japan_establish_house_fief_decision
+# tgp_lux_gaul_establish_house_fief_decision
 
 scripted_effect tgp_establish_house_fief_save_scopes_effect = {
 	top_liege ?= { save_scope_as = regent }
@@ -15,15 +15,15 @@ scripted_effect tgp_establish_house_fief_save_scopes_effect = {
 	}
 }
 
-tgp_japan_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
+tgp_lux_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 	type = character_event
 	title = {
 		first_valid = {
 			triggered_desc = {
 				trigger = { has_character_flag = establish_house_fief }
-				desc = tgp_japan_decision.9001.t.fief
+				desc = tgp_lux_gaul_decision.9001.t.fief
 			}
-			desc = tgp_japan_decision.9001.t.cadet
+			desc = tgp_lux_gaul_decision.9001.t.cadet
 		}
 	}
 	desc = {
@@ -33,9 +33,9 @@ tgp_japan_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 					this != scope:old_head
 					has_character_flag = establish_house_fief
 				}
-				desc = tgp_japan_decision.9001.desc.fief_split_house
+				desc = tgp_lux_gaul_decision.9001.desc.fief_split_house
 			}
-			desc = tgp_japan_decision.9001.desc.cadet
+			desc = tgp_lux_gaul_decision.9001.desc.cadet
 		}
 		first_valid = {
 			triggered_desc = {
@@ -44,21 +44,21 @@ tgp_japan_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 					var:petition_liege_house_fief_allowed_flag ?= top_liege
 					top_liege = { government_allows = administrative }
 				}
-				desc = tgp_japan_decision.9001.desc.permission
+				desc = tgp_lux_gaul_decision.9001.desc.permission
 			}
 			triggered_desc = {
 				trigger = {
 					has_character_flag = establish_house_fief
 					top_liege = { government_allows = administrative }
 				}
-				desc = tgp_japan_decision.9001.desc.crime
+				desc = tgp_lux_gaul_decision.9001.desc.crime
 			}
 			triggered_desc = {
 				trigger = { has_character_flag = establish_house_fief }
-				desc = tgp_japan_decision.9001.desc.feudal
+				desc = tgp_lux_gaul_decision.9001.desc.feudal
 			}
 		}
-		desc = tgp_japan_decision.9001.desc.fief_name
+		desc = tgp_lux_gaul_decision.9001.desc.fief_name
 	}
 	theme = realm
 
@@ -1633,11 +1633,11 @@ tgp_japan_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 	option = {
 		name = {
 			trigger = { has_character_flag = establish_house_fief }
-			text = tgp_japan_decision.9001.a.fief
+			text = tgp_lux_gaul_decision.9001.a.fief
 		}
 		name = {
 			trigger = { has_character_flag = found_cadet_branch }
-			text = tgp_japan_decision.9001.a.cadet
+			text = tgp_lux_gaul_decision.9001.a.cadet
 		}
 	}
 
@@ -1731,25 +1731,25 @@ tgp_japan_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 	}
 }
 
-tgp_japan_decision.9002 = { # SAME CLAN EVENT - NO WIDGET
+tgp_lux_gaul_decision.9002 = { # SAME CLAN EVENT - NO WIDGET
 	type = character_event
 	title = {
 		first_valid = {
 			triggered_desc = {
 				trigger = { is_landed = no }
-				desc = tgp_japan_decision.9002.t.landless
+				desc = tgp_lux_gaul_decision.9002.t.landless
 			}
-			desc = tgp_japan_decision.9002.t
+			desc = tgp_lux_gaul_decision.9002.t
 		}
 	}
 	desc = {
-		desc = tgp_japan_decision.9002.desc
+		desc = tgp_lux_gaul_decision.9002.desc
 		first_valid = {
 			triggered_desc = {
 				trigger = { is_landed = no }
-				desc = tgp_japan_decision.9002.desc.landless
+				desc = tgp_lux_gaul_decision.9002.desc.landless
 			}
-			desc = tgp_japan_decision.9002.desc.landed
+			desc = tgp_lux_gaul_decision.9002.desc.landed
 		}
 		first_valid = {
 			triggered_desc = {
@@ -1757,15 +1757,15 @@ tgp_japan_decision.9002 = { # SAME CLAN EVENT - NO WIDGET
 					var:petition_liege_house_fief_allowed_flag ?= top_liege
 					top_liege = { government_allows = administrative }
 				}
-				desc = tgp_japan_decision.9001.desc.permission
+				desc = tgp_lux_gaul_decision.9001.desc.permission
 			}
 			triggered_desc = {
 				trigger = {
 					top_liege = { government_allows = administrative }
 				}
-				desc = tgp_japan_decision.9001.desc.crime
+				desc = tgp_lux_gaul_decision.9001.desc.crime
 			}
-			desc = tgp_japan_decision.9001.desc.feudal
+			desc = tgp_lux_gaul_decision.9001.desc.feudal
 		}
 	}
 	theme = realm
@@ -1782,22 +1782,22 @@ tgp_japan_decision.9002 = { # SAME CLAN EVENT - NO WIDGET
 	}
 
 	option = {
-		name = tgp_japan_decision.9002.a
+		name = tgp_lux_gaul_decision.9002.a
 	}
 }
 
-tgp_japan_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
+tgp_lux_gaul_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
 	type = character_event
 	title = {
 		triggered_desc = {
 			trigger = {
 				scope:new_head = { is_landed = no }
 			}
-			desc = tgp_japan_decision.9005.t.landless
+			desc = tgp_lux_gaul_decision.9005.t.landless
 		}
-		desc = tgp_japan_decision.9005.t
+		desc = tgp_lux_gaul_decision.9005.t
 	}
-	desc = tgp_japan_decision.9005.desc
+	desc = tgp_lux_gaul_decision.9005.desc
 	theme = realm
 
 	left_portrait = {
@@ -1831,17 +1831,17 @@ tgp_japan_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
 	}
 
 	option = {
-		name = tgp_japan_decision.9005.a
+		name = tgp_lux_gaul_decision.9005.a
 	}
 }
 
-# tgp_japan_become_shogun_decision
+# tgp_lux_gaul_become_shogun_decision
 
-tgp_japan_decision.9101 = {
+tgp_lux_gaul_decision.9101 = {
 	type = character_event
 	window = fullscreen_event
-	title = tgp_japan_decision.9101.t
-	desc = tgp_japan_decision.9101.desc
+	title = tgp_lux_gaul_decision.9101.t
+	desc = tgp_lux_gaul_decision.9101.desc
 	theme = crown
 	override_background = { reference = tgp_fullscreen_japanese_shogunate }
 	left_portrait = {
@@ -1860,7 +1860,7 @@ tgp_japan_decision.9101 = {
 	immediate = {
 		save_scope_as = shogun
 		tgp_save_realm_ceremonial_liege_effect = yes
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 		if = {
 			limit = {
 				any_vassal = {
@@ -1869,39 +1869,39 @@ tgp_japan_decision.9101 = {
 					highest_held_title_tier >= tier_county
 				}
 			}
-			custom_tooltip = tgp_japan_become_shogun_decision_vassal_revocation_effect
+			custom_tooltip = tgp_lux_gaul_become_shogun_decision_vassal_revocation_effect
 		}
 		# Inform Vassals
 		every_vassal_or_below = {
 			limit = { 
 				is_ruler = yes 
 			}
-			trigger_event = tgp_japan_decision.9102
+			trigger_event = tgp_lux_gaul_decision.9102
 		}
 		# Rewards
 		japanese_become_shogun_reward_effect = yes
 	}
 
 	option = {
-		name = tgp_japan_decision.9101.a
+		name = tgp_lux_gaul_decision.9101.a
 	}
 }
 
-tgp_japan_decision.9102 = {
+tgp_lux_gaul_decision.9102 = {
 	type = character_event
-	title = tgp_japan_decision.9102.t
+	title = tgp_lux_gaul_decision.9102.t
 	desc = {
-		desc = tgp_japan_decision.9102.desc
+		desc = tgp_lux_gaul_decision.9102.desc
 		first_valid = {
 			triggered_desc = {
 				trigger = { exists = scope:title_change }
-				desc = tgp_japan_decision.9102.admin
+				desc = tgp_lux_gaul_decision.9102.admin
 			}
 			triggered_desc = {
 				trigger = { is_landed = yes }
-				desc = tgp_japan_decision.9102.feudal
+				desc = tgp_lux_gaul_decision.9102.feudal
 			}
-			desc = tgp_japan_decision.9102.fallback
+			desc = tgp_lux_gaul_decision.9102.fallback
 		}
 	}
 	theme = realm
@@ -1912,7 +1912,7 @@ tgp_japan_decision.9102 = {
 	}
 
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 	}
 
 	option = {
@@ -1921,9 +1921,9 @@ tgp_japan_decision.9102 = {
 				first_valid = {
 					triggered_desc = {
 						trigger = { exists = scope:title_change }
-						desc = tgp_japan_decision.9102.a.admin
+						desc = tgp_lux_gaul_decision.9102.a.admin
 					}
-					desc = tgp_japan_decision.9101.a
+					desc = tgp_lux_gaul_decision.9101.a
 				}
 			}
 		}
@@ -1936,28 +1936,28 @@ tgp_japan_decision.9102 = {
 	}
 }
 
-# tgp_japan_imperial_branch_decision
+# tgp_lux_gaul_imperial_branch_decision
 
-tgp_japan_decision.9201 = {
+tgp_lux_gaul_decision.9201 = {
 	type = character_event
-	title = tgp_japan_decision.9201.t
+	title = tgp_lux_gaul_decision.9201.t
 	desc = {
-		desc = tgp_japan_decision.9201.desc
+		desc = tgp_lux_gaul_decision.9201.desc
 		first_valid = {
 			triggered_desc = {
 				trigger = {
 					exists = scope:minamoto_house
 					exists = scope:taira_house
 				}
-				desc = tgp_japan_decision.9201.both
+				desc = tgp_lux_gaul_decision.9201.both
 			}
 			triggered_desc = {
 				trigger = { exists = scope:minamoto_house }
-				desc = tgp_japan_decision.9201.minamoto
+				desc = tgp_lux_gaul_decision.9201.minamoto
 			}
 			triggered_desc = {
 				trigger = { exists = scope:taira_house }
-				desc = tgp_japan_decision.9201.taira
+				desc = tgp_lux_gaul_decision.9201.taira
 			}
 		}
 	}
@@ -1992,7 +1992,7 @@ tgp_japan_decision.9201 = {
 	}
 
 	option = { # Join Existing Minamoto
-		name = tgp_japan_decision.9201.a
+		name = tgp_lux_gaul_decision.9201.a
 		trigger = { exists = scope:minamoto_house }
 		highlight_portrait = scope:minamoto_house.house_head
 		japan_set_house_effect = { NEW_HOUSE = scope:minamoto_house }
@@ -2011,7 +2011,7 @@ tgp_japan_decision.9201 = {
 	}
 
 	option = { # Join Existing Taira
-		name = tgp_japan_decision.9201.b
+		name = tgp_lux_gaul_decision.9201.b
 		trigger = { exists = scope:taira_house }
 		highlight_portrait = scope:taira_house.house_head
 		japan_set_house_effect = { NEW_HOUSE = scope:taira_house }
@@ -2030,7 +2030,7 @@ tgp_japan_decision.9201 = {
 	}
 
 	option = { # Found New Minamoto
-		name = tgp_japan_decision.9201.c
+		name = tgp_lux_gaul_decision.9201.c
 		trigger = {
 			NOT = { exists = scope:minamoto_house }
 		}
@@ -2040,7 +2040,7 @@ tgp_japan_decision.9201 = {
 			add_prestige = medium_prestige_loss
 		}
 		custom_tooltip = {
-			text = tgp_japan_decision.9201.c.tt
+			text = tgp_lux_gaul_decision.9201.c.tt
 			create_dynasty = {
 				name = dynn_Minamoto
 				coat_of_arms = japanese_minamoto_seiwa
@@ -2072,7 +2072,7 @@ tgp_japan_decision.9201 = {
 	}
 
 	option = { # Found New Taira
-		name = tgp_japan_decision.9201.d
+		name = tgp_lux_gaul_decision.9201.d
 		trigger = {
 			NOT = { exists = scope:taira_house }
 		}
@@ -2082,7 +2082,7 @@ tgp_japan_decision.9201 = {
 			add_prestige = medium_prestige_loss
 		}
 		custom_tooltip = {
-			text = tgp_japan_decision.9201.d.tt
+			text = tgp_lux_gaul_decision.9201.d.tt
 			create_dynasty = {
 				name = dynn_Taira
 				coat_of_arms = japanese_taira_kanmu
@@ -2136,10 +2136,10 @@ tgp_japan_decision.9201 = {
 			limit = { exists = scope:new_house }
 			hidden_effect = {
 				every_player = {
-					limit = { top_liege = title:e_japan.holder }
+					limit = { top_liege = title:e_high_kingdom_gaul.holder }
 					send_interface_message = {
 						type = event_generic_neutral
-						title = tgp_japan_decision.9201.message_title
+						title = tgp_lux_gaul_decision.9201.message_title
 						left_icon = root
 						right_icon = scope:nearest_emperor
 						show_as_tooltip = {
@@ -2160,12 +2160,12 @@ tgp_japan_decision.9201 = {
 	}
 }
 
-# tgp_japan_emperor_restoration_decision
+# tgp_lux_gaul_emperor_restoration_decision
 
-tgp_japan_decision.9301 = {
+tgp_lux_gaul_decision.9301 = {
 	type = character_event
-	title = tgp_japan_decision.9301.t
-	desc = tgp_japan_decision.9301.desc
+	title = tgp_lux_gaul_decision.9301.t
+	desc = tgp_lux_gaul_decision.9301.desc
 	theme = crown
 
 	left_portrait = {
@@ -2180,20 +2180,20 @@ tgp_japan_decision.9301 = {
 		# Inform Vassals
 		every_player = {
 			limit = { is_vassal_or_below_of = root }
-			trigger_event = tgp_japan_decision.9302
+			trigger_event = tgp_lux_gaul_decision.9302
 		}
 		restore_ceremonial_liege_faction_reward_effect = yes
 	}
 
 	option = {
-		name = tgp_japan_decision.9301.a
+		name = tgp_lux_gaul_decision.9301.a
 	}
 }
 
-tgp_japan_decision.9302 = {
+tgp_lux_gaul_decision.9302 = {
 	type = character_event
-	title = tgp_japan_decision.9302.t
-	desc = tgp_japan_decision.9302.desc
+	title = tgp_lux_gaul_decision.9302.t
+	desc = tgp_lux_gaul_decision.9302.desc
 	theme = realm
 
 	left_portrait = {
@@ -2202,22 +2202,22 @@ tgp_japan_decision.9302 = {
 	}
 
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 		show_as_tooltip = {
 			scope:tenno = { restore_ceremonial_liege_faction_reward_effect = yes }
 		}
 	}
 
 	option = {
-		name = tgp_japan_decision.9302.a
+		name = tgp_lux_gaul_decision.9302.a
 	}
 }
 
 #Become a Poet - Ceremony - House Aspiration
-tgp_japan_decision.9401 = {
+tgp_lux_gaul_decision.9401 = {
 	type = character_event
-	title = tgp_japan_decision.9401.t
-	desc = tgp_japan_decision.9401.desc
+	title = tgp_lux_gaul_decision.9401.t
+	desc = tgp_lux_gaul_decision.9401.desc
 	theme = education
 	left_portrait = {
 		character = root
@@ -2226,7 +2226,7 @@ tgp_japan_decision.9401 = {
 
 	#Study to become a poet
 	option = {
-		name = tgp_japan_decision.9401.a
+		name = tgp_lux_gaul_decision.9401.a
 
 		duel = {
 			skill = learning
@@ -2246,7 +2246,7 @@ tgp_japan_decision.9401 = {
 					add = 10
 				}
 				send_interface_toast = {
-					title = tgp_japan_decision.9401.a.toast.success
+					title = tgp_lux_gaul_decision.9401.a.toast.success
 					left_icon = root
 					add_trait = lifestyle_poet
 					add_stress = minor_stress_gain
@@ -2260,7 +2260,7 @@ tgp_japan_decision.9401 = {
 					min = -49
 				}
 				send_interface_toast = {
-					title = tgp_japan_decision.9401.a.toast.failure
+					title = tgp_lux_gaul_decision.9401.a.toast.failure
 					left_icon = root
 					add_stress = medium_stress_gain
 				}
@@ -2279,7 +2279,7 @@ tgp_japan_decision.9401 = {
 
 	#Opt out
 	option = {
-		name = tgp_japan_decision.9401.b
+		name = tgp_lux_gaul_decision.9401.b
 
 		ai_chance = {
 			base = 100
@@ -2292,11 +2292,11 @@ tgp_japan_decision.9401 = {
 	}
 }
 
-# tgp_japan_become_a_monk_decision - Becoming a Buddhist monk near the end of your life (or when you become seriously ill)
-tgp_japan_decision.9500 = {
+# tgp_lux_gaul_become_a_monk_decision - Becoming a Buddhist monk near the end of your life (or when you become seriously ill)
+tgp_lux_gaul_decision.9500 = {
 	type = character_event
-	title = tgp_japan_decision.9500.t
-	desc = tgp_japan_decision.9500.desc
+	title = tgp_lux_gaul_decision.9500.t
+	desc = tgp_lux_gaul_decision.9500.desc
 	theme = faith
 	left_portrait = {
 		character = root
@@ -2304,14 +2304,14 @@ tgp_japan_decision.9500 = {
 	}
 
 	option = {
-		name = tgp_japan_decision.9500.a
-		tgp_japan_become_a_monk_decision_effect = yes
+		name = tgp_lux_gaul_decision.9500.a
+		tgp_lux_gaul_become_a_monk_decision_effect = yes
 	}
 }
 
-# tgp_japan_establish_soryo_administration_decision
+# tgp_lux_gaul_establish_soryo_administration_decision
 
-tgp_japan_decision.9601 = {
+tgp_lux_gaul_decision.9601 = {
 	type = character_event
 	hidden = yes
 
@@ -2329,17 +2329,17 @@ tgp_japan_decision.9601 = {
 					is_imprisoned_by = scope:daijo_daijin
 				}
 			}
-			trigger_event = tgp_japan_decision.9602
+			trigger_event = tgp_lux_gaul_decision.9602
 		}
 		# After AI decisions
 		trigger_event = {
-			id = tgp_japan_decision.9604
+			id = tgp_lux_gaul_decision.9604
 			delayed = yes
 		}
 	}
 }
 
-tgp_japan_decision.9602 = { # Vassal AI event
+tgp_lux_gaul_decision.9602 = { # Vassal AI event
 	type = character_event
 	hidden = yes
 
@@ -2487,14 +2487,14 @@ tgp_japan_decision.9602 = { # Vassal AI event
 	}
 }
 
-tgp_japan_decision.9603 = { # Vassal player event
+tgp_lux_gaul_decision.9603 = { # Vassal player event
 	type = character_event
-	title = tgp_japan_decision.9603.t
+	title = tgp_lux_gaul_decision.9603.t
 	desc = {
-		desc = tgp_japan_decision.9603.desc
+		desc = tgp_lux_gaul_decision.9603.desc
 		triggered_desc = {
 			trigger = { exists = scope:leader }
-			desc = tgp_japan_decision.9603.leader
+			desc = tgp_lux_gaul_decision.9603.leader
 		}
 	}
 	theme = war
@@ -2512,7 +2512,7 @@ tgp_japan_decision.9603 = { # Vassal player event
 	}
 
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 		show_as_tooltip = {
 			scope:daijo_daijin = {
 				custom_description_no_bullet = { text = if_you_win_effect }
@@ -2523,11 +2523,11 @@ tgp_japan_decision.9603 = { # Vassal player event
 
 	option = {
 		name = {
-			text = tgp_japan_decision.9603.a.bloc
+			text = tgp_lux_gaul_decision.9603.a.bloc
 			trigger = { house.house_confederation.leading_house ?= house }
 		}
 		name = {
-			text = tgp_japan_decision.9603.a
+			text = tgp_lux_gaul_decision.9603.a
 			trigger = {
 				NOT = { house.house_confederation.leading_house ?= house }
 			}
@@ -2544,7 +2544,7 @@ tgp_japan_decision.9603 = { # Vassal player event
 				is_house_head = yes
 				house.house_confederation.leading_house = root.house
 			}
-			custom_tooltip = tgp_japan_decision.9603.a.tt
+			custom_tooltip = tgp_lux_gaul_decision.9603.a.tt
 			hidden_effect = {
 				top_liege = {
 					every_vassal = {
@@ -2569,11 +2569,11 @@ tgp_japan_decision.9603 = { # Vassal player event
 	}
 
 	option = {
-		name = tgp_japan_decision.9603.b
+		name = tgp_lux_gaul_decision.9603.b
 	}
 }
 
-tgp_japan_decision.9604 = { # War setup
+tgp_lux_gaul_decision.9604 = { # War setup
 	type = character_event
 	hidden = yes
 
@@ -2684,22 +2684,22 @@ tgp_japan_decision.9604 = { # War setup
 			}
 		}
 		trigger_event = {
-			id = tgp_japan_decision.9605
+			id = tgp_lux_gaul_decision.9605
 			delayed = yes
 		}
 	}
 }
 
-tgp_japan_decision.9605 = { # War start event
+tgp_lux_gaul_decision.9605 = { # War start event
 	type = character_event
 	title = {
 		desc = {
 			first_valid = {
 				triggered_desc = {
 					trigger = { exists = scope:war }
-					desc = tgp_japan_decision.9605.t
+					desc = tgp_lux_gaul_decision.9605.t
 				}
-				desc = tgp_japan_decision.9606.t
+				desc = tgp_lux_gaul_decision.9606.t
 			}
 		}
 	}
@@ -2707,9 +2707,9 @@ tgp_japan_decision.9605 = { # War start event
 		first_valid = {
 			triggered_desc = {
 				trigger = { exists = scope:war }
-				desc = tgp_japan_decision.9605.desc
+				desc = tgp_lux_gaul_decision.9605.desc
 			}
-			desc = tgp_japan_decision.9605.peace
+			desc = tgp_lux_gaul_decision.9605.peace
 		}
 	}
 	theme = war
@@ -2723,7 +2723,7 @@ tgp_japan_decision.9605 = { # War start event
 	lower_right_portrait = scope:portrait_2
 
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 		add_character_flag = wear_armor
 		if = {
 			limit = { exists = scope:leader }
@@ -2745,7 +2745,7 @@ tgp_japan_decision.9605 = { # War start event
 	}
 
 	option = {
-		name = tgp_japan_decision.9605.a
+		name = tgp_lux_gaul_decision.9605.a
 		trigger = { exists = scope:war }
 		show_as_tooltip = {
 			custom_description_no_bullet = { text = if_you_win_effect }
@@ -2754,7 +2754,7 @@ tgp_japan_decision.9605 = { # War start event
 	}
 
 	option = {
-		name = tgp_japan_decision.9605.b
+		name = tgp_lux_gaul_decision.9605.b
 		trigger = {
 			NOT = { exists = scope:war }
 		}
@@ -2764,7 +2764,7 @@ tgp_japan_decision.9605 = { # War start event
 				top_liege = scope:daijo_daijin
 				NOT = { this = scope:daijo_daijin }
 			}
-			trigger_event = tgp_japan_decision.9607
+			trigger_event = tgp_lux_gaul_decision.9607
 		}
 	}
 
@@ -2774,17 +2774,17 @@ tgp_japan_decision.9605 = { # War start event
 			limit = { exists = scope:leader }
 			every_in_list = {
 				variable = war_players
-				trigger_event = tgp_japan_decision.9603
+				trigger_event = tgp_lux_gaul_decision.9603
 			}
 		}
 		remove_variable = other_joiners_count
 	}
 }
 
-tgp_japan_decision.9606 = { # War won event
+tgp_lux_gaul_decision.9606 = { # War won event
 	type = character_event
-	title = tgp_japan_decision.9606.t
-	desc = tgp_japan_decision.9606.desc
+	title = tgp_lux_gaul_decision.9606.t
+	desc = tgp_lux_gaul_decision.9606.desc
 	theme = war
 
 	left_portrait = {
@@ -2802,12 +2802,12 @@ tgp_japan_decision.9606 = { # War won event
 	}
 
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 		japanese_establish_soryo_administration_reward_effect = yes
 	}
 
 	option = {
-		name = tgp_japan_decision.9606.a
+		name = tgp_lux_gaul_decision.9606.a
 	}
 
 	after = {
@@ -2816,15 +2816,15 @@ tgp_japan_decision.9606 = { # War won event
 				top_liege = scope:daijo_daijin
 				NOT = { this = scope:daijo_daijin }
 			}
-			trigger_event = tgp_japan_decision.9607
+			trigger_event = tgp_lux_gaul_decision.9607
 		}
 	}
 }
 
-tgp_japan_decision.9607 = { # War won vassal event
+tgp_lux_gaul_decision.9607 = { # War won vassal event
 	type = character_event
-	title = tgp_japan_decision.9606.t
-	desc = tgp_japan_decision.9607.desc
+	title = tgp_lux_gaul_decision.9606.t
+	desc = tgp_lux_gaul_decision.9607.desc
 	theme = war
 
 	left_portrait = {
@@ -2842,21 +2842,21 @@ tgp_japan_decision.9607 = { # War won vassal event
 	}
 
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 		#japanese_establish_soryo_administration_reward_effect = yes
 	}
 
 	option = {
-		name = tgp_japan_decision.9607.a
+		name = tgp_lux_gaul_decision.9607.a
 	}
 }
 
-# tgp_japan_restore_japanese_monarchy_decision
+# tgp_lux_gaul_restore_high_kingdom_gaulese_monarchy_decision
 
-tgp_japan_decision.9901 = {
+tgp_lux_gaul_decision.9901 = {
 	type = character_event
-	title = tgp_japan_decision.9901.t
-	desc = tgp_japan_decision.9901.desc
+	title = tgp_lux_gaul_decision.9901.t
+	desc = tgp_lux_gaul_decision.9901.desc
 	theme = realm
 	left_portrait = {
 		character = scope:kampaku
@@ -2875,30 +2875,30 @@ tgp_japan_decision.9901 = {
 
 	immediate = {
 		play_music_cue = "mx_cue_sacredrite"
-		show_as_tooltip = { tgp_restore_japanese_monarchy_decision_effect = yes }
-		tgp_restore_japanese_monarchy_yamato_restoration_effect = yes
+		show_as_tooltip = { tgp_restore_high_kingdom_gaulese_monarchy_decision_effect = yes }
+		tgp_restore_high_kingdom_gaulese_monarchy_yamato_restoration_effect = yes
 		every_player = {
 			limit = { is_vassal_or_below_of = root }
-			trigger_event = tgp_japan_decision.9902
+			trigger_event = tgp_lux_gaul_decision.9902
 		}
 	}
 
 	option = { # Rule as Regent
 		name = {
 			trigger = { this = scope:scion }
-			text = tgp_japan_decision.9901.a
+			text = tgp_lux_gaul_decision.9901.a
 		}
 		name = {
 			trigger = { this != scope:scion }
-			text = tgp_japan_decision.9901.a.scion
+			text = tgp_lux_gaul_decision.9901.a.scion
 		}
 	}
 }
 
-tgp_japan_decision.9902 = {
+tgp_lux_gaul_decision.9902 = {
 	type = character_event
-	title = tgp_japan_decision.9901.t
-	desc = tgp_japan_decision.9902.desc
+	title = tgp_lux_gaul_decision.9901.t
+	desc = tgp_lux_gaul_decision.9902.desc
 	theme = family
 	left_portrait = {
 		character = scope:kampaku
@@ -2919,27 +2919,27 @@ tgp_japan_decision.9902 = {
 		play_music_cue = "mx_cue_sacredrite"
 		show_as_tooltip = {
 			scope:kampaku = {
-				tgp_restore_japanese_monarchy_decision_effect = yes
-				tgp_restore_japanese_monarchy_yamato_restoration_effect = yes
+				tgp_restore_high_kingdom_gaulese_monarchy_decision_effect = yes
+				tgp_restore_high_kingdom_gaulese_monarchy_yamato_restoration_effect = yes
 			}
 		}
 	}
 
 	option = { # Long live the Emperor
-		name = tgp_japan_decision.9902.a
+		name = tgp_lux_gaul_decision.9902.a
 	}
 }
 
-# tgp_japan_restore_japanese_government_decision
+# tgp_lux_gaul_restore_high_kingdom_gaulese_government_decision
 
-tgp_japan_decision.9911 = {
+tgp_lux_gaul_decision.9911 = {
 	type = character_event
-	title = tgp_japan_decision.9911.t
+	title = tgp_lux_gaul_decision.9911.t
 	desc = {
-		desc = tgp_japan_decision.9911.desc
+		desc = tgp_lux_gaul_decision.9911.desc
 		triggered_desc = {
 			trigger = { exists = scope:rebel }
-			desc = tgp_japan_decision.9911.rebel
+			desc = tgp_lux_gaul_decision.9911.rebel
 		}
 	}
 	theme = crown
@@ -2956,22 +2956,22 @@ tgp_japan_decision.9911 = {
 
 	immediate = {
 		tgp_save_realm_ceremonial_liege_effect = yes
-		tgp_restore_japanese_government_decision_effect = yes
+		tgp_restore_high_kingdom_gaulese_government_decision_effect = yes
 	}
 
 	option = { # Yay
-		name = tgp_japan_decision.9911.a
+		name = tgp_lux_gaul_decision.9911.a
 	}
 }
 
-tgp_japan_decision.9912 = {
+tgp_lux_gaul_decision.9912 = {
 	type = character_event
-	title = tgp_japan_decision.9911.t
+	title = tgp_lux_gaul_decision.9911.t
 	desc = {
-		desc = tgp_japan_decision.9912.desc
+		desc = tgp_lux_gaul_decision.9912.desc
 		triggered_desc = {
 			trigger = { exists = scope:rebel }
-			desc = tgp_japan_decision.9912.rebel
+			desc = tgp_lux_gaul_decision.9912.rebel
 		}
 	}
 	theme = realm
@@ -2987,12 +2987,12 @@ tgp_japan_decision.9912 = {
 
 	immediate = {
 		show_as_tooltip = {
-			scope:kampaku = { tgp_restore_japanese_government_decision_effect = yes }
+			scope:kampaku = { tgp_restore_high_kingdom_gaulese_government_decision_effect = yes }
 		}
 	}
 
 	option = { # Yay
-		name = tgp_japan_decision.9911.a
+		name = tgp_lux_gaul_decision.9911.a
 		if = {
 			limit = {
 				NOT = { has_government = japan_administrative_government }
@@ -3002,7 +3002,7 @@ tgp_japan_decision.9912 = {
 	}
 
 	option = { # Boo
-		name = tgp_japan_decision.9912.b
+		name = tgp_lux_gaul_decision.9912.b
 		trigger = {
 			is_ai = no
 			NOR = {
@@ -3026,12 +3026,12 @@ tgp_japan_decision.9912 = {
 }
 
 #Player called to war by rebellious vassal. (vs imprisonment)
-tgp_japan_decision.9913 = {
+tgp_lux_gaul_decision.9913 = {
 	type = letter_event
 	opening = {
 		desc = call_ally.0100.opening
 	}
-	desc = tgp_japan_decision.9913.desc
+	desc = tgp_lux_gaul_decision.9913.desc
 
 	sender = {
 		character = scope:recipient
@@ -3039,7 +3039,7 @@ tgp_japan_decision.9913 = {
 	}
 
 	option = {
-		name = tgp_japan_decision.9913.a
+		name = tgp_lux_gaul_decision.9913.a
 		scope:recipient = {
 			every_character_war = {
 				limit = {
@@ -3061,7 +3061,7 @@ tgp_japan_decision.9913 = {
 		}
 	}
 	option = {
-		name = tgp_japan_decision.9913.b
+		name = tgp_lux_gaul_decision.9913.b
 		scope:recipient = {
 			add_opinion = {
 				target = root
@@ -3085,28 +3085,28 @@ scripted_trigger dominion_fight_partial = {
 	}
 }
 #Assert Regional Dominion
-#tgp_japan_decision.9960
-tgp_japan_decision.9960 = {
+#tgp_lux_gaul_decision.9960
+tgp_lux_gaul_decision.9960 = {
 	type = character_event
 	window = big_event_window
-	title = tgp_japan_decision.9960.t
+	title = tgp_lux_gaul_decision.9960.t
 	desc = {
-		desc = tgp_japan_decision.9960.intro
+		desc = tgp_lux_gaul_decision.9960.intro
 		first_valid = {
 			#de jure vassals agree to let you be duke
 			triggered_desc = {
 				trigger = {
 					NOT = { exists = scope:main_defender }
 				}
-				desc = tgp_japan_decision.9960.agree
+				desc = tgp_lux_gaul_decision.9960.agree
 			}
 			#some de jure vassals agree to let you be duke, some will fight you
 			triggered_desc = {
 				trigger = { dominion_fight_partial = yes }
-				desc = tgp_japan_decision.9960.partial_war
+				desc = tgp_lux_gaul_decision.9960.partial_war
 			}
 			#all jure vassals will fight you
-			desc = tgp_japan_decision.9960.full_war
+			desc = tgp_lux_gaul_decision.9960.full_war
 		}
 	}
 	theme = battle
@@ -3165,30 +3165,30 @@ tgp_japan_decision.9960 = {
 				days = 1
 			}
 		}
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 
-		tgp_japan_assert_regional_dominion_government_decision_effect = yes
+		tgp_lux_gaul_assert_regional_dominion_government_decision_effect = yes
 	}
 	#fight
 	option = {
 		trigger = { dominion_fight = yes }
-		name = tgp_japan_decision.9960.a
+		name = tgp_lux_gaul_decision.9960.a
 	}
 	#no fight
 	option = {
 		trigger = { dominion_fight = no }
-		name = tgp_japan_decision.9960.b
+		name = tgp_lux_gaul_decision.9960.b
 	}
 	after = {
 		remove_character_flag = wear_armor
 	}
 }
 #winner follow up
-tgp_japan_decision.9961 = {
+tgp_lux_gaul_decision.9961 = {
 	type = character_event
 	window = big_event_window
-	title = tgp_japan_decision.9961.t
-	desc = tgp_japan_decision.9961.desc
+	title = tgp_lux_gaul_decision.9961.t
+	desc = tgp_lux_gaul_decision.9961.desc
 	theme = battle
 	override_icon = {
 		trigger = { dominion_fight = yes }
@@ -3209,7 +3209,7 @@ tgp_japan_decision.9961 = {
 	override_background = { reference = battlefield }
 	override_effect_2d = { reference = legend_glow }
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_high_kingdom_gaulese_shogun"
 		if = {
 			limit = {
 				is_adult = yes
@@ -3272,18 +3272,18 @@ tgp_japan_decision.9961 = {
 	}
 	#you won, enjoy
 	option = {
-		name = tgp_japan_decision.9961.a
+		name = tgp_lux_gaul_decision.9961.a
 	}
 	after = {
 		remove_character_flag = wear_armor
 	}
 }
 #loser follow up
-tgp_japan_decision.9962 = {
+tgp_lux_gaul_decision.9962 = {
 	type = character_event
 	window = big_event_window
-	title = tgp_japan_decision.9962.t
-	desc = tgp_japan_decision.9962.desc
+	title = tgp_lux_gaul_decision.9962.t
+	desc = tgp_lux_gaul_decision.9962.desc
 	theme = battle
 	override_icon = {
 		trigger = { dominion_fight = yes }
@@ -3310,24 +3310,24 @@ tgp_japan_decision.9962 = {
 	}
 	#you lost, enjoy
 	option = {
-		name = tgp_japan_decision.9962.a
+		name = tgp_lux_gaul_decision.9962.a
 	}
 }
 #letter event
-tgp_japan_decision.9963 = {
+tgp_lux_gaul_decision.9963 = {
 	type = letter_event
-	opening = tgp_japan_decision.9963.opening
-	desc = tgp_japan_decision.9963.desc
+	opening = tgp_lux_gaul_decision.9963.opening
+	desc = tgp_lux_gaul_decision.9963.desc
 	sender = scope:super_soryo
 	#decline war
 	option = {
-		name = tgp_japan_decision.9963.a
+		name = tgp_lux_gaul_decision.9963.a
 		play_music_cue = mx_cue_combat_stinger
-		custom_tooltip = tgp_japan_decision.9963.a.tt
+		custom_tooltip = tgp_lux_gaul_decision.9963.a.tt
 	}
 	#join war
 	option = {
-		name = tgp_japan_decision.9963.b
+		name = tgp_lux_gaul_decision.9963.b
 		scope:super_soryo_war = {
 			add_defender = root
 			hidden_effect = {
