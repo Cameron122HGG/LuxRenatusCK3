@@ -2859,7 +2859,7 @@ tgp_lux_gaul_decision.9901 = {
 	desc = tgp_lux_gaul_decision.9901.desc
 	theme = realm
 	left_portrait = {
-		character = scope:kampaku
+		character = scope:majordomo
 		triggered_animation = {
 			trigger = { this = scope:scion }
 			animation = war_over_tie
@@ -2869,7 +2869,7 @@ tgp_lux_gaul_decision.9901 = {
 	right_portrait = {
 		character = scope:scion
 		animation = war_over_tie
-		trigger = { this != scope:kampaku }
+		trigger = { this != scope:majordomo }
 	}
 	override_background = { reference = throne_room_scope }
 
@@ -2901,7 +2901,7 @@ tgp_lux_gaul_decision.9902 = {
 	desc = tgp_lux_gaul_decision.9902.desc
 	theme = family
 	left_portrait = {
-		character = scope:kampaku
+		character = scope:majordomo
 		triggered_animation = {
 			trigger = { this = scope:scion }
 			animation = war_over_tie
@@ -2911,14 +2911,14 @@ tgp_lux_gaul_decision.9902 = {
 	right_portrait = {
 		character = scope:scion
 		animation = war_over_tie
-		trigger = { this != scope:kampaku }
+		trigger = { this != scope:majordomo }
 	}
 	override_background = { reference = throne_room_scope }
 
 	immediate = {
 		play_music_cue = "mx_cue_sacredrite"
 		show_as_tooltip = {
-			scope:kampaku = {
+			scope:majordomo = {
 				tgp_restore_high_kingdom_gallic_monarchy_decision_effect = yes
 				tgp_restore_high_kingdom_gallic_monarchy_yamato_restoration_effect = yes
 			}
@@ -2944,7 +2944,7 @@ tgp_lux_gaul_decision.9911 = {
 	}
 	theme = crown
 	left_portrait = {
-		character = scope:kampaku
+		character = scope:majordomo
 		animation = chaplain
 	}
 	right_portrait = {
@@ -2976,18 +2976,18 @@ tgp_lux_gaul_decision.9912 = {
 	}
 	theme = realm
 	left_portrait = {
-		character = scope:kampaku
+		character = scope:majordomo
 		animation = war_over_tie
 	}
 	override_background = { reference = throne_room_scope }
 
 	trigger = {
-		NOT = { is_at_war_with = scope:kampaku }
+		NOT = { is_at_war_with = scope:majordomo }
 	}
 
 	immediate = {
 		show_as_tooltip = {
-			scope:kampaku = { tgp_restore_high_kingdom_gallic_government_decision_effect = yes }
+			scope:majordomo = { tgp_restore_high_kingdom_gallic_government_decision_effect = yes }
 		}
 	}
 
@@ -3006,7 +3006,7 @@ tgp_lux_gaul_decision.9912 = {
 		trigger = {
 			is_ai = no
 			NOR = {
-				is_at_war_with = scope:kampaku
+				is_at_war_with = scope:majordomo
 				has_government = gaul_administrative_government
 			}
 		}
@@ -3019,7 +3019,7 @@ tgp_lux_gaul_decision.9912 = {
 			add_attacker = root
 		}
 		reverse_add_opinion = {
-			target = scope:kampaku
+			target = scope:majordomo
 			modifier = rebellious_vassal_opinion
 		}
 	}
