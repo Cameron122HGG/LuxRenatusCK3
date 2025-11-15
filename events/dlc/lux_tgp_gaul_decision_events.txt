@@ -70,12 +70,12 @@ tgp_lux_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 		character = scope:old_head
 		trigger = {
 			NOR = {
-				scope:regent ?= this
+				scope:majordomo ?= this
 				root = this
 			}
 		}
 	}
-	lower_right_portrait =  scope:regent
+	lower_right_portrait =  scope:majordomo
 
 	#NAMING WIDGET
 	widget = {
@@ -1773,7 +1773,7 @@ tgp_lux_gaul_decision.9002 = { # SAME CLAN EVENT - NO WIDGET
 		character = root
 		animation = thinking
 	}
-	lower_right_portrait =  scope:regent
+	lower_right_portrait =  scope:majordomo
 
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_adopting_feudal_government"
@@ -1819,11 +1819,11 @@ tgp_lux_gaul_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
 				change_government = gaul_feudal_government
 				if = {
 					limit = {
-						NOT = { var:petition_liege_house_fief_allowed_flag ?= scope:regent }
+						NOT = { var:petition_liege_house_fief_allowed_flag ?= scope:majordomo }
 					}
 					reverse_add_opinion = {
 						modifier = admin_soryo_conquest_crime
-						target = scope:regent
+						target = scope:majordomo
 					}
 				}
 			}
@@ -2127,9 +2127,9 @@ tgp_lux_gaul_decision.9201 = {
 		if = {
 			limit = {
 				is_ruler = no
-				top_liege != scope:regent
+				top_liege != scope:majordomo
 			}
-			scope:regent = { add_courtier = root }
+			scope:majordomo = { add_courtier = root }
 		}
 		# Message
 		if = {

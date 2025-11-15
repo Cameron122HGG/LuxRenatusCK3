@@ -518,7 +518,7 @@
 				limit = {
 					exists = primary_title
 					primary_title.tier > tier_county
-					OR = {
+					AND = {
 						#West Slavic
 						culture = { has_cultural_pillar = heritage_west_slavic }
 					}
@@ -564,7 +564,7 @@
 				value = change_succession_law_prestige_cost
 				multiply = {
 					value = 0.5 # We reduce the cost to ensure that going back to acclamation is easy
-					desc = "[administrative_government|E]"
+					desc = "administrative_government"
 				}
 			}
 		}
@@ -1150,6 +1150,7 @@
 			}
 			# Vassal Contract allows it
 			custom_description = {
+				text = succession_laws_must_not_be_forced_partition
 				NAND = {
 					is_independent_ruler = no
 					vassal_contract_has_flag = locked_to_partition
@@ -1317,6 +1318,7 @@
 			}
 			# Vassal Contract allows it
 			custom_description = {
+				text = succession_laws_must_not_be_forced_partition
 				NAND = {
 					is_independent_ruler = no
 					vassal_contract_has_flag = locked_to_partition
@@ -1703,6 +1705,7 @@
 			}
 			# Vassal Contract allows it
 			custom_description = {
+				text = succession_laws_must_not_be_forced_partition
 				NAND = {
 					is_independent_ruler = no
 					vassal_contract_has_flag = locked_to_partition
