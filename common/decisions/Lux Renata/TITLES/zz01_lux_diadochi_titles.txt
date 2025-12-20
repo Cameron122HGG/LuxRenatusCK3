@@ -1,0 +1,96 @@
+﻿#Restoring the Roman Empire (as Byzantium)
+### Restore the Roman Empire ###
+restore_seleucid_empire_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
+	}
+	desc = restore_seleucid_empire_decision_desc
+	selection_tooltip = restore_seleucid_empire_decision_tooltip
+	decision_group_type = LR_diadochi_titles_decision_group
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 120
+		empire = 0
+		hegemony = 0
+	}
+
+	is_shown = {
+		is_ruler = yes
+		is_playable_character = yes
+		has_title = title:k_syria
+		NOT = {  #Can only do it once.
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_restored_seleucid_empire
+			}
+		}
+		OR = {
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_republic
+			government_has_flag = government_is_classical
+			government_allows = administrative
+		}
+	}
+
+	is_valid = {
+		prestige_level >= max_prestige_level
+
+		completely_controls = title:e_persia
+		completely_controls = title:k_syria
+		completely_controls = title:k_jazira
+		completely_controls = title:k_mesopotamia
+	}
+
+	is_valid_showing_failures_only = {
+		is_landed = yes
+		is_capable_adult = yes
+		is_imprisoned = no
+		top_liege = this
+
+		OR = {
+			religion = { is_in_family = rf_graeco_roman }
+			religion = religion:hellenism_religion
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
+			culture = { has_cultural_pillar = heritage_byzantine }
+		}
+	}
+
+	effect = {
+		custom_tooltip = restore_seleucid_empire_decision_effect_tooltip
+		show_as_tooltip = {
+			create_seleucid_empire_scripted_effect = yes
+		}
+		if = {
+			limit = {
+				has_ep3_dlc_trigger = yes
+			}
+			trigger_event = ep3_roman_restoration.0100
+		}
+		else = {
+			trigger_event = roman_restoration.0001
+		}
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_restored_seleucid_empire
+			}
+			set_global_variable = {
+				name = flag_restored_seleucid_empire
+				value = root
+			}
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+### Diadochi Titles ###
