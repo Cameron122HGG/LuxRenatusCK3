@@ -1,5 +1,5 @@
 ﻿
-namespace = diadochi_seleucid
+namespace = LR_diadochi
 
 ##################################################
 
@@ -26,11 +26,11 @@ namespace = diadochi_seleucid
 ##################################################
 # Restoring the Seleucid Empire
 ##################################################
-diadochi_seleucid.0001 = {
+LR_diadochi.0001 = {
 	type = character_event
-	title = diadochi_seleucid.0001.t
+	title = LR_diadochi.0001.t
 	desc = {
-		desc = diadochi_seleucid.0001.desc.intro
+		desc = LR_diadochi.0001.desc.intro
 		first_valid = {
 			# Doing it as the Greeks.
 			triggered_desc = {
@@ -38,10 +38,10 @@ diadochi_seleucid.0001 = {
 					culture = { has_cultural_pillar = heritage_hellenistic_greek }
 
 				}
-				desc = diadochi_seleucid.0001.desc.greeks
+				desc = LR_diadochi.0001.desc.greeks
 			}
 			# Doing it as somebody else.
-			desc = diadochi_seleucid.0001.desc.other
+			desc = LR_diadochi.0001.desc.other
 		}
 		first_valid = {
 			# Doing it as Christians.
@@ -49,16 +49,16 @@ diadochi_seleucid.0001 = {
 				trigger = {
 					faith.religion = religion:christianity_religion
 				}
-				desc = diadochi_seleucid.0001.desc.christians
+				desc = LR_diadochi.0001.desc.christians
 			}
 			# Doing it as Hellenics
 			triggered_desc = {
 				trigger = {
 					faith.religion = faith:hellenic_pagan.religion
 				}
-				desc = diadochi_seleucid.0001.desc.hellenics
+				desc = LR_diadochi.0001.desc.hellenics
 			}
-			desc = diadochi_seleucid.0001.desc.fallback
+			desc = LR_diadochi.0001.desc.fallback
 		}
 	}
 	theme = emperor
@@ -74,7 +74,7 @@ diadochi_seleucid.0001 = {
 		create_story = restoring_roman_provinces_story
 	}
 	option = {
-		name = diadochi_seleucid.0001.a
+		name = LR_diadochi.0001.a
 		set_nickname_effect = { NICKNAME = nick_the_glorious }
 		# Send narrative fluff to other players (if any).
 		every_player = {
@@ -82,17 +82,17 @@ diadochi_seleucid.0001 = {
 				this != root
 				is_within_diplo_range = { CHARACTER = root }
 			}
-			trigger_event = diadochi_seleucid.0002
+			trigger_event = LR_diadochi.0002
 		}
 	}
 }
 
 # Players informed of some fucko declaring a new Rome
-diadochi_seleucid.0002 = {
+LR_diadochi.0002 = {
 	type = character_event
-	title = diadochi_seleucid.0002.t
+	title = LR_diadochi.0002.t
 	desc = {
-		desc = diadochi_seleucid.0002.desc
+		desc = LR_diadochi.0002.desc
 		first_valid = {
 			# Christians freaking out.
 			triggered_desc = {
@@ -100,10 +100,10 @@ diadochi_seleucid.0002 = {
 					scope:scoped_emperor = { faith.religion = faith:hellenic_pagan.religion }
 					faith.religion = faith:catholic.religion
 				}
-				desc = diadochi_seleucid.0002.desc.hellenics
+				desc = LR_diadochi.0002.desc.hellenics
 			}
 			# Regular.
-			desc = diadochi_seleucid.0002.desc.christians
+			desc = LR_diadochi.0002.desc.christians
 		}
 	}
 	theme = realm
@@ -133,7 +133,7 @@ diadochi_seleucid.0002 = {
 					has_title = title:e_hre
 				}
 			}
-			text = diadochi_seleucid.0002.a
+			text = LR_diadochi.0002.a
 		}
 		name = { # Regular HRE
 			trigger = {
@@ -143,7 +143,7 @@ diadochi_seleucid.0002 = {
 				}
 				has_title = title:e_hre
 			}
-			text = diadochi_seleucid.0002.b
+			text = LR_diadochi.0002.b
 		}
 		name = { # Crazy Hellenics
 			trigger = {
@@ -153,7 +153,7 @@ diadochi_seleucid.0002 = {
 					has_title = title:e_hre
 				}
 			}
-			text = diadochi_seleucid.0002.c
+			text = LR_diadochi.0002.c
 		}
 		name = { # Crazy Hellenics HRE
 			trigger = {
@@ -161,11 +161,11 @@ diadochi_seleucid.0002 = {
 				faith.religion = faith:catholic.religion
 				has_title = title:e_hre
 			}
-			text = diadochi_seleucid.0002.d
+			text = LR_diadochi.0002.d
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0002.e
+		name = LR_diadochi.0002.e
 		fallback = yes
 	}
 }
@@ -174,9 +174,9 @@ diadochi_seleucid.0002 = {
 # Holy Roman Empire for realsies this time.
 ##################################################
 
-diadochi_seleucid.0003 = {
+LR_diadochi.0003 = {
 	type = character_event
-	title = diadochi_seleucid.0003.t
+	title = LR_diadochi.0003.t
 	desc = {
 		first_valid = {
 			# Doing it as the Greeks.
@@ -184,7 +184,7 @@ diadochi_seleucid.0003 = {
 				trigger = {
 					root.culture = culture:greek
 				}
-				desc = diadochi_seleucid.0003.desc.greeks
+				desc = LR_diadochi.0003.desc.greeks
 			}
 			# Doing it as somebody else.
 			triggered_desc = {
@@ -193,10 +193,10 @@ diadochi_seleucid.0003 = {
 						root.culture = culture:greek
 					}
 				}
-				desc = diadochi_seleucid.0003.desc.other
+				desc = LR_diadochi.0003.desc.other
 			}
 		}
-		desc = diadochi_seleucid.0003.desc
+		desc = LR_diadochi.0003.desc
 	}
 	theme = realm
 	left_portrait = {
@@ -211,7 +211,7 @@ diadochi_seleucid.0003 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0003.a
+		name = LR_diadochi.0003.a
 		set_nickname_effect = { NICKNAME = nick_the_glorious }
 		# Send narrative fluff to other players (if any).
 		every_player = {
@@ -219,15 +219,15 @@ diadochi_seleucid.0003 = {
 				this != root
 				is_within_diplo_range = { CHARACTER = root }
 			}
-			trigger_event = diadochi_seleucid.0004
+			trigger_event = LR_diadochi.0004
 		}
 	}
 }
 
 # Players informed of (Holy) Roman Empire being reborn.
-diadochi_seleucid.0004 = {
+LR_diadochi.0004 = {
 	type = character_event
-	title = diadochi_seleucid.0004.t
+	title = LR_diadochi.0004.t
 	desc = {
 		first_valid = {
 			# Reaction of the Byzantines (if they are even still around)
@@ -240,7 +240,7 @@ diadochi_seleucid.0004 = {
 						}
 					}
 				}
-				desc = diadochi_seleucid.0004.desc.byzantines
+				desc = LR_diadochi.0004.desc.byzantines
 			}
 			# Everybody else.
 			triggered_desc = {
@@ -252,7 +252,7 @@ diadochi_seleucid.0004 = {
 						}
 					}
 				}
-				desc = diadochi_seleucid.0004.desc.others
+				desc = LR_diadochi.0004.desc.others
 			}
 		}
 	}
@@ -273,7 +273,7 @@ diadochi_seleucid.0004 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0004.a
+		name = LR_diadochi.0004.a
 		trigger = {
 			NOT = {
 				has_title = title:e_byzantium
@@ -281,7 +281,7 @@ diadochi_seleucid.0004 = {
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0004.b
+		name = LR_diadochi.0004.b
 		trigger = {
 			has_title = title:e_byzantium
 		}
@@ -292,9 +292,9 @@ diadochi_seleucid.0004 = {
 }
 
 # on_new_holder: New Emperor gets the Augustus Trait.
-diadochi_seleucid.0005 = {
+LR_diadochi.0005 = {
 	type = character_event
-	title = diadochi_seleucid.0005.t
+	title = LR_diadochi.0005.t
 	desc = {
 		first_valid = {
 			# Regular Roman Empire
@@ -304,14 +304,14 @@ diadochi_seleucid.0005 = {
 						exists = title:h_roman_empire.var:variable_restored_hre
 					}
 				}
-				desc = diadochi_seleucid.0005.desc.regular
+				desc = LR_diadochi.0005.desc.regular
 			}
 			# Holy Roman Empire
 			triggered_desc = {
 				trigger = {
 					exists = title:h_roman_empire.var:variable_restored_hre
 				}
-				desc = diadochi_seleucid.0005.desc.holy
+				desc = LR_diadochi.0005.desc.holy
 			}
 		}
 	}
@@ -352,21 +352,21 @@ diadochi_seleucid.0005 = {
 		if = {
 			limit = { scope:previous_holder = { is_alive = yes has_trait = augustus } }
 			save_scope_as = new_holder
-			scope:previous_holder = { trigger_event = diadochi_seleucid.0006 }
+			scope:previous_holder = { trigger_event = LR_diadochi.0006 }
 		}
 	}
 
 	option = {
-		name = diadochi_seleucid.0005.a
+		name = LR_diadochi.0005.a
 		add_trait = augustus
 	}
 }
 
 # If old holder is still alive, he will lose the trait.
-diadochi_seleucid.0006 = {
+LR_diadochi.0006 = {
 	type = character_event
-	title = diadochi_seleucid.0006.t
-	desc = diadochi_seleucid.0006.desc
+	title = LR_diadochi.0006.t
+	desc = LR_diadochi.0006.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -384,7 +384,7 @@ diadochi_seleucid.0006 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0006.a
+		name = LR_diadochi.0006.a
 		remove_trait = augustus
 		stress_impact = {
 			base = minor_stress_impact_gain
@@ -399,7 +399,7 @@ diadochi_seleucid.0006 = {
 # All events fired on_yearly pulses, checking for dejure Duchies.
 # Mostly just for flavor.
 
-scripted_trigger diadochi_seleucid_0010_is_valid_roman_empire_trigger = {
+scripted_trigger LR_diadochi_0010_is_valid_roman_empire_trigger = {
 	is_ai = no
 	is_roman_emperor_trigger = yes
 	OR = {
@@ -425,10 +425,10 @@ scripted_trigger diadochi_seleucid_0010_is_valid_roman_empire_trigger = {
 # Imperial Borders (all provinces restored)
 
 # Provincia Syria Palaestina
-diadochi_seleucid.0010 = {
+LR_diadochi.0010 = {
 	type = character_event
-	title = diadochi_seleucid.0010.t
-	desc = diadochi_seleucid.0010.desc
+	title = LR_diadochi.0010.t
+	desc = LR_diadochi.0010.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -436,7 +436,7 @@ diadochi_seleucid.0010 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -461,16 +461,16 @@ diadochi_seleucid.0010 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 
 # Provincia Aegyptus
-diadochi_seleucid.0011 = {
+LR_diadochi.0011 = {
 	type = character_event
-	title = diadochi_seleucid.0011.t
-	desc = diadochi_seleucid.0011.desc
+	title = LR_diadochi.0011.t
+	desc = LR_diadochi.0011.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -478,7 +478,7 @@ diadochi_seleucid.0011 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -503,15 +503,15 @@ diadochi_seleucid.0011 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Cyrenaica
-diadochi_seleucid.0012 = {
+LR_diadochi.0012 = {
 	type = character_event
-	title = diadochi_seleucid.0012.t
-	desc = diadochi_seleucid.0012.desc
+	title = LR_diadochi.0012.t
+	desc = LR_diadochi.0012.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -519,7 +519,7 @@ diadochi_seleucid.0012 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -544,15 +544,15 @@ diadochi_seleucid.0012 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Africa
-diadochi_seleucid.0013 = {
+LR_diadochi.0013 = {
 	type = character_event
-	title = diadochi_seleucid.0013.t
-	desc = diadochi_seleucid.0013.desc
+	title = LR_diadochi.0013.t
+	desc = LR_diadochi.0013.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -560,7 +560,7 @@ diadochi_seleucid.0013 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -585,15 +585,15 @@ diadochi_seleucid.0013 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Illyricum
-diadochi_seleucid.0014 = {
+LR_diadochi.0014 = {
 	type = character_event
-	title = diadochi_seleucid.0014.t
-	desc = diadochi_seleucid.0014.desc
+	title = LR_diadochi.0014.t
+	desc = LR_diadochi.0014.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -601,7 +601,7 @@ diadochi_seleucid.0014 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -626,15 +626,15 @@ diadochi_seleucid.0014 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Italia
-diadochi_seleucid.0015 = {
+LR_diadochi.0015 = {
 	type = character_event
-	title = diadochi_seleucid.0015.t
-	desc = diadochi_seleucid.0015.desc
+	title = LR_diadochi.0015.t
+	desc = LR_diadochi.0015.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -642,7 +642,7 @@ diadochi_seleucid.0015 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -668,15 +668,15 @@ diadochi_seleucid.0015 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Gallia
-diadochi_seleucid.0016 = {
+LR_diadochi.0016 = {
 	type = character_event
-	title = diadochi_seleucid.0016.t
-	desc = diadochi_seleucid.0016.desc
+	title = LR_diadochi.0016.t
+	desc = LR_diadochi.0016.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -684,7 +684,7 @@ diadochi_seleucid.0016 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -709,15 +709,15 @@ diadochi_seleucid.0016 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Germania
-diadochi_seleucid.0017 = {
+LR_diadochi.0017 = {
 	type = character_event
-	title = diadochi_seleucid.0017.t
-	desc = diadochi_seleucid.0017.desc
+	title = LR_diadochi.0017.t
+	desc = LR_diadochi.0017.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -725,7 +725,7 @@ diadochi_seleucid.0017 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -751,15 +751,15 @@ diadochi_seleucid.0017 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Britannia
-diadochi_seleucid.0018 = {
+LR_diadochi.0018 = {
 	type = character_event
-	title = diadochi_seleucid.0018.t
-	desc = diadochi_seleucid.0018.desc
+	title = LR_diadochi.0018.t
+	desc = LR_diadochi.0018.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -767,7 +767,7 @@ diadochi_seleucid.0018 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -793,15 +793,15 @@ diadochi_seleucid.0018 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Hispania
-diadochi_seleucid.0019 = {
+LR_diadochi.0019 = {
 	type = character_event
-	title = diadochi_seleucid.0019.t
-	desc = diadochi_seleucid.0019.desc
+	title = LR_diadochi.0019.t
+	desc = LR_diadochi.0019.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -809,7 +809,7 @@ diadochi_seleucid.0019 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -834,15 +834,15 @@ diadochi_seleucid.0019 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Mauretania
-diadochi_seleucid.0020 = {
+LR_diadochi.0020 = {
 	type = character_event
-	title = diadochi_seleucid.0020.t
-	desc = diadochi_seleucid.0020.desc
+	title = LR_diadochi.0020.t
+	desc = LR_diadochi.0020.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -850,7 +850,7 @@ diadochi_seleucid.0020 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -875,15 +875,15 @@ diadochi_seleucid.0020 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Mesopotamia
-diadochi_seleucid.0021 = {
+LR_diadochi.0021 = {
 	type = character_event
-	title = diadochi_seleucid.0021.t
-	desc = diadochi_seleucid.0021.desc
+	title = LR_diadochi.0021.t
+	desc = LR_diadochi.0021.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -891,7 +891,7 @@ diadochi_seleucid.0021 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -916,15 +916,15 @@ diadochi_seleucid.0021 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Caledonia
-diadochi_seleucid.0022 = {
+LR_diadochi.0022 = {
 	type = character_event
-	title = diadochi_seleucid.0022.t
-	desc = diadochi_seleucid.0022.desc
+	title = LR_diadochi.0022.t
+	desc = LR_diadochi.0022.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -932,7 +932,7 @@ diadochi_seleucid.0022 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -957,15 +957,15 @@ diadochi_seleucid.0022 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 # Provincia Hibernia
-diadochi_seleucid.0023 = {
+LR_diadochi.0023 = {
 	type = character_event
-	title = diadochi_seleucid.0023.t
-	desc = diadochi_seleucid.0023.desc
+	title = LR_diadochi.0023.t
+	desc = LR_diadochi.0023.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -973,7 +973,7 @@ diadochi_seleucid.0023 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_roman_provinces_variable_list
@@ -998,31 +998,31 @@ diadochi_seleucid.0023 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 	}
 }
 
 # Imperial Borders (all provinces restored)
-diadochi_seleucid.0024 = {
+LR_diadochi.0024 = {
 	type = character_event
-	title = diadochi_seleucid.0024.t
+	title = LR_diadochi.0024.t
 	desc = {
-		desc = diadochi_seleucid.0024.desc.intro
+		desc = LR_diadochi.0024.desc.intro
 		first_valid = {
 			# Christian Roman Empire
 			triggered_desc = {
 				trigger = {
 					faith.religion = faith:catholic.religion
 				}
-				desc = diadochi_seleucid.0024.desc.christian
+				desc = LR_diadochi.0024.desc.christian
 			}
 			# Hellenic Roman Empire
 			triggered_desc = {
 				trigger = {
 					faith.religion = faith:hellenic_pagan.religion
 				}
-				desc = diadochi_seleucid.0024.desc.hellenic
+				desc = LR_diadochi.0024.desc.hellenic
 			}
 			# Fallback Roman Empire
 			triggered_desc = {
@@ -1032,7 +1032,7 @@ diadochi_seleucid.0024 = {
 						faith.religion = faith:hellenic_pagan.religion
 					}
 				}
-				desc = diadochi_seleucid.0024.desc.fallback
+				desc = LR_diadochi.0024.desc.fallback
 			}
 		}
 	}
@@ -1043,7 +1043,7 @@ diadochi_seleucid.0024 = {
 	}
 
 	trigger = {
-		diadochi_seleucid_0010_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0010_is_valid_roman_empire_trigger = yes
 		is_roman_emperor_excluding_byzantium_trigger = yes
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
@@ -1070,7 +1070,7 @@ diadochi_seleucid.0024 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0010.a
+		name = LR_diadochi.0010.a
 		add_prestige = major_prestige_gain
 		hidden_effect = {
 			random_owned_story = {
@@ -1085,25 +1085,25 @@ diadochi_seleucid.0024 = {
 # Schism events.
 ##################################################
 
-diadochi_seleucid.0100 = {
+LR_diadochi.0100 = {
 	type = character_event
-	title = diadochi_seleucid.0100.t
+	title = LR_diadochi.0100.t
 	desc = {
-		desc = diadochi_seleucid.0100.desc.intro
+		desc = LR_diadochi.0100.desc.intro
 		first_valid = {
 			# As an Orthodox
 			triggered_desc = {
 				trigger = {
 					faith = faith:orthodox
 				}
-				desc = diadochi_seleucid.0100.desc.orthodox
+				desc = LR_diadochi.0100.desc.orthodox
 			}
 			# As a Catholic
 			triggered_desc = {
 				trigger = {
 					faith = faith:catholic
 				}
-				desc = diadochi_seleucid.0100.desc.catholic
+				desc = LR_diadochi.0100.desc.catholic
 			}
 			# And Everybody else
 			triggered_desc = {
@@ -1113,7 +1113,7 @@ diadochi_seleucid.0100 = {
 						faith = faith:orthodox
 					}
 				}
-				desc = diadochi_seleucid.0100.desc.generic
+				desc = LR_diadochi.0100.desc.generic
 			}
 		}
 	}
@@ -1162,30 +1162,30 @@ diadochi_seleucid.0100 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0100.a
+		name = LR_diadochi.0100.a
 	}
 }
 
 # Ecumenical followers get chance to convert.
-diadochi_seleucid.0101 = {
+LR_diadochi.0101 = {
 	type = character_event
-	title = diadochi_seleucid.0100.t
+	title = LR_diadochi.0100.t
 	desc = {
-		desc = diadochi_seleucid.0101.desc.intro
+		desc = LR_diadochi.0101.desc.intro
 		first_valid = {
 			# As an Orthodox
 			triggered_desc = {
 				trigger = {
 					scope:mending_faith = faith:orthodox
 				}
-				desc = diadochi_seleucid.0101.desc.orthodox
+				desc = LR_diadochi.0101.desc.orthodox
 			}
 			# As a Catholic
 			triggered_desc = {
 				trigger = {
 					scope:mending_faith = faith:catholic
 				}
-				desc = diadochi_seleucid.0101.desc.catholic
+				desc = LR_diadochi.0101.desc.catholic
 			}
 			# And Everybody else
 			triggered_desc = {
@@ -1195,7 +1195,7 @@ diadochi_seleucid.0101 = {
 						scope:mending_faith = faith:orthodox
 					}
 				}
-				desc = diadochi_seleucid.0101.desc.generic
+				desc = LR_diadochi.0101.desc.generic
 			}
 		}
 	}
@@ -1211,7 +1211,7 @@ diadochi_seleucid.0101 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0101.a
+		name = LR_diadochi.0101.a
 		trigger = {
 			OR = {
 				is_ai = no
@@ -1238,7 +1238,7 @@ diadochi_seleucid.0101 = {
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0101.b
+		name = LR_diadochi.0101.b
 		ai_chance = {
 			base = 20
 			ai_value_modifier = {
@@ -1260,25 +1260,25 @@ diadochi_seleucid.0101 = {
 }
 
 # Heretics and Heathens are only notified.
-diadochi_seleucid.0102 = {
+LR_diadochi.0102 = {
 	type = character_event
-	title = diadochi_seleucid.0100.t
+	title = LR_diadochi.0100.t
 	desc = {
-		desc = diadochi_seleucid.0101.desc.intro
+		desc = LR_diadochi.0101.desc.intro
 		first_valid = {
 			# As an Orthodox
 			triggered_desc = {
 				trigger = {
 					scope:mending_faith = faith:orthodox
 				}
-				desc = diadochi_seleucid.0101.desc.orthodox
+				desc = LR_diadochi.0101.desc.orthodox
 			}
 			# As a Catholic
 			triggered_desc = {
 				trigger = {
 					scope:mending_faith = faith:catholic
 				}
-				desc = diadochi_seleucid.0101.desc.catholic
+				desc = LR_diadochi.0101.desc.catholic
 			}
 			# And Everybody else
 			triggered_desc = {
@@ -1288,7 +1288,7 @@ diadochi_seleucid.0102 = {
 						scope:mending_faith = faith:orthodox
 					}
 				}
-				desc = diadochi_seleucid.0101.desc.generic
+				desc = LR_diadochi.0101.desc.generic
 			}
 		}
 	}
@@ -1304,30 +1304,30 @@ diadochi_seleucid.0102 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0102.a
+		name = LR_diadochi.0102.a
 	}
 }
 
 # Faithful players notified.
-diadochi_seleucid.0103 = {
+LR_diadochi.0103 = {
 	type = character_event
-	title = diadochi_seleucid.0100.t
+	title = LR_diadochi.0100.t
 	desc = {
-		desc = diadochi_seleucid.0100.desc.intro
+		desc = LR_diadochi.0100.desc.intro
 		first_valid = {
 			# As an Orthodox
 			triggered_desc = {
 				trigger = {
 					scope:mending_faith = faith:orthodox
 				}
-				desc = diadochi_seleucid.0100.desc.orthodox
+				desc = LR_diadochi.0100.desc.orthodox
 			}
 			# As a Catholic
 			triggered_desc = {
 				trigger = {
 					scope:mending_faith = faith:catholic
 				}
-				desc = diadochi_seleucid.0100.desc.catholic
+				desc = LR_diadochi.0100.desc.catholic
 			}
 			# And Everybody else
 			triggered_desc = {
@@ -1337,7 +1337,7 @@ diadochi_seleucid.0103 = {
 						scope:mending_faith = faith:orthodox
 					}
 				}
-				desc = diadochi_seleucid.0100.desc.generic
+				desc = LR_diadochi.0100.desc.generic
 			}
 		}
 	}
@@ -1353,7 +1353,7 @@ diadochi_seleucid.0103 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0100.a
+		name = LR_diadochi.0100.a
 	}
 }
 
@@ -1368,14 +1368,14 @@ diadochi_seleucid.0103 = {
 # Patriarchate of Alexandria
 # Patriarchate of Rome
 
-scripted_trigger diadochi_seleucid_0104_is_valid_roman_empire_trigger = {
+scripted_trigger LR_diadochi_0104_is_valid_roman_empire_trigger = {
 	is_roman_emperor_trigger = yes
 	faith = faith:orthodox
 	faith = { has_doctrine = special_doctrine_ecumenical_christian }
 }
 
 # on_new_holder hidden event to check title and conqueror.
-diadochi_seleucid.0199 = {
+LR_diadochi.0199 = {
 	type = character_event
 	hidden = yes
 
@@ -1388,11 +1388,11 @@ diadochi_seleucid.0199 = {
 		}
 		OR = {
 			AND = {
-				diadochi_seleucid_0104_is_valid_roman_empire_trigger = yes
+				LR_diadochi_0104_is_valid_roman_empire_trigger = yes
 				faith = faith:orthodox
 			}
 			any_liege_or_above = {
-				diadochi_seleucid_0104_is_valid_roman_empire_trigger = yes
+				LR_diadochi_0104_is_valid_roman_empire_trigger = yes
 				faith = faith:orthodox
 			}
 		}
@@ -1402,13 +1402,13 @@ diadochi_seleucid.0199 = {
 		if = {
 			limit = {
 				any_liege_or_above = {
-					diadochi_seleucid_0104_is_valid_roman_empire_trigger = yes
+					LR_diadochi_0104_is_valid_roman_empire_trigger = yes
 					faith = faith:orthodox
 				}
 			}
 			random_liege_or_above = {
 				limit = {
-					diadochi_seleucid_0104_is_valid_roman_empire_trigger = yes
+					LR_diadochi_0104_is_valid_roman_empire_trigger = yes
 					faith = faith:orthodox
 				}
 				trigger_event = {
@@ -1425,10 +1425,10 @@ diadochi_seleucid.0199 = {
 }
 
 # Patriarchate of Antioch
-diadochi_seleucid.0104 = {
+LR_diadochi.0104 = {
 	type = character_event
-	title = diadochi_seleucid.0104.t
-	desc = diadochi_seleucid.0104.desc
+	title = LR_diadochi.0104.t
+	desc = LR_diadochi.0104.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -1443,7 +1443,7 @@ diadochi_seleucid.0104 = {
 			}
 		}
 		NOT = { has_character_flag = flag_orthodox_patriarchate_cooldown }
-		diadochi_seleucid_0104_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0104_is_valid_roman_empire_trigger = yes
 		scope:title = title:c_antiocheia
 		#title:c_antiocheia.holder.faith = root.faith #Not under an infidel vassal.
 	}
@@ -1463,16 +1463,16 @@ diadochi_seleucid.0104 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0104.a
+		name = LR_diadochi.0104.a
 		add_piety = major_piety_gain
 	}
 }
 
 # Patriarchate of Jerusalem
-diadochi_seleucid.0105 = {
+LR_diadochi.0105 = {
 	type = character_event
-	title = diadochi_seleucid.0105.t
-	desc = diadochi_seleucid.0105.desc
+	title = LR_diadochi.0105.t
+	desc = LR_diadochi.0105.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -1487,7 +1487,7 @@ diadochi_seleucid.0105 = {
 			}
 		}
 		NOT = { has_character_flag = flag_orthodox_patriarchate_cooldown }
-		diadochi_seleucid_0104_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0104_is_valid_roman_empire_trigger = yes
 		scope:title = title:c_jerusalem
 		#title:c_jerusalem.holder.faith = root.faith #Not under an infidel vassal.
 	}
@@ -1507,16 +1507,16 @@ diadochi_seleucid.0105 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0104.a
+		name = LR_diadochi.0104.a
 		add_piety = major_piety_gain
 	}
 }
 
 # Patriarchate of Alexandria
-diadochi_seleucid.0106 = {
+LR_diadochi.0106 = {
 	type = character_event
-	title = diadochi_seleucid.0106.t
-	desc = diadochi_seleucid.0106.desc
+	title = LR_diadochi.0106.t
+	desc = LR_diadochi.0106.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -1531,7 +1531,7 @@ diadochi_seleucid.0106 = {
 			}
 		}
 		NOT = { has_character_flag = flag_orthodox_patriarchate_cooldown }
-		diadochi_seleucid_0104_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0104_is_valid_roman_empire_trigger = yes
 		scope:title = title:c_alexandria
 		#title:c_alexandria.holder.faith = root.faith #Not under an infidel vassal.
 	}
@@ -1551,16 +1551,16 @@ diadochi_seleucid.0106 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0104.a
+		name = LR_diadochi.0104.a
 		add_piety = major_piety_gain
 	}
 }
 
 # Patriarchate of Rome
-diadochi_seleucid.0107 = {
+LR_diadochi.0107 = {
 	type = character_event
-	title = diadochi_seleucid.0107.t
-	desc = diadochi_seleucid.0107.desc
+	title = LR_diadochi.0107.t
+	desc = LR_diadochi.0107.desc
 	theme = emperor
 	left_portrait = {
 		character = root
@@ -1575,7 +1575,7 @@ diadochi_seleucid.0107 = {
 			}
 		}
 		NOT = { has_character_flag = flag_orthodox_patriarchate_cooldown }
-		diadochi_seleucid_0104_is_valid_roman_empire_trigger = yes
+		LR_diadochi_0104_is_valid_roman_empire_trigger = yes
 		scope:title = title:c_roma
 		#title:c_roma.holder.faith = root.faith #Not under an infidel vassal.
 	}
@@ -1595,7 +1595,7 @@ diadochi_seleucid.0107 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0104.a
+		name = LR_diadochi.0104.a
 		add_piety = major_piety_gain
 	}
 }
@@ -1606,10 +1606,10 @@ diadochi_seleucid.0107 = {
 # Imposing Iconoclast Patriarchate
 ##################################################
 
-diadochi_seleucid.0120 = {
+LR_diadochi.0120 = {
 	type = character_event
-	title = diadochi_seleucid.0120.t
-	desc = diadochi_seleucid.0120.desc
+	title = LR_diadochi.0120.t
+	desc = LR_diadochi.0120.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -1701,14 +1701,14 @@ diadochi_seleucid.0120 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0120.a
+		name = LR_diadochi.0120.a
 		add_piety = major_piety_gain
 		every_player = {
 			limit = {
 				this != root
 				faith.religion = faith:orthodox.religion
 			}
-			trigger_event = diadochi_seleucid.0121 # Notification.
+			trigger_event = LR_diadochi.0121 # Notification.
 		}
 		if = { # Vassalize if possible/needed.
 			limit = {
@@ -1732,9 +1732,9 @@ diadochi_seleucid.0120 = {
 }
 
 # Christians notified.
-diadochi_seleucid.0121 = {
+LR_diadochi.0121 = {
 	type = character_event
-	title = diadochi_seleucid.0120.t
+	title = LR_diadochi.0120.t
 	desc = {
 		first_valid = {
 			# Orthodox Reaction
@@ -1742,14 +1742,14 @@ diadochi_seleucid.0121 = {
 				trigger = {
 					root.faith = faith:orthodox
 				}
-				desc = diadochi_seleucid.0121.desc.orthodox
+				desc = LR_diadochi.0121.desc.orthodox
 			}
 			# Iconoclast reaction
 			triggered_desc = {
 				trigger = {
 					root.faith = faith:iconoclast
 				}
-				desc = diadochi_seleucid.0121.desc.iconoclast
+				desc = LR_diadochi.0121.desc.iconoclast
 			}
 			# Every other Christian
 			triggered_desc = {
@@ -1759,7 +1759,7 @@ diadochi_seleucid.0121 = {
 						root.faith = faith:iconoclast
 					}
 				}
-				desc = diadochi_seleucid.0121.desc.other
+				desc = LR_diadochi.0121.desc.other
 			}
 		}
 	}
@@ -1791,13 +1791,13 @@ diadochi_seleucid.0121 = {
 			trigger = {
 				root.faith = faith:orthodox
 			}
-			text = diadochi_seleucid.0121.a
+			text = LR_diadochi.0121.a
 		}
 		name = {
 			trigger = {
 				root.faith = faith:iconoclast
 			}
-			text = diadochi_seleucid.0121.b
+			text = LR_diadochi.0121.b
 		}
 		if = {
 			limit = {
@@ -1809,7 +1809,7 @@ diadochi_seleucid.0121 = {
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0121.c
+		name = LR_diadochi.0121.c
 		fallback = yes
 	}
 }
@@ -1818,10 +1818,10 @@ diadochi_seleucid.0121 = {
 # Restoring Ecumenical Patriarchate
 ##################################################
 
-diadochi_seleucid.0122 = {
+LR_diadochi.0122 = {
 	type = character_event
-	title = diadochi_seleucid.0122.t
-	desc = diadochi_seleucid.0122.desc
+	title = LR_diadochi.0122.t
+	desc = LR_diadochi.0122.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -1913,14 +1913,14 @@ diadochi_seleucid.0122 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0122.a
+		name = LR_diadochi.0122.a
 		add_piety = major_piety_gain
 		every_player = {
 			limit = {
 				this != root
 				faith.religion = faith:orthodox.religion
 			}
-			trigger_event = diadochi_seleucid.0123 # Notification.
+			trigger_event = LR_diadochi.0123 # Notification.
 		}
 		if = { # Vassalize if possible/needed.
 			limit = {
@@ -1944,9 +1944,9 @@ diadochi_seleucid.0122 = {
 }
 
 # Christians notified.
-diadochi_seleucid.0123 = {
+LR_diadochi.0123 = {
 	type = character_event
-	title = diadochi_seleucid.0122.t
+	title = LR_diadochi.0122.t
 	desc = {
 		first_valid = {
 			# Orthodox Reaction
@@ -1954,14 +1954,14 @@ diadochi_seleucid.0123 = {
 				trigger = {
 					root.faith = faith:orthodox
 				}
-				desc = diadochi_seleucid.0123.desc.orthodox
+				desc = LR_diadochi.0123.desc.orthodox
 			}
 			# Iconoclast reaction
 			triggered_desc = {
 				trigger = {
 					root.faith = faith:iconoclast
 				}
-				desc = diadochi_seleucid.0123.desc.iconoclast
+				desc = LR_diadochi.0123.desc.iconoclast
 			}
 			#Every other Christian
 			triggered_desc = {
@@ -1971,7 +1971,7 @@ diadochi_seleucid.0123 = {
 						root.faith = faith:iconoclast
 					}
 				}
-				desc = diadochi_seleucid.0123.desc.other
+				desc = LR_diadochi.0123.desc.other
 			}
 		}
 	}
@@ -1999,13 +1999,13 @@ diadochi_seleucid.0123 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0123.a
+		name = LR_diadochi.0123.a
 		trigger = {
 			root.faith = faith:orthodox
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0123.b
+		name = LR_diadochi.0123.b
 		trigger = {
 			root.faith = faith:iconoclast
 		}
@@ -2014,7 +2014,7 @@ diadochi_seleucid.0123 = {
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0123.c
+		name = LR_diadochi.0123.c
 		trigger = {
 			NOR = {
 				root.faith = faith:orthodox
@@ -2028,10 +2028,10 @@ diadochi_seleucid.0123 = {
 # Restoring Papacy
 ##################################################
 
-diadochi_seleucid.0124 = {
+LR_diadochi.0124 = {
 	type = character_event
-	title = diadochi_seleucid.0124.t
-	desc = diadochi_seleucid.0124.desc
+	title = LR_diadochi.0124.t
+	desc = LR_diadochi.0124.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -2048,14 +2048,14 @@ diadochi_seleucid.0124 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0124.a
+		name = LR_diadochi.0124.a
 		add_piety = major_piety_gain
 		every_player = {
 			limit = {
 				this != root
 				faith.religion = faith:catholic.religion
 			}
-			trigger_event = diadochi_seleucid.0125 # Notification.
+			trigger_event = LR_diadochi.0125 # Notification.
 		}
 		if = { # Vassalize if possible/needed.
 			limit = {
@@ -2079,9 +2079,9 @@ diadochi_seleucid.0124 = {
 }
 
 # Christians notified.
-diadochi_seleucid.0125 = {
+LR_diadochi.0125 = {
 	type = character_event
-	title = diadochi_seleucid.0124.t
+	title = LR_diadochi.0124.t
 	desc = {
 		first_valid = {
 			# Catholic Reaction
@@ -2089,7 +2089,7 @@ diadochi_seleucid.0125 = {
 				trigger = {
 					root.faith = faith:catholic
 				}
-				desc = diadochi_seleucid.0125.desc.catholic
+				desc = LR_diadochi.0125.desc.catholic
 			}
 			# Every other Christian
 			triggered_desc = {
@@ -2099,7 +2099,7 @@ diadochi_seleucid.0125 = {
 					}
 
 				}
-				desc = diadochi_seleucid.0125.desc.other
+				desc = LR_diadochi.0125.desc.other
 			}
 		}
 	}
@@ -2122,13 +2122,13 @@ diadochi_seleucid.0125 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0125.a
+		name = LR_diadochi.0125.a
 		trigger = {
 			root.faith = faith:catholic
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0125.b
+		name = LR_diadochi.0125.b
 		trigger = {
 			NOT = {
 				root.faith = faith:catholic
@@ -2141,9 +2141,9 @@ diadochi_seleucid.0125 = {
 # Destroying the Papacy as a Muslim/Pagan
 ##################################################
 
-diadochi_seleucid.0130 = {
+LR_diadochi.0130 = {
 	type = character_event
-	title = diadochi_seleucid.0130.t
+	title = LR_diadochi.0130.t
 	desc = {
 		first_valid = {
 			# Muslim Reaction
@@ -2151,14 +2151,14 @@ diadochi_seleucid.0130 = {
 				trigger = {
 					root.faith.religion = faith:ashari.religion
 				}
-				desc = diadochi_seleucid.0130.desc.muslim
+				desc = LR_diadochi.0130.desc.muslim
 			}
 			# Hellenic Reaction
 			triggered_desc = {
 				trigger = {
 					root.faith.religion = faith:hellenic_pagan.religion
 				}
-				desc = diadochi_seleucid.0130.desc.hellenic
+				desc = LR_diadochi.0130.desc.hellenic
 			}
 			# And the rest
 			triggered_desc = {
@@ -2168,7 +2168,7 @@ diadochi_seleucid.0130 = {
 						root.faith.religion = faith:hellenic_pagan.religion
 					}
 				}
-				desc = diadochi_seleucid.0130.desc.fallback
+				desc = LR_diadochi.0130.desc.fallback
 			}
 		}
 		first_valid = {
@@ -2179,14 +2179,14 @@ diadochi_seleucid.0130 = {
 						exists = scope:scoped_pope
 					}
 				}
-				desc = diadochi_seleucid.0130.desc.no_pope
+				desc = LR_diadochi.0130.desc.no_pope
 			}
 			# Current Pope is crucified
 			triggered_desc = {
 				trigger = {
 					root.faith.religion = faith:hellenic_pagan.religion
 				}
-				desc = diadochi_seleucid.0130.desc.pope.crucifixion
+				desc = LR_diadochi.0130.desc.pope.crucifixion
 			}
 			# Current Pope is sacrificed
 			triggered_desc = {
@@ -2195,10 +2195,10 @@ diadochi_seleucid.0130 = {
 						has_doctrine_parameter = human_sacrifice_active
 					}
 				}
-				desc = diadochi_seleucid.0130.desc.pope.sacrificed
+				desc = LR_diadochi.0130.desc.pope.sacrificed
 			}
 			# Current Pope converts
-			desc = diadochi_seleucid.0130.desc.pope.submission
+			desc = LR_diadochi.0130.desc.pope.submission
 		}
 	}
 	theme = faith
@@ -2238,13 +2238,13 @@ diadochi_seleucid.0130 = {
 			trigger = {
 				faith.religion = faith:ashari.religion
 			}
-			text = diadochi_seleucid.0130.a.a
+			text = LR_diadochi.0130.a.a
 		}
 		name = {
 			trigger = {
 				faith.religion = faith:hellenic_pagan.religion
 			}
-			text = diadochi_seleucid.0130.a.b
+			text = LR_diadochi.0130.a.b
 		}
 		name = {
 			trigger = {
@@ -2253,7 +2253,7 @@ diadochi_seleucid.0130 = {
 					faith.religion = faith:hellenic_pagan.religion
 				}
 			}
-			text = diadochi_seleucid.0130.a.c
+			text = LR_diadochi.0130.a.c
 		}
 		every_player = {
 			limit = {
@@ -2263,15 +2263,15 @@ diadochi_seleucid.0130 = {
 					faith.religion = root.faith.religion
 				}
 			}
-			trigger_event = diadochi_seleucid.0131 # Notification.
+			trigger_event = LR_diadochi.0131 # Notification.
 		}
 	}
 }
 
 # Other players notified.
-diadochi_seleucid.0131 = {
+LR_diadochi.0131 = {
 	type = character_event
-	title = diadochi_seleucid.0130.t
+	title = LR_diadochi.0130.t
 	desc = {
 		first_valid = {
 			# Muslim/Pagan Reaction
@@ -2279,14 +2279,14 @@ diadochi_seleucid.0131 = {
 				trigger = {
 					root.faith.religion = scope:scoped_destroyer.faith.religion
 				}
-				desc = diadochi_seleucid.0131.desc.faithful
+				desc = LR_diadochi.0131.desc.faithful
 			}
 			# Christian Reaction
 			triggered_desc = {
 				trigger = {
 					root.faith.religion = faith:catholic.religion
 				}
-				desc = diadochi_seleucid.0131.desc.christians
+				desc = LR_diadochi.0131.desc.christians
 			}
 			# Fallback
 			triggered_desc = {
@@ -2296,7 +2296,7 @@ diadochi_seleucid.0131 = {
 						root.faith.religion = scope:scoped_destroyer.faith.religion
 					}
 				}
-				desc = diadochi_seleucid.0131.desc.fallback
+				desc = LR_diadochi.0131.desc.fallback
 			}
 		}
 	}
@@ -2328,13 +2328,13 @@ diadochi_seleucid.0131 = {
 			trigger = {
 				faith.religion = scope:scoped_destroyer.faith.religion
 			}
-			text = diadochi_seleucid.0131.a.a
+			text = LR_diadochi.0131.a.a
 		}
 		name = {
 			trigger = {
 				faith.religion = faith:catholic.religion
 			}
-			text = diadochi_seleucid.0131.a.b
+			text = LR_diadochi.0131.a.b
 		}
 		name = {
 			trigger = {
@@ -2343,7 +2343,7 @@ diadochi_seleucid.0131 = {
 					faith.religion = scope:scoped_destroyer.faith.religion
 				}
 			}
-			text = diadochi_seleucid.0131.a.c
+			text = LR_diadochi.0131.a.c
 		}
 		if = {
 			limit = {
@@ -2377,10 +2377,10 @@ scripted_effect add_innovation_if_missing_effect = {
 }
 
 
-diadochi_seleucid.0140 = {
+LR_diadochi.0140 = {
 	type = character_event
-	title = diadochi_seleucid.0140.t
-	desc = diadochi_seleucid.0140.desc
+	title = LR_diadochi.0140.t
+	desc = LR_diadochi.0140.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -2422,7 +2422,7 @@ diadochi_seleucid.0140 = {
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0140.a
+		name = LR_diadochi.0140.a
 		add_prestige = major_prestige_gain
 
 		every_culture_global = {
@@ -2439,7 +2439,7 @@ diadochi_seleucid.0140 = {
 				this != root
 				capital_province = { geographical_region = world_europe_west }
 			}
-			trigger_event = diadochi_seleucid.0141
+			trigger_event = LR_diadochi.0141
 		}
 		hidden_effect = { # Latins chance to convert to French.
 			every_vassal = {
@@ -2464,10 +2464,10 @@ diadochi_seleucid.0140 = {
 	}
 }
 
-diadochi_seleucid.0141 = {
+LR_diadochi.0141 = {
 	type = character_event
-	title = diadochi_seleucid.0140.t
-	desc = diadochi_seleucid.0141.desc
+	title = LR_diadochi.0140.t
+	desc = LR_diadochi.0141.desc
 	theme = realm
 	left_portrait = {
 		character = scope:scoped_ruler
@@ -2477,7 +2477,7 @@ diadochi_seleucid.0141 = {
 	immediate = { play_music_cue = "mx_cue_positive_effect" }
 
 	option = {
-		name = diadochi_seleucid.0141.a
+		name = LR_diadochi.0141.a
 		trigger = {
 			OR = {
 				has_title = title:e_hre
@@ -2487,7 +2487,7 @@ diadochi_seleucid.0141 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.0141.b
+		name = LR_diadochi.0141.b
 		trigger = {
 			NOR = {
 				has_title = title:e_hre
@@ -2501,11 +2501,11 @@ diadochi_seleucid.0141 = {
 # Italian Roman Empire rises
 ##################################################
 
-diadochi_seleucid.0150 = {
+LR_diadochi.0150 = {
 	type = character_event
-	title = diadochi_seleucid.0150.t
+	title = LR_diadochi.0150.t
 	desc = {
-		desc = diadochi_seleucid.0150.desc # Introduction.
+		desc = LR_diadochi.0150.desc # Introduction.
 		first_valid = {
 			# Doing it as Christians.
 			triggered_desc = {
@@ -2514,16 +2514,16 @@ diadochi_seleucid.0150 = {
 						faith.religion = faith:hellenic_pagan.religion
 					}
 				}
-				desc = diadochi_seleucid.0001.desc.christians
+				desc = LR_diadochi.0001.desc.christians
 			}
 			# Doing it as Hellenics
 			triggered_desc = {
 				trigger = {
 					faith.religion = faith:hellenic_pagan.religion
 				}
-				desc = diadochi_seleucid.0001.desc.hellenics
+				desc = LR_diadochi.0001.desc.hellenics
 			}
-			desc = diadochi_seleucid.0001.desc.fallback
+			desc = LR_diadochi.0001.desc.fallback
 		}
 	}
 	theme = realm
@@ -2535,11 +2535,11 @@ diadochi_seleucid.0150 = {
 	immediate = {
 		play_music_cue = "mx_cue_epic_sacral_moment"
 		save_scope_as = scoped_emperor
-		create_roman_empire_antigonid_kingdom_scripted_effect = yes
+		create_antigonid_kingdom_scripted_effect = yes
 	}
 
 	option = {
-		name = diadochi_seleucid.0150.a
+		name = LR_diadochi.0150.a
 		set_nickname_effect = { NICKNAME = nick_the_glorious }
 		# Send narrative fluff to other players (if any).
 		every_player = {
@@ -2547,15 +2547,15 @@ diadochi_seleucid.0150 = {
 				this != root
 				is_within_diplo_range = { CHARACTER = root }
 			}
-			trigger_event = diadochi_seleucid.0151
+			trigger_event = LR_diadochi.0151
 		}
 	}
 }
 
 # Players informed of (Italian) Roman Empire being reborn.
-diadochi_seleucid.0151 = {
+LR_diadochi.0151 = {
 	type = character_event
-	title = diadochi_seleucid.0151.t
+	title = LR_diadochi.0151.t
 	desc = {
 		first_valid = {
 			# Reaction of the Byzantines (if they are even still around)
@@ -2568,7 +2568,7 @@ diadochi_seleucid.0151 = {
 						}
 					}
 				}
-				desc = diadochi_seleucid.0151.desc.byzantines
+				desc = LR_diadochi.0151.desc.byzantines
 			}
 			# Everybody else.
 			triggered_desc = {
@@ -2580,7 +2580,7 @@ diadochi_seleucid.0151 = {
 						}
 					}
 				}
-				desc = diadochi_seleucid.0151.desc.others
+				desc = LR_diadochi.0151.desc.others
 			}
 			first_valid = {
 				# Regular.
@@ -2591,7 +2591,7 @@ diadochi_seleucid.0151 = {
 							faith.religion = faith:catholic.religion
 						}
 					}
-					desc = diadochi_seleucid.0002.desc.christians
+					desc = LR_diadochi.0002.desc.christians
 				}
 				# Christians freaking out.
 				triggered_desc = {
@@ -2599,7 +2599,7 @@ diadochi_seleucid.0151 = {
 						scope:scoped_emperor = { faith.religion = faith:hellenic_pagan.religion }
 						faith.religion = faith:catholic.religion
 					}
-					desc = diadochi_seleucid.0002.desc.hellenics
+					desc = LR_diadochi.0002.desc.hellenics
 				}
 			}
 		}
@@ -2611,7 +2611,7 @@ diadochi_seleucid.0151 = {
 	}
 
 	option = { # Regular
-		name = diadochi_seleucid.0002.a
+		name = LR_diadochi.0002.a
 		trigger = {
 			NOT = {
 				scope:scoped_emperor = { faith.religion = faith:hellenic_pagan.religion }
@@ -2624,7 +2624,7 @@ diadochi_seleucid.0151 = {
 		}
 	}
 	option = { # Regular vs Byzantium/HRE
-		name = diadochi_seleucid.0002.b
+		name = LR_diadochi.0002.b
 		trigger = {
 			NOT = {
 				scope:scoped_emperor = { faith.religion = faith:hellenic_pagan.religion }
@@ -2637,7 +2637,7 @@ diadochi_seleucid.0151 = {
 		}
 	}
 	option = { # Crazy Hellenics
-		name = diadochi_seleucid.0002.c
+		name = LR_diadochi.0002.c
 		trigger = {
 			scope:scoped_emperor = { faith.religion = faith:hellenic_pagan.religion }
 			faith.religion = faith:catholic.religion
@@ -2648,7 +2648,7 @@ diadochi_seleucid.0151 = {
 		}
 	}
 	option = { # Crazy Hellenics vs Byzantium/HRE
-		name = diadochi_seleucid.0002.d
+		name = LR_diadochi.0002.d
 		trigger = {
 			scope:scoped_emperor = { faith.religion = faith:hellenic_pagan.religion }
 			faith.religion = faith:catholic.religion
@@ -2667,10 +2667,10 @@ diadochi_seleucid.0151 = {
 # Byzantium/Roman Empire challenges HRE.
 ##################################################
 
-diadochi_seleucid.0160 = {
+LR_diadochi.0160 = {
 	type = character_event
-	title = diadochi_seleucid.0160.t
-	desc = diadochi_seleucid.0160.desc
+	title = LR_diadochi.0160.t
+	desc = LR_diadochi.0160.desc
 	theme = war
 	left_portrait = {
 		character = scope:byz_emperor
@@ -2686,7 +2686,7 @@ diadochi_seleucid.0160 = {
 		save_scope_as = byz_emperor
 		title:e_hre.holder = {
 			save_scope_as = hre_emperor
-			trigger_event = diadochi_seleucid.0161
+			trigger_event = LR_diadochi.0161
 		}
 		hidden_effect = {
 			add_character_flag = {
@@ -2695,7 +2695,7 @@ diadochi_seleucid.0160 = {
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0160.a
+		name = LR_diadochi.0160.a
 		start_war = {
 			casus_belli = dismantle_holy_pretender_cb
 			target = title:e_hre.holder
@@ -2704,10 +2704,10 @@ diadochi_seleucid.0160 = {
 }
 
 # HRE notified.
-diadochi_seleucid.0161 = {
+LR_diadochi.0161 = {
 	type = character_event
-	title = diadochi_seleucid.0161.t
-	desc = diadochi_seleucid.0161.desc
+	title = LR_diadochi.0161.t
+	desc = LR_diadochi.0161.desc
 	theme = war
 	left_portrait = {
 		character = scope:byz_emperor
@@ -2721,16 +2721,16 @@ diadochi_seleucid.0161 = {
 	immediate = { play_music_cue = "mx_cue_combat_2" }
 
 	option = {
-		name = diadochi_seleucid.0161.a
+		name = LR_diadochi.0161.a
 	}
 }
 
 # War is over:
 # Byz is victorious. Byz notified.
-diadochi_seleucid.0162 = {
+LR_diadochi.0162 = {
 	type = character_event
-	title = diadochi_seleucid.0162.t
-	desc = diadochi_seleucid.0162.desc
+	title = LR_diadochi.0162.t
+	desc = LR_diadochi.0162.desc
 	theme = war
 	left_portrait = {
 		character = scope:byz_emperor
@@ -2744,15 +2744,15 @@ diadochi_seleucid.0162 = {
 	immediate = { play_music_cue = "mx_cue_epic_sacral_moment" }
 
 	option = {
-		name = diadochi_seleucid.0162.a
+		name = LR_diadochi.0162.a
 	}
 }
 
 # Byz is victorious. HRE notified.
-diadochi_seleucid.0163 = {
+LR_diadochi.0163 = {
 	type = character_event
-	title = diadochi_seleucid.0163.t
-	desc = diadochi_seleucid.0163.desc
+	title = LR_diadochi.0163.t
+	desc = LR_diadochi.0163.desc
 	theme = war
 	left_portrait = {
 		character = scope:byz_emperor
@@ -2766,7 +2766,7 @@ diadochi_seleucid.0163 = {
 	immediate = { play_music_cue = "mx_cue_stress" }
 
 	option = {
-		name = diadochi_seleucid.0163.a
+		name = LR_diadochi.0163.a
 		stress_impact = {
 			base = minor_stress_impact_gain
 		}
@@ -2774,10 +2774,10 @@ diadochi_seleucid.0163 = {
 }
 
 # Byz is defeated. Byz notified.
-diadochi_seleucid.0164 = {
+LR_diadochi.0164 = {
 	type = character_event
-	title = diadochi_seleucid.0164.t
-	desc = diadochi_seleucid.0164.desc
+	title = LR_diadochi.0164.t
+	desc = LR_diadochi.0164.desc
 	theme = war
 	left_portrait = {
 		character = scope:byz_emperor
@@ -2791,7 +2791,7 @@ diadochi_seleucid.0164 = {
 	immediate = { play_music_cue = "mx_cue_stress" }
 
 	option = {
-		name = diadochi_seleucid.0164.a
+		name = LR_diadochi.0164.a
 		stress_impact = {
 			base = medium_stress_impact_gain
 		}
@@ -2799,10 +2799,10 @@ diadochi_seleucid.0164 = {
 }
 
 # Byz is defeated. HRE notified.
-diadochi_seleucid.0165 = {
+LR_diadochi.0165 = {
 	type = character_event
-	title = diadochi_seleucid.0165.t
-	desc = diadochi_seleucid.0165.desc
+	title = LR_diadochi.0165.t
+	desc = LR_diadochi.0165.desc
 	theme = war
 	left_portrait = {
 		character = scope:byz_emperor
@@ -2816,7 +2816,7 @@ diadochi_seleucid.0165 = {
 	immediate = { play_music_cue = "mx_cue_epic_sacral_moment" }
 
 	option = {
-		name = diadochi_seleucid.0165.a
+		name = LR_diadochi.0165.a
 	}
 }
 
@@ -2824,10 +2824,10 @@ diadochi_seleucid.0165 = {
 # Byzantium/Roman Empire challenges HRE.
 ##################################################
 
-diadochi_seleucid.0170 = {
+LR_diadochi.0170 = {
 	type = character_event
-	title = diadochi_seleucid.0170.t
-	desc = diadochi_seleucid.0170.desc
+	title = LR_diadochi.0170.t
+	desc = LR_diadochi.0170.desc
 	theme = war
 	left_portrait = {
 		character = scope:hre_emperor
@@ -2843,7 +2843,7 @@ diadochi_seleucid.0170 = {
 		save_scope_as = hre_emperor
 		title:e_byzantium.holder = {
 			save_scope_as = byz_emperor
-			trigger_event = diadochi_seleucid.0171
+			trigger_event = LR_diadochi.0171
 		}
 		hidden_effect = {
 			add_character_flag = {
@@ -2852,7 +2852,7 @@ diadochi_seleucid.0170 = {
 		}
 	}
 	option = {
-		name = diadochi_seleucid.0170.a
+		name = LR_diadochi.0170.a
 		start_war = {
 			casus_belli = dismantle_byz_pretender_cb
 			target = title:e_byzantium.holder
@@ -2861,10 +2861,10 @@ diadochi_seleucid.0170 = {
 }
 
 # HRE notified.
-diadochi_seleucid.0171 = {
+LR_diadochi.0171 = {
 	type = character_event
-	title = diadochi_seleucid.0171.t
-	desc = diadochi_seleucid.0171.desc
+	title = LR_diadochi.0171.t
+	desc = LR_diadochi.0171.desc
 	theme = war
 	left_portrait = {
 		character = scope:hre_emperor
@@ -2878,16 +2878,16 @@ diadochi_seleucid.0171 = {
 	immediate = { play_music_cue = "mx_cue_combat_2" }
 
 	option = {
-		name = diadochi_seleucid.0171.a
+		name = LR_diadochi.0171.a
 	}
 }
 
 # War is over:
 # HRE is victorious. HRE notified.
-diadochi_seleucid.0172 = {
+LR_diadochi.0172 = {
 	type = character_event
-	title = diadochi_seleucid.0172.t
-	desc = diadochi_seleucid.0172.desc
+	title = LR_diadochi.0172.t
+	desc = LR_diadochi.0172.desc
 	theme = war
 	left_portrait = {
 		character = scope:hre_emperor
@@ -2901,15 +2901,15 @@ diadochi_seleucid.0172 = {
 	immediate = { play_music_cue = "mx_cue_epic_sacral_moment" }
 
 	option = {
-		name = diadochi_seleucid.0172.a
+		name = LR_diadochi.0172.a
 	}
 }
 
 # HRE is victorious. Byz notified.
-diadochi_seleucid.0173 = {
+LR_diadochi.0173 = {
 	type = character_event
-	title = diadochi_seleucid.0173.t
-	desc = diadochi_seleucid.0173.desc
+	title = LR_diadochi.0173.t
+	desc = LR_diadochi.0173.desc
 	theme = war
 	left_portrait = {
 		character = scope:hre_emperor
@@ -2923,7 +2923,7 @@ diadochi_seleucid.0173 = {
 	immediate = { play_music_cue = "mx_cue_stress" }
 
 	option = {
-		name = diadochi_seleucid.0173.a
+		name = LR_diadochi.0173.a
 		stress_impact = {
 			base = minor_stress_impact_gain
 		}
@@ -2931,10 +2931,10 @@ diadochi_seleucid.0173 = {
 }
 
 # Byz is defeated. HRE notified.
-diadochi_seleucid.0174 = {
+LR_diadochi.0174 = {
 	type = character_event
-	title = diadochi_seleucid.0174.t
-	desc = diadochi_seleucid.0174.desc
+	title = LR_diadochi.0174.t
+	desc = LR_diadochi.0174.desc
 	theme = war
 	left_portrait = {
 		character = scope:hre_emperor
@@ -2948,7 +2948,7 @@ diadochi_seleucid.0174 = {
 	immediate = { play_music_cue = "mx_cue_stress" }
 
 	option = {
-		name = diadochi_seleucid.0174.a
+		name = LR_diadochi.0174.a
 		stress_impact = {
 			base = medium_stress_impact_gain
 		}
@@ -2956,10 +2956,10 @@ diadochi_seleucid.0174 = {
 }
 
 # HRE is defeated. Byz notified.
-diadochi_seleucid.0175 = {
+LR_diadochi.0175 = {
 	type = character_event
-	title = diadochi_seleucid.0175.t
-	desc = diadochi_seleucid.0175.desc
+	title = LR_diadochi.0175.t
+	desc = LR_diadochi.0175.desc
 	theme = war
 	left_portrait = {
 		character = scope:hre_emperor
@@ -2973,7 +2973,7 @@ diadochi_seleucid.0175 = {
 	immediate = { play_music_cue = "mx_cue_epic_sacral_moment" }
 
 	option = {
-		name = diadochi_seleucid.0175.a
+		name = LR_diadochi.0175.a
 	}
 }
 
@@ -2982,10 +2982,10 @@ diadochi_seleucid.0175 = {
 # by Joe Parkin              
 ############################
 
-diadochi_seleucid.1200 = {
+LR_diadochi.1200 = {
 	type = character_event
-	title = diadochi_seleucid.1200.t
-	desc = diadochi_seleucid.1200.desc
+	title = LR_diadochi.1200.t
+	desc = LR_diadochi.1200.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -3035,7 +3035,7 @@ diadochi_seleucid.1200 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.1200.a
+		name = LR_diadochi.1200.a
 		trigger = {
 			NOT = { capital_county = title:c_byzantion }
 		}
@@ -3049,13 +3049,13 @@ diadochi_seleucid.1200 = {
 
 	option = {
 		name = {
-			text = diadochi_seleucid.1200.b.rome
+			text = LR_diadochi.1200.b.rome
 			trigger = { 
 				is_roman_emperor_excluding_byzantium_trigger = yes
 			}
 		}
 		name = {
-			text = diadochi_seleucid.1200.b
+			text = LR_diadochi.1200.b
 			trigger = {
 				is_roman_emperor_excluding_byzantium_trigger = no
 			}
@@ -3067,11 +3067,11 @@ diadochi_seleucid.1200 = {
 # Byz Emp reclaims Constantinople from you (you wretched boy!) by Isabella Welch
 #################################################
 
-diadochi_seleucid.1204 = {
+LR_diadochi.1204 = {
 	type = letter_event
-	opening = diadochi_seleucid.1204.t
+	opening = LR_diadochi.1204.t
 	sender = scope:byz_emp
-	desc = diadochi_seleucid.1204.desc_vassal
+	desc = LR_diadochi.1204.desc_vassal
 	
 	trigger = {
 
@@ -3084,7 +3084,7 @@ diadochi_seleucid.1204 = {
 	}
 
 	option = { 
-		name = diadochi_seleucid.1204.a
+		name = LR_diadochi.1204.a
 		scope:byz_emp = {
 			add_opinion = {
 				modifier = grateful_opinion
@@ -3095,7 +3095,7 @@ diadochi_seleucid.1204 = {
 	}
 
 	option = {
-		name = diadochi_seleucid.1204.b
+		name = LR_diadochi.1204.b
 		scope:byz_emp = {
 			add_opinion = {
 				modifier = angry_opinion
@@ -3113,7 +3113,7 @@ diadochi_seleucid.1204 = {
 # 1211 - 1220
 ##################################################
 
-scripted_trigger diadochi_seleucid_1211_ai_choice_trigger = {
+scripted_trigger LR_diadochi_1211_ai_choice_trigger = {
 	OR = {
 		culture = { has_cultural_pillar = heritage_arabic }
 		culture = { has_cultural_pillar = heritage_berber }
@@ -3122,7 +3122,7 @@ scripted_trigger diadochi_seleucid_1211_ai_choice_trigger = {
 	}
 }
 
-scripted_effect diadochi_seleucid_1211_piss_off_big_e_effect = {
+scripted_effect LR_diadochi_1211_piss_off_big_e_effect = {
 	add_opinion = {
 		target = scope:taker
 		modifier = outraged_opinion
@@ -3137,19 +3137,19 @@ scripted_effect diadochi_seleucid_1211_piss_off_big_e_effect = {
 }
 
 #	Scope:taker chooses where their allegiances lie.
-diadochi_seleucid.1211 = {
+LR_diadochi.1211 = {
 	type = character_event
-	title = diadochi_seleucid.1211.t
+	title = LR_diadochi.1211.t
 	desc = {
-		desc = diadochi_seleucid.1211.desc.intro
+		desc = LR_diadochi.1211.desc.intro
 		first_valid = {
 			triggered_desc = {
 				trigger = { exists = scope:emperor }
-				desc = diadochi_seleucid.1211.desc.body.emperor_exists
+				desc = LR_diadochi.1211.desc.body.emperor_exists
 			}
-			desc = diadochi_seleucid.1211.desc.body.emperor_absent
+			desc = LR_diadochi.1211.desc.body.emperor_absent
 		}
-		desc = diadochi_seleucid.1211.desc.outro
+		desc = LR_diadochi.1211.desc.outro
 	}
 	theme = realm
 	left_portrait = {
@@ -3166,13 +3166,13 @@ diadochi_seleucid.1211 = {
 		title:e_byzantium.holder ?= {
 			save_scope_as = emperor
 			# And piss them off.
-			diadochi_seleucid_1211_piss_off_big_e_effect = yes
+			LR_diadochi_1211_piss_off_big_e_effect = yes
 		}
 	}
 
 	# We belong with Italy, forever.
 	option = {
-		name = diadochi_seleucid.1211.a
+		name = LR_diadochi.1211.a
 
 		title:k_sicily = { set_de_jure_liege_title = title:e_antigonid_kingdom }
 		save_scope_value_as = {
@@ -3186,14 +3186,14 @@ diadochi_seleucid.1211 = {
 			# Anyone who isn't strongly affiliated to North Africa prefers Italy.
 			modifier = {
 				add = 1
-				diadochi_seleucid_1211_ai_choice_trigger = no
+				LR_diadochi_1211_ai_choice_trigger = no
 			}
 		}
 	}
 	
 	# Sicily's destiny lies, as it always has, across the sea.
 	option = {
-		name = diadochi_seleucid.1211.b
+		name = LR_diadochi.1211.b
 
 		title:k_sicily = { set_de_jure_liege_title = title:e_maghreb }
 		save_scope_value_as = {
@@ -3207,14 +3207,14 @@ diadochi_seleucid.1211 = {
 			# Berbers, Arabs, Muslims, and folks with their capital in North Africa prefer the Maghreb.
 			modifier = {
 				add = 1
-				diadochi_seleucid_1211_ai_choice_trigger = yes
+				LR_diadochi_1211_ai_choice_trigger = yes
 			}
 		}
 	}
 	
 	# Why, with _me_ of course!
 	option = {
-		name = diadochi_seleucid.1211.c
+		name = LR_diadochi.1211.c
 		trigger = { rebuke_roman_revanchism_sicily_controls_unlisted_empire_trigger = yes }
 		show_as_unavailable = { always = yes }
 
@@ -3231,7 +3231,7 @@ diadochi_seleucid.1211 = {
 
 	after = {
 		# If we've got one, inform the emperor.
-		scope:emperor = { trigger_event = diadochi_seleucid.1212 }
+		scope:emperor = { trigger_event = LR_diadochi.1212 }
 		# Then inform every player in Sicily.
 		every_player = {
 			limit = {
@@ -3240,29 +3240,29 @@ diadochi_seleucid.1211 = {
 					title_province = { geographical_region = custom_sicily }
 				}
 			}
-			trigger_event = diadochi_seleucid.1213
+			trigger_event = LR_diadochi.1213
 		}
 	}
 }
 
 #	Scope:emperor is informed.
-diadochi_seleucid.1212 = {
+LR_diadochi.1212 = {
 	type = character_event
-	title = diadochi_seleucid.1212.t
+	title = LR_diadochi.1212.t
 	desc = {
-		desc = diadochi_seleucid.1212.desc.intro
+		desc = LR_diadochi.1212.desc.intro
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:new_empire = flag:italia }
-				desc = diadochi_seleucid.1212.desc.new_empire.italia
+				desc = LR_diadochi.1212.desc.new_empire.italia
 			}
 			triggered_desc = {
 				trigger = { scope:new_empire = flag:maghreb }
-				desc = diadochi_seleucid.1212.desc.new_empire.maghreb
+				desc = LR_diadochi.1212.desc.new_empire.maghreb
 			}
 			triggered_desc = {
 				trigger = { scope:new_empire = flag:own }
-				desc = diadochi_seleucid.1212.desc.new_empire.own
+				desc = LR_diadochi.1212.desc.new_empire.own
 			}
 		}
 		first_valid = {
@@ -3273,9 +3273,9 @@ diadochi_seleucid.1212 = {
 						rebuke_roman_revanchism_counties_controlled_by_ere_trigger = yes
 					}
 				}
-				desc = diadochi_seleucid.1212.desc.outro.territory_left
+				desc = LR_diadochi.1212.desc.outro.territory_left
 			}
-			desc = diadochi_seleucid.1212.desc.outro.no_territory_left
+			desc = LR_diadochi.1212.desc.outro.no_territory_left
 		}
 	}
 	theme = realm
@@ -3289,7 +3289,7 @@ diadochi_seleucid.1212 = {
 	}
 
 	immediate = {
-		show_as_tooltip = { diadochi_seleucid_1211_piss_off_big_e_effect = yes }
+		show_as_tooltip = { LR_diadochi_1211_piss_off_big_e_effect = yes }
 		# Mark us as not needing a second notification if we've got any land left.
 		add_character_flag = {
 			flag = informed_about_sicily_flag
@@ -3299,38 +3299,38 @@ diadochi_seleucid.1212 = {
 
 	# That presumptuous lout!
 	option = {
-		name = diadochi_seleucid.1212.a
+		name = LR_diadochi.1212.a
 
 		# No stress, no AI.
 	}
 }
 
 #	Scope:emperor is informed.
-diadochi_seleucid.1213 = {
+LR_diadochi.1213 = {
 	type = character_event
-	title = diadochi_seleucid.1213.t
+	title = LR_diadochi.1213.t
 	desc = {
-		desc = diadochi_seleucid.1213.desc.intro
+		desc = LR_diadochi.1213.desc.intro
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:new_empire = flag:italia }
-				desc = diadochi_seleucid.1213.desc.new_empire.italia
+				desc = LR_diadochi.1213.desc.new_empire.italia
 			}
 			triggered_desc = {
 				trigger = { scope:new_empire = flag:maghreb }
-				desc = diadochi_seleucid.1213.desc.new_empire.maghreb
+				desc = LR_diadochi.1213.desc.new_empire.maghreb
 			}
 			triggered_desc = {
 				trigger = { scope:new_empire = flag:own }
-				desc = diadochi_seleucid.1213.desc.new_empire.own
+				desc = LR_diadochi.1213.desc.new_empire.own
 			}
 		}
 		first_valid = {
 			triggered_desc = {
 				trigger = { exists = scope:emperor }
-				desc = diadochi_seleucid.1213.desc.body.emperor_exists
+				desc = LR_diadochi.1213.desc.body.emperor_exists
 			}
-			desc = diadochi_seleucid.1213.desc.body.emperor_absent
+			desc = LR_diadochi.1213.desc.body.emperor_absent
 		}
 		first_valid = {
 			triggered_desc = {
@@ -3340,9 +3340,9 @@ diadochi_seleucid.1213 = {
 						rebuke_roman_revanchism_counties_controlled_by_ere_trigger = yes
 					}
 				}
-				desc = diadochi_seleucid.1213.desc.outro.territory_left
+				desc = LR_diadochi.1213.desc.outro.territory_left
 			}
-			desc = diadochi_seleucid.1213.desc.outro.no_territory_left
+			desc = LR_diadochi.1213.desc.outro.no_territory_left
 		}
 	}
 	theme = realm
@@ -3364,14 +3364,14 @@ diadochi_seleucid.1213 = {
 
 	# Good riddance!
 	option = {
-		name = diadochi_seleucid.1213.a
+		name = LR_diadochi.1213.a
 
 		# No stress, no AI.
 	}
 
 	# What dark times we live in...
 	option = {
-		name = diadochi_seleucid.1213.b
+		name = LR_diadochi.1213.b
 
 		# No stress, no AI.
 	}
