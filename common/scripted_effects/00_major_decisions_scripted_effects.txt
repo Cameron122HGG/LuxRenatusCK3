@@ -287,9 +287,9 @@ create_roman_empire_holy_scripted_effect = {
 	}
 }
 
-create_roman_empire_italy_scripted_effect = {
+create_roman_empire_spqr_scripted_effect = {
 	add_trait = augustus
-	#Create Roman Empire, shift dejure/history/laws, destroy e_italy.
+	#Create Roman Empire, shift dejure/history/laws, destroy e_spqr.
 	hidden_effect = {
 		every_held_title = { #Should shift all dejure of all Empires owned at the time.
 			title_tier = empire
@@ -327,7 +327,7 @@ create_roman_empire_italy_scripted_effect = {
 			name = variable_restored_italy #Used for flavor later.
 			value = yes
 		}
-		copy_title_history = title:e_italy
+		copy_title_history = title:e_spqr
 	}
 	resolve_title_and_vassal_change = scope:change
 	if = { # Move your Title MaAs to your new title if you have any
@@ -403,19 +403,19 @@ split_byzantine_empire_effect = {
 			}
 			if = {
 				limit = {
-					title:e_italy ?= { is_titular = no }
+					title:e_spqr ?= { is_titular = no }
 					OR = {
 						title:k_trinacria ?= this
 						title:k_sicily ?= this
 						title:k_naples ?= this
 						title:k_venice ?= this
-						title:k_romagna ?= this
-						title:k_sardinia ?= this
 						title:k_italy ?= this
+						title:k_sardinia ?= this
+						title:k_lombardy ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_italy
-				title:e_italy = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_spqr
+				title:e_spqr = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
@@ -524,20 +524,20 @@ split_byzantine_empire_effect = {
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
-						title:e_italy ?= { is_titular = no }
+						title:e_spqr ?= { is_titular = no }
 						tier = tier_kingdom
 						OR = {
 							title:k_trinacria ?= this
 							title:k_sicily ?= this
 							title:k_naples ?= this
 							title:k_venice ?= this
-							title:k_romagna ?= this
-							title:k_sardinia ?= this
 							title:k_italy ?= this
+							title:k_sardinia ?= this
+							title:k_lombardy ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_italy
-					title:e_italy = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_spqr
+					title:e_spqr = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -1274,7 +1274,7 @@ form_carolingian_empire_scripted_effect = {
 		title:k_lotharingia = { set_de_jure_liege_title = title:e_france }
 		title:k_bavaria = { set_de_jure_liege_title = title:e_france }
 		title:k_east_francia = { set_de_jure_liege_title = title:e_france }
-		title:k_italy = { set_de_jure_liege_title = title:e_france }
+		title:k_lombardy = { set_de_jure_liege_title = title:e_france }
 		title:k_navarra = { set_de_jure_liege_title = title:e_france }
 		title:k_aragon = { set_de_jure_liege_title = title:e_france }
 		if = {
@@ -3036,7 +3036,7 @@ restore_holy_roman_empire_decision_scripted_effect = {
 			title_tier = kingdom
 			limit = {
 				NOT = {	#The Pope retains vague dibs on Italy.
-					any_this_title_or_de_jure_above = { this = title:e_italy }
+					any_this_title_or_de_jure_above = { this = title:e_spqr }
 				}
 				save_temporary_scope_as = this_title
 				#root = { completely_controls = scope:this_title }
@@ -3048,7 +3048,7 @@ restore_holy_roman_empire_decision_scripted_effect = {
 				title_tier = kingdom
 				limit = {
 					NOT = {	#The Pope retains vague dibs on Italy.
-						any_this_title_or_de_jure_above = { this = title:e_italy }
+						any_this_title_or_de_jure_above = { this = title:e_spqr }
 					}
 					save_temporary_scope_as = this_title
 					#prev = { completely_controls = scope:this_title }
