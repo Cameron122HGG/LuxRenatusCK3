@@ -2171,14 +2171,14 @@ restore_dumnonia_decision_scripted_effect = {
 	resolve_title_and_vassal_change = scope:title_change
 
 	hidden_effect = {
-		title:d_somerset = { save_scope_as = cornwall_somerset }
+		title:d_cornwall = { save_scope_as = cornwall_somerset }
 		title:d_gloucester = { save_scope_as = cornwall_gloucester }
 		title:d_cornwall = { set_de_jure_liege_title = title:k_cornwall }
 		if = {	#If owned, annex Somerset/Wessex.
 			limit = {
-				title:d_somerset = { holder = root }
+				title:d_cornwall = { holder = root }
 			}
-			title:d_somerset = { set_de_jure_liege_title = title:k_cornwall }
+			title:d_cornwall = { set_de_jure_liege_title = title:k_cornwall }
 		}
 		if = {	#If owned, annex Gloucestershire/Hwicce.
 			limit = {
