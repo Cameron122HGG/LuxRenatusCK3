@@ -3,9 +3,9 @@
 		create_cadet_branches = yes
 		rulers_should_have_dynasty = yes
 		dynasty_named_realms = no
-		royal_court = yes
 		legitimacy = yes
 	}
+	royal_court = any
 
 	fallback = 1
 
@@ -160,13 +160,16 @@ principate_government = {
 	}
 
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
-	flag = government_is_administrative
-	flag = government_is_principate
+	flags = {
+		government_is_principate
+		government_is_settled
+		government_uses_domicile_but_not_adventurer
+		government_uses_domain_limit
+		government_uses_admin_province_obligations
+	}
+	mechanic_type = administrative
+	is_mechanic_type_default = no
 
-	# These flags only exist for loc and in-game descriptions
-	flag = government_has_influence
-	flag = government_has_title_men_at_arms
-	flag = government_has_powerful_families
 	color = { 199 0 57 }
 }
 
