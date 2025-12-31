@@ -232,11 +232,11 @@ retake_western_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_roman_africa_list
 			limit = {
-				NOT = { de_jure_liege = title:e_praetorian_italia }
+				NOT = { de_jure_liege = title:e_praetorian_africa }
 			}
-			set_de_jure_liege_title = title:e_praetorian_italia
+			set_de_jure_liege_title = title:e_praetorian_africa
 		}
-		title:e_africa = { set_de_jure_liege_title = title:h_western_roman_empire }
+		title:e_praetorian_africa = { set_de_jure_liege_title = title:h_western_roman_empire }
 	}
 
 	every_vassal = {
@@ -477,15 +477,15 @@ restore_diocesis_system_decision_effect = {
 	#Sort the Diocesis
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_roman_illyricum = { set_de_jure_liege_title = title:e_roman_italia }
-		title:k_roman_italia_annonaria = { set_de_jure_liege_title = title:e_roman_italia }
-		title:k_roman_italia_suburbicaria = { set_de_jure_liege_title = title:e_roman_italia }
+		title:k_roman_pannonia = { set_de_jure_liege_title = title:e_praetorian_italia }
+		title:k_roman_italia_annonaria = { set_de_jure_liege_title = title:e_praetorian_italia }
+		title:k_roman_italia_suburbicaria = { set_de_jure_liege_title = title:e_praetorian_italia }
 
-		title:e_roman_italia = { set_de_jure_liege_title = title:h_roman_empire }
+		title:e_praetorian_italia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = { 
 		limit = { exists = title:e_spqr.holder }
-		title:k_roman_illyricum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roman_pannonia = { set_de_jure_liege_title = title:e_spqr }
 		title:k_roman_italia_annonaria = { set_de_jure_liege_title = title:e_spqr }
 		title:k_roman_italia_suburbicaria = { set_de_jure_liege_title = title:e_spqr }
 	}
@@ -529,9 +529,9 @@ restore_diocesis_system_decision_effect = {
 		every_in_list = {
 			list = custom_roman_illyricum_list
 			limit = {
-				NOT = { de_jure_liege = title:k_illyricum }
+				NOT = { de_jure_liege = title:k_roman_pannonia }
 			}
-			set_de_jure_liege_title = title:k_illyricum
+			set_de_jure_liege_title = title:k_roman_pannonia
 		}
 	
 		every_county_in_region = {
@@ -591,7 +591,7 @@ restore_diocesis_system_decision_effect = {
 
 	hidden_effect = {
 		#Fix. Carinthia. For. Reasons.
-		title:d_carinthia = { set_de_jure_liege_title = title:k_illyricum }
+		title:d_carinthia = { set_de_jure_liege_title = title:k_roman_pannonia }
 
 		every_held_title = { #Should destroy all kingdoms owned at the time.
 			limit = {
@@ -634,23 +634,23 @@ restore_eastern_diocesis_system_effect = {
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
 		title:k_roman_dacia = {
-			set_de_jure_liege_title = title:e_macedonia
+			set_de_jure_liege_title = title:e_praetorian_macedonia
 		}
 		title:k_roman_thracia = {
-			set_de_jure_liege_title = title:e_macedonia
+			set_de_jure_liege_title = title:e_praetorian_macedonia
 		}
 		title:k_roman_asia = {
-			set_de_jure_liege_title = title:e_anatolia
+			set_de_jure_liege_title = title:e_praetorian_oriens
 		}
 		title:k_roman_macedonia = {
-			set_de_jure_liege_title = title:e_macedonia
+			set_de_jure_liege_title = title:e_praetorian_macedonia
 		}
 		title:k_roman_pontus = {
-			set_de_jure_liege_title = title:e_anatolia
+			set_de_jure_liege_title = title:e_praetorian_oriens
 		}
 
-		title:e_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
-		title:e_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
+		title:e_praetorian_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
+		title:e_praetorian_oriens = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_byzantium.holder }
@@ -673,19 +673,19 @@ restore_eastern_diocesis_system_effect = {
 	else_if = {
 		limit = { exists = title:h_eastern_roman_empire.holder }
 		title:k_roman_dacia = {
-			set_de_jure_liege_title = title:e_macedonia
+			set_de_jure_liege_title = title:e_praetorian_illyricum
 		}
 		title:k_roman_thracia = {
-			set_de_jure_liege_title = title:e_macedonia
+			set_de_jure_liege_title = title:e_praetorian_illyricum
 		}
 		title:k_roman_asia = {
-			set_de_jure_liege_title = title:e_praefectura_oriens
+			set_de_jure_liege_title = title:e_praetorian_oriens
 		}
 		title:k_roman_macedonia = {
-			set_de_jure_liege_title = title:e_macedonia
+			set_de_jure_liege_title = title:e_praetorian_illyricum
 		}
 		title:k_roman_pontus = {
-			set_de_jure_liege_title = title:e_praefectura_oriens
+			set_de_jure_liege_title = title:e_praetorian_oriens
 		}
 	}
 
@@ -772,8 +772,8 @@ restore_eastern_diocesis_system_effect = {
 				
 			}
 			#Shift duchies
-			title:d_cilicia = { set_de_jure_liege_title = title:k_oriens }	
-			title:d_cyprus = { set_de_jure_liege_title = title:k_oriens }
+			title:d_cilicia = { set_de_jure_liege_title = title:k_roman_syria }	
+			title:d_cyprus = { set_de_jure_liege_title = title:k_roman_syria }
 		}	
 
 		# Fix. Bulgaria. For. Reasons
@@ -782,8 +782,8 @@ restore_eastern_diocesis_system_effect = {
 	
 	# Destroy useless kingdoms
 	if = {
-		limit = { exists = title:k_thessalonika.holder }
-		destroy_title = title:k_thessalonika
+		limit = { exists = title:k_byzantium.holder }
+		destroy_title = title:k_byzantium
 	}
 	if = {
 		limit = { exists = title:k_krete.holder }
@@ -802,8 +802,8 @@ restore_eastern_diocesis_system_effect = {
 		destroy_title = title:k_bulgaria
 	}
 	if = {
-		limit = { exists = title:k_nikaea.holder }
-		destroy_title = title:k_nikaea
+		limit = { exists = title:k_pergamon.holder }
+		destroy_title = title:k_pergamon
 	}
 
 	if = {
@@ -1004,7 +1004,7 @@ restore_diocesis_africa_mauretania_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_mauretania = {
+	title:k_roman_mauretania = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1015,15 +1015,15 @@ restore_diocesis_africa_mauretania_decision_effect = {
 	#Sort the Dioceses
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_roman_africa = { set_de_jure_liege_title = title:e_africa }
-		title:k_mauretania = { set_de_jure_liege_title = title:e_africa }
+		title:k_roman_africa = { set_de_jure_liege_title = title:e_praetorian_africa }
+		title:k_roman_mauretania = { set_de_jure_liege_title = title:e_praetorian_africa }
 
-		title:e_africa = { set_de_jure_liege_title = title:h_roman_empire }
+		title:e_praetorian_africa = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_spqr.holder }
 		title:k_roman_africa = { set_de_jure_liege_title = title:e_spqr }
-		title:k_mauretania = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roman_mauretania = { set_de_jure_liege_title = title:e_spqr }
 	}
 
 	# Destroy useless kingdoms
@@ -1084,9 +1084,9 @@ restore_diocesis_africa_mauretania_decision_effect = {
 		every_in_list = {
 			list = custom_roman_mauretania_list
 			limit = {
-				NOT = { de_jure_liege = title:k_mauretania }
+				NOT = { de_jure_liege = title:k_roman_mauretania }
 			}
-			set_de_jure_liege_title = title:k_mauretania
+			set_de_jure_liege_title = title:k_roman_mauretania
 		}
 
 		# Then shift all Kingdoms back.
@@ -1107,7 +1107,7 @@ restore_exarchate_oriens_decision_effect  = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_oriens = {
+	title:k_roman_syria = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1118,13 +1118,13 @@ restore_exarchate_oriens_decision_effect  = {
 	#Sort the Diocese
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_oriens = { set_de_jure_liege_title = title:e_oriens }
+		title:k_roman_syria = { set_de_jure_liege_title = title:e_oriens }
 
 		title:e_oriens = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_byzantium.holder }
-		title:k_oriens = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_roman_syria = { set_de_jure_liege_title = title:e_byzantium }
 	}
 
 	# Destroy useless kingdoms
@@ -1160,9 +1160,9 @@ restore_exarchate_oriens_decision_effect  = {
 		every_in_list = {
 			list = custom_roman_orientis_list
 			limit = {
-				NOT = { de_jure_liege = title:k_oriens }
+				NOT = { de_jure_liege = title:k_roman_syria }
 			}
-			set_de_jure_liege_title = title:k_oriens
+			set_de_jure_liege_title = title:k_roman_syria
 		}
 
 		# Then shift all Kingdoms back.
@@ -1183,7 +1183,7 @@ restore_exarchate_aegyptus_decision_effect  = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_aegyptus = {
+	title:k_roman_aegyptus = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1194,13 +1194,13 @@ restore_exarchate_aegyptus_decision_effect  = {
 	#Sort the Dioceses
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_aegyptus = { set_de_jure_liege_title = title:e_oriens }
+		title:k_roman_aegyptus = { set_de_jure_liege_title = title:e_oriens }
 
 		title:e_oriens = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_byzantium.holder }
-		title:k_aegyptus = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_roman_aegyptus = { set_de_jure_liege_title = title:e_byzantium }
 	}
 
 	# Destroy useless kingdoms
@@ -1233,9 +1233,9 @@ restore_exarchate_aegyptus_decision_effect  = {
 		every_in_list = {
 			list = custom_roman_aegyptus_list
 			limit = {
-				NOT = { de_jure_liege = title:k_aegyptus }
+				NOT = { de_jure_liege = title:k_roman_aegyptus }
 			}
-			set_de_jure_liege_title = title:k_aegyptus
+			set_de_jure_liege_title = title:k_roman_aegyptus
 		}
 
 		# Then shift all Kingdoms back.
@@ -1245,7 +1245,7 @@ restore_exarchate_aegyptus_decision_effect  = {
 	}	
 }
 
-reinstitute_african_grain_dole_decision_effect = {
+reinstitute_praetorian_african_grain_dole_decision_effect = {
 	if = {
 		limit = {
 			NOT = { title:c_roma = { has_variable = unlocked_grain_dole } }
@@ -1301,7 +1301,7 @@ restore_diocesis_hispania_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_hispaniarum = {
+	title:k_roman_hispania = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1312,11 +1312,11 @@ restore_diocesis_hispania_decision_effect = {
 	#Sort the Dioceses
 	if = {
 		limit = { exists = title:e_spqr.holder }
-		title:k_hispaniarum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roman_hispania = { set_de_jure_liege_title = title:e_spqr }
 	}
 	else_if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_hispaniarum = { set_de_jure_liege_title = title:e_spain }
+		title:k_roman_hispania = { set_de_jure_liege_title = title:e_spain }
 
 		title:e_spain = { 
 			set_de_jure_liege_title = title:h_roman_empire 
@@ -1380,9 +1380,9 @@ restore_diocesis_hispania_decision_effect = {
 		every_in_list = {
 			list = custom_roman_hispania_list
 			limit = {
-				NOT = { de_jure_liege = title:k_hispaniarum }
+				NOT = { de_jure_liege = title:k_roman_hispania }
 			}
-			set_de_jure_liege_title = title:k_hispaniarum
+			set_de_jure_liege_title = title:k_roman_hispania
 		}
 
 		# Then shift all Kingdoms back.
@@ -1638,11 +1638,11 @@ create_wre_roman_empire_scripted_effect = {
 			set_de_jure_liege_title = title:k_roman_macedonia
 		}	
 
-		title:k_roman_thracia = { set_de_jure_liege_title = title:e_macedonia }
-		title:k_roman_dacia = { set_de_jure_liege_title = title:e_macedonia }
-		title:k_roman_macedonia = { set_de_jure_liege_title = title:e_macedonia }
+		title:k_roman_thracia = { set_de_jure_liege_title = title:e_praetorian_macedonia }
+		title:k_roman_dacia = { set_de_jure_liege_title = title:e_praetorian_macedonia }
+		title:k_roman_macedonia = { set_de_jure_liege_title = title:e_praetorian_macedonia }
 
-		title:e_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
+		title:e_praetorian_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 
 		#Shift the Empires
 		every_county_in_region = {
@@ -1756,11 +1756,11 @@ retake_eastern_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_roman_prefecture_illyriucm_list
 			limit = {
-				NOT = { de_jure_liege = title:e_macedonia }
+				NOT = { de_jure_liege = title:e_praetorian_macedonia }
 			}
-			set_de_jure_liege_title = title:e_macedonia
+			set_de_jure_liege_title = title:e_praetorian_macedonia
 		}
-		title:e_macedonia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_macedonia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		
 		# Oriens
 		# Shift the Kingdoms
@@ -1786,11 +1786,11 @@ retake_eastern_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_rr_anatolia_list
 			limit = {
-				NOT = { de_jure_liege = title:e_anatolia }
+				NOT = { de_jure_liege = title:e_praetorian_oriens }
 			}
-			set_de_jure_liege_title = title:e_anatolia
+			set_de_jure_liege_title = title:e_praetorian_oriens
 		}
-		title:e_anatolia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_oriens = { set_de_jure_liege_title = title:h_eastern_roman_empire }
 
 	}
 	
@@ -2016,7 +2016,7 @@ create_roman_empire_scripted_effect = {
 		title:d_istria = { set_de_jure_liege_title = title:k_croatia }
 
 		#Shift kingdoms
-		title:k_africa = { set_de_jure_liege_title = title:e_africa }
+		title:k_africa = { set_de_jure_liege_title = title:e_praetorian_africa }
 		title:k_croatia = { set_de_jure_liege_title = title:e_spqr }
 		title:k_venice = { set_de_jure_liege_title = title:e_spqr }
 	}		
@@ -2451,11 +2451,11 @@ split_byzantine_empire_effect = {
 				tier = tier_kingdom
 				NOR = {
 					de_jure_liege = title:e_praetorian_illyricum
-					de_jure_liege = title:e_macedonia
-					de_jure_liege = title:e_anatolia
+					de_jure_liege = title:e_praetorian_macedonia
+					de_jure_liege = title:e_praetorian_oriens
 					de_jure_liege = title:e_oriens
 					de_jure_liege = title:e_aegyptus
-					de_jure_liege = title:e_africa
+					de_jure_liege = title:e_praetorian_africa
 				}
 			}
 			if = {
@@ -2499,8 +2499,8 @@ split_byzantine_empire_effect = {
 						title:k_bulgaria ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_macedonia
-				title:e_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_macedonia
+				title:e_praetorian_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
@@ -2515,8 +2515,8 @@ split_byzantine_empire_effect = {
 						title:k_anatolia ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_anatolia
-				title:e_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_oriens
+				title:e_praetorian_oriens = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
@@ -2549,15 +2549,15 @@ split_byzantine_empire_effect = {
 			}
 			if = {
 				limit = {
-					exists = title:e_africa
+					exists = title:e_praetorian_africa
 					OR = {
 						title:k_africa ?= this
 						title:k_tahert ?= this
 						title:k_maghreb ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_africa
-				title:e_africa = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_africa
+				title:e_praetorian_africa = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 		}
 		title:e_byzantium = { # Then we check for de jure titles of Byzantium
@@ -2612,8 +2612,8 @@ split_byzantine_empire_effect = {
 							title:k_bulgaria ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_macedonia
-					title:e_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_macedonia
+					title:e_praetorian_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -2628,8 +2628,8 @@ split_byzantine_empire_effect = {
 							title:k_anatolia ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_anatolia
-					title:e_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_oriens
+					title:e_praetorian_oriens = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -2663,7 +2663,7 @@ split_byzantine_empire_effect = {
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
-						exists = title:e_africa
+						exists = title:e_praetorian_africa
 						tier = tier_kingdom
 						OR = {
 							title:k_africa ?= this
@@ -2671,8 +2671,8 @@ split_byzantine_empire_effect = {
 							title:k_maghreb ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_africa
-					title:e_africa = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_africa
+					title:e_praetorian_africa = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -2728,8 +2728,8 @@ create_eastern_roman_empire_scripted_effect = {
 		# We move over the De Jure for all the basic titles
 		title:e_byzantium ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_illyricum ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
-		title:e_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
-		title:e_anatolia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_oriens ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:h_eastern_roman_empire = { # They get the new Roman Empire title
 			change_title_holder = {
 				holder = scope:new_holder
