@@ -71,7 +71,7 @@ restore_western_rome_scripted_effect = {
 		
 		if = {
 			limit = {
-				exists = { title:k_mediterranean_sea.holder }
+				exists = title:k_mediterranean_sea.holder
 			}
 			title:k_mediterranean_sea = { set_de_jure_liege_title = title:e_spqr }
 		}
@@ -180,12 +180,11 @@ retake_western_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_imperial_homelands_list
 			limit = {
-				NOT = { de_jure_liege = title:e_roman_italia }
+				NOT = { de_jure_liege = title:e_praetorian_italia }
 			}
-			set_de_jure_liege_title = title:e_roman_italia
+			set_de_jure_liege_title = title:e_praetorian_italia
 		}
-		title:e_roman_italia = { set_de_jure_liege_title = title:h_western_roman_empire }
-
+		title:e_praetorian_italia = { set_de_jure_liege_title = title:h_western_roman_empire }
 		#Gallia
 		# Shift the Kingdoms
 		every_county_in_region = { #Gallia
@@ -199,11 +198,11 @@ retake_western_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_roman_gallia_list
 			limit = {
-				NOT = { de_jure_liege = title:e_roman_gallia }
+				NOT = { de_jure_liege = title:e_praetorian_gallia }
 			}
-			set_de_jure_liege_title = title:e_roman_gallia
+			set_de_jure_liege_title = title:e_praetorian_gallia
 		}
-		title:e_roman_gallia = { set_de_jure_liege_title = title:h_western_roman_empire }
+		title:e_praetorian_gallia = { set_de_jure_liege_title = title:h_western_roman_empire }
 
 		#Hispania
 		# Shift the Kingdoms
@@ -214,11 +213,11 @@ retake_western_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_roman_hispania_list
 			limit = {
-				NOT = { de_jure_liege = title:e_roman_hispania }
+				NOT = { de_jure_liege = title:e_praetorian_gallia }
 			}
-			set_de_jure_liege_title = title:e_roman_hispania
+			set_de_jure_liege_title = title:e_praetorian_gallia
 		}
-		title:e_roman_hispania = { set_de_jure_liege_title = title:h_western_roman_empire }
+		title:e_praetorian_gallia = { set_de_jure_liege_title = title:h_western_roman_empire }
 
 		#Africa
 		# Shift the Kingdoms
@@ -233,9 +232,9 @@ retake_western_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_roman_africa_list
 			limit = {
-				NOT = { de_jure_liege = title:e_africa }
+				NOT = { de_jure_liege = title:e_praetorian_italia }
 			}
-			set_de_jure_liege_title = title:e_africa
+			set_de_jure_liege_title = title:e_praetorian_italia
 		}
 		title:e_africa = { set_de_jure_liege_title = title:h_western_roman_empire }
 	}
@@ -478,22 +477,22 @@ restore_diocesis_system_decision_effect = {
 	#Sort the Diocesis
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_illyricum = { set_de_jure_liege_title = title:e_roman_italia }
-		title:k_italia_annonaria = { set_de_jure_liege_title = title:e_roman_italia }
-		title:k_italia_suburbicaria = { set_de_jure_liege_title = title:e_roman_italia }
+		title:k_roman_illyricum = { set_de_jure_liege_title = title:e_roman_italia }
+		title:k_roman_italia_annonaria = { set_de_jure_liege_title = title:e_roman_italia }
+		title:k_roman_italia_suburbicaria = { set_de_jure_liege_title = title:e_roman_italia }
 
 		title:e_roman_italia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = { 
 		limit = { exists = title:e_spqr.holder }
-		title:k_illyricum = { set_de_jure_liege_title = title:e_spqr }
-		title:k_italia_annonaria = { set_de_jure_liege_title = title:e_spqr }
-		title:k_italia_suburbicaria = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roman_illyricum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roman_italia_annonaria = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roman_italia_suburbicaria = { set_de_jure_liege_title = title:e_spqr }
 	}
 
 	hidden_effect = {
 		if = {
-			limit = { NOT = { exists = title:e_western_empire.holder } }
+			limit = { NOT = { exists = title:e_spqr.holder } }
 			#Shift counties
 			#To Moravia
 			title:c_hohenau = { set_de_jure_liege_title = title:d_moravia }
@@ -536,27 +535,27 @@ restore_diocesis_system_decision_effect = {
 		}
 	
 		every_county_in_region = {
-			region = custom_italia_annoraria
+			region = custom_roman_italia_annoraria
 			duchy = { add_to_list = custom_italia_annoraria_list }
 		}
 		every_in_list = {
 			list = custom_italia_annoraria_list
 			limit = {
-				NOT = { de_jure_liege = title:k_italia_annonaria }
+				NOT = { de_jure_liege = title:k_roman_italia_annonaria }
 			}
-			set_de_jure_liege_title = title:k_italia_annonaria
+			set_de_jure_liege_title = title:k_roman_italia_annonaria
 		}
 
 		every_county_in_region = {
-			region = custom_italia_suburbicaria
+			region = custom_roman_italia_suburbicaria
 			duchy = { add_to_list = custom_italia_suburbicaria_list }
 		}
 		every_in_list = {
 			list = custom_italia_suburbicaria_list
 			limit = {
-				NOT = { de_jure_liege = title:k_italia_suburbicaria }
+				NOT = { de_jure_liege = title:k_roman_italia_suburbicaria }
 			}
-			set_de_jure_liege_title = title:k_italia_suburbicaria
+			set_de_jure_liege_title = title:k_roman_italia_suburbicaria
 		}
 	}
 
@@ -566,8 +565,8 @@ restore_diocesis_system_decision_effect = {
 		destroy_title = title:k_rome
 	}
 	if = {
-		limit = { exists = title:k_romagna.holder }
-		destroy_title = title:k_romagna
+		limit = { exists = title:k_lombardy.holder }
+		destroy_title = title:k_lombardy
 	}
 	if = {
 		limit = { exists = title:k_sicily.holder }
@@ -603,28 +602,28 @@ restore_diocesis_system_decision_effect = {
 
 		# Then shift all Kingdoms back.
 		title:k_sicily = { 
-			set_de_jure_liege_title = title:e_italy
+			set_de_jure_liege_title = title:e_spqr
 		}
 		title:k_rome = {
-			set_de_jure_liege_title = title:e_italy
+			set_de_jure_liege_title = title:e_spqr
 		}
 		title:k_bavaria = {
-			set_de_jure_liege_title = title:e_italy
+			set_de_jure_liege_title = title:e_spqr
 		}
 		title:k_venice = {
-			set_de_jure_liege_title = title:e_italy
+			set_de_jure_liege_title = title:e_spqr
 		}
 		title:k_croatia = {
-			set_de_jure_liege_title = title:e_italy
+			set_de_jure_liege_title = title:e_spqr
 		}
-		title:k_romagna = {
-			set_de_jure_liege_title = title:e_italy
+		title:k_lombardy = {
+			set_de_jure_liege_title = title:e_spqr
 		}
 		title:k_sardinia = {
-			set_de_jure_liege_title = title:e_italy
+			set_de_jure_liege_title = title:e_spqr
 		}
 		title:k_mediterranean_sea = {
-			set_de_jure_liege_title = title:e_italy
+			set_de_jure_liege_title = title:e_spqr
 		}
 	}	
 }
@@ -830,7 +829,7 @@ restore_diocesis_gallia_viennensis_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_gallia = {
+	title:k_roman_galliarum = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -844,7 +843,7 @@ restore_diocesis_gallia_viennensis_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_viennensis = {
+	title:k_roman_viennensis = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -860,15 +859,15 @@ restore_diocesis_gallia_viennensis_decision_effect = {
 	#Sort the Dioceses
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_gallia = { set_de_jure_liege_title = title:e_roman_gallia }
-		title:k_viennensis = { set_de_jure_liege_title = title:e_roman_gallia }
+		title:k_roman_galliarum = { set_de_jure_liege_title = title:e_praetorian_gallia }
+		title:k_roman_viennensis = { set_de_jure_liege_title = title:e_praetorian_gallia }
 
-		title:e_roman_gallia = { set_de_jure_liege_title = title:h_roman_empire }
+		title:e_praetorian_gallia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_spqr.holder }
-		title:k_gallia = { set_de_jure_liege_title = title:e_spqr }
-		title:k_viennensis = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roman_galliarum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roman_viennensis = { set_de_jure_liege_title = title:e_spqr }
 	}
 
 	# Destroy useless kingdoms
@@ -948,9 +947,9 @@ restore_diocesis_gallia_viennensis_decision_effect = {
 		every_in_list = {
 			list = custom_roman_viennensis_list
 			limit = {
-				NOT = { de_jure_liege = title:k_viennensis }
+				NOT = { de_jure_liege = title:k_roman_viennensis }
 			}
-			set_de_jure_liege_title = title:k_viennensis
+			set_de_jure_liege_title = title:k_roman_viennensis
 		}
 
 		every_county_in_region = {
@@ -960,9 +959,9 @@ restore_diocesis_gallia_viennensis_decision_effect = {
 		every_in_list = {
 			list = custom_roman_gallia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_gallia }
+				NOT = { de_jure_liege = title:k_roman_galliarum }
 			}
-			set_de_jure_liege_title = title:k_gallia
+			set_de_jure_liege_title = title:k_roman_galliarum
 		}
 
 		# Then shift all Kingdoms back.
@@ -1423,9 +1422,9 @@ restore_diocesis_britannia_decision_effect = {
 	}
 	else_if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_roman_britannia = { set_de_jure_liege_title = title:e_roman_gallia }
+		title:k_roman_britannia = { set_de_jure_liege_title = title:e_praetorian_gallia }
 
-		title:e_roman_gallia = { set_de_jure_liege_title = title:h_roman_empire }
+		title:e_praetorian_gallia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 
 	#Fix Northumberland
@@ -1711,7 +1710,7 @@ retake_eastern_provinces_decision_effect = {
 					exists = title:h_western_empire.holder 
 				}
 			}
-			title:k_sicily = { set_de_jure_liege_title = title:e_italy }	
+			title:k_sicily = { set_de_jure_liege_title = title:e_spqr }	
 		}	
 
 		# Shift Croatia to Carpathia
@@ -2018,8 +2017,8 @@ create_roman_empire_scripted_effect = {
 
 		#Shift kingdoms
 		title:k_africa = { set_de_jure_liege_title = title:e_africa }
-		title:k_croatia = { set_de_jure_liege_title = title:e_italy }
-		title:k_venice = { set_de_jure_liege_title = title:e_italy }
+		title:k_croatia = { set_de_jure_liege_title = title:e_spqr }
+		title:k_venice = { set_de_jure_liege_title = title:e_spqr }
 	}		
 	hidden_effect = {
 		#Shift the kingdoms
