@@ -1,0 +1,96 @@
+### Re-Establish the Theodosian Borders ###
+retake_eastern_provinces_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
+	}
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 0
+		empire = 120
+		hegemony = 120
+	}
+
+	sort_order = 50
+
+	desc = retake_eastern_provinces_decision_desc
+	selection_tooltip = retake_eastern_provinces_decision_tooltip
+	decision_group_type = roman
+
+	is_shown = {
+		has_ep3_dlc_trigger = yes
+		has_title = title:e_byzantium
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:retake_eastern_provinces_decision
+			}
+		}
+	}
+
+	is_valid = {
+		government_has_flag = government_is_administrative
+		completely_controls_region = custom_theodosian_ere
+		custom_tooltip = {
+			text = eastern_kingdoms_held_or_vassals_tt
+			
+			title:k_roman_dacia.holder = { liege = root }
+			title:k_roman_macedonia.holder = { liege = root }
+			title:k_roman_asia.holder = { liege = root }
+			title:k_roman_pontus.holder = { liege = root }
+			title:k_aegyptus.holder = { liege = root }
+			title:k_oriens.holder = { liege = root }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_at_war = no
+		NOT = { exists = involved_activity }
+		is_imprisoned = no
+		has_contagious_deadly_disease_trigger = no
+	}
+
+	cost = {
+		prestige = {
+			value = 1000		
+		}
+	}
+
+	effect = {
+		show_as_tooltip = {
+			retake_eastern_provinces_decision_effect = yes
+		}
+		trigger_event = {
+			id = ep3_decisions_event.4000
+		}
+		#Can only be done once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:retake_eastern_provinces_decision
+		}
+		if = {
+			limit = {
+				is_ai = no
+				game_start_date >= 1178.10.1
+			}
+			add_achievement_global_variable_effect = {
+				VARIABLE = achieved_against_the_odds_achievement
+				VALUE = yes
+			}
+		}
+	}
+
+	ai_potential = {
+		has_title = title:e_byzantium
+		is_at_war = no
+		NOT = { exists = involved_activity }
+		is_imprisoned = no
+		has_contagious_deadly_disease_trigger = no
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
