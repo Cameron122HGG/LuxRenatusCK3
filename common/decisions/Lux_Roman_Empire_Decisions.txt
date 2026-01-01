@@ -1,104 +1,5 @@
 ﻿
 # Restore the Western Roman Empire #DONE 
-lux_unify_italian_empire_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
-	}
-	desc = lux_unify_italian_empire_decision_desc
-	selection_tooltip = lux_unify_italian_empire_decision_tooltip
-	decision_group_type = roman
-
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 120
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
-
-	is_shown = {
-		culture = { has_cultural_pillar = heritage_latin }
-		is_ruler = yes
-		is_playable_character = yes
-		highest_held_title_tier > 2 #Dukes and above
-		capital_province = { geographical_region = ghw_region_italy }
-		
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_unified_italian_empire
-			}
-		}
-		NOT = {  #Too late.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_roman_empire
-			}
-		}
-		NOT = {  #Too late.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_reformed_carolingian_empire
-			}
-		}
-
-		#Just to guarantee
-		#is_roman_emperor_trigger = no
-	}
-
-	is_valid = {
-		#NOT = { exists = title:e_hre }
-		prestige_level >= very_high_prestige_level
-		has_title = title:e_spqr
-		completely_controls_region = custom_imperial_homelands
-	}
-
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		is_independent_ruler = yes
-		is_at_war = no
-	}
-
-	effect = {
-		custom_tooltip = lux_unify_italian_empire_decision_effect_tooltip
-		show_as_tooltip = {
-			restore_western_rome_scripted_effect = yes
-		}
-
-		if = {
-			limit = { has_ep3_dlc_trigger = yes }			
-			convert_to_administrative_from_feudalism_effect = { 
-				GOVERNMENT_TO_ADOPT = flag:administrative 
-			}
-		}
-
-		trigger_event = {
-			id = lux_major_decisions.0003
-		}
-
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_unified_italian_empire
-			}
-			set_global_variable = {
-				name = flag_unified_italian_empire
-				value = root
-			}
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 100
-	}
-}
 
 # Re-establish Theodosian Borders (western)  
 retake_western_provinces_decision = {
@@ -531,7 +432,7 @@ restore_diocesis_system_decision = {
     }
 
     is_valid = {
-        completely_controls_region = custom_imperial_homelands
+        completely_controls_region = custom_western_homelands
         
         custom_tooltip = {
             text = dioecesis_kingdoms_held_or_vassals_tt
@@ -660,9 +561,9 @@ restore_eastern_diocesis_decision = {
             text = eastern_dioecesis_kingdoms_held_or_vassals_tt
             trigger_if = {
                 limit = {
-                    exists = title:k_thessalonika.holder
+                    exists = title:k_byzantium.holder
                 }
-                title:k_thessalonika.holder = { liege = root }
+                title:k_byzantium.holder = { liege = root }
             }
             trigger_if = {
                 limit = {
