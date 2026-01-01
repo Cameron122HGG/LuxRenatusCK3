@@ -50,7 +50,7 @@ lux_unify_italian_empire_decision = {
 	is_valid = {
 		#NOT = { exists = title:e_hre }
 		prestige_level >= very_high_prestige_level
-		has_title = title:e_italy
+		has_title = title:e_spqr
 		completely_controls_region = custom_imperial_homelands
 	}
 
@@ -128,18 +128,18 @@ retake_western_provinces_decision = {
 	}
 
 	is_valid = {
-		completely_controls_region = custom_theodosian_wre
+		completely_controls_region = custom_honorian_wre
 		custom_tooltip = {
 			text = western_kingdoms_held_or_vassals_tt
 			
-			title:k_italia_annonaria.holder = { liege = root }
-			title:k_italia_suburbicaria.holder = { liege = root }
-			title:k_illyricum.holder = { liege = root }
-			title:k_gallia.holder = { liege = root }
-			title:k_viennensis.holder = { liege = root }
+			title:k_roman_italia_annonaria.holder = { liege = root }
+			title:k_roman_italia_suburbicaria.holder = { liege = root }
+			title:k_roman_illyricum.holder = { liege = root }
+			title:k_roman_galliarum.holder = { liege = root }
+			title:k_roman_viennensis.holder = { liege = root }
 			title:k_roman_africa.holder = { liege = root }
-			title:k_mauretania.holder = { liege = root }
-			title:k_hispaniarum.holder = { liege = root }
+			title:k_roman_mauretania.holder = { liege = root }
+			title:k_roman_hispania.holder = { liege = root }
 		}
 	}
 
@@ -184,12 +184,12 @@ retake_western_provinces_decision = {
 }
 
 #Restoring the Roman Empire (as WRE)
-restore_wre_roman_empire_decision = {
+restore_wrh_roman_empire_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
 	}
-	desc = restore_wre_roman_empire_decision_desc
-	selection_tooltip = restore_wre_roman_empire_decision_tooltip
+	desc = restore_wrh_roman_empire_decision_desc
+	selection_tooltip = restore_wrh_roman_empire_decision_tooltip
 	decision_group_type = roman
 
 	ai_check_interval = 120
@@ -255,9 +255,9 @@ restore_wre_roman_empire_decision = {
 	}
 
 	effect = {
-		custom_tooltip = restore_wre_roman_empire_decision_effect_tooltip
+		custom_tooltip = restore_wrh_roman_empire_decision_effect_tooltip
 		show_as_tooltip = {
-			create_wre_roman_empire_scripted_effect = yes
+			create_wrh_roman_empire_scripted_effect = yes
 		}
 		if = {
 			limit = {
@@ -291,7 +291,7 @@ restore_wre_roman_empire_decision = {
 
 #To do
 #Reunite the Roman Empire
-reunite_roman_empire_decision = {
+reunith_roman_empire_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
 	}
@@ -311,8 +311,8 @@ reunite_roman_empire_decision = {
 		}
 		exists = title:e_spqr.holder
 		exists = title:e_byzantium.holder
-		NOT = { exists = title:e_roman_empire.holder }
-		NOT = { has_title = title:e_roman_empire }
+		NOT = { exists = title:h_roman_empire.holder }
+		NOT = { has_title = title:h_roman_empire }
 		
 		NOT = {  #Too Late
 			is_target_in_global_variable_list = {
@@ -357,9 +357,9 @@ reunite_roman_empire_decision = {
 	}
 
 	effect = {
-		custom_tooltip = restore_wre_roman_empire_decision_effect_tooltip
+		custom_tooltip = restore_wrh_roman_empire_decision_effect_tooltip
 		show_as_tooltip = {
-			create_wre_roman_empire_scripted_effect = yes
+			create_wrh_roman_empire_scripted_effect = yes
 		}
 		if = {
 			limit = {
@@ -483,7 +483,7 @@ roman_renaissance_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_spqr
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         
         is_at_war = no
@@ -537,15 +537,15 @@ restore_diocesis_system_decision = {
             text = dioecesis_kingdoms_held_or_vassals_tt
             trigger_if = {
                 limit = {
-                    exists = title:k_italy.holder
+                    exists = title:k_rome.holder
                 }
-                title:k_italy.holder = { liege = root }
+                title:k_rome.holder = { liege = root }
             }
             trigger_if = {
                 limit = {
-                    exists = title:k_romagna.holder
+                    exists = title:k_lombardy.holder
                 }
-                title:k_romagna.holder = { liege = root }
+                title:k_lombardy.holder = { liege = root }
             }
             trigger_if = {
                 limit = {
@@ -604,7 +604,7 @@ restore_diocesis_system_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_spqr
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         
         is_at_war = no
@@ -744,7 +744,7 @@ restore_eastern_diocesis_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_byzantium
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         is_at_war = no
         NOT = { exists = involved_activity }
@@ -859,7 +859,7 @@ restore_diocesis_gallia_viennensis_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_spqr
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         
         is_at_war = no
@@ -956,7 +956,7 @@ restore_diocesis_africa_mauretania_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_spqr
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         
         is_at_war = no
@@ -1044,7 +1044,7 @@ restore_exarchate_aegyptus_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_spqr
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         
         is_at_war = no
@@ -1144,7 +1144,7 @@ restore_exarchate_oriens_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_spqr
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         
         is_at_war = no
@@ -1452,7 +1452,7 @@ restore_diocesis_hispania_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_spqr
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         is_at_war = no
         NOT = { exists = involved_activity }
@@ -1546,7 +1546,7 @@ restore_diocesis_britannia_decision = {
     ai_potential = {
         OR = {
             has_title = title:e_spqr
-            has_title = title:e_roman_empire
+            has_title = title:h_roman_empire
         }
         is_at_war = no
         NOT = { exists = involved_activity }
@@ -1622,7 +1622,7 @@ refound_praetorian_guard_decision = {
 	}
 
 	ai_potential = {
-		has_title = title:e_roman_empire
+		has_title = title:h_roman_empire
 	}
 
 	ai_will_do = {
@@ -1636,12 +1636,12 @@ refound_praetorian_guard_decision = {
 
 #Restoring the Roman Empire (as HRE)
 ### Restore the Roman Empire ###
-restore_roman_empire_holy_decision = {
+restorh_roman_empire_holy_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 	}
-	desc = restore_roman_empire_holy_decision_desc
-	selection_tooltip = restore_roman_empire_decision_tooltip
+	desc = restorh_roman_empire_holy_decision_desc
+	selection_tooltip = restorh_roman_empire_decision_tooltip
 	# Deliberately left in the major group rather than the Roman one.
 	decision_group_type = major
 
@@ -1662,7 +1662,7 @@ restore_roman_empire_holy_decision = {
 			NOT = { has_title = title:e_byzantium } # Prioritize Byzaboos
 			primary_title = title:e_hre
 		}
-		NOT = { primary_title = title:e_italy }
+		NOT = { primary_title = title:e_spqr }
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -1711,9 +1711,9 @@ restore_roman_empire_holy_decision = {
 	}
 
 	effect = {
-		custom_tooltip = lux_restore_roman_empire_holy_decision_effect_tooltip
+		custom_tooltip = lux_restorh_roman_empire_holy_decision_effect_tooltip
 		show_as_tooltip = {
-			create_roman_empire_holy_scripted_effect = yes
+			creath_roman_empire_holy_scripted_effect = yes
 		}
 		trigger_event = {
 			id = roman_restoration.0003
@@ -1740,12 +1740,12 @@ restore_roman_empire_holy_decision = {
 }
 
 #Restoring the Roman Empire (as Byzantium)
-restore_roman_empire_decision = {
+restorh_roman_empire_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
 	}
-	desc = restore_roman_empire_decision_desc
-	selection_tooltip = restore_roman_empire_decision_tooltip
+	desc = restorh_roman_empire_decision_desc
+	selection_tooltip = restorh_roman_empire_decision_tooltip
 	decision_group_type = roman
 
 	ai_check_interval_by_tier = {
@@ -1765,7 +1765,7 @@ restore_roman_empire_decision = {
 			has_title = title:h_eastern_roman_empire
 		}
 		NOT = { primary_title = title:e_hre }
-		NOT = { primary_title = title:e_italy }
+		NOT = { primary_title = title:e_spqr }
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -1827,9 +1827,9 @@ restore_roman_empire_decision = {
 	}
 
 	effect = {
-		custom_tooltip = lux_restore_roman_empire_decision_effect_tooltip
+		custom_tooltip = lux_restorh_roman_empire_decision_effect_tooltip
 		show_as_tooltip = {
-			create_roman_empire_scripted_effect = yes
+			creath_roman_empire_scripted_effect = yes
 		}
 		if = {
 			limit = {
@@ -1878,7 +1878,7 @@ unify_italian_empire_decision = {
 
 	is_valid = {
 		prestige_level >= very_high_prestige_level
-		has_title = title:e_italy
+		has_title = title:e_spqr
 		#All the Peninsula
 		completely_controls_region = world_europe_south_italy
 		#And Illyria
