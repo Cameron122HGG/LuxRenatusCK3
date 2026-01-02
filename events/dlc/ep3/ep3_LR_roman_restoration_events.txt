@@ -1,4 +1,4 @@
-﻿namespace = ep3_LR_Roman_Restoration
+﻿namespace = ep3_LR_roman_restoration
 
 #######################################
 ###
@@ -13,10 +13,10 @@
 
 # Justinian's Dream
 # Event fired on story cycle setup informing the player that they can form the roman empire
-ep3_LR_Roman_Restoration.0001 = {
+ep3_LR_roman_restoration.0001 = {
 	type = character_event
-	title = ep3_LR_Roman_Restoration.0001.t
-	desc = ep3_LR_Roman_Restoration.0001.desc
+	title = ep3_LR_roman_restoration.0001.t
+	desc = ep3_LR_roman_restoration.0001.desc
 	theme = emperor
 
 	override_background = {
@@ -30,13 +30,13 @@ ep3_LR_Roman_Restoration.0001 = {
 	}
 
 	trigger = {
-		NOT = { has_global_variable = flag_restored_Roman_empire }
+		NOT = { has_global_variable = flag_restored_roman_empire }
 	}
 
 	option = { 
-		name = ep3_LR_Roman_Restoration.0001.a
-		custom_tooltip = ep3_LR_Roman_Restoration.0001.a.tt
-		decision:restore_Roman_empire_decision = {
+		name = ep3_LR_roman_restoration.0001.a
+		custom_tooltip = ep3_LR_roman_restoration.0001.a.tt
+		decision:restore_roman_empire_decision = {
 			open_view_data = {
 				view = decision_detail
 				player = root
@@ -46,11 +46,11 @@ ep3_LR_Roman_Restoration.0001 = {
 }
 
 # Should I LARP or nah?
-ep3_LR_Roman_Restoration.0100 = {
+ep3_LR_roman_restoration.0100 = {
 	type = character_event
 	window = fullscreen_event
-	title = ep3_LR_Roman_Restoration.0100.t
-	desc = ep3_LR_Roman_Restoration.0100.desc
+	title = ep3_LR_roman_restoration.0100.t
+	desc = ep3_LR_roman_restoration.0100.desc
 	theme = emperor
 	override_background = { reference = ep3_fullscreen_restore_rome }
 
@@ -59,10 +59,10 @@ ep3_LR_Roman_Restoration.0100 = {
 	}
 
 	option = { # LARP (Hard Mode)
-		name = ep3_LR_Roman_Restoration.0100.a
-		custom_tooltip = ep3_LR_Roman_Restoration.hard_mode
-		custom_tooltip = ep3_LR_Roman_Restoration.end_hard_mode
-		custom_tooltip = ep3_LR_Roman_Restoration.invasion_cb
+		name = ep3_LR_roman_restoration.0100.a
+		custom_tooltip = ep3_LR_roman_restoration.hard_mode
+		custom_tooltip = ep3_LR_roman_restoration.end_hard_mode
+		custom_tooltip = ep3_LR_roman_restoration.invasion_cb
 		every_held_title = {
 			limit = {
 				is_head_of_faith = yes
@@ -104,7 +104,7 @@ ep3_LR_Roman_Restoration.0100 = {
 			}
 		}
 		custom_tooltip = {
-			text = ep3_LR_Roman_Restoration.household_gods_tenet
+			text = ep3_LR_roman_restoration.household_gods_tenet
 			set_global_variable = household_gods_tenet_unlocked
 		}
 		custom_tooltip = {
@@ -117,14 +117,14 @@ ep3_LR_Roman_Restoration.0100 = {
 			}
 			random_owned_story = {
 				type = ep3_story_cycle_restoring_rome
-				set_variable = Roman_empire_hard_mode
+				set_variable = roman_empire_hard_mode
 			}
 		}
 	}
 
 	option = { # Roleplay option (become Hellenic without Hard Mode)
-		name = ep3_LR_Roman_Restoration.0100.c
-		custom_tooltip = ep3_LR_Roman_Restoration.easy_mode
+		name = ep3_LR_roman_restoration.0100.c
+		custom_tooltip = ep3_LR_roman_restoration.easy_mode
 		every_held_title = {
 			limit = {
 				is_head_of_faith = yes
@@ -166,7 +166,7 @@ ep3_LR_Roman_Restoration.0100 = {
 			}
 		}
 		custom_tooltip = {
-			text = ep3_LR_Roman_Restoration.household_gods_tenet
+			text = ep3_LR_roman_restoration.household_gods_tenet
 			set_global_variable = household_gods_tenet_unlocked
 		}
 		custom_tooltip = {
@@ -176,40 +176,40 @@ ep3_LR_Roman_Restoration.0100 = {
 	}
 
 	option = { # Easy Mode
-		name = ep3_LR_Roman_Restoration.0100.b
-		custom_tooltip = ep3_LR_Roman_Restoration.easy_mode
+		name = ep3_LR_roman_restoration.0100.b
+		custom_tooltip = ep3_LR_roman_restoration.easy_mode
 	}
 
 	after = {
-		create_Roman_empire_scripted_effect = yes
+		create_roman_empire_scripted_effect = yes
 		set_nickname_effect = { NICKNAME = nick_the_glorious }
 		# Send narrative fluff to other players (if any).
 		every_player = {
 			limit = { this != root }
-			trigger_event = ep3_LR_Roman_Restoration.0101
+			trigger_event = ep3_LR_roman_restoration.0101
 		}
 	}
 }
 
 # Some chucklefuck restored Rome
-ep3_LR_Roman_Restoration.0101 = {
+ep3_LR_roman_restoration.0101 = {
 	type = character_event
 	window = fullscreen_event
-	title = Roman_Restoration.0002.t
+	title = roman_restoration.0002.t
 	desc = {
-		desc = ep3_LR_Roman_Restoration.0101.intro
+		desc = ep3_LR_roman_restoration.0101.intro
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:scoped_emperor.primary_title.state_faith ?= faith:hellenic_pagan }
-				desc = ep3_LR_Roman_Restoration.0101.hellenic
+				desc = ep3_LR_roman_restoration.0101.hellenic
 			}
 			triggered_desc = {
 				trigger = { scope:scoped_emperor.primary_title.state_faith ?= faith:orthodox }
-				desc = ep3_LR_Roman_Restoration.0101.orthodox
+				desc = ep3_LR_roman_restoration.0101.orthodox
 			}
-			desc = ep3_LR_Roman_Restoration.0101.fallback
+			desc = ep3_LR_roman_restoration.0101.fallback
 		}
-		desc = ep3_LR_Roman_Restoration.0101.outro
+		desc = ep3_LR_roman_restoration.0101.outro
 	}
 	theme = emperor
 	override_background = { reference = ep3_fullscreen_restore_rome }
@@ -225,7 +225,7 @@ ep3_LR_Roman_Restoration.0101 = {
 	}
 
 	option = { 
-		name = ep3_LR_Roman_Restoration.0101.a
+		name = ep3_LR_roman_restoration.0101.a
 	}
 }
 
@@ -234,10 +234,10 @@ ep3_LR_Roman_Restoration.0101 = {
 ### POST-ROME DIFFICULTIES
 
 # Your inefficient governor messed up, causing mass loss in popular opinion. Can you fix it?
-ep3_LR_Roman_Restoration.0300 = {
+ep3_LR_roman_restoration.0300 = {
 	type = character_event
-	title = ep3_LR_Roman_Restoration.0300.t
-	desc = ep3_LR_Roman_Restoration.0300.desc
+	title = ep3_LR_roman_restoration.0300.t
+	desc = ep3_LR_roman_restoration.0300.desc
 	theme = emperor
 
 	left_portrait = {
@@ -265,11 +265,11 @@ ep3_LR_Roman_Restoration.0300 = {
 			}
 			save_scope_as = inefficient_governor
 		}
-		custom_tooltip = ep3_LR_Roman_Restoration.0300.efficiency
+		custom_tooltip = ep3_LR_roman_restoration.0300.efficiency
 	}
 
 	option = { # Stewardship Challenge
-		name = ep3_LR_Roman_Restoration.0300.a
+		name = ep3_LR_roman_restoration.0300.a
 		duel = {
 			skill = stewardship
 			value = excellent_skill_level
@@ -282,13 +282,13 @@ ep3_LR_Roman_Restoration.0300 = {
 				}
 				send_interface_toast = {
 					type = event_toast_effect_good
-					title = ep3_LR_Roman_Restoration.0300.a.success
+					title = ep3_LR_roman_restoration.0300.a.success
 					left_icon = scope:inefficient_governor
 					right_icon = scope:inefficient_governor.primary_title
 
 					scope:inefficient_governor = {
 						every_sub_realm_county = {
-							custom = ep3_LR_Roman_Restoration.0300.every_sub_realm_county
+							custom = ep3_LR_roman_restoration.0300.every_sub_realm_county
 							add_county_modifier = {
 								modifier = restore_rome_recuperated_county_opinion_modifier
 								years = 10
@@ -305,13 +305,13 @@ ep3_LR_Roman_Restoration.0300 = {
 				}
 				send_interface_toast = {
 					type = event_toast_effect_bad
-					title = ep3_LR_Roman_Restoration.0300.a.failure
+					title = ep3_LR_roman_restoration.0300.a.failure
 					left_icon = scope:inefficient_governor
 					right_icon = scope:inefficient_governor.primary_title
 
 					scope:inefficient_governor = {
 						every_sub_realm_county = {
-							custom = ep3_LR_Roman_Restoration.0300.every_sub_realm_county
+							custom = ep3_LR_roman_restoration.0300.every_sub_realm_county
 							add_county_modifier = {
 								modifier = restore_rome_devastated_county_opinion_modifier
 								years = 10
@@ -324,7 +324,7 @@ ep3_LR_Roman_Restoration.0300 = {
 	}
 
 	option = { # Fire the Governor
-		name = ep3_LR_Roman_Restoration.0300.b
+		name = ep3_LR_roman_restoration.0300.b
 		change_influence = massive_influence_loss
 		save_scope_as = actor
 		scope:inefficient_governor = {
@@ -337,7 +337,7 @@ ep3_LR_Roman_Restoration.0300 = {
 		}
 		scope:inefficient_governor = {
 			every_sub_realm_county = {
-				custom = ep3_LR_Roman_Restoration.0300.every_sub_realm_county
+				custom = ep3_LR_roman_restoration.0300.every_sub_realm_county
 				add_county_modifier = {
 					modifier = restore_rome_recuperated_county_opinion_modifier
 					years = 10
@@ -348,11 +348,11 @@ ep3_LR_Roman_Restoration.0300 = {
 	}
 	
 	option = { # Opt-Out
-		name = ep3_LR_Roman_Restoration.0300.c
+		name = ep3_LR_roman_restoration.0300.c
 
 		scope:inefficient_governor = {
 			every_sub_realm_county = {
-				custom = ep3_LR_Roman_Restoration.0300.every_sub_realm_county
+				custom = ep3_LR_roman_restoration.0300.every_sub_realm_county
 				add_county_modifier = {
 					modifier = restore_rome_lowered_county_opinion_modifier
 					years = 10
@@ -370,10 +370,10 @@ ep3_LR_Roman_Restoration.0300 = {
 }
 
 # Every 10-30 years, a random kingdom will raid you
-ep3_LR_Roman_Restoration.0500 = {
+ep3_LR_roman_restoration.0500 = {
 	type = character_event
-	title = ep3_LR_Roman_Restoration.0500.t
-	desc = ep3_LR_Roman_Restoration.0500.desc
+	title = ep3_LR_roman_restoration.0500.t
+	desc = ep3_LR_roman_restoration.0500.desc
 	theme = emperor
 
 	left_portrait = {
@@ -466,13 +466,13 @@ ep3_LR_Roman_Restoration.0500 = {
 	}
 
 	option = {
-		name = ep3_LR_Roman_Restoration.0500.a
+		name = ep3_LR_roman_restoration.0500.a
 	}
 
 	after = {
 		scope:target_kingdom = {
 			start_war = {
-				cb = ep3_LR_Roman_empire_border_war
+				cb = ep3_roman_empire_border_war
 				target = root
 				target_title = scope:target_county
 			}
@@ -481,7 +481,7 @@ ep3_LR_Roman_Restoration.0500 = {
 }
 
 # Special Bubonic Plague Spawns - Commented out and disabled because this is not very fun
-#ep3_LR_Roman_Restoration.0510 = {
+#ep3_LR_roman_restoration.0510 = {
 #	hidden = yes
 #
 #	immediate = {
@@ -503,7 +503,7 @@ ep3_LR_Roman_Restoration.0500 = {
 #}
 
 # Mongol Invasion Spawns
-ep3_LR_Roman_Restoration.0520 = {
+ep3_LR_roman_restoration.0520 = {
 	scope = none
 	hidden = yes
 
