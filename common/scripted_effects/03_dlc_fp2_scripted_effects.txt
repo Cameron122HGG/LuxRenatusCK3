@@ -1547,41 +1547,10 @@ fp2_border_raid_damage_effect = {
 # Historical Artefacts
 ##################################################
 
-create_artifact_goblet_chalice_of_dona_urraca = {
-	$OWNER$ = { save_scope_as = owner }
-	set_artifact_rarity_famed = yes
-	scope:owner = {
-		create_artifact = {
-			name = fp2_chalice_dona_urraca
-			description = fp2_chalice_dona_urraca_desc
-			template = fp2_chalice_dona_urraca_template
-			type = miscellaneous_when_not_court
-			visuals = fp2_chalice_dona_urraca
-			wealth = scope:wealth
-			quality = scope:quality
-			modifier = chalice_of_dona_urraca_modifier
-			save_scope_as = newly_created_artifact
-		}
-	}
-	scope:newly_created_artifact = {
-		set_variable = {
-			name = dlc_potential_court_artefact
-			value = yes
-		}
-		set_variable = {
-			name = historical_unique_artifact
-			value = yes
-		}
-		set_variable = {
-			name = relic
-			value = flag:christian
-		}
-	}
-}
+
 
 create_artifact_various_aquamanile_santiago = {
 	$OWNER$ = { save_scope_as = owner }
-	character:3206 = { save_scope_as = reforger }
 	set_artifact_rarity_illustrious = yes
 	scope:owner = {
 		create_artifact = {
