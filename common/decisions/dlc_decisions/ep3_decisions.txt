@@ -86,7 +86,7 @@ hold_triumph_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		NOT = { has_trait = humble }
 		has_variable = ep3_valid_triumph_victory
 	}
@@ -349,7 +349,7 @@ prepare_greek_fire_dromons_decision = {
 		trigger_event = ep3_decisions_event.3100
 	}
 
-	ai_potential = {
+	is_available = {
 		NOT = { has_trait = compassionate }
 		OR = {
 			gold >= massive_gold_value
@@ -536,7 +536,7 @@ retake_eastern_provinces_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		has_title = title:e_byzantium
 		is_at_war = no
 		NOT = { exists = involved_activity }
@@ -635,7 +635,7 @@ refound_pandidakterion_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		has_title = title:e_byzantium
 		gold > 1000
 	}
@@ -896,7 +896,7 @@ ask_western_help_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		has_title = title:e_byzantium
 		realm_size < massive_realm_size
 	}
@@ -992,7 +992,7 @@ evangelize_the_slavs_decision = {
 		trigger_event = ep3_decisions_event.4020
 	}
 
-	ai_potential = {
+	is_available = {
 		piety > massive_piety_value
 		has_title = title:e_byzantium
 	}
@@ -1226,7 +1226,7 @@ recreate_byzantine_empire_decision = {
 		trigger_event = ep3_decisions_event.4030
 	}
 
-	ai_potential = {
+	is_available = {
 		NOT = { exists = title:e_byzantium.holder }
 		any_held_title = {
 			title_tier = kingdom
@@ -1342,7 +1342,7 @@ found_varangian_guard_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		has_title = title:e_byzantium
 	}
 
@@ -1443,7 +1443,7 @@ reinstitute_grain_dole_decision = {
 		reinstitute_grain_dole_decision_effect = yes
 	}
 
-	ai_potential = {
+	is_available = {
 		is_roman_emperor_trigger = yes
 	}
 
@@ -1550,7 +1550,7 @@ reconfirm_grain_dole_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		is_roman_emperor_trigger = yes
 		capital_county = { has_variable = unlocked_grain_dole }
 	}
@@ -1618,7 +1618,7 @@ reconfirm_grain_dole_decision = {
 #		trigger_event = ep3_decisions_event.3200
 #	}
 #
-#	ai_potential = {
+#	is_available = {
 #		always = no
 #	}
 #
@@ -1844,7 +1844,7 @@ change_state_faith = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		government_has_flag = government_is_administrative
 		primary_title.tier >= tier_empire
 		faith != primary_title.state_faith
@@ -2010,7 +2010,7 @@ adopt_state_faith = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		government_has_flag = government_is_administrative
 		NOT = { has_trait = zealous } # A zealous vassal would presumably not want to change their faith
 		exists = top_liege.primary_title.state_faith
@@ -2200,7 +2200,7 @@ found_salon_decision = {
 		trigger_event = ep3_decisions_event.4080
 	}
 
-	ai_potential = {
+	is_available = {
 		always = no
 	}
 
@@ -2316,7 +2316,7 @@ split_roman_empire_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		primary_title = title:h_roman_empire
 	}
 
@@ -2541,7 +2541,7 @@ commission_icon_decision = {
 		hegemony = 36
 	}
 	
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 		ai_greed < medium_positive_ai_value
 		short_term_gold > ai_war_chest_desired_gold_value
@@ -2628,7 +2628,7 @@ embrace_heresy_decision = {
 		trigger_event = ep3_decisions_event.5020
 	}
 
-	ai_potential = {
+	is_available = {
 		always = no
 	}
 
@@ -2699,7 +2699,7 @@ push_heresy_as_state_faith = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		always = no
 	}
 
@@ -2804,7 +2804,7 @@ establish_silk_production_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		domicile ?= {
 			is_domicile_type = estate
 		}
@@ -2937,7 +2937,7 @@ commission_silk_regalia_decision = {
 		hegemony = 60
 	}
 	
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 		ai_greed < medium_positive_ai_value
 		short_term_gold > ai_war_chest_desired_gold_value
@@ -3102,7 +3102,7 @@ foster_integration_decision = {
 		hegemony = 0
 	}
 	
-	ai_potential = {
+	is_available = {
 		government_allows = administrative
 		exists = top_liege
 		root.top_liege != root
@@ -3197,7 +3197,7 @@ gather_faction_support_decision = {
 		hegemony = 0
 	}
 	
-	ai_potential = {
+	is_available = {
 		government_allows = administrative
 		exists = top_liege
 		top_liege != root
@@ -3392,7 +3392,7 @@ legitimize_latin_dominion_decision = {
 		hegemony = 0
 	}
 	
-	ai_potential = {
+	is_available = {
 		primary_title ?= {
 			this = title:e_latin_empire
 		}
@@ -3673,7 +3673,7 @@ expunge_latin_dominion_decision = {
 		hegemony = 9
 	}
 	
-	ai_potential = {
+	is_available = {
 		is_available = yes
 		OR = {
 			highest_held_title_tier >= tier_kingdom
@@ -3795,7 +3795,7 @@ go_fishing_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		always = yes
 	}
 

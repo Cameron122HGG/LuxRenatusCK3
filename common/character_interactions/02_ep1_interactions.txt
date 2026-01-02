@@ -163,7 +163,7 @@ fund_inspiration_interaction = {
 		adult = yes
 	}
 
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 		OR = {
 			has_royal_court = yes
@@ -280,14 +280,14 @@ indebt_guest_interaction = {
 	pre_answer_yes_key = ANSWER_WILL_SUCCEED
 	pre_answer_maybe_breakdown_key = ANSWER_SUM_CHANCE
 	
-	ai_potential = {
+	is_available = {
 		# Repeat some is_shown triggers for performance gains.
 		indebt_guest_interaction_basic_checks_trigger = { ACTOR = this }
 	}
 
 	is_shown = {
 		scope:actor != scope:recipient
-		# Repeat some ai_potential triggers for performance gains.
+		# Repeat some is_available triggers for performance gains.
 		indebt_guest_interaction_basic_checks_trigger = { ACTOR = scope:actor }
 		# Scope:recipient must be a guest.
 		scope:recipient = { is_pool_guest_of = scope:actor }

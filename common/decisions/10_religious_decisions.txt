@@ -228,7 +228,7 @@ appoint_a_righteous_caliph_decision = { # Appoint a righteous caliph
 		piety = 1000
 	}
 
-	ai_potential = {
+	is_available = {
 		# Must be independent.
 		top_liege = this
 		# Should have a decent piety level.
@@ -288,7 +288,7 @@ take_vow_of_poverty_decision = {
 		hegemony = 120
 	}
 
-	ai_potential = {
+	is_available = {
 		faith = {
 			has_doctrine_parameter = vows_of_poverty_active
 		}
@@ -343,7 +343,7 @@ renounce_vow_of_poverty_decision = {
 		hegemony = 60
 	}
 
-	ai_potential = {
+	is_available = {
 		has_character_modifier = vow_of_poverty_modifier
 		# AI will consider if we're spending more money than we're making, and their treasury is low.
 		monthly_character_expenses > monthly_character_income
@@ -429,7 +429,7 @@ initiate_consolamentum_decision = {
 		hegemony = 60
 	}
 	
-	ai_potential = {		
+	is_available = {		
 		primary_heir ?= {
 			dynasty = root.dynasty
 		}
@@ -521,7 +521,7 @@ seek_aid_of_the_spirits_decision = {
 		hegemony = 60
 	}
 
-	ai_potential = {
+	is_available = {
 		always = yes
 	}
 
@@ -575,7 +575,7 @@ select_personal_deity_hinduism_decision = {
 		hegemony = 96
 	}
 
-	ai_potential = {
+	is_available = {
 		piety >= minor_piety_value
 		NOR = {
 			has_character_modifier = bhakti_hinduism_ganga
@@ -673,7 +673,7 @@ select_personal_deity_germanic_decision = {
 		hegemony = 96
 	}
 
-	ai_potential = {
+	is_available = {
 		piety >= minor_piety_value
 		NOR = {
 			has_character_modifier = bhakti_germanic_generic_odin
@@ -744,7 +744,7 @@ meditate_in_seclusion_decision = {
 	}
 	cooldown = { months = 36 }
 
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 		stress >= 75
 	}
@@ -838,7 +838,7 @@ give_sky_burial_decision = {
 	}
 	cooldown = { months = 12 }
 
-	ai_potential = {
+	is_available = {
 		always = yes
 	}
 
@@ -949,7 +949,7 @@ raise_runestone_decision = {
 		hegemony = 36
 	}
 
-	ai_potential = {
+	is_available = {
 		always = yes
 	}
 
@@ -1004,7 +1004,7 @@ divine_the_stars_decision = {
 		hegemony = 60
 	}
 
-	ai_potential = {
+	is_available = {
 		always = yes
 	}
 
@@ -1088,7 +1088,7 @@ revoke_false_conversion_decision = {	#Reveal yourself as a crypto-religionist.
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		exists = secret_faith
 		any_secret = { type = secret_crypto_religionist }
 		liege.faith = { faith_hostility_level_comparison = { root.secret_faith <= root.faith } }
@@ -1196,7 +1196,7 @@ encourage_confession_of_false_conversions_decision = {	# Ask that crypto-religio
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		always = yes
 	}
 
@@ -1285,7 +1285,7 @@ abandon_crypto_faith_decision = {	#Abandon your secret faith.
 		hidden_effect = { remove_character_secret_faith = yes }
 	}
 
-	ai_potential = {
+	is_available = {
 		exists = secret_faith
 		any_secret = {
 			type = secret_crypto_religionist
@@ -1380,7 +1380,7 @@ return_rome_decision = {
 		hegemony = 12
 	}
 
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 		top_liege = this
 		faith = faith:catholic
@@ -1456,7 +1456,7 @@ ai_create_head_of_faith_decision = {
 		hegemony = 12
 	}
 
-	ai_potential = {
+	is_available = {
 		is_adult = yes
 		NOR = {
 			faith = {

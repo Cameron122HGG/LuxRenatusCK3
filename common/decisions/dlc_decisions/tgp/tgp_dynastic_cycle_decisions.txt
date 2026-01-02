@@ -58,7 +58,7 @@ situation_dynastic_cycle_claim_mandate_decision = {
 		empire = 3
 		hegemony = 12
 	}
-	ai_potential = { 
+	is_available = { 
 		situation:dynastic_cycle ?= { situation_current_phase = situation_dynastic_cycle_phase_chaos }
 		NOT = {
 			any_owned_story = {
@@ -213,7 +213,7 @@ situation_dynastic_cycle_favor_own_culture_for_appointments = {
 		hegemony = 36
 	}
 	
-	ai_potential = { always = yes }
+	is_available = { always = yes }
 	
 	ai_will_do = {
 		base = 30
@@ -898,7 +898,7 @@ movement_petition_decision = {
 		}
 	}
 
-	ai_potential = { 
+	is_available = { 
 		always = no
 	}
 	ai_check_interval = 0
@@ -1426,7 +1426,7 @@ movement_petition_change_laws_decision = {
 			}
 		}
 	}
-	ai_potential = {
+	is_available = {
 		always = no
 	}
 	ai_check_interval = 0
@@ -2077,7 +2077,7 @@ ai_movement_petition_change_laws_decision = {
 			debug_log = "AI tried to use Movement Petition, but failed to pick the topic"
 		}
 	}
-	ai_potential = {
+	is_available = {
 		is_any_movement_leader = yes
 	}
 	ai_check_interval_by_tier = {
@@ -2197,7 +2197,7 @@ renounce_noble_family_title_decision = {
 
 	ai_check_interval = 0
 
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 		# Don't step down freely if you don't have any other house members holding a noble_family_title or inherit any held noble_family_title
 		OR = {
@@ -3145,7 +3145,7 @@ favored_movement_consults_heaven_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		is_any_movement_leader = yes
 	}
 	ai_check_interval_by_tier = {
@@ -3364,7 +3364,7 @@ house_head_consults_heaven_decision = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		government_allows = merit
 		OR = { # To make sure the cycle isn't nuked by landless families
 			highest_held_title_tier >= tier_duchy
