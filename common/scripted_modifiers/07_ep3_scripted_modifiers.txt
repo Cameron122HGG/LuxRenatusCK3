@@ -10,7 +10,7 @@
 
 laamp_improved_learning_contract_success_modifier = {
 	modifier = {
-		scope:owner.domicile ?= { has_domicile_parameter = camp_improved_learning_contract_success }
+		scope:owner.domicile ?= { has_domicile_parameter = camp_improved_learning_contract_rewards }
 		add = laamp_improved_learning_contract_success_value
 		desc = domicile_building_parameter_camp_improved_learning_contract_success_desc
 	}
@@ -132,6 +132,10 @@ liege_offer_co_emperorship_to_faction_leader_modifier = {
 
 court_position_boon_aptitude_modifier = {
 	modifier = {
+		any_court_position_holder = {
+			has_court_position = $POS$_court_position
+			save_temporary_scope_as = position_temp
+		}
 		add = {
 			value = "scope:position_temp.aptitude($POS$_court_position)"
 			subtract = 3
