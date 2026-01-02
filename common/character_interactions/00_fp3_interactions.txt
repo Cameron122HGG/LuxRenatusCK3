@@ -1101,33 +1101,7 @@ fp3_challenge_house_head_interaction = {
 		}
 	}
 	
-	auto_accept = {
-		trigger_if = {
-			limit = {
-				scope:recipient = { is_ruler = no }
-			}
-			scope:recipient = { is_ruler = no }
-		}
-		trigger_else_if = {
-			limit = { scope:hook = yes }
-			custom_description = {
-				text = "spending_hook"
-				subject = scope:actor
-				object = scope:recipient
-				scope:hook = yes
-			}
-		}
-		trigger_else_if = {
-			limit = {
-				scope:actor = { is_heir_of = scope:recipient }
-			}
-			custom_tooltip = {
-				text = fp3_challenge_house_head_interaction_heir_bonus_desc
-				scope:actor = { is_heir_of = scope:recipient }
-			}
-		}
-		trigger_else = { always = no }
-	}
+
 	
 	can_send = {
 		scope:actor = {
