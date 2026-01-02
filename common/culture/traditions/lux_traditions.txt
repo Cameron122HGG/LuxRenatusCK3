@@ -207,80 +207,61 @@ lux_tradition_diadochi_kingship = {
 
 ###### WRE
 
-tradition_roman_legions = {
+tradition_western_roman = {
 	category = regional
 
 	layers = {
-		0 = martial
+		0 = intrigue
 		1 = mediterranean
-		4 = imperial_tagmata.dds 
+		4 = palace_politics.dds
 	}
 
 	is_shown = {
 		OR = {
-			this = culture:roman
-			any_parent_culture_or_above = {
-				this = culture:roman
-			}
 			has_cultural_pillar = heritage_latin
-			scope:character = {
+			has_cultural_pillar = heritage_byzantine
+			OR = {
 				has_title = title:e_spqr
+				has_title = title:e_byzantium
+				has_title = title:h_roman_empire
 			}
 		}
-		# DLC check.
-		has_ep3_dlc_trigger = yes
-		NOT = {
-			has_cultural_tradition = tradition_roman_legacy
-		}
 	}
-	
 	can_pick = {
-		custom_tooltip = {
-			text = only_one_roman_military_tradition_allowed
-			trigger_if = {
-				limit = {
-					OR = {
-						NOT = { exists = scope:replacing }
-						NOT = {
-							scope:replacing = culture_tradition:tradition_ep3_imperial_tagmata
-						}
-					}
-				}
-				NOT = {
-					culture_tradition:tradition_ep3_imperial_tagmata = { is_in_list = traits }
-				}
-			}
+		OR = {
+			has_cultural_pillar = heritage_latin
+			has_cultural_pillar = heritage_byzantine
 		}
-	}
-
-	can_pick_for_hybridization = {
-		custom_tooltip = {
-			text = only_one_roman_military_tradition_allowed
-			NOT = {
-				culture_tradition:tradition_ep3_imperial_tagmata = { is_in_list = traits }
-			}
+		NOT = {
+			has_cultural_tradition = tradition_byzantine_succession
+			has_cultural_tradition = tradition_ep3_palace_politics
+			this = culture:greek
 		}
 	}
 
 	parameters = {
-		unlock_maa_legionary_cohort = yes
-		unlock_maa_legionary_cavalry = yes
-		unlock_maa_roman_ballista = yes
-		#can_appoint_magister_militum = yes
-		frontier_themes_borrow_neighbor_troops = yes
+		roman_plaza = yes
+		unlock_maa_western_roman = yes
+		doesnt_care_about_culture_faith_in_factions = yes
+		peasant_and_populist_factions_less_common = yes
+		ambitious_trait_more_common = yes
+		just_trait_more_common = yes
+		just_trait_gives_bonuses = yes
+		reduced_bodyguard_aptitude = yes
+		cultrad_unlocks_t2_countermeasures = yes
+		palace_politics_trait_bonuses = yes
+		palace_politics_trait_maluses = yes
 	}
-
-	province_modifier = {
-		levy_size = -0.50
-	}
-
 	character_modifier = {
-		#movement_speed = 0.1
-		siege_weapon_siege_value_mult = 0.2
-		#levy_toughness = -5
-		heavy_infantry_toughness_add = 4
-		heavy_infantry_max_size_add = 2
-		men_at_arms_title_limit = 1
+		short_reign_duration_mult = -0.5
+		vassal_limit = 25
+		long_reign_bonus_mult = -0.5
+		monthly_court_grandeur_change_mult = 0.2
+		political_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
+		personal_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
+	}
+	culture_modifier = {
+		cultural_acceptance_gain_mult = 0.2
 	}
 
 	cost = {
@@ -290,133 +271,75 @@ tradition_roman_legions = {
 				desc = BASE
 				format = "BASE_VALUE_FORMAT"
 			}
-			if = {
-				limit = {
-					NOR = {
-						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
-						culture_pillar:ethos_bellicose = { is_in_list = traits }
-					}
-				}
-				add = {
-					value = tradition_incompatible_ethos_penalty
-					desc = not_bellicose_or_bureaucratic_desc
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						scope:character = {
-							any_held_title = {
-								tier = tier_county
-								count >= 8
-								any_county_province = {
-									has_building_or_higher = stables_01
-								}
-							}
-						}
-					}
-				}
-				add = {
-					value = tradition_unfulfilled_criteria_penalty
-					desc = domain_counties_with_stables_desc
-				}
-			}
-			
-			multiply = tradition_replacement_cost_if_relevant
+			multiply = 20
 		}
 	}
-	
-	ai_will_do = {
-		value = 400
-		if = {
-			limit = { # Admin should be more into this
-				scope:character = {
-					government_allows = administrative
-				}
-			}
-			multiply = 2
-		}
-		else_if = {
-			limit = {
-				scope:character ?= {
-					ai_has_warlike_personality = yes
-				}
-			}
-			multiply = 4
-		}
-	}
+
+	ai_will_do = { value = 0 }
 }
 
-tradition_imperial_politics = {
+tradition_ep3_palace_politics = {
 	category = regional
 
 	layers = {
 		0 = intrigue
 		1 = mediterranean
-		4 = roman_ceremonies.dds
+		4 = palace_politics.dds 
 	}
 
 	is_shown = {
 		OR = {
-			this = culture:roman
+			this = culture:greek
+			any_parent_culture_or_above = {
+				this = culture:greek
+			}
+			has_cultural_pillar = heritage_byzantine
 			scope:character = {
-				has_title = title:e_spqr
+				OR = {
+					has_title = title:e_byzantium
+					has_title = title:h_roman_empire
+				}
 			}
 		}
 		# DLC check.
 		has_ep3_dlc_trigger = yes
 		NOT = {
 			has_cultural_tradition = tradition_byzantine_succession
+			has_cultural_tradition = tradition_western_roman
+		}
+	}
+	can_pick = {
+		custom_tooltip = {
+			text = cannot_have_tradition_court_eunuchs
+			NOT = { culture_tradition:tradition_court_eunuchs = { is_in_list = traits } }
+		}
+		custom_tooltip = {
+			text = cannot_have_tradition_merciful_blindings
+			NOT = { culture_tradition:tradition_merciful_blindings = { is_in_list = traits } }
 		}
 	}
 	
-	can_pick = {
-		custom_tooltip = {
-			text = only_one_roman_politics_tradition_allowed
-			trigger_if = {
-				limit = {
-					OR = {
-						NOT = { exists = scope:replacing }
-						NOT = {
-							scope:replacing = culture_tradition:tradition_ep3_palace_politics
-						}
-					}
-				}
-				NOT = {
-					culture_tradition:tradition_ep3_palace_politics = { is_in_list = traits }
-				}
-			}
-		}
-	}
-
-	can_pick_for_hybridization = {
-		custom_tooltip = {
-			text = only_one_roman_politics_tradition_allowed
-			NOT = {
-				culture_tradition:tradition_ep3_palace_politics = { is_in_list = traits }
-			}
-		}
-	}
-
-	parameters = { 
-		unlock_maa_praetorian_cohort = yes
-		unlock_praetorian_prefect = yes
+	parameters = {
+		unlock_maa_varangian_guards = yes
+		unlock_akolouthos = yes
 		reduced_bodyguard_aptitude = yes
 		can_blind_prisoners = yes
 		can_castrate_prisoners = yes
-		disloyal_trait_more_common = yes
+		eunuch_trait_bonuses = yes
+		can_appoint_chief_eunuch = yes
+		family_castration = yes
 		ambitious_trait_more_common = yes
+		physical_disfigurement_blocks_inheritance = yes #Actually only blocks claimants and reduce score in elective. Also includes infertility for tooltip reasons.
 		cultrad_unlocks_t2_countermeasures = yes
 		palace_politics_trait_bonuses = yes
 		palace_politics_trait_maluses = yes
 	}
-
 	character_modifier = {
 		monthly_court_grandeur_change_mult = 0.2
 		political_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
 		personal_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
 	}
-
+	
 	cost = {
 		prestige = {
 			add = {
@@ -458,116 +381,7 @@ tradition_imperial_politics = {
 			multiply = tradition_replacement_cost_if_relevant
 		}
 	}
-
-	ai_will_do = {
-		value = 200
-		if = {
-			limit = { # Admin should be more into this
-				scope:character = {
-					government_allows = administrative
-				}
-			}
-			multiply = 2
-		}
-	}
-}
-
-tradition_roman_ethics = {
-	category = regional
-
-	layers = {
-		0 = steward
-		1 = mediterranean
-		4 = jirga.dds 
-	}
-
-	is_shown = {
-		OR = {
-			this = culture:roman
-			scope:character = {
-				has_title = title:e_spqr
-			}
-		}
-		# DLC check.
-		has_ep3_dlc_trigger = yes
-	}
 	
-	can_pick = {
-	}
-
-	parameters = { 
-		can_use_conquest_cbs  = yes
-		#tradition_conquest_cb_enabled = yes
-		tradition_invasion_cb_enabled = yes
-		martial_education_more_valued = yes
-		prowess_traits_more_valued = yes
-		strong_traits_more_valued =	 yes
-		strong_traits_more_common = yes
-		craven_and_content_traits_looked_down_upon = yes
-		weak_traits_looked_down_upon = yes
-		rowdy_trait_more_common = yes
-	}
-
-	culture_modifier = {
-		cultural_acceptance_gain_mult = -0.15
-	}
-
-	character_modifier = {
-		different_culture_opinion = -20
-		same_culture_opinion = 10
-	}
-
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			if = {
-				limit = {
-					NOR = {
-						culture_pillar:ethos_bellicose = { is_in_list = traits }
-					}
-				}
-				add = {
-					value = tradition_incompatible_ethos_penalty
-					desc = not_bureaucratic_courtly_or_spiritual_desc
-				}
-			}
-			if = {
-				limit = {
-					trigger_if = {
-						limit = {
-							scope:character = {
-								is_ai = no
-							}
-						}
-						NOT = {
-							any_ruler = {
-								count >= 3
-								culture = prev
-								primary_title.tier >= tier_county
-								OR = {	
-									has_trait = strong
-									has_trait = physique_good
-								}
-							}
-						}
-					}
-					trigger_else = {
-						always = no
-					}
-				}
-				add = {
-					value = tradition_unfulfilled_criteria_penalty
-					desc = strong_rulers_desc
-				}
-			}			
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-
 	ai_will_do = {
 		value = 200
 		if = {
@@ -580,106 +394,3 @@ tradition_roman_ethics = {
 		}
 	}
 }
-
-tradition_molded_architecture = {
-	category = regional
-
-	layers = {
-		0 = learning
-		1 = mediterranean
-		4 = city2.dds 
-	}
-
-	is_shown = {
-		OR = {
-			this = culture:roman
-			scope:character = {
-				has_title = title:e_spqr
-			}
-		}
-		# DLC check.
-		has_ep3_dlc_trigger = yes
-	}
-	
-	can_pick = {
-	}
-
-	parameters = { 
-		enable_roman_duchy_buildings = yes
-		development_gain_on_building_complete = yes
-		architect_trait_prestige = yes
-	}
-
-	county_modifier = {
-		development_growth_factor = 0.15
-	}
-
-	character_modifier = {
-		build_speed = -0.15
-		build_gold_cost = -0.15
-	}
-
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			if = {
-				limit = {
-					NOR = {
-						culture_pillar:ethos_bellicose = { is_in_list = traits }
-					}
-				}
-				add = {
-					value = tradition_incompatible_ethos_penalty
-					desc = not_bureaucratic_courtly_or_spiritual_desc
-				}
-			}
-			if = {
-				limit = {
-					trigger_if = {
-						limit = {
-							scope:character = {
-								is_ai = no
-							}
-						}
-						NOT = {
-							any_ruler = {
-								count >= 3
-								culture = prev
-								primary_title.tier >= tier_county
-								OR = {	
-									has_trait = strong
-									has_trait = physique_good
-								}
-							}
-						}
-					}
-					trigger_else = {
-						always = no
-					}
-				}
-				add = {
-					value = tradition_unfulfilled_criteria_penalty
-					desc = strong_rulers_desc
-				}
-			}			
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-
-	ai_will_do = {
-		value = 200
-		if = {
-			limit = { # Admin should be more into this
-				scope:character = {
-					government_allows = administrative
-				}
-			}
-			multiply = 2
-		}
-	}
-}
-

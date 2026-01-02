@@ -1,95 +1,495 @@
-﻿#Restoring the Roman Empire (as Byzantium)
-### Restore the Roman Empire ###
-restore_seleucid_empire_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
-	}
-	desc = restore_seleucid_empire_decision_desc
-	selection_tooltip = restore_seleucid_empire_decision_tooltip
-	decision_group_type = LR_diadochi_titles_decision_group
+﻿#####
+###Ancient Greeks
+########
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 120
-		empire = 0
-		hegemony = 0
-	}
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		has_title = title:k_syria
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_seleucid_empire
-			}
-		}
+LR_diadochi_seleucid_kingdom_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
+    }
+
+    desc = LR_diadochi_seleucid_kingdom_desc
+    selection_tooltip = LR_diadochi_seleucid_kingdom_tooltip
+	confirm_text = LR_diadochi_seleucid_kingdom_confirm
+    decision_group_type = major
+
+    ai_check_interval = 120
+
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+		NOT = { exists = title:e_seleucid_kingdom.holder }
+		culture = culture:hellenistic
+
+		NOT = { has_title = title:e_antigonid_kingdom }
 		OR = {
-			government_has_flag = government_is_feudal
-			government_has_flag = government_is_republic
-			government_has_flag = government_is_classical
-			government_allows = administrative
+		NOT = { has_primary_title = title:e_byzantium }
+		NOT = { has_primary_title = title:e_antipatrid_kingdom }
+		NOT = { has_primary_title = title:e_ptolemaic_kingdom }
 		}
-	}
 
-	is_valid = {
-		prestige_level = 4
+		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
+		NOT = { dynasty = dynasty:dynasty_hellenic_antipater }
+		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios}
 
-		completely_controls = title:e_persia
-		completely_controls = title:k_syria
-		completely_controls = title:k_mesopotamia
-	}
+		OR = {
+		dynasty = dynasty:dynasty_hellenic_seleucid
+		dynasty = dynasty:dynasty_hellenic_seleukos
+		}
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
+        NOT = {
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_seleucid_reborn
+            }
+        }
+    }
+
+    is_valid = {
+        is_landed = yes
+		#is_capable_adult = yes
 		is_imprisoned = no
-		top_liege = this
+		is_independent_ruler = yes
+		is_at_war = no
+		NOT = { faith = { religion_tag = islam_religion } }
+
+		culture = culture:hellenistic
+
+		has_realm_law = crown_authority_3
 
 		OR = {
-			religion = { is_in_family = rf_graeco_roman }
-			religion = religion:hellenism_religion
-			culture = { has_cultural_pillar = heritage_hellenistic_greek }
-			culture = { has_cultural_pillar = heritage_byzantine }
+		   NOT = { has_title = title:e_byzantium }
+		   NOT = { exists = title:e_byzantium.holder }
 		}
+
+		OR = {
+		dynasty = dynasty:dynasty_hellenic_seleucid
+		dynasty = dynasty:dynasty_hellenic_seleukos
+		}
+
+		OR = {
+			faith = faith:messalian
+			faith = faith:nestorian
+			faith = { religion_tag = solar_religion }
+			faith = { religion_tag = zoroastrianism_religion }
+			faith = { religion_tag = hellenism_religion }
+		}
+
+		prestige_level >= 3
+
+
+		completely_controls = title:k_persia
+		completely_controls = title:k_syria
+		completely_controls = title:k_osroene
+		completely_controls = title:k_mesopotamia
+
+		OR = {
+		    completely_controls = title:k_armenia
+			completely_controls = title:k_jerusalem
+		}
+    }
+
+    cost = {
+         gold = 6000
+    }
+
+    effect = {
+		custom_tooltip = LR_diadochi_seleucid_kingdom_effect_tooltip
+
+	hidden_effect = {
+	    change_government = administrative_government
 	}
 
-	effect = {
-		custom_tooltip = restore_seleucid_empire_decision_effect_tooltip
-		show_as_tooltip = {
-			create_seleucid_empire_scripted_effect = yes
-		}
-		if = {
-			limit = {
-				has_ep3_dlc_trigger = yes
-			}
-			trigger_event = diadochi_seleucid_restoration.0100
-		}
-		else = {
-			trigger_event = diadochi_seleucid_restoration.0001
-		}
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_seleucid_empire
-			}
-			set_global_variable = {
-				name = flag_restored_seleucid_empire
-				value = root
-			}
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+    hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_seleucid_reborn
+            }
+            set_global_variable = {
+                name = flag_lux_seleucid_reborn
+                value = root
+            }
+        }
 
-	ai_will_do = {
-		base = 100
-	}
+		trigger_event = LR_diadochi_kingdoms_events.0007
+    }
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 1000000
+    }
 }
 
-### Diadochi Titles ###
+
+
+
+
+
+LR_diadochi_ptolemaic_empire_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
+    }
+
+    desc = LR_diadochi_ptolemaic_empire_desc
+    selection_tooltip = LR_diadochi_ptolemaic_empire_tooltip
+	confirm_text = LR_diadochi_ptolemaic_empire_confirm
+    decision_group_type = major
+
+    ai_check_interval = 120
+
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+		NOT = { exists = title:e_ptolemaic_kingdom.holder }
+		has_title = title:k_ptolemaic_kingdom
+
+		NOT = { has_title = title:e_antipatrid_kingdom }
+
+		OR = {
+		NOT = { has_primary_title = title:e_byzantium }
+		NOT = { has_primary_title = title:e_antigonid_kingdom }
+		NOT = { has_primary_title = title:e_seleucid_kingdom }
+		NOT = { has_primary_title = title:e_antipatrid_kingdom }
+		}
+
+		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
+		NOT = { dynasty = dynasty:dynasty_hellenic_antipater }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleukos }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleucid }
+
+		OR = {
+		culture = culture:hellenistic
+		dynasty = dynasty:dynasty_hellenic_ptolemaios
+		}
+
+        NOT = {
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_ptolemaic_empire
+            }
+        }
+    }
+
+    is_valid = {
+        is_landed = yes
+		#is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+		is_at_war = no
+		NOT = { faith = { religion_tag = islam_religion } }
+
+		OR = {
+			faith = faith:coptic
+			religion = religion:hellenism_religion
+		}
+
+		prestige_level >= 3
+
+		has_realm_law = crown_authority_3
+
+		OR = {
+		   NOT = { has_title = title:e_byzantium }
+		   NOT = { exists = title:e_byzantium.holder }
+		}
+
+		culture = culture:hellenistic
+
+		dynasty = dynasty:dynasty_hellenic_ptolemaios
+
+
+		has_title = title:k_egypt
+		completely_controls = title:k_jerusalem
+		completely_controls = title:d_cyprus
+    }
+
+    cost = {
+         gold = 6000
+    }
+
+    effect = {
+		custom_tooltip = LR_diadochi_ptolemaic_empire_effect_tooltip
+
+	hidden_effect = {
+	    change_government = administrative_government
+	}
+
+    hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_ptolemaic_empire
+            }
+            set_global_variable = {
+                name = flag_lux_ptolemaic_empire
+                value = root
+            }
+        }
+
+		trigger_event = LR_diadochi_kingdoms_events.0007
+    }
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 1000000
+    }
+}
+
+
+
+
+LR_diadochi_antigonid_kingdom_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+    }
+
+    desc = LR_diadochi_antigonid_kingdom_desc
+    selection_tooltip = LR_diadochi_antigonid_kingdom_tooltip
+	confirm_text = LR_diadochi_antigonid_kingdom_confirm
+    decision_group_type = major
+
+    ai_check_interval = 120
+
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+		NOT = { exists = title:e_antigonid_kingdom.holder }
+		has_title = title:k_anatolia
+
+		NOT = { has_title = title:e_antigonid_kingdom }
+
+		OR = {
+		NOT = { has_primary_title = title:e_byzantium }
+		NOT = { has_primary_title = title:e_seleucid_kingdom }
+		NOT = { has_primary_title = title:e_antigonid_kingdom }
+		NOT = { has_primary_title = title:e_ptolemaic_kingdom }
+		}
+
+		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleukos }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleucid }
+
+		has_realm_law = crown_authority_3
+
+		OR = {
+		culture = culture:hellenistic
+		dynasty = dynasty:dynasty_hellenic_antigonid
+		}
+
+
+        NOT = {
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_antigonid_kingdom
+            }
+        }
+    }
+
+    is_valid = {
+        is_landed = yes
+		#is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+		is_at_war = no
+		NOT = { faith = { religion_tag = islam_religion } }
+
+		OR = {
+			religion = religion:zunism_religion
+			religion = religion:zoroastrianism_religion
+			religion = religion:hellenism_religion
+		}
+
+		prestige_level >= 3
+
+		OR = {
+		   NOT = { has_title = title:e_byzantium }
+		   NOT = { exists = title:e_byzantium.holder }
+		}
+
+		OR = {
+		culture = culture:hellenistic
+		dynasty = dynasty:dynasty_hellenic_antigonid
+		}
+
+		has_title = title:k_anatolia
+
+		completely_controls = title:k_transoxiana
+		completely_controls = title:k_khorasan
+		completely_controls = title:k_makran
+		completely_controls = title:k_daylam
+    }
+
+    cost = {
+         gold = 6000
+    }
+
+    effect = {
+		custom_tooltip = LR_diadochi_antigonid_kingdom_effect_tooltip
+
+
+	hidden_effect = {
+	    change_government = administrative_government
+	}
+
+		title:d_sistan = { set_de_jure_liege_title = title:k_anatolia }
+	    title:d_jabal_kufs = { set_de_jure_liege_title = title:k_anatolia }
+	    title:d_makran = { set_de_jure_liege_title = title:k_anatolia }
+
+
+
+
+    hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_antigonid_kingdom
+            }
+            set_global_variable = {
+                name = flag_lux_antigonid_kingdom
+                value = root
+            }
+        }
+
+		trigger_event = LR_diadochi_kingdoms_events.0007
+    }
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 1000000
+    }
+}
+
+
+
+LR_diadochi_antipatrid_kingdom_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+    }
+
+    desc = LR_diadochi_antipatrid_kingdom_desc
+    selection_tooltip = LR_diadochi_antipatrid_kingdom_tooltip
+	confirm_text = LR_diadochi_antipatrid_kingdom_confirm
+    decision_group_type = major
+
+    ai_check_interval = 120
+
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+		NOT = { exists = title:e_antipatrid_kingdom.holder }
+
+		NOT = { has_primary_title = title:e_byzantium }
+
+		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
+		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleukos }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleucid }
+
+		OR = {
+		culture = culture:hellenistic
+		dynasty = dynasty:dynasty_hellenic_antigonid
+		}
+
+        NOT = {
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_antipatrid_successor
+            }
+        }
+    }
+
+    is_valid = {
+        is_landed = yes
+		#is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+		is_at_war = no
+		NOT = { faith = { religion_tag = islam_religion } }
+
+		NOT = { faith = faith:catholic }
+		NOT = { faith = faith:orthodox }
+
+		religion = religion:hellenism_religion
+
+		has_realm_law = crown_authority_2
+
+
+		prestige_level >= 2
+		culture = culture:hellenistic
+
+		completely_controls = title:k_macedonia
+		completely_controls = title:k_epirus
+		completely_controls = title:k_hellas
+
+    }
+
+    cost = {
+         gold = 1500
+    }
+
+    effect = {
+		custom_tooltip = LR_diadochi_antipatrid_kingdom_effect_tooltip
+
+	hidden_effect = {
+	    change_government = feudal_government
+	}
+
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+
+	title:k_macedonia = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+
+	resolve_title_and_vassal_change = scope:change
+	set_primary_title_to = title:k_macedonia
+
+	title:d_epirus = { set_de_jure_liege_title = title:k_macedonia }
+	title:d_dyrrachion = { set_de_jure_liege_title = title:k_macedonia }
+	title:d_cephalonia = { set_de_jure_liege_title = title:k_macedonia }
+	title:d_thrace = { set_de_jure_liege_title = title:k_macedonia }
+	title:d_strymon = { set_de_jure_liege_title = title:k_macedonia }
+	title:d_aegean_islands = { set_de_jure_liege_title = title:k_macedonia }
+	title:d_thessalonika = { set_de_jure_liege_title = title:k_macedonia }
+	title:d_thessaly = { set_de_jure_liege_title = title:k_macedonia }
+
+	title:c_abydos = { set_de_jure_liege_title = title:d_opsikion }
+
+
+	title:k_macedonia = { set_de_jure_liege_title = title:e_byzantium }
+
+
+    hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_antipatrid_successor
+            }
+            set_global_variable = {
+                name = flag_lux_antipatrid_successor
+                value = root
+            }
+        }
+
+		trigger_event = LR_diadochi_kingdoms_events.0006
+    }
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 1000000
+    }
+}
