@@ -45,9 +45,7 @@ LR_diadochi_kingdoms_events.1000 = {  #Successor Kingdoms
 		else = { play_music_cue = "mx_cue_combat_2" }
 	}
 
-	
 
-	
 	option = {
 		name = LR_diadochi_kingdoms_events.1000.a
 		trigger = { has_global_variable = lux_flag_ptolemaic_kingdom }
@@ -59,8 +57,6 @@ LR_diadochi_kingdoms_events.1000 = {  #Successor Kingdoms
 		}
     }
     
-	
-	
 	option = {
 		name = LR_diadochi_kingdoms_events.1000.b
 		trigger = { has_global_variable = lux_flag_antigonid_kingdom }
@@ -447,7 +443,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 	
 	
 	option = {
-		name = LR_diadochi_kingdoms_events.1100.e
+		name = LR_diadochi_kingdoms_events.1100.e #Seleucid Restoration
 		trigger = { 
 			has_title = { title:k_seleucid_kingdom
 			}
@@ -477,17 +473,18 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 
 	
 	resolve_title_and_vassal_change = scope:change
+	hidden_effect = { 
+		set_global_variable = { name = lux_flag_seleucid_empire 
+		} }
 		
-	hidden_effect = {
+		title:k_syria = { set_de_jure_liege_title = title:e_seleucid_kingdom }
+		title:k_mesopotamia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
+		title:k_babylonia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
+		title:k_media = { set_de_jure_liege_title = title:e_seleucid_kingdom }
+		title:k_parthia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
+		title:k_cappadocia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
+		title:k_armenia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
 	
-	title:e_persia = {
-				every_in_de_jure_hierarchy = {
-					limit = { tier = tier_kingdom }
-					set_de_jure_liege_title = title:e_seleucid_kingdom
-			    }
-		    }
-			
-		    title:k_syria = { set_de_jure_liege_title = title:e_seleucid_kingdom }
 		}
 		
 	
