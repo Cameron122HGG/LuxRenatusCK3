@@ -84,7 +84,7 @@ LR_diadochi_kingdoms_events.1000 = {  #Successor Kingdoms
 }
 
 
-LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi Kingdoms
+LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadochi Kingdoms
 	type = character_event
 	title = LR_diadochi_kingdoms_events.1100.t
 	desc = {
@@ -275,11 +275,11 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 		}
 	
 		
-	title:k_anatolia = { set_de_jure_liege_title = title:e_antigonid_kingdom }
-	title:k_krete = { set_de_jure_liege_title = title:e_antigonid_kingdom }
-	title:k_galatia = { set_de_jure_liege_title = title:e_antigonid_kingdom }
-	title:k_pergamon = { set_de_jure_liege_title = title:e_antigonid_kingdom }
-	title:k_antigonid_kingdom = { set_de_jure_liege_title = title:e_antigonid_kingdom }
+	title:k_anatolia = { set_de_jure_liege_title = title:e_antigonid_empire }
+	title:k_krete = { set_de_jure_liege_title = title:e_antigonid_empire }
+	title:k_galatia = { set_de_jure_liege_title = title:e_antigonid_empire }
+	title:k_pergamon = { set_de_jure_liege_title = title:e_antigonid_empire }
+	title:k_antigonid_kingdom = { set_de_jure_liege_title = title:e_antigonid_empire }
 
 	
 	create_title_and_vassal_change = {
@@ -287,7 +287,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:e_antigonid_kingdom = {
+	title:e_antigonid_empire = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -304,15 +304,15 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 			}
 		}
 		hidden_effect = {
-			primary_title = { transfer_title_maa_ownership = title:e_antigonid_kingdom }
+			primary_title = { transfer_title_maa_ownership = title:e_antigonid_empire }
 		}
 	}
 	
-	hidden_effect = { set_primary_title_to = title:e_antigonid_kingdom }
+	hidden_effect = { set_primary_title_to = title:e_antigonid_empire }
 	every_held_title = { #Should destroy all other Empires owned at the time.
 		limit = {
 				tier = tier_kingdom
-			NOT = { this = title:e_antigonid_kingdom }
+			NOT = { this = title:e_antigonid_empire }
 		}
 		root = { destroy_title = prev }
 	}
@@ -333,7 +333,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 			change = scope:change
 		}
 	}
-		title:e_antigonid_kingdom = { 
+		title:e_antigonid_empire = { 
 			set_capital_county = title:c_galatia
 		}
 		
@@ -347,7 +347,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 			quality = illustrious
 			chronicle = new_title
 			properties = {
-				title = title:e_antigonid_kingdom
+				title = title:e_antigonid_empire
 				founder = root
 			}
         }
@@ -363,9 +363,8 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 		
 		add_prestige = 2500
 		add_piety = 1250
-		
 		dynasty = {
-				add_dynasty_prestige = 1750
+			add_dynasty_prestige = 1750
 		}
     
 
@@ -449,9 +448,9 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 	
 	option = {
 		name = LR_diadochi_kingdoms_events.1100.e
-		trigger = { has_global_variable = lux_flag_seleucid_empire 
-		has_title = title:k_seleucid_kingdom
-		}
+		trigger = { 
+			has_title = { title:k_seleucid_kingdom
+			}
 		
 		
 		add_prestige = 2500
