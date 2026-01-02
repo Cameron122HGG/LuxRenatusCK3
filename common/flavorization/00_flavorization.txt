@@ -25,7 +25,7 @@ prince_female_roman = {
 		top_liege = no
 	}
 }
-prince_malh_roman_empire = {
+prince_male_roman_empire = {
 	type = character
 	gender = male
 	special = ruler_child
@@ -37,7 +37,7 @@ prince_malh_roman_empire = {
 		top_liege = no
 	}
 }
-prince_femalh_roman_empire = {
+prince_female_roman_empire = {
 	type = character
 	gender = female
 	special = ruler_child
@@ -492,6 +492,33 @@ empire_administrative_roman = {
 	name_lists = { name_list_roman }
 	flavourization_rules = {
 		top_liege = no
+	}
+}
+
+emperor_administrative_vassal_byzantine_group = {
+	type = title
+	tier = empire
+	priority = 102
+	governments = { administrative_government }
+	heritages = { heritage_byzantine }
+
+	flavourization_rules = {
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc.
+		only_vassals = yes
+	}
+}
+
+emperor_administrative_vassal_roman = {
+	type = title
+	tier = empire
+	priority = 102
+	governments = { administrative_government }
+	name_lists = { name_list_roman }
+	flavourization_rules = {
+		only_vassals = yes
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc.
 	}
 }
  

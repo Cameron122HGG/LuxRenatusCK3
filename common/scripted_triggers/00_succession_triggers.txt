@@ -30,6 +30,10 @@ historical_succession_access_single_heir_succession_law_trigger = {
 			tgp_korea_single_heir_succession_override_trigger = yes
 			has_title = title:e_hindustan
 			has_title = title:h_china
+			AND = {
+				is_independent_ruler = yes
+				government_has_flag = government_is_steppe_admin
+			}
 		}
 	}
 	trigger_else = {
@@ -77,4 +81,14 @@ can_have_meritocratic_regency_succession_law_trigger = {
 	government_allows = administrative
 	government_allows = merit
 	NOT = { government_allows = obedience } # Stop Khanates
+	OR = {
+		# Ceremonial Monarch title always pairs with law
+		exists = primary_title.var:administrative_ui_special_title
+		# Jipjeong Jeong Jung-bu
+		AND = {
+			game_start_date = 1178.10.1
+			has_title = title:e_goryeo
+			months_from_game_start < 1
+		}
+	}
 }

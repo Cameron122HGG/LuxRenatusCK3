@@ -18,7 +18,7 @@ king_arthur = {
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1 # "Arthur"
+		ancestor = character:159835 # "Arthur"
 		title = title:k_england
 	}
 }
@@ -34,8 +34,8 @@ carolingian = {
 		OR = {
 			culture = { has_cultural_pillar = heritage_central_germanic }
 			culture = { has_cultural_pillar = heritage_frankish }
-			dynasty = dynasty:1 # Karling
-			dynasty = dynasty:1 # Capet
+			dynasty = dynasty:25061 # Karling
+			dynasty = dynasty:743 # Capet
 		}
 	}
 	is_valid = {
@@ -52,7 +52,7 @@ carolingian = {
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:6392
 		title = title:e_france
 	}
 }
@@ -65,7 +65,7 @@ sons_of_david = {
 		NOT = {
 			has_global_variable = sons_of_david_legend
 		}
-		dynasty = dynasty:1 # Bagratoni
+		dynasty = dynasty:507 # Bagratoni
 	}
 	is_valid = {
 		custom_tooltip = {
@@ -93,6 +93,39 @@ sons_of_david = {
 	}
 }
 
+magi_descendant = {
+	type = holy
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = magi_descendant_legend
+		}
+		OR = {
+			dynasty = dynasty:2001159 #Güchügüd, the Naimas
+			dynasty = dynasty:1041002 #Khereid, Toghrul
+		}
+		culture = {
+			OR = {
+				this = culture:naiman
+				this = culture:kerait
+				any_parent_culture_or_above = { this = culture:naiman }
+				any_parent_culture_or_above = { this = culture:kerait }
+			}
+		}
+		
+	}
+	is_valid = {
+		has_realm_law = nomadic_authority_4
+		faith = faith:nestorian
+		piety_level >= medium_prestige_level
+	}
+	chronicle = saintly_descent
+	chronicle_properties = {
+		ancestor_flag = flag:magi # this felt very weird to type out
+		religion = root.religion
+	}
+}
 
 the_wheelwright = {
 	type = heroic
@@ -102,17 +135,17 @@ the_wheelwright = {
 		NOT = {
 			has_global_variable = the_wheelwright_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:699
 	}
 	is_valid = {
 		is_playable_character = yes
-		dynasty = dynasty:1
+		dynasty = dynasty:699
 		prestige_level >= high_prestige_level
 	}
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:82233
 		title = title:k_poland
 	}
 }
@@ -128,8 +161,7 @@ vercingetorix = {
 		# Bretons
 		culture = { has_cultural_pillar = heritage_brythonic }
 		NOR = { # You must think Rome is kinda cringe
-			has_title = title:h_roman_empire
-			has_title = title:e_byzantium
+			is_roman_emperor_trigger = yes
 			has_title = title:e_hre
 		}
 	}
@@ -154,11 +186,11 @@ saman_khudah = {
 		NOT = {
 			has_global_variable = saman_khudah_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:1042070
 	}
 	is_valid = {
 		is_playable_character = yes
-		dynasty = dynasty:1
+		dynasty = dynasty:1042070
 		custom_tooltip = {
 			text = persian_or_zoroastrian_tt
 			OR = { # It has to be cool to be Persian
@@ -172,7 +204,7 @@ saman_khudah = {
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:188637
 		title = title:e_persia
 	}
 }
@@ -198,7 +230,7 @@ bahram_gur = {
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:180645
 		title = title:e_persia
 	}
 }
@@ -221,7 +253,7 @@ cadell = {
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:159058
 		title = title:d_powys
 	}
 }
@@ -234,7 +266,7 @@ descendants_of_brahman = {
 		NOT = {
 			has_global_variable = descendants_of_brahman_legend
 		}
-		dynasty = dynasty:1 # Pallava
+		dynasty = dynasty:1043007 # Pallava
 		religion = religion:hinduism_religion
 	}
 	is_valid = {
@@ -293,9 +325,9 @@ sons_of_rurik = {
 		NOT = {
 			has_global_variable = sons_of_rurik_legend
 		}
-		dynasty = dynasty:1
-		exists = character:1
-		character:1 = { is_alive = no }
+		dynasty = dynasty:705
+		exists = character:40605
+		character:40605 = { is_alive = no }
 	}
 	is_valid = {
 		is_playable_character = yes
@@ -305,7 +337,7 @@ sons_of_rurik = {
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:40605
 		title = title:e_russia
 	}
 }
@@ -370,23 +402,88 @@ el_cid = {
 		NOT = {
 			has_global_variable = el_cid_legend
 		}
-		character:1 ?= { is_alive = yes } #El Cid
-		this = character:1
+		character:107590 ?= { is_alive = yes } #El Cid
+		this = character:107590
 	}
 	is_valid = {
-		character:1 ?= { is_alive = yes } 
-		this = character:1
+		character:107590 ?= { is_alive = yes } 
+		this = character:107590
 		is_playable_character = yes
 		highest_held_title_tier >= tier_kingdom
 	}
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:107590
 		title = title:e_spain
 	}
 }
 
+alfred_of_wessex = {
+	type = holy
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = alfred_of_wessex_legend
+		}
+		exists = character:7627
+		character:7627 = { #Good ol' Alfy
+			religion = religion:christianity_religion
+		}
+		OR = {
+			this = character:7627
+			dynasty = character:7627.dynasty
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		piety_level >= high_piety_level
+		trigger_if = {
+			limit = {
+				this = character:7627
+			}
+			custom_tooltip = {
+				text = no_pagans_in_britannia_tt
+				NOT = {
+					any_county_in_region = {
+						region = world_europe_west_britannia
+						holder.top_liege.religion = { is_in_family = rf_pagan }
+					}
+				}
+			}
+		}
+	}
+
+	chronicle = saintly_deed
+	chronicle_properties = {
+		ancestor = character:7627
+		religion = religion:christianity_religion
+	}
+}
+
+peasant_emperor = {
+	type = legitimizing
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = peasant_emperor_legend
+		}
+		exists = character:1700
+		this = character:1700 # Old Baz
+	}
+	is_valid = {
+		has_title = title:e_byzantium
+		prestige_level >= medium_prestige_level
+	}
+
+	chronicle = ancestral_glory
+	chronicle_properties = {
+		ancestor = character:1700
+		title = title:e_byzantium
+	}
+}
 
 
 # 1066 start date
@@ -401,10 +498,10 @@ william_gellones = {
 		OR = {
 			any_ancestor = {
 				even_if_dead = yes
-				this = character:1  #Guillaume Gallones
+				this = character:168130  #Guillaume Gallones
 			}
 			has_title = title:d_toulouse
-			dynasty = dynasty:1
+			dynasty = dynasty:100217
 		}
 		religion = religion:christianity_religion
 	}
@@ -422,7 +519,7 @@ william_gellones = {
 
 	chronicle = saintly_deed
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:168130
 		religion = religion:christianity_religion
 	}
 }
@@ -435,7 +532,7 @@ edward_the_martyr = {
 		NOT = {
 			has_global_variable = edward_the_martyr_legend
 		}
-		dynasty = dynasty:1 # Ol' Eddy
+		dynasty = character:99.dynasty  # Ol' Eddy
 		religion = religion:christianity_religion
 	}
 	is_valid = {
@@ -452,7 +549,7 @@ edward_the_martyr = {
 
 	chronicle = saintly_deed
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:99
 		religion = religion:christianity_religion
 	}
 }
@@ -465,7 +562,7 @@ yazdagird_iii = {
 		NOT = {
 			has_global_variable = yazdagird_iii_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:790
 		OR = {
 			capital_province = { geographical_region = world_middle_east_persia }
 			culture = { has_cultural_pillar = heritage_iranian }
@@ -480,7 +577,7 @@ yazdagird_iii = {
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:180637
 		title = title:e_persia
 	}
 }
@@ -493,7 +590,7 @@ afrasiyab = {
 		NOT = {
 			has_global_variable = afrasiyab_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:101864
 		culture = { has_cultural_pillar = heritage_turkic }
 	}
 	is_valid = {
@@ -517,7 +614,7 @@ sceafa = { # Claims to be descended from Noah
 		NOT = {
 			has_global_variable = sceafa_legend
 		}
-		dynasty = dynasty:1
+		dynasty = character:7627.dynasty
 		religion = { is_in_family = rf_abrahamic }
 	}
 	is_valid = {
@@ -541,7 +638,7 @@ new_troy_london = {
 		NOT = {
 			has_global_variable = new_troy_london_legend
 		}
-		has_title = title:c_roma
+		has_title = title:c_middlesex
 	}
 	is_valid = {
 		is_playable_character = yes
@@ -583,7 +680,7 @@ corineus = {
 	chronicle = ancient_people
 	chronicle_properties = {
 		culture = culture:trojan
-		title = title:c_roma
+		title = title:c_cornwall
 		original_region = geographical_region:troy_region
 	}
 }
@@ -617,6 +714,29 @@ scota = { # Scots claiming ancestry from Ancient Egypt
 	}
 }
 
+pyusawhti = { # Burmese legend claiming ancestry from a dragon goddess
+	type = heroic
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = pyusawhti_legend
+		}
+		dynasty = dynasty:2000000
+		has_title = title:k_pagan
+	}
+	is_valid = {
+		is_playable_character = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= high_prestige_level
+	}
+
+	chronicle = mythical_descent
+	chronicle_properties = {
+		beast = flag:dragon
+	}
+}
+
 menelik_i = { # Supposed son of Solomon and the Queen of Sheba
 	type = legitimizing
 	quality = famed
@@ -625,7 +745,7 @@ menelik_i = { # Supposed son of Solomon and the Queen of Sheba
 		NOT = {
 			has_global_variable = menelik_i_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:7246
 		religion = { is_in_family = rf_abrahamic }
 	}
 	is_valid = {
@@ -650,7 +770,7 @@ kings_of_semien = { # Ancestry to the Danites of Israel, and mythical kings of S
 		NOT = {
 			has_global_variable = kings_of_semien_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:1022242
 		religion = religion:judaism_religion
 	}
 	is_valid = {
@@ -667,7 +787,7 @@ kings_of_semien = { # Ancestry to the Danites of Israel, and mythical kings of S
 	}
 }
 
-roman_heritage = { # Erm, my family are *actually* Roman nobles erm
+roman_heritage = { 
 	type = legitimizing
 	quality = famed
 	is_shown = {
@@ -677,8 +797,8 @@ roman_heritage = { # Erm, my family are *actually* Roman nobles erm
 		}
 		OR = {
 			has_title = title:e_hre
-			has_title = title:e_byzantium
-			has_title = title:h_roman_empire
+			is_roman_emperor_trigger = yes
+			has_title = title:k_rum
 		}
 	}
 	is_valid = {
@@ -733,7 +853,7 @@ premysl = { # Descent from Premysl of Bohemia
 		NOT = {
 			has_global_variable = premysl_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:506
 	}
 	is_valid = {
 		is_playable_character = yes
@@ -743,7 +863,7 @@ premysl = { # Descent from Premysl of Bohemia
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:168345
 		title = title:k_bohemia
 	}
 }
@@ -756,7 +876,7 @@ borjigin = { # Alan Gua was impregnated by a ray of light
 		NOT = {
 			has_global_variable = borjigin_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:11100
 	}
 	is_valid = {
 		is_playable_character = yes
@@ -766,7 +886,7 @@ borjigin = { # Alan Gua was impregnated by a ray of light
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:303250
 		title = title:e_mongolia
 	}
 }
@@ -808,7 +928,7 @@ hieros_gamos_skirnismal = { # Fjolnir Yngling descended from Freyr and Gerdr
 		NOT = {
 			has_global_variable = hieros_gamos_skirnismal_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:499
 		OR = { # You must still be in an era where Nordic gods are still seen as kinda cool
 			culture = culture:norse
 			religion = religion:germanic_religion
@@ -834,7 +954,7 @@ shibi_chakravarti = { # Chola claiming descent from the legendary king Shibi
 		NOT = {
 			has_global_variable = shibi_chakravarti_legend
 		}
-		dynasty = dynasty:1
+		dynasty = dynasty:1043008
 	}
 	is_valid = {
 		is_playable_character = yes
@@ -873,7 +993,7 @@ the_red_hand = { # He who first lays hand on Ulster shall be its King
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:7255
 		title = title:k_ireland
 	}
 }
@@ -886,9 +1006,9 @@ ragnarr = { # Ol Raggy S
 		NOT = {
 			has_global_variable = ragnarr_legend
 		}
-		dynasty = dynasty:1
-		exists = character:1
-		character:1 = { is_alive = no }
+		dynasty = dynasty:490
+		exists = character:163109
+		character:163109 = { is_alive = no }
 		OR = {
 			religion = { is_in_family = rf_pagan }
 			culture = { has_cultural_parameter = has_access_to_runestones }
@@ -902,9 +1022,40 @@ ragnarr = { # Ol Raggy S
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:1
+		ancestor = character:163109
 		title = title:e_britannia # You could argue Scandinavia but ultimately ehhhhhhh
 	}
 }
 
 #Dynasty perk
+ce1_heroic_legacy_1 = {
+	type = legitimizing
+	quality = famed
+	is_shown = {
+		dynasty ?= {
+			has_dynasty_perk = ce1_heroic_legacy_1
+			NOT = {
+				exists = var:dynasty_legend_used
+			}
+		}
+	}
+	is_valid = {
+		is_landed = yes
+		OR = {
+			is_ai = no
+			# Prevent the AI from sniping the seed from the player
+			AND = {
+				is_ai = yes
+				NOT = {
+					dynasty = { any_dynasty_member = { is_ai = no } }
+				}
+			}
+		}
+	}
+	chronicle = great_deed_dynasty
+	chronicle_properties = {
+		founder = house.house_founder
+		dynasty = dynasty
+		title = primary_title
+	}
+}
