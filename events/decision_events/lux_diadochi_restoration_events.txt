@@ -83,6 +83,7 @@ LR_diadochi_kingdoms_events.1000 = {  #Successor Kingdoms
     }
 }
 
+
 LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi Kingdoms
 	type = character_event
 	title = LR_diadochi_kingdoms_events.1100.t
@@ -356,7 +357,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 	option = {
 		name = LR_diadochi_kingdoms_events.1100.c
 		trigger = { 
-		has_global_variable = lux_flag_antipatrid_kingdom 
+		has_global_variable = lux_flag_antipatrid_empire 
 		has_title = title:k_antipatrid_kingdom
 		}
 		
@@ -378,7 +379,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:e_antipatrid_kingdom = {
+	title:e_antipatrid_empire = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -395,15 +396,15 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 			}
 		}
 		hidden_effect = {
-			primary_title = { transfer_title_maa_ownership = title:e_antipatrid_kingdom }
+			primary_title = { transfer_title_maa_ownership = title:e_antipatrid_empire }
 		}
 	}
 	
-	hidden_effect = { set_primary_title_to = title:e_antipatrid_kingdom }
+	hidden_effect = { set_primary_title_to = title:e_antipatrid_empire }
 	every_held_title = { #Should destroy all other Empires owned at the time.
 		limit = {
 				tier = tier_kingdom
-			NOT = { this = title:e_antipatrid_kingdom }
+			NOT = { this = title:e_antipatrid_empire }
 		}
 		root = { destroy_title = prev }
 	}
@@ -424,7 +425,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 		}
 	}
 	
-		title:e_antipatrid_kingdom = { 
+		title:e_antipatrid_empire = { 
 			set_capital_county = title:c_thessalonika
 		}
 		
@@ -437,7 +438,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 			quality = illustrious
 			chronicle = new_title
 			properties = {
-				title = title:e_antipatrid_kingdom
+				title = title:e_antipatrid_empire
 				founder = root
 			}
 		}
@@ -448,7 +449,9 @@ LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi 
 	
 	option = {
 		name = LR_diadochi_kingdoms_events.1100.e
-		trigger = { has_global_variable = lux_flag_seleucid_kingdom }
+		trigger = { has_global_variable = lux_flag_seleucid_empire 
+		has_title = title:k_seleucid_kingdom
+		}
 		
 		
 		add_prestige = 2500
