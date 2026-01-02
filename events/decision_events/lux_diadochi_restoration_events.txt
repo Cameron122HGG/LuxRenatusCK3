@@ -1,8 +1,8 @@
 ﻿namespace = LR_diadochi_kingdoms_events
 
-LR_diadochi_kingdoms_events.0006 = {  ########Ptolemaic Egypt. antigonid and Macedonian
+LR_diadochi_kingdoms_events.1000 = {  #Successor Kingdoms
 	type = character_event
-	title = LR_diadochi_kingdoms_events.0006.t
+	title = LR_diadochi_kingdoms_events.1000.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
@@ -35,11 +35,21 @@ LR_diadochi_kingdoms_events.0006 = {  ########Ptolemaic Egypt. antigonid and Mac
 		animation = happiness
 	}
 
+	immediate = {
+		#Same-faith non-empire tier rulers are over-awed.
+		if = {
+			limit = { faith = scope:scoped_emperor.primary_title.state_faith }
+			play_music_cue = "mx_cue_epic_sacral_moment"
+		}
+		#Otherwise, this is a tacit statement of imperial threat.
+		else = { play_music_cue = "mx_cue_combat_2" }
+	}
+
 	
 
 	
 	option = {
-		name = LR_diadochi_kingdoms_events.0006.a
+		name = LR_diadochi_kingdoms_events.1000.a
 		trigger = { has_global_variable = lux_flag_ptolemaic_kingdom }
 		add_prestige = 1250
 		add_piety = 650
@@ -52,7 +62,7 @@ LR_diadochi_kingdoms_events.0006 = {  ########Ptolemaic Egypt. antigonid and Mac
 	
 	
 	option = {
-		name = LR_diadochi_kingdoms_events.0006.b
+		name = LR_diadochi_kingdoms_events.1000.b
 		trigger = { has_global_variable = lux_flag_antigonid_kingdom }
 		add_prestige = 1250
 		add_piety = 650
@@ -62,7 +72,7 @@ LR_diadochi_kingdoms_events.0006 = {  ########Ptolemaic Egypt. antigonid and Mac
     }
 	
 	option = {
-		name = LR_diadochi_kingdoms_events.0006.c
+		name = LR_diadochi_kingdoms_events.1000.c
 		trigger = { has_global_variable = lux_flag_antipatrid_kingdom }
 		add_prestige = 1250
 		add_piety = 650
@@ -73,6 +83,7 @@ LR_diadochi_kingdoms_events.0006 = {  ########Ptolemaic Egypt. antigonid and Mac
     }
 }
 
+
     
 	
 
@@ -80,48 +91,48 @@ LR_diadochi_kingdoms_events.0006 = {  ########Ptolemaic Egypt. antigonid and Mac
 
 
 
-LR_diadochi_kingdoms_events.0007 = {  ########Empire Ptolemaic/Antigonid/Macedonia and Seleucid
+LR_diadochi_kingdoms_events.1100 = {  ########Great Restoration of the Diadochi Kingdoms
 	type = character_event
-	title = LR_diadochi_kingdoms_events.0007.t
+	title = LR_diadochi_kingdoms_events.1100.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
 					has_global_variable = lux_flag_ptolemaic_empire
-					NOT = { has_global_variable = lux_flag_antigonid_kingdom }
-					NOT = { has_global_variable = lux_flag_antipatrid_kingdom }
-					NOT = { has_global_variable = lux_flag_seleucid_kingdom }
+					NOT = { has_global_variable = lux_flag_antigonid_empire }
+					NOT = { has_global_variable = lux_flag_antipatrid_empire }
+					NOT = { has_global_variable = lux_flag_seleucid_empire }
 				}
-				desc = LR_diadochi_kingdoms_events.0007.desc.ptolemaic
+				desc = LR_diadochi_kingdoms_events.1100.desc.ptolemaic
 			}
 			triggered_desc = {
 				trigger = {
-					has_global_variable = lux_flag_antigonid_kingdom
+					has_global_variable = lux_flag_antigonid_empire
 					NOT = { has_global_variable = lux_flag_ptolemaic_empire }
-					NOT = { has_global_variable = lux_flag_antipatrid_kingdom }
-					NOT = { has_global_variable = lux_flag_seleucid_kingdom }
+					NOT = { has_global_variable = lux_flag_antipatrid_empire }
+					NOT = { has_global_variable = lux_flag_seleucid_empire }
 				}
-				desc = LR_diadochi_kingdoms_events.0007.desc.antigonid
-			}
-			
-			triggered_desc = {
-				trigger = {
-					has_global_variable = lux_flag_antipatrid_kingdom
-					NOT = { has_global_variable = lux_flag_ptolemaic_empire }
-					NOT = { has_global_variable = lux_flag_antigonid_kingdom }
-					NOT = { has_global_variable = lux_flag_seleucid_kingdom }
-				}
-				desc = LR_diadochi_kingdoms_events.0007.desc.antipatrid
+				desc = LR_diadochi_kingdoms_events.1100.desc.antigonid
 			}
 			
 			triggered_desc = {
 				trigger = {
-					has_global_variable = lux_flag_seleucid_kingdom
+					has_global_variable = lux_flag_antipatrid_empire
 					NOT = { has_global_variable = lux_flag_ptolemaic_empire }
-					NOT = { has_global_variable = lux_flag_antigonid_kingdom }
-					NOT = { has_global_variable = lux_flag_antipatrid_kingdom }
+					NOT = { has_global_variable = lux_flag_antigonid_empire }
+					NOT = { has_global_variable = lux_flag_seleucid_empire }
 				}
-				desc = LR_diadochi_kingdoms_events.0007.desc.seleucid
+				desc = LR_diadochi_kingdoms_events.1100.desc.antipatrid
+			}
+			
+			triggered_desc = {
+				trigger = {
+					has_global_variable = lux_flag_seleucid_empire
+					NOT = { has_global_variable = lux_flag_ptolemaic_empire }
+					NOT = { has_global_variable = lux_flag_antigonid_empire }
+					NOT = { has_global_variable = lux_flag_antipatrid_empire }
+				}
+				desc = LR_diadochi_kingdoms_events.1100.desc.seleucid
 			}
 		}
 	}
@@ -142,12 +153,19 @@ LR_diadochi_kingdoms_events.0007 = {  ########Empire Ptolemaic/Antigonid/Macedon
 		character = root.player_heir  
 		animation = admiration
 	}
-	
-	
 
+	immediate = {
+		#Same-faith non-empire tier rulers are over-awed.
+		if = {
+			limit = { faith = scope:scoped_emperor.primary_title.state_faith }
+			play_music_cue = "mx_cue_epic_sacral_moment"
+		}
+		#Otherwise, this is a tacit statement of imperial threat.
+		else = { play_music_cue = "mx_cue_combat_2" }
+	}
 	
 	option = {
-		name = LR_diadochi_kingdoms_events.0007.a
+		name = LR_diadochi_kingdoms_events.1100.a
 		trigger = { 
 		has_global_variable = lux_flag_ptolemaic_empire 
 		has_title = title:k_ptolemaic_kingdom
@@ -249,7 +267,7 @@ LR_diadochi_kingdoms_events.0007 = {  ########Empire Ptolemaic/Antigonid/Macedon
 
 
 	option = {
-		name = LR_diadochi_kingdoms_events.0007.b
+		name = LR_diadochi_kingdoms_events.1100.b
 		trigger = { 
 		has_global_variable = lux_flag_antigonid_kingdom 
 		has_title = title:k_antigonid_kingdom
@@ -343,12 +361,8 @@ LR_diadochi_kingdoms_events.0007 = {  ########Empire Ptolemaic/Antigonid/Macedon
     }
 }
 	
-
-
-	
-	
 	option = {
-		name = LR_diadochi_kingdoms_events.0007.c
+		name = LR_diadochi_kingdoms_events.1100.c
 		trigger = { 
 		has_global_variable = lux_flag_antipatrid_kingdom 
 		has_title = title:k_antipatrid_kingdom
@@ -436,12 +450,12 @@ LR_diadochi_kingdoms_events.0007 = {  ########Empire Ptolemaic/Antigonid/Macedon
 			}
 		}
 	}
-    }    
+}    
 
 	
 	
 	option = {
-		name = LR_diadochi_kingdoms_events.0007.e
+		name = LR_diadochi_kingdoms_events.1100.e
 		trigger = { has_global_variable = lux_flag_seleucid_kingdom }
 		
 		
@@ -529,6 +543,6 @@ LR_diadochi_kingdoms_events.0007 = {  ########Empire Ptolemaic/Antigonid/Macedon
 		
 		root = { set_realm_capital = title:c_antiocheia }
     }
-}
+
 
 
