@@ -2576,28 +2576,28 @@ on_game_start_after_lobby = {
 			#}
 		#}
 		#Sami
-		if = {
-		    limit = {
-				has_mpo_dlc_trigger = yes
-				has_game_rule = sami_nomad_region_on
-			}
-			start_situation = {
-				type = game_rule_extra_nomads_sami
-				start_phase = situation_steppe_abundant_grazing_season
-				save_scope_as = my_situation
-			}
-			scope:my_situation = {
-				every_situation_county = {
-					limit = {
-						holder = {
-							OR = {
-								culture = culture:sami
-								culture = culture:karelian
-								culture = culture:samoyed
-								is_ai = no
-							}
-						}
-					}
+		#if = {
+		    #limit = {
+				#has_mpo_dlc_trigger = yes
+				#has_game_rule = sami_nomad_region_on
+			#}
+			#start_situation = {
+				#type = game_rule_extra_nomads_sami
+				#start_phase = situation_steppe_abundant_grazing_season
+				#save_scope_as = my_situation
+			#}
+			#scope:my_situation = {
+				#every_situation_county = {
+				#	limit = {
+					#	holder = {
+						#	OR = {
+							#	culture = culture:sami
+						#		culture = culture:karelian
+						#		culture = culture:samoyed
+						#		is_ai = no
+						#	}
+						#}
+					#}
 					holder = {
 						set_variable = {
 							name = steppe_game_start_var
