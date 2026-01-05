@@ -11,675 +11,684 @@ yearly_global_pulse = {
 			}
 			spawn_historical_characters_effect = yes
 		}
+		#Lux Renata TBA
 		# Visigothic culture split
 		## Deprecated; to reenable, remove always = no line & decomment the trigger_event section.
-		if = {
-			limit = {
-				always = no
-				current_date <= 920.1.1 # No need to check this in later starts
-				NOT = { has_global_variable = visigothic_culture_split }
-				current_date >= 850.1.1
-			}
-			random = {
-				chance = 0 # No chance the first year of play if starting in 867
-				modifier = {
-					add = 10
-					current_date >= 868.1.1
-				}
-				modifier = {
-					add = 10 # 20% chance
-					current_date >= 875.1.1
-				}
-				modifier = {
-					add = 10 # 30% chance
-					current_date >= 890.1.1
-				}
-				set_global_variable = {
-					name = visigothic_culture_split
-					value = yes
-				}
-				#trigger_event = {
-					#id = global_culture.0001
-					#days = { 60 300 }
-				#}
-			}
-		}
+		# if = {
+		# 	limit = {
+		# 		always = no
+		# 		current_date <= 920.1.1 # No need to check this in later starts
+		# 		NOT = { has_global_variable = visigothic_culture_split }
+		# 		current_date >= 850.1.1
+		# 	}
+		# 	random = {
+		# 		chance = 0 # No chance the first year of play if starting in 867
+		# 		modifier = {
+		# 			add = 10
+		# 			current_date >= 868.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 10 # 20% chance
+		# 			current_date >= 875.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 10 # 30% chance
+		# 			current_date >= 890.1.1
+		# 		}
+		# 		set_global_variable = {
+		# 			name = visigothic_culture_split
+		# 			value = yes
+		# 		}
+		# 		#trigger_event = {
+		# 			#id = global_culture.0001
+		# 			#days = { 60 300 }
+		# 		#}
+		# 	}
+		# }
+		#Lux Renata TBA
 		# Norse culture split.
-		if = {
-			limit = {
-				current_date < 990.1.1
-				NOT = { has_global_variable = norse_culture_split }
-				current_date >= 950.1.1
-			}
-			random = {
-				chance = 10
-				modifier = {
-					add = 20 # 30% chance
-					current_date >= 960.1.1
-				}
-				modifier = {
-					add = 30 # 60% chance
-					current_date >= 970.1.1
-				}
-				modifier = {
-					add = 40 # 100% chance
-					current_date >= 980.1.1
-				}
-				set_global_variable = {
-					name = norse_culture_split
-					value = yes
-				}
-				trigger_event = {
-					id = global_culture.0011
-					days = { 60 300 }
-				}
-			}
-		}
+		# if = {
+		# 	limit = {
+		# 		current_date < 990.1.1
+		# 		NOT = { has_global_variable = norse_culture_split }
+		# 		current_date >= 950.1.1
+		# 	}
+		# 	random = {
+		# 		chance = 10
+		# 		modifier = {
+		# 			add = 20 # 30% chance
+		# 			current_date >= 960.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 30 # 60% chance
+		# 			current_date >= 970.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 40 # 100% chance
+		# 			current_date >= 980.1.1
+		# 		}
+		# 		set_global_variable = {
+		# 			name = norse_culture_split
+		# 			value = yes
+		# 		}
+		# 		trigger_event = {
+		# 			id = global_culture.0011
+		# 			days = { 60 300 }
+		# 		}
+		# 	}
+		# }
+		#Lux Renata TBA
 		# Anglo-Saxon -> Scottish Culture Shift
-		if = {
-			limit = {
-				current_date <= 1066.1.1 # No need to check this in later starts
-				NOT = { has_global_variable = scottish_culture_creation }
-				current_date >= 867.1.1
-			}
-			random = {
-				chance = 0 # No chance the first year of play if starting in 867
-				modifier = {
-					add = 2 # 2% chance per year
-					current_date >= 900.1.1
-				}
-				modifier = {
-					add = 8 # 10% chance per year
-					current_date >= 950.1.1
-				}
-				modifier = {
-					add = 15 # 25% chance per year
-					current_date >= 1000.1.1
-				}
-				set_global_variable = {
-					name = scottish_culture_creation
-					value = yes
-				}
-				trigger_event = {
-					id = global_culture.0031
-					days = { 60 300 }
-				}
-			}
-		}
+		# if = {
+		# 	limit = {
+		# 		current_date <= 1066.1.1 # No need to check this in later starts
+		# 		NOT = { has_global_variable = scottish_culture_creation }
+		# 		current_date >= 867.1.1
+		# 	}
+		# 	random = {
+		# 		chance = 0 # No chance the first year of play if starting in 867
+		# 		modifier = {
+		# 			add = 2 # 2% chance per year
+		# 			current_date >= 900.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 8 # 10% chance per year
+		# 			current_date >= 950.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 15 # 25% chance per year
+		# 			current_date >= 1000.1.1
+		# 		}
+		# 		set_global_variable = {
+		# 			name = scottish_culture_creation
+		# 			value = yes
+		# 		}
+		# 		trigger_event = {
+		# 			id = global_culture.0031
+		# 			days = { 60 300 }
+		# 		}
+		# 	}
+		# }
+		#Lux Renata TBA
 		# Mongol Invasion
-		if = { limit = { has_game_rule = never_mongol_invasion } }
-		else_if = {
-			limit = {
-				has_game_rule = random_mongol_invasion
-				NOT = { has_global_variable = mongols_have_appeared }
-				#Greatest of khans hasn't come along
-				NOT = { has_global_variable = greatest_of_khans_title }
-				#Someone's not currently trying to be greatest of khans
-				NOT = { has_global_variable = mpo_gok_war_ongoing }
-				#Temujin dying prevents Mongol invasion for at least 50 years
-				NOT = {
-					has_global_variable = temujin_failed
-				}
-			}
-			random = {
-				chance = temujin_appearance_base_chance
-				modifier = {
-					factor = 0.25
-					current_date < 1180.1.1
-				}
-				modifier = {
-					add = 3
-					current_date > 1200.1.1
-				}
-				modifier = {
-					add = 5
-					current_date > 1220.1.1
-				}
-				modifier = {
-					add = 5
-					current_date > 1235.1.1
-				}
-				set_global_variable = {
-					name = mongols_have_appeared
-					value = yes
-				}
-				debug_log = "Attempting to spawn mongol invasion within 240 days"
-				trigger_event = {
-					id = mongol_invasion.0001
-					days = { 2 240 }
-				}
-			}
-		}
-		else = {
-			if = {
-				limit = {
-					current_date > 1180.1.1
-					current_date < 1250.1.1
-					NOT = { has_global_variable = mongols_have_appeared }
-					#Greatest of khans hasn't come along
-					NOT = { has_global_variable = greatest_of_khans_title }
-					#Someone's not currently trying to be greatest of khans
-					NOT = { has_global_variable = mpo_gok_war_ongoing }
-					trigger_if = {
-						limit = {
-							game_start_date = 1178.10.1
-						}
-						years_from_game_start >= 20
-					}
-					#Temujin dying prevents Mongol invasion for at least 50 years
-					NOT = {
-						has_global_variable = temujin_failed
-					}
-				}
-				debug_log = "Checking for chance of spawning mongols under historical settings"
-				random = {
-					chance = temujin_appearance_base_chance
-					modifier = {
-						add = 9
-						current_date > 1200.1.1
-					}
-					modifier = {
-						add = 10
-						current_date > 1220.1.1
-					}
-					modifier = {
-						add = 20
-						current_date > 1235.1.1
-					}
-					modifier = {
-						add = 30
-						exists = character:125501 # Temüjin
-						character:125501 = {
-							is_physically_able_ai_adult = yes
-						}
-					}
-					set_global_variable = {
-						name = mongols_have_appeared
-						value = yes
-					}
-					debug_log = "Attempting to spawn mongol invasion within 240 days"
-					trigger_event = {
-						id = mongol_invasion.0001
-						days = { 2 240 }
-					}
-				}
-			}
-		}
+		#if = { limit = { has_game_rule = never_mongol_invasion } }
+		#else_if = {
+		#	limit = {
+		#		has_game_rule = random_mongol_invasion
+		#		NOT = { has_global_variable = mongols_have_appeared }
+		#		#Greatest of khans hasn't come along
+		#		NOT = { has_global_variable = greatest_of_khans_title }
+		#		#Someone's not currently trying to be greatest of khans
+		#		NOT = { has_global_variable = mpo_gok_war_ongoing }
+		#		#Temujin dying prevents Mongol invasion for at least 50 years
+		#		NOT = {
+		#			has_global_variable = temujin_failed
+		#		}
+		#	}
+		#	random = {
+		#		chance = temujin_appearance_base_chance
+		#		modifier = {
+		#			factor = 0.25
+		#			current_date < 1180.1.1
+		#		}
+		#		modifier = {
+		#			add = 3
+		#			current_date > 1200.1.1
+		#		}
+		#		modifier = {
+		#			add = 5
+		#			current_date > 1220.1.1
+		#		}
+		#		modifier = {
+		#			add = 5
+		#			current_date > 1235.1.1
+		#		}
+		#		set_global_variable = {
+		#			name = mongols_have_appeared
+		#			value = yes
+		#		}
+		#		debug_log = "Attempting to spawn mongol invasion within 240 days"
+		#		trigger_event = {
+		#			id = mongol_invasion.0001
+		#			days = { 2 240 }
+		#		}
+		#	}
+		#}
+		#else = {
+		#	if = {
+		#		limit = {
+		#			current_date > 1180.1.1
+		#			current_date < 1250.1.1
+		#			NOT = { has_global_variable = mongols_have_appeared }
+		#			#Greatest of khans hasn't come along
+		#			NOT = { has_global_variable = greatest_of_khans_title }
+		#			#Someone's not currently trying to be greatest of khans
+		#			NOT = { has_global_variable = mpo_gok_war_ongoing }
+		#			trigger_if = {
+		#				limit = {
+		#					game_start_date = 1178.10.1
+		#				}
+		#				years_from_game_start >= 20
+		#			}
+		#			#Temujin dying prevents Mongol invasion for at least 50 years
+		#			NOT = {
+		#				has_global_variable = temujin_failed
+		#			}
+		#		}
+		#		debug_log = "Checking for chance of spawning mongols under historical settings"
+		#		random = {
+		#			chance = temujin_appearance_base_chance
+		#			modifier = {
+		#				add = 9
+		#				current_date > 1200.1.1
+		#			}
+		#			modifier = {
+		#				add = 10
+		#				current_date > 1220.1.1
+		#			}
+		#			modifier = {
+		#				add = 20
+		#				current_date > 1235.1.1
+		#			}
+		#			modifier = {
+		#				add = 30
+		#				exists = character:125501 # Temüjin
+		#				character:125501 = {
+		#					is_physically_able_ai_adult = yes
+		#				}
+		#			}
+		#			set_global_variable = {
+		#				name = mongols_have_appeared
+		#				value = yes
+		#			}
+		#			debug_log = "Attempting to spawn mongol invasion within 240 days"
+		#			trigger_event = {
+		#				id = mongol_invasion.0001
+		#				days = { 2 240 }
+		#			}
+		#		}
+		#	}
+		#}
+		#Lux Renata TBA
 		# Almohad Invasion
-		if = {
-			limit = {
-				current_date >= 1110.1.1
-				current_date < 1150.1.1
-				NOT = { has_global_variable = spawned_almohads }
-			}
-			random = {
-				chance = almohad_appearance_base_chance
-				modifier = {
-					add = 3
-					current_date >= 1130.1.1
-				}
-				modifier = {
-					add = 3
-					current_date >= 1140.1.1
-				}
-				debug_log = "Attempting to spawn Almohads within 240 days"
-				trigger_event = {
-					id = almohad.0001
-					days = { 2 240 }
-				}
-			}
-		}
+		# if = {
+		# 	limit = {
+		# 		current_date >= 1110.1.1
+		# 		current_date < 1150.1.1
+		# 		NOT = { has_global_variable = spawned_almohads }
+		# 	}
+		# 	random = {
+		# 		chance = almohad_appearance_base_chance
+		# 		modifier = {
+		# 			add = 3
+		# 			current_date >= 1130.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 3
+		# 			current_date >= 1140.1.1
+		# 		}
+		# 		debug_log = "Attempting to spawn Almohads within 240 days"
+		# 		trigger_event = {
+		# 			id = almohad.0001
+		# 			days = { 2 240 }
+		# 		}
+		# 	}
+		# }
+		#Lux Renata TBA
 		# Jomsvikings form autonomously.
-		if = {
-			limit = {
-				# Do we have the correct flavour pack?
-				has_fp1_dlc_trigger = yes
-				# Must be within the 10th century.
-				current_date >= 900.1.1
-				current_date < 1000.1.1
-				# The Jomsvikings cannot have already formed for any reason & by any method.
-				fp1_jomsvikings_have_not_existed_trigger = yes
-				# Must be a valid target somewhere in the appropriate region.
-				any_county_in_region = {
-					region = dlc_fp1_region_non_scandinavian_southern_baltic
-					holder = { fp1_ruler_eligible_for_jomsviking_coup = yes }
-				}
-			}
-			random = {
-				# Low initial chance, to give the player time.
-				chance = 5
-				# Add 5% every decade for the first half of the century.
-				modifier = {
-					add = 5
-					current_date >= 910.1.1
-				}
-				modifier = {
-					add = 5
-					current_date >= 920.1.1
-				}
-				modifier = {
-					add = 5
-					current_date >= 930.1.1
-				}
-				modifier = {
-					add = 5
-					current_date >= 940.1.1
-				}
-				modifier = {
-					add = 5
-					current_date >= 950.1.1
-				}
-				# And then add another 25% solid chance for the whole of the latter half of the century.
-				modifier = {
-					add = 25
-					current_date >= 960.1.1
-				}
-				# Fire the event.
-				trigger_event = {
-					id = fp1_jomsvikings.1011
-					days = { 30 300 }
-				}
-			}
-		}
+		# if = {
+		# 	limit = {
+		# 		# Do we have the correct flavour pack?
+		# 		has_fp1_dlc_trigger = yes
+		# 		# Must be within the 10th century.
+		# 		current_date >= 900.1.1
+		# 		current_date < 1000.1.1
+		# 		# The Jomsvikings cannot have already formed for any reason & by any method.
+		# 		fp1_jomsvikings_have_not_existed_trigger = yes
+		# 		# Must be a valid target somewhere in the appropriate region.
+		# 		any_county_in_region = {
+		# 			region = dlc_fp1_region_non_scandinavian_southern_baltic
+		# 			holder = { fp1_ruler_eligible_for_jomsviking_coup = yes }
+		# 		}
+		# 	}
+		# 	random = {
+		# 		# Low initial chance, to give the player time.
+		# 		chance = 5
+		# 		# Add 5% every decade for the first half of the century.
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date >= 910.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date >= 920.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date >= 930.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date >= 940.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date >= 950.1.1
+		# 		}
+		# 		# And then add another 25% solid chance for the whole of the latter half of the century.
+		# 		modifier = {
+		# 			add = 25
+		# 			current_date >= 960.1.1
+		# 		}
+		# 		# Fire the event.
+		# 		trigger_event = {
+		# 			id = fp1_jomsvikings.1011
+		# 			days = { 30 300 }
+		# 		}
+		# 	}
+		# }
+		#Lux Renata TBA
 		# A wandering French monk appears.
-		if = {
-			limit = {
-				# Do we have the correct flavour pack?
-				has_fp2_dlc_trigger = yes
-				# Must be before the monk would likely die.
-				current_date <= 880.1.1
-				# The monk hasn't already tried to turn up somewhere.
-				NOT = {
-					is_target_in_global_variable_list = {
-						name = unavailable_unique_events
-						target = flag:lyonese_monk_event
-					}
-				}
-			}
-			# If there's a player in this region, we wait for one to become eligible.
-			if = {
-				limit = {
-					any_player = {
-						capital_province = { geographical_region = dlc_fp2_lyonese_monk_region }
-					}
-				}
-				if = {
-					limit = {
-						OR = {
-							any_player = {
-								capital_province = { geographical_region = dlc_fp2_lyonese_monk_region }
-								fp2_lyonese_monk_0002_valid_character_configuration_trigger = yes
-							}
-							current_date = 880.1.1
-						}
-					}
-					# Fire the event.
-					trigger_event = {
-						id = fp2_lyonese_monk.0002
-						days = { 30 90 }
-					}
-				}
-			}
-			# Otherwise, we roll randomly per year immediately.
-			else_if = {
-				limit = {
-					any_county_in_region = {
-						region = dlc_fp2_lyonese_monk_region
-						holder = { fp2_lyonese_monk_0002_valid_court_trigger = yes }
-					}
-				}
-				random = {
-					# Low initial chance, to give the player time.
-					chance = 5
-					# Slowly ramp up the chance till *someone* is selected, assuming we have any valid candidates.
-					modifier = {
-						add = 20
-						current_date >= 870.1.1
-					}
-					modifier = {
-						add = 25
-						current_date >= 873.1.1
-					}
-					modifier = {
-						add = 25
-						current_date >= 876.1.1
-					}
-					modifier = {
-						add = 25
-						current_date = 880.1.1
-					}
-					# Fire the event.
-					trigger_event = {
-						id = fp2_lyonese_monk.0002
-						days = { 30 90 }
-					}
-				}
-			}
-		}
-
+		# if = {
+		# 	limit = {
+		# 		# Do we have the correct flavour pack?
+		# 		has_fp2_dlc_trigger = yes
+		# 		# Must be before the monk would likely die.
+		# 		current_date <= 880.1.1
+		# 		# The monk hasn't already tried to turn up somewhere.
+		# 		NOT = {
+		# 			is_target_in_global_variable_list = {
+		# 				name = unavailable_unique_events
+		# 				target = flag:lyonese_monk_event
+		# 			}
+		# 		}
+		# 	}
+		# 	# If there's a player in this region, we wait for one to become eligible.
+		# 	if = {
+		# 		limit = {
+		# 			any_player = {
+		# 				capital_province = { geographical_region = dlc_fp2_lyonese_monk_region }
+		# 			}
+		# 		}
+		# 		if = {
+		# 			limit = {
+		# 				OR = {
+		# 					any_player = {
+		# 						capital_province = { geographical_region = dlc_fp2_lyonese_monk_region }
+		# 						fp2_lyonese_monk_0002_valid_character_configuration_trigger = yes
+		# 					}
+		# 					current_date = 880.1.1
+		# 				}
+		# 			}
+		# 			# Fire the event.
+		# 			trigger_event = {
+		# 				id = fp2_lyonese_monk.0002
+		# 				days = { 30 90 }
+		# 			}
+		# 		}
+		# 	}
+		# 	# Otherwise, we roll randomly per year immediately.
+		# 	else_if = {
+		# 		limit = {
+		# 			any_county_in_region = {
+		# 				region = dlc_fp2_lyonese_monk_region
+		# 				holder = { fp2_lyonese_monk_0002_valid_court_trigger = yes }
+		# 			}
+		# 		}
+		# 		random = {
+		# 			# Low initial chance, to give the player time.
+		# 			chance = 5
+		# 			# Slowly ramp up the chance till *someone* is selected, assuming we have any valid candidates.
+		# 			modifier = {
+		# 				add = 20
+		# 				current_date >= 870.1.1
+		# 			}
+		# 			modifier = {
+		# 				add = 25
+		# 				current_date >= 873.1.1
+		# 			}
+		# 			modifier = {
+		# 				add = 25
+		# 				current_date >= 876.1.1
+		# 			}
+		# 			modifier = {
+		# 				add = 25
+		# 				current_date = 880.1.1
+		# 			}
+		# 			# Fire the event.
+		# 			trigger_event = {
+		# 				id = fp2_lyonese_monk.0002
+		# 				days = { 30 90 }
+		# 			}
+		# 		}
+		# 	}
+		# }
+		#Lux Renata TBA
 		# Rabbinicism becomes Monogamous
-		if = {
-			limit = {
-				# Rabbi Gershom bans polygamy sometime in the 11th century
-				current_date > "1000.01.01"
-				# Make sure this hasn't happened already
-				faith:rabbinism = {
-					has_doctrine = doctrine_polygamy
-					NOT = {
-						has_variable = rabbinicism_accepted_monogamy
-						has_variable = rabbinicism_rejected_monogamy
-					}
-				}
-			}
-			religion:judaism_religion = {
-				every_faith = {
-					limit = {
-						has_doctrine = doctrine_polygamy
-						has_doctrine = temple_authority_rabbinic_doctrine
-					}
-					if = {
-						limit = {
-							exists = religious_head
-						}
-						if = {
-							limit = {
-								religious_head = { top_liege != this }
-								religious_head.top_liege.faith = this
-							}
-							religious_head.top_liege = { trigger_event = jewish_events.0001 }
-						}
-						else_if = {
-							limit = {
-								religious_head = { top_liege != this }
-								religious_head.liege.faith = this
-							}
-							religious_head.liege = { trigger_event = jewish_events.0001 }
-						}
-						else = {
-							religious_head = { trigger_event = jewish_events.0001 }
-						}
-					}
-					else_if = {
-						limit = {
-							any_player = { # Checking players is more performant than checking faith characters and limiting it to players
-								faith = prev
-							}
-						}
-						random_player = {
-							limit = { faith = prev }
-							trigger_event = jewish_events.0001
-						}
-					}
-					else = {
-						random_faith_character = {
-							trigger_event = jewish_events.0001
-						}
-					}
-				}
-			}
-		}
+		# if = {
+		# 	limit = {
+		# 		# Rabbi Gershom bans polygamy sometime in the 11th century
+		# 		current_date > "1000.01.01"
+		# 		# Make sure this hasn't happened already
+		# 		faith:rabbinism = {
+		# 			has_doctrine = doctrine_polygamy
+		# 			NOT = {
+		# 				has_variable = rabbinicism_accepted_monogamy
+		# 				has_variable = rabbinicism_rejected_monogamy
+		# 			}
+		# 		}
+		# 	}
+		# 	religion:judaism_religion = {
+		# 		every_faith = {
+		# 			limit = {
+		# 				has_doctrine = doctrine_polygamy
+		# 				has_doctrine = temple_authority_rabbinic_doctrine
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					exists = religious_head
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						religious_head = { top_liege != this }
+		# 						religious_head.top_liege.faith = this
+		# 					}
+		# 					religious_head.top_liege = { trigger_event = jewish_events.0001 }
+		# 				}
+		# 				else_if = {
+		# 					limit = {
+		# 						religious_head = { top_liege != this }
+		# 						religious_head.liege.faith = this
+		# 					}
+		# 					religious_head.liege = { trigger_event = jewish_events.0001 }
+		# 				}
+		# 				else = {
+		# 					religious_head = { trigger_event = jewish_events.0001 }
+		# 				}
+		# 			}
+		# 			else_if = {
+		# 				limit = {
+		# 					any_player = { # Checking players is more performant than checking faith characters and limiting it to players
+		# 						faith = prev
+		# 					}
+		# 				}
+		# 				random_player = {
+		# 					limit = { faith = prev }
+		# 					trigger_event = jewish_events.0001
+		# 				}
+		# 			}
+		# 			else = {
+		# 				random_faith_character = {
+		# 					trigger_event = jewish_events.0001
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }
 
 		# The Rise of the Seljuk
-		if = { limit = { has_game_rule = never_seljuk_invasion } }
-		else_if = { # Random Seljuk Invasion
-			limit = {
-				has_game_rule = random_seljuk_invasion
-				NOR = {
-					exists = global_var:seljuk_invasion_happened
-					exists = struggle:persian_struggle # We don't allow it during the struggle (not that it can happen in 930)
-				}
-			}
-			random = {
-				chance = fp3_seljuk_chance_of_appearance
-				modifier = {
-					add = 5
-					current_date > 965.1.1
-				}
-				modifier = {
-					add = 5
-					current_date > 985.1.1
-				}
-				modifier = {
-					add = 5
-					current_date > 1005.1.1
-				}
-				modifier = {
-					factor = 0.25
-					OR = {
-						culture:turkish = { culture_number_of_counties = 0 }
-						faith:ashari = { has_followers_trigger = no }
-					}
-				}
-				set_global_variable = {
-					name = seljuk_invasion_happened
-					value = yes
-				}
-				debug_log = "Attempting to spawn seljuk invasion within 240 days"
-				trigger_event = {
-					id = fp3_story_cycle_seljuks_invasion_events.0001
-					days = { 2 240 }
-				}
-			}
-		}
-		else_if = { # Historical Seljuk Invasion
-			limit = {
-				current_date < 1066.1.1
-				current_date >= 945.1.1
-				NOR = {
-					exists = global_var:seljuk_invasion_happened
-					exists = struggle:persian_struggle # We don't allow it during the struggle (not that it can happen in 930)
-				}
-			}
-			random = {
-				chance = fp3_seljuk_chance_of_appearance
-				modifier = {
-					add = 5
-					current_date > 965.1.1
-				}
-				modifier = {
-					add = 5
-					current_date > 985.1.1
-				}
-				modifier = {
-					add = 5
-					current_date > 1005.1.1
-				}
-				modifier = {
-					factor = 0.25
-					OR = {
-						culture:turkish = { culture_number_of_counties = 0 }
-						faith:ashari = { has_followers_trigger = no }
-					}
-				}
-				set_global_variable = {
-					name = seljuk_invasion_happened
-					value = yes
-				}
-				debug_log = "Attempting to spawn seljuk invasion within 240 days"
-				trigger_event = {
-					id = fp3_story_cycle_seljuks_invasion_events.0001
-					days = { 2 240 }
-				}
-			}
-		}
+		#Lux Renata TBA
+		# if = { limit = { has_game_rule = never_seljuk_invasion } }
+		# else_if = { # Random Seljuk Invasion
+		# 	limit = {
+		# 		has_game_rule = random_seljuk_invasion
+		# 		NOR = {
+		# 			exists = global_var:seljuk_invasion_happened
+		# 			exists = struggle:persian_struggle # We don't allow it during the struggle (not that it can happen in 930)
+		# 		}
+		# 	}
+		# 	random = {
+		# 		chance = fp3_seljuk_chance_of_appearance
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date > 965.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date > 985.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date > 1005.1.1
+		# 		}
+		# 		modifier = {
+		# 			factor = 0.25
+		# 			OR = {
+		# 				culture:turkish = { culture_number_of_counties = 0 }
+		# 				faith:ashari = { has_followers_trigger = no }
+		# 			}
+		# 		}
+		# 		set_global_variable = {
+		# 			name = seljuk_invasion_happened
+		# 			value = yes
+		# 		}
+		# 		debug_log = "Attempting to spawn seljuk invasion within 240 days"
+		# 		trigger_event = {
+		# 			id = fp3_story_cycle_seljuks_invasion_events.0001
+		# 			days = { 2 240 }
+		# 		}
+		# 	}
+		# }
+		# else_if = { # Historical Seljuk Invasion
+		# 	limit = {
+		# 		current_date < 1066.1.1
+		# 		current_date >= 945.1.1
+		# 		NOR = {
+		# 			exists = global_var:seljuk_invasion_happened
+		# 			exists = struggle:persian_struggle # We don't allow it during the struggle (not that it can happen in 930)
+		# 		}
+		# 	}
+		# 	random = {
+		# 		chance = fp3_seljuk_chance_of_appearance
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date > 965.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date > 985.1.1
+		# 		}
+		# 		modifier = {
+		# 			add = 5
+		# 			current_date > 1005.1.1
+		# 		}
+		# 		modifier = {
+		# 			factor = 0.25
+		# 			OR = {
+		# 				culture:turkish = { culture_number_of_counties = 0 }
+		# 				faith:ashari = { has_followers_trigger = no }
+		# 			}
+		# 		}
+		# 		set_global_variable = {
+		# 			name = seljuk_invasion_happened
+		# 			value = yes
+		# 		}
+		# 		debug_log = "Attempting to spawn seljuk invasion within 240 days"
+		# 		trigger_event = {
+		# 			id = fp3_story_cycle_seljuks_invasion_events.0001
+		# 			days = { 2 240 }
+		# 		}
+		# 	}
+		# }
 
 		# Zanj Rebellion
-		if = {
-			limit = {
-				current_date = 868.1.2
-				NOT = { exists = global_var:zanj_rebellion_happened }
-			}
-			debug_log = "Zanj Rebellion Story Cycle Started"
-			trigger_event = {
-				id = fp3_story_cycle_zanj_rebellion_events.0001
-				days = { 100 5000 }
-			}
-			set_global_variable = {
-				name = zanj_rebellion_happened
-				value = yes
-			}
-		}
+		#Lux Renata TBA
+		# if = {
+		# 	limit = {
+		# 		current_date = 868.1.2
+		# 		NOT = { exists = global_var:zanj_rebellion_happened }
+		# 	}
+		# 	debug_log = "Zanj Rebellion Story Cycle Started"
+		# 	trigger_event = {
+		# 		id = fp3_story_cycle_zanj_rebellion_events.0001
+		# 		days = { 100 5000 }
+		# 	}
+		# 	set_global_variable = {
+		# 		name = zanj_rebellion_happened
+		# 		value = yes
+		# 	}
+		# }
 		#Grant latin emperor a de jure kingdom after 100 years, if they've failed to grab any de jure lands yet
-		if = {
-			limit = {
-				exists = global_var:byz_collapse_counter
-				current_year >= global_var:byz_collapse_counter
-				exists = title:e_latin_empire.holder
-				title:e_latin_empire.holder = {
-					is_alive = yes
-					primary_title = title:e_latin_empire
-					capital_county.kingdom = {
-						empire = title:e_byzantium
-						any_de_jure_county = {
-							percent >= 0.5
-							holder.top_liege = {
-								this = title:e_latin_empire.holder
-							}
-						}
-					}
-				}
-				NOT = {
-					title:e_latin_empire = {
-						any_in_de_jure_hierarchy = {
-							tier <= tier_kingdom
-						}
-					}
-				}
-			}
-			title:e_latin_empire.holder = {
-				trigger_event = ep3_frankokratia_events.0140
-			}
-		}
+		#if = {
+		#	limit = {
+		#		exists = global_var:byz_collapse_counter
+		#		current_year >= 1global_var:byz_collapse_counter
+		#		exists = title:e_latin_empire.holder
+		#		title:e_latin_empire.holder = {
+		#			is_alive = yes
+		#			primary_title = title:e_latin_empire
+		#			capital_county.kingdom = {
+		#				empire = title:e_byzantium
+		#				any_de_jure_county = {
+		#					percent >= 0.5
+		#					holder.top_liege = {
+		#						this = title:e_latin_empire.holder
+		#					}
+		#				}
+		#			}
+		#		}
+		#		NOT = {
+		#			title:e_latin_empire = {
+		#				any_in_de_jure_hierarchy = {
+		#					tier <= tier_kingdom
+		#				}
+		#			}
+		#		}
+		#	}
+		#	title:e_latin_empire.holder = {
+		#		trigger_event = ep3_frankokratia_events.0140
+		#	}
+		#}
 		#Greek anarchy CB becomes unavailable when things are settled
-		if = {
-			limit = {
-				exists = global_var:byz_collapse_counter
-				current_year >= global_var:byz_collapse_counter
-				OR = {
-					NOT = {
-						exists = title:e_latin_empire.holder
-					}
-					title:e_latin_empire.holder ?= {
-						NOT = {
-							any_realm_county = {
-								OR = {
-									empire = title:e_latin_empire
-									empire = title:e_byzantium
-								}
-							}
-						}
-					}
-					title:e_latin_empire.holder ?= {
-						any_held_title = {
-							this = title:e_byzantium
-						}
-					}
-				}
-			}
-			remove_global_variable = byz_collapse_counter
+		#if = {
+		#	limit = {
+		#		exists = global_var:byz_collapse_counter
+		#		current_year >= global_var:byz_collapse_counter
+		#		OR = {
+		#			NOT = {
+		#				exists = title:e_latin_empire.holder
+		#			}
+		#			title:e_latin_empire.holder ?= {
+		#				NOT = {
+		#					any_realm_county = {
+		#						OR = {
+		#							empire = title:e_latin_empire
+		#							empire = title:e_byzantium
+		#						}
+		#					}
+		#				}
+		#			}
+		#			title:e_latin_empire.holder ?= {
+		#				any_held_title = {
+		#					this = title:e_byzantium
+		#				}
+		#			}
+		#		}
+		#	}
+		#	remove_global_variable = byz_collapse_counter
 
-			#Send notification out to everyone in de jure latin empire
-			if = {
-				limit = {
-					title:e_latin_empire = {
-						any_in_de_jure_hierarchy = {
-							holder ?= {
-								is_ai = no
-							}
-						}
-					}
-				}
-				title:e_latin_empire = {
-					every_in_de_jure_hierarchy = {
-						limit = {
-							holder ?= {
-								is_ai = no
-							}
-						}
-						if = {
-							limit = {
-								holder ?= {
-									NOT = { is_in_list = latin_byz_notify }
-								}
-							}
-							holder = {
-								add_to_list = latin_byz_notify
-							}
-						}
-					}
-				}
-			}
-			if = {
-				limit = {
-					title:e_byzantium = {
-						any_in_de_jure_hierarchy = {
-							holder ?= {
-								is_ai = no
-							}
-						}
-					}
-				}
-				title:e_byzantium = {
-					every_in_de_jure_hierarchy = {
-						limit = {
-							holder ?= {
-								is_ai = no
-							}
-						}
-						if = {
-							limit = {
-								holder = {
-									NOT = { is_in_list = latin_byz_notify }
-								}
-							}
-							holder = {
-								add_to_list = latin_byz_notify
-							}
-						}
-					}
-				}
-			}
-			title:e_latin_empire.holder = {
-				if = {
-					limit = {
-						is_ai = no
-						NOT = { is_in_list = latin_byz_notify }
-					}
-					add_to_list = latin_byz_notify
-				}
-				trigger_event = ep3_frankokratia_events.0081
-			}
-			title:e_byzantium.holder = {
-				if = {
-					limit = {
-						is_ai = no
-						NOT = { is_in_list = latin_byz_notify }
-					}
-					add_to_list = latin_byz_notify
-				}
-			}
-			title:e_byzantium = {
-				save_scope_as = byzantium
-			}
-			if = {
-				limit = {
-					any_in_list = {
-						list = latin_byz_notify
-						count > 0
-					}
-				}
-				every_in_list = {
-					list = latin_byz_notify
-					send_interface_message = {
-						type = msg_frankokratia_anarchy_end
-						title = msg_greek_anarchy_cb_loss.t
-						desc = msg_greek_anarchy_cb_loss.desc
-						right_icon = scope:byzantium
-						custom_tooltip = lose_greek_anarchy_cb_tt
-					}
-				}
-			}
-		}
+		# 	#Send notification out to everyone in de jure latin empire
+		# 	if = {
+		# 		limit = {
+		# 			title:e_latin_empire = {
+		# 				any_in_de_jure_hierarchy = {
+		# 					holder ?= {
+		# 						is_ai = no
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 		title:e_latin_empire = {
+		# 			every_in_de_jure_hierarchy = {
+		# 				limit = {
+		# 					holder ?= {
+		# 						is_ai = no
+		# 					}
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						holder ?= {
+		# 							NOT = { is_in_list = latin_byz_notify }
+		# 						}
+		# 					}
+		# 					holder = {
+		# 						add_to_list = latin_byz_notify
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	if = {
+		# 		limit = {
+		# 			title:e_byzantium = {
+		# 				any_in_de_jure_hierarchy = {
+		# 					holder ?= {
+		# 						is_ai = no
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 		title:e_byzantium = {
+		# 			every_in_de_jure_hierarchy = {
+		# 				limit = {
+		# 					holder ?= {
+		# 						is_ai = no
+		# 					}
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						holder = {
+		# 							NOT = { is_in_list = latin_byz_notify }
+		# 						}
+		# 					}
+		# 					holder = {
+		# 						add_to_list = latin_byz_notify
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	title:e_latin_empire.holder = {
+		# 		if = {
+		# 			limit = {
+		# 				is_ai = no
+		# 				NOT = { is_in_list = latin_byz_notify }
+		# 			}
+		# 			add_to_list = latin_byz_notify
+		# 		}
+		# 		trigger_event = ep3_frankokratia_events.0081
+		# 	}
+		# 	title:e_byzantium.holder = {
+		# 		if = {
+		# 			limit = {
+		# 				is_ai = no
+		# 				NOT = { is_in_list = latin_byz_notify }
+		# 			}
+		# 			add_to_list = latin_byz_notify
+		# 		}
+		# 	}
+		# 	title:e_byzantium = {
+		# 		save_scope_as = byzantium
+		# 	}
+		# 	if = {
+		# 		limit = {
+		# 			any_in_list = {
+		# 				list = latin_byz_notify
+		# 				count > 0
+		# 			}
+		# 		}
+		# 		every_in_list = {
+		# 			list = latin_byz_notify
+		# 			send_interface_message = {
+		# 				type = msg_frankokratia_anarchy_end
+		# 				title = msg_greek_anarchy_cb_loss.t
+		# 				desc = msg_greek_anarchy_cb_loss.desc
+		# 				right_icon = scope:byzantium
+		# 				custom_tooltip = lose_greek_anarchy_cb_tt
+		# 			}
+		# 		}
+		# 	}
+		# }
 		# TGP House Relations tracking
 		every_active_dynasty = {
 			every_dynasty_house = {
@@ -2544,24 +2553,25 @@ five_year_everyone_pulse = {
 		}
 
 		# FP2 - Checks to start El Cid's Travels
-		if = {
-			limit = { # Am I El Cid?
-				has_fp2_dlc_trigger = yes
-				has_ep3_dlc_trigger = no
-				this = character:107590
-				NOT = { has_character_flag = has_already_begun_travelling } # Separate first check, for performance
+		#Lux Renata TBA
+		# if = {
+		# 	limit = { # Am I El Cid?
+		# 		has_fp2_dlc_trigger = yes
+		# 		has_ep3_dlc_trigger = no
+		# 		this = character:107590
+		# 		NOT = { has_character_flag = has_already_begun_travelling } # Separate first check, for performance
 
-				NOT = { # Start date employer is either dead or gone
-					OR = {
-						top_liege = character:107500
-						liege = character:107500
-						employer = character:107500
-					}
-				}
-				is_available_healthy_ai_adult = yes # Am I ready to go on an adventure?
-			}
-			trigger_event = fp2_struggle.2045
-		}
+		# 		NOT = { # Start date employer is either dead or gone
+		# 			OR = {
+		# 				top_liege = character:107500
+		# 				liege = character:107500
+		# 				employer = character:107500
+		# 			}
+		# 		}
+		# 		is_available_healthy_ai_adult = yes # Am I ready to go on an adventure?
+		# 	}
+		# 	trigger_event = fp2_struggle.2045
+		# }
 		#young nobodies getting castrated
 		if = {
 			limit = {
