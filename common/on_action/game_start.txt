@@ -125,77 +125,77 @@ on_game_start = {
 		#}
 
 		### 1066 - HASAN SABBAH STORY CYCLE ###
-		character:41702 ?= {
-			if = {
-				limit = {
-					is_alive = yes
-					is_playable_character = yes
-				}
-				house = { set_house_head = prev }
-				trigger_event = {
-					id = hasan_sabbah.1000
-					days = 1
-				}
-			}
-		}
+		#character:41702 ?= {
+			#if = {
+				#limit = {
+					#is_alive = yes
+					#is_playable_character = yes
+				#}
+				#house = { set_house_head = prev }
+				#trigger_event = {
+					#sid = hasan_sabbah.1000
+					#days = 1
+				#}
+			#}
+		#}
 		### 1066 - EL CID STORY CYCLE ###
-		character:107590 ?= {
-			if = {
-				limit = {
-					cid_story_cycle_start_trigger = yes
-				}
-				trigger_event = {
-					id = cid.0001
-					days = 1
-				}
-			}
-		}
+		#character:107590 ?= {
+			#if = {
+				#limit = {
+					#cid_story_cycle_start_trigger = yes
+				#}
+				#trigger_event = {
+					#sid = cid.0001
+					#days = 1
+				#}
+			#}
+		#}
 		### 1066 - LOUIS THE GERMAN ###
-		if = {
-			limit = {
-				exists = character:90107
-				current_date >= 11066.1.1
-			}
-			character:90107 = { give_nickname = nick_the_german_post_mortem }
-		}
+		#if = {
+			#limit = {
+				#exists = character:90107
+				#current_date >= 11066.1.1
+			#}
+			#character:90107 = { give_nickname = nick_the_german_post_mortem }
+		#}
 
 		### 1178 - SIBYLLA ###
-		if = {
-			limit = {
-				exists = character:223522
-				current_date >= 11178.1.1
-				character:223541 = {
-					is_ai = yes
-					is_alive = yes
-				}
-			}
-			character:223522 = {
-				trigger_event = {
-					id = bookmark.0300
-					days = { 21 28 }
-				}
-			}
-		}
+		#if = {
+			#limit = {
+				#exists = character:223522
+				#current_date >= 11178.1.1
+				#character:223541 = {
+					#is_ai = yes
+					#is_alive = yes
+				#}
+			#}
+			#character:223522 = {
+				#trigger_event = {
+					#sid = bookmark.0300
+					#days = { 21 28 }
+				#}
+			#}
+		#}
 		### 1066 - LIANG LUOYAO ###
-		if = {
-			limit = {
-				exists = character:tangut_liang_1
-				current_date >= 11066.1.1
-				character:tangut_liang_1.primary_spouse ?= character:206651
-			}
-			character:tangut_liang_1 = {
-				add_gold = {
-					value = {
-						value = 0
-						add = { 200 350 }
-					}
-				}
-				trigger_event = {
-					id = bookmark.0400
-					days = { 14 21 }
-				}
-			}
-		}
+		#if = {
+			#limit = {
+				#exists = character:tangut_liang_1
+				#current_date >= 11066.1.1
+				#character:tangut_liang_1.primary_spouse ?= character:206651
+			#}
+			#character:tangut_liang_1 = {
+				#add_gold = {
+					#value = {
+						#value = 0
+						#add = { 200 350 }
+					#}
+				#}
+				#trigger_event = {
+					#sid = bookmark.0400
+					#days = { 14 21 }
+				#}
+			#}
+		#}
 
 		### HRE SETUP ###
 		if = {
@@ -233,30 +233,30 @@ on_game_start = {
 		}
 
 		### ARMENIAN SETUP ###
-		title:e_byzantium.holder ?= {
-			every_vassal = {
-				limit = {
-					government_has_flag = government_is_feudal
-					vassal_contract_has_modifiable_obligations = yes
-					faith = faith:armenian_apostolic
-				}
-				vassal_contract_set_obligation_level = { type = religious_rights level = 1 }
-				set_subject_contract_modification_blocked = no
-			}
-		}
-		title:e_arabia.holder ?= {
-			every_vassal = {
-				limit = {
-					government_has_flag = government_is_feudal
-					vassal_contract_has_modifiable_obligations = yes
-					faith = faith:armenian_apostolic
-				}
-				vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 3 }
-				vassal_contract_set_obligation_level = { type = feudal_government_levies level = 2 }
-				vassal_contract_set_obligation_level = { type = jizya_special_rights level = 1 }
-				set_subject_contract_modification_blocked = no
-			}
-		}
+		#title:e_byzantium.holder ?= {
+			#every_vassal = {
+				#limit = {
+					#government_has_flag = government_is_feudal
+					#vassal_contract_has_modifiable_obligations = yes
+					#faith = faith:armenian_apostolic
+				#}
+				#vassal_contract_set_obligation_level = { type = religious_rights level = 1 }
+				#set_subject_contract_modification_blocked = no
+			#}
+		#}
+		#title:e_arabia.holder ?= {
+			#every_vassal = {
+				#limit = {
+					#government_has_flag = government_is_feudal
+					#vassal_contract_has_modifiable_obligations = yes
+					#faith = faith:armenian_apostolic
+				#}
+				#vassal_contract_set_obligation_level = { type = feudal_government_taxes level = 3 }
+				#vassal_contract_set_obligation_level = { type = feudal_government_levies level = 2 }
+				#vassal_contract_set_obligation_level = { type = jizya_special_rights level = 1 }
+				#set_subject_contract_modification_blocked = no
+			#}
+		#}
 
 		### CORONATION LOCATION SETUP ###
 		if = {
