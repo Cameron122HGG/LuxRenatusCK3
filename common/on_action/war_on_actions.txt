@@ -1151,100 +1151,102 @@ on_war_won_attacker = { # As in, won BY attacker. Only one of the two on_actions
 		scope:attacker = { save_scope_as = winner }
 		scope:defender = { save_scope_as = loser }
 		# Special rewards for Temüjin vs Jamukha
-		if = {
-			limit = {
-				scope:attacker = {
-					OR = {
-						this = character:125501
-						this = character:mpo_mongol_1
-					}
-					has_variable = temujin_jamukha_war_var
-				}
-				scope:defender = {
-					OR = {
-						this = character:125501
-						this = character:mpo_mongol_1
-					}
-				}
-			}
-			scope:attacker = {
-				add_prestige = major_prestige_gain
-			}
-		}
+		#Lux Renata TBA
+		#if = {
+		#	limit = {
+		#		scope:attacker = {
+		#			OR = {
+		#				this = character:125501
+		#				this = character:mpo_mongol_1
+		#			}
+		#			has_variable = temujin_jamukha_war_var
+		#		}
+		#		scope:defender = {
+		#			OR = {
+		#				this = character:125501
+		#				this = character:mpo_mongol_1
+		#			}
+		#		}
+		#	}
+		#	scope:attacker = {
+		#		add_prestige = major_prestige_gain
+		#	}
+		#}
 
 		# Give out a legend seed for beating ya boi G Khan
-		if = {
-			limit = {
-				scope:loser = {
-					OR = {
-						mpo_has_greatest_of_khans_nickname_trigger = yes
-						has_trait = greatest_of_khans
-					}
-				}
-				scope:winner = {
-					NOT = {
-						has_character_flag = khan_beater
-					}
-				}
-			}
-			scope:winner = {
-				if = {
-					limit = { has_dlc_feature = legends }
-					add_character_flag = khan_beater
-					send_interface_toast = {
-						title = heroic_legend_seed_drop.t
-						create_legend_seed = {
-							type = heroic
-							quality = famed
-							chronicle = legendary_battle
-							properties = {
-								winner = scope:winner
-								loser = scope:loser
-								location = scope:winner.location
-							}
-						}
-					}
-				}
-			}
-		}
+		#Lux Renata TBA
+		# if = {
+		# 	limit = {
+		# 		scope:loser = {
+		# 			OR = {
+		# 				mpo_has_greatest_of_khans_nickname_trigger = yes
+		# 				has_trait = greatest_of_khans
+		# 			}
+		# 		}
+		# 		scope:winner = {
+		# 			NOT = {
+		# 				has_character_flag = khan_beater
+		# 			}
+		# 		}
+		# 	}
+		# 	scope:winner = {
+		# 		if = {
+		# 			limit = { has_dlc_feature = legends }
+		# 			add_character_flag = khan_beater
+		# 			send_interface_toast = {
+		# 				title = heroic_legend_seed_drop.t
+		# 				create_legend_seed = {
+		# 					type = heroic
+		# 					quality = famed
+		# 					chronicle = legendary_battle
+		# 					properties = {
+		# 						winner = scope:winner
+		# 						loser = scope:loser
+		# 						location = scope:winner.location
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }
 
 		# Give out Legend Seed if GHW
-		if = {
-			limit = {
-				scope:attacker = {
-					has_dlc_feature = legends
-					NOT = { has_triggered_legend_seed = holy_warrior }
-					NOT = { has_game_rule = historical_legends_only }
-				}
-				scope:war ={
-					OR = {
-						using_cb = undirected_great_holy_war
-						using_cb = directed_great_holy_war
-					}
-				}
-				OR = {
-					scope:target_title.tier ?= tier_empire
-					scope:target_title.tier ?= tier_kingdom
-				}
-			}
-			random = {
-				chance = 75
-				scope:attacker = {
-					send_interface_toast = {
-						title = heroic_legend_seed_drop.t
-						create_legend_seed = {
-							type = heroic
-							quality = famed
-							chronicle = holy_warrior
-							properties = {
-								ancestor = scope:attacker
-								religion = scope:attacker.faith.religion
-							}
-						}
-					}
-				}
-			}
-		}
+		#Lux Renata TBA
+		# if = {
+		# 	limit = {
+		# 		scope:attacker = {
+		# 			has_dlc_feature = legends
+		# 			NOT = { has_triggered_legend_seed = holy_warrior }
+		# 		}
+		# 		scope:war ={
+		# 			OR = {
+		# 				using_cb = undirected_great_holy_war
+		# 				using_cb = directed_great_holy_war
+		# 			}
+		# 		}
+		# 		OR = {
+		# 			scope:chronicle_title.tier ?= tier_empire
+		# 			scope:chronicle_title.tier ?= tier_kingdom
+		# 		}
+		# 	}
+		# 	random = {
+		# 		chance = 75
+		# 		scope:attacker = {
+		# 			send_interface_toast = {
+		# 				title = heroic_legend_seed_drop.t
+		# 				create_legend_seed = {
+		# 					type = heroic
+		# 					quality = famed
+		# 					chronicle = holy_warrior
+		# 					properties = {
+		# 						ancestor = scope:attacker
+		# 						religion = scope:attacker.faith.religion
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }
 
 		# Change legend chapters if this was a neat war
 		scope:winner = {
@@ -1779,23 +1781,24 @@ on_war_won_attacker = { # As in, won BY attacker. Only one of the two on_actions
 			}
 		}
 
-		if = {
-			limit = {
-				scope:attacker = {
-					is_ai = no
-					this = character:223523
-				}
-				scope:defender = {
-					this = character:226000
-				}
-			}
-			scope:attacker = {
-				add_achievement_global_variable_effect = {
-					VARIABLE = finished_kingdom_of_heaven_achievement
-					VALUE = yes
-				}
-			}
-		}
+		#Lux Renata TBA
+		#if = {
+		#	limit = {
+		#		scope:attacker = {
+		#			is_ai = no
+		#			this = character:223523
+		#		}
+		#		scope:defender = {
+		#			this = character:226000
+		#		}
+		#	}
+		#	scope:attacker = {
+		#		add_achievement_global_variable_effect = {
+		#			VARIABLE = finished_kingdom_of_heaven_achievement
+		#			VALUE = yes
+		#		}
+		#	}
+		#}
 
 		#Destroy weakened confederation
 		if = {
@@ -2222,23 +2225,24 @@ on_war_won_defender = {
 			}
 		}
 
-		if = {
-			limit = {
-				scope:defender = {
-					is_ai = no
-					this = character:223523
-				}
-				scope:attacker = {
-					this = character:226000
-				}
-			}
-			scope:defender = {
-				add_achievement_global_variable_effect = {
-					VARIABLE = finished_kingdom_of_heaven_achievement
-					VALUE = yes
-				}
-			}
-		}
+		#Lux Renata TBA
+		#if = {
+		#	limit = {
+		#		scope:defender = {
+		#			is_ai = no
+		#			this = character:223523
+		#		}
+		#		scope:attacker = {
+		#			this = character:226000
+		#		}
+		#	}
+		#	scope:defender = {
+		#		add_achievement_global_variable_effect = {
+		#			VARIABLE = finished_kingdom_of_heaven_achievement
+		#			VALUE = yes
+		#		}
+		#	}
+		#}
 		#SuperSoryo follow up events triggered
 		if = {
 			limit = {

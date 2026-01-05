@@ -332,63 +332,65 @@ on_death = {
 			}
 		}
 
-		if = {
-			limit = {
-				exists = global_var:mongol_empire_was_broken_up
-				exists = global_var:handed_out_mongolia_in_mongol_succession # If Mongolia wasn't properly granted, something has gone wrong, and the primary_heir should receive the Mongol Empire as expected
-				any_held_title = {
-					this = title:e_mongol_empire
-				}
-			}
-			destroy_title = title:e_mongol_empire
-		}
+		#Lux Renata TBA
+		# if = {
+		# 	limit = {
+		# 		exists = global_var:mongol_empire_was_broken_up
+		# 		exists = global_var:handed_out_mongolia_in_mongol_succession # If Mongolia wasn't properly granted, something has gone wrong, and the primary_heir should receive the Mongol Empire as expected
+		# 		any_held_title = {
+		# 			this = title:e_mongol_empire
+		# 		}
+		# 	}
+		# 	destroy_title = title:e_mongol_empire
+		# }
 
+		#Lux Renata TBA
 		# Fix gods-damned Bavaria splitting from East Francia in an ugly fashion in 867.
-		if = {
-			limit = {
-				# Make sure we're looking at the right guy & that the circumstances haven't changed too much.
-				this = character:90107
-				highest_held_title_tier = tier_kingdom
-				has_realm_law = confederate_partition_succession_law
-				# Bavaria should be in a fit state for interfering with the handout order.
-				title:k_bavaria = {
-					OR = {
-						is_title_created = no
-						holder = root
-					}
-					any_in_de_jure_hierarchy = {
-						tier = tier_county
-						# More than 50%.
-						count >= 22
-						holder = {
-							any_liege_or_above = { this = root }
-						}
-					}
-				}
-				NOT = { has_primary_title = title:k_bavaria }
-				# Players can sort this themselves: you just need to have Bavaria as your primary title and it's all fine.
-				is_ai = yes
-			}
-			# If we've got no Bavaria, create it.
-			if = {
-				limit = {
-					title:k_bavaria = { is_title_created = no }
-				}
-				create_title_and_vassal_change = {
-					type = created
-					save_scope_as = change
-				}
-				title:k_bavaria = {
-					change_title_holder = {
-						holder = root
-						change = scope:change
-					}
-				}
-				resolve_title_and_vassal_change = scope:change
-			}
-			# Then switch around.
-			set_primary_title_to = title:k_bavaria
-		}
+		# if = {
+		# 	limit = {
+		# 		# Make sure we're looking at the right guy & that the circumstances haven't changed too much.
+		# 		this = character:90107
+		# 		highest_held_title_tier = tier_kingdom
+		# 		has_realm_law = confederate_partition_succession_law
+		# 		# Bavaria should be in a fit state for interfering with the handout order.
+		# 		title:k_bavaria = {
+		# 			OR = {
+		# 				is_title_created = no
+		# 				holder = root
+		# 			}
+		# 			any_in_de_jure_hierarchy = {
+		# 				tier = tier_county
+		# 				# More than 50%.
+		# 				count >= 22
+		# 				holder = {
+		# 					any_liege_or_above = { this = root }
+		# 				}
+		# 			}
+		# 		}
+		# 		NOT = { has_primary_title = title:k_bavaria }
+		# 		# Players can sort this themselves: you just need to have Bavaria as your primary title and it's all fine.
+		# 		is_ai = yes
+		# 	}
+		# 	# If we've got no Bavaria, create it.
+		# 	if = {
+		# 		limit = {
+		# 			title:k_bavaria = { is_title_created = no }
+		# 		}
+		# 		create_title_and_vassal_change = {
+		# 			type = created
+		# 			save_scope_as = change
+		# 		}
+		# 		title:k_bavaria = {
+		# 			change_title_holder = {
+		# 				holder = root
+		# 				change = scope:change
+		# 			}
+		# 		}
+		# 		resolve_title_and_vassal_change = scope:change
+		# 	}
+		# 	# Then switch around.
+		# 	set_primary_title_to = title:k_bavaria
+		# }
 
 		# Diarchies
 		## Handle regency loyalties.
@@ -1576,48 +1578,49 @@ on_death = {
 		}
 
 		# EP3, Hasan story cycle stuff
-		if = {
-			limit = {
-				root = character:3096
-			}
-			save_scope_as = ismaili_caliph
-			character:41702 ?= {
-				trigger_event = {
-					id = hasan_sabbah.1030
-					days = 1
-				}
-			}
-		}
-		if = {
-			limit = {
-				character:41702 ?= {
-					any_owned_story = {
-						type = story_hasan
-						var:ultimate_foe ?= root
-					}
-				}
-			}
-			character:41702 = {
-				random_owned_story = {
-					type = story_hasan
-					if = {
-						limit = {
-							scope:killer = character:41702
-						}
-						hasan_sabbah_end_war = {
-							HASAN = character:41702
-							SELJUK = root
-						}
-					}
-					else = {
-						set_variable = {
-							name = ultimate_foe
-							value = root.player_heir
-						}
-					}
-				}
-			}
-		}
+		#Lux Renata TBA
+		# if = {
+		# 	limit = {
+		# 		root = character:3096
+		# 	}
+		# 	save_scope_as = ismaili_caliph
+		# 	character:41702 ?= {
+		# 		trigger_event = {
+		# 			id = hasan_sabbah.1030
+		# 			days = 1
+		# 		}
+		# 	}
+		# }
+		# if = {
+		# 	limit = {
+		# 		character:41702 ?= {
+		# 			any_owned_story = {
+		# 				type = story_hasan
+		# 				var:ultimate_foe ?= root
+		# 			}
+		# 		}
+		# 	}
+		# 	character:41702 = {
+		# 		random_owned_story = {
+		# 			type = story_hasan
+		# 			if = {
+		# 				limit = {
+		# 					scope:killer = character:41702
+		# 				}
+		# 				hasan_sabbah_end_war = {
+		# 					HASAN = character:41702
+		# 					SELJUK = root
+		# 				}
+		# 			}
+		# 			else = {
+		# 				set_variable = {
+		# 					name = ultimate_foe
+		# 					value = root.player_heir
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }
 
 		if = {
 			limit = {
@@ -1627,28 +1630,29 @@ on_death = {
 			end_diarchy = yes
 		}
 
+		#Lux Renata TBA
 		# EP3, Wallada transfers possessions to her heir
-		if = {
-			limit = {
-				root = character:andalusian_0003
-				exists = player_heir
-			}
-			# save Wallada's scope
-			save_scope_as = wallada
-			random_artifact = {
-				limit = {
-					has_artifact_modifier = double_moon_modifier
-				}
-				set_owner = scope:wallada.primary_heir
-				save_scope_as = double_moon_book
-			}
-			primary_heir = {
-				trigger_event = {
-					id = ep3_story_cycle_violet_poet.0004
-					days = 1
-				}
-			}
-		}
+		#if = {
+		#	limit = {
+		#		root = character:andalusian_0003
+		#		exists = player_heir
+		#	}
+		#	# save Wallada's scope
+		#	save_scope_as = wallada
+		#	random_artifact = {
+		#		limit = {
+		#			has_artifact_modifier = double_moon_modifier
+		#		}
+		#		set_owner = scope:wallada.primary_heir
+		#		save_scope_as = double_moon_book
+		#	}
+		#	primary_heir = {
+		#		trigger_event = {
+		#			id = ep3_story_cycle_violet_poet.0004
+		#			days = 1
+		#		}
+		#	}
+		#}
 
 		# Populate new contracts for laamp heirs.
 		player_heir ?= {
@@ -1714,26 +1718,27 @@ on_death = {
 		mpo_remove_blood_brother_modifiers_effect = yes
 
 		#Tracking whether Genghis is dead or not
-		if = {
-			limit =	{
-				this = character:125501
-			}
-			set_global_variable = genghis_died
-			if = {
-				limit = {
-					NOT = {
-						any_held_title = {
-							this = title:e_mongol_empire
-						}
-					}
-				}
-				set_global_variable = {
-					name = temujin_failed
-					value = yes
-					years = 50
-				}
-			}
-		}
+		#Lux Renata TBA
+		#if = {
+		#	limit =	{
+		#		this = character:125501
+		#	}
+		#	set_global_variable = genghis_died
+		#	if = {
+		#		limit = {
+		#			NOT = {
+		#				any_held_title = {
+		#					this = title:e_mongol_empire
+		#				}
+		#			}
+		#		}
+		#		set_global_variable = {
+		#			name = temujin_failed
+		#			value = yes
+		#			years = 50
+		#		}
+		#	}
+		#}
 		#Greatest of khans stuff should pass to heir during initial war phase
 		if = {
 			limit = {
