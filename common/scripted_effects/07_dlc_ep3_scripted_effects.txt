@@ -1389,10 +1389,11 @@ purchase_land_interaction_effect = {
 
 	hidden_effect = {
 		scope:actor = {
-			if = {
-				limit = { character:90028 ?= this }
-				add_character_flag = hereward_settled_flag
-			}
+			#Lux Renata TBA
+			#if = {
+			#	limit = { character:90028 ?= this }
+			#	add_character_flag = hereward_settled_flag
+			#}
 			if = {
 				limit = {
 					NOT = { has_trait = adventurer }
@@ -1498,11 +1499,12 @@ purchase_land_interaction_effect = {
 
 purchase_land_interaction_shortened_effect = {
 	scope:actor = {
-		if = {
-			limit = { character:90028 ?= this }
-			custom_tooltip = ep3_story_cycle_harrying.3053.b.tt
-			add_character_flag = hereward_settled_flag
-		}
+		#Lux Renata TBA
+		#if = {
+		#	limit = { character:90028 ?= this }
+		#	custom_tooltip = ep3_story_cycle_harrying.3053.b.tt
+		#	add_character_flag = hereward_settled_flag
+		#}
 		show_as_tooltip = {
 			pay_short_term_gold = {
 				gold = scope:purchase_land_cost
@@ -12186,509 +12188,510 @@ ep3_camp_party_visit_holding_skills_boost = {
 }
 
 #Setting up the Fens as a pseudo-custom region
-ep3_the_fens_list_effect = {
-	province:1525 = { add_to_list = the_fens } #b_lynn
-	province:1534 = { add_to_list = the_fens } #b_cambridgeshire
-	province:1535 = { add_to_list = the_fens } #b_radfield
-	province:1536 = { add_to_list = the_fens } #b_papworth
-	province:1537 = { add_to_list = the_fens } #b_ely
-	province:1541 = { add_to_list = the_fens } #b_hurstingstone
-	province:1542 = { add_to_list = the_fens } #b_norman_cross
-	province:1584 = { add_to_list = the_fens } #b_stamford
-	province:1585 = { add_to_list = the_fens } #b_boston
-	province:1601 = { add_to_list = the_fens } #b_peterborough
-}
+#Lux Renata TBA
+#ep3_the_fens_list_effect = {
+#	province:1525 = { add_to_list = the_fens } #b_lynn
+#	province:1534 = { add_to_list = the_fens } #b_cambridgeshire
+#	province:1535 = { add_to_list = the_fens } #b_radfield
+#	province:1536 = { add_to_list = the_fens } #b_papworth
+#	province:1537 = { add_to_list = the_fens } #b_ely
+#	province:1541 = { add_to_list = the_fens } #b_hurstingstone
+#	province:1542 = { add_to_list = the_fens } #b_norman_cross
+#	province:1584 = { add_to_list = the_fens } #b_stamford
+#	province:1585 = { add_to_list = the_fens } #b_boston
+#	province:1601 = { add_to_list = the_fens } #b_peterborough
+#}
 
-#Used for setting up the Harrying of the North widget for events
-#Requires use of ep3_harrying_widget_clear_effect in the 'after' as well
-ep3_harrying_widget_setup_effect = {
-	global_var:harrying_of_the_north = { save_scope_as = story }
-	## First, identify our widget character.
-	save_scope_as = scope_character
-	## Then transfer over some suitable variables for the UI.
-	set_variable = {
-		name = pacification_gui
-		value = scope:story.var:pacification
-	}
-	set_variable = {
-		name = resistance_gui
-		value = scope:story.var:resistance
-	}
-}
+#Lux Renata TBA
+##Used for setting up the Harrying of the North widget for events
+##Requires use of ep3_harrying_widget_clear_effect in the 'after' as well
+#ep3_harrying_widget_setup_effect = {
+#	## First, identify our widget character.
+#	save_scope_as = scope_character
+#	## Then transfer over some suitable variables for the UI.
+#	set_variable = {
+#		name = pacification_gui
+#		value = scope:story.var:pacification
+#	}
+#	set_variable = {
+#		name = resistance_gui
+#		value = scope:story.var:resistance
+#	}
+#}
 
-#Increase pacification
-ep3_increase_pacification_effect = {
-	save_scope_as = origin_char
-	scope:story = {
-		change_variable = {
-			name = pacification
-			add = $AMOUNT$
-		}
-	}
-	set_variable = {
-		name = pacification_gui
-		value = scope:story.var:pacification
-	}
-	if = { #Display in red if Anglo-Saxon
-		limit = {
-			culture = culture:anglo_saxon
-		}
-		custom_tooltip = ep3_increase_pacification_effect_tt_negative
-	}
-	else = { #Otherwise in green
-		custom_tooltip = ep3_increase_pacification_effect_tt_positive
-	}
+##Increase pacification
+#ep3_increase_pacification_effect = {
+#	scope:story = {
+#		change_variable = {
+#			name = pacification
+#			add = $AMOUNT$
+#		}
+#	}
+#	set_variable = {
+#		name = pacification_gui
+#		value = scope:story.var:pacification
+#	}
+#	if = { #Display in red if Anglo-Saxon
+#		limit = {
+#			culture = culture:anglo_saxon
+#		}
+#		custom_tooltip = ep3_increase_pacification_effect_tt_negative
+#	}
+#	else = { #Otherwise in green
+#		custom_tooltip = ep3_increase_pacification_effect_tt_positive
+#	}
 
-	if = {
-		limit = {
-			exists = scope:story.var:ruler_england
-		}
-		scope:story.var:ruler_england = {
-			send_interface_message = {
-				type = msg_pacification_rise
-				title = harrying.notification_pacification_rise
-				desc = harrying_pacification_rise
-			}
-		}
-	}
+#	if = {
+#		limit = {
+#			exists = scope:story.var:ruler_england
+#		}
+#		scope:story.var:ruler_england = {
+#			send_interface_message = {
+#				type = msg_pacification_rise
+#				title = harrying.notification_pacification_rise
+#				desc = harrying_pacification_rise
+#			}
+#		}
+#	}
 
-	if = {
-		limit = {
-			character:90028 = {
-				is_alive = yes
-				NOT = {
-					has_character_flag = hereward_settled_flag
-				}
-			}
-		}
-		character:90028 = {
-			send_interface_message = {
-				type = msg_pacification_rise
-				title = harrying.notification_pacification_rise
-				desc = harrying_pacification_rise
-			}
-		}
-	}
+#	if = {
+#		limit = {
+#			character:90028 = {
+#				is_alive = yes
+#				NOT = {
+#					has_character_flag = hereward_settled_flag
+#				}
+#			}
+#		}
+#		character:90028 = {
+#			send_interface_message = {
+#				type = msg_pacification_rise
+#				title = harrying.notification_pacification_rise
+#				desc = harrying_pacification_rise
+#			}
+#		}
+#	}
 
-	if = {
-		limit = {
-			scope:story.var:ruler_england = {
-				any_vassal = {
-					culture = culture:anglo_saxon
-				}
-			}
-		}
-		scope:story.var:ruler_england = {
-			every_vassal = {
-				limit = {
-					culture = culture:anglo_saxon
-				}
-				send_interface_message = {
-					type = msg_pacification_rise
-					title = harrying.notification_pacification_rise
-					desc = harrying_pacification_rise
-				}
-			}
-		}
-	}
-}
+#	if = {
+#		limit = {
+#			scope:story.var:ruler_england = {
+#				any_vassal = {
+#					culture = culture:anglo_saxon
+#				}
+#			}
+#		}
+#		scope:story.var:ruler_england = {
+#			every_vassal = {
+#				limit = {
+#					culture = culture:anglo_saxon
+#				}
+#				send_interface_message = {
+#					type = msg_pacification_rise
+#					title = harrying.notification_pacification_rise
+#					desc = harrying_pacification_rise
+#				}
+#			}
+#		}
+#	}
+#}
 
-#Increase pacification - large
-ep3_increase_pacification_large_effect = {
-	save_scope_as = origin_char
-	scope:story = {
-		change_variable = {
-			name = pacification
-			add = 2
-		}
-	}
-	set_variable = {
-		name = pacification_gui
-		value = scope:story.var:pacification
-	}
-	if = { #Display in red if Anglo-Saxon
-		limit = {
-			culture = culture:anglo_saxon
-		}
-		custom_tooltip = ep3_increase_pacification_effect_tt_negative_large
-	}
-	else = { #Otherwise in green
-		custom_tooltip = ep3_increase_pacification_effect_tt_positive_large
-	}
+##Increase pacification - large
+#ep3_increase_pacification_large_effect = {
+#	save_scope_as = origin_char
+#	scope:story = {
+#		change_variable = {
+#			name = pacification
+#			add = 2
+#		}
+#	}
+#	set_variable = {
+#		name = pacification_gui
+#		value = scope:story.var:pacification
+#	}
+#	if = { #Display in red if Anglo-Saxon
+#		limit = {
+#			culture = culture:anglo_saxon
+#		}
+#		custom_tooltip = ep3_increase_pacification_effect_tt_negative_large
+#	}
+#	else = { #Otherwise in green
+#		custom_tooltip = ep3_increase_pacification_effect_tt_positive_large
+#	}
 
-	if = {
-		limit = {
-			exists = scope:story.var:ruler_england
-		}
-		scope:story.var:ruler_england = {
-			send_interface_message = {
-				type = msg_pacification_rise
-				title = harrying.notification_pacification_rise
-				desc = harrying_pacification_rise
-			}
-		}
-	}
+#	if = {
+#		limit = {
+#			exists = scope:story.var:ruler_england
+#		}
+#		scope:story.var:ruler_england = {
+#			send_interface_message = {
+#				type = msg_pacification_rise
+#				title = harrying.notification_pacification_rise
+#				desc = harrying_pacification_rise
+#			}
+#		}
+#	}
 
-	if = {
-		limit = {
-			character:90028 = {
-				is_alive = yes
-				NOT = {
-					has_character_flag = hereward_settled_flag
-				}
-			}
-		}
-		character:90028 = {
-			send_interface_message = {
-				type = msg_pacification_rise
-				title = harrying.notification_pacification_rise
-				desc = harrying_pacification_rise
-			}
-		}
-	}
+#	if = {
+#		limit = {
+#			character:90028 = {
+#				is_alive = yes
+#				NOT = {
+#					has_character_flag = hereward_settled_flag
+#				}
+#			}
+#		}
+#		character:90028 = {
+#			send_interface_message = {
+#				type = msg_pacification_rise
+#				title = harrying.notification_pacification_rise
+#				desc = harrying_pacification_rise
+#			}
+#		}
+#	}
 
-	if = {
-		limit = {
-			scope:story.var:ruler_england = {
-				any_vassal = {
-					culture = culture:anglo_saxon
-				}
-			}
-		}
-		scope:story.var:ruler_england = {
-			every_vassal = {
-				limit = {
-					culture = culture:anglo_saxon
-				}
-				send_interface_message = {
-					type = msg_pacification_rise
-					title = harrying.notification_pacification_rise
-					desc = harrying_pacification_rise
-				}
-			}
-		}
-	}
-}
+#	if = {
+#		limit = {
+#			scope:story.var:ruler_england = {
+#				any_vassal = {
+#					culture = culture:anglo_saxon
+#				}
+#			}
+#		}
+#		scope:story.var:ruler_england = {
+#			every_vassal = {
+#				limit = {
+#					culture = culture:anglo_saxon
+#				}
+#				send_interface_message = {
+#					type = msg_pacification_rise
+#					title = harrying.notification_pacification_rise
+#					desc = harrying_pacification_rise
+#				}
+#			}
+#		}
+#	}
+#}
 
-#Increase resistance
-ep3_increase_resistance_effect = {
-	save_scope_as = origin_char
-	scope:story = {
-		change_variable = {
-			name = resistance
-			add = $AMOUNT$
-		}
-	}
-	set_variable = {
-		name = resistance_gui
-		value = scope:story.var:resistance
-	}
-	if = { #Display in green if Anglo-Saxon
-		limit = {
-			culture = culture:anglo_saxon
-		}
-		custom_tooltip = ep3_increase_resistance_effect_tt_positive
-	}
-	else = { #Otherwise in green
-		custom_tooltip = ep3_increase_resistance_effect_tt_negative
-	}
+##Increase resistance
+#ep3_increase_resistance_effect = {
+#	save_scope_as = origin_char
+#	scope:story = {
+#		change_variable = {
+#			name = resistance
+#			add = $AMOUNT$
+#		}
+#	}
+#	set_variable = {
+#		name = resistance_gui
+#		value = scope:story.var:resistance
+#	}
+#	if = { #Display in green if Anglo-Saxon
+#		limit = {
+#			culture = culture:anglo_saxon
+#		}
+#		custom_tooltip = ep3_increase_resistance_effect_tt_positive
+#	}
+#	else = { #Otherwise in green
+#		custom_tooltip = ep3_increase_resistance_effect_tt_negative
+#	}
 
-	if = {
-		limit = {
-			exists = scope:story.var:ruler_england
-		}
-		scope:story.var:ruler_england = {
-			send_interface_message = {
-				type = msg_resistance_rise
-				title = harrying.notification_resistance_rise
-				desc = harrying_resistance_rise
-			}
-		}
-	}
+#	if = {
+#		limit = {
+#			exists = scope:story.var:ruler_england
+#		}
+#		scope:story.var:ruler_england = {
+#			send_interface_message = {
+#				type = msg_resistance_rise
+#				title = harrying.notification_resistance_rise
+#				desc = harrying_resistance_rise
+#			}
+#		}
+#	}
 
-	if = {
-		limit = {
-			character:90028 = {
-				is_alive = yes
-				NOT = {
-					has_character_flag = hereward_settled_flag
-				}
-			}
-		}
-		character:90028 = {
-			send_interface_message = {
-				type = msg_resistance_rise
-				title = harrying.notification_resistance_rise
-				desc = harrying_resistance_rise
-			}
-		}
-	}
+#	if = {
+#		limit = {
+#			character:90028 = {
+#				is_alive = yes
+#				NOT = {
+#					has_character_flag = hereward_settled_flag
+#				}
+#			}
+#		}
+#		character:90028 = {
+#			send_interface_message = {
+#				type = msg_resistance_rise
+#				title = harrying.notification_resistance_rise
+#				desc = harrying_resistance_rise
+#			}
+#		}
+#	}
 
-	if = {
-		limit = {
-			scope:story.var:ruler_england = {
-				any_vassal = {
-					culture = culture:anglo_saxon
-				}
-			}
-		}
-		scope:story.var:ruler_england = {
-			every_vassal = {
-				limit = {
-					culture = culture:anglo_saxon
-				}
-				send_interface_message = {
-					type = msg_resistance_rise
-					title = harrying.notification_resistance_rise
-					desc = harrying_resistance_rise
-				}
-			}
-		}
-	}
-}
+#	if = {
+#		limit = {
+#			scope:story.var:ruler_england = {
+#				any_vassal = {
+#					culture = culture:anglo_saxon
+#				}
+#			}
+#		}
+#		scope:story.var:ruler_england = {
+#			every_vassal = {
+#				limit = {
+#					culture = culture:anglo_saxon
+#				}
+#				send_interface_message = {
+#					type = msg_resistance_rise
+#					title = harrying.notification_resistance_rise
+#					desc = harrying_resistance_rise
+#				}
+#			}
+#		}
+#	}
+#}
 
-#Increase resistance - large
-ep3_increase_resistance_large_effect = {
-	save_scope_as = origin_char
-	scope:story = {
-		change_variable = {
-			name = resistance
-			add = 2
-		}
-	}
-	set_variable = {
-		name = resistance_gui
-		value = scope:story.var:resistance
-	}
-	if = { #Display in green if Anglo-Saxon
-		limit = {
-			culture = culture:anglo_saxon
-		}
-		custom_tooltip = ep3_increase_resistance_effect_tt_positive_large
-	}
-	else = { #Otherwise in green
-		custom_tooltip = ep3_increase_resistance_effect_tt_negative_large
-	}
+##Increase resistance - large
+#ep3_increase_resistance_large_effect = {
+#	save_scope_as = origin_char
+#	scope:story = {
+#		change_variable = {
+#			name = resistance
+#			add = 2
+#		}
+#	}
+#	set_variable = {
+#		name = resistance_gui
+#		value = scope:story.var:resistance
+#	}
+#	if = { #Display in green if Anglo-Saxon
+#		limit = {
+#			culture = culture:anglo_saxon
+#		}
+#		custom_tooltip = ep3_increase_resistance_effect_tt_positive_large
+#	}
+#	else = { #Otherwise in green
+#		custom_tooltip = ep3_increase_resistance_effect_tt_negative_large
+#	}
 
-	if = {
-		limit = {
-			exists = scope:story.var:ruler_england
-		}
-		scope:story.var:ruler_england = {
-			send_interface_message = {
-				type = msg_resistance_rise
-				title = harrying.notification_resistance_rise
-				desc = harrying_resistance_rise
-			}
-		}
-	}
+#	if = {
+#		limit = {
+#			exists = scope:story.var:ruler_england
+#		}
+#		scope:story.var:ruler_england = {
+#			send_interface_message = {
+#				type = msg_resistance_rise
+#				title = harrying.notification_resistance_rise
+#				desc = harrying_resistance_rise
+#			}
+#		}
+#	}
 
-	if = {
-		limit = {
-			character:90028 = {
-				is_alive = yes
-				NOT = {
-					has_character_flag = hereward_settled_flag
-				}
-			}
-		}
-		character:90028 = {
-			send_interface_message = {
-				type = msg_resistance_rise
-				title = harrying.notification_resistance_rise
-				desc = harrying_resistance_rise
-			}
-		}
-	}
+#	if = {
+#		limit = {
+#			character:90028 = {
+#				is_alive = yes
+#				NOT = {
+#					has_character_flag = hereward_settled_flag
+#				}
+#			}
+#		}
+#		character:90028 = {
+#			send_interface_message = {
+#				type = msg_resistance_rise
+#				title = harrying.notification_resistance_rise
+#				desc = harrying_resistance_rise
+#			}
+#		}
+#	}
 
-	if = {
-		limit = {
-			scope:story.var:ruler_england = {
-				any_vassal = {
-					culture = culture:anglo_saxon
-				}
-			}
-		}
-		scope:story.var:ruler_england = {
-			random_vassal = {
-				limit = {
-					culture = culture:anglo_saxon
-				}
-				send_interface_message = {
-					type = msg_resistance_rise
-					title = harrying.notification_resistance_rise
-					desc = harrying_resistance_rise
-				}
-			}
-		}
-	}
-}
+#	if = {
+#		limit = {
+#			scope:story.var:ruler_england = {
+#				any_vassal = {
+#					culture = culture:anglo_saxon
+#				}
+#			}
+#		}
+#		scope:story.var:ruler_england = {
+#			random_vassal = {
+#				limit = {
+#					culture = culture:anglo_saxon
+#				}
+#				send_interface_message = {
+#					type = msg_resistance_rise
+#					title = harrying.notification_resistance_rise
+#					desc = harrying_resistance_rise
+#				}
+#			}
+#		}
+#	}
+#}
 
-#Decrease pacification
-ep3_decrease_pacification_effect = {
-	save_scope_as = origin_char
-	if = {
-		limit = { scope:story.var:pacification != 0 }
-		scope:story = {
-			change_variable = {
-				name = pacification
-				add = -1
-			}
-		}
-		set_variable = {
-			name = pacification_gui
-			value = scope:story.var:pacification
-		}
-		if = { #Display in green if Anglo-Saxon
-			limit = {
-				culture = culture:anglo_saxon
-			}
-			custom_tooltip = ep3_decrease_pacification_effect_tt_positive
-		}
-		else = { #Otherwise in green
-			custom_tooltip = ep3_decrease_pacification_effect_tt_negative
-		}
+##Decrease pacification
+#ep3_decrease_pacification_effect = {
+#	save_scope_as = origin_char
+#	if = {
+#		limit = { scope:story.var:pacification != 0 }
+#		scope:story = {
+#			change_variable = {
+#				name = pacification
+#				add = -1
+#			}
+#		}
+#		set_variable = {
+#			name = pacification_gui
+#			value = scope:story.var:pacification
+#		}
+#		if = { #Display in green if Anglo-Saxon
+#			limit = {
+#				culture = culture:anglo_saxon
+#			}
+#			custom_tooltip = ep3_decrease_pacification_effect_tt_positive
+#		}
+#		else = { #Otherwise in green
+#			custom_tooltip = ep3_decrease_pacification_effect_tt_negative
+#		}
 
-		if = {
-			limit = {
-				exists = scope:story.var:ruler_england
-			}
-			scope:story.var:ruler_england = {
-				send_interface_message = {
-					type = msg_pacification_falls
-					title = harrying.notification_pacification_fall
-					desc = harrying_pacification_fall
-				}
-			}
-		}
+#		if = {
+#			limit = {
+#				exists = scope:story.var:ruler_england
+#			}
+#			scope:story.var:ruler_england = {
+#				send_interface_message = {
+#					type = msg_pacification_falls
+#					title = harrying.notification_pacification_fall
+#					desc = harrying_pacification_fall
+#				}
+#			}
+#		}
 
-		if = {
-			limit = {
-				character:90028 = {
-					is_alive = yes
-					NOT = {
-						has_character_flag = hereward_settled_flag
-					}
-				}
-			}
-			character:90028 = {
-				send_interface_message = {
-					type = msg_pacification_falls
-					title = harrying.notification_pacification_fall
-					desc = harrying_pacification_fall
-				}
-			}
-		}
+#		if = {
+#			limit = {
+#				character:90028 = {
+#					is_alive = yes
+#					NOT = {
+#						has_character_flag = hereward_settled_flag
+#					}
+#				}
+#			}
+#			character:90028 = {
+#				send_interface_message = {
+#					type = msg_pacification_falls
+#					title = harrying.notification_pacification_fall
+#					desc = harrying_pacification_fall
+#				}
+#			}
+#		}
 
-		if = {
-			limit = {
-				scope:story.var:ruler_england = {
-					any_vassal = {
-						culture = culture:anglo_saxon
-					}
-				}
-			}
-			scope:story.var:ruler_england = {
-				every_vassal = {
-					limit = {
-						culture = culture:anglo_saxon
-					}
-					send_interface_message = {
-						type = msg_pacification_falls
-						title = harrying.notification_pacification_fall
-						desc = harrying_pacification_fall
-					}
-				}
-			}
-		}
-	}
-}
+#		if = {
+#			limit = {
+#				scope:story.var:ruler_england = {
+#					any_vassal = {
+#						culture = culture:anglo_saxon
+#					}
+#				}
+#			}
+#			scope:story.var:ruler_england = {
+#				every_vassal = {
+#					limit = {
+#						culture = culture:anglo_saxon
+#					}
+#					send_interface_message = {
+#						type = msg_pacification_falls
+#						title = harrying.notification_pacification_fall
+#						desc = harrying_pacification_fall
+#					}
+#				}
+#			}
+#		}
+#	}
+#}
 
-#Decrease resistance
-ep3_decrease_resistance_effect = {
-	save_scope_as = origin_char
-	if = {
-		limit = { scope:story.var:pacification != 0 }
-		scope:story = {
-			change_variable = {
-				name = resistance
-				add = -1
-			}
-		}
-		set_variable = {
-			name = resistance_gui
-			value = scope:story.var:resistance
-		}
-		if = { #Display in red if Anglo-Saxon
-			limit = {
-				culture = culture:anglo_saxon
-			}
-			custom_tooltip = ep3_decrease_resistance_effect_tt_negative
-		}
-		else = { #Otherwise in green
-			custom_tooltip = ep3_decrease_resistance_effect_tt_positive
-		}
+##Decrease resistance
+#ep3_decrease_resistance_effect = {
+#	save_scope_as = origin_char
+#	if = {
+#		limit = { scope:story.var:pacification > 0 }
+#		scope:story = {
+#			change_variable = {
+#				name = resistance
+#				add = -1
+#			}
+#		}
+#		set_variable = {
+#			name = resistance_gui
+#			value = scope:story.var:resistance
+#		}
+#		if = { #Display in red if Anglo-Saxon
+#			limit = {
+#				culture = culture:anglo_saxon
+#			}
+#			custom_tooltip = ep3_decrease_resistance_effect_tt_negative
+#		}
+#		else = { #Otherwise in green
+#			custom_tooltip = ep3_decrease_resistance_effect_tt_positive
+#		}
 
-		if = {
-			limit = {
-				exists = scope:story.var:ruler_england
-			}
-			scope:story.var:ruler_england = {
-				send_interface_message = {
-					type = msg_resistance_falls
-					title = harrying.notification_resistance_fall
-					desc = harrying_resistance_fall
-				}
-			}
-		}
+#		if = {
+#			limit = {
+#				exists = scope:story.var:ruler_england
+#			}
+#			scope:story.var:ruler_england = {
+#				send_interface_message = {
+#					type = msg_resistance_falls
+#					title = harrying.notification_resistance_fall
+#					desc = harrying_resistance_fall
+#				}
+#			}
+#		}
 
-		if = {
-			limit = {
-				character:90028 = {
-					is_alive = yes
-					NOT = {
-						has_character_flag = hereward_settled_flag
-					}
-				}
-			}
-			character:90028 = {
-				send_interface_message = {
-					type = msg_resistance_falls
-					title = harrying.notification_resistance_fall
-					desc = harrying_resistance_fall
-				}
-			}
-		}
+#		if = {
+#			limit = {
+#				character:90028 = {
+#					is_alive = yes
+#					NOT = {
+#						has_character_flag = hereward_settled_flag
+#					}
+#				}
+#			}
+#			character:90028 = {
+#				send_interface_message = {
+#					type = msg_resistance_falls
+#					title = harrying.notification_resistance_fall
+#					desc = harrying_resistance_fall
+#				}
+#			}
+#		}
 
-		if = {
-			limit = {
-				scope:story.var:ruler_england = {
-					any_vassal = {
-						culture = culture:anglo_saxon
-					}
-				}
-			}
-			scope:story.var:ruler_england = {
-				every_vassal = {
-					limit = {
-						culture = culture:anglo_saxon
-					}
-					send_interface_message = {
-						type = msg_resistance_falls
-						title = harrying.notification_resistance_fall
-						desc = harrying_resistance_fall
-					}
-				}
-			}
-		}
-	}
-}
+#		if = {
+#			limit = {
+#				scope:story.var:ruler_england = {
+#					any_vassal = {
+#						culture = culture:anglo_saxon
+#					}
+#				}
+#			}
+#			scope:story.var:ruler_england = {
+#				every_vassal = {
+#					limit = {
+#						culture = culture:anglo_saxon
+#					}
+#					send_interface_message = {
+#						type = msg_resistance_falls
+#						title = harrying.notification_resistance_fall
+#						desc = harrying_resistance_fall
+#					}
+#				}
+#			}
+#		}
+#	}
+#}
 
-#Used for clearing widget data from the participants
-ep3_harrying_widget_clear_effect = {
-	remove_variable = pacification_gui
-	remove_variable = resistance_gui
-}
+##Used for clearing widget data from the participants
+#ep3_harrying_widget_clear_effect = {
+#	remove_variable = pacification_gui
+#	remove_variable = resistance_gui
+#}
+#Lux Renata TBA End
 
 # Effect for handling players and AI continuing as landless if deposed
 # Should be used over the standard effect in most cases (except barons/unlanded AI etc.)
