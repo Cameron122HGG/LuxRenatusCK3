@@ -1512,94 +1512,94 @@ ep3_adventurer_ai_valid_contract_trigger = {
 	}
 }
 
-hasan_evangelize_province_trigger = {
-	save_temporary_scope_as = county
-	scope:county.faith = {
+#hasan_evangelize_province_trigger = {
+#	save_temporary_scope_as = county
+#	scope:county.faith = {
 		# Religion is same as Hasan's (i.e. Muslim)
 		#religion = root.religion # QA thinks its more fun without this!
-		NOR = {
-			# Faith is different from Hasan's
-			custom_tooltip = {
-				text = zealous_missionary_start_decision_other_faith_location
-				this = root.faith
-			}
-			# County is not held by it's Faith's Religious Head
-			custom_tooltip = {
-				text = is_held_by_hof_tt
-				religious_head ?= scope:county.holder
-			}
-		}
-	}
-	development_level <= 25
-	custom_tooltip = {
-		text = has_tougher_to_convert_tt
-		NOT = { has_county_modifier = tougher_to_convert }
-	}
-	custom_tooltip = {
-		text = 0_or_below_county_opinion_tt
-		county_opinion <= 0
-	}
-	custom_tooltip = {
-		text = NOT_IS_HOLY_SITE_TRIGGER
-		NOT = {
-			any_direct_de_jure_vassal_title = { is_holy_site_of = scope:county.faith }
-		}
-	}
-}
+#		NOR = {
+#			# Faith is different from Hasan's
+#			custom_tooltip = {
+#				text = zealous_missionary_start_decision_other_faith_location
+#				this = root.faith
+#			}
+#			# County is not held by it's Faith's Religious Head
+#			custom_tooltip = {
+#				text = is_held_by_hof_tt
+#				religious_head ?= scope:county.holder
+#			}
+#		}
+#	}
+#	development_level <= 25
+#	custom_tooltip = {
+#		text = has_tougher_to_convert_tt
+#		NOT = { has_county_modifier = tougher_to_convert }
+#	}
+#	custom_tooltip = {
+#		text = 0_or_below_county_opinion_tt
+#		county_opinion <= 0
+#	}
+#	custom_tooltip = {
+#		text = NOT_IS_HOLY_SITE_TRIGGER
+#		NOT = {
+#			any_direct_de_jure_vassal_title = { is_holy_site_of = scope:county.faith }
+#		}
+#	}
+#}
 
-hasan_camp_in_foes_realm_trigger = {
-	trigger_if = {
-		limit = {
-			any_owned_story = {
-				var:ultimate_foe ?= {
-					save_temporary_scope_as = ultimate_foe
-				}
-			}
-		}
-		custom_description = {
-			text = hasan_stroy_cycle_camp_at_foe_realm
-			object = scope:ultimate_foe
-			domicile.domicile_location.county.holder = {
-				OR = {
-					any_liege_or_above = {
-						this = scope:ultimate_foe
-					}
-					this = scope:ultimate_foe
-				}
-			}
-		}
-	}
-	trigger_else = {
-		character:3096 = {
-			save_temporary_scope_as = caliph
-		}
-		save_temporary_scope_as = hasan
-		any_owned_story = {
-			trigger_if = {
-				limit = { exists = var:radical_points }
-				save_temporary_scope_value_as = {
-					name = radical_points
-					value = var:radical_points
-				}
-			}
-			trigger_else = {
-				save_temporary_scope_value_as = {
-					name = radical_points
-					value = 0
-				}
-			}
-		}
-		custom_tooltip = {
-			text = hasan_stroy_cycle_ultimate_foe
-			any_owned_story = {
-				story_type = story_hasan
-				exists = var:ultimate_foe
-				exists = var:radical_points
-				var:radical_points >= 15
-			}
-		}
-	}
-}
+#hasan_camp_in_foes_realm_trigger = {
+#	trigger_if = {
+#		limit = {
+#			any_owned_story = {
+#				var:ultimate_foe ?= {
+#					save_temporary_scope_as = ultimate_foe
+#				}
+#			}
+#		}
+#		custom_description = {
+#			text = hasan_stroy_cycle_camp_at_foe_realm
+#			object = scope:ultimate_foe
+#			domicile.domicile_location.county.holder = {
+#				OR = {
+#					any_liege_or_above = {
+#						this = scope:ultimate_foe
+#					}
+#					this = scope:ultimate_foe
+#				}
+#			}
+#		}
+#	}
+#	trigger_else = {
+#		character:3096 = {
+#			save_temporary_scope_as = caliph
+#		}
+#		save_temporary_scope_as = hasan
+#		any_owned_story = {
+#			trigger_if = {
+#				limit = { exists = var:radical_points }
+#				save_temporary_scope_value_as = {
+#					name = radical_points
+#					value = var:radical_points
+#				}
+#			}
+#			trigger_else = {
+#				save_temporary_scope_value_as = {
+#					name = radical_points
+#					value = 0
+#				}
+#			}
+#		}
+#		custom_tooltip = {
+#			text = hasan_stroy_cycle_ultimate_foe
+#			any_owned_story = {
+#				story_type = story_hasan
+#				exists = var:ultimate_foe
+#				exists = var:radical_points
+#				var:radical_points >= 15
+#			}
+#		}
+#	}
+#}
 
 estate_can_construct_market_03_trigger = {
 	domicile ?= { has_domicile_building_or_higher = estate_main_02 }
