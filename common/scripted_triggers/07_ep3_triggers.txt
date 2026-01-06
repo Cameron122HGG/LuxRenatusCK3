@@ -5,8 +5,10 @@
 is_roman_emperor_trigger = {
 	OR = {
 		has_title = title:e_byzantium
+		has_title = title:e_spqr #CST
 		has_title = title:h_roman_empire
 		has_title = title:h_eastern_roman_empire
+		has_title = title:h_western_roman_empire #CST
 	}
 }
 
@@ -14,14 +16,17 @@ is_roman_emperor_excluding_byzantium_trigger = {
 	OR = {
 		has_title = title:h_roman_empire
 		has_title = title:h_eastern_roman_empire
+		has_title = title:h_western_roman_empire #CST
 	}
 }
 
 is_roman_emperor_primary_title_trigger = {
 	OR = {
 		primary_title ?= title:e_byzantium
+		primary_title ?= title:e_spqr #CST
 		primary_title ?= title:h_roman_empire
 		primary_title ?= title:h_eastern_roman_empire
+		primary_title ?= title:h_western_roman_empire #CST
 	}
 }
 
@@ -32,28 +37,21 @@ is_roman_emperor_primary_title_excluding_byzantium_trigger = {
 	}
 }
 
-valid_for_byz_emperor_content_trigger = {
-	has_ep3_dlc_trigger = yes
-	culture = {
-		OR = {
-			has_cultural_pillar = heritage_byzantine
-			has_cultural_pillar = heritage_caucasian
-		}
-	}
+is_roman_emperor_excluding_western_rome_trigger = { #CST
 	OR = {
-		is_roman_emperor_primary_title_trigger = yes
-		AND = {
-			culture = {
-				OR = {
-					this = culture:greek
-					any_parent_culture_or_above = { this = culture:greek }
-				}
-			}
-			highest_held_title_tier >= tier_empire
-		}
+		has_title = title:h_roman_empire
+		has_title = title:h_eastern_roman_empire
+		has_title = title:e_byzantium
 	}
 }
 
+is_roman_emperor_excluding_eastern_rome_trigger = { #CST
+	OR = {
+		has_title = title:h_roman_empire
+		has_title = title:h_western_roman_empire
+		has_title = title:e_spqr
+	}
+}
 valid_for_byz_governor_content_trigger = {
 	has_ep3_dlc_trigger = yes
 	is_governor = yes
@@ -1763,3 +1761,17 @@ influence_candidacy_valid_succession_law_trigger = {
 		has_$TYPE$_law = japanese_regency_succession_law
 	}
 }
+
+#is_western_roman_emperor_trigger = {
+#	OR = {
+#		has_title = title:e_spqr
+#		has_title = title:h_western_empire
+#	}
+#}
+
+#is_eastern_roman_emperor_trigger = {
+#	OR = {
+#		has_title = title:e_byzantium
+#		has_title = title:h_eastern_empire
+#	}
+#}
