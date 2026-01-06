@@ -15,11 +15,13 @@ on_combat_end_winner = {
 	events = {
 		combat_event.0001 # Victorious commander gains progress towards earning "The Undefeated" nickname (obtained after winning 100 victories without a loss).
 		combat_event.1001 # Winner imprisons commanders/knights on the losing side.
-		combat_event.2001 # # Commander may become known as a Gajapati if you have the prerequisites
+		#Lux Renata TBA
+		#combat_event.2001 # # Commander may become known as a Gajapati if you have the prerequisites
 		fp1_shieldmaiden.0031 # Track shieldmaiden levelling.
 		historical_artifacts.0100 # #Save a memorable battle as potential topic for artifacts
 		combat_event.2101 #	Battle Won: glory goes up.
-		combat_event.2200 #	Hereward beat a Norman
+		#Lux Renata TBA
+		#combat_event.2200 #	Hereward beat a Norman
 		combat_event.3000 # Battle PoI Creation
 	}
 	random_events = {
@@ -27,57 +29,58 @@ on_combat_end_winner = {
 
 		20 = artifact.6000	# Chance to loot an enemy banner after winning a battle
 		1 = harm.0012		# A conk on the noggin' renders you a-foggin'.
-		20 = legend_spread_events.8140	# Make this part of your legend?
+		20 = legend_spread_events.8140	# Make this part of your legend?	
 	}
 	effect = {
 		#If you are el Cid you get a special events
-		if = {
-			limit = {
-				side_primary_participant = { has_variable = ongoing_cid_story_cycle }
-				enemy_side.side_commander.primary_title = title:k_valencia
-			}
-			enemy_side.side_commander ?= { save_scope_as = loser }
-			side_primary_participant = {
-				set_variable = {
-					name = cid_title_to_give
-					value = prev.enemy_side.side_commander.primary_title
-				}
-				trigger_event = cid.2000 #Tizona
-			}
-		}
-		else_if = {
-			limit = {
-				side_primary_participant = { has_variable = ongoing_cid_story_cycle }
-				OR = {
-					enemy_side.side_commander.primary_title = title:c_barcelona
-					enemy_side.side_commander.primary_title = title:d_barcelona
-				}
-			}
-			enemy_side.side_commander ?= { save_scope_as = loser }
-			side_primary_participant = {
-				set_variable = {
-					name = cid_title_to_give
-					value = prev.enemy_side.side_commander.primary_title
-				}
-				trigger_event = cid.2001 #Colada
-			}
-		}
-		else_if = {
-			limit = {
-				side_primary_participant = { has_variable = ongoing_cid_story_cycle }
-			}
-			random = {
-				chance = 10
-				enemy_side.side_commander ?= { save_scope_as = loser }
-				side_primary_participant = {
-					set_variable = {
-						name = cid_title_to_give
-						value = prev.enemy_side.side_commander.primary_title
-					}
-					trigger_event = cid.2000
-				}
-			}
-		}
+		#Lux Renata TBA
+		#if = {
+		#	limit = {
+		#		side_primary_participant = { has_variable = ongoing_cid_story_cycle }
+		#		enemy_side.side_commander.primary_title = title:k_valencia
+		#	}
+		#	enemy_side.side_commander ?= { save_scope_as = loser }
+		#	side_primary_participant = {
+		#		set_variable = {
+		#			name = cid_title_to_give
+		#			value = prev.enemy_side.side_commander.primary_title
+		#		}
+		#		trigger_event = cid.2000 #Tizona
+		#	}
+		#}
+		#else_if = {
+		#	limit = {
+		#		side_primary_participant = { has_variable = ongoing_cid_story_cycle }
+		#		OR = {
+		#			enemy_side.side_commander.primary_title = title:c_barcelona
+		#			enemy_side.side_commander.primary_title = title:d_barcelona
+		#		}
+		#	}
+		#	enemy_side.side_commander ?= { save_scope_as = loser }
+		#	side_primary_participant = {
+		#		set_variable = {
+		#			name = cid_title_to_give
+		#			value = prev.enemy_side.side_commander.primary_title
+		#		}
+		#		trigger_event = cid.2001 #Colada
+		#	}
+		#}
+		#else_if = {
+		#	limit = {
+		#		side_primary_participant = { has_variable = ongoing_cid_story_cycle }
+		#	}
+		#	random = {
+		#		chance = 10
+		#		enemy_side.side_commander ?= { save_scope_as = loser }
+		#		side_primary_participant = {
+		#			set_variable = {
+		#				name = cid_title_to_give
+		#				value = prev.enemy_side.side_commander.primary_title
+		#			}
+		#			trigger_event = cid.2000
+		#		}
+		#	}
+		#}
 		if = {
 			limit = {
 				exists = side_commander
@@ -504,7 +507,8 @@ on_combat_end_winner = {
 on_combat_end_loser = {
 	events = {
 		combat_event.0002 # Defeated commander loses shot at getting 'The Undefeated' nickname.
-		almohad.0003 # Check whether Ibn Tumert should die
+		#Lux Renata TBA
+		#almohad.0003 # Check whether Ibn Tumert should die
 		fp1_shieldmaiden.0031 # Track shieldmaiden levelling.
 		combat_event.2111 # Battle Lost: glory goes down.
 	}
@@ -565,7 +569,6 @@ on_combat_end_loser = {
 			if = {
 				limit = {
 					side_primary_participant = {
-						is_landed = yes
 						is_at_war = yes
 						any_character_war = {
 							NOT = {
