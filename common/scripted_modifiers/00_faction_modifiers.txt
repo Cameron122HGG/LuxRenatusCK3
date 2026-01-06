@@ -1260,27 +1260,29 @@ common_faction_modifiers = {
 		any_home_court_hostage = { warden = $FACTION_TARGET$ }
 	}
 
-	modifier = {
-		desc = "FACTION_REASON_DETRACTORS_STICK_TOGETHER"
-		add = -50
-		has_trait = fp3_struggle_detractor
-		OR = {
-			culture = { has_same_culture_heritage = $FACTION_TARGET$.culture }
-			faith = $FACTION_TARGET$.faith
-		}
-		$FACTION_TARGET$ = {
-			has_trait = fp3_struggle_detractor
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_DETRACTORS_STICK_TOGETHER"
+	# 	add = -50
+	# 	has_trait = fp3_struggle_detractor
+	# 	OR = {
+	# 		culture = { has_same_culture_heritage = $FACTION_TARGET$.culture }
+	# 		faith = $FACTION_TARGET$.faith
+	# 	}
+	# 	$FACTION_TARGET$ = {
+	# 		has_trait = fp3_struggle_detractor
+	# 	}
+	# }
 
 	#FP3 Strengthern Caliphate
-	modifier = {
-		desc = "FACTION_REASON_FP3_SUPPORTER"
-		add = -50
-		global_var:fp3_struggle_ending ?= flag:fp3_struggle_strengthen_caliphate_ending
-		has_trait = fp3_struggle_supporter
-		$FACTION_TARGET$ = { has_title = title:d_sunni }
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_FP3_SUPPORTER"
+	# 	add = -50
+	# 	global_var:fp3_struggle_ending ?= flag:fp3_struggle_strengthen_caliphate_ending
+	# 	has_trait = fp3_struggle_supporter
+	# 	$FACTION_TARGET$ = { has_title = title:d_sunni }
+	# }
 	modifier = {
 		add = 500
 		confederation.leading_house.house_head.joined_faction ?= scope:faction
@@ -1297,26 +1299,27 @@ common_faction_modifiers = {
 
 independence_faction_create_blockers = {
 	# If a suitable Populist Faction already exists, prefer to side with it
-	modifier = {
-		add = -1000
-		$FACTION_TARGET$ = {
-			any_targeting_faction = {
-  				faction_type = populist_faction
-  				var:faction_faith = root.faith
-  				var:faction_culture = root.culture
-			}
-	  	}
-	}
-	modifier = {
-		add = -1000
-		$FACTION_TARGET$ = {
-			any_targeting_faction = {
-  				faction_type = populist_faction
-  				var:faction_faith = root.faith
-  				var:faction_culture = { has_same_culture_heritage = root.culture }
-			}
-	  	}
-	}
+	#AGOT Disabled, populist faction
+	# modifier = {
+	# 	add = -1000
+	# 	$FACTION_TARGET$ = {
+	# 		any_targeting_faction = {
+  	# 			faction_type = populist_faction
+  	# 			var:faction_faith = root.faith
+  	# 			var:faction_culture = root.culture
+	# 		}
+	#   	}
+	# }
+	# modifier = {
+	# 	add = -1000
+	# 	$FACTION_TARGET$ = {
+	# 		any_targeting_faction = {
+  	# 			faction_type = populist_faction
+  	# 			var:faction_faith = root.faith
+  	# 			var:faction_culture = { has_same_culture_heritage = root.culture }
+	# 		}
+	#   	}
+	# }
 	modifier = {
 		add = -2000
 		OR = {
@@ -1334,7 +1337,8 @@ independence_faction_create_blockers = {
 			any_owned_story = {
 				OR = {
 					story_type = story_greatest_of_khans
-					story_type = story_mongol_invasion
+					#AGOT Disabled
+					#story_type = story_mongol_invasion
 				}
 			}
 	  	}
@@ -1347,15 +1351,16 @@ independence_faction_modifiers = {
 
 		add = {
 			value = -150
-			if = {
-				limit = {
-					exists = title:e_hre
-					$FACTION_TARGET$ = {
-						has_primary_title = title:e_hre
-					}
-				}
-				add = -150
-			}
+			#AGOT Disabled
+			# if = {
+			# 	limit = {
+			# 		exists = title:e_hre
+			# 		$FACTION_TARGET$ = {
+			# 			has_primary_title = title:e_hre
+			# 		}
+			# 	}
+			# 	add = -150
+			# }
 		}
 		$FACTION_TARGET$.primary_title = {
 			has_order_of_succession = election
@@ -1440,13 +1445,14 @@ independence_faction_modifiers = {
 		}
 	}
 
+	#AGOT Disabled
 	# Stem Duchies innovation
-	modifier = {
-		desc = "FACTION_REASON_INNOVATION_STEM_DUCHIES"
-		add = -25
-		$FACTION_TARGET$ = { culture = { has_innovation = innovation_stem_duchies }	}
-		culture = { has_same_culture_heritage = $FACTION_TARGET$.culture }
-	}
+	# modifier = {
+	# 	desc = "FACTION_REASON_INNOVATION_STEM_DUCHIES"
+	# 	add = -25
+	# 	$FACTION_TARGET$ = { culture = { has_innovation = innovation_stem_duchies }	}
+	# 	culture = { has_same_culture_heritage = $FACTION_TARGET$.culture }
+	# }
 
 	# Characters are less likely to join if cultural acceptance is high
 	modifier = {
@@ -1549,25 +1555,27 @@ independence_faction_modifiers = {
 		}
 	}
 
-	# Less likely for Anglosaxons to want to destroy England
-	modifier = {
-		desc = "FACTION_REASON_ANGLOSAXON"
-		add = -200
-		culture = {
-			has_cultural_pillar = heritage_west_germanic
-		}
-	 	$FACTION_TARGET$.primary_title = title:k_england
-	}
+	#AGOT Disabled
+	# # Less likely for Anglosaxons to want to destroy England
+	# modifier = {
+	# 	desc = "FACTION_REASON_ANGLOSAXON"
+	# 	add = -200
+	# 	culture = {
+	# 		has_cultural_pillar = heritage_west_germanic
+	# 	}
+	#  	$FACTION_TARGET$.primary_title = title:k_england
+	# }
 
-	# Less likely for French vassals
-	modifier = {
-		desc = "FACTION_REASON_FRENCH_VASSAL"
-		add = -200
-		culture = {
-			has_cultural_pillar = heritage_frankish
-		}
-	 	$FACTION_TARGET$.primary_title = title:k_france
-	}
+	#AGOT Disabled
+	# # Less likely for French vassals
+	# modifier = {
+	# 	desc = "FACTION_REASON_FRENCH_VASSAL"
+	# 	add = -200
+	# 	culture = {
+	# 		has_cultural_pillar = heritage_frankish
+	# 	}
+	#  	$FACTION_TARGET$.primary_title = title:k_france
+	# }
 
 	# New vassals do not want to join independence factions
 	modifier = {
@@ -1615,7 +1623,6 @@ independence_faction_modifiers = {
 }
 
 nation_fracturing_faction_modifiers = {
-
 	# Short reign increase the change of NF
 	modifier = {
 		desc = "FACTION_REASON_SHORT_REIGN"
@@ -1902,66 +1909,72 @@ nation_fracturing_faction_modifiers = {
 		}
 	}
 
-	# Less likely for French vassals
-	modifier = {
-		desc = "FACTION_REASON_FRENCH_VASSAL"
-		add = -200
-		culture = {
-			has_cultural_pillar = heritage_frankish
-		}
-	 	$FACTION_TARGET$.primary_title = title:k_france
-	}
+	#AGOT Disabled
+	# # Less likely for French vassals
+	# modifier = {
+	# 	desc = "FACTION_REASON_FRENCH_VASSAL"
+	# 	add = -200
+	# 	culture = {
+	# 		has_cultural_pillar = heritage_frankish
+	# 	}
+	#  	$FACTION_TARGET$.primary_title = title:k_france
+	# }
 
-	# Less likely for Anglosaxons to want to destroy England
-	modifier = {
-		desc = "FACTION_REASON_ANGLOSAXON"
-		add = -200
-		culture = {
-			has_cultural_pillar = heritage_west_germanic
-		}
-	 	$FACTION_TARGET$.primary_title = title:k_england
-	}
+	#AGOT Disabled
+	# # Less likely for Anglosaxons to want to destroy England
+	# modifier = {
+	# 	desc = "FACTION_REASON_ANGLOSAXON"
+	# 	add = -200
+	# 	culture = {
+	# 		has_cultural_pillar = heritage_west_germanic
+	# 	}
+	#  	$FACTION_TARGET$.primary_title = title:k_england
+	# }
 
-	# Less likely for Normans to want to destroy England
-	modifier = {
-		desc = "FACTION_REASON_NORMAN"
-		add = -200
-		culture = {
-			has_cultural_pillar = heritage_frankish
-		}
-	 	$FACTION_TARGET$.primary_title = title:k_england
-	}
+	#AGOT Disabled
+	# # Less likely for Normans to want to destroy England
+	# modifier = {
+	# 	desc = "FACTION_REASON_NORMAN"
+	# 	add = -200
+	# 	culture = {
+	# 		has_cultural_pillar = heritage_frankish
+	# 	}
+	#  	$FACTION_TARGET$.primary_title = title:k_england
+	# }
 
-	# Less likely for Brythonic to want to destroy England
-	modifier = {
-		desc = "FACTION_REASON_BRYTHONIC"
-		add = -200
-		culture = {
-			has_cultural_pillar = heritage_brythonic
-		}
-	 	$FACTION_TARGET$.primary_title = title:k_england
-	}
+	#AGOT Disabled
+	# # Less likely for Brythonic to want to destroy England
+	# modifier = {
+	# 	desc = "FACTION_REASON_BRYTHONIC"
+	# 	add = -200
+	# 	culture = {
+	# 		has_cultural_pillar = heritage_brythonic
+	# 	}
+	#  	$FACTION_TARGET$.primary_title = title:k_england
+	# }
 
+	#AGOT Disabled
 	# Less likely for vassals with Byzantine Traditions
-	modifier = {
-		desc = "FACTION_REASON_BYZANTINE"
-		add = -500
-	 	culture = {
-			has_cultural_parameter = byzantine_faction_differences
-		}
-	 	$FACTION_TARGET$ = {
-			has_title = title:e_byzantium
-		}
-	}
+	# modifier = {
+	# 	desc = "FACTION_REASON_BYZANTINE"
+	# 	add = -500
+	#  	culture = {
+	# 		has_cultural_parameter = byzantine_faction_differences
+	# 	}
+	#  	$FACTION_TARGET$ = {
+	# 		has_title = title:e_byzantium
+	# 	}
+	# }
 
-	modifier = {
-		desc = "FACTION_REASON_BYZANTINE_RELIGION"
-		add = -200
-		religion = liege.religion
-	 	$FACTION_TARGET$ = {
-			has_title = title:e_byzantium
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_BYZANTINE_RELIGION"
+	# 	add = -200
+	# 	religion = liege.religion
+	#  	$FACTION_TARGET$ = {
+	# 		has_title = title:e_byzantium
+	# 	}
+	# }
 
 	modifier = { # New vassals do not want to join independence factions
 		desc = "FACTION_REASON_NEW_VASSAL"
@@ -1972,13 +1985,14 @@ nation_fracturing_faction_modifiers = {
 		}
 	}
 
-	modifier = {
-		desc = "FACTION_REASON_PERSIAN_STRUGGLE"
-		add = -100
-		any_character_struggle = {
-			is_struggle_type = persian_struggle
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_PERSIAN_STRUGGLE"
+	# 	add = -100
+	# 	any_character_struggle = {
+	# 		is_struggle_type = persian_struggle
+	# 	}
+	# }
 }
 
 nation_fracturing_faction_blockers = {
@@ -2015,7 +2029,8 @@ nation_fracturing_faction_blockers = {
 			any_owned_story = {
 				OR = {
 					story_type = story_greatest_of_khans
-					story_type = story_mongol_invasion
+					#AGOT Disabled
+					#story_type = story_mongol_invasion
 				}
 			}
 	  	}
@@ -2023,29 +2038,31 @@ nation_fracturing_faction_blockers = {
 
 	## Game ruler specifics
 
+	#AGOT Disabled
 	# Keep it while the Caliph is alive
-	#modifier = {
-		#add = -1000
-		#$FACTION_TARGET$ = {
-			#this = character:73683
-			#any_held_title = {
-				#this = title:k_andalusia
-			#}
-		#}
-		#has_game_rule = dissolution_after_caliph_death
-	#}
+	# modifier = {
+	# 	add = -1000
+	# 	$FACTION_TARGET$ = {
+	# 		this = character:73683
+	# 		any_held_title = {
+	# 			this = title:k_andalusia
+	# 		}
+	# 	}
+	# 	has_game_rule = dissolution_after_caliph_death
+	# }
 
+	#AGOT Disabled
 	# Historical time blocker
-	#modifier = {
-		#add = -1000
-		#current_date < 1020.1.1
-		#$FACTION_TARGET$ = {
-			#any_held_title = {
-				#this = title:k_andalusia
-			#}
-		#}
-		#has_game_rule = dissolution_historical_date
-	#}
+	# modifier = {
+	# 	add = -1000
+	# 	current_date < 1020.1.1
+	# 	$FACTION_TARGET$ = {
+	# 		any_held_title = {
+	# 			this = title:k_andalusia
+	# 		}
+	# 	}
+	# 	has_game_rule = dissolution_historical_date
+	# }
 }
 
 liberty_faction_modifiers = {
@@ -2096,18 +2113,21 @@ claimant_faction_blockers = {
 			OR = {
 				has_trait = incapable
 				government_has_flag = government_is_theocracy
+				#AGOT Added
+				government_has_flag = government_is_republic
 			}
 		}
 	}
 	#Do not replace Mongol emperors with claimants, it ruins the story cycle
-	modifier = {
-		add = -1000
-		$FACTION_TARGET$ = {
-			any_owned_story = {
-				story_type = story_mongol_invasion
-			}
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	add = -1000
+	# 	$FACTION_TARGET$ = {
+	# 		any_owned_story = {
+	# 			story_type = story_mongol_invasion
+	# 		}
+	# 	}
+	# }
 }
 
 claimant_faction_modifiers = {
@@ -2477,12 +2497,15 @@ claimant_faction_modifiers = {
 				}
 				multiply = 0.5
 			}
-			if = { # Cultural reasons matter less in the HRE
-				limit = {
-					$FACTION_TITLE$ = { has_title_law = princely_elective_succession_law }
-				}
-				multiply = 0.25
-			}
+			#AGOT Disabled
+			# if = { # Cultural reasons matter less in the HRE
+			# 	limit = {
+			# 		$FACTION_TITLE$ = {
+			# 			has_title_law = princely_elective_succession_law
+			# 		}
+			# 	}
+			# 	multiply = 0.25
+			# }
 		}
 	}
 
@@ -2654,11 +2677,12 @@ claimant_faction_modifiers = {
 		house = { has_house_unity_parameter = unity_significantly_more_likely_claimant_factions }
 	}
 
-	modifier = {
-		desc = "FACTION_REASON_PERSIAN_STRUGGLE"
-		factor = 1.2
-		any_character_struggle = { is_struggle_type = persian_struggle }
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_PERSIAN_STRUGGLE"
+	# 	factor = 1.2
+	# 	any_character_struggle = { is_struggle_type = persian_struggle }
+	# }
 
 	# LOW LEGITIMACY
 	modifier = {
@@ -2712,140 +2736,143 @@ claimant_faction_modifiers = {
 
 	### HARRYING OF THE NORTH
 	# Increases Claimant faction likelihood if Resistance is high
-	modifier = {
-		desc = "FACTION_REASON_HARRYING_RESISTANCE"
-		$FACTION_TARGET$ = {
-			any_owned_story = {
-				type = story_cycle_harrying_of_the_north
-				var:resistance > 7
-				var:resistance > var:pacification
-			}
-		}
-		add = {
-			value = 0
-			if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:resistance > 7
-						}
-					} 
-				}
-				add = 15
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:resistance > 10
-						}
-					} 
-				}
-				add = 30
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:resistance > 13
-						}
-					} 
-				}
-				add = 50
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:resistance > 16
-						}
-					} 
-				}
-				add = 80
-			}
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_HARRYING_RESISTANCE"
+	# 	$FACTION_TARGET$ = {
+	# 		any_owned_story = {
+	# 			type = story_cycle_harrying_of_the_north
+	# 			var:resistance > 7
+	# 			var:resistance > var:pacification
+	# 		}
+	# 	}
+	# 	add = {
+	# 		value = 0
+	# 		if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:resistance > 7
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = 15
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:resistance > 10
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = 30
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:resistance > 13
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = 50
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:resistance > 16
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = 80
+	# 		}
+	# 	}
+	# }
 
 	# Decreases Claimant faction likelihood if Pacification is high
 	# This has lower thresholds but also lower rewards
-	modifier = {
-		desc = "FACTION_REASON_HARRYING_PACIFICATION"
-		$FACTION_TARGET$ = {
-			any_owned_story = {
-				type = story_cycle_harrying_of_the_north
-				var:pacification > 5
-				var:pacification > var:resistance
-			}
-		}
-		add = {
-			value = 0
-			if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:pacification > 5
-						}
-					} 
-				}
-				add = -5
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:pacification > 8
-						}
-					} 
-				}
-				add = -10
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:pacification > 11
-						}
-					} 
-				}
-				add = -15
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:pacification > 14
-						}
-					} 
-				}
-				add = -20
-			}
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_HARRYING_PACIFICATION"
+	# 	$FACTION_TARGET$ = {
+	# 		any_owned_story = {
+	# 			type = story_cycle_harrying_of_the_north
+	# 			var:pacification > 5
+	# 			var:pacification > var:resistance
+	# 		}
+	# 	}
+	# 	add = {
+	# 		value = 0
+	# 		if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:pacification > 5
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = -5
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:pacification > 8
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = -10
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:pacification > 11
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = -15
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:pacification > 14
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = -20
+	# 		}
+	# 	}
+	# }
 
 	# Finally, multiplicative modifier for if they're Anglo-Saxon and you're Norman
-	modifier = {
-		desc = "FACTION_REASON_HARRYING_ANGLO_SAXON"
-		$FACTION_TARGET$ = {
-			AND = {
-				any_owned_story = {
-					type = story_cycle_harrying_of_the_north
-				}
-				culture = culture:norman
-			}
-		}
-		$FACTION_CLAIMANT$ = {
-			culture = culture:anglo_saxon
-		}
-		factor = 1.5
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_HARRYING_ANGLO_SAXON"
+	# 	$FACTION_TARGET$ = {
+	# 		AND = {
+	# 			any_owned_story = {
+	# 				type = story_cycle_harrying_of_the_north
+	# 			}
+	# 			culture = culture:norman
+	# 		}
+	# 	}
+	# 	$FACTION_CLAIMANT$ = {
+	# 		culture = culture:anglo_saxon
+	# 	}
+	# 	factor = 1.5
+	# }
 
 	# Nomads choose a claimant per chaotic kurultai succession that they want, otherwise they go for other factions
 	modifier = {
@@ -2961,47 +2988,49 @@ claimant_faction_modifiers = {
 struggle_faction_modifiers = {
 	# Struggle Modifiers.
 	## Weight up in general sometimes.
-	modifier = {
-		desc = FACTION_FP3_STRUGGLE_FRICTION
-		has_trait = fp3_struggle_detractor
-		scope:faction = {
-			# Don't weight up dissolution factions unduly.
-			NOT = { faction_is_type = nation_fracturing_faction }
-			# Targeting the caliph uses different logic.
-			faction_target = { fp3_struggle_scoped_is_the_arabian_caliph_trigger = no }
-		}
-		add = {
-			value = 25
-			# Weight up independence factions a little more.
-			if = {
-				limit = {
-					scope:faction = { faction_is_type = independence_faction }
-				}
-				add = 25
-			}
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = FACTION_FP3_STRUGGLE_FRICTION
+	# 	has_trait = fp3_struggle_detractor
+	# 	scope:faction = {
+	# 		# Don't weight up dissolution factions unduly.
+	# 		NOT = { faction_is_type = nation_fracturing_faction }
+	# 		# Targeting the caliph uses different logic.
+	# 		faction_target = { fp3_struggle_scoped_is_the_arabian_caliph_trigger = no }
+	# 	}
+	# 	add = {
+	# 		value = 25
+	# 		# Weight up independence factions a little more.
+	# 		if = {
+	# 			limit = {
+	# 				scope:faction = { faction_is_type = independence_faction }
+	# 			}
+	# 			add = 25
+	# 		}
+	# 	}
+	# }
 	## Weight up further against specific targets.
-	modifier = {
-		desc = FACTION_FP3_STRUGGLE_FRICTION_CALIPHAL
-		has_trait = fp3_struggle_detractor
-		scope:faction = {
-			# Don't weight up dissolution factions unduly.
-			NOT = { faction_is_type = nation_fracturing_faction }
-			# Targeting the caliph uses different logic.
-			faction_target = { fp3_struggle_scoped_is_the_arabian_caliph_trigger = yes }
-		}
-		add = {
-			value = 35
-			# Weight up independence factions a little more.
-			if = {
-				limit = {
-					scope:faction = { faction_is_type = independence_faction }
-				}
-				add = 35
-			}
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = FACTION_FP3_STRUGGLE_FRICTION_CALIPHAL
+	# 	has_trait = fp3_struggle_detractor
+	# 	scope:faction = {
+	# 		# Don't weight up dissolution factions unduly.
+	# 		NOT = { faction_is_type = nation_fracturing_faction }
+	# 		# Targeting the caliph uses different logic.
+	# 		faction_target = { fp3_struggle_scoped_is_the_arabian_caliph_trigger = yes }
+	# 	}
+	# 	add = {
+	# 		value = 35
+	# 		# Weight up independence factions a little more.
+	# 		if = {
+	# 			limit = {
+	# 				scope:faction = { faction_is_type = independence_faction }
+	# 			}
+	# 			add = 35
+	# 		}
+	# 	}
+	# }
 }
 
 join_faction_stacking_modifiers = {
@@ -3618,16 +3647,17 @@ admin_claimant_faction_modifiers = {
 		desc = FACTION_REASON_ADMIN_CLAIMANT_FORNICATOR_AND_CRIMINAL
 	}
 	# Born in Purple
-	modifier = { # Prefer a claimant who is born in the purple when the liege is not
-		ep3_admin_faction_trigger = { FACTION_TARGET = $FACTION_TARGET$ } # Required for dlc context
-		$FACTION_TARGET$.primary_title = title:e_byzantium
-		$FACTION_CLAIMANT$ = { has_trait = born_in_the_purple }
-		NOT = {
-			$FACTION_TARGET$ = { has_trait = born_in_the_purple }
-		}
-		add = 25
-		desc = FACTION_REASON_ADMIN_BORN_IN_PURPLE
-	}
+	#AGOT Disabled
+	#modifier = { # Prefer a claimant who is born in the purple when the liege is not
+	#	ep3_admin_faction_trigger = { FACTION_TARGET = $FACTION_TARGET$ } # Required for dlc context
+	#	$FACTION_TARGET$.primary_title = title:e_byzantium
+	#	$FACTION_CLAIMANT$ = { has_trait = born_in_the_purple }
+	#	NOT = {
+	#		$FACTION_TARGET$ = { has_trait = born_in_the_purple }
+	#	}
+	#	add = 25
+	#	desc = FACTION_REASON_ADMIN_BORN_IN_PURPLE
+	#}
 	## Unpreferred heir
 	#modifier = { # Admin realms have extra trouble with Unpreferred Heirs
 	# 	ep3_admin_faction_trigger = { FACTION_TARGET = $FACTION_TARGET$ } # Required for dlc context
@@ -4118,12 +4148,13 @@ ceremonial_claimant_faction_modifiers = {
 				}
 				multiply = 0.5
 			}
-			if = { # Cultural reasons matter less in the HRE
-				limit = {
-					$FACTION_TITLE$ = { has_title_law = princely_elective_succession_law }
-				}
-				multiply = 0.25
-			}
+			#AGOT Disabled
+			# if = { # Cultural reasons matter less in the HRE
+			# 	limit = {
+			# 		$FACTION_TITLE$ = { has_title_law = princely_elective_succession_law }
+			# 	}
+			# 	multiply = 0.25
+			# }
 		}
 	}
 
@@ -4295,11 +4326,12 @@ ceremonial_claimant_faction_modifiers = {
 		house = { has_house_unity_parameter = unity_significantly_more_likely_claimant_factions }
 	}
 
-	modifier = {
-		desc = "FACTION_REASON_PERSIAN_STRUGGLE"
-		factor = 1.2
-		any_character_struggle = { is_struggle_type = persian_struggle }
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_PERSIAN_STRUGGLE"
+	# 	factor = 1.2
+	# 	any_character_struggle = { is_struggle_type = persian_struggle }
+	# }
 
 	# LOW LEGITIMACY
 	modifier = {
@@ -4353,138 +4385,141 @@ ceremonial_claimant_faction_modifiers = {
 
 	### HARRYING OF THE NORTH
 	# Increases Claimant faction likelihood if Resistance is high
-	modifier = {
-		desc = "FACTION_REASON_HARRYING_RESISTANCE"
-		$FACTION_TARGET$ ?= {
-			any_owned_story = {
-				type = story_cycle_harrying_of_the_north
-				var:resistance > 7
-				var:resistance > var:pacification
-			}
-		}
-		add = {
-			value = 0
-			if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:resistance > 7
-						}
-					} 
-				}
-				add = 15
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:resistance > 10
-						}
-					} 
-				}
-				add = 30
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:resistance > 13
-						}
-					} 
-				}
-				add = 50
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:resistance > 16
-						}
-					} 
-				}
-				add = 80
-			}
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_HARRYING_RESISTANCE"
+	# 	$FACTION_TARGET$ ?= {
+	# 		any_owned_story = {
+	# 			type = story_cycle_harrying_of_the_north
+	# 			var:resistance > 7
+	# 			var:resistance > var:pacification
+	# 		}
+	# 	}
+	# 	add = {
+	# 		value = 0
+	# 		if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:resistance > 7
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = 15
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:resistance > 10
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = 30
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:resistance > 13
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = 50
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:resistance > 16
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = 80
+	# 		}
+	# 	}
+	# }
 
 	# Decreases Claimant faction likelihood if Pacification is high
 	# This has lower thresholds but also lower rewards
-	modifier = {
-		desc = "FACTION_REASON_HARRYING_PACIFICATION"
-		$FACTION_TARGET$ ?= {
-			any_owned_story = {
-				type = story_cycle_harrying_of_the_north
-				var:pacification > 5
-				var:pacification > var:resistance
-			}
-		}
-		add = {
-			value = 0
-			if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:pacification > 5
-						}
-					} 
-				}
-				add = -5
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:pacification > 8
-						}
-					} 
-				}
-				add = -10
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:pacification > 11
-						}
-					} 
-				}
-				add = -15
-			}
-			else_if = {
-				limit = { 
-					$FACTION_TARGET$ = { 
-						any_owned_story = {
-							type = story_cycle_harrying_of_the_north
-							var:pacification > 14
-						}
-					} 
-				}
-				add = -20
-			}
-		}
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_HARRYING_PACIFICATION"
+	# 	$FACTION_TARGET$ ?= {
+	# 		any_owned_story = {
+	# 			type = story_cycle_harrying_of_the_north
+	# 			var:pacification > 5
+	# 			var:pacification > var:resistance
+	# 		}
+	# 	}
+	# 	add = {
+	# 		value = 0
+	# 		if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:pacification > 5
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = -5
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:pacification > 8
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = -10
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:pacification > 11
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = -15
+	# 		}
+	# 		else_if = {
+	# 			limit = { 
+	# 				$FACTION_TARGET$ = { 
+	# 					any_owned_story = {
+	# 						type = story_cycle_harrying_of_the_north
+	# 						var:pacification > 14
+	# 					}
+	# 				} 
+	# 			}
+	# 			add = -20
+	# 		}
+	# 	}
+	# }
 
 	# Finally, multiplicative modifier for if they're Anglo-Saxon and you're Norman
-	modifier = {
-		desc = "FACTION_REASON_HARRYING_ANGLO_SAXON"
-		$FACTION_TARGET$ ?= {
-			AND = {
-				any_owned_story = {
-					type = story_cycle_harrying_of_the_north
-				}
-				culture = culture:norman
-			}
-		}
-		$FACTION_CLAIMANT$.culture ?= culture:anglo_saxon
-		factor = 1.5
-	}
+	#AGOT Disabled
+	# modifier = {
+	# 	desc = "FACTION_REASON_HARRYING_ANGLO_SAXON"
+	# 	$FACTION_TARGET$ ?= {
+	# 		AND = {
+	# 			any_owned_story = {
+	# 				type = story_cycle_harrying_of_the_north
+	# 			}
+	# 			culture = culture:norman
+	# 		}
+	# 	}
+	# 	$FACTION_CLAIMANT$.culture ?= culture:anglo_saxon
+	# 	factor = 1.5
+	# }
 
 	# Nomads choose a claimant per chaotic kurultai succession that they want, otherwise they go for other factions
 	modifier = {
