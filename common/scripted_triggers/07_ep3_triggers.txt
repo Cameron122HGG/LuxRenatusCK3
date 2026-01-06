@@ -5,10 +5,10 @@
 is_roman_emperor_trigger = {
 	OR = {
 		has_title = title:e_byzantium
-		has_title = title:e_spqr #CST
+		has_title = title:e_spqr 
 		has_title = title:h_roman_empire
 		has_title = title:h_eastern_roman_empire
-		has_title = title:h_western_roman_empire #CST
+		has_title = title:h_western_roman_empire 
 	}
 }
 
@@ -16,17 +16,38 @@ is_roman_emperor_excluding_byzantium_trigger = {
 	OR = {
 		has_title = title:h_roman_empire
 		has_title = title:h_eastern_roman_empire
-		has_title = title:h_western_roman_empire #CST
+		has_title = title:h_western_roman_empire 
 	}
 }
 
+valid_for_byz_emperor_content_trigger = {
+ 	has_ep3_dlc_trigger = yes
+ 	culture = {
+ 		OR = {
+ 			has_cultural_pillar = heritage_byzantine
+ 			has_cultural_pillar = heritage_caucasian
+ 		}
+ 	}
+ 	OR = {
+ 		is_roman_emperor_primary_title_trigger = yes
+ 		AND = {
+ 			culture = {
+ 				OR = {
+ 					this = culture:greek
+ 					any_parent_culture_or_above = { this = culture:greek }
+ 				}
+ 			}
+ 			highest_held_title_tier >= tier_empire
+ 		}
+ 	}
+ }
 is_roman_emperor_primary_title_trigger = {
 	OR = {
 		primary_title ?= title:e_byzantium
-		primary_title ?= title:e_spqr #CST
+		primary_title ?= title:e_spqr 
 		primary_title ?= title:h_roman_empire
 		primary_title ?= title:h_eastern_roman_empire
-		primary_title ?= title:h_western_roman_empire #CST
+		primary_title ?= title:h_western_roman_empire 
 	}
 }
 
@@ -37,7 +58,7 @@ is_roman_emperor_primary_title_excluding_byzantium_trigger = {
 	}
 }
 
-is_roman_emperor_excluding_western_rome_trigger = { #CST
+is_roman_emperor_excluding_western_rome_trigger = { 
 	OR = {
 		has_title = title:h_roman_empire
 		has_title = title:h_eastern_roman_empire
@@ -45,7 +66,7 @@ is_roman_emperor_excluding_western_rome_trigger = { #CST
 	}
 }
 
-is_roman_emperor_excluding_eastern_rome_trigger = { #CST
+is_roman_emperor_excluding_eastern_rome_trigger = { 
 	OR = {
 		has_title = title:h_roman_empire
 		has_title = title:h_western_roman_empire
@@ -1510,40 +1531,40 @@ ep3_adventurer_ai_valid_contract_trigger = {
 	}
 }
 
-#hasan_evangelize_province_trigger = {
-#	save_temporary_scope_as = county
-#	scope:county.faith = {
+hasan_evangelize_province_trigger = {
+	save_temporary_scope_as = county
+	scope:county.faith = {
 		# Religion is same as Hasan's (i.e. Muslim)
 		#religion = root.religion # QA thinks its more fun without this!
-#		NOR = {
-#			# Faith is different from Hasan's
-#			custom_tooltip = {
-#				text = zealous_missionary_start_decision_other_faith_location
-#				this = root.faith
-#			}
-#			# County is not held by it's Faith's Religious Head
-#			custom_tooltip = {
-#				text = is_held_by_hof_tt
-#				religious_head ?= scope:county.holder
-#			}
-#		}
-#	}
-#	development_level <= 25
-#	custom_tooltip = {
-#		text = has_tougher_to_convert_tt
-#		NOT = { has_county_modifier = tougher_to_convert }
-#	}
-#	custom_tooltip = {
-#		text = 0_or_below_county_opinion_tt
-#		county_opinion <= 0
-#	}
-#	custom_tooltip = {
-#		text = NOT_IS_HOLY_SITE_TRIGGER
-#		NOT = {
-#			any_direct_de_jure_vassal_title = { is_holy_site_of = scope:county.faith }
-#		}
-#	}
-#}
+		NOR = {
+			# Faith is different from Hasan's
+			custom_tooltip = {
+				text = zealous_missionary_start_decision_other_faith_location
+				this = root.faith
+			}
+			# County is not held by it's Faith's Religious Head
+			custom_tooltip = {
+				text = is_held_by_hof_tt
+				religious_head ?= scope:county.holder
+			}
+		}
+	}
+	development_level <= 25
+	custom_tooltip = {
+		text = has_tougher_to_convert_tt
+		NOT = { has_county_modifier = tougher_to_convert }
+	}
+	custom_tooltip = {
+		text = 0_or_below_county_opinion_tt
+		county_opinion <= 0
+	}
+	custom_tooltip = {
+		text = NOT_IS_HOLY_SITE_TRIGGER
+		NOT = {
+			any_direct_de_jure_vassal_title = { is_holy_site_of = scope:county.faith }
+		}
+	}
+}
 
 #hasan_camp_in_foes_realm_trigger = {
 #	trigger_if = {
@@ -1761,17 +1782,3 @@ influence_candidacy_valid_succession_law_trigger = {
 		has_$TYPE$_law = japanese_regency_succession_law
 	}
 }
-
-#is_western_roman_emperor_trigger = {
-#	OR = {
-#		has_title = title:e_spqr
-#		has_title = title:h_western_empire
-#	}
-#}
-
-#is_eastern_roman_emperor_trigger = {
-#	OR = {
-#		has_title = title:e_byzantium
-#		has_title = title:h_eastern_empire
-#	}
-#}
