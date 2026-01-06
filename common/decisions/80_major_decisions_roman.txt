@@ -22,7 +22,7 @@ restore_roman_empire_decision = {
 		is_playable_character = yes
 		has_title = title:e_byzantium
 		NOT = { primary_title = title:e_hre }
-		NOT = { primary_title = title:e_italy }
+		NOT = { primary_title = title:e_spqr }
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -134,7 +134,7 @@ restore_roman_empire_holy_decision = {
 			NOT = { has_title = title:e_byzantium } # Prioritize Byzaboos
 			primary_title = title:e_hre
 		}
-		NOT = { primary_title = title:e_italy }
+		NOT = { primary_title = title:e_spqr }
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -234,13 +234,13 @@ restore_roman_empire_italian_decision = {
 	is_shown = {
 		is_ruler = yes
 		is_playable_character = yes
-		has_title = title:e_italy
+		has_title = title:e_spqr
 		OR = {
 			NAND = {
 				has_title = title:e_byzantium #Prioritize Byzaboos
 				has_title = title:e_hre #And the Germans
 			}
-			primary_title = title:e_italy
+			primary_title = title:e_spqr
 		}
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
@@ -298,7 +298,7 @@ restore_roman_empire_italian_decision = {
 	effect = {
 		custom_tooltip = restore_roman_empire_decision_effect_tooltip
 		show_as_tooltip = {
-			create_roman_empire_italy_scripted_effect = yes
+			create_roman_empire_spqr_scripted_effect = yes
 		}
 		trigger_event = {
 			id = roman_restoration.0150
@@ -992,7 +992,7 @@ restore_pope_in_rome_decision = {
 		}
 		modifier = {
 			factor = 0
-			has_title = title:e_italy
+			has_title = title:e_spqr
 		}
 	}
 }
@@ -1128,7 +1128,7 @@ unify_italian_empire_decision = {
 
 	is_valid = {
 		prestige_level >= very_high_prestige_level
-		has_title = title:e_italy
+		has_title = title:e_spqr
 		#All the Peninsula
 		completely_controls_region = world_europe_south_italy
 		#And Illyria
@@ -1454,7 +1454,7 @@ rebuke_roman_revanchism_sicily = {
 				100 = {
 					show_chance = no
 					desc = rebuke_roman_revanchism_sicily.tt.effects.option.1
-					title:k_sicily = { set_de_jure_liege_title = title:e_italy }
+					title:k_sicily = { set_de_jure_liege_title = title:e_spqr }
 				}
 				100 = {
 					show_chance = no
