@@ -269,16 +269,16 @@ historical_artifacts.0023 = {
 			}
 		}
 		### Chalice of Dona Urraca
-		if = {
-			limit = {
-				# It's likely that Urraca paid for her eponymous chalice using money she earnt from the titles her father pre-bequeathed to her, so it was probably made some time *after* 1066 (since she only got the lands in 1065, shortly before her father died), buuuuuut it's really mean to not let her have it at game start, so we give it to her in 1066.
-				current_date >= 1066.1.1
-				has_fp2_dlc_trigger = yes
-				exists = character:108501
-				character:108501 = { is_alive = yes }
-			}
-			create_artifact_goblet_chalice_of_dona_urraca = { OWNER = character:108501 }
-		}
+		#if = {
+		#	limit = {
+		#		# It's likely that Urraca paid for her eponymous chalice using money she earnt from the titles her father pre-bequeathed to her, so it was probably made some time *after* 1066 (since she only got the lands in 1065, shortly before her father died), buuuuuut it's really mean to not let her have it at game start, so we give it to her in 1066.
+		#		current_date >= 1066.1.1
+		#		has_fp2_dlc_trigger = yes
+		#		exists = character:108501
+		#		character:108501 = { is_alive = yes }
+		#	}
+		#	create_artifact_goblet_chalice_of_dona_urraca = { OWNER = character:108501 }
+		#}
 		## Thrones
 		### Throne of Scone (featuring Stone)
 		if = {
@@ -342,23 +342,23 @@ historical_artifacts.0023 = {
 		}
 		### (Former) Bells of Santiago
 		#### These aren't actually furniture, but we keep 'em here so they're next to the regular bells, which *are*.
-		if = {
+		#if = {
 			# If we're after Almanzor's raid, then the bells go to c_toledo's holder.
-			limit = {
-				has_fp2_dlc_trigger = yes
-				current_date >= 997.1.1
-			}
-			title:c_toledo.holder = {
-				create_artifact_various_aquamanile_santiago = { OWNER = this }
+		#	limit = {
+		#		has_fp2_dlc_trigger = yes
+		#		current_date >= 997.1.1
+		#	}
+		#	title:c_toledo.holder = {
+		#		create_artifact_various_aquamanile_santiago = { OWNER = this }
 				# The bells have been morphed once.
-				scope:newly_created_artifact = {
-					set_variable = {
-						name = artefact_santiago_bells
-						value = 1
-					}
-				}
-			}
-		}
+		#		scope:newly_created_artifact = {
+		#			set_variable = {
+		#				name = artefact_santiago_bells
+		#				value = 1
+		#			}
+		#		}
+		#	}
+		#}
 		## Weapons (including decoratives)
 		### Curtana
 		#### Not the *actual* Curtana, but at least occasionally traced as Edward the Confessor's sword (and then ascribed an even more mythic origin from there).
