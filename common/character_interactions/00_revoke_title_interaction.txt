@@ -530,33 +530,34 @@
 		}
 
 		# Harrying logic.
-		scope:actor = {
-			if = {
-				limit = {
-					character_is_valid_for_harrying_of_the_north_trigger = yes
-					scope:recipient = {
-						character_is_valid_for_harrying_of_the_north_trigger = yes
-						is_important_or_vip_struggle_character = yes
-					}
-					culture != scope:recipient.culture
-				}
-				global_var:harrying_of_the_north = { save_scope_as = story }
-				if = {
-					limit = {
-						character_is_valid_norman_for_harrying_of_the_north_trigger = yes
-						scope:recipient = { character_is_valid_anglo_saxon_for_harrying_of_the_north_trigger = yes }
-					}
-					ep3_increase_pacification_effect = { AMOUNT = harrying_minor_increase_value }
-				}
-				else_if = {
-					limit = {
-						character_is_valid_anglo_saxon_for_harrying_of_the_north_trigger = yes
-						scope:recipient = { character_is_valid_norman_for_harrying_of_the_north_trigger = yes }
-					}
-					ep3_increase_resistance_effect = { AMOUNT = harrying_minor_increase_value }
-				}
-			}
-		}
+		#Lux Renata TBA
+		#scope:actor = {
+		#	if = {
+		#		limit = {
+		#			character_is_valid_for_harrying_of_the_north_trigger = yes
+		#			scope:recipient = {
+		#				character_is_valid_for_harrying_of_the_north_trigger = yes
+		#				is_important_or_vip_struggle_character = yes
+		#			}
+		#			culture != scope:recipient.culture
+		#		}
+		#		global_var:harrying_of_the_north = { save_scope_as = story }
+		#		if = {
+		#			limit = {
+		#				character_is_valid_norman_for_harrying_of_the_north_trigger = yes
+		#				scope:recipient = { character_is_valid_anglo_saxon_for_harrying_of_the_north_trigger = yes }
+		#			}
+		#			ep3_increase_pacification_effect = { AMOUNT = harrying_minor_increase_value }
+		#		}
+		#		else_if = {
+		#			limit = {
+		#				character_is_valid_anglo_saxon_for_harrying_of_the_north_trigger = yes
+		#				scope:recipient = { character_is_valid_norman_for_harrying_of_the_north_trigger = yes }
+		#			}
+		#			ep3_increase_resistance_effect = { AMOUNT = harrying_minor_increase_value }
+		#		}
+		#	}
+		#}
 	}
 
 	on_decline = {
@@ -715,33 +716,34 @@
 		}
 
 		# Harrying logic.
-		scope:actor = {
-			if = {
-				limit = {
-					character_is_valid_for_harrying_of_the_north_trigger = yes
-					scope:recipient = {
-						character_is_valid_for_harrying_of_the_north_trigger = yes
-						is_important_or_vip_struggle_character = yes
-					}
-					culture != scope:recipient.culture
-				}
-				global_var:harrying_of_the_north = { save_scope_as = story }
-				if = {
-					limit = {
-						character_is_valid_norman_for_harrying_of_the_north_trigger = yes
-						scope:recipient = { character_is_valid_anglo_saxon_for_harrying_of_the_north_trigger = yes }
-					}
-					ep3_increase_resistance_effect = { AMOUNT = harrying_minor_increase_value }
-				}
-				else_if = {
-					limit = {
-						character_is_valid_anglo_saxon_for_harrying_of_the_north_trigger = yes
-						scope:recipient = { character_is_valid_norman_for_harrying_of_the_north_trigger = yes }
-					}
-					ep3_increase_pacification_effect = { AMOUNT = harrying_minor_increase_value }
-				}
-			}
-		}
+		#AGOT Disabled
+		#scope:actor = {
+		#	if = {
+		#		limit = {
+		#			character_is_valid_for_harrying_of_the_north_trigger = yes
+		#			scope:recipient = {
+		#				character_is_valid_for_harrying_of_the_north_trigger = yes
+		#				is_important_or_vip_struggle_character = yes
+		#			}
+		#			culture != scope:recipient.culture
+		#		}
+		#		global_var:harrying_of_the_north = { save_scope_as = story }
+		#		if = {
+		#			limit = {
+		#				character_is_valid_norman_for_harrying_of_the_north_trigger = yes
+		#				scope:recipient = { character_is_valid_anglo_saxon_for_harrying_of_the_north_trigger = yes }
+		#			}
+		#			ep3_increase_resistance_effect = { AMOUNT = harrying_minor_increase_value }
+		#		}
+		#		else_if = {
+		#			limit = {
+		#				character_is_valid_anglo_saxon_for_harrying_of_the_north_trigger = yes
+		#				scope:recipient = { character_is_valid_norman_for_harrying_of_the_north_trigger = yes }
+		#			}
+		#			ep3_increase_pacification_effect = { AMOUNT = harrying_minor_increase_value }
+		#		}
+		#	}
+		#}
 
 		if = {
 			limit = {
@@ -1015,7 +1017,7 @@
 	}
 	ai_frequency = 0 # This is handled via code instead; see REVOKE_TITLE_TICK in the AI defines. All the logic for *if* to send a revoke though is scripted below
 
-	ai_potential = {
+	is_available = {
 		has_realm_law_flag = title_revocation_allowed
 		primary_title.tier >= tier_county
 	}
