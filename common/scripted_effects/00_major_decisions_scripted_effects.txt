@@ -393,12 +393,12 @@ split_byzantine_empire_effect = {
 			limit = {
 				tier = tier_kingdom
 				NOR = {
-					de_jure_liege = title:e_illyria
-					de_jure_liege = title:e_macedonia
+					de_jure_liege = title:e_praetorian_illyricum
+					de_jure_liege = title:e_praetorian_macedonia
 					de_jure_liege = title:e_anatolia
-					de_jure_liege = title:e_oriens
+					de_jure_liege = title:e_praetorian_oriens
 					de_jure_liege = title:e_aegyptus
-					de_jure_liege = title:e_africa
+					de_jure_liege = title:e_praetorian_africa
 				}
 			}
 			if = {
@@ -430,20 +430,20 @@ split_byzantine_empire_effect = {
 						title:k_naples ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_illyria
-				title:e_illyria = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_illyricum
+				title:e_praetorian_illyricum = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
 					OR = {
-						title:k_thessalonika ?= this
+						title:k_byzantium ?= this
 						title:k_hellas ?= this
 						title:k_krete ?= this
 						title:k_bulgaria ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_macedonia
-				title:e_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_macedonia
+				title:e_praetorian_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
@@ -473,7 +473,7 @@ split_byzantine_empire_effect = {
 			}
 			if = {
 				limit = {
-					exists = title:e_oriens
+					exists = title:e_praetorian_oriens
 					OR = {
 						title:k_syria ?= this
 						title:k_jerusalem ?= this
@@ -485,8 +485,8 @@ split_byzantine_empire_effect = {
 						title:k_cyprus ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_oriens
-				title:e_oriens = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_oriens
+				title:e_praetorian_oriens = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
@@ -503,15 +503,15 @@ split_byzantine_empire_effect = {
 			}
 			if = {
 				limit = {
-					exists = title:e_africa
+					exists = title:e_praetorian_africa
 					OR = {
 						title:k_africa ?= this
 						title:k_tahert ?= this
 						title:k_maghreb ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_africa
-				title:e_africa = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_africa
+				title:e_praetorian_africa = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 		}
 		title:e_byzantium = { # Then we check for de jure titles of Byzantium
@@ -553,21 +553,21 @@ split_byzantine_empire_effect = {
 							title:k_naples ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_illyria
-					title:e_illyria = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_illyricum
+					title:e_praetorian_illyricum = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
 						tier = tier_kingdom	
 						OR = {
-							title:k_thessalonika ?= this
+							title:k_byzantium ?= this
 							title:k_hellas ?= this
 							title:k_krete ?= this
 							title:k_bulgaria ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_macedonia
-					title:e_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_macedonia
+					title:e_praetorian_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -598,7 +598,7 @@ split_byzantine_empire_effect = {
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
-						exists = title:e_oriens
+						exists = title:e_praetorian_oriens
 						tier = tier_kingdom
 						OR = {
 							title:k_syria ?= this
@@ -610,8 +610,8 @@ split_byzantine_empire_effect = {
 							title:k_cyprus ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_oriens
-					title:e_oriens = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_oriens
+					title:e_praetorian_oriens = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -629,7 +629,7 @@ split_byzantine_empire_effect = {
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
-						exists = title:e_africa
+						exists = title:e_praetorian_africa
 						tier = tier_kingdom
 						OR = {
 							title:k_africa ?= this
@@ -637,8 +637,8 @@ split_byzantine_empire_effect = {
 							title:k_maghreb ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_africa
-					title:e_africa = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_africa
+					title:e_praetorian_africa = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -693,8 +693,8 @@ create_eastern_roman_empire_scripted_effect = {
 		}
 		# We move over the De Jure for all the basic titles
 		title:e_byzantium ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
-		title:e_illyria ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
-		title:e_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_illyricum ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_anatolia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:h_eastern_roman_empire = { # They get the new Roman Empire title
 			change_title_holder = {
