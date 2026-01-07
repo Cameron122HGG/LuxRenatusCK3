@@ -51,309 +51,308 @@ number_of_madrasa_pupils = {
 	}
 }
 
-#Lux Renata TBA
 ##################################################
-# Lux Renata Persian Struggle TBA
+# Struggle
 
-# fp3_house_modifier_concession_ending_duration = 100
-# fp3_house_modifier_sunder_caliphate_duration = 100
+fp3_house_modifier_concession_ending_duration = 100
+fp3_house_modifier_sunder_caliphate_duration = 100
 
-# fp3_concession_death_countdown = {
-# 	value = current_year
-# 	subtract = 866
-# 	multiply = 1
-# }
+fp3_concession_death_countdown = {
+	value = current_year
+	subtract = 866
+	multiply = 1
+}
 
-# fp3_persia_ownage_percentage_for_foundation = 0.20
+fp3_persia_ownage_percentage_for_foundation = 0.20
 
-# fp3_persia_supporter_rulers_decimal_value = {
-# 	value = 50
-# 	divide = 100
-# 	max = 1
-# }
+fp3_persia_supporter_rulers_decimal_value = {
+	value = 50
+	divide = 100
+	max = 1
+}
 
-# fp3_persia_supporter_rulers_max_value = {
-# 	value = 0
-# 	struggle:persian_struggle ?= {
-# 		every_involved_ruler = {
-# 			limit = {
-# 				is_landed = yes
-# 				highest_held_title_tier >= tier_county
-# 				OR = {
-# 					NOT = { has_title = title:d_sunni }
-# 					OR = {
-# 						top_liege = this
-# 						is_vassal_of = title:d_sunni.holder
-# 					}
-# 				}
-# 			}
-# 			add = 1
-# 		}
-# 	}
-# }
+fp3_persia_supporter_rulers_max_value = {
+	value = 0
+	struggle:persian_struggle ?= {
+		every_involved_ruler = {
+			limit = {
+				is_landed = yes
+				highest_held_title_tier >= tier_county
+				OR = {
+					NOT = { has_title = title:d_sunni }
+					OR = {
+						top_liege = this
+						is_vassal_of = title:d_sunni.holder
+					}
+				}
+			}
+			add = 1
+		}
+	}
+}
 
-# fp3_persia_supporter_rulers_half_value = {
-# 	value = fp3_persia_supporter_rulers_max_value
-# 	divide = 2
-# 	ceiling = yes
-# }
+fp3_persia_supporter_rulers_half_value = {
+	value = fp3_persia_supporter_rulers_max_value
+	divide = 2
+	ceiling = yes
+}
 
-# fp3_persia_supporter_rulers_count_value = {
-# 	value = 0
-# 	struggle:persian_struggle ?= {
-# 		every_involved_ruler = {
-# 			limit = {
-# 				is_landed = yes
-# 				highest_held_title_tier >= tier_county
-# 				OR = {
-# 					NOT = { has_title = title:d_sunni }
-# 					OR = {
-# 						top_liege = this
-# 						is_vassal_of = title:d_sunni.holder
-# 					}
-# 				}
-# 				# Trigger
-# 				has_trait = fp3_struggle_supporter
-# 			}
-# 			add = 1
-# 		}
-# 	}
-# 	floor = yes
-# }
+fp3_persia_supporter_rulers_count_value = {
+	value = 0
+	struggle:persian_struggle ?= {
+		every_involved_ruler = {
+			limit = {
+				is_landed = yes
+				highest_held_title_tier >= tier_county
+				OR = {
+					NOT = { has_title = title:d_sunni }
+					OR = {
+						top_liege = this
+						is_vassal_of = title:d_sunni.holder
+					}
+				}
+				# Trigger
+				has_trait = fp3_struggle_supporter
+			}
+			add = 1
+		}
+	}
+	floor = yes
+}
 
-# fp3_persia_iranian_rulers_count_value = {
-# 	value = 0
-# 	struggle:persian_struggle ?= {
-# 		every_involved_ruler = {
-# 			limit = {
-#				is_landed = yes
-# 				highest_held_title_tier >= tier_county
-# 				culture = { has_cultural_pillar = heritage_iranian }
-# 			}
-# 			add = 1
-# 		}
-# 		every_interloper_ruler = {
-# 			limit = {
-#				is_landed = yes
-# 				highest_held_title_tier >= tier_county
-# 				culture = { has_cultural_pillar = heritage_iranian }
-# 			}
-# 			add = 1
-# 		}
-# 	}
-# 	floor = yes
-# }
+fp3_persia_iranian_rulers_count_value = {
+	value = 0
+	struggle:persian_struggle ?= {
+		every_involved_ruler = {
+			limit = {
+				is_landed = yes
+				highest_held_title_tier >= tier_county
+				culture = { has_cultural_pillar = heritage_iranian }
+			}
+			add = 1
+		}
+		every_interloper_ruler = {
+			limit = {
+				is_landed = yes
+				highest_held_title_tier >= tier_county
+				culture = { has_cultural_pillar = heritage_iranian }
+			}
+			add = 1
+		}
+	}
+	floor = yes
+}
 
-# fp3_persia_all_rulers_count_value = {
-# 	value = 0
-# 	struggle:persian_struggle ?= {
-# 		every_involved_ruler = {
-# 			limit = {
-#				is_landed = yes
-# 				highest_held_title_tier >= tier_county
-# 			}
-# 			add = 1
-# 		}
-# 		every_interloper_ruler = {
-# 			limit = {
-#				is_landed = yes
-# 				highest_held_title_tier >= tier_county
-# 			}
-# 			add = 1
-# 		}
-# 	}
-# 	floor = yes
-# }
+fp3_persia_all_rulers_count_value = {
+	value = 0
+	struggle:persian_struggle ?= {
+		every_involved_ruler = {
+			limit = {
+				is_landed = yes
+				highest_held_title_tier >= tier_county
+			}
+			add = 1
+		}
+		every_interloper_ruler = {
+			limit = {
+				is_landed = yes
+				highest_held_title_tier >= tier_county
+			}
+			add = 1
+		}
+	}
+	floor = yes
+}
 
-# fp3_persia_all_rulers_requirement_value = {
-# 	value = fp3_persia_all_rulers_count_value
-# 	multiply = 0.6
-# }
+fp3_persia_all_rulers_requirement_value = {
+	value = fp3_persia_all_rulers_count_value
+	multiply = 0.6
+}
 
-# fp3_persia_all_rulers_percentage_value = {
-# 	value = fp3_persia_iranian_rulers_count_value
-# 	divide = {
-# 		value = fp3_persia_all_rulers_count_value
-# 		min = 1
-# 	}
-# }
+fp3_persia_all_rulers_percentage_value = {
+	value = fp3_persia_iranian_rulers_count_value
+	divide = {
+		value = fp3_persia_all_rulers_count_value
+		min = 1
+	}
+}
 
-# fp3_persia_independent_detractor_rulers_count_value = {
-# 	value = 0
-# 	struggle:persian_struggle ?= {
-# 		every_involved_ruler = {
-# 			limit = {
-# 				top_liege = this
-# 				is_landed = yes
-# 				highest_held_title_tier >= tier_duchy
-# 				has_trait = fp3_struggle_detractor
-# 			}
-# 			add = 1
-# 		}
-# 		every_interloper_ruler = {
-# 			limit = {
-# 				top_liege = this
-# 				is_landed = yes
-# 				highest_held_title_tier >= tier_duchy
-# 				has_trait = fp3_struggle_detractor
-# 			}
-# 			add = 1
-# 		}
-# 	}
-# 	floor = yes
-# }
+fp3_persia_independent_detractor_rulers_count_value = {
+	value = 0
+	struggle:persian_struggle ?= {
+		every_involved_ruler = {
+			limit = {
+				top_liege = this
+				is_landed = yes
+				highest_held_title_tier >= tier_duchy
+				has_trait = fp3_struggle_detractor
+			}
+			add = 1
+		}
+		every_interloper_ruler = {
+			limit = {
+				top_liege = this
+				is_landed = yes
+				highest_held_title_tier >= tier_duchy
+				has_trait = fp3_struggle_detractor
+			}
+			add = 1
+		}
+	}
+	floor = yes
+}
 
-# fp3_persia_independent_non_sunni_rulers_count_value = {
-# 	value = 0
-# 	struggle:persian_struggle ?= {
-# 		every_involved_ruler = {
-# 			limit = {
-# 				top_liege = this
-# 				is_landed = yes
-# 				highest_held_title_tier >= tier_duchy
-# 				faith = {
-# 					NOT = {
-# 						has_doctrine = muhammad_succession_sunni_doctrine
-# 					}
-# 				}
-# 			}
-# 			add = 1
-# 		}
-# 		every_interloper_ruler = {
-# 			limit = {
-# 				top_liege = this
-# 				is_landed = yes
-# 				highest_held_title_tier >= tier_duchy
-# 				faith = {
-# 					NOT = {
-# 						has_doctrine = muhammad_succession_sunni_doctrine
-# 					}
-# 				}
-# 			}
-# 			add = 1
-# 		}
-# 	}
-# 	floor = yes
-# }
+fp3_persia_independent_non_sunni_rulers_count_value = {
+	value = 0
+	struggle:persian_struggle ?= {
+		every_involved_ruler = {
+			limit = {
+				top_liege = this
+				is_landed = yes
+				highest_held_title_tier >= tier_duchy
+				faith = {
+					NOT = {
+						has_doctrine = muhammad_succession_sunni_doctrine
+					}
+				}
+			}
+			add = 1
+		}
+		every_interloper_ruler = {
+			limit = {
+				top_liege = this
+				is_landed = yes
+				highest_held_title_tier >= tier_duchy
+				faith = {
+					NOT = {
+						has_doctrine = muhammad_succession_sunni_doctrine
+					}
+				}
+			}
+			add = 1
+		}
+	}
+	floor = yes
+}
 
-# fp3_iranian_sub_realm_counties_value = {
-# 	value = 0
-# 	every_sub_realm_county = {
-# 		limit = {
-# 			culture = { has_cultural_pillar = heritage_iranian }
-# 		}
-# 		add = 1
-# 	}
-# 	floor = yes
-# }
+fp3_iranian_sub_realm_counties_value = {
+	value = 0
+	every_sub_realm_county = {
+		limit = {
+			culture = { has_cultural_pillar = heritage_iranian }
+		}
+		add = 1
+	}
+	floor = yes
+}
 
-# fp3_persia_flame_of_iran_independent_value = {
-# 	value = 0
-# 	struggle:persian_struggle ?= {
-# 		every_involved_ruler = {
-# 			limit = {
-# 				top_liege != this
-# 				culture = { has_cultural_pillar = heritage_iranian }
-# 				exists = liege
-# 				NOT = {
-# 					liege.culture = { has_cultural_pillar = heritage_iranian }
-# 				}
-# 			}
-# 			add = 1
-# 		}
-# 	}
-# }
+fp3_persia_flame_of_iran_independent_value = {
+	value = 0
+	struggle:persian_struggle ?= {
+		every_involved_ruler = {
+			limit = {
+				top_liege != this
+				culture = { has_cultural_pillar = heritage_iranian }
+				exists = liege
+				NOT = {
+					liege.culture = { has_cultural_pillar = heritage_iranian }
+				}
+			}
+			add = 1
+		}
+	}
+}
 
-# # Paramameter for percentage of Persia you must control
-# fp3_persia_owned_for_rekindle_persia_percent_value = 30
+# Paramameter for percentage of Persia you must control
+fp3_persia_owned_for_rekindle_persia_percent_value = 30
 
-# # Uses above to plug in to script as a decimal
-# fp3_persia_owned_for_rekindle_persia_decimal_value = {
-# 	value = fp3_persia_owned_for_rekindle_persia_percent_value
-# 	divide = 100
-# 	max = 1
-# }
+# Uses above to plug in to script as a decimal
+fp3_persia_owned_for_rekindle_persia_decimal_value = {
+	value = fp3_persia_owned_for_rekindle_persia_percent_value
+	divide = 100
+	max = 1
+}
 
-# fp3_iranian_current_owned_persia_value = {
-# 	value = 0
-# 	every_county_in_region = {
-# 		region = world_persian_empire
-# 		limit = {
-# 			holder.top_liege = root
-# 		}
-# 		add = 1
-# 	}
-# 	divide = {
-# 		value = 0
-# 		every_county_in_region = {
-# 			region = world_persian_empire
-# 			add = 1
-# 		}
-# 	}
-# 	multiply = 100
-# }
+fp3_iranian_current_owned_persia_value = {
+	value = 0
+	every_county_in_region = {
+		region = world_persian_empire
+		limit = {
+			holder.top_liege = root
+		}
+		add = 1
+	}
+	divide = {
+		value = 0
+		every_county_in_region = {
+			region = world_persian_empire
+			add = 1
+		}
+	}
+	multiply = 100
+}
 
-# # Paramameter for percentage of Persia that must be iranian
-# fp3_iranian_culture_for_rekindle_persia_percent_value = 75
+# Paramameter for percentage of Persia that must be iranian
+fp3_iranian_culture_for_rekindle_persia_percent_value = 75
 
-# fp3_iranian_culture_for_rekindle_persia_decimal_value = {
-# 	value = fp3_iranian_culture_for_rekindle_persia_percent_value
-# 	divide = 100
-# 	max = 1
-# }
+fp3_iranian_culture_for_rekindle_persia_decimal_value = {
+	value = fp3_iranian_culture_for_rekindle_persia_percent_value
+	divide = 100
+	max = 1
+}
 
-# fp3_iranian_culture_current_persian_culture_value = {
-# 	value = 0
-# 	every_county_in_region = {
-# 		region = world_persian_empire
-# 		limit = {
-# 			culture = { has_cultural_pillar = heritage_iranian }
-# 		}
-# 		add = 1
-# 	}
-# 	divide = {
-# 		value = 0
-# 		every_county_in_region = {
-# 			region = world_persian_empire
-# 			add = 1
-# 		}
-# 	}
-# 	multiply = 100
-# }
+fp3_iranian_culture_current_persian_culture_value = {
+	value = 0
+	every_county_in_region = {
+		region = world_persian_empire
+		limit = {
+			culture = { has_cultural_pillar = heritage_iranian }
+		}
+		add = 1
+	}
+	divide = {
+		value = 0
+		every_county_in_region = {
+			region = world_persian_empire
+			add = 1
+		}
+	}
+	multiply = 100
+}
 
-# fp3_shia_caliphate_ending_conversion_chance_percent_value = 75
+fp3_shia_caliphate_ending_conversion_chance_percent_value = 75
 
-# fp3_shia_caliphate_ending_conversion_chance_decimal_value = {
-# 	value = fp3_iranian_culture_for_rekindle_persia_percent_value
-# 	divide = 100
-# 	max = 1
-# }
+fp3_shia_caliphate_ending_conversion_chance_decimal_value = {
+	value = fp3_iranian_culture_for_rekindle_persia_percent_value
+	divide = 100
+	max = 1
+}
 
-# fp3_strengthen_caliphate_ending_conversion_chance_percent_value = 50
+fp3_strengthen_caliphate_ending_conversion_chance_percent_value = 50
 
-# fp3_strengthen_caliphate_ending_conversion_chance_decimal_value = {
-# 	value = fp3_iranian_culture_for_rekindle_persia_percent_value
-# 	divide = 100
-# 	max = 1
-# }
+fp3_strengthen_caliphate_ending_conversion_chance_decimal_value = {
+	value = fp3_iranian_culture_for_rekindle_persia_percent_value
+	divide = 100
+	max = 1
+}
 
-# fp3_struggle_ending_conversion_modifier_value = 1.5
+fp3_struggle_ending_conversion_modifier_value = 1.5
 
-# fp3_iranian_faith_for_rekindle_persia_conversion_chance_percent_value = 50
+fp3_iranian_faith_for_rekindle_persia_conversion_chance_percent_value = 50
 
-# fp3_iranian_faith_for_rekindle_persia_conversion_chance_decimal_value = {
-# 	value = fp3_iranian_culture_for_rekindle_persia_percent_value
-# 	divide = 100
-# 	max = 1
-# }
+fp3_iranian_faith_for_rekindle_persia_conversion_chance_decimal_value = {
+	value = fp3_iranian_culture_for_rekindle_persia_percent_value
+	divide = 100
+	max = 1
+}
 
-# fp3_current_nb_ally_shia_caliphate = {
-# 	value = 0
-# 	every_ally = {
-# 		limit = { highest_held_title_tier >= tier_kingdom }
-# 		add = 1
-# 	}
-# }
+fp3_current_nb_ally_shia_caliphate = {
+	value = 0
+	every_ally = {
+		limit = { highest_held_title_tier >= tier_kingdom }
+		add = 1
+	}
+}
 
 ##################################################
 # Tax Collector 
