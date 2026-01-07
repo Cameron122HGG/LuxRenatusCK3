@@ -1057,90 +1057,89 @@ create_holy_order_effect = {
 # }
 
 #Lux Renata TBA
-# unite_india_decision_effect = {
+ unite_india_decision_effect = {
 # 	#Create the title and make it primary
-# 	create_title_and_vassal_change = {
-# 		type = created
-# 		save_scope_as = title_change
-# 		add_claim_on_loss = no
-# 	}
-# 	title:h_india = {
-# 		change_title_holder = {
-# 			holder = root
-# 			change = scope:title_change
-# 		}
-# 	}
-# 	resolve_title_and_vassal_change = scope:title_change
-# 	set_primary_title_to = title:h_india
+ 	create_title_and_vassal_change = {
+ 		type = created
+ 		save_scope_as = title_change
+ 		add_claim_on_loss = no
+ 	}
+ 	title:h_india = {
+ 		change_title_holder = {
+ 			holder = root
+ 			change = scope:title_change
+ 		}
+ 	}
+ 	resolve_title_and_vassal_change = scope:title_change
+ 	set_primary_title_to = title:h_india
 
-# 	title:e_rajastan = { set_de_jure_liege_title = title:h_india }
-# 	title:e_deccan = { set_de_jure_liege_title = title:h_india }
-# 	title:e_bengal = { set_de_jure_liege_title = title:h_india }
+ 	title:e_rajastan = { set_de_jure_liege_title = title:h_india }
+ 	title:e_deccan = { set_de_jure_liege_title = title:h_india }
+ 	title:e_bengal = { set_de_jure_liege_title = title:h_india }
 
-# 	hidden_effect = {
-# 		if = {
-# 			limit = { has_title = title:e_rajastan }
-# 			destroy_title = title:e_rajastan
-# 		}
-# 		if = {
-# 			limit = { has_title = title:e_deccan }
-# 			destroy_title = title:e_deccan
-# 		}
-# 		if = {
-# 			limit = { has_title = title:e_bengal }
-# 			destroy_title = title:e_bengal
-# 		}
-# 	}
-# }
-
-#Lux Renata TBA
-# become_saoshyant_decision_effect = {
-# 	set_nickname_effect = { NICKNAME = nick_the_saoshyant }
-# 	add_trait = saoshyant
-# 	custom_tooltip = become_saoshyant_decision_decendant_trait_tooltip
-# 	dynasty = {
-# 		add_dynasty_modifier = {
-# 			modifier = resurging_saoshyant
-# 			years = 25
-# 		}
-# 	}
-# 	if = {
-# 		limit = {
-# 			any_held_title = {
-# 				title_tier = county
-# 				faith != root.faith
-# 			}
-# 		}
-# 		every_held_title = {
-# 			custom = all_held_counties
-# 			title_tier = county
-# 			limit = {
-# 				faith != root.faith
-# 			}
-# 			random = {
-# 				chance = 35
-# 				set_county_faith = root.faith
-# 			}
-# 		}
-# 	}
-# 	faith = {
-# 		change_fervor = {
-# 			value = 15
-# 			desc = fervor_gain_saoshyant
-# 		}
-# 	}
-# }
+ 	hidden_effect = {
+ 		if = {
+ 			limit = { has_title = title:e_rajastan }
+ 			destroy_title = title:e_rajastan
+ 		}
+ 		if = {
+ 			limit = { has_title = title:e_deccan }
+ 			destroy_title = title:e_deccan
+ 		}
+ 		if = {
+ 			limit = { has_title = title:e_bengal }
+ 			destroy_title = title:e_bengal
+ 		}
+ 	}
+ }
 
 #Lux Renata TBA
-# build_grand_church_decision_effect = {
-# 	#faith = { activate_holy_site = segrada_familia }
-# 	if = {
-# 		limit = {
-# 			prestige_level < 5
-# 		}
-# 		add_prestige_level = 1
-# 	}
-# }
+ become_saoshyant_decision_effect = {
+ 	set_nickname_effect = { NICKNAME = nick_the_saoshyant }
+ 	add_trait = saoshyant
+ 	custom_tooltip = become_saoshyant_decision_decendant_trait_tooltip
+ 	dynasty = {
+ 		add_dynasty_modifier = {
+ 			modifier = resurging_saoshyant
+ 			years = 25
+ 		}
+ 	}
+ 	if = {
+ 		limit = {
+ 			any_held_title = {
+ 				title_tier = county
+ 				faith != root.faith
+ 			}
+ 		}
+ 		every_held_title = {
+ 			custom = all_held_counties
+ 			title_tier = county
+ 			limit = {
+ 				faith != root.faith
+ 			}
+ 			random = {
+ 				chance = 35
+ 				set_county_faith = root.faith
+ 			}
+ 		}
+ 	}
+ 	faith = {
+ 		change_fervor = {
+ 			value = 15
+ 			desc = fervor_gain_saoshyant
+ 		}
+ 	}
+ }
+
+ build_grand_church_decision_effect = {
+ 	faith = { activate_holy_site = segrada_familia }
+ 	if = {
+ 		limit = {
+ 			prestige_level < 5
+ 		}
+ 		add_prestige_level = 1
+ 	}
+ }
 
 accept_cannibalism_decision_effect = {
 	custom_tooltip = faith_accept_cannibalism
