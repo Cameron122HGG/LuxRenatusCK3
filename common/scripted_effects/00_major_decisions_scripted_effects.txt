@@ -1077,11 +1077,11 @@ restore_diocese_system_decision_effect = {
 		}
 	
 		every_county_in_region = {
-			region = custom_italia_annoraria
-			duchy = { add_to_list = custom_italia_annoraria_list }
+			region = custom_italia_annonaria
+			duchy = { add_to_list = custom_italia_annonaria_list }
 		}
 		every_in_list = {
-			list = custom_italia_annoraria_list
+			list = custom_italia_annonaria_list
 			limit = {
 				NOT = { de_jure_liege = title:k_italia_annonaria }
 			}
@@ -1175,19 +1175,19 @@ restore_eastern_diocese_system_effect = {
 	#Sort the diocese
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_roman_dacia = {
+		title:k_diocese_dacia = {
 			set_de_jure_liege_title = title:e_macedonia
 		}
-		title:k_roman_thracia = {
+		title:k_diocese_thracia = {
 			set_de_jure_liege_title = title:e_macedonia
 		}
-		title:k_roman_asia = {
+		title:k_diocese_asia = {
 			set_de_jure_liege_title = title:e_anatolia
 		}
-		title:k_roman_macedonia = {
+		title:k_diocese_macedonia = {
 			set_de_jure_liege_title = title:e_macedonia
 		}
-		title:k_roman_pontus = {
+		title:k_diocese_pontus = {
 			set_de_jure_liege_title = title:e_anatolia
 		}
 
@@ -1196,37 +1196,37 @@ restore_eastern_diocese_system_effect = {
 	}
 	else_if = {
 		limit = { exists = title:e_byzantium.holder }
-		title:k_roman_dacia = {
+		title:k_diocese_dacia = {
 			set_de_jure_liege_title = title:e_byzantium
 		}
-		title:k_roman_thracia = {
+		title:k_diocese_thracia = {
 			set_de_jure_liege_title = title:e_byzantium
 		}
-		title:k_roman_asia = {
+		title:k_diocese_asia = {
 			set_de_jure_liege_title = title:e_byzantium
 		}
-		title:k_roman_macedonia = {
+		title:k_diocese_macedonia = {
 			set_de_jure_liege_title = title:e_byzantium
 		}
-		title:k_roman_pontus = {
+		title:k_diocese_pontus = {
 			set_de_jure_liege_title = title:e_byzantium
 		}
 	}
 	else_if = {
 		limit = { exists = title:h_eastern_roman_empire.holder }
-		title:k_roman_dacia = {
+		title:k_diocese_dacia = {
 			set_de_jure_liege_title = title:e_macedonia
 		}
-		title:k_roman_thracia = {
+		title:k_diocese_thracia = {
 			set_de_jure_liege_title = title:e_macedonia
 		}
-		title:k_roman_asia = {
+		title:k_diocese_asia = {
 			set_de_jure_liege_title = title:e_praefectura_oriens
 		}
-		title:k_roman_macedonia = {
+		title:k_diocese_macedonia = {
 			set_de_jure_liege_title = title:e_macedonia
 		}
-		title:k_roman_pontus = {
+		title:k_diocese_pontus = {
 			set_de_jure_liege_title = title:e_praefectura_oriens
 		}
 	}
@@ -1248,9 +1248,9 @@ restore_eastern_diocese_system_effect = {
 		every_in_list = {
 			list = custom_roman_thracia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_thracia }
+				NOT = { de_jure_liege = title:k_diocese_thracia }
 			}
-			set_de_jure_liege_title = title:k_roman_thracia
+			set_de_jure_liege_title = title:k_diocese_thracia
 		}
 
 		# diocese of Dacia
@@ -1261,9 +1261,9 @@ restore_eastern_diocese_system_effect = {
 		every_in_list = {
 			list = custom_roman_dacia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_dacia }
+				NOT = { de_jure_liege = title:k_diocese_dacia }
 			}
-			set_de_jure_liege_title = title:k_roman_dacia
+			set_de_jure_liege_title = title:k_diocese_dacia
 		}	
 
 		# diocese of Macedonia
@@ -1274,9 +1274,9 @@ restore_eastern_diocese_system_effect = {
 		every_in_list = {
 			list = custom_roman_macedonia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_macedonia }
+				NOT = { de_jure_liege = title:k_diocese_macedonia }
 			}
-			set_de_jure_liege_title = title:k_roman_macedonia
+			set_de_jure_liege_title = title:k_diocese_macedonia
 		}		
 
 		# diocese of Asia
@@ -1287,9 +1287,9 @@ restore_eastern_diocese_system_effect = {
 		every_in_list = {
 			list = custom_roman_asia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_asia }
+				NOT = { de_jure_liege = title:k_diocese_asia }
 			}
-			set_de_jure_liege_title = title:k_roman_asia
+			set_de_jure_liege_title = title:k_diocese_asia
 		}
 
 		# diocese of Pontus
@@ -1300,9 +1300,9 @@ restore_eastern_diocese_system_effect = {
 		every_in_list = {
 			list = custom_roman_pontus_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_pontus }
+				NOT = { de_jure_liege = title:k_diocese_pontus }
 			}
-			set_de_jure_liege_title = title:k_roman_pontus
+			set_de_jure_liege_title = title:k_diocese_pontus
 		}
 
 		if = {
@@ -1319,7 +1319,7 @@ restore_eastern_diocese_system_effect = {
 		}	
 
 		# Fix. Bulgaria. For. Reasons
-		title:d_bulgaria = { set_de_jure_liege_title = title:k_roman_dacia }
+		title:d_bulgaria = { set_de_jure_liege_title = title:k_diocese_dacia }
 	}
 	
 	# Destroy useless kingdoms
@@ -1371,7 +1371,7 @@ restore_diocese_gallia_viennensis_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_roman_galliarum = {
+	title:k_diocese_galliarum = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1385,7 +1385,7 @@ restore_diocese_gallia_viennensis_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_roman_viennensis = {
+	title:k_diocese_viennensis = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1401,15 +1401,15 @@ restore_diocese_gallia_viennensis_decision_effect = {
 	#Sort the Dioceses
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_roman_galliarum = { set_de_jure_liege_title = title:e_praetorian_gallia }
-		title:k_roman_viennensis = { set_de_jure_liege_title = title:e_praetorian_gallia }
+		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_praetorian_gallia }
+		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_praetorian_gallia }
 
 		title:e_praetorian_gallia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_spqr.holder }
-		title:k_roman_galliarum = { set_de_jure_liege_title = title:e_spqr }
-		title:k_roman_viennensis = { set_de_jure_liege_title = title:e_spqr }
+		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_spqr }
 	}
 
 	# Destroy useless kingdoms
@@ -1489,9 +1489,9 @@ restore_diocese_gallia_viennensis_decision_effect = {
 		every_in_list = {
 			list = custom_roman_viennensis_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_viennensis }
+				NOT = { de_jure_liege = title:k_diocese_viennensis }
 			}
-			set_de_jure_liege_title = title:k_roman_viennensis
+			set_de_jure_liege_title = title:k_diocese_viennensis
 		}
 
 		every_county_in_region = {
@@ -1501,9 +1501,9 @@ restore_diocese_gallia_viennensis_decision_effect = {
 		every_in_list = {
 			list = custom_roman_gallia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_galliarum }
+				NOT = { de_jure_liege = title:k_diocese_galliarum }
 			}
-			set_de_jure_liege_title = title:k_roman_galliarum
+			set_de_jure_liege_title = title:k_diocese_galliarum
 		}
 
 		# Then shift all Kingdoms back.
@@ -1532,7 +1532,7 @@ restore_diocese_africa_mauretania_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_roman_africa = {
+	title:k_diocese_africa = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1557,14 +1557,14 @@ restore_diocese_africa_mauretania_decision_effect = {
 	#Sort the Dioceses
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_roman_africa = { set_de_jure_liege_title = title:e_praetorian_africa }
+		title:k_diocese_africa = { set_de_jure_liege_title = title:e_praetorian_africa }
 		title:k_mauretania = { set_de_jure_liege_title = title:e_praetorian_africa }
 
 		title:e_praetorian_africa = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_spqr.holder }
-		title:k_roman_africa = { set_de_jure_liege_title = title:e_spqr }
+		title:k_diocese_africa = { set_de_jure_liege_title = title:e_spqr }
 		title:k_mauretania = { set_de_jure_liege_title = title:e_spqr }
 	}
 
@@ -1614,9 +1614,9 @@ restore_diocese_africa_mauretania_decision_effect = {
 		every_in_list = {
 			list = custom_roman_africa_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_africa }
+				NOT = { de_jure_liege = title:k_diocese_africa }
 			}
-			set_de_jure_liege_title = title:k_roman_africa
+			set_de_jure_liege_title = title:k_diocese_africa
 		}
 
 		every_county_in_region = {
@@ -1692,7 +1692,7 @@ restore_exarchate_oriens_decision_effect  = {
 		title:d_amman = { set_de_jure_liege_title = title:k_jerusalem }
 		
 		#Fix Mesopotamia
-		title:d_mesopotamia = { set_de_jure_liege_title = title:k_roman_pontus }
+		title:d_mesopotamia = { set_de_jure_liege_title = title:k_diocese_pontus }
 		
 		# Shift the provinces
 		every_county_in_region = {
@@ -1949,7 +1949,7 @@ restore_diocese_britannia_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_roman_britannia = {
+	title:k_diocese_britannia = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1960,11 +1960,11 @@ restore_diocese_britannia_decision_effect = {
 	#Sort the Dioceses
 	if = {
 		limit = { exists = title:e_spqr.holder }
-		title:k_roman_britannia = { set_de_jure_liege_title = title:e_spqr }
+		title:k_diocese_britannia = { set_de_jure_liege_title = title:e_spqr }
 	}
 	else_if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_roman_britannia = { set_de_jure_liege_title = title:e_praetorian_gallia }
+		title:k_diocese_britannia = { set_de_jure_liege_title = title:e_praetorian_gallia }
 
 		title:e_praetorian_gallia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
@@ -1992,9 +1992,9 @@ restore_diocese_britannia_decision_effect = {
 		every_in_list = {
 			list = custom_roman_britannia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_britannia }
+				NOT = { de_jure_liege = title:k_diocese_britannia }
 			}
-			set_de_jure_liege_title = title:k_roman_britannia
+			set_de_jure_liege_title = title:k_diocese_britannia
 		}
 
 		# Then shift all Kingdoms back.
@@ -2149,9 +2149,9 @@ create_wre_roman_empire_scripted_effect = {
 		every_in_list = {
 			list = custom_roman_thracia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_thracia }
+				NOT = { de_jure_liege = title:k_diocese_thracia }
 			}
-			set_de_jure_liege_title = title:k_roman_thracia
+			set_de_jure_liege_title = title:k_diocese_thracia
 		}
 
 		# diocese of Dacia
@@ -2162,9 +2162,9 @@ create_wre_roman_empire_scripted_effect = {
 		every_in_list = {
 			list = custom_roman_dacia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_dacia }
+				NOT = { de_jure_liege = title:k_diocese_dacia }
 			}
-			set_de_jure_liege_title = title:k_roman_dacia
+			set_de_jure_liege_title = title:k_diocese_dacia
 		}	
 
 		# diocese of Macedonia
@@ -2175,14 +2175,14 @@ create_wre_roman_empire_scripted_effect = {
 		every_in_list = {
 			list = custom_roman_macedonia_list
 			limit = {
-				NOT = { de_jure_liege = title:k_roman_macedonia }
+				NOT = { de_jure_liege = title:k_diocese_macedonia }
 			}
-			set_de_jure_liege_title = title:k_roman_macedonia
+			set_de_jure_liege_title = title:k_diocese_macedonia
 		}	
 
-		title:k_roman_thracia = { set_de_jure_liege_title = title:e_macedonia }
-		title:k_roman_dacia = { set_de_jure_liege_title = title:e_macedonia }
-		title:k_roman_macedonia = { set_de_jure_liege_title = title:e_macedonia }
+		title:k_diocese_thracia = { set_de_jure_liege_title = title:e_macedonia }
+		title:k_diocese_dacia = { set_de_jure_liege_title = title:e_macedonia }
+		title:k_diocese_macedonia = { set_de_jure_liege_title = title:e_macedonia }
 
 		title:e_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 
