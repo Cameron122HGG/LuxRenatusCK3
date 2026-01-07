@@ -743,7 +743,6 @@ e_suvarnabhumi = {
 			}
 		}
 	}
-	
 	k_dvaravati = {
 		color = { 227 118 5 }
 		capital = c_lop_buri
@@ -1161,6 +1160,101 @@ e_suvarnabhumi = {
 					province = 11483
 					color = { 156 58 2 }
 				}
+			}
+		}
+	}
+	k_siam = {
+		color = { 88 137 172 }
+
+		capital = c_sukhothai
+
+		can_create = {
+			trigger_if = {
+				limit = {
+					is_ai = yes
+				}
+				culture = { has_cultural_pillar = heritage_tai }
+			}
+		}
+
+		ai_primary_priority = {
+			if = {
+				limit = {
+					culture = culture:tai
+				}
+				add = @correct_culture_primary_score
+			}
+			if = {
+				limit = {
+					culture = { has_cultural_pillar = heritage_tai }
+				}
+				add = @better_than_the_alternatives_score
+			}
+		}
+	}
+}
+
+e_brunei = {
+	color = { 255 255 0 }
+
+	capital = c_BOR_brunei
+
+	can_create = {
+		trigger_if = {
+			limit = {
+				is_ai = yes
+			}
+			religion = religion:islam_religion
+			culture = { has_cultural_pillar = heritage_austronesian }
+		}
+	}
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				religion = religion:islam_religion
+				culture = { has_cultural_pillar = heritage_austronesian }
+			}
+			add = @correct_culture_primary_score
+		}
+		if = {
+			limit = {
+				religion = religion:islam_religion
+				culture = { has_cultural_pillar = heritage_austronesian }
+			}
+			add = @better_than_the_alternatives_score
+		}
+	}
+
+	k_brunei = {
+		color = { 255 255 0 }
+
+		capital = c_BOR_brunei
+
+		can_create = {
+			trigger_if = {
+				limit = {
+					is_ai = yes
+				}
+				religion = religion:islam_religion
+				culture = { has_cultural_pillar = heritage_austronesian }
+			}
+		}
+
+		ai_primary_priority = {
+			if = {
+				limit = {
+					religion = religion:islam_religion
+					culture = { has_cultural_pillar = heritage_austronesian }
+				}
+				add = @correct_culture_primary_score
+			}
+			if = {
+				limit = {
+					religion = religion:islam_religion
+					culture = { has_cultural_pillar = heritage_austronesian }
+				}
+				add = @better_than_the_alternatives_score
 			}
 		}
 	}
