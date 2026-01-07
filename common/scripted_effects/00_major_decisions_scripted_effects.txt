@@ -395,9 +395,9 @@ split_byzantine_empire_effect = {
 				NOR = {
 					de_jure_liege = title:e_praetorian_illyricum
 					de_jure_liege = title:e_praetorian_macedonia
-					de_jure_liege = title:e_anatolia
+					de_jure_liege = title:e_praetorian_anatolia
 					de_jure_liege = title:e_praetorian_oriens
-					de_jure_liege = title:e_aegyptus
+					de_jure_liege = title:e_praetorian_aegyptus
 					de_jure_liege = title:e_praetorian_africa
 				}
 			}
@@ -468,8 +468,8 @@ split_byzantine_empire_effect = {
 						#title:k_aydin ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_anatolia
-				title:e_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_anatolia
+				title:e_praetorian_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
@@ -490,7 +490,7 @@ split_byzantine_empire_effect = {
 			}
 			if = {
 				limit = {
-					exists = title:e_aegyptus
+					exists = title:e_praetorian_aegyptus
 					OR = {
 						title:k_egypt ?= this
 						title:k_blemmyia ?= this
@@ -498,8 +498,8 @@ split_byzantine_empire_effect = {
 						title:k_abyssinia ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_aegyptus
-				title:e_aegyptus = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_aegyptus
+				title:e_praetorian_aegyptus = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
@@ -593,8 +593,8 @@ split_byzantine_empire_effect = {
 							title:k_aydin ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_anatolia
-					title:e_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_anatolia
+					title:e_praetorian_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -615,7 +615,7 @@ split_byzantine_empire_effect = {
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
-						exists = title:e_aegyptus
+						exists = title:e_praetorian_aegyptus
 						tier = tier_kingdom
 						OR = {
 							title:k_egypt ?= this
@@ -624,8 +624,8 @@ split_byzantine_empire_effect = {
 							title:k_abyssinia ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_aegyptus
-					title:e_aegyptus = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_aegyptus
+					title:e_praetorian_aegyptus = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -695,7 +695,7 @@ create_eastern_roman_empire_scripted_effect = {
 		title:e_byzantium ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_illyricum ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
-		title:e_anatolia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_anatolia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:h_eastern_roman_empire = { # They get the new Roman Empire title
 			change_title_holder = {
 				holder = scope:new_holder
