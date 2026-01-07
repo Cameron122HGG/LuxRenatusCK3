@@ -90,7 +90,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 					has_global_variable = lux_flag_ptolemaic_empire
 					NOT = { has_global_variable = lux_flag_antigonid_empire }
 					NOT = { has_global_variable = lux_flag_antipatrid_empire }
-					NOT = { has_global_variable = lux_flag_seleucid_empire }
+					NOT = { has_global_variable = lux_flag_seleukid_empire }
 				}
 				desc = LR_diadochi_kingdoms_events.1100.desc.ptolemaic
 			}
@@ -99,7 +99,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 					has_global_variable = lux_flag_antigonid_empire
 					NOT = { has_global_variable = lux_flag_ptolemaic_empire }
 					NOT = { has_global_variable = lux_flag_antipatrid_empire }
-					NOT = { has_global_variable = lux_flag_seleucid_empire }
+					NOT = { has_global_variable = lux_flag_seleukid_empire }
 				}
 				desc = LR_diadochi_kingdoms_events.1100.desc.antigonid
 			}
@@ -109,19 +109,19 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 					has_global_variable = lux_flag_antipatrid_empire
 					NOT = { has_global_variable = lux_flag_ptolemaic_empire }
 					NOT = { has_global_variable = lux_flag_antigonid_empire }
-					NOT = { has_global_variable = lux_flag_seleucid_empire }
+					NOT = { has_global_variable = lux_flag_seleukid_empire }
 				}
 				desc = LR_diadochi_kingdoms_events.1100.desc.antipatrid
 			}
 			
 			triggered_desc = {
 				trigger = {
-					has_global_variable = lux_flag_seleucid_empire
+					has_global_variable = lux_flag_seleukid_empire
 					NOT = { has_global_variable = lux_flag_ptolemaic_empire }
 					NOT = { has_global_variable = lux_flag_antigonid_empire }
 					NOT = { has_global_variable = lux_flag_antipatrid_empire }
 				}
-				desc = LR_diadochi_kingdoms_events.1100.desc.seleucid
+				desc = LR_diadochi_kingdoms_events.1100.desc.seleukid
 			}
 		}
 	}
@@ -449,10 +449,10 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 	
 	
 	option = {
-		name = LR_diadochi_kingdoms_events.1100.e #Seleucid Restoration
+		name = LR_diadochi_kingdoms_events.1100.e #Seleukid Restoration
 		trigger = { 
-			has_global_variable = lux_flag_seleucid_reborn
-			has_title = title:k_seleucid_kingdom
+			has_global_variable = lux_flag_seleukid_reborn
+			has_title = title:k_seleukid_kingdom
 		}
 			
 		
@@ -472,7 +472,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 		add_claim_on_loss = no
 	}
 	
-	title:e_seleucid_kingdom = {
+	title:e_seleukid_kingdom = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -487,12 +487,12 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 	title:e_persia = {
 				every_in_de_jure_hierarchy = {
 					limit = { tier = tier_kingdom }
-					set_de_jure_liege_title = title:e_seleucid_kingdom
+					set_de_jure_liege_title = title:e_seleukid_kingdom
 			    }
 		    }
 			
-		    title:k_syria = { set_de_jure_liege_title = title:e_seleucid_kingdom }
-			title:k_jerusalem = { set_de_jure_liege_title = title:e_seleucid_kingdom }
+		    title:k_syria = { set_de_jure_liege_title = title:e_seleukid_kingdom }
+			title:k_jerusalem = { set_de_jure_liege_title = title:e_seleukid_kingdom }
 		}
 		
 	
@@ -504,17 +504,17 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 			}
 		}
 		hidden_effect = {
-			primary_title = { transfer_title_maa_ownership = title:e_seleucid_kingdom }
+			primary_title = { transfer_title_maa_ownership = title:e_seleukid_kingdom }
 		}
 	}
 	
-	hidden_effect = { set_primary_title_to = title:e_seleucid_kingdom }
+	hidden_effect = { set_primary_title_to = title:e_seleukid_kingdom }
 	
 	
 	every_held_title = { #Should destroy all other Empires owned at the time.
 		limit = {
 				tier = tier_kingdom
-			NOT = { this = title:e_seleucid_kingdom }
+			NOT = { this = title:e_seleukid_kingdom }
 		}
 		root = { destroy_title = prev }
 	}
@@ -536,7 +536,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 			change = scope:change
 		}
 	}
-		title:e_seleucid_kingdom = { 
+		title:e_seleukid_kingdom = { 
 			set_capital_county = title:c_antiocheia
 		}
 		
@@ -550,7 +550,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 			quality = illustrious
 			chronicle = new_title
 			properties = {
-				title = title:e_seleucid_kingdom
+				title = title:e_seleukid_kingdom
 				founder = root
 			        }
 		        }

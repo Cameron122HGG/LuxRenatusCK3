@@ -1,14 +1,14 @@
 ﻿#Successor Kingdoms Decisions
 
 
-LR_diadochi_seleucid_kingdom_decision = {
+LR_diadochi_seleukid_kingdom_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
     }
 
-    desc = LR_diadochi_seleucid_kingdom_desc
-    selection_tooltip = LR_diadochi_seleucid_kingdom_tooltip
-	confirm_text = LR_diadochi_seleucid_kingdom_confirm
+    desc = LR_diadochi_seleukid_kingdom_desc
+    selection_tooltip = LR_diadochi_seleukid_kingdom_tooltip
+	confirm_text = LR_diadochi_seleukid_kingdom_confirm
     decision_group_type = major
 
     ai_check_interval = 120
@@ -16,7 +16,7 @@ LR_diadochi_seleucid_kingdom_decision = {
     is_shown = {
         is_ruler = yes
         is_playable_character = yes
-		NOT = { exists = title:k_seleucid_kingdom.holder }
+		NOT = { exists = title:k_seleukid_kingdom.holder }
 		has_trait = trait:bloodline_seleukos
 
 		NOT = { has_title = title:e_antigonid_empire }
@@ -31,14 +31,14 @@ LR_diadochi_seleucid_kingdom_decision = {
 		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios}
 
 		OR = {
-		dynasty = dynasty:dynasty_hellenic_seleucid
+		dynasty = dynasty:dynasty_hellenic_seleukid
 		dynasty = dynasty:dynasty_hellenic_seleukos
 		}
 
         NOT = {
             is_target_in_global_variable_list = {
                 name = unavailable_unique_decisions
-                target = flag:flag_lux_seleucid_reborn
+                target = flag:flag_lux_seleukid_reborn
             }
         }
     }
@@ -58,7 +58,7 @@ LR_diadochi_seleucid_kingdom_decision = {
 		}
 
 		OR = {
-		dynasty = dynasty:dynasty_hellenic_seleucid
+		dynasty = dynasty:dynasty_hellenic_seleukid
 		dynasty = dynasty:dynasty_hellenic_seleukos
 		}
 
@@ -88,7 +88,7 @@ LR_diadochi_seleucid_kingdom_decision = {
     }
 
     effect = {
-		custom_tooltip = LR_diadochi_seleucid_kingdom_effect_tooltip
+		custom_tooltip = LR_diadochi_seleukid_kingdom_effect_tooltip
 
 	hidden_effect = {
 	    change_government = classical_government_ep3
@@ -97,10 +97,10 @@ LR_diadochi_seleucid_kingdom_decision = {
     hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
-                target = flag:flag_lux_seleucid_reborn
+                target = flag:flag_lux_seleukid_reborn
             }
             set_global_variable = {
-                name = flag_lux_seleucid_reborn
+                name = flag_lux_seleukid_reborn
                 value = root
             }
         }
@@ -140,14 +140,14 @@ LR_diadochi_ptolemaic_kingdom_decision = {
 		OR = {
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_antigonid_empire }
-		NOT = { has_primary_title = title:e_seleucid_kingdom }
+		NOT = { has_primary_title = title:e_seleukid_kingdom }
 		NOT = { has_primary_title = title:e_antipatrid_empire }
 		}
 
 		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
 		NOT = { dynasty = dynasty:dynasty_hellenic_antipater }
 		NOT = { dynasty = dynasty:dynasty_hellenic_seleukos }
-		NOT = { dynasty = dynasty:dynasty_hellenic_seleucid }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleukid }
 
 		OR = {
 		culture = culture:hellenistic
@@ -254,14 +254,14 @@ LR_diadochi_antigonid_kingdom_decision = {
 
 		OR = {
 		NOT = { has_primary_title = title:e_byzantium }
-		NOT = { has_primary_title = title:e_seleucid_kingdom }
+		NOT = { has_primary_title = title:e_seleukid_kingdom }
 		NOT = { has_primary_title = title:e_antigonid_empire }
 		NOT = { has_primary_title = title:e_ptolemaic_empire }
 		}
 
 		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios }
 		NOT = { dynasty = dynasty:dynasty_hellenic_seleukos }
-		NOT = { dynasty = dynasty:dynasty_hellenic_seleucid }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleukid }
 
 		has_realm_law = crown_authority_3
 
@@ -377,7 +377,7 @@ LR_diadochi_antipatrid_kingdom_decision = {
 		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
 		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios }
 		NOT = { dynasty = dynasty:dynasty_hellenic_seleukos }
-		NOT = { dynasty = dynasty:dynasty_hellenic_seleucid }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleukid }
 
 		OR = {
 		culture = culture:hellenistic
