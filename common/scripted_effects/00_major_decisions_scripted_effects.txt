@@ -1,4 +1,115 @@
-﻿create_roman_empire_spqr_scripted_effect = {
+﻿# Restore the Western Roman Empire 
+restore_western_rome_scripted_effect = {
+	add_trait = augustus
+	if = {
+		limit = { has_dlc_feature = legends }
+		create_legend_seed = {
+			type = legitimizing
+			quality = illustrious
+			chronicle = new_title
+			properties = {
+				title = title:e_spqr
+				founder = root
+			}
+		}
+	}
+
+	hidden_effect = {
+		#Part 1: Create New de Jures
+		#Shift counties
+		
+		#To Moravia
+		title:c_hohenau = { set_de_jure_liege_title = title:d_moravia }
+		title:c_krems = { set_de_jure_liege_title = title:d_moravia }
+		title:c_freistadt = { set_de_jure_liege_title = title:d_moravia }
+		
+		#To Bohemia
+		title:c_passau = { set_de_jure_liege_title = title:d_bohemia }
+		#To Carinthia
+		title:c_lienz = { set_de_jure_liege_title = title:d_carinthia }
+		#To Curezzia
+		#title:c_grunningen = { set_de_jure_liege_title = title:d_currezia }
+		#To Romagna
+		title:c_urbino = { set_de_jure_liege_title = title:d_ravenna }
+		#To Transjurania
+		title:c_zurich = { set_de_jure_liege_title = title:d_transjurania }
+
+		#Shift duchies
+		#To Germany
+		title:d_nordgau = { set_de_jure_liege_title = title:k_east_francia }
+		
+		#To Bavaria
+		title:d_currezia = { set_de_jure_liege_title = title:k_bavaria }	
+		#To Croatia
+		title:d_somogy = { set_de_jure_liege_title = title:k_croatia }
+		title:d_visegrad = { set_de_jure_liege_title = title:k_croatia }
+		title:d_gyor = { set_de_jure_liege_title = title:k_croatia }
+		title:d_syrmia = { set_de_jure_liege_title = title:k_croatia }	
+		
+		# Then shift all Kingdoms.
+		title:k_sicily = { 
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_lombardy = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_bavaria = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_venice = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_croatia = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_rome = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_sardinia = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		
+		if = {
+			limit = {
+				exists = title:k_mediterranean_sea.holder
+			}
+			title:k_mediterranean_sea = { set_de_jure_liege_title = title:e_spqr }
+		}
+	}
+
+	#Part 2: Re-establish the Empire
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	
+	title:e_spqr = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	
+	resolve_title_and_vassal_change = scope:change
+	
+	every_held_title = { #Should destroy all kingdoms owned at the time.
+		limit = {
+			tier = tier_kingdom
+		}
+		root = { destroy_title = prev }
+	}
+
+	every_held_title = { #Should destroy all other Empires owned at the time.
+		limit = {
+			tier = tier_empire
+			NOT = { this = title:e_spqr }
+		}
+		root = { destroy_title = prev }
+	}
+}
+
+create_roman_empire_spqr_scripted_effect = {
 	add_trait = augustus
 	#Create Roman Empire, shift dejure/history/laws, destroy e_spqr.
 	hidden_effect = {
@@ -679,7 +790,7 @@ create_eastern_roman_empire_scripted_effect = {
 }
 
 #LR Rome
-# Restore the Western Roman Empire #DONE
+# Restore the Western Roman Empire 
 restore_spqr_scripted_effect = {
 	add_trait = augustus
 	if = {
@@ -784,7 +895,7 @@ restore_spqr_scripted_effect = {
 	}
 }
 
-# Re-establish Theodosian Borders (western) #DONE 
+# Re-establish Theodosian Borders (western)  
 retake_western_provinces_decision_effect = {
 	save_scope_as = root_scope
 	add_trait = augustus
@@ -1082,7 +1193,7 @@ restore_diocese_system_decision_effect = {
 	}	
 }
 
-#Done
+
 restore_eastern_diocese_system_effect = {
 	#Sort the diocese
 	if = {
@@ -1277,7 +1388,7 @@ restore_eastern_diocese_system_effect = {
 }
 
 restore_diocese_gallia_viennensis_decision_effect = {
-	#Create the kingdom of gallia
+	#Restore the provinces of gallia
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -1291,7 +1402,7 @@ restore_diocese_gallia_viennensis_decision_effect = {
 	}
 	resolve_title_and_vassal_change = scope:change
 
-	#Create the kingdom of viennensis
+	#Restore the provinces of viennensis
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -1438,7 +1549,7 @@ restore_diocese_gallia_viennensis_decision_effect = {
 }
 
 restore_diocese_africa_mauretania_decision_effect = {
-	#Create the kingdom of roman africa
+	#Restore the provinces of roman africa
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -1452,7 +1563,7 @@ restore_diocese_africa_mauretania_decision_effect = {
 	}
 	resolve_title_and_vassal_change = scope:change
 
-	#Create the kingdom of mauretania
+	#Restore the provinces of mauretania
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -1553,9 +1664,9 @@ restore_diocese_africa_mauretania_decision_effect = {
 	}	
 }
 
-#DONE 
-restore_exarchate_praetorian_prefecture_oriens_decision_effect  = {
-	#Create the kingdom of Oriens
+ 
+restore_diocese_syria_decision_effect  = {
+	#Restore the provinces of Oriens
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -1629,9 +1740,9 @@ restore_exarchate_praetorian_prefecture_oriens_decision_effect  = {
 	}	
 }
 
-#DONE
-restore_exarchate_aegyptus_decision_effect  = {
-	#Create the kingdom of Aegyptus
+
+restore_diocese_aegyptus_decision_effect  = {
+	#Restore the provinces of Aegyptus
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -1681,11 +1792,11 @@ restore_exarchate_aegyptus_decision_effect  = {
 		}
 		# Shift the provinces
 		every_county_in_region = {
-			region = custom_roman_aegyptus
-			duchy = { add_to_list = custom_roman_aegyptus_list }
+			region = custom_roman_diocese_aegyptus
+			duchy = { add_to_list = custom_roman_diocese_aegyptus_list }
 		}	
 		every_in_list = {
-			list = custom_roman_aegyptus_list
+			list = custom_roman_diocese_aegyptus_list
 			limit = {
 				NOT = { de_jure_liege = title:k_diocese_aegyptus }
 			}
@@ -1699,51 +1810,10 @@ restore_exarchate_aegyptus_decision_effect  = {
 	}	
 }
 
-reinstitute_african_grain_dole_decision_effect = {
-	if = {
-		limit = {
-			NOT = { title:c_roma = { has_variable = unlocked_grain_dole } }
-		}
-		custom_tooltip = {
-			text = half_price_chariot_race_tooltip
-			add_character_flag = half_price_chariot_race_flag
-		}
-	}
-	every_county_in_region = {
-		region = custom_roman_diocese_africa
-		limit = {
-			any_county_province = {
-				has_building_or_higher = cereal_fields_05
-			}
-		}
-		add_county_modifier = {
-			modifier = grain_providers_county_modifier
-			years = 25
-		}
-	}
-	add_legitimacy = medium_legitimacy_gain
-	if = {
-		limit = {
-			NOT = { title:c_roma = { has_variable = unlocked_grain_dole } }
-		}
-		add_prestige = {
-			value = massive_prestige_gain
-			multiply = 3
-		}
-		change_influence = {
-			value = massive_influence_gain
-			multiply = 3
-		}
-	}
-	else = {
-		add_prestige = massive_prestige_gain
-		change_influence = massive_influence_gain
-	}
-	set_variable = unlocked_grain_dole
-}
+
 
 restore_diocese_hispania_decision_effect = {
-	#Create the kingdom of Roman Hispania
+	#Restore the provinces of Roman Hispania
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -1849,7 +1919,7 @@ restore_diocese_hispania_decision_effect = {
 }
 
 restore_diocese_britannia_decision_effect = {
-	#Create the kingdom of roman Britannia
+	#Restore the provinces of roman Britannia
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -2114,8 +2184,7 @@ create_wre_roman_empire_scripted_effect = {
 	}
 }
 
-#Vanilla
-#EP3
+#Vanilla Ep3
 retake_eastern_provinces_decision_effect = {
 	save_scope_as = root_scope
 	add_trait = augustus
