@@ -23,7 +23,7 @@ LR_diadochi_seleucid_kingdom_decision = {
 		OR = {
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_antipatrid_empire }
-		NOT = { has_primary_title = title:e_ptolemaic_kingdom }
+		NOT = { has_primary_title = title:e_ptolemaic_empire }
 		}
 
 		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
@@ -91,7 +91,7 @@ LR_diadochi_seleucid_kingdom_decision = {
 		custom_tooltip = LR_diadochi_seleucid_kingdom_effect_tooltip
 
 	hidden_effect = {
-	    change_government = administrative_government
+	    change_government = classical_government_ep3
 	}
 
     hidden_effect = {
@@ -133,7 +133,7 @@ LR_diadochi_ptolemaic_kingdom_decision = {
         is_ruler = yes
         is_playable_character = yes
 		NOT = { exists = title:k_ptolemaic_kingdom.holder }
-		has_title = title:k_egypt
+		has_title = title:k_kyrene
 
 		NOT = { has_title = title:e_antipatrid_empire }
 
@@ -157,7 +157,7 @@ LR_diadochi_ptolemaic_kingdom_decision = {
         NOT = {
             is_target_in_global_variable_list = {
                 name = unavailable_unique_decisions
-                target = flag:flag_lux_ptolemaic_empire
+                target = flag:flag_lux_ptolemaic_kingdom
             }
         }
     }
@@ -203,19 +203,19 @@ LR_diadochi_ptolemaic_kingdom_decision = {
     }
 
     effect = {
-		custom_tooltip = LR_diadochi_ptolemaic_empire_effect_tooltip
+		custom_tooltip = LR_diadochi_ptolemaic_kingdom_effect_tooltip
 
 	hidden_effect = {
-	    change_government = administrative_government
+	    change_government = classical_government_ep3
 	}
 
     hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
-                target = flag:flag_lux_ptolemaic_empire
+                target = flag:flag_lux_ptolemaic_kingdom
             }
             set_global_variable = {
-                name = flag_lux_ptolemaic_empire
+                name = flag_lux_ptolemaic_kingdom
                 value = root
             }
         }
@@ -259,7 +259,7 @@ LR_diadochi_antigonid_kingdom_decision = {
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_seleucid_kingdom }
 		NOT = { has_primary_title = title:e_antigonid_empire }
-		NOT = { has_primary_title = title:e_ptolemaic_kingdom }
+		NOT = { has_primary_title = title:e_ptolemaic_empire }
 		}
 
 		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios }
@@ -325,7 +325,7 @@ LR_diadochi_antigonid_kingdom_decision = {
 
 
 	hidden_effect = {
-	    change_government = administrative_government
+	    change_government = classical_government_ep3
 	}
 
 		title:d_sistan = { set_de_jure_liege_title = title:k_anatolia }

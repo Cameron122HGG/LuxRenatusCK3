@@ -156,7 +156,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 	option = {
 		name = LR_diadochi_kingdoms_events.1100.a
 		trigger = { 
-		has_global_variable = lux_flag_ptolemaic_empire 
+		has_global_variable = lux_flag_ptolemaic_kingdom 
 		has_title = title:k_ptolemaic_kingdom
 		}
 		
@@ -173,11 +173,11 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 		
 
 		
-    title:k_jerusalem = { set_de_jure_liege_title = title:e_ptolemaic_kingdom }
-    title:k_egypt = { set_de_jure_liege_title = title:e_ptolemaic_kingdom }
-    title:k_cyprus = { set_de_jure_liege_title = title:e_ptolemaic_kingdom }
-	title:k_kyrene = { set_de_jure_liege_title = title:e_ptolemaic_kingdom }
-    title:k_ptolemaic_kingdom = { set_de_jure_liege_title = title:e_ptolemaic_kingdom }
+    title:k_jerusalem = { set_de_jure_liege_title = title:e_ptolemaic_empire }
+    title:k_egypt = { set_de_jure_liege_title = title:e_ptolemaic_empire }
+    title:k_cyprus = { set_de_jure_liege_title = title:e_ptolemaic_empire }
+	title:k_kyrene = { set_de_jure_liege_title = title:e_ptolemaic_empire }
+    title:k_ptolemaic_kingdom = { set_de_jure_liege_title = title:e_ptolemaic_empire }
 
   
     create_title_and_vassal_change = {
@@ -186,7 +186,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
         add_claim_on_loss = no
     }
     
-    title:e_ptolemaic_kingdom = {
+    title:e_ptolemaic_empire = {
         change_title_holder = {
             holder = root  
             change = scope:change
@@ -205,19 +205,19 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
             }
         }
         hidden_effect = {
-            primary_title = { transfer_title_maa_ownership = title:e_ptolemaic_kingdom }
+            primary_title = { transfer_title_maa_ownership = title:e_ptolemaic_empire }
         }
     }
     
 
     hidden_effect = { 
-        set_primary_title_to = title:e_ptolemaic_kingdom 
+        set_primary_title_to = title:e_ptolemaic_empire 
     }
     
     every_held_title = {
         limit = {
             tier = tier_kingdom
-            NOT = { this = title:e_ptolemaic_kingdom }
+            NOT = { this = title:e_ptolemaic_empire }
         }
         root = { destroy_title = prev }
     }
@@ -233,7 +233,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 		}
 	}
 	
-        title:e_ptolemaic_kingdom = { 
+        title:e_ptolemaic_empire = { 
             set_capital_county = title:c_alexandria
         }
 		
@@ -247,7 +247,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
             quality = illustrious
             chronicle = new_title
             properties = {
-                title = title:e_ptolemaic_kingdom
+                title = title:e_ptolemaic_empire
                 founder = root
                 }
             }
