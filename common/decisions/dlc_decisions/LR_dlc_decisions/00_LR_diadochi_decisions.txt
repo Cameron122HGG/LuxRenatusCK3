@@ -1,6 +1,4 @@
-﻿#####
-###Ancient Greeks
-########
+﻿#Successor Kingdoms Decisions
 
 
 LR_diadochi_seleucid_kingdom_decision = {
@@ -51,11 +49,8 @@ LR_diadochi_seleucid_kingdom_decision = {
 		is_imprisoned = no
 		is_independent_ruler = yes
 		is_at_war = no
-		NOT = { faith = { religion_tag = islam_religion } }
-
 		culture = culture:hellenistic
 
-		has_realm_law = crown_authority_3
 
 		OR = {
 		   NOT = { has_title = title:e_byzantium }
@@ -78,14 +73,13 @@ LR_diadochi_seleucid_kingdom_decision = {
 		prestige_level >= 3
 
 
-		completely_controls = title:k_persia
 		completely_controls = title:k_syria
 		completely_controls = title:k_osroene
-		completely_controls = title:k_mesopotamia
+		completely_controls = title:k_jerusalem
 
 		OR = {
-		    completely_controls = title:k_armenia
-			completely_controls = title:k_jerusalem
+		    completely_controls = title:k_syria
+			completely_controls = title:k_persia
 		}
     }
 
@@ -123,19 +117,14 @@ LR_diadochi_seleucid_kingdom_decision = {
     }
 }
 
-
-
-
-
-
-LR_diadochi_ptolemaic_empire_decision = {
+LR_diadochi_ptolemaic_kingdom_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
     }
 
-    desc = LR_diadochi_ptolemaic_empire_desc
-    selection_tooltip = LR_diadochi_ptolemaic_empire_tooltip
-	confirm_text = LR_diadochi_ptolemaic_empire_confirm
+    desc = LR_diadochi_ptolemaic_kingdom_desc
+    selection_tooltip = LR_diadochi_ptolemaic_kingdom_tooltip
+	confirm_text = LR_diadochi_ptolemaic_kingdom_confirm
     decision_group_type = major
 
     ai_check_interval = 120
@@ -143,8 +132,8 @@ LR_diadochi_ptolemaic_empire_decision = {
     is_shown = {
         is_ruler = yes
         is_playable_character = yes
-		NOT = { exists = title:e_ptolemaic_kingdom.holder }
-		has_title = title:k_ptolemaic_kingdom
+		NOT = { exists = title:k_ptolemaic_kingdom.holder }
+		has_title = title:k_egypt
 
 		NOT = { has_title = title:e_antipatrid_empire }
 
@@ -179,12 +168,7 @@ LR_diadochi_ptolemaic_empire_decision = {
 		is_imprisoned = no
 		is_independent_ruler = yes
 		is_at_war = no
-		NOT = { faith = { religion_tag = islam_religion } }
-
-		OR = {
-			faith = faith:coptic
-			religion = religion:hellenism_religion
-		}
+		
 
 		prestige_level >= 3
 
@@ -195,14 +179,23 @@ LR_diadochi_ptolemaic_empire_decision = {
 		   NOT = { exists = title:e_byzantium.holder }
 		}
 
+		OR = {
+			faith = { religion_tag = solar_religion }
+			faith = { religion_tag = kemetic_religion }
+			faith = { religion_tag = hellenism_religion }
+		}
+		dynasty = dynasty:dynasty_hellenic_ptolemaios
 		culture = culture:hellenistic
 
-		dynasty = dynasty:dynasty_hellenic_ptolemaios
 
 
 		has_title = title:k_egypt
-		completely_controls = title:k_jerusalem
-		completely_controls = title:d_cyprus
+		completely_controls = title:k_egypt
+		completely_controls = title:k_kyrene
+				OR = {
+		    completely_controls = title:k_cyprus
+			completely_controls = title:k_jerusalem
+		}
     }
 
     cost = {
