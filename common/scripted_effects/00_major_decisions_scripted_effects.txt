@@ -106,7 +106,6 @@ split_byzantine_empire_effect = {
 				NOR = {
 					de_jure_liege = title:e_praetorian_prefecture_illyricum
 					de_jure_liege = title:e_praetorian_prefecture_macedonia
-					de_jure_liege = title:e_praetorian_prefecture_anatolia
 					de_jure_liege = title:e_praetorian_prefecture_oriens
 					de_jure_liege = title:e_praetorian_prefecture_aegyptus
 					de_jure_liege = title:e_praetorian_prefecture_africa
@@ -179,8 +178,8 @@ split_byzantine_empire_effect = {
 						#title:k_aydin ?= this
 					}
 				}
-				set_de_jure_liege_title = title:e_praetorian_prefecture_anatolia
-				title:e_praetorian_prefecture_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
+				set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
+				title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 			}
 			if = {
 				limit = {
@@ -304,8 +303,8 @@ split_byzantine_empire_effect = {
 							#title:k_aydin ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_praetorian_prefecture_anatolia
-					title:e_praetorian_prefecture_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
+					title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 				every_in_de_jure_hierarchy = {
 					limit = {
@@ -406,7 +405,7 @@ create_eastern_roman_empire_scripted_effect = {
 		title:e_byzantium ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_prefecture_illyricum ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_prefecture_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
-		title:e_praetorian_prefecture_anatolia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_prefecture_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:h_eastern_roman_empire = { # They get the new Roman Empire title
 			change_title_holder = {
 				holder = scope:new_holder
@@ -954,17 +953,17 @@ restore_eastern_diocese_system_effect = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_asia = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_anatolia
+			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_macedonia = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_pontus = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_anatolia
+			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 
 		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
-		title:e_praetorian_prefecture_anatolia = { set_de_jure_liege_title = title:h_roman_empire }
+		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_byzantium.holder }
@@ -2064,11 +2063,11 @@ retake_eastern_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_roman_prefecture_illyricum_list
 			limit = {
-				NOT = { de_jure_liege = title:e_praetorian_prefecture_macedonia }
+				NOT = { de_jure_liege = title:e_praetorian_prefecture_illyricum }
 			}
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
+			set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum
 		}
-		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_prefecture_illyricum = { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		
 		# Oriens
 		# Shift the Kingdoms
@@ -2094,11 +2093,11 @@ retake_eastern_provinces_decision_effect = {
 		every_in_list = {
 			list = custom_roman_prefecture_macedonia_list
 			limit = {
-				NOT = { de_jure_liege = title:e_praetorian_prefecture_anatolia }
+				NOT = { de_jure_liege = title:e_praetorian_prefecture_macedonia }
 			}
-			set_de_jure_liege_title = title:e_praetorian_prefecture_anatolia
+			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
-		title:e_praetorian_prefecture_anatolia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
 
 	}
 	
