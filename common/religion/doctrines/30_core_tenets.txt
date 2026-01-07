@@ -1884,7 +1884,7 @@
 				religion_tag = muism_religion
 				religion_tag = dab_qhuas_religion
 				religion_tag = shamanism_religion
-				has_doctrine = tenet_sun_worship #If you already have it
+				has_doctrine = tenet_adorcism #If you already have it
 			}
 		}
 
@@ -2055,6 +2055,7 @@
 
 		parameters = {
 			piety_from_feasts_active = yes
+			piety_from_festivals_active = yes
 		}
 
 		traits = {
@@ -2156,7 +2157,10 @@
 		}
 
 		is_shown = {
-			religion_tag = magyar_religion
+			OR = {
+				religion_tag = magyar_religion
+				has_doctrine = tenet_mystical_birthright #If you already have it
+			}
 		}
 
 		parameters = {
@@ -2200,6 +2204,7 @@
 
 		parameters = {
 			piety_from_feasts_active = yes
+			piety_from_festivals_active = yes
 			mandatory_feast_attendance = yes
 			allows_brewery = yes
 		}
@@ -2305,7 +2310,7 @@
 	}
 
 	tenet_sun_worship = {
-		icon = core_tenet_sol_worship
+		icon = core_tenet_sun_worship
 
 		piety_cost = {
 			value = faith_tenet_cost_mid
@@ -2339,6 +2344,7 @@
 			desert_mountains_attrition_mult = -0.25
 		}
 
+		piety_cost = faith_tenet_cost_mid
 	}
 
 	tenet_warmonger = {
@@ -2563,7 +2569,7 @@
 			desert_mountains_advantage = 5
 		}
 
-
+		piety_cost = faith_tenet_cost_mid
 
 		traits = {
 			virtues = {
@@ -3764,8 +3770,6 @@
 
 		is_shown = {
 			has_tgp_dlc_trigger = yes
-		}
-		can_pick = {
 			religion = {
 				OR = {
 					this = religion:buddhism_religion
@@ -3829,8 +3833,6 @@
 
 		is_shown = {
 			has_tgp_dlc_trigger = yes
-		}
-		can_pick = {
 			religion = {
 				OR = {
 					this = religion:buddhism_religion
@@ -4086,7 +4088,7 @@
 		character_modifier = {
 			church_holding_build_gold_cost = -0.15
 			church_holding_holding_build_speed = -0.15
-			temple_citadel_holding_holding_build_gold_cost = -0.15
+			temple_citadel_holding_build_gold_cost = -0.15
 			temple_citadel_holding_holding_build_speed = -0.15
 		}
 		
