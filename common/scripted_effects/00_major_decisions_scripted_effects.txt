@@ -662,7 +662,7 @@ retake_western_provinces_decision_effect = {
 	}
 	
 	custom_tooltip = {
-		text = every_county_in_theodosian_we_region
+		text = every_county_in_theodosian_wre_region
 	}
 	
 	add_legitimacy = {
@@ -797,7 +797,7 @@ restore_diocese_system_decision_effect = {
 	#Sort the diocese
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_illyricum = { set_de_jure_liege_title = title:e_praetorian_prefecture_italia }
+		title:k_diocese_illyricum = { set_de_jure_liege_title = title:e_praetorian_prefecture_italia }
 		title:k_diocese_italia_annonaria = { set_de_jure_liege_title = title:e_praetorian_prefecture_italia }
 		title:k_diocese_italia_suburbicaria = { set_de_jure_liege_title = title:e_praetorian_prefecture_italia }
 
@@ -805,14 +805,14 @@ restore_diocese_system_decision_effect = {
 	}
 	else_if = { 
 		limit = { exists = title:e_spqr.holder }
-		title:k_illyricum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_diocese_illyricum = { set_de_jure_liege_title = title:e_spqr }
 		title:k_diocese_italia_annonaria = { set_de_jure_liege_title = title:e_spqr }
 		title:k_diocese_italia_suburbicaria = { set_de_jure_liege_title = title:e_spqr }
 	}
 
 	hidden_effect = {
 		if = {
-			limit = { NOT = { exists = title:e_western_empire.holder } }
+			limit = { NOT = { exists = title:e_spqr.holder } }
 			#Shift counties
 			#To Moravia
 			title:c_hohenau = { set_de_jure_liege_title = title:d_moravia }
@@ -849,9 +849,9 @@ restore_diocese_system_decision_effect = {
 		every_in_list = {
 			list = custom_roman_illyricum_list
 			limit = {
-				NOT = { de_jure_liege = title:k_illyricum }
+				NOT = { de_jure_liege = title:k_diocese_illyricum }
 			}
-			set_de_jure_liege_title = title:k_illyricum
+			set_de_jure_liege_title = title:k_diocese_illyricum
 		}
 	
 		every_county_in_region = {
@@ -911,7 +911,7 @@ restore_diocese_system_decision_effect = {
 
 	hidden_effect = {
 		#Fix. Carinthia. For. Reasons.
-		title:d_carinthia = { set_de_jure_liege_title = title:k_illyricum }
+		title:d_carinthia = { set_de_jure_liege_title = title:k_diocese_illyricum }
 
 		every_held_title = { #Should destroy all kingdoms owned at the time.
 			limit = {
