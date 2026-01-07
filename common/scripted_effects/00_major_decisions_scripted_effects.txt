@@ -609,13 +609,7 @@ restore_spqr_scripted_effect = {
 		title:k_sardinia = {
 			set_de_jure_liege_title = title:e_spqr
 		}
-		
-		if = {
-			limit = {
-				exists = { title:k_mediterranean_sea.holder }
-			}
-			title:k_mediterranean_sea = { set_de_jure_liege_title = title:e_spqr }
-		}
+
 	}
 
 	#Part 2: Re-establish the Empire
@@ -2061,14 +2055,14 @@ retake_eastern_provinces_decision_effect = {
 
 		# Creating the Praetorian Prefectures
 		
-		# Macedonia (Illyricum)
+		# Illyricum
 		# Shift the Kingdoms
 		every_county_in_region = {
 			region = custom_roman_prefecture_illyricum
-			kingdom = { add_to_list = custom_roman_prefecture_illyriucm_list }
+			kingdom = { add_to_list = custom_roman_prefecture_illyricum_list }
 		}	
 		every_in_list = {
-			list = custom_roman_prefecture_illyriucm_list
+			list = custom_roman_prefecture_illyricum_list
 			limit = {
 				NOT = { de_jure_liege = title:e_praetorian_prefecture_macedonia }
 			}
