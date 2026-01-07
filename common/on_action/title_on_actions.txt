@@ -58,24 +58,24 @@ on_title_destroyed = {
 				target = scope:landed_title
 			}
 		}
-		##Notify folks the latin empire has fallen
-		#else_if = {
-		#	limit = { scope:landed_title = title:e_latin_empire }
-		#	frankokratia_latin_emp_end_msg_effect = yes
-		#}
+		#Notify folks the latin empire has fallen
+		else_if = {
+			limit = { scope:landed_title = title:e_latin_empire }
+			frankokratia_latin_emp_end_msg_effect = yes
+		}
 		#Create byz collapse variable that defines anarchy period
-		e#lse_if = {
-		#	limit = {
-		#		scope:landed_title = {
-		#			this = title:e_byzantium
-		#		}
-		#	}
-		#	if = {
-		#		limit = {
-		#			exists = global_var:byz_collapse_counter
-		#		}
-		#		remove_global_variable = byz_collapse_counter
-		#	}
+		else_if = {
+			limit = {
+				scope:landed_title = {
+					this = title:e_byzantium
+				}
+			}
+			if = {
+				limit = {
+					exists = global_var:byz_collapse_counter
+				}
+				remove_global_variable = byz_collapse_counter
+			}
 			set_global_variable = {
 				name = byz_collapse_counter
 				value = {
