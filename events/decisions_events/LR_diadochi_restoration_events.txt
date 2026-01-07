@@ -348,7 +348,8 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 			}
         }
     }
-}
+	}
+
 	
 	option = {
 		name = LR_diadochi_kingdoms_events.1100.c
@@ -365,7 +366,11 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
     
 
 		
-		
+	title:k_macedonia = { set_de_jure_liege_title = title:e_antipatrid_empire }
+	title:k_hellas = { set_de_jure_liege_title = title:e_antipatrid_empire }
+	title:k_krete = { set_de_jure_liege_title = title:e_antipatrid_empire }
+	title:k_pergamon = { set_de_jure_liege_title = title:e_antipatrid_empire }
+	title:k_antipatrid_kingdom = { set_de_jure_liege_title = title:e_antipatrid_empire }
 
 			
 
@@ -426,6 +431,7 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 		
 		root = { set_realm_capital = title:c_thessalonika }
 	}
+	
 	if = {
 		limit = { has_dlc_feature = legends }
 		create_legend_seed = {
@@ -445,8 +451,10 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 	option = {
 		name = LR_diadochi_kingdoms_events.1100.e #Seleucid Restoration
 		trigger = { 
-			has_title = { title:k_seleucid_kingdom
-			}
+			has_global_variable = lux_flag_seleucid_reborn
+			has_title = title:k_seleucid_kingdom
+		}
+			
 		
 		
 		add_prestige = 2500
@@ -473,18 +481,18 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 
 	
 	resolve_title_and_vassal_change = scope:change
-	hidden_effect = { 
-		set_global_variable = { name = lux_flag_seleucid_empire 
-		} }
-		
-		title:k_syria = { set_de_jure_liege_title = title:e_seleucid_kingdom }
-		title:k_mesopotamia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
-		title:k_babylonia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
-		title:k_media = { set_de_jure_liege_title = title:e_seleucid_kingdom }
-		title:k_parthia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
-		title:k_cappadocia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
-		title:k_armenia = { set_de_jure_liege_title = title:e_seleucid_kingdom }
 	
+	hidden_effect = {
+	
+	title:e_persia = {
+				every_in_de_jure_hierarchy = {
+					limit = { tier = tier_kingdom }
+					set_de_jure_liege_title = title:e_seleucid_kingdom
+			    }
+		    }
+			
+		    title:k_syria = { set_de_jure_liege_title = title:e_seleucid_kingdom }
+			title:k_jerusalem = { set_de_jure_liege_title = title:e_seleucid_kingdom }
 		}
 		
 	
@@ -534,6 +542,21 @@ LR_diadochi_kingdoms_events.1100 = {  ########Imperial Restoration of the Diadoc
 		
 		root = { set_realm_capital = title:c_antiocheia }
     }
+}
+	if = {
+		limit = { has_dlc_feature = legends }
+		create_legend_seed = {
+			type = legitimizing
+			quality = illustrious
+			chronicle = new_title
+			properties = {
+				title = title:e_seleucid_kingdom
+				founder = root
+			        }
+		        }
+	        }
+        }
+	}
 
 
 
