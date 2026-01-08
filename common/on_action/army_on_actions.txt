@@ -23,6 +23,35 @@ on_army_monthly = {
 					trigger_event = { on_action = commander_death_events_pulse }
 				}
 			}
+			
+			#AGOT Added
+			if = {
+				limit = {
+					exists = army_commander
+				}
+				army_commander = {
+					if = {
+						limit = { 
+							character_has_regency_diarchy_trigger = no
+							NOT = { has_character_flag = army_regency_cooldown }
+						}
+						trigger_event = diarchy.0002
+						add_character_flag = agot_army_regency
+					}
+				}
+			}
+			army_owner = {
+				every_knight = {
+					if = {
+						limit = { 
+							character_has_regency_diarchy_trigger = no
+							NOT = { has_character_flag = army_regency_cooldown }
+						}
+						trigger_event = diarchy.0002
+						add_character_flag = agot_army_regency
+					}
+				}
+			}
 		}
 	}
 }
@@ -73,91 +102,92 @@ on_county_occupied = {
 			}
 		}
 		# Mongol Devastation
-		#if = {
-		#	limit = {
-		#		# Check that it's relevant so we don't fire it *all* the time
-		#		OR = {
-		#			AND = {
-		#				exists = global_var:mongol_empire_has_spawned
-		#				NOT = { exists = global_var:mongol_story_has_ended }
-		#				any_owned_story = {
-		#					type = story_mongol_invasion
-		#				}
-		#			}
-		#			any_owned_story = {
-		#				type = story_greatest_of_khans
-		#			}
-		#		}
-		#		NOT = { exists = scope:county.var:looted_by_mongols }
-		#	}
-		#	# Each County should only be devastated once
-		#	scope:county = {
-		#		set_variable = {
-		#			name = looted_by_mongols
-		#			value = yes
-		#			years = 25
-		#		}
-		#	}
-			# Send a message (and gold!) to the Mongol Emperor
-		#	send_interface_message = {
-		#		type = event_war_good
-		#		title = mongols_sieged_county.t
-		#		left_icon = scope:previous_controller
-		#		right_icon = scope:county
-		#		#Herd from nomad counties if nomadic
-		#		if = {
-		#			limit = {
-		#				scope:county = {
-		#					any_county_province = {
-		#						OR = {
-		#							has_holding_type = nomad_holding
-		#							has_holding_type = herder_holding
-		#						}
-		#					}
-		#				}
-		#				government_has_flag = government_is_nomadic
-		#			}
-		#			domicile = {
-		#				change_herd = miniscule_herd_gain
-		#			}
-		#		}
-		#		else = {
-		#			if = {
-		#				limit = {
-		#					scope:county.development_level >= 1
-		#				}
-		#				add_gold = {
-		#					add = scope:county.development_level
-		#					multiply = 5
-		#				}
-		#			}
-		#		}
-		#		if = {
-		#			limit = {
-		#				dread < 150
-		#			}
-		#			add_dread = 2
-		#		}
-		#		show_as_tooltip = {
-		#			scope:county = {
-		#				mongols_devastate_county_effect = yes
-		#			}
-		#		}
-		#	}
-		#	save_scope_as = mongol_emperor
-		#	# Send a message to the County's owner
-		#	scope:county.holder = {
-		#		send_interface_message = {
-		#			type = event_war_bad
-		#			title = mongols_sieged_county.t
-		#			left_icon = scope:mongol_emperor
-		#			right_icon = scope:county
-		#			scope:county = {
-		#				mongols_devastate_county_effect = yes
-		#			}
-		#		}
-		#	}
-		#}
+		#AGOT Disabled
+		# if = {
+		# 	limit = {
+		# 		# Check that it's relevant so we don't fire it *all* the time
+		# 		OR = {
+		# 			AND = {
+		# 				exists = global_var:mongol_empire_has_spawned
+		# 				NOT = { exists = global_var:mongol_story_has_ended }
+		# 				any_owned_story = {
+		# 					type = story_mongol_invasion
+		# 				}
+		# 			}
+		# 			any_owned_story = {
+		# 				type = story_greatest_of_khans
+		# 			}
+		# 		}
+		# 		NOT = { exists = scope:county.var:looted_by_mongols }
+		# 	}
+		# 	# Each County should only be devastated once
+		# 	scope:county = {
+		# 		set_variable = {
+		# 			name = looted_by_mongols
+		# 			value = yes
+		# 			years = 25
+		# 		}
+		# 	}
+		# 	# Send a message (and gold!) to the Mongol Emperor
+		# 	send_interface_message = {
+		# 		type = event_war_good
+		# 		title = mongols_sieged_county.t
+		# 		left_icon = scope:previous_controller
+		# 		right_icon = scope:county
+		# 		#Herd from nomad counties if nomadic
+		# 		if = {
+		# 			limit = {
+		# 				scope:county = {
+		# 					any_county_province = {
+		# 						OR = {
+		# 							has_holding_type = nomad_holding
+		# 							has_holding_type = herder_holding
+		# 						}
+		# 					}
+		# 				}
+		# 				government_has_flag = government_is_nomadic
+		# 			}
+		# 			domicile = {
+		# 				change_herd = miniscule_herd_gain
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					scope:county.development_level >= 1
+		# 				}
+		# 				add_gold = {
+		# 					add = scope:county.development_level
+		# 					multiply = 5
+		# 				}
+		# 			}
+		# 		}
+		# 		if = {
+		# 			limit = {
+		# 				dread < 150
+		# 			}
+		# 			add_dread = 2
+		# 		}
+		# 		show_as_tooltip = {
+		# 			scope:county = {
+		# 				mongols_devastate_county_effect = yes
+		# 			}
+		# 		}
+		# 	}
+		# 	save_scope_as = mongol_emperor
+		# 	# Send a message to the County's owner
+		# 	scope:county.holder = {
+		# 		send_interface_message = {
+		# 			type = event_war_bad
+		# 			title = mongols_sieged_county.t
+		# 			left_icon = scope:mongol_emperor
+		# 			right_icon = scope:county
+		# 			scope:county = {
+		# 				mongols_devastate_county_effect = yes
+		# 			}
+		# 		}
+		# 	}
+		# }
 		# Admin house power bonus for getting influence
 		if = {
 			limit = {
@@ -210,24 +240,26 @@ on_siege_completion = {
 		siege.0101 # Notify holders/lieges that the county was lost to siege
 		siege.0001 # Capture/kill prisoners
 		siege.0031 # Chance to steal an artifact
-		faction_demand.1010 #Reinforce populist rebels
+		#AGOT Disabled
+		# faction_demand.1010 #Reinforce populist rebels
 		faction_demand.1110 #Reinforce peasant rebels
 		siege.1001 #Someone I care about was immured here...
 		intrigue_scheming.1804 # I had genuine/fake info about the defenses. Follows up intrigue_scheming.1801 so this won't actually trigger after every siege
 	}
 	effect = {
 		save_scope_as = occupant
-		scope:barony = {
-			if = {
-				limit = { title_province = holder.capital_province }
-				holder = {
-					random = {
-						chance = 50
-						trigger_event = fp3_decision.0002 #FP3 Event to possibly lose your royal fire
-					}
-				}
-			}
-		}
+		#AGOT Disabled
+		# scope:barony = {
+		# 	if = {
+		# 		limit = { title_province = holder.capital_province }
+		# 		holder = {
+		# 			random = {
+		# 				chance = 50
+		# 				trigger_event = fp3_decision.0002 #FP3 Event to possibly lose your royal fire
+		# 			}
+		# 		}
+		# 	}
+		# }
 		# If you have the Sacred Destruction tenet get piety/destroy development
 		if = {
 			limit = {
@@ -384,6 +416,11 @@ on_siege_completion = {
 				}
 			}
 		}
+
+		#AGOT Added
+		scope:county = { # Remove fled dragonrider list
+			clear_variable_list = agot_fled_dragonriders
+		}
 	}
 }
 
@@ -461,7 +498,8 @@ on_siege_looting = {
 				multiply = 5
 			}
 		}
-		tgp_treasury_raided_effect = yes
+		#AGOT Disabled
+		# tgp_treasury_raided_effect = yes
 
 	}
 }
@@ -472,8 +510,11 @@ on_siege_looting = {
 
 on_army_enter_province = {
 	events = {
-		great_holy_war.0060		# Give Crusaders their trait upon reaching the holy land.
-		ep3_emperor_yearly.3010	# Byzantine emperor sends fireships to defend the strait of Marmara
+		#AGOT Disabled
+		#great_holy_war.0060 #Give Crusaders their trait upon reaching the holy land.
+		#AGOT Disabled
+		#ep3_emperor_yearly.3010	# Byzantine emperor sends fireships to defend the strait of Marmara
+		#AGOT Disabled
 		#game_rule.1021			# Figure out whether we should fire a conclusion event during the Conquest.
 	}
 	random_events = {
@@ -564,9 +605,46 @@ on_raid_action_start = {
 				}
 			}
 		}
+		#AGOT Added Only wildlings and pirates can raid the NW
+		if = {
+			limit = {
+				scope:county.holder = {
+					OR = {
+						government_has_flag = government_is_nw
+						any_liege_or_above = {
+							government_has_flag = government_is_nw
+						}
+					}
+				}
+				scope:raider = {
+					NOR = {
+						culture = { agot_is_wildling_culture = yes }
+						has_government = pirate_government
+						is_ai = no
+					}
+				}
+			}
+			scope:raider = {
+				add_truce_one_way = {
+					character = scope:county.holder
+					years = 10
+					name = TRUCE_ENFORCE_TRUCE
+				}
+			}
+		}
 	}
 	random_events = {
 		100 = fp1_yearly.0692	# FP1 - setup event for one of your knights converting to a reformed faith.
+	}
+}
+
+#AGOT Added
+on_raid_action_completion = {
+	events = {
+		agot_uninteractable_events.0001
+	}
+	on_actions = {
+		vanilla_on_raid_action_completion
 	}
 }
 
@@ -575,7 +653,16 @@ on_raid_action_start = {
 # scope:raider is the person owning the raid army
 # scope:barony is the barony title that got raided
 # scope:county is the county title for the barony
-on_raid_action_completion = {
+#AGOT Modified
+#on_raid_action_completion = {
+vanilla_on_raid_action_completion = {
+	#AGOT Added
+	trigger = {
+		exists = scope:barony
+		scope:barony.county.holder = {
+			NOT = { government_has_flag = government_is_uninteractable }
+		}
+	}
 	events = {
 		raiding.0001 # An independent liege personally raids a county capital.
 		raiding.0021 # Adjust raider completion tally.
@@ -583,7 +670,8 @@ on_raid_action_completion = {
 		raiding.0013 # Chance to kidnap prisoners
 		raiding.0014 # Chance to steal an artifact
 		bp2_yearly.8031 # Steal a doll
-		raiding.0031 # Hereward adds XP
+		#AGOT Disabled
+		#raiding.0031 # Hereward adds XP
 		raiding.0040 # Raid Intent Effects
 	}
 	effect = {
@@ -662,7 +750,8 @@ on_raid_action_completion = {
 					}
 				}
 				# Silk Road
-				tgp_silk_road_raid_effect = yes
+				#AGOT Disabled
+				# tgp_silk_road_raid_effect = yes
 			}
 		}
 		scope:county.holder = { add_to_list = raid_targets }
@@ -708,7 +797,7 @@ on_raid_action_completion = {
 						catalyst = catalyst_raided_involved
 						character = scope:raider
 					}
-					#log_debug_variable_for_persian_struggle_effect = { VAR = concession_catalyst_raided_involved }
+					log_debug_variable_for_persian_struggle_effect = { VAR = concession_catalyst_raided_involved }
 				}
 			}
 		}
@@ -733,7 +822,8 @@ on_raid_action_completion = {
 			}
 		}
 
-		tgp_treasury_raided_effect = yes
+		#AGOT Disabled
+		# tgp_treasury_raided_effect = yes
 	}
 }
 
