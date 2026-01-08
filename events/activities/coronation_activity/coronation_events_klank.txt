@@ -2048,7 +2048,7 @@ coronation_events_klank.1009 = {
         any_character_struggle = {
 			involvement = involved
             OR = {
-                #is_struggle_type = iberian_struggle
+                ##is_struggle_type = iberian_struggle
                 #is_struggle_type = persian_struggle
             }
             save_temporary_scope_as = temp_struggle
@@ -2082,7 +2082,7 @@ coronation_events_klank.1009 = {
             involvement = involved
             limit = {
                 OR = {
-                    #is_struggle_type = iberian_struggle
+                    ##is_struggle_type = iberian_struggle
                     #is_struggle_type = persian_struggle
                 }
             }
@@ -2526,7 +2526,7 @@ coronation_events_klank.1010 = {
         NOT = { has_title = title:d_sunni }
         any_character_struggle = {
             involvement = involved
-            #this = struggle:persian_struggle
+            #this = #struggle:persian_struggle
         }
         scope:activity = {
             activity_host = {
@@ -2550,7 +2550,7 @@ coronation_events_klank.1010 = {
                 NOT = { has_title = title:d_sunni }
                 any_character_struggle = {
                     involvement = involved
-                    #this = struggle:persian_struggle        
+                    #this = #struggle:persian_struggle        
                 }
                 trigger_if = {
                     limit = { root = { has_trait = fp3_struggle_detractor } }
@@ -2575,7 +2575,7 @@ coronation_events_klank.1010 = {
                     NOT = { has_title = title:d_sunni}
                     any_character_struggle = {
                         involvement = involved
-                        #this = struggle:persian_struggle
+                        #this = #struggle:persian_struggle
                     }
                     trigger_if = {
                         limit = { root = { has_trait = fp3_struggle_detractor } }
@@ -2587,7 +2587,7 @@ coronation_events_klank.1010 = {
             }
             title:d_sunni.holder = { save_scope_as = caliph }
         }
-        struggle:persian_struggle = { save_scope_as = persian_struggle }
+        #struggle:persian_struggle = { save_scope_as = persian_struggle }
         scope:activity.activity_host = {
             add_character_flag = fp3_struggle_coronation_event
             if = {
@@ -2632,7 +2632,7 @@ coronation_events_klank.1010 = {
             zealous = minor_stress_impact_loss
         }
 
-        struggle:persian_struggle = {
+        #struggle:persian_struggle = {
             if = {
                 limit = {
                     is_struggle_phase = struggle_persia_phase_unrest
@@ -2662,7 +2662,7 @@ coronation_events_klank.1010 = {
             else = {
                 custom_tooltip = coronation_events_klank.1010.b.catalyst_concession
                 hidden_effect = {
-                    struggle:persian_struggle = {
+                    #struggle:persian_struggle = {
                         activate_struggle_catalyst = {
 		                	catalyst = catalyst_coronation_event_concession
 		                	character = root
@@ -2680,12 +2680,12 @@ coronation_events_klank.1010 = {
 
         trigger = {
             OR = {
-                AND = { has_trait = fp3_struggle_detractor struggle:persian_struggle = { is_struggle_phase = struggle_persia_phase_stabilisation } }
-                AND = { has_trait = fp3_struggle_supporter struggle:persian_struggle = { is_struggle_phase = struggle_persia_phase_unrest } }
+                AND = { has_trait = fp3_struggle_detractor #struggle:persian_struggle = { is_struggle_phase = struggle_persia_phase_stabilisation } }
+                AND = { has_trait = fp3_struggle_supporter #struggle:persian_struggle = { is_struggle_phase = struggle_persia_phase_unrest } }
             }
         }
         
-        struggle:persian_struggle = {
+        #struggle:persian_struggle = {
             if = {
                 limit = {
                     is_struggle_phase = struggle_persia_phase_unrest
@@ -2728,7 +2728,7 @@ coronation_events_klank.1010 = {
         name = coronation_events_klank.1010.c
         custom_tooltip = coronation_events_klank.1010.b.catalyst_concession
         hidden_effect = {
-            struggle:persian_struggle = {
+            #struggle:persian_struggle = {
                 activate_struggle_catalyst = {
 		        	catalyst = catalyst_coronation_event_concession
 		        	character = root
