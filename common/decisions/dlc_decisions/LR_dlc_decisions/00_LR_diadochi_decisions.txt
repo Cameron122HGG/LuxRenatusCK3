@@ -3,36 +3,29 @@ LR_diadochi_seleukid_kingdom_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
     }
-
     desc = LR_diadochi_seleukid_kingdom_desc
     selection_tooltip = LR_diadochi_seleukid_kingdom_tooltip
 	confirm_text = LR_diadochi_seleukid_kingdom_confirm
     decision_group_type = major
-
     ai_check_interval = 120
-
     is_shown = {
         is_ruler = yes
         is_playable_character = yes
 		NOT = { exists = title:k_seleukid_kingdom.holder }
 		has_trait = trait:bloodline_seleukos
-
 		NOT = { has_title = title:e_antigonid_empire }
 		OR = {
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_antipatrid_empire }
 		NOT = { has_primary_title = title:e_ptolemaic_empire }
 		}
-
 		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
 		NOT = { dynasty = dynasty:dynasty_hellenic_antipater }
 		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios}
-
 		OR = {
 		dynasty = dynasty:dynasty_hellenic_seleukid
 		dynasty = dynasty:dynasty_hellenic_seleukos
 		}
-
         NOT = {
             is_target_in_global_variable_list = {
                 name = unavailable_unique_decisions
@@ -48,18 +41,14 @@ LR_diadochi_seleukid_kingdom_decision = {
 		is_independent_ruler = yes
 		is_at_war = no
 		culture = culture:hellenistic
-
-
 		OR = {
 		   NOT = { has_title = title:e_byzantium }
 		   NOT = { exists = title:e_byzantium.holder }
 		}
-
 		OR = {
 		dynasty = dynasty:dynasty_hellenic_seleukid
 		dynasty = dynasty:dynasty_hellenic_seleukos
 		}
-
 		OR = {
 			faith = faith:messalian
 			faith = faith:nestorian
@@ -67,14 +56,11 @@ LR_diadochi_seleukid_kingdom_decision = {
 			faith = { religion_tag = zoroastrianism_religion }
 			faith = { religion_tag = hellenism_religion }
 		}
-
 		prestige_level >= 3
-
 
 		completely_controls = title:k_syria
 		completely_controls = title:k_osroene
 		completely_controls = title:k_jerusalem
-
 		OR = {
 		    completely_controls = title:k_syria
 			completely_controls = title:k_persia
