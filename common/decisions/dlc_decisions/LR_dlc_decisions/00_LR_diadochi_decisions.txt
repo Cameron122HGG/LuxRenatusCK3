@@ -13,7 +13,7 @@ LR_diadochi_seleukid_kingdom_decision = {
         is_playable_character = yes
 		NOT = { exists = title:k_seleukid_kingdom.holder }
 		has_trait = trait:bloodline_seleukos
-		NOT = { has_title = title:e_antigonid_empire }
+		NOT = { has_trait = trait:bloodline }
 		OR = {
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_antipatrid_empire }
@@ -50,8 +50,6 @@ LR_diadochi_seleukid_kingdom_decision = {
 		dynasty = dynasty:dynasty_hellenic_seleukos
 		}
 		OR = {
-			faith = faith:messalian
-			faith = faith:nestorian
 			faith = { religion_tag = solar_religion }
 			faith = { religion_tag = zoroastrianism_religion }
 			faith = { religion_tag = hellenism_religion }
@@ -59,11 +57,10 @@ LR_diadochi_seleukid_kingdom_decision = {
 		prestige_level >= 3
 
 		completely_controls = title:k_syria
-		completely_controls = title:k_osroene
 		completely_controls = title:k_jerusalem
 		OR = {
-		    completely_controls = title:k_syria
-			completely_controls = title:k_persia
+		    completely_controls = title:k_mesopotamia
+			completely_controls = title:k_osroene
 		}
     }
 
