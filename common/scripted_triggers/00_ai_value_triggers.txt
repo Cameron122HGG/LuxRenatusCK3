@@ -67,15 +67,15 @@ ai_has_warlike_personality = {
 		house ?= { # The unity decision "Organize House Members for War" forces AI house members to adopt this stance
 			has_house_modifier = unity_house_organized_for_war_modifier
 		}
-		#AND = { # They are Detractors during the FP3 Struggle in the Unrest Phase
+		AND = { # They are Detractors during the FP3 Struggle in the Unrest Phase
 			any_character_struggle = {
-				#trigger_if = {
-					#limit = { is_struggle_type = persian_struggle }
-					#is_struggle_phase = struggle_persia_phase_unrest
-				#}
-				#trigger_else = { always = no }
-			#}
-			#has_trait = fp3_struggle_detractor
+				trigger_if = {
+					limit = { is_struggle_type = persian_struggle }
+					is_struggle_phase = struggle_persia_phase_unrest
+				}
+				trigger_else = { always = no }
+			}
+			has_trait = fp3_struggle_detractor
 		}
 		AND = { # Nomads are not 'unpredictable', they are Warlike instead
 			government_has_flag = government_is_nomadic
@@ -181,8 +181,8 @@ ai_has_cautious_personality = {
 		}
 		AND = { # They are Detractors during the FP3 Struggle in the Unrest Phase
 			any_character_struggle = {
-				#is_struggle_type = persian_struggle
-				#is_struggle_phase = struggle_persia_phase_unrest
+				is_struggle_type = persian_struggle
+				is_struggle_phase = struggle_persia_phase_unrest
 			}
 			has_trait = fp3_struggle_detractor
 		}
@@ -309,7 +309,7 @@ ai_wants_high_unity = {
 		AND = {
 			NOT = { has_trait = fp3_struggle_detractor }
 			# House is the most recent Caliphs house
-			#exists = #struggle:persian_struggle
+			exists = struggle:persian_struggle
 			trigger_if = {
 				limit = { exists = title:d_sunni.holder }
 				house = title:d_sunni.holder.house
