@@ -839,7 +839,10 @@ unity_search_for_administrators_decision = {
 	cooldown = { years = 10 }
 
 	is_shown = {
-		government_has_flag = government_is_clan
+		OR = {
+			government_has_flag = government_is_clan
+			government_has_flag = government_is_classical_feudal
+		}
 		is_landed = yes
 		exists = house
 	}
