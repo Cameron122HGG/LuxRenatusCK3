@@ -2,7 +2,7 @@
 tags={
 	"Total Conversion"
 }
-name="Lux Renata Dev Cameron"
+name="Lux Renata Dev General"
 replace_path="common/bookmarks"
 replace_path="common/dynasties"
 replace_path="common/dynasty_houses"
@@ -12,4 +12,4 @@ replace_path="history/provinces"
 replace_path="history/titles"
 replace_path="map_data"
 supported_version="1.18.*"
-path="C:/Users/Camer/Documents/Paradox Interactive/Crusader Kings III/mod/Lux Renata Dev Cameron"
+path="C:/Users/Camer/Documents/Paradox Interactive/Crusader Kings III/mod/Lux Renata Dev"
