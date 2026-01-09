@@ -2011,907 +2011,909 @@ coronation_events_klank.1008 = { # King from your dynasty attends your coronatio
     }
 }
 
-coronation_events_klank.1009 = {
-    type = activity_event
-	title = coronation_events_klank.1009.t
-	desc = coronation_events_klank.1009.desc
+#AGOT Disabled
+# coronation_events_klank.1009 = {
+#     type = activity_event
+# 	title = coronation_events_klank.1009.t
+# 	desc = coronation_events_klank.1009.desc
 
-    left_portrait = {
-        character = scope:left_struggle
-        animation = personality_content
-    }
+#     left_portrait = {
+#         character = scope:left_struggle
+#         animation = personality_content
+#     }
 
-    center_portrait = {
-        character = root
-        animation = personality_bold
-    }
+#     center_portrait = {
+#         character = root
+#         animation = personality_bold
+#     }
 
-    right_portrait = {
-        character = scope:right_struggle
-        animation = personality_vengeful
-    }
+#     right_portrait = {
+#         character = scope:right_struggle
+#         animation = personality_vengeful
+#     }
 
-    cooldown = { years = 10 }
+#     cooldown = { years = 10 }
 
-    weight_multiplier = {
-        base = 1
+#     weight_multiplier = {
+#         base = 1
 
-        modifier = {
-            add = 3
-            is_ai = no
-        }
-    }
+#         modifier = {
+#             add = 3
+#             is_ai = no
+#         }
+#     }
 
-	theme = coronation_activity
+# 	theme = coronation_activity
 
-    trigger = {
-        any_character_struggle = {
-			involvement = involved
-            OR = {
-                ##is_struggle_type = iberian_struggle
-                #is_struggle_type = persian_struggle
-            }
-            save_temporary_scope_as = temp_struggle
-		}
-        scope:activity = {
-            any_attending_character = {
-                is_in_guest_subset = { name = supporter }
-                NOT = { this = root}
-                any_character_struggle = {
-                    involvement = involved
-                    this = scope:temp_struggle
-                }
-                save_temporary_scope_as = char_check
-            }
-            any_attending_character = {
-                is_in_guest_subset = { name = detractor }
-                NOR = { this = root this = scope:char_check }
-                any_character_struggle = {
-                    involvement = involved
-                    this = scope:temp_struggle
-                }
-            }
-        }
-    }
+#     trigger = {
+#         any_character_struggle = {
+# 			involvement = involved
+#             OR = {
+#                 is_struggle_type = iberian_struggle
+#                 is_struggle_type = persian_struggle
+#             }
+#             save_temporary_scope_as = temp_struggle
+# 		}
+#         scope:activity = {
+#             any_attending_character = {
+#                 is_in_guest_subset = { name = supporter }
+#                 NOT = { this = root}
+#                 any_character_struggle = {
+#                     involvement = involved
+#                     this = scope:temp_struggle
+#                 }
+#                 save_temporary_scope_as = char_check
+#             }
+#             any_attending_character = {
+#                 is_in_guest_subset = { name = detractor }
+#                 NOR = { this = root this = scope:char_check }
+#                 any_character_struggle = {
+#                     involvement = involved
+#                     this = scope:temp_struggle
+#                 }
+#             }
+#         }
+#     }
 
-    immediate = {
-    	# For MP
-		coronation_busy_effect = yes
+#     immediate = {
+#     	# For MP
+# 		coronation_busy_effect = yes
 
-        random_character_struggle = {
-            involvement = involved
-            limit = {
-                OR = {
-                    ##is_struggle_type = iberian_struggle
-                    #is_struggle_type = persian_struggle
-                }
-            }
-            save_scope_as = char_struggle
-        }
-        scope:activity = {
-            activity_host = { save_scope_as = host }
-            random_attending_character = {
-                limit = {
-                    is_in_guest_subset = { name = supporter }
-                    NOT = {
-                        this = root
-                    }
-                    any_character_struggle = {
-                        involvement = involved
-                        this = scope:char_struggle
-                    }
-                }
-                save_scope_as = left_struggle
-            }
-            random_attending_character = {
-                limit = {
-                    is_in_guest_subset = { name = detractor }
-                    NOR = {
-                        this = root
-                        this = scope:left_struggle
-                    }
-                    any_character_struggle = {
-                        involvement = involved
-                        this = scope:char_struggle
-                    }
-                }
-                save_scope_as = right_struggle
-            }
-        }
-        random_religion_global = { 
-            limit = {
-                any_faith = {
-                    scope:char_struggle = { is_faith_involved_in_struggle = prev }
-                    num_county_followers > 0
-                    NOT = {
-                        this = root.faith
-                        this = scope:right_struggle.faith
-                        this = scope:left_struggle.faith
-                    }
-                }
-            }
-            random_faith = {
-                limit = {             
-                    scope:char_struggle = { is_faith_involved_in_struggle = prev }
-                    num_county_followers > 0
-                    NOT = {
-                        this = root.faith
-                        this = scope:right_struggle.faith
-                        this = scope:left_struggle.faith
-                    }
-                }
-                save_scope_as = first_struggle_faith
-            }
-        }
+#         random_character_struggle = {
+#             involvement = involved
+#             limit = {
+#                 OR = {
+#                     is_struggle_type = iberian_struggle
+#                     is_struggle_type = persian_struggle
+#                 }
+#             }
+#             save_scope_as = char_struggle
+#         }
+#         scope:activity = {
+#             activity_host = { save_scope_as = host }
+#             random_attending_character = {
+#                 limit = {
+#                     is_in_guest_subset = { name = supporter }
+#                     NOT = {
+#                         this = root
+#                     }
+#                     any_character_struggle = {
+#                         involvement = involved
+#                         this = scope:char_struggle
+#                     }
+#                 }
+#                 save_scope_as = left_struggle
+#             }
+#             random_attending_character = {
+#                 limit = {
+#                     is_in_guest_subset = { name = detractor }
+#                     NOR = {
+#                         this = root
+#                         this = scope:left_struggle
+#                     }
+#                     any_character_struggle = {
+#                         involvement = involved
+#                         this = scope:char_struggle
+#                     }
+#                 }
+#                 save_scope_as = right_struggle
+#             }
+#         }
+#         random_religion_global = { 
+#             limit = {
+#                 any_faith = {
+#                     scope:char_struggle = { is_faith_involved_in_struggle = prev }
+#                     num_county_followers > 0
+#                     NOT = {
+#                         this = root.faith
+#                         this = scope:right_struggle.faith
+#                         this = scope:left_struggle.faith
+#                     }
+#                 }
+#             }
+#             random_faith = {
+#                 limit = {             
+#                     scope:char_struggle = { is_faith_involved_in_struggle = prev }
+#                     num_county_followers > 0
+#                     NOT = {
+#                         this = root.faith
+#                         this = scope:right_struggle.faith
+#                         this = scope:left_struggle.faith
+#                     }
+#                 }
+#                 save_scope_as = first_struggle_faith
+#             }
+#         }
 
-        random_culture_global = {
-            limit = {
-                scope:char_struggle = { is_culture_involved_in_struggle = prev }
-                culture_number_of_counties > 0
-                NOT = {
-                    this = root.culture
-                    this = scope:right_struggle.culture
-                    this = scope:left_struggle.culture
-                }
-            }
-            save_scope_as = first_struggle_culture
-        }
-    }
+#         random_culture_global = {
+#             limit = {
+#                 scope:char_struggle = { is_culture_involved_in_struggle = prev }
+#                 culture_number_of_counties > 0
+#                 NOT = {
+#                     this = root.culture
+#                     this = scope:right_struggle.culture
+#                     this = scope:left_struggle.culture
+#                 }
+#             }
+#             save_scope_as = first_struggle_culture
+#         }
+#     }
 
-    option = { #Forget the outside, enjoy my coronation
-        name = coronation_events_klank.1009.a
-        trigger = { has_activity_intent = coronation_impress_attendees }
-        scope:activity = { activity_special_type_progression_tiny = yes }
-        custom_tooltip = coronation_tt_positive_tiny
-        coronation_add_magnificence_log_effect = {
-            VALUE = flag:positive_tiny
-            CHAR = root
-        }
+#     option = { #Forget the outside, enjoy my coronation
+#         name = coronation_events_klank.1009.a
+#         trigger = { has_activity_intent = coronation_impress_attendees }
+#         scope:activity = { activity_special_type_progression_tiny = yes }
+#         custom_tooltip = coronation_tt_positive_tiny
+#         coronation_add_magnificence_log_effect = {
+#             VALUE = flag:positive_tiny
+#             CHAR = root
+#         }
 
-        culture = {
-            change_cultural_acceptance = {
-		    	target = scope:first_struggle_culture
-		    	value = miniscule_negative_culture_acceptance
-		    	desc = cultural_acceptance_gain_event
-		    }
-            if = {
-                limit = {
-                    scope:first_struggle_faith.religious_head.culture != scope:first_struggle_culture
-                }
-                change_cultural_acceptance = {
-                    target = scope:first_struggle_faith.religious_head.culture
-                    value = miniscule_negative_culture_acceptance
-                    desc = cultural_acceptance_gain_event
-                }
-            }
-        }
+#         culture = {
+#             change_cultural_acceptance = {
+# 		    	target = scope:first_struggle_culture
+# 		    	value = miniscule_negative_culture_acceptance
+# 		    	desc = cultural_acceptance_gain_event
+# 		    }
+#             if = {
+#                 limit = {
+#                     scope:first_struggle_faith.religious_head.culture != scope:first_struggle_culture
+#                 }
+#                 change_cultural_acceptance = {
+#                     target = scope:first_struggle_faith.religious_head.culture
+#                     value = miniscule_negative_culture_acceptance
+#                     desc = cultural_acceptance_gain_event
+#                 }
+#             }
+#         }
 
-        scope:left_struggle = {
-            add_opinion = {
-                target = root
-                modifier = friendliness_opinion
-                opinion = 5
-            }
-        }
-        scope:right_struggle = {
-            add_opinion = {
-                target = root
-                modifier = friendliness_opinion
-                opinion = 5
-            }
-        }
+#         scope:left_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = friendliness_opinion
+#                 opinion = 5
+#             }
+#         }
+#         scope:right_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = friendliness_opinion
+#                 opinion = 5
+#             }
+#         }
 
-        coronation_impress_attendees_opinion_effect = yes
+#         coronation_impress_attendees_opinion_effect = yes
 
-        stress_impact = {
-            base = medium_stress_impact_gain
-            gregarious = minor_stress_impact_loss
-            calm = minor_stress_impact_loss
-        }
+#         stress_impact = {
+#             base = medium_stress_impact_gain
+#             gregarious = minor_stress_impact_loss
+#             calm = minor_stress_impact_loss
+#         }
 
-        ai_chance = {
-            base = 10
-            modifier = {
-                has_trait = gregarious
-                add = 10
-            }
-            modifier = {
-                has_trait = calm
-                add = 10
-            }
-        }
-    }
+#         ai_chance = {
+#             base = 10
+#             modifier = {
+#                 has_trait = gregarious
+#                 add = 10
+#             }
+#             modifier = {
+#                 has_trait = calm
+#                 add = 10
+#             }
+#         }
+#     }
 
-    option = { #Silence, detractor
-        name = coronation_events_klank.1009.b
+#     option = { #Silence, detractor
+#         name = coronation_events_klank.1009.b
 
-        culture = {
-            change_cultural_acceptance = {
-		    	target = scope:right_struggle.culture
-		    	value = miniscule_positive_culture_acceptance
-		    	desc = cultural_acceptance_gain_event
-		    }
-            change_cultural_acceptance = {
-		    	target = scope:first_struggle_culture
-		    	value = miniscule_negative_culture_acceptance
-		    	desc = cultural_acceptance_gain_event
-		    }
-            if = {
-                limit = {
-                    scope:first_struggle_faith.religious_head.culture != scope:first_struggle_culture
-                }
-                change_cultural_acceptance = {
-                    target = scope:first_struggle_faith.religious_head.culture
-                    value = miniscule_positive_culture_acceptance
-                    desc = cultural_acceptance_gain_event
-                }
-            }
-        }
+#         culture = {
+#             change_cultural_acceptance = {
+# 		    	target = scope:right_struggle.culture
+# 		    	value = miniscule_positive_culture_acceptance
+# 		    	desc = cultural_acceptance_gain_event
+# 		    }
+#             change_cultural_acceptance = {
+# 		    	target = scope:first_struggle_culture
+# 		    	value = miniscule_negative_culture_acceptance
+# 		    	desc = cultural_acceptance_gain_event
+# 		    }
+#             if = {
+#                 limit = {
+#                     scope:first_struggle_faith.religious_head.culture != scope:first_struggle_culture
+#                 }
+#                 change_cultural_acceptance = {
+#                     target = scope:first_struggle_faith.religious_head.culture
+#                     value = miniscule_positive_culture_acceptance
+#                     desc = cultural_acceptance_gain_event
+#                 }
+#             }
+#         }
 
-        scope:left_struggle = {
-            add_opinion = {
-                target = root
-                modifier = respect_opinion
-                opinion = 10
-            }
-        }
-        scope:right_struggle = {
-            add_opinion = {
-                target = root
-                modifier = irritated_opinion
-                opinion = -10
-            }
-        }
+#         scope:left_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = respect_opinion
+#                 opinion = 10
+#             }
+#         }
+#         scope:right_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = irritated_opinion
+#                 opinion = -10
+#             }
+#         }
 
-        if = {
-            limit = {
-                NOT = {
-                    this = scope:host
-                }
-            }    
-            scope:host = {
-                add_opinion = {
-                    target = root
-                    modifier = respect_opinion
-                    opinion = 5
-                }
-            }
-        }
+#         if = {
+#             limit = {
+#                 NOT = {
+#                     this = scope:host
+#                 }
+#             }    
+#             scope:host = {
+#                 add_opinion = {
+#                     target = root
+#                     modifier = respect_opinion
+#                     opinion = 5
+#                 }
+#             }
+#         }
 
-        stress_impact = {
-            wrathful = minor_stress_impact_loss
-        }
+#         stress_impact = {
+#             wrathful = minor_stress_impact_loss
+#         }
 
-        ai_chance = {
-            base = 1
-            modifier = {
-                has_trait = wrathful
-                factor = 0.2
-            }
-        }
-    }
+#         ai_chance = {
+#             base = 1
+#             modifier = {
+#                 has_trait = wrathful
+#                 factor = 0.2
+#             }
+#         }
+#     }
 
-    option = { #we need to support our guy in time of current_phase
-        name = coronation_events_klank.1009.c
-        trigger = { has_activity_intent = coronation_offer_support }
-        scope:activity = {
-            add_activity_log_entry = {
-                key = coronation_guest_struggle_support_log
-				score = 25
-				character = root
-				target = scope:host
-                if = {
-                    limit = {
-                        scope:host = {
-                           government_allows = administrative
-                        }
-                    }
-                    scope:host = { change_influence = medium_influence_gain add_legitimacy = miniscule_legitimacy_gain }
-                }
-                scope:host = { add_prestige = medium_prestige_gain add_legitimacy = miniscule_legitimacy_gain }
+#     option = { #we need to support our guy in time of current_phase
+#         name = coronation_events_klank.1009.c
+#         trigger = { has_activity_intent = coronation_offer_support }
+#         scope:activity = {
+#             add_activity_log_entry = {
+#                 key = coronation_guest_struggle_support_log
+# 				score = 25
+# 				character = root
+# 				target = scope:host
+#                 if = {
+#                     limit = {
+#                         scope:host = {
+#                             government_allows = administrative
+#                         }
+#                     }
+#                     scope:host = { change_influence = medium_influence_gain add_legitimacy = miniscule_legitimacy_gain }
+#                 }
+#                 scope:host = { add_prestige = medium_prestige_gain add_legitimacy = miniscule_legitimacy_gain }
 
-                activity_special_type_progression_tiny = yes
-                custom_tooltip = coronation_tt_positive_tiny
-            }
-        }
+#                 activity_special_type_progression_tiny = yes
+#                 custom_tooltip = coronation_tt_positive_tiny
+#             }
+#         }
 
-        scope:left_struggle = {
-            add_opinion = {
-                target = root
-                modifier = respect_opinion
-                opinion = 20
-            }
-        }
-        scope:right_struggle = {
-            add_opinion = {
-                target = root
-                modifier = irritated_opinion
-                opinion = -20
-            }
-        }
-        scope:host = {
-            add_opinion = {
-                target = root
-                modifier = respect_opinion
-                opinion = 10
-            }
-        }
+#         scope:left_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = respect_opinion
+#                 opinion = 20
+#             }
+#         }
+#         scope:right_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = irritated_opinion
+#                 opinion = -20
+#             }
+#         }
+#         scope:host = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = respect_opinion
+#                 opinion = 10
+#             }
+#         }
 
-        stress_impact = {
-            loyal = minor_stress_impact_loss
-        }
+#         stress_impact = {
+#             loyal = minor_stress_impact_loss
+#         }
 
-        ai_chance = {
-            base = 10
-            modifier = {
-                has_trait = loyal
-                add = 10
-            }
-        }
-    }
+#         ai_chance = {
+#             base = 10
+#             modifier = {
+#                 has_trait = loyal
+#                 add = 10
+#             }
+#         }
+#     }
 
-    option = { #this is a good, ekhm, opportunity
-        name = coronation_events_klank.1008.c
-        trigger = { has_activity_intent = coronation_disrupt_loyalists }
-        scope:activity = {
-            add_activity_log_entry = {
-                key = coronation_guest_struggle_undermine_log
-				score = 25
-				character = root
-				target = scope:host
-                if = {
-                    limit = {
-                       scope:host = { government_allows = administrative }
-                    }
-                    scope:host = { change_influence = medium_influence_loss add_legitimacy = miniscule_legitimacy_loss }
-                }
-                scope:host = { add_prestige = medium_prestige_loss add_legitimacy = miniscule_legitimacy_loss }
+#     option = { #this is a good, ekhm, opportunity
+#         name = coronation_events_klank.1008.c
+#         trigger = { has_activity_intent = coronation_disrupt_loyalists }
+#         scope:activity = {
+#             add_activity_log_entry = {
+#                 key = coronation_guest_struggle_undermine_log
+# 				score = 25
+# 				character = root
+# 				target = scope:host
+#                 if = {
+#                     limit = {
+#                        scope:host = { government_allows = administrative }
+#                     }
+#                     scope:host = { change_influence = medium_influence_loss add_legitimacy = miniscule_legitimacy_loss }
+#                 }
+#                 scope:host = { add_prestige = medium_prestige_loss add_legitimacy = miniscule_legitimacy_loss }
 
-                activity_special_type_progression_variable = { NUM = -5 }
-                custom_tooltip = coronation_tt_negative
-            }
-        }
+#                 activity_special_type_progression_variable = { NUM = -5 }
+#                 custom_tooltip = coronation_tt_negative
+#             }
+#         }
 
-        scope:right_struggle = {
-            add_opinion = {
-                target = root
-                modifier = respect_opinion
-                opinion = 20
-            }
-        }
-        scope:left_struggle = {
-            add_opinion = {
-                target = root
-                modifier = irritated_opinion
-                opinion = -20
-            }
-        }
-        scope:host = {
-            add_opinion = {
-                target = root
-                modifier = respect_opinion
-                opinion = 10
-            }
-        }
+#         scope:right_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = respect_opinion
+#                 opinion = 20
+#             }
+#         }
+#         scope:left_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = irritated_opinion
+#                 opinion = -20
+#             }
+#         }
+#         scope:host = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = respect_opinion
+#                 opinion = 10
+#             }
+#         }
 
-        stress_impact = {
-            disloyal = minor_stress_impact_loss
-        }
+#         stress_impact = {
+#             disloyal = minor_stress_impact_loss
+#         }
 
-        ai_chance = {
-            base = 10
-            modifier = {
-                has_trait = disloyal
-                add = 10
-            }
-        }
-    }
+#         ai_chance = {
+#             base = 10
+#             modifier = {
+#                 has_trait = disloyal
+#                 add = 10
+#             }
+#         }
+#     }
 
-    option = { #Alas, this truly be the times
-        name = coronation_events_klank.1008.b
+#     option = { #Alas, this truly be the times
+#         name = coronation_events_klank.1008.b
 
-        add_character_modifier = {
-            modifier = ach_enlightened_centrist
-            years = 4
-        }
+#         add_character_modifier = {
+#             modifier = ach_enlightened_centrist
+#             years = 4
+#         }
 
-        scope:right_struggle = {
-            add_opinion = {
-                target = root
-                modifier = irritated_opinion
-                opinion = -10
-            }
-        }
-        scope:left_struggle = {
-            add_opinion = {
-                target = root
-                modifier = irritated_opinion
-                opinion = -10
-            }
-        }
+#         scope:right_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = irritated_opinion
+#                 opinion = -10
+#             }
+#         }
+#         scope:left_struggle = {
+#             add_opinion = {
+#                 target = root
+#                 modifier = irritated_opinion
+#                 opinion = -10
+#             }
+#         }
 
-        stress_impact = {
-            ambitious = minor_stress_impact_loss
-        }
+#         stress_impact = {
+#             ambitious = minor_stress_impact_loss
+#         }
 
-        ai_chance = {
-            base = 10
-            modifier = {
-                has_trait = ambitious
-                add = 10
-            }
-        }
-    }
+#         ai_chance = {
+#             base = 10
+#             modifier = {
+#                 has_trait = ambitious
+#                 add = 10
+#             }
+#         }
+#     }
 
-    after = {
-    	# For MP
-		coronation_ready_effect = yes
-    }
-}
+#     after = {
+#     	# For MP
+# 		coronation_ready_effect = yes
+#     }
+# }
 
-coronation_events_klank.1010 = {
-    type = activity_event
-	title = coronation_events_klank.1010.t
-	desc = {
-        first_valid = {
-            triggered_desc = {
-                desc = coronation_events_klank.1010.desc.intro_caliph
-                trigger = { scope:activity.activity_host = { has_title = title:d_sunni } }
-            }
-            triggered_desc = {
-                desc = coronation_events_klank.1010.desc.intro_supporter
-                trigger = { has_trait = fp3_struggle_supporter }
-            }
-            desc = coronation_events_klank.1010.desc.intro_detractor
-        }
-        first_valid = {
-            triggered_desc = {
-                desc = coronation_events_klank.1010.desc.mid_supporter
-                trigger = { has_trait = fp3_struggle_supporter }
-            }
-            desc = coronation_events_klank.1010.desc.mid_detractor
-        }
-        desc = coronation_events_klank.1010.outro
-    }
+#AGOT Disabled
+# coronation_events_klank.1010 = {
+#     type = activity_event
+# 	title = coronation_events_klank.1010.t
+# 	desc = {
+#         first_valid = {
+#             triggered_desc = {
+#                 desc = coronation_events_klank.1010.desc.intro_caliph
+#                 trigger = { scope:activity.activity_host = { has_title = title:d_sunni } }
+#             }
+#             triggered_desc = {
+#                 desc = coronation_events_klank.1010.desc.intro_supporter
+#                 trigger = { has_trait = fp3_struggle_supporter }
+#             }
+#             desc = coronation_events_klank.1010.desc.intro_detractor
+#         }
+#         first_valid = {
+#             triggered_desc = {
+#                 desc = coronation_events_klank.1010.desc.mid_supporter
+#                 trigger = { has_trait = fp3_struggle_supporter }
+#             }
+#             desc = coronation_events_klank.1010.desc.mid_detractor
+#         }
+#         desc = coronation_events_klank.1010.outro
+#     }
 
-    left_portrait = {
-        character = root
-        camera = camera_event_very_left
-        animation = storyteller
-    }
+#     left_portrait = {
+#         character = root
+#         camera = camera_event_very_left
+#         animation = storyteller
+#     }
 
-    center_portrait = {
-        character = scope:struggle_participant
-        camera = camera_event_very_right
-        animation = personality_vengeful
-    }
+#     center_portrait = {
+#         character = scope:struggle_participant
+#         camera = camera_event_very_right
+#         animation = personality_vengeful
+#     }
 
-    lower_left_portrait = {
-        character = scope:caliph
-        trigger = {
-            scope:coronation_host ?= {
-                exists = this
-                NOT = { this = scope:caliph }
-            }
-        }
-    }
+#     lower_left_portrait = {
+#         character = scope:caliph
+#         trigger = {
+#             scope:coronation_host ?= {
+#                 exists = this
+#                 NOT = { this = scope:caliph }
+#             }
+#         }
+#     }
 
-    right_portrait = {
-        character = scope:coronation_host
-        camera = camera_event_very_right_fov50
-        animation = throne_room_cheer_2
-        trigger = {
-            scope:coronation_host ?= {
-                exists = this
-            }
-        }
-    }
+#     right_portrait = {
+#         character = scope:coronation_host
+#         camera = camera_event_very_right_fov50
+#         animation = throne_room_cheer_2
+#         trigger = {
+#             scope:coronation_host ?= {
+#                 exists = this
+#             }
+#         }
+#     }
 
-    cooldown = { years = 10 }
+#     cooldown = { years = 10 }
 
-    weight_multiplier = {
-        base = 1
+#     weight_multiplier = {
+#         base = 1
 
-        modifier = {
-            add = 3
-            is_ai = no
-        }
-    }
+#         modifier = {
+#             add = 3
+#             is_ai = no
+#         }
+#     }
 
-	theme = coronation_activity
+# 	theme = coronation_activity
 
-    trigger = {
-        NOT = { has_activity_intent = coronation_disrupt_loyalists }
-        faith.religion = religion:islam_religion
-        NOT = { has_title = title:d_sunni }
-        any_character_struggle = {
-            involvement = involved
-            #this = #struggle:persian_struggle
-        }
-        scope:activity = {
-            activity_host = {
-                NOT = { has_character_flag = fp3_struggle_coronation_event }
-                trigger_if = {
-                    limit = { has_trait = fp3_struggle_supporter }
-                    root = { has_trait = fp3_struggle_supporter }
-                }
-                trigger_else_if = {
-                    limit = { has_trait = fp3_struggle_detractor }
-                    root = { has_trait = fp3_struggle_detractor }
-                }
-                trigger_else = {
-                    has_title = title:d_sunni
-                    root = { has_trait = fp3_struggle_supporter }
-                }
-            }
-            any_attending_character = {
-                NOT = { this = root }
-                faith.religion = religion:islam_religion
-                NOT = { has_title = title:d_sunni }
-                any_character_struggle = {
-                    involvement = involved
-                    #this = #struggle:persian_struggle        
-                }
-                trigger_if = {
-                    limit = { root = { has_trait = fp3_struggle_detractor } }
-                    has_trait = fp3_struggle_supporter
-                }
-                trigger_else = { has_trait = fp3_struggle_detractor }
-            }
-        }
-    }
+#     trigger = {
+#         NOT = { has_activity_intent = coronation_disrupt_loyalists }
+#         faith.religion = religion:islam_religion
+#         NOT = { has_title = title:d_sunni }
+#         any_character_struggle = {
+#             involvement = involved
+#             this = struggle:persian_struggle
+#         }
+#         scope:activity = {
+#             activity_host = {
+#                 NOT = { has_character_flag = fp3_struggle_coronation_event }
+#                 trigger_if = {
+#                     limit = { has_trait = fp3_struggle_supporter }
+#                     root = { has_trait = fp3_struggle_supporter }
+#                 }
+#                 trigger_else_if = {
+#                     limit = { has_trait = fp3_struggle_detractor }
+#                     root = { has_trait = fp3_struggle_detractor }
+#                 }
+#                 trigger_else = {
+#                     has_title = title:d_sunni
+#                     root = { has_trait = fp3_struggle_supporter }
+#                 }
+#             }
+#             any_attending_character = {
+#                 NOT = { this = root }
+#                 faith.religion = religion:islam_religion
+#                 NOT = { has_title = title:d_sunni }
+#                 any_character_struggle = {
+#                     involvement = involved
+#                     this = struggle:persian_struggle        
+#                 }
+#                 trigger_if = {
+#                     limit = { root = { has_trait = fp3_struggle_detractor } }
+#                     has_trait = fp3_struggle_supporter
+#                 }
+#                 trigger_else = { has_trait = fp3_struggle_detractor }
+#             }
+#         }
+#     }
 
-    immediate = {
-    	# For MP
-		coronation_busy_effect = yes
+#     immediate = {
+#     	# For MP
+# 		coronation_busy_effect = yes
 
-        scope:activity = {
-            activity_location = { save_scope_as = location }
+#         scope:activity = {
+#             activity_location = { save_scope_as = location }
 
-            random_attending_character = {
-                limit = {
-                    NOT = { this = root }
-                    faith.religion = religion:islam_religion
-                    NOT = { has_title = title:d_sunni}
-                    any_character_struggle = {
-                        involvement = involved
-                        #this = #struggle:persian_struggle
-                    }
-                    trigger_if = {
-                        limit = { root = { has_trait = fp3_struggle_detractor } }
-                        has_trait = fp3_struggle_supporter
-                    }
-                    trigger_else = { has_trait = fp3_struggle_detractor }
-                }
-                save_scope_as = struggle_participant
-            }
-            title:d_sunni.holder = { save_scope_as = caliph }
-        }
-        #struggle:persian_struggle = { save_scope_as = persian_struggle }
-        scope:activity.activity_host = {
-            add_character_flag = fp3_struggle_coronation_event
-            if = {
-                limit = { NOT = { this = root} }
-                save_scope_as = coronation_host
-            }
-        } 
-    }
+#             random_attending_character = {
+#                 limit = {
+#                     NOT = { this = root }
+#                     faith.religion = religion:islam_religion
+#                     NOT = { has_title = title:d_sunni}
+#                     any_character_struggle = {
+#                         involvement = involved
+#                         this = struggle:persian_struggle
+#                     }
+#                     trigger_if = {
+#                         limit = { root = { has_trait = fp3_struggle_detractor } }
+#                         has_trait = fp3_struggle_supporter
+#                     }
+#                     trigger_else = { has_trait = fp3_struggle_detractor }
+#                 }
+#                 save_scope_as = struggle_participant
+#             }
+#             title:d_sunni.holder = { save_scope_as = caliph }
+#         }
+#         struggle:persian_struggle = { save_scope_as = persian_struggle }
+#         scope:activity.activity_host = {
+#             add_character_flag = fp3_struggle_coronation_event
+#             if = {
+#                 limit = { NOT = { this = root} }
+#                 save_scope_as = coronation_host
+#             }
+#         } 
+#     }
 
-    option = { #join my side?
-        name = coronation_events_klank.1010.a
-        trigger = { diplomacy >= 16 }
-        show_as_unavailable = { scope:struggle_participant = { is_ai = yes } }
+#     option = { #join my side?
+#         name = coronation_events_klank.1010.a
+#         trigger = { diplomacy >= 16 }
+#         show_as_unavailable = { scope:struggle_participant = { is_ai = yes } }
 
-        scope:struggle_participant = {
-            if = {
-                limit = { has_trait = fp3_struggle_detractor }
-                remove_trait = fp3_struggle_detractor
-                add_trait = fp3_struggle_supporter
-                scope:caliph = {
-                    add_opinion = {
-                        modifier = helpful_opinion
-                        opinion = 10
-                        target = root
-                    }
-                }
-            }
-            else = {
-                remove_trait = fp3_struggle_supporter
-                add_trait = fp3_struggle_detractor
-                scope:caliph = {
-                    add_opinion = {
-                        modifier = hate_opinion
-                        opinion = -10
-                        target = root
-                    }
-                }
-            }
-        }
+#         scope:struggle_participant = {
+#             if = {
+#                 limit = { has_trait = fp3_struggle_detractor }
+#                 remove_trait = fp3_struggle_detractor
+#                 add_trait = fp3_struggle_supporter
+#                 scope:caliph = {
+#                     add_opinion = {
+#                         modifier = helpful_opinion
+#                         opinion = 10
+#                         target = root
+#                     }
+#                 }
+#             }
+#             else = {
+#                 remove_trait = fp3_struggle_supporter
+#                 add_trait = fp3_struggle_detractor
+#                 scope:caliph = {
+#                     add_opinion = {
+#                         modifier = hate_opinion
+#                         opinion = -10
+#                         target = root
+#                     }
+#                 }
+#             }
+#         }
 
-        stress_impact = {
-            zealous = minor_stress_impact_loss
-        }
+#         stress_impact = {
+#             zealous = minor_stress_impact_loss
+#         }
 
-        #struggle:persian_struggle = {
-            if = {
-                limit = {
-                    is_struggle_phase = struggle_persia_phase_unrest
-                    root = { has_trait = fp3_struggle_supporter }
-                }
-                custom_tooltip = coronation_events_klank.1010.b.catalyst_stabilization
-                hidden_effect = {
-                    activate_struggle_catalyst = {
-		            	catalyst = catalyst_coronation_event_stabilization
-		            	character = root
-		            }
-                }
-            }
-            else_if = {
-                limit = {
-                    is_struggle_phase = struggle_persia_phase_stabilisation
-                    root = { has_trait = fp3_struggle_detractor }
-                }
-                custom_tooltip = coronation_events_klank.1010.b.catalyst_unrest
-                hidden_effect = {
-                    activate_struggle_catalyst = {
-		            	catalyst = catalyst_coronation_event_unrest
-		            	character = root
-		            }
-                }
-            }
-            else = {
-                custom_tooltip = coronation_events_klank.1010.b.catalyst_concession
-                hidden_effect = {
-                    #struggle:persian_struggle = {
-                        activate_struggle_catalyst = {
-		                	catalyst = catalyst_coronation_event_concession
-		                	character = root
-		                }
-                    }
-                }
-            }
-        }
+#         struggle:persian_struggle = {
+#             if = {
+#                 limit = {
+#                     is_struggle_phase = struggle_persia_phase_unrest
+#                     root = { has_trait = fp3_struggle_supporter }
+#                 }
+#                 custom_tooltip = coronation_events_klank.1010.b.catalyst_stabilization
+#                 hidden_effect = {
+#                     activate_struggle_catalyst = {
+# 		            	catalyst = catalyst_coronation_event_stabilization
+# 		            	character = root
+# 		            }
+#                 }
+#             }
+#             else_if = {
+#                 limit = {
+#                     is_struggle_phase = struggle_persia_phase_stabilisation
+#                     root = { has_trait = fp3_struggle_detractor }
+#                 }
+#                 custom_tooltip = coronation_events_klank.1010.b.catalyst_unrest
+#                 hidden_effect = {
+#                     activate_struggle_catalyst = {
+# 		            	catalyst = catalyst_coronation_event_unrest
+# 		            	character = root
+# 		            }
+#                 }
+#             }
+#             else = {
+#                 custom_tooltip = coronation_events_klank.1010.b.catalyst_concession
+#                 hidden_effect = {
+#                     struggle:persian_struggle = {
+#                         activate_struggle_catalyst = {
+# 		                	catalyst = catalyst_coronation_event_concession
+# 		                	character = root
+# 		                }
+#                     }
+#                 }
+#             }
+#         }
 
-        ai_chance = 100
-    }
+#         ai_chance = 100
+#     }
 
-    option = { #loudly push for other phase
-        name = coronation_events_klank.1010.b
+#     option = { #loudly push for other phase
+#         name = coronation_events_klank.1010.b
 
-        trigger = {
-            OR = {
-                AND = { has_trait = fp3_struggle_detractor #struggle:persian_struggle = { is_struggle_phase = struggle_persia_phase_stabilisation } }
-                AND = { has_trait = fp3_struggle_supporter #struggle:persian_struggle = { is_struggle_phase = struggle_persia_phase_unrest } }
-            }
-        }
+#         trigger = {
+#             OR = {
+#                 AND = { has_trait = fp3_struggle_detractor struggle:persian_struggle = { is_struggle_phase = struggle_persia_phase_stabilisation } }
+#                 AND = { has_trait = fp3_struggle_supporter struggle:persian_struggle = { is_struggle_phase = struggle_persia_phase_unrest } }
+#             }
+#         }
         
-        #struggle:persian_struggle = {
-            if = {
-                limit = {
-                    is_struggle_phase = struggle_persia_phase_unrest
-                }
-                custom_tooltip = coronation_events_klank.1010.b.catalyst_stabilization
-                hidden_effect = {
-                    activate_struggle_catalyst = {
-		            	catalyst = catalyst_coronation_event_stabilization
-		            	character = root
-		            }
-                }
-            }
-            else = {
-                custom_tooltip = coronation_events_klank.1010.b.catalyst_unrest
-                hidden_effect = {
-                    activate_struggle_catalyst = {
-		            	catalyst = catalyst_coronation_event_unrest
-		            	character = root
-		            }
-                }
-            }
-        }
+#         struggle:persian_struggle = {
+#             if = {
+#                 limit = {
+#                     is_struggle_phase = struggle_persia_phase_unrest
+#                 }
+#                 custom_tooltip = coronation_events_klank.1010.b.catalyst_stabilization
+#                 hidden_effect = {
+#                     activate_struggle_catalyst = {
+# 		            	catalyst = catalyst_coronation_event_stabilization
+# 		            	character = root
+# 		            }
+#                 }
+#             }
+#             else = {
+#                 custom_tooltip = coronation_events_klank.1010.b.catalyst_unrest
+#                 hidden_effect = {
+#                     activate_struggle_catalyst = {
+# 		            	catalyst = catalyst_coronation_event_unrest
+# 		            	character = root
+# 		            }
+#                 }
+#             }
+#         }
 
 
-        stress_impact = {
-            arbitrary = minor_stress_impact_loss
-            fickle = minor_stress_impact_loss
-        }
+#         stress_impact = {
+#             arbitrary = minor_stress_impact_loss
+#             fickle = minor_stress_impact_loss
+#         }
         
-        ai_chance = {
-            base = 1
-            modifier = {
-                add = 10
-                has_trait = fickle
-            }
-        }
-    }
+#         ai_chance = {
+#             base = 1
+#             modifier = {
+#                 add = 10
+#                 has_trait = fickle
+#             }
+#         }
+#     }
 
-    option = { #loudly push for Concession
-        name = coronation_events_klank.1010.c
-        custom_tooltip = coronation_events_klank.1010.b.catalyst_concession
-        hidden_effect = {
-            #struggle:persian_struggle = {
-                activate_struggle_catalyst = {
-		        	catalyst = catalyst_coronation_event_concession
-		        	character = root
-		        }
-            }
-        }
+#     option = { #loudly push for Concession
+#         name = coronation_events_klank.1010.c
+#         custom_tooltip = coronation_events_klank.1010.b.catalyst_concession
+#         hidden_effect = {
+#             struggle:persian_struggle = {
+#                 activate_struggle_catalyst = {
+# 		        	catalyst = catalyst_coronation_event_concession
+# 		        	character = root
+# 		        }
+#             }
+#         }
 
-        stress_impact = {
-            compassionate = minor_stress_impact_loss
-            calm = minor_stress_impact_loss
-        }
+#         stress_impact = {
+#             compassionate = minor_stress_impact_loss
+#             calm = minor_stress_impact_loss
+#         }
 
-        ai_chance = {
-            base = 1
-            modifier = {
-                add = 10
-                has_trait = compassionate
-            }
-        }
-    }
+#         ai_chance = {
+#             base = 1
+#             modifier = {
+#                 add = 10
+#                 has_trait = compassionate
+#             }
+#         }
+#     }
 
-    option = { #render upon caliph
-        name = coronation_events_klank.1010.d
-        trigger = {
-            has_trait = fp3_struggle_supporter scope:activity.activity_host = { has_title = title:d_sunni }
-        }
+#     option = { #render upon caliph
+#         name = coronation_events_klank.1010.d
+#         trigger = {
+#             has_trait = fp3_struggle_supporter scope:activity.activity_host = { has_title = title:d_sunni }
+#         }
 
-        if = {
-            limit = {
-                scope:struggle_participant = { is_ai = yes }
+#         if = {
+#             limit = {
+#                 scope:struggle_participant = { is_ai = yes }
 
-                scope:caliph = {
-                    can_add_hook = {
-                        target = scope:struggle_participant
-                        type = threat_hook
-                    }
-                }    
-            }
-            scope:caliph = {
-                add_hook = {
-                    target = scope:struggle_participant
-                    type = threat_hook
-                }
-            }
-        }
-        if = {
-            limit = {
-                OR = {
-                    scope:caliph = { is_ai = yes }
-                    AND = {
-                        scope:caliph = { is_ai = no }
-                        is_ai = no
-                    }
-                }
-                reverse_opinion = {
-                    target = scope:caliph
-                    value >= 20
-                }
-            }
-            progress_towards_friend_effect = {
-                REASON = friend_coronation_caliph_support
-                CHARACTER = scope:caliph
-                OPINION = default_friend_opinion
-            }
-        }
-        else = {
-            reverse_add_opinion = {
-                modifier = support_opinion
-                target = scope:caliph
-                opinion = 20
-            }
+#                 scope:caliph = {
+#                     can_add_hook = {
+#                         target = scope:struggle_participant
+#                         type = threat_hook
+#                     }
+#                 }    
+#             }
+#             scope:caliph = {
+#                 add_hook = {
+#                     target = scope:struggle_participant
+#                     type = threat_hook
+#                 }
+#             }
+#         }
+#         if = {
+#             limit = {
+#                 OR = {
+#                     scope:caliph = { is_ai = yes }
+#                     AND = {
+#                         scope:caliph = { is_ai = no }
+#                         is_ai = no
+#                     }
+#                 }
+#                 reverse_opinion = {
+#                     target = scope:caliph
+#                     value >= 20
+#                 }
+#             }
+#             progress_towards_friend_effect = {
+#                 REASON = friend_coronation_caliph_support
+#                 CHARACTER = scope:caliph
+#                 OPINION = default_friend_opinion
+#             }
+#         }
+#         else = {
+#             reverse_add_opinion = {
+#                 modifier = support_opinion
+#                 target = scope:caliph
+#                 opinion = 20
+#             }
             
-        }
+#         }
        
-        if = {
-            limit = {
-                OR = {
-                    scope:activity = {
-                        is_target_in_variable_list = {
-                            name = major_supporter
-                            target = root
-                        }                   
-                    }
-                    has_activity_intent = coronation_offer_support
-                    is_ai = no
-                }
-            }
-            scope:activity = { activity_special_type_progression_tiny = yes }
-            custom_tooltip = coronation_tt_positive_tiny
-            coronation_add_magnificence_log_effect = {
-                VALUE = flag:positive_tiny
-                CHAR = root
-            }
-        }
+#         if = {
+#             limit = {
+#                 OR = {
+#                     scope:activity = {
+#                         is_target_in_variable_list = {
+#                             name = major_supporter
+#                             target = root
+#                         }                   
+#                     }
+#                     has_activity_intent = coronation_offer_support
+#                     is_ai = no
+#                 }
+#             }
+#             scope:activity = { activity_special_type_progression_tiny = yes }
+#             custom_tooltip = coronation_tt_positive_tiny
+#             coronation_add_magnificence_log_effect = {
+#                 VALUE = flag:positive_tiny
+#                 CHAR = root
+#             }
+#         }
 
-        add_piety = medium_piety_gain
+#         add_piety = medium_piety_gain
 
-        ai_chance = {
-            base = 100
-            modifier = {
-                factor = 0
-                OR = {
-                    has_activity_intent = coronation_disrupt_loyalists
-                    is_in_guest_subset = { name = detractor }
-                }
-            }
-        }
-    }
+#         ai_chance = {
+#             base = 100
+#             modifier = {
+#                 factor = 0
+#                 OR = {
+#                     has_activity_intent = coronation_disrupt_loyalists
+#                     is_in_guest_subset = { name = detractor }
+#                 }
+#             }
+#         }
+#     }
 
-    option = {
-        name = coronation_events_klank.1010.e
+#     option = {
+#         name = coronation_events_klank.1010.e
 
-        scope:struggle_participant = {
-            remove_from_activity = involved_activity
-            if = {
-                limit = {
-                    OR = {
-                        is_ai = yes
-                        AND = {
-                            root = { is_ai = no }
-                            is_ai = no
-                        }
-                    }
-                }
-                progress_towards_rival_effect = {
-                    REASON = rival_coronation_yeeted_from_coronation
-                    CHARACTER = root
-                    OPINION = default_rival_opinion
-                }
-            }
+#         scope:struggle_participant = {
+#             remove_from_activity = involved_activity
+#             if = {
+#                 limit = {
+#                     OR = {
+#                         is_ai = yes
+#                         AND = {
+#                             root = { is_ai = no }
+#                             is_ai = no
+#                         }
+#                     }
+#                 }
+#                 progress_towards_rival_effect = {
+#                     REASON = rival_coronation_yeeted_from_coronation
+#                     CHARACTER = root
+#                     OPINION = default_rival_opinion
+#                 }
+#             }
             
-            if = {
-                limit = { has_trait = fp3_struggle_detractor }
-                scope:caliph = {
-                    add_opinion = {
-                        opinion = 5
-                        modifier = respect_opinion
-                        target = root
-                    }
-                }
-            }
-        }
-        if = {
-            limit = {
-                OR = {
-                    scope:activity.activity_host = root
-                    scope:activity = {
-                        is_target_in_variable_list = {
-                            name = major_supporter
-                            target = root
-                        }                   
-                    }
-                    has_activity_intent = coronation_offer_support
-                    is_ai = no
-                }
-            }
-            scope:activity = { activity_special_type_progression_tiny = yes }
-            custom_tooltip = coronation_tt_positive_tiny
-            coronation_add_magnificence_log_effect = {
-                VALUE = flag:positive_tiny
-                CHAR = root
-            }
-        }
+#             if = {
+#                 limit = { has_trait = fp3_struggle_detractor }
+#                 scope:caliph = {
+#                     add_opinion = {
+#                         opinion = 5
+#                         modifier = respect_opinion
+#                         target = root
+#                     }
+#                 }
+#             }
+#         }
+#         if = {
+#             limit = {
+#                 OR = {
+#                     scope:activity.activity_host = root
+#                     scope:activity = {
+#                         is_target_in_variable_list = {
+#                             name = major_supporter
+#                             target = root
+#                         }                   
+#                     }
+#                     has_activity_intent = coronation_offer_support
+#                     is_ai = no
+#                 }
+#             }
+#             scope:activity = { activity_special_type_progression_tiny = yes }
+#             custom_tooltip = coronation_tt_positive_tiny
+#             coronation_add_magnificence_log_effect = {
+#                 VALUE = flag:positive_tiny
+#                 CHAR = root
+#             }
+#         }
 
-        if = {
-            limit = {
-                NOT = { scope:activity.activity_host = root }
-            }
-            scope:coronation_host = {
-                add_opinion = {
-                    opinion = 10
-                    modifier = respect_opinion
-                    target = root
-                }
-            }
-        }
-    }
+#         if = {
+#             limit = {
+#                 NOT = { scope:activity.activity_host = root }
+#             }
+#             scope:coronation_host = {
+#                 add_opinion = {
+#                     opinion = 10
+#                     modifier = respect_opinion
+#                     target = root
+#                 }
+#             }
+#         }
+#     }
 
-    after = {
-    	# For MP
-		coronation_ready_effect = yes
-    }
-}
+#     after = {
+#     	# For MP
+# 		coronation_ready_effect = yes
+#     }
+# }
 
 # Big Realm Reform
 
