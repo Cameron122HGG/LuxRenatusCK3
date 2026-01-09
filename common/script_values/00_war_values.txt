@@ -51,18 +51,6 @@ standard_truce_duration_days = {
 	}
 	# A truce should at least give a 2-year breather.
 	min = 730
-	if = {
-		limit = {
-			scope:attacker = {
-				any_character_war = {
-					primary_attacker = scope:attacker
-					primary_defender = scope:defender
-					using_cb = fp2_border_raid
-				}
-			}
-		}
-		multiply = 2
-	}
 }
 
 #Victory Prestige Experience Gain
@@ -204,49 +192,49 @@ viking_conquest_ai_score_value = {
 			}
 		}
 		# Haesteinn needs to stop merc'ing East Francia when the resulting kingdom simply will not last.
-		if = {
-			limit = { this = character:6878 }
-			# Assuming the player hasn't opted into batshit Vikings.
-			if = {
-				limit = {
-					NOT = { has_game_rule = fp1_scandi_adventurers_apocalyptic }
-				}
-				# Tell him to calm it down a bit and pick a damned duchy realm or something.
-				if = {
-					limit = {
-						scope:defender = {
-							OR = {
-								realm_size >= massive_realm_size
-								highest_held_title_tier >= tier_kingdom
-							}
-						}
-					}
-					multiply = 0
-				}
-				# ... and a bit of bonus score if said-realm is an NPC Mercia to get him to behave a bit more historically.
-				if = {
-					limit = {
-						scope:defender = {
-							primary_title = title:d_hereford
-							top_liege = this
-							is_ai = yes
-						}
-					}
-					multiply = 100
-				}
-			}
-			# ... in which case, go extra wild.
-			else_if = {
-				limit = { has_game_rule = fp1_scandi_adventurers_apocalyptic }
-				# Nothing but a shiny new kingdom will satisfy apocalypse-Haesteinn.
-				if = {
-					limit = {
-						scope:defender = { highest_held_title_tier <= tier_duchy }
-					}
-					multiply = 0
-				}
-			}
-		}
+		#if = {
+		#	limit = { this = character:6878 }
+		#	# Assuming the player hasn't opted into batshit Vikings.
+		#	if = {
+		#		limit = {
+		#			NOT = { has_game_rule = fp1_scandi_adventurers_apocalyptic }
+		#		}
+		#		# Tell him to calm it down a bit and pick a damned duchy realm or something.
+		#		if = {
+		#			limit = {
+		#				scope:defender = {
+		#					OR = {
+		#						realm_size >= massive_realm_size
+		#						highest_held_title_tier >= tier_kingdom
+		#					}
+		#				}
+		#			}
+		#			multiply = 0
+		#		}
+		#		# ... and a bit of bonus score if said-realm is an NPC Mercia to get him to behave a bit more historically.
+		#		if = {
+		#			limit = {
+		#				scope:defender = {
+		#					primary_title = title:d_hereford
+		#					top_liege = this
+		#					is_ai = yes
+		#				}
+		#			}
+		#			multiply = 100
+		#		}
+		#	}
+		#	# ... in which case, go extra wild.
+		#	else_if = {
+		#		limit = { has_game_rule = fp1_scandi_adventurers_apocalyptic }
+		#		# Nothing but a shiny new kingdom will satisfy apocalypse-Haesteinn.
+		#		if = {
+		#			limit = {
+		#				scope:defender = { highest_held_title_tier <= tier_duchy }
+		#			}
+		#			multiply = 0
+		#		}
+		#	}
+		#}
 	}
 }
 
@@ -403,17 +391,17 @@ byzantium_conquests_ai_score_value = {
 				}
 				# Egypt.
 				else_if = {
-					limit = { geographical_region = custom_roman_aegyptus }
+					limit = { geographical_region = custom_roman_diocese_aegyptus }
 					add = 3.5
 				}
 				# Mesopotamia.
 				else_if = {
-					limit = { geographical_region = custom_roman_mesopotamia }
+					limit = { geographical_region = custom_roman_diocese_mesopotamia }
 					add = 3
 				}
 				# Illyria.
 				else_if = {
-					limit = { geographical_region = custom_roman_illyricum }
+					limit = { geographical_region = custom_roman_diocese_illyricum }
 					add = 2.5
 				}
 				# North Africa.
@@ -421,8 +409,8 @@ byzantium_conquests_ai_score_value = {
 					limit = {
 						OR = {
 							geographical_region = custom_roman_cyrenaica
-							geographical_region = custom_roman_africa
-							geographical_region = custom_roman_mauretania
+							geographical_region = custom_roman_diocese_africa
+							geographical_region = custom_roman_diocese_mauretania
 						}
 					}
 					add = 2
@@ -434,7 +422,7 @@ byzantium_conquests_ai_score_value = {
 				}
 				# Iberia.
 				else_if = {
-					limit = { geographical_region = custom_roman_hispania }
+					limit = { geographical_region = custom_roman_diocese_hispania }
 					add = 1.5
 				}
 				# The remainder.
