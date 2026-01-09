@@ -158,258 +158,421 @@ create_holy_order_effect = {
 	}
 }
 
-#embrace_english_culture_effect = {
-#	# Scopes saves for localization
-#	root = {
-#		save_scope_as = embracer
-#	}
-#
-#	# Prestige Bonus
-#	add_prestige = medium_prestige_gain
-#
-#	#Convert your, and your whole family's, culture
-#	set_culture = culture:english
-#	if = {
-#		limit = { any_spouse = { is_playable_character = no } }
-#		every_spouse = {
-#			limit = {
-#				is_playable_character = no
-#				OR = {
-#					culture = culture:norman
-#					culture = culture:french
-#				}
-#			}
-#			set_culture = culture:english
-#		}
-#	}
-#	if = {
-#		limit = {
-#			any_close_family_member = {
-#				is_playable_character = no
-#				NOT = { is_spouse_of = root }
-#			}
-#		}
-#		every_close_family_member = {
-#			limit = {
-#				is_playable_character = no
-#				NOT = { is_spouse_of = root }
-#			}
-#			custom = all_unlanded_family_members
-#			set_culture = culture:english
-#		}
-#	}
-#	if = {
-#		limit = {
-#			any_child = {
-#				NOT = { is_spouse_of = root }
-#			}
-#		}
-#		every_child = {
-#			limit = {
-#				NOT = { is_spouse_of = root }
-#			}
-#			custom = all_children_custom
-#			set_culture = culture:english
-#		}
-#	}
-#
-#	#Convert appropriate vassals, and their family
-#	if = {
-#		limit = {
-#			any_vassal_or_below = {
-#				is_ai = yes
-#				OR = {
-#					culture = culture:norman
-#					culture = culture:french
-#				}
-#				primary_title = {
-#					OR = {
-#						de_jure_liege = title:k_england
-#						de_jure_liege.de_jure_liege = title:k_england
-#						de_jure_liege.de_jure_liege.de_jure_liege = title:k_england
-#					}
-#				}
-#			}
-#		}
-#		every_vassal_or_below = {
-#			custom = embrace_english_culture_vassals_custom
-#			limit = {
-#				is_ai = yes
-#				OR = {
-#					culture = culture:norman
-#					culture = culture:french
-#				}
-#				primary_title = {
-#					OR = {
-#						de_jure_liege = title:k_england
-#						de_jure_liege.de_jure_liege = title:k_england
-#						de_jure_liege.de_jure_liege.de_jure_liege = title:k_england
-#					}
-#				}
-#			}
-#			set_culture = culture:english
-#			hidden_effect = {
-#				if = {
-#					limit = { any_spouse = { is_playable_character = no } }
-#					every_spouse = {
-#						limit = {
-#							is_playable_character = no
-#							OR = {
-#								culture = culture:norman
-#								culture = culture:french
-#							}
-#						}
-#						set_culture = culture:english
-#					}
-#				}
-#				if = {
-#					limit = {
-#						any_close_family_member = {
-#							is_playable_character = no
-#							NOT = { is_spouse_of = prev }
-#						}
-#					}
-#					every_close_family_member = {
-#						limit = {
-#							is_playable_character = no
-#							NOT = { is_spouse_of = prev }
-#						}
-#						custom = all_unlanded_family_members
-#						set_culture = culture:english
-#					}
-#				}
-#				if = {
-#					limit = {
-#						any_child = {
-#							NOT = { is_spouse_of = prev }
-#						}
-#					}
-#					every_child = {
-#						limit = {
-#							NOT = { is_spouse_of = prev }
-#						}
-#						custom = all_children_custom
-#						set_culture = culture:english
-#					}
-#				}
-#				if = {
-#					limit = {
-#						any_vassal_or_below = {
-#							is_ai = yes
-#							OR = {
-#								culture = culture:norman
-#								culture = culture:french
-#							}
-#							primary_title = {
-#								OR = {
-#									de_jure_liege = title:k_england
-#									de_jure_liege.de_jure_liege = title:k_england
-#									de_jure_liege.de_jure_liege.de_jure_liege = title:k_england
-#								}
-#							}
-#						}
-#					}
-#					every_vassal_or_below = {
-#						custom = embrace_english_culture_vassals_custom
-#						limit = {
-#							is_ai = yes
-#							OR = {
-#								culture = culture:norman
-#								culture = culture:french
-#							}
-#							primary_title = {
-#								OR = {
-#									de_jure_liege = title:k_england
-#									de_jure_liege.de_jure_liege = title:k_england
-#									de_jure_liege.de_jure_liege.de_jure_liege = title:k_england
-#								}
-#							}
-#						}
-#						set_culture = culture:english
-#						hidden_effect = {
-#							if = {
-#								limit = { any_spouse = { is_playable_character = no } }
-#								every_spouse = {
-#									limit = {
-#										is_playable_character = no
-#										OR = {
-#											culture = culture:norman
-#											culture = culture:french
-#										}
-#									}
-#									set_culture = culture:english
-#								}
-#							}
-#							if = {
-#								limit = {
-#									any_close_family_member = {
-#										is_playable_character = no
-#										NOT = { is_spouse_of = prev }
-#									}
-#								}
-#								every_close_family_member = {
-#									limit = {
-#										is_playable_character = no
-#										NOT = { is_spouse_of = prev }
-#									}
-#									custom = all_unlanded_family_members
-#									set_culture = culture:english
-#								}
-#							}
-#							if = {
-#								limit = {
-#									any_child = {
-#										NOT = { is_spouse_of = prev }
-#									}
-#								}
-#								every_child = {
-#									limit = {
-#										NOT = { is_spouse_of = prev }
-#									}
-#									custom = all_children_custom
-#									set_culture = culture:english
-#								}
-#							}
-#						}
-#					}
-#				}
-#			}
-#		}
-#	}
-#
-#	#Flip Counties
-#	every_county_in_region = {
-#		region = custom_england
-#		custom = embrace_english_culture_counties_custom
-#		limit = {
-#			target_is_de_facto_liege_or_above = root.primary_title
-#		}
-#		random = {
-#			chance = 40
-#			set_county_culture = culture:english
-#		}
-#	}
-#
-#	culture:english = {
-#		custom_tooltip = decision_embrace_english_culture_get_innovations
-#		hidden_effect = {
-#			reset_culture_creation_date = yes
-#			get_all_innovations_from = culture:norman
-#			get_all_innovations_from = culture:anglo_saxon
-#		}
-#	}
-#
-#	remove_global_variable = harrying_of_the_north
-#	every_player = {
-#		limit = {
-#			capital_province = {
-#				geographical_region = world_europe_west_britannia
-#			}
-#		}
-#		trigger_event = ep3_story_cycle_harrying.0004
-#	}
-#	global_var:harrying_of_the_north = { end_story = yes }
-#}	
+embrace_english_culture_effect = {
+	# Scopes saves for localization
+	root = {
+		save_scope_as = embracer
+	}
+
+	# Prestige Bonus
+	add_prestige = medium_prestige_gain
+
+	#Convert your, and your whole family's, culture
+	set_culture = culture:english
+	if = {
+		limit = { any_spouse = { is_playable_character = no } }
+		every_spouse = {
+			limit = {
+				is_playable_character = no
+				OR = {
+					culture = culture:norman
+					culture = culture:french
+				}
+			}
+			set_culture = culture:english
+		}
+	}
+	if = {
+		limit = {
+			any_close_family_member = {
+				is_playable_character = no
+				NOT = { is_spouse_of = root }
+			}
+		}
+		every_close_family_member = {
+			limit = {
+				is_playable_character = no
+				NOT = { is_spouse_of = root }
+			}
+			custom = all_unlanded_family_members
+			set_culture = culture:english
+		}
+	}
+	if = {
+		limit = {
+			any_child = {
+				NOT = { is_spouse_of = root }
+			}
+		}
+		every_child = {
+			limit = {
+				NOT = { is_spouse_of = root }
+			}
+			custom = all_children_custom
+			set_culture = culture:english
+		}
+	}
+
+	#Convert appropriate vassals, and their family
+	if = {
+		limit = {
+			any_vassal_or_below = {
+				is_ai = yes
+				OR = {
+					culture = culture:norman
+					culture = culture:french
+				}
+				primary_title = {
+					OR = {
+						de_jure_liege = title:k_england
+						de_jure_liege.de_jure_liege = title:k_england
+						de_jure_liege.de_jure_liege.de_jure_liege = title:k_england
+					}
+				}
+			}
+		}
+		every_vassal_or_below = {
+			custom = embrace_english_culture_vassals_custom
+			limit = {
+				is_ai = yes
+				OR = {
+					culture = culture:norman
+					culture = culture:french
+				}
+				primary_title = {
+					OR = {
+						de_jure_liege = title:k_england
+						de_jure_liege.de_jure_liege = title:k_england
+						de_jure_liege.de_jure_liege.de_jure_liege = title:k_england
+					}
+				}
+			}
+			set_culture = culture:english
+			hidden_effect = {
+				if = {
+					limit = { any_spouse = { is_playable_character = no } }
+					every_spouse = {
+						limit = {
+							is_playable_character = no
+							OR = {
+								culture = culture:norman
+								culture = culture:french
+							}
+						}
+						set_culture = culture:english
+					}
+				}
+				if = {
+					limit = {
+						any_close_family_member = {
+							is_playable_character = no
+							NOT = { is_spouse_of = prev }
+						}
+					}
+					every_close_family_member = {
+						limit = {
+							is_playable_character = no
+							NOT = { is_spouse_of = prev }
+						}
+						custom = all_unlanded_family_members
+						set_culture = culture:english
+					}
+				}
+				if = {
+					limit = {
+						any_child = {
+							NOT = { is_spouse_of = prev }
+						}
+					}
+					every_child = {
+						limit = {
+							NOT = { is_spouse_of = prev }
+						}
+						custom = all_children_custom
+						set_culture = culture:english
+					}
+				}
+				if = {
+					limit = {
+						any_vassal_or_below = {
+							is_ai = yes
+							OR = {
+								culture = culture:norman
+								culture = culture:french
+							}
+							primary_title = {
+								OR = {
+									de_jure_liege = title:k_england
+									de_jure_liege.de_jure_liege = title:k_england
+									de_jure_liege.de_jure_liege.de_jure_liege = title:k_england
+								}
+							}
+						}
+					}
+					every_vassal_or_below = {
+						custom = embrace_english_culture_vassals_custom
+						limit = {
+							is_ai = yes
+							OR = {
+								culture = culture:norman
+								culture = culture:french
+							}
+							primary_title = {
+								OR = {
+									de_jure_liege = title:k_england
+									de_jure_liege.de_jure_liege = title:k_england
+									de_jure_liege.de_jure_liege.de_jure_liege = title:k_england
+								}
+							}
+						}
+						set_culture = culture:english
+						hidden_effect = {
+							if = {
+								limit = { any_spouse = { is_playable_character = no } }
+								every_spouse = {
+									limit = {
+										is_playable_character = no
+										OR = {
+											culture = culture:norman
+											culture = culture:french
+										}
+									}
+									set_culture = culture:english
+								}
+							}
+							if = {
+								limit = {
+									any_close_family_member = {
+										is_playable_character = no
+										NOT = { is_spouse_of = prev }
+									}
+								}
+								every_close_family_member = {
+									limit = {
+										is_playable_character = no
+										NOT = { is_spouse_of = prev }
+									}
+									custom = all_unlanded_family_members
+									set_culture = culture:english
+								}
+							}
+							if = {
+								limit = {
+									any_child = {
+										NOT = { is_spouse_of = prev }
+									}
+								}
+								every_child = {
+									limit = {
+										NOT = { is_spouse_of = prev }
+									}
+									custom = all_children_custom
+									set_culture = culture:english
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#Flip Counties
+	every_county_in_region = {
+		region = custom_england
+		custom = embrace_english_culture_counties_custom
+		limit = {
+			target_is_de_facto_liege_or_above = root.primary_title
+		}
+		random = {
+			chance = 40
+			set_county_culture = culture:english
+		}
+	}
+
+	culture:english = {
+		custom_tooltip = decision_embrace_english_culture_get_innovations
+		hidden_effect = {
+			reset_culture_creation_date = yes
+			get_all_innovations_from = culture:norman
+			get_all_innovations_from = culture:anglo_saxon
+		}
+	}
+
+	remove_global_variable = harrying_of_the_north
+	every_player = {
+		limit = {
+			capital_province = {
+				geographical_region = world_europe_west_britannia
+			}
+		}
+		trigger_event = ep3_story_cycle_harrying.0004
+	}
+	global_var:harrying_of_the_north = { end_story = yes }
+}
+
+form_portugal_decision_effects = {
+	#Create the title and set proper de jure
+	hidden_effect = {
+		title:d_porto = {
+			save_scope_as = title_d_porto
+			set_de_jure_liege_title = title:k_portugal
+		}
+		title:d_coimbra = {
+			save_scope_as = title_d_coimbra
+			set_de_jure_liege_title = title:k_portugal
+		}
+		title:d_beja = {
+			save_scope_as = title_d_beja
+			set_de_jure_liege_title = title:k_portugal
+		}
+		title:d_algarve = {
+			save_scope_as = title_d_algarve
+			set_de_jure_liege_title = title:k_portugal
+		}
+		title:k_portugal = {
+			save_scope_as = title_k_portugal
+		}
+	}
+	custom_tooltip = form_portugal_decision_effects_de_jure_tt
+
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = title_change
+		add_claim_on_loss = no
+	}
+	title:k_portugal = {
+		change_title_holder = {
+			holder = root
+			change = scope:title_change
+		}
+		save_scope_as = title_k_portugal
+	}
+	resolve_title_and_vassal_change = scope:title_change
+
+	if = {
+		limit = {
+			NOR = {
+				primary_title = { this = title:k_portugal }
+				highest_held_title_tier = tier_empire
+			}
+		}
+		set_primary_title_to = title:k_portugal
+	}
+
+	hidden_effect = {
+		if = {
+			limit = { has_global_variable = fp2_struggle_compromise_ending }
+			title:k_portugal = { fp2_struggle_compromise_create_new_empire_effect = yes }
+		}
+	}
+
+	#Covert self & court to portuguese culture
+	if = {
+		limit = { NOT = { has_culture = culture:portuguese } }
+
+		every_courtier = {
+			limit = { has_same_culture_as = scope:portugal_former }
+			add_to_list = convert_list
+		}
+		#transfer over innovations from previous culture. 
+		culture:portuguese = {
+			hidden_effect = { reset_culture_creation_date = yes }
+			get_all_innovations_from = scope:portugal_former.culture
+		}
+		set_culture = culture:portuguese
+
+		every_in_list = {
+			list = convert_list
+			custom = portguese_convert_list #This says "every subject in the realm" even though vassals and their courts only covert later, through event
+			set_culture = culture:portuguese
+		}
+	}
+
+	# Convert Iberian counties to Portugese culture
+	every_sub_realm_county = {
+		limit = {
+			tier = tier_county
+			culture = { has_cultural_pillar = heritage_iberian }
+			OR = {
+				de_jure_liege = title:d_porto
+				de_jure_liege = title:d_coimbra
+				de_jure_liege = title:d_beja
+				de_jure_liege = title:d_algarve
+			}
+		}
+		custom = portugese_convert_iberian_counties
+		set_county_culture = culture:portuguese
+	}
+	every_sub_realm_county = {
+		limit = {
+			tier = tier_county
+			NOT = { culture = { has_cultural_pillar = heritage_iberian } }
+			OR = {
+				de_jure_liege = title:d_porto
+				de_jure_liege = title:d_coimbra
+				de_jure_liege = title:d_beja
+				de_jure_liege = title:d_algarve
+			}
+		}
+		custom = portugese_convert_non_iberian_counties
+		random = {
+			chance = 50
+			set_county_culture = culture:portuguese
+		}
+	}
+
+	#Innovations
+	culture:portuguese = {
+		add_random_innovation = culture_group_military
+		add_random_innovation = culture_group_civic
+	}
+
+	#Prestige
+	add_prestige = massive_prestige_gain	
+}
+
+
+declare_canarias_decision_effects = {
+	#Create the title and set proper de jure
+	title:d_canarias = {
+		save_scope_as = d_canarias
+		set_de_jure_liege_title = title:k_canarias
+	}
+	title:k_canarias = {
+		save_scope_as = title_k_canarias
+	}
+
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = title_change
+		add_claim_on_loss = no
+	}
+	title:k_canarias = {
+		change_title_holder = {
+			holder = root
+			change = scope:title_change
+		}
+		save_scope_as = title_k_canarias
+	}
+	resolve_title_and_vassal_change = scope:title_change
+
+	if = {
+		limit = {
+			NOR = {
+				primary_title = { this = title:k_canarias }
+				highest_held_title_tier = tier_empire
+			}
+		}
+		set_primary_title_to = title:k_canarias
+	}
+
+	#Prestige
+	add_prestige = massive_prestige_gain	
+}
+	
+
+
 unite_the_spanish_thrones_decision_effects = {
 	#Prestige
 	add_prestige = massive_prestige_gain
@@ -2954,7 +3117,7 @@ found_cadet_house_decision_effect = {
 					catalyst = catalyst_cadet_branch_created
 					character = $CHARACTER$
 				}
-				#log_debug_variable_for_persian_struggle_effect = { VAR = unrest_catalyst_cadet_branch_created }
+				log_debug_variable_for_persian_struggle_effect = { VAR = unrest_catalyst_cadet_branch_created }
 			}
 		}
 
@@ -3284,4 +3447,3 @@ flagellation_decision_effect = {
 	}
 
 }
-##################################################

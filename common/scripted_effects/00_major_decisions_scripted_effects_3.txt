@@ -667,58 +667,58 @@ break_with_old_ways_become_chosen_people = {
 }
 
 #EP3
-#retake_eastern_provinces_decision_effect = {
-#	save_scope_as = root_scope
-#	add_trait = augustus
-#	give_nickname = nick_the_great
-#	change_influence = {
-#		value = massive_influence_gain
-#		multiply = 5
-#	}
-#	custom_tooltip = {
-#		text = every_county_in_theodosian_region
-#		title:k_bulgaria = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_epirus = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_hellas = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_thessalonika = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_krete = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_cyprus = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_nikaea = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_anatolia = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_pontus = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_syria = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_jerusalem = { set_de_jure_liege_title = title:e_byzantium }
-#		title:k_egypt = { set_de_jure_liege_title = title:e_byzantium }
-#	}
-#	add_legitimacy = {
-#		value = massive_legitimacy_gain
-#		multiply = 2
-#	}
-#	dynasty ?= {
-#		add_dynasty_modifier = retaken_eastern_provinces_modifier
-#		add_dynasty_prestige = 2500
-#	}
-#	if = {
-#		limit = {
-#			culture = { has_cultural_parameter = holds_triumphs }
-#		}
-#		custom_tooltip = {
-#			text = free_triumph_tooltip
-#			add_character_flag = free_triumph_flag
-#		}
-#	}
-#	gain_legitimizing_legend_seed_tooltip_effect = yes
-#	hidden_effect = { legend_seed_great_deed_dynasty_effect = yes }
-#	every_vassal = {
-#		custom = custom.every_admin_vassal
-#		limit = { government_allows = administrative }
-#		add_opinion = {
-#			target = scope:root_scope
-#			modifier = admiration_opinion
-#			opinion = 20
-#		}
-#	}
-#}
+retake_eastern_provinces_decision_effect = {
+	save_scope_as = root_scope
+	add_trait = augustus
+	give_nickname = nick_the_great
+	change_influence = {
+		value = massive_influence_gain
+		multiply = 5
+	}
+	custom_tooltip = {
+		text = every_county_in_theodosian_region
+		title:k_bulgaria = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_epirus = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_hellas = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_thessalonika = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_krete = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_cyprus = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_nikaea = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_anatolia = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_pontus = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_syria = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_jerusalem = { set_de_jure_liege_title = title:e_byzantium }
+		title:k_egypt = { set_de_jure_liege_title = title:e_byzantium }
+	}
+	add_legitimacy = {
+		value = massive_legitimacy_gain
+		multiply = 2
+	}
+	dynasty ?= {
+		add_dynasty_modifier = retaken_eastern_provinces_modifier
+		add_dynasty_prestige = 2500
+	}
+	if = {
+		limit = {
+			culture = { has_cultural_parameter = holds_triumphs }
+		}
+		custom_tooltip = {
+			text = free_triumph_tooltip
+			add_character_flag = free_triumph_flag
+		}
+	}
+	gain_legitimizing_legend_seed_tooltip_effect = yes
+	hidden_effect = { legend_seed_great_deed_dynasty_effect = yes }
+	every_vassal = {
+		custom = custom.every_admin_vassal
+		limit = { government_allows = administrative }
+		add_opinion = {
+			target = scope:root_scope
+			modifier = admiration_opinion
+			opinion = 20
+		}
+	}
+}
 
 recreate_ere_decision_effect = {
 	if = {
@@ -832,7 +832,7 @@ reinstitute_grain_dole_decision_effect = {
 		}
 	}
 	every_county_in_region = {
-		region = custom_roman_diocese_aegyptus
+		region = custom_roman_aegyptus
 		limit = {
 			any_county_province = {
 				has_building_or_higher = cereal_fields_05

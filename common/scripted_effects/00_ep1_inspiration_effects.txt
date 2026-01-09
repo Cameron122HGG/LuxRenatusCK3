@@ -1449,34 +1449,34 @@ inspiration_adventure_create_artifact_effect = {
 								}
 								create_artifact_wall_banner_edessa_effect = { OWNER = root }
 							}
-							#10 = {
-							#	modifier = {
-							#		OR = {
-							#			scope:adventurer.adventure_inspiration_average_skill_value >= medium_inspiration_skill
-							#			AND = {
-							#				exists = scope:inspiration_owner.var:artifact_quality
-							#				scope:inspiration_owner.var:artifact_quality > medium_adventurer_epic_quality_level #Cumulative event choices
-							#			}
-							#		}
-							#		add = 5
-							#	}
-							#	trigger = {
-							#		current_year >= 1097
-							#		character:107590 ?= { is_alive = no } #El Cid is not around
-							#		NOT = {
-							#			any_artifact = {
-							#				has_variable = sword_cid
-							#			}
-							#		}
-							#		scope:location ?= {
-							#			OR = {
-							#				geographical_region = world_middle_east
-							#				geographical_region = world_asia_minor
-							#			}
-							#		}
-							#	}
-							#	create_artifact_wall_cid_sword_effect = { OWNER = root }
-							#}
+							10 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= medium_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > medium_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									current_year >= 1097
+									character:107590 ?= { is_alive = no } #El Cid is not around
+									NOT = {
+										any_artifact = {
+											has_variable = sword_cid
+										}
+									}
+									scope:location ?= {
+										OR = {
+											geographical_region = world_middle_east
+											geographical_region = world_asia_minor
+										}
+									}
+								}
+								create_artifact_wall_cid_sword_effect = { OWNER = root }
+							}
 							10 = {
 								modifier = {
 									OR = {
@@ -1618,7 +1618,7 @@ inspiration_adventure_create_artifact_effect = {
 								trigger = {
 									NOT = {
 										any_artifact = {
-											has_variable = charlemagne_throne
+											has_variable = charlamagne_throne
 										}
 									}
 									scope:location ?= {
@@ -1654,32 +1654,32 @@ inspiration_adventure_create_artifact_effect = {
 								}
 								create_artifact_excalibur_effect = { OWNER = root }
 							}
-							#10 = { #Head of St Edmund
-							#	modifier = {
-							#		OR = {
-							#			scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
-							#			AND = {
-							#				exists = scope:inspiration_owner.var:artifact_quality
-							#				scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
-							#			}
-							#		}
-							#		add = 5
-							#	}
-							#	trigger = {
-							#		NOT = {
-							#			any_artifact = {
-							#				has_variable = edmund_head
-							#			}
-							#		}
-							#		scope:location ?= {
-							#			OR = {
-							#				geographical_region = world_europe_west_britannia
-							#				geographical_region = world_europe_north
-							#			}
-							#		}
-							#	}
-							#	create_artifact_edmund_head_effect = { OWNER = root }
-							#}
+							10 = { #Head of St Edmund
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									NOT = {
+										any_artifact = {
+											has_variable = edmund_head
+										}
+									}
+									scope:location ?= {
+										OR = {
+											geographical_region = world_europe_west_britannia
+											geographical_region = world_europe_north
+										}
+									}
+								}
+								create_artifact_edmund_head_effect = { OWNER = root }
+							}
 							10 = { #Dhammapada
 								modifier = {
 									OR = {
@@ -2910,30 +2910,30 @@ inspiration_adventure_create_artifact_effect = {
 								}
 								create_artifact_heirloom_seal_effect = { OWNER = root }
 							}
-							#10 = {
-							#	modifier = {
-							#		OR = {
-							#			scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
-							#			AND = {
-							#				exists = scope:inspiration_owner.var:artifact_quality
-							#				scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
-							#			}
-							#		}
-							#		add = 5
-							#	}
-							#	trigger = {
-							#		has_tgp_dlc_trigger = yes
-							#		any_artifact = {
-							#			count < 1
-							#			has_variable = statue_amitabha_buddha
-							#		}
-							#		scope:location ?= {
-							#			geographical_region = world_asia_southeast
-							#		}
-							#		current_date >= 1080.1.1
-							#	}
-							#	create_artifact_statue_viet_green_amitabha_buddha_effect = { OWNER = root }
-							#}
+							10 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									has_tgp_dlc_trigger = yes
+									any_artifact = {
+										count < 1
+										has_variable = statue_amitabha_buddha
+									}
+									scope:location ?= {
+										geographical_region = world_asia_southeast
+									}
+									current_date >= 1080.1.1
+								}
+								create_artifact_statue_viet_green_amitabha_buddha_effect = { OWNER = root }
+							}
 							10 = {
 								modifier = {
 									OR = {
