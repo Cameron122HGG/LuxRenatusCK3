@@ -1037,6 +1037,75 @@ british_isles.1063 = {
 # by Linnéa Thimrén
 ##################################################
 
+british_isles.2001 = {
+	type = character_event
+	title = british_isles.2001.t
+	desc = british_isles.2001.desc
+	theme = culture_change
+	left_portrait = {
+		character = scope:embracer
+		animation = personality_bold
+	}
+
+	immediate = {
+		save_scope_as = embracer
+		culture = { save_scope_as = embracer_former_culture }
+	}
+
+	option = {
+		name = british_isles.2001.a
+		embrace_english_culture_effect = yes
+		hidden_effect = { # Moved here from embrace_english_culture_decision
+			# Send event to other players
+			every_player = {
+				limit = {
+					this != root
+					OR = {
+						primary_title = {
+							OR = {
+								de_jure_liege = title:e_britannia
+								de_jure_liege.de_jure_liege = title:e_britannia
+								de_jure_liege.de_jure_liege.de_jure_liege = title:e_britannia
+							}
+						}
+						culture = { has_cultural_pillar = heritage_north_germanic }
+						culture = { has_cultural_pillar = heritage_central_germanic }
+						culture = { has_cultural_pillar = heritage_west_germanic }
+						culture = { has_cultural_pillar = heritage_goidelic }
+						culture = { has_cultural_pillar = heritage_brythonic }
+					}
+				}
+				trigger_event = british_isles.2002
+			}
+		}
+	}
+}
+
+# Players informed
+british_isles.2002 = {
+	type = character_event
+	title = british_isles.2001.t
+	desc = british_isles.2002.desc
+	theme = culture_change
+	left_portrait = {
+		character = scope:embracer
+		animation = personality_bold
+	}
+
+	option = { # Not norman
+		name = british_isles.2002.a
+		trigger = {
+			NOT = { has_culture = scope:embracer.culture }
+		}
+	}
+	option = { # Also norman
+		name = british_isles.2002.b
+		trigger = {
+			has_culture = scope:embracer.culture
+		}
+	}
+}
+
 ##################################################
 # Laudabiliter
 # by Flavio Verna
@@ -1099,7 +1168,7 @@ british_isles.3002 = {
 		name = {
 			trigger = {
 				capital_province = {
-					geographical_region = custom_roman_diocese_hibernia
+					geographical_region = custom_roman_hibernia
 				}
 				NOT = { target_is_liege_or_above = scope:scoped_ruler }
 			}
@@ -1111,7 +1180,7 @@ british_isles.3002 = {
 					target_is_liege_or_above = scope:scoped_ruler
 					NOT = {
 						capital_province = {
-							geographical_region = custom_roman_diocese_hibernia
+							geographical_region = custom_roman_hibernia
 						}
 					}
 				}
@@ -1121,7 +1190,7 @@ british_isles.3002 = {
 		if = {
 			limit = {
 				capital_province = {
-					geographical_region = custom_roman_diocese_hibernia
+					geographical_region = custom_roman_hibernia
 				}
 				NOT = { target_is_liege_or_above = scope:scoped_ruler }
 			}
@@ -1166,6 +1235,7 @@ british_isles.4001 = {
 		add_prestige = medium_prestige_gain
 	}
 }
+
 
 #Inform any players.
 british_isles.4002 = {

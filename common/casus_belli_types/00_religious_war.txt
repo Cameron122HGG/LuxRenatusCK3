@@ -229,7 +229,7 @@
 		# Tell the Romans to stop going adventuring into the steppe for no gods-damned reason.
 		multiply = byzantium_conquests_ai_score_value
 
-		add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
+		#add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
 	}
 
 	cost = {
@@ -1147,7 +1147,7 @@ religious_war = {
 		# Tell the Romans to stop going adventuring into the steppe for no gods-damned reason.
 		multiply = byzantium_conquests_ai_score_value
 		
-		add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
+		#add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
 	}
 }
 
@@ -1760,7 +1760,7 @@ major_religious_war = {
 		multiply = byzantium_conquests_ai_score_value
 		multiply = muslim_invasions_prefer_nonmuslims_ai_score_value
 		
-		add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
+		#add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
 	}
 }
 
@@ -2057,7 +2057,7 @@ excommunication_war = {
 			}
 		}
 
-		add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
+		#add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
 	}
 }
 
@@ -3140,7 +3140,7 @@ flowery_war_cb = {
 			}
 		}
 		
-		add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
+		#add = frankokratia_leader_protection_value #Set back to 0. Declaring war on the frankokratia leader can really ruin the whole thing
 	}
 }
 
@@ -3234,36 +3234,36 @@ undirected_great_holy_war = {
 		force_truce_GHW_defenders_effect = yes
 		on_declared_war = yes
 		#Tell non diverting-players about the crazy 4th crusade plan
-		if = {
-			limit = {
-				scope:attacker.faith = { this = faith:catholic }
-				exists = global_var:byz_claimant_champion
-				global_var:byz_claimant_champion = {
-					is_alive = yes
-					is_ruler = yes
-					any_character_war = {
-						using_cb = crusading_claim_cb
-					}
-				}
-			}
-			global_var:byz_claimant_champion = {
-				random_character_war = {
-					limit = {
-						using_cb = crusading_claim_cb
-					}
-					save_scope_as = redirected_crusade
-				}
-			}
-			every_player = {
-			 	limit = {
-			 		NOT = {
-			 			is_attacker_in_war = scope:redirected_crusade
-			 		}
-			 		ep3_frankokratia_notification_recipient_trigger = yes
-			 	}
-			 	trigger_event = ep3_frankokratia_events.0031
-			}
-		}
+		#if = {
+		#	limit = {
+		#		scope:attacker.faith = { this = faith:catholic }
+		#		exists = global_var:byz_claimant_champion
+		#		global_var:byz_claimant_champion = {
+		#			is_alive = yes
+		#			is_ruler = yes
+		#			any_character_war = {
+		#				using_cb = crusading_claim_cb
+		#			}
+		#		}
+		#	}
+		#	global_var:byz_claimant_champion = {
+		#		random_character_war = {
+		#			limit = {
+		#				using_cb = crusading_claim_cb
+		#			}
+		#			save_scope_as = redirected_crusade
+		#		}
+		#	}
+		#	every_player = {
+		#	 	limit = {
+		#	 		NOT = {
+		#	 			is_attacker_in_war = scope:redirected_crusade
+		#	 		}
+		#	 		ep3_frankokratia_notification_recipient_trigger = yes
+		#	 	}
+		#	 	trigger_event = ep3_frankokratia_events.0031
+		#	}
+		#}
 		every_player = { #Fluff for attackers/defenders
 			limit = {
 				scope:attacker.faith.great_holy_war = {

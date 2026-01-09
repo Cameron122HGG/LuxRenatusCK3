@@ -230,7 +230,7 @@ historical_artifacts.0023 = {
 					limit = {
 						NOT = { has_character_flag = seeded_relic }
 					}
-					#create_artifact_fp2_votive_crowns_effect = { OWNER = this }
+					create_artifact_fp2_votive_crowns_effect = { OWNER = this }
 					add_character_flag = {
 						flag = seeded_relic
 						days = 1
@@ -323,23 +323,23 @@ historical_artifacts.0023 = {
 			}
 		}
 		### Bells of Santiago
-		#if = {
+		if = {
 			# If we're before Almanzor's raid, then the bells go to c_santiago's holder.
-		#	limit = {
-		#		has_fp2_dlc_trigger = yes
-		#		current_date < 997.1.1
-		#	}
-		#	title:c_santiago.holder = {
-		#		create_artifact_various_bells_santiago = { OWNER = this }
-		#		# The bells haven't been changed at all.
-		#		scope:newly_created_artifact = {
-		#			set_variable = {
-		#				name = artefact_santiago_bells
-		#				value = 0
-		#			}
-		#		}
-		#	}
-		#}
+			limit = {
+				has_fp2_dlc_trigger = yes
+				current_date < 997.1.1
+			}
+			title:c_santiago.holder = {
+				create_artifact_various_bells_santiago = { OWNER = this }
+				# The bells haven't been changed at all.
+				scope:newly_created_artifact = {
+					set_variable = {
+						name = artefact_santiago_bells
+						value = 0
+					}
+				}
+			}
+		}
 		### (Former) Bells of Santiago
 		#### These aren't actually furniture, but we keep 'em here so they're next to the regular bells, which *are*.
 		#if = {
@@ -479,7 +479,7 @@ historical_artifacts.0023 = {
 		#if = { # Chrysanthemum Throne
 		#	limit = {
 		#		has_dlc_feature = royal_court
-		#		current_date >= 10867.1.1
+		#		current_date >= 867.1.1
 		#		exists = title:k_chrysanthemum_throne.holder
 		#	}
 		#	title:k_chrysanthemum_throne.holder = {
@@ -586,7 +586,7 @@ historical_artifacts.0023 = {
 		### Shichishitō <500
 		#if = { # Chrysanthemum Throne
 		#	limit = {
-		#		current_date >= 10867.1.1
+		#		current_date >= 867.1.1
 		#		exists = title:k_chrysanthemum_throne.holder
 		#	}
 		#	title:k_chrysanthemum_throne.holder = {
@@ -596,7 +596,7 @@ historical_artifacts.0023 = {
 		### Gyerim-ro dagger ~867
 		#if = { # Silla
 		#	limit = {
-		#		current_date = 10867.1.1 # Only 867
+		#		current_date = 867.1.1 # Only 867
 		#		exists = title:k_silla.holder
 		#	}
 		#	title:k_silla.holder = {
@@ -627,7 +627,7 @@ historical_artifacts.0023 = {
 		### Karakawa ~800
 		#if = { # Taira
 			#limit = {
-			#	current_date >= 10867.1.1
+			#	current_date >= 867.1.1
 			#	exists = title:c_nf_taira_kanmu.holder
 			#}
 			#title:c_nf_taira_kanmu.holder = {

@@ -108,7 +108,202 @@ reclaim_britannia_decision = {
 	}
 }
 
-#############################################
+### Embrace English Culture ###
+embrace_english_culture_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 12
+		empire = 12
+		hegemony = 12
+	}
+
+	desc = embrace_english_culture_decision_desc
+
+	is_shown = {
+		game_start_date < 1178.1.1
+		culture = {
+			OR = {
+				any_parent_culture = {
+					this = culture:norman
+				}
+				has_cultural_pillar = heritage_frankish
+			}
+			NOT = {
+				this = culture:english
+			}
+		}
+		OR = {
+			any_claim = {
+				this = title:e_britannia
+			}
+			any_claim = {
+				this = title:k_england
+			}
+			OR = {	
+				title:k_england = {
+					any_in_de_jure_hierarchy = {
+						root.primary_title = this
+					}
+				}
+				root.primary_title = title:e_britannia
+			}
+		}
+		
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:embrace_english_culture_decision
+			}
+		}
+	}
+
+	is_valid = {
+		custom_description = {
+			text = capital_in_england_region_tooltip
+			capital_province = {
+				geographical_region = custom_england
+			}
+		}
+		has_title = title:k_england
+		trigger_if = {
+			limit = {
+				has_dlc_feature = roads_to_power
+			}
+			OR = {
+				custom_description = {
+					text = harrying_ended_tooltip
+					NOT = {
+						has_global_variable = harrying_of_the_north
+					}
+				}
+				custom_description = {
+					text = high_pacification_tooltip
+					any_owned_story = {
+						type = story_cycle_harrying_of_the_north
+						var:pacification > var:resistance
+						var:pacification > 14
+						var:embrace_culture_decision_counter > 11
+					}
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				OR = {
+					any_realm_county = {
+						culture = culture:english
+					}
+					culture.culture_head = {
+						any_realm_county = {
+							culture = culture:english
+						}
+					}
+					culture:english = {
+						exists = culture_head
+					}
+				}
+			}
+			culture = {
+				cultural_acceptance = {
+					target = culture:english
+					value >= 40
+				}
+			}
+		}
+		trigger_else = {
+			culture = {
+				cultural_acceptance = {
+					target = culture:anglo_saxon
+					value >= 40
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		NOT = {
+			government_has_flag = government_is_landless_adventurer
+		}
+	}
+
+	effect = {
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:embrace_english_culture_decision
+		}
+		show_as_tooltip = {
+			embrace_english_culture_effect = yes
+		}
+
+		trigger_event = british_isles.2001
+	}
+	
+	ai_potential = {
+		is_playable_character = yes
+		culture = {
+			OR = {
+				any_parent_culture = {
+					this = culture:norman
+				}
+				has_cultural_pillar = heritage_frankish
+			}
+			NOT = {
+				this = culture:english
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:embrace_english_culture_decision
+			}
+		}
+		trigger_if = {
+			limit = {
+				OR = {
+					any_realm_county = {
+						culture = culture:english
+					}
+					culture.culture_head = {
+						any_realm_county = {
+							culture = culture:english
+						}
+					}
+					culture:english = {
+						exists = culture_head
+					}
+				}
+			}
+			culture = {
+				cultural_acceptance = {
+					target = culture:english
+					value >= 50
+				}
+			}
+		}
+		trigger_else = {
+			culture = {
+				cultural_acceptance = {
+					target = culture:anglo_saxon
+					value >= 50
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
 # Request Laudabiliter - by Flavio
 ### Request Claim on Ireland ###
 england_request_laudabiliter_decision = {
@@ -140,7 +335,7 @@ england_request_laudabiliter_decision = {
 		}
 		# The ruler picking the decision should not already control Ireland.
 		NOT = {
-			completely_controls_region = custom_roman_diocese_hibernia
+			completely_controls_region = custom_roman_hibernia
 		}
 		# The ruler asking it must be a King or Emperor in some way related to Britain.
 		OR = {
@@ -153,7 +348,7 @@ england_request_laudabiliter_decision = {
 			has_title = title:e_france
 		}
 		any_county_in_region = {
-			region = custom_roman_diocese_hibernia
+			region = custom_roman_hibernia
 			OR = {
 				NOT = { faith = faith:catholic }
 				holder = {
@@ -786,4 +981,3 @@ restore_dumnonia_decision = {
 		base = 100
 	}
 }
-#

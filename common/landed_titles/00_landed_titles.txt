@@ -819,7 +819,7 @@ e_britannia = {
 				color = { 110 45 35 }
 
 				cultural_names = {
-					#This name is actually Anglo-Saxon, but the original Welsh name, Ergyng, is long dead by 10867. Arcenefelde is the archaic term for the area after the conquest, and the name used by/to refer to the Welsh-speaking portions of the county, with Herefordshire referring to the Anglo-Saxons/English.
+					#This name is actually Anglo-Saxon, but the original Welsh name, Ergyng, is long dead by 867. Arcenefelde is the archaic term for the area after the conquest, and the name used by/to refer to the Welsh-speaking portions of the county, with Herefordshire referring to the Anglo-Saxons/English.
 					name_list_welsh = cn_arcenefelde
 					name_list_cumbrian = cn_arcenefelde
 				}
@@ -35798,6 +35798,11 @@ e_spain = {
 	}
 
 	can_create = {
+		custom_description = {
+			text = form_hispania_must_end_struggle_trigger
+
+			NOT = { exists = struggle:iberian_struggle }
+		}
 
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
@@ -41426,6 +41431,14 @@ e_arabia = {
 	color = { 32 150 85 }
 
 	capital = c_medina # Damascus
+
+	can_destroy = {
+		custom_tooltip = {
+			text = persian_struggle.tt.forbid_title_destruction
+			NOT = { exists = struggle:persian_struggle }
+		}
+	}
+
 	definite_form = yes
 
 	can_create = {
