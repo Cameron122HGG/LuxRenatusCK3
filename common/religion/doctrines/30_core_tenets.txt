@@ -31,7 +31,8 @@
 		}
 
 		is_shown = {
-			has_doctrine = abrahamic_hostility_doctrine
+			always = yes
+			#has_doctrine = abrahamic_hostility_doctrine
 		}
 
 		can_pick = {
@@ -91,10 +92,11 @@
 		}
 
 		is_shown = {
-			OR = {
-				religion_tag = christianity_religion
-				religion_tag = islam_religion 
-			}
+			always = yes
+			#OR = {
+			#	religion_tag = christianity_religion
+			#	religion_tag = islam_religion 
+			#}
 		}
 
 		can_pick = {
@@ -133,10 +135,11 @@
 		}
 
 		is_shown = {
-			OR = {
-				religion_tag = christianity_religion
-				religion_tag = judaism_religion
-			}
+			always = yes
+			#OR = {
+			#	religion_tag = christianity_religion
+			#	religion_tag = judaism_religion
+			#}
 		}
 
 		can_pick = {
@@ -374,15 +377,16 @@
 		}
 
 		is_shown = {
-			NOR = {
-				religion_tag = islam_religion
-				religion_tag = judaism_religion
-				religion_tag = zoroastrianism_religion
-				AND = {
-					has_doctrine = pagan_hostility_doctrine
-					NOT = { religion_tag = kushitism_religion }
-				}
-			}
+			always = yes
+			#NOR = {
+			#	religion_tag = islam_religion
+			#	religion_tag = judaism_religion
+			#	religion_tag = zoroastrianism_religion
+			#	AND = {
+			#		has_doctrine = pagan_hostility_doctrine
+			#		NOT = { religion_tag = kushitism_religion }
+			#	}
+			#}
 		}
 		
 		can_pick = {
@@ -653,11 +657,12 @@
 		}
 
 		is_shown = {
-			NOR = {
-				religion_tag = buddhism_religion
-				religion_tag = hinduism_religion
-				religion_tag = jainism_religion
-			}
+			always = yes
+			#NOR = {
+			#	religion_tag = buddhism_religion
+			#	religion_tag = hinduism_religion
+			#	religion_tag = jainism_religion
+			#}
 		}
 
 		can_pick = {
@@ -675,6 +680,10 @@
 					doctrine:tenet_gruesome_festivals = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_dharmic_pacifism_trigger
+				NOT = { doctrine:tenet_dharmic_pacifism = { is_in_list = selected_doctrines } }
+			}			
 		}
 
 		parameters = {
@@ -871,7 +880,8 @@
 		icon = core_tenet_pastoral_isolation
 
 		is_shown = {
-			religion_tag = christianity_religion
+			always = yes
+			#religion_tag = christianity_religion
 		}
 		can_pick = {
 			custom_description = {
@@ -913,12 +923,12 @@
 		icon = core_tenet_rite
 
 		is_shown = {
-			# Filter out religions that use a branch system.
-			NOR = {
-				religion = religion:islam_religion
-				religion = religion:zoroastrianism_religion
-			}
-			# We also only want people with existing spiritual HoFs.
+			## Filter out religions that use a branch system.
+			#NOR = {
+			#	religion = religion:islam_religion
+			#	religion = religion:zoroastrianism_religion
+			#}
+			## We also only want people with existing spiritual HoFs.
 			exists = religious_head
 			has_doctrine_parameter = spiritual_head_of_faith
 		}
@@ -1339,13 +1349,14 @@
 		}
 
 		is_shown = {
-			NOR = {
-				AND = {
-					religion_tag = christianity_religion
-					NOT = { this = faith:cathar }
-				}
-				religion_tag = judaism_religion
-			}
+			always = yes
+			#NOR = {
+			#	AND = {
+			#		religion_tag = christianity_religion
+			#		NOT = { this = faith:cathar }
+			#	}
+			#	religion_tag = judaism_religion
+			#}
 		}
 
 		parameters = {
@@ -1461,10 +1472,11 @@
 		}
 
 		is_shown = {
-			OR = {
-				religion_tag = islam_religion
-				religion_tag = dualism_religion
-			}
+			always = yes
+			#OR = {
+			#	religion_tag = islam_religion
+			#	religion_tag = dualism_religion
+			#}
 		}
 
 		parameters = {
@@ -1590,7 +1602,7 @@
 		}
 
 		is_shown = {
-			NOT = { religion_tag = christianity_religion }
+			#NOT = { religion_tag = christianity_religion }
 			NOT = { has_doctrine = special_doctrine_jizya }
 		}
 	}
@@ -1692,14 +1704,15 @@
 		piety_cost = faith_tenet_cost_mid
 
 		is_shown = {
-			OR = {
-				religion_tag = hinduism_religion
-				# With FP1, Germanics also get personal deities.
-				AND = {
-					religion_tag = germanic_religion
-					has_fp1_dlc_trigger = yes
-				}
-			}
+			always = yes
+			#OR = {
+			#	religion_tag = hinduism_religion
+			#	# With FP1, Germanics also get personal deities.
+			#	AND = {
+			#		religion_tag = germanic_religion
+			#		has_fp1_dlc_trigger = yes
+			#	}
+			#}
 		}
 
 		parameters = {
@@ -1710,8 +1723,9 @@
 	tenet_dharmic_pacifism = { #Mix of reincarnation and pacifism rites
 		icon = core_tenet_dharmic_pacifism
 		is_shown = {
-			has_doctrine = eastern_hostility_doctrine
-			NOT = { religion_tag = zoroastrianism_religion }
+			always = yes
+			#has_doctrine = eastern_hostility_doctrine
+			#NOT = { religion_tag = zoroastrianism_religion }
 		}
 
 		piety_cost = {
@@ -1750,6 +1764,10 @@
 					doctrine:tenet_gruesome_festivals = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_pacifism_trigger
+				NOT = { doctrine:tenet_pacifism = { is_in_list = selected_doctrines } }
+			}		
 		}
 		
 		parameters = {
@@ -1776,8 +1794,9 @@
 		icon = core_tenet_inner_journey
 
 		is_shown = {
-			has_doctrine = eastern_hostility_doctrine
-			NOT = { religion_tag = zoroastrianism_religion }
+			always = yes
+			#has_doctrine = eastern_hostility_doctrine
+			#NOT = { religion_tag = zoroastrianism_religion }
 		}
 
 		piety_cost = {
@@ -1825,9 +1844,10 @@
 		}
 
 		is_shown = {
-			NOT = {
-				has_doctrine = abrahamic_hostility_doctrine
-			}
+			always = yes
+			#NOT = {
+			#	has_doctrine = abrahamic_hostility_doctrine
+			#}
 		}
 
 		name = {
@@ -1878,14 +1898,15 @@
 		}
 
 		is_shown = {
-			OR = {
-				religion_tag = west_african_bori_religion
-				religion_tag = akom_religion
-				religion_tag = muism_religion
-				religion_tag = dab_qhuas_religion
-				religion_tag = shamanism_religion
-				has_doctrine = tenet_adorcism #If you already have it
-			}
+			always = yes
+			#OR = {
+			#	religion_tag = west_african_bori_religion
+			#	religion_tag = akom_religion
+			#	religion_tag = muism_religion
+			#	religion_tag = dab_qhuas_religion
+			#	religion_tag = shamanism_religion
+			#	has_doctrine = tenet_adorcism #If you already have it
+			#}
 		}
 
 		parameters = {
@@ -1911,7 +1932,8 @@
 		}
 
 		is_shown = {
-			has_doctrine = pagan_hostility_doctrine
+			always = yes
+			#has_doctrine = pagan_hostility_doctrine
 		}
 
 		parameters = {
@@ -2039,7 +2061,8 @@
 		}
 
 		is_shown = {
-			NOT = { religion_tag = dualism_religion }
+			always = yes
+			#NOT = { religion_tag = dualism_religion }
 		}
 
 		can_pick = {
@@ -2101,12 +2124,13 @@
 		}
 
 		is_shown = {
-			# No HumSac for Abrahamics: 'tis literally the religion-namer.
-			NOR = {
-				religion_tag = christianity_religion
-				religion_tag = judaism_religion
-				religion_tag = islam_religion
-			}
+			always = yes
+			## No HumSac for Abrahamics: 'tis literally the religion-namer.
+			#NOR = {
+			#	religion_tag = christianity_religion
+			#	religion_tag = judaism_religion
+			#	religion_tag = islam_religion
+			#}
 		}
 
 		can_pick = {
@@ -2157,10 +2181,11 @@
 		}
 
 		is_shown = {
-			OR = {
-				religion_tag = magyar_religion
-				has_doctrine = tenet_mystical_birthright #If you already have it
-			}
+			always = yes
+			#OR = {
+			#	religion_tag = magyar_religion
+			#	has_doctrine = tenet_mystical_birthright #If you already have it
+			#}
 		}
 
 		parameters = {
@@ -2323,15 +2348,16 @@
 		}
 
 		is_shown = {
-			OR = {
-				religion_tag = zunism_religion
-				has_doctrine = tenet_sun_worship #If you already have it
-				AND = {
-					religion_tag = hinduism_religion
-					this = faith:saura #If you're into Saurism
-				}
-				
-			}
+			always = yes
+			#OR = {
+			#	religion_tag = zunism_religion
+			#	has_doctrine = tenet_sun_worship #If you already have it
+			#	AND = {
+			#		religion_tag = hinduism_religion
+			#		this = faith:saura #If you're into Saurism
+			#	}
+			#	
+			#}
 		}
 
 		parameters = {
@@ -2372,12 +2398,13 @@
 		}
 
 		is_shown = {
-			NOR = {
-				religion_tag = christianity_religion
-				religion_tag = islam_religion
-				religion_tag = judaism_religion
-				religion_tag = dualism_religion
-			}
+			always = yes
+			#NOR = {
+			#	religion_tag = christianity_religion
+			#	religion_tag = islam_religion
+			#	religion_tag = judaism_religion
+			#	religion_tag = dualism_religion
+			#}
 		}
 
 		can_pick = {
@@ -2452,13 +2479,13 @@
 		}
 
 		is_shown = {
-			# No HumSac for Abrahamics: 'tis literally the religion-namer.
-			NOR = {
-				religion_tag = christianity_religion
-				religion_tag = judaism_religion
-				religion_tag = islam_religion
-			}
-			# And DLC required.
+			## No HumSac for Abrahamics: 'tis literally the religion-namer.
+			#NOR = {
+			#	religion_tag = christianity_religion
+			#	religion_tag = judaism_religion
+			#	religion_tag = islam_religion
+			#}
+			## And DLC required.
 			has_fp1_dlc_trigger = yes
 		}
 
@@ -2589,7 +2616,8 @@
 		piety_cost = faith_tenet_cost_mid
 
 		is_shown = {
-			religion_tag = hellenism_religion
+			always = yes
+			#religion_tag = hellenism_religion
 		}
 
 		can_pick = {
@@ -2651,11 +2679,12 @@
 		}
 
 		is_shown = {
-			OR = {
-				has_doctrine = abrahamic_hostility_doctrine
-				has_doctrine = pagan_hostility_doctrine
-				has_doctrine = eastern_hostility_doctrine
-			}
+			always = yes
+			#OR = {
+			#	has_doctrine = abrahamic_hostility_doctrine
+			#	has_doctrine = pagan_hostility_doctrine
+			#	has_doctrine = eastern_hostility_doctrine
+			#}
 		}
 		can_pick = {
 			custom_description = {
@@ -2718,10 +2747,11 @@
 		}
 
 		is_shown = {
-			OR = {
-				has_doctrine = abrahamic_hostility_doctrine
-				has_doctrine = pagan_hostility_doctrine
-			}
+			always = yes
+			#OR = {
+			#	has_doctrine = abrahamic_hostility_doctrine
+			#	has_doctrine = pagan_hostility_doctrine
+			#}
 		}
 		can_pick = {
 			custom_description = {
@@ -2777,7 +2807,8 @@
 
 
 		is_shown = {
-			NOT = { has_doctrine = pagan_hostility_doctrine }
+			always = yes
+			#NOT = { has_doctrine = pagan_hostility_doctrine }
 		}
 		can_pick = {
 			custom_description = {
@@ -2828,7 +2859,8 @@
 		}
 
 		is_shown = {
-			NOT = { religion_tag = christianity_religion }
+			always = yes
+			#NOT = { religion_tag = christianity_religion }
 		}
 		can_pick = {
 			custom_description = {
@@ -2883,7 +2915,8 @@
 		}
 
 		is_shown = {
-			NOT = { religion_tag = islam_religion }
+			always = yes
+			#NOT = { religion_tag = islam_religion }
 		}
 		can_pick = {
 			custom_description = {
@@ -2937,7 +2970,8 @@
 		}
 
 		is_shown = {
-			NOT = { religion_tag = judaism_religion }
+			always = yes
+			#NOT = { religion_tag = judaism_religion }
 		}
 		can_pick = {
 			custom_description = {
@@ -3316,7 +3350,8 @@
 		}
 
 		is_shown = {
-			religion_tag = north_african_religion
+			always = yes
+			#religion_tag = north_african_religion
 		}
 
 		can_pick = {
@@ -3770,12 +3805,12 @@
 
 		is_shown = {
 			has_tgp_dlc_trigger = yes
-			religion = {
-				OR = {
-					this = religion:buddhism_religion
-					is_in_family = rf_sinitic
-				}
-			}
+			#religion = {
+			#	OR = {
+			#		this = religion:buddhism_religion
+			#		is_in_family = rf_sinitic
+			#	}
+			#}
 		}
 
 		piety_cost = {
@@ -3833,12 +3868,12 @@
 
 		is_shown = {
 			has_tgp_dlc_trigger = yes
-			religion = {
-				OR = {
-					this = religion:buddhism_religion
-					is_in_family = rf_sinitic
-				}
-			}
+			#religion = {
+			#	OR = {
+			#		this = religion:buddhism_religion
+			#		is_in_family = rf_sinitic
+			#	}
+			#}
 		}
 
 		piety_cost = {
@@ -3892,12 +3927,12 @@
 
 		is_shown = {
 			has_tgp_dlc_trigger = yes
-			religion = {
-				OR = {
-					this = religion:buddhism_religion
-					is_in_family = rf_sinitic
-				}
-			}
+			#religion = {
+			#	OR = {
+			#		this = religion:buddhism_religion
+			#		is_in_family = rf_sinitic
+			#	}
+			#}
 		}
 		can_pick = {
 			always = yes
@@ -3948,12 +3983,12 @@
 		icon = core_tenet_harmonious_society
 		is_shown = {
 			has_tgp_dlc_trigger = yes
-			religion = {
-				OR = {
-					this = religion:buddhism_religion
-					is_in_family = rf_sinitic
-				}
-			}
+			#religion = {
+			#	OR = {
+			#		this = religion:buddhism_religion
+			#		is_in_family = rf_sinitic
+			#	}
+			#}
 		}
 		can_pick = {
 			always = yes
@@ -4023,7 +4058,8 @@
 		}
 
 		is_shown = {
-			religion_tag = hinduism_religion
+			always = yes
+			#religion_tag = hinduism_religion
 		}
 
 		can_pick = {
@@ -4075,7 +4111,8 @@
 		}
 
 		is_shown = {
-			religion_tag = hinduism_religion
+			always = yes
+			#religion_tag = hinduism_religion
 		}
 
 		can_pick = {
@@ -4107,7 +4144,7 @@
 
 		is_shown = {
 			has_tgp_dlc_trigger = yes
-			has_doctrine = pagan_hostility_doctrine
+			#has_doctrine = pagan_hostility_doctrine
 		}
 		can_pick = {
 		}
