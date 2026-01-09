@@ -960,9 +960,6 @@ scripted_trigger coronation_events_6010_assailant_trigger = {
 	}
 	highest_held_title_tier >= tier_duchy
 	current_military_strength >= 300
-	#AGOT Added
-	NOT = { government_has_flag = government_is_nw }
-	is_human = yes
 }
 scripted_effect coronation_events_6010_defender_effect = {
 	add_trait = loyal
@@ -1320,15 +1317,14 @@ coronation_events.6010 = {
 						}
 					}
 				}
-				#AGOT Disabled
-				# AND = {
-				# 	exists = title:d_sunni.holder
-				# 	is_vassal_of = title:d_sunni.holder
-				# 	any_character_struggle = {
-				# 		involvement = involved
-				# 		has_struggle_phase_parameter = unlocks_claim_throne_for_caliph_vassals
-				# 	}
-				# }
+				AND = {
+					exists = title:d_sunni.holder
+					is_vassal_of = title:d_sunni.holder
+					any_character_struggle = {
+						involvement = involved
+						has_struggle_phase_parameter = unlocks_claim_throne_for_caliph_vassals
+					}
+				}
 				has_character_flag = confederation_claim_throne
 			}
 			has_activity_intent = coronation_disrupt_loyalists
@@ -1624,9 +1620,6 @@ scripted_trigger coronation_events_6011_trigger = {
 	NOT = {
 		has_any_bad_relationship_with_character_trigger = { CHARACTER = $CHARACTER$ }
 	}
-	#AGOT Added
-	NOT = { government_has_flag = government_is_nw }
-	is_human = yes
 }
 scripted_trigger coronation_events_6011_county_trigger = {
 	is_landless_type_title = no
@@ -2448,9 +2441,6 @@ scripted_trigger coronation_events_6020_foe_trigger = {
 			}
 		}
 	}
-	#AGOT Added
-	NOT = { government_has_flag = government_is_nw }
-	is_human = yes
 }
 scripted_trigger coronation_events_6020_supporter_trigger = {
 	is_ai = yes
@@ -2498,9 +2488,6 @@ scripted_trigger coronation_events_6020_supporter_trigger = {
 			development_level >= 1
 		}
 	}
-	#AGOT Added
-	NOT = { government_has_flag = government_is_nw }
-	is_human = yes
 }
 scripted_effect coronation_events_6020_mass_mobilization_effect = {
 	add_martial_lifestyle_xp = medium_lifestyle_xp
@@ -3029,13 +3016,12 @@ coronation_events.6020 = {
 	desc = coronation_events.6020.desc
 	left_portrait = {
 		character = root
-		#AGOT Disabled
-		# triggered_animation = {
-		# 	trigger = {
-		# 		faith.religion = religion:christianity_religion
-		# 	}
-		# 	animation = acknowledging
-		# }
+		triggered_animation = {
+			trigger = {
+				faith.religion = religion:christianity_religion
+			}
+			animation = acknowledging
+		}
 		animation = chancellor
 	}
 	center_portrait = {
@@ -4741,51 +4727,49 @@ coronation_events.6100 = {
 				desc = {
 					#Middle is faith dependent
 					first_valid = {
-						#AGOT Disabled
-						# triggered_desc = {	
-						# 	trigger = {
-						# 		scope:activity.var:activity_special_type_progression >= 25
-						# 		scope:host.faith.religion = {
-						# 			this = religion:christianity_religion
-						# 		}
-						# 		scope:host = {
-						# 			OR = {
-						# 				AND = {
-						# 					culture = {
-						# 						has_cultural_pillar = language_greek
-						# 						has_cultural_pillar = heritage_byzantine
-						# 					}
-						# 					highest_held_title_tier >= tier_empire
-						# 				}
-						# 				primary_title = title:e_byzantium
-						# 			}
-						# 			is_male = yes
-						# 		}
-						# 	}
-						# 	desc = coronation_events.6100.desc_byzantine
-						# }
-						#AGOT Disabled
-						# triggered_desc = {	
-						# 	trigger = {
-						# 		scope:activity.var:activity_special_type_progression >= 25
-						# 		scope:host.faith.religion = {
-						# 			this = religion:christianity_religion
-						# 		}
-						# 		scope:host = {
-						# 			OR = {
-						# 				AND = {
-						# 					culture = {
-						# 						has_cultural_pillar = language_greek
-						# 						has_cultural_pillar = heritage_byzantine
-						# 					}
-						# 					highest_held_title_tier >= tier_empire
-						# 				}
-						# 				primary_title = title:e_byzantium
-						# 			}
-						# 		}
-						# 	}
-						# 	desc = coronation_events.6100.desc_byzantine_femme
-						# }
+						triggered_desc = {	
+							trigger = {
+								scope:activity.var:activity_special_type_progression >= 25
+								scope:host.faith.religion = {
+									this = religion:christianity_religion
+								}
+								scope:host = {
+									OR = {
+										AND = {
+											culture = {
+												has_cultural_pillar = language_greek
+												has_cultural_pillar = heritage_byzantine
+											}
+											highest_held_title_tier >= tier_empire
+										}
+										primary_title = title:e_byzantium
+									}
+									is_male = yes
+								}
+							}
+							desc = coronation_events.6100.desc_byzantine
+						}
+						triggered_desc = {	
+							trigger = {
+								scope:activity.var:activity_special_type_progression >= 25
+								scope:host.faith.religion = {
+									this = religion:christianity_religion
+								}
+								scope:host = {
+									OR = {
+										AND = {
+											culture = {
+												has_cultural_pillar = language_greek
+												has_cultural_pillar = heritage_byzantine
+											}
+											highest_held_title_tier >= tier_empire
+										}
+										primary_title = title:e_byzantium
+									}
+								}
+							}
+							desc = coronation_events.6100.desc_byzantine_femme
+						}
 						triggered_desc = {	
 							trigger = {
 								scope:activity.var:activity_special_type_progression >= 75
@@ -4798,100 +4782,89 @@ coronation_events.6100 = {
 							}
 							desc = coronation_events.6100.desc_low
 						}
-						#AGOT Disabled
-						# triggered_desc = {	
-						# 	trigger = {
-						# 		scope:host.faith.religion = {
-						# 			this = religion:christianity_religion
-						# 		}
-						# 	}
-						# 	desc = coronation_events.6100.desc_christian
-						# }
+						triggered_desc = {	
+							trigger = {
+								scope:host.faith.religion = {
+									this = religion:christianity_religion
+								}
+							}
+							desc = coronation_events.6100.desc_christian
+						}
 						desc = coronation_events.6100.desc_generic
 					}
 					#Ending depends on faith and independence
 					first_valid = {
-						#AGOT Modified
-						# triggered_desc = {
-						# 	trigger = {
-						# 		scope:activity.var:activity_special_type_progression >= 25
-						# 		scope:host.faith.religion = {
-						# 			this = religion:christianity_religion
-						# 		}
-						# 		scope:host = {
-						# 			OR = {
-						# 				AND = {
-						# 					culture = {
-						# 						has_cultural_pillar = language_greek
-						# 						has_cultural_pillar = heritage_byzantine
-						# 					}
-						# 					highest_held_title_tier >= tier_empire
-						# 				}
-						# 				primary_title = title:e_byzantium
-						# 			}
-						# 			ai_zeal <= low_negative_ai_value
-						# 		}
-						# 	}
-						# 	desc = coronation_events.6100.desc_ending_byzantine_cynical
-						# }
-						# triggered_desc = {
-						# 	trigger = {
-						# 		scope:activity.var:activity_special_type_progression >= 25
-						# 		scope:host.faith.religion = {
-						# 			this = religion:christianity_religion
-						# 		}
-						# 		scope:host = {
-						# 			OR = {
-						# 				AND = {
-						# 					culture = {
-						# 						has_cultural_pillar = language_greek
-						# 						has_cultural_pillar = heritage_byzantine
-						# 					}
-						# 					highest_held_title_tier >= tier_empire
-						# 				}
-						# 				primary_title = title:e_byzantium
-						# 			}
-						# 		}
-						# 	}
-						# 	desc = coronation_events.6100.desc_ending_byzantine
-						# }
-						# triggered_desc = {
-						# 	trigger = {
-						# 		scope:host = {
-						# 			faith.religion = {
-						# 				NOT = { is_in_family = rf_abrahamic }
-						# 			}
-						# 			is_independent_ruler = no
-						# 		}
-						# 	}
-						# 	desc = coronation_events.6100.desc_ending_non_abrahamic_vassal
-						# }
-						# triggered_desc = {
-						# 	trigger = {
-						# 		scope:host = { is_independent_ruler = no }
-						# 	}
-						# 	desc = coronation_events.6100.desc_ending_vassal
-						# }
-						# triggered_desc = {
-						# 	trigger = {
-						# 		scope:host = {
-						# 			faith.religion = {
-						# 				NOT = { is_in_family = rf_abrahamic }
-						# 			}
-						# 		}
-						# 	}
-						# 	desc = coronation_events.6100.desc_ending_non_abrahamic
-						# }
-						# desc = coronation_events.6100.desc_ending
+						triggered_desc = {
+							trigger = {
+								scope:activity.var:activity_special_type_progression >= 25
+								scope:host.faith.religion = {
+									this = religion:christianity_religion
+								}
+								scope:host = {
+									OR = {
+										AND = {
+											culture = {
+												has_cultural_pillar = language_greek
+												has_cultural_pillar = heritage_byzantine
+											}
+											highest_held_title_tier >= tier_empire
+										}
+										primary_title = title:e_byzantium
+									}
+									ai_zeal <= low_negative_ai_value
+								}
+							}
+							desc = coronation_events.6100.desc_ending_byzantine_cynical
+						}
+						triggered_desc = {
+							trigger = {
+								scope:activity.var:activity_special_type_progression >= 25
+								scope:host.faith.religion = {
+									this = religion:christianity_religion
+								}
+								scope:host = {
+									OR = {
+										AND = {
+											culture = {
+												has_cultural_pillar = language_greek
+												has_cultural_pillar = heritage_byzantine
+											}
+											highest_held_title_tier >= tier_empire
+										}
+										primary_title = title:e_byzantium
+									}
+								}
+							}
+							desc = coronation_events.6100.desc_ending_byzantine
+						}
 						triggered_desc = {
 							trigger = {
 								scope:host = {
+									faith.religion = {
+										NOT = { is_in_family = rf_abrahamic }
+									}
 									is_independent_ruler = no
 								}
 							}
 							desc = coronation_events.6100.desc_ending_non_abrahamic_vassal
 						}
-						desc = coronation_events.6100.desc_ending_non_abrahamic
+						triggered_desc = {
+							trigger = {
+								scope:host = { is_independent_ruler = no }
+							}
+							desc = coronation_events.6100.desc_ending_vassal
+						}
+						triggered_desc = {
+							trigger = {
+								scope:host = {
+									faith.religion = {
+										NOT = { is_in_family = rf_abrahamic }
+									}
+								}
+							}
+							desc = coronation_events.6100.desc_ending_non_abrahamic
+						}
+						desc = coronation_events.6100.desc_ending
 					}
 				}
 			}
@@ -4899,51 +4872,49 @@ coronation_events.6100 = {
 			desc = {
 				#Middle is faith dependent
 				first_valid = {
-					#AGOT Disabled
-					# triggered_desc = {	
-					# 		trigger = {
-					# 			scope:activity.var:activity_special_type_progression >= 25
-					# 			scope:host.faith.religion = {
-					# 				this = religion:christianity_religion
-					# 			}
-					# 			scope:host = {
-					# 				OR = {
-					# 					AND = {
-					# 						culture = {
-					# 							has_cultural_pillar = language_greek
-					# 							has_cultural_pillar = heritage_byzantine
-					# 						}
-					# 						highest_held_title_tier >= tier_empire
-					# 					}
-					# 					primary_title = title:e_byzantium
-					# 				}
-					# 				is_male = yes
-					# 			}
-					# 		}
-					# 		desc = coronation_events.6100.desc_byzantine_guest
-					# 	}
-					#AGOT Disabled
-					# 	triggered_desc = {	
-					# 		trigger = {
-					# 			scope:activity.var:activity_special_type_progression >= 25
-					# 			scope:host.faith.religion = {
-					# 				this = religion:christianity_religion
-					# 			}
-					# 			scope:host = {
-					# 				OR = {
-					# 					AND = {
-					# 						culture = {
-					# 							has_cultural_pillar = language_greek
-					# 							has_cultural_pillar = heritage_byzantine
-					# 						}
-					# 						highest_held_title_tier >= tier_empire
-					# 					}
-					# 					primary_title = title:e_byzantium
-					# 				}
-					# 			}
-					# 		}
-					# 		desc = coronation_events.6100.desc_byzantine_femme_guest
-					# 	}
+					triggered_desc = {	
+							trigger = {
+								scope:activity.var:activity_special_type_progression >= 25
+								scope:host.faith.religion = {
+									this = religion:christianity_religion
+								}
+								scope:host = {
+									OR = {
+										AND = {
+											culture = {
+												has_cultural_pillar = language_greek
+												has_cultural_pillar = heritage_byzantine
+											}
+											highest_held_title_tier >= tier_empire
+										}
+										primary_title = title:e_byzantium
+									}
+									is_male = yes
+								}
+							}
+							desc = coronation_events.6100.desc_byzantine_guest
+						}
+						triggered_desc = {	
+							trigger = {
+								scope:activity.var:activity_special_type_progression >= 25
+								scope:host.faith.religion = {
+									this = religion:christianity_religion
+								}
+								scope:host = {
+									OR = {
+										AND = {
+											culture = {
+												has_cultural_pillar = language_greek
+												has_cultural_pillar = heritage_byzantine
+											}
+											highest_held_title_tier >= tier_empire
+										}
+										primary_title = title:e_byzantium
+									}
+								}
+							}
+							desc = coronation_events.6100.desc_byzantine_femme_guest
+						}
 					triggered_desc = {	
 						trigger = {
 							scope:activity.var:activity_special_type_progression >= 75
@@ -4956,78 +4927,67 @@ coronation_events.6100 = {
 						}
 						desc = coronation_events.6100.desc_low_guest
 					}
-					#AGOT Disabled
-					# triggered_desc = {	
-					# 	trigger = {
-					# 		scope:host.faith.religion = {
-					# 			this = religion:christianity_religion
-					# 		}
-					# 	}
-					# 	desc = coronation_events.6100.desc_christian_guest
-					# }
+					triggered_desc = {	
+						trigger = {
+							scope:host.faith.religion = {
+								this = religion:christianity_religion
+							}
+						}
+						desc = coronation_events.6100.desc_christian_guest
+					}
 					desc = coronation_events.6100.desc_generic_guest
 				}
 				#Ending depends on faith and independence
 				first_valid = {
-					#AGOT Modified
-					# triggered_desc = {
-					# 	trigger = {
-					# 		scope:activity.var:activity_special_type_progression >= 25
-					# 		scope:host.faith.religion = {
-					# 			this = religion:christianity_religion
-					# 		}
-					# 		scope:host = {
-					# 			OR = {
-					# 				AND = {
-					# 					culture = {
-					# 						has_cultural_pillar = language_greek
-					# 						has_cultural_pillar = heritage_byzantine
-					# 					}
-					# 					highest_held_title_tier >= tier_empire
-					# 				}
-					# 				primary_title = title:e_byzantium
-					# 			}
-					# 		}
-					# 	}
-					# 	desc = coronation_events.6100.desc_ending_byzantine_guest
-					# }
-					# triggered_desc = {
-					# 	trigger = {
-					# 		scope:host = {
-					# 			faith.religion = {
-					# 				NOT = { is_in_family = rf_abrahamic }
-					# 			}
-					# 			is_independent_ruler = no
-					# 		}
-					# 	}
-					# 	desc = coronation_events.6100.desc_ending_non_abrahamic_vassal_guest
-					# }
-					# triggered_desc = {
-					# 	trigger = {
-					# 		scope:host = { is_independent_ruler = no }
-					# 	}
-					# 	desc = coronation_events.6100.desc_ending_vassal_guest
-					# }
-					# triggered_desc = {
-					# 	trigger = {
-					# 		scope:host = {
-					# 			faith.religion = {
-					# 				NOT = { is_in_family = rf_abrahamic }
-					# 			}
-					# 		}
-					# 	}
-					# 	desc = coronation_events.6100.desc_ending_non_abrahamic_guest
-					# }
-					# desc = coronation_events.6100.desc_ending_guest
+					triggered_desc = {
+						trigger = {
+							scope:activity.var:activity_special_type_progression >= 25
+							scope:host.faith.religion = {
+								this = religion:christianity_religion
+							}
+							scope:host = {
+								OR = {
+									AND = {
+										culture = {
+											has_cultural_pillar = language_greek
+											has_cultural_pillar = heritage_byzantine
+										}
+										highest_held_title_tier >= tier_empire
+									}
+									primary_title = title:e_byzantium
+								}
+							}
+						}
+						desc = coronation_events.6100.desc_ending_byzantine_guest
+					}
 					triggered_desc = {
 						trigger = {
 							scope:host = {
+								faith.religion = {
+									NOT = { is_in_family = rf_abrahamic }
+								}
 								is_independent_ruler = no
 							}
 						}
 						desc = coronation_events.6100.desc_ending_non_abrahamic_vassal_guest
 					}
-					desc = coronation_events.6100.desc_ending_non_abrahamic_guest
+					triggered_desc = {
+						trigger = {
+							scope:host = { is_independent_ruler = no }
+						}
+						desc = coronation_events.6100.desc_ending_vassal_guest
+					}
+					triggered_desc = {
+						trigger = {
+							scope:host = {
+								faith.religion = {
+									NOT = { is_in_family = rf_abrahamic }
+								}
+							}
+						}
+						desc = coronation_events.6100.desc_ending_non_abrahamic_guest
+					}
+					desc = coronation_events.6100.desc_ending_guest
 				}
 			}
 		}
@@ -5084,24 +5044,23 @@ coronation_events.6100 = {
 			}
 			animation = wedding_happy_cry
 		}
-		#AGOT Disabled
-		# triggered_animation = {
-		# 	trigger = {
-		# 		scope:observer = {
-		# 			opinion = {
-		# 				target = scope:host
-		# 				value >= 0
-		# 			}
-		# 			ai_zeal >= low_positive_ai_value
-		# 			faith.religion = religion:christianity_religion
-		# 			OR = {
-		# 				this = scope:host.primary_heir
-		# 				this = scope:host.primary_spouse
-		# 			}
-		# 		}
-		# 	}
-		# 	animation = prayer
-		# }
+		triggered_animation = {
+			trigger = {
+				scope:observer = {
+					opinion = {
+						target = scope:host
+						value >= 0
+					}
+					ai_zeal >= low_positive_ai_value
+					faith.religion = religion:christianity_religion
+					OR = {
+						this = scope:host.primary_heir
+						this = scope:host.primary_spouse
+					}
+				}
+			}
+			animation = prayer
+		}
 		triggered_animation = {
 			trigger = {
 				scope:observer = {
@@ -5126,20 +5085,18 @@ coronation_events.6100 = {
 		animation = crowning
 		camera = camera_event_right_crowner_crowning
 	}
-	#AGOT Disabled
-	# override_background = {
-	# 	trigger = {
-	# 		scope:host.capital_county = title:c_byzantion
-	# 	}
-	# 	reference = ep3_hagia_sophia
-	# }
 	override_background = {
-		#AGOT Disabled
-		# trigger = {
-		# 	NOT = {
-		# 		scope:host.capital_county = title:c_byzantion
-		# 	}
-		# }
+		trigger = {
+			scope:host.capital_county = title:c_byzantion
+		}
+		reference = ep3_hagia_sophia
+	}
+	override_background = {
+		trigger = {
+			NOT = {
+				scope:host.capital_county = title:c_byzantion
+			}
+		}
 		reference = temple
 	}
 	artifact = {
@@ -5194,23 +5151,20 @@ coronation_events.6100 = {
 		}
 		scope:host = {
 			#Pick appropriate music
-			#AGOT Disabled
 			#Eastern Orthodox chanting
-			# if = {
-			# 	limit = {
-			# 		OR = {
-			# 			faith = faith:orthodox
-			# 			culture = { has_cultural_pillar = heritage_byzantine }
-			# 			culture = { has_cultural_pillar = language_greek }
-			# 		}
-			# 		scope:activity.var:activity_special_type_progression >= 25
-			# 	}
-			# 	play_music_cue = mep3_mood_06
-			# }
-			#Iberian
-			#AGOT Modified
-			# else_if = {
 			if = {
+				limit = {
+					OR = {
+						faith = faith:orthodox
+						culture = { has_cultural_pillar = heritage_byzantine }
+						culture = { has_cultural_pillar = language_greek }
+					}
+					scope:activity.var:activity_special_type_progression >= 25
+				}
+				play_music_cue = mep3_mood_06
+			}
+			#Iberian
+			else_if = {
 				limit = {
 					OR = {
 						culture = { has_building_gfx = iberian_building_gfx }
@@ -5591,21 +5545,20 @@ coronation_events.6101 = {
 					}
 					#Priests' dissent is leveled by magnificence
 					first_valid = {
-						#AGOT Disabled
-						# triggered_desc = {
-						# 	trigger = {	
-						# 		scope:host = {
-						# 			coronation_proper_artifact_crown_trigger = yes
-						# 			faith.religion = religion:christianity_religion
-						# 			culture = {
-						# 				has_cultural_pillar = heritage_iberian
-						# 				has_cultural_pillar = language_iberian
-						# 			}
-						# 		}
-						# 		scope:activity.var:activity_special_type_progression >= 25
-						# 	}
-						# 	desc = coronation_events.6101.desc_crowning_priests_iberian
-						# }
+						triggered_desc = {
+							trigger = {	
+								scope:host = {
+									coronation_proper_artifact_crown_trigger = yes
+									faith.religion = religion:christianity_religion
+									culture = {
+										has_cultural_pillar = heritage_iberian
+										has_cultural_pillar = language_iberian
+									}
+								}
+								scope:activity.var:activity_special_type_progression >= 25
+							}
+							desc = coronation_events.6101.desc_crowning_priests_iberian
+						}
 						triggered_desc = {
 							trigger = {	
 								scope:activity.var:activity_special_type_progression >= 75
@@ -5622,15 +5575,14 @@ coronation_events.6101 = {
 					}
 					#Mid part is Christian or not
 					first_valid = {
-						#AGOT Disabled
-						# triggered_desc = {
-						# 	trigger = {
-						# 		scope:host = {
-						# 			faith.religion = religion:christianity_religion
-						# 		}
-						# 	}
-						# 	desc = coronation_events.6101.desc_words_christian
-						# }
+						triggered_desc = {
+							trigger = {
+								scope:host = {
+									faith.religion = religion:christianity_religion
+								}
+							}
+							desc = coronation_events.6101.desc_words_christian
+						}
 						desc = coronation_events.6101.desc_words_generic
 					}
 					#End is based on personality
@@ -5676,26 +5628,25 @@ coronation_events.6101 = {
 				}
 				#Priests' dissent is leveled by magnificence
 				first_valid = {
-					#AGOT Disabled
-					# triggered_desc = {
-					# 	trigger = {	
-					# 		scope:host = {
-					# 			coronation_proper_artifact_crown_trigger = yes
-					# 			faith.religion = religion:christianity_religion
-					# 			culture = {
-					# 				has_cultural_pillar = heritage_iberian
-					# 				has_cultural_pillar = language_iberian
-					# 			}
-					# 		}
-					# 		faith.religion = religion:christianity_religion
-					# 		culture = {
-					# 			has_cultural_pillar = heritage_iberian
-					# 			has_cultural_pillar = language_iberian
-					# 		}
-					# 		scope:activity.var:activity_special_type_progression >= 25
-					# 	}
-					# 	desc = coronation_events.6101.desc_crowning_priests_iberian
-					# }
+					triggered_desc = {
+						trigger = {	
+							scope:host = {
+								coronation_proper_artifact_crown_trigger = yes
+								faith.religion = religion:christianity_religion
+								culture = {
+									has_cultural_pillar = heritage_iberian
+									has_cultural_pillar = language_iberian
+								}
+							}
+							faith.religion = religion:christianity_religion
+							culture = {
+								has_cultural_pillar = heritage_iberian
+								has_cultural_pillar = language_iberian
+							}
+							scope:activity.var:activity_special_type_progression >= 25
+						}
+						desc = coronation_events.6101.desc_crowning_priests_iberian
+					}
 					triggered_desc = {
 						trigger = {	
 							scope:activity.var:activity_special_type_progression >= 75
@@ -5712,15 +5663,14 @@ coronation_events.6101 = {
 				}
 				#Mid part is Christian or not
 				first_valid = {
-					#AGOT Disabled
-					# triggered_desc = {
-					# 	trigger = {
-					# 		scope:host = {
-					# 			faith.religion = religion:christianity_religion
-					# 		}
-					# 	}
-					# 	desc = coronation_events.6101.desc_words_christian_guest
-					# }
+					triggered_desc = {
+						trigger = {
+							scope:host = {
+								faith.religion = religion:christianity_religion
+							}
+						}
+						desc = coronation_events.6101.desc_words_christian_guest
+					}
 					desc = coronation_events.6101.desc_words_generic_guest
 				}
 				#End is based on personality
@@ -5805,10 +5755,9 @@ coronation_events.6101 = {
 		}
 		triggered_animation = {
 			trigger = {
-				#AGOT Disabled
-				# NOT = {
-				# 	scope:host.faith.religion = religion:christianity_religion
-				# }
+				NOT = {
+					scope:host.faith.religion = religion:christianity_religion
+				}
 				OR = {
 					has_trait = arrogant
 					has_trait = ambitious
@@ -5818,16 +5767,14 @@ coronation_events.6101 = {
 			}
 			animation = personality_honorable
 		}
-		#AGOT modified
-		# triggered_animation = {
-		# 	trigger = {
-		# 		NOT = {
-		# 			scope:host.faith.religion = religion:christianity_religion
-		# 		}
-		# 	}
-		# 	animation = personality_honorable
-		# }
-		# animation = acknowledging
+		triggered_animation = {
+			trigger = {
+				NOT = {
+					scope:host.faith.religion = religion:christianity_religion
+				}
+			}
+			animation = personality_honorable
+		}
 		animation = acknowledging
 		camera = camera_event_center_pointing_slighty_left
 	}
@@ -5906,23 +5853,20 @@ coronation_events.6101 = {
 		}
 		scope:host = {
 			#Pick appropriate music
-			#AGOT Disabled
 			#Eastern Orthodox chanting
-			# if = {
-			# 	limit = {
-			# 		OR = {
-			# 			faith = faith:orthodox
-			# 			culture = { has_cultural_pillar = heritage_byzantine }
-			# 			culture = { has_cultural_pillar = language_greek }
-			# 		}
-			# 		scope:activity.var:activity_special_type_progression >= 25
-			# 	}
-			# 	play_music_cue = mep3_mood_06
-			# }
-			#Iberian
-			#AGOT Modified
-			# else_if = {
 			if = {
+				limit = {
+					OR = {
+						faith = faith:orthodox
+						culture = { has_cultural_pillar = heritage_byzantine }
+						culture = { has_cultural_pillar = language_greek }
+					}
+					scope:activity.var:activity_special_type_progression >= 25
+				}
+				play_music_cue = mep3_mood_06
+			}
+			#Iberian
+			else_if = {
 				limit = {
 					OR = {
 						culture = { has_building_gfx = iberian_building_gfx }
@@ -6258,19 +6202,18 @@ coronation_events.6102 = {
 							desc = {
 								desc = coronation_events.6102.desc_high_east_asian
 								first_valid = {
-									#AGOT Disabled
-									# triggered_desc = {
-									# 	trigger = {
-									# 		scope:host = {
-									# 			AND = {
-									# 				government_is_japanese_trigger = yes
-									# 				has_title = title:e_japan
-									# 				tgp_has_ceremonial_liege_title_trigger = yes
-									# 			}
-									# 		}
-									# 	}
-									# 	desc = coronation_events.6102.desc_high_east_asian_ending_japan
-									# }
+									triggered_desc = {
+										trigger = {
+											scope:host = {
+												AND = {
+													government_is_japanese_trigger = yes
+													has_title = title:e_japan
+													tgp_has_ceremonial_liege_title_trigger = yes
+												}
+											}
+										}
+										desc = coronation_events.6102.desc_high_east_asian_ending_japan
+									}
 									desc = coronation_events.6102.desc_high_east_asian_ending
 								}
 							}
@@ -6285,19 +6228,18 @@ coronation_events.6102 = {
 							desc = {
 								desc = coronation_events.6102.desc_low_east_asian
 								first_valid = {
-									#AGOT Disabled
-									# triggered_desc = {
-									# 	trigger = {
-									# 		scope:host = {
-									# 			AND = {
-									# 				government_is_japanese_trigger = yes
-									# 				has_title = title:e_japan
-									# 				tgp_has_ceremonial_liege_title_trigger = yes
-									# 			}
-									# 		}
-									# 	}
-									# 	desc = coronation_events.6102.desc_low_east_asian_ending_japan
-									# }
+									triggered_desc = {
+										trigger = {
+											scope:host = {
+												AND = {
+													government_is_japanese_trigger = yes
+													has_title = title:e_japan
+													tgp_has_ceremonial_liege_title_trigger = yes
+												}
+											}
+										}
+										desc = coronation_events.6102.desc_low_east_asian_ending_japan
+									}
 									desc = coronation_events.6102.desc_low_east_asian_ending
 								}
 							}
@@ -6311,19 +6253,18 @@ coronation_events.6102 = {
 							desc = {
 								desc = coronation_events.6102.desc_mid_east_asian
 								first_valid = {
-									#AGOT Disabled
-									# triggered_desc = {
-									# 	trigger = {
-									# 		scope:host = {
-									# 			AND = {
-									# 				government_is_japanese_trigger = yes
-									# 				has_title = title:e_japan
-									# 				tgp_has_ceremonial_liege_title_trigger = yes
-									# 			}
-									# 		}
-									# 	}
-									# 	desc = coronation_events.6102.desc_mid_east_asian_ending_japan
-									# }
+									triggered_desc = {
+										trigger = {
+											scope:host = {
+												AND = {
+													government_is_japanese_trigger = yes
+													has_title = title:e_japan
+													tgp_has_ceremonial_liege_title_trigger = yes
+												}
+											}
+										}
+										desc = coronation_events.6102.desc_mid_east_asian_ending_japan
+									}
 									desc = coronation_events.6102.desc_mid_east_asian_ending
 								}
 							}
@@ -6400,19 +6341,18 @@ coronation_events.6102 = {
 						desc = {
 							desc = coronation_events.6102.desc_high_east_asian_guest
 							first_valid = {
-								#AGOT Disabled
-								# triggered_desc = {
-								# 	trigger = {
-								# 		scope:host = {
-								# 			AND = {
-								# 				government_is_japanese_trigger = yes
-								# 				has_title = title:e_japan
-								# 				tgp_has_ceremonial_liege_title_trigger = yes
-								# 			}
-								# 		}
-								# 	}
-								# 	desc = coronation_events.6102.desc_high_east_asian_ending_japan_guest
-								# }
+								triggered_desc = {
+									trigger = {
+										scope:host = {
+											AND = {
+												government_is_japanese_trigger = yes
+												has_title = title:e_japan
+												tgp_has_ceremonial_liege_title_trigger = yes
+											}
+										}
+									}
+									desc = coronation_events.6102.desc_high_east_asian_ending_japan_guest
+								}
 								desc = coronation_events.6102.desc_high_east_asian_ending_guest
 							}
 						}
@@ -6427,19 +6367,18 @@ coronation_events.6102 = {
 						desc = {
 							desc = coronation_events.6102.desc_low_east_asian_guest
 							first_valid = {
-								#AGOT Disabled
-								# triggered_desc = {
-								# 	trigger = {
-								# 		scope:host = {
-								# 			AND = {
-								# 				government_is_japanese_trigger = yes
-								# 				has_title = title:e_japan
-								# 				tgp_has_ceremonial_liege_title_trigger = yes
-								# 			}
-								# 		}
-								# 	}
-								# 	desc = coronation_events.6102.desc_low_east_asian_ending_japan_guest
-								# }
+								triggered_desc = {
+									trigger = {
+										scope:host = {
+											AND = {
+												government_is_japanese_trigger = yes
+												has_title = title:e_japan
+												tgp_has_ceremonial_liege_title_trigger = yes
+											}
+										}
+									}
+									desc = coronation_events.6102.desc_low_east_asian_ending_japan_guest
+								}
 								desc = coronation_events.6102.desc_low_east_asian_ending_guest
 							}
 						}
@@ -6453,19 +6392,18 @@ coronation_events.6102 = {
 						desc = {
 							desc = coronation_events.6102.desc_mid_east_asian_guest
 							first_valid = {
-								#AGOT Disabled
-								# triggered_desc = {
-								# 	trigger = {
-								# 		scope:host = {
-								# 			AND = {
-								# 				government_is_japanese_trigger = yes
-								# 				has_title = title:e_japan
-								# 				tgp_has_ceremonial_liege_title_trigger = yes
-								# 			}
-								# 		}
-								# 	}
-								# 	desc = coronation_events.6102.desc_mid_east_asian_ending_japan_guest
-								# }
+								triggered_desc = {
+									trigger = {
+										scope:host = {
+											AND = {
+												government_is_japanese_trigger = yes
+												has_title = title:e_japan
+												tgp_has_ceremonial_liege_title_trigger = yes
+											}
+										}
+									}
+									desc = coronation_events.6102.desc_mid_east_asian_ending_japan_guest
+								}
 								desc = coronation_events.6102.desc_mid_east_asian_ending_guest
 							}
 						}
@@ -6525,25 +6463,21 @@ coronation_events.6102 = {
 				scope:host = {
 					coronation_host_east_asian_steppe_admin_trigger = yes
 				}
-				#AGOT Disabled
-				# NOT = {
-				# 	scope:host.faith.religion = religion:christianity_religion
-				# }
+				NOT = {
+					scope:host.faith.religion = religion:christianity_religion
+				}
 			}
 			animation = emperor
 		}
-		#AGOT Disabled
-		# triggered_animation = {
-		# 	trigger = {
-		# 		NOT = {
-		# 			scope:host.faith.religion = religion:christianity_religion
-		# 		}
-		# 	}
-		# 	animation = personality_honorable
-		# }
-		#AGOT Modified
-		# animation = scepter
-		animation = personality_honorable
+		triggered_animation = {
+			trigger = {
+				NOT = {
+					scope:host.faith.religion = religion:christianity_religion
+				}
+			}
+			animation = personality_honorable
+		}
+		animation = scepter
 		camera = camera_event_center_mostly_away_right
 	}
 	right_portrait = {
@@ -6588,23 +6522,20 @@ coronation_events.6102 = {
 		scope:host = {
 			save_scope_as = bg_override_char
 			#Pick appropriate music
-			#AGOT Disabled
 			#Eastern Orthodox chanting
-			# if = {
-			# 	limit = {
-			# 		OR = {
-			# 			faith = faith:orthodox
-			# 			culture = { has_cultural_pillar = heritage_byzantine }
-			# 			culture = { has_cultural_pillar = language_greek }
-			# 		}
-			# 		scope:activity.var:activity_special_type_progression >= 25
-			# 	}
-			# 	play_music_cue = mep3_mood_06
-			# }
-			#Iberian
-			#AGOT Modified
-			# else_if = {
 			if = {
+				limit = {
+					OR = {
+						faith = faith:orthodox
+						culture = { has_cultural_pillar = heritage_byzantine }
+						culture = { has_cultural_pillar = language_greek }
+					}
+					scope:activity.var:activity_special_type_progression >= 25
+				}
+				play_music_cue = mep3_mood_06
+			}
+			#Iberian
+			else_if = {
 				limit = {
 					OR = {
 						culture = { has_building_gfx = iberian_building_gfx }
@@ -7013,13 +6944,12 @@ coronation_events.6110 = {
 		}
 		desc = coronation_events.6110.desc_2
 		first_valid = {
-			#AGOT Disabled
-			# triggered_desc = {
-			# 	trigger = {
-			# 		religion = religion:christianity_religion
-			# 	}
-			# 	desc = coronation_events.6110.desc_st_peter
-			# }
+			triggered_desc = {
+				trigger = {
+					religion = religion:christianity_religion
+				}
+				desc = coronation_events.6110.desc_st_peter
+			}
 			desc = coronation_events.6110.desc_generic
 		}
 		first_valid = {
@@ -7103,20 +7033,18 @@ coronation_events.6110 = {
 	    target = scope:crowning_artifact_3
 	    position = lower_right_portrait
 	}
-	#AGOT Disabled
-	# override_background = {
-	# 	trigger = {
-	# 		scope:host.capital_county = title:c_byzantion
-	# 	}
-	# 	reference = ep3_hagia_sophia
-	# }
 	override_background = {
-		#AGOT Disabled
-		# trigger = {
-		# 	NOT = {
-		# 		scope:host.capital_county = title:c_byzantion
-		# 	}
-		# }
+		trigger = {
+			scope:host.capital_county = title:c_byzantion
+		}
+		reference = ep3_hagia_sophia
+	}
+	override_background = {
+		trigger = {
+			NOT = {
+				scope:host.capital_county = title:c_byzantion
+			}
+		}
 		reference = temple
 	}
 
@@ -7920,29 +7848,28 @@ coronation_events.6120 = {
 	desc = {
 		#Triggered based on where you're going for rites
 		first_valid = {
-			#AGOT Disabled
-			# triggered_desc = {
-			# 	trigger = {
-			# 		faith.religion = religion:christianity_religion
-			# 		OR = {
-			# 			location.barony = title:b_constantinople
-			# 			AND = {
-			# 				location.barony = title:b_vaticano
-			# 				faith = faith:catholic
-			# 				scope:host.faith = faith:catholic
-			# 			}
-			# 			AND = {
-			# 				current_year >= 950
-			# 				location.barony = title:b_london
-			# 			}
-			# 			location.barony = title:b_reims
-			# 			location = {
-			# 				has_holding_type = church_holding
-			# 			}
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6120.desc_cathedral
-			# }
+			triggered_desc = {
+				trigger = {
+					faith.religion = religion:christianity_religion
+					OR = {
+						location.barony = title:b_constantinople
+						AND = {
+							location.barony = title:b_vaticano
+							faith = faith:catholic
+							scope:host.faith = faith:catholic
+						}
+						AND = {
+							current_year >= 950
+							location.barony = title:b_london
+						}
+						location.barony = title:b_reims
+						location = {
+							has_holding_type = church_holding
+						}
+					}
+				}
+				desc = coronation_events.6120.desc_cathedral
+			}
 			triggered_desc = {
 				trigger = {
 					exists = scope:activity.special_guest:priest
@@ -8388,29 +8315,27 @@ coronation_events.6120 = {
 			}
 			text = coronation_events.6120.c_begrudging
 		}
-		#AGOT Disabled
-		# name = {
-		# 	trigger = {
-		# 		faith.religion = religion:christianity_religion
-		# 		NOT = {
-		# 			NOR = {
-		# 				ai_honor >= high_positive_ai_value
-		# 				ai_zeal >= medium_positive_ai_value
-		# 			}
-		# 			OR = {
-		# 				coronation_clergy_approval_value < -1
-		# 				has_trait = cynical
-		# 				has_trait = arbitrary
-		# 				has_trait = fickle
-		# 			}
-		# 		}
-		# 	}
-		# 	text = coronation_events.6120.c_christian
-		# }
 		name = {
 			trigger = {
-				#AGOT Disabled
-				# NOT = { faith.religion = religion:christianity_religion }
+				faith.religion = religion:christianity_religion
+				NOT = {
+					NOR = {
+						ai_honor >= high_positive_ai_value
+						ai_zeal >= medium_positive_ai_value
+					}
+					OR = {
+						coronation_clergy_approval_value < -1
+						has_trait = cynical
+						has_trait = arbitrary
+						has_trait = fickle
+					}
+				}
+			}
+			text = coronation_events.6120.c_christian
+		}
+		name = {
+			trigger = {
+				NOT = { faith.religion = religion:christianity_religion }
 				NOT = {
 					NOR = {
 						ai_honor >= high_positive_ai_value
@@ -8477,9 +8402,6 @@ scripted_trigger coronation_events_6121_detractor_ally_trigger = {
 			this = prev
 		}
 	}
-	#AGOT Added
-	NOT = { government_has_flag = government_is_nw }
-	is_human = yes
 }
 scripted_trigger coronation_events_6121_minority_trigger = {
 	is_participant_in_activity = scope:activity
@@ -8496,71 +8418,66 @@ scripted_trigger coronation_events_6121_minority_trigger = {
 			value <= 80
 		}
 	}
-	#AGOT Added
-	NOT = { government_has_flag = government_is_nw }
-	is_human = yes
 }
 #Calling for the approval of the NOBILITY
 coronation_events.6121 = {
 	type = activity_event
 	title = {
 		first_valid = {
-			#AGOT Disabled
-			# triggered_desc = {
-			# 	trigger = {
-			# 		culture = {
-			# 			OR = {
-			# 				has_cultural_pillar = heritage_mongolic
-			# 				has_cultural_pillar = heritage_turkic
-			# 				has_cultural_pillar = heritage_magyar
-			# 			}
-			# 		}
-			# 		OR = {
-			# 			government_has_flag = government_is_nomadic
-			# 			has_trait = nomadic_philosophy
-			# 			primary_title = title:e_mongol_empire
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6121.t_kurultai
-			# }
+			triggered_desc = {
+				trigger = {
+					culture = {
+						OR = {
+							has_cultural_pillar = heritage_mongolic
+							has_cultural_pillar = heritage_turkic
+							has_cultural_pillar = heritage_magyar
+						}
+					}
+					OR = {
+						government_has_flag = government_is_nomadic
+						has_trait = nomadic_philosophy
+						primary_title = title:e_mongol_empire
+					}
+				}
+				desc = coronation_events.6121.t_kurultai
+			}
 			desc = coronation_events.6121.t
 		}
 	}
 	desc = {
 		#Regional flavor
 		first_valid = {
-			#AGOT Disabled
-			# triggered_desc = {
-			# 	trigger = {
-			# 		culture = {
-			# 			OR = {
-			# 				has_cultural_pillar = heritage_mongolic
-			# 				has_cultural_pillar = heritage_turkic
-			# 				has_cultural_pillar = heritage_magyar
-			# 			}
-			# 		}
-			# 		OR = {
-			# 			government_has_flag = government_is_nomadic
-			# 			has_trait = nomadic_philosophy
-			# 			primary_title = title:e_mongol_empire
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6121.desc_kurultai
-			# }
-			# triggered_desc = {
-			# 	trigger = {
-			# 		OR = {
-			# 			is_roman_emperor_primary_title_trigger = yes
-			# 			culture = {
-			# 				has_cultural_tradition = tradition_ep3_roman_ceremonies
-			# 			}
-			# 			culture = {
-			# 				has_cultural_tradition = tradition_roman_legacy
-			# 			}
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6121.desc_byzantine
-			# }
+			triggered_desc = {
+				trigger = {
+					culture = {
+						OR = {
+							has_cultural_pillar = heritage_mongolic
+							has_cultural_pillar = heritage_turkic
+							has_cultural_pillar = heritage_magyar
+						}
+					}
+					OR = {
+						government_has_flag = government_is_nomadic
+						has_trait = nomadic_philosophy
+						primary_title = title:e_mongol_empire
+					}
+				}
+				desc = coronation_events.6121.desc_kurultai
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						is_roman_emperor_primary_title_trigger = yes
+						culture = {
+							has_cultural_tradition = tradition_ep3_roman_ceremonies
+						}
+						culture = {
+							has_cultural_tradition = tradition_roman_legacy
+						}
+					}
+				}
+				desc = coronation_events.6121.desc_byzantine
+			}
 			desc = coronation_events.6121.desc_generic_intro
 		}
 		#Are the nobles compliant?
@@ -9627,21 +9544,20 @@ coronation_events.6122 = {
 				}
 				desc = coronation_events.6122.desc_low_approval
 			}
-			#AGOT Disabled
-			# triggered_desc = {
-			# 	trigger = {
-			# 		coronation_popular_approval_value >= 1
-			# 		religion = religion:christianity_religion
-			# 		OR = {
-			# 			location.barony = title:b_vaticano
-			# 			location.barony = title:b_roma
-			# 			location.culture = {
-			# 				has_cultural_pillar = language_greek
-			# 			}
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6122.desc_high_approval_christian
-			# }
+			triggered_desc = {
+				trigger = {
+					coronation_popular_approval_value >= 1
+					religion = religion:christianity_religion
+					OR = {
+						location.barony = title:b_vaticano
+						location.barony = title:b_roma
+						location.culture = {
+							has_cultural_pillar = language_greek
+						}
+					}
+				}
+				desc = coronation_events.6122.desc_high_approval_christian
+			}
 			triggered_desc = {
 				trigger = {
 					coronation_popular_approval_value >= 1
@@ -9659,13 +9575,12 @@ coronation_events.6122 = {
 			}
 			animation = eyeroll
 		}
-		#AGOT Disabled
-		# triggered_animation = {
-		# 	trigger = {
-		# 		root = { religion = religion:christianity_religion }
-		# 	}
-		# 	animation = acknowledging
-		# }
+		triggered_animation = {
+			trigger = {
+				root = { religion = religion:christianity_religion }
+			}
+			animation = acknowledging
+		}
 		triggered_animation = {
 			trigger = {
 				root = { coronation_popular_approval_value >= 1 }
@@ -10029,9 +9944,6 @@ scripted_trigger coronation_events_6123_vengeful_supporter_trigger = {
 			value < -40
 		}
 	}
-	#AGOT Added
-	NOT = { government_has_flag = government_is_nw }
-	is_human = yes
 }
 
 #Summary of approvals for guests
@@ -11689,23 +11601,21 @@ coronation_events.6123 = {
 }
 
 scripted_trigger coronation_events_6130_dharmic_trigger = {
-	#AGOT Modified
-	# faith.religion = {
-	# 	AND = {
-	# 		is_in_family = rf_eastern
-	# 		NOT = {
-	# 			this = religion:zoroastrianism_religion
-	# 		}
-	# 	}
-	# }
-	# root.involved_activity.activity_location = {
-	# 	OR = {
-	# 		geographical_region = world_india
-	# 		geographical_region = world_tibet
-	# 		geographical_region = world_burma
-	# 	}
-	# }
-	always = no
+	faith.religion = {
+		AND = {
+			is_in_family = rf_eastern
+			NOT = {
+				this = religion:zoroastrianism_religion
+			}
+		}
+	}
+	root.involved_activity.activity_location = {
+		OR = {
+			geographical_region = world_india
+			geographical_region = world_tibet
+			geographical_region = world_burma
+		}
+	}
 }
 #Anointment, perhaps by the HoF in an actual anointment
 coronation_events.6130 = {
@@ -11738,60 +11648,59 @@ coronation_events.6130 = {
 		#Intro line
 		desc = coronation_events.6130.desc.intro
 		first_valid = {
-			#AGOT Disabled
-			# triggered_desc = {
-			# 	trigger = {
-			# 		scope:activity = {
-			# 			has_activity_option = {
-			# 				category = special_type
-			# 				option = coronation_type_anointment
-			# 			}
-			# 		}
-			# 		this = scope:host
-			# 		scope:host.faith.religion = {
-			# 			this = religion:christianity_religion
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6130.papal_intro_host
-			# }
-			# triggered_desc = {
-			# 	trigger = {
-			# 		scope:activity = {
-			# 			has_activity_option = {
-			# 				category = special_type
-			# 				option = coronation_type_anointment
-			# 			}
-			# 		}
-			# 		scope:host.faith.religion = {
-			# 			this = religion:christianity_religion
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6130.papal_intro_guest
-			# }
-			# triggered_desc = {
-			# 	trigger = {
-			# 		this = scope:host
-			# 		scope:host.faith.religion = {
-			# 			OR = {
-			# 				this = religion:christianity_religion
-			# 				this = religion:judaism_religion
-			# 			}
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6130.abrahamic_intro_host
-			# }
-			# triggered_desc = {
-			# 	trigger = {
-			# 		this = scope:host
-			# 		scope:host.faith.religion = {
-			# 			OR = {
-			# 				this = religion:christianity_religion
-			# 				this = religion:judaism_religion
-			# 			}
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6130.abrahamic_intro_guest
-			# }
+			triggered_desc = {
+				trigger = {
+					scope:activity = {
+						has_activity_option = {
+							category = special_type
+							option = coronation_type_anointment
+						}
+					}
+					this = scope:host
+					scope:host.faith.religion = {
+						this = religion:christianity_religion
+					}
+				}
+				desc = coronation_events.6130.papal_intro_host
+			}
+			triggered_desc = {
+				trigger = {
+					scope:activity = {
+						has_activity_option = {
+							category = special_type
+							option = coronation_type_anointment
+						}
+					}
+					scope:host.faith.religion = {
+						this = religion:christianity_religion
+					}
+				}
+				desc = coronation_events.6130.papal_intro_guest
+			}
+			triggered_desc = {
+				trigger = {
+					this = scope:host
+					scope:host.faith.religion = {
+						OR = {
+							this = religion:christianity_religion
+							this = religion:judaism_religion
+						}
+					}
+				}
+				desc = coronation_events.6130.abrahamic_intro_host
+			}
+			triggered_desc = {
+				trigger = {
+					this = scope:host
+					scope:host.faith.religion = {
+						OR = {
+							this = religion:christianity_religion
+							this = religion:judaism_religion
+						}
+					}
+				}
+				desc = coronation_events.6130.abrahamic_intro_guest
+			}
 			triggered_desc = {
 				trigger = {
 					this = scope:host
@@ -11853,26 +11762,24 @@ coronation_events.6130 = {
 				}
 				desc = coronation_events.6130.faith_head
 			}
-			#AGOT Disabled
-			# triggered_desc = {
-			# 	trigger = {
-			# 		scope:host.faith.religion = religion:christianity_religion
-			# 		scope:anointer = {
-			# 			NOT = {
-			# 				this = scope:host.cp:councillor_court_chaplain
-			# 			}
-			# 			is_landed = yes
-			# 		}
-			# 	}
-			# 	desc = coronation_events.6130.christian_non_hof_non_cc
-			# }
-			#AGOT Disabled
-			# triggered_desc = {
-			# 	trigger = {
-			# 		scope:host.faith.religion = religion:christianity_religion
-			# 	}
-			# 	desc = coronation_events.6130.christian_non_hof
-			# }
+			triggered_desc = {
+				trigger = {
+					scope:host.faith.religion = religion:christianity_religion
+					scope:anointer = {
+						NOT = {
+							this = scope:host.cp:councillor_court_chaplain
+						}
+						is_landed = yes
+					}
+				}
+				desc = coronation_events.6130.christian_non_hof_non_cc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:host.faith.religion = religion:christianity_religion
+				}
+				desc = coronation_events.6130.christian_non_hof
+			}
 			desc = coronation_events.6130.anointer_fallback
 		}
 		#Anointing with oil or water from sacred rivers?
@@ -11992,20 +11899,18 @@ coronation_events.6130 = {
 		camera = camera_event_very_right
 	}
 	
-	#AGOT Disabled
-	# override_background = {
-	# 	trigger = {
-	# 		scope:host.capital_county = title:c_byzantion
-	# 	}
-	# 	reference = ep3_hagia_sophia
-	# }
 	override_background = {
-		#AGOT Disabled
-		# trigger = {
-		# 	NOT = {
-		# 		scope:host.capital_county = title:c_byzantion
-		# 	}
-		# }
+		trigger = {
+			scope:host.capital_county = title:c_byzantion
+		}
+		reference = ep3_hagia_sophia
+	}
+	override_background = {
+		trigger = {
+			NOT = {
+				scope:host.capital_county = title:c_byzantion
+			}
+		}
 		reference = temple
 	}
 	override_effect_2d = {
@@ -12039,9 +11944,8 @@ coronation_events.6130 = {
 				}
 			}
 			OR = {
-				#AGOT Disabled
-				# activity_host.faith.religion  = religion:christianity_religion
-				# activity_host.faith.religion  = religion:judaism_religion
+				activity_host.faith.religion  = religion:christianity_religion
+				activity_host.faith.religion  = religion:judaism_religion
 				activity_host = {
 					coronation_events_6130_dharmic_trigger = yes
 				}
@@ -12477,92 +12381,91 @@ coronation_events.6130 = {
 		}
 	}
 	#I am sooo ready to fight for the faith
-	#AGOT Disabled
-	# option = {
-	# 	trigger = {
-	# 		this = scope:host
-	# 		NOT = {
-	# 			has_trait = faith_warrior
-	# 		}
-	# 		faith = {
-	# 			fervor >= 75
-	# 		}
-	# 		trigger_if = {
-	# 			limit = {
-	# 				scope:activity = {
-	# 					has_activity_option = {
-	# 						category = special_type
-	# 						option = coronation_type_anointment
-	# 					}
-	# 				}
-	# 			}
-	# 			has_focus_martial = yes
-	# 		}
-	# 		trigger_else = {
-	# 			has_focus_martial = yes
-	# 			OR = {
-	# 				has_trait = education_martial_3
-	# 				has_trait = education_martial_4
-	# 				has_trait = education_martial_5
-	# 			}
-	# 		}
-	# 	}
-	# 	name = {
-	# 		trigger = {
-	# 			scope:host = {
-	# 				coronation_events_6130_dharmic_trigger = no
-	# 			}
-	# 		}
-	# 		text = coronation_events.6130.a
-	# 	}
-	# 	name = {
-	# 		trigger = {
-	# 			scope:host = {
-	# 				coronation_events_6130_dharmic_trigger = yes
-	# 			}
-	# 		}
-	# 		text = coronation_events.6130.a_dharmic
-	# 	}
-	# 	flavor = coronation_events.6130.a.flavor
-	# 	reason = lifestyle_focus
+	option = {
+		trigger = {
+			this = scope:host
+			NOT = {
+				has_trait = faith_warrior
+			}
+			faith = {
+				fervor >= 75
+			}
+			trigger_if = {
+				limit = {
+					scope:activity = {
+						has_activity_option = {
+							category = special_type
+							option = coronation_type_anointment
+						}
+					}
+				}
+				has_focus_martial = yes
+			}
+			trigger_else = {
+				has_focus_martial = yes
+				OR = {
+					has_trait = education_martial_3
+					has_trait = education_martial_4
+					has_trait = education_martial_5
+				}
+			}
+		}
+		name = {
+			trigger = {
+				scope:host = {
+					coronation_events_6130_dharmic_trigger = no
+				}
+			}
+			text = coronation_events.6130.a
+		}
+		name = {
+			trigger = {
+				scope:host = {
+					coronation_events_6130_dharmic_trigger = yes
+				}
+			}
+			text = coronation_events.6130.a_dharmic
+		}
+		flavor = coronation_events.6130.a.flavor
+		reason = lifestyle_focus
 
-	# 	#Kingdom tier holy war gives crusader trait
-	# 	custom_tooltip = crusader_from_k_holy_war_tt
-	# 	set_variable = {
-	# 		name = k_holy_war_crusader
-	# 	}
-	# 	stress_impact = {
-	# 		zealous = major_stress_impact_loss
-	# 		wrathful = miniscule_stress_impact_loss
-	# 		vengeful = minor_stress_impact_loss
-	# 		sadistic = miniscule_stress_impact_loss
-	# 		brave = miniscule_stress_impact_loss
-	# 		compassionate = minor_stress_impact_gain
-	# 		cynical = medium_stress_impact_gain
-	# 		craven = minor_stress_impact_gain
-	# 	}
-	# 	ai_chance = {
-	# 		base = 100
-	# 		modifier = {
-	# 			add = 100
-	# 			OR = {
-	# 				has_trait = zealous
-	# 				has_trait = wrathful
-	# 				has_trait = vengeful
-	# 				has_trait = sadistic
-	# 				has_trait = brave
-	# 			}
-	# 		}
-	# 		modifier = {
-	# 			factor = 0
-	# 			OR = {
-	# 				has_trait = compassionate
-	# 				has_trait = cynical
-	# 				has_trait = craven
-	# 			}
-	# 		}
-	# 	}
-	# }
+		#Kingdom tier holy war gives crusader trait
+		custom_tooltip = crusader_from_k_holy_war_tt
+		set_variable = {
+			name = k_holy_war_crusader
+		}
+		stress_impact = {
+			zealous = major_stress_impact_loss
+			wrathful = miniscule_stress_impact_loss
+			vengeful = minor_stress_impact_loss
+			sadistic = miniscule_stress_impact_loss
+			brave = miniscule_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+			cynical = medium_stress_impact_gain
+			craven = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				add = 100
+				OR = {
+					has_trait = zealous
+					has_trait = wrathful
+					has_trait = vengeful
+					has_trait = sadistic
+					has_trait = brave
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_trait = compassionate
+					has_trait = cynical
+					has_trait = craven
+				}
+			}
+		}
+	}
 	#It is now my duty to CONVERT
 	option = {
 		trigger = {
@@ -13237,14 +13140,13 @@ coronation_events.6140 = {
 			}
 			animation = disapproval
 		}
-		#AGOT Disabled
-		# triggered_animation = {
-		# 	trigger = {
-		# 		scope:host.religion = religion:christianity_religion
-		# 		scope:spouse.religion = religion:christianity_religion
-		# 	}
-		# 	animation = scepter
-		# }
+		triggered_animation = {
+			trigger = {
+				scope:host.religion = religion:christianity_religion
+				scope:spouse.religion = religion:christianity_religion
+			}
+			animation = scepter
+		}
 		triggered_animation = {
 			trigger = {
 				scope:host = {
@@ -13296,15 +13198,14 @@ coronation_events.6140 = {
 			}
 			animation = wedding_objection_start
 		}
-		#AGOT Disabled
-		# triggered_animation = {
-		# 	trigger = {
-		# 		scope:host.religion = religion:christianity_religion
-		# 		scope:spouse.religion = religion:christianity_religion
-		# 		ai_zeal < medium_positive_ai_value
-		# 	}
-		# 	animation = acknowledging
-		# }
+		triggered_animation = {
+			trigger = {
+				scope:host.religion = religion:christianity_religion
+				scope:spouse.religion = religion:christianity_religion
+				ai_zeal < medium_positive_ai_value
+			}
+			animation = acknowledging
+		}
 		animation = prayer
 		camera = camera_event_center
 	}
@@ -13324,32 +13225,29 @@ coronation_events.6140 = {
 	
 	override_background = {
 		trigger = {
-			#AGOT Disabled
-			# NOT = {
-			# 	scope:host.capital_county = title:c_byzantion
-			# }
+			NOT = {
+				scope:host.capital_county = title:c_byzantion
+			}
 			coronation_being_crowned_trigger = no
 			coronation_self_crowning_trigger = no
 		}
 		reference = throne_room
 	}
-	#AGOT Disabled
-	# override_background = {
-	# 	trigger = {
-	# 		scope:host.capital_county = title:c_byzantion
-	# 		OR = {
-	# 			coronation_being_crowned_trigger = yes
-	# 			coronation_self_crowning_trigger = yes
-	# 		}
-	# 	}
-	# 	reference = ep3_hagia_sophia
-	# }
 	override_background = {
 		trigger = {
-			#AGOT Disabled
-			# NOT = {
-			# 	scope:host.capital_county = title:c_byzantion
-			# }
+			scope:host.capital_county = title:c_byzantion
+			OR = {
+				coronation_being_crowned_trigger = yes
+				coronation_self_crowning_trigger = yes
+			}
+		}
+		reference = ep3_hagia_sophia
+	}
+	override_background = {
+		trigger = {
+			NOT = {
+				scope:host.capital_county = title:c_byzantion
+			}
 			OR = {
 				coronation_being_crowned_trigger = yes
 				coronation_self_crowning_trigger = yes
@@ -14149,9 +14047,6 @@ scripted_trigger coronation_events_6150_neighbor_trigger = {
 		value > -20
 	}
 	current_military_strength <= root.half_current_military_strength
-	#AGOT Added
-	NOT = { government_has_flag = government_is_nw }
-	is_human = yes
 }
 
 scripted_trigger coronation_events_6150_vassal_trigger = {
