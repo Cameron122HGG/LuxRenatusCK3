@@ -1235,7 +1235,7 @@ scripted_effect fund_inspiration_0031_pick_options_to_show_effect = {
 						name = book_topic_restoration
 						value = yes
 					}
-					title:k_dumnonia = {
+					title:k_cornwall = {
 						save_scope_as = restored_title
 					}
 				}
@@ -1366,7 +1366,7 @@ scripted_effect fund_inspiration_0031_pick_options_to_show_effect = {
 						name = book_topic_unification
 						value = yes
 					}
-					title:e_spqr = {
+					title:e_italy = {
 						save_scope_as = united_title
 					}
 				}
@@ -1434,22 +1434,22 @@ scripted_effect fund_inspiration_0031_pick_options_to_show_effect = {
 						save_scope_as = created_title
 					}
 				}
-				#else_if = {
-				#	limit = {
-				#		AND = {
-				#			exists = global_var:flag_formed_rum_sultanate
-				#			global_var:flag_formed_rum_sultanate = root
-				#		}
-				#		NOT = { exists = scope:book_topic_creation }
-				#	}
-				#	save_scope_value_as = {
-				#		name = book_topic_creation
-				#		value = yes
-				#	}
-				#	title:k_rum = {
-				#		save_scope_as = created_title
-				#	}
-				#}
+				else_if = {
+					limit = {
+						AND = {
+							exists = global_var:flag_formed_rum_sultanate
+							global_var:flag_formed_rum_sultanate = root
+						}
+						NOT = { exists = scope:book_topic_creation }
+					}
+					save_scope_value_as = {
+						name = book_topic_creation
+						value = yes
+					}
+					title:k_rum = {
+						save_scope_as = created_title
+					}
+				}
 				else_if = {
 					limit = {
 						AND = {
@@ -19175,10 +19175,10 @@ fund_inspiration.6500 = {
 
 scripted_trigger sisyphus_nickname_trigger = {
 	OR = {
-		has_title = title:k_lombardy
-		has_title = title:k_rome
+		has_title = title:k_italy
+		has_title = title:k_romagna
 		has_title = title:k_sardinia
-		has_title = title:e_spqr
+		has_title = title:e_italy
 		is_roman_emperor_excluding_byzantium_trigger = yes
 		capital_province = {
 			geographical_region = world_europe_west_britannia

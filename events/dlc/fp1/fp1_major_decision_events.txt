@@ -1240,240 +1240,240 @@ fp1_major_decisions.1002 = {
 # 1011-1020
 ##################################################
 
-#scripted_effect fp1_1011_gib_pretty_hair_effect = {
-#	# Gain the famous nickname.
-#	give_nickname = nick_fairhair
+scripted_effect fp1_1011_gib_pretty_hair_effect = {
+	# Gain the famous nickname.
+	give_nickname = nick_fairhair
 	# And a bit of diplomacy for your long vow.
-#	add_diplomacy_skill = 2
-#	# Plus that haircut.
-#	remove_character_modifier = harald_tanglehairs_vow_modifier
-#}
+	add_diplomacy_skill = 2
+	# Plus that haircut.
+	remove_character_modifier = harald_tanglehairs_vow_modifier
+}
 
 #	Tanglehair becomes Fairhair.
-#fp1_major_decisions.1011 = {
-#	type = character_event
-#	window = big_event_window
-#	title = fp1_major_decisions.1011.t
-#	desc = {
-#		desc = fp1_major_decisions.1011.desc.intro
-#		first_valid = {
-#			triggered_desc = {
-#				trigger = { exists = scope:gyda }
-#				desc = fp1_major_decisions.1011.desc.gyda
-#			}
-#			desc = fp1_major_decisions.1011.desc.oath
-#		}
-#		desc = fp1_major_decisions.1011.desc.outro
-#	}
-#	theme = crown
-#	left_portrait = {
-#		character = root
-#		animation = personality_honorable
-#	}
-#	right_portrait = {
-#		character = scope:gyda
-#		animation = admiration
-#	}
-#	override_background = { reference = fp1_ocean_norse }
-#
-#	immediate = {
-#		play_music_cue = "mx_cue_succession"
-#		# Check to see if Gyda is still around and kicking, and if so, treat this as a romance.
-#		character:166044 = {
-#			hidden_effect = {
-#				if = {
-#					limit = {
-#						betrothed ?= {
-#							NOR = {
-#								this = character:144000
-#								is_ai = no
-#							}
-#						}
-#					}
-#					break_betrothal = betrothed
-#				}
-				#else_if = {
-				#	limit = {
-				#		is_adult = yes
-				#		is_married = yes
-				#		any_spouse = {
-				#			NOR = {
-				#				this = character:144000
-				#				is_ai = no
-				#			}
-				#		}
-				#	}
-				#	every_spouse = {
-				#		prev = {
-				#			divorce = prev
-				#		}
-				#	}
-				#}
-				#else_if = {
-				#	limit = {
-				#		exists = concubinist
-				#		concubinist = {
-				#			NOR = {
-				#				this = character:144000
-				#				is_ai = no
-				#			}
-				#		}
-				#	}
-				#	concubinist = {
-				#		remove_concubine = prev
-				#	}
-				#}
-				#if = {
-				#	limit = {
-				#		is_alive = yes
-				#		could_marry_character_trigger = { CHARACTER = root }
-				#		has_any_bad_relationship_with_root_trigger = no
-				#		is_ai = yes
-				#	}
-				#	save_scope_as = gyda
-				#}
-			#}
-		#}
-	#}
+fp1_major_decisions.1011 = {
+	type = character_event
+	window = big_event_window
+	title = fp1_major_decisions.1011.t
+	desc = {
+		desc = fp1_major_decisions.1011.desc.intro
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:gyda }
+				desc = fp1_major_decisions.1011.desc.gyda
+			}
+			desc = fp1_major_decisions.1011.desc.oath
+		}
+		desc = fp1_major_decisions.1011.desc.outro
+	}
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:gyda
+		animation = admiration
+	}
+	override_background = { reference = fp1_ocean_norse }
+
+	immediate = {
+		play_music_cue = "mx_cue_succession"
+		# Check to see if Gyda is still around and kicking, and if so, treat this as a romance.
+		character:166044 = {
+			hidden_effect = {
+				if = {
+					limit = {
+						betrothed ?= {
+							NOR = {
+								this = character:144000
+								is_ai = no
+							}
+						}
+					}
+					break_betrothal = betrothed
+				}
+				else_if = {
+					limit = {
+						is_adult = yes
+						is_married = yes
+						any_spouse = {
+							NOR = {
+								this = character:144000
+								is_ai = no
+							}
+						}
+					}
+					every_spouse = {
+						prev = {
+							divorce = prev
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						exists = concubinist
+						concubinist = {
+							NOR = {
+								this = character:144000
+								is_ai = no
+							}
+						}
+					}
+					concubinist = {
+						remove_concubine = prev
+					}
+				}
+				if = {
+					limit = {
+						is_alive = yes
+						could_marry_character_trigger = { CHARACTER = root }
+						has_any_bad_relationship_with_root_trigger = no
+						is_ai = yes
+					}
+					save_scope_as = gyda
+				}
+			}
+		}
+	}
 	
 	# Gyda, my love!
-	#option = {
-	#	name = fp1_major_decisions.1011.b
-	#	trigger = {
-	#		# Gyda must have been valid.
-	#		exists = scope:gyda
+	option = {
+		name = fp1_major_decisions.1011.b
+		trigger = {
+			# Gyda must have been valid.
+			exists = scope:gyda
 			# And, for MP, remain valid.
-	#		could_marry_character_trigger = { CHARACTER = scope:gyda }
-	#	}
-	#	
-	#	if = {
-	#		limit = {
-	#			is_married = yes
-	#			primary_spouse ?= {
-	#				NOT = {
-	#					this = character:144000
-	#				}
-	#			}
-	#		}
-	#		divorce = primary_spouse
-	#	}
-	#	else_if = {
-	#		limit = {
-	#			betrothed ?= {
-	#				NOT = {
-	#					this = character:144000
-	#				}
-	#			}
-	#		}
-	#		break_betrothal = betrothed
-	#	}
+			could_marry_character_trigger = { CHARACTER = scope:gyda }
+		}
+		
+		if = {
+			limit = {
+				is_married = yes
+				primary_spouse ?= {
+					NOT = {
+						this = character:144000
+					}
+				}
+			}
+			divorce = primary_spouse
+		}
+		else_if = {
+			limit = {
+				betrothed ?= {
+					NOT = {
+						this = character:144000
+					}
+				}
+			}
+			break_betrothal = betrothed
+		}
 
-	#	# Apply standard haircut effects.
-	#	fp1_1011_gib_pretty_hair_effect = yes
-	#	# Harald & Gyda are wed.
-	#	if = {
-	#		limit = {
-	#			scope:gyda = { is_adult = no }
-	#		}
-	#		create_betrothal = scope:gyda
-	#	}
-	#	else_if = {
-	#		limit = {
-	#			has_ep2_dlc_trigger = yes
-	#		}
-	#		create_grand_wedding_betrothal = {
-	#			SPOUSE_1 = root
-	#			SPOUSE_2 = scope:gyda
-	#			HOST = root
-	#			PROMISEE = scope:gyda
-	#		}
-	#	}
-	#	else = { marry = scope:gyda }
-	#	# And rather happy about it.
-	#	add_opinion = {
-	#		target = scope:gyda
-	#		modifier = love_opinion
-	#		opinion = 150
-	#	}
-	#	reverse_add_opinion = {
-	#		target = scope:gyda
-	#		modifier = love_opinion
-	#		opinion = 150
-	#	}
-	#	
-	#	add_stress = -200
-#
-#		ai_chance = {
-#			# AI should always select this option if it's present.
-#			base = 100
-#		}
-#	}
-#
-#	# My vow fulfilled!
-#	option = {
-#		name = fp1_major_decisions.1011.a
-#
-#		# Apply standard haircut effects.
-#		fp1_1011_gib_pretty_hair_effect = yes
-#
-#		ai_chance = {
-#			# AI should only default to this if Gyda is unavailable.
-#			base = 0
-#		}
-#	}
-#	
-#	# Leave it; it is a mark of the struggles I have been through.
-#	option = {
-#		name = fp1_major_decisions.1011.c
-#		trigger = { is_ai = no }
-#
-#		# Harald Tanglehair keeps his wild locks.
-#		custom_tooltip = fp1_major_decisions.1011.c.tt
-#		## We swap the modifiers out so the copy responds correctly.
-#		hidden_effect = {
-#			remove_character_modifier = harald_tanglehairs_vow_modifier
-#			add_character_modifier = harald_tanglehairs_reminder_modifier
-#		}
+		# Apply standard haircut effects.
+		fp1_1011_gib_pretty_hair_effect = yes
+		# Harald & Gyda are wed.
+		if = {
+			limit = {
+				scope:gyda = { is_adult = no }
+			}
+			create_betrothal = scope:gyda
+		}
+		else_if = {
+			limit = {
+				has_ep2_dlc_trigger = yes
+			}
+			create_grand_wedding_betrothal = {
+				SPOUSE_1 = root
+				SPOUSE_2 = scope:gyda
+				HOST = root
+				PROMISEE = scope:gyda
+			}
+		}
+		else = { marry = scope:gyda }
+		# And rather happy about it.
+		add_opinion = {
+			target = scope:gyda
+			modifier = love_opinion
+			opinion = 150
+		}
+		reverse_add_opinion = {
+			target = scope:gyda
+			modifier = love_opinion
+			opinion = 150
+		}
+		
+		add_stress = -200
+
+		ai_chance = {
+			# AI should always select this option if it's present.
+			base = 100
+		}
+	}
+
+	# My vow fulfilled!
+	option = {
+		name = fp1_major_decisions.1011.a
+
+		# Apply standard haircut effects.
+		fp1_1011_gib_pretty_hair_effect = yes
+
+		ai_chance = {
+			# AI should only default to this if Gyda is unavailable.
+			base = 0
+		}
+	}
+	
+	# Leave it; it is a mark of the struggles I have been through.
+	option = {
+		name = fp1_major_decisions.1011.c
+		trigger = { is_ai = no }
+
+		# Harald Tanglehair keeps his wild locks.
+		custom_tooltip = fp1_major_decisions.1011.c.tt
+		## We swap the modifiers out so the copy responds correctly.
+		hidden_effect = {
+			remove_character_modifier = harald_tanglehairs_vow_modifier
+			add_character_modifier = harald_tanglehairs_reminder_modifier
+		}
 		# And a bit of learning for the lessons you've endured.
-#		add_learning_skill = 2
+		add_learning_skill = 2
 
-#		ai_chance = {
+		ai_chance = {
 			# Option here for player choice.
-#			base = 0
-#		}
-#	}
-#}
+			base = 0
+		}
+	}
+}
 
 # Check Norway's creation status.
-#fp1_major_decisions.1012 = {
-#	hidden = yes
-#
-#	# ... flag that.
-#	immediate = {
-#		set_global_variable = {
-#			name = norway_created
-#			value = yes
-#		}
-#		# And if it's not Harald Fairhair who did it, shame him.
-#		if = {
-#			limit = {
-#				exists = character:144000
-#				NOT = { this = character:144000 }
-#				character:144000 = { is_alive = yes }
-#			}
-#			hidden_effect = {
+fp1_major_decisions.1012 = {
+	hidden = yes
+
+	# ... flag that.
+	immediate = {
+		set_global_variable = {
+			name = norway_created
+			value = yes
+		}
+		# And if it's not Harald Fairhair who did it, shame him.
+		if = {
+			limit = {
+				exists = character:144000
+				NOT = { this = character:144000 }
+				character:144000 = { is_alive = yes }
+			}
+			hidden_effect = {
 				# Save the current King of Norway.
-#				save_scope_as = king_of_norway
+				save_scope_as = king_of_norway
 				# And message Harald with the bad news.
-#				character:144000 = {
-#					send_interface_toast = {	
-#						title = fp1_major_decisions.1012.t
-#						left_icon = scope:king_of_norway
-#						hidden_effect = { remove_character_modifier = harald_tanglehairs_vow_modifier }
-#						add_character_modifier = harald_tanglehairs_vow_broken_modifier
-#					}
-#				}
-#			}
-#		}
-#	}
-#}
+				character:144000 = {
+					send_interface_toast = {	
+						title = fp1_major_decisions.1012.t
+						left_icon = scope:king_of_norway
+						hidden_effect = { remove_character_modifier = harald_tanglehairs_vow_modifier }
+						add_character_modifier = harald_tanglehairs_vow_broken_modifier
+					}
+				}
+			}
+		}
+	}
+}
