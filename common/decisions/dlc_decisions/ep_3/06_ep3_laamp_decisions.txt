@@ -235,7 +235,7 @@ become_landless_adventurer_decision = {
 			factor = 0
 			OR = {
 				#Stahp it, John de Courcy
-				this = character:214000
+				#this = character:214000
 				#No adventurer should want to be one again... right?
 				has_variable = adventurer_creation_reason
 			}
@@ -2383,14 +2383,6 @@ zealous_missionary_prep_decision = {
 		custom_tooltip = {
 			text = zealous_missionary_prep_decision_reward_desc
 		}
-		if = {
-			limit = {
-				any_owned_story = {
-					story_type = story_hasan
-				}
-			}
-			custom_tooltip = chance_to_advance_to_the_assassins_tt
-		}
 	}
 
 	ai_check_interval_by_tier = {
@@ -2451,9 +2443,6 @@ zealous_missionary_start_decision = {
 	effect = {
 		custom_tooltip = {
 			text = zealous_missionary_start_decision_reward_desc
-		}
-		show_as_tooltip = {
-			ep3_hasan_advance_radicalism = yes
 		}
 		hidden_effect = {
 			trigger_event = ep3_laamp_decision_event.1102
