@@ -1,0 +1,120 @@
+﻿
+namespace = LR_diadochi_kingdoms_events
+##################################################
+# Seleukid Empire has been recreated.
+##################################################
+LR_diadochi_kingdoms_events.0001 = {
+	type = character_event
+	title = LR_diadochi_kingdoms_events.0001.t
+	desc = LR_diadochi_kingdoms_events.0001.desc
+	theme = faith
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+		create_seleukid_kingdom_scripted_effect = yes
+		legend_seed_new_title_effect = yes
+		hidden_effect = {
+			random_list = {
+				50 = { set_nickname_effect = { NICKNAME = nick_the_shepherd } }
+				50 = { set_nickname_effect = { NICKNAME = nick_the_judge } }
+			}
+			every_held_title = {
+				title_tier = county
+				random = { # Communities flowing back home.
+					chance = 33
+					set_county_culture = root.culture
+					set_county_faith = root.faith
+				}
+			}
+		}
+	}
+	option = {
+		name = LR_diadochi_kingdoms_events.0001.a
+		add_prestige = major_prestige_gain
+		add_piety = major_piety_gain
+		title:k_seleukid_kingdom = { save_scope_as = seleukid_title }
+		faith = {
+			change_fervor = {
+				value = 25
+				desc = fervor_gain_israel_recreated
+			}
+		}
+		hidden_effect = {
+			every_player = {
+				limit = {
+					this != root
+					OR = {
+						faith.religion = root.faith.religion
+						AND = {
+							is_landed = yes
+							capital_province = {
+								OR = {
+									geographical_region = world_europe_west
+									geographical_region = world_middle_east
+								}
+							}
+						}
+					}
+				}
+				trigger_event = LR_diadochi_kingdoms_events.0002
+			}
+		}
+	}
+}
+
+# Players notified.
+LR_diadochi_kingdoms_events.0002 = {
+	type = character_event
+	title = LR_diadochi_kingdoms_events.0001.t
+	desc = {
+		first_valid = {
+			# Greek Reaction
+			triggered_desc = {
+				trigger = {
+					root.faith.religion = scope:scoped_ruler.faith.religion
+				}
+				desc = LR_diadochi_kingdoms_events.0001.desc
+			}
+			# Every other Religion
+			triggered_desc = {
+				trigger = {
+					root.faith.religion != scope:scoped_ruler.faith.religion
+				}
+				desc = LR_diadochi_kingdoms_events.0002.desc.others
+			}
+		}
+	}
+	theme = faith
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_zealous
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				faith = { religion_tag = hellenism_religion }
+			}
+			play_music_cue = "mx_cue_faith_conversion"
+		}
+	}
+
+	option = {
+		name = LR_diadochi_kingdoms_events.0002.a
+		trigger = {
+			faith = { religion_tag = hellenism_religion }
+		}
+	}
+	option = {
+		name = LR_diadochi_kingdoms_events.0002.b
+		trigger = {
+			NOT = {
+				faith = { religion_tag = hellenism_religion }
+			}
+		}
+	}
+}

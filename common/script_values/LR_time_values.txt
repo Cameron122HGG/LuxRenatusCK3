@@ -1,0 +1,35 @@
+﻿era_4_year = {
+    value = 0  #Defaulted to zero until set in game
+    if = {
+        limit = { exists = global_var:fourth_age_date }
+        add = global_var:fourth_age_date
+        add = -1
+    }
+}
+alexander_era_dead = {
+    value = 0
+    if = { 
+        limit = { character:13027 = { is_alive = no } }
+        add = 1
+    }
+}
+
+calendar_setting = {
+    value = 0  #Defaulted to zero until set in game - Gregorian
+    if = {
+        limit = { has_game_rule = alexander_calendar }
+        add = 1
+    }
+    else_if = {
+        limit = { has_game_rule = macedonian_calendar }
+        add = 2
+    }
+    else_if = {
+        limit = { has_game_rule = roman_calendar }
+        add = 3
+    }
+    else_if = {
+        limit = { has_game_rule = egyptian_calendar }
+        add = 4
+    }
+}
