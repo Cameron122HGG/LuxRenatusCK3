@@ -552,63 +552,7 @@ LR_doctrine_ascendant = {
 		is_shown = {
 			OR = {
 				NOT = { has_doctrine = eastern_hostility_doctrine }
-				religion = { is_in_family = rf_sinitic }
-			}
-		}
-		can_pick = {
-			custom_description = {
-				text = incompatible_tenet_gnosticism_trigger
-				NOT = {
-					doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
-				}
-			}
-		}
-		parameters = {
-			hostility_override_eastern_hostility_doctrine = 1
-			#For loc:
-			is_eastern_faith_bilateral_loc_override = 1
-			eastern_syncretic_actor_opinion_active = yes
-			opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-		}
-		traits = {
-			virtues = { honest }
-			sins = { wrathful }
-		}
-	}
-
-	LR_tenet_subsaharan_ascendant = {
-		icon = LR_tenet_slavic_ascendant
-		piety_cost = {
-			if = {
-				limit = {
-					OR = {
-						religion_tag = dualism_religion
-						has_doctrine = pagan_hostility_doctrine
-					}
-				}
-				value = faith_tenet_cost_low
-			}
-			else_if = {
-				limit = {
-					religion_tag = islam_religion
-				}
-				value = faith_tenet_cost_high
-			}
-			else = {
-				value = faith_tenet_cost_mid
-			}
-
-			# Multiplier for keeping same tenet
-			if = {
-				limit = { has_doctrine = LR_tenet_eastern_ascendant }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
-		}
-
-		is_shown = {
-			OR = {
-				NOT = { has_doctrine = eastern_hostility_doctrine }
-				religion = { is_in_family = rf_sinitic }
+				religion = { is_in_family = rf_pagan }
 			}
 		}
 		can_pick = {
