@@ -1,24 +1,16 @@
 ﻿#situation:silk_road_situation.situation_sub_region:region_silk_road_proper_central_asia.var:innovation
 
 silk_road_valid_market_to_visit_trigger = {
-	trigger_if = {
-		limit = { 
-			exists = situation:silk_road_situation
-		}
-		save_temporary_scope_as = visitor_temp
-		situation:silk_road_situation.situation_sub_region:region_silk_road_proper_$SUB_REGION$ = { save_temporary_scope_as = sub_region_temp }
-		exists = scope:sub_region_temp.var:innovation
-		NOT = {
-			scope:visitor_temp.culture = {
-				any_in_list = {
-					variable = silk_road_unlocked_innovations
-					this = scope:sub_region_temp.var:innovation
-				}
+	save_temporary_scope_as = visitor_temp
+	situation:silk_road_situation.situation_sub_region:region_silk_road_proper_$SUB_REGION$ = { save_temporary_scope_as = sub_region_temp }
+	exists = scope:sub_region_temp.var:innovation
+	NOT = {
+		scope:visitor_temp.culture = {
+			any_in_list = {
+				variable = silk_road_unlocked_innovations
+				this = scope:sub_region_temp.var:innovation
 			}
 		}
-	}
-	trigger_else = {
-		always = no
 	}
 }
 
