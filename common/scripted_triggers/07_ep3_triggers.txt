@@ -5,10 +5,8 @@
 is_roman_emperor_trigger = {
 	OR = {
 		has_title = title:e_byzantium
-		has_title = title:e_spqr 
 		has_title = title:h_roman_empire
 		has_title = title:h_eastern_roman_empire
-		has_title = title:h_western_roman_empire 
 	}
 }
 
@@ -16,38 +14,14 @@ is_roman_emperor_excluding_byzantium_trigger = {
 	OR = {
 		has_title = title:h_roman_empire
 		has_title = title:h_eastern_roman_empire
-		has_title = title:h_western_roman_empire 
 	}
 }
 
-valid_for_byz_emperor_content_trigger = {
- 	has_ep3_dlc_trigger = yes
- 	culture = {
- 		OR = {
- 			has_cultural_pillar = heritage_byzantine
- 			has_cultural_pillar = heritage_caucasian
- 		}
- 	}
- 	OR = {
- 		is_roman_emperor_primary_title_trigger = yes
- 		AND = {
- 			culture = {
- 				OR = {
- 					this = culture:greek
- 					any_parent_culture_or_above = { this = culture:greek }
- 				}
- 			}
- 			highest_held_title_tier >= tier_empire
- 		}
- 	}
- }
 is_roman_emperor_primary_title_trigger = {
 	OR = {
 		primary_title ?= title:e_byzantium
-		primary_title ?= title:e_spqr 
 		primary_title ?= title:h_roman_empire
 		primary_title ?= title:h_eastern_roman_empire
-		primary_title ?= title:h_western_roman_empire 
 	}
 }
 
@@ -58,21 +32,28 @@ is_roman_emperor_primary_title_excluding_byzantium_trigger = {
 	}
 }
 
-is_roman_emperor_excluding_western_rome_trigger = { 
+valid_for_byz_emperor_content_trigger = {
+	has_ep3_dlc_trigger = yes
+	culture = {
+		OR = {
+			has_cultural_pillar = heritage_byzantine
+			has_cultural_pillar = heritage_caucasian
+		}
+	}
 	OR = {
-		has_title = title:h_roman_empire
-		has_title = title:h_eastern_roman_empire
-		has_title = title:e_byzantium
+		is_roman_emperor_primary_title_trigger = yes
+		AND = {
+			culture = {
+				OR = {
+					this = culture:greek
+					any_parent_culture_or_above = { this = culture:greek }
+				}
+			}
+			highest_held_title_tier >= tier_empire
+		}
 	}
 }
 
-is_roman_emperor_excluding_eastern_rome_trigger = { 
-	OR = {
-		has_title = title:h_roman_empire
-		has_title = title:h_western_roman_empire
-		has_title = title:e_spqr
-	}
-}
 valid_for_byz_governor_content_trigger = {
 	has_ep3_dlc_trigger = yes
 	is_governor = yes
@@ -1566,59 +1547,59 @@ hasan_evangelize_province_trigger = {
 	}
 }
 
-#hasan_camp_in_foes_realm_trigger = {
-#	trigger_if = {
-#		limit = {
-#			any_owned_story = {
-#				var:ultimate_foe ?= {
-#					save_temporary_scope_as = ultimate_foe
-#				}
-#			}
-#		}
-#		custom_description = {
-#			text = hasan_stroy_cycle_camp_at_foe_realm
-#			object = scope:ultimate_foe
-#			domicile.domicile_location.county.holder = {
-#				OR = {
-#					any_liege_or_above = {
-#						this = scope:ultimate_foe
-#					}
-#					this = scope:ultimate_foe
-#				}
-#			}
-#		}
-#	}
-#	trigger_else = {
-#		character:3096 = {
-#			save_temporary_scope_as = caliph
-#		}
-#		save_temporary_scope_as = hasan
-#		any_owned_story = {
-#			trigger_if = {
-#				limit = { exists = var:radical_points }
-#				save_temporary_scope_value_as = {
-#					name = radical_points
-#					value = var:radical_points
-#				}
-#			}
-#			trigger_else = {
-#				save_temporary_scope_value_as = {
-#					name = radical_points
-#					value = 0
-#				}
-#			}
-#		}
-#		custom_tooltip = {
-#			text = hasan_stroy_cycle_ultimate_foe
-#			any_owned_story = {
-#				story_type = story_hasan
-#				exists = var:ultimate_foe
-#				exists = var:radical_points
-#				var:radical_points >= 15
-#			}
-#		}
-#	}
-#}
+hasan_camp_in_foes_realm_trigger = {
+	trigger_if = {
+		limit = {
+			any_owned_story = {
+				var:ultimate_foe ?= {
+					save_temporary_scope_as = ultimate_foe
+				}
+			}
+		}
+		custom_description = {
+			text = hasan_stroy_cycle_camp_at_foe_realm
+			object = scope:ultimate_foe
+			domicile.domicile_location.county.holder = {
+				OR = {
+					any_liege_or_above = {
+						this = scope:ultimate_foe
+					}
+					this = scope:ultimate_foe
+				}
+			}
+		}
+	}
+	trigger_else = {
+		character:3096 = {
+			save_temporary_scope_as = caliph
+		}
+		save_temporary_scope_as = hasan
+		any_owned_story = {
+			trigger_if = {
+				limit = { exists = var:radical_points }
+				save_temporary_scope_value_as = {
+					name = radical_points
+					value = var:radical_points
+				}
+			}
+			trigger_else = {
+				save_temporary_scope_value_as = {
+					name = radical_points
+					value = 0
+				}
+			}
+		}
+		custom_tooltip = {
+			text = hasan_stroy_cycle_ultimate_foe
+			any_owned_story = {
+				story_type = story_hasan
+				exists = var:ultimate_foe
+				exists = var:radical_points
+				var:radical_points >= 15
+			}
+		}
+	}
+}
 
 estate_can_construct_market_03_trigger = {
 	domicile ?= { has_domicile_building_or_higher = estate_main_02 }
