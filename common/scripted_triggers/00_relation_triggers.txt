@@ -1190,15 +1190,12 @@ has_RelationToMe_relation = {
 		$CHARACTER$ = {
 			is_courtier_of = scope:relation_check
 			OR = {
-				AND = {
-					inspiration ?= {
-						inspiration_sponsor = { this = scope:relation_check }
-					}
+				inspiration ?= {
+					inspiration_sponsor = { this = scope:relation_check }
 				}
-				AND = {
-					exists = var:created_artifact_for
-					var:created_artifact_for = scope:relation_check
-				}
+				exists = var:created_artifact_for
+				var:created_artifact_for = scope:relation_check
+				
 			}
 		}
 		$CHARACTER$ = {
