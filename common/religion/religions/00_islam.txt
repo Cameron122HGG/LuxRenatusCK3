@@ -380,53 +380,81 @@
 			doctrine = doctrine_divorce_allowed
 			doctrine = doctrine_witchcraft_shunned
 		}
-		ibadi = { # Rationalist school of Sunni Islam. Dominant between 8th and 10th centuries in the Abbasid Caliphate (Persia).
-			color = { 0 0.7 0.5 }
+		
+		ibadi = {
+			color = { 0.3 0.6 0.3 }
 			icon = ibadi
-			religious_head = d_sunni
 
 			holy_site = mecca
 			holy_site = medina
 			holy_site = jerusalem
-			holy_site = baghdad
-			holy_site = sinai
+			holy_site = basra
+			holy_site = nizwa
 
-			#Tenet:
-			doctrine = tenet_struggle_submission
-			doctrine = tenet_alexandrian_catechism #FP3 change 
-			doctrine = tenet_legalism
+			#Tenet
+			doctrine = tenet_literalism
+			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_false_conversion_sanction
 
-			#DOCTRINES:
-			#Sunni
-			doctrine = muhammad_succession_sunni_doctrine
+			#DOCTRINES
+			#Muhakkima
+			#No religious head
+			#Witchcraft is a sin
+			doctrine = muhammad_succession_muhakkima_doctrine
 			# Jizya
 			doctrine = special_doctrine_jizya
-			doctrine = doctrine_divorce_allowed
+			doctrine = doctrine_no_head
 			doctrine = doctrine_witchcraft_shunned
+
+			localization = {		
+				PriestMale = islam_shia_priest
+				PriestMalePlural = islam_shia_priest_plural
+				PriestFemale = islam_shia_priest
+				PriestFemalePlural = islam_shia_priest_plural
+				PriestNeuter = islam_shia_priest
+				PriestNeuterPlural = islam_shia_priest_plural
+				ReligiousHeadName = islam_shia_religious_head_title
+				ReligiousHeadTitleName = islam_shia_religious_head_title_name
+			}
+
+			holy_order_names = {
+				{ name = "holy_order_haruriyya" }
+			}
 		}
-		kharijite = { # Rationalist school of Sunni Islam. Dominant between 8th and 10th centuries in the Abbasid Caliphate (Persia).
-			color = { 0 0.7 0.5 }
-			icon = ibadi
-			religious_head = d_sunni
+		
+		kharijite = {
+			color = { 0.3 0.8 0.2 }
+			icon = zayidi
+			religious_head = d_zayidi
 
 			holy_site = mecca
 			holy_site = medina
 			holy_site = jerusalem
-			holy_site = baghdad
-			holy_site = sinai
+			holy_site = nadjaf
+			holy_site = damascus
 
-			#Tenet:
 			doctrine = tenet_struggle_submission
-			doctrine = tenet_alexandrian_catechism #FP3 change 
+			doctrine = tenet_unrelenting_faith
 			doctrine = tenet_legalism
 
-			#DOCTRINES:
-			#Sunni
-			doctrine = muhammad_succession_sunni_doctrine
+			#Shia
+			#Witchcraft is a sin
+			doctrine = muhammad_succession_shia_doctrine
 			# Jizya
 			doctrine = special_doctrine_jizya
-			doctrine = doctrine_divorce_allowed
 			doctrine = doctrine_witchcraft_shunned
+			doctrine = doctrine_pluralism_pluralistic 
+
+			localization = {		
+				PriestMale = islam_shia_priest
+				PriestMalePlural = islam_shia_priest_plural
+				PriestFemale = islam_shia_priest
+				PriestFemalePlural = islam_shia_priest_plural
+				PriestNeuter = islam_shia_priest
+				PriestNeuterPlural = islam_shia_priest_plural
+				ReligiousHeadName = islam_shia_religious_head_title
+				ReligiousHeadTitleName = islam_shia_religious_head_title_name
+			}
 		}
 
 		quranist = {
@@ -616,7 +644,7 @@
 			}
 		}
 
-		imami = { #Twelver
+		imami = { 
 			color = { 0.1 0.5 0.1 }
 			icon = imami
 			religious_head = d_imami
@@ -829,7 +857,6 @@
 			}
 		}
 
-
 		azariqa = {
 			color = { 0.3 0.7 0.7 }
 			icon = azariqa
@@ -943,7 +970,7 @@
 			}
 		}
 
-		hafizi = { #Sub-set of Ismaili Shiites that fervently supported the primacy of their caliph.
+		hafizi = { 
 			color = { 0.5 0.8 0.4 }
 			icon = ibadi_custom
 			religious_head = d_shiite
@@ -982,43 +1009,31 @@
 			}
 		}
 
-		ilm_islam = { #Sub-set of Ismaili Shiites that fervently supported the primacy of their caliph.
-			color = { 0.5 0.8 0.4 }
-			icon = ibadi_custom
-			religious_head = d_shiite
+		ilm_islam = { # Iberian Sunni Islam
+			color = { 0 0.4 0 }
+			icon = muwalladi
+			religious_head = d_sunni
 
 			holy_site = mecca
 			holy_site = medina
 			holy_site = jerusalem
-			holy_site = nadjaf
-			holy_site = damascus
+			holy_site = cordoba
+			holy_site = fes
 
+			#Tenet:
 			doctrine = tenet_struggle_submission
-			doctrine = tenet_unrelenting_faith
-			doctrine = tenet_false_conversion_sanction
-			
-			# Leadership
-			doctrine = doctrine_temporal_head
+			doctrine = tenet_communal_identity
+			doctrine = tenet_adaptive
 
-			# Shia
-			doctrine = muhammad_succession_shia_doctrine
-			# Main Doctrines
-			doctrine = doctrine_pluralism_fundamentalist
-			# Criminal Doctrines
-			doctrine = doctrine_witchcraft_shunned
-			# Clergy Doctrines
-			doctrine = doctrine_clerical_function_recruitment
-
-			localization = {		
-				PriestMale = ilm_islam_priest
-				PriestMalePlural = ilm_islam_priest_plural
-				PriestFemale = ilm_islam_priest
-				PriestFemalePlural = ilm_islam_priest_plural
-				PriestNeuter = ilm_islam_priest
-				PriestNeuterPlural = ilm_islam_priest_plural
-				ReligiousHeadName = ilm_islam_religious_head_title
-				ReligiousHeadTitleName = ilm_islam_religious_head_title_name
-			}
+			#DOCTRINES:
+			#Sunni
+			doctrine = muhammad_succession_sunni_doctrine
+			# Jizya
+			doctrine = special_doctrine_jizya
+			#Homosexuality is a sin, but a much more tolerated one.
+			doctrine = doctrine_homosexuality_accepted
+			#Pluralistic
+			doctrine = doctrine_pluralism_pluralistic
 		}
 
 		ghazi_islam = { #Sub-set of Ismaili Shiites that fervently supported the primacy of their caliph.
@@ -1048,100 +1063,64 @@
 			# Clergy Doctrines
 			doctrine = doctrine_clerical_function_recruitment
 
-			localization = {		
-				PriestMale = ghazi_islam_priest
-				PriestMalePlural = ghazi_islam_priest_plural
-				PriestFemale = ghazi_islam_priest
-				PriestFemalePlural = ghazi_islam_priest_plural
-				PriestNeuter = ghazi_islam_priest
-				PriestNeuterPlural = ghazi_islam_priest_plural
-				ReligiousHeadName = ghazi_islam_religious_head_title
-				ReligiousHeadTitleName = ghazi_islam_religious_head_title_name
-			}
 		}
 	
-		murjiah = { #Sub-set of Ismaili Shiites that fervently supported the primacy of their caliph.
-			color = { 0.5 0.8 0.4 }
-			icon = ibadi_custom
-			religious_head = d_shiite
+		murjiah = { #Arabian Sunni Islam
+			color = { 0 0.6 0 }
+			icon = sunni
+			religious_head = d_sunni
 
 			holy_site = mecca
 			holy_site = medina
 			holy_site = jerusalem
-			holy_site = nadjaf
-			holy_site = damascus
+			holy_site = baghdad
+			holy_site = sinai
 
+			#Tenet:
 			doctrine = tenet_struggle_submission
-			doctrine = tenet_unrelenting_faith
-			doctrine = tenet_false_conversion_sanction
-			
-			# Leadership
+			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_legalism
+
+			#DOCTRINES:
+			#Sunni
+			doctrine = muhammad_succession_sunni_doctrine
+			# Jizya
+			doctrine = special_doctrine_jizya
+			#Leadership
 			doctrine = doctrine_temporal_head
-
-			# Shia
-			doctrine = muhammad_succession_shia_doctrine
-			# Main Doctrines
-			doctrine = doctrine_pluralism_fundamentalist
-			# Criminal Doctrines
-			doctrine = doctrine_witchcraft_shunned
-			# Clergy Doctrines
-			doctrine = doctrine_clerical_function_recruitment
-
-			localization = {		
-				PriestMale = murjiah_priest
-				PriestMalePlural = murjiah_priest_plural
-				PriestFemale = murjiah_priest
-				PriestFemalePlural = murjiah_priest_plural
-				PriestNeuter = murjiah_priest
-				PriestNeuterPlural = murjiah_priest_plural
-				ReligiousHeadName = murjiah_religious_head_title
-				ReligiousHeadTitleName = murjiah_religious_head_title_name
-			}
 		}
 
-		haruri = { #Sub-set of Ismaili Shiites that fervently supported the primacy of their caliph.
-			color = { 0.5 0.8 0.4 }
-			icon = ibadi_custom
-			religious_head = d_shiite
+		harufi = { # Iberian Sunni Islam
+			color = { 0 0.4 0 }
+			icon = muwalladi
+			religious_head = d_sunni
 
 			holy_site = mecca
 			holy_site = medina
 			holy_site = jerusalem
-			holy_site = nadjaf
-			holy_site = damascus
+			holy_site = cordoba
+			holy_site = fes
 
+			#Tenet:
 			doctrine = tenet_struggle_submission
-			doctrine = tenet_unrelenting_faith
-			doctrine = tenet_false_conversion_sanction
-			
-			# Leadership
-			doctrine = doctrine_temporal_head
+			doctrine = tenet_communal_identity
+			doctrine = tenet_adaptive
 
-			# Shia
-			doctrine = muhammad_succession_shia_doctrine
-			# Main Doctrines
-			doctrine = doctrine_pluralism_fundamentalist
-			# Criminal Doctrines
-			doctrine = doctrine_witchcraft_shunned
-			# Clergy Doctrines
-			doctrine = doctrine_clerical_function_recruitment
-
-			localization = {		
-				PriestMale = murjiah_priest
-				PriestMalePlural = murjiah_priest_plural
-				PriestFemale = murjiah_priest
-				PriestFemalePlural = murjiah_priest_plural
-				PriestNeuter = murjiah_priest
-				PriestNeuterPlural = murjiah_priest_plural
-				ReligiousHeadName = murjiah_religious_head_title
-				ReligiousHeadTitleName = murjiah_religious_head_title_name
-			}
+			#DOCTRINES:
+			#Sunni
+			doctrine = muhammad_succession_sunni_doctrine
+			# Jizya
+			doctrine = special_doctrine_jizya
+			#Homosexuality is a sin, but a much more tolerated one.
+			doctrine = doctrine_homosexuality_accepted
+			#Pluralistic
+			doctrine = doctrine_pluralism_pluralistic
 		}
 
-		athari = { #Sub-set of Ismaili Shiites that fervently supported the primacy of their caliph.
+		athari = { 
 			color = { 0.5 0.8 0.4 }
-			icon = ibadi_custom
-			religious_head = d_shiite
+			icon = sunni
+			religious_head = d_sunni
 
 			holy_site = mecca
 			holy_site = medina
@@ -1157,141 +1136,46 @@
 			doctrine = doctrine_temporal_head
 
 			# Shia
-			doctrine = muhammad_succession_shia_doctrine
+			doctrine = muhammad_succession_sunni_doctrine
 			# Main Doctrines
 			doctrine = doctrine_pluralism_fundamentalist
 			# Criminal Doctrines
 			doctrine = doctrine_witchcraft_shunned
 			# Clergy Doctrines
 			doctrine = doctrine_clerical_function_recruitment
-
-			localization = {
-				PriestMale = athari_priest
-				PriestMalePlural = athari_priest_plural
-				PriestFemale = athari_priest
-				PriestFemalePlural = athari_priest_plural
-				PriestNeuter = athari_priest
-				PriestNeuterPlural = athari_priest_plural
-				ReligiousHeadName = athari_religious_head_title
-				ReligiousHeadTitleName = athari_religious_head_title_name
-			}
 		}
 
 		sol_islam = {
-			color = { 0.5 0.5 0.3 }
-			graphical_faith = "catholic_gfx"
-			icon = sol_islam
+			color = { 0.2 0.7 0.1 }
+			icon = quranist
 
+			holy_site = mecca
+			holy_site = medina
 			holy_site = jerusalem
-			holy_site = rome
-			holy_site = kent	#Though Lindisfarne was certainly more important to them, Armagh & Iona already cover the northern & western British Isles, and Canterbury is symbolic of Rome's control over the Isles as a whole.
-			holy_site = armagh
-			holy_site = iona
+			holy_site = kufa
+			holy_site = sinai
 
-			#Special Tolerance
+			#Tenet
+			doctrine = tenet_literalism
+			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_false_conversion_sanction
 
-			#Main Group
-			doctrine = doctrine_pluralism_pluralistic #Mostly to keep them from forcing Catholics out of Britain.
-
-			#Marriage
-			doctrine = doctrine_divorce_approval
-
-			#Crimes
-			doctrine = doctrine_kinslaying_any_dynasty_member_crime #A dramatic crime under medieval Irish law.
-
-			#Clerical Functions
-			doctrine = doctrine_clerical_function_alms_and_pacification
-			doctrine = doctrine_clerical_succession_spiritual_fixed_appointment
-			doctrine = doctrine_clerical_marriage_allowed
-
-			#Tenets
-			doctrine = tenet_vows_of_poverty
-			doctrine = tenet_christian_syncretism
-			doctrine = tenet_monasticism
-			doctrine = doctrine_funeral_bewailment # Keening
-
-
-			holy_order_names = {
-				{ name = "holy_order_protectors_of_mithra" }
-			}
-
-			localization = {
-				#FertilityGod
-				FertilityGodName = sol_islam_fertility_god_name
-				FertilityGodNamePossessive = sol_islam_fertility_god_name_possessive
-				FertilityGodSheHe = CHARACTER_SHEHE_SHE
-				FertilityGodHerHis = CHARACTER_HERHIS_HER
-				FertilityGodHerHim = CHARACTER_HERHIM_HER
-
-				#WealthGod
-				WealthGodName = sol_islam_wealth_god_name
-				WealthGodNamePossessive = sol_islam_wealth_god_name_possessive
-				WealthGodSheHe = CHARACTER_SHEHE_HE
-				WealthGodHerHis = CHARACTER_HERHIS_HIS
-				WealthGodHerHim = CHARACTER_HERHIM_HIM
-
-				#HouseholdGod
-				HouseholdGodName = sol_islam_household_god_name
-				HouseholdGodNamePossessive = sol_islam_household_god_name_possessive
-				HouseholdGodSheHe = CHARACTER_SHEHE_HE
-				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
-				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
-
-				#FateGod
-				FateGodName = sol_islam_fate_god_name
-				FateGodNamePossessive = sol_islam_fate_god_name_possessive
-				FateGodSheHe = CHARACTER_SHEHE_HE
-				FateGodHerHis = CHARACTER_HERHIS_HIS
-				FateGodHerHim = CHARACTER_HERHIM_HIM
-
-				#KnowledgeGod
-				KnowledgeGodName = sol_islam_knowledge_god_name
-				KnowledgeGodNamePossessive = sol_islam_knowledge_god_name_possessive
-				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
-				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
-				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
-
-				#WarGod
-				WarGodName = sol_islam_war_god_name
-				WarGodNamePossessive = sol_islam_war_god_name_possessive
-				WarGodSheHe = CHARACTER_SHEHE_HE
-				WarGodHerHis = CHARACTER_HERHIS_HIS
-				WarGodHerHim = CHARACTER_HERHIM_HIM
-
-				#TricksterGod
-				TricksterGodName = sol_islam_trickster_god_name
-				TricksterGodNamePossessive = sol_islam_trickster_god_name_possessive
-				TricksterGodSheHe = CHARACTER_SHEHE_HE
-				TricksterGodHerHis = CHARACTER_HERHIS_HIS
-				TricksterGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WaterGod
-				WaterGodName = sol_islam_water_god_name
-				WaterGodNamePossessive = sol_islam_water_god_name_possessive
-				WaterGodSheHe = CHARACTER_SHEHE_HE
-				WaterGodHerHis = CHARACTER_HERHIS_HIS
-				WaterGodHerHim = CHARACTER_HERHIM_HIM
-
-				#solar christ abbey preeminence.
-				HouseOfWorship = sol_islam_house_of_worship
-				HouseOfWorship2 = sol_islam_house_of_worship_2
-				HouseOfWorship3 = sol_islam_house_of_worship_3
-				HouseOfWorshipPlural = sol_islam_house_of_worship_plural
-				PriestMale = sol_islam_priest_male
-				PriestMalePlural = sol_islam_priest_plural_male
-				PriestFemale = sol_islam_priest_female
-				PriestFemalePlural = sol_islam_priest_plural_female
-				PriestNeuter = sol_islam_priest_male
-				PriestNeuterPlural = sol_islam_priest_plural_male
-				BishopMale = sol_islam_bishop_male
-				BishopMalePlural = sol_islam_bishop_plural_male
-				BishopFemale = sol_islam_bishop_female
-				BishopFemalePlural = sol_islam_bishop_plural_female
-				BishopNeuter = sol_islam_bishop_male
-				BishopNeuterPlural = sol_islam_bishop_plural_male
-				ReligiousHeadName = sol_islam_religious_head_title
-				ReligiousHeadTitleName = sol_islam_religious_head_title_name
-			}
+			#DOCTRINES
+			#Sunni
+			#No Head
+			#Homosexuality is a crime
+			#Adultery is a crime
+			#Deviancy is a crime
+			#Fundamentalist
+			# Jizya
+			doctrine = special_doctrine_jizya
+			doctrine = muhammad_succession_zandaqa_doctrine	#Technically Shia
+			doctrine = doctrine_no_head
+			doctrine = doctrine_homosexuality_crime
+			doctrine = doctrine_adultery_men_crime
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_deviancy_crime
+			doctrine = doctrine_pluralism_fundamentalist
 		}
 	}
 			

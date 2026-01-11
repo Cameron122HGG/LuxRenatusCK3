@@ -2,7 +2,7 @@
 tags={
 	"Total Conversion"
 }
-name="Lux Renata Dev General"
+name="Lux Renata Dev"
 replace_path="common/bookmarks"
 replace_path="common/dynasties"
 replace_path="common/dynasty_houses"
@@ -17,4 +17,4 @@ replace_path="history/titles"
 replace_path="history/wars"
 replace_path="map_data/geographical_regions"
 supported_version="1.18.*"
-path="E:\CK3 Mods\ck3\Lux Renata Dev"
+path="E:/CK3 Mods/ck3/Lux Renata Dev"
