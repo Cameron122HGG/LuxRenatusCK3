@@ -3,14 +3,13 @@
 	flag = succession_order_laws
 
 	can_change_law_group = {
-		custom = {
+		custom_tooltip = {
 			text = CANT_CHANGE_LAW_TOOLTIP
-			NAND = {
+			NOR = {
 				has_realm_law = mandala_succession_law
 				government_has_flag = government_is_japan_administrative
 			}
 		}
-		
 	}
 
 	confederate_partition_succession_law = {
@@ -572,7 +571,7 @@
 				value = change_succession_law_prestige_cost
 				multiply = {
 					value = 0.5 # We reduce the cost to ensure that going back to acclamation is easy
-					desc = "administrative_government"
+					desc = "[administrative_government|E]"
 				}
 			}
 		}
@@ -1166,7 +1165,6 @@
 			}
 			# Vassal Contract allows it
 			custom_description = {
-				text = succession_laws_must_not_be_forced_partition
 				NAND = {
 					is_independent_ruler = no
 					vassal_contract_has_flag = locked_to_partition
@@ -1334,7 +1332,6 @@
 			}
 			# Vassal Contract allows it
 			custom_description = {
-				text = succession_laws_must_not_be_forced_partition
 				NAND = {
 					is_independent_ruler = no
 					vassal_contract_has_flag = locked_to_partition
