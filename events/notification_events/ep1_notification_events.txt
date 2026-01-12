@@ -80,7 +80,10 @@ ep1_notifications.0001 = {
 			play_sound_effect = "event:/DLC/EP1/SFX/UI/Notifications/court_grandeur_toast_lvl_up"
 			play_sound_effect = "event:/DLC/EP1/SFX/UI/Notifications/court_grandeur_num_change"
 		}
-		else = { # Grandeur decreased
+		else_if = { # Grandeur decreased
+			limit = {
+				scope:new_value < scope:old_value
+			}
 			send_interface_toast = {
 				type = msg_court_grandeur_bad
 				title = COURT_GRANDEUR_TOAST_GRANDEUR_DECREASED_TITLE
@@ -92,6 +95,7 @@ ep1_notifications.0001 = {
 			play_sound_effect = "event:/DLC/EP1/SFX/UI/Notifications/court_grandeur_toast_lvl_down"
 			play_sound_effect = "event:/DLC/EP1/SFX/UI/Notifications/court_grandeur_num_change"
 		}
+		else = { }
 	}
 }
 
