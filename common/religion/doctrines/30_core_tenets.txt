@@ -508,6 +508,36 @@
 					doctrine:tenet_eastern_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_other_syncretism_trigger
+				NOR = {
+					doctrine:tenet_unreformed_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}
+			NOT = { doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines } }			
 		}
 
 		parameters = {
@@ -516,10 +546,10 @@
 			granting_titles_gives_stress = yes
 		}
 
-		character_modifier = {
-			learning = 2
-			stewardship = -2
-		}
+		#character_modifier = {
+		#	learning = 2
+		#	stewardship = -2
+		#}
 
 		is_shown = {
 			NOT = { has_doctrine = special_doctrine_is_gnostic_faith } # Can't be Gnostic if ye already are Gnostic
@@ -2650,6 +2680,326 @@
 	# Syncretic Faith Tenets	#
 	#############################
 
+	
+	tenet_greco_roman_syncretism = {
+		icon = core_tenet_eastern_syncretism
+		piety_cost = {
+			if = {
+				limit = {
+					OR = {
+						religion_tag = dualism_religion
+						has_doctrine = pagan_hostility_doctrine
+					}
+				}
+				value = faith_tenet_cost_low
+			}
+			else_if = {
+				limit = {
+					religion_tag = islam_religion
+				}
+				value = faith_tenet_cost_high
+			}
+			else = {
+				value = faith_tenet_cost_mid
+			}
+
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_eastern_syncretism }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		is_shown = {
+			NOT = { has_doctrine = graeco_roman_hostility_doctrine }
+		}
+		can_pick = {
+			custom_description = {
+				text = incompatible_tenet_gnosticism_trigger
+				NOT = {
+					doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_description = {
+				text = incompatible_tenet_other_syncretism_trigger
+				NOR = {
+					doctrine:tenet_unreformed_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					#doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
+					
+				}
+			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}
+			NOT = { doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines } }
+		}
+		parameters = {
+			hostility_override_graeco_roman_hostility_doctrine = 1
+			#For loc:
+			is_eastern_faith_bilateral_loc_override = 1
+			#eastern_syncretic_actor_opinion_active = yes
+			#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+		}
+		traits = {
+			virtues = { calm }
+			sins = { wrathful }
+		}
+	}
+	tenet_persian_syncretism = {
+		icon = core_tenet_eastern_syncretism
+		piety_cost = {
+			if = {
+				limit = {
+					OR = {
+						religion_tag = dualism_religion
+						has_doctrine = pagan_hostility_doctrine
+					}
+				}
+				value = faith_tenet_cost_low
+			}
+			else_if = {
+				limit = {
+					religion_tag = islam_religion
+				}
+				value = faith_tenet_cost_high
+			}
+			else = {
+				value = faith_tenet_cost_mid
+			}
+
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_eastern_syncretism }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		is_shown = {
+			NOT = { religion_tag = zoroastrianism_religion }
+		}
+		can_pick = {
+			custom_description = {
+				text = incompatible_tenet_gnosticism_trigger
+				NOT = {
+					doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_description = {
+				text = incompatible_tenet_other_syncretism_trigger
+				NOR = {
+					doctrine:tenet_unreformed_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					#doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}
+			NOT = { doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines } }
+		}
+		parameters = {
+			hostility_override_special_doctrine_is_zoroastrian_faith = 2
+			can_use_zoroastrian_artefacts = yes
+			#For loc:
+			is_eastern_faith_bilateral_loc_override = 1
+			#eastern_syncretic_actor_opinion_active = yes
+			#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+		}
+		traits = {
+			virtues = { honest }
+			sins = { deceitful }
+		}
+	}
+	tenet_archaic_syncretism = {
+		icon = core_tenet_eastern_syncretism
+		piety_cost = {
+			if = {
+				limit = {
+					OR = {
+						religion_tag = dualism_religion
+						has_doctrine = pagan_hostility_doctrine
+					}
+				}
+				value = faith_tenet_cost_low
+			}
+			else_if = {
+				limit = {
+					religion_tag = islam_religion
+				}
+				value = faith_tenet_cost_high
+			}
+			else = {
+				value = faith_tenet_cost_mid
+			}
+
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_eastern_syncretism }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		is_shown = {
+			NOT = { has_doctrine = archaic_hostility_doctrine }
+		}
+		can_pick = {
+			custom_description = {
+				text = incompatible_tenet_gnosticism_trigger
+				NOT = {
+					doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_description = {
+				text = incompatible_tenet_other_syncretism_trigger
+				NOR = {
+					doctrine:tenet_unreformed_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					#doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}
+			NOT = { doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines } }
+		}
+		parameters = {
+			hostility_override_archaic_hostility_doctrine = 2
+			#For loc:
+			is_eastern_faith_bilateral_loc_override = 1
+			#eastern_syncretic_actor_opinion_active = yes
+			#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+		}
+		traits = {
+			virtues = { arrogant }
+			sins = { cynical }
+		}
+	}
+	tenet_subsaharan_syncretism = {
+		icon = core_tenet_unreformed_syncretism 
+		piety_cost = {
+			if = {
+				limit = { doctrine:doctrine_pluralism_pluralistic = {is_in_list = selected_doctrines} }
+				value = faith_tenet_cost_low
+			}
+			else_if = {
+				limit = { doctrine:doctrine_pluralism_fundamentalist = {is_in_list = selected_doctrines} }
+				value = faith_tenet_cost_high
+			}
+			else = {
+				value = faith_tenet_cost_mid
+			}
+
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_unreformed_syncretism }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+
+		is_shown = {
+			NOT = { has_doctrine = west_african_unreformed_faith_doctrine }
+		}
+		can_pick = {
+			custom_description = {
+				text = incompatible_tenet_other_syncretism_trigger
+				NOR = {
+					doctrine:tenet_eastern_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					#doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}
+			NOT = { doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines } }
+		}
+		parameters = {
+			#hostility_override_unreformed_faith_doctrine = 2
+			hostility_override_west_african_unreformed_faith_doctrine = 2
+			#unreformed_syncretic_actor_opinion_active = yes
+			#opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+			#unreformed_syncretic_conversion_malus_active = yes
+		}
+		traits = {
+			virtues = { patient }
+			sins = { arbitrary }
+		}
+	}
+	
 	tenet_sinitic_syncretism = {
 		icon = core_tenet_harmonious_society
 		piety_cost = {
@@ -2680,12 +3030,9 @@
 		}
 
 		is_shown = {
-			always = yes
-			#OR = {
-			#	has_doctrine = abrahamic_hostility_doctrine
-			#	has_doctrine = pagan_hostility_doctrine
-			#	has_doctrine = eastern_hostility_doctrine
-			#}
+			NOT = {
+				religion = { is_in_family = rf_sinitic }
+			}
 		}
 		can_pick = {
 			custom_description = {
@@ -2702,15 +3049,36 @@
 					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}
+			NOT = { doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines } }
 		}
 		parameters = {
 			hostility_override_sinitic_hostility_doctrine = 1
-			#For loc:
+			##For loc:
 			is_eastern_faith_bilateral_loc_override = 1
-			eastern_syncretic_actor_opinion_active = yes
-			opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+			#eastern_syncretic_actor_opinion_active = yes
+			#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
 		}
 		traits = {
 			virtues = { honest }
@@ -2748,11 +3116,10 @@
 		}
 
 		is_shown = {
-			always = yes
-			#OR = {
-			#	has_doctrine = abrahamic_hostility_doctrine
-			#	has_doctrine = pagan_hostility_doctrine
-			#}
+			OR = {
+				NOT = { has_doctrine = eastern_hostility_doctrine }
+				religion = { is_in_family = rf_sinitic }
+			}
 		}
 		can_pick = {
 			custom_description = {
@@ -2768,15 +3135,36 @@
 					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}
+			NOT = { doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines } }
 		}
 		parameters = {
 			hostility_override_eastern_hostility_doctrine = 1
-			#For loc:
+			##For loc:
 			is_eastern_faith_bilateral_loc_override = 1
-			eastern_syncretic_actor_opinion_active = yes
-			opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+			#eastern_syncretic_actor_opinion_active = yes
+			#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
 		}
 		traits = {
 			virtues = { honest }
@@ -2808,8 +3196,10 @@
 
 
 		is_shown = {
-			always = yes
-			#NOT = { has_doctrine = pagan_hostility_doctrine }
+			NOR = {
+				has_doctrine = unreformed_faith_doctrine
+				religion = { is_in_family = rf_pagan }
+			}
 		}
 		can_pick = {
 			custom_description = {
@@ -2819,15 +3209,36 @@
 					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}	
+			NOT = { doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines } }
 		}
 		parameters = {
 			hostility_override_unreformed_faith_doctrine = 2
-			hostility_override_west_african_unreformed_faith_doctrine = 2
-			unreformed_syncretic_actor_opinion_active = yes
-			opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-			unreformed_syncretic_conversion_malus_active = yes
+			#hostility_override_west_african_unreformed_faith_doctrine = 2
+			#unreformed_syncretic_actor_opinion_active = yes
+			#opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+			#unreformed_syncretic_conversion_malus_active = yes
 		}
 		traits = {
 			virtues = { humble }
@@ -2860,8 +3271,7 @@
 		}
 
 		is_shown = {
-			always = yes
-			#NOT = { religion_tag = christianity_religion }
+			NOT = { religion_tag = christianity_religion }
 		}
 		can_pick = {
 			custom_description = {
@@ -2871,18 +3281,39 @@
 					doctrine:tenet_unreformed_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}
+			NOT = { doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines } }
 		}
 
 		parameters = {
 			hostility_override_special_doctrine_is_christian_faith = 2
 			#For loc:
 			is_christian_faith_bilateral_loc_override = 2
-			# This parameter is empty; the syncretic religious trigger checks against the doctrine, as that's much clearer in tooltips and allows us to use a unified syncretic trigger per-religion rather than having bitty situational triggers.
+			## This parameter is empty; the syncretic religious trigger checks against the doctrine, as that's much clearer in tooltips and allows us to use a unified syncretic trigger per-religion rather than having bitty situational triggers.
 			can_use_christian_artefacts = yes
-			christian_syncretic_actor_opinion_active = yes
-			opinion_of_christian_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+			#christian_syncretic_actor_opinion_active = yes
+			#opinion_of_christian_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
 		}
 
 		traits = {
@@ -2916,8 +3347,7 @@
 		}
 
 		is_shown = {
-			always = yes
-			#NOT = { religion_tag = islam_religion }
+			NOT = { religion_tag = islam_religion }
 		}
 		can_pick = {
 			custom_description = {
@@ -2927,16 +3357,37 @@
 					doctrine:tenet_unreformed_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_christian_syncretism = { is_in_list = selected_doctrines }
 					doctrine:tenet_jewish_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_greco_roman_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_persian_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_archaic_syncretism = { is_in_list = selected_doctrines }
+					doctrine:tenet_subsaharan_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}	
+			NOT = { doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines } }
 		}
 
 		parameters = {
 			hostility_override_special_doctrine_is_islamic_faith = 2
 			# This parameter is empty; the syncretic religious trigger checks against the doctrine, as that's much clearer in tooltips and allows us to use a unified syncretic trigger per-religion rather than having bitty situational triggers.
 			can_use_islamic_artefacts = yes
-			islamic_syncretic_actor_opinion_active = yes
-			opinion_of_islamic_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+			#islamic_syncretic_actor_opinion_active = yes
+			#opinion_of_islamic_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
 		}
 
 		traits = {
@@ -2971,8 +3422,7 @@
 		}
 
 		is_shown = {
-			always = yes
-			#NOT = { religion_tag = judaism_religion }
+			NOT = { religion_tag = judaism_religion }
 		}
 		can_pick = {
 			custom_description = {
@@ -2984,14 +3434,31 @@
 					doctrine:tenet_islamic_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
-		}
+			custom_tooltip = {
+				text = needs_one_syncretic_doctrine_trigger
+				OR = {
+					doctrine:LR_doctrine_graeco_roman_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_christian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_islamic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_persian_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_dualist_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_sinitic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_eastern_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_archaic_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_folk_ascendant = { is_in_list = selected_doctrines }
+					doctrine:LR_doctrine_subsaharan_ascendant = { is_in_list = selected_doctrines }
+				}
+			}	
+			NOT = { doctrine:LR_doctrine_jewish_ascendant = { is_in_list = selected_doctrines } }
+		}		
 
 		parameters = {
 			hostility_override_special_doctrine_is_jewish_faith = 2
-			# This parameter is empty; the syncretic religious trigger checks against the doctrine, as that's much clearer in tooltips and allows us to use a unified syncretic trigger per-religion rather than having bitty situational triggers.
+			## This parameter is empty; the syncretic religious trigger checks against the doctrine, as that's much clearer in tooltips and allows us to use a unified syncretic trigger per-religion rather than having bitty situational triggers.
 			can_use_jewish_artefacts = yes
-			jewish_syncretic_actor_opinion_active = yes
-			opinion_of_jewish_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+			#jewish_syncretic_actor_opinion_active = yes
+			#opinion_of_jewish_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
 		}
 
 		traits = {
