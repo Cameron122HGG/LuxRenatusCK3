@@ -1,11 +1,11 @@
 ﻿
 # Restore the Western Roman Empire #DONE 
-LR_unify_italian_empire_decision = {
+LR_restore_western_empire_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
 	}
-	desc = LR_unify_italian_empire_decision_desc
-	selection_tooltip = LR_unify_italian_empire_decision_tooltip
+	desc = LR_restore_western_empire_decision_desc
+	selection_tooltip = LR_restore_western_empire_decision_tooltip
 	decision_group_type = roman
 
 	ai_check_interval_by_tier = {
@@ -51,7 +51,7 @@ LR_unify_italian_empire_decision = {
 		#NOT = { exists = title:e_hre }
 		prestige_level >= very_high_prestige_level
 		has_title = title:e_spqr
-		completely_controls_region = custom_western_homelands
+		completely_controls_region = custom_western_imperial_core
 	}
 
 	is_valid_showing_failures_only = {
@@ -63,7 +63,7 @@ LR_unify_italian_empire_decision = {
 	}
 
 	effect = {
-		custom_tooltip = LR_unify_italian_empire_decision_effect_tooltip
+		custom_tooltip = LR_restore_western_empire_decision_effect_tooltip
 		show_as_tooltip = {
 			restore_western_rome_scripted_effect = yes
 		}
@@ -389,7 +389,7 @@ LR_reunify_roman_empire_decision = {
 
 
 # Re-establish the Diocese System
-restore_diocese_system_decision = {
+restore_western_diocese_system_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
     }
@@ -397,8 +397,8 @@ restore_diocese_system_decision = {
 
     sort_order = 50
 
-    desc = restore_diocese_system_decision_desc
-    selection_tooltip = restore_diocese_system_decision_tooltip
+    desc = restore_western_diocese_system_decision_desc
+    selection_tooltip = restore_western_diocese_system_decision_tooltip
     
     decision_group_type = roman
 
@@ -410,16 +410,16 @@ restore_diocese_system_decision = {
         NOT = { #Can only do it once.
             is_target_in_global_variable_list = {
                 name = unavailable_unique_decisions
-                target = flag:diocese_restored_decision
+                target = flag:western_diocese_restored_decision
             }
         }
     }
 
     is_valid = {
-        completely_controls_region = custom_western_homelands
+        completely_controls_region = custom_western_imperial_core
         
         custom_tooltip = {
-            text = diocese_kingdoms_held_or_vassals_tt
+            text = western_diocese_kingdoms_held_or_vassals_tt
             trigger_if = {
                 limit = {
                     exists = title:k_lombardy.holder
@@ -460,13 +460,13 @@ restore_diocese_system_decision = {
     }
 
     effect = {
-        custom_tooltip = restore_diocese_system_effect_tooltip
-        custom_tooltip = restore_diocese_system_unlock_tooltip
+        custom_tooltip = restore_western_diocese_system_effect_tooltip
+        custom_tooltip = restore_western_diocese_system_unlock_tooltip
 
         hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
-                target = flag:diocese_restored_decision
+                target = flag:western_diocese_restored_decision
             }
         }
 
@@ -539,7 +539,7 @@ restore_eastern_diocese_decision = {
     }
 
     is_valid = {
-        completely_controls_region = custom_eastern_homelands
+        completely_controls_region = custom_eastern_imperial_core
         
         custom_tooltip = {
             text = eastern_diocese_kingdoms_held_or_vassals_tt
@@ -672,7 +672,7 @@ restore_diocese_gallia_viennensis_decision = {
         }
         is_target_in_global_variable_list = { #Only available after restoring the old diocese.
             name = unavailable_unique_decisions
-            target = flag:diocese_restored_decision
+            target = flag:western_diocese_restored_decision
         }
     }
 
@@ -788,7 +788,7 @@ restore_diocese_africa_mauretania_decision = {
         }
         is_target_in_global_variable_list = { #Only available after restoring the old diocese.
             name = unavailable_unique_decisions
-            target = flag:diocese_restored_decision
+            target = flag:western_diocese_restored_decision
         }
     }
 
@@ -1073,7 +1073,7 @@ restore_diocese_hispania_decision = {
         }
         is_target_in_global_variable_list = { #Only available after restoring the old dioceses.
             name = unavailable_unique_decisions
-            target = flag:diocese_restored_decision
+            target = flag:western_diocese_restored_decision
         }
     }
 
@@ -1225,7 +1225,7 @@ restore_diocese_britannia_decision = {
         }
         is_target_in_global_variable_list = { #Only available after restoring the old dioceses.
             name = unavailable_unique_decisions
-            target = flag:diocese_restored_decision
+            target = flag:western_diocese_restored_decision
         }
     }
 
