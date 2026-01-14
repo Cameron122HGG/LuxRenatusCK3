@@ -930,7 +930,7 @@ retake_western_provinces_decision_effect = {
 	hidden_effect = { 
 		legend_seed_great_deed_dynasty_effect = yes 
 		
-		# Creating the Hegemony of Western Rome
+		# Creating the Hegemony of Western Roman Empire
 		create_title_and_vassal_change = {
 			type = created
 			save_scope_as = change
@@ -955,11 +955,11 @@ retake_western_provinces_decision_effect = {
 		#Italia
 		# Shift the Kingdoms
 		every_county_in_region = {
-			region = custom_western_homelands
-			kingdom = { add_to_list = custom_western_homelands_list }
+			region = custom_western_imperial_core
+			kingdom = { add_to_list = custom_western_imperial_core_list }
 		}	
 		every_in_list = {
-			list = custom_western_homelands_list
+			list = custom_western_imperial_core_list
 			limit = {
 				NOT = { de_jure_liege = title:e_praetorian_prefecture_italia }
 			}
@@ -1032,7 +1032,7 @@ retake_western_provinces_decision_effect = {
 	}
 }
 
-restore_diocese_system_decision_effect = {
+restore_western_diocese_system_decision_effect = {
 	#Sort the diocese
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
@@ -2230,7 +2230,9 @@ retake_eastern_provinces_decision_effect = {
 			title:k_croatia = { set_de_jure_liege_title = title:e_carpathia }
 		}	
 
-		# Creating the Hegemony of Eastern Rome
+		# Creating the Hegemony of the Eastern Roman Empire
+		# Create Eastern Roman Empire, shift dejure/history/laws, destroy e_byzantium.
+		# Capital must be in Constantinople
 		create_title_and_vassal_change = {
 			type = created
 			save_scope_as = change
