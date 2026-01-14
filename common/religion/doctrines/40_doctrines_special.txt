@@ -388,12 +388,13 @@ is_zoroastrian_faith = {
 	group = "special"
 	
 	is_available_on_create = {
-		has_doctrine = special_doctrine_is_eastern_faith
+		has_doctrine = is_zoroastrian_faith
 	}
 
 	special_doctrine_is_zoroastrian_faith = {
 		parameters = {
 			# Since doctrines cannot modify other faith's views of us, only our view of others, all Eastern faiths are given this special doctrine which makes them friendlier to Faiths with the Eastern Syncretism tenet.
+			hostility_override_is_zoroastrian_faith = 1
 			hostility_override_LR_doctrine_persian_ascendant = 1
 			hostility_override_tenet_persian_syncretism = 1
 			#eastern_syncretic_recipient_opinion_active = yes
@@ -401,8 +402,50 @@ is_zoroastrian_faith = {
 		}
 	}
 }
+pagan_special_hostility_doctrine_group = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = pagan_special_hostility_doctrine
+	}
 
+	pagan_special_hostility_doctrine = {
+		parameters = {
+			hostility_override_pagan_special_hostility_doctrine = 1
+			hostility_override_LR_doctrine_folk_ascendant = 1
+			hostility_override_tenet_unreformed_syncretism = 1
+		}
+	}
+}
+graeco_roman_special_hostility_doctrine_group = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = graeco_roman_special_hostility_doctrine
+	}
 
+	graeco_roman_special_hostility_doctrine = {
+		parameters = {
+			hostility_override_graeco_roman_special_hostility_doctrine = 1
+			hostility_override_LR_doctrine_graeco_roman_ascendant = 1
+			hostility_override_tenet_greco_roman_syncretism = 1
+		}
+	}
+}
+archaic_special_hostility_doctrine_group = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = archaic_special_hostility_doctrine
+	}
 
+	archaic_special_hostility_doctrine = {
+		parameters = {
+			hostility_override_archaic_special_hostility_doctrine = 1
+			hostility_override_LR_doctrine_archaic_ascendant = 2
+			hostility_override_tenet_archaic_syncretism = 2
+		}
+	}
+}
 
 
