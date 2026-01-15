@@ -185,3 +185,103 @@ LR_diadochi_ptolemaic_kingdom_decision = {
         base = 1000000
     }
 }
+
+
+create_alexanders_hegemony_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
+	}
+	decision_group_type = major
+
+	desc = create_alexanders_hegemony_decision_desc
+	selection_tooltip = create_universal_empire_decision_tt
+	
+	sort_order = 1000 # Should be at the very top
+
+	is_shown = {
+		#highest_held_title_tier = tier_empire
+		OR = {
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
+			faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
+			faith = { has_doctrine = LR_doctrine_graeco_roman_ascendant }
+		}
+		NOT = { has_global_variable = created_alexanders_hegemony }
+	}
+	is_valid = {
+		is_independent_ruler = yes
+		
+		custom_tooltip = {
+			text = holds_imperial_title_tooltip
+			primary_title.tier = tier_empire
+		}
+		prestige_level >= 4	
+		completely_controls_region = world_alexanders_empire
+		#calc_true_if = {
+		#	amount >= 2
+		#	completely_controls_region = world_alexanders_empire_1
+		#	completely_controls_region = world_alexanders_empire_2
+		#	completely_controls_region = world_alexanders_empire_3
+		#}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_at_war = no
+	}
+
+	effect = {
+		save_scope_as = new_hegemon
+		show_as_tooltip = {
+			get_title = title:h_alexander_empire
+		}
+		add_prestige = 5000
+		dynasty ?= { add_dynasty_prestige = 5000 }		
+		
+		hidden_effect = {
+			scope:new_hegemon = {
+				get_title = title:h_alexander_empire
+			}
+			title:k_mesopotamia = { set_de_jure_liege_title = title:e_persia }
+			every_empire = {
+				limit = {
+					#tier = tier_empire
+					title_capital_county.title_province = { geographical_region = world_alexanders_empire }
+				}
+				set_de_jure_liege_title = title:h_alexander_empire
+			}			
+		}
+		
+		set_global_variable = {
+			name = created_alexanders_hegemony
+			value = yes
+		}
+	}
+
+	cost = {
+		prestige = 1000
+	}
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 0
+		empire = 24
+		hegemony = 0
+	}
+
+	ai_potential = {
+		culture = { has_cultural_pillar = heritage_hellenistic_greek }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+
+
+
+
+
