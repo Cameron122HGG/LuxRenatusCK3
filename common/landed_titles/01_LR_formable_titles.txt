@@ -3,104 +3,48 @@
 @always_primary_score = 1000
 @never_primary_score = -1000
 
-# TITULAR EMPIRES
-
-k_danelaw = {
-	color = { 255 60 15 }
-	de_jure_drift_disabled = yes
-
-	capital = c_north_riding
-
-	ai_primary_priority = {
-		if = {
-			limit = {
-				culture = { has_cultural_pillar = heritage_north_germanic }
-			}
-			add = @correct_culture_primary_score
-			add = @better_than_the_alternatives_score
-		}
-	}
+d_amalfi = {
+	color = { 140 200 230 }
+	capital = c_napoli
 }
 
-k_daneland = {
-	color = { 200 40 15 }
-
-	capital = c_north_riding
-
-	ai_primary_priority = {
-		if = {
-			limit = {
-				culture = { has_cultural_pillar = heritage_north_germanic }
-			}
-			add = @correct_culture_primary_score
-			add = @better_than_the_alternatives_score
-		}
-	}
+d_belgrade = {
+	color = { 151 125 62 }
+	capital = c_rashka
 }
 
-k_mediterranean_sea = { # FP2
-	color = { 180 0 0 }
-
-	capital = c_cagliari
+d_erzerum = {
+	color = { 103 84 255 }
+	capital = c_theodosiopolis
 }
 
-k_switzerland = {
-	color = { 255 80 80 }
+d_pronsk = {
+	color = { 23 132 81 }
+	capital = c_tula
+}
 
-	definite_form = yes
+d_sandomiersk = {
+	color = { 253 137 137 }
+	capital = c_sandomierska
+}
 
+d_swiss = {
+	color = { 255 1 1 }
 	capital = c_bern
 }
 
-k_visigoths = {
-	color = { 116 135 65 }
+d_zaragoza = {
+	color = { 80 220 10 }
+	capital = c_zaragoza
+}
 
+e_aarlud_khanate = {
+	color = { 80 152 200 }
+	capital = c_upland
+
+	can_be_named_after_dynasty = no
+	can_use_nomadic_naming = no
 	definite_form = yes
-
-	capital = c_toledo
-}
-
-e_outremer = {
-	color = { 180 180 180 }
-
-	capital = c_jerusalem
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-
-	ai_primary_priority = {
-		add = @always_primary_score
-	}
-}
-
-
-
-e_latin_empire = {
-	color = { 150 105 56 }
-
-	definite_form = yes
-
-	capital = c_byzantion
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_slavia = {
-	color = { 39 27 27 }
-	capital = c_kiev # Kiev
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_beth_nahrain = {
-	color = { 35 79 78 }
-	capital = c_damascus # Damascus
-
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
@@ -108,215 +52,7 @@ e_beth_nahrain = {
 
 e_armenia = {
 	color = { 198 29 29 }
-
-	capital = c_hayk # Ani
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-	
-
-}
-
-e_viet = {
-	color = { 250 234 15 }
-
-	capital = c_thang_long # Thang Long
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_majapahit = {
-	color = { 250 234 15 }
-
-	capital = c_JAV_janggala # Janggala
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_ruucuu = {
-	color = { 131 150 136 }
-
-	cultural_names = {
-		name_list_yamato = cn_ryukyu
-		name_list_emishi = cn_ryukyu
-	}
-
-	capital = c_ucinaa
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_north_sea = {
-	color = { 0 0 60 }
-	definite_form = yes
-
-	capital = c_sjaelland	#Roskilde
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-# TITULAR KINGDOMS
-
-k_pechenegs = {
-	color = { 132 108 72}
-
-	capital = c_odessa # Odessa
-}
-
-# TITULAR DUCHIES
-
-d_zaragoza = {
-	color = { 80 220 10 }
-
-	capital = c_zaragoza
-}
-
-d_erzerum = {
-	color = { 103 84 255 }
-
-	capital = c_theodosiopolis
-}
-
-d_amalfi = {
-	color = { 140 200 230 }
-
-	capital = c_napoli
-}
-
-d_belgrade = {
-	color = { 151 125 62 }
-
-	capital = c_rashka
-}
-
-d_pronsk = {
-	color = { 23 132 81 }
-
-	capital = c_tula
-}
-
-d_sandomiersk = {
-	color = { 253 137 137 }
-
-	capital = c_sandomierska
-}
-
-d_swiss = {
-	color = { 255 1 1 }
-
-	capital = c_bern
-}
-
-k_bosporan_kingdom = {
-	color = { 139 0 0 }
-
-	capital = c_kerch
-
-	definite_form = yes
-}
-
-#Horde
-e_golden_horde = {
-	color = { 243 180 17 }
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
-
-	definite_form = yes
-
-	capital = c_itil
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_ilkhanate = {
-	color = { 140 180 20 }
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
-
-	definite_form = yes
-
-	capital = c_tabriz
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_chagatai = {
-	color = { 200 200 200 }
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
-
-	#definite_form = yes
-
-	capital = c_samarkand
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_black_horde = {
-	color = { 50 50 50 }
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
-
-	definite_form = yes
-
-	capital = c_delhi
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_white_horde = {
-	color = { 230 230 230 }
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
-
-	definite_form = yes
-
-	capital = c_praha
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_aarlud_khanate = {
-	color = { 80 152 200 }
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
-
-	definite_form = yes
-
-	capital = c_upland
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-}
-
-e_togskol_khanate = {
-	color = { 50 150 180 }
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
-
-	definite_form = yes
-
-	capital = c_roma
+	capital = c_hayk
 
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
@@ -325,52 +61,105 @@ e_togskol_khanate = {
 
 e_baruun_khanate = {
 	color = { 100 180 50 }
+	capital = c_alexandria
+
 	can_be_named_after_dynasty = no
 	can_use_nomadic_naming = no
-
 	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
 
-	capital = c_alexandria
+e_beth_nahrain = {
+	color = { 35 79 78 }
+	capital = c_damascus
 
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
 }
 
-e_uyghur_khanate = {
-	color = { 90 70 40 }
+e_black_horde = {
+	color = { 50 50 50 }
+	capital = c_delhi
+
+	can_be_named_after_dynasty = no
 	can_use_nomadic_naming = no
-
 	definite_form = yes
-
-	capital = c_karabalgasun
-
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
+}
 
-	ai_primary_priority = {
-		if = {
-			limit = {
-				culture = culture:uyghur
-			}
-			add = @correct_culture_primary_score
-		}
+e_chagatai = {
+	color = { 200 200 200 }
+	capital = c_samarkand
+
+	can_be_named_after_dynasty = no
+	can_use_nomadic_naming = no
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
+
+e_golden_horde = {
+	color = { 243 180 17 }
+	capital = c_itil
+
+	can_be_named_after_dynasty = no
+	can_use_nomadic_naming = no
+	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
+
+e_great_liao = {
+	color = { 15 150 105 }
+	capital = c_karakorum
+
+	can_use_nomadic_naming = no
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
+
+e_ilkhanate = {
+	color = { 140 180 20 }
+	capital = c_tabriz
+
+	can_be_named_after_dynasty = no
+	can_use_nomadic_naming = no
+	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
+
+e_kara_khitai = {
+	color = { 10 10 10 }
+	capital = c_balashagun
+
+	cultural_names = {
+		name_list_khitan = cn_kara_khitai
+	}
+
+	can_use_nomadic_naming = no
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
 }
 
 e_kirghiz_khanate = {
 	color = { 245 180 100 }
-	can_use_nomadic_naming = no
-
-	definite_form = yes
-
 	capital = c_karabalgasun
 
+	can_use_nomadic_naming = no
+	definite_form = yes
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
-
 	ai_primary_priority = {
 		if = {
 			limit = {
@@ -381,64 +170,211 @@ e_kirghiz_khanate = {
 	}
 }
 
-e_mongol_empire = {
-	color = { 130 180 240 }
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
+e_latin_empire = {
+	color = { 150 105 56 }
+	capital = c_byzantion
 
 	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
+
+e_majapahit = {
+	color = { 250 234 15 }
+	capital = c_JAV_janggala
 
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
+}
 
+e_mongol_empire = {
+	color = { 130 180 240 }
+	capital = c_karakorum
+
+	can_be_named_after_dynasty = no
+	can_use_nomadic_naming = no
+	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
 	ai_primary_priority = {
 		add = @always_primary_score
 	}
-
-	capital = c_karakorum
 }
 
-e_great_liao = { #aka Great Liao / Liao dynasty
-	#It's the Liao dynasty before they've been defeated by the Jurchen/Jin
-	color = { 15 150 105 }
-	can_use_nomadic_naming = no
+e_north_sea = {
+	color = { 0 0 60 }
+	capital = c_sjaelland
 
-	capital = c_karakorum
-	#Liao dynasty's capital is offmap, so this capital setup is just here mechanically
-
+	definite_form = yes
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
 }
 
-e_kara_khitai = { #aka Western Liao / Great Liao
-	#It's the Liao dynasty after they've been booted by the Jurchen/Jin, and have fled west
-	#Should appear as "Kara Khitai" to differentiate from "Great Liao", even though it's *sort of* the same entity
-	color = { 10 10 10 }
-	can_use_nomadic_naming = no
-
-	capital = c_balashagun
+e_outremer = {
+	color = { 180 180 180 }
+	capital = c_jerusalem
 
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+}
+
+e_ruucuu = {
+	color = { 131 150 136 }
 
 	cultural_names = {
-		name_list_khitan = cn_kara_khitai
+		name_list_emishi = cn_ryukyu
+		name_list_yamato = cn_ryukyu
+	}
+
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
 }
 
+e_slavia = {
+	color = { 39 27 27 }
+	capital = c_kiev
+
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
 
 e_timurids = {
 	color = { 120 20 20 }
-	can_use_nomadic_naming = no
-
-	definite_form = yes
-
 	capital = c_samarkand
+
+	can_use_nomadic_naming = no
+	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
+
+e_togskol_khanate = {
+	color = { 50 150 180 }
+	capital = c_roma
+
+	can_be_named_after_dynasty = no
+	can_use_nomadic_naming = no
+	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
+
+e_uyghur_khanate = {
+	color = { 90 70 40 }
+	capital = c_karabalgasun
+
+	can_use_nomadic_naming = no
+	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = culture:uyghur
+			}
+			add = @correct_culture_primary_score
+		}
+	}
+}
+
+e_viet = {
+	color = { 250 234 15 }
 
 	can_create = {
 		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
 }
+
+e_white_horde = {
+	color = { 230 230 230 }
+	capital = c_praha
+
+	can_be_named_after_dynasty = no
+	can_use_nomadic_naming = no
+	definite_form = yes
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+}
+
+k_bosporan_kingdom = {
+	color = { 139 0 0 }
+	capital = c_kerch
+
+	definite_form = yes
+}
+
+k_daneland = {
+	color = { 200 40 15 }
+	capital = c_north_riding
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = {
+					has_cultural_pillar = heritage_north_germanic
+				}
+			}
+			add = @correct_culture_primary_score
+			add = @better_than_the_alternatives_score
+
+		}
+	}
+}
+
+k_danelaw = {
+	color = { 255 60 15 }
+	capital = c_north_riding
+
+	de_jure_drift_disabled = yes
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = {
+					has_cultural_pillar = heritage_north_germanic
+				}
+			}
+			add = @correct_culture_primary_score
+			add = @better_than_the_alternatives_score
+
+		}
+	}
+}
+
+k_mediterranean_sea = {
+	color = { 180 0 0 }
+	capital = c_cagliari
+}
+
+k_pechenegs = {
+	color = { 132 108 72 }
+	capital = c_odessa
+}
+
+k_switzerland = {
+	color = { 255 80 80 }
+	capital = c_bern
+
+	definite_form = yes
+}
+
+k_visigoths = {
+	color = { 116 135 65 }
+	capital = c_toledo
+
+	definite_form = yes
+}
+
