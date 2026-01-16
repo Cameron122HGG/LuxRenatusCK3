@@ -780,6 +780,7 @@ convert_to_administrative_decision = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
 			government_has_flag = government_is_japan_feudal
+			government_has_flag = government_is_classical_feudal
 		}
 		trigger_if = {
 			limit = { top_liege != this }
@@ -1071,6 +1072,7 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
+						has_government = classical_administrative_government
 					}
 				}
 			}
@@ -1092,6 +1094,7 @@ convert_to_administrative_decision = {
 						has_government = administrative_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
+						has_government = classical_administrative_government
 					}
 				}
 				custom_tooltip = {
@@ -1117,6 +1120,7 @@ convert_to_administrative_decision = {
 						has_government = administrative_government
 						has_government = celestial_government
 						has_government = japan_administrative_government
+						has_government = classical_administrative_government
 					}
 				}
 				custom_tooltip = {
@@ -1142,6 +1146,7 @@ convert_to_administrative_decision = {
 						has_government = administrative_government
 						has_government = celestial_government
 						has_government = meritocratic_government
+						has_government = classical_administrative_government
 					}
 				}
 				custom_tooltip = {
@@ -1154,6 +1159,27 @@ convert_to_administrative_decision = {
 			icon = "gfx/interface/icons/government_types/japan_administrative_government.dds"
 			ai_chance = {
 				value = 100
+			}
+		}#LR Gov
+		item = { # Classical Admin
+			value = go_classical_administrative_government
+			is_shown = {
+				has_ep3_dlc_trigger = yes
+			}
+			is_valid = {
+				top_liege = {
+					NOR = {
+						has_government = celestial_government
+						has_government = meritocratic_government
+						has_government = japan_administrative_government
+						has_government = administrative_government
+					}
+				}
+			}
+			localization = go_classical_administrative_government_name
+			icon = "gfx/interface/icons/government_types/classical_administrative_government.dds"
+			ai_chance = {
+				value = 10
 			}
 		}
 	}
@@ -1177,6 +1203,10 @@ convert_to_administrative_decision = {
 		else_if = {
 			limit = { scope:go_japan_administrative_government = yes }
 			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:japan_administrative }
+		}
+		else_if = {
+			limit = { scope:go_japan_administrative_government = yes }
+			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:classical_administrative }
 		}
 		save_scope_as = actor
 		if = {
@@ -1221,6 +1251,7 @@ convert_to_administrative_decision = {
 		OR = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
+			government_has_flag = government_is_classical_feudal
 		}
 		top_liege = this
 	}
