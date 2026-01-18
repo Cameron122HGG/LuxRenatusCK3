@@ -1,0 +1,29 @@
+﻿
+random_vassal_generation_template = {
+	age = { 20 50 }
+	random_traits = no
+	culture = scope:overlord_to_grant.culture
+	faith = scope:overlord_to_grant.faith
+	gender_female_chance = {
+		if = {
+			limit = {
+				scope:overlord_to_grant.faith = { has_doctrine = doctrine_gender_male_dominated }
+			}
+			add = 25
+		}
+		else_if = {
+			limit = {
+				scope:overlord_to_grant.faith = { has_doctrine = doctrine_gender_female_dominated }
+			}
+			add = 75
+		}
+		else = {
+			add = 50
+		}
+	}
+	#martial = {
+	#	min_template_decent_skill
+	#	max_template_decent_skill
+	#}
+}
+
