@@ -1479,9 +1479,9 @@ negotiate_settlement_interaction = {
 		}
 		# Story blockers.
 		## Hereward cannot be exiled by active participants in the Harrying of the North.
-		disable_interaction_for_hereward_trigger = yes
+		#disable_interaction_for_hereward_trigger = yes
 		## Hasan cannot be exiled by anyone during his story.
-		disable_interaction_for_hasan_trigger = yes
+		#disable_interaction_for_hasan_trigger = yes
 	}
 
 	on_send = {
@@ -1555,7 +1555,7 @@ negotiate_settlement_interaction = {
 		hegemony = 3
 	}
 
-	ai_potential = {
+	is_available = {
 		OR = {
 			top_liege = this
 			highest_held_title_tier >= tier_kingdom
@@ -2521,7 +2521,7 @@ trade_oath_interaction = {
 			has_trait = honest
 		}
 	}
-	ai_potential = {
+	is_available = {
 		has_realm_law = camp_purpose_legitimists
 	}
 	# Always do it if you get the chance.
@@ -4004,7 +4004,7 @@ contact_list_request_interaction = { # make a request, make_a_request
 		scope:actor = { has_usable_hook = scope:recipient }
 		scope:recipient = { is_ai = yes }
 	}
-	ai_potential = { government_has_flag = government_is_landless_adventurer }
+	is_available = { government_has_flag = government_is_landless_adventurer }
 	ai_accept = {
 		base = 0
 
@@ -4735,7 +4735,7 @@ reinforce_soldiers_interaction = {
 	ai_targets = {
 		ai_recipients = self
 	}
-	ai_potential = {
+	is_available = {
 		government_allows = conditional_maa_refill
 		any_maa_regiment = { maa_current_troops_count < maa_max_troops_count }
 	}
@@ -5026,7 +5026,7 @@ hire_laamp_mercenaries_interaction = {
 	ai_targets = {
 		ai_recipients = nearby_domicile_owners
 	}
-	ai_potential = {
+	is_available = {
 		any_character_war = {
 			is_war_leader = prev
 		}
@@ -5608,7 +5608,7 @@ refill_maa_interaction = {
 	ai_targets = {
 		ai_recipients = self
 	}
-	ai_potential = {
+	is_available = {
 		government_allows = conditional_maa_refill
 		any_maa_regiment = { maa_current_troops_count < maa_max_troops_count }
 	}
@@ -5693,9 +5693,9 @@ evict_adventurer_interaction = {
 		}
 		# Story blockers.
 		## Hereward cannot be exiled by active participants in the Harrying of the North.
-		disable_interaction_for_hereward_trigger = yes
+		#disable_interaction_for_hereward_trigger = yes
 		## Hasan cannot be exiled by anyone during his story.
-		disable_interaction_for_hasan_trigger = yes
+		#disable_interaction_for_hasan_trigger = yes
 	}
 
 	on_send = {
@@ -5788,7 +5788,7 @@ evict_adventurer_interaction = {
 		ai_recipients = sub_realm_domicile_owners
 		max = 10
 	}
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 		is_imprisoned = no
 		NOT = { has_trait = incapable }
@@ -6890,7 +6890,7 @@ request_laamp_legitimist_support = {
 		ai_recipients = domicile_location_neighboring_top_rulers
 		ai_recipients = contacts
 	}
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 		ai_greed <= 25
 	}
@@ -7119,7 +7119,7 @@ task_contract_train_knight_interaction = {
 		ai_recipients = liege
 		ai_recipients = contacts
 	}
-	ai_potential = {
+	is_available = {
 		is_at_war = no
 	}
 	ai_will_do = {
@@ -7477,7 +7477,7 @@ laamp_war_change_sides_interaction = {
 
 	auto_accept = yes
 
-	ai_potential = {
+	is_available = {
 		is_at_war = yes
 	}
 
@@ -7822,7 +7822,7 @@ laamp_leave_war_interaction = {
 
 	auto_accept = yes
 
-	ai_potential = {
+	is_available = {
 		is_at_war = yes
 	}
 

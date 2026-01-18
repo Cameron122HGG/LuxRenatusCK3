@@ -853,7 +853,7 @@ gift_artifact_interaction = {
 		}
 	}
 	
-	ai_potential = {
+	is_available = {
 		has_any_artifact = yes
 		trigger_if = {
 			limit = {
@@ -1569,7 +1569,7 @@ demand_artifact_interaction = {
 		evaluate_action_decreasing_house_unity = { VALUE = 100 }
 	}
 	
-	ai_potential = {
+	is_available = {
 		is_adult = yes
 		is_at_war = no
 		ai_greed >= low_negative_ai_value
@@ -2357,7 +2357,7 @@ challenge_for_artifact_interaction = {
 	}
 
 	# AI
-	ai_potential = {
+	is_available = {
 		NOT = { has_trait = craven }
 		is_imprisoned = no
 		can_start_single_combat_trigger = yes
@@ -3210,7 +3210,7 @@ start_stealing_back_artifact = {
 	}
 	
 	# AI
-	ai_potential = {
+	is_available = {
 		is_imprisoned = no
 		ai_greed >= low_negative_ai_value
 		intrigue >= low_skill_rating
@@ -3947,7 +3947,7 @@ buy_artifact_claim = {
 		hegemony = 30
 	}
 
-	ai_potential = {
+	is_available = {
 		# The basic requirements
 		is_imprisoned = no 
 		is_playable_character = yes 
@@ -4295,7 +4295,7 @@ demand_dynasty_banner_interaction = {
 		}
 	}
 	
-	ai_potential = {
+	is_available = {
 		is_adult = yes
 		is_at_war = no
 		ai_greed >= low_negative_ai_value
@@ -4469,7 +4469,7 @@ destroy_artifact_interaction = {
 		hegemony = 24
 	}
 
-	ai_potential = {
+	is_available = {
 		OR = {
 			faith = { # Aniconists will always want to destroy artifacts
 				has_doctrine_parameter = destroying_artifacts_is_pious
@@ -4552,7 +4552,7 @@ destroy_artifact_interaction = {
 			faith = {
 				has_doctrine_parameter = destroying_artifacts_is_pious
 			}
-			OR = { # This errors in the ai_potential so it's been moved here
+			OR = { # This errors in the is_available so it's been moved here
 				has_trait = zealous
 				scope:target = { is_equipped = no }
 				scope:target = { exists = var:relic }
