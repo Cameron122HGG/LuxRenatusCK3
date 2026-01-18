@@ -6,14 +6,13 @@
  ### In-Game
  ## DATE Replacements
  # ERA 
- ERA_LUX_GREG_IG: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
- 
- ERA_LUX_GREG_IG_FRONTEND_BOOKMARK: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ ERA_LUX_GREG_IG: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
+ ERA_LUX_GREG_IG_FRONTEND_BOOKMARK: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
 
  # YEAR # 
- YEAR_LUX_GREG_IG: "[Add_int32('(int32)-10000', '(int32)$YEAR$')]"
+ YEAR_LUX_GREG_IG: "[Add_int32('(int32)-10000', '(int32)$YEAR|q$')]"
  
- YEAR_LUX_GREG_IG_FRONTEND_BOOKMARK: "[Add_int32('(int32)-10000', '(int32)$YEAR$')]"
+ YEAR_LUX_GREG_IG_FRONTEND_BOOKMARK: "[Add_int32('(int32)-10000', '(int32)$YEAR|q$')]"
 
  ### Dynasty Founding Date
  ## DATE Replacements
@@ -23,17 +22,17 @@
  YEAR_LUX_GREG_DYNFOUND: "[Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)]"
 ## RULER DESIGNER BIRTH DATE
   # ERA
- ERA_LUX_GREG_RULDESBIRTH: "[Select_CString(GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)7054'), 'Fo.A.',Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)4033'), 'T.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)592'), 'S.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)2' ), 'F.A.', Select_CString( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)1' ), 'Y.T.', 'Y.L.' ) ) ) ) )]"
- YEAR_LUX_GREG_RULDESBIRTH: "[Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)7054'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)7054' ), Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)4033'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)4033' ) , Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)592'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)592' ) , Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)2'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)2' ) , Select_int32( GreaterThan_int32( RulerDesignerWindow.GetBirthYear, '(int32)1'), Subtract_int32( RulerDesignerWindow.GetBirthYear, '(int32)1' ) , RulerDesignerWindow.GetBirthYear ) ) ) ) )]"
+ ERA_LUX_GREG_RULDESBIRTH: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
+ YEAR_LUX_GREG_RULDESBIRTH: "[Add_int32('(int32)-10000', '(int32)$YEAR|q$')]"
  RULER_DESIGNER_BIRTH_YEAR: "Born: $YEAR_LUX_GREG_RULDESBIRTH$ $ERA_LUX_GREG_RULDESBIRTH$"
 
  ### Main Menu
  ## SaveGameItem
  # ERA 
- ERA_LUX_GREG_SGI: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ ERA_LUX_GREG_SGI: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
  
  # YEAR
- YEAR_LUX_GREG_SGI: "[Add_int32('(int32)-10000', '(int32)$YEAR$')]"
+ YEAR_LUX_GREG_SGI: "[Add_int32('(int32)-10000', '(int32)$YEAR|q$')]"
  
  ## BookmarkSelectRuler
  # ERA
@@ -44,31 +43,31 @@
 
  ## BookmarkSelectedDate
  # ERA
- ERA_LUX_GREG_BSD: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ ERA_LUX_GREG_BSD: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
  
  # YEAR
- YEAR_LUX_GREG_BSD: "[Add_int32('(int32)-10000', '(int32)$YEAR$')]"
+ YEAR_LUX_GREG_BSD: "[Add_int32('(int32)-10000', '(int32)$YEAR|q$')]"
  
  ## BookmarkItemDate
  # ERA
- ERA_LUX_GREG_BID: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ ERA_LUX_GREG_BID: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
  
  # YEAR
- YEAR_LUX_GREG_BID: "[Add_int32('(int32)-10000', '(int32)$YEAR$')]"
+ YEAR_LUX_GREG_BID: "[Add_int32('(int32)-10000', '(int32)$YEAR|q$')]"
 
  ## MP_Game_Setup_Date
  # ERA
- ERA_LUX_GREG_MPGSD: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ ERA_LUX_GREG_MPGSD: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
  
  # YEAR
- YEAR_LUX_GREG_MPGSD: "[Add_int32('(int32)-10000', '(int32)$YEAR$')]"
+ YEAR_LUX_GREG_MPGSD: "[Add_int32('(int32)-10000', '(int32)$YEAR|q$')]"
  
  ## MP_Game_Setup_Bookmark_Date
  # ERA
- ERA_LUX_GREG_MPGSBD: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ ERA_LUX_GREG_MPGSBD: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
  
  # YEAR
- YEAR_LUX_GREG_MPGSBD: "[Add_int32('(int32)-10000', '(int32)$YEAR$')]"
+ YEAR_LUX_GREG_MPGSBD: "[Add_int32('(int32)-10000', '(int32)$YEAR|q$')]"
 
  
 
@@ -88,7 +87,7 @@
  ### Text replacements in main menu
  FRONTEND_CONTINUE_TT: "#T Continue From Save Game\n#!"[SaveGameItem.GetName]"\n[SaveGameItem.GetPlayerName|V]\n[SaveGameItem.GetTitleName|VU]\n[SaveGameItem.GetDate.GetStringShortNoYear|V], $ERA_LUX_GREG_SGI$ $YEAR_LUX_GREG_SGI$\n[Select_CString(SaveGameItem.IsCloudSave, 'Cloud Save', '' )]"
  LOAD_SAVE_ITEM_DATE: "Date: [SaveGameItem.GetDate.GetStringShortNoYear], $ERA_LUX_GREG_SGI$ $YEAR_LUX_GREG_SGI$"
- PICK_ANY_CHARACTER: "Play as any Ruler in $ERA_LUX_GREG_SR$$YEAR_LUX_GREG_SR$"
+ PICK_ANY_CHARACTER: "Play as any Ruler in $ERA_LUX_GREG_IG$ $YEAR_LUX_GREG_IG$"
  
  ### Replacements in GUI files 
  ## gui/frontend_bookmarks.gui
@@ -102,8 +101,8 @@
  # Default: [GameMpSetup.GetSelectedBookmark.GetDate.GetString]
  frontend_mp_game_setup_bookmark_date_replace: "[GameMpSetup.GetSelectedBookmark.GetDate.GetStringShortNoYear], $ERA_LUX_GREG_MPGSBD$ $YEAR_LUX_GREG_MPGSBD$"
 
- #HOUSE_VIEW_FOUNDED: "Founded in [Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')] by [DynastyHouse.GetFounder.GetName]"
- #HOUSE_LIST_FOUNDATION: "Founded in [Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ #HOUSE_VIEW_FOUNDED: "Founded in [Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')] by [DynastyHouse.GetFounder.GetName]"
+ #HOUSE_LIST_FOUNDATION: "Founded in [Add_int32('(int32)-10000', DynastyHouse.GetFoundYear)] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR|q$', '(int32)10001'),'',' B.C'),' A.D')]"
 
  
 
