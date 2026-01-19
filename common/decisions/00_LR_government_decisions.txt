@@ -1,0 +1,209 @@
+﻿
+convert_high_tribal_to_feudalism_decision = {
+	picture = {
+		trigger = {
+			has_tgp_dlc_trigger = yes
+			liege = {
+				culture = { has_cultural_pillar = heritage_japonic }
+			}
+		}
+		reference = "gfx/interface/illustrations/decisions/tgp_dominance.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
+	desc = convert_high_tribal_to_feudalism_decision_desc
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 72
+		duchy = 36
+		kingdom = 36
+		empire = 36
+		hegemony = 36
+	}
+
+	is_shown = {
+		government_has_flag = government_is_kinship
+		OR = {
+			top_liege = this
+			AND = {
+				top_liege != this
+				liege = {
+					NOR = {
+						government_has_flag = government_is_kinship
+						government_has_flag = government_is_tribal
+					}
+				}
+			}
+		}
+	}
+
+	is_valid = {
+		has_realm_law = crown_authority_2
+		custom_description = {
+			text = faith_is_reformed
+			subject = root
+			faith = { NOT = { has_doctrine_parameter = unreformed } }
+		}
+		prestige_level >= 1
+		custom_description = { #You need to have 70% of all (non-regional/unique) tribal innovations!
+			text = has_all_tribal_innovations
+			subject = root.culture
+			culture = {
+				calc_true_if = {
+					amount >= 9
+					has_innovation = innovation_motte
+					has_innovation = innovation_catapult
+					has_innovation = innovation_barracks
+					has_innovation = innovation_mustering_grounds
+					has_innovation = innovation_bannus
+					has_innovation = innovation_quilted_armor
+					has_innovation = innovation_gavelkind
+					has_innovation = innovation_crop_rotation
+					has_innovation = innovation_city_planning
+					has_innovation = innovation_casus_belli
+					has_innovation = innovation_plenary_assemblies
+					has_innovation = innovation_ledger
+					has_innovation = innovation_development_01
+					has_innovation = innovation_currency_01
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		custom_tooltip = {
+			text = permafrost_feudal_ban
+			NOT = { culture = { has_cultural_parameter = permafrost_cannot_become_feudal } }
+		}
+	}
+
+	cost = {
+		prestige = 200
+	}
+
+	effect = {
+		gain_legitimizing_legend_seed_tooltip_effect = yes		
+		if = {
+			limit = {
+				top_liege != this
+				OR = {
+					liege = { government_has_flag = government_is_classical_feudal }
+					AND = {
+						liege = { government_has_flag = government_is_classical_feudal }
+						faith.religion = { is_in_family = rf_graeco_roman }
+					}
+				}
+			}
+			change_government = classical_feudal_government
+		}
+		else_if = {
+			limit = {
+				top_liege != this
+				OR = {
+					liege = { government_has_flag = government_is_despotic }
+					AND = {
+						liege = { government_has_flag = government_is_despotic }
+						faith.religion = { is_in_family = rf_archaic }
+					}
+				}
+			}
+			change_government = despot_government
+		}
+		else_if = {
+			limit = {
+				top_liege != this
+				OR = {
+					liege = { government_has_flag = government_is_clan }
+					AND = {
+						liege = { government_has_flag = government_is_clan }
+						religion = religion:islam_religion
+					}
+				}
+			}
+			change_government = clan_government
+		}		
+		##Independent
+		else_if = {
+			limit = {
+				top_liege = this
+				faith.religion = { is_in_family = rf_graeco_roman }
+			}
+			change_government = classical_feudal_government
+		}
+		else_if = {
+			limit = {
+				top_liege = this
+				faith.religion = { is_in_family = rf_archaic }
+			}
+			change_government = despot_government
+		}
+		else_if = {
+			limit = {
+				top_liege = this
+				faith = { religion_tag = islam_religion }
+			}
+			change_government = clan_government
+		}		
+		else = { change_government = feudal_government }
+		
+		##Convert Vassals
+		custom_tooltip = {
+			text = LR_high_tribal_vassal_adoption
+			if = {
+				limit = {
+					government_has_flag = government_is_classical_feudal
+				}
+				every_vassal_or_below = {
+					limit = { government_has_flag = government_is_kinship }
+					change_government = classical_feudal_government
+				}
+			}
+			else_if = {
+				limit = {
+					government_has_flag = government_is_despotic
+				}
+				every_vassal_or_below = {
+					limit = { government_has_flag = government_is_kinship }
+					change_government = despot_government
+				}
+			}
+			else_if = {
+				limit = {
+					government_has_flag = government_is_clan
+				}
+				every_vassal_or_below = {
+					limit = { government_has_flag = government_is_kinship }
+					change_government = clan_government
+				}
+			}		
+			else = {
+				every_vassal_or_below = {
+					limit = { government_has_flag = government_is_kinship }
+					change_government = feudal_government
+				}
+			}
+		}
+		
+		#trigger_event = LR_high_tribal_decision.0001
+		save_scope_as = actor
+		#hidden_effect = {
+		#	every_vassal = {
+		#		trigger_event = {
+		#			id = LR_high_tribal_decision.0002
+		#			days = 3
+		#		}
+		#	}
+		#}
+	}
+
+	ai_potential = {
+		NOT = { mpo_has_gok_mongol_empire_trigger = yes } #Stop the Mongols from slowing their conquest. 
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
