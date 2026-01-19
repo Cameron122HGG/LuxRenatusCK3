@@ -1196,6 +1196,24 @@ GetGovernmentIcon = {
 		}
 		localization_key = classical_feudal_icon_concept
 	}
+	text = { # Kinship
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = kinship_governmnet
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					has_government = kinship_governmnet
+				}
+				trigger_else = {
+					liege ?= { has_government = kinship_governmnet }
+				}
+			}
+		}
+		localization_key = kinship_governmnet_icon_concept
+	}	
 	text = { # Classical Admin
 		trigger = {
 			trigger_if = {

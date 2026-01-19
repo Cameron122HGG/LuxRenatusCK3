@@ -1521,20 +1521,59 @@ convert_whole_realm_to_feudalism_effect = {
 			}
 		}
 	}
-	##Liege has clan? Convert to clan!
+
+	else_if = {
+		limit = {
+			top_liege != this
+			OR = {
+				liege = { government_has_flag = government_is_kinship }
+				AND = {
+					liege = { government_has_flag = government_is_kinship }
+					faith.religion = { is_in_family = rf_pagan }
+				}
+			}
+		}
+		change_government = kinship_government
+	}
+	else_if = {
+		limit = {
+			top_liege != this
+			OR = {
+				liege = { government_has_flag = government_is_classical_feudal }
+				AND = {
+					liege = { government_has_flag = government_is_classical_feudal }
+					faith.religion = { is_in_family = rf_graeco_roman }
+				}
+			}
+		}
+		change_government = classical_feudal_government
+	}
+	else_if = {
+		limit = {
+			top_liege != this
+			OR = {
+				liege = { government_has_flag = government_is_despotic }
+				AND = {
+					liege = { government_has_flag = government_is_despotic }
+					faith.religion = { is_in_family = rf_archaic }
+				}
+			}
+		}
+		change_government = despot_government
+	}
 	else_if = {
 		limit = {
 			top_liege != this
 			OR = {
 				liege = { government_has_flag = government_is_clan }
 				AND = {
-					liege = { government_has_flag = government_is_tribal }
+					liege = { government_has_flag = government_is_clan }
 					religion = religion:islam_religion
 				}
 			}
 		}
 		change_government = clan_government
-	}
+	}	
 	##Liege has feudal? Convert to feudal!
 	else_if = {
 		limit = {
@@ -1581,44 +1620,90 @@ convert_whole_realm_to_feudalism_effect = {
 		}
 		change_government = clan_government
 	}
+	else_if = {
+		limit = {
+			top_liege = this
+			faith.religion = { is_in_family = rf_pagan }
+		}
+		change_government = kinship_government
+	}
+	else_if = {
+		limit = {
+			top_liege = this
+			faith.religion = { is_in_family = rf_graeco_roman }
+		}
+		change_government = classical_feudal_government
+	}
+	else_if = {
+		limit = {
+			top_liege = this
+			faith.religion = { is_in_family = rf_archaic }
+		}
+		change_government = despot_government
+	}
 	##You're an independent anything else? Convert to feudal!
 	else = { change_government = feudal_government }
-	if = {
-		limit = {
-			government_has_flag = government_is_tribal
-		}
-		##General
-		custom_tooltip = all_holding_will_change
-		##Liege has clan? Convert to clan!
-		if = {
-			limit = {
-				top_liege != this
-				liege = { government_has_flag = government_is_clan }
-			}
-			custom_tooltip = clan_liege_vassals_will_convert
-		}
-		#Liege has feudal? Convert to feudal!
-		if = {
-			limit = {
-				top_liege != this
-				liege = { government_has_flag = government_is_feudal }
-			}
-			custom_tooltip = feudal_liege_vassals_will_convert
-		}
-		##If I am Islamic, we will become clan.
-		if = {
-			limit = {
-				top_liege = this
-				faith = { religion_tag = islam_religion }
-			}
-			custom_tooltip = islamic_vassals_will_convert
-		}
-		##If I am not Islamic, we will become feudal.
-		else_if = {
-			limit = { top_liege = this }
-			custom_tooltip = other_vassals_will_convert
-		}
+	
+	custom_tooltip = all_holding_will_change
+	custom_tooltip = { #Simplified the tooltip
+		text = LR_high_tribal_vassal_adoption
 	}
+	#if = {
+	#	limit = {
+	#		government_has_flag = government_is_tribal
+	#	}
+	#	##General
+	#	custom_tooltip = all_holding_will_change
+	#	#Liege has feudal? Convert to feudal!
+	#	if = {
+	#		limit = {
+	#			top_liege != this
+	#			liege = { government_has_flag = government_is_feudal }
+	#		}
+	#		custom_tooltip = feudal_liege_vassals_will_convert
+	#	}
+	#	##If I am Islamic, we will become clan.
+	#	if = {
+	#		limit = {
+	#			top_liege = this
+	#			faith = { religion_tag = islam_religion }
+	#		}
+	#		custom_tooltip = islamic_vassals_will_convert
+	#	}
+	#	if = {
+	#		limit = {
+	#			top_liege = this
+	#			faith.religion = { is_in_family = rf_pagan }
+	#		}
+	#		custom_tooltip = feudal_liege_vassals_will_convert
+	#	}
+	#	if = {
+	#		limit = {
+	#			top_liege = this
+	#			faith.religion = { is_in_family = rf_graeco_roman }
+	#		}
+	#		change_government = feudal_liege_vassals_will_convert
+	#	}
+	#	if = {
+	#		limit = {
+	#			top_liege = this
+	#			faith.religion = { is_in_family = rf_archaic }
+	#		}
+	#		change_government = feudal_liege_vassals_will_convert
+	#	}
+	#	if = {
+	#		limit = {
+	#			top_liege != this
+	#			liege = { government_has_flag = government_is_clan }
+	#		}
+	#		custom_tooltip = clan_liege_vassals_will_convert
+	#	}		
+	#	##If I am not Islamic, we will become feudal.
+	#	else_if = {
+	#		limit = { top_liege = this }
+	#		custom_tooltip = other_vassals_will_convert
+	#	}
+	#}
 
 	hidden_effect = {
 		#Nuke tribal authorities.
@@ -1703,6 +1788,102 @@ convert_whole_realm_to_feudalism_effect = {
 		#Liege has taken clan, so become clan.
 		else_if = {
 			limit = {
+				government_has_flag = government_is_kinship
+			}
+			every_vassal_or_below = {
+				limit = { government_has_flag = government_is_tribal }
+				change_government = kinship_government
+				#Nuke tribal authorities.
+				if = {
+					limit = { has_realm_law = tribal_authority_0 }
+					remove_realm_law = tribal_authority_0
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_1 }
+					remove_realm_law = tribal_authority_1
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_2 }
+					remove_realm_law = tribal_authority_2
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_3 }
+					remove_realm_law = tribal_authority_3
+				}
+				if = {
+					limit = {
+						NOT = { has_realm_law = crown_authority_0 }
+					}
+					add_realm_law_skip_effects = crown_authority_0
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				government_has_flag = government_is_classical_feudal
+			}
+			every_vassal_or_below = {
+				limit = { government_has_flag = government_is_tribal }
+				change_government = classical_feudal_government
+				#Nuke tribal authorities.
+				if = {
+					limit = { has_realm_law = tribal_authority_0 }
+					remove_realm_law = tribal_authority_0
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_1 }
+					remove_realm_law = tribal_authority_1
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_2 }
+					remove_realm_law = tribal_authority_2
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_3 }
+					remove_realm_law = tribal_authority_3
+				}
+				if = {
+					limit = {
+						NOT = { has_realm_law = crown_authority_0 }
+					}
+					add_realm_law_skip_effects = crown_authority_0
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				government_has_flag = government_is_despotic
+			}
+			every_vassal_or_below = {
+				limit = { government_has_flag = government_is_tribal }
+				change_government = despot_government
+				#Nuke tribal authorities.
+				if = {
+					limit = { has_realm_law = tribal_authority_0 }
+					remove_realm_law = tribal_authority_0
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_1 }
+					remove_realm_law = tribal_authority_1
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_2 }
+					remove_realm_law = tribal_authority_2
+				}
+				if = {
+					limit = { has_realm_law = tribal_authority_3 }
+					remove_realm_law = tribal_authority_3
+				}
+				if = {
+					limit = {
+						NOT = { has_realm_law = crown_authority_0 }
+					}
+					add_realm_law_skip_effects = crown_authority_0
+				}
+			}
+		}
+		else_if = {
+			limit = {
 				government_has_flag = government_is_clan
 			}
 			every_vassal_or_below = {
@@ -1732,7 +1913,7 @@ convert_whole_realm_to_feudalism_effect = {
 					add_realm_law_skip_effects = crown_authority_0
 				}
 			}
-		}
+		}		
 		#Liege is not clan, become feudal.
 		else = {
 			every_vassal_or_below = {
