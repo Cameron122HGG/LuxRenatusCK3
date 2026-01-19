@@ -222,29 +222,35 @@ yearly_saharan.0001 = {
 		if = {
 			limit = {
 				root.faith = scope:target_county.faith
-				NOR = {
-					root.faith = { has_doctrine = doctrine_pluralism_pluralistic }
-					#Not syncretised with Eastern Family.
-					AND = {
-						root.faith = { has_doctrine = tenet_eastern_syncretism }
-						scope:source_county.faith.religion = { is_in_family = rf_eastern }
-					}
-					#Not syncretised with Christianity.
-					AND = {
-						root.faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
-						scope:source_county.faith = { religion_tag = christianity_religion }
-					}
-					#Not syncretised with Islam.
-					AND = {
-						root.faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
-						scope:source_county.faith = { religion_tag = islam_religion }
-					}
-					#Not syncretised with Judaism.
-					AND = {
-						root.faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
-						scope:source_county.faith = { religion_tag = judaism_religion }
-					}
-				}
+				#root.faith = {
+				#	faith_hostility_level = {
+				#		target = scope:source_county.faith.religion
+				#		value > faith_astray_level
+				#	}
+				#}
+				#NOR = {
+				#	root.faith = { has_doctrine = doctrine_pluralism_pluralistic }
+				#	#Not syncretised with Eastern Family.
+				#	AND = {
+				#		root.faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
+				#		scope:source_county.faith.religion = { is_in_family = rf_eastern }
+				#	}
+				#	#Not syncretised with Christianity.
+				#	AND = {
+				#		root.faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
+				#		scope:source_county.faith = { religion_tag = christianity_religion }
+				#	}
+				#	#Not syncretised with Islam.
+				#	AND = {
+				#		root.faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
+				#		scope:source_county.faith = { religion_tag = islam_religion }
+				#	}
+				#	#Not syncretised with Judaism.
+				#	AND = {
+				#		root.faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
+				#		scope:source_county.faith = { religion_tag = judaism_religion }
+				#	}
+				#}
 			}
 			#Piety scales depending on how monistic you are.
 			if = {
