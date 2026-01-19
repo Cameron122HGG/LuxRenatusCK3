@@ -4,6 +4,13 @@
 
 game_rule_create_spouse_and_children = {
 	$CHARACTER$ = {
+	if = {
+		limit = { 
+			OR = {
+				is_independent_ruler = yes
+				primary_title.tier > tier_duchy
+			}
+		}		
 		#If not married, create spouse
 		if = {
 			limit = {
@@ -331,6 +338,7 @@ game_rule_create_spouse_and_children = {
 				}
 			}
 		}
+	}
 	}
 }
 
