@@ -1643,62 +1643,67 @@ convert_whole_realm_to_feudalism_effect = {
 	}
 	##You're an independent anything else? Convert to feudal!
 	else = { change_government = feudal_government }
-	if = {
-		limit = {
-			government_has_flag = government_is_tribal
-		}
-		##General
-		custom_tooltip = all_holding_will_change
-		#Liege has feudal? Convert to feudal!
-		if = {
-			limit = {
-				top_liege != this
-				liege = { government_has_flag = government_is_feudal }
-			}
-			custom_tooltip = feudal_liege_vassals_will_convert
-		}
-		##If I am Islamic, we will become clan.
-		if = {
-			limit = {
-				top_liege = this
-				faith = { religion_tag = islam_religion }
-			}
-			custom_tooltip = islamic_vassals_will_convert
-		}
-		if = {
-			limit = {
-				top_liege = this
-				faith.religion = { is_in_family = rf_pagan }
-			}
-			custom_tooltip = feudal_liege_vassals_will_convert
-		}
-		if = {
-			limit = {
-				top_liege = this
-				faith.religion = { is_in_family = rf_graeco_roman }
-			}
-			change_government = feudal_liege_vassals_will_convert
-		}
-		if = {
-			limit = {
-				top_liege = this
-				faith.religion = { is_in_family = rf_archaic }
-			}
-			change_government = feudal_liege_vassals_will_convert
-		}
-		if = {
-			limit = {
-				top_liege != this
-				liege = { government_has_flag = government_is_clan }
-			}
-			custom_tooltip = clan_liege_vassals_will_convert
-		}		
-		##If I am not Islamic, we will become feudal.
-		else_if = {
-			limit = { top_liege = this }
-			custom_tooltip = other_vassals_will_convert
-		}
+	
+	custom_tooltip = all_holding_will_change
+	custom_tooltip = { #Simplified the tooltip
+		text = LR_high_tribal_vassal_adoption
 	}
+	#if = {
+	#	limit = {
+	#		government_has_flag = government_is_tribal
+	#	}
+	#	##General
+	#	custom_tooltip = all_holding_will_change
+	#	#Liege has feudal? Convert to feudal!
+	#	if = {
+	#		limit = {
+	#			top_liege != this
+	#			liege = { government_has_flag = government_is_feudal }
+	#		}
+	#		custom_tooltip = feudal_liege_vassals_will_convert
+	#	}
+	#	##If I am Islamic, we will become clan.
+	#	if = {
+	#		limit = {
+	#			top_liege = this
+	#			faith = { religion_tag = islam_religion }
+	#		}
+	#		custom_tooltip = islamic_vassals_will_convert
+	#	}
+	#	if = {
+	#		limit = {
+	#			top_liege = this
+	#			faith.religion = { is_in_family = rf_pagan }
+	#		}
+	#		custom_tooltip = feudal_liege_vassals_will_convert
+	#	}
+	#	if = {
+	#		limit = {
+	#			top_liege = this
+	#			faith.religion = { is_in_family = rf_graeco_roman }
+	#		}
+	#		change_government = feudal_liege_vassals_will_convert
+	#	}
+	#	if = {
+	#		limit = {
+	#			top_liege = this
+	#			faith.religion = { is_in_family = rf_archaic }
+	#		}
+	#		change_government = feudal_liege_vassals_will_convert
+	#	}
+	#	if = {
+	#		limit = {
+	#			top_liege != this
+	#			liege = { government_has_flag = government_is_clan }
+	#		}
+	#		custom_tooltip = clan_liege_vassals_will_convert
+	#	}		
+	#	##If I am not Islamic, we will become feudal.
+	#	else_if = {
+	#		limit = { top_liege = this }
+	#		custom_tooltip = other_vassals_will_convert
+	#	}
+	#}
 
 	hidden_effect = {
 		#Nuke tribal authorities.
