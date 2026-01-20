@@ -1,6 +1,87 @@
 ﻿
 # Restore the Western Roman Empire if its gone.
+LR_restore_western_empire_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
+	}
+	desc = LR_restore_western_empire_decision_desc
+	selection_tooltip = LR_restore_western_empire_decision_tooltip
+	decision_group_type = roman
 
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 120
+		kingdom = 120
+		empire = 120
+		hegemony = 120
+	}
+
+	is_shown = {
+		culture = { has_cultural_pillar = heritage_latin }
+		is_ruler = yes
+		is_playable_character = yes
+		highest_held_title_tier > 2 #Dukes and above
+		capital_province = { geographical_region = ghw_region_italy }
+		NOT = { exists = title:e_spqr.holder }
+
+		#Just to guarantee
+		#is_roman_emperor_trigger = no
+	}
+
+	is_valid = {
+		#NOT = { exists = title:e_hre }
+		prestige_level >= very_high_prestige_level
+		has_title = title:e_spqr
+		completely_controls_region = custom_western_imperial_core
+	}
+
+	is_valid_showing_failures_only = {
+		is_landed = yes
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+		is_at_war = no
+	}
+
+	effect = {
+		custom_tooltip = LR_restore_western_empire_decision_effect_tooltip
+		show_as_tooltip = {
+			restore_western_rome_scripted_effect = yes
+		}
+
+		if = {
+			limit = { has_ep3_dlc_trigger = yes }			
+			convert_to_administrative_from_feudalism_effect = { 
+				GOVERNMENT_TO_ADOPT = flag:administrative 
+			}
+		}
+
+		trigger_event = {
+			id = LR_major_decisions.0003
+		}
+
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_restored_western_roman_empire
+			}
+			set_global_variable = {
+				name = flag_restored_western_roman_empire
+				value = root
+			}
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
 
 # Upgrade the WRE to a Hegemony
 LR_retake_western_provinces_decision = {
