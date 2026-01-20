@@ -1,4 +1,79 @@
-﻿create_roman_empire_spqr_scripted_effect = {
+﻿restore_western_rome_scripted_effect = {
+	add_trait = augustus
+	if = {
+		limit = { has_dlc_feature = legends }
+		create_legend_seed = {
+			type = legitimizing
+			quality = illustrious
+			chronicle = new_title
+			properties = {
+				title = title:e_spqr
+				founder = root
+			}
+		}
+	}
+
+	hidden_effect = {
+		#Shift all Kingdoms.
+		title:k_sicily = { 
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_lombardy = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_venice = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_rome = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_sardinia = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		title:k_siracusa = {
+			set_de_jure_liege_title = title:e_spqr
+		}
+		
+		if = {
+			limit = {
+				exists = title:k_mediterranean_sea.holder
+			}
+			title:k_mediterranean_sea = { set_de_jure_liege_title = title:e_spqr }
+		}
+	}
+
+	#Part 2: Re-establish the Empire
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	
+	title:e_spqr = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	
+	resolve_title_and_vassal_change = scope:change
+	
+	every_held_title = { #Should destroy all kingdoms owned at the time.
+		limit = {
+			tier = tier_kingdom
+		}
+		root = { destroy_title = prev }
+	}
+
+	every_held_title = { #Should destroy all other Empires owned at the time.
+		limit = {
+			tier = tier_empire
+			NOT = { this = title:e_spqr }
+		}
+		root = { destroy_title = prev }
+	}
+}
+create_roman_empire_spqr_scripted_effect = {
 	add_trait = augustus
 	#Create Roman Empire, shift dejure/history/laws, destroy e_spqr.
 	hidden_effect = {
