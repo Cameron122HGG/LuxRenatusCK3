@@ -1,0 +1,59 @@
+﻿namespace = lr_gov_events
+
+lr_gov_events.0001 = {
+	type = character_event
+	title = lr_gov_events.0001.t
+	desc = lr_gov_events.0001.desc
+	theme = realm
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = root
+		animation = storyteller
+	}
+
+	immediate = {
+		custom_tooltip = {
+			text = lr_gov_events_abandon_high_tribal
+		}
+		hidden_effect = {
+			every_liege_or_above = {
+				limit = {
+					NOT = { top_liege = this }
+				}
+				send_interface_message = {
+					type = event_stewardship_neutral_with_text
+					title = msg_vassal_feudalised
+					desc = msg_vassal_feudalised_desc
+					right_icon = root
+				}
+			}
+		}
+	}
+
+	option = {
+		name = lr_gov_events.0001.a
+	}
+}
+
+lr_gov_events.0002 = {
+	type = letter_event
+	opening = lr_gov_events.0002.opening
+	desc = lr_gov_events.0001.desc
+	sender = {
+		character = scope:actor
+		animation = personality_rational
+	}
+
+	immediate = {
+		custom_tooltip = {
+			text = lr_gov_events_abandon_high_tribal
+		}	
+	}
+
+	option = {
+		name = lr_gov_events.0001.a
+	}
+}
+
+
+
