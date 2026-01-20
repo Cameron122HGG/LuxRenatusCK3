@@ -34,7 +34,7 @@ LR_restore_western_empire_decision = {
 		#NOT = { exists = title:e_hre }
 		prestige_level >= very_high_prestige_level
 		has_title = title:e_spqr
-		completely_controls_region = custom_western_imperial_core
+		completely_controls_region = custom_spqr_imperial_core
 	}
 
 	is_valid_showing_failures_only = {
@@ -396,7 +396,7 @@ restore_western_diocese_system_decision = {
     }
 
     is_valid = {
-        completely_controls_region = custom_western_imperial_core
+        completely_controls_region = custom_western_dioceses
         
         custom_tooltip = {
             text = western_diocese_kingdoms_held_or_vassals_tt
@@ -404,44 +404,101 @@ restore_western_diocese_system_decision = {
                 limit = {
                     exists = title:k_lombardy.holder
                 }
-                title:k_lombardy.holder = { liege = root }
+				OR = {
+					title:k_lombardy.holder = root
+					title:k_lombardy.holder = { liege = root }
+				}
             }
             trigger_if = {
                 limit = {
                     exists = title:k_venice.holder
                 }
-                title:k_venice.holder = { liege = root }
+				OR = {
+					title:k_venice.holder = root
+					title:k_venice.holder = { liege = root }
+				}
             }
             trigger_if = {
                 limit = {
                     exists = title:k_rome.holder
                 }
-                title:k_rome.holder = { liege = root }
+				OR = {
+					title:k_rome.holder = root
+					title:k_rome.holder = { liege = root }
+				}
             }
             trigger_if = {
                 limit = {
                     exists = title:k_sardinia.holder
                 }
-                title:k_sardinia.holder = { liege = root }
+				OR = {
+					title:k_sardinia.holder = root
+					title:k_sardinia.holder = { liege = root }
+				}
             }
             trigger_if = {
                 limit = {
                     exists = title:k_sicily.holder
                 }
-                title:k_sicily.holder = { liege = root }
+				OR = {
+					title:k_sicily.holder = root
+					title:k_sicily.holder = { liege = root }
+				}
             }
             trigger_if = {
                 limit = {
                     exists = title:k_siracusa.holder
                 }
-                title:k_siracusa.holder = { liege = root }
+				OR = {
+					title:k_siracusa.holder = root
+					title:k_siracusa.holder = { liege = root }
+				}
             }
             trigger_if = {
                 limit = {
                     exists = title:k_genoa.holder
                 }
-                title:k_genoa.holder = { liege = root }
+				OR = {
+					title:k_genoa.holder = root
+					title:k_genoa.holder = { liege = root }
+				}
             }
+            trigger_if = {
+                limit = {
+                    exists = title:k_bavaria.holder
+                }
+				OR = {
+					title:k_bavaria.holder = root
+					title:k_bavaria.holder = { liege = root }
+				}
+            }
+            trigger_if = {
+                limit = {
+                    exists = title:k_croatia.holder
+                }
+				OR = {
+					title:k_croatia.holder = root
+					title:k_croatia.holder = { liege = root }
+				}
+            }
+            trigger_if = {
+                limit = {
+                    exists = title:k_mediterranean_sea.holder
+                }
+				OR = {
+					title:k_mediterranean_sea.holder = root
+					title:k_mediterranean_sea.holder = { liege = root }
+				}
+            }
+            trigger_if = {
+                limit = {
+                    exists = title:k_austria.holder
+                }
+				OR = {
+					title:k_austria.holder = root
+					title:k_austria.holder = { liege = root }
+				}
+            }			
         }
     }
 
