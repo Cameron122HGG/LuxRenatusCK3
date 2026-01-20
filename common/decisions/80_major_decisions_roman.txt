@@ -1,5 +1,5 @@
 ﻿
-# Restore the Western Roman Empire #DONE 
+# Restore the Western Roman Empire if its gone.
 LR_restore_western_empire_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
@@ -27,7 +27,7 @@ LR_restore_western_empire_decision = {
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
-				target = flag:flag_unified_italian_empire
+				target = flag:flag_restored_western_roman_empire
 			}
 		}
 		NOT = {  #Too late.
@@ -82,10 +82,10 @@ LR_restore_western_empire_decision = {
 		hidden_effect = {
 			add_to_global_variable_list = {
 				name = unavailable_unique_decisions
-				target = flag:flag_unified_italian_empire
+				target = flag:flag_restored_western_roman_empire
 			}
 			set_global_variable = {
-				name = flag_unified_italian_empire
+				name = flag_restored_western_roman_empire
 				value = root
 			}
 		}
@@ -100,7 +100,7 @@ LR_restore_western_empire_decision = {
 	}
 }
 
-# Re-establish Theodosian Borders (western)  
+# Upgrade the WRE to a Hegemony
 LR_retake_western_provinces_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
@@ -289,7 +289,6 @@ restore_wre_roman_empire_decision = {
 	}
 }
 
-
 LR_reunify_roman_empire_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
@@ -386,9 +385,7 @@ LR_reunify_roman_empire_decision = {
 	}
 }
 
-
-
-# Re-establish the Diocese System
+# Restore the Administrative System of the Western Roman Empire
 restore_western_diocese_system_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -503,7 +500,7 @@ restore_western_diocese_system_decision = {
     }
 }
 
-# Re-establish the Eastern Diocese 
+# Restore the Administrative System of the Eastern Roman Empire 
 restore_eastern_diocese_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -642,7 +639,7 @@ restore_eastern_diocese_decision = {
     }
 }
 
-# Re-establish the Dioceses of Gallia and Viennensis
+# Restore the Roman Administrative System of Gaul
 restore_diocese_gallia_viennensis_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -758,7 +755,7 @@ restore_diocese_gallia_viennensis_decision = {
     }
 }
 
-# Re-establish the Dioceses of Africa and Mauretania
+# Restore the Roman Dioceses of Africa and Mauretania
 restore_diocese_africa_mauretania_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -855,7 +852,7 @@ restore_diocese_africa_mauretania_decision = {
     }
 }
 
-# Restore the Exarchate of Aegyptus
+# Restore the Roman Diocese of Aegyptus
 restore_diocese_aegyptus_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -943,7 +940,7 @@ restore_diocese_aegyptus_decision = {
     }
 }
 
-# Restore the Exarchate of Syria Palestina
+# Restore Levantine Provinces
 restore_diocese_syria_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -1043,7 +1040,7 @@ restore_diocese_syria_decision = {
     }
 }
 
-# Re-establish the Diocese of Hispania
+# Restore the Roman of Diocese of Hispania
 restore_diocese_hispania_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -1195,7 +1192,7 @@ restore_diocese_hispania_decision = {
     }
 }
 
-# Re-establish the Diocese of Britannia
+# Restore the Roman Diocese of Britannia
 restore_diocese_britannia_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -1520,63 +1517,63 @@ restore_roman_empire_decision = {
 }
 
 # Uniting Italy Vanilla disabled
-unify_italian_empire_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
-	}
-	desc = unify_italian_empire_decision_desc
-	selection_tooltip = unify_italian_empire_decision_tooltip
-	decision_group_type = major
-
-	ai_check_interval = 120
-
-	is_shown = {
-		always = no
-	}
-
-	is_valid = {
-		prestige_level >= very_high_prestige_level
-		has_title = title:e_spqr
-		#All the Peninsula
-		completely_controls_region = world_europe_south_italy
-		#And Illyria
-		completely_controls_region = custom_roman_illyricum
-	}
-
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		is_independent_ruler = yes
-		is_at_war = no
-	}
-
-	effect = {
-		gain_heroic_legend_seed_tooltip_effect = yes
-		custom_tooltip = unify_italian_empire_decision_effect_tooltip
-		trigger_event = {
-			id = roman_restoration.0140
-		}
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_unified_italian_empire
-			}
-			set_global_variable = {
-				name = flag_unified_italian_empire
-				value = root
-			}
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 100
-	}
-}
+#unify_italian_empire_decision = {
+#	picture = {
+#	#	reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+#	}
+#	desc = unify_italian_empire_decision_desc
+#	selection_tooltip = unify_italian_empire_decision_tooltip
+#	decision_group_type = major
+#
+#	ai_check_interval = 120
+#
+#	is_shown = {
+#		always = no
+#	}
+#
+#	is_valid = {
+#		prestige_level >= very_high_prestige_level
+#		has_title = title:e_spqr
+#		#All the Peninsula
+#		completely_controls_region = world_europe_south_italy
+#		#And Illyria
+#		completely_controls_region = custom_roman_illyricum
+#	}
+#
+#	is_valid_showing_failures_only = {
+#		is_landed = yes
+#		is_capable_adult = yes
+#		is_imprisoned = no
+#		is_independent_ruler = yes
+#		is_at_war = no
+#	}
+#
+#	effect = {
+#		gain_heroic_legend_seed_tooltip_effect = yes
+#		custom_tooltip = unify_italian_empire_decision_effect_tooltip
+#		trigger_event = {
+#			id = roman_restoration.0140
+#		}
+#		hidden_effect = {
+#			add_to_global_variable_list = {
+#				name = unavailable_unique_decisions
+#				target = flag:flag_unified_italian_empire
+#			}
+#			set_global_variable = {
+#				name = flag_unified_italian_empire
+#				value = root
+#			}
+#		}
+#	}
+#	
+#	ai_potential = {
+#		always = yes
+#	}
+#
+#	ai_will_do = {
+#		base = 100
+#	}
+#}
 
 
 
