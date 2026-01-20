@@ -815,11 +815,11 @@ retake_western_provinces_decision_effect = {
 		#Italia
 		# Shift the Kingdoms
 		every_county_in_region = {
-			region = custom_western_imperial_core
-			kingdom = { add_to_list = custom_western_imperial_core_list }
+			region = custom_spqr_imperial_core
+			kingdom = { add_to_list = custom_spqr_imperial_core }
 		}	
 		every_in_list = {
-			list = custom_western_imperial_core_list
+			list = custom_spqr_imperial_core
 			limit = {
 				NOT = { de_jure_liege = title:e_praetorian_prefecture_italia }
 			}
@@ -1007,6 +1007,18 @@ restore_western_diocese_system_decision_effect = {
 		limit = { exists = title:k_mediterranean_sea.holder }
 		destroy_title = title:k_mediterranean_sea
 	}
+	if = {
+		limit = { exists = title:k_genoa.holder }
+		destroy_title = title:k_genoa
+	}	
+	if = {
+		limit = { exists = title:k_venice.holder }
+		destroy_title = title:k_venice
+	}	
+	if = {
+		limit = { exists = title:k_austria.holder }
+		destroy_title = title:k_austria
+	}		
 
 	hidden_effect = {
 		#Fix. Carinthia. For. Reasons.
