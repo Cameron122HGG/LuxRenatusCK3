@@ -8,6 +8,7 @@ LR_restore_western_empire_decision = {
 	selection_tooltip = LR_restore_western_empire_decision_tooltip
 	decision_group_type = roman
 
+
 	ai_check_interval_by_tier = {
 		barony = 0
 		county = 0
@@ -23,25 +24,7 @@ LR_restore_western_empire_decision = {
 		is_playable_character = yes
 		highest_held_title_tier > 2 #Dukes and above
 		capital_province = { geographical_region = ghw_region_italy }
-		
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_western_roman_empire
-			}
-		}
-		NOT = {  #Too late.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_roman_empire
-			}
-		}
-		NOT = {  #Too late.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_reformed_carolingian_empire
-			}
-		}
+		NOT = { exists = title:e_spqr.holder }
 
 		#Just to guarantee
 		#is_roman_emperor_trigger = no
@@ -425,6 +408,12 @@ restore_western_diocese_system_decision = {
             }
             trigger_if = {
                 limit = {
+                    exists = title:k_venice.holder
+                }
+                title:k_venice.holder = { liege = root }
+            }
+            trigger_if = {
+                limit = {
                     exists = title:k_rome.holder
                 }
                 title:k_rome.holder = { liege = root }
@@ -443,15 +432,15 @@ restore_western_diocese_system_decision = {
             }
             trigger_if = {
                 limit = {
-                    exists = title:k_bavaria.holder
+                    exists = title:k_siracusa.holder
                 }
-                title:k_bavaria.holder = { liege = root }
+                title:k_siracusa.holder = { liege = root }
             }
             trigger_if = {
                 limit = {
-                    exists = title:k_croatia.holder
+                    exists = title:k_genoa.holder
                 }
-                title:k_croatia.holder = { liege = root }
+                title:k_genoa.holder = { liege = root }
             }
         }
     }
