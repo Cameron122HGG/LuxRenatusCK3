@@ -12,18 +12,17 @@ LR_diadochi_seleukid_kingdom_decision = {
         is_ruler = yes
         is_playable_character = yes
 		NOT = { exists = title:k_seleukid_kingdom.holder }
-		has_trait = trait:bloodline_seleukos
-		OR = {
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_antipatrid_empire }
 		NOT = { has_primary_title = title:e_ptolemaic_empire }
-		}
 		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
 		NOT = { dynasty = dynasty:dynasty_hellenic_antipater }
 		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios}
 		OR = {
-		dynasty = dynasty:dynasty_hellenic_seleukid
-		dynasty = dynasty:dynasty_hellenic_seleukos
+			dynasty = dynasty:dynasty_hellenic_seleukid
+			dynasty = dynasty:dynasty_hellenic_seleukos
+			has_trait = trait:bloodline_seleukos
+			dynasty = { has_dynasty_perk = bloodline_seleukos }			
 		}
         NOT = {
             is_target_in_global_variable_list = {
@@ -31,6 +30,10 @@ LR_diadochi_seleukid_kingdom_decision = {
                 target = flag:flag_lux_seleukid_reborn
             }
         }
+		custom_tooltip = {
+			text = primary_title_is_kingdom_tooltip
+			primary_title.tier = tier_kingdom
+		}		
     }
     is_valid = {
         is_landed = yes
@@ -44,8 +47,8 @@ LR_diadochi_seleukid_kingdom_decision = {
 		   NOT = { exists = title:e_byzantium.holder }
 		}
 		OR = {
-		dynasty = dynasty:dynasty_hellenic_seleukid
-		dynasty = dynasty:dynasty_hellenic_seleukos
+			dynasty = dynasty:dynasty_hellenic_seleukid
+			dynasty = dynasty:dynasty_hellenic_seleukos
 		}
 		OR = {
 			faith = { religion_tag = solar_religion }
@@ -56,30 +59,30 @@ LR_diadochi_seleukid_kingdom_decision = {
 
 		completely_controls = title:k_syria
 		completely_controls = title:k_jerusalem
-		OR = {
-		    completely_controls = title:k_mesopotamia
-			completely_controls = title:k_osroene
-		}
+		completely_controls = title:k_mesopotamia 
+		completely_controls = title:k_osroene
     }
     cost = {
-         gold = 6000
+		prestige = 2000
     }
     effect = {
 		custom_tooltip = LR_diadochi_seleukid_kingdom_effect_tooltip
 
-	hidden_effect = {
-	    change_government = classical_administrative_government
-	}
-    hidden_effect = {
-            add_to_global_variable_list = {
-                name = unavailable_unique_decisions
-                target = flag:flag_lux_seleukid_reborn
-            }
-            set_global_variable = {
-                name = flag_lux_seleukid_reborn
-                value = root
-            }
-        }
+		#hidden_effect = {
+		#	change_government = classical_administrative_government
+		#}
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_lux_seleukid_reborn
+			}
+			set_global_variable = {
+				name = flag_lux_seleukid_reborn
+				value = root
+			}
+			create_seleukid_kingdom_scripted_effect = yes
+		}
+		root = { save_scope_as = scoped_ruler }
 		trigger_event = LR_diadochi_kingdoms_events.0001
     }
     ai_potential = {
@@ -103,24 +106,23 @@ LR_diadochi_ptolemaic_kingdom_decision = {
         is_ruler = yes
         is_playable_character = yes
 		NOT = { exists = title:k_ptolemaic_kingdom.holder }
-		has_trait = trait:bloodline_ptolemaios
-		OR = {
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_antipatrid_empire }
 		NOT = { has_primary_title = title:e_seleukid_empire }
-		}
 		NOT = { dynasty = dynasty:dynasty_hellenic_antigonid }
 		NOT = { dynasty = dynasty:dynasty_hellenic_antipater }
 		NOT = { dynasty = dynasty:dynasty_hellenic_seleukid }
 		OR = {
-		dynasty = dynasty:dynasty_hellenic_ptolemaios
+			dynasty = dynasty:dynasty_hellenic_ptolemaios
+			has_trait = trait:bloodline_ptolemaios
+			dynasty = { has_dynasty_perk = bloodline_ptolemaios }					
 		}
         NOT = {
             is_target_in_global_variable_list = {
                 name = unavailable_unique_decisions
                 target = flag:flag_lux_ptolemaios_reborn
             }
-        }
+        }		
     }
 
     is_valid = {
@@ -146,35 +148,39 @@ LR_diadochi_ptolemaic_kingdom_decision = {
 
 		completely_controls = title:k_egypt
 		completely_controls = title:k_kyrene
-		OR = {
-		    completely_controls = title:k_cyprus
-			completely_controls = title:k_krete
-		}
+		completely_controls = title:k_cyprus
+		completely_controls = title:k_krete
+		custom_tooltip = {
+			text = primary_title_is_kingdom_tooltip
+			primary_title.tier = tier_kingdom
+		}		
 	}
     
 
     cost = {
-         gold = 6000
+		prestige = 2000
     }
 
     effect = {
 		custom_tooltip = LR_diadochi_ptolemaic_kingdom_effect_tooltip
 
-	hidden_effect = {
-	    change_government = classical_administrative_government
-	}
+		#hidden_effect = {
+		#    change_government = classical_administrative_government
+		#}
 
-    hidden_effect = {
-            add_to_global_variable_list = {
-                name = unavailable_unique_decisions
-                target = flag:flag_lux_ptolemaic_reborn
-            }
-            set_global_variable = {
-                name = flag_lux_ptolemaic_reborn
-                value = root
-            }
-        }
-		trigger_event = LR_diadochi_kingdoms_events.0001
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_lux_ptolemaic_reborn
+			}
+			set_global_variable = {
+				name = flag_lux_ptolemaic_reborn
+				value = root
+			}
+			create_ptolemaic_kingdom_scripted_effect = yes
+		}
+		root = { save_scope_as = scoped_ruler }
+		trigger_event = LR_diadochi_kingdoms_events.0005
     }
 
     ai_potential = {
@@ -189,12 +195,12 @@ LR_diadochi_ptolemaic_kingdom_decision = {
 
 create_alexanders_hegemony_decision = {
 	picture = {
-		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
+		reference = "gfx/interface/illustrations/decisions/decision_alexanders_restoration.dds"
 	}
 	decision_group_type = major
 
 	desc = create_alexanders_hegemony_decision_desc
-	selection_tooltip = create_alexanders_hegemony_decision_tt
+	selection_tooltip = create_alexanders_hegemony_decision_tooltip
 	
 	sort_order = 1000 # Should be at the very top
 
@@ -242,7 +248,18 @@ create_alexanders_hegemony_decision = {
 			scope:new_hegemon = {
 				get_title = title:h_alexander_empire
 			}
-			title:k_mesopotamia = { set_de_jure_liege_title = title:e_persia }
+			if = {
+				limit = { 
+					NOT = { title:k_mesopotamia.de_jure_liege = title:e_seleukid_empire }
+				}
+				title:k_mesopotamia = { set_de_jure_liege_title = title:e_persia }
+			}
+			if = {
+				limit = { 
+					NOT = { title:k_osroene.de_jure_liege = title:e_seleukid_empire }
+				}
+				title:k_osroene = { set_de_jure_liege_title = title:e_persia }
+			}			
 			every_empire = {
 				limit = {
 					#tier = tier_empire
@@ -252,6 +269,8 @@ create_alexanders_hegemony_decision = {
 			}			
 		}
 		
+		root = { save_scope_as = scoped_ruler }
+		trigger_event = LR_diadochi_kingdoms_events.0003		
 		set_global_variable = {
 			name = created_alexanders_hegemony
 			value = yes

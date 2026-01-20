@@ -85,7 +85,7 @@ convert_high_tribal_to_feudalism_decision = {
 	}
 
 	effect = {
-		gain_legitimizing_legend_seed_tooltip_effect = yes		
+		#gain_legitimizing_legend_seed_tooltip_effect = yes		
 		if = {
 			limit = {
 				top_liege != this
@@ -187,16 +187,16 @@ convert_high_tribal_to_feudalism_decision = {
 			}
 		}
 		
-		#trigger_event = LR_high_tribal_decision.0001
+		trigger_event = lr_gov_events.0001
 		save_scope_as = actor
-		#hidden_effect = {
-		#	every_vassal = {
-		#		trigger_event = {
-		#			id = LR_high_tribal_decision.0002
-		#			days = 3
-		#		}
-		#	}
-		#}
+		hidden_effect = {
+			every_vassal = {
+				trigger_event = {
+					id = lr_gov_events.0002
+					days = 3
+				}
+			}
+		}
 	}
 
 	ai_potential = {
