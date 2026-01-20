@@ -751,111 +751,6 @@ create_eastern_roman_empire_scripted_effect = {
 		set_de_jure_liege_title = title:h_eastern_roman_empire
 	}
 }
-
-restore_spqr_scripted_effect = {
-	add_trait = augustus
-	if = {
-		limit = { has_dlc_feature = legends }
-		create_legend_seed = {
-			type = legitimizing
-			quality = illustrious
-			chronicle = new_title
-			properties = {
-				title = title:e_spqr
-				founder = root
-			}
-		}
-	}
-
-	hidden_effect = {
-		#Part 1: Create New de Jures
-		#Shift counties
-		
-		#To Moravia
-		title:c_hohenau = { set_de_jure_liege_title = title:d_moravia }
-		title:c_krems = { set_de_jure_liege_title = title:d_moravia }
-		title:c_freistadt = { set_de_jure_liege_title = title:d_moravia }
-		
-		#To Bohemia
-		title:c_passau = { set_de_jure_liege_title = title:d_bohemia }
-		#To Carinthia
-		title:c_lienz = { set_de_jure_liege_title = title:d_carinthia }
-		#To Curezzia
-		#title:c_grunningen = { set_de_jure_liege_title = title:d_currezia }
-		#To Romagna
-		title:c_urbino = { set_de_jure_liege_title = title:d_ravenna }
-		#To Transjurania
-		title:c_zurich = { set_de_jure_liege_title = title:d_transjurania }
-
-		#Shift duchies
-		#To Germany
-		title:d_nordgau = { set_de_jure_liege_title = title:k_east_francia }
-		
-		#To Bavaria
-		title:d_currezia = { set_de_jure_liege_title = title:k_bavaria }	
-		#To Croatia
-		title:d_somogy = { set_de_jure_liege_title = title:k_croatia }
-		title:d_visegrad = { set_de_jure_liege_title = title:k_croatia }
-		title:d_gyor = { set_de_jure_liege_title = title:k_croatia }
-		title:d_syrmia = { set_de_jure_liege_title = title:k_croatia }	
-		
-		# Then shift all Kingdoms.
-		title:k_sicily = { 
-			set_de_jure_liege_title = title:e_spqr
-		}
-		title:k_lombardy = {
-			set_de_jure_liege_title = title:e_spqr
-		}
-		title:k_bavaria = {
-			set_de_jure_liege_title = title:e_spqr
-		}
-		title:k_venice = {
-			set_de_jure_liege_title = title:e_spqr
-		}
-		title:k_croatia = {
-			set_de_jure_liege_title = title:e_spqr
-		}
-		title:k_rome = {
-			set_de_jure_liege_title = title:e_spqr
-		}
-		title:k_sardinia = {
-			set_de_jure_liege_title = title:e_spqr
-		}
-
-	}
-
-	#Part 2: Re-establish the Empire
-	create_title_and_vassal_change = {
-		type = created
-		save_scope_as = change
-		add_claim_on_loss = no
-	}
-	
-	title:e_spqr = {
-		change_title_holder = {
-			holder = root
-			change = scope:change
-		}
-	}
-	
-	resolve_title_and_vassal_change = scope:change
-	
-	every_held_title = { #Should destroy all kingdoms owned at the time.
-		limit = {
-			tier = tier_kingdom
-		}
-		root = { destroy_title = prev }
-	}
-
-	every_held_title = { #Should destroy all other Empires owned at the time.
-		limit = {
-			tier = tier_empire
-			NOT = { this = title:e_spqr }
-		}
-		root = { destroy_title = prev }
-	}
-}
-
 retake_western_provinces_decision_effect = {
 	save_scope_as = root_scope
 	add_trait = augustus
@@ -2172,28 +2067,7 @@ retake_eastern_provinces_decision_effect = {
 	hidden_effect = { 
 		legend_seed_great_deed_dynasty_effect = yes 
 
-		# Shift Sicily to Italia
-		if = { 
-			limit = {
-				NOR = { 
-					exists = title:e_spqr.holder 
-					exists = title:h_western_roman_empire.holder 
-				}
-			}
-			title:k_sicily = { set_de_jure_liege_title = title:e_spqr }	
-		}	
 
-		# Shift Croatia to Carpathia
-		if = { 
-			limit = {
-				NOR = { 
-					exists = title:e_spqr.holder 
-					exists = title:h_western_roman_empire.holder 
-				}
-			}
-			title:d_syrmia = { set_de_jure_liege_title = title:k_croatia }	
-			title:k_croatia = { set_de_jure_liege_title = title:e_carpathia }
-		}	
 
 		# Creating the Hegemony of the Eastern Roman Empire
 		# Create Eastern Roman Empire, shift dejure/history/laws, destroy e_byzantium.
@@ -2447,3 +2321,69 @@ create_roman_empire_scripted_effect = {
 	}
 }
 
+merge_pontus_effect = {
+	title:$PRIMARY$ = {
+		save_scope_as = rightful_title
+		every_in_de_jure_hierarchy = {
+			custom = merge_pontus_decision_vassal_$TEXT$
+			limit = {
+				tier < tier_empire
+			}
+			holder ?= {
+				if = {
+					limit = {
+						NOR = { 
+							is_in_list = merge_pontus_list 
+							this = root
+						}
+					}
+					add_opinion = {
+						modifier = rightful_king_opinion
+						target = root
+						opinion = 20
+					}
+					add_to_temporary_list = merge_pontus_list
+				}
+			}
+			custom_tooltip = merge_pontus_opinion
+		}
+	}
+	title:$SECONDARY$ = {
+		save_scope_as = destroyed_title
+		every_in_de_jure_hierarchy = {
+			custom = merge_pontus_culture_tooltip_$TEXT$
+			limit = {
+				tier = tier_county
+			}
+			hidden_effect = {
+				culture ?= {
+					if = {
+						limit = {
+							NOR = { 
+								is_in_list = merge_pontus_list 
+								this = root.culture
+								any_parent_culture_or_above = { this = root.culture }
+							}
+						}
+						change_cultural_acceptance = {
+							target = root.culture
+							value = -25
+							desc = cultural_acceptance_merge_pontus
+						}
+						add_to_list = merge_pontus_list
+					}
+				}
+			}
+			custom_tooltip = merge_pontus_culture_tooltip
+		}
+		every_in_de_jure_hierarchy = {
+			custom = merge_pontus_decision_tooltip_$TEXT$
+			limit = {
+				tier = tier_kingdom
+			}
+			hidden_effect = { set_de_jure_liege_title = title:$PRIMARY$ }
+			custom_tooltip = merge_pontus_decision_tooltip_2_$TEXT$
+		}
+	}
+	destroy_title = title:$SECONDARY$
+}
