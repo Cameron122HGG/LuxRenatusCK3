@@ -38,5 +38,48 @@ library_of_alexandria_01 = {
 	flag = travel_point_of_interest_learning
 	flag = special_university
 }
+honorius_palace_01 = {
 
+	construction_time = very_slow_construction_time
+	
+	type_icon = "icon_structure_palace_of_achen.dds"
+
+	can_construct = {
+		always = yes
+	}
+
+	show_disabled = yes
+	
+	cost_gold = 2000
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		monthly_prestige_gain_per_happy_powerful_vassal_add = 0.2
+		diplomacy_per_prestige_level = 1
+		#title_creation_cost_mult = -0.10
+	}
+
+	county_modifier = {
+		tax_mult = 0.10
+		development_growth = 0.20
+		development_growth_factor = 0.20
+	}
+	
+	province_modifier = {
+		monthly_income = 2
+	}
+	
+	ai_value = {
+		base = 100
+		culture_likely_to_fortify_modifier = yes
+		modifier = { # Fill all building slots before going for special buildings
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+	
+	type = special
+
+	flag = travel_point_of_interest_diplomatic
+}
 
