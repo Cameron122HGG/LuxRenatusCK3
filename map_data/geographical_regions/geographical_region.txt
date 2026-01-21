@@ -183,9 +183,9 @@ world_europe_south_east = {
 world_europe_south_italy = {
 	duchies = {
 		#Italia
-		d_verona d_lombardia d_genoa d_emilia d_ravenna d_toscana d_pisa d_ancona d_spoleto d_latium d_corsica d_sardinia d_venice d_piedmonte d_friuli
+		d_verona d_lombardia d_genoa d_emilia d_flaminia d_toscana d_pisa d_ancona d_valeria d_latium d_corsica d_sardinia d_venice d_piedmonte d_histria
 		#Sicily
-		d_benevento d_capua d_apulia d_salerno d_calabria d_sicily
+		d_samnium d_capua d_apulia d_salerno d_calabria d_sicily
 	}
 }
 world_europe_south = {
@@ -1302,9 +1302,9 @@ custom_rhineland = {
 custom_northern_italy = {
 	duchies = {
 		#k_rome
-		d_friuli d_verona d_piedmonte d_lombardia d_genoa d_emilia d_pisa d_toscana
+		d_histria d_verona d_piedmonte d_lombardia d_genoa d_emilia d_pisa d_toscana
 		#k_romagna
-		d_ravenna d_ancona d_spoleto
+		d_flaminia d_ancona d_valeria
 		#k_sardinia (exempting Sardinia)
 		d_corsica
 		#Exclude k_venezia and d_latium
@@ -1402,7 +1402,7 @@ custom_burgundy = { #Expanded dejure.
 
 custom_roman_empire = { #Only the provinces needed to restore the Empire, not the full borders.
 	duchies = {
-		d_latium d_corsica d_venice d_ravenna d_sicily d_genoa d_capua d_apulia d_thrace d_strymon d_antioch d_palestine d_alexandria d_athens d_tunis d_croatia d_thessalonika d_thessaly
+		d_latium d_corsica d_venice d_flaminia d_sicily d_genoa d_capua d_apulia d_thrace d_strymon d_antioch d_palestine d_alexandria d_athens d_tunis d_croatia d_thessalonika d_thessaly
 	}
 }
 
@@ -1511,9 +1511,16 @@ custom_roman_illyricum = {
 		d_slavonia
 		d_croatia
 		d_dalmatia
-		d_friuli
+		d_histria
 		d_tyrol
 		d_lower_bosna
+		
+		d_steyermark
+		d_krain
+		d_osterreich
+		d_salzburg
+		
+		d_syrmia
 	}
 }
 
@@ -1564,61 +1571,76 @@ custom_roman_italia_suburbicaria = {
 }
 
 custom_roman_italia_annonaria = {
-	counties = {
-		c_ravenna
-		c_urbino
-		c_bologna
-		c_ferrara
-		c_casentino
-		c_parma
-		c_modena
-		c_genoa
-		c_luni
-		c_monferrato
-		c_turin
-		c_novara
-		c_cuneo
-		c_tortona
-		c_lombardia
-		c_brescia
-		c_como
-		c_trent
-		c_pavia
-		c_cremona
-		c_mantua
-		c_verona
-		c_treviso
-		c_padua
-		c_polesine
-		c_aquileia
-		c_friuli
-		c_gorz
-		c_venezia
-		c_veneto
-		c_innsbruck
-		c_brixen
-		c_lienz
-		c_regensburg
-		c_munchen
-		c_eschenlohe
-		c_rothenburg
-		c_geisenhausen
-		c_frontenhausen
-		c_falkenstein
-		c_passau
-		c_augsburg
-		c_alpsee
-		c_kempten
-		c_ravensburg
-		c_burgau
-		c_grisons
-		c_zurich
-		c_sankt_gallen
-		c_grunningen
-		c_kranj
-		c_ljubljana
-		c_pula
+	duchies = {
+		d_genoa
+		d_piedmonte
+		d_lombardia
+		d_emilia
+		d_flaminia
+		d_verona
+		d_tyrol
+		d_bavaria
+		d_augsburg
+		d_histria
+		
+		d_nordgau #?
+		d_venice
 	}
+	#counties = {
+	#	c_ravenna
+	#	c_urbino
+	#	c_bologna
+	#	c_ferrara
+	#	c_casentino
+	#	c_parma
+	#	c_modena
+	#	c_genoa
+	#	c_luni
+	#	c_monferrato
+	#	c_turin
+	#	c_novara
+	#	c_cuneo
+	#	c_tortona
+	#	c_lombardia
+	#	c_brescia
+	#	c_como
+	#	c_trent
+	#	c_pavia
+	#	c_cremona
+	#	c_mantua
+	#	c_verona
+	#	c_treviso
+	#	c_padua
+	#	c_polesine
+	#	c_aquileia
+	#	c_friuli
+	#	c_gorz
+	#	c_venezia
+	#	c_veneto
+	#	c_innsbruck
+	#	c_brixen
+	#	c_lienz
+	#	c_regensburg
+	#	c_munchen
+	#	c_eschenlohe
+	#	c_rothenburg
+	#	c_geisenhausen
+	#	c_frontenhausen
+	#	c_falkenstein
+	#	c_passau
+	#	c_augsburg
+	#	c_alpsee
+	#	c_kempten
+	#	c_ravensburg
+	#	c_burgau
+	#	c_grisons
+	#	c_zurich
+	#	c_sankt_gallen
+	#	c_grunningen
+	#	c_kranj
+	#	c_ljubljana
+	#	c_pula
+	#}
 }
 
 custom_roman_viennensis = {
@@ -2033,7 +2055,7 @@ custom_outremer = {
 custom_sicily = {
 	duchies = {
 		#Sicily
-		d_benevento d_capua d_apulia d_salerno d_calabria d_sicily
+		d_samnium d_capua d_apulia d_salerno d_calabria d_sicily
 	}
 }
 
@@ -3274,7 +3296,7 @@ omnod_dalai_khanate_de_jure_region = {
 special_sicilian_culture_region = {
 	duchies = {
 		#Sicily
-		d_benevento d_capua d_apulia d_salerno d_calabria d_sicily
+		d_samnium d_capua d_apulia d_salerno d_calabria d_sicily
 	}
 }
 
@@ -3294,9 +3316,9 @@ special_cagot_region = {
 ghw_region_northern_italy = {
 	duchies = {
 		#Italy
-		d_friuli d_verona d_piedmonte d_lombardia d_genoa d_emilia d_pisa d_toscana
+		d_histria d_verona d_piedmonte d_lombardia d_genoa d_emilia d_pisa d_toscana
 		#Romagna
-		d_ravenna d_ancona d_spoleto d_latium
+		d_flaminia d_ancona d_valeria d_latium
 		#Venice
 		d_venice
 	}
@@ -3385,7 +3407,7 @@ ghw_region_mediterranean = {
 		#Sardinia
 		d_sardinia d_corsica
 		#Sicily
-		d_sicily d_benevento d_capua d_apulia d_salerno d_calabria
+		d_sicily d_samnium d_capua d_apulia d_salerno d_calabria
 		#Cyprus
 		d_cyprus
 		#Balearics
@@ -3572,7 +3594,7 @@ ghw_region_north_africa = {
 ghw_region_sicily = {
 	duchies = {
 		#Sicily
-		d_sicily d_benevento d_capua d_apulia d_salerno d_calabria
+		d_sicily d_samnium d_capua d_apulia d_salerno d_calabria
 	}
 }
 
@@ -3814,11 +3836,11 @@ ghw_region_mainland_greece = {
 ghw_region_italy = {
 	duchies = {
 		#Italy
-		d_friuli d_verona d_piedmonte d_lombardia d_genoa d_emilia d_pisa d_toscana
+		d_histria d_verona d_piedmonte d_lombardia d_genoa d_emilia d_pisa d_toscana
 		#Romagna
-		d_ravenna d_ancona d_spoleto d_latium
+		d_flaminia d_ancona d_valeria d_latium
 		#Sicily
-		d_sicily d_benevento d_capua d_apulia d_salerno d_calabria
+		d_sicily d_samnium d_capua d_apulia d_salerno d_calabria
 		#Venice
 		d_venice
 	}
@@ -4603,7 +4625,7 @@ dlc_ep1_region_south_east_europe = {
 		# k_serbia
 		d_duklja d_rashka d_macva d_syrmia
 		# Italia
-		d_verona d_lombardia d_genoa d_emilia d_ravenna d_toscana d_pisa d_ancona d_spoleto d_latium d_corsica d_sardinia d_venice d_piedmonte d_friuli
+		d_verona d_lombardia d_genoa d_emilia d_flaminia d_toscana d_pisa d_ancona d_valeria d_latium d_corsica d_sardinia d_venice d_piedmonte d_histria
 	}
 }
 
@@ -5944,7 +5966,7 @@ israel_region = {
 # Mediteranean Coastal Provinces
 mediteranean_coast = {
 	duchies = {
-		d_antioch d_lebanon d_urdunn d_palestine d_delta d_alexandria d_cyrenaica d_syrte d_tripolitania d_gabes d_tunis d_kroumerie d_bejaia d_alger d_tlemcen d_rif d_sevilla d_granada d_murcia d_valencia d_barcelona d_languedoc d_provence d_genoa d_pisa d_toscana d_latium d_capua d_salerno d_calabria d_sicily d_corsica d_sardinia d_mallorca d_apulia d_benevento d_spoleto d_ancona d_ravenna d_verona d_venice d_friuli d_istria d_dalmatia d_usora  d_duklja d_dyrrachion d_cephalonia d_epirus d_achaia d_krete d_aegean_islands d_athens d_thessaly d_thessalonika d_strymon d_thrace d_optimatoi d_opsikion d_ephese d_cibyrrhaeot d_cilicia d_cyprus
+		d_antioch d_lebanon d_urdunn d_palestine d_delta d_alexandria d_cyrenaica d_syrte d_tripolitania d_gabes d_tunis d_kroumerie d_bejaia d_alger d_tlemcen d_rif d_sevilla d_granada d_murcia d_valencia d_barcelona d_languedoc d_provence d_genoa d_pisa d_toscana d_latium d_capua d_salerno d_calabria d_sicily d_corsica d_sardinia d_mallorca d_apulia d_samnium d_valeria d_ancona d_flaminia d_verona d_venice d_histria d_istria d_dalmatia d_usora  d_duklja d_dyrrachion d_cephalonia d_epirus d_achaia d_krete d_aegean_islands d_athens d_thessaly d_thessalonika d_strymon d_thrace d_optimatoi d_opsikion d_ephese d_cibyrrhaeot d_cilicia d_cyprus
 	}
 	counties = {
 		c_farama
