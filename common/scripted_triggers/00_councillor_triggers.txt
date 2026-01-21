@@ -137,6 +137,22 @@ can_be_court_chaplain_trigger = {
 	$COURT_OWNER$ ?= {
 		NOT = { government_has_flag = government_is_nomadic }
 	}
+	trigger_if = {
+		limit = {
+			faith = { has_doctrine = doctrine_clerical_marriage_disallowed }
+		}	
+		is_married = no
+	}
+	trigger_if = {
+		limit = {
+			faith = { has_doctrine = doctrine_theocracy_temporal }
+		}
+		NOT = {
+			any_heir_title = {
+				holder = $COURT_OWNER$
+			}
+		}
+	}	
 	NOR = {
 		has_council_position = councillor_spouse
 		AND = {

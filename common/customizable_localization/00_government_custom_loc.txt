@@ -1087,10 +1087,10 @@ GetGovernmentIcon = {
 			trigger_else = {
 				trigger_if = {
 					limit = { is_ruler = yes }
-					government_has_flag = government_is_administrative
+					government_has_flag = government_is_vanilla_administrative
 				}
 				trigger_else = {
-					liege ?= { government_has_flag = government_is_administrative }
+					liege ?= { government_has_flag = government_is_vanilla_administrative }
 				}
 			}
 		}
@@ -1196,6 +1196,24 @@ GetGovernmentIcon = {
 		}
 		localization_key = classical_feudal_icon_concept
 	}
+	text = { # Kinship
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = kinship_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					has_government = kinship_government
+				}
+				trigger_else = {
+					liege ?= { has_government = kinship_government }
+				}
+			}
+		}
+		localization_key = kinship_government_icon_concept
+	}	
 	text = { # Classical Admin
 		trigger = {
 			trigger_if = {

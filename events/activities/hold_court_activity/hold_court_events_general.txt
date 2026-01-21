@@ -18808,25 +18808,41 @@ scripted_trigger hold_court_8120_syncretic_faith_trigger = {
 	scope:peasant.religion != root.religion
 	OR = {
 		AND = { # Eastern
-			scope:peasant.faith.religion = { is_in_family = rf_eastern }
-			faith = { has_doctrine = tenet_eastern_syncretism }
+			scope:peasant.faith = { has_doctrine = special_doctrine_is_eastern_faith }
+			faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
 		}
 		AND = { # Pagan
-			scope:peasant.faith = { has_doctrine_parameter = unreformed }
-			faith = { has_doctrine = tenet_unreformed_syncretism }
+			scope:peasant.faith = { has_doctrine = pagan_special_hostility_doctrine }
+			faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
 		}
 		AND = { # Christian
-			scope:peasant.religion = religion:christianity_religion
-			faith = { has_doctrine = tenet_christian_syncretism }
+			scope:peasant.faith = { has_doctrine = special_doctrine_is_christian_faith }
+			faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
 		}
 		AND = { # Islam
-			scope:peasant.religion = religion:islam_religion
-			faith = { has_doctrine = tenet_islamic_syncretism }
+			scope:peasant.faith = { has_doctrine = special_doctrine_is_islamic_faith }
+			faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
 		}
 		AND = { # Judaism
-			scope:peasant.religion = religion:judaism_religion
-			faith = { has_doctrine = tenet_jewish_syncretism }
+			scope:peasant.faith = { has_doctrine = special_doctrine_is_jewish_faith }
+			faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
 		}
+		AND = { # Greco-Roman
+			scope:peasant.faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
+			faith = { has_doctrine_parameter = graeco_roman_syncretic_actor_opinion_active }
+		}
+		AND = { # Archaic
+			scope:peasant.faith = { has_doctrine = archaic_special_hostility_doctrine }
+			faith = { has_doctrine_parameter = archaic_syncretic_actor_opinion_active }
+		}
+		AND = { # Zoroastrian
+			scope:peasant.faith = { has_doctrine = special_doctrine_is_zoroastrian_faith }
+			faith = { has_doctrine_parameter = persian_syncretic_actor_opinion_active }
+		}
+		AND = { # Gonostic
+			scope:peasant.faith = { has_doctrine = special_doctrine_is_gnostic_faith }
+			faith = { has_doctrine_parameter = gnostic_syncretic_actor_opinion_active }
+		}		
 	}
 }
 
@@ -19011,7 +19027,7 @@ hold_court.8120 = {
 			limit = {
 				AND = { 
 					scope:peasant.faith.religion = { is_in_family = rf_eastern }
-					faith = { has_doctrine = tenet_eastern_syncretism }
+					faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
 				}
 			}
 			custom_tooltip = hold_court.8120.b.tt_eastern # Eastern
@@ -19020,7 +19036,7 @@ hold_court.8120 = {
 			limit = {
 				AND = { 
 					scope:peasant.faith = { has_doctrine_parameter = unreformed }
-					faith = { has_doctrine = tenet_unreformed_syncretism }
+					faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
 				}
 			}
 			custom_tooltip = hold_court.8120.b.tt_pagan # Pagan
@@ -19029,7 +19045,7 @@ hold_court.8120 = {
 			limit = {
 				AND = { 
 					scope:peasant.religion = religion:christianity_religion
-					faith = { has_doctrine = tenet_christian_syncretism }
+					faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
 				}
 			}
 			custom_tooltip = hold_court.8120.b.tt_christianity # Christian
@@ -19038,7 +19054,7 @@ hold_court.8120 = {
 			limit = {
 				AND = { 
 					scope:peasant.religion = religion:islam_religion
-					faith = { has_doctrine = tenet_islamic_syncretism }
+					faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
 				}
 			}
 			custom_tooltip = hold_court.8120.b.tt_islam # Islam
@@ -24337,25 +24353,41 @@ scripted_trigger hold_court_8200_infidel_trigger = {
 	faith != root.faith
 	NOR = {
 		AND = { # Eastern
-			religion = { is_in_family = rf_eastern }
-			root.faith = { has_doctrine = tenet_eastern_syncretism }
+			faith = { has_doctrine = special_doctrine_is_eastern_faith }
+			root.faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
 		}
 		AND = { # Pagan
-			faith = { has_doctrine_parameter = unreformed }
-			root.faith = { has_doctrine = tenet_unreformed_syncretism }
+			faith = { has_doctrine = pagan_special_hostility_doctrine }
+			root.faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
 		}
 		AND = { # Christian
-			religion = religion:christianity_religion
-			root.faith = { has_doctrine = tenet_christian_syncretism }
+			faith = { has_doctrine = special_doctrine_is_christian_faith }
+			root.faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
 		}
 		AND = { # Islam
-			religion = religion:islam_religion
-			root.faith = { has_doctrine = tenet_islamic_syncretism }
+			faith = { has_doctrine = special_doctrine_is_islamic_faith }
+			root.faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
 		}
 		AND = { # Judaism
-			religion = religion:judaism_religion
-			root.faith = { has_doctrine = tenet_jewish_syncretism }
+			faith = { has_doctrine = special_doctrine_is_jewish_faith }
+			root.faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
 		}
+		AND = { # Greco-Roman
+			faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
+			root.faith = { has_doctrine_parameter = graeco_roman_syncretic_actor_opinion_active }
+		}
+		AND = { # Archaic
+			faith = { has_doctrine = archaic_special_hostility_doctrine }
+			root.faith = { has_doctrine_parameter = archaic_syncretic_actor_opinion_active }
+		}
+		AND = { # Zoroastrian
+			faith = { has_doctrine = special_doctrine_is_zoroastrian_faith }
+			root.faith = { has_doctrine_parameter = persian_syncretic_actor_opinion_active }
+		}
+		AND = { # Gonostic
+			faith = { has_doctrine = special_doctrine_is_gnostic_faith }
+			root.faith = { has_doctrine_parameter = gnostic_syncretic_actor_opinion_active }
+		}		
 	}
 	NAND = {
 		government_has_flag = government_is_theocracy

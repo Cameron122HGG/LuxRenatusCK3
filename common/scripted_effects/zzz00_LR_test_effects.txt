@@ -1,127 +1,1423 @@
 ﻿
 
 LR_test_effect = {
-	every_ruler = {
-		limit = { 
-			is_independent_ruler = yes 
-			is_landed = yes
-			domain_size > domain_limit
-			primary_title.tier > tier_duchy
-		}
-		save_temporary_scope_as = overlord_to_grant
-		every_held_title = {
-			limit = {
-				NOT = { 
-					this = scope:overlord_to_grant.capital_county 
-				}
-				tier = tier_county
-			}
-			# Grab the county for ease of reference.
-			save_temporary_scope_as = current_county
-			scope:current_county.de_jure_liege = {
-				create_title_and_vassal_change = {
-					type = created
-					save_scope_as = change
-					add_claim_on_loss = no
-				}
-				change_title_holder = {
-					holder = scope:overlord_to_grant
-					change = scope:change
-					take_baronies = no
-				}
-			}
-			resolve_title_and_vassal_change = scope:change
-			add_to_temporary_list = titles_for_granting
-		}
-		every_held_title = {
-			limit = {
-				NOT = { 
-					this = scope:overlord_to_grant.capital_county.duchy
-				}
-				title_capital_county.holder = scope:overlord_to_grant
-				tier = tier_duchy
-			}
-			# Create an elevated peasant to claim the county.
-			create_character = {
-				location = scope:current_county.title_province
-				template = random_vassal_generation_template
-				save_temporary_scope_as = local_warlord
-			}
-			
-			save_temporary_scope_as = current_duchy
-			every_in_list = {
-				list = titles_for_granting
-				if = {
-					limit = { de_jure_liege = scope:current_duchy }
-					create_title_and_vassal_change = {
-						type = granted
-						save_scope_as = change
-						add_claim_on_loss = no
-					}				
-					change_title_holder_include_vassals = {
-						holder = scope:local_warlord
-						change = scope:change
-						take_baronies = yes
-					}
-					resolve_title_and_vassal_change = scope:change
-				}
-			}			
 
-			# Assign the seceding title to the new upstart.
-			scope:current_duchy = {
-				create_title_and_vassal_change = {
-					type = granted
-					save_scope_as = change
-					add_claim_on_loss = no
-				}				
-				change_title_holder_include_vassals = {
-					holder = scope:local_warlord
-					change = scope:change
-					take_baronies = yes
-				}
-				resolve_title_and_vassal_change = scope:change				
-			}
+	every_ruler = {
+		limit = { has_trait = bloodline_alexander }
+		remove_trait = bloodline_alexander
+		dynasty = {
+			add_dynasty_perk = bloodline_alexander
 		}
 	}
 	every_ruler = {
-		limit = { 
-			is_independent_ruler = yes 
-			is_landed = yes
-			domain_size > domain_limit
-			primary_title.tier < tier_kingdom
-		}
-		save_temporary_scope_as = overlord_to_grant
-		every_held_title = {
-			limit = {
-				NOT = { 
-					this = scope:overlord_to_grant.capital_county
-					this.duchy = scope:overlord_to_grant.primary_title
-				}
-				tier = tier_county
-			}
-			# Grab the county for ease of reference.
-			save_temporary_scope_as = current_county
-			# Create an elevated peasant to claim the county.
-			create_character = {
-				location = scope:current_county.title_province
-				template = random_vassal_generation_template
-				save_temporary_scope_as = local_warlord
-			}
-			# Assign the seceding title to the new upstart.
-			create_title_and_vassal_change = {
-				type = granted
-				save_scope_as = change
-				add_claim_on_loss = no
-			}
-			scope:current_county = {
-				change_title_holder = {
-					holder = scope:local_warlord
-					change = scope:change
-					take_baronies = yes
-				}
-			}
-			resolve_title_and_vassal_change = scope:change
+		limit = { has_trait = bloodline_ptolemaios }
+		remove_trait = bloodline_ptolemaios
+		dynasty = {
+			add_dynasty_perk = bloodline_ptolemaios
 		}
 	}
+	every_ruler = {
+		limit = { has_trait = bloodline_gelimer }
+		remove_trait = bloodline_gelimer
+		dynasty = {
+			add_dynasty_perk = bloodline_gelimer
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_seleukos }
+		remove_trait = bloodline_seleukos
+		dynasty = {
+			add_dynasty_perk = bloodline_seleukos
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_sassanid }
+		remove_trait = bloodline_sassanid
+		dynasty = {
+			add_dynasty_perk = bloodline_sassanid
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_julianos }
+		remove_trait = bloodline_julianos
+		dynasty = {
+			add_dynasty_perk = bloodline_julianos
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_agiad }
+		remove_trait = bloodline_agiad
+		dynasty = {
+			add_dynasty_perk = bloodline_agiad
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_karling }
+		remove_trait = bloodline_karling
+		dynasty = {
+			add_dynasty_perk = bloodline_karling
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_merovingian }
+		remove_trait = bloodline_merovingian
+		dynasty = {
+			add_dynasty_perk = bloodline_merovingian
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_capet }
+		remove_trait = bloodline_capet
+		dynasty = {
+			add_dynasty_perk = bloodline_capet
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_barcelona }
+		remove_trait = bloodline_barcelona
+		dynasty = {
+			add_dynasty_perk = bloodline_barcelona
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_decebal }
+		remove_trait = bloodline_decebal
+		dynasty = {
+			add_dynasty_perk = bloodline_decebal
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_brian }
+		remove_trait = bloodline_brian
+		dynasty = {
+			add_dynasty_perk = bloodline_brian
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_oleg }
+		remove_trait = bloodline_oleg
+		dynasty = {
+			add_dynasty_perk = bloodline_oleg
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_rurik }
+		remove_trait = bloodline_rurik
+		dynasty = {
+			add_dynasty_perk = bloodline_rurik
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_parmenion }
+		remove_trait = bloodline_parmenion
+		dynasty = {
+			add_dynasty_perk = bloodline_parmenion
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_almaqah }
+		remove_trait = bloodline_almaqah
+		dynasty = {
+			add_dynasty_perk = bloodline_almaqah
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_artorius }
+		remove_trait = bloodline_artorius
+		dynasty = {
+			add_dynasty_perk = bloodline_artorius
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_vespasian }
+		remove_trait = bloodline_vespasian
+		dynasty = {
+			add_dynasty_perk = bloodline_vespasian
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_kahina }
+		remove_trait = bloodline_kahina
+		dynasty = {
+			add_dynasty_perk = bloodline_kahina
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_verus }
+		remove_trait = bloodline_verus
+		dynasty = {
+			add_dynasty_perk = bloodline_verus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_amyntas }
+		remove_trait = bloodline_amyntas
+		dynasty = {
+			add_dynasty_perk = bloodline_amyntas
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_severus }
+		remove_trait = bloodline_severus
+		dynasty = {
+			add_dynasty_perk = bloodline_severus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_muawiyah }
+		remove_trait = bloodline_muawiyah
+		dynasty = {
+			add_dynasty_perk = bloodline_muawiyah
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_calgacus }
+		remove_trait = bloodline_calgacus
+		dynasty = {
+			add_dynasty_perk = bloodline_calgacus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_theodemir }
+		remove_trait = bloodline_theodemir
+		dynasty = {
+			add_dynasty_perk = bloodline_theodemir
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_hengist }
+		remove_trait = bloodline_hengist
+		dynasty = {
+			add_dynasty_perk = bloodline_hengist
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_aelle }
+		remove_trait = bloodline_aelle
+		dynasty = {
+			add_dynasty_perk = bloodline_aelle
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_aescwine }
+		remove_trait = bloodline_aescwine
+		dynasty = {
+			add_dynasty_perk = bloodline_aescwine
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_raedwald }
+		remove_trait = bloodline_raedwald
+		dynasty = {
+			add_dynasty_perk = bloodline_raedwald
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_oswald }
+		remove_trait = bloodline_oswald
+		dynasty = {
+			add_dynasty_perk = bloodline_oswald
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_offa }
+		remove_trait = bloodline_offa
+		dynasty = {
+			add_dynasty_perk = bloodline_offa
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_urien }
+		remove_trait = bloodline_urien
+		dynasty = {
+			add_dynasty_perk = bloodline_urien
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_maelgwn }
+		remove_trait = bloodline_maelgwn
+		dynasty = {
+			add_dynasty_perk = bloodline_maelgwn
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_mathrafal }
+		remove_trait = bloodline_mathrafal
+		dynasty = {
+			add_dynasty_perk = bloodline_mathrafal
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_artgal }
+		remove_trait = bloodline_artgal
+		dynasty = {
+			add_dynasty_perk = bloodline_artgal
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_samo }
+		remove_trait = bloodline_samo
+		dynasty = {
+			add_dynasty_perk = bloodline_samo
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_cerdic }
+		remove_trait = bloodline_cerdic
+		dynasty = {
+			add_dynasty_perk = bloodline_cerdic
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_wisimar }
+		remove_trait = bloodline_wisimar
+		dynasty = {
+			add_dynasty_perk = bloodline_wisimar
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_gabran }
+		remove_trait = bloodline_gabran
+		dynasty = {
+			add_dynasty_perk = bloodline_gabran
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_findlaech }
+		remove_trait = bloodline_findlaech
+		dynasty = {
+			add_dynasty_perk = bloodline_findlaech
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_britconstantine }
+		remove_trait = bloodline_britconstantine
+		dynasty = {
+			add_dynasty_perk = bloodline_britconstantine
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_ivar }
+		remove_trait = bloodline_ivar
+		dynasty = {
+			add_dynasty_perk = bloodline_ivar
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_fergus }
+		remove_trait = bloodline_fergus
+		dynasty = {
+			add_dynasty_perk = bloodline_fergus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_guthrum }
+		remove_trait = bloodline_guthrum
+		dynasty = {
+			add_dynasty_perk = bloodline_guthrum
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_halfdan }
+		remove_trait = bloodline_halfdan
+		dynasty = {
+			add_dynasty_perk = bloodline_halfdan
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_sweyn }
+		remove_trait = bloodline_sweyn
+		dynasty = {
+			add_dynasty_perk = bloodline_sweyn
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_rognvald }
+		remove_trait = bloodline_rognvald
+		dynasty = {
+			add_dynasty_perk = bloodline_rognvald
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_zenobia }
+		remove_trait = bloodline_zenobia
+		dynasty = {
+			add_dynasty_perk = bloodline_zenobia
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_warcislaw }
+		remove_trait = bloodline_warcislaw
+		dynasty = {
+			add_dynasty_perk = bloodline_warcislaw
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_krak }
+		remove_trait = bloodline_krak
+		dynasty = {
+			add_dynasty_perk = bloodline_krak
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_piast }
+		remove_trait = bloodline_piast
+		dynasty = {
+			add_dynasty_perk = bloodline_piast
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_cech }
+		remove_trait = bloodline_cech
+		dynasty = {
+			add_dynasty_perk = bloodline_cech
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_rus }
+		remove_trait = bloodline_rus
+		dynasty = {
+			add_dynasty_perk = bloodline_rus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_attila }
+		remove_trait = bloodline_attila
+		dynasty = {
+			add_dynasty_perk = bloodline_attila
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_diocletian }
+		remove_trait = bloodline_diocletian
+		dynasty = {
+			add_dynasty_perk = bloodline_diocletian
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_valentinian }
+		remove_trait = bloodline_valentinian
+		dynasty = {
+			add_dynasty_perk = bloodline_valentinian
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_aurelius }
+		remove_trait = bloodline_aurelius
+		dynasty = {
+			add_dynasty_perk = bloodline_aurelius
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_augustus }
+		remove_trait = bloodline_augustus
+		dynasty = {
+			add_dynasty_perk = bloodline_augustus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_popiel }
+		remove_trait = bloodline_popiel
+		dynasty = {
+			add_dynasty_perk = bloodline_popiel
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_theodosius }
+		remove_trait = bloodline_theodosius
+		dynasty = {
+			add_dynasty_perk = bloodline_theodosius
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_aetius }
+		remove_trait = bloodline_aetius
+		dynasty = {
+			add_dynasty_perk = bloodline_aetius
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_david }
+		remove_trait = bloodline_david
+		dynasty = {
+			add_dynasty_perk = bloodline_david
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_mithridates }
+		remove_trait = bloodline_mithridates
+		dynasty = {
+			add_dynasty_perk = bloodline_mithridates
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_hieron }
+		remove_trait = bloodline_hieron
+		dynasty = {
+			add_dynasty_perk = bloodline_hieron
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_maccabeus }
+		remove_trait = bloodline_maccabeus
+		dynasty = {
+			add_dynasty_perk = bloodline_maccabeus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_viriathus }
+		remove_trait = bloodline_viriathus
+		dynasty = {
+			add_dynasty_perk = bloodline_viriathus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_chlorus }
+		remove_trait = bloodline_chlorus
+		dynasty = {
+			add_dynasty_perk = bloodline_chlorus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_theodoric }
+		remove_trait = bloodline_theodoric
+		dynasty = {
+			add_dynasty_perk = bloodline_theodoric
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_arminius }
+		remove_trait = bloodline_arminius
+		dynasty = {
+			add_dynasty_perk = bloodline_arminius
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_asander }
+		remove_trait = bloodline_asander
+		dynasty = {
+			add_dynasty_perk = bloodline_asander
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_aniketos }
+		remove_trait = bloodline_aniketos
+		dynasty = {
+			add_dynasty_perk = bloodline_aniketos
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_epanderos }
+		remove_trait = bloodline_epanderos
+		dynasty = {
+			add_dynasty_perk = bloodline_epanderos
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_chandragupta }
+		remove_trait = bloodline_chandragupta
+		dynasty = {
+			add_dynasty_perk = bloodline_chandragupta
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_lysimachus }
+		remove_trait = bloodline_lysimachus
+		dynasty = {
+			add_dynasty_perk = bloodline_lysimachus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_brennus }
+		remove_trait = bloodline_brennus
+		dynasty = {
+			add_dynasty_perk = bloodline_brennus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_arsaces }
+		remove_trait = bloodline_arsaces
+		dynasty = {
+			add_dynasty_perk = bloodline_arsaces
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_barca }
+		remove_trait = bloodline_barca
+		dynasty = {
+			add_dynasty_perk = bloodline_barca
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_jugurtha }
+		remove_trait = bloodline_jugurtha
+		dynasty = {
+			add_dynasty_perk = bloodline_jugurtha
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_sulla }
+		remove_trait = bloodline_sulla
+		dynasty = {
+			add_dynasty_perk = bloodline_sulla
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_antonius }
+		remove_trait = bloodline_antonius
+		dynasty = {
+			add_dynasty_perk = bloodline_antonius
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_corocotta }
+		remove_trait = bloodline_corocotta
+		dynasty = {
+			add_dynasty_perk = bloodline_corocotta
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_arminiuss }
+		remove_trait = bloodline_arminiuss
+		dynasty = {
+			add_dynasty_perk = bloodline_arminiuss
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_tigranes }
+		remove_trait = bloodline_tigranes
+		dynasty = {
+			add_dynasty_perk = bloodline_tigranes
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_trajan }
+		remove_trait = bloodline_trajan
+		dynasty = {
+			add_dynasty_perk = bloodline_trajan
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_kanishka }
+		remove_trait = bloodline_kanishka
+		dynasty = {
+			add_dynasty_perk = bloodline_kanishka
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_antipater }
+		remove_trait = bloodline_antipater
+		dynasty = {
+			add_dynasty_perk = bloodline_antipater
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_posthumus }
+		remove_trait = bloodline_posthumus
+		dynasty = {
+			add_dynasty_perk = bloodline_posthumus
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_stilicho }
+		remove_trait = bloodline_stilicho
+		dynasty = {
+			add_dynasty_perk = bloodline_stilicho
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_alaric }
+		remove_trait = bloodline_alaric
+		dynasty = {
+			add_dynasty_perk = bloodline_alaric
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_aurelian }
+		remove_trait = bloodline_aurelian
+		dynasty = {
+			add_dynasty_perk = bloodline_aurelian
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_hermeric }
+		remove_trait = bloodline_hermeric
+		dynasty = {
+			add_dynasty_perk = bloodline_hermeric
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_isauros }
+		remove_trait = bloodline_isauros
+		dynasty = {
+			add_dynasty_perk = bloodline_isauros
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_justinian }
+		remove_trait = bloodline_justinian
+		dynasty = {
+			add_dynasty_perk = bloodline_justinian
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_muhankhan }
+		remove_trait = bloodline_muhankhan
+		dynasty = {
+			add_dynasty_perk = bloodline_muhankhan
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_fatimid }
+		remove_trait = bloodline_fatimid
+		dynasty = {
+			add_dynasty_perk = bloodline_fatimid
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_tervel }
+		remove_trait = bloodline_tervel
+		dynasty = {
+			add_dynasty_perk = bloodline_tervel
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_abbas }
+		remove_trait = bloodline_abbas
+		dynasty = {
+			add_dynasty_perk = bloodline_abbas
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_rustam }
+		remove_trait = bloodline_rustam
+		dynasty = {
+			add_dynasty_perk = bloodline_rustam
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_bjorn }
+		remove_trait = bloodline_bjorn
+		dynasty = {
+			add_dynasty_perk = bloodline_bjorn
+		}
+	}
+	every_ruler = {
+		limit = { has_trait = bloodline_harald }
+		remove_trait = bloodline_harald
+		dynasty = {
+			add_dynasty_perk = bloodline_harald
+		}
+	}
+	##Now for every not-landed character
+	every_ruler = {	
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_alexander }
+			remove_trait = bloodline_alexander
+			dynasty = {
+				add_dynasty_perk = bloodline_alexander
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_ptolemaios }
+			remove_trait = bloodline_ptolemaios
+			dynasty = {
+				add_dynasty_perk = bloodline_ptolemaios
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_gelimer }
+			remove_trait = bloodline_gelimer
+			dynasty = {
+				add_dynasty_perk = bloodline_gelimer
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_seleukos }
+			remove_trait = bloodline_seleukos
+			dynasty = {
+				add_dynasty_perk = bloodline_seleukos
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_sassanid }
+			remove_trait = bloodline_sassanid
+			dynasty = {
+				add_dynasty_perk = bloodline_sassanid
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_julianos }
+			remove_trait = bloodline_julianos
+			dynasty = {
+				add_dynasty_perk = bloodline_julianos
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_agiad }
+			remove_trait = bloodline_agiad
+			dynasty = {
+				add_dynasty_perk = bloodline_agiad
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_karling }
+			remove_trait = bloodline_karling
+			dynasty = {
+				add_dynasty_perk = bloodline_karling
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_merovingian }
+			remove_trait = bloodline_merovingian
+			dynasty = {
+				add_dynasty_perk = bloodline_merovingian
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_capet }
+			remove_trait = bloodline_capet
+			dynasty = {
+				add_dynasty_perk = bloodline_capet
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_barcelona }
+			remove_trait = bloodline_barcelona
+			dynasty = {
+				add_dynasty_perk = bloodline_barcelona
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_decebal }
+			remove_trait = bloodline_decebal
+			dynasty = {
+				add_dynasty_perk = bloodline_decebal
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_brian }
+			remove_trait = bloodline_brian
+			dynasty = {
+				add_dynasty_perk = bloodline_brian
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_oleg }
+			remove_trait = bloodline_oleg
+			dynasty = {
+				add_dynasty_perk = bloodline_oleg
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_rurik }
+			remove_trait = bloodline_rurik
+			dynasty = {
+				add_dynasty_perk = bloodline_rurik
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_parmenion }
+			remove_trait = bloodline_parmenion
+			dynasty = {
+				add_dynasty_perk = bloodline_parmenion
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_almaqah }
+			remove_trait = bloodline_almaqah
+			dynasty = {
+				add_dynasty_perk = bloodline_almaqah
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_artorius }
+			remove_trait = bloodline_artorius
+			dynasty = {
+				add_dynasty_perk = bloodline_artorius
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_vespasian }
+			remove_trait = bloodline_vespasian
+			dynasty = {
+				add_dynasty_perk = bloodline_vespasian
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_kahina }
+			remove_trait = bloodline_kahina
+			dynasty = {
+				add_dynasty_perk = bloodline_kahina
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_verus }
+			remove_trait = bloodline_verus
+			dynasty = {
+				add_dynasty_perk = bloodline_verus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_amyntas }
+			remove_trait = bloodline_amyntas
+			dynasty = {
+				add_dynasty_perk = bloodline_amyntas
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_severus }
+			remove_trait = bloodline_severus
+			dynasty = {
+				add_dynasty_perk = bloodline_severus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_muawiyah }
+			remove_trait = bloodline_muawiyah
+			dynasty = {
+				add_dynasty_perk = bloodline_muawiyah
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_calgacus }
+			remove_trait = bloodline_calgacus
+			dynasty = {
+				add_dynasty_perk = bloodline_calgacus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_theodemir }
+			remove_trait = bloodline_theodemir
+			dynasty = {
+				add_dynasty_perk = bloodline_theodemir
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_hengist }
+			remove_trait = bloodline_hengist
+			dynasty = {
+				add_dynasty_perk = bloodline_hengist
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_aelle }
+			remove_trait = bloodline_aelle
+			dynasty = {
+				add_dynasty_perk = bloodline_aelle
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_aescwine }
+			remove_trait = bloodline_aescwine
+			dynasty = {
+				add_dynasty_perk = bloodline_aescwine
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_raedwald }
+			remove_trait = bloodline_raedwald
+			dynasty = {
+				add_dynasty_perk = bloodline_raedwald
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_oswald }
+			remove_trait = bloodline_oswald
+			dynasty = {
+				add_dynasty_perk = bloodline_oswald
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_offa }
+			remove_trait = bloodline_offa
+			dynasty = {
+				add_dynasty_perk = bloodline_offa
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_urien }
+			remove_trait = bloodline_urien
+			dynasty = {
+				add_dynasty_perk = bloodline_urien
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_maelgwn }
+			remove_trait = bloodline_maelgwn
+			dynasty = {
+				add_dynasty_perk = bloodline_maelgwn
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_mathrafal }
+			remove_trait = bloodline_mathrafal
+			dynasty = {
+				add_dynasty_perk = bloodline_mathrafal
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_artgal }
+			remove_trait = bloodline_artgal
+			dynasty = {
+				add_dynasty_perk = bloodline_artgal
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_samo }
+			remove_trait = bloodline_samo
+			dynasty = {
+				add_dynasty_perk = bloodline_samo
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_cerdic }
+			remove_trait = bloodline_cerdic
+			dynasty = {
+				add_dynasty_perk = bloodline_cerdic
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_wisimar }
+			remove_trait = bloodline_wisimar
+			dynasty = {
+				add_dynasty_perk = bloodline_wisimar
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_gabran }
+			remove_trait = bloodline_gabran
+			dynasty = {
+				add_dynasty_perk = bloodline_gabran
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_findlaech }
+			remove_trait = bloodline_findlaech
+			dynasty = {
+				add_dynasty_perk = bloodline_findlaech
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_britconstantine }
+			remove_trait = bloodline_britconstantine
+			dynasty = {
+				add_dynasty_perk = bloodline_britconstantine
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_ivar }
+			remove_trait = bloodline_ivar
+			dynasty = {
+				add_dynasty_perk = bloodline_ivar
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_fergus }
+			remove_trait = bloodline_fergus
+			dynasty = {
+				add_dynasty_perk = bloodline_fergus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_guthrum }
+			remove_trait = bloodline_guthrum
+			dynasty = {
+				add_dynasty_perk = bloodline_guthrum
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_halfdan }
+			remove_trait = bloodline_halfdan
+			dynasty = {
+				add_dynasty_perk = bloodline_halfdan
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_sweyn }
+			remove_trait = bloodline_sweyn
+			dynasty = {
+				add_dynasty_perk = bloodline_sweyn
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_rognvald }
+			remove_trait = bloodline_rognvald
+			dynasty = {
+				add_dynasty_perk = bloodline_rognvald
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_zenobia }
+			remove_trait = bloodline_zenobia
+			dynasty = {
+				add_dynasty_perk = bloodline_zenobia
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_warcislaw }
+			remove_trait = bloodline_warcislaw
+			dynasty = {
+				add_dynasty_perk = bloodline_warcislaw
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_krak }
+			remove_trait = bloodline_krak
+			dynasty = {
+				add_dynasty_perk = bloodline_krak
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_piast }
+			remove_trait = bloodline_piast
+			dynasty = {
+				add_dynasty_perk = bloodline_piast
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_cech }
+			remove_trait = bloodline_cech
+			dynasty = {
+				add_dynasty_perk = bloodline_cech
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_rus }
+			remove_trait = bloodline_rus
+			dynasty = {
+				add_dynasty_perk = bloodline_rus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_attila }
+			remove_trait = bloodline_attila
+			dynasty = {
+				add_dynasty_perk = bloodline_attila
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_diocletian }
+			remove_trait = bloodline_diocletian
+			dynasty = {
+				add_dynasty_perk = bloodline_diocletian
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_valentinian }
+			remove_trait = bloodline_valentinian
+			dynasty = {
+				add_dynasty_perk = bloodline_valentinian
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_aurelius }
+			remove_trait = bloodline_aurelius
+			dynasty = {
+				add_dynasty_perk = bloodline_aurelius
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_augustus }
+			remove_trait = bloodline_augustus
+			dynasty = {
+				add_dynasty_perk = bloodline_augustus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_popiel }
+			remove_trait = bloodline_popiel
+			dynasty = {
+				add_dynasty_perk = bloodline_popiel
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_theodosius }
+			remove_trait = bloodline_theodosius
+			dynasty = {
+				add_dynasty_perk = bloodline_theodosius
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_aetius }
+			remove_trait = bloodline_aetius
+			dynasty = {
+				add_dynasty_perk = bloodline_aetius
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_david }
+			remove_trait = bloodline_david
+			dynasty = {
+				add_dynasty_perk = bloodline_david
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_mithridates }
+			remove_trait = bloodline_mithridates
+			dynasty = {
+				add_dynasty_perk = bloodline_mithridates
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_hieron }
+			remove_trait = bloodline_hieron
+			dynasty = {
+				add_dynasty_perk = bloodline_hieron
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_maccabeus }
+			remove_trait = bloodline_maccabeus
+			dynasty = {
+				add_dynasty_perk = bloodline_maccabeus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_viriathus }
+			remove_trait = bloodline_viriathus
+			dynasty = {
+				add_dynasty_perk = bloodline_viriathus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_chlorus }
+			remove_trait = bloodline_chlorus
+			dynasty = {
+				add_dynasty_perk = bloodline_chlorus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_theodoric }
+			remove_trait = bloodline_theodoric
+			dynasty = {
+				add_dynasty_perk = bloodline_theodoric
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_arminius }
+			remove_trait = bloodline_arminius
+			dynasty = {
+				add_dynasty_perk = bloodline_arminius
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_asander }
+			remove_trait = bloodline_asander
+			dynasty = {
+				add_dynasty_perk = bloodline_asander
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_aniketos }
+			remove_trait = bloodline_aniketos
+			dynasty = {
+				add_dynasty_perk = bloodline_aniketos
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_epanderos }
+			remove_trait = bloodline_epanderos
+			dynasty = {
+				add_dynasty_perk = bloodline_epanderos
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_chandragupta }
+			remove_trait = bloodline_chandragupta
+			dynasty = {
+				add_dynasty_perk = bloodline_chandragupta
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_lysimachus }
+			remove_trait = bloodline_lysimachus
+			dynasty = {
+				add_dynasty_perk = bloodline_lysimachus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_brennus }
+			remove_trait = bloodline_brennus
+			dynasty = {
+				add_dynasty_perk = bloodline_brennus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_arsaces }
+			remove_trait = bloodline_arsaces
+			dynasty = {
+				add_dynasty_perk = bloodline_arsaces
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_barca }
+			remove_trait = bloodline_barca
+			dynasty = {
+				add_dynasty_perk = bloodline_barca
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_jugurtha }
+			remove_trait = bloodline_jugurtha
+			dynasty = {
+				add_dynasty_perk = bloodline_jugurtha
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_sulla }
+			remove_trait = bloodline_sulla
+			dynasty = {
+				add_dynasty_perk = bloodline_sulla
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_antonius }
+			remove_trait = bloodline_antonius
+			dynasty = {
+				add_dynasty_perk = bloodline_antonius
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_corocotta }
+			remove_trait = bloodline_corocotta
+			dynasty = {
+				add_dynasty_perk = bloodline_corocotta
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_arminiuss }
+			remove_trait = bloodline_arminiuss
+			dynasty = {
+				add_dynasty_perk = bloodline_arminiuss
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_tigranes }
+			remove_trait = bloodline_tigranes
+			dynasty = {
+				add_dynasty_perk = bloodline_tigranes
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_trajan }
+			remove_trait = bloodline_trajan
+			dynasty = {
+				add_dynasty_perk = bloodline_trajan
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_kanishka }
+			remove_trait = bloodline_kanishka
+			dynasty = {
+				add_dynasty_perk = bloodline_kanishka
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_antipater }
+			remove_trait = bloodline_antipater
+			dynasty = {
+				add_dynasty_perk = bloodline_antipater
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_posthumus }
+			remove_trait = bloodline_posthumus
+			dynasty = {
+				add_dynasty_perk = bloodline_posthumus
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_stilicho }
+			remove_trait = bloodline_stilicho
+			dynasty = {
+				add_dynasty_perk = bloodline_stilicho
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_alaric }
+			remove_trait = bloodline_alaric
+			dynasty = {
+				add_dynasty_perk = bloodline_alaric
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_aurelian }
+			remove_trait = bloodline_aurelian
+			dynasty = {
+				add_dynasty_perk = bloodline_aurelian
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_hermeric }
+			remove_trait = bloodline_hermeric
+			dynasty = {
+				add_dynasty_perk = bloodline_hermeric
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_isauros }
+			remove_trait = bloodline_isauros
+			dynasty = {
+				add_dynasty_perk = bloodline_isauros
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_justinian }
+			remove_trait = bloodline_justinian
+			dynasty = {
+				add_dynasty_perk = bloodline_justinian
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_muhankhan }
+			remove_trait = bloodline_muhankhan
+			dynasty = {
+				add_dynasty_perk = bloodline_muhankhan
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_fatimid }
+			remove_trait = bloodline_fatimid
+			dynasty = {
+				add_dynasty_perk = bloodline_fatimid
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_tervel }
+			remove_trait = bloodline_tervel
+			dynasty = {
+				add_dynasty_perk = bloodline_tervel
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_abbas }
+			remove_trait = bloodline_abbas
+			dynasty = {
+				add_dynasty_perk = bloodline_abbas
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_rustam }
+			remove_trait = bloodline_rustam
+			dynasty = {
+				add_dynasty_perk = bloodline_rustam
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_bjorn }
+			remove_trait = bloodline_bjorn
+			dynasty = {
+				add_dynasty_perk = bloodline_bjorn
+			}
+		}
+		every_courtier_or_guest = {
+			limit = { has_trait = bloodline_harald }
+			remove_trait = bloodline_harald
+			dynasty = {
+				add_dynasty_perk = bloodline_harald
+			}
+		}
+	}	
 }
 
