@@ -249,17 +249,21 @@ create_alexanders_hegemony_decision = {
 				get_title = title:h_alexander_empire
 			}
 			if = {
-				limit = { 
-					NOT = { title:k_mesopotamia.de_jure_liege = title:e_seleukid_empire }
+				limit = {  
+					title:k_mesopotamia.de_jure_liege.title_capital_county.title_province = { 
+						NOT = { geographical_region = world_alexanders_empire } 
+					}
 				}
 				title:k_mesopotamia = { set_de_jure_liege_title = title:e_persia }
 			}
 			if = {
-				limit = { 
-					NOT = { title:k_osroene.de_jure_liege = title:e_seleukid_empire }
+				limit = {
+					title:k_osroene.de_jure_liege.title_capital_county.title_province = { 
+						NOT = { geographical_region = world_alexanders_empire } 
+					}
 				}
 				title:k_osroene = { set_de_jure_liege_title = title:e_persia }
-			}			
+			}
 			every_empire = {
 				limit = {
 					#tier = tier_empire
