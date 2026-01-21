@@ -1324,6 +1324,9 @@ grant_title_to_new_random_character_interaction = {
 }
 
 #be aware that the actual granting of the title happens in code!
+
+
+#be aware that the actual granting of the title happens in code!
 grant_governorship_interaction = {
 	icon = grant_governorship
 	category = interaction_category_vassal
@@ -1482,24 +1485,32 @@ grant_governorship_interaction = {
 				}
 				custom_tooltip = {
 					text = admin_must_be_de_jure_or_neighboring
-					any_held_title = {
-						OR = {
-							# The target title is part of your de jure structure
-							is_de_jure_liege_or_above_target = scope:target
-							target_is_de_jure_liege_or_above = scope:target
-							# Or is a neighboring county which de jure duchy is not part of your realm
-							AND = {
-								NOT = { tier = tier_barony }
-								any_title_to_title_neighboring_county = { this = scope:target }
-								scope:target = {
-									tier = tier_county
-									duchy = {
-										OR = {
-											NOT = { exists = holder }
-											holder = {
-												NOR = {
-													is_vassal_or_below_of = scope:actor
-													this = scope:actor
+					trigger_if = {
+						limit = { 
+							scope:target.tier < primary_title.tier
+							#NOT = {
+							#	scope:target.tier = tier_duchy
+							#	main_administrative_tier = tier_county
+							#}
+						}
+						any_held_title = {
+							OR = {
+								# The target title is part of your de jure structure
+								is_de_jure_liege_or_above_target = scope:target
+								target_is_de_jure_liege_or_above = scope:target
+								# Or is a neighboring county which de jure duchy is not part of your realm
+								AND = {
+									any_title_to_title_neighboring_county = { this = scope:target }
+									scope:target = {
+										tier = tier_county
+										duchy = {
+											OR = {
+												NOT = { exists = holder }
+												holder = {
+													NOR = {
+														is_vassal_or_below_of = scope:actor
+														this = scope:actor
+													}
 												}
 											}
 										}
@@ -1567,23 +1578,32 @@ grant_governorship_interaction = {
 					}
 					custom_tooltip = {
 						text = admin_must_be_de_jure_or_neighboring
-						any_held_title = {
-							OR = {
-								# The target title is part of your de jure structure
-								is_de_jure_liege_or_above_target = scope:target
-								target_is_de_jure_liege_or_above = scope:target
-								# Or is a neighboring county which de jure duchy is not part of your realm
-								AND = {
-									any_title_to_title_neighboring_county = { this = scope:target }
-									scope:target = {
-										tier = tier_county
-										duchy = {
-											OR = {
-												NOT = { exists = holder }
-												holder = {
-													NOR = {
-														is_vassal_or_below_of = scope:actor
-														this = scope:actor
+						trigger_if = {
+							limit = { 
+								scope:target.tier < primary_title.tier
+								#NOT = {
+								#	scope:target.tier = tier_duchy
+								#	main_administrative_tier = tier_county
+								#}
+							}
+							any_held_title = {
+								OR = {
+									# The target title is part of your de jure structure
+									is_de_jure_liege_or_above_target = scope:target
+									target_is_de_jure_liege_or_above = scope:target
+									# Or is a neighboring county which de jure duchy is not part of your realm
+									AND = {
+										any_title_to_title_neighboring_county = { this = scope:target }
+										scope:target = {
+											tier = tier_county
+											duchy = {
+												OR = {
+													NOT = { exists = holder }
+													holder = {
+														NOR = {
+															is_vassal_or_below_of = scope:actor
+															this = scope:actor
+														}
 													}
 												}
 											}
@@ -1693,6 +1713,31 @@ grant_governorship_interaction = {
 	}
 
 	on_accept = {
+		hidden_effect = {
+			scope:recipient = {
+				if = {
+					limit = { has_government = celestial_government }
+					vassal_contract_set_obligation_level = {
+						type = celestial_provinces
+						level = celestial_province_standard
+					}
+				}
+				if = {
+					limit = { has_government = meritocratic_government }
+					vassal_contract_set_obligation_level = {
+						type = meritocratic_provinces
+						level = meritocratic_province_standard
+					}
+				}
+				if = {
+					limit = { government_has_flag = government_is_administrative }
+					vassal_contract_set_obligation_level = {
+						type = administrative_themes
+						level = admin_theme_balanced
+					}
+				}
+			}
+		}
 		if = {
 			limit = {
 				scope:recipient = {
