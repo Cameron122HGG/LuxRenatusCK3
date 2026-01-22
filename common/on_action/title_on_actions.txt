@@ -2505,6 +2505,25 @@ on_title_gain = {
 				reset_title_name = yes
 			}
 		}
+		if = {
+			limit = {
+				scope:title = title:k_egypt
+				exists = title:k_upper_egypt.holder
+			}
+			root = { save_scope_as = creator_of_egypt }
+			destroy_title = title:k_upper_egypt
+			root = {  
+				trigger_event = LR_diadochi_kingdoms_events.0007		
+			}
+			if = {
+				limit = {
+					NOT = { root = title:k_upper_egypt.holder }
+				}
+				title:k_upper_egypt.holder = {
+					trigger_event = LR_diadochi_kingdoms_events.0007		
+				}		
+			}
+		}
 	}
 	events = {
 		roman_restoration.0005		#New Roman Emperor gets Augustus trait. (old holder, if still alive, loses it)
