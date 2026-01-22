@@ -2505,23 +2505,6 @@ on_title_gain = {
 				reset_title_name = yes
 			}
 		}
-		###Make it so tribals grant feudal titles as High Tribals
-		if = {
-			limit = {
-				scope:previous_holder = {  
-					AND = {
-						has_government = tribal_government
-						root = {
-							is_vassal_of = scope:previous_holder
-							days_as_ruler = 0
-							has_government = feudal_government 
-						}
-					}
-				}
-			}
-			root = { change_government = kinship_government }
-		}
-		###Destroy Upper Egypt when forming Egypt proper
 		if = {
 			limit = {
 				scope:title = title:k_egypt
