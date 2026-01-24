@@ -6,8 +6,8 @@
  GAME_DATE_STRING_LONG:100 "$DAY|O$ of $MONTH$, $YEAR_LUX_GREG_IG$ $ERA_LUX_GREG_IG$"
  GAME_DATE_STRING_SHORT_NO_YEAR:100 "$DAY$ $MONTH_SHORT$"
 
- YEAR_LUX_GREG_IG: "[Add_int32('(int32)-10000', '(int32)$YEAR$')]"
- ERA_LUX_GREG_IG: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
+ YEAR_LUX_GREG_IG: "[Add_int32('(int32)-5000', '(int32)$YEAR$')]"
+ ERA_LUX_GREG_IG: "[Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)5000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)10001'),'',' B.C'),' A.D')]"
  BOOKMARK_DATE_STRING:100 "[GameSetup.GetSelectedDate.GetStringShortNoYear], $ERA_LUX_GREG_IG$ $YEAR_LUX_GREG_IG$"
  PICK_ANY_CHARACTER: "Play in the world of Lux Renata"
 
