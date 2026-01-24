@@ -55,5 +55,172 @@ lr_gov_events.0002 = {
 	}
 }
 
+lr_gov_events.0003 = {
+	type = character_event
+	title = lr_gov_events.0003.t
+	desc = lr_gov_events.0003.desc
+	theme = realm
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = root
+		animation = storyteller
+	}
 
+	immediate = {
+		show_as_tooltip = {
+			change_government = classical_feudal_government
+		}
+		hidden_effect = {
+			every_liege_or_above = {
+				limit = {
+					NOT = { top_liege = this }
+				}
+				send_interface_message = {
+					type = event_stewardship_neutral_with_text
+					title = msg_vassal_feudalised
+					desc = msg_vassal_feudalised_desc
+					right_icon = root
+				}
+			}
+		}
+	}
+
+	option = {
+		name = lr_gov_events.0003.a
+	}
+}
+
+lr_gov_events.0004 = {
+	type = letter_event
+	opening = lr_gov_events.0003.opening
+	desc = lr_gov_events.0003.desc
+	sender = {
+		character = scope:actor
+		animation = personality_rational
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			change_government = classical_feudal_government
+		}	
+	}
+
+	option = {
+		name = lr_gov_events.0003.a
+	}
+}
+
+
+lr_gov_events.0005 = {
+	type = character_event
+	title = lr_gov_events.0003.t
+	desc = lr_gov_events.0003.desc
+	theme = realm
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = root
+		animation = storyteller
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			change_government = despot_government
+		}
+		hidden_effect = {
+			every_liege_or_above = {
+				limit = {
+					NOT = { top_liege = this }
+				}
+				send_interface_message = {
+					type = event_stewardship_neutral_with_text
+					title = msg_vassal_feudalised
+					desc = msg_vassal_feudalised_desc
+					right_icon = root
+				}
+			}
+		}
+	}
+
+	option = {
+		name = lr_gov_events.0003.a	
+	}
+}
+
+lr_gov_events.0006 = {
+	type = letter_event
+	opening = lr_gov_events.0003.opening
+	desc = lr_gov_events.0003.desc
+	sender = {
+		character = scope:actor
+		animation = personality_rational
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			change_government = despot_government
+		}	
+	}
+
+	option = {
+		name = lr_gov_events.0003.a
+	}
+}
+
+lr_gov_events.0007 = {
+	type = character_event
+	title = lr_gov_events.0007.t
+	desc = lr_gov_events.0007.desc
+	theme = realm
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = root
+		animation = storyteller
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			if = {
+				limit = {
+					has_government = clan_government
+				}
+				change_government = clan_government
+			}
+			else = {
+				change_government = feudal_government
+			}
+		}	
+	}
+
+	option = {
+		name = lr_gov_events.0007.a
+	}
+}
+
+lr_gov_events.0008 = {
+	type = letter_event
+	opening = lr_gov_events.0007.opening
+	desc = lr_gov_events.0007.desc
+	sender = {
+		character = scope:actor
+		animation = personality_rational
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			if = {
+				limit = {
+					has_government = clan_government
+				}
+				change_government = clan_government
+			}
+			else = {
+				change_government = feudal_government
+			}
+		}	
+	}
+
+	option = {
+		name = lr_gov_events.0007.a
+	}
+}
 

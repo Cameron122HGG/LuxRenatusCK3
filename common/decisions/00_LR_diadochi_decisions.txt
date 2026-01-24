@@ -63,7 +63,7 @@ LR_diadochi_seleukid_kingdom_decision = {
 		completely_controls = title:k_osroene
     }
     cost = {
-		prestige = 2000
+		gold = 1000
     }
     effect = {
 		custom_tooltip = LR_diadochi_seleukid_kingdom_effect_tooltip
@@ -158,7 +158,7 @@ LR_diadochi_ptolemaic_kingdom_decision = {
     
 
     cost = {
-		prestige = 2000
+		gold = 1000
     }
 
     effect = {
@@ -208,10 +208,16 @@ create_alexanders_hegemony_decision = {
 		#highest_held_title_tier = tier_empire
 		OR = {
 			culture = { has_cultural_pillar = heritage_hellenistic_greek }
+			culture = { has_cultural_pillar = heritage_indo_hellenic }
 			faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
 			faith = { has_doctrine = LR_doctrine_graeco_roman_ascendant }
 		}
 		NOT = { has_global_variable = created_alexanders_hegemony }
+		OR = {
+			capital_province = { geographical_region = world_alexanders_empire }
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
+			culture = { has_cultural_pillar = heritage_indo_hellenic }
+		}
 	}
 	is_valid = {
 		is_independent_ruler = yes
@@ -281,9 +287,9 @@ create_alexanders_hegemony_decision = {
 		}
 	}
 
-	cost = {
-		prestige = 1000
-	}
+	#cost = {
+	#	gold = 2500
+	#}
 
 	ai_check_interval_by_tier = {
 		barony = 0
