@@ -23,28 +23,32 @@
 	}
 
 	hidden_effect = {
-		every_held_title = { #Should shift all dejure of all Empires owned at the time.
-			title_tier = empire
-
-			set_de_jure_liege_title = title:h_roman_empire
-		}
+		#every_held_title = { #Should shift all dejure of all Empires owned at the time.
+		#	title_tier = empire
+		#
+		#	set_de_jure_liege_title = title:h_roman_empire
+		#}
 		every_empire = {
 			limit = {
-				NOT = { exists = hegemony }
-				any_de_jure_county = {
-					percent >= 0.6
-					holder = {
-						OR = {
-							this = root
-							any_liege_or_above = { this = root }
-						}
-					}
+				#NOT = { exists = hegemony }
+				#any_de_jure_county = {
+				#	percent >= 0.6
+				#	holder = {
+				#		OR = {
+				#			this = root
+				#			any_liege_or_above = { this = root }
+				#		}
+				#	}
+				#}
+				OR = {
+					title_capital_county.title_province = { geographical_region = custom_eastern_imperial_core }
+					title_capital_county.title_province = { geographical_region = custom_western_imperial_core }
 				}
 			}
 			set_de_jure_liege_title = title:h_roman_empire
 		}
 	}
-	split_byzantine_empire_effect = yes
+	#split_byzantine_empire_effect = yes
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change

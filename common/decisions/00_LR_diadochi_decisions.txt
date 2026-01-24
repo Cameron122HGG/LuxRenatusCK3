@@ -208,10 +208,15 @@ create_alexanders_hegemony_decision = {
 		#highest_held_title_tier = tier_empire
 		OR = {
 			culture = { has_cultural_pillar = heritage_hellenistic_greek }
+			culture = { has_cultural_pillar = heritage_indo_hellenic }
 			faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
 			faith = { has_doctrine = LR_doctrine_graeco_roman_ascendant }
 		}
 		NOT = { has_global_variable = created_alexanders_hegemony }
+		OR = {
+			capital_province = { geographical_region = world_alexanders_empire }
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
+			culture = { has_cultural_pillar = heritage_indo_hellenic }
 	}
 	is_valid = {
 		is_independent_ruler = yes
@@ -281,9 +286,9 @@ create_alexanders_hegemony_decision = {
 		}
 	}
 
-	cost = {
-		gold = 2500
-	}
+	#cost = {
+	#	gold = 2500
+	#}
 
 	ai_check_interval_by_tier = {
 		barony = 0
