@@ -274,8 +274,13 @@ convert_classical_feudal_decision = {
 		OR = {
 			faith = { has_doctrine = LR_doctrine_graeco_roman_ascendant }
 			faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
-			liege = {
-				has_government = classical_feudal_government			
+			trigger_if = {
+				limit = {
+					is_independent_ruler = no
+				}
+				liege = {
+					has_government = classical_feudal_government			
+				}
 			}
 		}
 	}
@@ -396,8 +401,13 @@ convert_despotic_decision = {
 			faith = { has_doctrine = archaic_special_hostility_doctrine }
 			faith = { has_doctrine = tenet_persian_syncretism }
 			faith = { has_doctrine = special_doctrine_is_zoroastrian_faith }
-			liege = {
-				has_government = despot_government			
+			trigger_if = {
+				limit = {
+					is_independent_ruler = no
+				}			
+				liege = {
+					has_government = despot_government			
+				}
 			}
 		}			
 	}
@@ -507,14 +517,20 @@ abandon_ancient_government_decision = {
 	}
 
 	is_valid = {
-		OR = {
-			liege = {
-				has_government = feudal_government			
+		trigger_if = {
+			limit = {
+				is_independent_ruler = no
 			}
-			liege = {
-				has_government = clan_government			
-			}			
-		}			
+			OR = {
+				liege = {
+					has_government = feudal_government			
+				}
+				liege = {
+					has_government = clan_government			
+				}			
+			}
+		}
+		trigger_else = { always = no }
 	}
 
 	is_valid_showing_failures_only = {
