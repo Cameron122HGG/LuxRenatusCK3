@@ -20,9 +20,11 @@ restore_roman_empire_decision = {
 	is_shown = {
 		is_ruler = yes
 		is_playable_character = yes
-		has_title = title:e_byzantium
+		OR = {
+			has_title = title:e_byzantium
+			has_title = title:e_spqr
+		}
 		NOT = { primary_title = title:e_hre }
-		NOT = { primary_title = title:e_spqr }
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -39,24 +41,29 @@ restore_roman_empire_decision = {
 
 	is_valid = {
 		prestige_level >= max_prestige_level
+		custom_tooltip = {
+			text = holds_imperial_title_tooltip
+			primary_title.tier = tier_empire
+		}		
 
-		completely_controls = title:d_latium
-		completely_controls = title:d_venice
-		completely_controls = title:d_flaminia
-		completely_controls = title:d_sicily
-		completely_controls = title:d_genoa
-		completely_controls = title:d_capua
-		completely_controls = title:d_apulia
-		completely_controls = title:d_thrace
-		completely_controls = title:d_antioch
-		completely_controls = title:d_palestine
-		completely_controls = title:d_alexandria
-		completely_controls = title:d_athens
-		completely_controls = title:d_tunis
-		completely_controls = title:d_croatia
-		completely_controls = title:d_thessalonika
+		#completely_controls = title:d_latium
+		#completely_controls = title:d_venice
+		#completely_controls = title:d_flaminia
+		#completely_controls = title:d_sicily
+		#completely_controls = title:d_genoa
+		#completely_controls = title:d_capua
+		#completely_controls = title:d_apulia
+		#completely_controls = title:d_thrace
+		#completely_controls = title:d_antioch
+		#completely_controls = title:d_palestine
+		#completely_controls = title:d_alexandria
+		#completely_controls = title:d_athens
+		#completely_controls = title:d_tunis
+		#completely_controls = title:d_croatia
+		#completely_controls = title:d_thessalonika
+		completely_controls_region = custom_eastern_imperial_core		
+		completely_controls_region = custom_western_imperial_core
 	}
-
 	is_valid_showing_failures_only = {
 		is_landed = yes
 		is_capable_adult = yes
@@ -66,6 +73,8 @@ restore_roman_empire_decision = {
 		OR = {
 			religion = { is_in_family = rf_abrahamic }
 			religion = religion:hellenism_religion
+			religion = religion:roman_religion
+			religion = religion:solar_religion
 			culture = { has_cultural_pillar = heritage_latin }
 			culture = { has_cultural_pillar = heritage_byzantine }
 		}
@@ -76,15 +85,16 @@ restore_roman_empire_decision = {
 		show_as_tooltip = {
 			create_roman_empire_scripted_effect = yes
 		}
-		if = {
-			limit = {
-				has_ep3_dlc_trigger = yes
-			}
-			trigger_event = ep3_roman_restoration.0100
-		}
-		else = {
-			trigger_event = roman_restoration.0001
-		}
+		#if = {
+		#	limit = {
+		#		has_ep3_dlc_trigger = yes
+		#	}
+		#	trigger_event = ep3_roman_restoration.0100
+		#}
+		#else = {
+		#	trigger_event = roman_restoration.0001
+		#}
+		trigger_event = roman_restoration.0001
 		hidden_effect = {
 			add_to_global_variable_list = {
 				name = unavailable_unique_decisions
