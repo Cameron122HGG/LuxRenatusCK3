@@ -485,50 +485,35 @@ abandon_ancient_government_decision = {
 	}
 
 	is_shown = {
-		trigger_if = {
-			limit = { is_independent_ruler = no }
+		is_independent_ruler = no
+		OR = {
 			AND = {
-				OR = {
-					AND = {
-						OR = {
-							has_government = classical_feudal_government
-							has_government = despot_government
-						}
-						OR = {
-							liege = {
-								has_government = feudal_government
-							}
-							liege = {
-								has_government = clan_government			
-							}			
-						}
-					}
-					AND = {
-						has_government = clan_government
-						liege = {
-							has_government = feudal_government
-						}	
-					}
-					AND = {
-						has_government = feudal_government
-						liege = {
-							has_government = clan_government
-						}	
-					}			
-				}
-			}
-		}
-		trigger_else_if = {
-			limit = { is_independent_ruler = yes }
-			AND = {
-				is_ai = no
 				OR = {
 					has_government = classical_feudal_government
 					has_government = despot_government
+				}
+				OR = {
+					liege = {
+						has_government = feudal_government
+					}
+					liege = {
+						has_government = clan_government			
+					}			
+				}
+			}
+			AND = {
+				has_government = clan_government
+				liege = {
+					has_government = feudal_government
 				}	
 			}
+			AND = {
+				has_government = feudal_government
+				liege = {
+					has_government = clan_government
+				}	
+			}			
 		}
-		trigger_else = { always = no }
 	}
 
 	is_valid = {
@@ -545,16 +530,6 @@ abandon_ancient_government_decision = {
 				}			
 			}
 		}
-		trigger_else_if = {
-			limit = {
-				is_ai = no
-				is_independent_ruler = yes
-			}
-			OR = {
-				has_government = classical_feudal_government
-				has_government = despot_government
-			}
-		}		
 		trigger_else = { always = no }
 	}
 
@@ -566,44 +541,20 @@ abandon_ancient_government_decision = {
 	}
 
 	cost = {
-		prestige = {
-			value = {
-				add = 100
-				if = {
-					limit = {
-						is_independent_ruler = yes
-					}
-					add = 1900
-				}
-			}
-		}
+		prestige = 100
 	}
 
 	effect = {
-		#gain_legitimizing_legend_seed_tooltip_effect = yes	
+		#gain_legitimizing_legend_seed_tooltip_effect = yes		
 		if = {
-			limit = { is_independent_ruler = no }
-			if = {
-				limit = {
-					liege = { has_government = clan_government }
-				}
-				change_government = clan_government
+			limit = {
+				liege = { has_government = clan_government }
 			}
-			else = {
-				change_government = feudal_government
-			}
+			change_government = clan_government
 		}
 		else = {
-			if = {
-				limit = {
-					religion = religion:islam_religion
-				}
-				change_government = clan_government
-			}
-			else = {
-				change_government = feudal_government
-			}
-		}		
+			change_government = feudal_government
+		}
 		custom_tooltip = {
 			text = LR_high_tribal_vassal_adoption		
 			if = {
