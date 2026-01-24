@@ -1713,31 +1713,6 @@ grant_governorship_interaction = {
 	}
 
 	on_accept = {
-		hidden_effect = {
-			scope:recipient = {
-				if = {
-					limit = { has_government = celestial_government }
-					vassal_contract_set_obligation_level = {
-						type = celestial_provinces
-						level = celestial_province_standard
-					}
-				}
-				if = {
-					limit = { has_government = meritocratic_government }
-					vassal_contract_set_obligation_level = {
-						type = meritocratic_provinces
-						level = meritocratic_province_standard
-					}
-				}
-				if = {
-					limit = { government_has_flag = government_is_administrative }
-					vassal_contract_set_obligation_level = {
-						type = administrative_themes
-						level = admin_theme_balanced
-					}
-				}
-			}
-		}
 		if = {
 			limit = {
 				scope:recipient = {
@@ -2349,5 +2324,30 @@ grant_governorship_interaction = {
 				}
 			}
 		}
+		hidden_effect = {
+			scope:recipient = {
+				if = {
+					limit = { has_government = celestial_government }
+					vassal_contract_set_obligation_level = {
+						type = celestial_provinces
+						level = celestial_province_standard
+					}
+				}
+				if = {
+					limit = { has_government = meritocratic_government }
+					vassal_contract_set_obligation_level = {
+						type = meritocratic_provinces
+						level = meritocratic_province_standard
+					}
+				}
+				if = {
+					limit = { government_has_flag = government_is_administrative }
+					vassal_contract_set_obligation_level = {
+						type = administrative_themes
+						level = admin_theme_balanced
+					}
+				}
+			}
+		}		
 	}
 }
