@@ -112,6 +112,17 @@ LR_restore_western_hegemony_decision = {
 
 	is_valid = {
 		completely_controls_region = custom_spqr_imperial_core
+		
+		##Checking if Restoring Provinces has started and then how many
+		custom_tooltip = {
+			text = LR_has_restored_at_least_three_provinces_tooltip	
+			trigger_if = {
+				limit = { exists = global_var:num_of_provinces_restored_wre }
+				global_var:num_of_provinces_restored_wre > 2
+			}
+			trigger_else = { always = no }
+		}
+		
 		custom_tooltip = {
 			text = LR_western_kingdoms_held_or_vassals_tt
 			
@@ -472,6 +483,12 @@ restore_western_diocese_system_decision = {
     effect = {
         custom_tooltip = restore_western_diocese_system_effect_tooltip
         custom_tooltip = restore_western_diocese_system_unlock_tooltip
+		
+		###Beginning Variable for number of provinces restored	
+		set_global_variable = {
+			name = num_of_provinces_restored_wre
+			value = 0
+		}
 
         hidden_effect = {
             add_to_global_variable_list = {
@@ -614,6 +631,12 @@ restore_eastern_diocese_decision = {
     effect = {
         custom_tooltip = restore_eastern_diocese_system_effect_tooltip
         custom_tooltip = restore_eastern_diocese_system_unlock_tooltip
+		
+		###Beginning Variable for number of provinces restored
+		set_global_variable = {
+			name = num_of_provinces_restored_ere
+			value = 0
+		}	
 
         hidden_effect = {
             add_to_global_variable_list = {
@@ -852,6 +875,13 @@ restore_diocese_gallia_viennensis_decision = {
     effect = {
         custom_tooltip = restore_diocese_gallia_effect_tooltip
         custom_tooltip = restore_diocese_viennensis_effect_tooltip
+		
+		##adding to number of provinces restored
+		change_global_variable = {
+			name = num_of_provinces_restored_wre
+			add = 1
+		}	
+		
         hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
@@ -955,6 +985,13 @@ restore_diocese_africa_mauretania_decision = {
     effect = {
         custom_tooltip = restore_diocese_africa_effect_tooltip
         custom_tooltip = restore_diocese_mauretania_effect_tooltip
+		
+		##adding to number of provinces restored
+		change_global_variable = {
+			name = num_of_provinces_restored_wre
+			add = 1
+		}		
+		
         hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
@@ -1043,6 +1080,13 @@ restore_diocese_aegyptus_decision = {
 
     effect = {
         custom_tooltip = restore_diocese_aegyptus_effect_tooltip
+		
+		##adding to number of provinces restored
+		change_global_variable = {
+			name = num_of_provinces_restored_ere
+			add = 1
+		}			
+		
         hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
@@ -1143,6 +1187,13 @@ restore_diocese_syria_decision = {
 
     effect = {
         custom_tooltip = restore_diocese_syria_effect_tooltip
+		
+		##adding to number of provinces restored
+		change_global_variable = {
+			name = num_of_provinces_restored_ere
+			add = 1
+		}
+		
         hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
@@ -1296,6 +1347,13 @@ restore_diocese_hispania_decision = {
 
     effect = {
         custom_tooltip = restore_diocese_hispania_effect_tooltip
+		
+		##adding to number of provinces restored
+		change_global_variable = {
+			name = num_of_provinces_restored_wre
+			add = 1
+		}
+		
         hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
@@ -1371,6 +1429,7 @@ restore_diocese_britannia_decision = {
     is_valid = {    
         #government_has_flag = government_is_administrative
         completely_controls_region = custom_roman_britannia
+		
         custom_tooltip = {
             text = britannia_kingdoms_held_or_vassals_tt
             trigger_if = {
@@ -1390,6 +1449,13 @@ restore_diocese_britannia_decision = {
 
     effect = {
         custom_tooltip = restore_diocese_britannia_effect_tooltip
+		
+		##adding to number of provinces restored
+		change_global_variable = {
+			name = num_of_provinces_restored_wre
+			add = 1
+		}		
+		
         hidden_effect = {
             add_to_global_variable_list = {
                 name = unavailable_unique_decisions
