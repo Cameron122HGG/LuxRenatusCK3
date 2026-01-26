@@ -1633,7 +1633,7 @@
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		age >= 6
 		OR = {
 			AND = {
@@ -2047,7 +2047,7 @@ promote_divergent_or_hybrid_culture_interaction = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		government_has_flag = government_is_nomadic
 		highest_held_title_tier >= tier_duchy
 	}
@@ -2452,7 +2452,7 @@ inspire_conversion_interaction = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		government_has_flag = government_is_nomadic
 		highest_held_title_tier >= tier_duchy
 		NOR = {
@@ -4151,7 +4151,7 @@ mpo_interaction_ask_for_paiza = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		is_adult = yes
 	}
 
@@ -4652,7 +4652,7 @@ steal_herd_interaction = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		prestige >= medium_prestige_value # In case they fail
 		trigger_if = {
 			limit = {
@@ -4838,7 +4838,7 @@ mpo_ask_for_herd_interaction = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		primary_title.tier >= tier_duchy
 	}
 
@@ -5133,7 +5133,7 @@ mpo_demand_obedience_interaction = {
 
 	cost = { prestige = minor_prestige_value }
 
-	ai_potential = {
+	is_available = {
 		government_allows = obedience
 		primary_title.tier >= tier_duchy
 	}
@@ -5456,7 +5456,7 @@ refill_maa_nomad_interaction = {
 	ai_targets = {
 		ai_recipients = self
 	}
-	ai_potential = {
+	is_available = {
 		is_nomad = yes
 		government_allows = conditional_maa_refill
 		any_maa_regiment = { maa_current_troops_count < maa_max_troops_count }
@@ -6460,7 +6460,7 @@ influence_child_commander_interaction = {
 	}
 
 	# AI
-	ai_potential = {
+	is_available = {
 		any_relation = {
 			type = ward
 			count >= 1
@@ -6867,7 +6867,7 @@ mpo_make_blood_brother = {
 		}
 	}
 	## Performance-enhancement
-	ai_potential = {
+	is_available = {
 		is_imprisoned = no
 		is_at_war = no
 		has_blood_brother = no
@@ -7703,7 +7703,7 @@ mpo_retrieve_land_from_herder_interaction = {
 		hegemony = 4
 	}
 
-	ai_potential = {
+	is_available = {
 		domain_size < domain_limit
 		primary_title.tier >= tier_county
 	}
@@ -8050,7 +8050,7 @@ mpo_gift_herd_interaction = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		is_available_at_peace_ai_adult = yes
 		ai_greed < medium_positive_ai_value
 		domicile.herd >= {
@@ -9650,7 +9650,7 @@ mpo_offer_submission_or_ruin = {
 		}
 	}
 
-	ai_potential = {
+	is_available = {
 		any_owned_story = {
 			OR = {
 				story_type = story_greatest_of_khans
@@ -9875,7 +9875,7 @@ mpo_negotiate_obedience_interaction = {
 		trigger_else = {}
 	}
 
-	ai_potential = {
+	is_available = {
 		government_allows = obedience
 		primary_title.tier >= tier_duchy
 		prestige >= major_prestige_value
@@ -11263,7 +11263,7 @@ join_confederation_interaction = {
 		}
 	}
 
-	#ai_potential = {
+	#is_available = {
 	#	#AI rely on the offer interaction, not this one
 	#	always = no
 	#}
