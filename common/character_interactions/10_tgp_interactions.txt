@@ -266,7 +266,7 @@ celestial_siphon_treasury_interaction = {
 		hegemony = 0
 	}
 
-	is_available = {
+	ai_potential = {
 		has_treasury = yes
 		is_landed = yes
 		#do it only when you are poor
@@ -578,7 +578,7 @@ celestial_demand_treasury_interaction = {
 		ai_recipients = vassals
 	}
 
-	is_available = {
+	ai_potential = {
 		treasury < 100 # Don't bother unless your treasury is low
 		is_adult = yes
 	}
@@ -994,7 +994,7 @@ celestial_give_treasury_interaction = {
 		max = 20
 	}
 
-	is_available = {
+	ai_potential = {
 		is_adult = yes
 		treasury > 1000 # Let's make sure the AI don't spend their treasury needlessly
 	}
@@ -2240,7 +2240,7 @@ request_mentoring_interaction = {
 		max = 10
 	}
 
-	is_available = {
+	ai_potential = {
 		government_has_flag = government_is_celestial
 		is_adult = yes
 	}
@@ -2767,7 +2767,7 @@ send_child_to_examination_interaction = {
 		ai_recipients = children
 	}
 
-	is_available = { is_adult = yes }
+	ai_potential = { is_adult = yes }
 
 	ai_will_do = {
 		base = 100
@@ -3922,7 +3922,7 @@ transfer_small_gold_amount_to_treasury_interaction = {
 		empire = 1
 		hegemony = 1
 	}
-	is_available = {
+	ai_potential = {
 		has_treasury = yes
 		gold > 10
 		gold > medium_gold_value
@@ -4005,7 +4005,7 @@ transfer_large_gold_amount_to_treasury_interaction = {
 		empire = 1
 		hegemony = 1
 	}
-	is_available = {
+	ai_potential = {
 		has_treasury = yes
 		gold > 50
 		gold > major_gold_value
@@ -4090,7 +4090,7 @@ transfer_huge_gold_amount_to_treasury_interaction = {
 		hegemony = 1
 	}
 
-	is_available = {
+	ai_potential = {
 		has_treasury = yes
 		gold > 500
 	}
@@ -4704,7 +4704,7 @@ influence_meritorious_career_interaction = {
 		hegemony = 6
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = merit
 		influence >= monumental_influence_value # Only consider doing this if you have the influence to spare
 		OR = {
@@ -5175,7 +5175,7 @@ celestial_request_military_aid_interaction = {
 		hegemony = 0
 	}
 
-	is_available = {
+	ai_potential = {
 		is_at_war = yes
 	}
 
@@ -5578,7 +5578,7 @@ celestial_request_treasury_interaction = {
 		hegemony = 0
 	}
 
-	is_available = {
+	ai_potential = {
 		is_at_war = no
 		NOT = { has_variable = celestial_request_treasury_cooldown }
 		treasury <= minor_treasury_value
@@ -6011,7 +6011,7 @@ celestial_request_commander_interaction = {
 		hegemony = 36
 	}
 
-	is_available = {
+	ai_potential = {
 		vassal_contract_has_flag = celestial_military_appointment
 		NOT = { has_variable = celestial_request_commander_cooldown }
 	}
@@ -6376,7 +6376,7 @@ celestial_request_examination_support_interaction = {
 		hegemony = 36
 	}
 
-	is_available = {
+	ai_potential = {
 		vassal_contract_has_flag = celestial_civil_appointment
 		NOT = { has_variable = celestial_examination_support_cooldown }
 	}
@@ -6742,7 +6742,7 @@ celestial_send_military_aid_interaction = {
 		hegemony = 3
 	}
 
-	is_available = {
+	ai_potential = {
 		OR = {
 			# If you are the minister of war
 			has_title = title:e_minister_of_war
@@ -6969,7 +6969,7 @@ set_favored_minister_interaction = {
 		hegemony = 24
 	}
 
-	is_available = {
+	ai_potential = {
 		NOT = {
 			employs_court_position = favored_minister_court_position
 		}
@@ -7185,7 +7185,7 @@ celestial_movement_power_promote_interaction = {
 		hegemony = 36
 	}
 
-	is_available = {
+	ai_potential = {
 		NOT = {
 			any_scheme = {
 				is_scheme_category = political
@@ -7460,7 +7460,7 @@ celestial_movement_power_slander_interaction = {
 		hegemony = 12
 	}
 
-	is_available = {
+	ai_potential = {
 		# Morally upright or generally content characters never slander.
 		NOR = {
 			any_scheme = {
@@ -7614,7 +7614,7 @@ break_with_elder = {
 		hegemony = 60
 	}
 
-	is_available = {
+	ai_potential = {
 		num_of_relation_elder > 0
 	}
 
@@ -7859,7 +7859,7 @@ find_elder_interaction = {
 		hegemony = 0
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = merit
 		num_of_relation_elder = 0
 	}
@@ -8606,7 +8606,7 @@ celestial_request_elders_support_interaction = {
 		hegemony = 0
 	}
 
-	is_available = {
+	ai_potential = {
 		OR = {
 			num_of_relation_elder > 0
 			num_of_relation_disciple > 0
@@ -9572,7 +9572,7 @@ tgp_mandala_send_missionary_interaction = {
 		hegemony = 6
 	}
 
-	is_available = {
+	ai_potential = {
 		is_adult = yes
 		government_has_flag = government_is_mandala
 	}
@@ -10170,7 +10170,7 @@ force_abdication_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_independent_ruler = yes
 	}
 
@@ -10707,7 +10707,7 @@ diarch_train_knight_interaction = {
 		parameter = dynastic_cycle
 		max = 20
 	}
-	is_available = {
+	ai_potential = {
 		is_at_war = no
 		is_diarch = yes
 	}
@@ -11045,7 +11045,7 @@ landless_admin_switch_non_admin_top_liege_interaction = {
 	ai_targets = {
 		ai_recipients = neighboring_rulers
 	}
-	is_available = {
+	ai_potential = {
 		is_at_war = no
 	}
 }
@@ -11141,7 +11141,7 @@ censor_find_secrets_interaction = {
 		ai_recipients = peer_vassals
 		max = 20
 	}
-	is_available = {
+	ai_potential = {
 		is_at_war = no
 		NOT = {
 			any_scheme = {
@@ -11630,7 +11630,7 @@ pay_treasury_debt_interaction = {
 		max = 20
 	}
 
-	is_available = {
+	ai_potential = {
 		is_adult = yes
 		treasury > 1000 # Let's make sure the AI don't spend their treasury needlessly
 	}

@@ -562,7 +562,7 @@ diarch_revoke_title_interaction = {
 		hegemony = 6
 	}
 
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		liege = { has_realm_law_flag = title_revocation_allowed }
 		# Loyal diarchs don't engage in skullduggery.
@@ -1211,7 +1211,7 @@ diarch_retract_vassal_interaction = {
 		hegemony = 24
 	}
 	
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		has_realm_law_flag = title_revocation_allowed
 		primary_title.tier > tier_county
@@ -2326,7 +2326,7 @@ diarch_subsidise_crown_authority_interaction = {
 		empire = 24
 		hegemony = 24
 	}
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		# Loyal diarchs don't engage in skullduggery.
 		diarch_loyalty < diarch_loyalty_visibly_loyal_threshold
@@ -2664,7 +2664,7 @@ diarch_adjust_bureaucracy_interaction = {
 		empire = 24
 		hegemony = 24
 	}
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		liege_has_co_emperorship_trigger = yes
 		# Loyal diarchs don't engage in skullduggery.
@@ -2924,7 +2924,7 @@ diarch_legal_meddling_interaction = {
 		hegemony = 6
 	}
 
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		# Loyal diarchs don't engage in skullduggery.
 		diarch_loyalty < diarch_loyalty_visibly_loyal_threshold
@@ -3610,7 +3610,7 @@ diarch_syphon_treasury_interaction = {
 		hegemony = 12
 	}
 
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		# Loyal diarchs don't engage in skullduggery.
 		diarch_loyalty < diarch_loyalty_visibly_loyal_threshold
@@ -4009,7 +4009,7 @@ diarch_shift_privileges_interaction = {
 		hegemony = 6
 	}
 
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		# Loyal diarchs don't engage in skullduggery.
 		diarch_loyalty < diarch_loyalty_visibly_loyal_threshold
@@ -4429,7 +4429,7 @@ diarch_request_imperial_expedition_interaction = {
 		empire = 24
 		hegemony = 24
 	}
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		liege = { has_diarchy_active_parameter = unlock_diarch_requests_military_expedition_interaction }
 		NOR = {
@@ -4879,7 +4879,7 @@ diarch_demand_despotate_interaction = {
 		empire = 24
 		hegemony = 24
 	}
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		liege = { has_diarchy_active_parameter = unlock_diarch_demand_kingdom_interaction }
 		NOR = {
@@ -5656,7 +5656,7 @@ mulct_vizier_interaction = {
 		empire = 120
 		hegemony = 120
 	}
-	is_available = {
+	ai_potential = {
 		has_active_diarchy = yes
 		has_diarchy_parameter = unlock_mulct_vizier_interaction
 	}
@@ -5930,7 +5930,7 @@ scapegoat_counterpart_interaction = {
 		hegemony = 12
 	}
 
-	is_available = {
+	ai_potential = {
 		OR = {
 			# Either they're a liege.
 			AND = {
@@ -6745,7 +6745,7 @@ swing_scales_currency_interaction = {
 		hegemony = 24
 	}
 
-	is_available = {
+	ai_potential = {
 		OR = {
 			# Either they're a liege.
 			AND = {
@@ -7115,7 +7115,7 @@ diarch_swing_scales_currency_interaction = {
 		hegemony = 6
 	}
 
-	is_available = {
+	ai_potential = {
 		# Double check due to some irritating errors.
 		is_diarch = yes
 		liege = { has_active_diarchy = yes }
@@ -7253,7 +7253,7 @@ diarch_entrench_regency_interaction = {
 		empire = 6
 		hegemony = 6
 	}
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		# Don't entrench for no reason — we want to have a bit of a delay so that the AI can go off travelling or get locked in prison once in a while.
 		liege = { years_in_diarchy >= 2 }
@@ -7374,7 +7374,7 @@ diarch_regent_appoints_self_co_emperor_interaction = {
 		empire = 12
 		hegemony = 12
 	}
-	is_available = {
+	ai_potential = {
 		is_diarch = yes
 		# Filter us down nice'n'tight.
 		liege = { may_appoint_co_emperors_trigger = yes }
@@ -7466,7 +7466,7 @@ liege_dismiss_temporary_regency_interaction = {
 		empire = 12
 		hegemony = 12
 	}
-	is_available = { has_active_diarchy = yes }
+	ai_potential = { has_active_diarchy = yes }
 
 	ai_will_do = {
 		# You never _don't_ want to do this.
@@ -8241,7 +8241,7 @@ liege_dismiss_entrenched_regency_interaction = {
 		empire = 12
 		hegemony = 12
 	}
-	is_available = {
+	ai_potential = {
 		# Are we in a diarchy at all?
 		has_active_diarchy = yes
 		# Can we leave it?
@@ -8454,7 +8454,7 @@ liege_dismiss_vizier_interaction = {
 		empire = 24
 		hegemony = 24
 	}
-	is_available = { has_active_diarchy = yes }
+	ai_potential = { has_active_diarchy = yes }
 
 	ai_will_do = {
 		# You should actively want to get rid of them.
@@ -9000,7 +9000,7 @@ declare_me_regent_interaction = {
 	#ai_targets = { ai_recipients = liege }
 	#ai_frequency = 0
 	#
-	#is_available = {
+	#ai_potential = {
 	#	# Turning off for the AI for the moment due to not being able to display who you'll offend if you do it.
 	#	## Should otherwise work and can be turned back on again if wished.
 	#	always = no
@@ -9401,7 +9401,7 @@ appoint_vizier_interaction = {
 		hegemony = 120
 	}
 	
-	is_available = {
+	ai_potential = {
 		government_has_flag = may_appoint_viziers
 	}
 	
@@ -9680,7 +9680,7 @@ appoint_junior_emperor_interaction = {
 		hegemony = 60
 	}
 	
-	is_available = {
+	ai_potential = {
 		# Filter us down nice'n'tight.
 		may_appoint_co_emperors_trigger = yes
 		# Plus rule out any diarchies already on the go.
@@ -9925,7 +9925,7 @@ appoint_co_emperor_interaction = {
 		hegemony = 60
 	}
 	
-	is_available = {
+	ai_potential = {
 		# Filter us down nice'n'tight.
 		may_appoint_co_emperors_trigger = yes
 		# Plus rule out any diarchies already on the go.
@@ -10132,7 +10132,7 @@ appoint_co_monarch_interaction = {
 		hegemony = 120
 	}
 	
-	is_available = {
+	ai_potential = {
 		# Filter us down nice'n'tight.
 		may_appoint_co_monarchs_trigger = yes
 		# Plus rule out any diarchies already on the go.
@@ -10313,7 +10313,7 @@ overthrow_regent_scheme_interaction = {
 		hegemony = 60
 	}
 
-	is_available = {
+	ai_potential = {
 		# Some traits lock the AI out.
 		## Calc these first 'cause they're cheaper.
 		NOR = {
