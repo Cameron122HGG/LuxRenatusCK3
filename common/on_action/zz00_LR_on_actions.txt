@@ -9,6 +9,19 @@
 		every_ruler = {
 			limit = { is_valid_for_legitimacy_change = yes }
 			add_legitimacy = 300
+		}	
+	}
+}
+LR_initial_after_lobby_effect = {
+	effect = {
+		##Add Man-at-Arms, due to domain limit calculation making initial income poor
+		every_ruler = {
+			limit = { 
+				is_landed = yes
+				is_ruler = yes
+				highest_held_title_tier >= tier_county 
+			}
+			LR_generate_maa_on_start = yes
 		}
 	}
 }
