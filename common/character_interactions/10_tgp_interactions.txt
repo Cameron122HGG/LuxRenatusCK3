@@ -4767,6 +4767,7 @@ influence_meritorious_career_interaction = {
 
 # Minister requests
 # Request Military Aid
+##Altered to allow other admin realms
 celestial_request_military_aid_interaction = {
 	icon = icon_soldier_survivor
 	interface_priority = 60
@@ -4818,11 +4819,20 @@ celestial_request_military_aid_interaction = {
 	is_shown = {
 		scope:actor = {
 			government_allows = administrative
-			government_allows = merit
+			#government_allows = merit
 			top_liege != this
 			OR = {
 				is_governor = yes
 				has_title = title:e_minister_grand_marshal
+				
+				AND = {
+					government_allows = administrative
+					government_has_flag = government_is_administrative
+					is_landed = yes
+					top_liege != this
+					highest_held_title_tier >= tier_county
+					tgp_is_ceremonial_liege_trigger = no
+				}
 			}
 		}
 		scope:recipient = {
@@ -4850,6 +4860,9 @@ celestial_request_military_aid_interaction = {
 					OR = {
 						vassal_contract_has_flag = celestial_military_appointment
 						vassal_contract_has_flag = meritocratic_military_appointment
+						
+						vassal_contract_has_flag = admin_theme_military
+						vassal_contract_has_flag = admin_theme_frontier
 					}
 				}
 			}
@@ -6526,6 +6539,7 @@ celestial_request_examination_support_interaction = {
 
 # Minister actions
 # Have Military Governor Join War
+##Altered to allow for other admins
 celestial_send_military_aid_interaction = {
 	icon = icon_soldier_survivor
 	interface_priority = 70
@@ -6568,7 +6582,7 @@ celestial_send_military_aid_interaction = {
 				AND = {
 					top_liege = this
 					government_allows = administrative
-					government_allows = merit
+					#government_allows = merit
 				}
 			}
 		}
@@ -6589,6 +6603,9 @@ celestial_send_military_aid_interaction = {
 					OR = {
 						vassal_contract_has_flag = celestial_military_appointment
 						vassal_contract_has_flag = meritocratic_military_appointment
+						
+						vassal_contract_has_flag = admin_theme_military
+						vassal_contract_has_flag = admin_theme_frontier
 					}
 				}
 			}
