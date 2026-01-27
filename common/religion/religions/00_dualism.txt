@@ -25,7 +25,7 @@
 	doctrine = doctrine_clerical_succession_spiritual_appointment
 
 	#Special Doctrine for Gnostic mechanics
-	doctrine = special_doctrine_is_gnostic_faith
+	#doctrine = special_doctrine_is_gnostic_faith #moved to individual faiths for Ahrimanism to be considered evil by them
 
 	#Allow pilgrimages
 	doctrine = doctrine_pilgrimage_encouraged
@@ -235,6 +235,8 @@
 			holy_site = samarkand
 			holy_site = udabhanda
 
+			doctrine = special_doctrine_is_gnostic_faith
+
 			doctrine = tenet_mendicant_preachers # Manicheans preached very far East
 			doctrine = tenet_adaptive
 			doctrine = tenet_esotericism
@@ -355,6 +357,8 @@
 			holy_site = jerusalem
 
 			doctrine = LR_doctrine_christian_ascendant
+			
+			doctrine = special_doctrine_is_gnostic_faith			
 
 			doctrine = tenet_pacifism
 			doctrine = tenet_esotericism
@@ -473,6 +477,8 @@
 			holy_site = jerusalem
 
 			doctrine = LR_doctrine_islamic_ascendant
+			
+			doctrine = special_doctrine_is_gnostic_faith
 
 			doctrine = tenet_inner_journey
 			doctrine = tenet_esotericism
@@ -528,6 +534,8 @@
 			holy_site = alexandria
 			holy_site = sijilmasa
 			holy_site = sinai
+
+			doctrine = special_doctrine_is_gnostic_faith
 
 			doctrine = tenet_asceticism # Regarded starvation as the redemption of the human soul and would practice meditation
 			doctrine = tenet_esotericism
@@ -641,6 +649,8 @@
 			holy_site = alexandria
 			holy_site = sijilmasa
 			holy_site = sinai
+
+			doctrine = special_doctrine_is_gnostic_faith
 
 			doctrine = tenet_communal_identity
 			doctrine = tenet_esotericism
@@ -764,6 +774,8 @@
 
 			doctrine = LR_doctrine_christian_ascendant
 
+			doctrine = special_doctrine_is_gnostic_faith
+
 			doctrine = tenet_asceticism
 			doctrine = tenet_esotericism
 			doctrine = tenet_fp3_fedayeen
@@ -880,6 +892,8 @@
 			holy_site = takht-e_soleyman
 			holy_site = yazd
 
+			doctrine = special_doctrine_is_gnostic_faith
+
 			doctrine = tenet_reincarnation
 			doctrine = tenet_esotericism
 			doctrine = tenet_hedonistic
@@ -917,6 +931,8 @@
 
 			doctrine = LR_doctrine_eastern_ascendant
 
+			doctrine = special_doctrine_is_gnostic_faith
+
 			doctrine = doctrine_polytheist
 			doctrine = tenet_inner_journey
 			doctrine = tenet_adaptive
@@ -953,25 +969,19 @@
 			holy_site = konugardr
 			holy_site = ranaheim
 
-			doctrine = unreformed_faith_doctrine
+			#doctrine = unreformed_faith_doctrine
+
+			doctrine = special_doctrine_is_gnostic_faith
+			
+			doctrine = doctrine_pluralism_righteous
 
 			doctrine = tenet_warmonger
-			# Gruesome Festivals, else Human Sacrifice.
-			doctrine_selection_pair = {
-				requires_dlc_flag = the_northern_lords
-				doctrine = tenet_gruesome_festivals
-				fallback_doctrine = tenet_human_sacrifice
-			}
-			# Bhakti, else Ancestor Worship.
-			doctrine_selection_pair = {
-				requires_dlc_flag = the_northern_lords
-				doctrine = tenet_bhakti
-				fallback_doctrine = tenet_ancestor_worship
-			}
+			doctrine = tenet_unrelenting_faith
+			doctrine = tenet_mendicant_preachers
 		}
 
 		mani_ahriman = {
-			color = { 0.7 0.7 0.4 }
+			color = { 53 53 53 }
 			icon = manichean #ahriman
 
 			holy_site = ahvaz
@@ -981,10 +991,19 @@
 			holy_site = udabhanda
 
 			doctrine = LR_doctrine_folk_ascendant
+			doctrine = special_doctrine_is_anti_zoroastrian_faith
 
-			doctrine = tenet_mendicant_preachers # mani_ahrimans preached very far East
-			doctrine = tenet_adaptive
-			doctrine = tenet_esotericism
+			doctrine = tenet_carnal_exaltation
+			doctrine = tenet_unrelenting_faith 
+			doctrine = tenet_pursuit_of_power
+			
+			doctrine = doctrine_pluralism_fundamentalist
+			
+			doctrine = doctrine_no_head
+			doctrine = doctrine_clerical_gender_either
+			doctrine = doctrine_theocracy_lay_clergy	
+			doctrine = doctrine_witchcraft_accepted
+			doctrine = doctrine_clerical_function_recruitment
 
 			localization = { # mani_ahriman/Ahrimanic Gods
 				#HighGodName
@@ -1104,8 +1123,13 @@
 
 			doctrine = LR_doctrine_folk_ascendant
 
+			doctrine = special_doctrine_is_gnostic_faith
+			
+			doctrine = doctrine_henotheist
+			doctrine = doctrine_clerical_function_recruitment
+
 			doctrine = tenet_mendicant_preachers # Manicheans preached very far East
-			doctrine = tenet_adaptive
+			doctrine = tenet_communal_possessions
 			doctrine = tenet_esotericism
 
 			localization = { # Manichean/Priscillianism Gods
