@@ -173,7 +173,87 @@ LR_generate_noble_families_on_start = {
 	}	
 }
 
-
+LR_generate_maa_on_start = {
+	if = {
+		limit = { number_of_maa_regiments < 2 }
+		if = {
+			limit = { 
+				realm_size <= tiny_realm_size 
+			}
+			create_maa_or_upgrade_regiment_effect = {
+				TYPE = light_footmen
+				SIZE = 3
+			}
+			create_maa_or_upgrade_regiment_effect = {
+				TYPE = bowmen
+				SIZE = 1
+			}
+			#create_maa_or_upgrade_regiment_effect = {
+			#	TYPE = light_horsemen
+			#	SIZE = 1
+			#}
+			#create_maa_or_upgrade_regiment_effect = {
+			#	TYPE = pikemen_unit
+			#	SIZE = 1
+			#}
+			#create_maa_or_upgrade_regiment_effect = {
+			#	TYPE = armored_footmen
+			#	SIZE = 1
+			#}
+		}
+		else_if = {
+			limit = { 
+				realm_size > tiny_realm_size
+				realm_size < medium_realm_size
+			}
+			#create_maa_or_upgrade_regiment_effect = {
+			#	TYPE = light_footmen
+			#	SIZE = 3
+			#}
+			create_maa_or_upgrade_regiment_effect = {
+				TYPE = bowmen
+				SIZE = 2
+			}
+			create_maa_or_upgrade_regiment_effect = {
+				TYPE = light_horsemen
+				SIZE = 1
+			}
+			create_maa_or_upgrade_regiment_effect = {
+				TYPE = pikemen_unit
+				SIZE = 2
+			}
+			#create_maa_or_upgrade_regiment_effect = {
+			#	TYPE = armored_footmen
+			#	SIZE = 1
+			#}
+		}
+		else_if = {
+			limit = { 
+				realm_size >= medium_realm_size
+			}
+			#create_maa_or_upgrade_regiment_effect = {
+			#	TYPE = light_footmen
+			#	SIZE = 2
+			#}
+			create_maa_or_upgrade_regiment_effect = {
+				TYPE = bowmen
+				SIZE = 2
+			}
+			create_maa_or_upgrade_regiment_effect = {
+				TYPE = light_horsemen
+				SIZE = 1
+			}
+			#create_maa_or_upgrade_regiment_effect = {
+			#	TYPE = pikemen_unit
+			#	SIZE = 2
+			#}
+			create_maa_or_upgrade_regiment_effect = {
+				TYPE = armored_footmen
+				SIZE = 3
+			}
+		}
+	}
+}
 
 
 
