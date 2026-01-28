@@ -1633,7 +1633,7 @@ harm_candidacy_interaction = {
 		hegemony = 24
 	}
 
-	is_available = {
+	ai_potential = {
 		influence > major_influence_value
 		government_allows = administrative
 		ai_honor <= 25
@@ -2473,7 +2473,7 @@ request_appointment_support = {
 		empire = 0
 		hegemony = 0
 	}
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 		house ?= {
 			OR = {
@@ -2723,7 +2723,7 @@ demand_admin_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 		is_adult = yes
 	}
@@ -3412,7 +3412,7 @@ contest_appointment_interaction = {
 		hegemony = 12
 	}
 
-	is_available = {
+	ai_potential = {
 		is_landless_administrative = yes
 		liege = { has_realm_law_flag = title_revocation_allowed }
 	}
@@ -3795,7 +3795,7 @@ request_council_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		top_liege != this
 		is_councillor = no
 		liege ?= {
@@ -4700,7 +4700,7 @@ castrate_child_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_adult = yes
 	}
 
@@ -5204,7 +5204,7 @@ offer_eunuch_interaction = {
 		hegemony = 0
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 	}
 
@@ -5450,7 +5450,7 @@ cabinet_of_curiosities_interaction = {
 		hegemony = 84
 	}
 
-	is_available = {
+	ai_potential = {
 		has_any_unequipped_artifact = yes
 		any_character_artifact = {
 			count >= 5
@@ -5559,7 +5559,7 @@ acknowledge_governor_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 		highest_held_title_tier >= tier_empire
 	}
@@ -5821,7 +5821,7 @@ boost_efficiency_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 		top_liege = {
 			any_vassal = {
@@ -6092,7 +6092,7 @@ damage_efficiency_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 		top_liege = {
 			any_vassal = {
@@ -6625,7 +6625,7 @@ governor_removal_interaction = {
 		empire = 6
 		hegemony = 6
 	}
-	is_available = {
+	ai_potential = {
 		influence > massive_influence_value
 		is_at_war = no # Don't spend influence when at war in case troops are needed
 	}
@@ -7880,7 +7880,7 @@ force_step_down_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		NOT = {
 			any_scheme = {
 				is_scheme_category = political
@@ -8503,7 +8503,7 @@ request_governorship_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_governor = no
 	}
 
@@ -8933,7 +8933,7 @@ noble_family_adoption_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_house_head = yes
 		house ?= {
 			any_house_member = {
@@ -9421,7 +9421,7 @@ request_ally_title_troops_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_governor = yes
 	}
 
@@ -9732,7 +9732,7 @@ request_emperor_title_troops_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_governor = yes # Only governors may ask for troops
 		NOR = { # Don't ask for more troops if you have borrowed some already
 			any_maa_regiment = {
@@ -10105,7 +10105,7 @@ request_title_troops_back_interaction = {
 	on_decline = {
 	}
 
-	#is_available = {
+	#ai_potential = {
 	#	always = no
 	#}
 	#
@@ -10356,7 +10356,7 @@ request_raid_remit_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_house_head = yes
 		house ?= {
 			any_house_member = {
@@ -10739,7 +10739,7 @@ request_co_emperor_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		NOR = {
 			has_trait = humble
 			has_trait = content
@@ -11279,7 +11279,7 @@ frontier_influence_war_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 		top_liege = this
 	}
@@ -11978,7 +11978,7 @@ house_head_request_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_house_head = yes
 	}
 
@@ -12196,7 +12196,7 @@ ep3_hof_ask_for_influence_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		is_playable_character = yes
 		piety >= massive_piety_value
 		NOT = { has_trait = excommunicated }
@@ -13531,7 +13531,7 @@ ep3_governor_request_war_permission_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 		is_adult = yes
 		liege = { is_at_war = no } # Don't ask if your liege is at war
@@ -13676,7 +13676,7 @@ ep3_mass_arrests_interaction = {
 		}
 	}
 
-	is_available = {
+	ai_potential = {
 		government_allows = administrative
 		is_adult = yes
 	}
