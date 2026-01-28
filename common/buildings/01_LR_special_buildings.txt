@@ -32,9 +32,9 @@ library_of_alexandria_01 = {
 		monthly_dynasty_prestige = 0.25
 	}
 	county_modifier = {
-		tax_mult = 0.2
+		#tax_mult = 0.2
 		development_growth = 0.30
-		development_growth_factor = 0.50
+		development_growth_factor = 0.40
 	}
 	
 	ai_value = {
@@ -94,4 +94,46 @@ honorius_palace_01 = {
 
 	flag = travel_point_of_interest_diplomatic
 }
+
+
+lighthouse_of_alexandria_01 = {
+	construction_time = very_slow_construction_time
+
+	type_icon = "hercules.dds"
+	
+	can_construct_potential = {
+		barony ?= title:b_alexandria
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = 3000
+	
+	character_modifier = {
+		naval_movement_speed_mult = 0.25
+		embarkation_cost_mult = -0.25
+	}	
+	duchy_capital_county_modifier = {
+		tax_mult = 0.20
+	}
+	province_modifier = {
+		monthly_income = 5
+	}
+	county_modifier = {
+		development_growth = 0.10
+		development_growth_factor = 0.20
+		tax_mult = 0.3
+	}
+	
+	ai_value = {
+		base = 100
+		culture_likely_to_fortify_modifier = yes
+		modifier = { # Fill all building slots before going for special buildings
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+	
+	type = duchy_capital
+}
+
 
