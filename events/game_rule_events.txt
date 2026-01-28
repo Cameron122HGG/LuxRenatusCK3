@@ -260,7 +260,12 @@ scripted_trigger weak_empire = {
 	is_titular = no
 	is_landless_type_title = no
 	is_head_of_faith = no
-	NOT = { # Need to own 20% of De Jure counties #LR changed to 10%
+	##added check so that small Roman Empires don't get destroyed
+	NOR = {
+		this = title:e_spqr
+		this = title:e_byzantium
+	}
+	NOT = { # Need to own 20% of De Jure counties #LR changed to 5%
 		any_in_de_jure_hierarchy = {
 			filter = {
 				tier = tier_county
@@ -274,7 +279,7 @@ scripted_trigger weak_empire = {
 					target_is_liege_or_above = root
 				}
 			}
-			percent >= 0.10
+			percent >= 0.05
 		}
 	}
 }
