@@ -11,7 +11,8 @@ LR_diadochi_seleukid_kingdom_decision = {
     is_shown = {
         is_ruler = yes
         is_playable_character = yes
-		NOT = { exists = title:k_seleukid_kingdom.holder }
+		NOT = { highest_held_title_tier = tier_hegemony }
+		NOT = { exists = title:e_seleukid_empire.holder }
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_antipatrid_empire }
 		NOT = { has_primary_title = title:e_ptolemaic_empire }
@@ -29,11 +30,7 @@ LR_diadochi_seleukid_kingdom_decision = {
                 name = unavailable_unique_decisions
                 target = flag:flag_lux_seleukid_reborn
             }
-        }
-		custom_tooltip = {
-			text = primary_title_is_kingdom_tooltip
-			primary_title.tier = tier_kingdom
-		}		
+        }	
     }
     is_valid = {
         is_landed = yes
@@ -61,6 +58,16 @@ LR_diadochi_seleukid_kingdom_decision = {
 		completely_controls = title:k_jerusalem
 		completely_controls = title:k_mesopotamia 
 		completely_controls = title:k_osroene
+		OR = {
+			custom_tooltip = {
+				text = primary_title_is_e_levant_tooltip		
+				primary_title = title:e_levant
+			}
+			custom_tooltip = {
+				text = primary_title_is_kingdom_tooltip
+				primary_title.tier = tier_kingdom
+			}
+		}		
     }
     cost = {
 		gold = 1000
@@ -105,7 +112,8 @@ LR_diadochi_ptolemaic_kingdom_decision = {
     is_shown = {
         is_ruler = yes
         is_playable_character = yes
-		NOT = { exists = title:k_ptolemaic_kingdom.holder }
+		NOT = { highest_held_title_tier = tier_hegemony }
+		NOT = { exists = title:e_ptolemaic_empire.holder }
 		NOT = { has_primary_title = title:e_byzantium }
 		NOT = { has_primary_title = title:e_antipatrid_empire }
 		NOT = { has_primary_title = title:e_seleukid_empire }
@@ -120,7 +128,7 @@ LR_diadochi_ptolemaic_kingdom_decision = {
         NOT = {
             is_target_in_global_variable_list = {
                 name = unavailable_unique_decisions
-                target = flag:flag_lux_ptolemaios_reborn
+                target = flag:flag_lux_ptolemaic_reborn
             }
         }		
     }
@@ -150,10 +158,16 @@ LR_diadochi_ptolemaic_kingdom_decision = {
 		completely_controls = title:k_kyrene
 		completely_controls = title:k_cyprus
 		completely_controls = title:k_krete
-		custom_tooltip = {
-			text = primary_title_is_kingdom_tooltip
-			primary_title.tier = tier_kingdom
-		}		
+		OR = {
+			custom_tooltip = {
+				text = primary_title_is_e_egypt_tooltip		
+				primary_title = title:e_egypt
+			}
+			custom_tooltip = {
+				text = primary_title_is_kingdom_tooltip
+				primary_title.tier = tier_kingdom
+			}
+		}
 	}
     
 
