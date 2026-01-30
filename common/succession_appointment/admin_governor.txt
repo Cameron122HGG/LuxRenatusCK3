@@ -454,6 +454,38 @@
 				}
 			}
 
+			###LR hereditary post
+			if = {
+				limit = { 
+					scope:title.holder = { vassal_contract_has_flag = hereditary_appointment_yes } 
+					root = { is_child_of = scope:title.holder }
+				}
+				add = {
+					value = 300
+					desc = hereditary_post_child_desc
+				}
+			}
+			if = {
+				limit = { 
+					scope:title.holder = { vassal_contract_has_flag = hereditary_appointment_yes } 
+					root = { is_grandchild_of = scope:title.holder }
+				}
+				add = {
+					value = 200
+					desc = hereditary_post_grandchild_desc
+				}
+			}
+			if = {
+				limit = { 
+					scope:title.holder = { vassal_contract_has_flag = hereditary_appointment_yes } 
+					root.house = scope:title.holder.house
+				}
+				add = {
+					value = 200
+					desc = hereditary_post_desc
+				}
+			}
+			###
 			#ADJUST BASED ON GENDER LAW - MUST GO AT THE END
 			if = {
 				limit = {
@@ -516,37 +548,6 @@
 				multiply = {
 					value = 0
 					desc = appointment_is_top_liege
-				}
-			}
-			###LR hereditary post
-			if = {
-				limit = { 
-					scope:title.holder = { vassal_contract_has_flag = hereditary_appointment_yes } 
-					root = { is_child_of = scope:title.holder }
-				}
-				add = {
-					value = 300
-					desc = hereditary_post_child_desc
-				}
-			}
-			if = {
-				limit = { 
-					scope:title.holder = { vassal_contract_has_flag = hereditary_appointment_yes } 
-					root = { is_grandchild_of = scope:title.holder }
-				}
-				add = {
-					value = 200
-					desc = hereditary_post_grandchild_desc
-				}
-			}
-			if = {
-				limit = { 
-					scope:title.holder = { vassal_contract_has_flag = hereditary_appointment_yes } 
-					root.house = scope:title.holder.house
-				}
-				add = {
-					value = 200
-					desc = hereditary_post_desc
 				}
 			}			
 		}
