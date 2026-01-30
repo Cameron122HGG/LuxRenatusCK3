@@ -2333,14 +2333,29 @@ grant_governorship_interaction = {
 						level = celestial_province_standard
 					}
 				}
-				if = {
+				else_if = {
 					limit = { has_government = meritocratic_government }
 					vassal_contract_set_obligation_level = {
 						type = meritocratic_provinces
 						level = meritocratic_province_standard
 					}
 				}
-				if = {
+				else_if = {
+					limit = { government_has_flag = government_is_classical_administrative }
+					vassal_contract_set_obligation_level = {
+						type = ca_state_ownership
+						level = ca_state_ownership_30
+					}
+					vassal_contract_set_obligation_level = {
+						type = ca_citizenship
+						level = ca_citizenship_2
+					}
+					vassal_contract_set_obligation_level = {
+						type = ca_military_designation
+						level = ca_military_designation_1
+					}
+				}
+				else_if = {
 					limit = { government_has_flag = government_is_administrative }
 					vassal_contract_set_obligation_level = {
 						type = administrative_themes

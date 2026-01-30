@@ -2132,6 +2132,44 @@ governor_efficiency = {
 				desc = japanese_archives_governor_efficiency_boost_desc
 			}
 		}
+		##LR Classical Administrative Contract
+		if = {
+			limit = { vassal_contract_has_flag = state_ownership_20 }		
+			multiply = { ##Separate to display positive number
+				value = 0
+				add = { 
+					desc = STATE_OWNERSHIP_IMPACT_20
+					add = 1.20
+				}
+			}
+		}
+		else_if = {
+			limit = { 
+				OR = {
+					vassal_contract_has_flag = state_ownership_40 
+					vassal_contract_has_flag = state_ownership_50
+				}
+			}
+			multiply = {
+				value = 0
+				if = {
+					limit = { vassal_contract_has_flag = state_ownership_40 }
+					add = { 
+						desc = STATE_OWNERSHIP_IMPACT_40
+						add = -0.85
+					}
+				}
+				if = {
+					limit = { vassal_contract_has_flag = state_ownership_50 }
+					add = {
+						desc = STATE_OWNERSHIP_IMPACT_50
+						add = -0.70
+					}
+				}
+				multiply = -1 #necessary for number to be negative, yet multiplier positive
+			}
+		}
+		##
 		#HOUSE BLOC
 		if = {
 			limit = {
