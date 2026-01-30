@@ -520,4 +520,41 @@ ca_military_designation = {
 	}
 }
 
-
+ca_hereditary_appointment = {
+	display_mode = radiobutton
+	icon = gold_icon
+	obligation_levels = {
+		ca_hereditary_appointment_no = {
+			#position = { 0 0 }
+			default = yes
+			#subject_modifier = {
+			#	monthly_treasury_from_salary_budget_mult = -0.05
+			#}
+			ai_liege_desire = {
+				value = 100
+			}
+			flag = hereditary_appointment_no
+		}
+		ca_hereditary_appointment_yes = {
+			#position = { 0 0 }
+			is_valid = {
+				custom_tooltip = {
+					text = admin_top_liege_valid_desc
+					scope:liege = scope:subject.top_liege
+				}
+			}
+			liege_modifier = {
+				direct_vassal_opinion = -5
+			}
+			subject_modifier = {
+				monthly_treasury_from_salary_budget_mult = 0.10
+				opinion_of_liege = 25
+				monthly_prestige = 0.5
+			}
+			ai_liege_desire = {
+				value = 0
+			}
+			flag = hereditary_appointment_yes
+		}		
+	}
+}
