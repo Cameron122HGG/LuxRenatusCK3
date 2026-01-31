@@ -14,6 +14,43 @@ classical_administrative_obligations = {
 		}
 	}
 }
+ca_count_dev_fund = {
+	display_mode = hidden
+
+	defaults_to_highest_valid_level = yes
+
+	can_be_changed = {
+		always = no
+	}
+
+	obligation_levels = {
+		ca_count_dev_fund_none = {
+			position = { 0 0 }
+			default = yes
+
+			ai_liege_desire = 0
+			ai_subject_desire = 0
+		}
+
+		ca_count_dev_fund_count = {
+			position = { 2 0 }
+
+			parent = administrative_salary_rank_none
+			is_valid = {
+				scope:subject = {
+					highest_held_title_tier < tier_duchy
+				}
+			}
+
+			ai_liege_desire = 3
+			ai_subject_desire = 3
+
+			subject_modifier = {
+				monthly_treasury_from_liege_mult = -0.25
+			}
+		}
+	}
+}
 
 ca_state_ownership = {
 	display_mode = radiobutton
@@ -58,7 +95,7 @@ ca_state_ownership = {
 			flag = state_ownership_20
 			subject_modifier = {
 				governor_xp_gain_mult = -0.05
-				monthly_treasury_from_liege_mult = 0.15
+				monthly_treasury_from_liege_mult = 0.10
 				monthly_treasury_from_salary_budget_mult = -0.05				
 			}
 		}
@@ -148,7 +185,7 @@ ca_state_ownership = {
 			flag = state_ownership_40
 			subject_modifier = {
 				governor_xp_gain_mult = 0.05
-				monthly_treasury_from_liege_mult = -0.15
+				monthly_treasury_from_liege_mult = -0.10
 				monthly_treasury_from_salary_budget_mult = 0.05
 			}			
 		}
@@ -194,7 +231,7 @@ ca_state_ownership = {
 			flag = state_ownership_50
 			subject_modifier = {
 				governor_xp_gain_mult = 0.10
-				monthly_treasury_from_liege_mult = -0.30
+				monthly_treasury_from_liege_mult = -0.20
 				monthly_treasury_from_salary_budget_mult = 0.10				
 			}
 		}
