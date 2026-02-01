@@ -173,7 +173,7 @@ world_europe_north = {
 world_europe_south_east = {
 	duchies = {
 		#West ERE
-		d_thrace d_strymon d_thessalonika d_thessaly d_dyrrachion d_cephalonia d_epirus d_athens d_achaia d_krete d_cyprus d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis d_rashka d_macva d_slavonia d_croatia d_dalmatia d_usora
+		d_thrace d_strymon d_thessalonika d_thessaly d_dyrrachion d_cephalonia d_epirus d_athens d_achaia d_krete d_cyprus d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis d_rashka d_macva d_slavonia d_croatia d_dalmatia d_usora
 		#d_adrianopolis d_karvuna d_dioclea
 		d_bosna d_lower_bosna d_krain d_istria  d_duklja	
 		#Wallachia
@@ -1426,11 +1426,10 @@ custom_roman_dacia = {
 		d_macva
 		d_rashka
 		d_duklja
-		d_bulgaria
 	}
 }
 
-custom_roman_macedonia = {
+custom_roman_moesia = {
 	duchies = {
 		d_krete
 		d_achaia
@@ -1438,9 +1437,10 @@ custom_roman_macedonia = {
 		d_epirus
 		d_thessaly
 		d_thessalonika
-		d_bulgaria
+		d_lykandos
 		d_dyrrachion
 		d_cephalonia
+		d_macedonia
 	}
 	counties = {
 		c_ohrid
@@ -1490,6 +1490,7 @@ custom_roman_cyrenaica = {
 custom_roman_africa = {
 	duchies = {
 		d_tunis
+		d_gabes
 		d_kairouan
 		d_kroumerie
 		d_jerid
@@ -1515,58 +1516,32 @@ custom_roman_illyricum = {
 		d_tyrol
 		d_lower_bosna
 		
-		d_steyermark
+		#d_steyermark
 		d_krain
-		d_osterreich
-		d_salzburg
+		#d_osterreich
+		#d_salzburg
 		
 		d_syrmia
 	}
 }
 
 custom_roman_italia_suburbicaria = {
-	counties = {
-		c_roma
-		c_viterbo
-		c_orvieto
-		c_capua
-		c_napoli
-		c_tivoli
-		c_spoleto
-		c_teramo
-		c_abruzzi
-		c_ancona
-		c_fermo
-		c_firenze
-		c_lucca
-		c_arezzo
-		c_siena
-		c_orbetello
-		c_pisa
-		c_benevento
-		c_lanciano
-		c_foggia
-		c_apulia
-		c_bari
-		c_lecce
-		c_salerno
-		c_camarda
-		c_cosenza
-		c_rossano
-		c_ajaccio
-		c_bastia
-		c_vecchio
-		c_cagliari
-		c_arborea
-		c_gallura
-		c_logudoro
-		c_tortoli
-		c_palermo
-		c_messina
-		c_siracusa
-		c_agrigento
-		c_malta
-		c_reggio_calabria
+	duchies = {
+		d_toscana
+		d_pisa
+		d_ancona
+		d_valeria
+		#d_emilia
+		#d_flaminia
+		d_samnium
+		d_latium
+		d_salerno
+		d_sicily
+		d_calabria
+		d_corsica
+		d_capua
+		d_apulia
+		d_sardinia
 	}
 }
 
@@ -1579,11 +1554,7 @@ custom_roman_italia_annonaria = {
 		d_flaminia
 		d_verona
 		d_tyrol
-		d_bavaria
-		d_augsburg
 		d_histria
-		
-		d_nordgau #?
 		d_venice
 	}
 	#counties = {
@@ -1825,11 +1796,7 @@ custom_roman_hispania = {
 custom_roman_britannia = {
 	duchies = {
 		d_gwynedd d_powys d_deheubarth d_cornwall
-		d_lancaster d_york d_norfolk d_bedford d_hereford d_gloucester d_canterbury d_somerset
-	}
-	counties = {
-		c_cumberland
-		c_durham
+		d_lancaster d_york d_norfolk d_bedford d_hereford d_gloucester d_canterbury d_somerset d_magonsaete d_northumberland d_cumbria
 	}
 }
 
@@ -1853,7 +1820,6 @@ custom_roman_mesopotamia = {
 	duchies = {
 		#d_armenia
 		d_mesopotamia
-		d_edessa
 		#d_coloneia
 		d_kermanshah
 		d_basra
@@ -1884,8 +1850,7 @@ custom_roman_hibernia = {
 
 custom_roman_prefecture_illyricum = {
 	regions = {
-		custom_roman_thracia
-		custom_roman_macedonia
+		custom_roman_illyricum
 		custom_roman_dacia
 	}
 }
@@ -1902,18 +1867,10 @@ custom_roman_syria = {
 		d_urdunn
 		d_palmyra
 		d_diyarmudar
-		#d_diyarbakr
+		d_diyarbakr
 		d_amman
 		d_sinai
-		d_edessa
 	}
-	counties = {
-		c_khabur
-		c_upper_khabur 
-		c_mayyafariqin
-		c_bakriya
-		c_amida
-	}	
 }
 
 custom_roman_prefecture_oriens = {
@@ -1930,12 +1887,13 @@ custom_roman_asia = {
 		d_ephese
 		d_cibyrrhaeot
 		d_thracesia
-		#d_opsikion
 		d_anatolia
 		d_cilicia
 		d_aegean_islands
 		d_cyprus
-		d_opsikion	
+		d_opsikion
+		d_edessa
+	
 	}
 }
 
@@ -1956,7 +1914,7 @@ custom_roman_pontus = {
 custom_eastern_imperial_core = {
 	regions = {
 		custom_roman_thracia
-		custom_roman_macedonia
+		custom_roman_moesia
 		custom_roman_dacia
 		custom_roman_asia
 		custom_roman_pontus
@@ -1994,7 +1952,7 @@ custom_theodosian_ere = {
 	}
 	duchies = {
 		# Bulgaria
-		d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis
+		d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis
 		# Crete
 		d_krete
 		# Cyprus
@@ -2020,14 +1978,14 @@ custom_theodosian_wre = {
 		custom_roman_italia_suburbicaria
 		custom_roman_mauretania
 		custom_roman_africa
-		#custom_roman_britannia
+		custom_roman_britannia
 	}
 }
 
 custom_eastern_balkans = {
 	duchies = {
 		#Bulgaria
-		d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis
+		d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis
 		# Wallachia
 		d_transylvanian_alps d_muntenia d_oltenia
 		# Moldavia
@@ -2184,7 +2142,7 @@ custom_slavia = {
 		#Serbia
 		d_rashka d_macva d_duklja
 		#Bulgaria
-		d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis
+		d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis
 		#Wallachia (dacia)
 		d_transylvanian_alps d_muntenia d_oltenia
 		#Moldavia
@@ -2242,7 +2200,7 @@ custom_south_slavia = {
 		#Serbia
 		d_rashka d_macva d_duklja
 		#Bulgaria
-		d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis
+		d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis
 		#Wallachia (dacia)
 		d_transylvanian_alps d_muntenia d_oltenia
 		#Moldavia
@@ -2653,7 +2611,7 @@ world_horse_buildings_in_hills_and_mountains = {
 		#Serbia
 		d_rashka d_macva d_duklja
 		#Bulgaria
-		d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis
+		d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis
 		#Hungary
 		d_visegrad d_somogy d_nyitra d_ungvar d_transcarpathia d_transylvania d_bihar d_temes d_bacs d_gyor d_syrmia
 		#Wallachia
@@ -2996,7 +2954,7 @@ special_mongol_empire_conquest_region_bonus = {
 		#k_hungary
 		d_visegrad d_somogy d_nyitra d_ungvar d_transcarpathia d_transylvania d_bihar d_temes d_bacs d_gyor d_syrmia
 		#k_bulgaria
-		d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis
+		d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis
 		#k_serbia
 		d_rashka d_macva d_duklja
 		#k_poland
@@ -3425,7 +3383,7 @@ ghw_region_balkans = {
 		#Serbia
 		d_rashka d_macva d_duklja
 		#Bulgaria
-		d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis
+		d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis
 	}
 }
 ghw_region_holy_land = {
