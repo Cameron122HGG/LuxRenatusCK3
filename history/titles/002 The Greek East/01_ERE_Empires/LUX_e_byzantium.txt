@@ -1398,45 +1398,45 @@ k_byzantium = {
 		holder = 1712480 
 	}
 	6060.1.1 = {
-		holder = 71
-		government = classical_administrative_government
-		succession_laws = {
-			acclamation_succession_law
-		}
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					holder = { has_government = classical_feudal_government }
-				}
-				set_state_faith = faith:sol_imperial
-			}
-			if = {
-				limit = {
-					exists = holder
-					has_dlc_feature = royal_court
-				}
-				holder = {
-					set_court_type = court_warlike
-				}
-			}
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_feudal_government
-					add_realm_law_skip_effects = single_heir_succession_law
-				}
-			}
-		}
+		holder = 0 #holder = 71
+		#government = classical_administrative_government
+		#succession_laws = {
+		#	acclamation_succession_law
+		#}
+		#effect = {
+		#	if = {
+		#		limit = {
+		#			exists = holder
+		#			holder = { has_government = classical_feudal_government }
+		#		}
+		#		set_state_faith = faith:sol_imperial
+		#	}
+		#	if = {
+		#		limit = {
+		#			exists = holder
+		#			has_dlc_feature = royal_court
+		#		}
+		#		holder = {
+		#			set_court_type = court_warlike
+		#		}
+		#	}
+		#	if = {
+		#		limit = {
+		#			exists = holder
+		#			NOT = { has_dlc_feature = roads_to_power }
+		#		}
+		#		holder = {
+		#			change_government = classical_feudal_government
+		#			add_realm_law_skip_effects = single_heir_succession_law
+		#		}
+		#	}
+		#}
 	}
 	6061.1.1 = {
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}
 	}
 }
 
@@ -1574,9 +1574,13 @@ d_opsikion = {
 		holder = 1712525 
 	}
 	6066.1.1 = {
-		liege = k_byzantium
+		liege = e_byzantium
 		holder = 2
-		government = classical_administrative_government	
+		government = classical_administrative_government
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}
 		effect = {
 			if = {
 				limit = {
@@ -1935,7 +1939,7 @@ k_macedonia = {
 
 d_strymon = {
 	6066.1.1 = {
-		liege = k_byzantium
+		liege = k_julio_argedai_byz
 		holder = 48
 		government = classical_administrative_government
 		effect = {
@@ -1953,7 +1957,7 @@ d_strymon = {
 }
 c_zherkovo = {
 	6066.1.1 = {
-		liege = k_byzantium
+		liege = k_julio_argedai_byz
 		holder = 71
 		government = classical_feudal_government
 		effect = {
@@ -1980,7 +1984,7 @@ c_serres = {
 c_mosynopolis = {
 	6066.1.1 = {
 		holder = 71 #Poranti Venna
-		liege = k_byzantium
+		liege = k_julio_argedai_byz
 	}
 }
 
