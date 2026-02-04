@@ -79,7 +79,6 @@ duke_classical_male_byzantine_group = {
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
-		spouse_takes_title = no
 	}
 }
 duke_classical_female_byzantine_group = {
@@ -92,7 +91,6 @@ duke_classical_female_byzantine_group = {
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
-		spouse_takes_title = no
 	}
 }
 
@@ -107,7 +105,6 @@ king_classical_male_byzantine_group = {
 
 	flavourization_rules = {
 		top_liege = no
-		spouse_takes_title = no
 		only_vassals = yes
 	}
 }
@@ -122,7 +119,6 @@ king_classical_female_byzantine_group = {
 
 	flavourization_rules = {
 		top_liege = no
-		spouse_takes_title = no
 		only_vassals = yes
 	}	
 }
@@ -192,14 +188,14 @@ hegemony_classical_byzantine_group = {
 	governments = { despot_government classical_feudal_government }
 	heritages = { heritage_byzantine }
 }
-#------------------ Classical Ep3 Byzantine ------------------#	
+#------------------ Admin Byzantine ------------------#	
 spouse_estate_holder_male_byzantine_group = {
 	type = character
 	gender = male
 	special = domicile
     domicile_type = estate
 	priority = 27
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
@@ -211,7 +207,7 @@ spouse_estate_holder_female_byzantine_group = {
 	special = domicile
     domicile_type = estate
 	priority = 27
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
@@ -224,7 +220,7 @@ baron_classical_ep3_male_byzantine_group = {
 	special = holder
 	tier = barony
 	priority = 28
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
@@ -237,7 +233,7 @@ baron_classical_ep3_female_byzantine_group = {
 	special = holder
 	tier = barony
 	priority = 28
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
@@ -251,7 +247,7 @@ count_classical_ep3_male_byzantine_group = {
 	special = holder
 	tier = county
 	priority = 30
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
@@ -264,7 +260,7 @@ count_classical_ep3_female_byzantine_group = {
 	special = holder
 	tier = county
 	priority = 30
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
@@ -275,7 +271,7 @@ county_classical_ep3_byzantine_group = {
 	type = title
 	tier = county
 	priority = 30
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 }
 
@@ -283,7 +279,7 @@ duchy_classical_ep3_byzantine_group = {
 	type = title
 	tier = duchy
 	priority = 51
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
@@ -295,7 +291,7 @@ duke_classical_ep3_male_byzantine_group = {
 	special = holder
 	tier = duchy
 	priority = 51
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		top_liege = no
@@ -321,7 +317,7 @@ king_classical_ep3_male_byzantine_group = {
 	gender = male
 	special = holder
 	tier = kingdom
-	priority = 150
+	priority = 75
 	governments = { classical_administrative_government administrative_government }
 	heritages = { heritage_byzantine }
 
@@ -336,8 +332,8 @@ king_classical_ep3_female_byzantine_group = {
 	gender = female
 	special = holder
 	tier = kingdom
-	priority = 150
-	governments = { classical_administrative_government administrative_government }
+	priority = 75
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 
 	flavourization_rules = {
@@ -349,11 +345,21 @@ king_classical_ep3_female_byzantine_group = {
 kingdom_classical_ep3_byzantine_group = {
 	type = title
 	tier = kingdom
-	priority = 150
-	governments = { classical_administrative_government administrative_government }
+	priority = 75
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 	flavourization_rules = {
 		only_vassals = yes
+	}
+}
+kingdom_classical_independent_byzantine_group = {
+	type = title
+	tier = kingdom
+	priority = 107
+	governments = { classical_administrative_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = { 
+		only_independent = yes
 	}
 }
 
@@ -363,8 +369,11 @@ emperor_classical_ep3_male_byzantine_group = {
 	special = holder
 	tier = empire
 	priority = 250
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		only_vassals = yes
+	}
 }
 emperor_classical_ep3_female_byzantine_group = {
 	type = character
@@ -372,15 +381,49 @@ emperor_classical_ep3_female_byzantine_group = {
 	special = holder
 	tier = empire
 	priority = 250
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		only_vassals = yes
+	}
 }
+
 empire_classical_ep3_byzantine_group = {
 	type = title
 	tier = empire
 	priority = 250
-	governments = { classical_administrative_government administrative_government }
+	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
+}
+
+emperor_classical_ep3_male_independent_byzantine_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 255
+	governments = { classical_administrative_government }
+	heritages = { heritage_byzantine }
+}
+
+emperor_classical_ep3_female_independent_byzantine_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 255
+	governments = { classical_administrative_government }
+	heritages = { heritage_byzantine }
+}
+empire_classical_independent_byzantine_group = {
+	type = title
+	tier = empire
+	priority = 255
+	governments = { classical_administrative_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = { 
+		only_independent = yes
+	}
 }
 
 hegemon_classical_ep3_male_byzantine_group = {
@@ -416,7 +459,7 @@ eastern_byzantium_king = {
 	special = holder
 	tier = kingdom
 	priority = 155
-	titles = { k_byzantium }
+	titles = { k_byzantium k_julio_argedai_byz }
 	heritages = { heritage_byzantine }
 	flavourization_rules = { 
 		top_liege = no
@@ -428,7 +471,7 @@ eastern_byzantium_queen = {
 	special = holder
 	tier = kingdom
 	priority = 155
-	titles = { k_byzantium }
+	titles = { k_byzantium k_julio_argedai_byz }
 	heritages = { heritage_byzantine }
 	flavourization_rules = { 
 		top_liege = no
@@ -441,7 +484,7 @@ western_byzantium_king = {
 	special = holder
 	tier = kingdom
 	priority = 155
-	titles = { k_byzantium }
+	titles = { k_byzantium k_julio_argedai_byz }
 	heritages = { heritage_latin }
 	flavourization_rules = { 
 		top_liege = no
@@ -453,7 +496,7 @@ western_byzantium_queen = {
 	special = holder
 	tier = kingdom
 	priority = 155
-	titles = { k_byzantium }
+	titles = { k_byzantium k_julio_argedai_byz }
 	heritages = { heritage_latin }
 	flavourization_rules = { 
 		top_liege = no
@@ -467,7 +510,6 @@ byzantium_emperor_male = {
 	tier = empire
 	priority = 270
 	titles = { e_byzantium }
-	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 }
 byzantium_emperor_female = {
@@ -477,7 +519,6 @@ byzantium_emperor_female = {
 	tier = empire
 	priority = 270
 	titles = { e_byzantium }
-	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
 }
 
@@ -500,4 +541,205 @@ byzantium_hegemon_female = {
 	titles = { h_eastern_roman_empire }
 	governments = { classical_administrative_government }
 	heritages = { heritage_byzantine }
+}
+
+
+#------------------ End LR EP3 Byzantine ------------------#
+### Greek ###
+# Feudal / Imperial
+duke_feudal_male_greek = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 27
+	governments = { feudal_government kinship_government despot_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		top_liege = no
+	}
+}
+king_feudal_male_greek = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government kinship_government despot_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		top_liege = no
+	}
+}
+king_feudal_female_greek = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government kinship_government despot_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		top_liege = no
+	}
+}
+kingdom_feudal_greek = {
+	type = title
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government kinship_government despot_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		top_liege = no
+	}
+}
+emperor_feudal_male_greek = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 107
+	governments = { feudal_government kinship_government despot_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		top_liege = no
+		only_independent = yes
+	}
+}
+emperor_feudal_female_greek = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 107
+	governments = { feudal_government kinship_government despot_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		top_liege = no
+	}
+}
+
+### Byzantine ###
+# Republic
+duke_republic_male_byzantine_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 27
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	heritages = { heritage_byzantine }
+}
+duke_republic_female_byzantine_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 27
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	heritages = { heritage_byzantine }
+}
+king_republic_male_byzantine_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	heritages = { heritage_byzantine }
+}
+king_republic_female_byzantine_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	heritages = { heritage_byzantine }
+}
+
+### ADMINISTRATIVE
+
+baron_administrative_male_byzantine_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 28
+	governments = { administrative_government }
+	heritages = { heritage_byzantine }
+	
+	flavourization_rules = {
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		spouse_takes_title = no
+	}
+}
+baron_administrative_female_byzantine_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 28
+	governments = { administrative_government }
+	heritages = { heritage_byzantine }
+	
+	flavourization_rules = {
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		spouse_takes_title = no
+	}
+}
+count_administrative_male_byzantine_group = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 28
+	governments = { administrative_government }
+	heritages = { heritage_byzantine }
+	
+	flavourization_rules = {
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		spouse_takes_title = no
+	}
+}
+count_administrative_female_byzantine_group = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 28
+	governments = { administrative_government }
+	heritages = { heritage_byzantine }
+	
+	flavourization_rules = {
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		spouse_takes_title = no
+	}
+}
+county_administrative_byzantine_group = {
+	type = title
+	tier = county
+	priority = 51
+	governments = { administrative_government }
+	heritages = { heritage_byzantine }
+	flavourization_rules = {
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+	}
 }
