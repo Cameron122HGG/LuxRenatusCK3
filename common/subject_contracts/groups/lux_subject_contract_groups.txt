@@ -70,7 +70,10 @@ kinship_vassal = {
 
 tributary_byzantine = {
 	is_tributary = yes
-	tributary_can_break_free = { always = no }
+	tributary_can_break_free = {
+		scope:suzerain.military_power < root.military_power
+		is_at_war = no
+	}
 	suzerain_heir_succession = yes
 	suzerain_line_type = line_suzerain
 	tributary_line_type = line_tributary
