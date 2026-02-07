@@ -7224,18 +7224,18 @@ laamp_war_change_sides_interaction = {
 		}
 		scope:actor = {
 			#ROOT is  a 4th crusader and should not be one anymore
-			frankokratia_remove__war_leader_var_effect = yes
+			#frankokratia_remove__war_leader_var_effect = yes
 			#ROOT is not a 4th crusader and should be one
 			if = {
 				limit = {
 					any_character_war = {
-						using_cb = crusading_claim_cb
+						#using_cb = crusading_claim_cb
 						any_war_participant = {
 							this = scope:recipient
 						}
 						any_war_participant = {
 							any_owned_story = {
-								type = frankokratia_story
+								#type = frankokratia_story
 								NOT = {
 									any_in_list = {
 										variable = frankokratia_leaders
@@ -7253,7 +7253,7 @@ laamp_war_change_sides_interaction = {
 					limit = {
 						any_war_participant = {
 							any_owned_story = {
-								type = frankokratia_story
+								#type = frankokratia_story
 								NOT = {
 									any_in_list = {
 										variable = frankokratia_leaders
@@ -7269,7 +7269,7 @@ laamp_war_change_sides_interaction = {
 					random_war_participant = {
 						limit = {
 							any_owned_story = {
-								type = frankokratia_story
+								#type = frankokratia_story
 								NOT = {
 									any_in_list = {
 										variable = frankokratia_leaders
@@ -7279,7 +7279,7 @@ laamp_war_change_sides_interaction = {
 							}
 						}
 						random_owned_story = {
-							type = frankokratia_story
+							#type = frankokratia_story
 							limit = {
 								NOT = {
 									any_in_list = {
@@ -7690,7 +7690,7 @@ laamp_leave_war_interaction = {
 		}
 		scope:actor = {
 			#ROOT is  a 4th crusader and should not be one anymore
-			frankokratia_remove__war_leader_var_effect = yes
+			#frankokratia_remove__war_leader_var_effect = yes
 			every_character_war = {
 				limit = {
 					OR = {
