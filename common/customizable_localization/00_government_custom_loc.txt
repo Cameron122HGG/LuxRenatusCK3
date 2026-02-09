@@ -1268,7 +1268,27 @@ GetGovernmentIcon = {
 				}
 			}
 		}
-		localization_key = despot_icon_concept
+		localization_key = despotic_icon_concept
+	}
+	text = { # Despotic Administrative
+		trigger = {
+			trigger_if = {
+				limit = {
+					is_alive = no
+				}
+				has_government = despotic_administrative_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					government_has_flag = government_is_despotic_administrative
+				}
+				trigger_else = {
+					liege ?= { government_has_flag = government_is_despotic_administrative }
+				}
+			}
+		}
+		localization_key = despotic_administrative_icon_concept
 	}
 }
 
