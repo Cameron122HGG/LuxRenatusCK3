@@ -229,9 +229,9 @@
 					player_heir = {
 						save_scope_as = new_khan
 					}
-					every_player = {
-						trigger_event = mongol_invasion.1005 # Small end to story
-					}
+					#every_player = {
+					#	trigger_event = mongol_invasion.1005 # Small end to story
+					#}
 				}
 			}
 			end_story = yes
@@ -323,21 +323,21 @@
 					}
 				}
 			}
-			if = {
-				limit = { exists = scope:new_story_owner }
-				make_story_owner = scope:new_story_owner
-				scope:new_story_owner = {
+			#if = {
+				#limit = { exists = scope:new_story_owner }
+				#make_story_owner = scope:new_story_owner
+				#scope:new_story_owner = {
 					# Delayed firing of spawning new event troops
-					trigger_event = {
-						id = mongol_invasion.0100
-						days = 1
-					}
-				}
-				debug_log = "Successfully replaced the Mongol Khan"
-				debug_log_date = yes
-				debug_log_scopes = yes
-			}
-			else = {
+					#trigger_event = {
+					#	id = mongol_invasion.0100
+					#	days = 1
+				#	}
+				#}
+				#debug_log = "Successfully replaced the Mongol Khan"
+				#debug_log_date = yes
+				#debug_log_scopes = yes
+			#}
+			if = {
 				# Make sure the empire breaks up as best as possible
 				story_owner = {
 					if = {
