@@ -19,48 +19,46 @@ on_game_start = {
 
 	effect = {
 		# Chinese Song-fashion
-		#Lux Renata TBA
-		# if = {
-		# 	limit = {
-		# 		current_date >= 960.1.1
-		# 	}
-		# 	set_global_variable = {
-		# 		name = chinese_fashion_change
-		# 		value = 1
-		# 	}
-		# }
+		 if = {
+		 	limit = {
+		 		current_date >= 5960.1.1
+		 	}
+		 	set_global_variable = {
+		 		name = chinese_fashion_change
+		 		value = 1
+		 	}
+		}
 		#Epidemics 10 years grace
 		set_global_variable = {
 			name = start_epidemic_grace
 			value = yes
 			years = 10
 		}
-		#Lux Renata TBA
-		# Set Cumania name if there is no MPO DLC
-		# if = {
-		# 	limit = {
-		# 		has_mpo_dlc_trigger = no
-		# 		current_date >= 1000.1.1
-		# 	}
-		# 	title:e_caspian-pontic_steppe = {
-		# 		set_title_name = cn_cumania
-		# 	}
-		# }
-		# #Rabbene Gershom outlaws polygamy
-		# if = {
-		# 	limit = {
-		# 		current_date >= 1000.1.1
-		# 	}
-		# 	religion:judaism_religion = {
-		# 		every_faith = {
-		# 			limit = {
-		# 				has_doctrine = temple_authority_rabbinic_doctrine
-		# 			}
-		# 			remove_doctrine = doctrine_polygamy
-		# 			add_doctrine = doctrine_monogamy
-		# 		}
-		# 	}
-		# }
+		#Set Cumania name if there is no MPO DLC
+		if = {
+			limit = {
+				has_mpo_dlc_trigger = no
+				current_date >= 6000.1.1
+			}
+			title:e_caspian-pontic_steppe = {
+				set_title_name = cn_cumania
+			}
+		}
+		#Rabbene Gershom outlaws polygamy
+		if = {
+			limit = {
+				current_date >= 6000.1.1
+			}
+			religion:judaism_religion = {
+				every_faith = {
+					limit = {
+						has_doctrine = temple_authority_rabbinic_doctrine
+					}
+					remove_doctrine = doctrine_polygamy
+					add_doctrine = doctrine_monogamy
+				}
+			}
+		}
 		# ### 867 - RADHANITES IN KHAZARIA ###
 		# character:74025 = {
 		# 	if = {
