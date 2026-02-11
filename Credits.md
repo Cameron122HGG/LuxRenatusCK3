@@ -20,6 +20,7 @@ Cyberxkhan, creator of the CK2 and CK3 mod VIET, who has an advisory postion on 
 Numahr, creator of Lux Invicta's religion system SELIN has been helpful in explaining his intentions and workshopping ideas for the development of Renata's religion system.
 Tarkus, the youtuber who first presented my mod at ModCon 2025 during the period it was called Lux Renatus
 Soul Tomato, who at the time of this writing has made two videos on Lux Renata.
+AncientConqueror who wrote the code for Loading Screen Quotes.
 
 
 
