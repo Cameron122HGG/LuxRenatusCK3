@@ -1433,6 +1433,7 @@ on_game_start = {
 							has_government = steppe_admin_government
 							has_government = japan_administrative_government
 							has_government = japan_feudal_government
+							has_government = roman_imperial_government
 						}
 					}
 					change_government = feudal_government
@@ -1502,27 +1503,26 @@ on_game_start = {
 						move_domicile = prev.capital_province
 					}
 				}
-				#Lux Renata TBA
-				# if = {
-				# 	limit = {
-				# 		tgp_is_any_minister = yes
-				# 	}
-				# 	random_held_title = {
-				# 		limit = {
-				# 			tier = tier_empire
-				# 		}
-				# 		set_capital_county = prev.top_liege.capital_county
-				# 	}
-				# 	random_held_title = {
-				# 		limit = {
-				# 			is_noble_family_title = yes
-				# 		}
-				# 		set_capital_county = prev.top_liege.capital_county
-				# 	}
-				# 	domicile ?= {
-				# 		move_domicile = prev.top_liege.capital_province
-				# 	}
-				# }
+				 if = {
+				 	limit = {
+				 		tgp_is_any_minister = yes
+				 	}
+				 	random_held_title = {
+				 		limit = {
+				 			tier = tier_empire
+				 		}
+				 		set_capital_county = prev.top_liege.capital_county
+				 	}
+				 	random_held_title = {
+				 		limit = {
+				 			is_noble_family_title = yes
+				 		}
+				 		set_capital_county = prev.top_liege.capital_county
+				 	}
+				 	domicile ?= {
+				 		move_domicile = prev.top_liege.capital_province
+				 	}
+				 }
 			}
 		}
 		# DYNASTIC CYCLE SETUP
@@ -1535,7 +1535,7 @@ on_game_start = {
 		# 		}
 		# 	}
 		# 	if = {
-		# 		limit = { game_start_date < 868.1.1 }
+		# 		limit = { game_start_date < 5868.1.1 }
 		# 		tgp_set_wuking_element_effect = { ELEMENT = earth } # Tang
 		# 		every_situation_sub_region = {
 		# 			add_takeover_phase_points = {
@@ -1563,138 +1563,139 @@ on_game_start = {
 
 		#### FERTILE LANDS ###
 		## For deserts that are supposed to be very fertile
-		#title:c_taizz = { add_county_modifier = fertile_desert_mountains_modifier }
-		#title:c_mandab = { add_county_modifier = fertile_desert_mountains_modifier }
-		#title:c_zabid = { add_county_modifier = fertile_desert_mountains_modifier }
-		#title:c_sanaa = { add_county_modifier = fertile_desert_mountains_modifier }
-		#title:c_dathina = { add_county_modifier = fertile_desert_mountains_modifier }
+		title:c_taizz = { add_county_modifier = fertile_desert_mountains_modifier }
+		title:c_mandab = { add_county_modifier = fertile_desert_mountains_modifier }
+		title:c_zabid = { add_county_modifier = fertile_desert_mountains_modifier }
+		title:c_sanaa = { add_county_modifier = fertile_desert_mountains_modifier }
+		title:c_dathina = { add_county_modifier = fertile_desert_mountains_modifier }
 
 		#### HENDEKAPOLIS ###
-		#title:c_ionia = { add_county_modifier = dodekapolis_modifier }
-		#title:c_chios = { add_county_modifier = dodekapolis_modifier }
-		#title:c_aeolis = { add_county_modifier = dodekapolis_modifier }
-		#title:c_lesbos = { add_county_modifier = dodekapolis_modifier }
+		title:c_ionia = { add_county_modifier = dodekapolis_modifier }
+		title:c_chios = { add_county_modifier = dodekapolis_modifier }
+		title:c_aeolis = { add_county_modifier = dodekapolis_modifier }
+		title:c_lesbos = { add_county_modifier = dodekapolis_modifier }
 
 		#### GREECE BACKWATER COUNTIES ###
 		#if = {
-		#	limit = { has_ep3_dlc_trigger = yes }
-		#	title:c_laconia = { add_county_modifier = backwater_county_modifier }
-		#	title:c_messenia = { add_county_modifier = backwater_county_modifier }
-		#	title:c_korinthos = { add_county_modifier = backwater_county_modifier }
-		#	title:c_achaia = { add_county_modifier = backwater_county_modifier }
-		#	title:c_cephalonia = { add_county_modifier = backwater_county_modifier }
-		#	title:c_attica = { add_county_modifier = backwater_county_modifier }
-		#	title:c_boeotia = { add_county_modifier = backwater_county_modifier }
-		#	title:c_aetolia = { add_county_modifier = backwater_county_modifier }
-		#	title:c_naxos = { add_county_modifier = backwater_county_modifier }
-		#	title:c_euboea = { add_county_modifier = backwater_county_modifier }
-		#	title:c_neopatras = { add_county_modifier = backwater_county_modifier }
-		#	title:c_demetrias = { add_county_modifier = backwater_county_modifier }
-		#	title:c_thessaliotis = { add_county_modifier = backwater_county_modifier }
-		#	title:c_thessalia = { add_county_modifier = backwater_county_modifier }
-		#	title:c_epeiros = { add_county_modifier = backwater_county_modifier }
-		#	title:c_buthrotum = { add_county_modifier = backwater_county_modifier }
-		#	title:c_veria = { add_county_modifier = backwater_county_modifier }
-		#	title:c_metzovo = { add_county_modifier = backwater_county_modifier }
-		#	title:c_chalkidike = { add_county_modifier = backwater_county_modifier }
-		#	title:c_thessalonika = { add_county_modifier = backwater_county_modifier }
-		#	title:c_serres = { add_county_modifier = backwater_county_modifier }
-		#	title:c_mosynopolis = { add_county_modifier = backwater_county_modifier }
-		#	title:c_ohrid = { add_county_modifier = backwater_county_modifier }
-		#	title:c_antipatreia = { add_county_modifier = backwater_county_modifier }
-		#	title:c_dyrrachion = { add_county_modifier = backwater_county_modifier }
-		#	title:c_avlonas = { add_county_modifier = backwater_county_modifier }
-		#}
+			limit = { has_ep3_dlc_trigger = yes }
+			title:c_laconia = { add_county_modifier = backwater_county_modifier }
+			title:c_messenia = { add_county_modifier = backwater_county_modifier }
+			title:c_korinthos = { add_county_modifier = backwater_county_modifier }
+			title:c_achaia = { add_county_modifier = backwater_county_modifier }
+			title:c_cephalonia = { add_county_modifier = backwater_county_modifier }
+			title:c_attica = { add_county_modifier = backwater_county_modifier }
+			title:c_boeotia = { add_county_modifier = backwater_county_modifier }
+			title:c_aetolia = { add_county_modifier = backwater_county_modifier }
+			title:c_naxos = { add_county_modifier = backwater_county_modifier }
+			title:c_euboea = { add_county_modifier = backwater_county_modifier }
+			title:c_neopatras = { add_county_modifier = backwater_county_modifier }
+			title:c_demetrias = { add_county_modifier = backwater_county_modifier }
+			title:c_thessaliotis = { add_county_modifier = backwater_county_modifier }
+			title:c_thessalia = { add_county_modifier = backwater_county_modifier }
+			title:c_epeiros = { add_county_modifier = backwater_county_modifier }
+			title:c_buthrotum = { add_county_modifier = backwater_county_modifier }
+			title:c_veria = { add_county_modifier = backwater_county_modifier }
+			title:c_metzovo = { add_county_modifier = backwater_county_modifier }
+			title:c_chalkidike = { add_county_modifier = backwater_county_modifier }
+			title:c_thessalonika = { add_county_modifier = backwater_county_modifier }
+			title:c_serres = { add_county_modifier = backwater_county_modifier }
+			title:c_mosynopolis = { add_county_modifier = backwater_county_modifier }
+			title:c_ohrid = { add_county_modifier = backwater_county_modifier }
+			title:c_antipatreia = { add_county_modifier = backwater_county_modifier }
+			title:c_dyrrachion = { add_county_modifier = backwater_county_modifier }
+			title:c_avlonas = { add_county_modifier = backwater_county_modifier }
+		}
 
 		#### Pandidakterion IN CONSTANTINOPLE ###
-		#if = {
-		#	limit = {
-		#		has_ep3_dlc_trigger = yes
-		#		current_date >= 1046.1.1
-		#	}
-		#	title:c_byzantion = { add_county_modifier = pandidakterion_university_modifier }
-		#}
+		if = {
+			limit = {
+				has_ep3_dlc_trigger = yes
+				current_date >= 6046.1.1
+			}
+			title:c_byzantion = { add_county_modifier = pandidakterion_university_modifier }
+		}
 
 		#### Varangian Guard ###
-		#if = {
-		#	limit = {
-		#		has_ep3_dlc_trigger = yes
-		#		current_date >= 988.1.1
-		#	}
-		#	title:e_byzantium = { set_variable = founded_varangian_guard }
-		#}
+		if = {
+			limit = {
+				has_ep3_dlc_trigger = yes
+				current_date >= 5988.1.1
+			}
+			title:e_byzantium = { set_variable = founded_varangian_guard }
+		}
 
-		#if = {
-		#	limit = {
-		#		has_dlc_feature = hybridize_culture
-		#		NOT = {
-		#			has_dlc_feature = khans_of_the_steppe
-		#		}
-		#	}
-		#	culture:mongol = {
-		#		add_culture_tradition = tradition_malleable_invaders
-		#	}
-		#	culture:khitan = {
-		#		add_culture_tradition = tradition_malleable_invaders
-		#	}
-		#	culture:jurchen = {
-		#		add_culture_tradition = tradition_malleable_invaders
-		#	}
-		#	culture:cuman = {
-		#		add_culture_tradition = tradition_malleable_invaders
-		#	}
-		#	culture:bolghar = {
-		#		add_culture_tradition = tradition_malleable_invaders
-		#	}
-		#	culture:bashkir = {
-		#		add_culture_tradition = tradition_malleable_invaders
-		#	}
-		#	culture:karluk = {
-		#		add_culture_tradition = tradition_malleable_invaders
-		#	}
-		#	culture:shatuo = {
-		#		add_culture_tradition = tradition_malleable_invaders
-		#	}
-		#}
+		if = {
+			limit = {
+				has_dlc_feature = hybridize_culture
+				NOT = {
+					has_dlc_feature = khans_of_the_steppe
+				}
+			}
+			culture:mongol = {
+				add_culture_tradition = tradition_malleable_invaders
+			}
+			culture:khitan = {
+				add_culture_tradition = tradition_malleable_invaders
+			}
+			culture:jurchen = {
+				add_culture_tradition = tradition_malleable_invaders
+			}
+			culture:cuman = {
+				add_culture_tradition = tradition_malleable_invaders
+			}
+			culture:bolghar = {
+				add_culture_tradition = tradition_malleable_invaders
+			}
+			culture:bashkir = {
+				add_culture_tradition = tradition_malleable_invaders
+			}
+			culture:karluk = {
+				add_culture_tradition = tradition_malleable_invaders
+			}
+			culture:shatuo = {
+				add_culture_tradition = tradition_malleable_invaders
+			}
+		}
 
-		# if = {
-		# 	limit = {
-		# 		NOT = {
-		# 			has_dlc_feature = khans_of_the_steppe
-		# 		}
-		# 	}
-		# 	culture:hunnic = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:saka = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:alan = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:mongol = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:buryat = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:oirat = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:naiman = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:kerait = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:khitan = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:tuyuhun = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:jurchen = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:cuman = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:khazar = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:bolghar = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:bashkir = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:avar = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:karluk = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:kimek = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:kipchak = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:laktan = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:kirghiz = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:yughur = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:uriankhai = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:chuvash = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:ongud = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:turkmen = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:mogyer = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:pecheneg = { add_culture_tradition = tradition_horse_lords }
-		# 	culture:ongud = { add_culture_tradition = tradition_steppe_tolerance }
-		# 	culture:uyghur = { add_culture_tradition = tradition_steppe_tolerance }
-		# 	#culture:turkish = { add_culture_tradition = tradition_horse_lords }
-		# }
+		if = {
+			limit = {
+				NOT = {
+					has_dlc_feature = khans_of_the_steppe
+				}
+			}
+			culture:hunnic = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:saka = { add_culture_tradition = tradition_horse_lords }
+			culture:alan = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:mongol = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:buryat = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:oirat = { add_culture_tradition = tradition_horse_lords }
+			culture:naiman = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:kerait = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:khitan = { add_culture_tradition = tradition_horse_lords }
+			culture:tuyuhun = { add_culture_tradition = tradition_horse_lords }
+			culture:jurchen = { add_culture_tradition = tradition_horse_lords }
+			culture:cuman = { add_culture_tradition = tradition_horse_lords }
+			culture:khazar = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:bolghar = { add_culture_tradition = tradition_horse_lords }
+			culture:bashkir = { add_culture_tradition = tradition_horse_lords }
+			culture:avar = { add_culture_tradition = tradition_horse_lords }
+			culture:karluk = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:kimek = { add_culture_tradition = tradition_horse_lords }
+			culture:kipchak = { add_culture_tradition = tradition_horse_lords }
+			culture:laktan = { add_culture_tradition = tradition_horse_lords }
+			culture:kirghiz = { add_culture_tradition = tradition_horse_lords }
+			culture:yughur = { add_culture_tradition = tradition_horse_lords add_culture_tradition = tradition_steppe_tolerance }
+			culture:uriankhai = { add_culture_tradition = tradition_horse_lords }
+			culture:chuvash = { add_culture_tradition = tradition_horse_lords }
+			culture:ongud = { add_culture_tradition = tradition_horse_lords }
+			culture:turkmen = { add_culture_tradition = tradition_horse_lords }
+			culture:mogyer = { add_culture_tradition = tradition_horse_lords }
+			culture:pecheneg = { add_culture_tradition = tradition_horse_lords }
+			culture:ongud = { add_culture_tradition = tradition_steppe_tolerance }
+			culture:uyghur = { add_culture_tradition = tradition_steppe_tolerance }
+			#culture:turkish = { add_culture_tradition = tradition_horse_lords }
+		}
+}
 
 		#### DEBUG GLOBAL VARIABLES ###
 		## We set these here so that they present nicely and you can see when some variables register zero.
@@ -2023,276 +2024,276 @@ on_game_start = {
 		#	}
 		#}
 
-		# ### EP3 BYZANTIUM IMPORTANT COUNTIES ###
-		# if = {
-		# 	limit = { has_ep3_dlc_trigger = yes }
-		# 	title:c_antiocheia = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_jerusalem = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_alexandria = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_abbadan = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_edessa = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_bari = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_siracusa = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_roma = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_ravenna = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_tunis = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_tangiers = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_murcia = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_lombardia = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_trier = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_cumberland = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_northumberland = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_chandax = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_tourraine = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = ep3_emperor_yearly.2000
-		# 		}
-		# 	}
-		# 	title:c_byzantion = {
-		# 		set_important_location = {
-		# 			title = title:e_byzantium
-		# 			enter_realm_event = roman_restoration.1200
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_roman_empire
-		# 			enter_realm_event = roman_restoration.1200
-		# 		}
-		# 		set_important_location = {
-		# 			title = title:h_eastern_roman_empire
-		# 			enter_realm_event = roman_restoration.1200
-		# 		}
-		# 	}
-		# }
+		### EP3 BYZANTIUM IMPORTANT COUNTIES ###
+		if = {
+			limit = { has_ep3_dlc_trigger = yes }
+			title:c_antiocheia = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_jerusalem = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_alexandria = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_abbadan = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_edessa = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_bari = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_siracusa = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_roma = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_ravenna = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_tunis = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_tangiers = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_murcia = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_lombardia = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_trier = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_cumberland = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_northumberland = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_chandax = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_tourraine = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = ep3_emperor_yearly.2000
+				}
+			}
+			title:c_byzantion = {
+				set_important_location = {
+					title = title:e_byzantium
+					enter_realm_event = roman_restoration.1200
+				}
+				set_important_location = {
+					title = title:h_roman_empire
+					enter_realm_event = roman_restoration.1200
+				}
+				set_important_location = {
+					title = title:h_eastern_roman_empire
+					enter_realm_event = roman_restoration.1200
+				}
+			}
+		}
 
 		# MPO Tribes of the North cultrad mechanic
 		if = {
@@ -2364,6 +2365,7 @@ on_game_start = {
 				set_title_name = e_unholy_roman_empire
 			}
 		}
+		
 		title:h_eastern_roman_empire = {
 			if = {
 				limit = {
@@ -2408,8 +2410,8 @@ on_game_start = {
 				set_title_name = h_unholy_roman_empire
 			}
 		}
-		#Western Roman Empire name game rule
-				title:e_spqr = {
+		
+		title:e_spqr = {
 			if = {
 				limit = {
 					has_game_rule = western_rome_name_of_spqr
@@ -2453,6 +2455,7 @@ on_game_start = {
 				set_title_name = e_unholy_roman_empire
 			}
 		}
+		
 		title:h_western_roman_empire = {
 			if = {
 				limit = {
@@ -2496,7 +2499,7 @@ on_game_start = {
 				}
 				set_title_name = h_unholy_roman_empire_spqr
 			}
-		}
+		
 
 
 		# Remove Coronation Doctrine if you don't have the DLC
@@ -2565,32 +2568,30 @@ on_game_start = {
 				}
 			}
 		}
-
+		
 		# TGP: extra legitimacy for the Hegemon, so you don't fold over immediately
-		#Lux Renata TBA
-		# if = {
-		# 	limit = { has_tgp_dlc_trigger = yes }
-		# 	title:h_china.holder = {
-		# 		# and even more for the Song, as they were in a pretty good shape on our start dates
-		# 		if = {
-		# 			limit = {
-		# 				situation:dynastic_cycle ?= {
-		# 					OR = {
-		# 						situation_current_phase = situation_dynastic_cycle_phase_stability_expansion
-		# 						situation_current_phase = situation_dynastic_cycle_phase_stability_advancement
-		# 					}
-		# 				}
-		# 			}
-		# 			add_legitimacy = 4500
-		# 		}
-		# 		else = {
-		# 			add_legitimacy = 3000
-		# 		}
-		# 	}
-		# }
+		if = {
+		 	limit = { has_tgp_dlc_trigger = yes }
+		 	title:h_china.holder = {
+		 		# and even more for the Song, as they were in a pretty good shape on our start dates
+		 		if = {
+		 			limit = {
+		 				situation:dynastic_cycle ?= {
+		 					OR = {
+		 						situation_current_phase = situation_dynastic_cycle_phase_stability_expansion
+		 						situation_current_phase = situation_dynastic_cycle_phase_stability_advancement
+		 					}
+		 				}
+		 			}
+		 			add_legitimacy = 4500
+		 		}
+		 		else = {
+		 			add_legitimacy = 3000
+		 		}
+		 	}
+		}
 		### TGP SILK ROAD INNOVATIONS
-		#Lux Renata TBA
-		# tgp_silk_road_innovation_setup_effect = yes
+		tgp_silk_road_innovation_setup_effect = yes
 
 		set_global_variable = {
 			name = natural_disaster_initial_grace_period
@@ -2598,64 +2599,60 @@ on_game_start = {
 		}
 
 		### TGP Earthquake Regions
-		#Lux Renata TBA
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_europe }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_europe_south }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_china }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_japan }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_minor }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_indonesia }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_philippines }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_sakhalin_hokkaido }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_middle_east }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_india }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_steppe }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_siberia }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_burma }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:custom_arakan_mountains }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:custom_bactria }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_tibet }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_himalaya }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_africa }
-		# add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_africa_north_east }
-
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_europe }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_europe_south }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_china }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_japan }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_minor }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_indonesia }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_philippines }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_asia_sakhalin_hokkaido }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_middle_east }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_india }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_steppe }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_siberia }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_burma }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:custom_arakan_mountains }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:custom_bactria }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_tibet }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_himalaya }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_africa }
+		 add_to_global_variable_list = { name = earthquake_region_list target = geographical_region:world_africa_north_east }
 
 		### TGP Flood Regions
-		#Lux Renata TBA
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:amur_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:danube_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:daugava_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:dnieper_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:dniester_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:don_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:elbe_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:ganges_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:garonne_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:godavari_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:guadalquivir_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:guadiana_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:indus_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:irrawaddy_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:kaveri_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:loire_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:lovat_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:mahanadi_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:mekong_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:niger_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:nile_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:pearl_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:po_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:rhine_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:rhone_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:seine_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:tapti_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:tigris_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:vistula_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:volga_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:yangtze_river_region }
-		# add_to_global_variable_list = { name = flood_region_list target = geographical_region:yellow_river_region }
-
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:amur_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:danube_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:daugava_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:dnieper_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:dniester_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:don_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:elbe_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:ganges_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:garonne_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:godavari_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:guadalquivir_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:guadiana_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:indus_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:irrawaddy_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:kaveri_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:loire_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:lovat_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:mahanadi_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:mekong_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:niger_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:nile_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:pearl_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:po_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:rhine_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:rhone_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:seine_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:tapti_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:tigris_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:vistula_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:volga_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:yangtze_river_region }
+		 add_to_global_variable_list = { name = flood_region_list target = geographical_region:yellow_river_region }
 		##### HISTORICAL HOUSE RELATIONS - deliberately placed above blocs
 		tgp_setup_historical_house_relation_effect = yes
 		#####  TGP JAPAN #####
@@ -2666,20 +2663,18 @@ on_game_start = {
 			### BLOCS
 			tgp_setup_historical_house_bloc_effect = yes
 		}
-		#
-		#Lux Renata TBA
-		# if = {
-		# 	limit = {
-		# 		title:k_magyar = {
-		# 			exists = holder
-		# 		}
-		# 	}
-		# 	title:k_magyar = {
-		# 		add_title_law = confederation_elective_succession_law
-		# 	}
-		# }
-	}
-}
+		 if = {
+		 	limit = {
+		 		title:k_magyar = {
+		 			exists = holder
+		 		}
+		 	}
+		 	title:k_magyar = {
+		 		add_title_law = confederation_elective_succession_law
+		 	}
+		 }
+	
+
 
 # Like on_game_start, except it is called once the host (or player, in single player) exits the lobby. Good for anything where you need to know who the players are, or what the game rules are
 on_game_start_after_lobby = {
@@ -6995,120 +6990,119 @@ on_game_start_after_lobby = {
 			### MANDALA
 
 			#Starting Mandala Temple Complexes
-			#Lux Renata TBA
-			# #Dvaravati
-			# province:10822 = {
-			# 	add_great_building = mandala_capital_01
-			# 	if = {
-			# 		limit = {
-			# 			game_start_date >= 6066.1.1
-			# 		}
-			# 		ruin_great_building = yes
-			# 	}
-			# 	add_to_global_variable_list = { # Add to list so it can be found by the PoI
-			# 		name = mandala_poi_list
-			# 		target = this
-			# 	}
-			# }
-			# #Haripunjaya
-			# province:11441 = {
-			# 	add_great_building = mandala_capital_01
-			# 	add_to_global_variable_list = { # Add to list so it can be found by the PoI
-			# 		name = mandala_poi_list
-			# 		target = this
-			# 	}
-			# }
-			# #Pagan
-			# province:9550 = {
-			# 	if = {
-			# 		limit = {
-			# 			game_start_date < 6066.1.1
-			# 		}
-			# 		add_great_building = mandala_capital_01
-			# 	}
-			# 	else_if = {
-			# 		limit = { game_start_date >= 6066.1.1 }
-			# 		add_great_building = mandala_capital_02
-			# 	}
-			# 	add_to_global_variable_list = { # Add to list so it can be found by the PoI
-			# 		name = mandala_poi_list
-			# 		target = this
-			# 	}
-			# }
-			# #Angkor
-			# province:10816 = {
-			# 	if = {
-			# 		limit = {
-			# 			game_start_date < 6066.1.1
-			# 		}
-			# 		add_great_building = mandala_capital_01
-			# 	}
-			# 	else_if = {
-			# 		limit = { game_start_date >= 6066.1.1 }
-			# 		add_great_building = mandala_capital_02
-			# 	}
-			# 	else = {
-			# 		add_great_building = mandala_capital_03
-			# 	}
-			# 	add_to_global_variable_list = { # Add to list so it can be found by the PoI
-			# 		name = mandala_poi_list
-			# 		target = this
-			# 	}
-			# }
-			# #Srivijaya/Palembang
-			# province:11296 = {
-			# 	add_great_building = mandala_capital_02
-			# 	if = {
-			# 		limit = {
-			# 			game_start_date >= 6066.1.1
-			# 		}
-			# 		ruin_great_building = yes #Could also be completely destroyed - almost nothing left today
-			# 	}
-			# 	add_to_global_variable_list = { # Add to list so it can be found by the PoI
-			# 		name = mandala_poi_list
-			# 		target = this
-			# 	}
-			# }
-			# #Mataram
-			# #Prambanan
-			# province:11343 = {
-			# 	add_great_building = mandala_capital_01
-			# 	if = {
-			# 		limit = {
-			# 			game_start_date >= 6066.1.1
-			# 		}
-			# 		ruin_great_building = yes
-			# 	}
-			# 	add_to_global_variable_list = { # Add to list so it can be found by the PoI
-			# 		name = mandala_poi_list
-			# 		target = this
-			# 	}
-			# }
-			# #Champa
-			# #Indrapura
-			# province:10830 = {
-			# 	if = {
-			# 		limit = {
-			# 			game_start_date < 6066.1.1
-			# 		}
-			# 		add_great_building = mandala_capital_01
-			# 		add_to_global_variable_list = { # Add to list so it can be found by the PoI
-			# 			name = mandala_poi_list
-			# 			target = this
-			# 		}
-			# 	}
-			# }
-			# #Vijaya
-			# province:10827 = {
-			# 	if = {
-			# 		limit = { game_start_date >= 6066.1.1 }
-			# 		add_great_building = mandala_capital_01
-			# 		add_to_global_variable_list = { # Add to list so it can be found by the PoI
-			# 			name = mandala_poi_list
-			# 			target = this
-			# 		}
-			# 	}
-			# }
+			#Dvaravati
+			province:10822 = {
+				add_great_building = mandala_capital_01
+				if = {
+					limit = {
+						game_start_date >= 6066.1.1
+					}
+					ruin_great_building = yes
+				}
+				add_to_global_variable_list = { # Add to list so it can be found by the PoI
+					name = mandala_poi_list
+					target = this
+				}
+			}
+			#Haripunjaya
+			province:11441 = {
+				add_great_building = mandala_capital_01
+				add_to_global_variable_list = { # Add to list so it can be found by the PoI
+					name = mandala_poi_list
+					target = this
+				}
+			}
+			#Pagan
+			province:9550 = {
+				if = {
+					limit = {
+						game_start_date < 6066.1.1
+					}
+					add_great_building = mandala_capital_01
+				}
+				else_if = {
+					limit = { game_start_date >= 6066.1.1 }
+					add_great_building = mandala_capital_02
+				}
+				add_to_global_variable_list = { # Add to list so it can be found by the PoI
+					name = mandala_poi_list
+					target = this
+				}
+			}
+			#Angkor
+			province:10816 = {
+				if = {
+					limit = {
+						game_start_date < 6066.1.1
+					}
+					add_great_building = mandala_capital_01
+				}
+				else_if = {
+					limit = { game_start_date >= 6066.1.1 }
+					add_great_building = mandala_capital_02
+				}
+				else = {
+					add_great_building = mandala_capital_03
+				}
+				add_to_global_variable_list = { # Add to list so it can be found by the PoI
+					name = mandala_poi_list
+					target = this
+				}
+			}
+			#Srivijaya/Palembang
+			province:11296 = {
+				add_great_building = mandala_capital_02
+				if = {
+					limit = {
+						game_start_date >= 6066.1.1
+					}
+					ruin_great_building = yes #Could also be completely destroyed - almost nothing left today
+				}
+				add_to_global_variable_list = { # Add to list so it can be found by the PoI
+					name = mandala_poi_list
+					target = this
+				}
+			}
+			#Mataram
+			#Prambanan
+			province:11343 = {
+				add_great_building = mandala_capital_01
+				if = {
+					limit = {
+						game_start_date >= 6066.1.1
+					}
+					ruin_great_building = yes
+				}
+				add_to_global_variable_list = { # Add to list so it can be found by the PoI
+					name = mandala_poi_list
+					target = this
+				}
+			}
+			#Champa
+			#Indrapura
+			province:10830 = {
+				if = {
+					limit = {
+						game_start_date < 6066.1.1
+					}
+					add_great_building = mandala_capital_01
+					add_to_global_variable_list = { # Add to list so it can be found by the PoI
+						name = mandala_poi_list
+						target = this
+					}
+				}
+			}
+			#Vijaya
+			province:10827 = {
+				if = {
+					limit = { game_start_date >= 6066.1.1 }
+					add_great_building = mandala_capital_01
+					add_to_global_variable_list = { # Add to list so it can be found by the PoI
+						name = mandala_poi_list
+						target = this
+					}
+				}
+			}
 			#Apply the Godking AI story to Maharajas with a temple
 			every_independent_ruler = {
 				limit = { government_has_flag = government_is_mandala }
@@ -7158,170 +7152,166 @@ on_game_start_after_lobby = {
 			# 	}
 			# }
 		}
-		### TGP MERIT AND TREASURY HANDOUT ON GAME START ###
-		#Lux Renata TBA
-		# if = {
-		# 	limit = {
-		# 		has_tgp_dlc_trigger = yes
-		# 	}
-		# 	title:h_china.holder ?= {
-		# 		# If the hegemon is from the ruler designer, let's ensure we got decent starting values
-		# 		if = {
-		# 			limit = {
-		# 				is_from_ruler_designer = yes
-		# 			}
-		# 			if = {
-		# 				limit = { # If we don't have enough legitimacy, let's increase it
-		# 					legitimacy < legitimacy_level_3
-		# 				}
-		# 				add_legitimacy = {
-		# 					value = legitimacy_level_3
-		# 					add = 100 # To provide a margin and not drop down a level too quickly
-		# 					subtract = legitimacy
-		# 				}
-		# 			}
-		# 			if = {
-		# 				limit = { # If the royal court is enabled, set it to a decent default
-		# 					has_royal_court = yes
-		# 				}
-		# 				set_current_court_grandeur = court_grandeur_minimum_expected
-		# 			}
-		# 			# Let's add some starting currencies
-		# 			add_prestige = 1000
-		# 			add_piety = 500
-		# 			change_influence = 1000
-		# 			dynasty ?= { add_dynasty_prestige = 500 }
-		# 		}
-		# 		# Set Grand Chancellor as Chinese diarchy
-		# 		try_start_diarchy = grand_secretariat
-		# 	}
-		# }
+			### TGP MERIT AND TREASURY HANDOUT ON GAME START ###
+		if = {
+			limit = {
+				has_tgp_dlc_trigger = yes
+			}
+			title:h_china.holder ?= {
+				# If the hegemon is from the ruler designer, let's ensure we got decent starting values
+				if = {
+					limit = {
+						is_from_ruler_designer = yes
+					}
+					if = {
+						limit = { # If we don't have enough legitimacy, let's increase it
+							legitimacy < legitimacy_level_3
+						}
+						add_legitimacy = {
+							value = legitimacy_level_3
+							add = 100 # To provide a margin and not drop down a level too quickly
+							subtract = legitimacy
+						}
+					}
+					if = {
+						limit = { # If the royal court is enabled, set it to a decent default
+							has_royal_court = yes
+						}
+						set_current_court_grandeur = court_grandeur_minimum_expected
+					}
+					# Let's add some starting currencies
+					add_prestige = 1000
+					add_piety = 500
+					change_influence = 1000
+					dynasty ?= { add_dynasty_prestige = 500 }
+				}
+				# Set Grand Chancellor as Chinese diarchy
+				try_start_diarchy = grand_secretariat
+			}
+		}
 		### TGP KOREA SETUP
-		#Lux Renata TBA
-		# if = {
-		# 	# Special variable that UI uses to display correct title
-		# 	limit = {
-		# 		exists = title:e_goryeo.holder
-		# 		has_tgp_dlc_trigger = yes
-		# 		game_start_date >= 6066.1.1
-		# 	}
-		# 	# GORYEO GOVERNORSHIP SETUP
-		# 	title:d_bukgye = { add_to_temporary_list = goryeo_military_provinces }
-		# 	title:d_donggye = { add_to_temporary_list = goryeo_military_provinces }
-		# 	title:d_yukju = { add_to_temporary_list = goryeo_military_provinces }
-		# 	every_in_list = {
-		# 		list = goryeo_military_provinces
-		# 		limit = {
-		# 			holder ?= { is_governor = yes }
-		# 		}
-		# 		holder = {
-		# 			vassal_contract_set_obligation_level = {
-		# 				type = meritocratic_provinces
-		# 				level = meritocratic_province_military
-		# 			}
-		# 			add_realm_law_skip_effects = meritocratic_military_appointment_succession_law
-		# 		}
-		# 	}
-		# }
-		# else_if = {
-		# 	limit = {
-		# 		exists = title:k_silla.holder
-		# 		has_tgp_dlc_trigger = yes
-		# 		game_start_date = 5867.1.1
-		# 	}
-		# 	# SILLA GOVERNORSHIP SETUP
-		# 	title:d_bukgye = { add_to_temporary_list = silla_military_provinces }
-		# 	title:d_donggye = { add_to_temporary_list = silla_military_provinces }
-		# 	title:d_yukju = { add_to_temporary_list = silla_military_provinces }
-		# 	every_in_list = {
-		# 		list = silla_military_provinces
-		# 		limit = {
-		# 			holder ?= { is_governor = yes }
-		# 		}
-		# 		holder = {
-		# 			vassal_contract_set_obligation_level = {
-		# 				type = meritocratic_provinces
-		# 				level = meritocratic_province_military
-		# 			}
-		# 			add_realm_law_skip_effects = meritocratic_military_appointment_succession_law
-		# 		}
-		# 	}
-		# }
+		if = {
+			# Special variable that UI uses to display correct title
+			limit = {
+				exists = title:e_goryeo.holder
+				has_tgp_dlc_trigger = yes
+				game_start_date >= 6066.1.1
+			}
+			# GORYEO GOVERNORSHIP SETUP
+			title:d_bukgye = { add_to_temporary_list = goryeo_military_provinces }
+			title:d_donggye = { add_to_temporary_list = goryeo_military_provinces }
+			title:d_yukju = { add_to_temporary_list = goryeo_military_provinces }
+			every_in_list = {
+				list = goryeo_military_provinces
+				limit = {
+					holder ?= { is_governor = yes }
+				}
+				holder = {
+					vassal_contract_set_obligation_level = {
+						type = meritocratic_provinces
+						level = meritocratic_province_military
+					}
+					add_realm_law_skip_effects = meritocratic_military_appointment_succession_law
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				exists = title:k_silla.holder
+				has_tgp_dlc_trigger = yes
+				game_start_date = 5867.1.1
+			}
+			# SILLA GOVERNORSHIP SETUP
+			title:d_bukgye = { add_to_temporary_list = silla_military_provinces }
+			title:d_donggye = { add_to_temporary_list = silla_military_provinces }
+			title:d_yukju = { add_to_temporary_list = silla_military_provinces }
+			every_in_list = {
+				list = silla_military_provinces
+				limit = {
+					holder ?= { is_governor = yes }
+				}
+				holder = {
+					vassal_contract_set_obligation_level = {
+						type = meritocratic_provinces
+						level = meritocratic_province_military
+					}
+					add_realm_law_skip_effects = meritocratic_military_appointment_succession_law
+				}
+			}
+		}
 		### TGP JAPAN SETUP
-		#Lux Renata TBA
-		# if = {
-		# 	limit = {
-		# 		exists = title:e_japan.holder
-		# 		has_tgp_dlc_trigger = yes
-		# 	}
-		# 	title:c_chikuzen ?= { # Dazaifu
-		# 		if = {
-		# 			limit = {
-		# 				holder ?= { is_governor = yes }
-		# 			}
-		# 			holder = {
-		# 				vassal_contract_set_obligation_level = {
-		# 					type = japan_administrative_provinces
-		# 					level = japan_administrative_province_trade
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	title:d_hitakami ?= { add_to_temporary_list = japan_military_provinces } # Mutsu
-		# 	title:d_nushiro ?= { add_to_temporary_list = japan_military_provinces } # Dewa
-		# 	every_in_list = {
-		# 		list = japan_military_provinces
-		# 		limit = {
-		# 			holder ?= { is_governor = yes }
-		# 		}
-		# 		holder = {
-		# 			vassal_contract_set_obligation_level = {
-		# 				type = japan_administrative_provinces
-		# 				level = japan_administrative_province_military
-		# 			}
-		# 			add_realm_law_skip_effects = japanese_military_appointment_succession_law
-		# 		}
-		# 	}
-		# 	if = {
-		# 		limit = {
-		# 			game_start_date >= 6066.1.1
-		# 			game_start_date < 6178.10.1
-		# 		}
-		# 		title:e_japan.holder = {
-		# 			trigger_event = tgp_japan_career.0001
-		# 			every_vassal = {
-		# 				trigger_event = tgp_japan_career.0001
-		# 			}
-		# 		}
-		# 	}
-		# }
+		if = {
+			limit = {
+				exists = title:e_japan.holder
+				has_tgp_dlc_trigger = yes
+			}
+			title:c_chikuzen ?= { # Dazaifu
+				if = {
+					limit = {
+						holder ?= { is_governor = yes }
+					}
+					holder = {
+						vassal_contract_set_obligation_level = {
+							type = japan_administrative_provinces
+							level = japan_administrative_province_trade
+						}
+					}
+				}
+			}
+			title:d_hitakami ?= { add_to_temporary_list = japan_military_provinces } # Mutsu
+			title:d_nushiro ?= { add_to_temporary_list = japan_military_provinces } # Dewa
+			every_in_list = {
+				list = japan_military_provinces
+				limit = {
+					holder ?= { is_governor = yes }
+				}
+				holder = {
+					vassal_contract_set_obligation_level = {
+						type = japan_administrative_provinces
+						level = japan_administrative_province_military
+					}
+					add_realm_law_skip_effects = japanese_military_appointment_succession_law
+				}
+			}
+			if = {
+				limit = {
+					game_start_date >= 6066.1.1
+					game_start_date < 6178.10.1
+				}
+				title:e_japan.holder = {
+					trigger_event = tgp_japan_career.0001
+					every_vassal = {
+						trigger_event = tgp_japan_career.0001
+					}
+				}
+			}
+		}
 		##TEACH CHINESE TO RELEVENT NOBLES###
-		#Lux Renata TBA
-		# title:e_japan.holder ?= {
-		# 	add_to_list = holder_to_learn_chinese
-		# }
-		# title:e_goryeo.holder ?= {
-		# 	add_to_list = holder_to_learn_chinese
-		# }
-		# title:h_china.holder ?= {
-		# 	every_tributary = {
-		# 		add_to_list = holder_to_learn_chinese
-		# 	}
-		# }
-		# every_in_list = {
-		# 	list = holder_to_learn_chinese
-		# 	tgp_learn_chinese_effect_game_start = yes
-		# 	every_noble_family = {
-		# 		holder ?= {
-		# 			tgp_learn_chinese_effect_game_start = yes
-		# 			house = {
-		# 				every_house_member = {
-		# 					tgp_learn_chinese_effect_game_start = yes
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# }
+		title:e_japan.holder ?= {
+			add_to_list = holder_to_learn_chinese
+		}
+		title:e_goryeo.holder ?= {
+			add_to_list = holder_to_learn_chinese
+		}
+		title:h_china.holder ?= {
+			every_tributary = {
+				add_to_list = holder_to_learn_chinese
+			}
+		}
+		every_in_list = {
+			list = holder_to_learn_chinese
+			tgp_learn_chinese_effect_game_start = yes
+			every_noble_family = {
+				holder ?= {
+					tgp_learn_chinese_effect_game_start = yes
+					house = {
+						every_house_member = {
+							tgp_learn_chinese_effect_game_start = yes
+						}
+					}
+				}
+			}
+		}
 		#Lux Renata TBA
 		# # Byzantium naming
 		# title:e_byzantium = {
@@ -7847,7 +7837,7 @@ on_game_start_after_lobby = {
 		# 		}
 		# 		create_story = story_conqueror
 		# 	}
-		# }
+		 }
 
 		every_player = {
 			limit = {
@@ -7947,87 +7937,84 @@ on_game_start_after_lobby = {
 
 		# TGP China education track switch
 
-		#Lux Renata TBA
-		# if = {
-		# 	limit = {
-		# 		exists = title:h_china.holder
-		# 	}
-		# 	title:h_china.holder = {
-		# 		add_to_list = realm_potential_education_flip_list
-		# 	}
-		# }
-		# if = {
-		# 	limit = {
-		# 		exists = title:e_goryeo.holder
-		# 	}
-		# 	title:e_goryeo.holder = {
-		# 		add_to_list = realm_potential_education_flip_list
-		# 	}
-		# }
-		# if = {
-		# 	limit = {
-		# 		exists = title:k_dali.holder
-		# 	}
-		# 	title:k_dali.holder = {
-		# 		add_to_list = realm_potential_education_flip_list
-		# 	}
-		# }
-		# if = {
-		# 	limit = {
-		# 		exists = title:k_viet.holder
-		# 	}
-		# 	title:k_viet.holder = {
-		# 		add_to_list = realm_potential_education_flip_list
-		# 	}
-		# }
-		# if = {
-		# 	limit = {
-		# 		exists = title:k_xia.holder
-		# 	}
-		# 	title:k_xia.holder = {
-		# 		add_to_list = realm_potential_education_flip_list
-		# 	}
-		# }
-		# if = {
-		# 	limit = {
-		# 		exists = title:e_andong.holder
-		# 	}
-		# 	title:e_andong.holder = {
-		# 		add_to_list = realm_potential_education_flip_list
-		# 	}
-		# }
+		if = {
+			limit = {
+				exists = title:h_china.holder
+			}
+			title:h_china.holder = {
+				add_to_list = realm_potential_education_flip_list
+			}
+		}
+		if = {
+			limit = {
+				exists = title:e_goryeo.holder
+			}
+			title:e_goryeo.holder = {
+				add_to_list = realm_potential_education_flip_list
+			}
+		}
+		if = {
+			limit = {
+				exists = title:k_dali.holder
+			}
+			title:k_dali.holder = {
+				add_to_list = realm_potential_education_flip_list
+			}
+		}
+		if = {
+			limit = {
+				exists = title:k_viet.holder
+			}
+			title:k_viet.holder = {
+				add_to_list = realm_potential_education_flip_list
+			}
+		}
+		if = {
+			limit = {
+				exists = title:k_xia.holder
+			}
+			title:k_xia.holder = {
+				add_to_list = realm_potential_education_flip_list
+			}
+		}
+		if = {
+			limit = {
+				exists = title:e_andong.holder
+			}
+			title:e_andong.holder = {
+				add_to_list = realm_potential_education_flip_list
+			}
+		}
 
-		#Lux Renata TBA
-		# every_in_list = {
-		# 	list = realm_potential_education_flip_list
-		# 	every_vassal_or_below = {
-		# 		limit = {
-		# 			is_ai = yes
-		# 			OR = {
-		# 				AND = {
-		# 					OR = {
-		# 						vassal_contract_has_flag = celestial_province_military
-		# 						vassal_contract_has_flag = celestial_province_protectorate
-		# 					}
-		# 					has_trait_with_flag = civilian_province
-		# 				}
-		# 				AND = {
-		# 					OR = {
-		# 						vassal_contract_has_flag = celestial_province_standard
-		# 						vassal_contract_has_flag = celestial_province_industrial
-		# 						vassal_contract_has_flag = celestial_province_metropolitan
-		# 					}
-		# 					has_trait_with_flag = military_province
-		# 				}
-		# 			}
-		# 		}
-		# 		tgp_flip_education_track_on_game_start = yes
-		# 	}
-		# }
+		every_in_list = {
+			list = realm_potential_education_flip_list
+			every_vassal_or_below = {
+				limit = {
+					is_ai = yes
+					OR = {
+						AND = {
+							OR = {
+								vassal_contract_has_flag = celestial_province_military
+								vassal_contract_has_flag = celestial_province_protectorate
+							}
+							has_trait_with_flag = civilian_province
+						}
+						AND = {
+							OR = {
+								vassal_contract_has_flag = celestial_province_standard
+								vassal_contract_has_flag = celestial_province_industrial
+								vassal_contract_has_flag = celestial_province_metropolitan
+							}
+							has_trait_with_flag = military_province
+						}
+					}
+				}
+				tgp_flip_education_track_on_game_start = yes
+			}
+		}
 	}
-
+	
 	events = {
-		#Lux Renata TBA
 		#game_rule.1011	#Hungarian Migration management.
 		historical_artifacts.0023			# Historical Artifacts Generator
 		coronation_events.0302 # ACH crown giveaway
