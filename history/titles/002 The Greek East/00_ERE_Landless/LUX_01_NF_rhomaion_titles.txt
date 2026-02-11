@@ -18,6 +18,18 @@ d_nf_julioargeadai = { # House of the Alexandros and Octavianus
 		holder = 71 # Founder House
 		government = classical_administrative_government
 		succession_laws = { noble_family_succession_law }
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}		
+		}		
 	}
 	6067.9.15 = {
 		effect = {
@@ -31,6 +43,18 @@ d_nf_komnenos = { # Isidoros
 		holder = 48 # Ioannes Komnenos
 		government = classical_administrative_government
 		succession_laws = { noble_family_succession_law }
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}		
+		}		
 	}
 	6068.9.15 = {
 		effect = {
