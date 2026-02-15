@@ -1,7 +1,7 @@
 ﻿roman = {
 	color = { 0.5 0.1 0.4 }
 	
-	ethos = ethos_bellicose
+	ethos = ethos_bureaucratic
 	heritage = heritage_latin
 	language = language_latin
 	martial_custom = martial_custom_male_only
@@ -113,19 +113,24 @@ romano_gothic = {
 
 	parents = { roman gothic }
 	
-	ethos = ethos_communal
+	ethos = ethos_bellicose
 	heritage = heritage_latin
 	language = language_latin #Romano-Gothic successor
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_domain
 	traditions = {
 		tradition_visigothic_codes
-		tradition_astute_diplomats
+		tradition_martial_admiration
 		tradition_formation_fighting
-		tradition_chanson_de_geste
+		tradition_quarrelsome
 	}
-	
-	name_list = name_list_roman
+
+	dlc_tradition = {
+		trait = tradition_fp2_ritualised_friendship
+		requires_dlc_flag = the_fate_of_iberia
+	}
+
+	name_list = name_list_roman #Romano-Gothic successor
 	
 	coa_gfx = { latin_group_coa_gfx western_coa_gfx }
 	building_gfx = { mediterranean_building_gfx }
@@ -138,21 +143,21 @@ romano_gothic = {
 }
 
 romano_briton = {
-	parents = { roman }
+	parents = { roman brythonic }
 	#history_loc_override = romano_british_heritage_loc
 
 	color = { 0.45 0.35 0.8 }
 	created = 5212.1.1
-	ethos = ethos_stoic
+	ethos = ethos_spiritual
 	heritage = heritage_latin
 	language = language_romano_briton
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_domain
 	traditions = {
 		tradition_formation_fighting
-		tradition_legalistic
-		tradition_highland_warriors
-		tradition_longbow_competitions
+		tradition_zealous_people
+		tradition_forest_fighters
+		tradition_by_the_sword
 	}
 	
 	name_list = name_list_romano_briton #romano british
@@ -177,14 +182,14 @@ gallo_roman = {
 
 	color = { 0.55 0.75 0.25 }
 	created = 5200.1.1
-	ethos = ethos_stoic
+	ethos = ethos_courtly
 	heritage = heritage_latin
 	language = language_latin
 	martial_custom = martial_custom_male_only
 	head_determination = head_determination_domain
 	traditions = {
 		tradition_formation_fighting
-		tradition_legalistic
+		tradition_astute_diplomats
 		tradition_hereditary_hierarchy
 		tradition_martial_admiration
 	}
@@ -216,11 +221,9 @@ dacian = {
 	head_determination = head_determination_domain
 	traditions = {
 		tradition_formation_fighting
-		tradition_legalistic
-		tradition_roman_legacy
-		tradition_poetry
+		tradition_warrior_monks
 		tradition_hereditary_hierarchy
-		tradition_noble_adoption
+		tradition_mountain_homes
 	}
 	
 	name_list = name_list_roman

@@ -13,7 +13,7 @@
 		}
 	}
 	
-	color = langobard
+	color = { 0.45 0.3 0.3 }
 }
 
 language_east_germanic = {
@@ -31,7 +31,7 @@ language_east_germanic = {
 		}
 	}
 	
-	color = langobard
+	color = { 0.15 0.3 0.6 }
 }
 
 language_hellenistic_greek = {
@@ -70,20 +70,38 @@ language_indo_hellenic = {
 	color = trojan
 }
 
-language_romano_briton = {
+language_latin = {
 	type = language
 	is_shown = {
 		language_is_shown_trigger = {
-			LANGUAGE = language_romano_briton
+			LANGUAGE = language_latin
 		}
 	}
 	ai_will_do = {
 		value = 10
 		if = {
-			limit = { has_cultural_pillar = language_romano_briton }
+			limit = { has_cultural_pillar = language_latin }
 			multiply = 10
 		}
 	}
 	
-	color = trojan
+	color = { 0.7 0.1 0.2 }
+}
+
+language_frankish = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_frankish
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_frankish }
+			multiply = 10
+		}
+	}
+	
+	color = french
 }
