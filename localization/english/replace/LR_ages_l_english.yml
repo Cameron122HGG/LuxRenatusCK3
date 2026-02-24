@@ -13,7 +13,7 @@
 
  ERA_LUX_GREG_DYNFOUND: "[Select_CString(LessThanOrEqualTo_int32( DynastyHouse.GetFoundYear, '(int32)5000'),'B.C.', Select_CString( GreaterThan_int32( DynastyHouse.GetFoundYear, '(int32)5001'),'A.D.', '' ))]"
 
-# YEAR
+
  YEAR_LUX_GREG_DYNFOUND: "[Add_int32('(int32)-5000', DynastyHouse.GetFoundYear)]"
 
  HOUSE_VIEW_FOUNDED: "Founded in [Subtract_int32('(int32)5000', DynastyHouse.GetFoundYear)] [Select_CString(LessThanOrEqualTo_int32('(int32)$YEAR$', '(int32)5000'),Select_CString(GreaterThanOrEqualTo_int32('(int32)$YEAR$', '(int32)5001'),'','B.C'),'A.D')] by [DynastyHouse.GetFounder.GetName]"
