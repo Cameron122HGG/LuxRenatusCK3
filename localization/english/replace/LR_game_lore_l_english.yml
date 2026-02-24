@@ -1,4 +1,48 @@
 ﻿l_english:
+#RANKS/TIERS
+ game_concept_barony: "Barony"
+ game_concept_baronies: "Baronies"
+ game_concept_barons: "Barons"
+ game_concept_baron: "Baron"
+ game_concept_barony_desc: "A $game_concept_barony$ is a [title|E] of the lowest [title_tier|E].\n\n$game_concept_baronies$ have the smallest footprint on the map, organized into larger [counties|E].\n\n$game_concept_barony$ $game_concept_titles$ must always have a [holder|E] if they contain a [holding|E]."
+ game_concept_baron_desc: "A $game_concept_baron$ is a [ruler|E] whose [primary_title|E] is a [barony|E].\n\nTheir [rank|E] is the lowest possible, directly below [counts|E]. As such, they cannot have [vassals|E] and any non-$game_concept_baron$ can be their [liege|E]."
+
+ game_concept_county: "County"
+ game_concept_counties: "Counties"
+ game_concept_count: "Count"
+ game_concept_counts: "Counts"
+ game_concept_county_desc: "A $game_concept_county$ is a [title|E] one [title_tier|E] below a [duchy|E] and one above a [barony|E].\n\nThe $game_concept_title$ includes the [county_capital|E] in the $game_concept_county$, as well as [de_jure|E] rights to all the [baronies|E] in the $game_concept_county$.\n\n$game_concept_counties$ always have [holders|E] because $game_concept_county_capitals$ cannot be destroyed."
+ game_concept_count_desc: "A $game_concept_count$ is a [ruler|E] whose [primary_title|E] is a [county|E].\n\nTheir [rank|E] is only above [barons|E] and directly below [dukes|E], and as such they can have $game_concept_barons$ as [vassals|E], and a $game_concept_duke$ or above as their [liege|E]."
+
+ game_concept_duchy: "Duchy"
+ game_concept_duchies: "Duchies"
+ game_concept_duke: "Duke"
+ game_concept_dukes: "Dukes"
+ game_concept_duchy_desc: "A $game_concept_duchy$ is a [title|E] one [title_tier|E] below a [kingdom|E] and one above a [county|E].\n\nThe [holder|E] of a $game_concept_duchy$ has [de_jure|E] rights to its constituent $game_concept_counties$ and can have [counts|E] as [vassals|E].\n\nDuchies may be dormant and have no current Holder. Such $game_concept_title_succession$ can be created by a [ruler|E] who controls at least half of its $game_concept_counties$."
+ game_concept_duke_desc: "A $game_concept_duke$ is a [ruler|E] whose [primary_title|E] is a [duchy|E].\n\nTheir [rank|E] is directly above [counts|E] and directly below [kings|E], and as such they can have $game_concept_counts$ as [vassals|E], and a $game_concept_king$ or above as their [liege|E]."
+
+ game_concept_kingdom: "Kingdom"
+ game_concept_kingdoms: "Kingdoms"
+ game_concept_king: "King"
+ game_concept_kings: "Kings"
+ game_concept_kingdom_desc: "A $game_concept_kingdom$ is a [title|E] one [title_tier|E] below a [empire|E] and one above a [duchy|E].\n\nThe [holder|E] of a $game_concept_kingdom$ has [de_jure|E] rights to its constituent territory.\n\n$game_concept_kingdoms$ may be dormant and have no current $game_concept_holder$. Such $game_concept_titles$ can be created by a [ruler|E] who controls at least half of the [counties|E] within."
+ game_concept_king_desc: "A $game_concept_king$ is a [ruler|E] whose [primary_title|E] is a [kingdom|E].\n\nTheir [rank|E] is directly above [dukes|E] and directly below [emperors|E], and as such they can have $game_concept_dukes$ and below as [vassals|E], and an $game_concept_emperor$ or above as their [liege|E]."
+
+ game_concept_empire: "Empire"
+ game_concept_empires: "Empires"
+ game_concept_emperor: "Emperor"
+ game_concept_emperors: "Emperors"
+ game_concept_empire_desc: "An $game_concept_empire$ is a [title|E] one [title_tier|E] below a [hegemony|E] and one above a [kingdom|E].\n\nThe [holder|E] of an Empire has [de_jure|E] rights to its constituent territory and can have [kings|E] as [vassals|E].\n\n$game_concept_empires$ can be dormant and have no current $game_concept_holder$. Such $game_concept_titles$ can be created by a [ruler|E] who controls more than 80% of the [counties|E] within."
+ game_concept_emperor_desc: "An $game_concept_emperor$ is a [ruler|E] whose [primary_title|E] is an [empire|E].\n\nTheir [rank|E] is directly above [kings|E] and directly below [hegemons|E], and as such they can have $game_concept_kings$ and below as [vassals|E], and only a $game_concept_hegemon$ as their [liege|E]."
+
+ game_concept_hegemony: "Hegemony"
+ game_concept_hegemonies: "Hegemonies"
+ game_concept_hegemon: "Hegemon"
+ game_concept_hegemons: "Hegemons"
+ game_concept_hegemony_desc: "A $game_concept_hegemony$ is a [title|E] of the highest [title_tier|E].\n\nThe [holder|E] of a $game_concept_hegemony$ has [de_jure|E] rights to its constituent territory and can have [emperors|E] as [vassals|E]."
+ game_concept_hegemon_desc: "A $game_concept_hegemon$ is a [ruler|E] whose [primary_title|E] is a [hegemony|E].\n\nTheir [rank|E] is the highest possible, directly above [emperors|E]. As such, they can have any non-$game_concept_hegemons$ as their [vassals|E], and they can never have a [liege|E]."
+
+#Government types and concepts
  game_concept_classical_feudal: "Classical Feudal"
  game_concept_classical_feudal_government: "Classical Feudal Monarchy"
  game_concept_classical_feudal_i: "@government_type_classical_feudal! $classical_feudal_government$"
@@ -23,9 +67,7 @@
  game_concept_despotic_administrative_desc: "$game_concept_despotic_administrative$ is a [government_bureaucratic_type|E] [government_form|E] that appoints [characters|E] as [governors|E], to manage and preside over land, called [provinces|E], on behalf of their [liege|E].\n\n$game_concept_administrative$ Characters have access to [influence|E] and some also have a personal [family_estate|E].\n\nOnly [independent|E] [rulers|E] of an $game_concept_administrative$ [realm|E] have [legitimacy|E], while [vassals|E] do not.\n\n$admin_cannot_declare_internal_wars$\n\nImportant aspect of this form of government is management of Land Ownership through governor contract.\nHigh State Land Ownership lowers provincial treasury, increasing the revenue of the Central Government but decreasing the amount of funds available to the province. \nIt also increases salary of the governor, strengthening them in the process, thus it is important to take all factors into consideration, to keep political and financial balance."
  game_concept_despotic_administrative_government_desc: "The Near Eastern Administrative Monarchy is a form of government inspired by the Near Eastern political models of Mesopotamia, Iran, and the Nile. It emphasizes enlightened rule by the monarch, with a well-developed administrative system that maintains the Graeco-Roman legal framework. This government type allows for efficient governance, urban development, and strong military organization, reflecting the principles of classical administration."
 
-
-
-
+#Cultural and religious concepts
  game_concept_western_roman: "Western Roman"
  game_concept_western_romans: "Western Romans"
  game_concept_western_roman_desc: "The Western Roman heritage group is the Latin heir to the ancient Roman civilization that once ruled much of Europe, North Africa, and the Middle East. Time has passed, and the Western Roman Empire has long been split from the East and greatly weakened, but its legacy endures in the languages, laws, and customs of its descendants. Western Romans are known for their strong sense of civic duty, their love of order and discipline, and their appreciation for the arts and architecture. They are also renowned for their military prowess, having inherited the tactics and strategies of their Roman ancestors. In the medieval world, Western Romans often find themselves at odds with other cultures, particularly the Germanic tribes that have settled in former Roman territories."
