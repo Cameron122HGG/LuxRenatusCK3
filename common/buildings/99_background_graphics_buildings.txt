@@ -20,6 +20,7 @@ walls_00 = {
 			has_building_or_higher = "roman_wall_of_lugo_01"
 			has_building_or_higher = "kano_walls_01"
 			has_building_or_higher = "jaisalmer_fort_01"
+			has_building_or_higher = "temples_angkor_01" #NOTE: the model gives its own unique set of walls to Angkor
 			# Herders shouldn't have walls
 			scope:holder = {
 				government_has_flag = government_is_herder
@@ -32,13 +33,25 @@ walls_00 = {
 walls_01_tribal = {
 	is_graphical_background = yes
 
+	
+	#Base Tribal Walls:
 	asset = {
 		type = pdxmesh
 		names = {
 			"tribal_walls_01_a_mesh"
 		}
 	}
-
+	#Specific Tribal Walls:
+	#Emishi:
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_emishi_wall_01_mesh"
+		}
+		requires_dlc_flag = north_pacific_attire
+		#Emishi GFX:
+		graphical_cultures = { emishi_building_gfx amuric_building_gfx }
+	}
 	is_enabled = {
 		OR = {
 			is_county_capital = yes
@@ -90,7 +103,7 @@ walls_01 = {
 	asset = {
 		type = pdxmesh
 		requires_dlc_flag = the_northern_lords
-		graphical_cultures = { norse_building_gfx }
+		graphical_regions = { graphical_western graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp1_norse_walls_01_mesh"
 		}
@@ -110,7 +123,7 @@ walls_01 = {
 		type = pdxmesh
 		requires_dlc_flag = the_fate_of_iberia
 		graphical_cultures = { iberian_building_gfx }
-		graphical_regions = { graphical_mediterranean }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp2_building_iberian_wall_01_mesh"
 		}
@@ -120,18 +133,33 @@ walls_01 = {
 		type = pdxmesh
 		requires_dlc_flag = legacy_of_persia
 		graphical_cultures = { iranian_building_gfx }
-		graphical_regions = { graphical_mena graphical_india graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp3_building_persian_walls_01_a_01_mesh"
 		}
 	}
+
+
+	#Emishi:
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_emishi_wall_01_mesh"
+		}
+		requires_dlc_flag = north_pacific_attire
+		#Emishi GFX:
+		graphical_cultures = { emishi_building_gfx amuric_building_gfx }
+		#In all graphical regions:
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
+	}
+
 
 	# TGP Southeast Asia
 	asset = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { southeast_asian_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_india }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_se_asia_wall_01_mesh"
 		}
@@ -141,7 +169,7 @@ walls_01 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { chinese_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_chinese_wall_01_mesh"
 		}
@@ -151,7 +179,7 @@ walls_01 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { japanese_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_japanese_wall_01_mesh"
 		}
@@ -160,8 +188,7 @@ walls_01 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { steppe_building_gfx }
-		governments = { steppe_admin_government celestial_government meritocratic_government }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_chinese_wall_01_mesh"
 		}
@@ -170,7 +197,7 @@ walls_01 = {
 		type = pdxmesh
 		requires_dlc_flag = khans_of_the_steppe
 		graphical_cultures = { steppe_building_gfx }
-		graphical_regions = { graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		governments = { nomad_government }
 		names = {
 			"mpo_mongol_wall_01_mesh"
@@ -212,6 +239,7 @@ walls_01 = {
 walls_02 = {
 	is_graphical_background = yes
 
+
 	asset = {
 		type = pdxmesh
 		graphical_regions = { graphical_western graphical_mediterranean graphical_india }
@@ -234,11 +262,11 @@ walls_02 = {
 		type = pdxmesh
 		requires_dlc_flag = the_northern_lords
 		graphical_cultures = { norse_building_gfx }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp1_norse_walls_02_mesh"
 		}
 	}
-
 	asset = {
 		type = pdxmesh
 		requires_dlc_flag = the_northern_lords
@@ -253,7 +281,7 @@ walls_02 = {
 		type = pdxmesh
 		requires_dlc_flag = the_fate_of_iberia
 		graphical_cultures = { iberian_building_gfx }
-		graphical_regions = { graphical_mediterranean }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp2_building_iberian_wall_02_mesh"
 		}
@@ -263,7 +291,7 @@ walls_02 = {
 		type = pdxmesh
 		requires_dlc_flag = legacy_of_persia
 		graphical_cultures = { iranian_building_gfx }
-		graphical_regions = { graphical_mena graphical_india graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp3_building_persian_walls_02_a_01_mesh"
 		}
@@ -273,17 +301,33 @@ walls_02 = {
 		type = pdxmesh
 		requires_dlc_flag = roads_to_power
 		graphical_cultures = { byzantine_building_gfx caucasian_building_gfx }
-		graphical_regions = { graphical_mediterranean }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"ep3_byzantine_walls_02_mesh"
 		}
 	}
+
+	
+
+	#Emishi:
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_emishi_wall_02_mesh"
+		}
+		requires_dlc_flag = north_pacific_attire
+		#Emishi GFX:
+		graphical_cultures = { emishi_building_gfx amuric_building_gfx }
+		#In all graphical regions:
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
+	} #Above Japan due to falling back to Japanese
+
 	# TGP Southeast Asia
 	asset = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { southeast_asian_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_india }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_se_asia_wall_02_mesh"
 		}
@@ -293,7 +337,7 @@ walls_02 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { chinese_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_chinese_wall_02_mesh"
 		}
@@ -303,7 +347,7 @@ walls_02 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { japanese_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_japanese_wall_02_mesh"
 		}
@@ -313,7 +357,7 @@ walls_02 = {
 		requires_dlc_flag = all_under_heaven
 		governments = { steppe_admin_government celestial_government meritocratic_government }
 		graphical_cultures = { steppe_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_chinese_wall_02_mesh"
 		}
@@ -322,7 +366,7 @@ walls_02 = {
 		type = pdxmesh
 		requires_dlc_flag = khans_of_the_steppe
 		graphical_cultures = { steppe_building_gfx }
-		graphical_regions = { graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		governments = { nomad_government }
 		names = {
 			"mpo_mongol_wall_02_mesh"
@@ -399,11 +443,24 @@ walls_03 = {
 		}
 	}
 
+	#Emishi:
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_emishi_wall_03_mesh"
+		}
+		requires_dlc_flag = north_pacific_attire
+		#Emishi GFX:
+		graphical_cultures = { emishi_building_gfx amuric_building_gfx }
+		#In all graphical regions:
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
+	}
+
 	asset = {
 		type = pdxmesh
 		requires_dlc_flag = the_fate_of_iberia
 		graphical_cultures = { iberian_building_gfx }
-		graphical_regions = { graphical_mediterranean }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp2_building_iberian_wall_03_mesh"
 		}
@@ -413,7 +470,7 @@ walls_03 = {
 		type = pdxmesh
 		requires_dlc_flag = legacy_of_persia
 		graphical_cultures = { iranian_building_gfx }
-		graphical_regions = { graphical_mena graphical_india graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp3_building_persian_walls_03_a_01_mesh"
 		}
@@ -423,7 +480,7 @@ walls_03 = {
 		type = pdxmesh
 		requires_dlc_flag = roads_to_power
 		graphical_cultures = { byzantine_building_gfx caucasian_building_gfx }
-		graphical_regions = { graphical_mediterranean }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"ep3_byzantine_walls_03_mesh"
 		}
@@ -433,7 +490,7 @@ walls_03 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { southeast_asian_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_india }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_se_asia_wall_03_mesh"
 		}
@@ -443,7 +500,7 @@ walls_03 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { chinese_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_chinese_wall_03_mesh"
 		}
@@ -453,7 +510,7 @@ walls_03 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { japanese_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_japanese_wall_03_mesh"
 		}
@@ -462,8 +519,7 @@ walls_03 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { steppe_building_gfx }
-		governments = { steppe_admin_government celestial_government meritocratic_government }
-		graphical_regions = { graphical_east_asia }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_chinese_wall_03_mesh"
 		}
@@ -473,7 +529,7 @@ walls_03 = {
 		type = pdxmesh
 		requires_dlc_flag = khans_of_the_steppe
 		graphical_cultures = { steppe_building_gfx }
-		graphical_regions = { graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		governments = { nomad_government }
 		names = {
 			"mpo_mongol_wall_03_mesh"
@@ -551,12 +607,23 @@ walls_04 = {
 			"india_walls_04_a_mesh"
 		}
 	}
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_emishi_wall_04_mesh"
+		}
+		requires_dlc_flag = north_pacific_attire
+		#Emishi GFX:
+		graphical_cultures = { emishi_building_gfx amuric_building_gfx }
+		#In all graphical regions:
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
+	}
 
 	asset = {
 		type = pdxmesh
 		requires_dlc_flag = the_fate_of_iberia
 		graphical_cultures = { iberian_building_gfx }
-		graphical_regions = { graphical_mediterranean }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp2_building_iberian_wall_04_mesh"
 		}
@@ -566,7 +633,7 @@ walls_04 = {
 		type = pdxmesh
 		requires_dlc_flag = legacy_of_persia
 		graphical_cultures = { iranian_building_gfx }
-		graphical_regions = { graphical_mena graphical_india  graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"fp3_building_persian_walls_04_a_01_mesh"
 		}
@@ -576,7 +643,7 @@ walls_04 = {
 		type = pdxmesh
 		requires_dlc_flag = roads_to_power
 		graphical_cultures = { byzantine_building_gfx caucasian_building_gfx }
-		graphical_regions = { graphical_mediterranean }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"ep3_byzantine_walls_04_mesh"
 		}
@@ -586,7 +653,7 @@ walls_04 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { southeast_asian_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_india }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_se_asia_wall_04_mesh"
 		}
@@ -596,7 +663,7 @@ walls_04 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { chinese_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_chinese_wall_04_mesh"
 		}
@@ -606,7 +673,7 @@ walls_04 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { japanese_building_gfx }
-		graphical_regions = { graphical_east_asia graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_japanese_wall_04_mesh"
 		}
@@ -615,8 +682,7 @@ walls_04 = {
 		type = pdxmesh
 		requires_dlc_flag = all_under_heaven
 		graphical_cultures = { steppe_building_gfx }
-		governments = { steppe_admin_government celestial_government meritocratic_government }
-		graphical_regions = { graphical_east_asia }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		names = {
 			"tgp_building_chinese_wall_04_mesh"
 		}
@@ -625,7 +691,7 @@ walls_04 = {
 		type = pdxmesh
 		requires_dlc_flag = khans_of_the_steppe
 		graphical_cultures = { steppe_building_gfx }
-		graphical_regions = { graphical_steppe }
+		graphical_regions = { graphical_western graphical_mena graphical_india graphical_mediterranean graphical_steppe graphical_east_asia graphical_siberia }
 		governments = { nomad_government }
 		names = {
 			"mpo_mongol_wall_04_mesh"
