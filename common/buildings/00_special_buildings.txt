@@ -1,4 +1,25 @@
-﻿###########
+﻿#Special Buildings:
+#When adding Special Buildings also always add an entry in the following custom loc:
+#GetSpecialBuildingNameFromProvince
+#GetSpecialBuildingTouristDescriptor
+
+
+#Special Building Flags:
+
+#Effects, adding the flag is enough to have it working but you also need to add a tooltip using effect_desc
+#special_university = unlocks effects for tournaments and book inspiration, as well other mechanical effects of universities
+#holy_building = unlocks funeral bonuses
+
+#Point of Interest flags (no further implementation needed after adding the flag)
+#travel_point_of_interest_religious = this location will be a religious point of interest
+#travel_point_of_interest_economic = this location will be an economic point of interest
+#travel_point_of_interest_martial = this location will be a martial point of interest
+#travel_point_of_interest_wonder = this location will be a wonder point of interest
+#travel_point_of_interest_natural_feature = this location will be a natural feature point of interest
+#travel_point_of_interest_diplomatic = this location will be a diplomatic point of interest
+#travel_point_of_interest_learning = this location will be a learning point of interest
+
+###########
 ## Generic Holy Site Buildings
 ###########
 
@@ -3520,14 +3541,13 @@ dome_of_the_rock_01 = {
 	}
 	
 	is_enabled = {
-		#custom_description = {
-		#	text = holy_site_building_trigger
-		#	barony = {
-		#		is_holy_site_of = scope:holder.faith
-		#	}
-		#}
-		#NOT = { scope:holder.religion = religion:judaism_religion }
-		always = yes
+		custom_description = {
+			text = holy_site_building_trigger
+			barony = {
+				is_holy_site_of = scope:holder.faith
+			}
+		}
+		NOT = { scope:holder.religion = religion:judaism_religion }
 	}
 	
 	show_disabled = yes
@@ -3566,7 +3586,7 @@ dome_of_the_rock_01 = {
 		}
 	}
 	
-	#next_building = temple_in_jerusalem_01
+	next_building = temple_in_jerusalem_01
 	
 	type = special
 
@@ -10431,9 +10451,9 @@ hanging_temple_01 = {
 	character_modifier = {
 		piety_level_impact_mult = 0.1
 		monthly_piety_gain_per_legitimacy_level_mult = 0.05
-		taoism_religion_opinion = 15
-		buddhism_religion_opinion = 15
-		confucianism_religion_opinion = 15
+		taoism_religion_opinion = 5
+		buddhism_religion_opinion = 5
+		confucianism_religion_opinion = 5
 	}
 
 	province_modifier = {
