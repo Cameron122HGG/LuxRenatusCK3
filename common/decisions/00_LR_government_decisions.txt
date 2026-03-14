@@ -24,14 +24,14 @@
 	}
 
 	is_shown = {
-		government_has_flag = government_is_kinship
+		government_has_flag = government_is_high_tribal
 		OR = {
 			liege = this
 			AND = {
 				liege != this
 				liege = {
 					NOR = {
-						government_has_flag = government_is_kinship
+						government_has_flag = government_is_high_tribal
 						government_has_flag = government_is_tribal
 						government_has_flag = government_is_nomadic
 					}
@@ -157,7 +157,7 @@
 					government_has_flag = government_is_classical_feudal
 				}
 				every_vassal_or_below = {
-					limit = { government_has_flag = government_is_kinship }
+					limit = { government_has_flag = government_is_high_tribal }
 					change_government = classical_feudal_government
 				}
 			}
@@ -166,7 +166,7 @@
 					government_has_flag = government_is_despotic
 				}
 				every_vassal_or_below = {
-					limit = { government_has_flag = government_is_kinship }
+					limit = { government_has_flag = government_is_high_tribal }
 					change_government = despotic_government
 				}
 			}
@@ -175,13 +175,13 @@
 					government_has_flag = government_is_clan
 				}
 				every_vassal_or_below = {
-					limit = { government_has_flag = government_is_kinship }
+					limit = { government_has_flag = government_is_high_tribal }
 					change_government = clan_government
 				}
 			}		
 			else = {
 				every_vassal_or_below = {
-					limit = { government_has_flag = government_is_kinship }
+					limit = { government_has_flag = government_is_high_tribal }
 					change_government = feudal_government
 				}
 			}
@@ -246,7 +246,7 @@ convert_classical_feudal_decision = {
 				}
 			}
 		}
-		NOT = { government_has_flag = government_is_kinship }
+		NOT = { government_has_flag = government_is_high_tribal }
 		OR = {
 			AND = {
 				liege = this
@@ -369,7 +369,7 @@ convert_despotic_decision = {
 				}
 			}			
 		}
-		NOT = { government_has_flag = government_is_kinship }
+		NOT = { government_has_flag = government_is_high_tribal }
 		OR = {
 			AND = {
 				liege = this

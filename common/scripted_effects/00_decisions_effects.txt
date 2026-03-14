@@ -1531,9 +1531,9 @@ convert_whole_realm_to_feudalism_effect = {
 		limit = {
 			top_liege != this
 			OR = {
-				liege = { government_has_flag = government_is_kinship }
+				liege = { government_has_flag = government_is_high_tribal }
 				AND = {
-					liege = { government_has_flag = government_is_kinship }
+					liege = { government_has_flag = government_is_high_tribal }
 					faith.religion = { is_in_family = rf_pagan }
 				}
 			}
@@ -1793,7 +1793,7 @@ convert_whole_realm_to_feudalism_effect = {
 		#Liege has taken clan, so become clan.
 		else_if = {
 			limit = {
-				government_has_flag = government_is_kinship
+				government_has_flag = government_is_high_tribal
 			}
 			every_vassal_or_below = {
 				limit = { government_has_flag = government_is_tribal }
