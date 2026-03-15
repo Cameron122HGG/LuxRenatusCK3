@@ -1,0 +1,26 @@
+﻿namespace = german_introduction
+german_introduction.0001 = {
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_player = {
+  			if = {
+				limit = {
+					capital_province = { geographical_region = custom_bavaria }
+			}
+				trigger_event = german_introduction.0002
+       		}
+   	 	}
+	}
+}
+## This a basic event, use it as a base for other events. Though you probably will want to remove the annotation spam first.
+german_introduction.0002 = {
+	type = character_event
+	title = "german_introduction.0002.t"
+	desc = "german_introduction.0002.desc"
+	window = character_event
+	option = {
+		name = "german_introduction.0002.a"
+	}
+}
