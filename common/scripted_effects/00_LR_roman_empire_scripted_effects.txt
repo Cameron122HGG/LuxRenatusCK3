@@ -833,9 +833,9 @@ retake_western_provinces_decision_effect = {
 
 		#Gallia
 		# Shift the Kingdoms
-		every_county_in_region = { #Gallia
-			region = custom_roman_gallia
-			kingdom = { add_to_list = custom_roman_gallia_list }
+		#every_county_in_region = { #Gallia
+		#	region = custom_roman_gallia
+		#	kingdom = { add_to_list = custom_roman_gallia_list }
 		}	
 		every_county_in_region = { #Viennensis
 			region = custom_roman_viennensis
@@ -1305,9 +1305,9 @@ restore_roman_provinces_gallia_viennensis_decision_effect = {
 		title:e_praetorian_prefecture_gallia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
-		limit = { exists = title:e_spqr.holder }
-		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_spqr }
-		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_spqr }
+		limit = { exists = title:h_western_roman_empire.holder }
+		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
+		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 	}
 
 	# Destroy useless kingdoms
