@@ -1090,7 +1090,6 @@ restore_eastern_roman_provinces_system_effect = {
 		}
 
 		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
-		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_byzantium.holder }
@@ -1119,14 +1118,15 @@ restore_eastern_roman_provinces_system_effect = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_asia = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_oriens
+			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_moesia = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_pontus = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_oriens
+			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
+		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
 	}
 
 	hidden_effect = {
@@ -1562,14 +1562,8 @@ restore_roman_provinces_syria_decision_effect  = {
 	resolve_title_and_vassal_change = scope:change
 
 	#Sort the Diocese
+	title:k_diocese_syria = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
 	if = {
-		limit = { exists = title:h_roman_empire.holder }
-		#OR = { exists = title:h_eastern_roman_empire.holder }
-		title:k_diocese_syria = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
-
-		title:e_praetorian_prefecture_oriens = { set_de_jure_liege_title = title:h_roman_empire }
-	}
-	else_if = {
 		limit = { exists = title:e_byzantium.holder }
 		title:k_diocese_syria = { set_de_jure_liege_title = title:e_byzantium }
 	}
@@ -1640,24 +1634,8 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 	resolve_title_and_vassal_change = scope:change
 
 	#Sort the Dioceses
+	title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
 	if = {
-		limit = { exists = title:h_roman_empire.holder }
-		#OR = { exists = title:h_eastern_roman_empire.holder }
-		title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
-
-		title:e_praetorian_prefecture_oriens = { set_de_jure_liege_title = title:h_roman_empire }
-	}
-	else_if = {
-		limit = { exists = title:e_byzantium.holder }
-		title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_byzantium }
-	}
-
-	# Destroy useless kingdoms
-	if = {
-		limit = { exists = title:k_egypt.holder }
-		destroy_title = title:k_egypt
-	}
-
 	hidden_effect = {	
 		#To Fezzan
 		title:c_awjila = { set_de_jure_liege_title = title:d_fezzan }
