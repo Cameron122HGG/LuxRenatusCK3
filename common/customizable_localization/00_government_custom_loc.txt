@@ -1200,19 +1200,19 @@ GetGovernmentIcon = {
 		trigger = {
 			trigger_if = {
 				limit = { is_alive = no }
-				has_government = kinship_government
+				has_government = high_tribal_government
 			}
 			trigger_else = {
 				trigger_if = {
 					limit = { is_ruler = yes }
-					has_government = kinship_government
+					has_government = high_tribal_government
 				}
 				trigger_else = {
-					liege ?= { has_government = kinship_government }
+					liege ?= { has_government = high_tribal_government }
 				}
 			}
 		}
-		localization_key = kinship_government_icon_concept
+		localization_key = high_tribal_government_icon_concept
 	}	
 	text = { # Classical Admin
 		trigger = {
@@ -1232,13 +1232,31 @@ GetGovernmentIcon = {
 		}
 		localization_key = classical_administrative_icon_concept
 	}
+	text = { # Roman Imperial
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = roman_imperial_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					has_government = roman_imperial_government
+				}
+				trigger_else = {
+					liege ?= { has_government = roman_imperial_government }
+				}
+			}
+		}
+		localization_key = roman_imperial_icon_concept
+	}
 	text = { # Despotism/Satrapy
 		trigger = {
 			trigger_if = {
 				limit = {
 					is_alive = no
 				}
-				has_government = despot_government
+				has_government = despotic_government
 			}
 			trigger_else = {
 				trigger_if = {
@@ -1250,7 +1268,25 @@ GetGovernmentIcon = {
 				}
 			}
 		}
-		localization_key = despot_icon_concept
+		localization_key = despotic_icon_concept
+	}
+	text = { # Despotic Admin
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = despotic_administrative_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					has_government = despotic_administrative_government
+				}
+				trigger_else = {
+					liege ?= { has_government = despotic_administrative_government }
+				}
+			}
+		}
+		localization_key = despotic_administrative_icon_concept
 	}
 }
 

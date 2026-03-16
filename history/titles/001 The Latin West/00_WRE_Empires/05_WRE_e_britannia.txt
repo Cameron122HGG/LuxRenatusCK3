@@ -5,7 +5,7 @@
 	
 	6060.1.1 = { 
 		holder = 455
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 
@@ -53,7 +53,7 @@ c_suffolk = {
 	6060.1.1 = {
 		holder = 1008
 		government = feudal_government
-		liege = k_petty_essex
+		liege = k_petty_eanglia
 	}
 
 }
@@ -97,7 +97,7 @@ c_bedford = {
 k_wessex = {
 	6060.1.1 = {
 		holder = 403
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 
@@ -106,7 +106,7 @@ k_wessex = {
 c_gloucestershire = {
 	6060.1.1 = {
 		holder = 1013
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_wessex
 	}
 
@@ -115,8 +115,16 @@ c_gloucestershire = {
 c_oxfordshire = {
 	6060.1.1 = {
 		holder = 1014
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_wessex
+	}
+
+}
+
+c_dorset = {
+	6060.1.1 = {
+		holder = 1005
+		liege = k_dumnonia
 	}
 
 }
@@ -202,10 +210,19 @@ c_hereford = {
 
 }
 
+c_shropshire = {
+	6060.1.1 = {
+		holder = 1034
+		government = feudal_government
+		liege = k_petty_brythonia
+	}
+
+}
+
 k_petty_york = {
 	6060.1.1 = {
 		holder = 408
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 }
@@ -237,7 +254,7 @@ c_east_riding = {
 k_petty_danelaw = {
 	6060.1.1 = {
 		holder = 407
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 }
@@ -268,8 +285,20 @@ k_dumnonia = {
 	
 	5337.5.22 = { 
 		holder = 11101
-		government = classical_feudal_government
+		government = classical_administrative_government
 		liege = 0
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}		
+		}		
 	}
 	5352.1.1 = {
 		holder = 11102
@@ -372,6 +401,14 @@ k_dumnonia = {
 	}
 }
 
+c_somerset = {
+	6060.1.1 = {
+		holder = 1004
+		liege = k_dumnonia
+	}
+
+}
+
 k_ireland = {
 	5867.1.1 = { change_development_level = 2 }
 	6066.1.1 = { change_development_level = 6 }
@@ -383,7 +420,7 @@ k_ireland = {
 d_meath = {
 	6052.1.1 = {
 		holder = 426
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 
@@ -403,7 +440,7 @@ c_athlone = {
 d_ulster = {
 	6066.1.1 = {
 		holder = 428
-		government = kinship_government #republic_government
+		government = high_tribal_government #republic_government
 		liege = 0
 	}
 
@@ -428,7 +465,7 @@ c_ailech = {
 d_connacht = {
 	6066.1.1 = {
 		holder = 420
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 
@@ -453,7 +490,7 @@ c_breifne = {
 d_leinster = {
 	6066.1.1 = {
 		holder = 425
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 
@@ -474,7 +511,7 @@ c_ossory = {
 d_munster = {
 	6066.1.1 = {
 	holder = 419
-	government = kinship_government
+	government = high_tribal_government
 	liege = 0
 
 	}
@@ -515,7 +552,7 @@ k_wales = {
 k_petty_gwynedd = {
 	6063.1.1 = {
 		holder = 459
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 
@@ -523,7 +560,7 @@ k_petty_gwynedd = {
 d_gwynedd = {
 	6063.1.1 = {
 		holder = 459
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_petty_gwynedd
 	}
 
@@ -532,7 +569,7 @@ d_gwynedd = {
 k_petty_dyfed = {
 	6063.1.1 = {
 		holder = 412
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 
@@ -541,7 +578,7 @@ k_petty_dyfed = {
 d_deheubarth = {
 	6063.1.1 = {
 		holder = 412
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_petty_dyfed
 	}
 }
@@ -549,7 +586,7 @@ d_deheubarth = {
 c_pembrokeshire = {
 	6063.1.1 = {
 		holder = 412
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_petty_dyfed
 	}
 
@@ -558,7 +595,7 @@ c_pembrokeshire = {
 c_carmarthenshire = {
 	6063.1.1 = {
 		holder = 412
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_petty_dyfed
 	}
 
@@ -567,7 +604,7 @@ c_carmarthenshire = {
 c_monmouthshire = {
 	6063.1.1 = {
 		holder = 1019
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_petty_dyfed
 	}
 
@@ -576,7 +613,7 @@ c_monmouthshire = {
 c_glamorgan = {
 	6063.1.1 = {
 		holder = 1020
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_petty_dyfed
 	}
 
@@ -585,7 +622,7 @@ c_glamorgan = {
 c_brecknockshire = {
 	6063.1.1 = {
 		holder = 1020
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_petty_dyfed
 	}
 
@@ -619,7 +656,7 @@ c_denbighshire = {
 k_petty_powys = {
 	6063.1.1 = {
 		holder = 416
-		government = kinship_government
+		government = high_tribal_government
 		liege = 0
 	}
 
@@ -627,7 +664,7 @@ k_petty_powys = {
 d_powys = {
 	6063.1.1 = {
 		holder = 416
-		government = kinship_government
+		government = high_tribal_government
 		liege = k_petty_powys
 	}
 
@@ -648,7 +685,17 @@ k_scotland = {
     6060.1.1 = {
         holder = 414
         liege = 0
-		government = kinship_government
+		government = high_tribal_government
+    }
+
+}
+
+# K Caledonia
+k_titular_caledonia = {
+    6060.1.1 = {
+        holder = 457
+        liege = 0
+		government = high_tribal_government
     }
 
 }
@@ -656,9 +703,9 @@ k_scotland = {
 # D Albany
 d_albany = {
     6060.1.1 = {
-        holder = 414
-        liege = 0
-		government = kinship_government
+        holder = 457
+        liege = k_titular_caledonia
+		government = high_tribal_government
     }
 
 }
@@ -666,8 +713,8 @@ d_albany = {
 # C Gowrie
 c_gowrie = {
     6060.1.1 = {
-        holder = 414
-        liege = 0
+        holder = 457
+        liege = k_titular_caledonia
     }
 
 }
@@ -675,8 +722,8 @@ c_gowrie = {
 # C Fife
 c_fife = {
     6060.1.1 = {
-        holder = 414
-        liege = 0
+        holder = 457
+        liege = k_titular_caledonia
     }
 
 }
@@ -684,8 +731,8 @@ c_fife = {
 # C Strathearn
 c_strathearn = {
     6060.1.1 = {
-        holder = 414
-        liege = 0
+        holder = 457
+        liege = k_titular_caledonia
     }
 
 }
@@ -693,8 +740,8 @@ c_strathearn = {
 # C Atholl
 c_atholl = {
     6060.1.1 = {
-        holder = 414
-        liege = 0
+        holder = 457
+        liege = k_titular_caledonia
     }
 
 }
@@ -702,8 +749,8 @@ c_atholl = {
 # C Angus
 c_angus = {
     6060.1.1 = {
-        holder = 414
-        liege = 0
+        holder = 457
+        liege = k_titular_caledonia
     }
 
 }
@@ -711,8 +758,8 @@ c_angus = {
 # C Mearns
 c_mearns = {
     6060.1.1 = {
-        holder = 414
-        liege = 0
+        holder = 457
+        liege = k_titular_caledonia
     }
 
 }
@@ -792,7 +839,7 @@ k_alba = {
 # D Galloway
 d_galloway = { 
     6060.1.1 = {
-        holder = 415
+        holder = 411
         liege = 0
     }
 
@@ -810,8 +857,8 @@ c_lennox = {
 # C Galloway
 c_galloway = {
     6060.1.1 = {
-        holder = 415
-        liege = 0
+        holder = 1027
+        liege = k_mann_the_isles
     }
 
 }
@@ -819,8 +866,8 @@ c_galloway = {
 # C Carrick
 c_carrick = {
     6060.1.1 = {
-        holder = 415
-        liege = 0
+        holder = 1027
+        liege = k_mann_the_isles
     }
 
 }
@@ -828,7 +875,7 @@ c_carrick = {
 # C Ayrshire
 c_ayrshire = {
     6060.1.1 = {
-        holder = 415
+        holder = 411
         liege = 0
     }
 
@@ -864,7 +911,7 @@ c_dunbar = {
 # C Teviotdale
 c_teviotdale = {
     6060.1.1 = {
-        holder = 415
+        holder = 411
         liege = 0
     }
 
@@ -873,7 +920,7 @@ c_teviotdale = {
 # C Annandale
 c_annandale = {
     6060.1.1 = {
-        holder = 415
+        holder = 411
         liege = 0
     }
 
@@ -891,7 +938,7 @@ c_linlithgowshire = {
 # C Lanarkshire
 c_lanarkshire = {
     6060.1.1 = {
-        holder = 415
+        holder = 411
         liege = 0
     }
 
@@ -904,7 +951,7 @@ k_mann_the_isles = {
     6060.1.1 = {
         holder = 431
         liege = 0
-		government = kinship_government
+		government = high_tribal_government
     }
 
 }
@@ -968,7 +1015,7 @@ d_western_isles = {
     6060.1.1 = {
         holder = 417
         liege = 0
-		government = kinship_government
+		government = high_tribal_government
     }
 
 }
@@ -994,19 +1041,127 @@ c_outer_hebrides = {
 # C Argyll
 c_argyll = {
     6060.1.1 = {
-        holder = 417
+        holder = 456
         liege = 0
     }
 
 }
 
+# K Dal Riata
+k_titular_dalriada = {
+    6060.1.1 = {
+        holder = 456
+        liege = 0
+    }
 
+}
 
 # C Brecknockshire
 
+# K Bernicia
+k_bernicia = {
+    6060.1.1 = {
+        holder = 452
+        liege = 0
+    }
 
+}
 
+# C Durham
+c_durham = {
+    6060.1.1 = {
+        holder = 452
+        liege = 0
+    }
 
+}
 
+# C Northumberland
+c_northumberland = {
+    6060.1.1 = {
+        holder = 452
+        liege = 0
+    }
 
+}
 
+# K Rheged
+k_rheged = {
+    6060.1.1 = {
+        holder = 458
+        liege = 0
+    }
+
+}
+
+# C Cumberland
+c_cumberland = {
+    6060.1.1 = {
+        holder = 458
+        liege = 0
+    }
+
+}
+
+# C Westmorland
+c_westmorland = {
+    6060.1.1 = {
+        holder = 458
+        liege = 0
+    }
+
+}
+
+# K Northumbria
+k_titular_northumbria = {
+    6060.1.1 = {
+        holder = 410
+        liege = 0
+    }
+
+}
+
+# C Lancashire
+c_lancashire = {
+    6060.1.1 = {
+        holder = 410
+        liege = 0
+    }
+
+}
+
+# C Cheshire
+c_cheshire = {
+    6060.1.1 = {
+        holder = 410
+        liege = 0
+    }
+
+}
+
+# C Staffordshire
+c_staffordshire = {
+    6060.1.1 = {
+        holder = 410
+        liege = 0
+    }
+
+}
+
+# C Derby
+c_derby = {
+    6060.1.1 = {
+        holder = 410
+        liege = 0
+    }
+
+}
+
+# K Strathclyde
+k_titular_strathclyde = {
+    6060.1.1 = {
+        holder = 411
+        liege = 0
+    }
+
+}

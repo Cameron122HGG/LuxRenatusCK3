@@ -1,0 +1,518 @@
+﻿# MERIT
+
+#Note! These are base values. Use loss/gain below
+miniscule_roman_merit_value = 10
+minor_roman_merit_value = 30
+medium_roman_merit_value = 60
+major_roman_merit_value = 100
+massive_roman_merit_value = 150
+monumental_roman_merit_value = 250
+
+# These starting values should match the corresponding tier in define: "LEVELS_MERIT"
+county_starting_roman_merit_value = 100
+duchy_starting_roman_merit_value = 2000
+kingdom_starting_roman_merit_value = 5500
+empire_starting_roman_merit_value = 12000
+
+miniscule_roman_merit_loss = {
+	value = 0
+	subtract = miniscule_roman_merit_value
+}
+minor_roman_merit_loss = {
+	value = 0
+	subtract = minor_roman_merit_value
+}
+medium_roman_merit_loss = {
+	value = 0
+	subtract = medium_roman_merit_value
+}
+major_roman_merit_loss = {
+	value = 0
+	subtract = major_roman_merit_value
+}
+massive_roman_merit_loss = {
+	value = 0
+	subtract = massive_roman_merit_value
+}
+monumental_roman_merit_loss = {
+	value = 0
+	subtract = monumental_roman_merit_value
+}
+
+miniscule_roman_merit_gain = miniscule_roman_merit_value
+minor_roman_merit_gain = minor_roman_merit_value
+medium_roman_merit_gain = medium_roman_merit_value
+major_roman_merit_gain = major_roman_merit_value
+massive_roman_merit_gain = massive_roman_merit_value
+monumental_roman_merit_gain = monumental_roman_merit_value
+
+stratified_society_roman_merit_gain_value = 500
+
+maximum_roman_merit_level = {
+	value = 0
+	if = {
+		limit = {
+			government_has_flag = government_has_merit
+		}
+		if = {
+			limit = {
+				government_has_flag = government_is_roman_imperial
+			}
+			add = 9
+		}
+		else = {
+			add = 5
+		}
+	}
+}
+
+roman_imperial_province_military_max_value = 8
+roman_imperial_province_protectorate_max_value = {
+	value = 5
+	#if = {
+	#	limit = {
+	#		situation:dynastic_cycle ?= { has_situation_top_phase_parameter = dynastic_cycle_hegemon_increased_protectorate_limit }
+	#	}
+	#	add = dynastic_cycle_protectorate_bonus_value
+	#}
+}
+#dynastic_cycle_protectorate_bonus_value = 4
+
+roman_imperial_province_industrial_max_value = 8
+roman_imperial_province_metropolitan_max_value = {
+	value = 5
+	#if = {
+	#	limit = {
+	#		situation:dynastic_cycle ?= { has_situation_top_phase_parameter = dynastic_cycle_hegemon_increased_metropolitan_limit }
+	#	}
+	#	add = dynastic_cycle_metropolitan_bonus_value
+	#}
+}
+#dynastic_cycle_metropolitan_bonus_value = 4
+
+#kaifeng_examination_cost_value = 0.5
+#forbidden_city_bonus_value = 4
+#great_barracks_bonus_value = 5
+
+# Make sure these match the target define: APPOINTMENT_MERIT_TIER
+roman_merit_level_expected_hegemony_value = 9
+roman_merit_level_expected_empire_value = 7
+roman_merit_level_expected_kingdom_value = 5
+roman_merit_level_expected_duchy_value = 3
+roman_merit_level_expected_county_value = 1
+
+expected_primary_title_roman_merit = {
+	if = {
+		limit = {
+			primary_title.tier = tier_hegemony # shouldn't ever actually be necessary, but we'll check to be safe
+		}
+		value = roman_merit_level_expected_hegemony_value
+	}
+	else_if = {
+		limit = {
+			primary_title.tier = tier_empire
+		}
+		value = roman_merit_level_expected_empire_value
+	}
+	else_if = {
+		limit = {
+			primary_title.tier = tier_kingdom
+		}
+		value = roman_merit_level_expected_kingdom_value
+	}
+	else_if = {
+		limit = {
+			primary_title.tier = tier_duchy
+		}
+		value = roman_merit_level_expected_duchy_value
+	}
+	else = {
+		value = roman_merit_level_expected_county_value
+	}
+}
+
+assign_roman_merit_based_on_tier_value = {
+	value = 50 # Some base roman_merit
+	if = {
+		limit = {
+			primary_title.tier = tier_hegemony # shouldn't ever actually be necessary, but we'll check to be safe
+		}
+		value = {
+			value = empire_starting_roman_merit_value
+			multiply = 1.5
+		}
+	}
+	else_if = {
+		limit = {
+			primary_title.tier = tier_empire
+		}
+		value = empire_starting_roman_merit_value
+	}
+	else_if = {
+		limit = {
+			primary_title.tier = tier_kingdom
+		}
+		value = kingdom_starting_roman_merit_value
+	}
+	else_if = {
+		limit = {
+			primary_title.tier = tier_duchy
+		}
+		value = duchy_starting_roman_merit_value
+	}
+	else = {
+		value = county_starting_roman_merit_value
+	}
+}
+# Ministry/council values
+council_scaled_roman_imperial_ministry_value = {
+	value = 0 # This value should be 0 for anyone who isn't on the roman_imperial ministry
+	if = {
+		limit = {
+			liege = {
+				highest_held_title_tier >= tier_hegemony
+				government_has_flag = government_is_roman_imperial
+			}
+		}
+		add = {
+			every_relation = {
+				type = disciple
+				add = 1
+			}
+			min = 1
+		}
+	}
+}
+council_scaled_roman_imperial_ministry_favored_value = {
+	value = 0 # This value should be 0 for everyone except the favored minister
+	if = {
+		limit = {
+			has_court_position = favored_minister_court_position
+		}
+		add = 1
+	}
+}
+
+
+
+
+roman_retirement_age_0_value = 50
+roman_retirement_age_1_value = 60
+roman_retirement_age_2_value = 70
+roman_retirement_age_3_value = 80
+roman_retirement_age_4_value = 90
+roman_retirement_age_current_value = {
+	value = 0
+	if = {
+		limit = {
+			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_4 }
+		}
+		add = roman_retirement_age_4_value
+	}
+	else_if = {
+		limit = {
+			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_3 }
+		}
+		add = roman_retirement_age_3_value
+	}
+	else_if = {
+		limit = {
+			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_2 }
+		}
+		add = roman_retirement_age_2_value
+	}
+	else_if = {
+		limit = {
+			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_1 }
+		}
+		add = roman_retirement_age_1_value
+	}
+	else_if = {
+		limit = {
+			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_0 }
+		}
+		add = roman_retirement_age_0_value
+	}
+}
+# End of ministry values
+
+
+
+automated_nomination_roman_merit_investment_value = {
+	value = 0
+	add = roman_merit_level
+	multiply = 10
+}
+
+
+roman_imperial_civilian_score_bonus_1_value = 10
+roman_imperial_civilian_score_bonus_2_value = 20
+roman_imperial_civilian_score_bonus_3_value = 40
+roman_imperial_civilian_score_bonus_4_value = 80
+
+roman_imperial_military_score_bonus_1_value = 10
+roman_imperial_military_score_bonus_2_value = 20
+roman_imperial_military_score_bonus_3_value = 40
+roman_imperial_military_score_bonus_4_value = 80
+
+roman_imperial_ministry_score_bonus_1_value = 10
+roman_imperial_ministry_score_bonus_2_value = 20
+roman_imperial_ministry_score_bonus_3_value = 40
+roman_imperial_ministry_score_bonus_4_value = 80
+
+
+estate_roman_merit_rank_increase_bonus_1_value = 50
+estate_roman_merit_rank_increase_bonus_2_value = 100
+estate_roman_merit_rank_increase_bonus_3_value = 150
+estate_roman_merit_rank_increase_bonus_4_value = 200
+estate_roman_merit_rank_increase_bonus_5_value = 250
+estate_roman_merit_rank_increase_bonus_6_value = 300
+
+
+
+estate_roman_merit_construction_bonus_1_value = 0.25
+estate_roman_merit_construction_bonus_2_value = 0.5
+estate_roman_merit_construction_bonus_3_value = 0.75
+estate_roman_merit_construction_bonus_4_value = 1
+
+
+
+# Career score values
+roman_career_score_minor_base_value = 10
+roman_career_score_medium_base_value = 40
+roman_career_score_major_base_value = 100
+
+roman_career_score_minor_total_value = {
+	value = roman_career_score_minor_base_value
+}
+roman_career_score_medium_total_value = {
+	value = roman_career_score_medium_base_value
+}
+roman_career_score_major_total_value = {
+	value = roman_career_score_major_base_value
+}
+roman_career_score_actor_multiplier_value = {
+	# 100% is the default
+	value = 1
+	# Grand Chanchellor bonus
+	if = {
+		limit = {
+			has_title = title:e_minister_chancellor
+		}
+		add = 0.2
+	}
+	# Minister of Personnel is good at promoting career's
+	if = {
+		limit = {
+			has_title = title:e_minister_of_personnel
+		}
+		add = 0.1
+	}
+}
+roman_career_score_major_cost_value = {
+	value = roman_career_score_major_base_value
+	multiply = 10
+}
+roman_career_score_medium_cost_value = {
+	value = roman_career_score_medium_base_value
+	multiply = 10
+}
+roman_career_score_minor_cost_value = {
+	value = roman_career_score_minor_base_value
+	multiply = 10
+}
+
+# > 0 contender won and will become new leader
+# <= 0 movement leader won and defended position
+roman_debate_outcome_value = {
+	value = 0
+    if = {
+    	limit = {
+	    	exists = var:challenged_movement_leader
+	    	exists = var:debate_contender
+    	}
+	    if = {
+	        limit = {
+	           var:challenged_movement_leader.var:tgp_debate_success_score >= { value = var:debate_contender.var:tgp_debate_success_score multiply = 2 }
+	        }
+	        add = -3
+	    }
+	    else_if = {
+	        limit = {
+	            var:debate_contender.var:tgp_debate_success_score >= { value = var:challenged_movement_leader.var:tgp_debate_success_score multiply = 2 }
+	        }
+	    	add = 3
+	    }
+	    else_if = {
+	        limit = {
+	            var:challenged_movement_leader.var:tgp_debate_success_score >= { value = var:debate_contender.var:tgp_debate_success_score multiply = 1.5 }
+	        }
+	    	add = -2
+	    }
+	    else_if = {
+	        limit = {
+	            var:debate_contender.var:tgp_debate_success_score >= { value = var:challenged_movement_leader.var:tgp_debate_success_score multiply = 1.5 }
+	        }
+	    	add = 2
+	    }
+	    else_if = {
+	        limit = {
+	            var:challenged_movement_leader.var:tgp_debate_success_score >= { value = var:debate_contender.var:tgp_debate_success_score multiply = 1.2 }
+	        }
+	    	add = -1
+	    }
+	    else_if = {
+	        limit = {
+	            var:debate_contender.var:tgp_debate_success_score >= { value = var:challenged_movement_leader.var:tgp_debate_success_score multiply = 1.2 }
+	        }
+	    	add = 1
+	    }
+	}
+}
+
+building_construction_roman_merit_gain_base_value = medium_roman_merit_value
+building_construction_roman_merit_gain_value = {
+	value = building_construction_roman_merit_gain_base_value
+	add = root.county.development_level # root being the province in which a building is constructed
+	
+	# Domicile buildings
+	if = {
+		limit = {
+			exists = domicile
+		}
+		domicile = {
+			if = {
+				limit = {
+					has_domicile_parameter = estate_increase_merit_on_construction_4
+				}
+				multiply = {
+					value = 1
+					add = estate_roman_merit_construction_bonus_4_value
+				}
+			}
+			else_if = {
+				limit = {
+					has_domicile_parameter = estate_increase_merit_on_construction_3
+				}
+				multiply = {
+					value = 1
+					add = estate_roman_merit_construction_bonus_3_value
+				}
+			}
+			else_if = {
+				limit = {
+					has_domicile_parameter = estate_increase_merit_on_construction_2
+				}
+				multiply = {
+					value = 1
+					add = estate_roman_merit_construction_bonus_2_value
+				}
+			}
+			else_if = {
+				limit = {
+					has_domicile_parameter = estate_increase_merit_on_construction_1
+				}
+				multiply = {
+					value = 1
+					add = estate_roman_merit_construction_bonus_1_value
+				}
+			}
+		}
+	}
+}
+
+roman_merit_starting_boost_value = {
+	value = 0
+	if = {
+		limit = { roman_merit >= roman_merit_level_8_value }
+		add = roman_merit_upgrade_level_8_value
+	}
+	else_if = {
+		limit = { roman_merit >= roman_merit_level_7_value }
+		add = roman_merit_upgrade_level_7_value
+	}
+	else_if = {
+		limit = { roman_merit >= roman_merit_level_6_value }
+		add = roman_merit_upgrade_level_6_value
+	}
+	else_if = {
+		limit = { roman_merit >= roman_merit_level_5_value }
+		add = roman_merit_upgrade_level_5_value
+	}
+	else_if = {
+		limit = { roman_merit >= roman_merit_level_4_value }
+		add = roman_merit_upgrade_level_4_value
+	}
+	else_if = {
+		limit = { roman_merit >= roman_merit_level_3_value }
+		add = roman_merit_upgrade_level_3_value
+	}
+	else_if = {
+		limit = { roman_merit >= roman_merit_level_2_value }
+		add = roman_merit_upgrade_level_2_value
+	}
+	else = { add = roman_merit_upgrade_level_1_value }
+}
+
+roman_merit_level_1_value = 100
+roman_merit_level_2_value = 1000
+roman_merit_level_3_value = 2000
+roman_merit_level_4_value = 3500
+roman_merit_level_5_value = 5500
+roman_merit_level_6_value = 8500
+roman_merit_level_7_value = 12000
+roman_merit_level_8_value = 17000
+roman_merit_level_9_value = 23000
+
+roman_merit_upgrade_level_1_value = {
+	value = roman_merit_level_2_value
+	subtract = roman_merit_level_1_value
+}
+
+roman_merit_upgrade_level_2_value = {
+	value = roman_merit_level_3_value
+	subtract = roman_merit_level_2_value
+}
+
+roman_merit_upgrade_level_3_value = {
+	value = roman_merit_level_4_value
+	subtract = roman_merit_level_3_value
+}
+
+roman_merit_upgrade_level_4_value = {
+	value = roman_merit_level_5_value
+	subtract = roman_merit_level_4_value
+}
+
+roman_merit_upgrade_level_5_value = {
+	value = roman_merit_level_6_value
+	subtract = roman_merit_level_5_value
+}
+
+roman_merit_upgrade_level_6_value = {
+	value = roman_merit_level_7_value
+	subtract = roman_merit_level_6_value
+}
+
+roman_merit_upgrade_level_7_value = {
+	value = roman_merit_level_8_value
+	subtract = roman_merit_level_7_value
+}
+
+roman_merit_upgrade_level_8_value = {
+	value = roman_merit_level_9_value
+	subtract = roman_merit_level_8_value
+}
+
+roman_merit_gain_on_succession_1_value = 0.03
+roman_merit_gain_on_succession_2_value = 0.06
+roman_merit_gain_on_succession_3_value = 0.09
+roman_merit_gain_on_succession_4_value = 0.12
+
+
+inspection_activity_roman_merit_bonus_1_value = 0.06
+inspection_activity_roman_merit_bonus_2_value = 0.12
+inspection_activity_roman_merit_bonus_3_value = 0.18
+inspection_activity_roman_merit_bonus_4_value = 0.24
+inspection_activity_roman_merit_bonus_5_value = 0.3
+

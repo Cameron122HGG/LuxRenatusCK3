@@ -1,0 +1,123 @@
+﻿classical_feudal = {
+	contracts = {	
+		special_contract
+		religious_rights
+		fortification_rights
+		coinage_rights
+		succession_rights
+		war_declaration_rights
+		council_rights
+		title_revocation_rights
+		jizya_special_rights
+		classical_tax_collector_obligations
+	}
+}
+
+
+classical_admin_vassal = {
+	contracts = {
+		classical_administrative_obligations
+		ca_count_dev_fund
+		ca_state_ownership
+		ca_citizenship
+		ca_military_designation
+		ca_hereditary_appointment
+		administrative_salary_rank
+	}
+	modify_contract_layout = admin
+}
+
+principate_vassal = {
+	contracts = {
+		principate_obligations
+		principate_themes
+	}
+	modify_contract_layout = admin
+}
+
+despotic_vassal = {
+	contracts = {
+		feudal_government_taxes
+		feudal_government_levies
+		
+		special_contract
+		religious_rights
+		war_declaration_rights
+		council_rights
+		title_revocation_rights
+		marriage_favor_rights
+		despotic_tax_collector_obligations
+	}
+	#modify_contract_layout = clan
+}
+
+despotic_admin_vassal = {
+	admin_province_contract = despotic_administrative_themes
+	contracts = {
+		despotic_administrative_obligations
+		despotic_administrative_themes
+		administrative_salary_rank
+	}
+	modify_contract_layout = admin
+}
+
+despotic_imperial_vassal = {
+	admin_province_contract = despotic_administrative_themes
+	contracts = {
+		despotic_administrative_obligations
+		despotic_administrative_themes
+		administrative_salary_rank
+	}
+	modify_contract_layout = admin
+}
+
+high_tribal_vassal = {
+	contracts = {
+		high_tribal_government_obligations
+		
+		special_contract
+		religious_rights
+		fortification_rights
+		coinage_rights
+		succession_rights
+		war_declaration_rights
+		council_rights
+		title_revocation_rights
+		jizya_special_rights
+	}
+}
+
+tributary_byzantine = {
+	is_tributary = yes
+	tributary_can_break_free = {
+		scope:suzerain.military_power < root.military_power
+		is_at_war = no
+	}
+	suzerain_heir_succession = yes
+	suzerain_line_type = line_suzerain
+	tributary_line_type = line_tributary
+	should_show_as_suzerain_realm_name = yes
+	should_show_as_suzerain_realm_color = yes
+
+	contracts = {
+		default_tributary_taxes
+		default_tributary_prestige
+		suzerain_war_participation_guarantee
+		tributary_war_participation_obligation
+	}
+}
+
+roman_imperial_vassal = {
+	admin_province_contract = roman_imperial_provinces
+
+	contracts = {
+		roman_imperial_obligations
+		roman_imperial_provinces
+		roman_imperial_treasury
+		roman_imperial_salary
+		roman_imperial_salary_rank
+	}
+
+	modify_contract_layout = eastern_admin
+}
+

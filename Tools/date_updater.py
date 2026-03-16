@@ -7,7 +7,7 @@ import pathlib
 #For reasons unknown to me this file has two instances of the date 1300.1.1 and is the only gfx file to have any dates at all
 
 
-years_to_add = 10000
+years_to_add = 5000
 
 for file in glob.glob("old_files/**/*.txt", recursive=True):
 	cur_file = open(file, 'r', encoding='utf-8')

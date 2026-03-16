@@ -547,7 +547,7 @@ form_carolingian_empire_scripted_effect = {
 		title:k_east_francia = { set_de_jure_liege_title = title:e_france }
 		title:k_lombardy = { set_de_jure_liege_title = title:e_france }
 		title:k_navarra = { set_de_jure_liege_title = title:e_france }
-		title:k_aragon = { set_de_jure_liege_title = title:e_france }
+		title:k_visigoths = { set_de_jure_liege_title = title:e_france }
 		if = {
 			limit = {
 				OR = {
@@ -1400,14 +1400,14 @@ restore_dumnonia_decision_scripted_effect = {
 	resolve_title_and_vassal_change = scope:title_change
 
 	hidden_effect = {
-		title:d_somerset = { save_scope_as = cornwall_somerset }
+		title:d_belgarum = { save_scope_as = cornwall_somerset }
 		title:d_gloucester = { save_scope_as = cornwall_gloucester }
 		title:d_cornwall = { set_de_jure_liege_title = title:k_dumnonia }
 		if = {	#If owned, annex Somerset/Wessex.
 			limit = {
-				title:d_somerset = { holder = root }
+				title:d_belgarum = { holder = root }
 			}
-			title:d_somerset = { set_de_jure_liege_title = title:k_dumnonia }
+			title:d_belgarum = { set_de_jure_liege_title = title:k_dumnonia }
 		}
 		if = {	#If owned, annex Gloucestershire/Hwicce.
 			limit = {

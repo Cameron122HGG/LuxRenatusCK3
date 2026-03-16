@@ -19,7 +19,18 @@
 		title:k_jerusalem = { set_de_jure_liege_title = title:e_seleukid_empire }
 		title:k_mesopotamia = { set_de_jure_liege_title = title:e_seleukid_empire }
 		title:k_osroene = { set_de_jure_liege_title = title:e_seleukid_empire }
-		scope:previous_title = { set_de_jure_liege_title = title:e_seleukid_empire }		
+		#scope:previous_title = { set_de_jure_liege_title = title:e_seleukid_empire }
+
+		if = {
+			limit = { has_title = title:e_levant }
+			destroy_title = title:e_levant
+			title:e_levant = {
+				every_in_de_jure_hierarchy = {
+					limit = { tier = tier_kingdom }
+					set_de_jure_liege_title = title:e_seleukid_empire
+				}
+			}
+		}		
 	}
 }
 create_ptolemaic_kingdom_scripted_effect = {
@@ -43,7 +54,18 @@ create_ptolemaic_kingdom_scripted_effect = {
 		title:k_kyrene = { set_de_jure_liege_title = title:e_ptolemaic_empire }
 		title:k_cyprus = { set_de_jure_liege_title = title:e_ptolemaic_empire }
 		title:k_krete = { set_de_jure_liege_title = title:e_ptolemaic_empire }	
-		scope:previous_title = { set_de_jure_liege_title = title:e_ptolemaic_empire }
+		#scope:previous_title = { set_de_jure_liege_title = title:e_ptolemaic_empire }
+		
+		if = {
+			limit = { has_title = title:e_egypt }
+			destroy_title = title:e_egypt
+			title:e_egypt = {
+				every_in_de_jure_hierarchy = {
+					limit = { tier = tier_kingdom }
+					set_de_jure_liege_title = title:e_ptolemaic_empire
+				}
+			}
+		}		
 	}
 }
 

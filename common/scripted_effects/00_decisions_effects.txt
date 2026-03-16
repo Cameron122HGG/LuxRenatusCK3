@@ -604,7 +604,7 @@ unite_the_spanish_thrones_decision_effects = {
 	title:k_leon = { add_to_list = spanish_kingdoms }
 	title:k_spanish_galicia = { add_to_list = spanish_kingdoms }
 	title:k_portugal = { add_to_list = spanish_kingdoms }
-	title:k_aragon = { add_to_list = spanish_kingdoms }
+	title:k_visigoths = { add_to_list = spanish_kingdoms }
 	title:k_navarra = { add_to_list = spanish_kingdoms }
 	title:k_andalusia = { add_to_list = spanish_kingdoms }
 	title:k_badajoz = { add_to_list = spanish_kingdoms }
@@ -1531,14 +1531,14 @@ convert_whole_realm_to_feudalism_effect = {
 		limit = {
 			top_liege != this
 			OR = {
-				liege = { government_has_flag = government_is_kinship }
+				liege = { government_has_flag = government_is_high_tribal }
 				AND = {
-					liege = { government_has_flag = government_is_kinship }
+					liege = { government_has_flag = government_is_high_tribal }
 					faith.religion = { is_in_family = rf_pagan }
 				}
 			}
 		}
-		change_government = kinship_government
+		change_government = high_tribal_government
 	}
 	else_if = {
 		limit = {
@@ -1564,7 +1564,7 @@ convert_whole_realm_to_feudalism_effect = {
 				}
 			}
 		}
-		change_government = despot_government
+		change_government = despotic_government
 	}
 	else_if = {
 		limit = {
@@ -1630,7 +1630,7 @@ convert_whole_realm_to_feudalism_effect = {
 			top_liege = this
 			faith.religion = { is_in_family = rf_pagan }
 		}
-		change_government = kinship_government
+		change_government = high_tribal_government
 	}
 	else_if = {
 		limit = {
@@ -1644,7 +1644,7 @@ convert_whole_realm_to_feudalism_effect = {
 			top_liege = this
 			faith.religion = { is_in_family = rf_archaic }
 		}
-		change_government = despot_government
+		change_government = despotic_government
 	}
 	##You're an independent anything else? Convert to feudal!
 	else = { change_government = feudal_government }
@@ -1793,11 +1793,11 @@ convert_whole_realm_to_feudalism_effect = {
 		#Liege has taken clan, so become clan.
 		else_if = {
 			limit = {
-				government_has_flag = government_is_kinship
+				government_has_flag = government_is_high_tribal
 			}
 			every_vassal_or_below = {
 				limit = { government_has_flag = government_is_tribal }
-				change_government = kinship_government
+				change_government = high_tribal_government
 				#Nuke tribal authorities.
 				if = {
 					limit = { has_realm_law = tribal_authority_0 }
@@ -1861,7 +1861,7 @@ convert_whole_realm_to_feudalism_effect = {
 			}
 			every_vassal_or_below = {
 				limit = { government_has_flag = government_is_tribal }
-				change_government = despot_government
+				change_government = despotic_government
 				#Nuke tribal authorities.
 				if = {
 					limit = { has_realm_law = tribal_authority_0 }
