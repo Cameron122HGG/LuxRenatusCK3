@@ -818,6 +818,7 @@ retake_western_provinces_decision_effect = {
 
 		#Italia
 		# Shift the Kingdoms
+		title:e_praetorian_prefecture_italia = { set_de_jure_liege_title = title:h_western_roman_empire }
 		every_county_in_region = {
 			region = custom_spqr_imperial_core
 			kingdom = { add_to_list = custom_spqr_imperial_core }
@@ -1297,6 +1298,8 @@ restore_roman_provinces_gallia_viennensis_decision_effect = {
 	}
 
 	#Sort the Dioceses
+		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
+		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
 		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
@@ -1453,6 +1456,8 @@ restore_roman_provinces_africa_mauretania_decision_effect = {
 	resolve_title_and_vassal_change = scope:change
 
 	#Sort the Dioceses
+		title:k_diocese_africa = { set_de_jure_liege_title = title:e_praetorian_prefecture_africa }
+		title:k_diocese_mauretania = { set_de_jure_liege_title = title:e_praetorian_prefecture_africa }
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
 		title:k_diocese_africa = { set_de_jure_liege_title = title:e_praetorian_prefecture_africa }
@@ -1688,18 +1693,12 @@ restore_roman_provinces_hispania_decision_effect = {
 	resolve_title_and_vassal_change = scope:change
 
 	#Sort the Dioceses
+	title:k_diocese_hispania = { set_de_jure_liege_title = title:e_spain }
 	if = {
 		limit = { exists = title:e_spqr.holder }
 		title:k_diocese_hispania = { set_de_jure_liege_title = title:e_spqr }
 	}
-	else_if = {
-		limit = { exists = title:h_roman_empire.holder }
-		title:k_diocese_hispania = { set_de_jure_liege_title = title:e_spain }
-
-		title:e_spain = { 
-			set_de_jure_liege_title = title:h_roman_empire 
-		}
-	}
+}
 		
 	title:e_spain = { set_coa = e_spain }
 			
@@ -1794,17 +1793,11 @@ restore_roman_provinces_britannia_decision_effect = {
 	resolve_title_and_vassal_change = scope:change
 
 	#Sort the Dioceses
+	title:k_diocese_britannia = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 	if = {
 		limit = { exists = title:e_spqr.holder }
 		title:k_diocese_britannia = { set_de_jure_liege_title = title:e_spqr }
 	}
-	else_if = {
-		limit = { exists = title:h_roman_empire.holder }
-		title:k_diocese_britannia = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
-
-		title:e_praetorian_prefecture_gallia = { set_de_jure_liege_title = title:h_roman_empire }
-	}
-
 	#Fix Northumberland
 	title:c_northumberland = { set_de_jure_liege_title = title:d_lothian }
 	title:c_cumberland = { set_de_jure_liege_title = title:d_lothian }
