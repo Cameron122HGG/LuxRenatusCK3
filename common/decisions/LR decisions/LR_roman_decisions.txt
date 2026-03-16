@@ -306,6 +306,8 @@ LR_reunify_roman_empire_decision = {
 		}
 		exists = title:e_spqr.holder
 		exists = title:e_byzantium.holder
+		exists = title:h_eastern_roman_empire.holder
+		exists = title:h_western_roman_empire.holder
 		NOT = { exists = title:h_roman_empire.holder }
 		NOT = { has_title = title:h_roman_empire }
 		
@@ -403,6 +405,7 @@ restore_western_diocese_system_decision = {
         is_ruler = yes
         is_playable_character = yes
         is_roman_emperor_excluding_eastern_roman_emperor_trigger = yes
+		has_title = title:h_western_roman_empire
         NOT = { #Can only do it once.
             is_target_in_global_variable_list = {
                 name = unavailable_unique_decisions
