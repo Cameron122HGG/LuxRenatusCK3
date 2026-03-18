@@ -1564,6 +1564,7 @@ restore_roman_provinces_syria_decision_effect  = {
 	#Sort the Diocese
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
+		OR = { exists = title:h_eastern_roman_empire.holder }
 		title:k_diocese_syria = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
 
 		title:e_praetorian_prefecture_oriens = { set_de_jure_liege_title = title:h_roman_empire }
@@ -1572,7 +1573,6 @@ restore_roman_provinces_syria_decision_effect  = {
 		limit = { exists = title:e_byzantium.holder }
 		title:k_diocese_syria = { set_de_jure_liege_title = title:e_byzantium }
 	}
-
 	# Destroy useless kingdoms
 	if = {
 		limit = { exists = title:k_israel.holder }
@@ -1605,7 +1605,7 @@ restore_roman_provinces_syria_decision_effect  = {
 		# Shift the provinces
 		every_county_in_region = {
 			region = custom_roman_syria
-			duchy = { add_to_list = custom_roman_syria_list }
+			duchy = { add_to_list = custom_roman_orientis_list }
 		}	
 		every_in_list = {
 			list = custom_roman_orientis_list
@@ -1624,7 +1624,6 @@ restore_roman_provinces_syria_decision_effect  = {
 		}
 	}	
 }
-
 restore_roman_provinces_aegyptus_decision_effect  = {
 	#Restore the provinces of Aegyptus
 	create_title_and_vassal_change = {
@@ -1643,6 +1642,7 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 	#Sort the Dioceses
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
+		OR = { exists = title:h_eastern_roman_empire.holder }
 		title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
 
 		title:e_praetorian_prefecture_oriens = { set_de_jure_liege_title = title:h_roman_empire }
