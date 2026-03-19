@@ -34,8 +34,11 @@ LR_restore_western_empire_decision = {
 
 	is_valid = {
 		#NOT = { exists = title:e_hre }
+		NOT = { exists = title:e_spqr }
+		NOT = { exists = title:h_western_roman_empire }
+		NOT = { exists = title:h_roman_empire }
 		prestige_level >= very_high_prestige_level
-		has_title = title:e_spqr
+		has_title = title:k_rome
 		completely_controls_region = custom_spqr_imperial_core
 	}
 
@@ -116,14 +119,14 @@ LR_restore_western_hegemony_decision = {
 		completely_controls_region = custom_spqr_imperial_core
 		
 		##Checking if Restoring Provinces has started and then how many
-		custom_tooltip = {
-			text = LR_has_restored_at_least_three_provinces_tooltip	
-			trigger_if = {
-				limit = { exists = global_var:num_of_provinces_restored_wre }
-				global_var:num_of_provinces_restored_wre > 2
-			}
-			trigger_else = { always = no }
-		}
+		#custom_tooltip = {
+			#text = LR_has_restored_at_least_three_provinces_tooltip	
+		#	trigger_if = {
+		#		limit = { exists = global_var:num_of_provinces_restored_wre }
+		#		global_var:num_of_provinces_restored_wre > 2
+		#	}
+		#	trigger_else = { always = no }
+		#}
 		
 		custom_tooltip = {
 			text = LR_western_kingdoms_held_or_vassals_tt
@@ -389,7 +392,7 @@ LR_reunify_roman_empire_decision = {
 }
 
 # Restore the Administrative System of the Western Roman Empire
-restore_western_diocese_system_decision = {
+restore_western_administration_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
     }
@@ -397,8 +400,8 @@ restore_western_diocese_system_decision = {
 
     sort_order = 50
 
-    desc = restore_western_diocese_system_decision_desc
-    selection_tooltip = restore_western_diocese_system_decision_tooltip
+    desc = restore_western_administration_decision_desc
+    selection_tooltip = restore_western_administration_decision_tooltip
     
     decision_group_type = roman
 
@@ -542,7 +545,7 @@ restore_western_diocese_system_decision = {
 }
 
 # Restore the Administrative System of the Eastern Roman Empire 
-restore_eastern_diocese_decision = {
+restore_eastern_administration_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
     }
@@ -558,8 +561,8 @@ restore_eastern_diocese_decision = {
 
     sort_order = 50
 
-    desc = restore_eastern_diocese_decision_desc
-    selection_tooltip = restore_eastern_diocese_decision_tooltip
+    desc = restore_eastern_administration_decision_desc
+    selection_tooltip = restore_eastern_administration_decision_tooltip
     
     decision_group_type = roman
 
@@ -1179,7 +1182,7 @@ restore_diocese_syria_decision = {
         #   text = ere_borders_restored_tt
         #   is_target_in_global_variable_list = { #Only available after retake ere borders
         #       name = unavailable_unique_decisions
-        #       target = flag:retake_eastern_provinces_decision
+        #       target = flag:LR_restore_eastern_hegemony_decision
         #   }
         #}  
         custom_tooltip = {
@@ -1667,7 +1670,7 @@ restore_roman_empire_decision = {
             text = ere_borders_restored_tt
             is_target_in_global_variable_list = { 
             	name = unavailable_unique_decisions
-            	target = flag:retake_eastern_provinces_decision
+            	target = flag:LR_restore_eastern_hegemony_decision
         	}
         } 	
 		completely_controls = title:d_latium
@@ -1802,7 +1805,7 @@ restore_roman_empire_decision = {
 #}
 
 #Re-Establish the Theodosian Borders 
-retake_eastern_provinces_decision = {
+LR_restore_eastern_hegemony_decision = {
 	picture = {
 	    reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
 	}
@@ -1818,8 +1821,8 @@ retake_eastern_provinces_decision = {
 
 	sort_order = 50
 
-	desc = retake_eastern_provinces_decision_desc
-	selection_tooltip = retake_eastern_provinces_decision_tooltip
+	desc = LR_restore_eastern_hegemony_decision_desc
+	selection_tooltip = LR_restore_eastern_hegemony_decision_tooltip
 	decision_group_type = roman
 
 	is_shown = {
@@ -1828,7 +1831,7 @@ retake_eastern_provinces_decision = {
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
-				target = flag:retake_eastern_provinces_decision
+				target = flag:LR_restore_eastern_hegemony_decision
 			}
 		}
 	}
@@ -1928,7 +1931,7 @@ retake_eastern_provinces_decision = {
 
 	effect = {
 		show_as_tooltip = {
-			retake_eastern_provinces_decision_effect = yes
+			LR_restore_eastern_hegemony_decision_effect = yes
 		}
 		trigger_event = {
 			id = ep3_decisions_event.4000
@@ -1937,7 +1940,7 @@ retake_eastern_provinces_decision = {
 		#Can only be done once
 		add_to_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:retake_eastern_provinces_decision
+			target = flag:LR_restore_eastern_hegemony_decision
 		}
 		if = {
 			limit = {
