@@ -50,6 +50,37 @@ k_upper_egypt = {
 	capital = c_qus
 }
 
+k_east_francia = {
+		color = { 160 160 160 }
+		
+		capital = c_frankfurt
+
+		ai_primary_priority = {
+			if = {
+			limit = {
+				culture = culture:franconian
+				culture = culture:frankish
+			}
+			add = @correct_culture_primary_score
+			}
+
+			if = {
+			limit = {
+				NOT = {
+					culture = culture:franconian
+				}
+				culture = {
+					has_cultural_pillar = heritage_central_germanic
+				}
+			}
+			add = @better_than_the_alternatives_score
+		}
+	}
+}
+		
+		
+
+
 #d_legio_vi_victrix = {
 #	color = { 168 8 8 }
 #	capital = c_napoli
