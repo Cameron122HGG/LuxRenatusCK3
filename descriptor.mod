@@ -1,4 +1,4 @@
-﻿version="0.5 DAWN Dev"
+﻿version=" Lux Renata Development Build"
 tags={
 	"Total Conversion"
 }
