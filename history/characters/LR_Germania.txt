@@ -5,7 +5,12 @@ HenrySon1 = {
 	faith = teiwaz
 	culture = bavarian
 	father = 1318
+	trait = shy
+	trait = brave
+	trait = patient
+	trait = education_martial_2
 	6030.1.1 = { birth = yes }
+	6055.1.1 = { set_relation_rival = { target = character:HenrySon2 reason = rival_historical } }
 	6074.1.1 = { death = yes }
 }
 HenrySon2 = {
@@ -14,7 +19,12 @@ HenrySon2 = {
 	faith = teiwaz
 	culture = bavarian
 	father = 1318
+	trait = callous
+	trait = impatient
+	trait = ambitious
+	trait = education_martial_3
 	6038.1.1 = { birth = yes }
+	6055.1.1 = { set_relation_rival = { target = character:HenrySon1 reason = rival_historical } }
 	6074.1.1 = { death = yes }
 }
 16534 = {
@@ -137,12 +147,17 @@ HenrySon2 = {
 #Salian
 223 = {
 	name = Heinrich #nordmark
+	dna = 1316_emperor_heinrich
 	dynasty = 651
-	#dna = fanfuqdebcu
-	#properties = cdqsdd00000
 	health = 8
+	martial = 5
+	diplomacy = 5
+	intrigue = 8
+	stewardship = 4
 	faith = antinomian
 	culture = german
+	trait = cynical
+	trait = education_martial_3
 	father = 16546
 	6044.1.2 = {
 		birth = 6044.1.2
@@ -199,6 +214,11 @@ BabenburgBoi = {
 	faith = arian
 	culture = franconian
 	father = OttoPoppo2
+	trait = zealous
+	trait = ambitious
+	trait = humble
+	trait = education_stewardship_2
+	trait = one_eyed
 	6010.1.1 = { birth = yes }
 	6069.1.1 = { death = yes }
 }
@@ -210,6 +230,7 @@ BabenburgBoi = {
 	faith = arian
 	culture = "franconian"
 	father = BabenburgBoi
+	trait = bossy
 	6050.10.5 = {
 		birth = yes
 	}
@@ -224,6 +245,9 @@ german_band_hesse_1 = {	#Herder
 	faith = allfather
 	culture = franconian
 	father = Henerich
+	trait = zealous
+	trait = wrathful
+	trait = vengeful
 	6046.1.1 = {
 		birth = yes
 	}
@@ -679,6 +703,9 @@ RudolphWelf4 = {
 	faith = catholic
 	culture = swabian
 	father = RudolphWelf3
+	trait = content
+	trait = compassionate
+	trait = fickle
 	6012.1.1 = { birth = yes }
 	6069.1.1 = { death = yes }
 }
@@ -832,11 +859,21 @@ RudolphWelf3 = {
 Welf4 = { #WE WELF UP IN THIS BITCH
 	name = Welf
 	health = 8
-	dynasty = 650
+	dynasty = ElderWelf
+	dynasty_house = house_welf
+	martial = 4
+	diplomacy = 5
+	intrigue = 8
+	stewardship = 5
 	faith = mani_germanic
 	mother = Welfess
 	culture = bavarian
-	6050.1.1 = {
+	trait = lustful
+	trait = arrogant
+	trait = zealous
+	trait = disinherited
+	trait = education_martial_3
+	6035.1.1 = {
 		birth = 6050.1.1
 	}
 	6125.1.1 = {
@@ -1130,11 +1167,44 @@ Aribo = {
 	faith = allfather
 	culture = franconian
 	father = 1830204
+	trait = honest
+	trait = compassionate
+	trait = arbitrary
 	6040.1.2 = {
 		birth = 6040.1.2
 	}
 	6100.1.2 = {
 		death = 6100.1.2
+	}
+}
+1830205 = {
+	name = "Berta" #thuringia
+	female = yes
+	dynasty = 100255
+	#dna = "hfttkomzgce"
+	health = 8
+	faith = "allfather"
+	culture = "german"
+	father = 1830204
+	6050.1.2 = {
+		birth = "6050.1.2"
+	}
+	6110.1.2 = {
+		death = "6110.1.2"
+	}
+}
+1830206 = {
+	name = "Asculf" #thuringia
+	dynasty = 100255
+	health = 8
+	faith = "allfather"
+	culture = "german"
+	father = 1830204
+	6045.1.2 = {
+		birth = "6045.1.2"
+	}
+	6105.1.2 = {
+		death = "6105.1.2"
 	}
 }
 RadulfOfThuringia = {
@@ -1367,6 +1437,10 @@ HermanafridAncestor8 = {
 	health = 8
 	faith = norse_christ
 	culture = frisian
+	trait = education_intrigue_1
+	trait = lustful
+	trait = gluttonous
+	trait = just
 	father = 1830197
 	6044.1.2 = {
 		birth = 6044.1.2
@@ -1766,11 +1840,16 @@ Gerulf  = {
 	faith = mani_germanic
 	culture = bavarian
 	father = 1830253
-	6045.1.2 = {
-		birth = 6045.1.2
+	trait = craven
+	trait = zealous
+	trait = pensive
+	trait = temperate
+	disallow_random_traits = yes
+	6050.1.2 = {
+		birth = yes
 	}
 	6100.1.2 = {
-		death = 6100.1.2
+		death = yes
 	}
 }
 1830253 = {
@@ -1781,6 +1860,12 @@ Gerulf  = {
 	father = OttoBav2
 	faith = "mani_germanic"
 	culture = "bavarian"
+	trait = education_intrigue_4
+	trait = deceitful
+	trait = greedy
+	trait = shrewd
+	trait = callous
+	trait = devoted
 	6005.1.2 = {
 		birth = "6005.1.2"
 	}
@@ -1805,14 +1890,27 @@ Gerulf  = {
 	}
 }
 1830255 = {
-	name = "Werner" #osterreic
+	name = "Tassilo" #osterreic
 	dynasty = 1100124
 	health = 8
 	faith = "mani_germanic"
 	culture = "bavarian"
 	father = 1830253
-	6050.1.2 = {
+	trait = brave
+	trait = gregarious
+	trait = impatient
+	trait = one_legged
+	trait = education_martial_1
+	6045.1.2 = {
 		birth = "6050.1.2"
+	}
+	6053.1.2 = {
+		set_employer = HenrySon2
+		set_relation_rival = { target = character:1830253 reason = rival_historical }
+	}
+	6060.1.2 = {
+		give_council_position = councillor_marshal
+		add_trait = one_legged
 	}
 	6105.1.2 = {
 		death = "6105.1.2"
@@ -3857,6 +3955,8 @@ Berthold = {
 	faith = german_pagan
 	culture = swabian
 	father = BertholdBreisgau
+	trait = lustful
+	trait = education_martial_2
 	6019.1.1 = {
 		birth = yes
 	}
@@ -4296,6 +4396,11 @@ german_band_ostfalen_1 = {	#Herder
 	faith = german_pagan
 	culture = saxon
 	father = BernhardII
+	trait = diligent
+	trait = calm
+	trait = cynical
+	trait = craven
+	trait = education_diplomacy_2
 	6021.1.1 = { birth = yes }
 	6069.1.1 = { death = yes }
 }
