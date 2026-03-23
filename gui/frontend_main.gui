@@ -72,6 +72,8 @@ widget = {
 			size = { 1920 1080 }
 			scale = "[ScaleToFitElementInside('(int32)1920', '(int32)1080')]"
 			position = "[Select_CVector2f( FrontEndMainView.ShouldShowChallengeCharacter, '(CVector2f)-250,0', '(CVector2f)0,0' )]"
+		}
+	}
 
 		#icon = {
 		#	name = "shadow_left"
@@ -254,8 +256,8 @@ widget = {
 		#	blockoverride "portrait_button_template_onclick" {}
 		#	blockoverride "portrait_button_template_onrightclick" {}
 		#	blockoverride "portrait_button_template_tooltip" {}
-		}
-	}
+		#}
+	#}
 
 	widget = {
 		parentanchor = left
@@ -1567,7 +1569,7 @@ widget = {
 					background = {
 						using = Background_Area_Light
 						using = Mask_Rough_Edges
-						margin_top = -12
+						margin_top = 20
 						margin_bottom = 12
 					}
 
@@ -1575,8 +1577,9 @@ widget = {
 						name = "character_text"
 						text = "[BookmarkCharacter.GetDescription]"
 						size = { 330 250 }
-						margin_bottom = 10
-						align = left
+						margin_bottom = 16
+						align = left|top
+						autoresize = no
 					}
 
 					expand = {}
@@ -1642,7 +1645,7 @@ widget = {
 		icon = {
 			parentanchor = bottom
 			texture = "gfx/interface/component_decoration/decoration_frame_bottom.dds"
-			position = { -20 42 }
+			position = { -20 10 }
 			spriteType = Corneredtiled
 			spriteborder = { 100 0 }
 			size = { 440 20 }
@@ -1650,4 +1653,3 @@ widget = {
 		}
 	}
 }
-
