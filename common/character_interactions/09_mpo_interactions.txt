@@ -3033,7 +3033,7 @@ migration_interaction = {
 		# Relative Herd
 		modifier = {
 			trigger_if = {
-				exists = scope:recipient.domicile # Herders won't have a domicile
+				limit = { exists = scope:recipient.domicile } # Herders won't have a domicile
 			}
 			add = 25
 			domicile.herd >= scope:recipient.domicile.herd
@@ -3049,14 +3049,14 @@ migration_interaction = {
 			desc = MIGRATION_INTERACTION_GURKHAN_ACCEPTANCE
 		}
 		modifier = {
-			add = 50
 			trigger_if = {
-				exists = situation:the_great_steppe
+				limit = { exists = situation:the_great_steppe }
 			}
 			scope:actor = {
 				this = situation:the_great_steppe.situation_top_herd
 			}
 			desc = MIGRATION_INTERACTION_GURKHAN_ACTOR_ACCEPTANCE
+			add = 50
 		}
 		# Dread
 		modifier = {
