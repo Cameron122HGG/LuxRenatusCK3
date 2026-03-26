@@ -1,9 +1,13 @@
-﻿era_4_year = {
-    value = 0  #Defaulted to zero until set in game
+﻿adjusted_year_BCAD = {
+    value = 5000
+    subtract = current_year
+
+    save_temporary_value_as = current_adjusted_year
+
     if = {
-        limit = { exists = global_var:fourth_age_date }
-        add = global_var:fourth_age_date
-        add = -1
+      limit = { scope:current_adjusted_year >= 0 }
+
+      add = 1
     }
 }
 alexander_era_dead = {
@@ -31,18 +35,5 @@ calendar_setting = {
     else_if = {
         limit = { has_game_rule = egyptian_calendar }
         add = 4
-    }
-}
-
-adjusted_year_BCAD = {
-    value = 5001
-    add = current_year
-
-    save_temporary_value_as = current_adjusted_year
-
-    if = {
-      limit = { scope:current_adjusted_year >= 0 }
-
-      value = 1
     }
 }
