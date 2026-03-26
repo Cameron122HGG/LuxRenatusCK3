@@ -1,20 +1,21 @@
-﻿# Returns the display year as a positive integer
+﻿# Returns the display year as a positive integer (BC or AD)
 adjusted_year_BCAD = {
     value = current_year
-    subtract = 5000
+    subtract = 5000        # +ve = AD, 0 or -ve = BC
 
     if = {
         limit = { value <= 0 }
         multiply = -1
-        add = 1
+        add = 1            # no-year-zero: 5000 -> 1 BC, 4999 -> 2 BC, etc.
     }
 }
 
-# Returns positive value if AD, zero or negative if BC
-# Use: script_value > 0 triggers AD, <= 0 triggers BC
-lux_renata_is_ad = {
+# Returns 1 if AD, 0 if BC — use this to gate era label in GUI/loc
+is_ad_year = {
     value = current_year
     subtract = 5000
+    # positive = AD, zero or negative = BC
+    # Use: script_value > 0 for AD, script_value <= 0 for BC
 }
 
 calendar_setting = {
