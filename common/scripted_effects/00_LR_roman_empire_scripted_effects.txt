@@ -1127,6 +1127,9 @@ restore_eastern_roman_provinces_system_effect = {
 		title:k_diocese_pontus = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
+		title:k_diocese_armenia = {
+			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
+		}
 		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
 	}
 
@@ -1202,6 +1205,18 @@ restore_eastern_roman_provinces_system_effect = {
 				NOT = { de_jure_liege = title:k_diocese_pontus }
 			}
 			set_de_jure_liege_title = title:k_diocese_pontus
+		}
+		# diocese of armenia
+		every_county_in_region = {
+			region = custom_roman_armenia
+			duchy = { add_to_list = custom_roman_armenia_list }
+		}	
+		every_in_list = {
+			list = custom_roman_armenia_list
+			limit = {
+				NOT = { de_jure_liege = title:k_diocese_armenia }
+			}
+			set_de_jure_liege_title = title:k_diocese_armenia
 		}
 
 		if = {
