@@ -1640,12 +1640,10 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 
 	#Sort the Dioceses
 	title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
-	if = {
-	hidden_effect = {	
+		hidden_effect = {	
 		#To Fezzan
 		title:c_awjila = { set_de_jure_liege_title = title:d_fezzan }
 		title:c_waddan = { set_de_jure_liege_title = title:d_fezzan }
-		
 		if = {
 			limit = {
 				NOT = {
@@ -1663,6 +1661,7 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 			region = custom_roman_aegyptus
 			duchy = { add_to_list = custom_roman_aegyptus_list }
 		}	
+		
 		every_in_list = {
 			list = custom_roman_aegyptus_list
 			limit = {
@@ -1671,12 +1670,12 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 			set_de_jure_liege_title = title:k_diocese_aegyptus
 		}
 
+
 		# Then shift all Kingdoms back.
 		title:k_egypt = { 
-			set_de_jure_liege_title = title:e_arabia
+			set_de_jure_liege_title = title:e_egypt
 		}
-	}	
-}
+	}
 restore_roman_provinces_hispania_decision_effect = {
 	#Restore the provinces of Roman Hispania
 	create_title_and_vassal_change = {
