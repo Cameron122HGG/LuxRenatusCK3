@@ -58,10 +58,10 @@ peltast = {
 ballistrai = {
 	type = archers
 
-	damage = 35
+	damage = 27
 	toughness = 12
 	pursuit = 0
-	screen = 0
+	screen = 12
 
 	siege_value = 0.1
 
@@ -104,7 +104,7 @@ hoplite = {
 	damage = 22
 	toughness = 26
 	pursuit = 0
-	screen = 20
+	screen = 0
 
 	terrain_bonus = {
 		mountains = { toughness = 8 }
@@ -142,8 +142,8 @@ companion_guards = {
 
 	damage = 45
 	toughness = 32
-	pursuit = 10
-	screen = 5
+	pursuit = 0
+	screen = 0
 
 	can_recruit = {
 		exists = scope:title
@@ -186,8 +186,8 @@ funditores = {
 	
 	damage = 25
 	toughness = 10
-	pursuit = 10
-	screen = 0
+	pursuit = 5
+	screen = 10
 
 	counters = {
 		heavy_infantry = 1
@@ -226,10 +226,10 @@ funditores = {
 archer_auxilia = {
 	type = archers
 	
-	damage = 30
-	toughness = 5
-	pursuit = 0
-	screen = 0
+	damage = 26
+	toughness = 13
+	pursuit = 10
+	screen = 10
 
 	counters = {
 		pikemen = 1
@@ -255,9 +255,9 @@ archer_auxilia = {
 roman_principes = {
 	type = heavy_infantry
 	
-	damage = 40
-	toughness = 30
-	pursuit = 15
+	damage = 28
+	toughness = 23
+	pursuit = 0
 	screen = 15
 	
 	counters = {
@@ -282,8 +282,8 @@ roman_principes = {
 roman_hastati = {
 	type = heavy_infantry
 	
-	damage = 30
-	toughness = 10
+	damage = 23
+	toughness = 13
 	pursuit = 0
 	screen = 0
 
@@ -343,10 +343,10 @@ roman_velites = {
 roman_triarii = {
 	type = pikemen
 	
-	damage = 40
-	toughness = 30
-	pursuit = 15
-	screen = 15
+	damage = 28
+	toughness = 33
+	pursuit = 0
+	screen = 0
 	
 	counters = {
 		pikemen = 1
@@ -372,8 +372,8 @@ roman_triarii = {
 roman_comitatenses = {
 	type = heavy_infantry
 	
-	damage = 45
-	toughness = 35
+	damage = 36
+	toughness = 32
 	pursuit = 0
 	screen = 0
 
@@ -407,10 +407,10 @@ roman_comitatenses = {
 roman_limitanei = {
 	type = heavy_infantry
 	
-	damage = 40
-	toughness = 40
-	pursuit = 10
-	screen = 10
+	damage = 26
+	toughness = 26
+	pursuit = 0
+	screen = 0
 
 	counters = {
 		archers = 2
@@ -442,10 +442,10 @@ roman_limitanei = {
 roman_foederatii = {
 	type = pikemen
 	
-	damage = 50
-	toughness = 20
-	pursuit = 5
-	screen = 5
+	damage = 23
+	toughness = 26
+	pursuit = 0
+	screen = 0
 	
 	counters = {
 		heavy_infantry = 1
@@ -475,8 +475,8 @@ roman_foederatii = {
 roman_equites = {
 	type = light_cavalry
 	
-	damage = 20
-	toughness = 5
+	damage = 25
+	toughness = 17
 	pursuit = 30
 	screen = 30
 	
@@ -507,10 +507,10 @@ roman_equites = {
 roman_cataphractarii = {
 	type = heavy_cavalry
 	
-	damage = 50
-	toughness = 40
-	pursuit = 30
-	screen = 30
+	damage = 100
+	toughness = 45
+	pursuit = 25
+	screen = 0
 	
 	counters = {
 		heavy_infantry = 2
@@ -533,7 +533,7 @@ roman_cataphractarii = {
 	high_maintenance_cost = { gold = heavy_cavalry_high_maint_cost }
 	provision_cost = @provisions_cost_cavalry_expensive
 	
-	stack = 100
+	stack = 50
 	ai_quality = { value = @cultural_maa_extra_ai_score }
 	icon = roman_cataphractarii
 }
@@ -542,8 +542,8 @@ roman_cataphractarii = {
 egypt_spearmen = {
 	type = pikemen
 	
-	damage = 40
-	toughness = 10
+	damage = 10
+	toughness = 25
 	pursuit = 0
 	screen = 0
 	
@@ -573,8 +573,8 @@ egypt_spearmen = {
 egypt_infantry = {
 	type = heavy_infantry
 
-	damage = 35
-	toughness = 30
+	damage = 25
+	toughness = 20
 	pursuit = 0
 	screen = 0
 
@@ -603,10 +603,10 @@ egypt_infantry = {
 egypt_archers = {
 	type = archers
 
-	damage = 42
-	toughness = 18
+	damage = 24
+	toughness = 12
 	pursuit = 0
-	screen = 0
+	screen = 12
 
 	terrain_bonus = {
 	
@@ -698,10 +698,10 @@ iran_light_warriors = {
 iran_warriors = {
 	type = heavy_infantry
 
-	damage = 40
-	toughness = 35
-	pursuit = 15
-	screen = 15
+	damage = 26
+	toughness = 18
+	pursuit = 0
+	screen = 0
 	
 	counters = {
 		heavy_infantry = 1
@@ -723,21 +723,22 @@ iran_warriors = {
 }
 
 iran_immortals = {
-	type = skirmishers
+	type = heavy_infantry
 
-	damage = 60
-	toughness = 50
-	pursuit = 20
-	screen = 20
+	damage = 42
+	toughness = 46
+	pursuit = 0
+	screen = 0
 
 	terrain_bonus = {
 		
 	}
 
 	counters = {
-		heavy_infantry = 3
-		light_cavalry = 1
-		skirmishers = 2
+		skirmishers = 1
+		pikemen = 1
+		archers = 1
+		peasant_militia = 2
 	}
 
 	can_recruit = {location = {geographical_region = LR_icci_custom_sassanid }}
@@ -757,7 +758,7 @@ iran_immortals = {
 iran_bowmen = {
 	type = archers
 
-	damage = 30
+	damage = 25
 	toughness = 15
 	pursuit = 10
 	screen = 10
@@ -786,10 +787,10 @@ iran_bowmen = {
 kurdish_bowmen = {
 	type = archers
 
-	damage = 50
-	toughness = 15
-	pursuit = 10
-	screen = 10
+	damage = 30
+	toughness = 20
+	pursuit = 15
+	screen = 15
 	
 	terrain_bonus = {
 	
@@ -816,10 +817,10 @@ kurdish_bowmen = {
 iran_camel_riders = {
 	type = camel_cavalry
 	
-	damage = 22
-	toughness = 16
-	pursuit = 30
-	screen = 50
+	damage = 25
+	toughness = 17
+	pursuit = 25
+	screen = 25
 	
 	terrain_bonus = {
 		
@@ -846,9 +847,9 @@ iran_cataphract = {
 	type = heavy_cavalry
 	
 	damage = 90
-	toughness = 60
-	pursuit = 40
-	screen = 0
+	toughness = 55
+	pursuit = 25
+	screen = 15
 	
 	terrain_bonus = {
 		
@@ -875,8 +876,8 @@ iran_cataphract = {
 savaran_cavalry = {
 	type = archer_cavalry
 	
-	damage = 50
-	toughness = 10
+	damage = 45
+	toughness = 15
 	pursuit = 40
 	screen = 30
 	
@@ -907,7 +908,7 @@ savaran_cavalry = {
 iran_war_elephant = {
 	type = elephant_cavalry
 	
-	damage = 300
+	damage = 275
 	toughness = 100
 	pursuit = 0
 	screen = 0
@@ -943,10 +944,10 @@ iran_war_elephant = {
 alamannia_iron_riders = {
 	type = heavy_cavalry
 	
-	damage = 140
+	damage = 100
 	toughness = 40
-	pursuit = 5
-	screen = 0
+	pursuit = 15
+	screen = 10
 	
 	terrain_bonus = {
 		
@@ -966,7 +967,7 @@ alamannia_iron_riders = {
 	high_maintenance_cost = { gold = heavy_cavalry_high_maint_cost }
 	provision_cost = @provisions_cost_cavalry_expensive
 	
-	stack = 100
+	stack = 50
 	ai_quality = { value = 100 }
 	icon = alamannia_iron_riders
 }
@@ -974,10 +975,10 @@ alamannia_iron_riders = {
 bavarian_auxilia = {
 	type = skirmishers
 
-	damage = 30
-	toughness = 20
-	pursuit = 20
-	screen = 30
+	damage = 21
+	toughness = 23
+	pursuit = 15
+	screen = 20
 
 	terrain_bonus = {
 		mountains = { damage = 8 toughness = 9 }
@@ -1003,8 +1004,8 @@ bavarian_auxilia = {
 saxo_swordsmen = {
 	type = heavy_infantry
 
-	damage = 90
-	toughness = 80
+	damage = 33
+	toughness = 38
 	pursuit = 0
 	screen = 0
 
@@ -1057,8 +1058,8 @@ franconian_cavalry = {
 rhinelander_cavalry = {
 	type = light_cavalry
 
-	damage = 50
-	toughness = 15
+	damage = 35
+	toughness = 20
 	pursuit = 20
 	screen = 20
 
@@ -1086,8 +1087,8 @@ rhinelander_cavalry = {
 frisian_militia = {
 	type = peasant_militia
 
-	damage = 20
-	toughness = 20
+	damage = 16
+	toughness = 22
 	pursuit = 20
 	screen = 30
 
@@ -1173,10 +1174,10 @@ sorbian_lupites = {
 greek_peltasts = {
 	type = skirmishers
 
-	damage = 70
-	toughness = 0
-	pursuit = 0
-	screen = 0
+	damage = 20
+	toughness = 12
+	pursuit = 16
+	screen = 20
 
 	terrain_bonus = {
 	}
@@ -1314,7 +1315,7 @@ militia_hoplites = {
 greek_hoplites = {
 	type = pikemen
 
-	damage = 60
+	damage = 20
 	toughness = 30
 	pursuit = 0
 	screen = 0
@@ -1352,10 +1353,10 @@ greek_hoplites = {
 thorax_greek_hoplites = {
 	type = pikemen
 
-	damage = 75
-	toughness = 20
-	pursuit = 10
-	screen = 5
+	damage = 27
+	toughness = 35
+	pursuit = 0
+	screen = 0
 
 	terrain_bonus = {
 	}
@@ -1388,8 +1389,8 @@ thorax_greek_hoplites = {
 royal_greek_hoplites = {
 	type = pikemen
 
-	damage = 80
-	toughness = 50
+	damage = 33
+	toughness = 38
 	pursuit = 0
 	screen = 0
 
@@ -1426,8 +1427,8 @@ royal_greek_hoplites = {
 royal_spartan_hoplites = {
 	type = pikemen
 
-	damage = 130
-	toughness = 70
+	damage = 38
+	toughness = 43
 	pursuit = 0
 	screen = 0
 
@@ -1460,7 +1461,7 @@ royal_spartan_hoplites = {
 greek_citizen_cavalry = {
 	type = light_cavalry
 
-	damage = 40
+	damage = 45
 	toughness = 10
 	pursuit = 30
 	screen = 30
@@ -1498,10 +1499,10 @@ greek_citizen_cavalry = {
 greek_hippeus_cavalry = {
 	type = heavy_cavalry
 	
-	damage = 150
-	toughness = 20
-	pursuit = 20
-	screen = 10
+	damage = 135
+	toughness = 30
+	pursuit = 25
+	screen = 15
 	
 	terrain_bonus = {
 
@@ -1536,8 +1537,8 @@ greek_hippeus_cavalry = {
 ere_slingers = {
 	type = skirmishers
 
-	damage = 30
-	toughness = 3
+	damage = 20
+	toughness = 10
 	pursuit = 10
 	screen = 10
 
@@ -1680,43 +1681,43 @@ ere_spearmen = {
 	icon = ere_spearmen
 }
 
-ere_skutatoi = {
-	type = heavy_infantry
-
-	damage = 40
-	toughness = 25
-	pursuit = 0
-	screen = 0
-
-	counters = {
-		pikemen = 1
-		peasant_militia = 2
-		skirmishers = 0.5
-	}
-
-	can_recruit = {
-		culture = {
-			OR = {
-				has_cultural_pillar = heritage_byzantine
-			}
-		}
-	}
-
-	buy_cost = { gold = heavy_infantry_recruitment_cost }
-	low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
-	high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
-	provision_cost = @provisions_cost_infantry_moderate
-
-	stack = 100
-	ai_quality = { value = 100 }
-	icon = ere_skutatoi
-}
+#ere_skutatoi = {
+#	type = heavy_infantry
+#
+#	damage = 30
+#	toughness = 25
+#	pursuit = 0
+#	screen = 0
+#
+#	counters = {
+#		pikemen = 1
+#		peasant_militia = 2
+#		skirmishers = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = heavy_infantry_recruitment_cost }
+#	low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+#	high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_moderate
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_skutatoi
+#}
 
 ere_praeventores = {
 	type = heavy_infantry
 
-	damage = 60
-	toughness = 40
+	damage = 30
+	toughness = 20
 	pursuit = 0
 	screen = 0
 
@@ -1747,8 +1748,8 @@ ere_praeventores = {
 ere_foederatii = {
 	type = heavy_infantry
 
-	damage = 65
-	toughness = 20
+	damage = 33
+	toughness = 23
 	pursuit = 0
 	screen = 0
 
@@ -1778,8 +1779,8 @@ ere_foederatii = {
 ere_buccellarii = {
 	type = heavy_infantry
 
-	damage = 85
-	toughness = 55
+	damage = 38
+	toughness = 35
 	pursuit = 0
 	screen = 0
 
@@ -1811,10 +1812,10 @@ ere_buccellarii = {
 ere_horse_toxotai = {
 	type = archer_cavalry
 	
-	damage = 70
+	damage = 60
 	toughness = 5
-	pursuit = 60
-	screen = 40
+	pursuit = 40
+	screen = 20
 	
 	terrain_bonus = {
 
@@ -1882,10 +1883,10 @@ ere_equites = {
 ere_mounted_buccellarii = {
 	type = heavy_cavalry
 	
-	damage = 130
-	toughness = 60
+	damage = 125
+	toughness = 35
 	pursuit = 20
-	screen = 20
+	screen = 15
 	
 	terrain_bonus = {
 	}
@@ -1918,9 +1919,9 @@ ere_clibanarii = {
 	type = heavy_cavalry
 	
 	damage = 110
-	toughness = 80
-	pursuit = 40
-	screen = 40
+	toughness = 40
+	pursuit = 30
+	screen = 20
 	
 	terrain_bonus = {
 	}
@@ -1954,10 +1955,10 @@ ere_clibanarii = {
 legionarii = {
 	type = heavy_infantry
 
-	damage = 30
-	toughness = 40
+	damage = 20
+	toughness = 25
 	pursuit = 0
-	screen = 15
+	screen = 0
 	
 	counters = {
 		skirmishers = 1
@@ -1983,10 +1984,10 @@ legionarii = {
 palatina = {
 	type = heavy_infantry
 
-	damage = 50
-	toughness = 55
+	damage = 30
+	toughness = 35
 	pursuit = 0
-	screen = 20
+	screen = 0
 
 	can_recruit = {
 		culture = { has_cultural_parameter = unlock_maa_western_roman }
@@ -2014,10 +2015,10 @@ palatina = {
 baaallistarii = {
 	type = archers
 	
-	damage = 40
-	toughness = 15
+	damage = 42
+	toughness = 18
 	pursuit = 0
-	screen = 15
+	screen = 0
 	
 	can_recruit = {
 		culture = { has_cultural_parameter = unlock_maa_western_roman }
