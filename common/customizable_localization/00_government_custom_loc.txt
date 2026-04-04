@@ -1196,7 +1196,7 @@ GetGovernmentIcon = {
 		}
 		localization_key = classical_feudal_icon_concept
 	}
-	text = { # Kinship
+	text = { # High Tribal
 		trigger = {
 			trigger_if = {
 				limit = { is_alive = no }
@@ -1214,7 +1214,7 @@ GetGovernmentIcon = {
 		}
 		localization_key = high_tribal_government_icon_concept
 	}	
-	text = { # Classical Admin
+	text = { # Classical Admin (Roman)
 		trigger = {
 			trigger_if = {
 				limit = { is_alive = no }
@@ -1232,6 +1232,24 @@ GetGovernmentIcon = {
 		}
 		localization_key = classical_administrative_icon_concept
 	}
+	text = { # Classical Admin (Diadochi)
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = diadochi_administrative_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					has_government = diadochi_administrative_government
+				}
+				trigger_else = {
+					liege ?= { has_government = diadochi_administrative_government }
+				}
+			}
+		}
+		localization_key = diadochi_administrative_icon_concept
+	}	
 	text = { # Roman Imperial
 		trigger = {
 			trigger_if = {
