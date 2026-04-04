@@ -1,23 +1,23 @@
 ﻿#####################
-# IMPERIAL POLICIES #
+# Sacral POLICIES #
 #####################
 
 @imperial_policy_laws_cooldown_value = 10
 @imperial_policy_cost_value = 500
 
-imperial_policy_laws = {
-	default = manor_reform_law
+gaul_imperial_policy_laws = {
+	default = gaul_manor_reform_law
 	cumulative = no
 	flag = imperial_policy
 
-	defense_mobilization_law = {
+	gaul_defense_mobilization_law = {
 		flag = defense_mobilization_law
 
 		can_keep = {
-			realm_law_use_imperial_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
 				limit = { is_independent_ruler = no }
-				liege = { has_realm_law = defense_mobilization_law }
+				liege = { has_realm_law = gaul_defense_mobilization_law }
 			}
 		}
 
@@ -31,7 +31,7 @@ imperial_policy_laws = {
 					NOT = { has_variable = imperial_policy_laws_cooldown }
 				}
 			}
-			tgp_japan_defense_mobilization_valid_trigger = yes
+			tgp_gaul_defense_mobilization_valid_trigger = yes
 		}
 
 		on_pass = {
@@ -49,8 +49,8 @@ imperial_policy_laws = {
 			fort_level = 1
 			hostile_raid_time = 0.15
 		}
-		flag = governors_may_recruit_japanese_horse_archers
-		flag = cheaper_japanese_domicile_military_buildings
+		flag = governors_may_recruit_gallic_horse_archers
+		flag = cheaper_gallic_domicile_military_buildings
 
 		pass_cost = {
 			prestige = @imperial_policy_cost_value
@@ -61,16 +61,16 @@ imperial_policy_laws = {
 		}
 	}
 
-	disarmament_law = {
+	gaul_disarmament_law = {
 		flag = disarmament_law
 		flag = vassal_internal_wars_cost_doubled
-		flag = japan_administrative_can_build_castles
+		flag = gaul_admin_can_build_castles
 
 		can_keep = {
-			realm_law_use_imperial_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
 				limit = { is_independent_ruler = no }
-				liege = { has_realm_law = disarmament_law }
+				liege = { has_realm_law = gaul_disarmament_law }
 			}
 		}
 		
@@ -97,7 +97,7 @@ imperial_policy_laws = {
 
 		modifier = {
 			men_at_arms_recruitment_cost = 0.25
-			japan_feudal_government_vassal_opinion = -15
+			gaul_feudal_government_vassal_opinion = -15
 			development_growth_factor = 0.15
 		}
 
@@ -114,21 +114,21 @@ imperial_policy_laws = {
 				value = -50
 			}
 			if = {
-				limit = { government_has_flag = government_is_japan_feudal }
+				limit = { government_has_flag = government_is_gaul_feudal }
 				add = -1000
 			}
 		}
 	}
 
-	isolation_law = {
+	gaul_isolation_law = {
 		flag = isolation_law
 		flag = better_physician_treatments
 
 		can_keep = {
-			realm_law_use_imperial_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
 				limit = { is_independent_ruler = no }
-				liege = { has_realm_law = isolation_law }
+				liege = { has_realm_law = gaul_isolation_law }
 			}
 		}
 		
@@ -181,15 +181,15 @@ imperial_policy_laws = {
 		}
 	}
 
-	imperial_expansion_law = {
+	gaul_imperial_expansion_law = {
 		flag = imperial_expansion_law
-		flag = cheaper_japanese_domicile_military_buildings
+		flag = cheaper_gallic_domicile_military_buildings
 
 		can_keep = {
-			realm_law_use_imperial_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
 				limit = { is_independent_ruler = no }
-				liege = { has_realm_law = imperial_expansion_law }
+				liege = { has_realm_law = gaul_imperial_expansion_law }
 			}
 		}
 
@@ -206,20 +206,20 @@ imperial_policy_laws = {
 				trigger_if = {
 					limit = {
 						NOR = {
-							has_realm_law = japanese_bureaucracy_2
-							has_realm_law = japanese_bureaucracy_3
+							has_realm_law = gallic_bureaucracy_2
+							has_realm_law = gallic_bureaucracy_3
 						}
 					}
-					has_realm_law = japanese_bureaucracy_2
+					has_realm_law = gallic_bureaucracy_2
 				}
 				trigger_if = {
 					limit = {
 						NOR = {
-							has_realm_law = japanese_bureaucracy_2
-							has_realm_law = japanese_bureaucracy_3
+							has_realm_law = gallic_bureaucracy_2
+							has_realm_law = gallic_bureaucracy_3
 						}
 					}
-					has_realm_law = japanese_bureaucracy_3
+					has_realm_law = gallic_bureaucracy_3
 				}
 				is_at_war = no
 			}
@@ -237,7 +237,7 @@ imperial_policy_laws = {
 		modifier = {
 			mercenary_hire_cost_mult = -0.15
 			men_at_arms_recruitment_cost = -0.15
-			japan_administrative_government_vassal_opinion = -35
+			gaul_admin_government_vassal_opinion = -35
 			travel_danger = 20
 		}
 
@@ -254,20 +254,20 @@ imperial_policy_laws = {
 				add = 50
 			}
 			if = {
-				limit = { government_has_flag = government_is_japan_administrative }
+				limit = { government_has_flag = government_is_gaul_admin }
 				add = -1000
 			}
 		}
 	}
 
-	manor_reform_law = {
+	gaul_manor_reform_law = {
 		flag = manor_reform_law
 
 		can_keep = {
-			realm_law_use_imperial_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
 				limit = { is_independent_ruler = no }
-				liege = { has_realm_law = manor_reform_law }
+				liege = { has_realm_law = gaul_manor_reform_law }
 			}
 		}
 		
@@ -293,7 +293,7 @@ imperial_policy_laws = {
 		}
 		
 		should_start_with = {
-			realm_law_use_imperial_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 		}
 
 		modifier = {
@@ -302,7 +302,7 @@ imperial_policy_laws = {
 			domicile_build_speed = 0.25
 			build_gold_cost = -0.15
 			build_speed = -0.15
-			japan_administrative_government_vassal_opinion = -15
+			gaul_admin_government_vassal_opinion = -15
 		}
 
 		pass_cost = {
@@ -318,20 +318,20 @@ imperial_policy_laws = {
 				add = 25
 			}
 			if = {
-				limit = { government_has_flag = government_is_japan_administrative }
+				limit = { government_has_flag = government_is_gaul_admin }
 				add = -100
 			}
 		}
 	}
 
-	bandit_crackdown_law = {
+	gaul_bandit_crackdown_law = {
 		flag = bandit_crackdown_law
 
 		can_keep = {
-			realm_law_use_imperial_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
 				limit = { is_independent_ruler = no }
-				liege = { has_realm_law = bandit_crackdown_law }
+				liege = { has_realm_law = gaul_bandit_crackdown_law }
 			}
 		}
 		
