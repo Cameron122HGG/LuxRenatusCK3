@@ -9,12 +9,12 @@
  gaul_administrative_government_adjective: "$gaul_administrative_government$"
  gaul_administrative_government_with_icon: "@government_type_ritsuryo! $gaul_administrative_government$"
  gaul_administrative_government_vassals_label: "$gaul_administrative_government$ [obligations|E] are based on [GetPlayer.Custom('GetProvinceAdministrationConcept')]"
- gaul_administrative_government_desc: "\n$gaul_administrative_government$ is a type of [administrative|E] [government|E] unique to Japan.\n\nIt is a centralized [government_bureaucratic_type|E] [government_form|E] where [characters|E] are appointed as [governors|E] on behalf of their [liege|E], have access to [influence|E], and [noble_family|E] [house_head_heads|E] have a [family_manor|E] and [house_aspiration|E].\n\nA [kampaku|E] governs the [realm|E] on behalf of the [gallic_emperor|E], and may be elected from among [noble_family|E] [house_head_heads|E], or imposed by [faction|E] demand.\n\n$gaul_administrative_government$ [vassals|E] generally govern only a single [county|E], but may reject the centralized system and become local [soryo|E] lords to build their own power, though this is usually considered a [criminal|E] act.\n\n$gaul_administrative_government$ $game_concept_house_heads$ may create and join [house_blocs|E] within the [realm|E], which will support the [leading_house|E] in becoming $game_concept_kampaku$.\n\n$gaul_government_domain_limit_help$\n\n#F The $gaul_administrative_government$ system refers to the centralized administrative government of Japan, inspired by the Chinese Confucian bureaucracy.#!"
+ gaul_administrative_government_desc: "\n$gaul_administrative_government$ is a type of [administrative|E] [government|E] unique to Japan.\n\nIt is a centralized [government_bureaucratic_type|E] [government_form|E] where [characters|E] are appointed as [governors|E] on behalf of their [liege|E], have access to [influence|E], and [noble_family|E] [house_head_heads|E] have a [family_manor|E] and [house_aspiration|E].\n\nA [kampaku|E] governs the [realm|E] on behalf of the [high_king_gaul|E], and may be elected from among [noble_family|E] [house_head_heads|E], or imposed by [faction|E] demand.\n\n$gaul_administrative_government$ [vassals|E] generally govern only a single [county|E], but may reject the centralized system and become local [soryo|E] lords to build their own power, though this is usually considered a [criminal|E] act.\n\n$gaul_administrative_government$ $game_concept_house_heads$ may create and join [house_blocs|E] within the [realm|E], which will support the [leading_house|E] in becoming $game_concept_kampaku$.\n\n$gaul_government_domain_limit_help$\n\n#F The $gaul_administrative_government$ system refers to the centralized administrative government of Japan, inspired by the Chinese Confucian bureaucracy.#!"
  gaul_feudal_government: "Regnulum" # 惣領
  gaul_feudal_government_adjective: "$gaul_feudal_government$"
  gaul_feudal_government_with_icon: "@government_type_soryo! $gaul_feudal_government$"
  gaul_feudal_government_vassals_label: "$gaul_feudal_government$ [obligations|E] are based on each [vassal|E]'s [vassal_contract|E]"
- gaul_feudal_government_desc: "\n$gaul_feudal_government$ is a type of [feudal|E] [government|E] unique to Japan.\n\n$gaul_feudal_government$ represents local lords who have discarded or supplanted the reach of the central [ritsuryo|E] government and rule provinces as their own fiefs.\n\n$gaul_feudal_government$ Characters do not use [influence|E], but [noble_family|E] [house_head_heads|E] retain their [family_manor|E] and [house_aspiration|E].\n\nThough they cannot be elected [ceremonial_regent|E], $gaul_feudal_government$ [rulers|E] may take power via the #V $replace_ceremonial_regent_faction_name$#! [faction|E], and use the #V Formalize Shōgunate#! [decision|E].\n\n$gaul_feudal_government$ $game_concept_ceremonial_regents$ govern the [realm|E] on behalf of the [gallic_emperor|E], inherit by $single_heir_succession_law$ [succession|E], and may be overthrown by [faction|E] demand.\n\n$gaul_feudal_government$ $game_concept_house_heads$ may create and join [house_blocs|E] within the [realm|E].\n\n$gaul_government_domain_limit_help$\n\n#F $gaul_feudal_government$ refers to the early stages of Gallic feudalization beginning in the Heian-period, increasingly formalized under the Kamakura-period's first Shōgunate.#!"
+ gaul_feudal_government_desc: "\n$gaul_feudal_government$ is a type of [feudal|E] [government|E] unique to Japan.\n\n$gaul_feudal_government$ represents local lords who have discarded or supplanted the reach of the central [ritsuryo|E] government and rule provinces as their own fiefs.\n\n$gaul_feudal_government$ Characters do not use [influence|E], but [noble_family|E] [house_head_heads|E] retain their [family_manor|E] and [house_aspiration|E].\n\nThough they cannot be elected [ceremonial_regent|E], $gaul_feudal_government$ [rulers|E] may take power via the #V $replace_ceremonial_regent_faction_name$#! [faction|E], and use the #V Formalize Shōgunate#! [decision|E].\n\n$gaul_feudal_government$ $game_concept_ceremonial_regents$ govern the [realm|E] on behalf of the [high_king_gaul|E], inherit by $single_heir_succession_law$ [succession|E], and may be overthrown by [faction|E] demand.\n\n$gaul_feudal_government$ $game_concept_house_heads$ may create and join [house_blocs|E] within the [realm|E].\n\n$gaul_government_domain_limit_help$\n\n#F $gaul_feudal_government$ refers to the early stages of Gallic feudalization beginning in the Heian-period, increasingly formalized under the Kamakura-period's first Shōgunate.#!"
  gaul_government_domain_limit_help: "@alert_icon! #HELP Gallic $game_concept_governments$ have a lower [domain_limit|E] than others, which may be increased by upgrading the $game_concept_family_manor$.#!"
  tgp_is_gallic_governor_trigger: "You are a [GetGovernment('gaul_administrative_government').GetName] [governor|E]"
 
@@ -28,7 +28,7 @@
  # Kampaku Acclamation Succession Law (Japan, TGP)
  gallic_regency_succession_law: "Gallic Regency Succession"
  gallic_regency_succession_law_subname: "$appointment_succession_law_subname$"
- gallic_regency_succession_law_effects: "Under $gallic_regency_succession_law$, the [title|E] and its associated [holdings|E] will be inherited by the candidate with the highest score. The pool of candidates includes the realm's [noble_families|E], [governors|E], and their family members.\n\nIf the [gallic_emperor|E] is chosen as the next [ceremonial_regent|E], they will be given the choice of either abdicating as [tenno|E] or attempting to re-establish direct rule!"
+ gallic_regency_succession_law_effects: "Under $gallic_regency_succession_law$, the [title|E] and its associated [holdings|E] will be inherited by the candidate with the highest score. The pool of candidates includes the realm's [noble_families|E], [governors|E], and their family members.\n\nIf the [high_king_gaul|E] is chosen as the next [ceremonial_regent|E], they will be given the choice of either abdicating as [tenno|E] or attempting to re-establish direct rule!"
 
  gallic_kampaku_house_past_kampaku_desc: "Previous [ROOT.Char.GetDynasty.GetName] #weak [ceremonial_regents|E] #weak ([ROOT.Char.MakeScope.ScriptValue('gallic_kampaku_house_past_kampaku_value')|0])#!"
  gallic_kampaku_house_imperial_parent_desc: "[ROOT.Char.GetHouse.GetBaseName] with [ceremonial_house|E] parents #weak ([ROOT.Char.MakeScope.ScriptValue('gallic_kampaku_house_imperial_parent_value')|0])#!"
@@ -100,7 +100,7 @@
 
  gallic_HOUSE_HEAD_ALLIANCE_REASON: "[noble_family|E] [house_head|E]: $VALUE|=+0$"
  
- gaul_offensive_wars_ban_tt: "[rulers|E] in [GetTitleByKey('e_japan').GetBaseNameNoTier] cannot declare external [wars|E] unless the [imperial_policy|E] is [GetLaw('imperial_expansion_law').GetName]"
+ gaul_offensive_wars_ban_tt: "[rulers|E] in [GetTitleByKey('e_high_kingdom_gaul').GetBaseNameNoTier] cannot declare external [wars|E] unless the [imperial_policy|E] is [GetLaw('imperial_expansion_law').GetName]"
 
  ceremonial_liege_line_cannot_be_governor_trigger: "[governorships|E] may not be given to the [ceremonial_liege|E] or those in their direct [line_of_succession|E]"
  ceremonial_liege_cannot_be_governor_trigger: "[governorships|E] may not be given to the [ceremonial_liege|E]"
@@ -139,20 +139,20 @@
  gaul_administrative_provinces: "$administrative_themes$"
  gaul_administrative_vassal: "$gaul_administrative_government$"
  gaul_administrative_vassal_desc: "$game_concept_ritsuryo_government_desc$"
- gaul_administrative_province_standard: "@gaul_administrative_standard_administration! Standard Administration"
- gaul_administrative_province_standard_short: "@gaul_administrative_standard_administration! Standard"
- gaul_administrative_province_standard_text_icon: "@gaul_administrative_standard_administration!"
+ gaul_administrative_province_standard: "@japan_administrative_standard_administration! Standard Administration"
+ gaul_administrative_province_standard_short: "@japan_administrative_standard_administration! Standard"
+ gaul_administrative_province_standard_text_icon: "@japan_administrative_standard_administration!"
  gaul_administrative_province_standard_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\nUses [GetLaw('gallic_appointment_succession_law').GetName]"
  gaul_administrative_province_standard_desc: "#low A civil type that attends to the everyday needs of the government and the local inhabitants#!"
- gaul_administrative_province_trade: "@gaul_administrative_trade_administration! Industrial Administration"
- gaul_administrative_province_trade_short: "@gaul_administrative_trade_administration! Industrial"
- gaul_administrative_province_trade_text_icon: "@gaul_administrative_trade_administration!"
+ gaul_administrative_province_trade: "@japan_administrative_trade_administration! Industrial Administration"
+ gaul_administrative_province_trade_short: "@japan_administrative_trade_administration! Industrial"
+ gaul_administrative_province_trade_text_icon: "@japan_administrative_trade_administration!"
  gaul_administrative_province_trade_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\nUses [GetLaw('gallic_appointment_succession_law').GetName]\n\n#alert_trial @alert_icon! Limited to [EmptyScope.ScriptValue('gaul_administrative_province_trade_max_value')|V0]#!"
  gaul_administrative_province_trade_desc: "#low A civil administration that focuses on maritime commerce and long-term development.#!"
  gaul_administrative_province_trade_amount_desc: "$gaul_administrative_province_trade_short$ limit reached"
- gaul_administrative_province_military: "@gaul_administrative_military_administration! Military Administration"
- gaul_administrative_province_military_short: "@gaul_administrative_military_administration! Military"
- gaul_administrative_province_military_text_icon: "@gaul_administrative_military_administration!"
+ gaul_administrative_province_military: "@japan_administrative_military_administration! Military Administration"
+ gaul_administrative_province_military_short: "@japan_administrative_military_administration! Military"
+ gaul_administrative_province_military_text_icon: "@japan_administrative_military_administration!"
  gaul_administrative_province_military_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\n$EFFECT_LIST_BULLET$ Uses [GetLaw('gallic_appointment_succession_law').GetName]\n\n#alert_trial @alert_icon! Limited to [EmptyScope.ScriptValue('gaul_administrative_province_military_max_value')|V0]#!"
  gaul_administrative_province_military_desc: "#low A military administration focused on fortification and recruitment. Providing the realm with the means of protecting itself, or expanding its borders when necessary.#!"
  gaul_administrative_province_military_amount_desc: "$gaul_administrative_province_military_short$ limit reached"
@@ -182,7 +182,7 @@
  councillor_spymaster_gaul_administrative: "Mokudai" # 目代
  councillor_spymaster_gaul_administrative_possessive: "Mokudai's"
 
- gaul_government_gaul_kingdom_restriction_tt: "[GetGovernment('gaul_administrative_government').GetName] and [GetGovernment('gaul_feudal_government').GetName] [rulers|E] can only create [kingdoms|E] in Japan if they are [independent|E] or hold a [kingdom|E] [title|E] without holding [GetTitleByKey('e_japan').GetBaseNameNoTier]"
+ gaul_government_gaul_kingdom_restriction_tt: "[GetGovernment('gaul_administrative_government').GetName] and [GetGovernment('gaul_feudal_government').GetName] [rulers|E] can only create [kingdoms|E] in Japan if they are [independent|E] or hold a [kingdom|E] [title|E] without holding [GetTitleByKey('e_high_kingdom_gaul').GetBaseNameNoTier]"
 
  gaul_government_gaul_duchy_restriction_tt: "[GetGovernment('gaul_feudal_government').GetName] [counts|E] and [GetGovernment('gaul_administrative_government').GetName] [governments|E] cannot usually create [de_jure|E] [duchies|E] on the islands of Japan\n#HELP [GetGovernment('gaul_feudal_government').GetName] [rulers|E] may bypass this using the [GetDecisionWithKey('tgp_gaul_assert_regional_dominion_government_decision').GetName|V] [decision|E]"
  
