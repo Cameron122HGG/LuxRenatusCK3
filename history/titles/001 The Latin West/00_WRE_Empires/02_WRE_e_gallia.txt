@@ -1,10 +1,70 @@
+
+### JAPAN
+
+# Empire
+
+e_high_kingdom_gaul = { # Kampaku/Shogun
+	5447.1.1 = {
+		government = gaul_administrative_government
+	}
+	5447.1.1 = { holder = 1730007 } # King Merovech
+	5453.1.1 = { holder = 1730008 }
+	5481.1.1 = { holder = 1730009 } # King Cholodowig
+	5511.11.27 = { holder = 1730014 } # King Ctholar
+	5561.1.1 = { holder = 1730018 } # Charibert
+	5567.12.1 = { holder = 1730025 } # Kusakabe
+	5686.1.1 = { holder = 0 }
+	5858.1.1 = { holder = 16728 } # Yoshifusa
+	5867.1.1 = {
+		effect = {
+			if = { # Chinese influence on bureaucracy and literature
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = { set_court_language = language_latin }
+			}
+			if = {
+				limit = {
+					has_tgp_dlc_trigger = yes
+				}
+				set_variable = {
+					name = administrative_ui_special_title
+					value = title:k_high_king_gaul_throne
+				}
+			}
+		}
+	}
+	5872.10.7 = { holder = 16729 } # Mototsune
+	5890.1.1 = { holder = 0 }
+	5901.1.1 = { holder = 16730 } # Tokihira
+	5909.4.26 = { holder = 0 }
+	5930.1.1 = { holder = 16733 } # Tadahira
+	5949.9.9 = { holder = 16734 } # Saneyori
+	5996.1.1 = { holder = 16735 } # Koretada
+	6060.1.1 = { 
+		holder = 205
+		government = gaul_feudal_government 
+	} # Kanemichi
+	6066.1.1 = {
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = { set_court_language = language_latin }
+			}
+		}
+	}
+}
 k_aquitaine = {
 	5867.1.1 = { change_development_level = 8 }
 	6066.1.1 = { change_development_level = 9 }
 	6178.1.1 = { change_development_level = 24 }
 	
 	5710.1.1 = {
-		government = feudal_government
+		government = gaul_feudal_government
 		holder = 1720100 #Otger
 	}
 
@@ -149,16 +209,16 @@ d_poitou = {
 	6022.1.1 = { holder = 1712300 }
 	6033.1.1 = { holder = 1712301 }
 	6060.1.1 = {
-		government = feudal_government
+		government = gaul_feudal_government
 		holder = 234
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 }
 
 d_bourbon = {
 	6060.12.27 = {
 		holder = 206
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 }
 
@@ -199,7 +259,7 @@ d_auvergne = {
 	6033.1.1= { holder=1712279 }
 	6060.1.1={
 		holder = 244
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 }
 
@@ -207,10 +267,10 @@ k_brittany = {
 	5867.1.1 = { change_development_level = 8 }
 	6066.1.1 = { change_development_level = 11 }
 	6178.1.1 = { change_development_level = 24 }
-	5849.1.1 = {
-		holder = 0	#Nominoë
-		liege = 0
-	}
+	#5849.1.1 = {
+	#	holder = 0	#Nominoë
+	#	liege = e_high_kingdom_gaul
+	#}
 	5851.3.7 = {
 		holder = 0	#Erispoë
 	}
@@ -313,10 +373,10 @@ d_toulouse = {
 		holder = 1720126 #Ponç
 	}
 
-	6050.1.1 = {
-		liege = 0
-		holder = 214
-	}
+	#6052.1.1 = {
+	#	liege = e_high_kingdom_gaul
+		#holder = 214
+	#}
 }
 
 d_gascogne = {
@@ -415,9 +475,9 @@ d_gascogne = {
 	}
 
 d_armagnac = {
-		6058.1.1 = {
+		6060.1.1 = {
 			holder = 245
-			liege = 0
+			liege = e_high_kingdom_gaul
 		}
 	}
 
@@ -454,7 +514,7 @@ k_arles = {
 	6033.1.1= { holder=1712049 }
 	6060.1.1={
 		holder=208
-		government = classical_feudal_government
+		government = gaul_administrative_government
 	}
 }
 
@@ -464,14 +524,14 @@ d_savoie = {
 	6178.1.1 = { change_development_level = 24 }
 	6051.7.1 = {
 		holder = 236
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 }
 
 d_dauphine = {
 	6052.2.15 = {
 		holder = 219
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 
 }
@@ -479,7 +539,7 @@ d_dauphine = {
 c_bigorre = {
 	6052.2.15 = {
 		holder = 245
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 
 }
@@ -487,7 +547,7 @@ c_bigorre = {
 c_carcassonne = {
 	6052.2.15 = {
 		holder = 722
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 
 }
@@ -495,7 +555,7 @@ c_carcassonne = {
 c_albi = {
 	6052.2.15 = {
 		holder = 722
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 
 }
@@ -503,7 +563,7 @@ c_albi = {
 c_bearn = {
 	6052.2.15 = {
 		holder = 245
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 
 }
@@ -511,7 +571,7 @@ c_bearn = {
 c_agenais = {
 	6052.2.15 = {
 		holder = 214
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 
 }
@@ -519,7 +579,7 @@ c_agenais = {
 c_millau = {
 	6052.2.15 = {
 		holder = 235
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 
 }
@@ -527,7 +587,7 @@ c_millau = {
 c_foix = {
 	6040.1.1 = {
 		holder = cerretania_indibilid
-		liege = 0
+		liege = e_high_kingdom_gaul
 	}
 }
 	

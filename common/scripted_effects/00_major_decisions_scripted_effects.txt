@@ -537,17 +537,17 @@ form_carolingian_empire_scripted_effect = {
 	title:e_hre.holder ?= { save_scope_as = scoped_emperor }
 	#De jure shifts.
 	hidden_effect = {
-		title:k_france = { set_de_jure_liege_title = title:e_france }
-		title:k_burgundy = { set_de_jure_liege_title = title:e_france }
-		title:k_aquitaine = { set_de_jure_liege_title = title:e_france }
-		title:k_brittany = { set_de_jure_liege_title = title:e_france }
-		title:k_frisia = { set_de_jure_liege_title = title:e_france }
-		title:k_lotharingia = { set_de_jure_liege_title = title:e_france }
-		title:k_bavaria = { set_de_jure_liege_title = title:e_france }
-		title:k_east_francia = { set_de_jure_liege_title = title:e_france }
-		title:k_lombardy = { set_de_jure_liege_title = title:e_france }
-		title:k_navarra = { set_de_jure_liege_title = title:e_france }
-		title:k_visigoths = { set_de_jure_liege_title = title:e_france }
+		title:k_france = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_burgundy = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_aquitaine = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_brittany = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_frisia = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_lotharingia = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_bavaria = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_east_francia = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_lombardy = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_navarra = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
+		title:k_visigoths = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
 		if = {
 			limit = {
 				OR = {
@@ -561,7 +561,7 @@ form_carolingian_empire_scripted_effect = {
 					}
 				}
 			}
-			title:k_austria = { set_de_jure_liege_title = title:e_france }
+			title:k_austria = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
 		}
 		if = {
 			limit = {
@@ -576,7 +576,7 @@ form_carolingian_empire_scripted_effect = {
 					}
 				}
 			}
-			title:k_switzerland = { set_de_jure_liege_title = title:e_france }
+			title:k_switzerland = { set_de_jure_liege_title = title:e_high_kingdom_gaul }
 		}
 	}
 	# Prestige
@@ -2265,8 +2265,8 @@ restore_holy_roman_empire_decision_scripted_effect = {
 		if = { # Merge Francia into the HRE under certain conditions
 			limit = {
 				OR = {
-					NOT = { exists = title:e_france.holder }
-					title:e_france.holder ?= root
+					NOT = { exists = title:e_high_kingdom_gaul.holder }
+					title:e_high_kingdom_gaul.holder ?= root
 				}
 				OR = {
 					title:k_france = { # If core West Francia is part of the HRE
@@ -2286,7 +2286,7 @@ restore_holy_roman_empire_decision_scripted_effect = {
 					}
 				}
 			}
-			title:e_france = {
+			title:e_high_kingdom_gaul = {
 				every_in_de_jure_hierarchy = {
 					limit = { tier = tier_kingdom }
 					set_de_jure_liege_title = title:e_hre
