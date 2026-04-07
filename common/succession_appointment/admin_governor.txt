@@ -303,9 +303,9 @@
 					piety_level >= 1
 					house ?= {
 						OR = {
-							has_house_power_parameter = candidate_score_per_piety_level_1
-							has_house_power_parameter = candidate_score_per_piety_level_2
-							has_house_power_parameter = candidate_score_per_piety_level_3
+							has_house_aspiration_parameter = candidate_score_per_piety_level_1
+							has_house_aspiration_parameter = candidate_score_per_piety_level_2
+							has_house_aspiration_parameter = candidate_score_per_piety_level_3
 						}
 					}
 				}
@@ -314,13 +314,13 @@
 					add = {
 						if = {
 							limit = {
-								house ?= { has_house_power_parameter = candidate_score_per_piety_level_3 }
+								house ?= { has_house_aspiration_parameter = candidate_score_per_piety_level_3 }
 							}
 							add = candidate_score_per_piety_level_3_value
 						}
 						else_if = {
 							limit = {
-								house ?= { has_house_power_parameter = candidate_score_per_piety_level_2 }
+								house ?= { has_house_aspiration_parameter = candidate_score_per_piety_level_2 }
 							}
 							add = candidate_score_per_piety_level_2_value
 						}

@@ -1209,6 +1209,9 @@ councillor_spouse_stewardship.2002 = {
 
 	option = { #Loan money
 		name = councillor_spouse_stewardship.2002.a
+		trigger = {
+			NOT = { exists = var:loan_holder } # cannot have multiple loans - keep it simple
+		}
 		hidden_effect = {
 			scope:courtier_lender = {
 				if = {

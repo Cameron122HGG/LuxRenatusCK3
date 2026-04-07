@@ -24,7 +24,12 @@ tgp_dynastic_cycle_decision_event.0101 = {
 	}
 	after = {
 		hidden_effect = {
-			set_employer = scope:new_player
+			if = {
+				limit = {
+					employer != scope:new_player
+				}
+				set_employer = scope:new_player
+			}
 		}
 	}
 }

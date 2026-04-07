@@ -81,7 +81,7 @@ invite_to_house_bloc_interaction = {
 					any_confederation = {
 						has_leading_house = yes
 						leading_house.house_head.top_liege = root.top_liege
-						leading_house = { has_same_house_power_as = root.house }
+						leading_house = { has_same_house_aspiration_as = root.house }
 					}
 				}
 			}
@@ -566,7 +566,7 @@ invite_to_house_bloc_interaction = {
  		}
 		modifier = { # Don't invite people of different House Aspiration
 			scope:recipient.house ?= {
-				NOT = { has_same_house_power_as = scope:actor.house }
+				NOT = { has_same_house_aspiration_as = scope:actor.house }
 			}
  			add = -100
  		}
@@ -574,7 +574,7 @@ invite_to_house_bloc_interaction = {
 			exists = scope:recipient.house
 			scope:actor.house ?= {
 				house_confederation ?= { cohesion < 75 }
-				NOT = { has_same_house_power_as = scope:recipient.house }
+				NOT = { has_same_house_aspiration_as = scope:recipient.house }
 			}
  			add = -150
  		}
@@ -597,7 +597,7 @@ invite_to_house_bloc_interaction = {
 				any_confederation = {
 					has_leading_house = yes
 					leading_house.house_head.top_liege = scope:actor.top_liege
-					leading_house = { has_same_house_power_as = scope:actor.house }
+					leading_house = { has_same_house_aspiration_as = scope:actor.house }
 				}
 			}
 			add = 150
@@ -948,7 +948,7 @@ join_house_bloc_interaction = {
 			desc = AI_LANDLESS_REASON
 		}
 		modifier = { # Same house power
-			scope:actor.house ?= { has_same_house_power_as = scope:recipient.house }
+			scope:actor.house ?= { has_same_house_aspiration_as = scope:recipient.house }
 			add = 25
 			desc = AI_SAME_ASPIRATION_REASON
 		}
@@ -1075,7 +1075,7 @@ join_house_bloc_interaction = {
 		}
 		modifier = { # Don't join blocs of different aspiration
 			scope:actor.house = {
-				NOT = { has_same_house_power_as = scope:recipient.house }
+				NOT = { has_same_house_aspiration_as = scope:recipient.house }
 			}
 			add = -150
 		}
@@ -1237,7 +1237,7 @@ leave_house_bloc_interaction = {
 		modifier = { # Different House Aspiration
 			exists = scope:actor.house.house_confederation.leading_house
 			scope:actor.house ?= {
-				NOT = { has_same_house_power_as = scope:actor.house.house_confederation.leading_house }
+				NOT = { has_same_house_aspiration_as = scope:actor.house.house_confederation.leading_house }
 			}
 			add = 100
 		}
@@ -1472,7 +1472,7 @@ kick_from_house_bloc_interaction = {
 		modifier = {
 			exists = scope:recipient.house
 			NOT = {
-				scope:actor.house ?= { has_same_house_power_as = scope:recipient.house }
+				scope:actor.house ?= { has_same_house_aspiration_as = scope:recipient.house }
 			}
 			add = 50
 		}
@@ -1585,20 +1585,20 @@ assume_house_bloc_leadership_interaction = {
 				custom_tooltip = {
 					text = assume_house_bloc_leadership_interaction_aspiration_tt
 					scope:actor.house = {
-						has_same_house_power_as = scope:leader_temp.house
+						has_same_house_aspiration_as = scope:leader_temp.house
 						OR = {
 							AND = {
-								has_house_power_parameter = aspiration_level_3
+								has_house_aspiration_parameter = aspiration_level_3
 								scope:leader_temp.house = {
 									OR = {
-										has_house_power_parameter = aspiration_level_2
-										has_house_power_parameter = aspiration_level_1
+										has_house_aspiration_parameter = aspiration_level_2
+										has_house_aspiration_parameter = aspiration_level_1
 									}
 								}
 							}
 							AND = {
-								has_house_power_parameter = aspiration_level_2
-								scope:leader_temp.house = { has_house_power_parameter = aspiration_level_1 }
+								has_house_aspiration_parameter = aspiration_level_2
+								scope:leader_temp.house = { has_house_aspiration_parameter = aspiration_level_1 }
 							}
 						}
 					}
@@ -2364,7 +2364,7 @@ demand_aspiration_change_interaction = {
 			custom_tooltip = {
 				text = demand_aspiration_change_interaction_power_tt
 				NOT = {
-					house = { has_same_house_power_as = scope:recipient.house }
+					house = { has_same_house_aspiration_as = scope:recipient.house }
 				}
 			}
 		}
@@ -2485,7 +2485,7 @@ demand_aspiration_change_interaction = {
 			}
 			house = {
 				switch = {
-					trigger = has_house_power_parameter
+					trigger = has_house_aspiration_parameter
 					ceremony_cheaper_feasts = {
 						scope:house = { set_house_aspiration = { type = ceremony } }
 					}
@@ -2607,7 +2607,7 @@ demand_aspiration_change_interaction = {
 		# Rating
 		modifier = {
 			scope:recipient.house = {
-				NOT = { has_same_house_power_as = scope:actor.house }
+				NOT = { has_same_house_aspiration_as = scope:actor.house }
 			}
 			add = 100
 		}

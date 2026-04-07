@@ -388,7 +388,7 @@ councillor_spouse_learning_2603_chosen_councillor_effect = {
 			}
 		}
 		add_opinion = {
-			target = root
+			target = scope:councillor_liege
 			modifier = grateful_opinion
 			opinion = 15
 		}
@@ -402,7 +402,7 @@ councillor_spouse_learning_2603_chosen_councillor_effect = {
 	}
 	else = {
 		add_opinion = {
-			target = root
+			target = scope:councillor_liege
 			modifier = insult_opinion
 			opinion = -15
 		}
@@ -804,82 +804,139 @@ councillor_increase_relevant_skill_two_points_effect = {
 }
 
 assign_appropriate_councillor_position_effect = {
-	if = {
-		limit = {
-			$CHARACTER$ = { highest_skill = diplomacy }
-		}
-		if = {
-			limit = { exists = cp:councillor_chancellor }
-			fire_councillor = cp:councillor_chancellor
-		}
-		assign_councillor_type = {
-			type = councillor_chancellor
-			target = $CHARACTER$
-		}
-	}
-	else_if = {
-		limit = {
-			$CHARACTER$ = { highest_skill = intrigue }
-		}
-		if = {
-			limit = { exists = cp:councillor_spymaster }
-			fire_councillor = cp:councillor_spymaster
-		}
-		assign_councillor_type = {
-			type = councillor_spymaster
-			target = $CHARACTER$
-		}
-	}
-	else_if = {
-		limit = {
-			$CHARACTER$ = { highest_skill = stewardship }
-		}
-		if = {
-			limit = { exists = cp:councillor_steward }
-			fire_councillor = cp:councillor_steward
-		}
-		assign_councillor_type = {
-			type = councillor_steward
-			target = $CHARACTER$
-		}
-	}
-	else_if = {
-		limit = {
-			$CHARACTER$ = { highest_skill = martial }
-		}
-		if = {
-			limit = { exists = cp:councillor_marshal }
-			fire_councillor = cp:councillor_marshal
-		}
-		assign_councillor_type = {
-			type = councillor_marshal
-			target = $CHARACTER$
-		}
-	}
-	else_if = {
-		limit = {
-			$CHARACTER$ = { highest_skill = learning }
-			faith = {
-				has_doctrine = doctrine_theocracy_temporal
+	save_scope_as = court_owner
+	$NEW_COUNCILLOR$ = {
+		save_scope_as = new_councillor
+		switch = {
+			trigger = highest_skill
+			diplomacy = {
+				choose_and_assign_appropriate_councillor_position_effect = {
+					PREFERRED_POSITION = chancellor
+					FALLBACK_1 = steward
+					FALLBACK_2 = spymaster
+					FALLBACK_3 = marshal
+					FALLBACK_4 = court_chaplain
+				}
+			}
+			intrigue = {
+				choose_and_assign_appropriate_councillor_position_effect = {
+					PREFERRED_POSITION = marshal
+					FALLBACK_1 = spymaster
+					FALLBACK_2 = steward
+					FALLBACK_3 = chancellor
+					FALLBACK_4 = court_chaplain
+				}
+			}
+			stewardship = {
+				choose_and_assign_appropriate_councillor_position_effect = {
+					PREFERRED_POSITION = steward
+					FALLBACK_1 = chancellor
+					FALLBACK_2 = spymaster
+					FALLBACK_3 = marshal
+					FALLBACK_4 = court_chaplain
+				}
+			}
+			martial = {
+				choose_and_assign_appropriate_councillor_position_effect = {
+					PREFERRED_POSITION = spymaster
+					FALLBACK_1 = steward
+					FALLBACK_2 = chancellor
+					FALLBACK_3 = marshal
+					FALLBACK_4 = court_chaplain
+				}
+			}
+			learning = {
+				choose_and_assign_appropriate_councillor_position_effect = {
+					PREFERRED_POSITION = court_chaplain
+					FALLBACK_1 = chancellor
+					FALLBACK_2 = steward
+					FALLBACK_3 = spymaster
+					FALLBACK_4 = marshal
+				}
 			}
 		}
-		if = {
-			limit = { exists = cp:councillor_court_chaplain }
-			fire_councillor = cp:councillor_court_chaplain
-		}
-		assign_councillor_type = {
-			type = councillor_court_chaplain
-			target = $CHARACTER$
-		}
 	}
-	else = {
+}
+
+choose_and_assign_appropriate_councillor_position_effect = {
+	scope:court_owner = {
 		if = {
-			limit = { exists = cp:councillor_chancellor }
-			fire_councillor = cp:councillor_chancellor
+			limit = {
+				OR = {
+					NOT = { exists = cp:councillor_$PREFERRED_POSITION$ }
+					cp:councillor_$PREFERRED_POSITION$ ?= {
+						can_be_fired_from_council_trigger = { COURT_OWNER = scope:court_owner }
+					}
+				}
+			}
+			assign_councillor_type = {
+				type = councillor_$PREFERRED_POSITION$
+				target = scope:new_councillor
+				remove_existing_councillor = yes
+			}
 		}
-		assign_councillor_type = { # Fallback, mostly for faiths that don't allow Chaplain appointment
-			type = councillor_chancellor
-			target = $CHARACTER$
+		else_if = {
+			limit = {
+				OR = {
+					NOT = { exists = cp:councillor_$FALLBACK_1$ }
+					cp:councillor_$FALLBACK_1$ ?= {
+						can_be_fired_from_council_trigger = { COURT_OWNER = scope:court_owner }
+					}
+				}
+			}
+			assign_councillor_type = {
+				type = councillor_$FALLBACK_1$
+				target = scope:new_councillor
+				remove_existing_councillor = yes
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					NOT = { exists = cp:councillor_$FALLBACK_2$ }
+					cp:councillor_$FALLBACK_2$ ?= {
+						can_be_fired_from_council_trigger = { COURT_OWNER = scope:court_owner }
+					}
+				}
+			}
+			assign_councillor_type = {
+				type = councillor_$FALLBACK_2$
+				target = scope:new_councillor
+				remove_existing_councillor = yes
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					NOT = { exists = cp:councillor_$FALLBACK_3$ }
+					cp:councillor_$FALLBACK_3$ ?= {
+						can_be_fired_from_council_trigger = { COURT_OWNER = scope:court_owner }
+					}
+				}
+			}
+			assign_councillor_type = {
+				type = councillor_$FALLBACK_3$
+				target = scope:new_councillor
+				remove_existing_councillor = yes
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					NOT = { exists = cp:councillor_$FALLBACK_4$ }
+					cp:councillor_$FALLBACK_4$ ?= {
+						can_be_fired_from_council_trigger = { COURT_OWNER = scope:court_owner }
+					}
+				}
+			}
+			assign_councillor_type = {
+				type = councillor_$FALLBACK_4$
+				target = scope:new_councillor
+				remove_existing_councillor = yes
+			}
+		}
+		else = {
+			# shouldn't happen, if before using the assign_appropriate_councillor_position_effect you check that any councilor can be fired
 		}
 	}
 }

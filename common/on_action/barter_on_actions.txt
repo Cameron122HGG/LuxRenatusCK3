@@ -44,9 +44,14 @@ on_barter_action_completion = {
 						}
 					}
 				}
-				reverse_add_opinion = {
-					target = scope:barony.county.holder
-					modifier = bartered_in_my_lands_opinion
+				if = {
+					limit = {
+						scope:barterer != scope:barony.county.holder
+					}
+					reverse_add_opinion = {
+						target = scope:barony.county.holder
+						modifier = bartered_in_my_lands_opinion
+					}
 				}
 			}
 		}
