@@ -1076,6 +1076,7 @@ convert_to_administrative_decision = {
 						has_government = classical_administrative_government
 						has_government = despotic_administrative_government
 						has_government = diadochi_administrative_government
+						has_government = gaul_administrative_government
 					}
 				}
 				custom_tooltip = {
@@ -1105,6 +1106,7 @@ convert_to_administrative_decision = {
 						has_government = classical_administrative_government
 						has_government = despotic_administrative_government
 						has_government = diadochi_administrative_government
+						has_government = gaul_administrative_government
 					}
 				}
 				custom_tooltip = {
@@ -1163,6 +1165,7 @@ convert_to_administrative_decision = {
 						has_government = classical_administrative_government
 						has_government = despotic_administrative_government
 						has_government = diadochi_administrative_government
+						has_government = gaul_administrative_government
 					}
 				}
 				custom_tooltip = {
@@ -1216,6 +1219,7 @@ convert_to_administrative_decision = {
 						has_government = classical_administrative_government
 						has_government = despotic_administrative_government
 						#has_government = diadochi_administrative_government
+						has_government = gaul_administrative_government
 					}
 				}
 			}
@@ -1226,6 +1230,36 @@ convert_to_administrative_decision = {
 			}
 		}
 	}
+		item = { # procurio / AKA Gaul Administrative
+			value = go_gaul_administrative_government
+			is_shown = {
+				has_tgp_dlc_trigger = yes
+			}
+			is_valid = {
+				top_liege = {
+					NOR = {
+						has_government = administrative_government
+						has_government = celestial_government
+						has_government = meritocratic_government
+						has_government = japan_administrative_government
+						has_government = classical_administrative_government
+						has_government = despotic_administrative_government
+						has_government = diadochi_administrative_government
+						#has_government = gaul_administrative_government
+					}
+				}
+				custom_tooltip = {
+					text = convert_to_administrative_japanese_desc
+					tgp_can_become_japan_administrative_trigger = yes
+				}
+			}
+			current_description = go_japan_administrative_government_desc
+			localization = go_japan_administrative_government_name
+			icon = "gfx/interface/icons/government_types/japan_administrative_government.dds"
+			ai_chance = {
+				value = 100
+			}
+		}#LR Gov
 
 	effect = {
 		# Change to your selected government
