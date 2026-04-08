@@ -380,6 +380,16 @@ CharlesKarling = {
 	5823.1.1 = { birth = yes }
 	5877.1.1 = { death = yes }
 }
+LouisIIIKarling = {
+	name = Louis 
+	dynasty = 25061
+	culture = frankish
+	faith = catholic
+	father = 16524
+	give_nickname = nick_the_stammerer
+	5846.1.1 = { birth = yes }
+	5879.1.1 = { death = yes }
+}
 
 #Lotharing
 228 = {
@@ -460,6 +470,15 @@ LouisIILotharing = {
 	give_nickname = nick_the_younger
 	5835.1.1 = { birth = yes }
 	5890.1.1 = { death = yes }
+}
+CharlesLotharing = {
+	name = Charles
+	dynasty = dynasty_frankish_lotharing
+	culture = frankish
+	faith = catholic
+	father = 16755
+	5840.1.1 = { birth = yes }
+	5863.1.1 = { death = yes }
 }
 16525 = {
 	name = Hugh
@@ -771,11 +790,25 @@ TeutbergaIBosonid = {
 	dynasty = 7052
 	culture = frankish
 	faith = catholic
+	father = BosoIBosonid
 	5831.1.1 = { birth = yes }
 	5854.1.1 = {
 		add_spouse = 16523 # Lothar the Younger
 	}
 	5875.1.1 = { death = yes }
+}
+RichildisIBosonid = {
+	name = Richildis
+	female = yes
+	dynasty = 7052
+	culture = frankish
+	faith = catholic
+	father = BosoIBosonid
+	5845.1.1 = { birth = yes }
+	5864.1.1 = {
+		add_spouse = Bivin # Bivin of Gorsza
+	}
+	5910.1.1 = { death = yes }
 }
 TheobaldIBosonid = {
 	name = Theobald
@@ -1144,13 +1177,32 @@ HughBlois = {
 		death = 6060.1.1
 	}
 }
-#Bouvinid
-
+#Bouvinid/Bivinidid
+Bivin = {
+	name = Bivin
+	dynasty = Bouvinid
+	faith = catholic
+	culture = frankish
+	5810.1.1 = { birth = yes }
+	5863.1.1 = { death = yes }
+}
+BosoBurgundy = {
+	name = Boso
+	dynasty = Bouvinid
+	faith = catholic
+	culture = frankish
+	father = Bivin
+	mother = RichildisIBosonid
+	5841.1.1 = { birth = yes }
+	5887.1.1 = { death = yes }
+}
 16813 = {
 	name = Richard
 	dynasty = Bouvinid
 	faith = catholic
 	culture = frankish
+	father = Bivin
+	mother = RichildisIBosonid
 	give_nickname = nick_the_justiciar
 	5858.1.1 = { birth = yes }
 	5921.1.1 = { death = yes }
@@ -1381,15 +1433,6 @@ RenaurdIIIvera = {
 	father = GuillaumeIvera
 	6047.1.1 = { birth = yes }
 	6080.1.1 = { death = yes }
-}
-AdalbertoIIIvera = {
-	name = Berengario
-	dynasty = 681
-	faith = catholic
-	culture = frankish
-	father = BerengarioIIvera
-	5922.1.1 = { birth = yes }
-	5972.1.1 = { death = yes }
 }
 AdalbertoIIIvera = {
 	name = Berengario
@@ -1742,6 +1785,550 @@ AdamAmiens = {
 	}
 	6100.1.1 = {
 		death = "5864.1.1"
+	}
+}
+#Burgundia
+215 = {
+	name = Walaric #burgking
+	dynasty = 377
+	#dna = bpjpvjhhgcn
+	#properties = agi0ec00000
+	health = 8
+	faith = catholic
+	culture = burgundian
+	father = 1830177
+	mother = 14789
+	6040.1.2 = {
+		birth = 6040.1.2
+	}
+	6100.1.2 = {
+		death = 6100.1.2
+	}
+}
+1830177 = {
+	name = "Willehad" #burgking
+	dynasty = 377
+	#properties = "agi0ec00000"
+	health = 8
+	faith = "catholic"
+	culture = "burgundian"
+	father = WalaricIBurgundy
+	6005.1.2 = {
+		birth = "6005.1.2"
+	}
+	6026.1.1 = {
+		add_spouse = "14789"
+	}
+	6065.1.2 = {
+		death = "6065.1.2"
+	}
+}
+1830178 = {
+	name = "Aubirge" #burgking
+	female = yes
+	dynasty = 377
+	#dna = "bpjpvjhhgcn"
+	health = 8
+	faith = "catholic"
+	culture = "burgundian"
+	father = 1830177
+	mother = 14789
+	6050.1.2 = {
+		birth = "6050.1.2"
+	}
+	6110.1.2 = {
+		death = "6110.1.2"
+	}
+}
+1830179 = {
+	name = "Adelard" #burgking
+	dynasty = 377
+	health = 8
+	faith = "catholic"
+	culture = "burgundian"
+	father = 1830177
+	mother = 14789
+	6045.1.2 = {
+		birth = "6045.1.2"
+	}
+	6105.1.2 = {
+		death = "6105.1.2"
+	}
+}
+Gibica = {
+	name = Gibica
+	dynasty = 377
+	faith = german_pagan
+	culture = burgundian
+	5350.1.1 = {
+		birth = "yes"
+	}
+	5406.1.1 = {
+		death = "yes"
+	}
+}
+Gundomar = {
+	name = Gundomar
+	dynasty = 377
+	faith = german_pagan
+	culture = burgundian
+	father = Gibica
+	5380.1.1 = {
+		birth = "yes"
+	}
+	5411.1.1 = {
+		death = "yes"
+	}
+}
+Giselher = { #Gislaharius
+	name = Giselher  
+	dynasty = 377
+	faith = german_pagan
+	culture = burgundian
+	father = Gibica
+	5390.1.1 = {
+		birth = "yes"
+	}
+	5415.1.1 = {
+		death = "yes"
+	}
+}
+Gunther = { #Gundaharius
+	name = Gunther
+	dynasty = 377
+	faith = german_pagan
+	culture = burgundian
+	father = Gibica
+	5400.1.1 = {
+		birth = "yes"
+	}
+	5437.1.1 = {
+		death = "yes"
+	}
+}
+Gondioc = {
+	name = Gondioc
+	dynasty = 377
+	faith = arian
+	culture = burgundian
+	father = Gunther
+	5420.1.1 = {
+		birth = "yes"
+	}
+	5473.1.1 = {
+		death = "yes"
+	}
+}
+ChilpericIBurgundy = {
+	name = Chilperic
+	dynasty = 377
+	faith = arian
+	culture = burgundian
+	father = Gunther
+	5430.1.1 = {
+		birth = "yes"
+	}
+	5480.1.1 = {
+		death = "yes"
+	}
+}
+GundobadBurgundy = {
+	name = Gundobad
+	dynasty = 377
+	faith = arian
+	culture = burgundian
+	father = Gondioc
+	5420.1.1 = {
+		birth = "yes"
+	}
+	5516.1.1 = {
+		death = "yes"
+	}
+}
+
+SigismundBurgundy = {
+	name = Sigismund
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = GundobadBurgundy
+	give_nickname = nick_the_saint
+	5470.1.1 = {
+		birth = "yes"
+	}
+	5524.1.1 = {
+		death = "yes"
+	}
+}
+SigericBurgundy = {
+	name = Sigeric
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = SigismundBurgundy
+	5500.1.1 = {
+		birth = "yes"
+	}
+	5517.1.1 = {
+		death = "yes"
+	}
+}
+GundomarBurgundy = {
+	name = Gundomar
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = GundobadBurgundy
+	5472.1.1 = {
+		birth = "yes"
+	}
+	5534.1.1 = {
+		death = "yes"
+	}
+}
+SigericIIBurgundy = {
+	name = Sigeric
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = GundomarBurgundy
+	5500.1.1 = {
+		birth = "yes"
+	}
+	5570.1.1 = {
+		death = "yes"
+	}
+}
+ChilpericIIBurgundy = {
+	name = Chilperic
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = SigericIIBurgundy
+	5530.1.1 = {
+		birth = "yes"
+	}
+	5595.1.1 = {
+		death = "yes"
+	}
+}
+SigismundIIBurgundy = {
+	name = Sigismund
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = ChilpericIIBurgundy
+	5562.1.1 = {
+		birth = "yes"
+	}
+	5657.1.1 = {
+		death = "yes"
+	}
+}
+GundomarIIIBurgundy = {
+	name = Sigismund
+	dynasty = 377
+	faith = catholic
+	culture = frankish
+	father = SigismundIIBurgundy
+	5589.1.1 = {
+		birth = "yes"
+	}
+	5661.1.1 = {
+		death = "yes"
+	}
+}
+OttoIIBurgundy = {
+	name = Odo
+	dynasty = 377
+	faith = catholic
+	culture = frankish
+	father = SigismundIIBurgundy
+	give_nickname = nick_the_elder
+	5600.1.1 = {
+		birth = "yes"
+	}
+	5668.1.1 = {
+		death = "yes"
+	}
+}
+OttoIIIBurgundy = {
+	name = Odo
+	dynasty = 377
+	faith = catholic
+	culture = frankish
+	father = OttoIIBurgundy
+	give_nickname = nick_the_younger
+	5624.1.1 = {
+		birth = "yes"
+	}
+	5681.1.1 = {
+		death = "yes"
+	}
+}
+WulframIBurgundy = {
+	name = Wulfram
+	dynasty = 377
+	faith = catholic
+	culture = frankish
+	father = OttoIIIBurgundy
+	5670.1.1 = {
+		birth = "yes"
+	}
+	5690.1.1 = {
+		death = "yes"
+	}
+}
+SigismundIIIBurgundy = {
+	name = Sigismund
+	dynasty = 377
+	faith = catholic
+	culture = frankish
+	father = WulframIBurgundy
+	5689.1.1 = {
+		birth = "yes"
+	}
+	5750.1.1 = {
+		death = "yes"
+	}
+}
+GundobadIIBurgundy = {
+	name = Gundobad
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = SigismundIIIBurgundy
+	5708.1.1 = {
+		birth = "yes"
+	}
+	5780.1.1 = {
+		death = "yes"
+	}
+}
+EudesIBurgundy = {
+	name = Eudes
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = GundobadIIBurgundy
+	5760.1.1 = {
+		birth = "yes"
+	}
+	5800.1.1 = {
+		death = "yes"
+	}
+}
+EudesIBurgundy = {
+	name = Eudes
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = GundobadIIBurgundy
+	5760.1.1 = {
+		birth = "yes"
+	}
+	5800.1.1 = {
+		death = "yes"
+	}
+}
+SiegfriedIIBurgundy = {
+	name = Siegfried
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = EudesIBurgundy
+	5789.1.1 = {
+		birth = "yes"
+	}
+	5819.1.1 = {
+		death = "yes"
+	}
+}
+WillehadIBurgundy = {
+	name = Willehad
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = EudesIBurgundy
+	5792.1.1 = {
+		birth = "yes"
+	}
+	5840.1.1 = {
+		death = "yes"
+	}
+}
+ClovisIBurgundy = {
+	name = Clovis
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = EudesIBurgundy
+	5839.1.1 = {
+		birth = "yes"
+	}
+	5890.1.1 = {
+		death = "yes"
+	}
+}
+EudesIIBurgundy = {
+	name = Eudes
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = ClovisIBurgundy
+	5870.1.1 = {
+		birth = "yes"
+	}
+	5920.1.1 = {
+		death = "yes"
+	}
+}
+SiegfriedIBurgundy = {
+	name = Siegfried
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = EudesIIBurgundy
+	trait = devoted
+	5900.1.1 = {
+		birth = "yes"
+	}
+	5978.1.1 = {
+		death = "yes"
+	}
+}
+OttoIVBurgundy = {
+	name = Odo
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = EudesIIBurgundy
+	5903.1.1 = {
+		birth = "yes"
+	}
+	5949.1.1 = {
+		death = "yes"
+	}
+}
+KarlIBurgundy = {
+	name = Karl
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = OttoIVBurgundy
+	5920.1.1 = {
+		birth = "yes"
+	}
+	5985.1.1 = {
+		death = "yes"
+	}
+}
+WillehadIIBurgundy = {
+	name = Willehad
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = KarlIBurgundy
+	5959.1.1 = {
+		birth = "yes"
+	}
+	6002.1.1 = {
+		death = "yes"
+	}
+}
+OttoVBurgundy = {
+	name = Odo
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = WillehadIIBurgundy
+	5970.1.1 = {
+		birth = "yes"
+	}
+	6000.1.1 = {
+		death = "yes"
+	}
+}
+WalaricIBurgundy = {
+	name = Walaric
+	dynasty = 377
+	faith = catholic
+	culture = burgundian
+	father = OttoVBurgundy
+	5990.1.1 = {
+		birth = "yes"
+	}
+	6018.1.1 = {
+		death = "yes"
+	}
+}
+ChilpericIIIBurgundy = {
+	name = Chilperic
+	dynasty = 377
+	faith = catholic
+	culture = frankish
+	father = OttoIIIBurgundy
+	trait = bastard
+	trait = kinslayer
+	give_nickname = "nick_the_cruel"
+	5658.1.1 = {
+		birth = "yes"
+	}
+	5720.1.1 = {
+		death = "yes"
+	}
+}
+Hagen = {
+	name = Hagen
+	faith = german_pagan
+	culture = burgundian
+	father = Gibica
+	trait = bastard
+	trait = murderer
+	5399.1.1 = {
+		birth = yes
+	}
+	5437.1.1 = {
+		death = yes
+	}
+}
+Kriemhild  = { #Gudrun
+	name = Kriemhild
+	female = yes
+	dynasty = 377
+	faith = german_pagan
+	culture = burgundian
+	father = Gibica
+	5422.1.1 = { add_spouse = SiegfriedBurgundy }
+	5402.1.1 = {
+		birth = "yes"
+	}
+	5437.1.1 = { #Killed by Hildebrand after killing Hagen. 
+		death = "yes"
+	}
+}
+SiegfriedBurgundy  = {
+	name = Siegfried
+	faith = german_pagan
+	culture = burgundian
+	5402.1.1 = {
+		birth = "yes"
+	}
+	5424.1.1 = { #Murdered by Hagen
+		death = "yes"
+	}
+}
+GuntherdBurgundy  = {
+	name = Gunther
+	faith = german_pagan
+	culture = burgundian
+	mother = Kriemhild 
+	father = SiegfriedBurgundy
+	5420.1.1 = {
+		birth = "yes"
+	}
+	5460.1.1 = { #
+		death = "yes"
 	}
 }
 #Misc
