@@ -93,6 +93,23 @@ change_to_administrative_effect = {
 					scope:governor_liege = { government_has_flag = government_is_steppe_admin }
 					NOT = { government_has_flag = government_is_steppe_admin }
 				}
+				NOT = { government_allows = administrative }
+				AND = {
+					government_allows = administrative
+					scope:governor_liege = { government_has_flag = government_is_classical_administrative }
+					NOT = { government_has_flag = government_is_classical_administrative }
+				}
+				
+				AND = {
+					government_allows = administrative
+					scope:governor_liege = { government_has_flag = government_is_gaul_administrative }
+					NOT = { government_has_flag = government_is_gaul_administrative }
+				}
+				AND = {
+					government_allows = administrative
+					scope:governor_liege = { government_has_flag = government_is_diadochi_administrative }
+					NOT = { government_has_flag = government_is_diadochi_administrative }
+				}
 			}
 		}
 		# Only case where Estate type is shared between Admin and non-Admin
@@ -105,25 +122,25 @@ change_to_administrative_effect = {
 			}
 			save_scope_as = new_admin
 		}
-		# If we are greek, let's ensure we become administrative
-		if = {
-			limit = {
-				NOT = { exists = scope:has_selected_a_government }
-				scope:governor_liege = {
-					this = scope:governor # not vassal of some other admin liege
-					culture = {
-						OR = {
-							this = culture:greek
-							any_parent_culture_or_above = { this = culture:greek }
-						}
-					}
-				}
-			}
-			save_scope_value_as = {
-				name = has_selected_a_government
-				value = flag:administrative
-			}
-		}
+		# If we are greek, let's ensure we become administrative #LETS NOT DO THAT PLAYBOY #LUX RENATA -Cameron122
+		#if = {
+		#	limit = {
+		#		NOT = { exists = scope:has_selected_a_government }
+		#		scope:governor_liege = {
+		#			this = scope:governor # not vassal of some other admin liege
+		#			culture = {
+		#				OR = {
+		#					this = culture:greek
+		#					any_parent_culture_or_above = { this = culture:greek }
+		#				}
+		#			}
+		#		}
+		#	}
+		#	save_scope_value_as = {
+		#		name = has_selected_a_government
+		#		value = flag:administrative
+		#	}
+		#}
 		# Change government
 		# We first check if you have a selected government, then if you are independent, then what your liege has
 		if = { # Ritsuryo
