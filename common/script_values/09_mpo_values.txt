@@ -870,13 +870,8 @@ mpo_paiza_abuse_khan_reaction_value = {
 
 }
 
-mpo_introduce_heir_prestige_cost = medium_prestige_value
-mpo_introduce_heir_piety_cost = major_piety_value
 
-age_compared_to_player_heir = {
-	add = age
-	subtract = root.player_heir.age
-}
+
 
 mpo_friendship_setup_positive_modifiers_value = {
 	value = 0
@@ -1090,6 +1085,13 @@ mpo_convert_capital_duchy_nomad_value = {
 	}
 }
 
+mpo_introduce_heir_prestige_cost = medium_prestige_value
+mpo_introduce_heir_piety_cost = major_piety_value
+
+age_compared_to_player_heir = {
+	add = age
+	subtract = root.player_heir.age
+}
 
 odds_steal_herd_scheme_misc_value = {
 	value = 10
@@ -1138,6 +1140,7 @@ odds_steal_herd_scheme_misc_value = {
 		}
 	}
 }
+
 
 mpo_tsagaan_sar_gift_likely_value = {
 	value = 25
@@ -1657,13 +1660,13 @@ obedience_value = {
 						switch = {
 							trigger = has_domicile_parameter
 							nomad_yurt_kurultai_more_loyal_lvl_1 = {
-								add = { value = 6 desc = kurultai_yurt_01_domicile_building }
+								add = { value = 6 desc = kurultai_yurt_01 }
 							}
 							nomad_yurt_kurultai_more_loyal_lvl_2 = {
-								add = { value = 12 desc = kurultai_yurt_01_domicile_building }
+								add = { value = 12 desc = kurultai_yurt_01 }
 							}
 							nomad_yurt_kurultai_more_loyal_lvl_3 = {
-								add = { value = 18 desc = kurultai_yurt_01_domicile_building }
+								add = { value = 18 desc = kurultai_yurt_01 }
 							}
 						}
 					}
@@ -1914,6 +1917,10 @@ obedience_value = {
 			if = { # Larger Herd
 				limit = {
 					government_has_flag = government_has_herd
+					obedience_target = {
+						government_has_flag = government_has_herd
+						exists = domicile
+					}
 					exists = domicile
 					domicile.herd >= 100
 					domicile.herd > obedience_target.domicile.herd
@@ -2304,6 +2311,26 @@ fought_gok_alone_value = {
 	min = 1 
 }
 
+mpo_domicile_yurt_marriage_acceptance_value = {
+	value = 0
+	scope:actor.domicile ?= {
+		switch = {
+			trigger = has_domicile_parameter
+			nomad_yurt_marriage_acceptance_lvl_1 = { add = 5 }
+			nomad_yurt_marriage_acceptance_lvl_2 = { add = 10 }
+			nomad_yurt_marriage_acceptance_lvl_3 = { add = 20 }
+			nomad_yurt_marriage_acceptance_lvl_4 = { add = 30 }
+		}
+		switch = {
+			trigger = has_domicile_parameter
+			nomad_main_yurt_marriage_acceptance_lvl_1 = { add = 5 }
+			nomad_main_yurt_marriage_acceptance_lvl_2 = { add = 10 }
+			nomad_main_yurt_marriage_acceptance_lvl_3 = { add = 15 }
+			nomad_main_yurt_marriage_acceptance_lvl_4 = { add = 20 }
+		}
+	}
+}
+
 potential_joiner_combined_value = {
 	value = 0
 	every_in_list = {
@@ -2323,27 +2350,6 @@ potential_joiner_combined_value = {
 		}
 	}
 	min = 1
-}
-
-
-mpo_domicile_yurt_marriage_acceptance_value = {
-	value = 0
-	scope:actor.domicile ?= {
-		switch = {
-			trigger = has_domicile_parameter
-			nomad_yurt_marriage_acceptance_lvl_1 = { add = 5 }
-			nomad_yurt_marriage_acceptance_lvl_2 = { add = 10 }
-			nomad_yurt_marriage_acceptance_lvl_3 = { add = 20 }
-			nomad_yurt_marriage_acceptance_lvl_4 = { add = 30 }
-		}
-		switch = {
-			trigger = has_domicile_parameter
-			nomad_main_yurt_marriage_acceptance_lvl_1 = { add = 5 }
-			nomad_main_yurt_marriage_acceptance_lvl_2 = { add = 10 }
-			nomad_main_yurt_marriage_acceptance_lvl_3 = { add = 15 }
-			nomad_main_yurt_marriage_acceptance_lvl_4 = { add = 20 }
-		}
-	}
 }
 
 sent_herd_opinion_value = {
@@ -2852,4 +2858,22 @@ confederation_military_power_half = {
 confederation_military_power_three_quarters = {
 	value = confederation_military_power
 	multiply = 0.75
+}
+
+two_thirds_max_herd_value = {
+	value = max_herd
+	multiply = 0.66
+}
+nomad_invasion_cb_prestige_cost = {
+	add = {
+		value = 2000
+		desc = CB_BASE_COST
+	}
+	multiply = common_cb_prestige_cost_multiplier
+	if = {
+		limit = {
+			scope:attacker = { is_ai = yes }
+		}
+		multiply = 0.5
+	}
 }
