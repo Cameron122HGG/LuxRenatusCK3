@@ -1180,6 +1180,7 @@ convert_to_administrative_decision = {
 				value = 100
 			}
 		}#LR Gov
+		
 		item = { # Classical Admin Roman branch
 			value = go_classical_administrative_government
 			is_shown = {
@@ -1204,6 +1205,7 @@ convert_to_administrative_decision = {
 				value = 20
 			}
 		}
+		
 		item = { # Classical Admin Diadochi branch
 			value = go_diadochi_administrative_government
 			is_shown = {
@@ -1228,13 +1230,14 @@ convert_to_administrative_decision = {
 			ai_chance = {
 				value = 20
 			}
-		}
+		}	
+		
 		item = { # procurio / AKA Gaul Administrative
-		value = go_gaul_administrative_government
-		is_shown = {
-			has_tgp_dlc_trigger = yes
-		}
-		is_valid = {
+			value = go_gaul_administrative_government
+			is_shown = {
+				has_tgp_dlc_trigger = yes
+			}
+			is_valid = {
 			top_liege = {
 				NOR = {
 					has_government = administrative_government
@@ -1259,7 +1262,8 @@ convert_to_administrative_decision = {
 				value = 100
 			}
 		}
-		item = { # roman_imperial
+
+	item = { # Roman Imperial
 			value = go_roman_imperial_government
 			is_shown = {
 				has_tgp_dlc_trigger = yes
@@ -1272,24 +1276,17 @@ convert_to_administrative_decision = {
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
 						has_government = classical_administrative_government
-						has_government = despotic_administrative_government
+						#has_government = roman_imperial_government
 						has_government = diadochi_administrative_government
 						has_government = gaul_administrative_government
-						#has_government = roman_imperial_government
 					}
 				}
-				custom_tooltip = {
-					text = convert_to_administrative_roman_imperial_desc
-					tgp_should_become_roman_imperial_trigger = yes
-				}
 			}
-			current_description = go_roman_imperial_government_desc
 			localization = go_roman_imperial_government_name
 			icon = "gfx/interface/icons/government_types/roman_imperial_government.dds"
 			ai_chance = {
-				value = 50
+				value = 20
 			}
-		}
 	}
 
 	effect = {
@@ -1327,15 +1324,10 @@ convert_to_administrative_decision = {
 			}
 			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:despotic_administrative }
 		}
-		else_if = {
+			else_if = {
 			limit = { scope:go_gaul_administrative_government = yes
 			}
 			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:gaul_administrative }
-		}
-		else_if = {
-			limit = { scope:go_roman_imperial_government = yes
-			}
-			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:roman_imperial }
 		}
 		save_scope_as = actor
 		if = {
