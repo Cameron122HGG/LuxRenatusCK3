@@ -1,0 +1,90 @@
+﻿## Choose a Hellenistic Epithet
+LR_choose_epithet = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
+	}
+	sort_order = 40
+
+	is_shown = {
+		OR = {
+			culture = { has_cultural_pillar = language_greek }
+		}
+		has_any_nickname = no
+	}
+
+	is_valid_showing_failures_only = {
+	}
+
+	widget = {
+		gui = "decision_view_widget_option_list_generic"
+		controller = decision_option_list_controller
+		decision_to_second_step_button = "CHOOSE_EPITHET"
+		show_from_start = yes
+
+		item = { # Nicator
+			is_shown = { has_trait = brave }
+			value = choose_epithet_nicator
+			current_description = choose_epithet_nicator_desc
+			localization = choose_epithet_nicator
+		}
+		ai_chance = {
+			value = 10
+
+			modifier = {
+				factor = 1.1
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = wrathful
+			}
+			modifier = {
+				factor = 1.05
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 1.2
+				has_trait = education_martial
+			}
+			modifier = {
+				factor = 1.1
+				has_trait = strategist
+			}
+		}
+		item = { # Soter
+			value = choose_epithet_soter
+			current_description = choose_epithet_soter_desc
+			localization = choose_epithet_soter
+			ai_chance = { value = 10 }
+		}
+		item = { # Theos
+			value = choose_ephithet_theos
+			is_shown = { has_trait = zealous }
+			current_description = choose_ephithet_theos_desc
+			localization = choose_epithet_theos
+			ai_chance = { value = 10 }
+		}
+	}
+
+	effect = {
+		switch = {
+			trigger = yes
+			scope:choose_epithet_nicator = {
+				give_nickname = nick_nicator
+			}
+			scope:choose_epithet_soter = {
+				give_nickname = nick_soter
+			}
+			scope:choose_ephithet_theos = {
+				give_nickname = nick_theos
+		}
+	}
+	ai_check_interval = 60
+	ai_potential = {
+		highest_held_title_tier > 3 #Only Kings and Emperors
+		is_independent_ruler = yes
+	}
+	ai_will_do = {
+		base = 0
+	}
+}
