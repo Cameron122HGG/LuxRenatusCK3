@@ -22,7 +22,13 @@ LR_choose_epithet = {
 		show_from_start = yes
 
 		item = { # Nicator
-			is_shown = { has_trait = brave }
+			is_shown = {
+				OR = {
+					has_trait = generous
+					has_trait = arrogant
+					has_trait = compassionate
+				}
+			}
 			value = choose_epithet_nicator
 			current_description = choose_epithet_nicator_desc
 			localization = choose_epithet_nicator
@@ -58,10 +64,30 @@ LR_choose_epithet = {
 			ai_chance = { value = 10 }
 		}
 		item = { # Theos
-			value = choose_ephithet_theos
-			is_shown = { has_trait = zealous }
-			current_description = choose_ephithet_theos_desc
+			value = choose_epithet_theos
+			is_shown = {
+				OR = {
+					has_trait = zealous
+					has_trait = arrogant
+					has_trait = ambitious
+					has_trait = lunatic_1
+				}
+			}
+			current_description = choose_epithet_theos_desc
 			localization = choose_epithet_theos
+			ai_chance = { value = 10 }
+		}
+		item = { # Euergetes
+			value = choose_epithet_euergetes
+			is_shown = {
+				OR = {
+					has_trait = generous
+					has_trait = arrogant
+					has_trait = compassionate
+				}
+			}
+			current_description = choose_epithet_euergetes_desc
+			localization = choose_epithet_euergetes
 			ai_chance = { value = 10 }
 		}
 	}
@@ -75,9 +101,12 @@ LR_choose_epithet = {
 			scope:choose_epithet_soter = {
 				give_nickname = nick_soter
 			}
-			scope:choose_ephithet_theos = {
+			scope:choose_epithet_theos = {
 				give_nickname = nick_theos
-		}
+			}
+			scope:choose_epithet_euergetes = {
+				give_nickname = nick_the_generous
+			}
 	}
 	ai_check_interval = 60
 	ai_potential = {
