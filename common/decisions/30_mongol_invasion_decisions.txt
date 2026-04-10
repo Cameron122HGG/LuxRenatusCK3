@@ -50,6 +50,29 @@ submit_to_the_great_khan_decision = {
 	}
 
 	effect = {
+		if = {
+			limit = {
+				exists = confederation
+			}
+			confederation = {
+				#Your confederation will survive, it has more members
+				if = {
+					limit = {
+						any_confederation_member = {
+							count >= 2
+							NOT = {
+								this = root
+							}
+						}
+					}
+					remove_confederation_member = root
+				}
+				#Your confederation is toast
+				else = {
+					disband_confederation = yes
+				}
+			}
+		}
 		hidden_effect = {
 			if = {
 				limit = {

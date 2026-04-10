@@ -853,10 +853,25 @@ activity_invite_rule_local_exam_entrants = {
 			limit = {
 				government_allows = merit
 			}
-			root.top_liege = {
+			if = {
+				limit = {
+					exists = capital_county
+				}
+				capital_county.kingdom = {
+					save_scope_as = kingdom
+				}
+			}
+			else = {
+				location.county.holder.top_liege.capital_county.kingdom = {
+					save_scope_as = kingdom
+				}
+			}
+			top_liege = {
 				every_vassal_or_below = {
 					limit = {
-						capital_county.kingdom = root.capital_county.kingdom
+						capital_county.kingdom = {
+							this = scope:kingdom
+						}
 						is_landed = no
 						NOR = {
 							# Has not passed this exam before

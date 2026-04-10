@@ -340,7 +340,7 @@ estate_granary_decision = {
 			limit = {
 				domicile ?= { has_domicile_building_or_higher = east_asian_estate_rice_field_01 }
 			}
-			custom_tooltip = estate_unlock_granary_decision_grain_building_tt # Reused loc
+			custom_tooltip = estate_unlock_granary_decision_rice_building_tt
 		}
 		if = {
 			limit = {
@@ -512,7 +512,7 @@ admin_confirmation_decision = {
 	decision_group_type = admin
 
 	cost = {
-		prestige = standard_activity_cost
+		prestige = standard_activity_base_cost
 	}
 
 	is_shown = {
@@ -586,6 +586,11 @@ admin_confirmation_decision = {
 		}
 		save_scope_as = confirmation_vassal
 		liege ?= { save_scope_as = confirmation_liege }
+		switch = {
+			trigger = has_trait
+			shy = { add_stress = medium_stress_impact_gain }
+			humble = { add_stress = medium_stress_impact_gain }
+		}
 		start_travel_plan = {
 			destination = liege.capital_province
 			on_start_on_action = admin_confirmation_start
@@ -603,7 +608,7 @@ admin_confirmation_decision = {
 		base = 0
 		modifier = {
 			add = 50
-			prestige > standard_activity_cost
+			prestige > standard_activity_base_cost
 		}
 		modifier = {
 			add = -50
@@ -1759,6 +1764,7 @@ convert_to_feudalism_from_administrative_decision = {
 #############################################
 
 ### Withdraw from Governorship ###
+### Withdraw from Ministry ###
 renounce_governorship_decision = {
 	picture = {
 		trigger = {
@@ -1784,7 +1790,17 @@ renounce_governorship_decision = {
 		empire = 120
 		hegemony = 0
 	}
-
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					tgp_is_any_minister = yes
+				}
+				desc = renounce_ministership_decision
+			}
+			desc = renounce_governorship_decision
+		}
+	}
 	desc = {
 		first_valid = {
 			triggered_desc = {	
@@ -1802,7 +1818,17 @@ renounce_governorship_decision = {
 			desc = renounce_governorship_decision_desc
 		}
 	}
-	selection_tooltip = renounce_governorship_decision_tooltip
+	selection_tooltip = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					tgp_is_any_minister = yes
+				}
+				desc = renounce_ministership_decision_tooltip
+			}
+			desc = renounce_governorship_decision_tooltip
+		}
+	}
 	decision_group_type = admin
 
 	is_shown = {
@@ -1825,7 +1851,15 @@ renounce_governorship_decision = {
 	}
 
 	effect = {
-		custom_tooltip = renounce_governorship_decision_effect_tt
+		if = {
+			limit = {
+				tgp_is_any_minister = yes
+			}
+			custom_tooltip = renounce_ministership_decision_effect_tt
+		}
+		else = {
+			custom_tooltip = renounce_governorship_decision_effect_tt
+		}
 		show_as_tooltip = {
 			tgp_step_down_title_recipient_tooltip_effect = yes
 			if = {

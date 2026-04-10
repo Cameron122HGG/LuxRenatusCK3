@@ -4,7 +4,7 @@
 start_slander_interaction = {
 	icon = icon_scheme_slander
 	interface_priority = 95
-	common_interaction = yes
+	common_interaction = no
 	category = interaction_category_succession
 	filter_tags = { admin_house_head dynastic_cycle ceremonial_liege }
 
@@ -980,7 +980,7 @@ start_challenge_status_interaction = {
 	interface_priority = 80
 	category = interaction_category_hostile
 	filter_tags = { admin_house_head }
-	common_interaction = yes
+	common_interaction = no
 	send_name = START_SCHEME
 
 	scheme = challenge_status
@@ -1012,6 +1012,9 @@ start_challenge_status_interaction = {
 	}
 
 	is_valid_showing_failures_only = {
+		scope:recipient = {
+			is_lowborn = no
+		}
 		scope:actor = {
 			is_adult = yes
 			is_imprisoned = no
