@@ -280,8 +280,9 @@ borrow_from_holy_order_decision = { #by Linnéa Thimrén
 		is_playable_character = yes
 		highest_held_title_tier > tier_barony
 		faith = {
-			any_faith_holy_order = { count >= 1 } #Your faith must have a Holy Order
-		}
+			any_faith_holy_order = {  #Your faith must have a Holy Order
+				always = yes 
+			}
 		# cannot already have a loan - keep it simple
 		NOR = {
 			exists = var:loan_amount_owed
