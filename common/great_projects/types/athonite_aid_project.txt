@@ -1,0 +1,266 @@
+﻿@athonite_aid_illustration = "gfx/interface/illustrations/great_projects/athonite_aid_illustration.dds"
+@icon_great_project_athonite_aid = "gfx/interface/icons/great_projects/icon_great_project_athonite_aid.dds"
+
+athonite_aid = {
+	icon = {
+		reference = @icon_great_project_athonite_aid
+	}
+	illustration = {
+		reference = @athonite_aid_illustration
+	}
+	province_filter = geographical_region
+	province_filter_target = mount_athos_region
+	cost = {
+		gold = major_gold_value
+	}	
+	name = {
+		desc = great_project_type_athonite_aid
+	}
+	construction_time = {
+		value = 365
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = {
+				has_trait = zealous
+			}
+			add = 50
+		}
+	}
+	is_shown = {
+		NOT = { has_global_variable = athonite_aid_cooldown }
+		NOT = { is_planning_great_project = athonite_aid }
+		is_ruler = yes
+		faith = faith:orthodox
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		top_liege = {
+			any_realm_county = {
+				this = title:c_chalkidike
+			}
+		}
+		#province:3776 = {
+			#has_building = mount_athos_01
+		#}
+	}
+	can_start_planning = {
+		title:b_ierrisos = {
+			custom_tooltip = { 
+				text = "ATHONITE_AID_LOCATION_TOOLTIP"
+				holder.top_liege = root.top_liege
+			}
+		}
+	}
+	is_valid = {
+		title:b_ierrisos.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_complete = {
+		set_global_variable = { name = athonite_aid_cooldown years = 100 }
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		title:c_chalkidike = {
+			add_county_modifier = {
+				modifier = mount_athos_patronage_modifier
+				years = 50
+			}
+		}
+		scope:founder = {
+			trigger_event = athonite_aid_project_events.0001
+			add_character_modifier = { modifier = patron_of_mount_athos_modifier years = 10 }
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_piety = minor_piety_value 
+				}	
+			}
+		}
+	}
+	invite_interaction = request_great_project_contribution_interaction
+	
+	project_contributions = {
+		athonite_aid_laborers = {
+			is_required = yes
+			cost = {
+				treasury_or_gold = great_project_base_contribution_cost
+			}
+			contributor_is_valid = {
+				faith = faith:orthodox
+				OR = {
+					this = scope:founder
+					is_vassal_or_below_of = scope:founder
+					is_tributary_of = scope:founder
+				}
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+				}
+				trigger_event = athonite_aid.1001
+				capital_county = {
+					add_county_modifier = {
+						modifier = athonite_contributor_county_blessing_modifier
+						years = 25
+					}
+				}
+			}
+			ai_check_interval_by_tier = {							
+				barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6
+			}
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						has_trait = zealous
+					}
+					add = 50
+				}
+			}
+		}
+		athonite_aid_materials = {
+			is_required = yes
+			cost = {
+				treasury_or_gold = great_project_base_contribution_cost
+			}
+			contributor_is_valid = {
+				faith = faith:orthodox
+				OR = {
+					this = scope:founder
+					is_vassal_or_below_of = scope:founder
+					is_tributary_of = scope:founder
+				}
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+				}
+				trigger_event = athonite_aid.1002
+				capital_county = {
+					add_county_modifier = {
+						modifier = athonite_contributor_county_blessing_modifier
+						years = 25
+					}
+				}
+			}
+			ai_check_interval_by_tier = {							
+				barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6
+			}
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						has_trait = zealous
+					}
+					add = 50
+				}
+			}
+		}
+		athonite_aid_artists = {
+			is_required = yes
+			cost = {
+				treasury_or_gold = great_project_base_contribution_cost
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			contributor_is_valid = {
+				faith = faith:orthodox
+				OR = {
+					this = scope:founder
+					is_vassal_or_below_of = scope:founder
+					is_tributary_of = scope:founder
+				}
+			}
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+				}
+				trigger_event = athonite_aid.1003
+				capital_county = {
+					add_county_modifier = {
+						modifier = athonite_contributor_county_blessing_modifier
+						years = 25
+					}
+				}
+			}
+			ai_check_interval_by_tier = {							
+				barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6
+			}
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						has_trait = zealous
+					}
+					add = 50
+				}
+			}
+		}
+		athonite_aid_towers = {
+			is_required = yes
+			cost = {
+				treasury_or_gold = great_project_base_contribution_cost
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			contributor_is_valid = {
+				faith = faith:orthodox
+				OR = {
+					this = scope:founder
+					is_vassal_or_below_of = scope:founder
+					is_tributary_of = scope:founder
+				}
+			}
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+				}
+				trigger_event = athonite_aid.1004
+				capital_county = {
+					add_county_modifier = {
+						modifier = athonite_contributor_county_blessing_modifier
+						years = 25
+					}
+				}
+			}
+			ai_check_interval_by_tier = {							
+				barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6
+			}
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						has_trait = zealous
+					}
+					add = 50
+				}
+			}
+		}
+	}
+}

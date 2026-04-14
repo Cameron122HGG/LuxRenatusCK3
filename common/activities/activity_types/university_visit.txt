@@ -1,5 +1,6 @@
 ﻿activity_adult_education = {
 	is_shown = {
+		has_bp2_dlc_trigger = yes
 		highest_held_title_tier > tier_barony
 		is_playable_character = yes
 		trigger_if = {
@@ -32,9 +33,6 @@
 	can_start_showing_failures_only = {
 		NOT = { is_activity_type_on_cooldown = activity_adult_education }
 		is_available_adult = yes
-		NOT = {
-			has_character_modifier = partially_mute_modifier
-		}
 
 		# Can you improve?
 		trigger_if = {
@@ -210,8 +208,11 @@
 	is_location_valid = {
 		custom_tooltip = {
 			text = activity_education_no_culture_center
+			OR = {
+				is_higher_studies_location = yes
+				county = { has_county_modifier = academy_of_athens_modifier }
+			}
 			has_special_building_slot = yes
-			is_higher_studies_location = yes
 		}
 		#You only get to visit any particular university once in your life
 		custom_tooltip = { 
@@ -298,6 +299,12 @@
 			}
 			desc = adult_education_has_pandidakterion_desc
 		}
+		triggered_desc = {
+			trigger = {
+				county = { has_county_modifier = academy_of_athens_modifier }
+			}
+			desc = adult_education_has_academy_of_athens_desc
+		}
 		# Will it yield Confucian Education XP?
 		triggered_desc = {
 			trigger = {
@@ -348,6 +355,12 @@
 		if = {
 			limit = {
 				county ?= { has_county_modifier = pandidakterion_university_modifier }
+			}
+			add = 100
+		}
+		if = {
+			limit = {
+				county ?= { has_county_modifier = academy_of_athens_modifier }
 			}
 			add = 100
 		}
@@ -1698,6 +1711,13 @@
 			if = { # EP3: If you attend the Pandidakterion, and is from the same realm, you get a starting success bonus
 				limit = {
 					activity_location.county = { has_county_modifier = pandidakterion_university_modifier }
+					scope:host.top_liege = scope:activity.activity_location.county.holder.top_liege
+				}
+				activity_special_type_progression_major = yes
+			}
+			if = {
+				limit = {
+					activity_location.county = { has_county_modifier = academy_of_athens_modifier }
 					scope:host.top_liege = scope:activity.activity_location.county.holder.top_liege
 				}
 				activity_special_type_progression_major = yes
