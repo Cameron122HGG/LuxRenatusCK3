@@ -24,7 +24,6 @@ court_tutor_improve_others = {
 	}
 
 	on_monthly = {
-		liege_or_court_owner = { save_scope_as = notification_character }
 		random = {
 			chance = {
 				value = 1
@@ -167,12 +166,6 @@ court_tutor_improve_others = {
 									has_court_position = travel_leader_court_position
 									has_court_position = court_scholar_court_position
 								}
-								NOT = {
-									has_trait_xp = {
-										trait = lifestyle_physician
-										value >= 100
-									}
-								}
 							}
 						}
 						if = {
@@ -190,14 +183,7 @@ court_tutor_improve_others = {
 					1 = { # Traveler trait
 						trigger = {
 							scope:target_character = {
-								has_court_position = travel_leader_court_position	
-								NOT = {
-									has_trait_xp = {
-										trait = lifestyle_traveler
-										track = travel
-										value >= 100
-									}
-								}
+								has_court_position = travel_leader_court_position
 							}
 						}
 						if = {
@@ -265,13 +251,6 @@ court_tutor_improve_others = {
 									has_court_position = travel_leader_court_position
 									has_court_position = master_of_hunt_court_position
 								}
-								NOT = {
-									has_trait_xp = {
-										trait = lifestyle_hunter
-										track = hunter
-										value >= 100
-									}
-								}
 							}
 						}
 						if = {
@@ -298,12 +277,6 @@ court_tutor_improve_others = {
 									has_court_position = champion_court_position
 									has_court_position = master_assassin_court_position
 								}
-								NOT = {
-									has_trait_xp = {
-										trait = lifestyle_blademaster
-										value >= 100
-									}
-								}
 							}
 						}
 						if = {
@@ -325,12 +298,6 @@ court_tutor_improve_others = {
 									has_court_position = court_physician_court_position
 									has_court_position = cave_hermit_court_position
 								}
-								NOT = {
-									has_trait_xp = {
-										trait = lifestyle_mystic
-										value >= 100
-									}
-								}
 							}
 						}
 						if = {
@@ -351,14 +318,6 @@ court_tutor_improve_others = {
 							OR = {
 								scope:liege_character ?= scope:target_character
 								scope:heir_character ?= scope:target_character
-							}
-							scope:target_character = {
-								NOT = {
-									has_trait_xp = {
-										trait = confucian_education
-										value >= 100
-									}
-								}
 							}
 						}
 						if = {

@@ -107,29 +107,25 @@
 			}
 		}
 		can_pass = {
-			# it's failure only block, workaround for showing correct toolip.
-			trigger_if = {
-				limit = {
-					exists = primary_title
+			OR = {
+				can_change_partition_succession_law_trigger = yes
+				trigger_if = {
+					limit = {
+						exists = primary_title
+					}
 					is_confederation_member = yes
 				}
-				is_confederation_member = yes
-			}
-			trigger_else = {
-				can_change_partition_succession_law_trigger = yes
 			}
 		}
 		can_have = {
-			# it's failure only block, workaround for showing correct toolip.
-			trigger_if = {
-				limit = {
-					exists = primary_title
+			OR = {
+				can_have_partition_succession_law_trigger = yes
+				trigger_if = {
+					limit = {
+						exists = primary_title
+					}
 					is_confederation_member = yes
 				}
-				is_confederation_member = yes
-			}
-			trigger_else = {
-				can_have_partition_succession_law_trigger = yes
 			}
 		}
 		should_start_with = {
@@ -272,10 +268,7 @@
 		}
 		can_have = {
 			NOT = { government_has_flag = government_is_nomadic }
-			OR = {
-				can_have_single_heir_succession_law_trigger = yes
-				historical_succession_access_single_heir_succession_law_trigger = yes
-			}
+			can_have_single_heir_succession_law_trigger = yes
 		}
 		can_pass = {
 			can_change_succession_law_trigger = yes
@@ -674,7 +667,6 @@
 				government_has_flag = government_is_celestial
 				government_has_flag = government_is_japan_administrative
 				government_has_flag = government_is_meritocratic
-				government_has_flag = government_is_steppe_admin
 			}
 			is_independent_ruler = no
 		}
@@ -1138,7 +1130,6 @@
 		}
 		flag = advanced_succession_law
 		flag = appointment_type_succession
-		flag = appointment_with_level_requirement
 		modifier = {
 			glory_hound_opinion = -10
 			courtly_opinion = 5
@@ -1210,7 +1201,6 @@
 		}
 		flag = advanced_succession_law
 		flag = appointment_type_succession
-		flag = appointment_with_level_requirement
 		modifier = {
 			glory_hound_opinion = 5
 			courtly_opinion = -10
@@ -1289,30 +1279,17 @@
 	japanese_appointment_succession_law = {
 		can_keep = {
 			can_keep_japanese_appointment_succession_law_trigger = yes
-			custom_tooltip = {
-				text = celestial_military_appointment_allowed_desc
-				NOT = { vassal_contract_has_flag = japan_administrative_military_appointment }
-			}
 		}
 		can_pass = {
 			can_change_japanese_appointment_succession_law_trigger = yes
-			custom_tooltip = {
-				text = celestial_military_appointment_allowed_desc
-				NOT = { vassal_contract_has_flag = japan_administrative_military_appointment }
-			}
 		}
 		can_have = {
 			can_have_japanese_appointment_succession_law_trigger = yes
-			custom_tooltip = {
-				text = celestial_military_appointment_allowed_desc
-				NOT = { vassal_contract_has_flag = japan_administrative_military_appointment }
-			}
 		}
 		should_start_with = {
 			government_has_flag = government_is_japan_administrative
 			is_independent_ruler = no
 			NOT = { has_title = title:k_chrysanthemum_throne }
-			NOT = { vassal_contract_has_flag = japan_administrative_military_appointment }
 		}
 		succession = {
 			order_of_succession = appointment
@@ -1371,13 +1348,11 @@
 		can_have = {
 			government_allows = administrative
 			is_independent_ruler = no
-			vassal_contract_has_flag = japan_administrative_military_appointment
 		}
 		can_pass = {
 			can_change_succession_law_trigger = yes
 			government_allows = administrative
 			is_independent_ruler = no
-			vassal_contract_has_flag = japan_administrative_military_appointment
 		}
 		should_start_with = {
 			government_has_flag = government_is_japan_administrative
@@ -1630,7 +1605,7 @@
 			government_allows = administrative
 			is_independent_ruler = no
 			custom_tooltip = {
-				text = celestial_appointment_allowed_desc
+				text = celestial_military_appointment_allowed_desc
 				NOT = { vassal_contract_has_flag = meritocratic_military_appointment }
 			}
 			# Vassal Contract allows it
@@ -1657,7 +1632,7 @@
 			}
 			is_independent_ruler = no
 			custom_tooltip = {
-				text = celestial_appointment_allowed_desc
+				text = celestial_military_appointment_allowed_desc
 				NOT = { vassal_contract_has_flag = meritocratic_military_appointment }
 			}
 		}
@@ -1667,7 +1642,6 @@
 		}
 		flag = advanced_succession_law
 		flag = appointment_type_succession
-		flag = appointment_with_level_requirement
 		modifier = {
 			glory_hound_opinion = -10
 			courtly_opinion = 5
@@ -1695,10 +1669,7 @@
 		}
 
 		potential = {
-			OR = {
-				government_has_flag = government_is_steppe_admin
-				government_has_flag = government_is_meritocratic
-			}
+			government_has_flag = government_is_meritocratic
 			is_independent_ruler = no
 		}
 	}
@@ -1745,7 +1716,6 @@
 		}
 		flag = advanced_succession_law
 		flag = appointment_type_succession
-		flag = appointment_with_level_requirement
 		modifier = {
 			glory_hound_opinion = -10
 			courtly_opinion = 5
@@ -1773,10 +1743,7 @@
 		}
 
 		potential = {
-			OR = {
-				government_has_flag = government_is_steppe_admin
-				government_has_flag = government_is_meritocratic
-			}
+			government_has_flag = government_is_meritocratic
 			is_independent_ruler = no
 		}
 	}

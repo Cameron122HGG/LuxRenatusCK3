@@ -33,6 +33,8 @@ become_chakravarti_decision = {
 			religion = religion:hinduism_religion
 			religion = religion:buddhism_religion
 			religion = religion:jainism_religion
+			faith = { has_doctrine = tenet_eastern_syncretism }
+			faith = { has_doctrine = LR_doctrine_eastern_ascendant }
 		}
 		highest_held_title_tier >= tier_kingdom
 		capital_province = {
@@ -48,9 +50,11 @@ become_chakravarti_decision = {
 	}
 
 	is_valid = {
+		#completely_controls_region = world_india
 		completely_controls = title:e_rajastan
 		completely_controls = title:e_deccan
 		completely_controls = title:e_bengal
+		completely_controls = title:e_punjab
 		piety_level >= 5
 	}
 
@@ -609,7 +613,6 @@ found_the_empire_of_hindustan_decision = {
 		trigger_if = {
 			limit = {
 				is_ai = no
-				exists = faith.religious_head
 			}
 			OR = {
 				faith.religious_head = {	#And they have to actually like you enough to want to invest you.
@@ -634,11 +637,11 @@ found_the_empire_of_hindustan_decision = {
 			found_empire_of_hindustan_scripted_effect = yes
 		}
 		gain_heroic_legend_seed_tooltip_effect = yes
+		faith.religious_head = { save_scope_as = founder_hof }
 		if = {
 			limit = {
-				faith.religious_head ?= { is_playable_character = yes }
+				faith.religious_head = { is_playable_character = yes }
 			}
-			faith.religious_head = { save_scope_as = founder_hof }
 			faith.religious_head.capital_province = { save_scope_as = ceremony_locale }
 		}
 		else = {

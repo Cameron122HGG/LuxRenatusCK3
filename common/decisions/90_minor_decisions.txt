@@ -1026,7 +1026,7 @@ commit_suicide_decision = { #by Linnéa Thimrén
 					}
 					trait_is_criminal_in_faith_trigger = {
 						FAITH = faith
-						TRAIT = trait:adulterer
+						TRAIT = adulterer
 						GENDER_CHARACTER = this
 					}
 				}
@@ -1087,7 +1087,7 @@ commit_suicide_decision = { #by Linnéa Thimrén
 						}
 						trait_is_criminal_in_faith_trigger = {
 							FAITH = faith
-							TRAIT = trait:adulterer
+							TRAIT = adulterer
 							GENDER_CHARACTER = this
 						}
 					}
@@ -2406,11 +2406,8 @@ stress_loss_athletic_decision = { #by Linnéa Thimrén
 
 	is_valid_showing_failures_only = {
 		is_available = yes
-		NOR = {
-			has_trait = infirm
-			has_trait = fragile_bones
-			has_character_modifier = stress_smelling_of_sweat
-		}
+		NOT = { has_trait = infirm }
+		NOT = { has_character_modifier = stress_smelling_of_sweat }
 	}
 
 	effect = {

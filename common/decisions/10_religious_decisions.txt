@@ -401,7 +401,7 @@ initiate_consolamentum_decision = {
 
 	is_valid = {
 		OR = {
-			age >= ritual_suicide_age
+			age >= 60
 			custom_description = {
 				text = decision_consolamentum_health
 				health <= 1
@@ -414,7 +414,7 @@ initiate_consolamentum_decision = {
 		hidden_effect = {
 			add_piety_level = 1
 		}
-		death = { death_reason = death_ritual_suicide }
+		death = { death_reason = death_suicide}
 		show_as_tooltip = {
 			add_piety_level = 1
 		}
@@ -1312,6 +1312,7 @@ return_rome_decision = {
 	selection_tooltip = return_rome_decision_tooltip
 
 	is_shown = {
+		always = no
 		top_liege = this
 		faith = faith:catholic
 		exists = faith.religious_head
@@ -1356,18 +1357,12 @@ return_rome_decision = {
 		resolve_title_and_vassal_change = scope:change
 
 		add_piety = major_piety_value
-		if = {
-			limit = {
-				faith.religious_head ?= {
-					this != root
-				}
-			}
-			faith.religious_head = {
-				add_opinion = {
-					target = root
-					modifier = grateful_opinion
-					opinion = 20
-				}
+
+		faith.religious_head = {
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 20
 			}
 		}
 

@@ -68,7 +68,7 @@
 			desc = game_concept_chancellor_desc
 		}
 	}
-
+	
 	auto_fill = {
 	}
 
@@ -545,6 +545,37 @@ councillor_spymaster = {
 		trigger_else = {
 			can_be_spymaster_trigger = { COURT_OWNER = root.liege_or_court_owner }
 		}
+		# Gender must follow laws in merit based realms
+		trigger_if = {
+			limit = {
+				root.liege_or_court_owner = {
+					is_landed = yes
+					government_has_flag = government_has_merit
+				}
+			}
+			trigger_if = {
+				limit = {
+					root.liege_or_court_owner = {
+						OR = {
+							has_realm_law = male_only_law
+							has_realm_law = male_preference_law
+						}
+					}
+				}
+				is_male = yes
+			}
+			trigger_if = {
+				limit = {
+					root.liege_or_court_owner = {
+						OR = {
+							has_realm_law = female_only_law
+							has_realm_law = female_preference_law
+						}
+					}
+				}
+				is_female = yes
+			}
+		}
 		tgp_is_ceremonial_liege_trigger = no
 	}
 
@@ -687,7 +718,7 @@ councillor_court_chaplain = {
 			}
 			triggered_desc = {
 				trigger = {
-					OR = {
+					AND = {
 						culture = { has_cultural_pillar = heritage_tibetan }
 					}
 					religion = religion:buddhism_religion
@@ -946,15 +977,15 @@ councillor_court_chaplain = {
 	portrait_animation = chaplain
 
 	barbershop_data = {
-		position = { 1618.0 172.0 }
+		position = { 1618.0 172.0  }
 		click_to_front = no
 	}
 }
 
 councillor_spouse = {
 	auto_fill = yes
-	can_fire = { councillor_spouse_can_fire = yes }
-	can_reassign = { councillor_spouse_can_reassign = yes }
+	can_fire = no
+	can_reassign = no
 	
 	name = {
 		first_valid = {
@@ -2741,7 +2772,23 @@ councillor_spouse = {
 	tooltip = game_concept_spouse_desc
 
 	valid_position = {
-		councillor_spouse_valid_position = yes
+		AND = {
+			NOT = {
+				has_diarchy_type = vizierate
+			}
+			any_spouse = {
+				OR = {
+					court_owner = root
+					AND = {
+						is_ruler = yes
+						liege ?= root
+					}
+				}
+			}
+		}
+		NOT = { government_has_flag = government_is_landless_adventurer }
+		# Celestial hegemons have access to the ministry instead, so no spouse
+		tgp_has_access_to_ministry_trigger = no
 	}
 
 	valid_character = {
@@ -2774,7 +2821,7 @@ councillor_spouse = {
 	}
 
 	barbershop_data = {
-		position = { 763.0 261.00 }
+		position = { 763.0 261.00  }
 		click_to_front = yes
 	}
 }
@@ -2792,8 +2839,18 @@ councillor_vizier = {
 	}
 
 	valid_character = {
-		exists = liege_or_court_owner
-		can_be_vizier_councillor_trigger = { COUNCIL_OWNER = liege_or_court_owner }
+		exists = root.liege_or_court_owner
+		can_be_councillor_basics_trigger = yes
+		save_temporary_scope_as = confidant
+
+		liege = {
+			OR = {
+				scope:confidant = diarch
+				any_consort = {
+					scope:confidant = this
+				}
+			}
+		}
 	}
 
 	on_get_position = {
@@ -2812,7 +2869,7 @@ councillor_vizier = {
 	}
 
 	barbershop_data = {
-		position = { 763.0 261.00 }
+		position = { 763.0 261.00  }
 		click_to_front = yes
 	}
 }
@@ -3094,7 +3151,7 @@ councillor_kurultai_3 = {
 	portrait_animation = hunting_shortbow_aim_arrow_default
 
 	barbershop_data = {
-		position = { 1618.0 172.0 }
+		position = { 1618.0 172.0  }
 		click_to_front = no
 	}
 }
