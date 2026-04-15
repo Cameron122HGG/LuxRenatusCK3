@@ -855,62 +855,43 @@ tgp_dynastic_cycle.0071 = {
 		name = tgp_dynastic_cycle.0071.a
 		if = {
 			limit = {
-				OR = {
-					has_variable = new_son_of_heaven
+				trigger_if = {
+					limit = { has_variable = favor_era }
+					var:favor_era != flag:advancement
+				}
+				trigger_else = {
 					situation:dynastic_cycle = {
 						NOT = { situation_current_phase = situation_dynastic_cycle_phase_stability_advancement }
 					}
 				}
 			}
 			custom_tooltip = dynastic_cycle_entered_stability_advancement_tt
-			situation:dynastic_cycle = {
-				# Prevent dup entry in history.
-				if = {
-					limit = { NOT = { situation_current_phase = situation_dynastic_cycle_phase_stability_advancement } }
-					situation_top_sub_region = {
-						change_phase = { phase = situation_dynastic_cycle_phase_stability_advancement }
-					}
-				}
-			}
+			# Lose legitimacy, but only if it's not getting you into Chaos
 			if = {
 				limit = {
-					trigger_if = {
-						limit = {
-							has_variable = new_son_of_heaven
-						}
-						has_variable = favor_era
-						var:favor_era != flag:advancement
-					}
-					trigger_else = {
-						situation:dynastic_cycle = {
-							NOT = { situation_current_phase = situation_dynastic_cycle_phase_stability_advancement }
+					legitimacy_level > 2
+				}
+				add_legitimacy = monumental_legitimacy_loss
+			}
+			situation:dynastic_cycle = {
+				situation_top_sub_region = {
+					change_phase = { phase = situation_dynastic_cycle_phase_stability_advancement }
+				}
+				situation_participant_group:expansion_movement = {
+					every_situation_group_participant = {
+						custom = tgp_hegemon_picked_different_era_opinion_advancement_tt
+						add_opinion = {
+							modifier = tgp_hegemon_picked_different_era_opinion
+							target = root
 						}
 					}
 				}
-				# Lose legitimacy, but only if it's not getting you into Chaos
-				if = {
-					limit = {
-						legitimacy_level > 2
-					}
-					add_legitimacy = monumental_legitimacy_loss
-				}
-				situation:dynastic_cycle = {
-					situation_participant_group:expansion_movement = {
+				hidden_effect = {
+					situation_participant_group:conservative_movement = {
 						every_situation_group_participant = {
-							custom = tgp_hegemon_picked_different_era_opinion_advancement_tt
 							add_opinion = {
 								modifier = tgp_hegemon_picked_different_era_opinion
 								target = root
-							}
-						}
-					}
-					hidden_effect = {
-						situation_participant_group:conservative_movement = {
-							every_situation_group_participant = {
-								add_opinion = {
-									modifier = tgp_hegemon_picked_different_era_opinion
-									target = root
-								}
 							}
 						}
 					}
@@ -942,60 +923,43 @@ tgp_dynastic_cycle.0071 = {
 		name = tgp_dynastic_cycle.0071.b
 		if = {
 			limit = {
-				OR = {
-					has_variable = new_son_of_heaven
+				trigger_if = {
+					limit = { has_variable = favor_era }
+					var:favor_era != flag:expansion
+				}
+				trigger_else = {
 					situation:dynastic_cycle = {
 						NOT = { situation_current_phase = situation_dynastic_cycle_phase_stability_expansion }
 					}
 				}
 			}
 			custom_tooltip = dynastic_cycle_entered_stability_expansion_tt
+			# Lose legitimacy, but only if it's not getting you into Chaos
+			if = {
+				limit = {
+					legitimacy_level > 2
+				}
+				add_legitimacy = monumental_legitimacy_loss
+			}
 			situation:dynastic_cycle = {
 				situation_top_sub_region = {
 					change_phase = { phase = situation_dynastic_cycle_phase_stability_expansion }
 				}
-			}
-			if = {
-				limit = {
-					trigger_if = {
-						limit = {
-							has_variable = new_son_of_heaven
-						}
-						# You didn't do as what you promised before
-						has_variable = favor_era
-						var:favor_era != flag:expansion
-					}
-					# or you want change current phase
-					trigger_else = {
-						situation:dynastic_cycle = {
-							NOT = { situation_current_phase = situation_dynastic_cycle_phase_stability_expansion }
+				situation_participant_group:advancement_movement = {
+					every_situation_group_participant = {
+						custom = tgp_hegemon_picked_different_era_opinion_expansion_tt
+						add_opinion = {
+							modifier = tgp_hegemon_picked_different_era_opinion
+							target = root
 						}
 					}
 				}
-				# Lose legitimacy, but only if it's not getting you into Chaos
-				if = {
-					limit = {
-						legitimacy_level > 2
-					}
-					add_legitimacy = monumental_legitimacy_loss
-				}
-				situation:dynastic_cycle = {
-					situation_participant_group:advancement_movement = {
+				hidden_effect = {
+					situation_participant_group:conservative_movement = {
 						every_situation_group_participant = {
-							custom = tgp_hegemon_picked_different_era_opinion_expansion_tt
 							add_opinion = {
 								modifier = tgp_hegemon_picked_different_era_opinion
 								target = root
-							}
-						}
-					}
-					hidden_effect = {
-						situation_participant_group:conservative_movement = {
-							every_situation_group_participant = {
-								add_opinion = {
-									modifier = tgp_hegemon_picked_different_era_opinion
-									target = root
-								}
 							}
 						}
 					}
