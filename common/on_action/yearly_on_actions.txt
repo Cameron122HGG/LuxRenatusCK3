@@ -560,137 +560,137 @@ yearly_global_pulse = {
 		#	}
 		#}
 		#Greek anarchy CB becomes unavailable when things are settled
-		#if = {
-		#	limit = {
-		#		exists = global_var:byz_collapse_counter
-		#		current_year >= global_var:byz_collapse_counter
-		#		OR = {
-		#			NOT = {
-		#				exists = title:e_latin_empire.holder
-		#			}
-		#			title:e_latin_empire.holder ?= {
-		#				NOT = {
-		#					any_realm_county = {
-		#						OR = {
-		#							empire = title:e_latin_empire
-		#							empire = title:e_byzantium
-		#						}
-		#					}
-		#				}
-		#			}
-		#			title:e_latin_empire.holder ?= {
-		#				any_held_title = {
-		#					this = title:e_byzantium
-		#				}
-		#			}
-		#		}
-		#	}
-		#	remove_global_variable = byz_collapse_counter
+		if = {
+			limit = {
+				exists = global_var:byz_collapse_counter
+				current_year >= global_var:byz_collapse_counter
+				OR = {
+					NOT = {
+						exists = title:e_latin_empire.holder
+					}
+					title:e_latin_empire.holder ?= {
+						NOT = {
+							any_realm_county = {
+								OR = {
+									empire = title:e_latin_empire
+									empire = title:e_byzantium
+								}
+							}
+						}
+					}
+					title:e_latin_empire.holder ?= {
+						any_held_title = {
+							this = title:e_byzantium
+						}
+					}
+				}
+			}
+			remove_global_variable = byz_collapse_counter
 
-		# 	#Send notification out to everyone in de jure latin empire
-		# 	if = {
-		# 		limit = {
-		# 			title:e_latin_empire = {
-		# 				any_in_de_jure_hierarchy = {
-		# 					holder ?= {
-		# 						is_ai = no
-		# 					}
-		# 				}
-		# 			}
-		# 		}
-		# 		title:e_latin_empire = {
-		# 			every_in_de_jure_hierarchy = {
-		# 				limit = {
-		# 					holder ?= {
-		# 						is_ai = no
-		# 					}
-		# 				}
-		# 				if = {
-		# 					limit = {
-		# 						holder ?= {
-		# 							NOT = { is_in_list = latin_byz_notify }
-		# 						}
-		# 					}
-		# 					holder = {
-		# 						add_to_list = latin_byz_notify
-		# 					}
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	if = {
-		# 		limit = {
-		# 			title:e_byzantium = {
-		# 				any_in_de_jure_hierarchy = {
-		# 					holder ?= {
-		# 						is_ai = no
-		# 					}
-		# 				}
-		# 			}
-		# 		}
-		# 		title:e_byzantium = {
-		# 			every_in_de_jure_hierarchy = {
-		# 				limit = {
-		# 					holder ?= {
-		# 						is_ai = no
-		# 					}
-		# 				}
-		# 				if = {
-		# 					limit = {
-		# 						holder = {
-		# 							NOT = { is_in_list = latin_byz_notify }
-		# 						}
-		# 					}
-		# 					holder = {
-		# 						add_to_list = latin_byz_notify
-		# 					}
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	title:e_latin_empire.holder = {
-		# 		if = {
-		# 			limit = {
-		# 				is_ai = no
-		# 				NOT = { is_in_list = latin_byz_notify }
-		# 			}
-		# 			add_to_list = latin_byz_notify
-		# 		}
-		# 		trigger_event = ep3_frankokratia_events.0081
-		# 	}
-		# 	title:e_byzantium.holder = {
-		# 		if = {
-		# 			limit = {
-		# 				is_ai = no
-		# 				NOT = { is_in_list = latin_byz_notify }
-		# 			}
-		# 			add_to_list = latin_byz_notify
-		# 		}
-		# 	}
-		# 	title:e_byzantium = {
-		# 		save_scope_as = byzantium
-		# 	}
-		# 	if = {
-		# 		limit = {
-		# 			any_in_list = {
-		# 				list = latin_byz_notify
-		# 				count > 0
-		# 			}
-		# 		}
-		# 		every_in_list = {
-		# 			list = latin_byz_notify
-		# 			send_interface_message = {
-		# 				type = msg_frankokratia_anarchy_end
-		# 				title = msg_greek_anarchy_cb_loss.t
-		# 				desc = msg_greek_anarchy_cb_loss.desc
-		# 				right_icon = scope:byzantium
-		# 				custom_tooltip = lose_greek_anarchy_cb_tt
-		# 			}
-		# 		}
-		# 	}
-		# }
+			#Send notification out to everyone in de jure latin empire
+			if = {
+				limit = {
+					title:e_latin_empire = {
+						any_in_de_jure_hierarchy = {
+							holder ?= {
+								is_ai = no
+							}
+						}
+					}
+				}
+				title:e_latin_empire = {
+					every_in_de_jure_hierarchy = {
+						limit = {
+							holder ?= {
+								is_ai = no
+							}
+						}
+						if = {
+							limit = {
+								holder ?= {
+									NOT = { is_in_list = latin_byz_notify }
+								}
+							}
+							holder = {
+								add_to_list = latin_byz_notify
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					title:e_byzantium = {
+						any_in_de_jure_hierarchy = {
+							holder ?= {
+								is_ai = no
+							}
+						}
+					}
+				}
+				title:e_byzantium = {
+					every_in_de_jure_hierarchy = {
+						limit = {
+							holder ?= {
+								is_ai = no
+							}
+						}
+						if = {
+							limit = {
+								holder = {
+									NOT = { is_in_list = latin_byz_notify }
+								}
+							}
+							holder = {
+								add_to_list = latin_byz_notify
+							}
+						}
+					}
+				}
+			}
+			title:e_latin_empire.holder = {
+				if = {
+					limit = {
+						is_ai = no
+						NOT = { is_in_list = latin_byz_notify }
+					}
+					add_to_list = latin_byz_notify
+				}
+				trigger_event = ep3_frankokratia_events.0081
+			}
+			title:e_byzantium.holder = {
+				if = {
+					limit = {
+						is_ai = no
+						NOT = { is_in_list = latin_byz_notify }
+					}
+					add_to_list = latin_byz_notify
+				}
+			}
+			title:e_byzantium = {
+				save_scope_as = byzantium
+			}
+			if = {
+				limit = {
+					any_in_list = {
+						list = latin_byz_notify
+						count > 0
+					}
+				}
+				every_in_list = {
+					list = latin_byz_notify
+					send_interface_message = {
+						type = msg_frankokratia_anarchy_end
+						title = msg_greek_anarchy_cb_loss.t
+						desc = msg_greek_anarchy_cb_loss.desc
+						right_icon = scope:byzantium
+						custom_tooltip = lose_greek_anarchy_cb_tt
+					}
+				}
+			}
+		}
 		# TGP House Relations tracking
-		every_active_dynasty = {
+		every_dynasty = {
 			every_dynasty_house = {
 				every_house_relation = {
 					if = {
@@ -804,14 +804,35 @@ yearly_global_pulse = {
 				}
 			}
 		}
-		#Yearly Imperial Grace Reduction for Hegemonic Tributaries 
+
+		# complete grand campaign if whole target kingdom conquered in other way
 		if = {
 			limit = {
-				exists = suzerain
-				suzerain = { highest_held_title_tier = tier_hegemony }
-				NOT = { exists = suzerain.top_participant_group:dynastic_cycle }
+				exists = title:h_china.holder
+				any_great_project = {
+					great_project_type = grand_campaign_project
+					great_project_owner = title:h_china.holder
+					var:grand_campaign_target_kingdom ?= {
+						any_de_jure_county = {
+							count = all
+							holder.top_overlord = title:h_china.holder
+						}
+					}
+				}
 			}
-			
+			every_great_project = {
+				limit = {
+					great_project_type = grand_campaign_project
+					great_project_owner = title:h_china.holder
+					var:grand_campaign_target_kingdom ?= {
+						any_de_jure_county = {
+							count = all
+							holder.top_overlord = title:h_china.holder
+						}
+					}
+				}
+				complete_great_project = this
+			}
 		}
 	}
 
@@ -1622,6 +1643,10 @@ yearly_playable_pulse = {
 					NOT = { government_has_flag = government_is_nomadic }
 					any_held_title = {
 						is_nomad_title = yes
+						trigger_if = {
+							limit = { exists = title_domicile }
+							title_domicile = { is_domicile_type = yurt }
+						}
 					}
 				}
 				save_scope_as = scoped_ruler
@@ -1632,6 +1657,10 @@ yearly_playable_pulse = {
 					every_held_title = {
 						limit = {
 							is_nomad_title = yes
+							trigger_if = {
+								limit = { exists = title_domicile }
+								title_domicile = { is_domicile_type = yurt }
+							}
 						}
 						scope:scoped_ruler = {
 							destroy_title = prev
@@ -1665,11 +1694,19 @@ yearly_playable_pulse = {
 					}
 					any_held_title = {
 						is_nomad_title = yes
+						trigger_if = {
+							limit = { exists = title_domicile }
+							title_domicile = { is_domicile_type = yurt }
+						}
 					}
 				}
 				every_held_title = {
 					limit = {
 						is_nomad_title = yes
+						trigger_if = {
+							limit = { exists = title_domicile }
+							title_domicile = { is_domicile_type = yurt }
+						}
 					}
 					scope:scoped_ruler = {
 						destroy_title = prev
@@ -1795,6 +1832,138 @@ yearly_playable_pulse = {
 				debug_log_scopes = yes
 			}
 		}
+		#Very weak landed nomads are culled
+		if = {
+			limit = {
+				years_from_game_start > 3
+				government_has_flag = government_is_nomadic
+				domicile ?= {
+					herd < 150
+				}
+				is_at_war = no
+				is_landed = yes
+				capital_county.title_province = {
+					has_holding_type = nomad_holding
+				}
+				is_ai = yes
+				any_held_title = {
+					exists = title_domicile
+					NOT = { exists = var:player_domicile_title }
+				}
+				is_imprisoned = no
+				is_migrating = no
+				NOR = {
+					exists = involved_activity
+					any_close_or_extended_family_member = {
+						is_ai = no
+					}
+					liege ?= {
+						is_ai = no
+					}
+					any_ally = {
+						is_ai = no
+					}
+					any_vassal = {
+						is_ai = no
+					}
+					any_tributary = {
+						is_ai = no
+					}
+					any_player = {
+						root = {
+							is_of_major_or_minor_interest_trigger = { CHARACTER = prev }
+						}
+					}
+				}
+			}
+			#Cull if weak or has been slightly weak for multiple years
+			if = {
+				limit = {
+					OR = {
+						domicile ?= {
+							herd <= 50
+						}
+						has_character_flag = weakish_nomad
+					}
+				}
+				#Grant any vassals independence or transfer to liege
+				every_vassal = {
+					limit = {
+						highest_held_title_tier >= tier_county
+					}
+					save_scope_as = nomad_vassal
+					create_title_and_vassal_change = {
+						type = independency
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					change_liege_or_become_independent = {
+						CHANGE = scope:change
+						VASSAL = scope:nomad_vassal
+					}
+					resolve_title_and_vassal_change = scope:change
+				}
+				#Give all titles to herders
+				give_domain_to_herders = yes
+				#Make LAAMP or wanderer
+				clean_up_ai_nomad_effect = yes
+			}
+			#Set flag if first year and only slightly weak
+			else = {
+				add_character_flag = {
+					flag = weakish_nomad
+					months = 18
+				}
+			}
+		}
+		#Accolades training squires
+		if = {
+			limit = {
+				any_accolade = {
+					exists = acclaimed_knight
+					acclaimed_knight = {
+						is_incapable = no
+						is_imprisoned = no
+					}
+					accolade_squires_quality_value >= accolade_squires_inexperienced_minimum_value
+				}
+			}
+			random = {
+				chance = {
+					value = 0
+					every_accolade = {
+						limit = {
+							exists = acclaimed_knight
+							acclaimed_knight = {
+								is_incapable = no
+								is_imprisoned = no
+							}
+							accolade_squires_quality_value >= accolade_squires_inexperienced_minimum_value
+						}
+						add = 33
+					}
+				}
+				#Need to trigger one accolade's effect now, and the rest on increments to space out their messages
+				random_accolade = {
+					limit = {
+						#Favour accolades who have not trained squire in last 3 years
+						NOT = {
+							has_variable = recently_trained_squire
+						}
+						accolade_can_train_squire_trigger = yes
+					}
+					alternative_limit = {
+						accolade_can_train_squire_trigger = yes
+					}
+					#Give other accolades a chance to train squires
+					set_variable = {
+						name = recently_trained_squire
+						years = 3
+					}
+					accolade_squire_training_effect = yes
+				}
+			}
+		}
 	}
 	events = {
 		court_maintenance.0012 # Dynasty banner improves with renown
@@ -1879,11 +2048,19 @@ three_year_playable_pulse = {
 				limit = {
 					any_held_title = {
 						is_nomad_title = yes
+						trigger_if = {
+							limit = { exists = title_domicile }
+							title_domicile = { is_domicile_type = yurt }
+						}
 					}
 				}
 				every_held_title = {
 					limit = {
 						is_nomad_title = yes
+						trigger_if = {
+							limit = { exists = title_domicile }
+							title_domicile = { is_domicile_type = yurt }
+						}
 					}
 					scope:scoped_ruler = {
 						destroy_title = prev
@@ -2017,6 +2194,77 @@ three_year_playable_pulse = {
 				left_icon = scope:inspired_courtier
 				title = courtier_inspired_message
 				desc = courtier_inspired_effect
+			}
+		}
+		#Accolade knights training
+		if = {
+			limit = {
+				any_accolade = {
+					accolade_can_train_knight_trigger = yes
+				}
+			}
+			random = {
+				chance = {
+					value = 0
+					every_accolade = {
+						limit = {
+							accolade_can_train_knight_trigger = yes
+						}
+						if = {
+							limit = {
+								var:lifetime_glory >= monumental_glory_value
+							}
+							add = 33
+						}
+						if = {
+							limit = {
+								var:lifetime_glory >= massive_glory_value
+							}
+							add = 33
+						}
+						if = {
+							limit = {
+								var:lifetime_glory >= major_glory_value
+							}
+							add = 33
+						}
+						add = 33
+					}
+				}
+				#Need to trigger one accolade's effect now, and the rest on increments to space out their messages
+				random_accolade = {
+					weight = {
+						base = 3
+						modifier = {
+							add = 1
+							var:lifetime_glory >= monumental_glory_value
+						}
+						modifier = {
+							add = 1
+							var:lifetime_glory >= massive_glory_value
+						}
+						modifier = {
+							add = 1
+							var:lifetime_glory >= major_glory_value
+						}
+					}
+					limit = {
+						#Favour accolades who have not trained recently
+						NOT = {
+							has_variable = recently_trained_knight
+						}
+						accolade_can_train_knight_trigger = yes
+					}
+					alternative_limit = {
+						accolade_can_train_knight_trigger = yes
+					}
+					#Give other accolades a chance to train squires
+					set_variable = {
+						name = recently_trained_knight
+						years = 15
+					}
+					accolade_knight_training_effect = yes
+				}
 			}
 		}
 	}

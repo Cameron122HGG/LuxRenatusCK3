@@ -1759,6 +1759,7 @@ convert_to_feudalism_from_administrative_decision = {
 #############################################
 
 ### Withdraw from Governorship ###
+### Withdraw from Ministry ###
 renounce_governorship_decision = {
 	picture = {
 		trigger = {
@@ -1784,7 +1785,17 @@ renounce_governorship_decision = {
 		empire = 120
 		hegemony = 0
 	}
-
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					tgp_is_any_minister = yes
+				}
+				desc = renounce_ministership_decision
+			}
+			desc = renounce_governorship_decision
+		}
+	}
 	desc = {
 		first_valid = {
 			triggered_desc = {	
@@ -1802,7 +1813,17 @@ renounce_governorship_decision = {
 			desc = renounce_governorship_decision_desc
 		}
 	}
-	selection_tooltip = renounce_governorship_decision_tooltip
+	selection_tooltip = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					tgp_is_any_minister = yes
+				}
+				desc = renounce_ministership_decision_tooltip
+			}
+			desc = renounce_governorship_decision_tooltip
+		}
+	}
 	decision_group_type = admin
 
 	is_shown = {
@@ -1825,7 +1846,15 @@ renounce_governorship_decision = {
 	}
 
 	effect = {
-		custom_tooltip = renounce_governorship_decision_effect_tt
+		if = {
+			limit = {
+				tgp_is_any_minister = yes
+			}
+			custom_tooltip = renounce_ministership_decision_effect_tt
+		}
+		else = {
+			custom_tooltip = renounce_governorship_decision_effect_tt
+		}
 		show_as_tooltip = {
 			tgp_step_down_title_recipient_tooltip_effect = yes
 			if = {

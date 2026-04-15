@@ -688,95 +688,10 @@ travel_leader = {
 	}	
 }
 
-# root = accolade
-deactivate_accolade = {
-	prestige = {
-		if = {
-			limit = {
-				accolade_owner ?= {
-					highest_held_title_tier >= tier_empire
-				}
-				accolade_rank >= 2
-			}
-			add = massive_prestige_value
-		}
-		else_if = {
-			limit = {
-				accolade_owner ?= {
-					highest_held_title_tier = tier_kingdom
-				}
-				accolade_rank >= 2
-			}
-			add = major_prestige_value
-		}
-		else_if = {
-			limit = {
-				OR = {
-					AND = {
-						accolade_owner ?= {
-							highest_held_title_tier = tier_duchy
-						}
-						accolade_rank >= 2
-					}
-					AND = {
-						accolade_owner ?= {
-							highest_held_title_tier >= tier_empire
-						}
-						accolade_rank < 2
-					}
-				}
-			}
-			add = medium_prestige_value
-		}
-		else_if = {
-			limit = {
-				OR = {
-					AND = {
-						accolade_owner ?= {
-							highest_held_title_tier = tier_county
-						}
-						accolade_rank >= 2
-					}
-					AND = {
-						accolade_owner ?= {
-							highest_held_title_tier = tier_kingdom
-						}
-						accolade_rank < 2
-					}
-				}
-			}
-			add = minor_prestige_value
-		}
-		else = {
-			add = miniscule_prestige_value
-		}
-	}
-}
-
 # root = acclaimed knight
 # event targets = scope:owner
 create_accolade = {
-	prestige = {
-		if = {
-			limit = {
-				scope:owner ?= {
-					highest_held_title_tier >= tier_empire
-				}
-			}
-			add = 200
-		}
-		else_if = {
-			limit = {
-				scope:owner ?= {
-					highest_held_title_tier = tier_kingdom
-				}
-			}
-			add = 150
-		}
-		else = {
-			add = 100
-		}
-	}
+	prestige = accolade_creation_prestige_cost 
 }
 
 # root = the title whose troops we want to reassign

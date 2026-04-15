@@ -23,10 +23,10 @@ is_very_young_character = {
 				has_trait = fecund
 			}
 		}
-		age <= 25
+		effective_age <= 25
 	}
 	trigger_else = {
-		age <= 20
+		effective_age <= 20
 	}		
 }
 
@@ -38,10 +38,10 @@ is_young_character = {
 				has_trait = fecund
 			}
 		}
-		age <= 35
+		effective_age <= 35
 	}
 	trigger_else = {
-		age <= 30
+		effective_age <= 30
 	}
 }
 
@@ -53,10 +53,10 @@ is_aging_character = {
 				has_trait = fecund
 			}
 		}
-		age >= 45
+		effective_age >= 45
 	}
 	trigger_else = {
-		age >= 40
+		effective_age >= 40
 	}
 }
 
@@ -65,9 +65,9 @@ is_old_character = {
 		limit = {
 			is_male = yes
 		}
-		age >= define:NCharacter|MALE_ELDERLY_AGE
+		effective_age >= define:NCharacter|MALE_ELDERLY_AGE
 	}
 	trigger_else = {
-		age >= define:NCharacter|FEMALE_ELDERLY_AGE
+		effective_age >= define:NCharacter|FEMALE_ELDERLY_AGE
 	}
 }

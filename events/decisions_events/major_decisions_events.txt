@@ -1584,3 +1584,150 @@ major_decisions.3200 = {
 		}
 	}
 }
+#Restore Carthage 
+major_decisions.3300 = { 
+	type = character_event
+	title = major_decisions.3300.t
+	desc = major_decisions.3300.desc
+	theme = crown
+
+	override_effect_2d = { reference = legend_glow }
+
+	left_portrait = {
+		character = root 
+		animation = sword_coup_degrace
+		camera = camera_torso_scheme_right_look_right
+	}
+
+	immediate = {
+		restore_carthage_scripted_effect = yes
+
+		culture = { save_scope_as = founder_culture }
+	}
+
+	option = {
+		name = major_decisions.3300.a
+
+		hidden_effect = {
+			culture:carthaginian = {
+				get_all_innovations_from = scope:founder_culture
+			}
+		}
+
+		#convert people to your new culture
+		convert_family_culture_and_notify_vassals_effect = {
+			OLD_CULTURE = root.culture
+			NEW_CULTURE = culture:carthaginian
+			CONVERTER = root
+		}
+		
+		#convert capital counties to carthaginian
+		title:c_tunis = {
+			set_county_culture = culture:carthaginian
+		}
+		title:c_tripolitana = {
+			set_county_culture = culture:carthaginian
+		}
+		title:c_algier = {
+			set_county_culture = culture:carthaginian		
+		}
+		title:c_murcia = {
+			set_county_culture = culture:carthaginian
+		}
+	}
+
+	option = {
+		name = major_decisions.3300.b
+	}
+}
+
+##############
+# Carantania #
+##############
+major_decisions.3400 = {
+	type = character_event
+	title = major_decisions.3400.t
+	desc = major_decisions.3400.desc
+	theme = crown
+	override_background = ce1_legendary_spring
+	left_portrait =	{
+		character = root
+		animation = pondering
+	}
+	window = big_event_window
+
+	widget = { gui = event_window_widget_vfx_godray container = foreground_shader_vfx_container }
+
+	immediate = {
+		decision_restore_carantania_effect = yes
+	}
+
+	option = {
+		name = major_decisions.3400.a
+	}
+}
+
+###########
+# Cumbria #
+###########
+major_decisions.3500 = {
+	type = character_event
+	title = major_decisions.3500.t
+	desc = major_decisions.3500.desc
+	theme = crown
+	override_background = council_chamber
+	left_portrait =	{
+		character = root
+		animation = pondering
+	}
+	window = big_event_window
+
+	widget = { gui = event_window_widget_vfx_godray container = foreground_shader_vfx_container }
+
+	immediate = {
+		form_cumbria_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = major_decisions.3500.a
+	}
+}
+
+###################
+# Cossack Kingdom #
+###################
+
+#Create Cossack Kingdom
+major_decisions.3600 = { 
+	type = character_event
+	title = major_decisions.3600.t
+	desc = major_decisions.3600.desc
+	theme = crown
+	override_background = council_chamber
+
+	window = big_event_window
+
+	override_effect_2d = { reference = legend_glow }
+
+	left_portrait = {
+		character = root 
+		animation = sword_coup_degrace
+		camera = camera_torso_scheme_right_look_right
+	}
+
+	immediate = {
+		create_cossack_scripted_effect = yes
+	}
+
+	option = {
+		name = major_decisions.3600.a
+		convert_family_culture_and_notify_vassals_effect = {
+			OLD_CULTURE = scope:founder_culture
+			NEW_CULTURE = scope:new_culture
+			CONVERTER = root
+		}
+	}
+	option = {
+		name = major_decisions.3600.b
+	}
+}

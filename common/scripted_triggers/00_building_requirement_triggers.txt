@@ -202,7 +202,16 @@ building_orchards_requirement_terrain = {
 }
 
 building_farm_estates_requirement_terrain = {
-	terrain = farmlands
+	OR = {
+		terrain = farmlands
+		AND = {
+			OR = {
+				terrain = hills
+				terrain = jungle
+			}
+			county.culture = { has_cultural_parameter = rice_cultivators_can_construct_paddy_fields_in_hills_and_jungle }
+		}
+	}
 }
 
 building_military_camps_requirement_terrain = {
@@ -757,6 +766,7 @@ islamic_special_building_trigger = {
 		has_building = the_friday_mosque_01 # shared zoroastrian
 		has_building = holy_site_great_mosque_of_cordoba_01 # shared christian
 		has_building_or_higher = damascus_mosque_01
+		has_building_or_higher = yazd_mosque_01
 	}
 }
 
@@ -775,6 +785,8 @@ christian_special_building_trigger = {
 		has_building_or_higher = holy_wisdom_01
 		has_building_or_higher = duomo_florence_01
 		has_building_or_higher = wawel_cathedral_01
+		has_building_or_higher = holy_site_st_peters_basilica_01
+		has_building_or_higher = mont_st_michel_01
 	}
 }
 
@@ -785,9 +797,19 @@ eastern_special_building_trigger = {
 		has_building = shwedagon_pagoda_01
 		has_building = ananda_temple_01
 		has_building = khajuraho_01
+		has_building = angkor_wat_01
+		has_building = my_son_sanctuary_01
+		has_building = stone_pagoda_01
+		has_building = muara_takus_01
+		has_building = three_pagodas_dali_01
+		has_building = pyramid_lingapura_01
+		has_building = buddha_kamakura_01
 		has_building_or_higher = jokhang_01
 		has_building_or_higher = konark_temple_01
 		has_building_or_higher = vatapi_caves_01
+		has_building_or_higher = sanchi_stupa_01
+		has_building_or_higher = boudhanath_01
+		has_building_or_higher = temples_angkor_01
 	}
 }
 
@@ -814,6 +836,7 @@ religious_special_building_exclusion_trigger = { # checks if any special buildin
 				has_building = holy_site_japanese_temple_01
 				has_building = holy_site_chinese_temple_01
 				has_building = holy_site_se_asia_pagan_temple_01
+				has_building = izumo_taisha_01
 			}
 		}
 		AND = { # Islamic
@@ -830,11 +853,12 @@ religious_special_building_exclusion_trigger = { # checks if any special buildin
 		}
 		AND = { # Eastern family
 			NOR = {
-				ROOT.religion = religion:hinduism_religion
-				ROOT.religion = religion:buddhism_religion
-				ROOT.religion = religion:jainism_religion
-				ROOT.religion = religion:taoism_religion
-				ROOT.religion = religion:zoroastrianism_religion
+				barony.holder.religion = religion:hinduism_religion
+				barony.holder.religion = religion:buddhism_religion
+				barony.holder.religion = religion:jainism_religion
+				barony.holder.religion = religion:taoism_religion
+				barony.holder.religion = religion:confucianism_religion
+				barony.holder.religion = religion:zoroastrianism_religion
 			}
 			eastern_special_building_trigger = yes
 		}
@@ -847,6 +871,21 @@ religious_special_building_exclusion_trigger = { # checks if any special buildin
 			NOT = { barony.holder.religion = religion:judaism_religion }
 			has_building = temple_in_jerusalem_01
 		}
+	}
+}
+
+building_monastic_schools_holding_level_requirement_trigger = {
+	trigger_if = {
+		limit = { scope:holder.faith = { has_doctrine_parameter = monastic_schools_allowed_in_every_holding_type } }
+		OR = {
+			has_building_or_higher = castle_$LEVEL$
+			has_building_or_higher = city_$LEVEL$
+			has_building_or_higher = temple_$LEVEL$
+			has_building_or_higher = temple_citadel_$LEVEL$
+		}
+	}
+	trigger_else = {
+		has_building_or_higher = temple_$LEVEL$
 	}
 }
 
@@ -881,6 +920,7 @@ building_spice_plantation_requirement_terrain = {
 		geographical_region = world_asia_sulawesi_maluku
 		geographical_region = world_asia_indonesia 
 		geographical_region = world_india
+		geographical_region = world_burma
 	}
 	OR = {
 		terrain = jungle
@@ -899,18 +939,18 @@ building_examination_hall_requirement_terrain = {
 }
 
 building_breweries_requirement = {
-	OR = {
-		AND = {
+	trigger_if = {
+		limit = {
 			has_building_or_higher = temple_$NUMBER$
-			OR = {
-				faith = faith:catholic
-				faith = { has_doctrine_parameter = allows_brewery }
-			}
 		}
-		AND = {
-			has_building_or_higher = city_$NUMBER$
-			culture = { has_cultural_parameter = allows_brewery }
+		OR = {
+			faith = faith:catholic
+			faith = { has_doctrine_parameter = allows_brewery }
 		}
+	}
+	trigger_else = {
+    	building_requirement_castle_city_church = { LEVEL = $NUMBER$ }
+		culture = { has_cultural_parameter = allows_brewery }
 	}
 }
 
