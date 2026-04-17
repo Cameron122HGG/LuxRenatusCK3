@@ -50,7 +50,11 @@ ep2_wedding.0101 = {
 			text = ep2_wedding.0101.a_lowborn
 		}			
 		custom_tooltip = ep2_wedding.0101.a.tt
-		set_variable = bloody_wedding_murder_family_var
+		set_variable = {
+			name = bloody_wedding_murder
+			value = flag:family
+			years = 1
+		}
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -82,8 +86,12 @@ ep2_wedding.0101 = {
 	option = { #kill only the spouse
 		name = ep2_wedding.0101.b
 		custom_tooltip = ep2_wedding.0101.a.tt
-		set_variable = bloody_wedding_murder_solo_var
-			ai_chance = {
+		set_variable = {
+			name = bloody_wedding_murder
+			value = flag:solo
+			years = 1
+		}
+		ai_chance = {
 			base = 100
 			modifier = {
 				OR = {
@@ -113,8 +121,12 @@ ep2_wedding.0101 = {
 				}
 			}
 		}
-		set_variable = bloody_wedding_murder_spouse_var
-			ai_chance = {
+		set_variable = {
+			name = bloody_wedding_murder
+			value = flag:spouse
+			years = 1
+		}
+		ai_chance = {
 			base = 100
 			modifier = {
 				OR = {
@@ -303,7 +315,7 @@ ep2_wedding.0202 = {
 
 	trigger = {
 		exists = scope:activity
-		has_variable = bloody_wedding_murder_family_var
+		var:bloody_wedding_murder ?= flag:family
 	}
 	
 	immediate = {
@@ -584,7 +596,7 @@ ep2_wedding.0203 = {
 
 	trigger = {
 		exists = scope:activity
-		has_variable = bloody_wedding_murder_solo_var
+		var:bloody_wedding_murder ?= flag:solo
 	}
 	
 	immediate = {
@@ -971,19 +983,19 @@ ep2_wedding.0301 = {
 		first_valid = {
 			triggered_desc = { #Your mercenaries killed everyone
 				trigger = {
-					has_variable = bloody_wedding_murder_family_var
+					var:bloody_wedding_murder ?= flag:family
 				}
 				desc = ep2_wedding.0301.desc.family
 			}
 			triggered_desc = { #Agent killed the spouse
 				trigger = {
-					has_variable = bloody_wedding_murder_solo_var
+					var:bloody_wedding_murder ?= flag:solo
 				}
 				desc = ep2_wedding.0301.desc.agent
 			}
 			triggered_desc = { #Spouse died during the wedding night
 				trigger = {
-					has_variable = bloody_wedding_murder_spouse_var
+					var:bloody_wedding_murder ?= flag:spouse
 				}
 				desc = ep2_wedding.0301.desc.wedding_night
 			}
@@ -992,7 +1004,7 @@ ep2_wedding.0301 = {
 			triggered_desc = { #You're the spouse - wedding night kill
 				trigger = {
 					scope:spouse_1 = root 
-					has_variable = bloody_wedding_murder_spouse_var
+					var:bloody_wedding_murder ?= flag:spouse
 				}
 				desc = ep2_wedding.0301.spouse_wnight
 			}
@@ -1112,19 +1124,19 @@ ep2_wedding.0302 = {
 		first_valid = {
 			triggered_desc = { #Host killed everyone
 				trigger = {
-					scope:host = { has_variable = bloody_wedding_murder_family_var }
+					scope:host = { var:bloody_wedding_murder ?= flag:family }
 				}
 				desc = ep2_wedding.0302.desc.family
 			}
 			triggered_desc = { #Agent killed the spouse
 				trigger = {
-					scope:host = { has_variable = bloody_wedding_murder_solo_var }
+					scope:host = { var:bloody_wedding_murder ?= flag:solo }
 				}
 				desc = ep2_wedding.0302.desc.agent
 			}
 			triggered_desc = { #Spouse died during the wedding night
 				trigger = {
-					scope:host = { has_variable = bloody_wedding_murder_spouse_var }
+					scope:host = { var:bloody_wedding_murder ?= flag:spouse }
 				}
 				desc = ep2_wedding.0302.desc.wedding_night
 			}
@@ -1185,7 +1197,7 @@ ep2_wedding.0302 = {
 		scope:activity.var:spouse_2_var = { save_scope_as = spouse_2 }
 		if = {
 			limit = {
-				scope:host = { has_variable = bloody_wedding_murder_family_var }
+				scope:host = { var:bloody_wedding_murder ?= flag:family }
 			}
 			show_as_tooltip = {
 				scope:activity = {
@@ -1208,8 +1220,8 @@ ep2_wedding.0302 = {
 			limit = {
 				scope:host = {
 					OR = {
-						has_variable = bloody_wedding_murder_solo_var
-						has_variable = bloody_wedding_murder_spouse_var
+						var:bloody_wedding_murder ?= flag:solo
+						var:bloody_wedding_murder ?= flag:spouse
 					}
 				}
 			}
@@ -1488,9 +1500,9 @@ ep2_wedding.0955 = {
 ep2_wedding.0958 = { #variable clean up - done in an event so they persist for the guests
 	hidden = yes
 	immediate = {
-		remove_variable ?= bloody_wedding_murder_family_var
-		remove_variable ?= bloody_wedding_murder_solo_var
-		remove_variable ?= bloody_wedding_murder_spouse_var
+		remove_variable ?= bloody_wedding_murder
+		remove_variable ?= bloody_wedding_backed_down_var
+		remove_variable ?= bloody_murder_fail
 	}
 }
 
@@ -1594,13 +1606,13 @@ ep2_wedding.0204 = {
 			#we assume you're the spouse otherwise
 			triggered_desc = {
 				trigger = {
-					scope:host = { has_variable = bloody_wedding_murder_family_var }
+					scope:host = { var:bloody_wedding_murder ?= flag:family }
 				}
 				desc = ep2_wedding.0204.desc.family
 			}
 			triggered_desc = {
 				trigger = {
-					scope:host = { has_variable = bloody_wedding_murder_solo_var }
+					scope:host = { var:bloody_wedding_murder ?= flag:solo }
 				}
 				desc = ep2_wedding.0204.desc.solo
 			}
@@ -1622,7 +1634,7 @@ ep2_wedding.0204 = {
 	lower_center_portrait = {
 		trigger = {
 			root != scope:spouse_2
-			NOT = { scope:host = { has_variable = bloody_wedding_murder_solo_var } }
+			NOT = { scope:host = { var:bloody_wedding_murder ?= flag:solo } }
 		}
 		character = scope:spouse_2
 	}
@@ -1630,7 +1642,7 @@ ep2_wedding.0204 = {
 		trigger = {
 			exists = scope:entourage_1
 			root != scope:entourage_1
-			NOT = { scope:host = { has_variable = bloody_wedding_murder_solo_var } }
+			NOT = { scope:host = { var:bloody_wedding_murder ?= flag:solo } }
 		}
 		character = scope:entourage_1
 	}
@@ -1638,7 +1650,7 @@ ep2_wedding.0204 = {
 		trigger = {
 			exists = scope:entourage_2
 			root != scope:entourage_2
-			NOT = { scope:host = { has_variable = bloody_wedding_murder_solo_var } }
+			NOT = { scope:host = { var:bloody_wedding_murder ?= flag:solo } }
 		}
 		character = scope:entourage_2
 	}

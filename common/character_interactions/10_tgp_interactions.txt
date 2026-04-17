@@ -2667,7 +2667,7 @@ send_child_to_examination_interaction = {
 						add = 20
 					}
 					modifier = {
-						house ?= { has_house_power_parameter = examination_success_bonus }
+						house ?= { has_house_aspiration_parameter = examination_success_bonus }
 						add = 10
 					}
 					modifier = {
@@ -4392,8 +4392,8 @@ influence_meritorious_career_interaction = {
 				limit = {
 					scope:actor.house ?= {
 						OR = {
-							has_house_power_parameter = influence_career_bonus_1
-							has_house_power_parameter = influence_career_bonus_2
+							has_house_aspiration_parameter = influence_career_bonus_1
+							has_house_aspiration_parameter = influence_career_bonus_2
 						}
 					}
 					scope:recipient.house ?= scope:actor.house
@@ -4403,11 +4403,11 @@ influence_meritorious_career_interaction = {
 					multiply = {
 						scope:actor.house = {
 							if = {
-								limit = { has_house_power_parameter = influence_career_bonus_2 }
+								limit = { has_house_aspiration_parameter = influence_career_bonus_2 }
 								add = influence_career_bonus_2_value
 							}
 							else_if = {
-								limit = { has_house_power_parameter = influence_career_bonus_1 }
+								limit = { has_house_aspiration_parameter = influence_career_bonus_1 }
 								add = influence_career_bonus_1_value
 							}
 						}

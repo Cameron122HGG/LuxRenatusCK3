@@ -13473,7 +13473,7 @@ seduce_outcome_publicised_attempted_crimes_or_nothing_effect = {
 			limit = {
 				$OWNER$ = { is_married = yes }
 				trait_is_shunned_or_criminal_in_faith_trigger = {
-					TRAIT = adulterer
+					TRAIT = trait:adulterer
 					FAITH = this.faith
 					GENDER_CHARACTER = $OWNER$
 				}
@@ -13494,7 +13494,7 @@ seduce_outcome_publicised_attempted_crimes_or_nothing_effect = {
 					}
 					#And who count the action as adulterous.
 					trait_is_shunned_or_criminal_in_faith_trigger = {
-						TRAIT = adulterer
+						TRAIT = trait:adulterer
 						FAITH = faith
 						GENDER_CHARACTER = $OWNER$
 					}
@@ -13513,7 +13513,7 @@ seduce_outcome_publicised_attempted_crimes_or_nothing_effect = {
 			limit = {
 				$OWNER$ = { is_married = no }
 				trait_is_shunned_or_criminal_in_faith_trigger = {
-					TRAIT = fornicator
+					TRAIT = trait:fornicator
 					FAITH = faith
 					GENDER_CHARACTER = $OWNER$
 				}
@@ -13534,7 +13534,7 @@ seduce_outcome_publicised_attempted_crimes_or_nothing_effect = {
 					}
 					#And who count the action to be fornication.
 					trait_is_shunned_or_criminal_in_faith_trigger = {
-						TRAIT = fornicator
+						TRAIT = trait:fornicator
 						FAITH = this.faith
 						GENDER_CHARACTER = $OWNER$
 					}
@@ -14645,7 +14645,7 @@ claim_throne_set_mythical_founder_variable_effect = {
 			AND = { # Charles Martell
 				OR = {
 					scope:target_title = title:k_france
-					scope:target_title = title:e_france
+					scope:target_title = title:e_high_kingdom_gaul #france
 				}
 				current_date > 1000.1.1
 			}
@@ -14658,7 +14658,7 @@ claim_throne_set_mythical_founder_variable_effect = {
 	else_if = { # Alexander
 		limit = {
 			OR = {			
-				scope:target_title = title:k_macedonia #thessalonika vanilla
+				scope:target_title = title:k_macedonia
 				scope:target_title = title:k_hellas
 				scope:target_title = title:k_egypt
 				AND = {
@@ -14710,11 +14710,11 @@ claim_throne_set_mythical_founder_variable_effect = {
 			value = flag:rus
 		}
 	}
-	else_if = { # Arthur #Lux Renata modified
+	else_if = { # Arthur
 		limit = {
 			OR = {
 				scope:target_title = title:k_wales
-				scope:target_title = title:k_dumnonia #k_cornwall vanilla
+				scope:target_title = title:k_dumnonia
 				scope:target_title = title:k_england
 				scope:target_title = title:e_britannia
 			}
@@ -14727,10 +14727,10 @@ claim_throne_set_mythical_founder_variable_effect = {
 	else_if = { # Belisarius
 		limit = {
 			OR = {
-				scope:target_title = title:k_lombardy #italy vanilla
-				scope:target_title = title:k_rome #romagna vanilla
+				scope:target_title = title:k_lombardy
+				scope:target_title = title:k_rome
 				scope:target_title = title:k_sardinia
-				scope:target_title = title:e_spqr #italy empire vanilla
+				scope:target_title = title:e_spqr
 				scope:target_title = title:h_roman_empire
 				scope:target_title = title:h_eastern_roman_empire
 			}
@@ -14744,10 +14744,10 @@ claim_throne_set_mythical_founder_variable_effect = {
 	else_if = { # Romulus
 		limit = {
 			OR = {
-				scope:target_title = title:k_lombardy #italy vanilla
-				scope:target_title = title:k_rome #romagna vanilla
+				scope:target_title = title:k_lombardy
+				scope:target_title = title:k_rome
 				scope:target_title = title:k_sardinia
-				scope:target_title = title:e_spqr #italy empire vanilla
+				scope:target_title = title:e_spqr
 				scope:target_title = title:h_roman_empire
 				scope:target_title = title:h_eastern_roman_empire
 			}

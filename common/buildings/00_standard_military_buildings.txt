@@ -78,12 +78,12 @@ wind_furnace_02 = {
 	can_construct_potential = {
 		building_wind_furnace_requirement_terrain = yes
 		building_requirement_castle_city_church = { LEVEL = 01 }
-		scope:holder.culture = {
-			has_innovation = innovation_barracks
-		}
 	}
 
 	can_construct_showing_failures_only = {
+		scope:holder.culture = {
+			has_innovation = innovation_barracks
+		}
 		building_requirement_tribal = no
 	}
 	
@@ -729,13 +729,13 @@ workshops_01 = {
 	can_construct_potential = {
 		building_workshops_requirement_terrain = yes
 		building_requirement_castle_city_church = { LEVEL = 01 }
-		scope:holder.culture = {
-			has_innovation = innovation_advanced_bowmaking
-		}
 	}
 
 	can_construct_showing_failures_only = {
 		building_requirement_tribal = no
+		scope:holder.culture = {
+			has_innovation = innovation_advanced_bowmaking
+		}
 	}
 	
 	cost_gold = expensive_building_tier_1_cost
@@ -787,13 +787,13 @@ workshops_02 = {
 	can_construct_potential = {
 		building_workshops_requirement_terrain = yes
 		building_requirement_castle_city_church = { LEVEL = 01 }
-		scope:holder.culture = {
-			has_innovation = innovation_advanced_bowmaking
-		}
 	}
 
 	can_construct_showing_failures_only = {
 		building_requirement_tribal = no
+		scope:holder.culture = {
+			has_innovation = innovation_advanced_bowmaking
+		}
 	}
 	
 	cost_gold = expensive_building_tier_2_cost
@@ -1200,12 +1200,12 @@ horse_pastures_02 = {
 
 	can_construct_potential = {
 		building_horse_pastures_requirement_terrain = yes
-		scope:holder.culture = {
-			has_innovation = innovation_barracks
-		}
 	}
 
 	can_construct_showing_failures_only = {
+		scope:holder.culture = {
+			has_innovation = innovation_barracks
+		}
 	}
 	
 	cost_gold = cheap_building_tier_2_cost
@@ -1619,12 +1619,12 @@ hillside_grazing_02 = {
 
 	can_construct_potential = {
 		building_hillside_grazing_requirement_terrain = yes
-		scope:holder.culture = {
-			has_innovation = innovation_barracks
-		}
 	}
 
 	can_construct_showing_failures_only = {
+		scope:holder.culture = {
+			has_innovation = innovation_barracks
+		}
 	}
 	
 	cost_gold = cheap_building_tier_2_cost
@@ -2051,9 +2051,6 @@ warrior_lodges_02 = {
 	}
 	can_construct_potential = {
 		building_warrior_lodges_requirement_terrain = yes
-		scope:holder.culture = {
-			has_innovation = innovation_barracks
-		}
 		trigger_if = {
 			limit = {
 				scope:holder = {
@@ -2069,6 +2066,9 @@ warrior_lodges_02 = {
 	}
 
 	can_construct_showing_failures_only = {
+		scope:holder.culture = {
+			has_innovation = innovation_barracks
+		}
 	}
 	
 	cost_gold = cheap_building_tier_2_cost
@@ -3664,12 +3664,12 @@ outposts_02 = {
 	can_construct_potential = {
 		building_outposts_requirement_terrain = yes
 		building_requirement_castle_city_church = { LEVEL = 01 }
-		scope:holder.culture = {
-			has_innovation = innovation_barracks
-		}
 	}
 
 	can_construct_showing_failures_only = {
+		scope:holder.culture = {
+			has_innovation = innovation_barracks
+		}
 		building_requirement_tribal = no
 	}
 	
@@ -4132,6 +4132,11 @@ barracks_01 = {
 		monthly_piety = 0.1
 	}
 
+	county_culture_modifier = {
+		parameter = strength_in_numbers_maa_limit_bonus 
+		levy_size = 0.01
+	}
+
 	province_culture_modifier = {
 		parameter = strength_in_numbers_maa_limit_bonus
 		stationed_heavy_infantry_damage_mult = -0.20
@@ -4193,6 +4198,9 @@ barracks_02 = {
 	can_construct_potential = {
 		building_barracks_requirement_terrain = yes
 		building_requirement_castle_city_church = { LEVEL = 01 }
+	}
+
+	can_construct_showing_failures_only = {
 		trigger_if = {
 			limit = {
 				NOT = {
@@ -4210,9 +4218,6 @@ barracks_02 = {
 				has_cultural_parameter = next_level_barracks
 			}
 		}
-	}
-
-	can_construct_showing_failures_only = {
 		building_requirement_tribal = no
 	}
 	
@@ -4230,9 +4235,9 @@ barracks_02 = {
 		monthly_piety = 0.2
 	}
 
-	character_culture_modifier = {
+	county_culture_modifier = {
 		parameter = strength_in_numbers_maa_limit_bonus 
-		men_at_arms_limit = 1
+		levy_size = 0.01
 	}
 
 	province_culture_modifier = {
@@ -4317,9 +4322,9 @@ barracks_03 = {
 		monthly_piety = 0.3
 	}
 
-	character_culture_modifier = {
+	county_culture_modifier = {
 		parameter = strength_in_numbers_maa_limit_bonus 
-		men_at_arms_limit = 1
+		levy_size = 0.02
 	}
 
 	province_culture_modifier = {
@@ -4405,9 +4410,9 @@ barracks_04 = {
 		monthly_piety = 0.4
 	}
 
-	character_culture_modifier = {
+	county_culture_modifier = {
 		parameter = strength_in_numbers_maa_limit_bonus 
-		men_at_arms_limit = 2
+		levy_size = 0.02
 	}
 
 	province_culture_modifier = {
@@ -4498,9 +4503,9 @@ barracks_05 = {
 		monthly_piety = 0.5
 	}
 
-	character_culture_modifier = {
+	county_culture_modifier = {
 		parameter = strength_in_numbers_maa_limit_bonus 
-		men_at_arms_limit = 2
+		levy_size = 0.03
 	}
 
 	province_culture_modifier = {
@@ -4591,9 +4596,9 @@ barracks_06 = {
 		monthly_piety = 0.6
 	}
 
-	character_culture_modifier = {
+	county_culture_modifier = {
 		parameter = strength_in_numbers_maa_limit_bonus 
-		men_at_arms_limit = 3
+		levy_size = 0.03
 	}
 
 	province_culture_modifier = {
@@ -4684,9 +4689,9 @@ barracks_07 = {
 		monthly_piety = 0.7
 	}
 
-	character_culture_modifier = {
+	county_culture_modifier = {
 		parameter = strength_in_numbers_maa_limit_bonus 
-		men_at_arms_limit = 3
+		levy_size = 0.04
 	}
 
 	province_culture_modifier = {
@@ -4777,9 +4782,9 @@ barracks_08 = {
 		monthly_piety = 0.8
 	}
 
-	character_culture_modifier = {
+	county_culture_modifier = {
 		parameter = strength_in_numbers_maa_limit_bonus 
-		men_at_arms_limit = 4
+		levy_size = 0.04
 	}
 
 	province_culture_modifier = {
@@ -4888,13 +4893,13 @@ camel_farms_02 = {
 	can_construct_potential = {
 		building_camel_farms_requirement_terrain = yes
 		building_requirement_castle_city_church = { LEVEL = 01 }
-		scope:holder.culture = {
-			has_innovation = innovation_barracks
-		}
 	}
 	
 	can_construct_showing_failures_only = {
 		building_requirement_tribal = no
+		scope:holder.culture = {
+			has_innovation = innovation_barracks
+		}
 	}
 
 	cost_gold = normal_building_tier_2_cost
@@ -5404,6 +5409,9 @@ stables_02 = {
 	can_construct_potential = {
 		building_stables_requirement_terrain = yes
 		building_requirement_castle_city_church = { LEVEL = 01 }
+	}
+
+	can_construct_showing_failures_only = {
 		trigger_if = {
 			limit = {
 				NOT = {
@@ -5421,9 +5429,6 @@ stables_02 = {
 				has_cultural_parameter = next_level_stables
 			}
 		}
-	}
-
-	can_construct_showing_failures_only = {
 		building_requirement_tribal = no
 	}
 	
@@ -5907,10 +5912,6 @@ smiths_01 = {
 		knight_effectiveness_mult = normal_knight_effectiveness_mult_tier_1
 	}
 
-	character_culture_modifier = {
-		parameter = frugal_blacksmith_maa_size 
-		knight_limit = 1
-	}
 	province_culture_modifier = {
 		parameter = coking_smith_bonuses
 		stationed_maa_toughness_mult = normal_maa_toughness_tier_1
@@ -6065,11 +6066,6 @@ smiths_02 = {
 		knight_effectiveness_mult = normal_knight_effectiveness_mult_tier_2
 	}
 
-	character_culture_modifier = {
-		parameter = frugal_blacksmith_maa_size 
-		knight_limit = 1
-		men_at_arms_limit = 1
-	}
 	province_culture_modifier = {
 		parameter = coking_smith_bonuses
 		stationed_maa_toughness_mult = normal_maa_toughness_tier_2
@@ -6149,11 +6145,6 @@ smiths_03 = {
 		knight_effectiveness_mult = normal_knight_effectiveness_mult_tier_3
 	}
 
-	character_culture_modifier = {
-		parameter = frugal_blacksmith_maa_size 
-		knight_limit = 2
-		men_at_arms_limit = 1
-	}
 	province_culture_modifier = {
 		parameter = coking_smith_bonuses
 		stationed_maa_toughness_mult = normal_maa_toughness_tier_3
@@ -6229,11 +6220,6 @@ smiths_04 = {
 		knight_effectiveness_mult = normal_knight_effectiveness_mult_tier_4
 	}
 
-	character_culture_modifier = {
-		parameter = frugal_blacksmith_maa_size 
-		knight_limit = 2
-		men_at_arms_limit = 1
-	}
 	province_culture_modifier = {
 		parameter = coking_smith_bonuses
 		stationed_maa_toughness_mult = normal_maa_toughness_tier_4
@@ -6308,11 +6294,6 @@ smiths_05 = {
 		knight_effectiveness_mult = normal_knight_effectiveness_mult_tier_5
 	}
 
-	character_culture_modifier = {
-		parameter = frugal_blacksmith_maa_size 
-		knight_limit = 3
-		men_at_arms_limit = 1
-	}
 	province_culture_modifier = {
 		parameter = coking_smith_bonuses
 		stationed_maa_toughness_mult = normal_maa_toughness_tier_5
@@ -6387,11 +6368,6 @@ smiths_06 = {
 		knight_effectiveness_mult = normal_knight_effectiveness_mult_tier_6
 	}
 
-	character_culture_modifier = {
-		parameter = frugal_blacksmith_maa_size 
-		knight_limit = 3
-		men_at_arms_limit = 2
-	}
 	province_culture_modifier = {
 		parameter = coking_smith_bonuses
 		stationed_maa_toughness_mult = normal_maa_toughness_tier_6
@@ -6466,11 +6442,6 @@ smiths_07 = {
 		knight_effectiveness_mult = normal_knight_effectiveness_mult_tier_7
 	}
 
-	character_culture_modifier = {
-		parameter = frugal_blacksmith_maa_size 
-		knight_limit = 4
-		men_at_arms_limit = 2
-	}
 	province_culture_modifier = {
 		parameter = coking_smith_bonuses
 		stationed_maa_toughness_mult = normal_maa_toughness_tier_7
@@ -6545,11 +6516,6 @@ smiths_08 = {
 		knight_effectiveness_mult = normal_knight_effectiveness_mult_tier_8
 	}
 
-	character_culture_modifier = {
-		parameter = frugal_blacksmith_maa_size 
-		knight_limit = 4
-		men_at_arms_limit = 3
-	}
 	province_culture_modifier = {
 		parameter = coking_smith_bonuses
 		stationed_maa_toughness_mult = normal_maa_toughness_tier_8

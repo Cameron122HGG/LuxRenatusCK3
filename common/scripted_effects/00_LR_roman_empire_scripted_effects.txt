@@ -204,8 +204,8 @@ create_roman_empire_holy_scripted_effect = {
 							title:k_brittany ?= this
 						}
 					}
-					set_de_jure_liege_title = title:e_france
-					title:e_france = { set_de_jure_liege_title = title:h_roman_empire }
+					set_de_jure_liege_title = title:e_high_kingdom_gaul
+					title:e_high_kingdom_gaul = { set_de_jure_liege_title = title:h_roman_empire }
 				}
 			}
 			every_in_de_jure_hierarchy = {
@@ -1430,16 +1430,16 @@ restore_roman_provinces_gallia_viennensis_decision_effect = {
 
 		# Then shift all Kingdoms back.
 		title:k_aquitaine = { 
-			set_de_jure_liege_title = title:e_france
+			set_de_jure_liege_title = title:e_high_kingdom_gaul
 		}
 		title:k_burgundy = { 
-			set_de_jure_liege_title = title:e_france
+			set_de_jure_liege_title = title:e_high_kingdom_gaul
 		}
 		title:k_france = { 
-			set_de_jure_liege_title = title:e_france
+			set_de_jure_liege_title = title:e_high_kingdom_gaul
 		}
 		title:k_brittany = { 
-			set_de_jure_liege_title = title:e_france
+			set_de_jure_liege_title = title:e_high_kingdom_gaul
 		}
 		title:k_lotharingia = { 
 			set_de_jure_liege_title = title:e_germany
@@ -1498,8 +1498,8 @@ restore_roman_provinces_africa_mauretania_decision_effect = {
 		destroy_title = title:k_africa
 	}
 	if = {
-		limit = { exists = title:k_carthage.holder }
-		destroy_title = title:k_carthage
+		limit = { exists = title:k_kartaga.holder }
+		destroy_title = title:k_kartaga
 	}
 	if = {
 		limit = { exists = title:k_tahert.holder }
@@ -1566,7 +1566,7 @@ restore_roman_provinces_africa_mauretania_decision_effect = {
 		title:k_tahert = { 
 			set_de_jure_liege_title = title:e_maghreb
 		}
-		title:k_carthage = { 
+		title:k_kartaga = { 
 			set_de_jure_liege_title = title:e_maghreb
 		}
 	}	

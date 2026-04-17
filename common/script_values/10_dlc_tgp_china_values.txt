@@ -690,7 +690,7 @@ automated_nomination_merit_investment_value = {
 
 disciples_limit_base_value = 5
 
-disciples_limit_value = {
+disciples_limit_value = { # Disciple Limit, disciple_limit
 	value = 0
 	add = {
 		value = disciples_limit_base_value
@@ -750,7 +750,9 @@ disciples_limit_value = {
 	# Secretary Director buff
 	if = {
 		limit = {
-			has_diarchy_type = grand_secretariat
+			top_liege ?= {
+				has_diarchy_type = grand_secretariat
+			}
 			is_diarch_of_target = top_liege
 		}
 		add = {
@@ -789,11 +791,6 @@ celestial_ministry_score_bonus_1_value = 10
 celestial_ministry_score_bonus_2_value = 20
 celestial_ministry_score_bonus_3_value = 40
 celestial_ministry_score_bonus_4_value = 80
-
-estate_increased_tutor_aptitude_1_value = 5
-estate_increased_tutor_aptitude_2_value = 10
-estate_increased_tutor_aptitude_3_value = 15
-estate_increased_tutor_aptitude_4_value = 20
 
 estate_minister_bureaucrat_aptitude_1_value = 5
 estate_minister_bureaucrat_aptitude_2_value = 10

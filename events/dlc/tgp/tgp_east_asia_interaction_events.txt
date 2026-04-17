@@ -53,11 +53,9 @@ tgp_east_asia_interaction_events.0020 = {
 			}
 			#You're quite the smooth-talker huh
 			scope:actor.dynasty ?= {
-				show_as_tooltip = {
-					add_dynasty_prestige = {
-						value = miniscule_dynasty_prestige_value
-						divide = 2
-					}
+				add_dynasty_prestige = {
+					value = miniscule_dynasty_prestige_value
+					divide = 2
 				}
 			}
 		}
@@ -149,7 +147,7 @@ tgp_east_asia_interaction_events.0030 = {
 		ai_chance = {
 			base = 100
 			modifier = {
-				house = { has_house_power_parameter = aspect_of_serenity }
+				house = { has_house_aspiration_parameter = aspect_of_serenity }
 				factor = 0
 			}
 			modifier = {
@@ -495,11 +493,9 @@ tgp_east_asia_interaction_events.1002 = {
 	option = {
 		name = tgp_east_asia_interaction_events.1003.b
 		trigger = {
-			NOT = {
-				has_hook_of_type = {
-					target = scope:actor
-					type = favor_hook
-				}
+			can_add_hook = {
+				target = scope:actor
+				type = favor_hook
 			}
 			scope:hook = no
 		}

@@ -1,0 +1,38 @@
+﻿found_empire_of_bulgaria_decision_effect = {				
+	dynasty = {
+		add_dynasty_modifier = {
+			modifier = founded_empire_of_bulgaria_modifier
+			years = 100
+		}
+		add_dynasty_prestige = monumental_dynasty_prestige_gain
+	}		
+	set_nickname_effect = { NICKNAME = nick_the_great }				
+	save_scope_as = founder
+	title:e_bulgaria = { save_scope_as = bulgaria_empire_title }
+	scope:bulgaria_empire_title = {
+		create_title_and_vassal_change = { type = created save_scope_as = title_change_realm }
+		change_title_holder = { holder = scope:founder change = scope:title_change_realm }
+		resolve_title_and_vassal_change = scope:title_change_realm
+		copy_title_history = title:k_bulgaria
+	}
+	
+	hidden_effect = { 
+		title:k_bulgaria = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_kingdom }
+				set_de_jure_liege_title = title:e_bulgaria
+			}
+		}		
+		title:k_dacia = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_kingdom }
+				set_de_jure_liege_title = title:e_bulgaria
+			}
+		}
+		title:e_bulgaria = {
+			set_de_jure_liege_title = title:k_bulgaria.de_jure_liege
+			set_de_jure_liege_title = title:k_dacia.de_jure_liege
+		}
+	}		
+}	
+

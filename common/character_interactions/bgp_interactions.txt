@@ -1,0 +1,175 @@
+﻿bgp_send_to_labyrinth = {
+    common_interaction = no
+    category = interaction_category_prison
+	special_interaction = execute_prisoner_interaction
+    icon = icon_dead
+	desc = bgp_send_to_labyrinth_desc
+
+    is_shown = {
+        scope:recipient = {
+            is_imprisoned_by = scope:actor
+            NOT = { has_trait = incapable }
+        }
+		scope:actor = {
+           # has_title = title:c_chandax
+			#has_global_variable = restore_knossos_palace_alt_cooldown
+        }
+    }
+	
+	is_highlighted = {
+		OR = {
+			scope:actor = { has_trait = sadistic }
+			scope:actor = { has_relation_rival = scope:recipient }
+			scope:actor = { has_relation_nemesis = scope:recipient }
+		}
+	}
+
+    on_accept = {
+        scope:recipient = {
+            trigger_event = {
+				id = restore_knossos_palace.0010
+			}
+        }
+		scope:actor = {
+			trigger_event = {
+				id = restore_knossos_palace.0009
+			}
+		}
+		show_as_tooltip = {
+			scope:recipient = {
+				add_character_modifier = {
+					modifier = sentenced_to_labyrinth
+					years = 3
+				}
+			}
+		}
+		scope:recipient.house ?= {
+			change_house_relation_effect = {
+				HOUSE = scope:actor.house
+				VALUE = house_relation_damage_medium_value
+				REASON = torture
+				CHAR = scope:actor
+				TARGET_CHAR = scope:recipient
+				TITLE = scope:dummy_gender
+			}
+		}
+		blind_castrate_and_disfigure_effect = yes 
+    }
+
+    auto_accept = yes
+
+    ai_will_do = {
+        base = -100
+		modifier = { 
+			scope:actor = {
+				NOT = {
+					has_trait = sadistic
+				}
+				OR = {
+					has_secret_relation_lover = scope:recipient
+					has_relation_lover = scope:recipient
+					has_relation_soulmate = scope:recipient
+					has_relation_friend = scope:recipient
+					has_relation_best_friend = scope:recipient
+					opinion = {
+						target = scope:recipient
+						value > very_high_positive_opinion
+					}
+				}
+			}
+			add = -1000
+		}
+		modifier = {
+			scope:recipient = {
+				is_child_of = scope:actor
+				NOR = {
+					has_relation_rival = scope:actor
+					has_relation_nemesis = scope:actor
+				}
+			}
+			add = -1000
+		}
+		modifier = {
+			scope:recipient = {
+				is_spouse_of = scope:actor
+				NOR = {
+					has_relation_rival = scope:actor
+					has_relation_nemesis = scope:actor
+					exposed_cheating_on_spouse_trigger = { SPOUSE = scope:actor }
+				}
+			}
+			add = -1000
+		}
+		modifier = {
+			add = 100
+			scope:actor.ai_compassion < medium_positive_ai_value
+			scope:actor = {
+				opinion = {
+					target = scope:recipient
+					value <= high_negative_opinion
+				}
+			}
+		}
+		modifier = {
+			add = -20
+			ai_compassion >= low_positive_ai_value
+			scope:recipient = { is_adult = no }
+		}
+		modifier = {
+			add = -20
+			scope:actor.dynasty = scope:recipient.dynasty
+			NOT = { faith = { has_doctrine = doctrine_kinslaying_any_dynasty_member_crime } }
+		}
+		modifier = {
+			add = -20
+			is_close_family_of = scope:recipient
+			NOT = { faith = { has_doctrine = doctrine_kinslaying_close_kin_crime } }
+		}
+		modifier = {
+			add = 50
+			has_execute_reason = scope:recipient
+			OR = {
+				has_trait = sadistic
+				has_trait = lunatic
+			}
+		}
+		modifier = {
+			add = 20
+			scope:actor = {
+				has_execute_reason = scope:recipient
+				ai_greed > 0
+				any_heir_title = {
+					holder ?= scope:recipient
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			scope:actor = {
+				has_execute_reason = scope:recipient
+				ai_vengefulness >= medium_positive_ai_value
+				OR = {
+					has_relation_rival = scope:recipient
+					has_relation_nemesis = scope:recipient
+					scope:recipient = {
+						is_spouse_of = scope:actor
+						exposed_cheating_on_spouse_trigger = { SPOUSE = scope:actor }
+					}
+				}
+			}
+		}
+		modifier = {
+			has_trait = sadistic
+			add = 30
+		}
+		modifier = {
+			scope:actor = {
+				has_opinion_modifier = {
+					modifier = tried_to_escape_from_prison_opinion
+					target = scope:recipient
+				}
+			}
+			add = 25
+		}
+    }
+}

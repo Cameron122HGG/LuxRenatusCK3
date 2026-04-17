@@ -310,7 +310,7 @@ grab_mythical_founder_effect = {
 						AND = { 
 							OR = {
 								root.primary_title = title:k_france
-								root.primary_title = title:e_france
+								root.primary_title = title:e_high_kingdom_gaul
 							}
 							current_date > 1000.1.1
 						}
@@ -544,7 +544,7 @@ grab_mythical_founder_effect = {
 						root.culture = culture:breton
 						NOR = { # used to distinguish themselves from the French
 							root.primary_title = title:k_france
-							root.primary_title = title:e_france
+							root.primary_title = title:e_high_kingdom_gaul
 						}
 					}
 					set_variable = { name = mythical_ancestor_var value = flag:conan_meriadoc }
@@ -2541,7 +2541,7 @@ mark_historical_legend_as_done = {
 	else_if = { # Carolingian
 		limit = {
 			legend_property:ancestor ?= character:16750
-			legend_property:title ?= title:e_france
+			legend_property:title ?= title:e_high_kingdom_gaul
 		}
 		set_global_variable = {
 			name = carolingian_legend
@@ -2577,7 +2577,7 @@ mark_historical_legend_as_done = {
 	}
 	#else_if = { # el_cid
 	#	limit = {
-	#		legend_property:ancestor ?= character:107590
+	#		legend_property:ancestor ?= character:1820000
 	#	}
 	#	set_global_variable = {
 	#		name = el_cid_legend

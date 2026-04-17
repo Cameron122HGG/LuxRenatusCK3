@@ -267,7 +267,10 @@ mpo_flavor_events_settled.0010 = {
 	
 	trigger = {
 		has_mpo_dlc_trigger = yes
-		NOT = { government_has_flag = government_is_nomadic }
+		NOR = {
+			government_has_flag = government_is_nomadic
+			any_primary_war_enemy = { government_has_flag = government_is_nomadic }
+		}
 		any_neighboring_top_liege_realm_owner = {
 			mpo_flavor_events_settled_0010_valid_nomad_lord_trigger = yes 
 		}

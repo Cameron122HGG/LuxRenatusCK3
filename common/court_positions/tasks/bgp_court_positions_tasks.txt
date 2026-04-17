@@ -1,0 +1,659 @@
+﻿aurelian_walls_prefect_task_focus_fortifications = {
+	court_position_types = { 
+		aurelian_walls_prefect_court_position
+	}
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+	employee_modifier = {
+		monthly_prestige = minor_court_position_task_prestige_salary
+	}
+	
+	on_start = {
+		remove_prefect_modifiers_effect_rome = yes
+		scope:liege ?= {
+			title:c_roma = {
+				add_county_modifier = aurelian_walls_prefect_1
+			}
+		}
+	}
+	
+	on_end = {
+		scope:liege ?= {
+			if = {
+				limit = {
+					title:c_roma = {
+						has_county_modifier = aurelian_walls_prefect_1
+					}
+				}
+				title:c_roma = {
+					remove_county_modifier = aurelian_walls_prefect_1
+				}
+			}
+		}
+	}
+	
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+
+		if = {
+			limit = {
+				OR = {
+					has_trait = just
+					has_trait = diligent
+					has_trait = ambitious
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				ai_has_economical_boom_personality = yes
+			}
+			add = 20
+		}
+
+		if = {
+			limit = {
+				has_trait = education_stewardship
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = 10
+		}
+	}
+}
+
+aurelian_walls_prefect_task_focus_maa = {
+	court_position_types = { 
+		aurelian_walls_prefect_court_position
+	}
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+	employee_modifier = {
+		monthly_prestige = minor_court_position_task_prestige_salary
+	}
+	
+	on_start = {
+		remove_prefect_modifiers_effect_rome = yes
+		scope:liege ?= {
+			province:2575 = {
+				add_province_modifier = aurelian_walls_prefect_2
+			}
+		}
+	}
+	
+	on_end = {
+		scope:liege ?= {
+			if = {
+				limit = {
+					province:2575 = {
+						has_province_modifier = aurelian_walls_prefect_2
+					}
+				}
+				province:2575 = {
+					remove_province_modifier = aurelian_walls_prefect_2
+				}
+			}
+		}
+	}
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+
+		if = {
+			limit = {
+				OR = {
+					has_trait = just
+					has_trait = diligent
+					has_trait = ambitious
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				ai_has_economical_boom_personality = yes
+			}
+			add = 20
+		}
+
+		if = {
+			limit = {
+				has_trait = education_stewardship
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = 10
+		}
+	}
+}
+
+aurelian_walls_prefect_task_garrison = {
+	court_position_types = { 
+		aurelian_walls_prefect_court_position
+	}
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+	employee_modifier = {
+		monthly_prestige = minor_court_position_task_prestige_salary
+	}
+	on_start = {
+		remove_prefect_modifiers_effect_rome = yes
+		scope:liege ?= {
+			title:c_roma = {
+				add_county_modifier = aurelian_walls_prefect_3
+			}
+		}
+	}
+	
+	on_end = {
+		scope:liege ?= {
+			if = {
+				limit = {
+					title:c_roma = {
+						has_county_modifier = aurelian_walls_prefect_3
+					}
+				}
+				title:c_roma = {
+					remove_county_modifier = aurelian_walls_prefect_3
+				}
+			}
+		}
+	}
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+
+		if = {
+			limit = {
+				OR = {
+					has_trait = just
+					has_trait = diligent
+					has_trait = ambitious
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				ai_has_economical_boom_personality = yes
+			}
+			add = 20
+		}
+
+		if = {
+			limit = {
+				has_trait = education_stewardship
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = 10
+		}
+	}
+}
+
+domestikos_of_the_walls_task_focus_fortifications = {
+	court_position_types = { 
+		domestikos_of_the_walls_court_position
+	}
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+	employee_modifier = {
+		monthly_prestige = minor_court_position_task_prestige_salary
+	}
+	
+	on_start = {
+		remove_prefect_modifiers_effect_byz = yes
+		scope:liege ?= {
+			title:c_byzantion = {
+				add_county_modifier = theodosian_walls_domestikos_1
+			}
+		}
+	}
+	
+	on_end = {
+		scope:liege ?= {
+			if = {
+				limit = {
+					title:c_byzantion = {
+						has_county_modifier = theodosian_walls_domestikos_1
+					}
+				}
+				title:c_byzantion = {
+					remove_county_modifier = theodosian_walls_domestikos_1
+				}
+			}
+		}
+	}
+	
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+
+		if = {
+			limit = {
+				OR = {
+					has_trait = just
+					has_trait = diligent
+					has_trait = ambitious
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				ai_has_economical_boom_personality = yes
+			}
+			add = 20
+		}
+
+		if = {
+			limit = {
+				has_trait = education_stewardship
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = 10
+		}
+	}
+}
+
+domestikos_of_the_walls_task_focus_maa = {
+	court_position_types = { 
+		domestikos_of_the_walls_court_position
+	}
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+	employee_modifier = {
+		monthly_prestige = minor_court_position_task_prestige_salary
+	}
+	
+	on_start = {
+		remove_prefect_modifiers_effect_byz = yes
+		scope:liege ?= {
+			province:496 = {
+				add_province_modifier = theodosian_walls_domestikos_2
+			}
+		}
+	}
+	
+	on_end = {
+		scope:liege ?= {
+			if = {
+				limit = {
+					province:496 = {
+						has_province_modifier = theodosian_walls_domestikos_2
+					}
+				}
+				province:496 = {
+					remove_province_modifier = theodosian_walls_domestikos_2
+				}
+			}
+		}
+	}
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+
+		if = {
+			limit = {
+				OR = {
+					has_trait = just
+					has_trait = diligent
+					has_trait = ambitious
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				ai_has_economical_boom_personality = yes
+			}
+			add = 20
+		}
+
+		if = {
+			limit = {
+				has_trait = education_stewardship
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = 10
+		}
+	}
+}
+
+domestikos_of_the_walls_task_garrison = {
+	court_position_types = { 
+		domestikos_of_the_walls_court_position
+	}
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 2
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+	employee_modifier = {
+		monthly_prestige = minor_court_position_task_prestige_salary
+	}
+	on_start = {
+		remove_prefect_modifiers_effect_byz = yes
+		scope:liege ?= {
+			title:c_byzantion = {
+				add_county_modifier = theodosian_walls_domestikos_3
+			}
+		}
+	}
+	
+	on_end = {
+		scope:liege ?= {
+			if = {
+				limit = {
+					title:c_byzantion = {
+						has_county_modifier = theodosian_walls_domestikos_3
+					}
+				}
+				title:c_byzantion = {
+					remove_county_modifier = theodosian_walls_domestikos_3
+				}
+			}
+		}
+	}
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+
+		if = {
+			limit = {
+				OR = {
+					has_trait = just
+					has_trait = diligent
+					has_trait = ambitious
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				ai_has_economical_boom_personality = yes
+			}
+			add = 20
+		}
+
+		if = {
+			limit = {
+				has_trait = education_stewardship
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = 10
+		}
+	}
+}

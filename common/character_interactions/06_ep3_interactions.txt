@@ -411,7 +411,7 @@ influence_candidacy_interaction = {
 			# House Aspiration Service
 			if = {
 				limit = {
-					scope:actor.house ?= { has_house_power_parameter = service_house_cheaper_influence_candidacy_investments }
+					scope:actor.house ?= { has_house_aspiration_parameter = service_house_cheaper_influence_candidacy_investments }
 				}
 				add = {
 					value = scope:calculated_base_cost
@@ -9892,21 +9892,21 @@ request_emperor_title_troops_interaction = {
 		# Family attribute bonus
 		modifier = {
 			scope:actor.house ?= {
-				has_house_power_parameter = increased_request_troops_acceptance_3
+				has_house_aspiration_parameter = increased_request_troops_acceptance_3
 			}
 			add = increased_request_troops_acceptance_3_value
 			desc = family_attribute_desc_with_value
 		}
 		modifier = {
 			scope:actor.house ?= {
-				has_house_power_parameter = increased_request_troops_acceptance_2
+				has_house_aspiration_parameter = increased_request_troops_acceptance_2
 			}
 			add = increased_request_troops_acceptance_2_value
 			desc = family_attribute_desc_with_value
 		}
 		modifier = {
 			scope:actor.house ?= {
-				has_house_power_parameter = increased_request_troops_acceptance_1
+				has_house_aspiration_parameter = increased_request_troops_acceptance_1
 			}
 			add = increased_request_troops_acceptance_1_value
 			desc = family_attribute_desc_with_value
@@ -10140,6 +10140,7 @@ request_raid_remit_interaction = {
 					is_domicile_type = estate
 					is_domicile_type = east_asian_estate
 					is_domicile_type = japanese_manor
+					is_domicile_type = gallic_manor
 				}
 			}
 			top_liege != this
@@ -10150,6 +10151,7 @@ request_raid_remit_interaction = {
 					is_domicile_type = estate
 					is_domicile_type = east_asian_estate
 					is_domicile_type = japanese_manor
+					is_domicile_type = gallic_manor
 				}
 			}
 			house != scope:recipient.house
@@ -10194,6 +10196,7 @@ request_raid_remit_interaction = {
 						is_domicile_type = estate
 						is_domicile_type = east_asian_estate
 						is_domicile_type = japanese_manor
+						is_domicile_type = gallic_manor
 					}
 				}
 			}
@@ -12585,13 +12588,13 @@ ep3_hof_ask_for_influence_interaction = {
 				value = 0
 				if = {
 					limit = {
-						scope:actor.house ?= { has_house_power_parameter = increased_clerical_influence_acceptance_3 }
+						scope:actor.house ?= { has_house_aspiration_parameter = increased_clerical_influence_acceptance_3 }
 					}
 					add = increased_clerical_influence_acceptance_3_value
 				}
 				else_if = {
 					limit = {
-						scope:actor.house ?= { has_house_power_parameter = increased_clerical_influence_acceptance_2 }
+						scope:actor.house ?= { has_house_aspiration_parameter = increased_clerical_influence_acceptance_2 }
 					}
 					add = increased_clerical_influence_acceptance_2_value
 				}
@@ -12601,9 +12604,9 @@ ep3_hof_ask_for_influence_interaction = {
 			}
 			scope:actor.house ?= {
 				OR = {
-					has_house_power_parameter = increased_clerical_influence_acceptance_1
-					has_house_power_parameter = increased_clerical_influence_acceptance_2
-					has_house_power_parameter = increased_clerical_influence_acceptance_3
+					has_house_aspiration_parameter = increased_clerical_influence_acceptance_1
+					has_house_aspiration_parameter = increased_clerical_influence_acceptance_2
+					has_house_aspiration_parameter = increased_clerical_influence_acceptance_3
 				}
 			}
 			desc = you_have_faithful_nobles_attribute_with_value_desc

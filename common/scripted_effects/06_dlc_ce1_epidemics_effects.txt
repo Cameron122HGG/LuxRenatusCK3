@@ -338,13 +338,13 @@ get_random_realm_epidemic = {
 				modifier = {
 					add = 750
 					any_province_epidemic = {
-						intensity >= apocalyptic
+						outbreak_intensity >= apocalyptic
 					}
 				}
 				modifier = {
 					add = 5
 					any_province_epidemic = {
-						intensity >= major
+						outbreak_intensity >= major
 					}
 				}
 			}
@@ -407,13 +407,13 @@ get_random_nearby_realm_epidemic = {
 				modifier = {
 					add = 750
 					any_province_epidemic = {
-						intensity >= apocalyptic
+						outbreak_intensity >= apocalyptic
 					}
 				}
 				modifier = {
 					add = 5
 					any_province_epidemic = {
-						intensity >= major
+						outbreak_intensity >= major
 					}
 				}
 			}
@@ -650,11 +650,8 @@ remove_isolated_capital_modifiers_effect = {
 		limit = {
 			has_county_modifier = isolate_capital_decision_modifier
 			NOT = {
-				any_county_province = {
-					this != root
-					any_province_epidemic = {
-						this = scope:epidemic
-					}
+				any_county_province_epidemic = {
+					this = scope:epidemic
 				}
 			}
 		}
@@ -668,11 +665,8 @@ remove_isolated_capital_modifiers_effect = {
 			holder.top_liege = {
 				NOT = {
 					any_sub_realm_county = {
-						any_county_province = {
-							this != root
-							any_province_epidemic = {
-								this = scope:epidemic
-							}
+						any_county_province_epidemic = {
+							this = scope:epidemic
 						}
 					}
 				}
@@ -858,7 +852,6 @@ add_plague_county_modifiers = {
 }
 
 plague_recovery_event_effect = {
-	scope:epidemic = { save_scope_as = epidemic }
 	county.holder.liege = {
 		add_to_variable_list = {
 			name = formerly_infected_counties
@@ -874,6 +867,7 @@ plague_recovery_event_effect = {
 		every_in_list = {
 			variable = lieges_to_notify
 			limit = {
+				is_alive = yes # dead people do seem to sneak into the list, so we need to check
 				NOT = {
 					has_character_flag = notified_of_plague_recovery
 				}
@@ -927,4 +921,48 @@ apply_infection_fertility_loss = {
 		value = $BASE$
 	}
 	change_county_fertility = epidemic_fertility_loss_value
+}
+
+# Random Black Death game rule
+bd_random_game_rule_effect = {
+	random = {
+		chance = 1
+		random = { # You cannot set a chance lower than 1% so we have to do this ugly fix
+			chance = {
+				value = 1
+				if = {
+					limit = { years_from_game_start > 100 }
+					add = 10
+				}
+				if = {
+					limit = { years_from_game_start > 200 }
+					add = 14
+				}
+				if = {
+					limit = { years_from_game_start > 300 }
+					add = 15
+				}
+				if = {
+					limit = { years_from_game_start > 400 }
+					add = 20
+				}
+				if = {
+					limit = { years_from_game_start > 500 }
+					add = 20
+				}
+				if = {
+					limit = { years_from_game_start > 600 }
+					add = 20
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_global_variable = start_epidemic_grace }
+					NOT = { has_global_variable = random_black_plague_var }
+					has_game_rule = bd_occurrence_random
+				}
+				set_global_variable = random_black_plague_var
+			}
+		}
+	}
 }

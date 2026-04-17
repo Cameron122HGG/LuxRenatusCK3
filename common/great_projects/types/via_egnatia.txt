@@ -1,0 +1,890 @@
+﻿@via_egnatia_illustration = "gfx/interface/illustrations/great_projects/via_egnatia_illustration.dds"
+@icon_silk_road_realm = "gfx/interface/icons/activities/activity_chariot_race.dds"
+
+via_egnatia_restoration = {
+	icon = {
+		reference = @icon_silk_road_realm
+	}
+	illustration = {
+		reference = @via_egnatia_illustration
+	}
+	name = {
+		desc = great_project_type_via_egnatia_restoration
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+			multiply = 2
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = {
+				ai_is_controller_of_via_egnatia_route = yes
+			}
+			add = 50
+		}
+	}
+	construction_time = { value = 3650 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = via_egnatia_hub
+	is_shown = {
+		NOT = { is_planning_great_project = via_egnatia_restoration }
+		NOT = { has_global_variable = via_egnatia_restoration_cooldown }
+		is_ruler = yes
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_1_TOOLTIP"
+			title:c_brysis = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_2_TOOLTIP"
+			title:c_kalliopolis = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_3_TOOLTIP"
+			title:c_mosynopolis = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_4_TOOLTIP"
+			title:c_serres = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_5_TOOLTIP"
+			title:c_veria = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_6_TOOLTIP"
+			title:c_thessalonika = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_7_TOOLTIP"
+			title:c_ohrid = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_8_TOOLTIP"
+			title:c_antipatreia = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_9_TOOLTIP"
+			title:c_dyrrachion = { holder.top_liege = root.top_liege }
+		}
+		custom_description = {
+			text = has_manorialism_tooltip
+			subject = root.culture
+			culture = {
+					has_innovation = innovation_manorialism
+			}
+		}
+	}
+	is_valid = {
+		title:c_brysis.holder = { top_liege = scope:owner.top_liege }
+		title:c_kalliopolis.holder = { top_liege = scope:owner.top_liege }
+		title:c_mosynopolis.holder = { top_liege = scope:owner.top_liege }
+		title:c_serres.holder = { top_liege = scope:owner.top_liege }
+		title:c_veria.holder = { top_liege = scope:owner.top_liege }
+		title:c_thessalonika.holder = { top_liege = scope:owner.top_liege }
+		title:c_ohrid.holder = { top_liege = scope:owner.top_liege }
+		title:c_antipatreia.holder = { top_liege = scope:owner.top_liege }
+		title:c_dyrrachion.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 20
+			add_character_modifier = { modifier = via_egnatia_broken_promises_modifier years = 10 }
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		set_global_variable = { name = via_egnatia_restoration_cooldown months = -1 }
+		title:c_brysis = {
+			remove_county_modifier = neglected_via_egnatia_modifier 
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 } 
+		}
+		title:c_kalliopolis = {
+			remove_county_modifier = neglected_via_egnatia_modifier 
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 } 
+		}
+		title:c_mosynopolis = {
+			remove_county_modifier = neglected_via_egnatia_modifier 
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 } 
+		}
+		title:c_serres = {
+			remove_county_modifier = neglected_via_egnatia_modifier 
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 } 
+		}
+		title:c_veria = {
+			remove_county_modifier = neglected_via_egnatia_modifier 
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 } 
+		}
+		title:c_thessalonika = {
+			remove_county_modifier = neglected_via_egnatia_modifier 
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 } 
+			}
+		title:c_ohrid = {
+			remove_county_modifier = neglected_via_egnatia_modifier 
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 } 
+		}
+		title:c_antipatreia = {
+			remove_county_modifier = neglected_via_egnatia_modifier
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 } 
+			}
+		title:c_dyrrachion = {
+			remove_county_modifier = neglected_via_egnatia_modifier
+			add_county_modifier = { modifier = via_egnatia_dyrrachion_hub_modifier years = 50 } 
+			add_county_modifier = { modifier = restored_via_egnatia_modifier months = -1 }
+		}
+	}
+	project_contributions = {
+		imperial_survey = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = via_egnatia_events.0001
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		open_imperial_quarries = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = via_egnatia_events.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}	
+		}	
+		paving_the_strata = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = via_egnatia_events.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		finance_laborers = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = via_egnatia_events.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		establish_road_outposts = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = no
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = via_egnatia_events.0005
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		construct_imperial_bridges = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = no
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = via_egnatia_events.0006
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}	
+		organize_the_cursus = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = no
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = via_egnatia_events.0007
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		found_imperial_stud_farms = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = no
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = via_egnatia_events.0008
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			contributor_cooldown = individual_contribution_cooldown_value
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+	}
+}
+
+via_egnatia_improvement = {
+	icon = {
+		reference = @icon_silk_road_realm
+	}
+	illustration = {
+		reference = @via_egnatia_illustration
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+			multiply = 4
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = {
+				ai_is_controller_of_via_egnatia_route = yes
+			}
+			add = 50
+		}
+	}
+	construction_time = { value = 3650 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = via_egnatia_hub
+	name = {
+		desc = great_project_type_via_egnatia_improvement
+	}
+	is_shown = {
+		title:c_dyrrachion = { has_county_modifier = restored_via_egnatia_modifier }
+		NOT = { is_planning_great_project = via_egnatia_improvement }
+		NOT = { has_global_variable = via_egnatia_improvement_cooldown }
+		is_ruler = yes
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_1_TOOLTIP"
+			title:c_brysis = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_2_TOOLTIP"
+			title:c_kalliopolis = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_3_TOOLTIP"
+			title:c_mosynopolis = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_4_TOOLTIP"
+			title:c_serres = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_5_TOOLTIP"
+			title:c_veria = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_6_TOOLTIP"
+			title:c_thessalonika = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_7_TOOLTIP"
+			title:c_ohrid = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_8_TOOLTIP"
+			title:c_antipatreia = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "VIA_EGNATIA_LOCATION_9_TOOLTIP"
+			title:c_dyrrachion = { holder.top_liege = root.top_liege }
+		}
+		custom_description = {
+			text = has_urbanization_tooltip
+			subject = root.culture
+			culture = {
+					has_innovation = innovation_development_03
+			}
+		}
+	}
+	is_valid = {
+		title:c_brysis.holder = { top_liege = scope:owner.top_liege }
+		title:c_kalliopolis.holder = { top_liege = scope:owner.top_liege }
+		title:c_mosynopolis.holder = { top_liege = scope:owner.top_liege }
+		title:c_serres.holder = { top_liege = scope:owner.top_liege }
+		title:c_veria.holder = { top_liege = scope:owner.top_liege }
+		title:c_thessalonika.holder = { top_liege = scope:owner.top_liege }
+		title:c_ohrid.holder = { top_liege = scope:owner.top_liege }
+		title:c_antipatreia.holder = { top_liege = scope:owner.top_liege }
+		title:c_dyrrachion.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -700 
+			add_stress = 20
+			add_character_modifier = { modifier = via_egnatia_broken_promises_modifier years = 10 }
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		set_global_variable = { name = via_egnatia_improvement_cooldown months = -1 }
+		title:c_brysis = {
+			remove_county_modifier = restored_via_egnatia_modifier 
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 } 
+		}
+		title:c_kalliopolis = {
+			remove_county_modifier = restored_via_egnatia_modifier 
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 } 
+		}
+		title:c_mosynopolis = {
+			remove_county_modifier = restored_via_egnatia_modifier 
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 } 
+		}
+		title:c_serres = {
+			remove_county_modifier = restored_via_egnatia_modifier 
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 } 
+		}
+		title:c_veria = {
+			remove_county_modifier = restored_via_egnatia_modifier 
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 } 
+		}
+		title:c_thessalonika = {
+			remove_county_modifier = restored_via_egnatia_modifier
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 } 
+			}
+		title:c_ohrid = {
+			remove_county_modifier = restored_via_egnatia_modifier
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 } 
+		}
+		title:c_antipatreia = {
+			remove_county_modifier = restored_via_egnatia_modifier
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 } 
+			}
+		title:c_dyrrachion = {
+			remove_county_modifier = restored_via_egnatia_modifier
+			add_county_modifier = { modifier = via_egnatia_dyrrachion_hub_modifier years = 100 } 
+			add_county_modifier = { modifier = bustling_via_egnatia_modifier months = -1 }
+		}
+	}
+	project_contributions = {
+		establish_road_magistracies = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				trigger_event = via_egnatia_events.0009
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		erect_milestones = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				trigger_event = via_egnatia_events.0010
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		organize_maintenance = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				trigger_event = via_egnatia_events.0011
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		subsidize_caravanserais = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				trigger_event = via_egnatia_events.0012
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		institute_patrols = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = no
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				trigger_event = via_egnatia_events.0013
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		toll_bridges = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = no
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				trigger_event = via_egnatia_events.0014
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+		expand_relay_network = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = no
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				trigger_event = via_egnatia_events.0015
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}	
+		breeding_programs = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = no
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			on_complete = { 
+				trigger_event = via_egnatia_events.0016
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_via_egnatia_route = yes
+					}
+				add = 50
+				}
+			}
+		}
+	}
+}
