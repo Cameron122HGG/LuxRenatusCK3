@@ -520,6 +520,60 @@ window = {
 
 						vbox = {
 							layoutpolicy_horizontal = expanding
+							spacing = 8
+
+							margin_bottom = -8
+
+							text_label_center = {
+								layoutpolicy_horizontal = expanding
+								text = "LR_FAITH_DOCTRINES_MATRIX"
+								default_format = "#low"
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+
+								hbox = {
+									name = "lr_matrix_doctrines"
+									datamodel = "[FaithWindow.GetGroupingHelper( 'LR_matrix_group' ).GetGrouping]"
+									spacing = 0
+									layoutpolicy_vertical = expanding
+									minimumsize = { 0 108 }
+
+									item = {
+										vbox = {
+											layoutpolicy_vertical = expanding
+											minimumsize = { 100 0 }
+											name = "doctrine_list_item"
+											datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
+											visible = "[FaithDoctrine.IsVisible]"
+											tooltip = "FAITH_WINDOW_DOCTRINE_TOOLTIP"
+											using = tooltip_se
+
+											icon_doctrine = {
+												name = "doctrine_group_icon"
+												size = { 60 60 }
+												texture = "[FaithDoctrine.GetIcon]"
+											}
+
+											text_single = {
+												name = "doctrine_name"
+												align = center
+												text = "[FaithDoctrine.GetNameNoTooltip( GuiFaithDoctrineItem.GetFaith )]"
+												default_format = "#high"
+												multiline = yes
+												max_width = 104
+											}
+
+											expand = {}
+										}
+									}
+								}
+							}
+						}						
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
 							spacing = 12
 							margin_bottom = -10
 
