@@ -1835,7 +1835,7 @@ tgp_gaul_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
 	}
 }
 
-# tgp_gaul_become_shogun_decision
+# tgp_gaul_become_dictator_decision
 
 tgp_gaul_decision.9101 = {
 	type = character_event
@@ -1858,7 +1858,7 @@ tgp_gaul_decision.9101 = {
 	}
 
 	immediate = {
-		save_scope_as = shogun
+		save_scope_as = gaul_dictator
 		tgp_save_realm_ceremonial_liege_effect = yes
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
 		if = {
@@ -1869,7 +1869,7 @@ tgp_gaul_decision.9101 = {
 					highest_held_title_tier >= tier_county
 				}
 			}
-			custom_tooltip = tgp_gaul_become_shogun_decision_vassal_revocation_effect
+			custom_tooltip = tgp_gaul_become_dictator_decision_vassal_revocation_effect
 		}
 		# Inform Vassals
 		every_vassal_or_below = {
@@ -1879,7 +1879,7 @@ tgp_gaul_decision.9101 = {
 			trigger_event = tgp_gaul_decision.9102
 		}
 		# Rewards
-		gallic_become_shogun_reward_effect = yes
+		gallic_become_dictator_reward_effect = yes
 	}
 
 	option = {

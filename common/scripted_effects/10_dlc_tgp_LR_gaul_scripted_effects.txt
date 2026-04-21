@@ -463,7 +463,7 @@ add_random_internal_gallic_manor_building = {
 
 gaul_clear_flavour_flags_effect = {
 	remove_global_variable = shogunate_established
-	remove_global_variable = tenno_restored
+	remove_global_variable = high_king_gaul_restored
 	remove_character_flag = shogun_flag
 	remove_character_flag = ceremonial_liege_flag
 	remove_character_flag = joko_flag
@@ -551,7 +551,7 @@ gallic_restore_ceremonial_liege_faction_reward_effect = {
 		}
 	}
 	scope:ceremonial_liege_temp = {
-		custom_tooltip = tenno_duchy_creation_tt
+		custom_tooltip = high_king_gaul_duchy_creation_tt
 		if = {
 			limit = { has_legitimacy = yes }
 			add_legitimacy = major_legitimacy_gain
@@ -608,1838 +608,7 @@ gallic_restore_ceremonial_liege_faction_titles_effect = {
 	resolve_title_and_vassal_change = scope:title_change
 }
 
-assign_gallic_house_name_options_effect = {
-	random_list = {
-		### AKI
-		### AKITA (NUSHIRO)
-		1 = { # OKAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_kawa TITLE = title:c_nushiro } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_nushiro }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_kawa }
-		}
-		1 = { # YURI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yuri TITLE = title:c_nushiro } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_nushiro }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yuri }
-		}
-		### AWA
-		1 = { # MIYOSHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Miyoshi TITLE = title:c_awa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_awa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Miyoshi }
-		}
-		1 = { # TAGUCHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Taguchi TITLE = title:c_awa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_awa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Taguchi }
-		}
-		### BINGO
-		1 = { # OTA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_ta TITLE = title:c_bingo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bingo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_ta }
-		}
-		### BITCHU
-		1 = { # SENOO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Seno_o TITLE = title:c_bitchu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bitchu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Seno_o }
-		}
-		### BIZEN
-		1 = { # NAMBA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Namba TITLE = title:c_bizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Namba }
-		}
-		### BUNGO
-		1 = { # ANAMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Anami TITLE = title:c_bungo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bungo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Anami }
-		}
-		1 = { # HONDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Honda TITLE = title:c_bungo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bungo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Honda }
-		}
-		1 = { # MITAI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mitai TITLE = title:c_bungo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bungo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mitai }
-		}
-		1 = { # OGATA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ogata TITLE = title:c_bungo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bungo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ogata }
-		}
-		1 = { # ONO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_no TITLE = title:c_bungo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bungo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_no }
-		}
-		1 = { # SHIGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shiga TITLE = title:c_bungo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bungo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shiga }
-		}
-		1 = { # WASADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Wasada TITLE = title:c_bungo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bungo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Wasada }
-		}
-		1 = { # USUKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Usuki TITLE = title:c_bungo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_bungo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Usuki }
-		}
-		### BUZEN
-		1 = { # YAMAGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamaga TITLE = title:c_buzen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_buzen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yamaga }
-		}
-		### CHIKUGO
-		1 = { # KAMACHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kamachi TITLE = title:c_chikugo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_chikugo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kamachi }
-		}
-		### CHIKUZEN
-		1 = { # AKIZUKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Akizuki TITLE = title:c_chikugo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_chikugo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Akizuki }
-		}
-		1 = { # HARADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Harada TITLE = title:c_chikugo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_chikugo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Harada }
-		}
-		### DEWA (TOKISARA)
-		1 = { # SAGAE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sagae TITLE = title:c_tokisara } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tokisara }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sagae }
-		}
-		### ECHIGO
-		1 = { # HANJO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kanazu TITLE = title:c_echigo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kanazu }
-		}
-		1 = { # IROBE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Irobe TITLE = title:c_echigo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Irobe }
-		}
-		1 = { # KAJI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kaji TITLE = title:c_echigo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kaji }
-		}
-		1 = { # KANAZU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kanazu TITLE = title:c_echigo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kanazu }
-		}
-		1 = { # NAKAJO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_NakajO_ TITLE = title:c_echigo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_NakajO_ }
-		}
-		1 = { # OGUNI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Oguni TITLE = title:c_echigo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Oguni }
-		}
-		1 = { # SADO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sado TITLE = title:c_echigo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sado }
-		}
-		1 = { # YASUDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yasuda TITLE = title:c_echigo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yasuda }
-		}
-		### ECHIZEN
-		1 = { # AKATSUKA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Akatsuka TITLE = title:c_echizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Akatsuka }
-		}
-		1 = { # ICHIJI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ichiji TITLE = title:c_echizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ichiji }
-		}
-		1 = { # MIKATA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mikata TITLE = title:c_echizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mikata }
-		}
-		1 = { # ODA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Oda TITLE = title:c_echizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Oda }
-		}
-		1 = { # NANJO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_NanjO_ TITLE = title:c_echizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_NanjO_ }
-		}
-		1 = { # TSUTSUMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tsutsumi TITLE = title:c_echizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_echizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tsutsumi }
-		}
-		### ETCHU
-		### HARIMA
-		1 = { # AKAMATSU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Akamatsu TITLE = title:c_harima } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_harima }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Akamatsu }
-		}
-		1 = { # BESSHO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Bessho TITLE = title:c_harima } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_harima }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Bessho }
-		}
-		1 = { # URAKAMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Urakami TITLE = title:c_harima } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_harima }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Urakami }
-		}
-		### HIDA
-		1 = { # USHIMARU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ushimaru TITLE = title:c_hida } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hida }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ushimaru }
-		}
-		### HIGO
-		1 = { # ASO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Aso TITLE = title:c_higo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_higo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Aso }
-		}
-		1 = { # KIKUCHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kikuchi TITLE = title:c_higo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_higo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kikuchi }
-		}
-		1 = { # KUMABE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kumabe TITLE = title:c_higo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_higo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kumabe }
-		}
-		1 = { # TAKEZAKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Takezaki TITLE = title:c_higo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_higo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Takezaki }
-		}
-		### HITACHI
-		1 = { # AKASU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Akasu TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Akasu }
-		}
-		1 = { # ASABA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Asaba TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Asaba }
-		}
-		1 = { # HATTA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hatta TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hatta }
-		}
-		1 = { # ISA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Isa TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Isa }
-		}
-		1 = { # KATAOKA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kataoka TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kataoka }
-		}
-		1 = { # MIMURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mimura TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mimura }
-		}
-		1 = { # NAMEKATA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Namekata TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Namekata }
-		}
-		1 = { # NEMOTO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nemoto TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nemoto }
-		}
-		1 = { # NISSAI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nissai TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nissai }
-		}
-		1 = { # ONOZAKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Onozaki TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Onozaki }
-		}
-		1 = { # SATAKE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Satake TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Satake }
-		}
-		1 = { # SHIDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shida TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shida }
-		}
-		1 = { # TAKEDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Takeda TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Takeda }
-		}
-		1 = { # TOMURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tomura TITLE = title:c_hitachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tomura }
-		}
-		### HIZEN
-		1 = { # MATSURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Matsura TITLE = title:c_hizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Matsura }
-		}
-		1 = { # YASUTOMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yasutomi TITLE = title:c_hizen } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_hizen }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yasutomi }
-		}
-		### HOKI
-		### HYUGA
-		### INABA
-		1 = { # HIKIDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hikida TITLE = title:c_inaba } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_inaba }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hikida }
-		}
-		1 = { # SAJI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Saji TITLE = title:c_inaba } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_inaba }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Saji }
-		}
-		### ISAWA
-		1 = { # SHIBA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shiba TITLE = title:c_isawa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_isawa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shiba }
-		}
-		### ISE
-		1 = { # HATTORI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hattori TITLE = title:c_yamato } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_yamato }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hattori }
-		}
-		1 = { # IGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Iga TITLE = title:c_ise } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_ise }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Iga }
-		}
-		1 = { # ITO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_ItO_ TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_ItO_ }
-		}
-		1 = { # KANBE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kanbe TITLE = title:c_ise } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_ise }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kanbe }
-		}
-		1 = { # KUKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kuki TITLE = title:c_ise } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_ise }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kuki }
-		}
-		1 = { # SEKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Seki TITLE = title:c_ise } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_ise }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Seki }
-		}
-		1 = { # SHIMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shima TITLE = title:c_ise } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_ise }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shima }
-		}
-		### IWAKI
-		1 = { # TAMURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tamura TITLE = title:c_iwaki } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iwaki }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tamura }
-		}
-		1 = { # WATARI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Watari TITLE = title:c_iwaki } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iwaki }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Watari }
-		}
-		### IWASHIRO
-		1 = { # DATE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Date TITLE = title:c_iwase } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iwase }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Date }
-		}
-		1 = { # SUGIME
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sugime TITLE = title:c_iwase } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iwase }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sugime }
-		}
-		### IWASE
-		1 = { # ASAKA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Asaka TITLE = title:c_iwase } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iwase }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Asaka }
-		}
-		### IYO
-		1 = { # KONO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_KO_no TITLE = title:c_iyo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iyo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_KO_no }
-		}
-		### IZU
-		1 = { # AKAZAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Akazawa TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Akazawa }
-		}
-		1 = { # AMANO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Amano TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Amano }
-		}
-		1 = { # EMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ema TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ema }
-		}
-		1 = { # HOJO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_HO_jO_ TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_HO_jO_ }
-		}
-		1 = { # ITO 2
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_ItO__2 TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_ItO__2 }
-		}
-		1 = { # KANO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kano TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kano }
-		}
-		1 = { # KAWAZU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kawazu TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kawazu }
-		}
-		1 = { # OMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_mi TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_mi }
-		}
-		1 = { # TASHIRO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tashiro TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tashiro }
-		}
-		1 = { # USAMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Usami TITLE = title:c_izu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Usami }
-		}
-		### IWAMI
-		1 = { # MASUDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Masuda TITLE = title:c_iwami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iwami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Masuda }
-		}
-		### IZUMO
-		1 = { # MISAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Misawa TITLE = title:c_izumo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izumo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Misawa }
-		}
-		1 = { # MITOYA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mitoya TITLE = title:c_izumo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izumo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mitoya }
-		}
-		1 = { # NOGI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nogi TITLE = title:c_izumo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izumo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nogi }
-		}
-		### KAGA
-		1 = { # KUMASAKA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kumasaka TITLE = title:c_kaga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kaga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kumasaka }
-		}
-		1 = { # TOGASHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Togashi TITLE = title:c_kaga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kaga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Togashi }
-		}
-		### KAI
-		1 = { # AKIYAMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Akiyama TITLE = title:c_kai } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kai }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Akiyama }
-		}
-		1 = { # ASARI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Asari TITLE = title:c_kai } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kai }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Asari }
-		}
-		1 = { # ICHIJO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_IchijO_ TITLE = title:c_kai } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kai }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_IchijO_ }
-		}
-		1 = { # ITSUMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Henmi TITLE = title:c_kai } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kai }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Henmi }
-		}
-		1 = { # KAGAMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kagami TITLE = title:c_kai } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kai }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kagami }
-		}
-		1 = { # NANBU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nanbu TITLE = title:c_kai } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kai }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nanbu }
-		}
-		1 = { # OGASAWARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ogasawara TITLE = title:c_kai } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kai }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ogasawara }
-		}
-		### KAWACHI
-		1 = { # IZUMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Izumi TITLE = title:c_kawachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kawachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Izumi }
-		}
-		1 = { # TAKAYASU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Takayasu TITLE = title:c_kawachi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kawachi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Takayasu }
-		}
-		### KAZUSA
-		1 = { # ANZAI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Anzai TITLE = title:c_kazusa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kazusa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Anzai }
-		}
-		1 = { # HANYU 2
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_HanyU__2 TITLE = title:c_kazusa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kazusa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_HanyU__2 }
-		}
-		1 = { # INTO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_IntO_ TITLE = title:c_kazusa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kazusa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_IntO_ }
-		}
-		1 = { # KANEDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kaneda TITLE = title:c_kazusa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kazusa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kaneda }
-		}
-		1 = { # NAGASA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nagasa TITLE = title:c_awa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_awa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nagasa }
-		}
-		1 = { # OBU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Obu TITLE = title:c_kazusa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kazusa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Obu }
-		}
-		1 = { # SAKUMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sakuma TITLE = title:c_kazusa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kazusa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sakuma }
-		}
-		### KII
-		1 = { # AKATA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Akata TITLE = title:c_kii } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Akata }
-		}
-		1 = { # ITOGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Itoga TITLE = title:c_kii } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Itoga }
-		}
-		1 = { # HOZUMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hozumi TITLE = title:c_kii } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hozumi }
-		}
-		1 = { # SHINGU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_ShingU_ TITLE = title:c_kii } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_ShingU_ }
-		}
-		1 = { # SUZUKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Suzuki TITLE = title:c_kii } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Suzuki }
-		}
-		1 = { # UI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ui TITLE = title:c_kii } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ui }
-		}
-		1 = { # YAMAMOTO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamamoto TITLE = title:c_kii } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yamamoto }
-		}
-		1 = { # YUASA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yuasa TITLE = title:c_kii } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yuasa }
-		}
-		### KOZUKE
-		1 = { # AKAHORI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Akahori TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Akahori }
-		}
-		1 = { # AOYAMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Aoyama TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Aoyama }
-		}
-		1 = { # IWAMATSU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Iwamatsu TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Iwamatsu }
-		}
-		1 = { # JINBO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Jinbo TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Jinbo }
-		}
-		1 = { # MOMONOI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Momonoi TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Momonoi }
-		}
-		1 = { # NITTA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nitta TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nitta }
-		}
-		1 = { # OBATA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Obata TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Obata }
-		}
-		1 = { # SATOMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Satomi TITLE = title:c_mino } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mino }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Satomi }
-		}
-		1 = { # TOKUGAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tokugawa TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tokugawa }
-		}
-		1 = { # YAMANA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamana TITLE = title:c_kozuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_kozuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yamana }
-		}
-		### MIKAWA
-		1 = { # ASUKE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Asuke TITLE = title:c_mikawa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mikawa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Asuke }
-		}
-		1 = { # HOSOKAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hosokawa TITLE = title:c_mikawa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mikawa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hosokawa }
-		}
-		1 = { # IMAGAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Imagawa TITLE = title:c_mikawa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mikawa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Imagawa }
-		}
-		1 = { # ISSHIKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Isshiki TITLE = title:c_higo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_higo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Isshiki }
-		}
-		1 = { # KIRA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kira TITLE = title:c_mikawa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mikawa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kira }
-		}
-		1 = { # MAKINO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Makino TITLE = title:c_mikawa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mikawa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Makino }
-		}
-		1 = { # MATSUDAIRA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Matsudaira TITLE = title:c_mikawa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mikawa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Matsudaira }
-		}
-		1 = { # NIKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Niki TITLE = title:c_mikawa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mikawa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Niki }
-		}
-		### MIMASAKA
-		1 = { # KATSUTA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Katsuta TITLE = title:c_mimasaka } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mimasaka }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Katsuta }
-		}
-		1 = { # SHINMEN
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shinmen TITLE = title:c_mimasaka } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mimasaka }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shinmen }
-		}
-		### MINO
-		1 = { # ASANO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Asano TITLE = title:c_mino } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mino }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Asano }
-		}
-		1 = { # FUKUSHIMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Fukushima TITLE = title:c_mino } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mino }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Fukushima }
-		}
-		1 = { # IKEDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ikeda TITLE = title:c_mino } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mino }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ikeda }
-		}
-		1 = { # KIDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kida TITLE = title:c_mino } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mino }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kida }
-		}
-		1 = { # TOKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Toki_JP TITLE = title:c_mino } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mino }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Toki_JP }
-		}
-		1 = { # TOYOYAMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Toyoyama TITLE = title:c_mino } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mino }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Toyoyama }
-		}
-		### MUSASHI
-		1 = { # ADACHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Adachi TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Adachi }
-		}
-		1 = { # ASAMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Asami TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Asami }
-		}
-		1 = { # CHICHIBU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Chichibu TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Chichibu }
-		}
-		1 = { # INAGE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Inage TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Inage }
-		}
-		1 = { # INOMATA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Inomata TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Inomata }
-		}
-		1 = { # KANEKO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kaneko TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kaneko }
-		}
-		1 = { # KASAI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kasai TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kasai }
-		}
-		1 = { # KASUKABE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kasukabe TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kasukabe }
-		}
-		1 = { # KAWAGOE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kawagoe TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kawagoe }
-		}
-		1 = { # KAWASAKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kawasaki TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kawasaki }
-		}
-		1 = { # KUMAGAI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kumagai TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kumagai }
-		}
-		1 = { # HATAKEYAMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hatakeyama TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hatakeyama }
-		}
-		1 = { # HIKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hiki TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hiki }
-		}
-		1 = { # HIRUKAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hirukawa TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hirukawa }
-		}
-		1 = { # INAZAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Inazawa TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Inazawa }
-		}
-		1 = { # MOKUSAI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mokusai TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mokusai }
-		}
-		1 = { # MURAYAMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Murayama TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Murayama }
-		}
-		1 = { # NARITA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Narita TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Narita }
-		}
-		1 = { # NOMOTO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nomoto TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nomoto }
-		}
-		1 = { # NOYO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Noyo TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Noyo }
-		}
-		1 = { # OI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_i TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_i }
-		}
-		1 = { # OYAMADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Oyamada TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Oyamada }
-		}
-		1 = { # TOSHIMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Toshima TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Toshima }
-		}
-		1 = { # SHINAGAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shinagawa TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shinagawa }
-		}
-		1 = { # USHIODA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ushioda TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ushioda }
-		}
-		1 = { # YOKOYAMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yokoyama TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yokoyama }
-		}
-		1 = { # YOMODA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yomoda TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yomoda }
-		}
-		### NAGATO
-		### NOTO
-		1 = { # TOKUDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tokuda TITLE = title:c_noto } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_noto }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tokuda }
-		}
-		### OKI
-		### OMI
-		1 = { # AMAGO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Amago TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Amago }
-		}
-		1 = { # AMENOMORI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Amenomori TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Amenomori }
-		}
-		1 = { # HAYAMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hayami TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hayami }
-		}
-		1 = { # IBA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Iba_JP TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Iba_JP }
-		}
-		1 = { # KUTSUKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kutsuki TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kutsuki }
-		}
-		1 = { # MIKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Miki TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Miki }
-		}
-		1 = { # OHARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_hara TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_hara }
-		}
-		1 = { # SASAKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sasaki TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sasaki }
-		}
-		1 = { # TANAKA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tanaka TITLE = title:c_omi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tanaka }
-		}
-		### OSUMI
-		1 = { # KIMOTSUKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kimotsuki TITLE = title:c_osumi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_osumi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kimotsuki }
-		}
-		1 = { # KITAHARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kitahara TITLE = title:c_osumi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_osumi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kitahara }
-		}
-		### OWARI
-		1 = { # HACHISUKA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hachisuka TITLE = title:c_owari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hachisuka }
-		}
-		1 = { # HOTTA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hotta TITLE = title:c_owari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hotta }
-		}
-		1 = { # NIWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Niwa TITLE = title:c_owari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Niwa }
-		}
-		1 = { # OGAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ogawa TITLE = title:c_owari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ogawa }
-		}
-		1 = { # OKADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Okada TITLE = title:c_owari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Okada }
-		}
-		1 = { # OSADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Osada TITLE = title:c_owari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Osada }
-		}
-		1 = { # YAMADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamada TITLE = title:c_owari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yamada }
-		}
-		1 = { # YASUDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yasuda TITLE = title:c_owari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yasuda }
-		}
-		### SAGAMI
-		1 = { # AIHARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Aihara TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Aihara }
-		}
-		1 = { # AIKO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_AikO_ TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_AikO_ }
-		}
-		1 = { # ASHINA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ashina_JP TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ashina_JP }
-		}
-		1 = { # DOI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Doi TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Doi }
-		}
-		1 = { # EBINA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ebina TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ebina }
-		}
-		1 = { # HATANO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hatano TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hatano }
-		}
-		1 = { # KAGAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kagawa TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kagawa }
-		}
-		1 = { # KAJIWARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kajiwara TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kajiwara }
-		}
-		1 = { # KOBAYAKAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kobayakawa TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kobayakawa }
-		}
-		1 = { # MATANO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Matano TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Matano }
-		}
-		1 = { # MIURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Miura TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Miura }
-		}
-		1 = { # MORI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mori_JP TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mori_JP }
-		}
-		1 = { # NAGAE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nagae TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nagae }
-		}
-		1 = { # NAGAO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nagao TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nagao }
-		}
-		1 = { # NAKAMURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nakamura TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nakamura }
-		}
-		1 = { # NIKAIDO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nikaido TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nikaido }
-		}
-		1 = { # OBA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_ba TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_ba }
-		}
-		1 = { # OKAZAKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Okazaki TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Okazaki }
-		}
-		1 = { # OTAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_tawa TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_tawa }
-		}
-		1 = { # OTOMO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_tomo TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_tomo }
-		}
-		1 = { # SAWARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sawara TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sawara }
-		}
-		1 = { # SHIBUYA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shibuya TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shibuya }
-		}
-		1 = { # SOGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Soga TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Soga }
-		}
-		1 = { # SUGIMOTO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sugimoto TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sugimoto }
-		}
-		1 = { # TOKIWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tokiwa TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tokiwa }
-		}
-		1 = { # TSUCHIYA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tsuchiya TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tsuchiya }
-		}
-		1 = { # YAMAUCHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamauchi TITLE = title:c_sagami } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yamauchi }
-		}
-		### SANUKI
-		1 = { # SOGO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_SogO_ TITLE = title:c_sanuki } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sanuki }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_SogO_ }
-		}
-		### SATSUMA
-		1 = { # SHIMAZU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shimazu TITLE = title:c_satsuma } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_satsuma }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shimazu }
-		}
-		1 = { # TOGO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_TO_gO_ TITLE = title:c_satsuma } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_satsuma }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_TO_gO_ }
-		}
-		1 = { # YAMADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamada TITLE = title:c_satsuma } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_satsuma }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yamada }
-		}
-		### SETTSU
-		1 = { # MINASE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Minase TITLE = title:c_settsu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_settsu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Minase }
-		}
-		1 = { # MIZOKUI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mizokui TITLE = title:c_settsu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_settsu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mizokui }
-		}
-		1 = { # NOSE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nose TITLE = title:c_settsu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_settsu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nose }
-		}
-		1 = { # TADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tada TITLE = title:c_settsu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_settsu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tada }
-		}
-		1 = { # WATANABE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Watanabe TITLE = title:c_settsu } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_settsu }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Watanabe }
-		}
-		### SHINANO
-		1 = { # AIDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Aida TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Aida }
-		}
-		1 = { # ATOBE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Atobe TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Atobe }
-		}
-		1 = { # DEURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Deura TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Deura }
-		}
-		1 = { # HIGUCHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Higuchi TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Higuchi }
-		}
-		1 = { # HOSHINA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hoshina TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hoshina }
-		}
-		1 = { # IIDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Iida TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Iida }
-		}
-		1 = { # IINUMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Iinuma TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Iinuma }
-		}
-		1 = { # IMAI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Imai TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Imai }
-		}
-		1 = { # INA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ina TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ina }
-		}
-		1 = { # INOUE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Inoue TITLE = title:c_musashi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Inoue }
-		}
-		1 = { # KATAGIRI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Katagiri TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Katagiri }
-		}
-		1 = { # KOSAKA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kosaka TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kosaka }
-		}
-		1 = { # KISO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kiso TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kiso }
-		}
-		1 = { # KURITA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kurita TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kurita }
-		}
-		1 = { # MOCHIZUKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mochizuki TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mochizuki }
-		}
-		1 = { # MURAKAMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Murakami TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Murakami }
-		}
-		1 = { # NAKANO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nakano TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nakano }
-		}
-		1 = { # NATSUME
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Natsume TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Natsume }
-		}
-		1 = { # NEZU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nezu TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nezu }
-		}
-		1 = { # NISHINA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nishina TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nishina }
-		}
-		1 = { # ODAGIRI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Odagiri TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Odagiri }
-		}
-		1 = { # SANADA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sanada TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sanada }
-		}
-		1 = { # SHIODA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shioda TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shioda }
-		}
-		1 = { # TOMONO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Tomono TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tomono }
-		}
-		1 = { # UEDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ueda TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ueda }
-		}
-		1 = { # UNNO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Unno TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Unno }
-		}
-		1 = { # YASHIRO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yashiro TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yashiro }
-		}
-		1 = { # YODA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yoda TITLE = title:c_shinano } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yoda }
-		}
-		### SHIMOSA
-		1 = { # CHIBA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Chiba TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Chiba }
-		}
-		1 = { # HARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hara TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hara }
-		}
-		1 = { # KOKUBU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kokubu TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kokubu }
-		}
-		1 = { # OSUGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_suga TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_suga }
-		}
-		1 = { # SHIMOKOBE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_ShimokO_be TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_ShimokO_be }
-		}
-		1 = { # SOMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_SO_ma TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_SO_ma }
-		}
-		1 = { # SOSA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_SO_sa TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_SO_sa }
-		}
-		1 = { # TAKEISHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Takeishi TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Takeishi }
-		}
-		1 = { # TO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_TO_ TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_TO_ }
-		}
-		1 = { # YUKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_YU_ki TITLE = title:c_shimosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_YU_ki }
-		}
-		### SHIMOTSUKE
-		1 = { # ASHIKAGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ashikaga TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ashikaga }
-		}
-		1 = { # HAGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Haga TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Haga }
-		}
-		1 = { # ITAKURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Itakura TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Itakura }
-		}
-		1 = { # NASU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Nasu TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nasu }
-		}
-		1 = { # ONODERA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Onodera TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Onodera }
-		}
-		1 = { # OYAMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Oyama TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Oyama }
-		}
-		1 = { # SANO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sano TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sano }
-		}
-		1 = { # SHIONOYA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shionoya TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shionoya }
-		}
-		1 = { # UJIIE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Uji_ie TITLE = title:c_shimotsuke } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Uji_ie }
-		}
-		### SUO
-		1 = { # MIGATA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Migata TITLE = title:c_suo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Migata }
-		}
-		1 = { # OUCHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_uchi TITLE = title:c_suo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_uchi }
-		}
-		1 = { # TOIDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Toida TITLE = title:c_suo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Toida }
-		}
-		1 = { # WASHIZU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Washizu TITLE = title:c_suo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Washizu }
-		}
-		1 = { # YAMAGUCHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamaguchi TITLE = title:c_suo } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yamaguchi }
-		}
-		### SURUGA
-		1 = { # ABE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Abe TITLE = title:c_suruga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suruga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Abe }
-		}
-		1 = { # ANO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ano TITLE = title:c_suruga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suruga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ano }
-		}
-		1 = { # IRIE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Irie TITLE = title:c_suruga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suruga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Irie }
-		}
-		1 = { # KAMBARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kambara TITLE = title:c_suruga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suruga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kambara }
-		}
-		1 = { # KIKKAWA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kikkawa TITLE = title:c_suruga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suruga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kikkawa }
-		}
-		1 = { # MAKI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Maki TITLE = title:c_suruga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suruga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Maki }
-		}
-		1 = { # OKABE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Okabe TITLE = title:c_suruga } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_suruga }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Okabe }
-		}
-		### TAGA
-		1 = { # HIZUME
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hizume TITLE = title:c_korehari } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_korehari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hizume }
-		}
-		### TAJIMA
-		1 = { # ASAKURA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Asakura TITLE = title:c_tajima } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tajima }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Asakura }
-		}
-		### TANBA
-		1 = { # ASHIDA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ashida TITLE = title:c_tanba } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tanba }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ashida }
-		}
-		1 = { # OTA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_ta TITLE = title:c_tanba } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tanba }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_ta }
-		}
-		1 = { # UESUGI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Uesugi TITLE = title:c_tanba } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tanba }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Uesugi }
-		}
-		### TOSA
-		1 = { # CHOSOKABE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_ChO_sokabe TITLE = title:c_tosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_ChO_sokabe }
-		}
-		1 = { # HASUIKE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Hasuike TITLE = title:c_tosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hasuike }
-		}
-		1 = { # KOSOKABE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_KO_sokabe TITLE = title:c_tosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_KO_sokabe }
-		}
-		1 = { # SOGABE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sogabe TITLE = title:c_tosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sogabe }
-		}
-		1 = { # YASU
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Yasu TITLE = title:c_tosa } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tosa }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yasu }
-		}
-		### TOTOMI
-		1 = { # HARAISHI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Haraishi TITLE = title:c_totomi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_totomi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Haraishi }
-		}
-		1 = { # II
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ii TITLE = title:c_totomi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_totomi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ii }
-		}
-		1 = { # ISHITANI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ishitani TITLE = title:c_totomi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_totomi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ishitani }
-		}
-		1 = { # SAGARA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Sagara TITLE = title:c_totomi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_totomi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Sagara }
-		}
-		1 = { # TOYODA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Toyoda TITLE = title:c_totomi } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_totomi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Toyoda }
-		}
-		### TSUGARU
-		### TSUSHIMA
-		1 = { # SO
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_SO_ TITLE = title:c_tsushima } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tsushima }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_SO_ }
-		}
-		### UGO
-		### UZEN
-		1 = { # MOGAMI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Mogami TITLE = title:c_tokisara } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tokisara }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Mogami }
-		}
-		1 = { # OZONE
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_zone TITLE = title:c_tokisara } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tokisara }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_zone }
-		}
-		1 = { # SHIRATORI
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Shiratori TITLE = title:c_tokisara } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tokisara }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Shiratori }
-		}
-		### YAMATO
-		1 = { # KASUGA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Kasuga TITLE = title:c_yamato } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_yamato }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kasuga }
-		}
-		1 = { # IKOMA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_Ikoma TITLE = title:c_yamato } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_yamato }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ikoma }
-		}
-		1 = { # OMIYA
-			trigger = { gaul_house_name_county_trigger = { FLAG = flag:dynn_O_miya TITLE = title:c_yamato } }
-			gallic_new_house_name_modifiers = { TITLE = title:c_yamato }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_miya }
-		}
-		### OTHER / SHARED
-		1 = { # FURUICHI
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Furuichi TITLE = title:c_kawachi }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Furuichi TITLE = title:c_omi }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Furuichi TITLE = title:c_settsu }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Furuichi TITLE = title:c_yamato }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_kawachi }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			gallic_new_house_name_modifiers = { TITLE = title:c_settsu }
-			gallic_new_house_name_modifiers = { TITLE = title:c_yamato }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Furuichi }
-		}
-		1 = { # HAYASHI
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Hayashi TITLE = title:c_kaga }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Hayashi TITLE = title:c_owari }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_kaga }
-			gallic_new_house_name_modifiers = { TITLE = title:c_owari }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hayashi }
-		}
-		1 = { # HONJO
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Furuichi TITLE = title:c_echigo }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Furuichi TITLE = title:c_musashi }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_echigo }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_HonjO_ }
-		}
-		1 = { # HIRAGA
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Hiraga TITLE = title:c_shinano }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Hiraga TITLE = title:c_tokisara }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_shinano }
-			gallic_new_house_name_modifiers = { TITLE = title:c_tokisara }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Hiraga }
-		}
-		1 = { # ISHIKAWA
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Ishikawa TITLE = title:c_kawachi }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Ishikawa TITLE = title:c_iwaki }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_kawachi }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iwaki }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Ishikawa }
-		}
-		1 = { # KODAMA
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Kodama TITLE = title:c_hoki }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Kodama TITLE = title:c_musashi }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_hoki }
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kodama }
-		}
-		1 = { # NAKAMURA
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Nakamura TITLE = title:c_hitachi }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Nakamura TITLE = title:c_sagami }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Nakamura TITLE = title:c_shimotsuke }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			gallic_new_house_name_modifiers = { TITLE = title:c_shimotsuke }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nakamura }
-		}
-		1 = { # SHINGU
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_ShingU_ TITLE = title:c_kii }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_ShingU_ TITLE = title:c_iwase }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_kii }
-			gallic_new_house_name_modifiers = { TITLE = title:c_iwase }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_ShingU_ }
-		}
-		1 = { # TAKAOKA
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Takaoka TITLE = title:c_hitachi }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Takaoka TITLE = title:c_izumo }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_hitachi }
-			gallic_new_house_name_modifiers = { TITLE = title:c_izumo }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Takaoka }
-		}
-		1 = { # WADA
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Wada TITLE = title:c_kawachi }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Wada TITLE = title:c_sagami }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_kawachi }
-			gallic_new_house_name_modifiers = { TITLE = title:c_sagami }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Wada }
-		}
-		1 = { # YAMAGATA
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamagata TITLE = title:c_aki }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Yamagata TITLE = title:c_mino }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_aki }
-			gallic_new_house_name_modifiers = { TITLE = title:c_mino }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yamagata }
-		}
-		1 = { # YOSHIDA
-			trigger = {
-				OR = {
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Yoshida TITLE = title:c_musashi }
-					gaul_house_name_county_trigger = { FLAG = flag:dynn_Yoshida TITLE = title:c_omi }
-				}
-			}
-			gallic_new_house_name_modifiers = { TITLE = title:c_musashi }
-			gallic_new_house_name_modifiers = { TITLE = title:c_omi }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Yoshida }
-		}
-		### FUJIWARA
-		3 = { # ANDO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_AndO_ }
-		}
-		3 = { # ENDO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_EndO_ }
-		}
-		3 = { # GOTO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_GotO_ }
-		}
-		3 = { # KATO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_KatO_ }
-		}
-		3 = { # KONDO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_KondO_ }
-		}
-		3 = { # KUDO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_KudO_ }
-		}
-		3 = { # MUTO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_MutO_ }
-		}
-		3 = { # SAITO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_SaitO_ }
-		}
-		3 = { # SATO
-			trigger = { dynasty ?= { exists = var:fujiwara_flag } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_SatO_ }
-		}
-	}
-}
 
-assign_gallic_house_name_options_kyoto_effect = {
-	### YAMASHIRO (KYOTO)
-	random_list = {
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_Awata } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Awata }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_Awataguchi } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Awataguchi }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_GojO_ } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_GojO_ }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_IchijO_ } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_IchijO_ }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_Kitabatake } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Kitabatake }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_Konoe } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Konoe }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_KyO_goku } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_KyO_goku }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_Nakamikado } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Nakamikado }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_NijO_ } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_NijO_ }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_O_inomikado } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_O_inomikado }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_Rokkaku } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Rokkaku }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_RokujO_ } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_RokujO_ }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_SanjO_ } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_SanjO_ }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_ShijO_ } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_ShijO_ }
-		}
-		1 = {
-			trigger = { gaul_house_name_trigger = { FLAG = flag:dynn_Tsuchimikado } }
-			add_to_variable_list = { name = gallic_house_names target = flag:dynn_Tsuchimikado }
-		}
-	}
-}
 
 gallic_faction_demand_regent_transfer_effect = {
 	top_liege = {
@@ -2532,7 +701,7 @@ tgp_gaul_schoolhouse_education_boost_effect = {
 
 tgp_restore_gallic_monarchy_decision_effect = {
 	save_scope_as = mayor_of_the_palace
-	tgp_restore_gallic_monarchy_yamato_scion_effect = yes
+	tgp_restore_gallic_monarchy_merovingian_scion_effect = yes
 	add_prestige = major_prestige_value
 	if = {
 		limit = { government_allows = administrative }
@@ -2540,48 +709,48 @@ tgp_restore_gallic_monarchy_decision_effect = {
 	}
 	else = { add_piety = medium_piety_value }
 	if = {
-		limit = { exists = scope:scion }
+		limit = { exists = scope:gaul_scion }
 		add_hook = {
 			type = strong_favor_hook
-			target = scope:scion
+			target = scope:gaul_scion
 		}
 	}
 	else = { custom_tooltip = tgp_restore_gallic_monarchy_decision_hook_tt }
 }
 
-tgp_restore_gallic_monarchy_yamato_scion_effect = {
-	title:k_high_king_gaul_throne.previous_holder ?= { save_scope_as = last_tenno }
+tgp_restore_gallic_monarchy_merovingian_scion_effect = {
+	title:k_high_king_gaul_throne.previous_holder ?= { save_scope_as = last_high_king_gaul }
 	dynasty:frankish_merovingian.dynasty_founder.house ?= {
 		save_scope_as = house_merovingian
 		if = {
 			limit = { this = scope:mayor_of_the_palace.house }
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_yamato_scion_mayor_of_the_palace_tt
+				limit = { NOT = { exists = scope:gaul_scion } }
+				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_mayor_of_the_palace_tt
 			}
-			scope:mayor_of_the_palace = { save_scope_as = scion }
+			scope:mayor_of_the_palace = { save_scope_as = gaul_scion }
 		}
 		else_if = {
 			limit = {
-				scope:last_tenno ?= { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
+				scope:last_high_king_gaul ?= { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 			}
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_yamato_scion_last_tt
+				limit = { NOT = { exists = scope:gaul_scion } }
+				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_tt
 			}
-			scope:last_tenno = { save_scope_as = scion }
+			scope:last_high_king_gaul = { save_scope_as = gaul_scion }
 		}
 		else_if = {
 			limit = {
-				scope:last_tenno ?= {
+				scope:last_high_king_gaul ?= {
 					any_child = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 				}
 			}
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_yamato_scion_last_child_tt
+				limit = { NOT = { exists = scope:gaul_scion } }
+				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_child_tt
 			}
-			scope:last_tenno = {
+			scope:last_high_king_gaul = {
 				ordered_child = {
 					limit = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 					order_by = age
@@ -2591,15 +760,15 @@ tgp_restore_gallic_monarchy_yamato_scion_effect = {
 		}
 		else_if = {
 			limit = {
-				scope:last_tenno ?= {
+				scope:last_high_king_gaul ?= {
 					any_close_family_member = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 				}
 			}
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_yamato_scion_last_close_family_tt
+				limit = { NOT = { exists = scope:gaul_scion } }
+				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_close_family_tt
 			}
-			scope:last_tenno = {
+			scope:last_high_king_gaul = {
 				ordered_close_family_member = {
 					limit = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 					order_by = age
@@ -2616,8 +785,8 @@ tgp_restore_gallic_monarchy_yamato_scion_effect = {
 				}
 			}
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_yamato_scion_found_tt
+				limit = { NOT = { exists = scope:gaul_scion } }
+				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_found_tt
 			}
 			ordered_house_member = {
 				limit = {
@@ -2631,35 +800,35 @@ tgp_restore_gallic_monarchy_yamato_scion_effect = {
 			}
 		}
 		else = {
-			tgp_restore_gallic_monarchy_yamato_creation_effect = yes
+			tgp_restore_gallic_monarchy_merovingian_creation_effect = yes
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_yamato_scion_created_tt
+				limit = { NOT = { exists = scope:gaul_scion } }
+				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_created_tt
 			}
 		}
 		# Save children for portraits
-		scope:scion = {
+		scope:gaul_scion = {
 			save_scope_as = background_throne_room_scope
 			ordered_child = {
-				limit = { house = scope:scion.house }
+				limit = { house = scope:gaul_scion.house }
 				max = 3
 				check_range_bounds = no
 				order_by = age
 				switch = {
 					trigger = exists
-					scope:scion_child_2 = { save_scope_as = scion_child_3 }
-					scope:scion_child_1 = { save_scope_as = scion_child_2 }
-					fallback = { save_scope_as = scion_child_1 }
+					scope:gaul_gaul_scion_child_2 = { save_scope_as = gaul_scion_child_3 }
+					scope:gaul_gaul_scion_child_1 = { save_scope_as = gaul_scion_child_2 }
+					fallback = { save_scope_as = gaul_scion_child_1 }
 				}
 			}
 		}
 	}
 }
 
-tgp_restore_gallic_monarchy_yamato_restoration_effect = {
+tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 	add_character_flag = tgp_gaul_restore_gallic_monarchy_flag
 	if = {
-		limit = { exists = scope:scion }
+		limit = { exists = scope:gaul_scion }
 		if = {
 			limit = { exists = title:k_high_king_gaul_throne.holder }
 			create_title_and_vassal_change = {
@@ -2676,16 +845,16 @@ tgp_restore_gallic_monarchy_yamato_restoration_effect = {
 		}
 		title:k_high_king_gaul_throne ?= {
 			change_title_holder = {
-				holder = scope:scion
+				holder = scope:gaul_scion
 				change = scope:change
 			}
 		}
 		if = {
 			limit = {
-				scope:scion.liege != scope:mayor_of_the_palace
-				scope:scion != scope:mayor_of_the_palace
+				scope:gaul_scion.liege != scope:mayor_of_the_palace
+				scope:gaul_scion != scope:mayor_of_the_palace
 			}
-			scope:scion ?= {
+			scope:gaul_scion ?= {
 				change_liege = {
 					liege = scope:mayor_of_the_palace
 					change = scope:change
@@ -2696,7 +865,7 @@ tgp_restore_gallic_monarchy_yamato_restoration_effect = {
 	}
 	remove_character_flag = tgp_gaul_restore_gallic_monarchy_flag
 	hidden_effect = {
-		scope:scion = {
+		scope:gaul_scion = {
 			if = {
 				limit = {
 					NOT = { government_has_flag = government_is_gaul_administrative }
@@ -2707,32 +876,32 @@ tgp_restore_gallic_monarchy_yamato_restoration_effect = {
 	}
 }
 
-tgp_restore_gallic_monarchy_yamato_creation_effect = {
+tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 	create_character = {
 		template = tgp_gaul_imperial_scion_template
 		location = scope:mayor_of_the_palace.capital_province
 		age = { 16 38 }
 		save_scope_as = scion
 	}
-	scope:scion ?= {
+	scope:gaul_scion ?= {
 		if = {
 			limit = { is_female = yes }
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
 				location = scope:mayor_of_the_palace.capital_province
-				mother = scope:scion
+				mother = scope:gaul_scion
 				age = { 11 12 }
 			}
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
 				location = scope:mayor_of_the_palace.capital_province
-				mother = scope:scion
+				mother = scope:gaul_scion
 				age = { 7 8 }
 			}
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
 				location = scope:mayor_of_the_palace.capital_province
-				mother = scope:scion
+				mother = scope:gaul_scion
 				age = { 3 4  }
 			}
 		}
@@ -2740,19 +909,19 @@ tgp_restore_gallic_monarchy_yamato_creation_effect = {
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
 				location = scope:mayor_of_the_palace.capital_province
-				father = scope:scion
+				father = scope:gaul_scion
 				age = { 11 12 }
 			}
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
 				location = scope:mayor_of_the_palace.capital_province
-				father = scope:scion
+				father = scope:gaul_scion
 				age = { 7 8 }
 			}
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
 				location = scope:mayor_of_the_palace.capital_province
-				father = scope:scion
+				father = scope:gaul_scion
 				age = { 3 4 }
 			}
 		}
