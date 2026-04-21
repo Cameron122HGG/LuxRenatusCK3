@@ -3346,8 +3346,8 @@ tgp_liege_change_bloc_management_effect = {
 }
 
 tgp_gaul_assert_regional_dominion_government_decision_effect = {
-	save_scope_as = super_soryo
-	scope:super_soryo.primary_title.duchy ?= { save_scope_as = title_scope }
+	save_scope_as = super_regnulum
+	scope:super_regnulum.primary_title.duchy ?= { save_scope_as = title_scope }
 	# Crime to Kampaku
 	if = {
 		limit = {
@@ -3356,18 +3356,18 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 		# Message for attacker
 		send_interface_toast = {
 			type = event_war_bad
-			title = tgp_gaul_soryo_war_is_crime_title
+			title = tgp_gaul_regnulum_war_is_crime_title
 			left_icon = top_liege
 			right_icon = scope:title_scope
 			top_liege = {
 				send_interface_toast = {
 					type = event_war_bad
-					title = tgp_gaul_soryo_war_is_crime_kampaku_title
-					left_icon = scope:super_soryo
+					title = tgp_gaul_regnulum_war_is_crime_kampaku_title
+					left_icon = scope:super_regnulum
 					right_icon = scope:title_scope
 					add_opinion = {
-						target = scope:super_soryo
-						modifier = admin_soryo_conquest_crime
+						target = scope:super_regnulum
+						modifier = admin_regnulum_conquest_crime
 					}
 				}
 			}
@@ -3377,7 +3377,7 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 		limit = { exists = scope:title_scope.holder }
 		hidden_effect = {
 			scope:title_scope.holder = { save_scope_as = main_defender }
-			scope:super_soryo = {
+			scope:super_regnulum = {
 				if = {
 					limit = {
 						any_truce_target = { this = scope:main_defender }
@@ -3404,7 +3404,7 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 	}
 	else_if = {
 		limit = {
-			scope:super_soryo = {
+			scope:super_regnulum = {
 				NOR = {
 					prestige_level >= 4
 					legitimacy_level >= 3
@@ -3413,25 +3413,25 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 			scope:title_scope ?= {
 				any_de_jure_county_holder = {
 					NOR = {
-						is_liege_or_above_of = scope:super_soryo
-						top_suzerain ?= scope:super_soryo
-						is_allied_to = scope:super_soryo
+						is_liege_or_above_of = scope:super_regnulum
+						top_suzerain ?= scope:super_regnulum
+						is_allied_to = scope:super_regnulum
 						government_has_flag = government_is_herder
 						trigger_if = {
 							limit = {
-								exists = scope:super_soryo.confederation
+								exists = scope:super_regnulum.confederation
 							}
-							confederation ?= scope:super_soryo.confederation
+							confederation ?= scope:super_regnulum.confederation
 						}	
 					}
 					#They wont join if you're too scary
 					has_dread_level_towards = {
-						target = scope:super_soryo
+						target = scope:super_regnulum
 						level < 2
 					}
 					#Must be strong enough to feel like they can fight you
 					current_military_strength >= {
-						value = scope:super_soryo.current_military_strength
+						value = scope:super_regnulum.current_military_strength
 						multiply = 0.5
 					}
 				}
@@ -3441,30 +3441,30 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 			scope:title_scope = {
 				every_de_jure_county_holder = {
 					limit = {
-						NOT = { is_liege_or_above_of = scope:super_soryo }
+						NOT = { is_liege_or_above_of = scope:super_regnulum }
 					}
 					if = {
 						limit = {
 							NOR = {
-								top_suzerain ?= scope:super_soryo
-								is_allied_to = scope:super_soryo
+								top_suzerain ?= scope:super_regnulum
+								is_allied_to = scope:super_regnulum
 								government_has_flag = government_is_herder
 								trigger_if = {
 									limit = {
-										exists = scope:super_soryo.confederation
+										exists = scope:super_regnulum.confederation
 									}
-									confederation ?= scope:super_soryo.confederation
+									confederation ?= scope:super_regnulum.confederation
 								}	
 							}
 							
 							#They wont join if you're too scary
 							has_dread_level_towards = {
-								target = scope:super_soryo
+								target = scope:super_regnulum
 								level < 2
 							}
 							#Must be strong enough to feel like they can fight you
 							current_military_strength >= {
-								value = scope:super_soryo.current_military_strength
+								value = scope:super_regnulum.current_military_strength
 								multiply = 0.5
 							}
 						}
@@ -3481,7 +3481,7 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 					save_scope_as = main_defender
 				}
 			}
-			scope:super_soryo = {
+			scope:super_regnulum = {
 				if = {
 					limit = {
 						any_truce_target = { this = scope:main_defender }
@@ -3497,23 +3497,23 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 			#find ai for war
 			random_character_war = {
 				limit = {
-					primary_attacker = scope:super_soryo
+					primary_attacker = scope:super_regnulum
 					primary_defender = scope:main_defender
 					using_cb = domination_cb
 				}
-				save_scope_as = super_soryo_war
+				save_scope_as = super_regnulum_war
 				every_in_list = {
 					list = war_targets
 					limit = {
-						NOT = { is_participant_in_war = scope:super_soryo_war }
+						NOT = { is_participant_in_war = scope:super_regnulum_war }
 						is_ai = yes
 					}
-					save_scope_as = super_soryo_war_target
-					scope:super_soryo_war = {
+					save_scope_as = super_regnulum_war_target
+					scope:super_regnulum_war = {
 						hidden_effect = {
-							set_called_to = scope:super_soryo_war_target
+							set_called_to = scope:super_regnulum_war_target
 						}
-						add_defender = scope:super_soryo_war_target
+						add_defender = scope:super_regnulum_war_target
 					}
 				}
 			}
@@ -3531,7 +3531,7 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 			tgp_bloc_members_join_war_effect = { WAR = scope:war }
 		}
 		save_scope_value_as = {
-			name = super_soryo_war_current_enemy_strength
+			name = super_regnulum_war_current_enemy_strength
 			value = {
 				value = 0
 				every_in_list = {
@@ -3565,15 +3565,15 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 				}
 			}
 		}
-		custom_tooltip = super_soryo_war_no_holder_custom_tooltip
-		custom_tooltip = super_soryo_potential_peaceful
+		custom_tooltip = super_regnulum_war_no_holder_custom_tooltip
+		custom_tooltip = super_regnulum_potential_peaceful
 	}
 	else = {
 		scope:title_scope = { tgp_gaul_assert_regional_dominance_war_outcome_effect = yes }
 		add_dread = 15
 		add_legitimacy = 50
 		dynasty = { add_dynasty_prestige = 150 }
-		custom_tooltip = super_soryo_reward_peaceful
+		custom_tooltip = super_regnulum_reward_peaceful
 	}
 }
 
@@ -3638,7 +3638,7 @@ tgp_set_minamoto_taira_dynasty_prestige_effect = {
 	}
 }
 
-tgp_gaul_soryo_eradicate_cb_transfer_effect = {
+tgp_gaul_regnulum_eradicate_cb_transfer_effect = {
 	scope:loser = {
 		every_held_title = {
 			limit = {
@@ -3693,7 +3693,7 @@ tgp_gaul_soryo_eradicate_cb_transfer_effect = {
 	resolve_title_and_vassal_change = scope:change
 }
 
-gallic_establish_soryo_administration_reward_effect = {
+gallic_establish_regnulum_administration_reward_effect = {
 	save_temporary_scope_as = winner_temp
 	scope:winner_temp = {
 		if = {
@@ -3710,14 +3710,14 @@ gallic_establish_soryo_administration_reward_effect = {
 		}
 		house.house_confederation ?= {
 			custom_tooltip = {
-				text = gallic_establish_soryo_administration_vassal_government_tt
+				text = gallic_establish_regnulum_administration_vassal_government_tt
 				every_confederation_member = {
 					limit = { has_government = gaul_administrative_government }
 					change_government = gaul_feudal_government
 				}
 			}
 		}
-		custom_tooltip = gallic_establish_soryo_administration_imprison_tt
+		custom_tooltip = gallic_establish_regnulum_administration_imprison_tt
 	}
 }
 
