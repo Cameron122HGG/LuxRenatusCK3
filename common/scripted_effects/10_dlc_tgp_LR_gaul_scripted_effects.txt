@@ -2550,8 +2550,8 @@ tgp_restore_gallic_monarchy_decision_effect = {
 }
 
 tgp_restore_gallic_monarchy_yamato_scion_effect = {
-	title:k_chrysanthemum_throne.previous_holder ?= { save_scope_as = last_tenno }
-	dynasty:gallic_yamato.dynasty_founder.house ?= {
+	title:k_high_king_gaul_throne.previous_holder ?= { save_scope_as = last_tenno }
+	dynasty:frankish_merovingian.dynasty_founder.house ?= {
 		save_scope_as = house_yamato
 		if = {
 			limit = { this = scope:kampaku.house }
@@ -2661,7 +2661,7 @@ tgp_restore_gallic_monarchy_yamato_restoration_effect = {
 	if = {
 		limit = { exists = scope:scion }
 		if = {
-			limit = { exists = title:k_chrysanthemum_throne.holder }
+			limit = { exists = title:k_high_king_gaul_throne.holder }
 			create_title_and_vassal_change = {
 				type = usurped
 				save_scope_as = change
@@ -2674,7 +2674,7 @@ tgp_restore_gallic_monarchy_yamato_restoration_effect = {
 				save_scope_as = change
 			}
 		}
-		title:k_chrysanthemum_throne ?= {
+		title:k_high_king_gaul_throne ?= {
 			change_title_holder = {
 				holder = scope:scion
 				change = scope:change
