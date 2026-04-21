@@ -143,7 +143,7 @@
 	add_achievement_flag_effect = { FLAG = achievement_a_house_of_my_own_flag }
 }
 
-set_house_of_all_descendants_effect = {
+gallic_set_house_of_all_descendants_effect = {
 	if = {
 		limit = { any_child = { count >= 1 } }
 		every_child = { # Children
@@ -181,43 +181,7 @@ gaul_set_house_effect = {
 	}
 }
 
-gaul_dynasty_tracker_setup_effect = {
-	# FUJIWARA
-	dynasty:gallic_fujiwara ?= { add_to_list = fujiwara_list }
-	dynasty:gallic_fujiwara_oshu ?= { add_to_list = fujiwara_list }
-	every_in_list = {
-		list = fujiwara_list
-		set_variable = { name = fujiwara_flag }
-	}
-	# MINAMOTO
-	dynasty:gallic_minamoto_daigo ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_kazan ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_koko ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_gosanjo ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_montoku ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_murakami ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_ninmyo ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_saga ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_sanjo ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_seiwa ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_uda ?= { add_to_list = minamoto_list }
-	dynasty:gallic_minamoto_yozei ?= { add_to_list = minamoto_list }
-	every_in_list = {
-		list = minamoto_list
-		set_variable = { name = minamoto_flag }
-		#dynasty_founder.house ?= { set_house_name = "dynn_Minamoto" } # For easier parsing of house names
-	}
-	# TAIRA
-	dynasty:gallic_taira_kanmu ?= { add_to_list = taira_list }
-	dynasty:gallic_taira_koko ?= { add_to_list = taira_list }
-	dynasty:gallic_taira_montoku ?= { add_to_list = taira_list }
-	dynasty:gallic_taira_ninmyo ?= { add_to_list = taira_list }
-	every_in_list = {
-		list = taira_list
-		set_variable = { name = taira_flag }
-		#dynasty_founder.house ?= { set_house_name = "dynn_Taira" } # For easier parsing of house names
-	}
-}
+
 
 fill_external_gallic_manor_building_effect = {
 	switch = {
@@ -552,7 +516,7 @@ gallic_become_shogun_reward_effect = {
 	}
 }
 
-restore_ceremonial_liege_faction_combined_effect = {
+gallic_restore_ceremonial_liege_faction_combined_effect = {
 	top_liege = {
 		save_temporary_scope_as = regent_temp
 		primary_title = {
@@ -570,7 +534,7 @@ restore_ceremonial_liege_faction_combined_effect = {
 	# GLOBAL VAR
 	gaul_clear_flavour_flags_effect = yes
 	set_global_variable = {
-		name = tenno_restored
+		name = high_king_gaul_restored
 		value = yes
 	}
 	show_as_tooltip = { restore_ceremonial_liege_faction_reward_effect = yes }
@@ -578,7 +542,7 @@ restore_ceremonial_liege_faction_combined_effect = {
 	scope:ceremonial_liege_temp = { trigger_event = tgp_gaul_decision.9301 }
 }
 
-restore_ceremonial_liege_faction_reward_effect = {
+gallic_restore_ceremonial_liege_faction_reward_effect = {
 	top_liege = {
 		save_temporary_scope_as = regent_temp
 		primary_title = {
@@ -604,7 +568,7 @@ restore_ceremonial_liege_faction_reward_effect = {
 	}
 }
 
-restore_ceremonial_liege_faction_titles_effect = {
+gallic_restore_ceremonial_liege_faction_titles_effect = {
 	top_liege = {
 		save_temporary_scope_as = regent_temp
 		primary_title = {
@@ -2477,7 +2441,7 @@ assign_gallic_house_name_options_kyoto_effect = {
 	}
 }
 
-faction_demand_regent_transfer_effect = {
+gallic_faction_demand_regent_transfer_effect = {
 	top_liege = {
 		save_temporary_scope_as = old_regent_temp
 		primary_title = {
@@ -2886,7 +2850,7 @@ tgp_restore_gallic_government_decision_effect = {
 	remove_character_flag = tgp_gaul_restore_gallic_government_flag
 }
 
-tgp_destroy_ceremonial_throne_effect = {
+gallic_tgp_destroy_ceremonial_throne_effect = {
 	liege = { save_scope_as = liege }
 	save_scope_as = vassal
 	scope:vassal ?= {
@@ -2903,7 +2867,7 @@ tgp_destroy_ceremonial_throne_effect = {
 	}
 }
 
-tgp_destroy_ceremonial_liege_title_effect = {
+gallic_tgp_destroy_ceremonial_liege_title_effect = {
 	save_scope_as = ceremonial_liege
 	random_held_title = {
 		limit = { exists = var:ceremonial_title }
@@ -3149,201 +3113,10 @@ tgp_restore_procuratio_civil_war_effect = {
 	}
 }
 
-tgp_set_historical_house_relation_effect = {
-	if = {
-		limit = {
-			house_relation_is_valid_to_start_trigger = {
-				HOUSE = this
-				OTHER_HOUSE = $OTHER_HOUSE$
-			}
-		}
-		set_house_relation = {
-			target = $OTHER_HOUSE$
-			level = $LEVEL$
-			description = house_relation_reason_historical_desc
-		}
-	}
-}
 
-tgp_setup_historical_house_relation_effect = {
-	### 867 ###
-	if = {
-		limit = { game_start_date = 867.1.1 }
-		house:house_fujiwara_ashikaga = {
-			tgp_set_historical_house_relation_effect = { # 
-				OTHER_HOUSE = house:house_minamoto_kozuke
-				LEVEL = rivalry
-			}
-		}
-	}
-	### 1066 ###
-	else_if = {
-		limit = { game_start_date = 1066.9.15 }
-		dynasty:gallic_minamoto_murakami.dynasty_founder.house = {
-			tgp_set_historical_house_relation_effect = { # 
-				OTHER_HOUSE = dynasty:gallic_fujiwara.dynasty_founder.house
-				LEVEL = friendly
-			}
-		}
-	}
-	### 1178 ###
-	else_if = {
-		limit = { game_start_date = 1178.10.1 }
-		dynasty:gallic_sugawara.dynasty_founder.house = {
-			tgp_set_historical_house_relation_effect = { # 
-				OTHER_HOUSE = dynasty:gallic_ki.dynasty_founder.house
-				LEVEL = friendly
-			}
-		}
-		house:house_minamoto_kiso = {
-			tgp_set_historical_house_relation_effect = { # Yoshikata killed by Yoshihira
-				OTHER_HOUSE = dynasty:gallic_nakahara_kiso.dynasty_founder.house
-				LEVEL = friendly
-			}
-		}
-		house:house_minamoto_kawachi = {
-			tgp_set_historical_house_relation_effect = { # Yoritomo's brothers killed by Kiyomori
-				OTHER_HOUSE = dynasty:gallic_nakahara_kiso.dynasty_founder.house
-				LEVEL = rivalry
-			}
-			tgp_set_historical_house_relation_effect = { # Marriage and historical alliance
-				OTHER_HOUSE = house:house_taira_hojo
-				LEVEL = friendly
-			}
-		}
-		house:house_kudo_kawazu = {
-			tgp_set_historical_house_relation_effect = { # Soga brothers
-				OTHER_HOUSE = house:house_kudo_ito_2
-				LEVEL = rivalry
-			}
-		}
-		house:house_taira_wada = {
-			tgp_set_historical_house_relation_effect = { # Yoshimune killed by Tsunetomo
-				OTHER_HOUSE = dynasty:gallic_nagasa.dynasty_founder.house
-				LEVEL = rivalry
-			}
-		}
-		house:house_taira_chichibu = {
-			tgp_set_historical_house_relation_effect = { # Shigetaka killed by Yoshihira
-				OTHER_HOUSE = house:house_minamoto_kawachi
-				LEVEL = rivalry
-			}
-		}
-		house:house_taira_soga = {
-			tgp_set_historical_house_relation_effect = { # Soga brothers
-				OTHER_HOUSE = house:house_minamoto_kawachi
-				LEVEL = rivalry
-			}
-		}
-		dynasty:gallic_ito.dynasty_founder.house = {
-			tgp_set_historical_house_relation_effect = { # Tadanao killed by Tametomo
-				OTHER_HOUSE = house:house_minamoto_kawachi
-				LEVEL = rivalry
-			}
-		}
-		house:house_kudo_ito_2 = {
-			tgp_set_historical_house_relation_effect = { # Sukeyasu_2 killed by Suketsune_2
-				OTHER_HOUSE = house:house_kudo_kawazu
-				LEVEL = rivalry
-			}
-		}
-		house:house_fujiwara_shijo = {
-			tgp_set_historical_house_relation_effect = { # Takasue's brothers killed by Kiyomori
-				OTHER_HOUSE = dynasty:gallic_taira_kanmu.dynasty_founder.house
-				LEVEL = rivalry
-			}
-		}
-		dynasty:gallic_fujiwara.dynasty_founder.house = {
-			tgp_set_historical_house_relation_effect = { # Yorinaga killed by Shigesada
-				OTHER_HOUSE = house:house_minamoto_mitsumasa
-				LEVEL = rivalry
-			}
-		}
-	}
-}
 
-tgp_liege_change_bloc_management_effect = {
-	$VASSAL$ = {
-		if = { # Leave if not a valid member anymore
-			limit = {
-				OR = {
-					exists = confederation.leading_house
-					exists = house.house_confederation
-				}
-			}
-			save_temporary_scope_as = vassal_temp
-			house ?= { save_temporary_scope_as = vassal_house_temp }
-			liege ?= { save_temporary_scope_as = new_liege }
-			confederation ?= {
-				save_temporary_scope_as = current_bloc_temp
-				leading_house = { save_temporary_scope_as = current_bloc_leader_temp }
-			}
-			house.house_confederation ?= {
-				save_temporary_scope_as = current_house_bloc_temp
-				leading_house = { save_temporary_scope_as = current_house_bloc_leader_temp }
-			}
-			if = {
-				limit = {
-					exists = scope:current_bloc_temp
-					exists =  scope:old_liege
-					trigger_if = { # If a vassal
-						limit = { is_independent_ruler = no }
-						scope:new_liege.liege != scope:old_liege.liege
-						scope:new_liege = {
-							is_independent_ruler = no
-						}
-					}
-					trigger_else = {
-						NOT = { scope:vassal_temp = scope:old_liege.top_liege }
-					}
-				}
-				scope:current_bloc_temp = {
-					if = {
-						limit = {
-							scope:vassal_temp = {
-								is_house_head = yes
-								house.house_confederation = scope:current_bloc_temp
-								scope:new_liege = {
-									is_independent_ruler = no
-								}
-							}
-						}
-						scope:vassal_house_temp = {
-							tgp_leave_house_bloc_effect = {
-								OPINION = flag:no
-								TRUCE = flag:yes
-							}
-						}
-					}
-					else_if = {
-						limit = { scope:vassal_temp.confederation = scope:current_bloc_temp }
-						remove_confederation_member = scope:vassal_temp
-					}
-				}
-				debug_log = "Bloc liege change member leave"
-				debug_log_scopes = yes
-			}
-			if = { # Join if not a member of valid
-				limit = {
-					is_house_head = no
-					exists = scope:current_house_bloc_temp
-					scope:vassal_house_temp.house_head.liege ?= liege
-					NOT = { confederation = scope:vassal_house_temp.house_confederation }
-				}
-				confederation ?= {
-					save_temporary_scope_as = current_bloc_temp
-					remove_confederation_member = scope:vassal_temp
-				}
-				house.house_confederation = {
-					save_temporary_scope_as = house_bloc_temp
-					add_confederation_member = scope:vassal_temp
-				}
-				debug_log = "Bloc liege change member join"
-				debug_log_scopes = yes
-			}
-		}
-	}
-}
+
+
 
 tgp_gaul_assert_regional_dominion_government_decision_effect = {
 	save_scope_as = super_regnulum
@@ -3629,14 +3402,7 @@ tgp_gaul_assert_regional_dominance_war_outcome_effect = {
 	resolve_title_and_vassal_change = scope:change
 }
 
-tgp_set_minamoto_taira_dynasty_prestige_effect = {
-	holder.dynasty ?= {
-		while = {
-			limit = { dynasty_prestige_level < 5 }
-			add_dynasty_prestige_level = 1
-		}
-	}
-}
+
 
 tgp_gaul_regnulum_eradicate_cb_transfer_effect = {
 	scope:loser = {
@@ -3721,396 +3487,6 @@ gallic_establish_regnulum_administration_reward_effect = {
 	}
 }
 
-tgp_learn_chinese_effect_game_start = {
-	if = {
-		limit = {
-			should_learn_chinese_trigger = yes
-		}
-		learn_language = language_chinese
-	}
-}
-tgp_learn_chinese_effect_birthday = {
-	if = {
-		limit = {
-			should_learn_chinese_trigger = yes
-		}
-		learn_language = language_chinese
-		every_player = {
-			limit = {
-				OR = {
-					is_parent_of = scope:child_learned_chinese
-					this = scope:child_learned_chinese
-					has_relation_guardian = scope:child_learned_chinese
-					has_relation_elder = scope:child_learned_chinese
-				}
-			}
-			send_interface_toast = {
-				type = event_childhood_good_with_text
-				title = gallic_korean_child_learned_chinese_title
-				desc = gallic_korean_child_learned_chinese_effect
-				left_icon = scope:child_learned_chinese
-				show_as_tooltip = {
-					scope:child_learned_chinese = {
-						learn_language = language_chinese
-					}
-				}
-			}
-		}
-	}
-}
 
-create_love_artifact_poetry_effect = {
-	$OWNER$ = { save_scope_as = owner }
 
-	hidden_effect_new_object = {
-		get_artifact_quality_effect = yes
-		get_artifact_wealth_effect = yes
 
-		scope:owner = {
-			create_artifact = {
-				name = love_artifact_poetry_name
-				creator = scope:owner
-				description = love_artifact_poetry_description
-				visuals = scroll
-				type = miscellaneous
-				modifier = artifact_monthly_minor_prestige_1_modifier
-				modifier = artifact_attraction_opinion_1_modifier
-				save_scope_as = newly_created_artifact
-				wealth = scope:wealth
-				quality = scope:quality
-			}
-		}
-
-		scope:newly_created_artifact = {
-			add_scaled_artifact_modifier_minor_prestige_effect = yes
-			add_scaled_artifact_modifier_majesty_effect = yes
-		}
-	}
-}
-
-tgp_bloc_members_join_faction_effect = {
-	if = { # gallic blocs
-		limit = { scope:faction.faction_leader.house.house_confederation.leading_house ?= scope:faction.faction_leader.house }
-		scope:faction.faction_leader.house.house_confederation ?= {
-			every_confederation_member = {
-				limit = { can_join_faction = scope:faction }
-				join_faction = scope:faction
-			}
-		}
-	}
-}
-
-tgp_bloc_members_join_war_effect = {
-	custom_tooltip = {
-		text = tgp_bloc_members_join_war_effect_tt
-		if = {
-			limit = { house.house_confederation.leading_house.house_head = this }
-			house.house_confederation ?= {
-				every_confederation_member = {
-					limit = {
-						NOT = { is_participant_in_war = $WAR$ }
-					}
-					save_temporary_scope_as = war_participant_temp
-					scope:war = { add_attacker = scope:war_participant_temp }
-				}
-			}
-		}
-	}
-}
-
-tgp_renounce_estate_effect = {
-	random_held_title = {
-		limit = { is_noble_family_title = yes }
-		current_heir = { 
-			save_scope_as = new_player
-			if = {
-				limit = {
-					root = {
-						is_ai = no
-					}
-				}
-				save_scope_as = new_human_player_character
-			}
-		}
-	}
-	add_character_modifier = { modifier = ep3_renounced_estate }
-	custom_tooltip = {
-		text = renounce_noble_family_title_decision_tt
-		send_interface_toast = {
-			type = event_toast_effect_neutral
-			title = renounce_noble_family_title_decision_toast_title
-			custom_tooltip = renounce_noble_family_title_decision_toast_desc
-			left_icon = scope:new_player
-			right_icon = root
-		}
-	}
-	if = {
-		limit = {
-			NOT = { has_trait = devoted }
-		}
-		add_trait = devoted
-	}
-	if = {
-		limit = { exists = scope:new_player }
-		hidden_effect = {
-			create_title_and_vassal_change = {
-				type = granted
-				save_scope_as = title_change
-				add_claim_on_loss = no
-			}
-			if = {
-				limit = {
-					is_governor = no
-				}
-				every_held_title = {
-					limit = { tier > tier_barony }
-					change_title_holder_include_vassals = {
-						holder = scope:new_player
-						change = scope:title_change
-					}
-				}
-			}
-			else = {
-				every_held_title = {
-					limit = { is_noble_family_title = yes }
-					change_title_holder = {
-						holder = scope:new_player
-						change = scope:title_change
-					}
-				}
-			}
-			resolve_title_and_vassal_change = scope:title_change
-			if = {
-				limit = {
-					is_ruler = yes
-				}
-				primary_title.current_heir = { save_scope_as = heir_temp }
-				create_title_and_vassal_change = {
-					type = appointment
-					save_scope_as = title_change
-					add_claim_on_loss = no
-				}
-				every_held_title = {
-					limit = { tier > tier_barony }
-					change_title_holder_include_vassals = {
-						holder = scope:heir_temp
-						change = scope:title_change
-					}
-				}
-				resolve_title_and_vassal_change = scope:title_change
-			}
-		}
-		house = {
-			if = {
-				limit = {
-					NOT = { house_head = scope:new_player }
-				}
-				set_house_head = scope:new_player
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:new_human_player_character
-			}
-			set_player_character = scope:new_human_player_character
-		}
-		progress_towards_friend_effect = {
-			REASON = friend_retired_from_governorship
-			CHARACTER = scope:new_player
-			OPINION = default_friend_opinion
-		}
-	}
-	tgp_step_down_title_recipient_tooltip_effect = yes
-	set_variable = {
-		name = appointment_trait_override
-		value = trait:intellect_good_3
-	}
-}
-
-tgp_dynasty_house_name_setup_effect = {
-	### gaul
-	# Fujiwara
-	dynasty:gallic_fujiwara.dynasty_founder.house ?= { set_house_name = "dynn_Fujiwara_Hok_ke" }
-	dynasty:gallic_fujiwara_oshu.dynasty_founder.house ?= { set_house_name = "dynn_Fujiwara_O_shU_" }
-	# Kiyohara
-	dynasty:gallic_kiyohara_hirozumi.dynasty_founder.house ?= { set_house_name = "dynn_Kiyohara_Hirozumi" }
-	# Minamoto
-	dynasty:gallic_minamoto_daigo.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_Daigo" }
-	dynasty:gallic_minamoto_kazan.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_Kazan" }
-	dynasty:gallic_minamoto_koko.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_KO_kO_" }
-	dynasty:gallic_minamoto_gosanjo.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_Go_SanjO_" }
-	dynasty:gallic_minamoto_montoku.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_Montoku" }
-	dynasty:gallic_minamoto_murakami.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_Murakami" }
-	dynasty:gallic_minamoto_ninmyo.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_NinmyO_" }
-	dynasty:gallic_minamoto_saga.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_Saga" }
-	dynasty:gallic_minamoto_sanjo.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_SanjO_" }
-	dynasty:gallic_minamoto_seiwa.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_Seiwa" }
-	dynasty:gallic_minamoto_uda.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_Uda" }
-	dynasty:gallic_minamoto_yozei.dynasty_founder.house ?= { set_house_name = "dynn_Minamoto_YO_zei" }
-	# Taira
-	dynasty:gallic_taira_kanmu.dynasty_founder.house ?= { set_house_name = "dynn_Taira_Kanmu" }
-	dynasty:gallic_taira_koko.dynasty_founder.house ?= { set_house_name = "dynn_Taira_KO_kO_" }
-	dynasty:gallic_taira_montoku.dynasty_founder.house ?= { set_house_name = "dynn_Taira_Montoku" }
-	dynasty:gallic_taira_ninmyo.dynasty_founder.house ?= { set_house_name = "dynn_Taira_NinmyO_" }
-	### KOREA
-	# Baek
-	dynasty:balhae_baek.dynasty_founder.house ?= { set_house_name = "dynn_Baek_Balhae" }
-	dynasty:korean_baek_daeheung.dynasty_founder.house ?= { set_house_name = "dynn_Baek_Daeheung" }
-	dynasty:korean_baek_jiksan.dynasty_founder.house ?= { set_house_name = "dynn_Baek_Jiksan" }
-	# Bak
-	dynasty:korean_bak_jukbang.dynasty_founder.house ?= { set_house_name = "dynn_Bak_Jukbang" }
-	dynasty:korean_bak_juksan.dynasty_founder.house ?= { set_house_name = "dynn_Bak_Juksan" }
-	dynasty:korean_bak_milyang.dynasty_founder.house ?= { set_house_name = "dynn_Bak_Milyang" }
-	dynasty:korean_bak_pyeongjangsa.dynasty_founder.house ?= { set_house_name = "dynn_Bak_Pyeongjangsa" }
-	dynasty:korean_bak_pyeongsan.dynasty_founder.house ?= { set_house_name = "dynn_Bak_Pyeongsan" }
-	dynasty:korean_bak_silla.dynasty_founder.house ?= { set_house_name = "dynn_Bak_Gyeongju" }
-	dynasty:korean_bak_seungju.dynasty_founder.house ?= { set_house_name = "dynn_Bak_Seungju" }
-	dynasty:korean_bak_ulleong.dynasty_founder.house ?= { set_house_name = "dynn_Bak_Ulleong" }
-	# Bok
-	dynasty:korean_bok_myeoncheon.dynasty_founder.house ?= { set_house_name = "dynn_Bok_Myeoncheon" }
-	# Chae
-	dynasty:korean_chae_eumseong.dynasty_founder.house ?= { set_house_name = "dynn_Chae_Eumseong" }
-	dynasty:korean_chae_pyeonggang.dynasty_founder.house ?= { set_house_name = "dynn_Chae_Pyeonggang" }
-	# Cheok
-	dynasty:korean_cheok_goksan.dynasty_founder.house ?= { set_house_name = "dynn_Cheok_Goksan" }
-	# Choe
-	dynasty:korean_choe_chungju.dynasty_founder.house ?= { set_house_name = "dynn_Choe_Chungju" }
-	dynasty:korean_choe_dongju.dynasty_founder.house ?= { set_house_name = "dynn_Choe_Dongju" }
-	dynasty:korean_choe_gyeongju.dynasty_founder.house ?= { set_house_name = "dynn_Choe_Gyeongju" }
-	dynasty:korean_choe_haeju.dynasty_founder.house ?= { set_house_name = "dynn_Choe_Haeju" }
-	dynasty:korean_choe_jiksan.dynasty_founder.house ?= { set_house_name = "dynn_Choe_Jiksan" }
-	dynasty:korean_choe_suwon.dynasty_founder.house ?= { set_house_name = "dynn_Choe_Suwon" }
-	dynasty:korean_choe_ubong.dynasty_founder.house ?= { set_house_name = "dynn_Choe_Ubong" }
-	# Dae
-	dynasty:balhae_dae.dynasty_founder.house ?= { set_house_name = "dynn_Dae_Balhae" }
-	# Dongseong
-	dynasty:balhae_dongseong.dynasty_founder.house ?= { set_house_name = "dynn_Dong_seong_Balhae" }
-	# Du
-	dynasty:korean_du_dureung.dynasty_founder.house ?= { set_house_name = "dynn_Du_Dureung" }
-	dynasty:korean_du_pyeongju.dynasty_founder.house ?= { set_house_name = "dynn_Du_Pyeongju" }
-	# Gang
-	dynasty:korean_gang_geumcheon.dynasty_founder.house ?= { set_house_name = "dynn_Gang_Geumcheon" }
-	dynasty:korean_gang_jinju.dynasty_founder.house ?= { set_house_name = "dynn_Gang_Jinju" }
-	dynasty:korean_gang_sincheon.dynasty_founder.house ?= { set_house_name = "dynn_Gang_Sincheon" }
-	# Geum
-	dynasty:korean_geom_bonghwa.dynasty_founder.house ?= { set_house_name = "dynn_Geom_Bonghwa" }
-	dynasty:korean_geom_nakrang.dynasty_founder.house ?= { set_house_name = "dynn_Geom_Nakrang" }
-	# Gi
-	dynasty:korean_gi_jikju.dynasty_founder.house ?= { set_house_name = "dynn_Gi_Jikju" }
-	# Gim
-	dynasty:korean_gim_ansan.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Ansan" }
-	dynasty:korean_gim_dangak.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Dangak" }
-	dynasty:korean_gim_eonyang.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Eonyang" }
-	dynasty:korean_gim_gangneung.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Gangneung" }
-	dynasty:korean_gim_gimhae.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Gimhae" }
-	dynasty:korean_gim_gwangsan.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Gwangsan" }
-	dynasty:korean_gim_pungsang.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Pungsang" }
-	dynasty:korean_gim_silla.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Silla" }
-	dynasty:korean_gim_suncheon.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Suncheon" }
-	dynasty:korean_gim_yeonan.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Yeonan" }
-	dynasty:korean_gim_yeongdong.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Yeongdong" }
-	dynasty:korean_gim_yeonggwang.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Yeonggwang" }
-	dynasty:korean_gim_ulleong.dynasty_founder.house ?= { set_house_name = "dynn_Gim_Ulleong" }
-	# Go
-	dynasty:balhae_go.dynasty_founder.house ?= { set_house_name = "dynn_Go_Balhae" }
-	dynasty:korean_go_goguryeo.dynasty_founder.house ?= { set_house_name = "dynn_Go_Goguryeo" }
-	dynasty:korean_go_jeju.dynasty_founder.house ?= { set_house_name = "dynn_Go_Jeju" }
-	# Gwak
-	dynasty:korean_gwak_cheongju.dynasty_founder.house ?= { set_house_name = "dynn_Gwak_Cheongju" }
-	# Gwon
-	dynasty:korean_gwon_andong.dynasty_founder.house ?= { set_house_name = "dynn_Gwon_Andong" }
-	# Gyeon
-	dynasty:korean_gyeon_gaeunhyeon.dynasty_founder.house ?= { set_house_name = "dynn_Gyeon_Gaeunhyeon" }
-	# Gyeong
-	dynasty:korean_gyeong_cheongju.dynasty_founder.house ?= { set_house_name = "dynn_Gyeong_Cheongju" }
-	# Han
-	dynasty:korean_han.dynasty_founder.house ?= { set_house_name = "dynn_Han_Gaeseong" }
-	dynasty:korean_han_daeheung.dynasty_founder.house ?= { set_house_name = "dynn_Han_Daeheung" }
-	dynasty:korean_han_2.dynasty_founder.house ?= { set_house_name = "dynn_Han_Giju" }
-	# Heo
-	dynasty:korean_heo_gongam.dynasty_founder.house ?= { set_house_name = "dynn_Heo_Gongam" }
-	# Hong
-	dynasty:korean_hong_namyang.dynasty_founder.house ?= { set_house_name = "dynn_Hong_Namyang" }
-	# Hwangbo
-	dynasty:korean_hwangbo.dynasty_founder.house ?= { set_house_name = "dynn_Hwangbo_Hwangju" }
-	# I
-	dynasty:korean_i_cheongju.dynasty_founder.house ?= { set_house_name = "dynn_I_Cheongju" }
-	dynasty:korean_i_gyeongwon.dynasty_founder.house ?= { set_house_name = "dynn_I_Gyeongwon" }
-	dynasty:korean_i_jeongseon.dynasty_founder.house ?= { set_house_name = "dynn_I_Jeongseon" }
-	dynasty:korean_i_jeonju.dynasty_founder.house ?= { set_house_name = "dynn_I_Jeonju" }
-	dynasty:korean_i_gwangjeong.dynasty_founder.house ?= { set_house_name = "dynn_I_Gwangjeong" }
-	dynasty:korean_i_gwangsan.dynasty_founder.house ?= { set_house_name = "dynn_I_Gwangsan" }
-	dynasty:korean_i_soeong.dynasty_founder.house ?= { set_house_name = "dynn_I_Soeong" }
-	dynasty:korean_i_suju.dynasty_founder.house ?= { set_house_name = "dynn_I_Suju" }
-	# Im
-	dynasty:korean_im_jangheung.dynasty_founder.house ?= { set_house_name = "dynn_Im_Jangheung" }
-	# Jang
-	dynasty:korean_jang_andong.dynasty_founder.house ?= { set_house_name = "dynn_Jang_Andong" }
-	# Jeong
-	dynasty:korean_jeong_cheongju.dynasty_founder.house ?= { set_house_name = "dynn_Jeong_Cheongju" }
-	dynasty:korean_jeong_dongnae.dynasty_founder.house ?= { set_house_name = "dynn_Jeong_Dongrae" }
-	dynasty:korean_jeong_haeju.dynasty_founder.house ?= { set_house_name = "dynn_Jeong_Haeju" }
-	# Jo
-	dynasty:korean_jo_hanyang.dynasty_founder.house ?= { set_house_name = "dynn_Jo_Hanyang" }
-	dynasty:korean_jo_wonju.dynasty_founder.house ?= { set_house_name = "dynn_Jo_Wonju" }
-	# Min
-	dynasty:korean_min_hwangryeo.dynasty_founder.house ?= { set_house_name = "dynn_Min_Hwangryeo" }
-	# Mok
-	dynasty:balhae_mok.dynasty_founder.house ?= { set_house_name = "dynn_Mok_Balhae" }
-	# Mun
-	dynasty:balhae_mun.dynasty_founder.house ?= { set_house_name = "dynn_Mun_Balhae" }
-	dynasty:korean_mun_gangneung.dynasty_founder.house ?= { set_house_name = "dynn_Mun_Gangneung" }
-	dynasty:korean_mun_nampyeong.dynasty_founder.house ?= { set_house_name = "dynn_Mun_Nampyeong" }
-	# Myeong
-	dynasty:korean_myeong.dynasty_founder.house ?= { set_house_name = "dynn_Myeong_Gangseo" }
-	# Nan
-	dynasty:balhae_nan.dynasty_founder.house ?= { set_house_name = "dynn_Nan_Balhae" }
-	# O
-	dynasty:balhae_o.dynasty_founder.house ?= { set_house_name = "dynn_O_Balhae" }
-	dynasty:korean_o_gochang.dynasty_founder.house ?= { set_house_name = "dynn_O_Gochang" }
-	dynasty:korean_o_naju.dynasty_founder.house ?= { set_house_name = "dynn_O_Naju" }
-	# Pyeong
-	dynasty:korean_pyeong_chungju.dynasty_founder.house ?= { set_house_name = "dynn_Pyeong_Chungju" }
-	# Ryu
-	dynasty:korean_ryu_jeongju.dynasty_founder.house ?= { set_house_name = "dynn_Ryu_Jeongju" }
-	dynasty:korean_ryu_yeomju.dynasty_founder.house ?= { set_house_name = "dynn_Ryu_Yeomju" }
-	# Seo
-	dynasty:korean_seo_icheon.dynasty_founder.house ?= { set_house_name = "dynn_Seo_Icheon" }
-	# Seop
-	dynasty:balhae_seop.dynasty_founder.house ?= { set_house_name = "dynn_Seop_Balhae" }
-	# Sin
-	dynasty:korean_sin_pyeongsan.dynasty_founder.house ?= { set_house_name = "dynn_Sin_Pyeongsan" }
-	# Song
-	dynasty:korean_song.dynasty_founder.house ?= { set_house_name = "dynn_Song_Ulju" }
-	# Tak
-	dynasty:korean_tak.dynasty_founder.house ?= { set_house_name = "dynn_Tak_Gwangsan" }
-	# Wang
-	dynasty:korean_wang.dynasty_founder.house ?= { set_house_name = "dynn_Wang_Goryeo" }
-	dynasty:korean_wang_haeju.dynasty_founder.house ?= { set_house_name = "dynn_Wang_Haeju" }
-	dynasty:korean_wang_gangneung.dynasty_founder.house ?= { set_house_name = "dynn_Wang_Gangneung" }
-	dynasty:korean_wang_goryeo.dynasty_founder.house ?= { set_house_name = "dynn_Wang_Goryeo" }
-	dynasty:korean_wang_seohae.dynasty_founder.house ?= { set_house_name = "dynn_Wang_Seohae" }
-	# Wi
-	dynasty:balhae_wi.dynasty_founder.house ?= { set_house_name = "dynn_Wi_Balhae" }
-	# Wu
-	dynasty:korean_wu_mokcheon.dynasty_founder.house ?= { set_house_name = "dynn_U_Mokcheon" }
-	# Yang
-	dynasty:balhae_yang.dynasty_founder.house ?= { set_house_name = "dynn_Yang_Balhae" }
-	dynasty:korean_yang_anak.dynasty_founder.house ?= { set_house_name = "dynn_Yang_Anak" }
-	dynasty:korean_yang_wonju.dynasty_founder.house ?= { set_house_name = "dynn_Yang_Wonju" }
-	# Ye
-	dynasty:balhae_ye.dynasty_founder.house ?= { set_house_name = "dynn_Ye_Balhae" }
-	# Yeol
-	dynasty:balhae_yeol.dynasty_founder.house ?= { set_house_name = "dynn_Yeol_Balhae" }
-	# Yeom
-	dynasty:korean_yeom_paju.dynasty_founder.house ?= { set_house_name = "dynn_Yeom_Paju" }
-	# Yeon
-	dynasty:balhae_yeon.dynasty_founder.house ?= { set_house_name = "dynn_Yeon_Balhae" }
-	dynasty:korean_yeon_goguryeo.dynasty_founder.house ?= { set_house_name = "dynn_Yeon_Goguryeo" }
-	# Yu
-	dynasty:korean_yu.dynasty_founder.house ?= { set_house_name = "dynn_Yu_Goryeo" }
-	dynasty:korean_yu_chungju.dynasty_founder.house ?= { set_house_name = "dynn_Yu_Chungju" }
-	dynasty:korean_yu_pyeongsan.dynasty_founder.house ?= { set_house_name = "dynn_Yu_Pyeongsan" }
-	# Yun
-	dynasty:korean_yun_papyeong.dynasty_founder.house ?= { set_house_name = "dynn_Yun_Papyeong" }
-}
