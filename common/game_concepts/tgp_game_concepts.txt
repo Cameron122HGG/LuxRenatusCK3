@@ -534,11 +534,25 @@ ritsuryo_government = {
 	texture = "gfx/interface/icons/government_types/japan_administrative_government.dds"
 }
 
+procuratio_government = {
+	requires_dlc_flag = all_under_heaven
+	parent = government
+	alias = { procuratio gaul_administrative procuratio_i }
+	texture = "gfx/interface/icons/government_types/gaul_administrative_government.dds"
+}
+
 soryo_government = {
 	requires_dlc_flag = all_under_heaven
 	parent = government
 	alias = { soryo japan_feudal soryo_i }
 	texture = "gfx/interface/icons/government_types/japan_feudal_government.dds"
+}
+
+regnulum_government = {
+	requires_dlc_flag = all_under_heaven
+	parent = government
+	alias = { regnulum gaul_feudal regnulum_i }
+	texture = "gfx/interface/icons/government_types/gaul_feudal_government.dds"
 }
 
 ceremonial_regent = {
@@ -563,10 +577,24 @@ kampaku = {
 	parent = ceremonial_regent
 }
 
+mayor_of_the_palace = {
+	requires_dlc_flag = all_under_heaven
+	texture = "gfx/interface/icons/government_types/gaul_administrative_government.dds"
+	alias = { mayor_of_the_palace_possessive }
+	parent = ceremonial_regent
+}
+
 shogun = {
 	requires_dlc_flag = all_under_heaven
 	texture = "gfx/interface/icons/government_types/japan_feudal_government.dds"
 	alias = { shogun_possessive }
+	parent = ceremonial_regent
+}
+
+magister_militum = {
+	requires_dlc_flag = all_under_heaven
+	texture = "gfx/interface/icons/government_types/gaul_feudal_government.dds"
+	alias = { magister_militum_possessive }
 	parent = ceremonial_regent
 }
 
@@ -590,6 +618,13 @@ japanese_emperor = {
 	parent = ceremonial_liege
 }
 
+gallic_high_king = {
+	requires_dlc_flag = all_under_heaven
+	texture = "gfx/interface/icons/government_types/gaul_administrative_government.dds"
+	alias = { gallic_high_king_possessive sacral_king sacral_king_possessive }
+	parent = ceremonial_liege
+}
+
 japanese_manor = {
 	requires_dlc_flag = all_under_heaven
 	texture = "gfx/interface/icons/map_icons/map_icon_japanese_manor.dds"
@@ -605,6 +640,12 @@ japanese_manor_building = {
 }
 
 japanese_bureaucracy = {
+	texture = "gfx/interface/icons/message_feed/law.dds"
+	parent = law
+	requires_dlc_flag = all_under_heaven
+}
+
+gallic_bureaucracy = {
 	texture = "gfx/interface/icons/message_feed/law.dds"
 	parent = law
 	requires_dlc_flag = all_under_heaven
@@ -665,6 +706,12 @@ imperial_policy = {
 	requires_dlc_flag = all_under_heaven
 	texture = "gfx/interface/icons/government_types/japan_administrative_government.dds"
 	alias = { imperial_policies }
+}
+
+royal_policy = {
+	requires_dlc_flag = all_under_heaven
+	texture = "gfx/interface/icons/government_types/gaul_administrative_government.dds"
+	alias = { royal_policies }
 }
 
 ###################################
