@@ -2339,7 +2339,7 @@ tenet_sanctity_of_nature = {
 }
 
 tenet_sun_worship = {
-	icon = core_tenet_sun_worship
+	icon = core_tenet_sol_worship
 
 	piety_cost = {
 		value = faith_tenet_cost_mid
@@ -2351,17 +2351,18 @@ tenet_sun_worship = {
 		}
 	}
 
-	is_shown = {
-		OR = {
-			religion_tag = zunism_religion
-			has_doctrine = tenet_sun_worship #If you already have it
-			AND = {
-				religion_tag = hinduism_religion
-				this = faith:saura #If you're into Saurism
-			}
-			
+		is_shown = {
+			always = yes
+			#OR = {
+			#	religion_tag = zunism_religion
+			#	has_doctrine = tenet_sun_worship #If you already have it
+			#	AND = {
+			#		religion_tag = hinduism_religion
+			#		this = faith:saura #If you're into Saurism
+			#	}
+			#	
+			#}
 		}
-	}
 
 	parameters = {
 		summer_festivals_active = yes

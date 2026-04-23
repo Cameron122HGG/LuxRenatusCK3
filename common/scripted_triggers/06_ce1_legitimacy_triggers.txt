@@ -28,3 +28,16 @@ is_valid_for_nomadic_legitimacy_change = {
 	is_valid_for_legitimacy_change = yes
 	government_has_flag = government_is_nomadic
 }
+
+use_general_legitimacy = {
+	trigger_if = {
+		limit = {
+			government_allows = administrative
+		}
+		top_liege = this
+	}
+	NOR = { 
+		government_has_flag = government_is_nomadic
+		government_has_flag = government_is_mandala
+	}
+}

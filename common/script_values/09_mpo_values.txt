@@ -870,8 +870,13 @@ mpo_paiza_abuse_khan_reaction_value = {
 
 }
 
+mpo_introduce_heir_prestige_cost = medium_prestige_value
+mpo_introduce_heir_piety_cost = major_piety_value
 
-
+age_compared_to_player_heir = {
+	add = age
+	subtract = root.player_heir.age
+}
 
 mpo_friendship_setup_positive_modifiers_value = {
 	value = 0
@@ -1085,13 +1090,6 @@ mpo_convert_capital_duchy_nomad_value = {
 	}
 }
 
-mpo_introduce_heir_prestige_cost = medium_prestige_value
-mpo_introduce_heir_piety_cost = major_piety_value
-
-age_compared_to_player_heir = {
-	add = age
-	subtract = root.player_heir.age
-}
 
 odds_steal_herd_scheme_misc_value = {
 	value = 10
@@ -1140,6 +1138,7 @@ odds_steal_herd_scheme_misc_value = {
 		}
 	}
 }
+
 
 
 mpo_tsagaan_sar_gift_likely_value = {
@@ -1660,13 +1659,13 @@ obedience_value = {
 						switch = {
 							trigger = has_domicile_parameter
 							nomad_yurt_kurultai_more_loyal_lvl_1 = {
-								add = { value = 6 desc = kurultai_yurt_01 }
+								add = { value = 6 desc = kurultai_yurt_01_domicile_building }
 							}
 							nomad_yurt_kurultai_more_loyal_lvl_2 = {
-								add = { value = 12 desc = kurultai_yurt_01 }
+								add = { value = 12 desc = kurultai_yurt_01_domicile_building }
 							}
 							nomad_yurt_kurultai_more_loyal_lvl_3 = {
-								add = { value = 18 desc = kurultai_yurt_01 }
+								add = { value = 18 desc = kurultai_yurt_01_domicile_building }
 							}
 						}
 					}
@@ -1809,15 +1808,15 @@ obedience_value = {
 			# Legitimacy
 			if = {
 				limit = {
-					obedience_target = {
-						has_nomadic_legitimacy = yes
-						legitimacy_level >= 3
-					}
+					obedience_target = { has_legitimacy = yes }
 				}
-				add = { value = 25 desc = obedience_value_high_legitimacy }
-			}
-			else = {
-				add = { value = -15 desc = obedience_value_low_legitimacy }
+				if = {
+					limit = { obedience_target = { legitimacy_level >= 3 } }
+					add = { value = 25 desc = obedience_value_high_legitimacy }
+				}
+				else = {
+					add = { value = -15 desc = obedience_value_low_legitimacy }
+				}
 			}
 			
 			# Traits
@@ -2351,6 +2350,9 @@ potential_joiner_combined_value = {
 	}
 	min = 1
 }
+
+
+
 
 sent_herd_opinion_value = {
 	value = 5
