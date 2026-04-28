@@ -463,7 +463,7 @@ add_random_internal_gallic_manor_building = {
 
 gaul_clear_flavour_flags_effect = {
 	remove_global_variable = shogunate_established
-	remove_global_variable = high_king_gaul_restored
+	remove_global_variable = sacral_king_gaul_restored
 	remove_character_flag = shogun_flag
 	remove_character_flag = ceremonial_liege_flag
 	remove_character_flag = joko_flag
@@ -534,7 +534,7 @@ gallic_restore_ceremonial_liege_faction_combined_effect = {
 	# GLOBAL VAR
 	gaul_clear_flavour_flags_effect = yes
 	set_global_variable = {
-		name = high_king_gaul_restored
+		name = sacral_king_gaul_restored
 		value = yes
 	}
 	show_as_tooltip = { restore_ceremonial_liege_faction_reward_effect = yes }
@@ -551,7 +551,7 @@ gallic_restore_ceremonial_liege_faction_reward_effect = {
 		}
 	}
 	scope:ceremonial_liege_temp = {
-		custom_tooltip = high_king_gaul_duchy_creation_tt
+		custom_tooltip = sacral_king_gaul_duchy_creation_tt
 		if = {
 			limit = { has_legitimacy = yes }
 			add_legitimacy = major_legitimacy_gain
@@ -719,7 +719,7 @@ tgp_restore_gallic_monarchy_decision_effect = {
 }
 
 tgp_restore_gallic_monarchy_merovingian_scion_effect = {
-	title:k_high_king_gaul_throne.previous_holder ?= { save_scope_as = last_high_king_gaul }
+	title:k_sacral_king_gaul_throne.previous_holder ?= { save_scope_as = last_sacral_king_gaul }
 	dynasty:frankish_merovingian.dynasty_founder.house ?= {
 		save_scope_as = house_merovingian
 		if = {
@@ -732,17 +732,17 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 		}
 		else_if = {
 			limit = {
-				scope:last_high_king_gaul ?= { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
+				scope:last_sacral_king_gaul ?= { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 			}
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
 				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_tt
 			}
-			scope:last_high_king_gaul = { save_scope_as = gaul_scion }
+			scope:last_sacral_king_gaul = { save_scope_as = gaul_scion }
 		}
 		else_if = {
 			limit = {
-				scope:last_high_king_gaul ?= {
+				scope:last_sacral_king_gaul ?= {
 					any_child = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 				}
 			}
@@ -750,7 +750,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 				limit = { NOT = { exists = scope:gaul_scion } }
 				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_child_tt
 			}
-			scope:last_high_king_gaul = {
+			scope:last_sacral_king_gaul = {
 				ordered_child = {
 					limit = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 					order_by = age
@@ -760,7 +760,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 		}
 		else_if = {
 			limit = {
-				scope:last_high_king_gaul ?= {
+				scope:last_sacral_king_gaul ?= {
 					any_close_family_member = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 				}
 			}
@@ -768,7 +768,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 				limit = { NOT = { exists = scope:gaul_scion } }
 				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_close_family_tt
 			}
-			scope:last_high_king_gaul = {
+			scope:last_sacral_king_gaul = {
 				ordered_close_family_member = {
 					limit = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 					order_by = age
@@ -830,7 +830,7 @@ tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 	if = {
 		limit = { exists = scope:gaul_scion }
 		if = {
-			limit = { exists = title:k_high_king_gaul_throne.holder }
+			limit = { exists = title:k_sacral_king_gaul_throne.holder }
 			create_title_and_vassal_change = {
 				type = usurped
 				save_scope_as = change
@@ -843,7 +843,7 @@ tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 				save_scope_as = change
 			}
 		}
-		title:k_high_king_gaul_throne ?= {
+		title:k_sacral_king_gaul_throne ?= {
 			change_title_holder = {
 				holder = scope:gaul_scion
 				change = scope:change

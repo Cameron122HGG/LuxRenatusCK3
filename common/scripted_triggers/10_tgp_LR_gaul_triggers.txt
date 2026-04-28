@@ -2,7 +2,7 @@
 tgp_is_gallic_mayor_trigger = {
 	has_title = title:e_high_kingdom_gaul
 	NOR = {
-		has_title = title:k_high_king_gaul_throne
+		has_title = title:k_sacral_king_gaul_throne
 		has_global_variable = high_king_restored
 		has_global_variable = shogunate_established
 	}
@@ -241,8 +241,8 @@ can_have_gallic_regency_succession_law_trigger = {
 	is_independent_ruler = yes
 	government_has_flag = government_is_gaul_administrative
 	OR = {
-		has_title = title:k_high_king_gaul_throne
-		any_vassal_or_below = { has_title = title:k_high_king_gaul_throne }
+		has_title = title:k_sacral_king_gaul_throne
+		any_vassal_or_below = { has_title = title:k_sacral_king_gaul_throne }
 	}
 	NOT = {
 		has_global_variable = high_king_restored
@@ -253,7 +253,7 @@ can_have_gallic_appointment_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
 	government_has_flag = government_is_gaul_administrative
 	is_independent_ruler = no
-	NOT = { has_title = title:k_high_king_gaul_throne }
+	NOT = { has_title = title:k_sacral_king_gaul_throne }
 }
 
 can_keep_gallic_appointment_succession_law_trigger = {
@@ -271,7 +271,7 @@ can_change_gallic_appointment_succession_law_trigger = {
 tgp_gaul_single_heir_succession_override_trigger = {
 	save_temporary_scope_as = holder_temp
 	OR = {
-		title:k_high_king_gaul_throne.holder ?= scope:holder_temp
+		title:k_sacral_king_gaul_throne.holder ?= scope:holder_temp
 		AND = {
 			has_global_variable = high_king_restored
 			title:e_high_kingdom_gaul.holder ?= scope:holder_temp
@@ -283,7 +283,7 @@ tgp_blocked_action_against_high_king_trigger = {
 	custom_description = {
 		text = tgp_blocked_ruler_against_ceremonial_action_trigger
 		NAND = {
-			$TARGET$ = { has_title = title:k_high_king_gaul_throne }
+			$TARGET$ = { has_title = title:k_sacral_king_gaul_throne }
 			$TARGET$.top_liege = $ACTOR$.top_liege
 		}
 	}
@@ -293,7 +293,7 @@ LR_tgp_blocked_ruler_against_ceremonial_action_trigger = {
 	custom_description = {
 		text = tgp_blocked_ruler_against_ceremonial_action_trigger
 		NAND = {
-			$HIGH_KING$ = { has_title = title:k_high_king_gaul_throne }
+			$HIGH_KING$ = { has_title = title:k_sacral_king_gaul_throne }
 			$REGENT$ = $HIGH_KING$.liege
 		}
 	}
@@ -475,7 +475,7 @@ tgp_gaul_install_regent_faction_can_create_trigger = {
 	custom_tooltip = {
 		text = replace_ceremonial_regent_faction_mayor_trigger
 		NOR = {
-			has_global_variable = shogunate_established
+			has_global_variable = dictatorship_established
 			has_global_variable = high_king_restored
 		}
 	}

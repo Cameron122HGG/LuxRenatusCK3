@@ -799,7 +799,7 @@ tgp_gaul_emperor_restoration_decision = {
 		if = {
 			limit = {
 				is_ai = no
-				has_title = title:k_high_king_gaul_throne
+				has_title = title:k_sacral_king_gaul_throne
 			}
 			add_achievement_global_variable_effect = {
 				VARIABLE = finished_ep4_03_sword_of_gaul_achievement
@@ -1176,8 +1176,8 @@ tgp_gaul_restore_gallic_monarchy_decision = {
 		government_is_gallic_trigger = yes
 		# Chrysanthemum no longer part of gaul or destroyed
 		trigger_if = {
-			limit = { exists = title:k_high_king_gaul_throne.holder }
-			NOT = { title:e_high_kingdom_gaul.holder ?= title:k_high_king_gaul_throne.holder.top_liege }
+			limit = { exists = title:k_sacral_king_gaul_throne.holder }
+			NOT = { title:e_high_kingdom_gaul.holder ?= title:k_sacral_king_gaul_throne.holder.top_liege }
 		}
 		# gallic culture
 		culture = {
@@ -1195,8 +1195,8 @@ tgp_gaul_restore_gallic_monarchy_decision = {
 		custom_tooltip = { # Chrysanthemum destroyed or no longer part of gaul
 			text = tgp_gaul_restore_gallic_monarchy_decision_title_tt
 			trigger_if = {
-				limit = { exists = title:k_high_king_gaul_throne.holder.top_liege }
-				NOT = { title:e_high_kingdom_gaul.holder ?= title:k_high_king_gaul_throne.holder.top_liege }
+				limit = { exists = title:k_sacral_king_gaul_throne.holder.top_liege }
+				NOT = { title:e_high_kingdom_gaul.holder ?= title:k_sacral_king_gaul_throne.holder.top_liege }
 			}
 			trigger_else = { always = yes }
 		}
