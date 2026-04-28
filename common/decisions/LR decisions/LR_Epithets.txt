@@ -57,6 +57,14 @@ LR_choose_epithet = {
 			}
 		}
 		item = { # Soter
+			is_shown = {
+				OR = {
+					has_trait = zealous
+					has_trait = holy_warrior
+					has_trait = paragon
+					has_trait = savior
+				}
+			}
 			value = choose_epithet_soter
 			current_description = choose_epithet_soter_desc
 			localization = choose_epithet_soter
@@ -83,10 +91,85 @@ LR_choose_epithet = {
 					has_trait = generous
 					has_trait = arrogant
 					has_trait = compassionate
+					has_trait = improvident
 				}
 			}
 			current_description = choose_epithet_euergetes_desc
 			localization = choose_epithet_euergetes
+			ai_chance = { value = 10 }
+		}
+		item = { # Eleutherios
+			value = choose_epithet_eleutherios
+			is_shown = {
+				OR = {
+					has_trait = compassionate
+					has_trait = just
+					has_trait = peasant_leader
+				}
+			}
+			current_description = choose_epithet_eleutherios_desc
+			localization = choose_epithet_eleutherios
+			ai_chance = { value = 10 }
+		}
+		item = { # Epiphanes
+			value = choose_epithet_epiphanes
+			is_shown = {
+				OR = {
+					has_trait = arrogant
+					prestige_level >= 3
+				}
+			}
+			current_description = choose_epithet_epiphanes_desc
+			localization = choose_epithet_epiphanes
+			ai_chance = { value = 10 }
+		}
+		item = { # Eupator
+			value = choose_epithet_eupator
+			is_shown = {
+				OR = {
+					has_trait = arrogant
+					var:parent_fame_lvl >= 3
+					has_trait = pure_blooded
+				}
+			}
+			current_description = choose_epithet_eupator_desc
+			localization = choose_epithet_eupator
+			ai_chance = { value = 10 }
+		}
+		item = { #Frangopoulos (Mostly for the funny.)
+			value = choose_epithet_frangopoulos
+			is_shown = {
+				OR = {
+					father.culture = {
+						OR = {
+							this = culture:frankish
+							any_parent_culture_or_above = {
+								this = culture:frankish
+							}
+						}
+					}
+				}
+			}
+			current_description = choose_epithet_frangopoulos_desc
+			localization = choose_epithet_frangopoulos
+			ai_chance = { value = 10 }
+		}
+		item = { #Voulgaropoulos (Mostly for the funny.)
+			value = choose_epithet_voulgaropoulos
+			is_shown = {
+				OR = {
+					father.culture = {
+						OR = {
+							this = culture:bulgarian
+							any_parent_culture_or_above = {
+								this = culture:bulgarian
+							}
+						}
+					}
+				}
+			}
+			current_description = choose_epithet_voulgaropoulos_desc
+			localization = choose_epithet_voulgaropoulos
 			ai_chance = { value = 10 }
 		}
 	}
@@ -105,6 +188,21 @@ LR_choose_epithet = {
 			}
 			scope:choose_epithet_euergetes = {
 				give_nickname = nick_euergetes
+			}
+			scope:choose_epithet_eleutherios = {
+				give_nickname = nick_eleutherios
+			}
+			scope:choose_epithet_epiphanes = {
+				give_nickname = nick_epiphanes
+			}
+			scope:choose_epithet_eupator = {
+				give_nickname = nick_eupator
+			}
+			scope:choose_epithet_frangopoulos = {
+				give_nickname = nick_frangopoulos
+			}
+			scope:choose_epithet_voulgaropoulos = {
+				give_nickname = nick_voulgaropoulos
 			}
 	}
 	ai_check_interval = 60
