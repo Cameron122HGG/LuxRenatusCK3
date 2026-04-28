@@ -160,7 +160,7 @@ tgp_gaul_establish_house_fief_decision = {
 						}
 					}
 				}
-				custom_tooltip = tgp_gaul_establish_house_fief_kampaku_crime_effect
+				custom_tooltip = tgp_gaul_establish_house_fief_mayor_crime_effect
 			}
 		}
 		hidden_effect = {
@@ -410,10 +410,10 @@ tgp_gaul_establish_house_fief_decision = {
 }
 
 ### Abandon the Bureaucracy ###
-tgp_gaul_establish_soryo_manor_decision = {
+tgp_gaul_establish_regnulum_manor_decision = {
 	decision_group_type = major
-	title = tgp_gaul_establish_soryo_manor_decision
-	desc = tgp_gaul_establish_soryo_manor_decision_desc
+	title = tgp_gaul_establish_regnulum_manor_decision
+	desc = tgp_gaul_establish_regnulum_manor_decision_desc
 	selection_tooltip = tgp_gaul_establish_house_fief_decision_tooltip
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/tgp_house_fief.dds"
@@ -554,11 +554,11 @@ tgp_gaul_establish_soryo_manor_decision = {
 
 # Become Soryo as independent Ritsuryō
 ### Establish Sōryō Administration ###
-tgp_gaul_establish_soryo_administration_decision = {
+tgp_gaul_establish_regnulum_administration_decision = {
 	decision_group_type = major
-	title = tgp_gaul_establish_soryo_administration_decision
-	desc = tgp_gaul_establish_soryo_administration_decision_desc
-	selection_tooltip = tgp_gaul_establish_soryo_administration_decision_tooltip
+	title = tgp_gaul_establish_regnulum_administration_decision
+	desc = tgp_gaul_establish_regnulum_administration_decision_desc
+	selection_tooltip = tgp_gaul_establish_regnulum_administration_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/event_story/tgp_japanese_shogunate.dds" }
 	sort_order = 80
 
@@ -621,9 +621,9 @@ tgp_gaul_establish_soryo_administration_decision = {
 			VARIABLE = achieved_ep4_18_yes_i_need_my_samurai_achievement
 			VALUE = yes
 		}
-		custom_tooltip = gallic_establish_soryo_administration_war_start_tt
+		custom_tooltip = gallic_establish_regnulum_administration_war_start_tt
 		custom_description_no_bullet = { text = if_you_win_effect }
-		show_as_tooltip = { gallic_establish_soryo_administration_reward_effect = yes }
+		show_as_tooltip = { gallic_establish_regnulum_administration_reward_effect = yes }
 		trigger_event = {
 			id = tgp_gaul_decision.9601
 			delayed = yes
@@ -644,11 +644,11 @@ tgp_gaul_establish_soryo_administration_decision = {
 
 # Become Shogun
 ### Formalize [ROOT.Char.GetHouse.GetNameNoTooltip] Shōgunate ###
-tgp_gaul_become_shogun_decision = {
+tgp_gaul_become_gallic_dictator_decision = {
 	decision_group_type = major
-	title = tgp_gaul_become_shogun_decision
-	desc = tgp_gaul_become_shogun_decision_desc
-	selection_tooltip = tgp_gaul_become_shogun_decision_tooltip
+	title = tgp_gaul_become_gallic_dictator_decision
+	desc = tgp_gaul_become_gallic_dictator_decision_desc
+	selection_tooltip = tgp_gaul_become_gallic_dictator_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/event_story/tgp_japanese_shogunate.dds" }
 	sort_order = 80
 
@@ -672,7 +672,7 @@ tgp_gaul_become_shogun_decision = {
 	is_valid = {
 		# Is Regent
 		custom_tooltip = {
-			text = tgp_gaul_become_shogun_decision_top_liege_trigger
+			text = tgp_gaul_become_gallic_dictator_decision_top_liege_trigger
 			has_title = title:e_high_kingdom_gaul
 		}
 		prestige_level >= 4
@@ -680,7 +680,7 @@ tgp_gaul_become_shogun_decision = {
 		is_independent_ruler = yes
 		has_government = gaul_feudal_government
 		custom_tooltip = {
-			text = tgp_gaul_become_shogun_decision_centralization_trigger
+			text = tgp_gaul_become_gallic_dictator_decision_centralization_trigger
 			OR = {
 				has_realm_law = gallic_bureaucracy_2
 				has_realm_law = gallic_bureaucracy_3
@@ -688,7 +688,7 @@ tgp_gaul_become_shogun_decision = {
 		}
 		is_at_war = no
 		custom_tooltip = {
-			text = tgp_gaul_become_shogun_decision_land_trigger
+			text = tgp_gaul_become_gallic_dictator_decision_land_trigger
 			top_liege = {
 				completely_controls = title:d_kinai
 				completely_controls = title:d_nankaido
@@ -705,7 +705,7 @@ tgp_gaul_become_shogun_decision = {
 
 	effect = {
 		trigger_event = tgp_gaul_decision.9101
-		show_as_tooltip = { gallic_become_shogun_reward_effect = yes }
+		show_as_tooltip = { gallic_become_gallic_dictator_reward_effect = yes }
 		if = {
 			limit = {
 				is_ai = no
@@ -730,13 +730,13 @@ tgp_gaul_become_shogun_decision = {
 	ai_will_do = { base = 100 }
 }
 
-# Emperor Restoration
+# high_king Restoration
 ### Restore Direct Imperial Rule ###
-tgp_gaul_emperor_restoration_decision = {
+tgp_gaul_high_king_restoration_decision = {
 	decision_group_type = major
-	title = tgp_gaul_emperor_restoration_decision
-	desc = tgp_gaul_emperor_restoration_decision_desc
-	selection_tooltip = tgp_gaul_emperor_restoration_decision_tooltip
+	title = tgp_gaul_high_king_restoration_decision
+	desc = tgp_gaul_high_king_restoration_decision_desc
+	selection_tooltip = tgp_gaul_high_king_restoration_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/decisions/tgp_kowtow.dds" }
 	sort_order = 80
 
@@ -762,7 +762,7 @@ tgp_gaul_emperor_restoration_decision = {
 		has_title = title:e_high_kingdom_gaul
 		tgp_has_ceremonial_liege_title_trigger = yes
 		custom_tooltip = {
-			text = tgp_gaul_become_shogun_decision_centralization_trigger
+			text = tgp_gaul_become_gallic_dictator_decision_centralization_trigger
 			OR = {
 				has_realm_law = gallic_bureaucracy_2
 				has_realm_law = gallic_bureaucracy_3
@@ -1535,9 +1535,9 @@ move_dictator_court_decision = {
 	}
 }
 
-# Emperor Starting a Ceremonial Monarch War
+# high_king Starting a Ceremonial Monarch War
 ### Begin the Restoration War ###
-tgp_gaul_emperor_war_decision = {
+tgp_gaul_high_king_war_decision = {
 	decision_group_type = major
 	confirm_text = commit_suicide_decision_confirm
 	picture = { reference = "gfx/interface/illustrations/decisions/tgp_kowtow.dds" }
