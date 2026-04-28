@@ -369,7 +369,9 @@
 				scope:recipient = {
 					NOT = {
 						any_land_neighboring_realm_with_tributaries_owner = {
-							this != scope:actor
+							NOT = {
+								this = scope:actor
+							}
 						}
 					}
 					NOT = {
@@ -2629,43 +2631,7 @@ migration_interaction = {
 					value = scope:target_title
 				}
 			}
-			if = {
-				limit = {
-					OR = {
-						has_variable = crowned_king_var
-						has_variable = crowned_emperor_var
-					}
-				}
-				set_variable = {
-					name = nomad_migration_preserve_coronation
-					value = yes
-				}
-			}
-			if = {
-				limit = {
-					highest_held_title_tier = tier_duchy
-				}
-				add_character_modifier = {
-					modifier = mpo_migrating_accolade_duke_modifier
-				}
-			}
-			else_if = {
-				limit = {
-					highest_held_title_tier = tier_kingdom
-				}
-				add_character_modifier = {
-					modifier = mpo_migrating_accolade_king_modifier
-				}
-			}
-			else_if = {
-				limit = {
-					highest_held_title_tier >= tier_empire
-				}
-				add_character_modifier = {
-					modifier = mpo_migrating_accolade_emperor_modifier
-				}
-			}
-			
+
 			# Save your old lands
 			save_scope_as = old_holder
 			capital_county = { save_scope_as = old_capital_county }
@@ -2750,6 +2716,17 @@ migration_interaction = {
 					migration_set_obedient_vassal_effect = yes
 				}
 			}
+			# Player and non obedient vassals get turned into Tributaries instead
+			every_vassal = {
+				limit = {
+					exists = scope:target_title
+					OR = {
+						NOT = { is_obedient_to = scope:actor }
+						is_ai = no
+					}
+				}
+				break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:actor TRIBUTARY = prev }
+			}
 			# Migration travel is handled by code
 		}
 	}
@@ -2771,44 +2748,6 @@ migration_interaction = {
 				set_variable = {
 					name = migrating_into_tributary_war_var
 					value = scope:recipient.overlord
-				}
-			}
-		}
-		scope:actor = {
-			if = {
-				limit = {
-					OR = {
-						has_variable = crowned_king_var
-						has_variable = crowned_emperor_var
-					}
-				}
-				set_variable = {
-					name = nomad_migration_preserve_coronation
-					value = yes
-				}
-			}
-			if = {
-				limit = {
-					highest_held_title_tier = tier_duchy
-				}
-				add_character_modifier = {
-					modifier = mpo_migrating_accolade_duke_modifier
-				}
-			}
-			else_if = {
-				limit = {
-					highest_held_title_tier = tier_kingdom
-				}
-				add_character_modifier = {
-					modifier = mpo_migrating_accolade_king_modifier
-				}
-			}
-			else_if = {
-				limit = {
-					highest_held_title_tier >= tier_empire
-				}
-				add_character_modifier = {
-					modifier = mpo_migrating_accolade_emperor_modifier
 				}
 			}
 		}
@@ -3094,7 +3033,7 @@ migration_interaction = {
 		# Relative Herd
 		modifier = {
 			trigger_if = {
-				exists = scope:recipient.domicile # Herders won't have a domicile
+				limit = { exists = scope:recipient.domicile } # Herders won't have a domicile
 			}
 			add = 25
 			domicile.herd >= scope:recipient.domicile.herd
@@ -3110,14 +3049,14 @@ migration_interaction = {
 			desc = MIGRATION_INTERACTION_GURKHAN_ACCEPTANCE
 		}
 		modifier = {
-			add = 50
 			trigger_if = {
-				exists = situation:the_great_steppe
+				limit = { exists = situation:the_great_steppe }
 			}
 			scope:actor = {
 				this = situation:the_great_steppe.situation_top_herd
 			}
 			desc = MIGRATION_INTERACTION_GURKHAN_ACTOR_ACCEPTANCE
+			add = 50
 		}
 		# Dread
 		modifier = {
@@ -3393,7 +3332,9 @@ migration_interaction = {
 					}
 					AND = {
 						tier = tier_county
-						any_county_province_epidemic = {
+						any_county_province = {
+							any_province_epidemic = {
+							}
 						}
 					}
 				}
@@ -7061,7 +7002,13 @@ mpo_make_blood_brother = {
 		}
 
 		# Jamukha offers Temujin via Event
-
+		#modifier = {
+		#	trigger = {
+		#		scope:actor = { this = character:mpo_mongol_1 }
+		#		scope:recipient = { this = character:125501 }
+		#	}
+		#	factor = 0
+		#}
 	}
 }
 
@@ -7769,9 +7716,7 @@ mpo_retrieve_land_from_herder_interaction = {
 			desc = YOU_ARE_AN_ADVENTURER_REASON
 		}
 		modifier = {
-			scope:recipient = {
-				is_tributary = yes
-			}
+			exists = scope:actor.suzerain
 			add = -25
 			desc = ADVENTURER_SUZERAIN_REASON
 		}
@@ -7830,7 +7775,6 @@ mpo_vassal_to_tributary_interaction = {
 	is_valid_showing_failures_only = {
 		scope:recipient = {
 			is_imprisoned = no
-			is_independent_ruler = yes
 		}
 		scope:actor = {
 			is_imprisoned = no
@@ -8825,7 +8769,9 @@ mpo_offer_submission_or_ruin = {
 				scope:recipient = {
 					NOT = {
 						any_neighboring_top_liege_realm_owner = {
-							this != scope:actor
+							NOT = {
+								this = scope:actor
+							}
 						}
 					}
 					NOT = {

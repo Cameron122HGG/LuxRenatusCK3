@@ -255,10 +255,26 @@ any_liege_or_above_is_participant_trigger = {
 	}
 }
 
+##LR - conquest CBs are for everyone, just more expensive if you wouldn't 'normally' have them!
 can_use_conquest_cbs_trigger = {
+	always = yes
+	#OR = {
+	#	government_has_flag = government_is_tribal
+	#	government_has_flag = government_is_clan
+	#	government_has_flag = government_is_nomadic
+	#	government_has_flag = government_is_steppe_admin
+	#	faith = { has_doctrine_parameter = conquest_cb_enabled }
+	#	culture = { has_cultural_parameter = can_use_conquest_cbs }
+	#	AND = {
+	#		government_has_flag = government_is_japan_feudal
+	#		has_realm_law = imperial_expansion_law
+	#	}
+	#}
+}
+have_cheaper_conquest_cbs_trigger = {
 	OR = {
 		government_has_flag = government_is_tribal
-		government_has_flag = government_is_clan
+		#government_has_flag = government_is_clan
 		government_has_flag = government_is_nomadic
 		government_has_flag = government_is_steppe_admin
 		faith = { has_doctrine_parameter = conquest_cb_enabled }
@@ -269,6 +285,7 @@ can_use_conquest_cbs_trigger = {
 		}
 	}
 }
+##
 
 can_be_warrior_trigger = {
 	is_available_quick = {
@@ -309,7 +326,6 @@ can_be_warrior_trigger = {
 	}
 }
 
-# referenced in KNIGHT_RESTRICTIONS_TT, update when changing this trigger
 can_be_knight_trigger = {
 	is_available_quick = {
 		ai = yes
@@ -318,10 +334,10 @@ can_be_knight_trigger = {
 	can_be_warrior_trigger = { ARMY_OWNER = $ARMY_OWNER$ }
 	trigger_if = { # Admin governors cannot be knights
 		limit = {
-			government_allows = administrative
-			exists = primary_title
+			$ARMY_OWNER$ = { government_allows = administrative }
+			is_courtier = no
 		}
-		primary_title = {
+		primary_title ?= {
 			tier < tier_duchy
 			trigger_if = {
 				limit = { is_noble_family_title = yes }
@@ -370,15 +386,6 @@ can_be_knight_trigger = {
 			exists = liege.diarch
 		}
 		this != liege.diarch
-	}
-	# knight permissions for players
-	trigger_if = {
-		limit = {
-			$ARMY_OWNER$ = {
-				is_ai = no
-			}
-		}
-		is_knight_permitted = $ARMY_OWNER$
 	}
 }
 
@@ -913,7 +920,6 @@ herders_and_tributary_constraints = {
 			# You cannot attack your Confederation buddies tributaries
 			trigger_if = {
 				limit = {
-					exists = suzerain
 					suzerain != this
 					scope:attacker = { is_confederation_member = yes }
 					suzerain = { is_confederation_member = yes }
@@ -926,7 +932,6 @@ herders_and_tributary_constraints = {
 				is_tributary_of_suzerain_or_above = scope:defender 	# can't attack your own suzerain
 				trigger_if = {
 					limit = {
-						exists = suzerain
 						suzerain != this
 						scope:defender = { is_confederation_member = yes }
 						suzerain = { is_confederation_member = yes }

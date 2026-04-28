@@ -1357,18 +1357,12 @@ return_rome_decision = {
 		resolve_title_and_vassal_change = scope:change
 
 		add_piety = major_piety_value
-		if = {
-			limit = {
-				faith.religious_head ?= {
-					this != root
-				}
-			}
-			faith.religious_head = {
-				add_opinion = {
-					target = root
-					modifier = grateful_opinion
-					opinion = 20
-				}
+
+		faith.religious_head = {
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 20
 			}
 		}
 

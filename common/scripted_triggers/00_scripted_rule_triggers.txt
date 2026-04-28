@@ -43,13 +43,12 @@ can_raid_trigger = {
 		}
 		# Trait logics.
 		## With restrictions.
-		AND = {
-			can_raid_trait_flag_standard_requirements_trigger = yes
+		#AND = {
+			#can_raid_trait_flag_standard_requirements_trigger = yes
 			#has_trait_with_flag = trait_enable_raiding_per_standard_restrictions
-		}
+		#}
 		## Without restrictions.
 		#has_trait_with_flag = trait_enable_raiding_without_restrictions
-		has_variable = enable_raiding_without_restrictions
 	}
 	# Some faiths prohibit this.
 	OR = {
@@ -67,7 +66,8 @@ can_raid_trigger = {
 # Here so that you can plug in whatever dynasty modifiers you want without overwriting the whole scripted rule trigger.
 can_raid_dynasty_modifiers_that_enable_raiding_overseas_list_trigger = {
 	# Yes, I realise the OR is redundant till someone else puts something in here. Shoosh.
-	has_dynasty_modifier = fp1_legacy_of_piracy_modifier
+		has_dynasty_modifier = fp1_legacy_of_piracy_modifier
+
 }
 can_raid_dynasty_modifiers_that_enable_raiding_overland_list_trigger = {
 	OR = {

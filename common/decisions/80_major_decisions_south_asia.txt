@@ -613,7 +613,6 @@ found_the_empire_of_hindustan_decision = {
 		trigger_if = {
 			limit = {
 				is_ai = no
-				exists = faith.religious_head
 			}
 			OR = {
 				faith.religious_head = {	#And they have to actually like you enough to want to invest you.
@@ -638,11 +637,11 @@ found_the_empire_of_hindustan_decision = {
 			found_empire_of_hindustan_scripted_effect = yes
 		}
 		gain_heroic_legend_seed_tooltip_effect = yes
+		faith.religious_head = { save_scope_as = founder_hof }
 		if = {
 			limit = {
-				faith.religious_head ?= { is_playable_character = yes }
+				faith.religious_head = { is_playable_character = yes }
 			}
-			faith.religious_head = { save_scope_as = founder_hof }
 			faith.religious_head.capital_province = { save_scope_as = ceremony_locale }
 		}
 		else = {

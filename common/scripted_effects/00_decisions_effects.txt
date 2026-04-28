@@ -3547,15 +3547,15 @@ restore_carthage_scripted_effect = {
 		}
 	}
 	create_title_and_vassal_change = {
-		type = created
-		save_scope_as = title_change
-		add_claim_on_loss = no
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = no
 	}
 
 	#Create Kingdoms
 	hidden_effect = {
 		# Carthage
-		title:k_carthage = {
+		title:k_kartaga = {
 			change_title_holder = {
 				holder = root
 				change = scope:title_change
@@ -3564,25 +3564,25 @@ restore_carthage_scripted_effect = {
 		}
 		 # Carthage Duchies
 		title:d_gabes = {
-			set_de_jure_liege_title = title:k_carthage
+			set_de_jure_liege_title = title:k_kartaga
 		}
 		title:d_kairouan = {
-			set_de_jure_liege_title = title:k_carthage
+			set_de_jure_liege_title = title:k_kartaga
 		}
 		title:d_kroumerie = {
-			set_de_jure_liege_title = title:k_carthage
+			set_de_jure_liege_title = title:k_kartaga
 		}
 		title:d_tunis = {
-			set_de_jure_liege_title = title:k_carthage
+			set_de_jure_liege_title = title:k_kartaga
 		}
 		title:d_jerid = {
-			set_de_jure_liege_title = title:k_carthage
+			set_de_jure_liege_title = title:k_kartaga
 		}
 		title:d_sicily = {
-			set_de_jure_liege_title = title:k_carthage
+			set_de_jure_liege_title = title:k_kartaga
 		}
 		title:d_sardinia = {
-			set_de_jure_liege_title = title:k_carthage
+			set_de_jure_liege_title = title:k_kartaga
 		}
 		# And "Tunis" Carthage as capital
 		title:c_tunis = {
@@ -3651,6 +3651,16 @@ restore_carthage_scripted_effect = {
 		title:d_valencia = {
 			set_de_jure_liege_title = title:k_carthago_nova
 		}
+
+		every_held_title = { #Should destroy Kingdoms without dejure land
+		title_tier = kingdom
+			if = {
+				 limit = {
+					any_direct_de_jure_vassal_title = { count < 1 }
+				 }
+				root = { destroy_title = prev }
+			}
+		}
 	}
 
 	#Create Empire
@@ -3660,25 +3670,11 @@ restore_carthage_scripted_effect = {
 			change = scope:title_change
 		}
 	}
-
 	resolve_title_and_vassal_change = scope:title_change
-
-	hidden_effect = {
-		every_held_title = { #Should destroy Kingdoms without dejure land
-			title_tier = kingdom
-			if = {
-				limit = {
-					any_direct_de_jure_vassal_title = { count < 1 }
-					title_capital_county.empire = title:e_carthage
-				}
-				root = { destroy_title = prev }
-			}
-		}
-	}
 
 	if = {
 		limit = {
-			capital_county != title:c_tunis
+			NOT = { capital_county = title:c_tunis }
 		}
 		set_realm_capital = title:c_tunis
 	}

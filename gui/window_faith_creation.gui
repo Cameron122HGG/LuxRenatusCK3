@@ -271,6 +271,32 @@ window = {
 										default_format = "#low"
 									}
 
+									fixedgridbox = {
+										name = "doctrines_grid_LR_matrix_group"
+										datamodel = "[FaithCreationWindow.GetGroupingHelper( 'LR_matrix_group' ).GetGrouping]"
+
+										flipdirection = yes
+										addcolumn = 270
+										addrow = 65
+										datamodel_wrap = 2
+
+										item = {
+											widget_doctrine_selection_item = {
+												blockoverride "doctrine_icon_texture"
+												{
+													texture = "[FaithDoctrine.GetIcon]"
+												}
+											}
+										}
+									}
+								}								
+
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+
+									text_label_left = {
+										layoutpolicy_horizontal = expanding
 										text = "FAITH_DOCTRINES_MARRIAGE"
 										default_format = "#low"
 									}
@@ -1187,7 +1213,7 @@ window = {
 			}
 		}
 	}
-
+}
 
 template faith_window_trait_tooltip
 {

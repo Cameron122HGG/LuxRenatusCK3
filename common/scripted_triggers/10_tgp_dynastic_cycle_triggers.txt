@@ -79,7 +79,17 @@ tgp_war_ban_all_ministers_trigger = {
 			}
 		}
 		scope:attacker = {
-			tgp_has_minister_title = no
+			NOR = {
+				has_title = title:e_minister_chancellor
+				has_title = title:e_minister_censor
+				has_title = title:e_minister_grand_marshal
+				has_title = title:e_minister_of_personnel
+				has_title = title:e_minister_of_revenue
+				has_title = title:e_minister_of_rites
+				has_title = title:e_minister_of_war
+				has_title = title:e_minister_of_justice
+				has_title = title:e_minister_of_works
+			}
 		}
 	}
 }
@@ -92,7 +102,17 @@ tgp_war_ban_civilian_ministers_trigger = {
 			}
 		}
 		scope:attacker = {
-			tgp_has_civilian_minister_title = no
+			NOR = {
+				has_title = title:e_minister_chancellor
+				has_title = title:e_minister_censor
+				#has_title = title:e_minister_grand_marshal # This guys is allowed to declare wars in some cases
+				has_title = title:e_minister_of_personnel
+				has_title = title:e_minister_of_revenue
+				has_title = title:e_minister_of_rites
+				has_title = title:e_minister_of_war
+				has_title = title:e_minister_of_justice
+				has_title = title:e_minister_of_works
+			}
 		}
 	}
 }
@@ -219,13 +239,14 @@ is_province_valid_confucian_education_trigger = {
 
 grand_campaign_valid_contributor_trigger = {
 	is_vassal_or_below_of = scope:owner
-	this != scope:owner
-	this != scope:founder
 	custom_description = {
 		text = grand_campaign_target_border_tt
 		object = scope:great_project.var:attack_$ID$.holder
 		scope:great_project.var:attack_$ID$ ?= {
-			any_de_jure_county = {
+			trigger_if = {
+				limit = {
+					is_title_created = yes
+				}
 				holder.top_overlord != scope:owner
 			}
 			any_title_to_title_neighboring_county = {

@@ -260,12 +260,12 @@ faction_demand.0001 = {
 					has_title = title:e_ilkhanate
 					has_title = title:e_golden_horde
 					has_title = title:e_chagatai
-					#has_title = title:e_red_horde
+					##has_title = title:e_red_horde
 					has_title = title:e_white_horde
 					has_title = title:e_aarlud_khanate
 					has_title = title:e_togskol_khanate
 					has_title = title:e_baruun_khanate
-					#has_title = title:e_great_yuan
+					##has_title = title:e_great_yuan
 					#has_title = title:e_blue_horde
 					#has_title = title:e_omnod_dalai_khanate
 					has_title = title:e_byzantium
@@ -282,7 +282,7 @@ faction_demand.0001 = {
 	# Attempt to bribe.
 	option = {
 		name = "FACTION_DEMAND_BRIBE_CO_EMPEROR"
-		show_as_unavailable = { may_appoint_co_emperors_trigger = yes }
+		show_as_unavailable = { has_active_diarchy = yes }
 		trigger = { faction_target_can_attempt_to_bribe_with_co_emperorship_trigger = yes }
 
 		# Ping-pong the choice back to the target.
@@ -571,44 +571,27 @@ faction_demand.0101 = {
 
 		# LEGITIMACY LOSS FOR ACCEPTING FACTION DEMANDS
 		faction_accept_demand_legitimacy_effect = yes
+		
 		switch = {
-			trigger = has_realm_law_in_group
-			celestial_bureaucracy = {
-				change_realm_law_level = {
-					law_group = celestial_bureaucracy
-					change = -1
-				}
-			}
-			imperial_bureaucracy = {
-				change_realm_law_level = {
-					law_group = imperial_bureaucracy
-					change = -1
-				}
-			}
-			japanese_bureaucracy = {
-				change_realm_law_level = {
-					law_group = japanese_bureaucracy
-					change = -1
-				}
-			}
-			meritocratic_bureaucracy = {
-				change_realm_law_level = {
-					law_group = meritocratic_bureaucracy
-					change = -1
-				}
-			}
-			crown_authority = {
-				change_realm_law_level = {
-					law_group = crown_authority
-					change = -1
-				}
-			}
-			tribal_authority = {
-				change_realm_law_level = {
-					law_group = tribal_authority
-					change = -1
-				}
-			}
+			trigger = has_realm_law
+			imperial_bureaucracy_1 = { add_realm_law = imperial_bureaucracy_0 }
+			imperial_bureaucracy_2 = { add_realm_law = imperial_bureaucracy_1 }
+			imperial_bureaucracy_3 = { add_realm_law = imperial_bureaucracy_2 }
+			tribal_authority_1 = { add_realm_law = tribal_authority_0 }
+			tribal_authority_2 = { add_realm_law = tribal_authority_1 }
+			tribal_authority_3 = { add_realm_law = tribal_authority_2 }
+			celestial_bureaucracy_1 = { add_realm_law = celestial_bureaucracy_0 }
+			celestial_bureaucracy_2 = { add_realm_law = celestial_bureaucracy_1 }
+			celestial_bureaucracy_3 = { add_realm_law = celestial_bureaucracy_2 }
+			meritocratic_bureaucracy_1 = { add_realm_law = meritocratic_bureaucracy_0 }
+			meritocratic_bureaucracy_2 = { add_realm_law = meritocratic_bureaucracy_1 }
+			meritocratic_bureaucracy_3 = { add_realm_law = meritocratic_bureaucracy_2 }
+			japanese_bureaucracy_1 = { add_realm_law = japanese_bureaucracy_0 }
+			japanese_bureaucracy_2 = { add_realm_law = japanese_bureaucracy_1 }
+			japanese_bureaucracy_3 = { add_realm_law = japanese_bureaucracy_2 }
+			crown_authority_1 = { add_realm_law = crown_authority_0 }
+			crown_authority_2 = { add_realm_law = crown_authority_1 }
+			crown_authority_3 = { add_realm_law = crown_authority_2 }
 		}
 
 		add_prestige = -200
@@ -678,7 +661,7 @@ faction_demand.0101 = {
 
 	option = {
 		name = "FACTION_DEMAND_BRIBE_CO_EMPEROR"
-		show_as_unavailable = { may_appoint_co_emperors_trigger = yes }
+		show_as_unavailable = { has_active_diarchy = yes }
 		trigger = { faction_target_can_attempt_to_bribe_with_co_emperorship_trigger = yes }
 
 		# Ping-pong the choice back to the target.
@@ -2174,7 +2157,7 @@ faction_demand.2001 = {
 		name = "FACTION_DEMAND_BRIBE_CO_EMPEROR"
 		show_as_unavailable = {
 			OR = {
-				may_appoint_co_emperors_trigger = yes
+				has_active_diarchy = yes
 				scope:faction_leader != scope:faction.special_character
 			}
 		}
@@ -2792,7 +2775,7 @@ faction_demand.0221 = {
 
 	option = {
 		name = "FACTION_DEMAND_BRIBE_CO_EMPEROR"
-		show_as_unavailable = { may_appoint_co_emperors_trigger = yes }
+		show_as_unavailable = { has_active_diarchy = yes }
 		trigger = { faction_target_can_attempt_to_bribe_with_co_emperorship_trigger = yes }
 
 		# Ping-pong the choice back to the target.
@@ -3445,7 +3428,7 @@ faction_demand.1000 = {
 
 	option = {
 		name = "FACTION_DEMAND_BRIBE_CO_EMPEROR"
-		show_as_unavailable = { may_appoint_co_emperors_trigger = yes }
+		show_as_unavailable = { has_active_diarchy = yes }
 		trigger = { faction_target_can_attempt_to_bribe_with_co_emperorship_trigger = yes }
 
 		# Ping-pong the choice back to the target.
@@ -3994,7 +3977,7 @@ faction_demand.9998 = {
 			}
 			modifier = {
 				add = 10000
-				scope:peasant_leader = { is_no_men_enabled = yes }
+				scope:faction_leader = { is_no_men_enabled = yes }
 			}
 		}
 	}

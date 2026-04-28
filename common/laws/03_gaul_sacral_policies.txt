@@ -1,23 +1,23 @@
 ﻿#####################
-# IMPERIAL POLICIES #
+# Sacral POLICIES #
 #####################
 
-@gallic_policy_laws_cooldown_value = 10
-@gallic_policy_cost_value = 500
+@imperial_policy_laws_cooldown_value = 10
+@imperial_policy_cost_value = 500
 
-gallic_policy_laws = {
-	default = gallic_manor_reform_law
+gaul_imperial_policy_laws = {
+	default = gaul_manor_reform_law
 	cumulative = no
-	flag = gallic_policy
+	flag = imperial_policy
 
-	gallic_defense_mobilization_law = {
+	gaul_defense_mobilization_law = {
 		flag = defense_mobilization_law
 
 		can_keep = {
-			realm_law_use_gallic_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
-				limit = { this != top_liege }
-				liege = { has_realm_law = gallic_defense_mobilization_law }
+				limit = { is_independent_ruler = no }
+				liege = { has_realm_law = gaul_defense_mobilization_law }
 			}
 		}
 
@@ -27,20 +27,20 @@ gallic_policy_laws = {
 					top_liege = this
 				}
 				custom_tooltip = {
-					text = gallic_policy_laws_cooldown_desc
-					NOT = { has_variable = gallic_policy_laws_cooldown }
+					text = imperial_policy_laws_cooldown_desc
+					NOT = { has_variable = imperial_policy_laws_cooldown }
 				}
-				tgp_gaul_defense_mobilization_valid_trigger = yes
 			}
+			tgp_gaul_defense_mobilization_valid_trigger = yes
 		}
 
 		on_pass = {
 			## Set cooldown
 			set_variable = {
-				name = gallic_policy_laws_cooldown
-				years = @gallic_policy_laws_cooldown_value
+				name = imperial_policy_laws_cooldown
+				years = @imperial_policy_laws_cooldown_value
 			}
-			tgp_gallic_policy_event_effect = yes
+			tgp_imperial_policy_event_effect = yes
 		}
 
 		modifier = {
@@ -53,7 +53,7 @@ gallic_policy_laws = {
 		flag = cheaper_gallic_domicile_military_buildings
 
 		pass_cost = {
-			prestige = @gallic_policy_cost_value
+			prestige = @imperial_policy_cost_value
 		}
 
 		ai_will_do = {
@@ -61,16 +61,16 @@ gallic_policy_laws = {
 		}
 	}
 
-	gallic_disarmament_law = {
+	gaul_disarmament_law = {
 		flag = disarmament_law
 		flag = vassal_internal_wars_cost_doubled
-		flag = gaul_administrative_can_build_castles
+		flag = gaul_admin_can_build_castles
 
 		can_keep = {
-			realm_law_use_gallic_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
-				limit = { this != top_liege }
-				liege = { has_realm_law = gallic_disarmament_law }
+				limit = { is_independent_ruler = no }
+				liege = { has_realm_law = gaul_disarmament_law }
 			}
 		}
 		
@@ -80,8 +80,8 @@ gallic_policy_laws = {
 					top_liege = this
 				}
 				custom_tooltip = {
-					text = gallic_policy_laws_cooldown_desc
-					NOT = { has_variable = gallic_policy_laws_cooldown }
+					text = imperial_policy_laws_cooldown_desc
+					NOT = { has_variable = imperial_policy_laws_cooldown }
 				}
 			}
 		}
@@ -89,10 +89,10 @@ gallic_policy_laws = {
 		on_pass = {
 			## Set cooldown
 			set_variable = {
-				name = gallic_policy_laws_cooldown
-				years = @gallic_policy_laws_cooldown_value
+				name = imperial_policy_laws_cooldown
+				years = @imperial_policy_laws_cooldown_value
 			}
-			tgp_gallic_policy_event_effect = yes
+			tgp_imperial_policy_event_effect = yes
 		}
 
 		modifier = {
@@ -102,7 +102,7 @@ gallic_policy_laws = {
 		}
 
 		pass_cost = {
-			prestige = @gallic_policy_cost_value
+			prestige = @imperial_policy_cost_value
 		}
 
 		ai_will_do = {
@@ -120,15 +120,15 @@ gallic_policy_laws = {
 		}
 	}
 
-	gallic_isolation_law = {
+	gaul_isolation_law = {
 		flag = isolation_law
 		flag = better_physician_treatments
 
 		can_keep = {
-			realm_law_use_gallic_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
-				limit = { this != top_liege }
-				liege = { has_realm_law = isolation_law }
+				limit = { is_independent_ruler = no }
+				liege = { has_realm_law = gaul_isolation_law }
 			}
 		}
 		
@@ -138,8 +138,8 @@ gallic_policy_laws = {
 					top_liege = this
 				}
 				custom_tooltip = {
-					text = gallic_policy_laws_cooldown_desc
-					NOT = { has_variable = gallic_policy_laws_cooldown }
+					text = imperial_policy_laws_cooldown_desc
+					NOT = { has_variable = imperial_policy_laws_cooldown }
 				}
 			}
 		}
@@ -147,10 +147,10 @@ gallic_policy_laws = {
 		on_pass = {
 			## Set cooldown
 			set_variable = {
-				name = gallic_policy_laws_cooldown
-				years = @gallic_policy_laws_cooldown_value
+				name = imperial_policy_laws_cooldown
+				years = @imperial_policy_laws_cooldown_value
 			}
-			tgp_gallic_policy_event_effect = yes
+			tgp_imperial_policy_event_effect = yes
 		}
 
 		modifier = {
@@ -160,18 +160,19 @@ gallic_policy_laws = {
 		}
 
 		pass_cost = {
-			prestige = @gallic_policy_cost_value
+			prestige = @imperial_policy_cost_value
 		}
 
 		ai_will_do = {
 			value = 0
 			if = {
 				limit = {
-					top_liege = this
 					any_realm_county = {
-						any_county_province_epidemic = {
-							count >= 1
-							outbreak_intensity >= apocalyptic
+						any_county_province = {
+							any_province_epidemic = {
+								count >= 1
+								outbreak_intensity >= apocalyptic
+							}
 						}
 					}
 				}
@@ -180,15 +181,15 @@ gallic_policy_laws = {
 		}
 	}
 
-	gallic_expansion_law = {
-		flag = gallic_expansion_law
+	gaul_imperial_expansion_law = {
+		flag = imperial_expansion_law
 		flag = cheaper_gallic_domicile_military_buildings
 
 		can_keep = {
-			realm_law_use_gallic_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
-				limit = { this != top_liege }
-				liege = { has_realm_law = gallic_expansion_law }
+				limit = { is_independent_ruler = no }
+				liege = { has_realm_law = gaul_imperial_expansion_law }
 			}
 		}
 
@@ -198,8 +199,8 @@ gallic_policy_laws = {
 					top_liege = this
 				}
 				custom_tooltip = {
-					text = gallic_policy_laws_cooldown_desc
-					NOT = { has_variable = gallic_policy_laws_cooldown }
+					text = imperial_policy_laws_cooldown_desc
+					NOT = { has_variable = imperial_policy_laws_cooldown }
 				}
 				# Filtered with 'trigger_if' to make nicer tooltips
 				trigger_if = {
@@ -227,21 +228,21 @@ gallic_policy_laws = {
 		on_pass = {
 			## Set cooldown
 			set_variable = {
-				name = gallic_policy_laws_cooldown
-				years = @gallic_policy_laws_cooldown_value
+				name = imperial_policy_laws_cooldown
+				years = @imperial_policy_laws_cooldown_value
 			}
-			tgp_gallic_policy_event_effect = yes
+			tgp_imperial_policy_event_effect = yes
 		}
 
 		modifier = {
 			mercenary_hire_cost_mult = -0.15
 			men_at_arms_recruitment_cost = -0.15
-			gaul_administrative_government_vassal_opinion = -35
+			#japan_admin_government_vassal_opinion = -35
 			travel_danger = 20
 		}
 
 		pass_cost = {
-			prestige = @gallic_policy_cost_value
+			prestige = @imperial_policy_cost_value
 		}
 
 		ai_will_do = {
@@ -259,14 +260,14 @@ gallic_policy_laws = {
 		}
 	}
 
-	gallic_manor_reform_law = {
+	gaul_manor_reform_law = {
 		flag = manor_reform_law
 
 		can_keep = {
-			realm_law_use_gallic_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
-				limit = { this != top_liege }
-				liege = { has_realm_law = gallic_manor_reform_law }
+				limit = { is_independent_ruler = no }
+				liege = { has_realm_law = gaul_manor_reform_law }
 			}
 		}
 		
@@ -276,8 +277,8 @@ gallic_policy_laws = {
 					top_liege = this
 				}
 				custom_tooltip = {
-					text = gallic_policy_laws_cooldown_desc
-					NOT = { has_variable = gallic_policy_laws_cooldown }
+					text = imperial_policy_laws_cooldown_desc
+					NOT = { has_variable = imperial_policy_laws_cooldown }
 				}
 			}
 		}
@@ -285,14 +286,14 @@ gallic_policy_laws = {
 		on_pass = {
 			## Set cooldown
 			set_variable = {
-				name = gallic_policy_laws_cooldown
-				years = @gallic_policy_laws_cooldown_value
+				name = imperial_policy_laws_cooldown
+				years = @imperial_policy_laws_cooldown_value
 			}
-			tgp_gallic_policy_event_effect = yes
+			tgp_imperial_policy_event_effect = yes
 		}
 		
 		should_start_with = {
-			realm_law_use_gallic_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 		}
 
 		modifier = {
@@ -301,11 +302,11 @@ gallic_policy_laws = {
 			domicile_build_speed = 0.25
 			build_gold_cost = -0.15
 			build_speed = -0.15
-			gaul_administrative_government_vassal_opinion = -15
+			#japan_admin_government_vassal_opinion = -15
 		}
 
 		pass_cost = {
-			prestige = @gallic_policy_cost_value
+			prestige = @imperial_policy_cost_value
 		}
 
 		ai_will_do = {
@@ -323,14 +324,14 @@ gallic_policy_laws = {
 		}
 	}
 
-	gallic_bandit_crackdown_law = {
+	gaul_bandit_crackdown_law = {
 		flag = bandit_crackdown_law
 
 		can_keep = {
-			realm_law_use_gallic_policy_trigger = yes
+			realm_law_gaul_use_imperial_policy_trigger = yes
 			trigger_if = {
-				limit = { this != top_liege }
-				liege = { has_realm_law = gallic_bandit_crackdown_law }
+				limit = { is_independent_ruler = no }
+				liege = { has_realm_law = gaul_bandit_crackdown_law }
 			}
 		}
 		
@@ -340,8 +341,8 @@ gallic_policy_laws = {
 					top_liege = this
 				}
 				custom_tooltip = {
-					text = gallic_policy_laws_cooldown_desc
-					NOT = { has_variable = gallic_policy_laws_cooldown }
+					text = imperial_policy_laws_cooldown_desc
+					NOT = { has_variable = imperial_policy_laws_cooldown }
 				}
 			}
 		}
@@ -349,10 +350,10 @@ gallic_policy_laws = {
 		on_pass = {
 			## Set cooldown
 			set_variable = {
-				name = gallic_policy_laws_cooldown
-				years = @gallic_policy_laws_cooldown_value
+				name = imperial_policy_laws_cooldown
+				years = @imperial_policy_laws_cooldown_value
 			}
-			tgp_gallic_policy_event_effect = yes
+			tgp_imperial_policy_event_effect = yes
 		}
 
 		modifier = {
@@ -365,7 +366,7 @@ gallic_policy_laws = {
 		}
 
 		pass_cost = {
-			prestige = @gallic_policy_cost_value
+			prestige = @imperial_policy_cost_value
 		}
 
 		ai_will_do = {
