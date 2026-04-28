@@ -41,20 +41,14 @@ coronation_reset_realm_law_effect = {
 coronation_reset_realm_law_variable_effect = {
 	if = {
 		limit = {
-			NOR = {
-				has_realm_law = crowned_emperor
-				has_variable = nomad_migration_preserve_coronation
-			}
+			NOT = { has_realm_law = crowned_emperor }
 			has_variable = crowned_emperor_var
 		}
 		remove_variable = crowned_emperor_var
 	}
 	else_if = {
 		limit = {
-			NOR = {
-				has_realm_law = crowned_king
-				has_variable = nomad_migration_preserve_coronation
-			}
+			NOT = { has_realm_law = crowned_king }
 			has_variable = crowned_king_var
 		}
 		remove_variable = crowned_king_var

@@ -27,21 +27,3 @@ random_vassal_generation_template = {
 	#}
 }
 
-tgp_gaul_imperial_scion_template = {
-	culture = scope:mayor_of_the_palace.culture
-	faith = scope:mayor_of_the_palace.faith
-	dynasty_house = scope:house_merovingian
-	gender_female_chance = {
-		if = {
-			limit = { scope:mayor_of_the_palace.faith = { has_doctrine = doctrine_gender_male_dominated } }
-			add = 0
-		}
-		else_if = {
-			limit = { scope:mayor_of_the_palace.faith = { has_doctrine = doctrine_gender_female_dominated } }
-			add = 100
-		}
-		else = {
-			add = 50
-		}
-	}
-}

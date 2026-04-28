@@ -534,20 +534,19 @@ window = {
 								layoutpolicy_horizontal = expanding
 
 								hbox = {
-									name = "LR_Matrix_doctrines"
-									datamodel = "[FaithWindow.GetCategoryHelper( 'LR_matrix_group' ).GetCategory]"
-									spacing = -6
+									name = "lr_matrix_doctrines"
+									datamodel = "[FaithWindow.GetGroupingHelper( 'LR_matrix_group' ).GetGrouping]"
+									spacing = 0
 									layoutpolicy_vertical = expanding
 									minimumsize = { 0 108 }
 
 									item = {
 										vbox = {
-											name = "doctrine_list_item"
-											datacontext = "[DoctrineItem.GetDoctrine]"
-											visible = "[FaithDoctrine.IsVisible]"
-											minimumsize = { 100 0 }
 											layoutpolicy_vertical = expanding
-											
+											minimumsize = { 100 0 }
+											name = "doctrine_list_item"
+											datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
+											visible = "[FaithDoctrine.IsVisible]"
 											tooltip = "FAITH_WINDOW_DOCTRINE_TOOLTIP"
 											using = tooltip_se
 
@@ -560,7 +559,7 @@ window = {
 											text_single = {
 												name = "doctrine_name"
 												align = center
-												text = "[FaithDoctrine.GetNameNoTooltip( DoctrineItem.GetFaith )]"
+												text = "[FaithDoctrine.GetNameNoTooltip( GuiFaithDoctrineItem.GetFaith )]"
 												default_format = "#high"
 												multiline = yes
 												max_width = 104
