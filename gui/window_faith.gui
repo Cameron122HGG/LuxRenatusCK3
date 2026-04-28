@@ -271,6 +271,28 @@ window = {
 					down = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'holy_sites' )]"
 				}
 			}
+			
+			button_tab = {
+				shortcut = "tab_3"
+				onclick = "[GetVariableSystem.Set( 'faith_view_tabs', 'faith_lore' )]"
+				down = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'faith_lore' )]"
+
+				alwaystransparent = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'faith_lore' )]"
+
+				blockoverride "tab_label"
+				{
+					text = "FAITH_LORE_TEXT"
+					max_width = 220
+				}
+
+				blockoverride "icon_visible" {}
+
+				blockoverride "tab_icon"
+				{
+					texture = "gfx/interface/icons/flat_icons/holy_site.dds"
+					down = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'faith_lore' )]"
+				}
+			}
 		}
 
 		vbox = {
