@@ -291,9 +291,9 @@ gaul_install_bloc_member_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "gaul_INSTALL_BLOC_MEMBER_WAR_NAME"
-	war_name_base = "gaul_INSTALL_BLOC_MEMBER_WAR_NAME_BASE"
-	cb_name = "gaul_INSTALL_BLOC_MEMBER_CB_NAME"
+	war_name = "GAUL_INSTALL_BLOC_MEMBER_WAR_NAME"
+	war_name_base = "GAUL_INSTALL_BLOC_MEMBER_WAR_NAME_BASE"
+	cb_name = "GAUL_INSTALL_BLOC_MEMBER_CB_NAME"
 	interface_priority = 100
 
 	ticking_war_score_targets_entire_realm = no
@@ -1252,9 +1252,9 @@ gaul_demand_administrative_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "gaul_DEMAND_ADMINISTRATIVE_WAR_NAME"
-	war_name_base = "gaul_DEMAND_ADMINISTRATIVE_WAR_NAME_BASE"
-	cb_name = "gaul_DEMAND_ADMINISTRATIVE_CB_NAME"
+	war_name = "GAUL_DEMAND_ADMINISTRATIVE_WAR_NAME"
+	war_name_base = "GAUL_DEMAND_ADMINISTRATIVE_WAR_NAME_BASE"
+	cb_name = "GAUL_DEMAND_ADMINISTRATIVE_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -1284,7 +1284,7 @@ gaul_demand_administrative_cb = {
 }
 
 # War to conquer gaul
-gaul_imperial_expansion_cb = {
+gaul_sacral_expansion_cb = {
 	icon = gaul_administrative_government
 	group = conquest
 	combine_into_one = yes
@@ -1328,7 +1328,7 @@ gaul_imperial_expansion_cb = {
 	allowed_against_character_display_regardless = {
 		# Must be neighbours, but we want to show casus belli in list regardless
 		custom_tooltip = {
-			text = gaul_imperial_expansion_cb_neighbour_tt
+			text = gaul_sacral_expansion_cb_neighbour_tt
 			any_sub_realm_county = {
 				any_title_to_title_neighboring_and_across_water_county = { holder.top_liege = scope:attacker.top_liege }
 			}
@@ -1371,9 +1371,9 @@ gaul_imperial_expansion_cb = {
 				trigger = {
 					scope:attacker = { gaul_imperial_expansion_cb_allowed_for_character_trigger = no }
 				}
-				desc = gaul_imperial_expansion_cb_ended_invalid.desc.attacker
+				desc = gaul_sacral_expansion_cb_ended_invalid.desc.attacker
 			}
-			desc = gaul_imperial_expansion_cb_ended_invalid.desc
+			desc = gaul_sacral_expansion_cb_ended_invalid.desc
 		}
 	}
 
@@ -1391,9 +1391,9 @@ gaul_imperial_expansion_cb = {
 							is_independent_ruler = yes
 						}
 					}
-					desc = gaul_imperial_expansion_cb_victory_desc_attacker
+					desc = gaul_sacral_expansion_cb_victory_desc_attacker
 				}
-				desc = gaul_imperial_expansion_cb_victory_desc
+				desc = gaul_sacral_expansion_cb_victory_desc
 			}
 			triggered_desc = {
 				trigger = {
@@ -1601,9 +1601,9 @@ gaul_imperial_expansion_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "gaul_IMPERIAL_EXPANSION_WAR_NAME"
-	war_name_base = "gaul_IMPERIAL_EXPANSION_WAR_NAME_BASE"
-	cb_name = "gaul_IMPERIAL_EXPANSION_CB_NAME"
+	war_name = "GAUL_SACRAL_EXPANSION_WAR_NAME"
+	war_name_base = "GAUL_SACRAL_EXPANSION_WAR_NAME_BASE"
+	cb_name = "GAUL_SACRAL_EXPANSION_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -1633,13 +1633,13 @@ gaul_imperial_expansion_cb = {
 }
 
 # War to reconquer gaul
-gaul_imperial_reconquest_cb = {
+gaul_sacral_reconquest_cb = {
 	icon = gaul_administrative_government
 	group = de_jure
 
-	war_name = "GAUL_IMPERIAL_RECONQUEST_WAR_NAME"
-	war_name_base = "GAUL_IMPERIAL_RECONQUEST_WAR_NAME_BASE"
-	cb_name = "GAUL_IMPERIAL_RECONQUEST_CB_NAME"
+	war_name = "GAUL_SACRAL_RECONQUEST_WAR_NAME"
+	war_name_base = "GAUL_SACRAL_RECONQUEST_WAR_NAME_BASE"
+	cb_name = "GAUL_SACRAL_RECONQUEST_CB_NAME"
 	interface_priority = 80
 
 	combine_into_one = yes
@@ -1653,7 +1653,7 @@ gaul_imperial_reconquest_cb = {
 					limit = { empire = title:e_high_kingdom_gaul }
 					add = {
 						value = 50
-						desc = gaul_imperial_reconquest_cb_cost_tt
+						desc = gaul_sacral_reconquest_cb_cost_tt
 					}
 				}
 			}
@@ -1712,9 +1712,9 @@ gaul_imperial_reconquest_cb = {
 				trigger = {
 					scope:attacker = { gaul_imperial_reconquest_cb_allowed_for_character_trigger = no }
 				}
-				desc = gaul_imperial_reconquest_cb_ended_invalid.desc.attacker
+				desc = gaul_sacral_reconquest_cb_ended_invalid.desc.attacker
 			}
-			desc = gaul_imperial_reconquest_cb_ended_invalid.desc
+			desc = gaul_sacral_reconquest_cb_ended_invalid.desc
 		}
 	}
 
@@ -1729,7 +1729,7 @@ gaul_imperial_reconquest_cb = {
 					trigger = { scope:attacker = { is_local_player = yes } }
 					desc = de_jure_cb_victory_desc_attacker
 				}
-				desc = gaul_imperial_reconquest_cb_victory_desc
+				desc = gaul_sacral_reconquest_cb_victory_desc
 			}
 			triggered_desc = {
 				trigger = {
@@ -1908,7 +1908,7 @@ gaul_imperial_reconquest_cb = {
 }
 
 # War to reimpose procuratio
-gaul_refused_procuratio_cb = {
+gaul_sacral_procuratio_cb = {
 	icon = dissolution_war
 	group = civil_war
 	ai_only_against_liege = yes
@@ -2746,9 +2746,9 @@ gaul_establish_regnulum_administration_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "gaul_ESTABLISH_regnulum_ADMINISTRATION_WAR_NAME"
-	war_name_base = "gaul_ESTABLISH_regnulum_ADMINISTRATION_WAR_NAME_BASE"
-	cb_name = "gaul_ESTABLISH_regnulum_ADMINISTRATION_CB_NAME"
+	war_name = "GAUL_ESTABLISH_REGNULUM_ADMINISTRATION_WAR_NAME"
+	war_name_base = "GAUL_ESTABLISH_REGNULUM_ADMINISTRATION_WAR_NAME_BASE"
+	cb_name = "GAUL_ESTABLISH_REGNULUM_ADMINISTRATION_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
