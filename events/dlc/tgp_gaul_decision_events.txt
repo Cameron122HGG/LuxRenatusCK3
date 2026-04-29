@@ -1858,7 +1858,7 @@ tgp_gaul_decision.9101 = {
 	}
 
 	immediate = {
-		save_scope_as = gaul_dictator
+		save_scope_as = gallic_dictator
 		tgp_save_realm_ceremonial_liege_effect = yes
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
 		if = {
@@ -2122,7 +2122,7 @@ tgp_gaul_decision.9601 = {
 	hidden = yes
 
 	immediate = {
-		save_scope_as = gaul_dictator
+		save_scope_as = gallic_dictator
 		# Inform Vassals
 		every_vassal = {
 			limit = {
@@ -2130,9 +2130,9 @@ tgp_gaul_decision.9601 = {
 				is_landed = yes
 				# Exclude members of bloc, allies, prisoners
 				NOR = {
-					house.house_confederation ?= scope:gaul_dictator.house.house_confederation
-					is_allied_to = scope:gaul_dictator
-					is_imprisoned_by = scope:gaul_dictator
+					house.house_confederation ?= scope:gallic_dictator.house.house_confederation
+					is_allied_to = scope:gallic_dictator
+					is_imprisoned_by = scope:gallic_dictator
 				}
 			}
 			trigger_event = tgp_gaul_decision.9602
@@ -2153,7 +2153,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 
 	on_trigger_fail = { # Create player list to handle separately
 		save_temporary_scope_as = war_joiner_temp
-		scope:gaul_dictator = {
+		scope:gallic_dictator = {
 			add_to_variable_list = {
 				name = war_players
 				target = scope:war_joiner_temp
@@ -2189,14 +2189,14 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 				}
 				modifier = {
 					add = 30
-					has_relation_rival = scope:gaul_dictator
+					has_relation_rival = scope:gallic_dictator
 				}
 				modifier = {
 					add = 30
 					house = {
 						any_house_relation = {
 							has_house_relation_level = feud
-							any_relation_house = { this = scope:gaul_dictator.house }
+							any_relation_house = { this = scope:gallic_dictator.house }
 						}
 					}
 				}
@@ -2205,7 +2205,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = rivalry
-							any_relation_house = { this = scope:gaul_dictator.house }
+							any_relation_house = { this = scope:gallic_dictator.house }
 						}
 					}
 				}
@@ -2214,7 +2214,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = quarrel
-							any_relation_house = { this = scope:gaul_dictator.house }
+							any_relation_house = { this = scope:gallic_dictator.house }
 						}
 					}
 				}
@@ -2223,7 +2223,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 					government_allows = administrative
 				}
 				save_temporary_scope_as = war_joiner_temp
-				scope:gaul_dictator = {
+				scope:gallic_dictator = {
 					add_to_variable_list = {
 						name = war_joiners
 						target = scope:war_joiner_temp
@@ -2242,7 +2242,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 								house.house_confederation ?= root.house.house_confederation
 							}
 							save_temporary_scope_as = war_joiner_temp
-							scope:gaul_dictator = {
+							scope:gallic_dictator = {
 								add_to_variable_list = {
 									name = war_joiners
 									target = scope:war_joiner_temp
@@ -2255,7 +2255,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 			}
 			10 = { # Don't join war
 				opinion_modifier = {
-					opinion_target = scope:gaul_dictator
+					opinion_target = scope:gallic_dictator
 					multiplier = -0.1
 				}
 				ai_value_modifier = {
@@ -2266,7 +2266,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = amity
-							any_relation_house = { this = scope:gaul_dictator.house }
+							any_relation_house = { this = scope:gallic_dictator.house }
 						}
 					}
 				}
@@ -2275,7 +2275,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = friendly
-							any_relation_house = { this = scope:gaul_dictator.house }
+							any_relation_house = { this = scope:gallic_dictator.house }
 						}
 					}
 				}
@@ -2284,7 +2284,7 @@ tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = cordial
-							any_relation_house = { this = scope:gaul_dictator.house }
+							any_relation_house = { this = scope:gallic_dictator.house }
 						}
 					}
 				}
@@ -2306,7 +2306,7 @@ tgp_gaul_decision.9603 = { # Vassal player event
 	theme = war
 
 	left_portrait = {
-		character = scope:gaul_dictator
+		character = scope:gallic_dictator
 		animation = japanese_war_fan
 	}
 	lower_left_portrait = scope:leader
@@ -2320,7 +2320,7 @@ tgp_gaul_decision.9603 = { # Vassal player event
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
 		show_as_tooltip = {
-			scope:gaul_dictator = {
+			scope:gallic_dictator = {
 				custom_description_no_bullet = { text = if_you_win_effect }
 				show_as_tooltip = { gallic_establish_soryo_administration_reward_effect = yes }
 			}
@@ -2441,12 +2441,12 @@ tgp_gaul_decision.9604 = { # War setup
 			scope:leader ?= {
 				start_war = {
 					cb = gaul_establish_regnulum_administration_cb
-					target = scope:gaul_dictator
+					target = scope:gallic_dictator
 				}
 				random_character_war = {
 					limit = {
 						primary_attacker = scope:leader
-						primary_defender = scope:gaul_dictator
+						primary_defender = scope:gallic_dictator
 						using_cb = gaul_establish_regnulum_administration_cb
 					}
 					save_scope_as = war
@@ -2521,7 +2521,7 @@ tgp_gaul_decision.9605 = { # War start event
 	theme = war
 
 	left_portrait = {
-		character = scope:gaul_dictator
+		character = scope:gallic_dictator
 		animation = japanese_war_fan
 	}
 	lower_left_portrait = scope:leader
@@ -2567,8 +2567,8 @@ tgp_gaul_decision.9605 = { # War start event
 		gallic_establish_soryo_administration_reward_effect = yes
 		every_player = {
 			limit = {
-				top_liege = scope:gaul_dictator
-				NOT = { this = scope:gaul_dictator }
+				top_liege = scope:gallic_dictator
+				NOT = { this = scope:gallic_dictator }
 			}
 			trigger_event = tgp_gaul_decision.9607
 		}
@@ -2594,7 +2594,7 @@ tgp_gaul_decision.9606 = { # War won event
 	theme = war
 
 	left_portrait = {
-		character = scope:gaul_dictator
+		character = scope:gallic_dictator
 		animation = japanese_war_fan
 	}
 	right_portrait = {
@@ -2619,8 +2619,8 @@ tgp_gaul_decision.9606 = { # War won event
 	after = {
 		every_player = {
 			limit = {
-				top_liege = scope:gaul_dictator
-				NOT = { this = scope:gaul_dictator }
+				top_liege = scope:gallic_dictator
+				NOT = { this = scope:gallic_dictator }
 			}
 			trigger_event = tgp_gaul_decision.9607
 		}
@@ -2634,7 +2634,7 @@ tgp_gaul_decision.9607 = { # War won vassal event
 	theme = war
 
 	left_portrait = {
-		character = scope:gaul_dictator
+		character = scope:gallic_dictator
 		animation = war_over_win
 	}
 	right_portrait = {
