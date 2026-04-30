@@ -94,6 +94,49 @@ high_tribal_vassal = {
 	}
 }
 
+
+roman_imperial_vassal = {
+	admin_province_contract = roman_imperial_provinces
+
+	contracts = {
+		roman_imperial_obligations
+		roman_imperial_provinces
+		roman_imperial_treasury
+		roman_imperial_salary
+		roman_imperial_salary_rank
+	}
+
+	modify_contract_layout = eastern_admin
+}
+
+gaul_administrative_vassal = {
+	admin_province_contract = japan_administrative_provinces
+
+	contracts = {
+		japan_administrative_obligations
+		japan_administrative_provinces
+	}
+
+	modify_contract_layout = eastern_admin
+}
+
+gaul_feudal_vassal = {
+	contracts = {
+		feudal_government_taxes
+		feudal_government_levies
+		special_contract
+		religious_rights
+		fortification_rights
+		coinage_rights
+		succession_rights
+		war_declaration_rights
+		council_rights
+		title_revocation_rights
+		jizya_special_rights
+	}
+}
+
+#Tributary contract group example, feel free to modify as needed
 tributary_byzantine = {
 	is_tributary = yes
 	tributary_can_break_free = {
@@ -114,17 +157,22 @@ tributary_byzantine = {
 	}
 }
 
-roman_imperial_vassal = {
-	admin_province_contract = roman_imperial_provinces
+tributary_britain = {
+	is_tributary = yes
+	tributary_can_break_free = {
+		scope:suzerain.military_power < root.military_power
+		is_at_war = no
+	}
+	suzerain_heir_succession = yes
+	suzerain_line_type = line_suzerain
+	tributary_line_type = line_tributary
+	should_show_as_suzerain_realm_name = no
+	should_show_as_suzerain_realm_color = yes
 
 	contracts = {
-		roman_imperial_obligations
-		roman_imperial_provinces
-		roman_imperial_treasury
-		roman_imperial_salary
-		roman_imperial_salary_rank
+		default_tributary_taxes
+		default_tributary_prestige
+		suzerain_war_participation_guarantee
+		tributary_war_participation_obligation
 	}
-
-	modify_contract_layout = eastern_admin
 }
-
