@@ -14,6 +14,8 @@ invite_agent_to_scheme_interaction = {
 						always = scope:mandala_trickster
 						always = scope:gift
 						always = scope:gift_significant
+						always = scope:treasury
+						always = scope:treasury_significant
 						always = scope:offer_hook
 						always = scope:offer_hook_strong
 						always = scope:hook
@@ -45,6 +47,8 @@ invite_agent_to_scheme_interaction = {
 						always = scope:mandala_trickster
 						always = scope:gift
 						always = scope:gift_significant
+						always = scope:treasury
+						always = scope:treasury_significant
 						always = scope:offer_hook
 						always = scope:offer_hook_strong
 						always = scope:hook
@@ -86,6 +90,22 @@ invite_agent_to_scheme_interaction = {
 					target = scope:recipient
 				}
 				stress_impact = { greedy = medium_stress_impact_gain }
+			}
+			# Treasury Bribe
+			if = {
+				limit = { always = scope:treasury }
+				pay_treasury_to_gold = {
+					value = bribe_value
+					target = scope:recipient
+				}
+			}
+			# Big Treasury Bribe
+			if = {
+				limit = { always = scope:treasury_significant }
+				pay_treasury_to_gold = {
+					value = greater_bribe_value
+					target = scope:recipient
+				}
 			}
 			# Offer Hook
 			if = {
@@ -449,6 +469,12 @@ invite_agent_to_scheme_interaction = {
 	send_option = {
 		flag = gift
 		is_shown = {
+			NOT = {
+				scope:actor = {
+					has_treasury = yes
+					has_title = title:e_minister_censor
+				}
+			}
 			# We don't show bribes for schemes where agents will always auto-accept or else deny.
 			NAND = {
 				scope:scheme = { is_scheme_category = contract }
@@ -476,6 +502,12 @@ invite_agent_to_scheme_interaction = {
 	send_option = {
 		flag = gift_significant
 		is_shown = {
+			NOT = {
+				scope:actor = {
+					has_treasury = yes
+					has_title = title:e_minister_censor
+				}
+			}
 			# We don't show bribes for schemes where agents will always auto-accept or else deny.
 			NAND = {
 				scope:scheme = { is_scheme_category = contract }
@@ -496,6 +528,68 @@ invite_agent_to_scheme_interaction = {
 			triggered_desc = {
 				trigger = { scope:actor.gold >= greater_bribe_value }
 				desc = SCHEME_AGENT_GOLD_SIGNIFICANT_VALID
+			}
+		}
+	}
+	## Treasury
+	send_option = {
+		flag = treasury
+		is_shown = {
+			scope:actor = {
+				has_treasury = yes
+				has_title = title:e_minister_censor
+			}
+			# We don't show bribes for schemes where agents will always auto-accept or else deny.
+			NAND = {
+				scope:scheme = { is_scheme_category = contract }
+				scope:recipient = { is_courtier_of = scope:actor }
+			}
+		}
+		is_valid = {
+			scope:actor.treasury >= bribe_value
+			custom_tooltip = {
+				text = offer_gold.tt.cannot_offer_both_bribes
+				scope:treasury_significant = no
+			}
+			would_agent_accept_petty_bribes_against_target_trigger = yes
+		}
+		localization = SCHEME_AGENT_TREASURY_BRIBE
+		current_description = {
+			# Triggered desc so that we don't get a weird double tooltip.
+			triggered_desc = {
+				trigger = { scope:actor.treasury >= bribe_value }
+				desc = SCHEME_AGENT_TREASURY_BRIBE_VALID
+			}
+		}
+	}
+	## Even more treasury
+	send_option = {
+		flag = treasury_significant
+		is_shown = {
+			scope:actor = {
+				has_treasury = yes
+				has_title = title:e_minister_censor
+			}
+			# We don't show bribes for schemes where agents will always auto-accept or else deny.
+			NAND = {
+				scope:scheme = { is_scheme_category = contract }
+				scope:recipient = { is_courtier_of = scope:actor }
+			}
+		}
+		is_valid = {
+			scope:actor.treasury >= greater_bribe_value
+			custom_tooltip = {
+				text = offer_gold.tt.cannot_offer_both_bribes
+				scope:treasury = no
+			}
+			would_agent_accept_petty_bribes_against_target_trigger = yes
+		}
+		localization = SCHEME_AGENT_TREASURY_SIGNIFICANT_BRIBE
+		current_description = {
+			# Triggered desc so that we don't get a weird double tooltip.
+			triggered_desc = {
+				trigger = { scope:actor.treasury >= greater_bribe_value }
+				desc = SCHEME_AGENT_TREASURY_SIGNIFICANT_VALID
 			}
 		}
 	}
