@@ -2849,9 +2849,6 @@ on_game_start_after_lobby = {
 	on_actions = {
 		LR_initial_after_lobby_effect
 	}
-	events = {
-		german_introduction.0001
-	}
 
 	effect = {
 		# To prevent the Season Changes event from triggering on game start
@@ -7151,7 +7148,6 @@ on_game_start_after_lobby = {
 					domicile ?= { move_domicile = title:e_japan.holder.capital_province }
 				}
 			}
-			
 			title:e_high_kingdom_gaul.holder ?= {
 				add_realm_law_skip_effects = gallic_bureaucracy_1
 				noble_family_title_realm_setup_effect = yes
@@ -7168,8 +7164,8 @@ on_game_start_after_lobby = {
 					domicile ?= { move_domicile = title:e_high_kingdom_gaul.holder.capital_province }
 				}
 			} #GALLIC HIGH KING
-			title:k_sacral_king_gaul_throne.holder ?= {
-				save_scope_as = sacral_king_gaul
+			title:k_high_king_gaul_throne.holder ?= {
+				save_scope_as = gallic_high_king
 				# Give him some cash
 				add_gold = monumental_gold_value
 				house = {
@@ -7178,10 +7174,10 @@ on_game_start_after_lobby = {
 						limit = {
 							is_ruler = no
 							is_married = no
-							NOT = { liege = scope:sacral_king_gaul }
+							NOT = { liege = scope:gallic_high_king }
 						}
 						save_scope_as = gallic_sacral_family_member
-						scope:sacral_king_gaul = { add_courtier = scope:gallic_sacral_family_member }
+						scope:japanese_emperor = { add_courtier = scope:gallic_sacral_family_member }
 					}
 				}
 				# GET THOSE ROOKIE NUMBERS UP
