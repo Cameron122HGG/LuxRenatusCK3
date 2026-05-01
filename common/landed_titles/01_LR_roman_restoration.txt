@@ -206,3 +206,25 @@ k_diocese_viennensis = {
 	capital = c_bordeaux
 }
 
+e_gallic_empire = {
+	capital = c_lyon
+	ruler_uses_title_name = yes
+	definite_form = yes
+    
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = { has_cultural_pillar = heritage_latin }
+			}
+			add = @correct_culture_primary_score
+			add = @better_than_the_alternatives_score
+		}
+	}
+
+	color = { 19 57 17 }
+	
+}

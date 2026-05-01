@@ -1635,3 +1635,402 @@ tgp_gaul_high_king_war_decision = {
 		base = 200
 	}
 }
+
+#Become King of the Franks
+become_king_of_franks_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decision_raise_runestone.dds"
+	}
+	decision_group_type = major
+
+	desc = become_king_of_franks_decision_desc
+	selection_tooltip = become_king_of_franks_decision_tooltip
+
+	ai_check_interval = 120
+
+	is_shown = {
+		is_ruler = yes
+		is_landed_or_landless_administrative = yes
+		OR = {
+			religion = religion:christianity_religion
+			culture = culture:french
+		}
+		NOT = {  #Can only do it once.
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:became_king_of_franks
+			}
+		}
+		
+	}
+
+	is_valid = {
+		highest_held_title_tier <= tier_kingdom
+		prestige_level >= high_prestige_level
+		is_independent_ruler = yes
+
+		
+		completely_controls_region = custom_gaul
+		
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	effect = {
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		title:e_frankish_empire = {
+			save_scope_as = title_e_frankish_empire
+		}
+		title:e_frankish_empire = {
+			change_title_holder = {
+				holder = root
+				change = scope:title_change
+			}
+			save_scope_as = title_e_frankish_empire
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		
+		#trigger_event = {
+		#	id = province_events.0004
+		#	days = 2
+		#}
+		add_prestige = 1500
+		
+		hidden_effect = {
+			title:d_normandy = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_valois = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_berry = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_anjou = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_orleans = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_champagne = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_burgundy = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_bar = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_toulouse = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_languedoc = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_armagnac = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_auvergne = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_bourbon = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_upper_burgundy = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_provence = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_savoie = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_dauphine = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_transjurania = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_flanders = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_julich = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_luxembourg = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_upper_lorraine = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			title:d_alsace = {
+				set_de_jure_liege_title = title:e_frankish_empire
+			}
+			
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:became_king_of_franks
+			}
+		}
+	}
+
+	cost = {
+		gold = 500
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+#Proclaim the Gallic Empire
+become_emperor_of_gaul_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decision_raise_runestone.dds"
+	}
+	decision_group_type = major
+
+	desc = become_emperor_of_gaul_decision_desc
+	selection_tooltip = become_emperor_of_gaul_decision_tooltip
+
+	ai_check_interval = 120
+
+	is_shown = {
+		is_ruler = yes
+		is_landed_or_landless_administrative = yes
+		OR = {
+			government_has_flag = government_is_gaul_feudal
+			government_has_flag = government_is_gaul_administrative
+			government_has_flag = government_is_roman_imperial
+			government_has_flag = government_is_administrative
+		}
+		culture = { has_cultural_pillar = heritage_latin }
+		any_realm_county = {
+			title_province = {geographical_region = custom_gaul}
+		  }
+		NOT = {  #Can only do it once.
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:became_emperor_of_gaul
+			}
+		}
+		highest_held_title_tier < tier_empire
+	}
+
+	is_valid = {
+		highest_held_title_tier = tier_empire
+		prestige_level >= high_prestige_level
+		OR = {
+			is_independent_ruler = yes
+			AND = {
+				highest_held_title_tier = tier_empire
+				liege = {
+					OR = {
+						government_has_flag = government_is_classical_administrative
+						government_has_flag = government_is_roman_imperial
+						government_has_flag = government_is_gaul_administrative
+					}
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				title:h_roman_empire = {
+					is_title_created = yes
+				}
+				title:h_roman_empire.holder = {
+					OR = {
+						government_has_flag = government_is_classical_administrative
+						government_has_flag = government_is_roman_imperial
+						government_has_flag = government_is_administrative
+					}
+				}
+				OR = {
+						#has_game_rule = imperial_competence_enabled
+						AND = {
+							#has_game_rule = imperial_competence_enabled_in_430
+							current_date >= 5430.1.1
+						}
+					}
+			}
+			custom_description = {
+				text = roman_empire_low_competence
+				subject = title:h_roman_empire.holder
+				title:h_roman_empire.holder = {
+					OR = {
+						var:civic_comp < 500
+						var:diplo_comp < 500
+						var:mil_comp < 500
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				title:h_western_roman_empire = {
+					is_title_created = yes
+				}
+				title:h_western_roman_empire.holder = {
+					OR = {
+						government_has_flag = government_is_classical_administrative
+						government_has_flag = government_is_roman_imperial
+						government_has_flag = government_is_administrative
+					}
+				}
+				OR = {
+						#has_game_rule = imperial_competence_enabled
+						AND = {
+							#has_game_rule = imperial_competence_enabled_in_430
+							current_date >= 5430.1.1
+						}
+					}
+			}
+			custom_description = {
+				text = roman_empire_low_competence
+				subject = title:h_western_roman_empire.holder
+				title:h_western_roman_empire.holder = {
+					OR = {
+						var:civic_comp < 500
+						var:diplo_comp < 500
+						var:mil_comp < 500
+					}
+				}
+			}
+		}
+		
+		completely_controls_region = custom_gaul
+		completely_controls_region = custom_roman_britannia
+
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+	}
+
+	effect = {
+		if = {
+			limit = {
+			has_dlc_feature = roads_to_power
+			}
+			save_scope_as = actor
+			TFE_convert_to_administrative_from_feudalism_effect = yes
+		}
+		else = {
+			change_government = roman_imperial_government
+		}
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		every_vassal_or_below = {
+			if = {
+				limit = {
+					has_dlc_feature = roads_to_power
+					OR = {
+						government_has_flag = government_is_gaul_administrative
+						AND = {
+							government_has_flag = government_is_roman
+							highest_held_title_tier > tier_county
+						}
+					}
+				}
+				change_government = administrative_government
+			}
+			else_if = {
+				limit = {
+					NOT = { has_dlc_feature = roads_to_power }
+					OR = {
+						government_has_flag = government_is_gaul_feudal
+						AND = {
+							government_has_flag = government_is_roman
+							highest_held_title_tier > tier_county
+						}
+					}
+				}
+				change_government = roman_imperial_government
+			}
+		}
+		title:e_gallic_empire = {
+			save_scope_as = title_e_gallic_empire
+		}
+		title:e_gallic_empire = {
+			change_title_holder = {
+				holder = root
+				change = scope:title_change
+			}
+			save_scope_as = title_e_gallic_empire
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		
+		#trigger_event = {
+		#	id = province_events.0040
+		#	days = 2
+		#}
+		add_prestige = 1500
+		
+		hidden_effect = {
+			title:k_diocese_galliarum = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_diocese_viennensis = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_diocese_britannia = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_england = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_wales = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_dumnonia = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_brittany = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_france = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_aquitaine = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_lotharingia = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			title:k_burgundy = {
+				set_de_jure_liege_title = title:e_gallic_empire
+			}
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:became_emperor_of_gaul
+			}
+		}
+	}
+
+	cost = {
+		gold = 1000
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+

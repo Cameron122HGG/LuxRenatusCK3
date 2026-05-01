@@ -3755,3 +3755,27 @@ k_sacral_king_gaul_throne = {
 # Landless
 
 #to fill in
+
+e_frankish_empire = {
+	color = { 15 27 187 }
+	capital = c_ile_de_france
+	ruler_uses_title_name = yes
+	definite_form = yes
+    
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = { has_cultural_pillar = heritage_latin }
+			}
+			add = @correct_culture_primary_score
+			add = @better_than_the_alternatives_score
+		}
+	}
+
+
+	
+}
