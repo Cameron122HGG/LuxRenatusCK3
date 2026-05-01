@@ -6617,27 +6617,6 @@ mpo_release_herder_land_effect = {
 				value >= 1
 			}
 		}
-		create_character = {
-			template = herder_character
-			dynasty = none
-			location = scope:county_of_origin.title_province
-			culture = scope:county_of_origin.culture
-			faith = scope:county_of_origin.faith
-			gender_female_chance = {
-				if = {
-					limit = { scope:county_of_origin.faith = { has_doctrine = doctrine_gender_male_dominated } }
-					add = 20
-				}
-				else_if = {
-					limit = { scope:county_of_origin.faith = { has_doctrine = doctrine_gender_female_dominated } }
-					add = 80
-				}
-				else = {
-					add = 50
-				}
-			}
-			save_scope_as = new_herder
-		}
 		random_in_list = {
 			list = target_titles
 			if = {
@@ -6646,6 +6625,31 @@ mpo_release_herder_land_effect = {
 				}
 				title_province = { set_holding_type = herder_holding }
 			}
+
+			save_scope_as = county_of_origin
+
+			create_character = {
+				template = herder_character
+				dynasty = none
+				location = scope:county_of_origin.title_province
+				culture = scope:county_of_origin.culture
+				faith = scope:county_of_origin.faith
+				gender_female_chance = {
+					if = {
+						limit = { scope:county_of_origin.faith = { has_doctrine = doctrine_gender_male_dominated } }
+						add = 20
+					}
+					else_if = {
+						limit = { scope:county_of_origin.faith = { has_doctrine = doctrine_gender_female_dominated } }
+						add = 80
+					}
+					else = {
+						add = 50
+					}
+				}
+				save_scope_as = new_herder
+			}
+
 			create_title_and_vassal_change = {
 				type = granted
 				save_scope_as = change

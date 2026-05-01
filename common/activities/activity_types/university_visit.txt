@@ -33,6 +33,9 @@
 	can_start_showing_failures_only = {
 		NOT = { is_activity_type_on_cooldown = activity_adult_education }
 		is_available_adult = yes
+		NOT = {
+			has_character_modifier = partially_mute_modifier
+		}
 
 		# Can you improve?
 		trigger_if = {
@@ -213,6 +216,7 @@
 				county = { has_county_modifier = academy_of_athens_modifier }
 			}
 			has_special_building_slot = yes
+			is_higher_studies_location = yes
 		}
 		#You only get to visit any particular university once in your life
 		custom_tooltip = { 

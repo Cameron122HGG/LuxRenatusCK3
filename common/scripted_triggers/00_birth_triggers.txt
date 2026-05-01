@@ -57,3 +57,47 @@ allow_naming_on_birth_of_child_trigger = {
 	}
 }
 
+former_consort_was_father = {
+	OR = {
+		any_former_spouse = {
+			even_if_dead = yes
+			this = scope:father
+			this = scope:real_father
+			trigger_if = {
+				limit = {
+					is_alive = yes
+				}
+				NOT = { any_consort = { this = root } }
+			}
+		}
+		any_former_concubinist = {
+			even_if_dead = yes
+			this = scope:father
+			this = scope:real_father
+			trigger_if = {
+				limit = {
+					is_alive = yes
+				}
+				NOT = { any_consort = { this = root } }
+			}
+		}
+		any_former_concubine = {
+			even_if_dead = yes
+			this = scope:father
+			this = scope:real_father
+			trigger_if = {
+				limit = {
+					is_alive = yes
+				}
+				NOT = { any_consort = { this = root } }
+			}
+		}
+	}
+}
+# a bit redundant for modders want adjust those event without overwriting whole file.
+pregnancy_is_bastard = {
+	NOR = {
+		scope:real_father ?= { is_consort_of = root }
+		former_consort_was_father = yes
+	}
+}
