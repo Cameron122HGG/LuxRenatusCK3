@@ -2,9 +2,9 @@
 tgp_is_gallic_mayor_trigger = {
 	has_title = title:e_high_kingdom_gaul
 	NOR = {
-		has_title = title:k_sacral_king_gaul_throne
-		has_global_variable = sacral_king_gaul_restored
-		has_global_variable = gallic_dictatorship_established
+		has_title = title:k_high_king_gaul_throne
+		has_global_variable = high_king_restored
+		has_global_variable = shogunate_established
 	}
 }
 
@@ -14,33 +14,26 @@ tgp_is_gallic_governor_trigger = {
 		government_has_flag = government_is_gaul_administrative
 		is_landed = yes
 		is_ruler = yes
-		highest_held_title_tier >= tier_duchy
+		highest_held_title_tier >= tier_county
 		is_independent_ruler = no
 		tgp_is_ceremonial_liege_trigger = no
 	}
 }
-can_have_gallic_regency_succession_law_trigger = {
+
+can_have_mayor_acclamation_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
+	government_allows = administrative
 	is_independent_ruler = yes
-	government_has_flag = government_is_gaul_administrative
-	OR = {
-		has_title = title:k_sacral_king_gaul_throne
-		any_vassal_or_below = { has_title = title:k_sacral_king_gaul_throne }
-	}
-	NOT = {
-		has_global_variable = sacral_king_gaul_restored
-	}
 }
 
-can_keep_gallic_regency_succession_law_trigger = {
+can_keep_mayor_acclamation_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
 	trigger_if = {
 		limit = {
 			has_realm_law = gallic_regency_succession_law
-			has
 		}
 		OR = {
-			can_have_gallic_regency_succession_law_trigger = yes
+			can_have_mayor_acclamation_succession_law_trigger = yes
 			has_title = title:e_high_kingdom_gaul
 		}
 	}
@@ -243,13 +236,24 @@ tgp_gaul_ceremonial_title_revoke_restriction_trigger = {
 	}
 }
 
-
+can_have_gallic_regency_succession_law_trigger = {
+	has_tgp_dlc_trigger = yes
+	is_independent_ruler = yes
+	government_has_flag = government_is_gaul_administrative
+	OR = {
+		has_title = title:k_high_king_gaul_throne
+		any_vassal_or_below = { has_title = title:k_high_king_gaul_throne }
+	}
+	NOT = {
+		has_global_variable = high_king_restored
+	}
+}
 
 can_have_gallic_appointment_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
 	government_has_flag = government_is_gaul_administrative
 	is_independent_ruler = no
-	NOT = { has_title = title:k_sacral_king_gaul_throne }
+	NOT = { has_title = title:k_high_king_gaul_throne }
 }
 
 can_keep_gallic_appointment_succession_law_trigger = {
@@ -267,9 +271,9 @@ can_change_gallic_appointment_succession_law_trigger = {
 tgp_gaul_single_heir_succession_override_trigger = {
 	save_temporary_scope_as = holder_temp
 	OR = {
-		title:k_sacral_king_gaul_throne.holder ?= scope:holder_temp
+		title:k_high_king_gaul_throne.holder ?= scope:holder_temp
 		AND = {
-			has_global_variable = sacral_king_gaul_restored
+			has_global_variable = high_king_restored
 			title:e_high_kingdom_gaul.holder ?= scope:holder_temp
 		}
 	}
@@ -279,7 +283,7 @@ tgp_blocked_action_against_high_king_trigger = {
 	custom_description = {
 		text = tgp_blocked_ruler_against_ceremonial_action_trigger
 		NAND = {
-			$TARGET$ = { has_title = title:k_sacral_king_gaul_throne }
+			$TARGET$ = { has_title = title:k_high_king_gaul_throne }
 			$TARGET$.top_liege = $ACTOR$.top_liege
 		}
 	}
@@ -289,8 +293,8 @@ LR_tgp_blocked_ruler_against_ceremonial_action_trigger = {
 	custom_description = {
 		text = tgp_blocked_ruler_against_ceremonial_action_trigger
 		NAND = {
-			$SACRAL_KING$ = { has_title = title:k_sacral_king_gaul_throne }
-			$REGENT$ = $SACRAL_KING$.liege
+			$HIGH_KING$ = { has_title = title:k_high_king_gaul_throne }
+			$REGENT$ = $HIGH_KING$.liege
 		}
 	}
 }
@@ -374,7 +378,8 @@ gaul_sacral_expansion_cb_allowed_against_character_trigger = {
 		NOT = { empire = title:e_high_kingdom_gaul }
 		title_province = {
 			OR = {
-				geographical_region = world_europe_gaul
+				geographical_region = world_asia_gaul
+				geographical_region = world_asia_sakhalin_hokkaido
 			}
 		}
 	}
@@ -446,7 +451,7 @@ tgp_gaul_valid_restore_monarchy_scion_trigger = {
 
 tgp_gaul_sacral_expansion_internal_peace_trigger = {
 	custom_tooltip = {
-		text = imperial_expansion_internal_peace_trigger
+		text = sacral_expansion_internal_peace_trigger
 		top_liege = {
 			NOT = {
 				any_vassal_or_below = {
@@ -470,8 +475,8 @@ tgp_gaul_install_regent_faction_can_create_trigger = {
 	custom_tooltip = {
 		text = replace_ceremonial_regent_faction_mayor_trigger
 		NOR = {
-			has_global_variable = gallic_dictatorship_established
-			has_global_variable = sacral_king_gaul_restored
+			has_global_variable = shogunate_established
+			has_global_variable = high_king_restored
 		}
 	}
 	is_adult = yes
@@ -606,7 +611,7 @@ sacral_policy_faction_can_create_trigger = {
 	gaul_faction_cohesion_trigger = yes
 }
 
-tgp_gaul_procuratio_bloc_house_head_trigger = {
+tgp_gaul_procurio_bloc_house_head_trigger = {
 	top_liege = root.top_liege
 	government_has_flag = government_is_gaul_administrative
 }
@@ -678,7 +683,7 @@ tgp_gaul_cadet_creates_dynasty_trigger = {
 		this = dynasty.dynast
 		this = house.house_head
 	}
-	dynasty.dynast ?= { government_has_flag = government_is_gallic_group }
+	dynasty.dynast ?= { government_allows = administrative }
 }
 
 tgp_roman_or_frank_trigger = {
@@ -742,7 +747,7 @@ gaul_government_gaul_kingdom_restriction_trigger = {
 		}
 		custom_tooltip = {
 			text = gaul_government_gaul_kingdom_restriction_tt
-			has_global_variable = sacral_king_gaul_restored
+			has_global_variable = high_king_restored
 		}
 	}
 }
@@ -764,7 +769,7 @@ gaul_government_gaul_duchy_restriction_trigger = {
 		}
 		custom_tooltip = {
 			text = gaul_government_gaul_duchy_restriction_tt
-			has_global_variable = sacral_king_gaul_restored
+			has_global_variable = high_king_restored
 		}
 	}
 }
