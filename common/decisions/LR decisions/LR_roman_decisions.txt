@@ -119,26 +119,26 @@ LR_restore_western_hegemony_decision = {
 		completely_controls_region = custom_spqr_imperial_core
 		
 		##Checking if Restoring Provinces has started and then how many
-		#custom_tooltip = {
-			#text = LR_has_restored_at_least_three_provinces_tooltip	
-		#	trigger_if = {
-		#		limit = { exists = global_var:num_of_provinces_restored_wre }
-		#		global_var:num_of_provinces_restored_wre > 2
-		#	}
-		#	trigger_else = { always = no }
-		#}
+		custom_tooltip = {
+			text = LR_has_restored_at_least_three_provinces_tooltip	
+			trigger_if = {
+				limit = { exists = global_var:num_of_provinces_restored_wre }
+				global_var:num_of_provinces_restored_wre > 2
+			}
+			trigger_else = { always = no }
+		}
 		
 		custom_tooltip = {
 			text = LR_western_kingdoms_held_or_vassals_tt
 			
 			title:k_diocese_italia_annonaria.holder = { liege = root }
 			title:k_diocese_italia_suburbicaria.holder = { liege = root }
-			#title:k_diocese_illyricum.holder = { liege = root }
-			#title:k_diocese_galliarum.holder = { liege = root }
-			#title:k_diocese_viennensis.holder = { liege = root }
-			#title:k_diocese_africa.holder = { liege = root }
-			#title:k_diocese_mauretania.holder = { liege = root }
-			#title:k_diocese_hispania.holder = { liege = root }
+			title:k_diocese_illyricum.holder = { liege = root }
+			title:k_diocese_galliarum.holder = { liege = root }
+			title:k_diocese_viennensis.holder = { liege = root }
+			title:k_diocese_africa.holder = { liege = root }
+			title:k_diocese_mauretania.holder = { liege = root }
+			title:k_diocese_hispania.holder = { liege = root }
 		}
 	}
 
@@ -248,7 +248,7 @@ restore_roman_empire_spqr_decision = {
 
 		OR = {
 			religion = { is_in_family = rf_abrahamic }
-			religion = religion:hellenism_religion
+			religion = { is_in_family = rf_graeco_roman }
 			culture = { has_cultural_pillar = heritage_latin }
 			culture = { has_cultural_pillar = heritage_byzantine }
 		}
@@ -410,7 +410,7 @@ restore_western_administration_decision = {
         is_ruler = yes
         is_playable_character = yes
         is_roman_emperor_excluding_eastern_roman_emperor_trigger = yes
-		has_title = title:h_western_roman_empire
+		#has_title = title:h_western_roman_empire
         NOT = { #Can only do it once.
             is_target_in_global_variable_list = {
                 name = unavailable_unique_decisions
@@ -420,7 +420,7 @@ restore_western_administration_decision = {
     }
 
     is_valid = {
-        completely_controls_region = custom_western_dioceses
+		completely_controls_region = custom_spqr_imperial_core
         
         custom_tooltip = {
             text = western_diocese_kingdoms_held_or_vassals_tt
