@@ -10955,24 +10955,31 @@ e_britannia = {
 			name_list_anglo_saxon = lx_scotland
 			name_list_sarmato_briton = cn_alba
 		}
+		d_galloway = {
+			color = { 230 120 65 }
+			capital = c_lennox
 
+			cultural_names = {
+				name_list_gaelic = cn_galloway
+				name_list_irish = cn_galloway
+				name_list_norse = cn_galvei
+				name_list_norwegian = cn_galvei
+			}
 			ai_primary_priority = {
 				if = {
-				limit = {
-					culture = culture:cumbrian
+					limit = {
+						culture = culture:cumbrian
+					}
+					add = @correct_culture_primary_score
 				}
-				add = @correct_culture_primary_score
-			}
 				if = {
-				limit = {
-					culture = culture:welsh
-					culture = culture:cornish
-					culture = culture:breton
-
-				}
-				add = @better_than_the_alternatives_score
-			}
-
+					limit = {
+						culture = culture:welsh
+						culture = culture:cornish
+						culture = culture:breton
+					}
+					add = @better_than_the_alternatives_score
+				}	
 			}
 
 			c_lennox = {
