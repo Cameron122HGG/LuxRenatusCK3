@@ -1975,14 +1975,14 @@ LR_restore_eastern_hegemony_decision = {
 }
 
 #Gallic Emperor Decision for when Romans secure power in the Sacral Kingdom of Gaul over the Franks.
-became_gallic_emperor = {
+restore_gallic_empire_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/fp1_decision_raise_runestone.dds"
 	}
-	decision_group_type = major
+	decision_group_type = roman
 
-	desc = became_gallic_emperor_desc
-	selection_tooltip = became_gallic_emperor_tooltip
+	desc = restore_gallic_empire_decision_desc
+	selection_tooltip = restore_gallic_empire_decision_tooltip
 
 	ai_check_interval = 120
 
@@ -2002,7 +2002,7 @@ became_gallic_emperor = {
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
-				target = flag:became_gallic_emperor
+				target = flag:restore_gallic_empire_decision
 			}
 		}
 		highest_held_title_tier <= tier_empire
@@ -2024,7 +2024,7 @@ became_gallic_emperor = {
 				}
 			}
 		}
-		completely_controls_region = custom_roman_gaul
+		completely_controls_region = LR_world_europe_gaul
 		#completely_controls_region = custom_roman_britannia
 
 	}
@@ -2097,42 +2097,10 @@ became_gallic_emperor = {
 		add_prestige = 1500
 		
 		hidden_effect = {
-			title:k_diocese_galliarum = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_diocese_viennensis = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_diocese_britannia = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_england = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_wales = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_dumnonia = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_brittany = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_france = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_aquitaine = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_lotharingia = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
-			title:k_burgundy = {
-				set_de_jure_liege_title = title:e_gallic_empire
-			}
+			restore_roman_provinces_gallia_viennensis_decision_effect = yes
 			add_to_global_variable_list = {
 				name = unavailable_unique_decisions
-				target = flag:became_gallic_emperor
+				target = flag:restore_gallic_empire_decision
 			}
 		}
 	}

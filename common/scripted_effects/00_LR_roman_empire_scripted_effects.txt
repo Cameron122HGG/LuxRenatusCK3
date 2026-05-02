@@ -1333,6 +1333,11 @@ restore_roman_provinces_gallia_viennensis_decision_effect = {
 		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_spqr }
 		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_spqr }
 	}
+	else_if = {
+		limit = { exists = title:e_gallic_empire.holder }
+		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_gallic_empire }
+		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_gallic_empire }
+	}
 
 	# Destroy useless kingdoms
 	if = {
