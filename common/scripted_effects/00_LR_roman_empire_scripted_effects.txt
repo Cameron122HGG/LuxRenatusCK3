@@ -2449,6 +2449,29 @@ restore_gallic_empire_provinces_gallia_viennensis_decision_effect = {
 		}
 	}
 	resolve_title_and_vassal_change = scope:change
+		#Gallia
+		# Shift the Kingdoms
+		every_county_in_region = { #Gallia
+			region = custom_roman_gallia
+			kingdom = { add_to_list = custom_roman_gallia_list }
+		}
+		every_in_list = {
+		list = custom_roman_gallia_list
+		limit = {
+			NOT = { de_jure_liege = title:e_gallic_empire }
+		}
+		set_de_jure_liege_title = title:e_gallic_empire
+		}	
+		every_county_in_region = { #Viennensis
+			region = custom_roman_viennensis
+			kingdom = { add_to_list = custom_roman_viennensis_list }
+		}
+		every_in_list = {
+		list = custom_roman_viennensis_list
+		limit = {
+			NOT = { de_jure_liege = title:e_gallic_empire }
+		}
+		#title:e_praetorian_prefecture_gallia = { set_de_jure_liege_title = title:h_western_roman_empire }
 
 	every_held_title = { #Should destroy all other Empires owned at the time.
 		title_tier = empire
@@ -2480,25 +2503,8 @@ restore_gallic_empire_provinces_gallia_viennensis_decision_effect = {
 			change = scope:change
 		}
 	}
+		}
 	resolve_title_and_vassal_change = scope:change
-
-	hidden_effect = { 
-
-	
-	}
-
-	#Sort the Dioceses
-		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_gallic_empire }
-		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_gallic_empire }
-
-	#else_if = {
-		#limit = { exists = title:e_spqr.holder }
-		#title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_spqr }
-		#title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_spqr }
-	#}
-
-
-	# Destroy useless kingdoms
 	if = {
 		limit = { exists = title:k_aquitaine.holder }
 		destroy_title = title:k_aquitaine
@@ -2536,8 +2542,17 @@ restore_gallic_empire_provinces_gallia_viennensis_decision_effect = {
 		destroy_title = title:k_arles
 	}
 	if = {
+		limit = { exists = title:k_belgica.holder }
+		destroy_title = title:k_belgica
+	}
+	if = {
 		limit = { exists = title:k_sacral_king_gaul_throne.holder }
 		destroy_title = title:k_sacral_king_gaul_throne
 	}
 }
+
+
+
+
+
 
