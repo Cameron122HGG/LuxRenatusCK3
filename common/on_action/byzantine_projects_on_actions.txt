@@ -47,6 +47,41 @@ my_on_game_start_1 = {
 				days = 6
 			}
 		}
+		if = {
+			limit = { has_game_rule = seljuk_raiders_bgp_border } 
+			dynasty:101862 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029006 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029007 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029034 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029036 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+		}
+		else_if = {
+			limit = { has_game_rule = seljuk_raiders_bgp_border_seljuk } 
+			dynasty:101862 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029006 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029007 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029034 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029036 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:7327 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+		}
+		else_if = {
+			limit = { has_game_rule = seljuk_raiders_bgp_border_seljuk_plus } 
+			dynasty:101862 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029006 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029007 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029034 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029036 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:7327 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:7296 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:587 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:101688 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:7344 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:1029009 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			dynasty:101690 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+		}
+		else_if = {
+			limit = { has_game_rule = seljuk_raiders_bgp_border_off }
+		}
 		title:k_pechenegs.holder = {
 			trigger_event = {
 				id = pecheneg_invasion.0001
@@ -117,7 +152,16 @@ my_on_game_start_1 = {
 my_on_game_start_2 = {
   effect = {
 		if = {
-			limit = { current_date = 867.1.1 }
+			limit = {
+				current_date = 5867.1.1
+				NOT = {
+					has_game_rule = no_historical_characters
+				}
+			}
+			spawn_bgp_historical_characters_effect = yes
+		}
+		if = {
+			limit = { current_date = 5867.1.1 }
 			title:e_byzantium.holder = {
 				trigger_event = {
 					id = reinforce_sicily.0007
@@ -131,10 +175,64 @@ my_on_game_start_2 = {
 			set_global_variable = { name = byzantine_867_disasters months = 600 }
 			set_global_variable = { name = paulicians_restless_b months = -1 }
 			title:c_satala = { add_county_modifier = { modifier = paulician_stronghold_modifier months = 1200} }
+
+			set_global_variable = { name = anatolian_beacon_system_cooldown months = -1 }
+			
+			title:b_nikaea.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+			title:b_prusa.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+			title:b_gordium.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+			title:b_polybotus.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+			title:b_parnassos.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+			title:b_kyzistra.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+			title:b_isaura.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+			
+			if = {
+				limit = { has_game_rule = abbasid_raiders_bgp_border } 
+				dynasty:1029093 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7520 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:598 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7503 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1029120 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1042127 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1029121 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			}
+			else_if = {
+				limit = { has_game_rule = abbasid_raiders_bgp_border_abbasid } 
+				dynasty:1029093 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7520 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:598 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7503 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1029120 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1042127 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1029121 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7296 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+			}
+			else_if = {
+				limit = { has_game_rule = abbasid_raiders_bgp_border_abbasid_plus } 
+				dynasty:101686 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:1029093 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7520 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:598 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7503 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1029120 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1042127 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1029121 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7296 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:7348 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1029123 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1029119 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:1042117 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:tajik_shaybani_dynasty = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				#dynasty:820 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+				dynasty:809 = { add_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+		}
+		else_if = {
+			limit = { has_game_rule = abbasid_raiders_bgp_border_off }
+		}
 		}
 		if = {
 			limit = {
-				current_date = 867.1.1 
+				current_date = 5867.1.1 
 				title:e_byzantium.holder = {
 					faith = faith:orthodox
 				}
@@ -157,3 +255,59 @@ labyrinth_gamble = {
 		100 = restore_knossos_palace.0014
 	}
 }
+
+silence_of_the_soul_jerusalem = {
+	random_events = {
+		100 = patriarchal_seats_events.1001
+		100 = patriarchal_seats_events.1002
+		100 = patriarchal_seats_events.1003
+		100 = patriarchal_seats_events.1004
+		100 = patriarchal_seats_events.1005
+		100 = patriarchal_seats_events.1006
+		100 = patriarchal_seats_events.1007
+		100 = patriarchal_seats_events.1008
+		100 = patriarchal_seats_events.1009
+		100 = patriarchal_seats_events.1010
+	}
+}
+
+service_to_the_meek_jerusalem = {
+	random_events = {
+		100 = patriarchal_seats_events.2001
+		100 = patriarchal_seats_events.2002
+		100 = patriarchal_seats_events.2003
+		100 = patriarchal_seats_events.2004
+		100 = patriarchal_seats_events.2005
+		100 = patriarchal_seats_events.2006
+		100 = patriarchal_seats_events.2007
+		100 = patriarchal_seats_events.2008
+		100 = patriarchal_seats_events.2009
+		100 = patriarchal_seats_events.2010
+	}
+}
+
+sharpening_of_mind_jerusalem = {
+	random_events = {
+		100 = patriarchal_seats_events.3001
+		100 = patriarchal_seats_events.3002
+		100 = patriarchal_seats_events.3003
+		100 = patriarchal_seats_events.3004
+		100 = patriarchal_seats_events.3005
+	}
+}
+
+in_his_footsteps_jerusalem = {
+	random_events = {
+		100 = patriarchal_seats_events.4001
+		100 = patriarchal_seats_events.4002
+		100 = patriarchal_seats_events.4003
+		100 = patriarchal_seats_events.4004
+		100 = patriarchal_seats_events.4005
+		100 = patriarchal_seats_events.4006
+		100 = patriarchal_seats_events.4007
+		100 = patriarchal_seats_events.4008
+		100 = patriarchal_seats_events.4009
+		100 = patriarchal_seats_events.4010
+	}
+}
+

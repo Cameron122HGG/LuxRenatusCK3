@@ -162,3 +162,253 @@ bzn_defenders_of_paulicianism_decision = {
 		base = 100
 	}
 }
+
+activate_anatolian_beacons = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 12
+		duchy = 12
+		kingdom = 36
+		empire = 12
+		hegemony = 12
+	}
+	desc = activate_anatolian_beacons_desc
+	is_shown = {
+		NOT = { has_global_variable = beacons_active }
+		completely_controls = title:d_cappadocia
+		completely_controls = title:d_anatolia
+		completely_controls = title:d_cibyrrhaeot
+		completely_controls = title:d_opsikion
+		completely_controls = title:d_charsianon
+		completely_controls = title:d_thrace
+		has_global_variable = anatolian_beacon_system_cooldown
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+		is_lowborn = no			
+		is_landed = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_duchy
+	}	
+
+	is_valid = {
+		OR = {
+			has_primary_title = title:e_byzantium	
+			has_primary_title = title:h_roman_empire	
+			has_primary_title = title:h_eastern_roman_empire	
+			has_primary_title = title:e_latin_empire	
+			has_primary_title = title:e_hre
+		}
+		completely_controls = title:d_cappadocia
+		completely_controls = title:d_anatolia
+		completely_controls = title:d_cibyrrhaeot
+		completely_controls = title:d_opsikion
+		completely_controls = title:d_charsianon
+		completely_controls = title:b_constantinople
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+	}
+	cost = {
+		prestige = 200
+	}	
+	
+	effect = {
+		set_global_variable = { name = beacons_active months = -1 }
+		title:b_nikaea.title_province = { remove_building = bgp_byzantine_beacon_unlit }
+		title:b_prusa.title_province = { remove_building = bgp_byzantine_beacon_unlit }
+		title:b_gordium.title_province = { remove_building = bgp_byzantine_beacon_unlit }
+		title:b_polybotus.title_province = { remove_building = bgp_byzantine_beacon_unlit }
+		title:b_parnassos.title_province = { remove_building = bgp_byzantine_beacon_unlit }
+		title:b_kyzistra.title_province = { remove_building = bgp_byzantine_beacon_unlit }
+		title:b_isaura.title_province = { remove_building = bgp_byzantine_beacon_unlit }
+		
+		title:b_nikaea.title_province = { add_special_building = bgp_byzantine_beacon_lit }
+		title:b_prusa.title_province = { add_special_building = bgp_byzantine_beacon_lit }
+		title:b_gordium.title_province = { add_special_building = bgp_byzantine_beacon_lit }
+		title:b_polybotus.title_province = { add_special_building = bgp_byzantine_beacon_lit }
+		title:b_parnassos.title_province = { add_special_building = bgp_byzantine_beacon_lit }
+		title:b_kyzistra.title_province = { add_special_building = bgp_byzantine_beacon_lit }
+		title:b_isaura.title_province = { add_special_building = bgp_byzantine_beacon_lit }
+		
+		title:c_kaisereia = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_kyzistra = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_cappadocia = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_charsianon = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_lower_galatia = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_isauria = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_seleucia = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_pamphylia = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_selge = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_philomelium = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_pisidia = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_caria = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_lycaonia = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_galatia_salutaris = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+		title:c_pacatiana = {
+			add_county_modifier = { modifier = anatolian_beacon_system_modifier months = -1 } 
+		}
+	}
+	
+	ai_potential = {
+		is_ruler = yes
+	}
+
+	ai_will_do = {
+		base = 200
+	}
+}
+
+deactivate_anatolian_beacons = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 12
+		duchy = 12
+		kingdom = 36
+		empire = 12
+		hegemony = 12
+	}
+	desc = deactivate_anatolian_beacons_desc
+	is_shown = {
+		has_global_variable = beacons_active
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+		is_lowborn = no			
+		is_landed = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_duchy
+	}	
+
+	is_valid = {
+		OR = {
+			has_primary_title = title:e_byzantium	
+			has_primary_title = title:h_roman_empire	
+			has_primary_title = title:h_eastern_roman_empire	
+			has_primary_title = title:e_latin_empire	
+			has_primary_title = title:e_hre
+		}
+		completely_controls = title:b_constantinople
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+	}
+	cost = {
+		prestige = 200
+	}	
+	
+	effect = {
+		remove_global_variable = beacons_active
+		title:b_nikaea.title_province = { remove_building = bgp_byzantine_beacon_lit }
+		title:b_prusa.title_province = { remove_building = bgp_byzantine_beacon_lit }
+		title:b_gordium.title_province = { remove_building = bgp_byzantine_beacon_lit }
+		title:b_polybotus.title_province = { remove_building = bgp_byzantine_beacon_lit }
+		title:b_parnassos.title_province = { remove_building = bgp_byzantine_beacon_lit }
+		title:b_kyzistra.title_province = { remove_building = bgp_byzantine_beacon_lit }
+		title:b_isaura.title_province = { remove_building = bgp_byzantine_beacon_lit }
+		
+		title:b_nikaea.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+		title:b_prusa.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+		title:b_gordium.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+		title:b_polybotus.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+		title:b_parnassos.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+		title:b_kyzistra.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+		title:b_isaura.title_province = { add_special_building = bgp_byzantine_beacon_unlit }
+		
+		title:c_kaisereia = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_kyzistra = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_cappadocia = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_charsianon = {
+			remove_county_modifier = anatolian_beacon_system_modifier 
+		}
+		title:c_lower_galatia = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_isauria = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_seleucia = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_pamphylia = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_selge = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_philomelium = {
+			remove_county_modifier = anatolian_beacon_system_modifier 
+		}
+		title:c_pisidia = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_caria = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_lycaonia = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_galatia_salutaris = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+		title:c_pacatiana = {
+			remove_county_modifier = anatolian_beacon_system_modifier
+		}
+	}
+	
+	ai_potential = {
+		is_ruler = yes
+	}
+
+	ai_will_do = {
+		base = 200
+	}
+}
