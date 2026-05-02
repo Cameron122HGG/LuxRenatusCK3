@@ -665,7 +665,7 @@ tgp_gaul_become_gallic_dictator_decision = {
 		top_liege = { has_title = title:e_high_kingdom_gaul }
 		NOR = {
 			has_global_variable = dictatorship_established
-			has_global_variable = tenno_restored
+			has_global_variable = sacral_king_gaul_restored
 		}
 	}
 
@@ -678,7 +678,7 @@ tgp_gaul_become_gallic_dictator_decision = {
 		prestige_level >= 4
 		legitimacy_level >= 4
 		is_independent_ruler = yes
-		has_government = gaul_feudal_government
+		has_government = gaul_administrative_government
 		custom_tooltip = {
 			text = tgp_gaul_become_gallic_dictator_decision_centralization_trigger
 			OR = {
@@ -690,11 +690,11 @@ tgp_gaul_become_gallic_dictator_decision = {
 		custom_tooltip = {
 			text = tgp_gaul_become_gallic_dictator_decision_land_trigger
 			top_liege = {
-				completely_controls = title:d_kinai
-				completely_controls = title:d_nankaido
-				completely_controls = title:d_hokurikudo
-				completely_controls = title:d_west_bando
-				completely_controls = title:d_north_saikaido
+				completely_controls = title:d_orleans
+				completely_controls = title:d_valois
+				completely_controls = title:d_bar
+				completely_controls = title:d_dauphine
+				completely_controls = title:d_toulouse
 			}
 		}
 	}
@@ -729,6 +729,7 @@ tgp_gaul_become_gallic_dictator_decision = {
 	ai_potential = { always = yes }
 	ai_will_do = { base = 100 }
 }
+
 
 # high_king Restoration
 ### Restore Direct Imperial Rule ###
@@ -1182,8 +1183,8 @@ tgp_gaul_restore_gallic_monarchy_decision = {
 		# gallic culture
 		culture = {
 			OR = {
-				this = culture:gallo_roman
-				any_parent_culture_or_above = { this = culture:gallo_roman }
+				this = culture:french
+				any_parent_culture_or_above = { this = culture:french }
 			}
 		}
 	}

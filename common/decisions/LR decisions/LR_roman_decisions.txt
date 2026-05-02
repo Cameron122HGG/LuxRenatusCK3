@@ -2075,7 +2075,7 @@ restore_gallic_empire_decision = {
 						}
 					}
 				}
-				change_government = roman_imperial_government
+				change_government = classical_feudal_government
 			}
 		}
 		title:e_gallic_empire = {
@@ -2094,10 +2094,14 @@ restore_gallic_empire_decision = {
 		#	id = province_events.0040
 		#	days = 2
 		#}
-		add_prestige = 1500
+		add_prestige = 2000
 		
 		hidden_effect = {
 			restore_roman_provinces_gallia_viennensis_decision_effect = yes
+			if = {
+				limit = { exists = title:k_sacral_king_gaul_throne.holder }
+				destroy_title = title:k_sacral_king_gaul_throne
+		}
 			add_to_global_variable_list = {
 				name = unavailable_unique_decisions
 				target = flag:restore_gallic_empire_decision
@@ -2106,7 +2110,7 @@ restore_gallic_empire_decision = {
 	}
 
 	cost = {
-		gold = 1000
+		gold = 1500
 	}
 
 	ai_potential = {
