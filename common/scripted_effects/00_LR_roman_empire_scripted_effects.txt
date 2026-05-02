@@ -1662,10 +1662,10 @@ restore_roman_provinces_syria_decision_effect  = {
 
 		# Then shift all Kingdoms back.
 		title:k_syria = { 
-			set_de_jure_liege_title = title:e_high_kingdom_gaul
+			set_de_jure_liege_title = title:e_levant
 		}
 		title:k_israel = { 
-			set_de_jure_liege_title = title:e_high_kingdom_gaul
+			set_de_jure_liege_title = title:e_levant
 		}
 	}	
 }
@@ -2438,9 +2438,13 @@ merge_pontus_effect = {
 	destroy_title = title:$SECONDARY$
 }
 
+<<<<<<< HEAD
 restore_gallic_empire_scripted_effect = {
 	#save_scope_as = scoped_ruler
 	primary_title = { save_scope_as = previous_title }
+=======
+restore_gallic_empire_provinces_gallia_viennensis_decision_effect = {
+>>>>>>> parent of 48fd93a8 (Refactor Gallic Empire restoration logic by updating scripted effects and decision effects for province restoration)
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -2453,23 +2457,110 @@ restore_gallic_empire_scripted_effect = {
 		}
 	}
 	resolve_title_and_vassal_change = scope:change
-	hidden_effect = {
-		set_primary_title_to = title:e_gallic_empire
-		#title:k_syria = { set_de_jure_liege_title = title:e_gallic_empire }
-		#title:k_jerusalem = { set_de_jure_liege_title = title:e_gallic_empire }
-		#title:k_mesopotamia = { set_de_jure_liege_title = title:e_gallic_empire }
-		#title:k_osroene = { set_de_jure_liege_title = title:e_gallic_empire }
-		#scope:previous_title = { set_de_jure_liege_title = title:e_gallic_empire }
+		#Gallia
+		# Shift the Kingdoms
+		every_county_in_region = { #Gallia
+			region = custom_roman_gallia
+			kingdom = { add_to_list = custom_roman_gallia_list }
+		}
+		every_in_list = {
+		list = custom_roman_gallia_list
+		limit = {
+			NOT = { de_jure_liege = title:e_gallic_empire }
+		}
+		set_de_jure_liege_title = title:e_gallic_empire
+		}	
+		every_county_in_region = { #Viennensis
+			region = custom_roman_viennensis
+			kingdom = { add_to_list = custom_roman_viennensis_list }
+		}
+		every_in_list = {
+		list = custom_roman_viennensis_list
+		limit = {
+			NOT = { de_jure_liege = title:e_gallic_empire }
+		}
+		#title:e_praetorian_prefecture_gallia = { set_de_jure_liege_title = title:h_western_roman_empire }
 
-		if = {
-			limit = { has_title = title:e_high_kingdom_gaul }
-			destroy_title = title:e_high_kingdom_gaul
-			title:e_high_kingdom_gaul = {
-				every_in_de_jure_hierarchy = {
-					limit = { tier = tier_kingdom }
-					set_de_jure_liege_title = title:e_gallic_empire
-				}
-			}
-		}		
+	every_held_title = { #Should destroy all other Empires owned at the time.
+		title_tier = empire
+		root = { destroy_title = prev }
+	}
+	#Restore the provinces of gallia
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_diocese_galliarum = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	#Restore the provinces of viennensis
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_diocese_viennensis = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+		}
+	resolve_title_and_vassal_change = scope:change
+	if = {
+		limit = { exists = title:k_aquitaine.holder }
+		destroy_title = title:k_aquitaine
+	}
+	if = {
+		limit = { exists = title:k_burgundy.holder }
+		destroy_title = title:k_burgundy
+	}
+	if = {
+		limit = { exists = title:k_france.holder }
+		destroy_title = title:k_france
+	}
+	if = {
+		limit = { exists = title:k_brittany.holder }
+		destroy_title = title:k_brittany
+	}
+	if = {
+		limit = { exists = title:k_lotharingia.holder }
+		destroy_title = title:k_lotharingia
+	}
+	if = {
+		limit = { exists = title:k_neustria.holder }
+		destroy_title = title:k_neustria
+	}
+	if = {
+		limit = { exists = title:k_savoie.holder }
+		destroy_title = title:k_savoie
+	}
+	if = {
+		limit = { exists = title:k_septimania.holder }
+		destroy_title = title:k_septimania
+	}
+	if = {
+		limit = { exists = title:k_arles.holder }
+		destroy_title = title:k_arles
+	}
+	if = {
+		limit = { exists = title:k_belgica.holder }
+		destroy_title = title:k_belgica
+	}
+	if = {
+		limit = { exists = title:k_sacral_king_gaul_throne.holder }
+		destroy_title = title:k_sacral_king_gaul_throne
 	}
 }
+
+
+
+
+
+
