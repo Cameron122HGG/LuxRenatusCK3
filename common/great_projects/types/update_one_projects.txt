@@ -17,8 +17,20 @@ refortify_danubian_limes = {
 	is_important = no
 	cost = {
 		treasury_or_gold = {
-			value = great_project_base_contribution_cost
-			multiply = 4
+			if = {
+				limit = { has_game_rule = difficulty_bgp_harsh }
+				value = great_project_base_contribution_cost
+				multiply = 8
+			}
+			else_if = {
+				limit = { has_game_rule = difficulty_bgp_unfair }
+				value = great_project_base_contribution_cost
+				multiply = 12
+			}
+			else = {
+				value = great_project_base_contribution_cost
+				multiply = 4
+			}
 		}
 	}
 	ai_will_do = {
@@ -42,12 +54,21 @@ refortify_danubian_limes = {
 		OR = {
 			title:e_byzantium = { holder.top_liege = root.top_liege }
 			title:h_roman_empire = { holder.top_liege = root.top_liege }
-			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }	
+			AND = {
+				has_game_rule = empire_requirements_bgp_pretenders
+				OR = {
+					title:e_hre = { holder.top_liege = root.top_liege }
+					title:e_latin_empire = { holder.top_liege = root.top_liege }
+					title:e_byzantium = { holder.top_liege = root.top_liege }
+				}
+			}
+			has_game_rule = empire_requirements_bgp_everyone
 		}
 		OR = {
 			has_game_rule = bgp_anyone
 			culture = { has_cultural_pillar = heritage_byzantine }
-			culture = { has_cultural_pillar = heritage_ancient_greek }
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
 		}
 	}
 	can_start_planning = {
@@ -145,7 +166,19 @@ refortify_danubian_limes = {
 		imperial_quarries = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -181,8 +214,20 @@ refortify_danubian_limes = {
 		annona_militaris = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -218,7 +263,19 @@ refortify_danubian_limes = {
 		vexillation_detachments = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -254,7 +311,19 @@ refortify_danubian_limes = {
 		corvee_labor = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -290,7 +359,19 @@ refortify_danubian_limes = {
 		master_architect = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -326,8 +407,20 @@ refortify_danubian_limes = {
 		imperial_sanction = {
 			cost = {
 				piety = {
-					value = great_project_base_contribution_cost
-					multiply = 3
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 6
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 9
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 3
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -363,8 +456,20 @@ refortify_danubian_limes = {
 		singidunum_fortress = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 2.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 6
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 10
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -403,8 +508,20 @@ refortify_danubian_limes = {
 		durostorum_citadel = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 3
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 6
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 9
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 3
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -443,8 +560,20 @@ refortify_danubian_limes = {
 		trajans_crossing = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 3
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 6
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 9
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 3
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -483,8 +612,20 @@ refortify_danubian_limes = {
 		tomis_port = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 2.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 8
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -536,8 +677,20 @@ maintain_danubian_limes = {
 	is_important = no
 	cost = {
 		treasury_or_gold = {
-			value = great_project_base_contribution_cost
-			multiply = 2
+			if = {
+				limit = { has_game_rule = difficulty_bgp_harsh }
+				value = great_project_base_contribution_cost
+				multiply = 4
+			}
+			else_if = {
+				limit = { has_game_rule = difficulty_bgp_unfair }
+				value = great_project_base_contribution_cost
+				multiply = 8
+			}
+			else = {
+				value = great_project_base_contribution_cost
+				multiply = 2
+			}
 		}
 	}
 	ai_will_do = {
@@ -549,7 +702,6 @@ maintain_danubian_limes = {
 			add = 50
 		}
 	}
-
 	construction_time = { value = 1095 }
 	invite_interaction = request_great_project_contribution_interaction
 	province_filter = geographical_region
@@ -562,12 +714,21 @@ maintain_danubian_limes = {
 		OR = {
 			title:e_byzantium = { holder.top_liege = root.top_liege }
 			title:h_roman_empire = { holder.top_liege = root.top_liege }
-			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }	
+			AND = {
+				has_game_rule = empire_requirements_bgp_pretenders
+				OR = {
+					title:e_hre = { holder.top_liege = root.top_liege }
+					title:e_latin_empire = { holder.top_liege = root.top_liege }
+					title:e_byzantium = { holder.top_liege = root.top_liege }
+				}
+			}
+			has_game_rule = empire_requirements_bgp_everyone
 		}
 		OR = {
 			has_game_rule = bgp_anyone
 			culture = { has_cultural_pillar = heritage_byzantine }
-			culture = { has_cultural_pillar = heritage_ancient_greek }
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
 		}
 	}
 	can_start_planning = {
@@ -675,7 +836,19 @@ maintain_danubian_limes = {
 		muster_repair_crews = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -711,8 +884,20 @@ maintain_danubian_limes = {
 		procure_repair_supplies = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -748,7 +933,19 @@ maintain_danubian_limes = {
 		reform_limitanei = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -784,7 +981,19 @@ maintain_danubian_limes = {
 		appoint_limes_curator = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -833,8 +1042,19 @@ rebuild_anastasian_wall = {
 	is_important = no
 	cost = {
 		treasury_or_gold = {
-			value = great_project_base_contribution_cost
-			multiply = 2
+			if = {
+				limit = { has_game_rule = difficulty_bgp_harsh }
+				value = great_project_base_contribution_cost
+				multiply = 2
+			}
+			else_if = {
+				limit = { has_game_rule = difficulty_bgp_unfair }
+				value = great_project_base_contribution_cost
+				multiply = 4
+			}
+			else = {
+				value = great_project_base_contribution_cost
+			}
 		}
 	}
 	ai_will_do = {
@@ -858,12 +1078,21 @@ rebuild_anastasian_wall = {
 		OR = {
 			title:e_byzantium = { holder.top_liege = root.top_liege }
 			title:h_roman_empire = { holder.top_liege = root.top_liege }
-			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }	
+			AND = {
+				has_game_rule = empire_requirements_bgp_pretenders
+				OR = {
+					title:e_hre = { holder.top_liege = root.top_liege }
+					title:e_latin_empire = { holder.top_liege = root.top_liege }
+					title:e_byzantium = { holder.top_liege = root.top_liege }
+				}
+			}
+			has_game_rule = empire_requirements_bgp_everyone
 		}
 		OR = {
 			has_game_rule = bgp_anyone
 			culture = { has_cultural_pillar = heritage_byzantine }
-			culture = { has_cultural_pillar = heritage_ancient_greek }
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
 		}
 	}
 	can_start_planning = {
@@ -913,8 +1142,20 @@ rebuild_anastasian_wall = {
 		clear_traces = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -950,8 +1191,20 @@ rebuild_anastasian_wall = {
 		quarry_stone_and_bricks = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 2.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 6
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 10
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -987,8 +1240,20 @@ rebuild_anastasian_wall = {
 		organize_wall_guard = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 2
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 8
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -1023,9 +1288,21 @@ rebuild_anastasian_wall = {
 		}
 		appoint_long_walls_count = {
 			cost = {
-				prestige = {
-					value = great_project_base_contribution_cost
-					multiply = 2.5
+				treasury_or_gold = {
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 8
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -1073,8 +1350,20 @@ via_appia_restoration = {
 	}
 	cost = {
 		treasury_or_gold = {
-			value = great_project_base_contribution_cost
-			multiply = 2
+			if = {
+				limit = { has_game_rule = difficulty_bgp_harsh }
+				value = great_project_base_contribution_cost
+				multiply = 4
+			}
+			else_if = {
+				limit = { has_game_rule = difficulty_bgp_unfair }
+				value = great_project_base_contribution_cost
+				multiply = 8
+			}
+			else = {
+				value = great_project_base_contribution_cost
+				multiply = 2
+			}
 		}
 	}
 	ai_will_do = {
@@ -1097,12 +1386,21 @@ via_appia_restoration = {
 		OR = {
 			title:e_byzantium = { holder.top_liege = root.top_liege }
 			title:h_roman_empire = { holder.top_liege = root.top_liege }
-			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }	
+			AND = {
+				has_game_rule = empire_requirements_bgp_pretenders
+				OR = {
+					title:e_hre = { holder.top_liege = root.top_liege }
+					title:e_latin_empire = { holder.top_liege = root.top_liege }
+					title:e_byzantium = { holder.top_liege = root.top_liege }
+				}
+			}
+			has_game_rule = empire_requirements_bgp_everyone
 		}
 		OR = {
 			has_game_rule = bgp_anyone
 			culture = { has_cultural_pillar = heritage_byzantine }
-			culture = { has_cultural_pillar = heritage_ancient_greek }
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
 		}
 	}
 	can_start_planning = {
@@ -1208,7 +1506,19 @@ via_appia_restoration = {
 		secure_appia = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -1244,8 +1554,20 @@ via_appia_restoration = {
 		node_of_capua = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 2
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 8
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -1281,8 +1603,20 @@ via_appia_restoration = {
 		bridges_of_beneventum = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -1318,8 +1652,20 @@ via_appia_restoration = {
 		pavers_guild = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 3
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 6
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 9
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 3
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -1355,8 +1701,20 @@ via_appia_restoration = {
 		rome_ascent = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -1392,8 +1750,20 @@ via_appia_restoration = {
 		gateway_brundisium = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
