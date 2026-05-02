@@ -9959,35 +9959,34 @@ e_britannia = {
 		definite_form = yes
 	}
 
-	k_scotland = {
+	k_scotland = { #Pictland
 		color = { 10 81 243 }
 		capital = c_gowrie
 
 		cultural_names = {
-			name_list_gaelic = cn_alba
-			name_list_irish = cn_alba
-			name_list_pictish = cn_pictland
-		}
+			name_list_gaelic = lx_cruithentuath
+			name_list_irish = lx_cruithentuath
+			name_list_pictish = lx_prydyn
+			name_list_breton = lx_prydyn
+			name_list_cornish = lx_prydyn
+			name_list_cumbrian = lx_prydyn
 
-		ai_primary_priority = {
-			if = {
-			limit = {
-				OR = {
-					culture = culture:scottish
-					culture = culture:gaelic
-					culture = culture:pictish
+			name_list_anglo_saxon = lx_peohtland
+			name_list_norse = lx_piktland
+			name_list_norwegian = lx_piktland
+			name_list_swedish = lx_piktland
+			name_list_danish = lx_piktland
+			name_list_welsh = lx_prydyn
+			#name_list_norse_gael = lx_alba
+			name_list_english = lx_albany
+			name_list_norman = lx_albanie
 
-				}
-			}
-			add = @correct_culture_primary_score
-		}
-			if = {
-			limit = {
-				culture = culture:irish
-			}
-			add = @better_than_the_alternatives_score
-		}
-
+			name_list_roman = lx_caledonia
+			name_list_gallo_roman = lx_caledonia
+			name_list_romano_gothic = lx_caledonia
+			name_list_romano_hispanic = lx_caledonia
+			name_list_romano_briton = lx_prydein
+			name_list_sarmato_briton = lx_prydyn
 		}
 
 		d_albany = {
@@ -10263,38 +10262,36 @@ e_britannia = {
 			}
 		}
 	}
-
-	k_alba = {
+	
+	k_alba = { #Scottia
 		color = { 230 140 0 }
 		capital = c_lennox
 
 		cultural_names = {
 			name_list_gaelic = cn_alba
 			name_list_irish = cn_alba
-			name_list_pictish = cn_pictland
-		}
+			name_list_pictish = cn_alba
+			name_list_breton = cn_alba
+			name_list_cornish = cn_alba
+			name_list_cumbrian = cn_alba
 
-		ai_primary_priority = {
-			if = {
-			limit = {
-				OR = {
-					culture = culture:scottish
-					culture = culture:gaelic
-					culture = culture:pictish
+			name_list_anglo_saxon = lx_scotland
+			name_list_norse = lx_skotland
+			name_list_norwegian = lx_skotland
+			name_list_swedish = lx_skotland
+			name_list_danish = lx_skotland
+			name_list_welsh = cn_alba
+			#name_list_norse_gael = lx_alba
+			name_list_english = lx_albany
+			name_list_norman = lx_albanie
 
-				}
-			}
-			add = @correct_culture_primary_score
+			name_list_roman = lx_scottia
+			name_list_gallo_roman = lx_scottia
+			name_list_romano_gothic = lx_scottia
+			name_list_romano_hispanic = lx_scottia
+			name_list_romano_briton = lx_albania
+			name_list_sarmato_briton = lx_albania
 		}
-			if = {
-			limit = {
-				culture = culture:irish
-			}
-			add = @better_than_the_alternatives_score
-		}
-
-		}
-
 		d_galloway = {
 			color = { 230 120 65 }
 			capital = c_lennox
@@ -10431,7 +10428,6 @@ e_britannia = {
 				}
 			}
 		}
-
 		d_lothian = {
 			color = { 195 130 25 }
 			capital = c_lothian
@@ -10553,7 +10549,7 @@ e_britannia = {
 			}
 		}
 	}
-
+	
 	k_ireland = {
 		color = { 6 127 2 }
 		capital = c_dublin
@@ -11128,6 +11124,7 @@ e_britannia = {
 		}
 	}
 }
+
 
 e_byzantium = {
 	color = { 75 0 130 }
@@ -12628,11 +12625,13 @@ e_byzantium = {
 	}
 
 	k_cyprus = {
-		color = { 215 215 20 }
+		color = { 85 138 236 }
 		capital = c_nicosia
 
 		cultural_names = {
 			name_list_turkish = cn_kibris
+			name_list_greek = cn_kypros
+			name_list_hellenistic = cn_kypros
 		}
 
 		can_create = {
@@ -17393,3708 +17392,6 @@ e_caspian-pontic_steppe = {
 		de_jure_drift_disabled = yes
 	}
 }
-
-e_france = {
-	color = { 11 22 170 }
-	capital = c_ile_de_france
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-	ai_primary_priority = {
-		if = {
-		limit = {
-			culture = culture:french
-		}
-		add = @correct_culture_primary_score
-	}
-		if = {
-		limit = {
-			OR = {
-				culture = culture:norman
-				culture = culture:occitan
-
-			}
-		}
-		add = @better_than_the_alternatives_score
-	}
-
-	}
-
-	k_france = {
-		color = { 15 27 187 }
-		capital = c_ile_de_france
-
-		ai_primary_priority = {
-			if = {
-			limit = {
-				culture = culture:gallo_roman
-			}
-			add = @correct_culture_primary_score
-		}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:norman
-					culture = culture:occitan
-
-				}
-			}
-			add = @better_than_the_alternatives_score
-		}
-
-		}
-
-		d_soissons = {
-			color = { 24 52 226 }
-			capital = c_vermandois
-
-			c_vermandois = {
-				color = { 20 50 220 }
-
-				b_marle = {
-					color = { 20 50 220 }
-					province = 2397
-				}
-
-				b_roucy = {
-					color = { 20 50 220 }
-					province = 2400
-				}
-
-				b_laon = {
-					color = { 20 50 220 }
-					province = 2399
-				}
-			}
-
-			c_amiens = {
-				color = { 18 76 240 }
-
-				b_amiens = {
-					color = { 18 76 240 }
-					province = 2184
-				}
-
-				b_corbie = {
-					color = { 18 76 240 }
-					province = 2185
-				}
-
-				b_peronne = {
-					color = { 18 76 240 }
-					province = 2186
-				}
-			}
-
-			c_clermont = {
-				color = { 28 58 230 }
-
-				b_clermont = {
-					color = { 28 58 230 }
-					province = 2189
-				}
-
-				b_noyon = {
-					color = { 28 58 230 }
-					province = 2188
-				}
-
-				b_saint_quentin = {
-					color = { 28 58 230 }
-					province = 2187
-				}
-			}
-
-			c_cambray = {
-				color = { 95 80 135 }
-
-				b_cambrai = {
-					color = { 95 80 135 }
-					province = 2118
-				}
-
-				b_malboden = {
-					color = { 95 80 135 }
-					province = 2121
-				}
-
-				b_valenciennes = {
-					color = { 95 80 135 }
-					province = 2119
-				}
-			}
-
-			c_valois = {
-				color = { 15 40 210 }
-
-				b_senlis = {
-					color = { 15 40 210 }
-					province = 2358
-				}
-
-				b_crepy = {
-					color = { 15 40 210 }
-					province = 2360
-				}
-
-				b_coucy = {
-					color = { 15 40 210 }
-					province = 2398
-				}
-			}
-		}
-
-		d_valois = {
-			color = { 24 52 226 }
-			capital = c_ile_de_france
-
-			c_ile_de_france = {
-				color = { 24 52 226 }
-
-				b_paris = {
-					color = { 24 52 226 }
-					province = 2333
-				}
-
-				b_saint_denis = {
-					color = { 24 52 226 }
-					province = 2357
-				}
-
-				b_montreuil = {
-					color = { 24 52 226 }
-					province = 2356
-				}
-
-				b_versailles = {
-					color = { 24 52 226 }
-					province = 2334
-				}
-
-				b_montlhery = {
-					color = { 24 52 226 }
-					province = 2335
-				}
-
-				b_etampes = {
-					color = { 24 52 226 }
-					province = 2336
-				}
-			}
-
-			c_brie_francaise = {
-				color = { 25 80 225 }
-
-				b_melun = {
-					color = { 25 80 225 }
-					province = 2354
-				}
-
-				b_bray = {
-					color = { 25 80 225 }
-					province = 2353
-				}
-
-				b_nemours = {
-					color = { 25 80 225 }
-					province = 2337
-				}
-
-				b_montereau = {
-					color = { 25 80 225 }
-					province = 2342
-				}
-			}
-
-			c_meaux = {
-				color = { 12 48 170 }
-
-				b_meaux = {
-					color = { 12 48 170 }
-					province = 2359
-				}
-
-				b_crecy = {
-					color = { 12 48 170 }
-					province = 2355
-				}
-			}
-
-			c_beaumont = {
-				color = { 35 65 230 }
-
-				b_beaumont = {
-					color = { 35 65 230 }
-					province = 2190
-				}
-
-				b_mantes = {
-					color = { 35 65 230 }
-					province = 2181
-				}
-
-				b_beauvais = {
-					color = { 35 65 230 }
-					province = 2183
-				}
-
-				b_montfort = {
-					color = { 35 65 230 }
-					province = 2332
-				}
-			}
-		}
-
-		d_champagne = {
-			color = { 7 60 160 }
-			capital = c_reims
-
-			c_reims = {
-				color = { 7 60 160 }
-
-				b_reims = {
-					color = { 7 60 160 }
-					province = 2390
-				}
-
-				b_epernay = {
-					color = { 7 60 160 }
-					province = 2366
-				}
-
-				b_chatillon = {
-					color = { 7 60 160 }
-					province = 2362
-				}
-
-				b_chateau_thierry = {
-					color = { 7 60 160 }
-					province = 2361
-				}
-			}
-
-			c_troyes = {
-				color = { 15 55 145 }
-
-				b_troyes = {
-					color = { 15 55 145 }
-					province = 2371
-				}
-
-				b_clairvaux = {
-					color = { 15 55 145 }
-					province = 2375
-				}
-
-				b_joinville = {
-					color = { 15 55 145 }
-					province = 2373
-				}
-
-				b_bar_sur_aube = {
-					color = { 15 55 145 }
-					province = 2372
-				}
-			}
-
-			c_coulommiers = {
-				color = { 12 48 170 }
-
-				b_provins = {
-					color = { 12 48 170 }
-					province = 2363
-				}
-
-				b_coulommiers = {
-					color = { 12 48 170 }
-					province = 2364
-				}
-
-				b_romilly = {
-					color = { 12 48 170 }
-					province = 2365
-				}
-			}
-
-			c_chalons = {
-				color = { 7 60 120 }
-
-				b_chalons = {
-					color = { 7 60 120 }
-					province = 2392
-				}
-
-				b_saint_dizier = {
-					color = { 7 60 120 }
-					province = 2389
-				}
-
-				b_vitry_en_perthois = {
-					color = { 7 60 120 }
-					province = 2367
-				}
-			}
-
-			c_rethel = {
-				color = { 4 70 170 }
-
-				b_rethel = {
-					color = { 4 70 170 }
-					province = 2391
-				}
-
-				b_grandpre = {
-					color = { 4 70 170 }
-					province = 2393
-				}
-
-				b_mezieres = {
-					color = { 4 70 170 }
-					province = 2394
-				}
-
-				b_romigny = {
-					color = { 4 70 170 }
-					province = 2396
-				}
-			}
-
-			c_sens = {
-				color = { 20 80 145 }
-
-				b_sens = {
-					color = { 20 80 145 }
-					province = 2352
-				}
-
-				b_nogent = {
-					color = { 20 80 145 }
-					province = 2368
-				}
-
-				b_aube = {
-					color = { 20 80 145 }
-					province = 2369
-				}
-
-				b_bar_sur_seine = {
-					color = { 20 80 145 }
-					province = 2370
-				}
-			}
-		}
-	}
-
-	k_lotharingia = {
-		color = { 110 110 160 }
-		capital = c_luxembourg
-
-		ai_primary_priority = {
-			if = {
-			limit = {
-				culture = {
-					has_cultural_pillar = heritage_central_germanic
-				}
-			}
-			add = @better_than_the_alternatives_score
-		}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:french
-					culture = culture:norman
-					culture = culture:occitan
-
-				}
-			}
-			add = @better_than_the_alternatives_score
-		}
-
-		}
-
-		d_julich = {
-			color = { 145 125 195 }
-			capital = c_aachen
-
-			c_aachen = {
-				color = { 130 125 175 }
-
-				cultural_names = {
-					name_list_cisalpine = cn_aquisgrana
-					name_list_french = cn_aix_la_chapelle
-					name_list_italian = cn_aquisgrana
-					name_list_occitan = cn_aquisgrana
-					name_list_sicilian = cn_aquisgrana
-				}
-
-				b_aachen = {
-					color = { 130 125 175 }
-					province = 2092
-				}
-
-				b_limbourg = {
-					color = { 130 125 175 }
-					province = 2448
-				}
-
-				b_duren = {
-					color = { 130 125 175 }
-					province = 2093
-				}
-
-				b_eschweiler = {
-					color = { 130 125 175 }
-					province = 2683
-				}
-
-				b_prum = {
-					color = { 130 125 175 }
-					province = 2684
-				}
-			}
-
-			c_cleves = {
-				color = { 165 120 190 }
-
-				b_kleve = {
-					color = { 165 120 190 }
-					province = 2104
-				}
-
-				b_gladbach = {
-					color = { 165 120 190 }
-					province = 2102
-				}
-
-				b_wezel = {
-					color = { 165 120 190 }
-					province = 2435
-				}
-
-				b_moers = {
-					color = { 165 120 190 }
-					province = 2101
-				}
-			}
-
-			c_cologne = {
-				color = { 150 145 180 }
-
-				b_cologne = {
-					color = { 150 145 180 }
-					province = 2088
-				}
-
-				b_bonn = {
-					color = { 150 145 180 }
-					province = 2087
-				}
-
-				b_neuss = {
-					color = { 150 145 180 }
-					province = 2682
-				}
-
-				b_nauenahr = {
-					color = { 150 145 180 }
-					province = 2685
-				}
-			}
-
-			c_koblenz = {
-				color = { 150 140 190 }
-
-				b_koblenz = {
-					color = { 150 140 190 }
-					province = 2084
-				}
-
-				b_adenau = {
-					color = { 150 140 190 }
-					province = 2086
-				}
-
-				b_cochem = {
-					color = { 150 140 190 }
-					province = 2697
-				}
-
-				b_sponhem = {
-					color = { 150 140 190 }
-					province = 2696
-				}
-			}
-
-			c_maastricht = {
-				color = { 145 125 195 }
-
-				b_maastricht = {
-					color = { 145 125 195 }
-					province = 2099
-				}
-
-				b_eindhoven = {
-					color = { 145 125 195 }
-					province = 2100
-				}
-
-				b_tilburg = {
-					color = { 145 125 195 }
-					province = 2110
-				}
-			}
-		}
-
-		d_alsace = {
-			color = { 205 205 230 }
-			capital = c_strassburg
-
-			c_strassburg = {
-				color = { 205 205 230 }
-
-				b_strassburg = {
-					color = { 205 205 230 }
-					province = 2721
-				}
-
-				b_haguenau = {
-					color = { 205 205 230 }
-					province = 2722
-				}
-
-				b_lichtberg = {
-					color = { 205 205 230 }
-					province = 2723
-				}
-			}
-
-			c_colmar = {
-				color = { 210 200 220 }
-
-				b_colmar = {
-					color = { 210 200 220 }
-					province = 2717
-				}
-
-				b_selestat = {
-					color = { 210 200 220 }
-					province = 2719
-				}
-			}
-
-			c_sundgau = {
-				color = { 215 200 215 }
-
-				b_montbelliard = {
-					color = { 215 200 215 }
-					province = 2057
-				}
-
-				b_mulhouse = {
-					color = { 215 200 215 }
-					province = 2058
-				}
-
-				b_ferrette = {
-					color = { 215 200 215 }
-					province = 2720
-				}
-
-				b_porrentruy = {
-					color = { 215 200 215 }
-					province = 2056
-				}
-			}
-		}
-
-		d_upper_lorraine = {
-			color = { 90 90 125 }
-			capital = c_trier
-
-			cultural_names = {
-				name_list_french = cn_upper_lorraine
-				name_list_norman = cn_upper_lorraine
-			}
-
-			c_trier = {
-				color = { 80 80 125 }
-
-				b_trier = {
-					color = { 90 90 125 }
-					province = 2083
-				}
-
-				b_beda = {
-					color = { 90 90 125 }
-					province = 2085
-				}
-
-				b_konz = {
-					color = { 90 90 125 }
-					province = 2700
-				}
-
-				b_wadern = {
-					color = { 90 90 125 }
-					province = 2703
-				}
-			}
-
-			c_nancy = {
-				color = { 65 65 100 }
-
-				b_nancy = {
-					color = { 65 65 100 }
-					province = 2709
-				}
-
-				b_epinal = {
-					color = { 65 65 100 }
-					province = 2078
-				}
-
-				b_blankenberg = {
-					color = { 65 65 100 }
-					province = 2713
-				}
-
-				b_salm = {
-					color = { 65 65 100 }
-					province = 2714
-				}
-			}
-
-			c_metz = {
-				color = { 85 85 140 }
-
-				b_metz = {
-					color = { 85 85 140 }
-					province = 2708
-				}
-
-				b_saarburg = {
-					color = { 85 85 140 }
-					province = 2698
-				}
-
-				b_forbach = {
-					color = { 85 85 140 }
-					province = 2705
-				}
-
-				b_faulquemont = {
-					color = { 85 85 140 }
-					province = 2711
-				}
-			}
-
-			c_saarbrucken = {
-				color = { 90 90 110 }
-
-				b_saarbrucken = {
-					color = { 90 90 110 }
-					province = 2704
-				}
-
-				b_zweibrucken = {
-					color = { 90 90 110 }
-					province = 2726
-				}
-
-				b_bitsch = {
-					color = { 90 90 110 }
-					province = 2725
-				}
-			}
-
-			c_puttlingen = {
-				color = { 80 80 115 }
-
-				b_puttlingen = {
-					color = { 80 80 115 }
-					province = 2710
-				}
-
-				b_finstigen = {
-					color = { 80 80 115 }
-					province = 2712
-				}
-			}
-		}
-
-		d_luxembourg = {
-			color = { 120 100 155 }
-			capital = c_luxembourg
-
-			c_luxembourg = {
-				color = { 100 120 155 }
-
-				b_luxembourg = {
-					color = { 110 110 155 }
-					province = 2082
-				}
-
-				b_bastogne = {
-					color = { 110 110 155 }
-					province = 2090
-				}
-
-				b_clervaux = {
-					color = { 110 110 155 }
-					province = 2449
-				}
-
-				b_vianden = {
-					color = { 110 110 155 }
-					province = 2699
-				}
-
-				b_diekirch = {
-					color = { 110 110 155 }
-					province = 2089
-				}
-			}
-
-			c_bouillon = {
-				color = { 100 110 180 }
-
-				b_bouillon = {
-					color = { 100 110 180 }
-					province = 2091
-				}
-
-				b_chiny = {
-					color = { 100 110 180 }
-					province = 2686
-				}
-
-				b_saint_hubert = {
-					color = { 100 110 180 }
-					province = 2687
-				}
-
-				b_virton = {
-					color = { 100 110 180 }
-					province = 2095
-				}
-			}
-
-			c_liege = {
-				color = { 90 95 135 }
-
-				b_liege = {
-					color = { 90 95 135 }
-					province = 2097
-				}
-
-				b_la_roche = {
-					color = { 90 95 135 }
-					province = 2094
-				}
-
-				b_huy = {
-					color = { 90 95 135 }
-					province = 2096
-				}
-			}
-
-			c_namur = {
-				color = { 100 95 150 }
-
-				b_namur = {
-					color = { 100 95 150 }
-					province = 2098
-				}
-
-				b_charleroi = {
-					color = { 100 95 150 }
-					province = 2116
-				}
-
-				b_couvin = {
-					color = { 100 95 150 }
-					province = 2122
-				}
-			}
-		}
-
-		d_bar = {
-			color = { 24 95 226 }
-			capital = c_bar
-
-			c_bar = {
-				color = { 14 85 226 }
-
-				b_bar = {
-					color = { 24 95 226 }
-					province = 2388
-				}
-
-				b_verdun = {
-					color = { 24 95 226 }
-					province = 2395
-				}
-
-				b_argonne = {
-					color = { 24 95 226 }
-					province = 2081
-				}
-			}
-
-			c_briey = {
-				color = { 53 132 226 }
-
-				b_briey = {
-					color = { 53 132 226 }
-					province = 2706
-				}
-
-				b_hayange = {
-					color = { 53 132 226 }
-					province = 2080
-				}
-			}
-
-			c_neufchateau = {
-				color = { 75 75 125 }
-
-				b_neufchateau = {
-					color = { 75 75 125 }
-					province = 2384
-				}
-
-				b_vaudemont = {
-					color = { 75 75 125 }
-					province = 2715
-				}
-
-				b_lure = {
-					color = { 75 75 125 }
-					province = 2192
-				}
-			}
-
-			c_langres = {
-				color = { 55 105 225 }
-
-				b_langres = {
-					color = { 55 105 225 }
-					province = 2374
-				}
-
-				b_grand = {
-					color = { 55 105 225 }
-					province = 2386
-				}
-
-				b_champs = {
-					color = { 55 105 225 }
-					province = 2385
-				}
-			}
-
-			c_vaucouleurs = {
-				color = { 15 80 220 }
-
-				b_vaucouleurs = {
-					color = { 15 80 220 }
-					province = 2387
-				}
-
-				b_toul = {
-					color = { 15 80 220 }
-					province = 2079
-				}
-			}
-		}
-	}
-
-	k_belgica = {
-		color = { 25 55 55 }
-		capital = c_brugge
-
-		ai_primary_priority = {
-			if = {
-			limit = {
-				culture = culture:gallo_roman
-			}
-			add = @correct_culture_primary_score
-		}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:norman
-					culture = culture:occitan
-
-				}
-			}
-			add = @better_than_the_alternatives_score
-		}
-
-		}
-
-		d_brabant = {
-			color = { 110 85 125 }
-			capital = c_brabant
-
-			c_brabant = {
-				color = { 110 85 125 }
-
-				b_leuven = {
-					color = { 110 85 125 }
-					province = 2105
-				}
-
-				b_brussels = {
-					color = { 110 85 125 }
-					province = 2107
-				}
-
-				b_turnhout = {
-					color = { 110 85 125 }
-					province = 2111
-				}
-			}
-
-			c_antwerpen = {
-				color = { 125 85 110 }
-
-				b_antwerpen = {
-					color = { 125 85 110 }
-					province = 2106
-				}
-
-				b_rosendaal = {
-					color = { 125 85 110 }
-					province = 2108
-				}
-
-				b_breda = {
-					color = { 125 85 110 }
-					province = 2109
-				}
-			}
-
-			c_hainaut = {
-				color = { 110 95 145 }
-
-				b_mons = {
-					color = { 110 95 145 }
-					province = 2117
-				}
-
-				b_tournai = {
-					color = { 110 95 145 }
-					province = 2127
-				}
-
-				b_ath = {
-					color = { 110 95 145 }
-					province = 2120
-				}
-			}
-		}
-
-		d_flanders = {
-			color = { 65 95 180 }
-			capital = c_brugge
-
-			c_brugge = {
-				color = { 65 95 180 }
-
-				b_bruges = {
-					color = { 65 95 180 }
-					province = 2115
-				}
-
-				b_gent = {
-					color = { 65 95 180 }
-					province = 2114
-				}
-
-				b_roeselare = {
-					color = { 65 95 180 }
-					province = 2124
-				}
-			}
-
-			c_yperen = {
-				color = { 78 94 185 }
-
-				b_ypres = {
-					color = { 78 94 185 }
-					province = 2125
-				}
-
-				b_veurne = {
-					color = { 78 94 185 }
-					province = 2128
-				}
-
-				b_dunkirk = {
-					color = { 78 94 185 }
-					province = 2131
-				}
-			}
-
-			c_guines = {
-				color = { 80 90 170 }
-
-				b_calais = {
-					color = { 80 90 170 }
-					province = 2130
-				}
-
-				b_grevelines = {
-					color = { 80 90 170 }
-					province = 2129
-				}
-
-				b_saint_omer = {
-					color = { 80 90 170 }
-					province = 2133
-				}
-			}
-
-			c_lille = {
-				color = { 75 115 205 }
-
-				b_lille = {
-					color = { 75 115 205 }
-					province = 2126
-				}
-
-				b_courtrai = {
-					color = { 75 115 205 }
-					province = 2123
-				}
-
-				b_aire = {
-					color = { 75 115 205 }
-					province = 2134
-				}
-			}
-
-			c_boulogne = {
-				color = { 78 103 165 }
-
-				b_boulogne = {
-					color = { 78 103 165 }
-					province = 2132
-				}
-
-				b_montreuil_sur_mer = {
-					color = { 78 103 165 }
-					province = 2136
-				}
-
-				b_abbeville = {
-					color = { 78 103 165 }
-					province = 2137
-				}
-
-				b_hesdin = {
-					color = { 78 103 165 }
-					province = 2135
-				}
-			}
-		}
-	}
-
-	k_neustria = {
-		color = { 77 116 208 }
-		capital = c_orleans
-
-		ai_primary_priority = {
-			if = {
-			limit = {
-				culture = culture:french
-			}
-			add = @correct_culture_primary_score
-		}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:norman
-					culture = culture:occitan
-
-				}
-			}
-			add = @better_than_the_alternatives_score
-		}
-
-		}
-
-		d_berry = {
-			color = { 30 40 220 }
-			capital = c_berry
-
-			c_berry = {
-				color = { 30 40 220 }
-
-				b_deols = {
-					color = { 30 40 220 }
-					province = 2280
-				}
-
-				b_chateauroux = {
-					color = { 30 40 220 }
-					province = 2279
-				}
-
-				b_la_haye = {
-					color = { 30 40 220 }
-					province = 2276
-				}
-			}
-
-			c_tourraine = {
-				color = { 25 65 225 }
-
-				b_tours = {
-					color = { 25 65 225 }
-					province = 2274
-				}
-
-				b_tourraine = {
-					color = { 25 65 225 }
-					province = 2273
-				}
-
-				b_loches = {
-					color = { 25 65 225 }
-					province = 2275
-				}
-			}
-
-			c_blois = {
-				color = { 42 65 190 }
-
-				b_blois = {
-					color = { 42 65 190 }
-					province = 2319
-				}
-
-				b_contres = {
-					color = { 42 65 190 }
-					province = 2318
-				}
-
-				b_romorantin = {
-					color = { 42 65 190 }
-					province = 2316
-				}
-			}
-
-			c_issoudun = {
-				color = { 25 50 250 }
-
-				b_issoudun = {
-					color = { 25 50 250 }
-					province = 2278
-				}
-
-				b_valencay = {
-					color = { 25 50 250 }
-					province = 2277
-				}
-
-				b_bourges = {
-					color = { 25 50 250 }
-					province = 2312
-				}
-			}
-		}
-
-		d_anjou = {
-			color = { 5 95 235 }
-			capital = c_anjou
-
-			c_anjou = {
-				color = { 5 95 235 }
-
-				b_angers = {
-					color = { 5 95 235 }
-					province = 2267
-				}
-
-				b_luigne = {
-					color = { 5 95 235 }
-					province = 2263
-				}
-
-				b_la_fleche = {
-					color = { 5 95 235 }
-					province = 2268
-				}
-
-				b_le_lude = {
-					color = { 5 95 235 }
-					province = 2269
-				}
-
-				b_craon = {
-					color = { 5 95 235 }
-					province = 2262
-				}
-			}
-
-			c_saumur = {
-				color = { 30 80 230 }
-
-				b_saumur = {
-					color = { 30 80 230 }
-					province = 2261
-				}
-
-				b_melay = {
-					color = { 30 80 230 }
-					province = 2260
-				}
-			}
-
-			c_maine = {
-				color = { 15 80 205 }
-
-				b_le_mans = {
-					color = { 15 80 205 }
-					province = 2270
-				}
-
-				b_courcillon = {
-					color = { 15 80 205 }
-					province = 2272
-				}
-
-				b_sarthe = {
-					color = { 15 80 205 }
-					province = 2271
-				}
-			}
-
-			c_sable = {
-				color = { 10 110 250 }
-
-				b_sable = {
-					color = { 10 110 250 }
-					province = 2264
-				}
-
-				b_mayenne = {
-					color = { 10 110 250 }
-					province = 2266
-				}
-
-				b_laval = {
-					color = { 10 110 250 }
-					province = 2265
-				}
-			}
-		}
-
-		d_orleans = {
-			color = { 10 16 243 }
-			capital = c_orleans
-
-			c_orleans = {
-				color = { 10 16 243 }
-
-				b_orleans = {
-					color = { 10 16 243 }
-					province = 2338
-				}
-
-				b_beaugency = {
-					color = { 10 16 243 }
-					province = 2320
-				}
-
-				b_olivet = {
-					color = { 10 16 243 }
-					province = 2317
-				}
-
-				b_vierzon = {
-					color = { 10 16 243 }
-					province = 2315
-				}
-			}
-
-			c_montargis = {
-				color = { 7 15 240 }
-
-				b_montargis = {
-					color = { 7 15 240 }
-					province = 2339
-				}
-
-				b_coutenay = {
-					color = { 7 15 240 }
-					province = 2340
-				}
-
-				b_chateau_renard = {
-					color = { 7 15 240 }
-					province = 2341
-				}
-			}
-
-			c_vendome = {
-				color = { 4 4 210 }
-
-				b_vendome = {
-					color = { 4 4 210 }
-					province = 2283
-				}
-
-				b_chateaudun = {
-					color = { 4 4 210 }
-					province = 2321
-				}
-			}
-
-			c_chartres = {
-				color = { 23 38 255 }
-
-				b_dreux = {
-					color = { 23 38 255 }
-					province = 2331
-				}
-
-				b_chartres = {
-					color = { 23 38 255 }
-					province = 2322
-				}
-
-				b_perche = {
-					color = { 23 38 255 }
-					province = 2324
-				}
-
-				b_nogent_le_rotrou = {
-					color = { 23 38 255 }
-					province = 2323
-				}
-			}
-
-			c_sancerre = {
-				color = { 5 30 175 }
-
-				b_sancerre = {
-					color = { 5 30 175 }
-					province = 2314
-				}
-
-				b_sully_sur_loire = {
-					color = { 5 30 175 }
-					province = 2463
-				}
-
-				b_herry = {
-					color = { 5 30 175 }
-					province = 2313
-				}
-			}
-		}
-	}
-
-	k_normandy = {
-		color = { 169 35 75 }
-		capital = c_bayeux
-
-		ai_primary_priority = {
-			if = {
-			limit = {
-				culture = culture:french
-			}
-			add = @correct_culture_primary_score
-		}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:norman
-					culture = culture:occitan
-
-				}
-			}
-			add = @better_than_the_alternatives_score
-		}
-
-		}
-
-		d_normandy = {
-			color = { 71 24 226 }
-			capital = c_bayeux
-
-			c_bayeux = {
-				color = { 10 0 130 }
-
-				b_bayeux = {
-					color = { 10 0 130 }
-					province = 2170
-				}
-
-				b_caen = {
-					color = { 10 0 130 }
-					province = 2172
-				}
-
-				b_falaise = {
-					color = { 10 0 130 }
-					province = 2173
-				}
-			}
-
-			c_avranches = {
-				color = { 0 0 125 }
-
-				b_avranches = {
-					color = { 0 0 125 }
-					province = 2167
-				}
-
-				b_cherbourg = {
-					color = { 0 0 125 }
-					province = 2169
-				}
-
-				b_coutances = {
-					color = { 0 0 125 }
-					province = 2168
-				}
-			}
-
-			c_alencon = {
-				color = { 12 12 105 }
-
-				b_alencon = {
-					color = { 12 12 105 }
-					province = 2325
-				}
-
-				b_mortain = {
-					color = { 12 12 105 }
-					province = 2171
-				}
-
-				b_argentan = {
-					color = { 12 12 105 }
-					province = 2326
-				}
-			}
-
-			c_lisieux = {
-				color = { 10 10 160 }
-
-				b_lisieux = {
-					color = { 10 10 160 }
-					province = 2174
-				}
-
-				b_sees = {
-					color = { 10 10 160 }
-					province = 2327
-				}
-			}
-		}
-
-		d_rouen = {
-			color = { 87 36 145 }
-			capital = c_rouen
-
-			c_rouen = {
-				color = { 7 7 145 }
-
-				b_rouen = {
-					color = { 7 7 145 }
-					province = 2179
-				}
-
-				b_gisors = {
-					color = { 7 7 145 }
-					province = 2180
-				}
-
-				b_harcourt = {
-					color = { 7 7 145 }
-					province = 2175
-				}
-			}
-
-			c_eu = {
-				color = { 20 20 130 }
-
-				b_eu = {
-					color = { 20 20 130 }
-					province = 2178
-				}
-
-				b_fecamp = {
-					color = { 20 20 130 }
-					province = 2176
-				}
-
-				b_dieppe = {
-					color = { 20 20 130 }
-					province = 2177
-				}
-
-				b_aumale = {
-					color = { 20 20 130 }
-					province = 2182
-				}
-			}
-
-			c_evreux = {
-				color = { 0 15 130 }
-
-				b_evreux = {
-					color = { 0 15 130 }
-					province = 2329
-				}
-
-				b_vernon = {
-					color = { 0 15 130 }
-					province = 2330
-				}
-
-				b_verneuil = {
-					color = { 0 15 130 }
-					province = 2328
-				}
-			}
-		}
-	}
-
-	k_burgundy = {
-		color = { 134 0 37 }
-		capital = c_besancon
-
-		ai_primary_priority = {
-			if = {
-				limit = {
-					OR = {
-						culture = culture:french
-						culture = culture:norman
-						culture = culture:occitan
-
-					}
-				}
-				add = @better_than_the_alternatives_score
-			}
-		}
-
-		d_burgundy = {
-			color = { 40 85 145 }
-			capital = c_dijon
-
-			c_dijon = {
-				color = { 40 85 145 }
-
-				b_dijon = {
-					color = { 40 85 145 }
-					province = 2380
-				}
-
-				b_gray = {
-					color = { 40 85 145 }
-					province = 2382
-				}
-
-				b_chaumont = {
-					color = { 40 85 145 }
-					province = 2381
-				}
-			}
-
-			c_chalon = {
-				color = { 35 105 165 }
-
-				b_chalon = {
-					color = { 35 105 165 }
-					province = 2348
-				}
-
-				b_citeaux = {
-					color = { 35 105 165 }
-					province = 2377
-				}
-
-				b_beaune = {
-					color = { 35 105 165 }
-					province = 2376
-				}
-
-				b_autun = {
-					color = { 35 105 165 }
-					province = 2347
-				}
-			}
-
-			c_auxerre = {
-				color = { 65 95 155 }
-
-				b_auxerre = {
-					color = { 65 95 155 }
-					province = 2346
-				}
-
-				b_donzy = {
-					color = { 65 95 155 }
-					province = 2345
-				}
-
-				b_chablis = {
-					color = { 65 95 155 }
-					province = 2350
-				}
-			}
-
-			c_tonnerrois = {
-				color = { 60 110 180 }
-
-				b_tonnerre = {
-					color = { 60 110 180 }
-					province = 2351
-				}
-
-				b_montbard = {
-					color = { 60 110 180 }
-					province = 2379
-				}
-			}
-
-			c_avalois = {
-				color = { 65 118 155 }
-
-				b_vezelay = {
-					color = { 65 118 155 }
-					province = 2349
-				}
-
-				b_morvan = {
-					color = { 65 118 155 }
-					province = 2378
-				}
-			}
-
-			c_macon = {
-				color = { 70 120 190 }
-
-				b_macon = {
-					color = { 70 120 190 }
-					province = 2302
-				}
-
-				b_cluny = {
-					color = { 70 120 190 }
-					province = 2304
-				}
-
-				b_semur_en_brionnais = {
-					color = { 70 120 190 }
-					province = 2303
-				}
-			}
-
-			c_nevers = {
-				color = { 30 75 165 }
-
-				b_nevers = {
-					color = { 30 75 165 }
-					province = 2343
-				}
-
-				b_moulins = {
-					color = { 30 75 165 }
-					province = 2307
-				}
-
-				b_pougues_les_eaux = {
-					color = { 30 75 165 }
-					province = 2344
-				}
-			}
-		}
-
-		d_upper_burgundy = {
-			color = { 159 20 58 }
-			capital = c_besancon
-
-			c_besancon = {
-				color = { 139 10 38 }
-
-				b_besancon = {
-					color = { 139 10 38 }
-					province = 2076
-				}
-
-				b_vesoul = {
-					color = { 139 10 38 }
-					province = 2077
-				}
-
-				b_morteau = {
-					color = { 139 10 38 }
-					province = 2075
-				}
-
-				b_ornans = {
-					color = { 139 10 38 }
-					province = 2459
-				}
-
-				b_gy = {
-					color = { 139 10 38 }
-					province = 2383
-				}
-			}
-
-			c_bresse = {
-				color = { 199 82 112 }
-
-				b_bourg = {
-					color = { 199 82 112 }
-					province = 2071
-				}
-
-				b_champagnole = {
-					color = { 199 82 112 }
-					province = 2457
-				}
-			}
-
-			c_dole = {
-				color = { 170 35 70 }
-
-				b_dole = {
-					color = { 170 35 70 }
-					province = 2458
-				}
-
-				b_quingey = {
-					color = { 170 35 70 }
-					province = 2191
-				}
-
-				b_lons_le_saunier = {
-					color = { 170 35 70 }
-					province = 2073
-				}
-
-				b_salins = {
-					color = { 170 35 70 }
-					province = 2072
-				}
-			}
-		}
-	}
-
-	k_savoie = {
-		color = { 145 40 10 }
-		capital = c_savoie
-
-		ai_primary_priority = {
-			if = {
-				limit = {
-					OR = {
-						culture = culture:french
-						culture = culture:norman
-						culture = culture:occitan
-
-					}
-				}
-				add = @better_than_the_alternatives_score
-			}
-		}
-
-		d_transjurania = {
-			color = { 159 40 10 }
-			capital = c_bern
-
-			c_bern = {
-				color = { 139 30 10 }
-
-				b_bern = {
-					color = { 139 30 10 }
-					province = 2046
-				}
-
-				b_lausanne = {
-					color = { 139 30 10 }
-					province = 2037
-				}
-
-				b_thun = {
-					color = { 139 30 10 }
-					province = 2047
-				}
-			}
-
-			c_aargau = {
-				color = { 150 70 15 }
-
-				b_biel = {
-					color = { 150 70 15 }
-					province = 2049
-				}
-
-				b_lucerne = {
-					color = { 150 70 15 }
-					province = 2048
-				}
-			}
-
-			c_neuchatel = {
-				color = { 135 55 45 }
-
-				b_neuchatel = {
-					color = { 135 55 45 }
-					province = 2460
-				}
-
-				b_pontarlier = {
-					color = { 135 55 45 }
-					province = 2074
-				}
-			}
-		}
-
-		d_savoie = {
-			color = { 101 8 34 }
-			capital = c_savoie
-
-			c_savoie = {
-				color = { 81 8 14 }
-
-				b_moutiers = {
-					color = { 81 8 14 }
-					province = 2031
-				}
-
-				b_saint_michel_de_maurienne = {
-					color = { 81 8 14 }
-					province = 2029
-				}
-
-				b_chambery = {
-					color = { 81 8 14 }
-					province = 2455
-				}
-
-				b_belley = {
-					color = { 81 8 14 }
-					province = 2069
-				}
-			}
-
-			c_aosta = {
-				color = { 90 5 15 }
-
-				b_aosta = {
-					color = { 90 5 15 }
-					province = 2039
-				}
-
-				b_martigny = {
-					color = { 90 5 15 }
-					province = 2038
-				}
-			}
-
-			c_geneva = {
-				color = { 175 40 65 }
-
-				b_geneva = {
-					color = { 175 40 65 }
-					province = 2035
-				}
-
-				b_annecy = {
-					color = { 175 40 65 }
-					province = 2034
-				}
-
-				b_thonon_les_bains = {
-					color = { 175 40 65 }
-					province = 2036
-				}
-
-				b_faucigny = {
-					color = { 175 40 65 }
-					province = 8719
-				}
-			}
-
-			c_canavese = {
-				color = { 115 25 45 }
-
-				b_ivrea = {
-					color = { 115 25 45 }
-					province = 2040
-				}
-
-				b_pinerolo = {
-					color = { 115 25 45 }
-					province = 2042
-				}
-
-				b_canavese = {
-					color = { 115 25 45 }
-					province = 2456
-				}
-			}
-		}
-	}
-}
-
-e_gallia = {
-	color = { 10 96 14 }
-	capital = c_bordeaux
-
-	can_create = {
-		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
-	}
-	ai_primary_priority = {
-		if = {
-		limit = {
-			culture = culture:french
-		}
-		add = @correct_culture_primary_score
-	}
-		if = {
-		limit = {
-			OR = {
-				culture = culture:norman
-				culture = culture:occitan
-
-			}
-		}
-		add = @better_than_the_alternatives_score
-	}
-
-	}
-
-	k_aquitaine = {
-		color = { 101 50 253 }
-
-		can_create = {
-			trigger_if = {
-				limit = {
-					is_ai = yes
-				}
-			}
-		}
-		ai_primary_priority = {
-			if = {
-			limit = {
-				culture = culture:occitan
-			}
-			add = @correct_culture_primary_score
-			}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:norman
-					culture = culture:french
-
-				}
-			}
-			add = @better_than_the_alternatives_score
-			}
-
-		}
-
-		d_aquitaine = {
-			color = { 43 24 226 }
-			capital = c_angouleme
-
-			ai_primary_priority = {
-				if = {
-				limit = {
-					culture = culture:occitan
-				}
-				add = @correct_culture_primary_score
-			}
-				if = {
-				limit = {
-					OR = {
-						culture = culture:norman
-						culture = culture:french
-
-					}
-				}
-				add = @better_than_the_alternatives_score
-			}
-
-			}
-
-			c_angouleme = {
-				color = { 43 24 226 }
-
-				b_angouleme = {
-					color = { 43 24 226 }
-					province = 2244
-				}
-
-				b_saint_junien = {
-					color = { 43 24 226 }
-					province = 2245
-				}
-
-				b_cognac = {
-					color = { 43 24 226 }
-					province = 2462
-				}
-			}
-
-			c_perigord = {
-				color = { 35 10 215 }
-
-				b_perigueux = {
-					color = { 35 10 215 }
-					province = 2237
-				}
-
-				b_nontron = {
-					color = { 35 10 215 }
-					province = 2239
-				}
-
-				b_montignac = {
-					color = { 35 10 215 }
-					province = 2238
-				}
-
-				b_bergerac = {
-					color = { 35 10 215 }
-					province = 2236
-				}
-			}
-
-			c_limousin = {
-				color = { 35 10 255 }
-
-				b_limoges = {
-					color = { 35 10 255 }
-					province = 2248
-				}
-
-				b_chalus = {
-					color = { 35 10 255 }
-					province = 2246
-				}
-
-				b_ventadour = {
-					color = { 35 10 255 }
-					province = 2247
-				}
-
-				b_turenne = {
-					color = { 35 10 255 }
-					province = 2240
-				}
-			}
-
-			c_saintonge = {
-				color = { 60 40 250 }
-
-				b_saintonge = {
-					color = { 60 40 250 }
-					province = 2241
-				}
-
-				b_jonzac = {
-					color = { 60 40 250 }
-					province = 2145
-				}
-
-				b_royan = {
-					color = { 60 40 250 }
-					province = 2146
-				}
-
-				b_saintes = {
-					color = { 60 40 250 }
-					province = 2242
-				}
-			}
-
-			c_aunis = {
-				color = { 35 20 200 }
-
-				b_la_rochelle = {
-					color = { 35 20 200 }
-					province = 2147
-				}
-
-				b_taillebourg = {
-					color = { 35 20 200 }
-					province = 2243
-				}
-			}
-		}
-
-		d_poitou = {
-			color = { 50 50 130 }
-			capital = c_poitiers
-
-			c_poitiers = {
-				color = { 50 50 130 }
-
-				b_poitiers = {
-					color = { 50 50 130 }
-					province = 2252
-				}
-
-				b_ruffec = {
-					color = { 50 50 130 }
-					province = 2251
-				}
-
-				b_chatellerault = {
-					color = { 50 50 130 }
-					province = 2253
-				}
-
-				b_loudun = {
-					color = { 50 50 130 }
-					province = 2256
-				}
-			}
-
-			c_lusignan = {
-				color = { 30 30 105 }
-
-				b_lusignan = {
-					color = { 30 30 105 }
-					province = 2249
-				}
-
-				b_melle = {
-					color = { 30 30 105 }
-					province = 2250
-				}
-
-				b_niort = {
-					color = { 30 30 105 }
-					province = 2254
-				}
-			}
-
-			c_montaigu = {
-				color = { 55 60 150 }
-
-				b_montaigu = {
-					color = { 55 60 150 }
-					province = 2150
-				}
-
-				b_talmont = {
-					color = { 55 60 150 }
-					province = 2149
-				}
-
-				b_maulevrier = {
-					color = { 55 60 150 }
-					province = 2259
-				}
-			}
-
-			c_thouars = {
-				color = { 35 35 130 }
-
-				b_thouars = {
-					color = { 35 35 130 }
-					province = 2257
-				}
-
-				b_parthenay = {
-					color = { 35 35 130 }
-					province = 2255
-				}
-
-				b_bressuire = {
-					color = { 35 35 130 }
-					province = 2258
-				}
-
-				b_fontenay = {
-					color = { 35 35 130 }
-					province = 2148
-				}
-			}
-		}
-
-		d_bourbon = {
-			color = { 26 10 135 }
-			capital = c_bourbon
-
-			c_bourbon = {
-				color = { 26 10 135 }
-
-				b_bourbon = {
-					color = { 26 10 135 }
-					province = 2310
-				}
-
-				b_orval = {
-					color = { 26 10 135 }
-					province = 2311
-				}
-
-				b_montlucon = {
-					color = { 26 10 135 }
-					province = 2308
-				}
-
-				b_boussac = {
-					color = { 26 10 135 }
-					province = 2281
-				}
-			}
-
-			c_bellac = {
-				color = { 15 5 125 }
-
-				b_bellac = {
-					color = { 15 5 125 }
-					province = 2284
-				}
-
-				b_la_tremouille = {
-					color = { 15 5 125 }
-					province = 2464
-				}
-			}
-
-			c_jaligny = {
-				color = { 37 10 150 }
-
-				b_saint_pourcain = {
-					color = { 37 10 150 }
-					province = 2309
-				}
-
-				b_jaligny = {
-					color = { 37 10 150 }
-					province = 2306
-				}
-			}
-
-			c_la_marche = {
-				color = { 20 5 150 }
-
-				b_grandmont = {
-					color = { 20 5 150 }
-					province = 2285
-				}
-
-				b_gueret = {
-					color = { 20 5 150 }
-					province = 2286
-				}
-
-				b_aubusson = {
-					color = { 20 5 150 }
-					province = 2287
-				}
-			}
-		}
-
-		d_auvergne = {
-			color = { 54 10 243 }
-			capital = c_auvergne
-
-			c_auvergne = {
-				color = { 54 10 243 }
-
-				b_aurillac = {
-					color = { 54 10 243 }
-					province = 2294
-				}
-
-				b_carlat = {
-					color = { 54 10 243 }
-					province = 2293
-				}
-
-				b_murat = {
-					color = { 54 10 243 }
-					province = 2292
-				}
-			}
-
-			c_clermont_sur_allier = {
-				color = { 65 7 225 }
-
-				b_clermont_sur_ailler = {
-					color = { 65 7 225 }
-					province = 2289
-				}
-
-				b_la_tour = {
-					color = { 65 7 225 }
-					province = 2295
-				}
-
-				b_mercaeur = {
-					color = { 65 7 225 }
-					province = 2290
-				}
-
-				b_montpensier = {
-					color = { 65 7 225 }
-					province = 2288
-				}
-			}
-
-			c_thiers = {
-				color = { 80 35 255 }
-
-				b_thiers = {
-					color = { 80 35 255 }
-					province = 2299
-				}
-
-				b_ambert = {
-					color = { 80 35 255 }
-					province = 2300
-				}
-			}
-
-			c_velay = {
-				color = { 70 0 215 }
-
-				b_le_puy = {
-					color = { 70 0 215 }
-					province = 2225
-				}
-
-				b_velay = {
-					color = { 70 0 215 }
-					province = 2296
-				}
-			}
-		}
-	}
-
-	k_arles = {
-		color = { 5 45 125 }
-		capital = c_venaissin
-
-		ai_primary_priority = {
-			if = {
-				limit = {
-					OR = {
-						culture = culture:french
-						culture = culture:norman
-						culture = culture:occitan
-
-					}
-				}
-				add = @better_than_the_alternatives_score
-			}
-		}
-
-		d_provence = {
-			color = { 145 37 67 }
-			capital = c_venaissin
-
-			c_venaissin = {
-				color = { 180 30 70 }
-
-				b_arles = {
-					color = { 180 30 70 }
-					province = 2017
-				}
-
-				b_orange = {
-					color = { 180 30 70 }
-					province = 2062
-				}
-
-				b_avignon = {
-					color = { 180 30 70 }
-					province = 2059
-				}
-
-				b_vaison = {
-					color = { 180 30 70 }
-					province = 2067
-				}
-			}
-
-			c_provence = {
-				color = { 165 50 105 }
-
-				b_toulon = {
-					color = { 165 50 105 }
-					province = 2019
-				}
-
-				b_dragugnian = {
-					color = { 165 50 105 }
-					province = 2024
-				}
-
-				b_castellane = {
-					color = { 165 50 105 }
-					province = 2025
-				}
-
-				b_marseille = {
-					color = { 165 50 105 }
-					province = 2018
-				}
-
-				b_aix = {
-					color = { 165 50 105 }
-					province = 2023
-				}
-			}
-
-			c_nice = {
-				color = { 195 75 90 }
-
-				b_nice = {
-					color = { 195 75 90 }
-					province = 2021
-				}
-
-				b_grasse = {
-					color = { 195 75 90 }
-					province = 2020
-				}
-
-				b_barcelonnette = {
-					color = { 195 75 90 }
-					province = 8720
-				}
-
-				b_puget = {
-					color = { 195 75 90 }
-					province = 8721
-				}
-
-				b_digne = {
-					color = { 195 75 90 }
-					province = 2026
-				}
-			}
-
-			c_forcalquier = {
-				color = { 165 20 65 }
-
-				b_forcalquier = {
-					color = { 165 20 65 }
-					province = 2061
-				}
-
-				b_apt = {
-					color = { 165 20 65 }
-					province = 2060
-				}
-
-				b_embrun = {
-					color = { 165 20 65 }
-					province = 2027
-				}
-
-				b_gap = {
-					color = { 165 20 65 }
-					province = 2028
-				}
-
-				b_briancon = {
-					color = { 165 20 65 }
-					province = 8718
-				}
-			}
-		}
-
-		d_dauphine = {
-			color = { 115 26 90 }
-			capital = c_lyon
-
-			c_lyon = {
-				color = { 95 6 70 }
-
-				b_lyon = {
-					color = { 95 6 70 }
-					province = 2065
-				}
-
-				b_villars = {
-					color = { 95 6 70 }
-					province = 2070
-				}
-
-				b_beaujeu = {
-					color = { 95 6 70 }
-					province = 2301
-				}
-			}
-
-			c_forez = {
-				color = { 166 28 127 }
-
-				b_feurs = {
-					color = { 166 28 127 }
-					province = 2297
-				}
-
-				b_montbrison = {
-					color = { 166 28 127 }
-					province = 2298
-				}
-
-				b_roanne = {
-					color = { 166 28 127 }
-					province = 2305
-				}
-			}
-
-			c_viviers = {
-				color = { 195 70 95 }
-
-				b_viviers = {
-					color = { 195 70 95 }
-					province = 2063
-				}
-
-				b_annonay = {
-					color = { 195 70 95 }
-					province = 3258
-				}
-			}
-
-			c_viennois = {
-				color = { 120 10 80 }
-
-				b_grenoble = {
-					color = { 120 10 80 }
-					province = 2030
-				}
-
-				b_vienne = {
-					color = { 120 10 80 }
-					province = 2033
-				}
-
-				b_chartreuse = {
-					color = { 120 10 80 }
-					province = 2032
-				}
-
-				b_romans = {
-					color = { 120 10 80 }
-					province = 2068
-				}
-			}
-
-			c_valentinois = {
-				color = { 195 70 95 }
-
-				b_monteil = {
-					color = { 195 70 95 }
-					province = 8717
-				}
-
-				b_die = {
-					color = { 195 70 95 }
-					province = 2066
-				}
-
-				b_valence = {
-					color = { 195 70 95 }
-					province = 2064
-				}
-			}
-		}
-	}
-
-	k_septimania = {
-		color = { 50 50 253 }
-		capital = c_toulouse
-
-		can_create = {
-			trigger_if = {
-				limit = {
-					is_ai = yes
-				}
-			}
-		}
-		ai_primary_priority = {
-			if = {
-			limit = {
-				culture = culture:occitan
-			}
-			add = @correct_culture_primary_score
-		}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:norman
-					culture = culture:french
-
-				}
-			}
-			add = @better_than_the_alternatives_score
-		}
-
-		}
-
-		d_gascogne = {
-			color = { 81 30 243 }
-			capital = c_bordeaux
-
-			c_bordeaux = {
-				color = { 81 30 243 }
-
-				b_bordeaux = {
-					color = { 81 30 243 }
-					province = 2142
-				}
-
-				b_medoc = {
-					color = { 81 30 243 }
-					province = 2141
-				}
-
-				b_blaye = {
-					color = { 81 30 243 }
-					province = 2144
-				}
-
-				b_fronsac = {
-					color = { 81 30 243 }
-					province = 2143
-				}
-			}
-
-			c_labourd = {
-				color = { 105 45 245 }
-
-				b_bayonne = {
-					color = { 105 45 245 }
-					province = 2012
-				}
-
-				b_dax = {
-					color = { 105 45 245 }
-					province = 2138
-				}
-
-				b_mimizan = {
-					color = { 105 45 245 }
-					province = 2139
-				}
-			}
-
-			c_albret = {
-				color = { 80 50 190 }
-
-				b_albret = {
-					color = { 80 50 190 }
-					province = 2196
-				}
-
-				b_tartas = {
-					color = { 80 50 190 }
-					province = 2195
-				}
-
-				b_la_teste_de_buch = {
-					color = { 80 50 190 }
-					province = 2140
-				}
-
-				b_langon = {
-					color = { 80 50 190 }
-					province = 2197
-				}
-			}
-
-			c_marsan = {
-				color = { 100 35 225 }
-
-				b_marsan = {
-					color = { 100 35 225 }
-					province = 2199
-				}
-
-				b_bazadais = {
-					color = { 100 35 225 }
-					province = 2198
-				}
-
-				b_gabardan = {
-					color = { 100 35 225 }
-					province = 2200
-				}
-			}
-
-			c_agenais = {
-				color = { 65 15 200 }
-
-				b_agen = {
-					color = { 65 15 200 }
-					province = 2232
-				}
-
-				b_agenais = {
-					color = { 65 15 200 }
-					province = 2235
-				}
-			}
-		}
-
-		d_armagnac = {
-			color = { 145 30 175 }
-			capital = c_armagnac
-
-			c_armagnac = {
-				color = { 145 30 175 }
-
-				b_armagnac = {
-					color = { 145 30 175 }
-					province = 2201
-				}
-
-				b_lectoure = {
-					color = { 145 30 175 }
-					province = 2204
-				}
-
-				b_lomagne = {
-					color = { 145 30 175 }
-					province = 2205
-				}
-
-				b_fesensac = {
-					color = { 145 30 175 }
-					province = 2203
-				}
-			}
-
-			c_bigorre = {
-				color = { 165 35 170 }
-
-				b_tarbes = {
-					color = { 165 35 170 }
-					province = 2010
-				}
-
-				b_pardiac = {
-					color = { 165 35 170 }
-					province = 2202
-				}
-			}
-
-			c_bearn = {
-				color = { 155 50 150 }
-
-				b_pau = {
-					color = { 155 50 150 }
-					province = 2193
-				}
-
-				b_tursan = {
-					color = { 155 50 150 }
-					province = 2194
-				}
-
-				b_oloron = {
-					color = { 155 50 150 }
-					province = 2011
-				}
-			}
-
-			c_comminges = {
-				color = { 175 55 165 }
-
-				b_bertrand_de_comminges = {
-					color = { 175 55 165 }
-					province = 2009
-				}
-
-				b_saint_lizier = {
-					color = { 175 55 165 }
-					province = 2008
-				}
-
-				b_astarac = {
-					color = { 175 55 165 }
-					province = 2206
-				}
-
-				b_muret = {
-					color = { 175 55 165 }
-					province = 2207
-				}
-			}
-		}
-		d_barcelona = { #Marca Laietanica
-			color = { 166 100 72 }
-			capital = c_barcelona
-
-			cultural_names = {
-				name_list_andalusian = cn_barshiluna
-				name_list_baranis = cn_barshiluna
-				name_list_bedouin = cn_barshiluna
-				name_list_butr = cn_barshiluna
-				name_list_egyptian = cn_barshiluna
-				name_list_french = lx_lagedaine
-				name_list_levantine = cn_barshiluna
-				name_list_maghrebi = cn_barshiluna
-				name_list_occitan = lx_lagedanha
-				name_list_yemeni = cn_barshiluna
-				name_list_zaghawa = cn_barshiluna
-				name_list_roman = lx_laietania
-				name_list_aragonese = lx_laiescen
-				name_list_romano_hispanic = lx_Laietania
-				name_list_romano_gothic = lx_lajetanna
-				name_list_visigothic = lx_barchenona
-				name_list_basque = lx_laizken
-				name_list_gallo_roman = lx_lagedania
-			}
-
-			can_be_named_after_dynasty = no
-
-			c_barcelona = { #Add Egara and Montcada/Montseny
-				color = { 156 110 72 }
-
-				cultural_names = {
-					name_list_andalusian = cn_barshiluna
-					name_list_baranis = cn_barshiluna
-					name_list_bedouin = cn_barshiluna
-					name_list_butr = cn_barshiluna
-					name_list_egyptian = cn_barshiluna
-					name_list_levantine = cn_barshiluna
-					name_list_maghrebi = cn_barshiluna
-					name_list_yemeni = cn_barshiluna
-					name_list_zaghawa = cn_barshiluna
-					name_list_roman = lx_barcino
-					name_list_aragonese = lx_barkeno
-					name_list_romano_hispanic = lx_barcinona
-					name_list_romano_gothic = lx_barcenona
-					name_list_visigothic = lx_barchenona
-					name_list_basque = lx_bartzenona
-					name_list_gallo_roman = lx_barcenone
-					name_list_occitan = lx_barchinona
-				}
-
-				can_be_named_after_dynasty = no
-
-				b_barcelona = {
-					color = { 156 110 72 }
-					province = 1862
-					cultural_names = {
-						name_list_andalusian = cn_barshiluna
-						name_list_baranis = cn_barshiluna
-						name_list_bedouin = cn_barshiluna
-						name_list_butr = cn_barshiluna
-						name_list_egyptian = cn_barshiluna
-						name_list_levantine = cn_barshiluna
-						name_list_maghrebi = cn_barshiluna
-						name_list_yemeni = cn_barshiluna
-						name_list_zaghawa = cn_barshiluna
-						name_list_roman = lx_barcino
-						name_list_aragonese = lx_barkeno
-						name_list_romano_hispanic = lx_barcinona
-						name_list_romano_gothic = lx_barcenona
-						name_list_visigothic = lx_barchenona
-						name_list_basque = lx_bartzenona
-						name_list_gallo_roman = lx_barcenone
-						name_list_occitan = lx_barchinona
-					}
-
-				}
-
-				b_sitges = { #Olèrdola
-					color = { 156 110 72 }
-					province = 1861
-						cultural_names = {
-							name_list_andalusian = lx_ulardula
-							name_list_baranis = lx_ulardula
-							name_list_bedouin = lx_ulardula
-							name_list_butr = lx_ulardula
-							name_list_egyptian = lx_ulardula
-							name_list_levantine = lx_ulardula
-							name_list_maghrebi = lx_ulardula
-							name_list_yemeni = lx_ulardula
-							name_list_zaghawa = lx_ulardula
-							name_list_roman = lx_olorda
-							name_list_aragonese = lx_ulartola
-							name_list_romano_hispanic = lx_olordula
-							name_list_romano_gothic = lx_olordula
-							name_list_visigothic = lx_olerdula
-							name_list_basque = lx_olarte
-							name_list_gallo_roman = lx_olordula
-							name_list_occitan = lx_olerdola
-						}
-				}
-
-				b_manresa = { #Cardona/Udorra
-					color = { 156 110 72 }
-					province = 1877
-
-					cultural_names = {
-						name_list_andalusian = lx_karduna
-						name_list_baranis = lx_karduna
-						name_list_bedouin = lx_karduna
-						name_list_butr = lx_karduna
-						name_list_egyptian = lx_karduna
-						name_list_levantine = lx_karduna
-						name_list_maghrebi = lx_karduna
-						name_list_yemeni = lx_karduna
-						name_list_zaghawa = lx_karduna
-						name_list_roman = lx_udura
-						name_list_aragonese = lx_uturra
-						name_list_romano_hispanic = lx_udora
-						name_list_romano_gothic = lx_udora
-						name_list_visigothic = lx_cardona
-						name_list_basque = lx_udurra
-						name_list_gallo_roman = lx_udora
-						name_list_occitan = lx_cardona
-					}
-				}
-				#b_egara
-				#b_montecatano_iluro
-			}
-			c_ausona = { #osona, ausona
-				color = { 150 125 90 }
-					cultural_names = {
-						name_list_andalusian = lx_awsaniya
-						name_list_baranis = lx_awsaniya
-						name_list_bedouin = lx_awsaniya
-						name_list_butr = lx_awsaniya
-						name_list_egyptian = lx_awsaniya
-						name_list_levantine = lx_awsaniya
-						name_list_maghrebi = lx_awsaniya
-						name_list_yemeni = lx_awsaniya
-						name_list_zaghawa = lx_awsaniya
-						name_list_roman = lx_ausona
-						name_list_aragonese = lx_ausonesken
-						name_list_romano_hispanic = lx_ausona
-						name_list_romano_gothic = lx_ausona
-						name_list_visigothic = lx_ausona
-						name_list_basque = lx_ausonesken
-						name_list_gallo_roman = lx_ausone
-						name_list_occitan = lx_ausona
-					}
-				b_vic = { #Auso
-					color = { 150 125 90 }
-					province = 1875
-
-					cultural_names = {
-						name_list_andalusian = lx_awsa
-						name_list_baranis = lx_awsa
-						name_list_bedouin = lx_awsa
-						name_list_butr = lx_awsa
-						name_list_egyptian = lx_awsa
-						name_list_levantine = lx_awsa
-						name_list_maghrebi = lx_awsa
-						name_list_yemeni = lx_awsa
-						name_list_zaghawa = lx_awsa
-						name_list_roman = lx_ausa
-						name_list_aragonese = lx_ause
-						name_list_romano_hispanic = lx_ausa
-						name_list_romano_gothic = lx_ausa
-						name_list_visigothic = lx_ausa
-						name_list_basque = lx_ausa
-						name_list_gallo_roman = lx_ausa
-						name_list_occitan = lx_ausa
-					}
-				}
-
-				b_berga = {
-					color = { 150 125 90 }
-					province = 1876
-
-					cultural_names = {
-						name_list_andalusian = lx_bargha
-						name_list_baranis = lx_bargha
-						name_list_bedouin = lx_bargha
-						name_list_butr = lx_bargha
-						name_list_egyptian = lx_bargha
-						name_list_levantine = lx_bargha
-						name_list_maghrebi = lx_bargha
-						name_list_yemeni = lx_bargha
-						name_list_zaghawa = lx_bargha
-						name_list_roman = lx_bergium
-						name_list_aragonese = lx_bargis
-						name_list_romano_hispanic = lx_bergia
-						name_list_romano_gothic = lx_bergia
-						name_list_visigothic = lx_bergio
-						name_list_basque = lx_bargis
-						name_list_gallo_roman = lx_bergia
-						name_list_occitan = lx_berga
-					}
-				}
-			}
-			c_girona = { #Indigetia?
-				color = { 170 115 110 }
-
-				cultural_names = {
-					name_list_andalusian = cn_harundah
-					name_list_baranis = cn_harundah
-					name_list_bedouin = cn_harundah
-					name_list_butr = cn_harundah
-					name_list_egyptian = cn_harundah
-					name_list_levantine = cn_harundah
-					name_list_maghrebi = cn_harundah
-					name_list_yemeni = cn_harundah
-					name_list_zaghawa = cn_harundah
-
-					name_list_roman = lx_indigetia
-					name_list_aragonese = lx_untikesken
-					name_list_romano_hispanic = lx_indegeza
-					name_list_romano_gothic = lx_endegeza
-					name_list_visigothic = lx_gerunda
-					name_list_basque = lx_untikesken
-					name_list_gallo_roman = lx_endegeza
-					name_list_occitan = lx_endegec_a
-				}
-
-				can_be_named_after_dynasty = no
-
-				b_girona = {
-					color = { 170 115 110 }
-					province = 1864
-
-					cultural_names = {
-						name_list_andalusian = cn_harundah
-						name_list_baranis = cn_harundah
-						name_list_bedouin = cn_harundah
-						name_list_butr = cn_harundah
-						name_list_egyptian = cn_harundah
-						name_list_levantine = cn_harundah
-						name_list_maghrebi = cn_harundah
-						name_list_yemeni = cn_harundah
-						name_list_zaghawa = cn_harundah
-
-						name_list_roman = lx_gerunda
-						name_list_aragonese = lx_kerunta
-						name_list_romano_hispanic = lx_geronda
-						name_list_romano_gothic = lx_geronda
-						name_list_visigothic = lx_geronda
-						name_list_basque = lx_kerunta
-						name_list_gallo_roman = lx_geronda
-						name_list_occitan = lx_girona
-					}
-				}
-
-				b_loredo = {
-					color = { 170 115 110 }
-					province = 1863
-
-					cultural_names = {
-						name_list_roman = lx_oleastrum
-						name_list_aragonese = lx_untike
-						name_list_romano_hispanic = lx_endega
-						name_list_romano_gothic = lx_endega
-						name_list_visigothic = lx_oleastrja
-						name_list_basque = lx_untike
-						name_list_gallo_roman = lx_endega
-						name_list_occitan = lx_endega
-					}
-				}
-			}
-			c_besalu = { #Besalú, Bisuldunum
-				color = { 176 95 88 }
-				cultural_names = {
-					name_list_roman = lx_emporitanum
-					name_list_aragonese = lx_sardoniscen
-					name_list_romano_hispanic = lx_emporidana
-					name_list_romano_gothic = lx_emporidana
-					name_list_visigothic = lx_emporidana
-					name_list_basque = lx_sardoniscen
-					name_list_gallo_roman = lx_emporion
-					name_list_occitan = lx_empories #Sordonha for the north
-					name_list_andalusian = cn_amburiya
-					name_list_baranis = cn_amburiya
-					name_list_bedouin = cn_amburiya
-					name_list_butr = cn_amburiya
-					name_list_egyptian = cn_amburiya
-					name_list_levantine = cn_amburiya
-					name_list_maghrebi = cn_amburiya
-					name_list_yemeni = cn_amburiya
-					name_list_zaghawa = cn_amburiya
-				}
-				b_olot = {
-					color = { 170 115 110 }
-					province = 1867
-					cultural_names = {
-						name_list_andalusian = lx_basalu
-						name_list_baranis = lx_basalu
-						name_list_bedouin = lx_basalu
-						name_list_butr = lx_basalu
-						name_list_egyptian = lx_basalu
-						name_list_levantine = lx_basalu
-						name_list_maghrebi = lx_basalu
-						name_list_yemeni = lx_basalu
-						name_list_zaghawa = lx_basalu
-
-						name_list_roman = lx_besuldunum
-						name_list_aragonese = lx_sebendun
-						name_list_romano_hispanic = lx_besulduno
-						name_list_romano_gothic = lx_besolduno
-						name_list_visigothic = lx_besulduno
-						name_list_basque = lx_sebendun
-						name_list_gallo_roman = lx_besoldun
-						name_list_occitan = lx_besaldu
-					}
-				}
-				b_prades_rossello = { #Cuixà, old monastery complex, Cuxano or Cussano.
-					color = { 176 95 88 }
-					province = 8798
-
-					cultural_names = {
-						name_list_andalusian = lx_kusha
-						name_list_baranis = lx_kusha
-						name_list_bedouin = lx_kusha
-						name_list_butr = lx_kusha
-						name_list_egyptian = lx_kusha
-						name_list_levantine = lx_kusha
-						name_list_maghrebi = lx_kusha
-						name_list_yemeni = lx_kusha
-						name_list_zaghawa = lx_kusha
-
-						name_list_roman = lx_cussanum
-						name_list_aragonese = lx_kuksa
-						name_list_romano_hispanic = lx_cuxano
-						name_list_romano_gothic = lx_cuxano
-						name_list_visigothic = lx_cuxano
-						name_list_basque = lx_kuksa
-						name_list_gallo_roman = lx_cuissan
-						name_list_occitan = lx_cuissA_
-					}
-				}
-			}
-			c_rossello = { #Emporion / Sordonia / Empòries, probably good to split between Emporitana in the south and Sordonia in the north.
-				color = { 176 95 88 }
-					cultural_names = {
-					name_list_roman = lx_emporitanum
-					name_list_aragonese = lx_sardoniscen
-					name_list_romano_hispanic = lx_emporidana
-					name_list_romano_gothic = lx_emporidana
-					name_list_visigothic = lx_emporidana
-					name_list_basque = lx_sardoniscen
-					name_list_gallo_roman = lx_emporion
-					name_list_occitan = lx_empories #Sordonha for the north
-					name_list_andalusian = cn_amburiya
-					name_list_baranis = cn_amburiya
-					name_list_bedouin = cn_amburiya
-					name_list_butr = cn_amburiya
-					name_list_egyptian = cn_amburiya
-					name_list_levantine = cn_amburiya
-					name_list_maghrebi = cn_amburiya
-					name_list_yemeni = cn_amburiya
-					name_list_zaghawa = cn_amburiya
-					}
-				can_be_named_after_dynasty = no
-
-				b_perpignan = { #Ruscino or Elna/Iliberis, might make an Elna barony later
-					color = { 176 95 88 }
-					province = 1866
-
-					cultural_names = {
-						name_list_andalusian = lx_ilna
-						name_list_baranis = lx_ilna
-						name_list_bedouin = lx_ilna
-						name_list_butr = lx_ilna
-						name_list_egyptian = lx_ilna
-						name_list_levantine = lx_ilna
-						name_list_maghrebi = lx_ilna
-						name_list_yemeni = lx_ilna
-						name_list_zaghawa = lx_ilna
-
-						name_list_roman = lx_ruscino
-						name_list_aragonese = lx_iliberi #Might make an Elna barony later
-						name_list_romano_hispanic = lx_rusciliona
-						name_list_romano_gothic = lx_rusciliona
-						name_list_visigothic = lx_rusciliona
-						name_list_basque = lx_iliberi
-						name_list_gallo_roman = lx_rossillon
-						name_list_occitan = lx_rossilho
-					}
-				}
-				b_roses = { #Emporion
-					color = { 176 95 88 }
-					province = 1865
-
-					cultural_names = {
-						name_list_andalusian = cn_amburiya
-						name_list_baranis = cn_amburiya
-						name_list_bedouin = cn_amburiya
-						name_list_butr = cn_amburiya
-						name_list_egyptian = cn_amburiya
-						name_list_levantine = cn_amburiya
-						name_list_maghrebi = cn_amburiya
-						name_list_yemeni = cn_amburiya
-						name_list_zaghawa = cn_amburiya
-
-						name_list_roman = lx_emporiae
-						name_list_aragonese = lx_emporias
-						name_list_romano_hispanic = lx_emporiae
-						name_list_romano_gothic = lx_emporiae
-						name_list_visigothic = lx_emporias
-						name_list_basque = lx_emporias
-						name_list_gallo_roman = lx_emporiae
-						name_list_occitan = lx_empories
-					}
-				}
-			}
-		}
-		d_toulouse = {
-			color = { 95 24 226 }
-			capital = c_toulouse
-
-			c_toulouse = {
-				color = { 95 24 226 }
-
-				b_toulouse = {
-					color = { 95 24 226 }
-					province = 2214
-				}
-
-				b_pamiers = {
-					color = { 95 24 226 }
-					province = 2211
-				}
-
-				b_castelsarrasin = {
-					color = { 95 24 226 }
-					province = 2213
-				}
-
-				b_beaumont_sur_leze = {
-					color = { 95 24 226 }
-					province = 2208
-				}
-			}
-
-			c_quercy = {
-				color = { 110 40 225 }
-
-				b_quercy = {
-					color = { 110 40 225 }
-					province = 2231
-				}
-
-				b_montauban = {
-					color = { 110 40 225 }
-					province = 2230
-				}
-
-				b_cahors = {
-					color = { 110 40 225 }
-					province = 2233
-				}
-
-				b_figeac = {
-					color = { 110 40 225 }
-					province = 2234
-				}
-			}
-
-			c_gevaudan = {
-				color = { 130 55 205 }
-
-				b_gevaudan = {
-					color = { 130 55 205 }
-					province = 2223
-				}
-
-				b_mende = {
-					color = { 130 55 205 }
-					province = 2221
-				}
-
-				b_saint_flour = {
-					color = { 130 55 205 }
-					province = 2224
-				}
-
-				b_langeac = {
-					color = { 130 55 205 }
-					province = 2291
-				}
-			}
-
-			c_rouergue = {
-				color = { 115 5 210 }
-
-				b_rodez = {
-					color = { 115 5 210 }
-					province = 2226
-				}
-
-				b_la_salle = {
-					color = { 115 5 210 }
-					province = 2228
-				}
-
-				b_marvejols = {
-					color = { 115 5 210 }
-					province = 2227
-				}
-
-				b_la_peyrade = {
-					color = { 115 5 210 }
-					province = 2229
-				}
-			}
-
-			c_millau = {
-				color = { 130 20 195 }
-
-				b_millau = {
-					color = { 130 20 195 }
-					province = 2222
-				}
-
-				b_navacelles = {
-					color = { 130 20 195 }
-					province = 2220
-				}
-			}
-			c_foix = { #Tectosagia, Tezaja, Tessaia
-				color = { 70 60 170 }
-
-					cultural_names = {
-						name_list_andalusian = lx_tisaya
-						name_list_baranis = lx_tisaya
-						name_list_bedouin = lx_tisaya
-						name_list_butr = lx_tisaya
-						name_list_egyptian = lx_tisaya
-						name_list_levantine = lx_tisaya
-						name_list_maghrebi = lx_tisaya
-						name_list_yemeni = lx_tisaya
-						name_list_zaghawa = lx_tisaya
-
-						name_list_roman = lx_tectosagia
-						name_list_aragonese = lx_sabartesken
-						name_list_romano_hispanic = lx_tessaia
-						name_list_romano_gothic = lx_tessaia
-						name_list_visigothic = lx_tesagia
-						name_list_basque = lx_sabartesken
-						name_list_gallo_roman = lx_tessaia
-						name_list_occitan = lx_tezaja
-					}
-				b_foix = {
-					color = { 70 60 170 }
-					province = 2209
-
-					cultural_names = {
-						name_list_andalusian = lx_fuwash
-						name_list_baranis = lx_fuwash
-						name_list_bedouin = lx_fuwash
-						name_list_butr = lx_fuwash
-						name_list_egyptian = lx_fuwash
-						name_list_levantine = lx_fuwash
-						name_list_maghrebi = lx_fuwash
-						name_list_yemeni = lx_fuwash
-						name_list_zaghawa = lx_fuwash
-
-						name_list_roman = lx_fuxum
-						name_list_aragonese = lx_sabarte
-						name_list_romano_hispanic = lx_fusco
-						name_list_romano_gothic = lx_foisco
-						name_list_visigothic = lx_fusco
-						name_list_basque = lx_sabarte
-						name_list_gallo_roman = lx_foisco
-						name_list_occitan = lx_fois
-					}
-				}
-
-				b_tarascon = {
-					color = { 70 60 170 }
-					province = 2210
-
-					cultural_names = {
-						name_list_andalusian = lx_taraskun
-						name_list_baranis = lx_taraskun
-						name_list_bedouin = lx_taraskun
-						name_list_butr = lx_taraskun
-						name_list_egyptian = lx_taraskun
-						name_list_levantine = lx_taraskun
-						name_list_maghrebi = lx_taraskun
-						name_list_yemeni = lx_taraskun
-						name_list_zaghawa = lx_taraskun
-
-						name_list_roman = lx_tarasco
-						name_list_aragonese = lx_tarascon
-						name_list_romano_hispanic = lx_tarascon
-						name_list_romano_gothic = lx_tarascona
-						name_list_visigothic = lx_tarascone
-						name_list_basque = lx_taraskon
-						name_list_gallo_roman = lx_tarascun
-						name_list_occitan = lx_tarascon
-					}
-				}
-
-				b_montbel = {
-					color = { 70 60 170 }
-					province = 2007
-
-					cultural_names = {
-						name_list_andalusian = lx_muntbil
-						name_list_baranis = lx_muntbil
-						name_list_bedouin = lx_muntbil
-						name_list_butr = lx_muntbil
-						name_list_egyptian = lx_muntbil
-						name_list_levantine = lx_muntbil
-						name_list_maghrebi = lx_muntbil
-						name_list_yemeni = lx_muntbil
-						name_list_zaghawa = lx_muntbil
-
-						name_list_roman = lx_monte_bello
-						name_list_aragonese = lx_montbel
-						name_list_romano_hispanic = lx_montbel
-						name_list_romano_gothic = lx_montbel
-						name_list_visigothic = lx_montebelo
-						name_list_basque = lx_montbel
-						name_list_gallo_roman = lx_montbel
-						name_list_occitan = lx_montbel
-					}
-				}
-			}
-		}
-
-		d_languedoc = {
-			color = { 90 80 190 }
-			capital = c_albi
-
-			c_albi = {
-				color = { 90 80 190 }
-
-				b_albi = {
-					color = { 90 80 190 }
-					province = 2215
-				}
-
-				b_castelnaudary = {
-					color = { 90 80 190 }
-					province = 2212
-				}
-			}
-
-			c_uses = {
-				color = { 130 120 230 }
-
-				b_montlaur = {
-					color = { 130 120 230 }
-					province = 2217
-				}
-
-				b_uses = {
-					color = { 130 120 230 }
-					province = 2216
-				}
-			}
-
-			c_montpellier = {
-				color = { 85 80 160 }
-
-				b_montpellier = {
-					color = { 85 80 160 }
-					province = 2015
-				}
-
-				b_nimes = {
-					color = { 85 80 160 }
-					province = 2016
-				}
-
-				b_cevennes = {
-					color = { 85 80 160 }
-					province = 2218
-				}
-			}
-
-			c_carcassonne = {
-				color = { 110 100 155 }
-
-				b_carcassonne = {
-					color = { 110 100 155 }
-					province = 2006
-				}
-
-				b_limoux = {
-					color = { 110 100 155 }
-					province = 2447
-				}
-
-				b_narbonne = {
-					color = { 110 100 155 }
-					province = 2005
-				}
-			}
-
-			c_beziers = {
-				color = { 115 100 220 }
-
-				b_beziers = {
-					color = { 115 100 220 }
-					province = 2013
-				}
-
-				b_lodeve = {
-					color = { 115 100 220 }
-					province = 2219
-				}
-
-				b_agde = {
-					color = { 115 100 220 }
-					province = 2014
-				}
-			}
-		}
-	}
-
-	k_brittany = {
-		color = { 197 215 217 }
-		capital = c_vannes
-
-		can_create = {
-			trigger_if = {
-				limit = {
-					is_ai = yes
-				}
-				culture = {
-					has_cultural_pillar = heritage_brythonic
-				}
-			}
-		}
-		ai_primary_priority = {
-			if = {
-				limit = {
-					culture = culture:breton
-				}
-				add = @correct_culture_primary_score
-			}
-		}
-
-		d_brittany = {
-			color = { 166 190 191 }
-			capital = c_vannes
-
-			c_vannes = {
-				color = { 145 170 171 }
-
-				b_vannes = {
-					color = { 145 170 171 }
-					province = 2154
-				}
-
-				b_porhoet = {
-					color = { 145 170 171 }
-					province = 2163
-				}
-
-				b_rohan = {
-					color = { 145 170 171 }
-					province = 2160
-				}
-			}
-
-			c_nantes = {
-				color = { 131 145 145 }
-
-				b_nantes = {
-					color = { 131 145 145 }
-					province = 2152
-				}
-
-				b_rais = {
-					color = { 131 145 145 }
-					province = 2151
-				}
-
-				b_guerande = {
-					color = { 131 145 145 }
-					province = 2153
-				}
-
-				b_chateaubriant = {
-					color = { 131 145 145 }
-					province = 2166
-				}
-			}
-
-			c_cornouaille = {
-				color = { 120 161 161 }
-
-				b_quimper = {
-					color = { 120 161 161 }
-					province = 2156
-				}
-
-				b_lorient = {
-					color = { 120 161 161 }
-					province = 2155
-				}
-
-				b_cornouailles = {
-					color = { 120 161 161 }
-					province = 2159
-				}
-			}
-
-			c_french_leon = {
-				color = { 69 97 97 }
-
-				b_brest = {
-					color = { 69 97 97 }
-					province = 2157
-				}
-
-				b_st_pol_de_leon = {
-					color = { 69 97 97 }
-					province = 2158
-				}
-			}
-
-			c_penthievre = {
-				color = { 81 133 133 }
-
-				b_saint_brieuc = {
-					color = { 81 133 133 }
-					province = 2162
-				}
-
-				b_treguier = {
-					color = { 81 133 133 }
-					province = 2161
-				}
-
-				b_saint_malo = {
-					color = { 81 133 133 }
-					province = 2164
-				}
-			}
-
-			c_rennes = {
-				color = { 137 199 199 }
-
-				b_rennes = {
-					color = { 137 199 199 }
-					province = 2165
-				}
-
-				b_combourg = {
-					color = { 137 199 199 }
-					province = 2282
-				}
-			}
-		}
-	}
-}
-
 e_germany = {
 	color = { 190 200 190 }
 	capital = c_frankfurt
@@ -27066,25 +23363,6 @@ e_egypt = {
 					province = 6096
 				}
 			}
-
-			c_siwa = {
-				color = { 106 225 140 }
-
-				b_siwa = {
-					color = { 106 225 140 }
-					province = 6093
-				}
-
-				b_ain_al-gharbi = {
-					color = { 106 225 140 }
-					province = 6092
-				}
-
-				b_qara = {
-					color = { 106 225 140 }
-					province = 6117
-				}
-			}
 		}
 
 		d_delta = {
@@ -27636,25 +23914,44 @@ e_egypt = {
 
 			c_barqa = {
 				color = { 34 152 65 }
-
+				cultural_names = {
+					name_list_greek = cn_kyrene
+					name_list_hellenistic = cn_kyrene
+				}
 				b_barqa-al-marj = {
 					color = { 34 152 65 }
 					province = 6104
+					cultural_names = {
+						name_list_greek = cn_kyrene
+						name_list_hellenistic = cn_kyrene
+					}
 				}
 
 				b_wadi_masus = {
 					color = { 34 152 65 }
 					province = 6102
+					cultural_names = {
+						name_list_greek = cn_appolonia
+						name_list_hellenistic = cn_appolonia
+					}
 				}
 
 				b_jabal_al-gharbi = {
 					color = { 34 152 65 }
 					province = 6103
+					cultural_names = {
+						name_list_greek = cn_ptolemais
+						name_list_hellenistic = cn_ptolemais
+					}
 				}
 
 				b_benghazi = {
 					color = { 34 152 65 }
 					province = 6105
+					cultural_names = {
+						name_list_greek = cn_berenice
+						name_list_hellenistic = cn_berenice
+					}
 				}
 			}
 
@@ -27702,6 +23999,24 @@ e_egypt = {
 				b_tobruk = {
 					color = { 40 158 71 }
 					province = 6098
+				}
+			}
+			c_siwa = {
+				color = { 106 225 140 }
+
+				b_siwa = {
+					color = { 106 225 140 }
+					province = 6093
+				}
+
+				b_ain_al-gharbi = {
+					color = { 106 225 140 }
+					province = 6092
+				}
+
+				b_qara = {
+					color = { 106 225 140 }
+					province = 6117
 				}
 			}
 		}
@@ -28016,103 +24331,902 @@ e_levant = {
 	k_syria = {
 		color = { 145 130 88 }
 		capital = c_antiocheia
+			cultural_names = {
+				name_list_hellenistic = lx_syria
+				name_list_greek = lx_syria
 
+				name_list_roman = lx_syria
+				##name_list_afro_roman = lx_syria
+				name_list_gallo_roman = lx_syria
+				name_list_romano_gothic = lx_syria
+
+				name_list_assyrian = lx_suriya
+				#name_list_punic = lx_suriya
+				name_list_radhanite = lx_aram
+
+				name_list_persian = lx_suristan
+				##name_list_parthian = lx_suristan
+				name_list_kurdish = lx_suriya
+
+				name_list_armenian = lx_asorik
+				name_list_georgian = lx_asoret_i
+
+				name_list_frankish = lx_surie
+				name_list_french = lx_syrie
+				name_list_occitan = lx_siria
+
+				name_list_norse = lx_syrland
+				name_list_swedish = lx_syrien
+				name_list_danish = lx_syrien
+				name_list_norwegian = lx_syria
+				##name_list_varangian = lx_syrien
+				##name_list_geatish = lx_syrien
+			}
 		d_aleppo = {
 			color = { 85 232 20 }
 			capital = c_aleppo
+				cultural_names = {
+					name_list_hellenistic = lx_chalybonitis
+					#name_list_macedonian = lx_chalybonitis
+					name_list_greek = lx_chalybonitis
+					#name_list_ausonian = lx_chalybonitis
 
+					name_list_roman = lx_chalybonitis
+					#name_list_afro_roman = lx_chalybonitis
+					name_list_gallo_roman = lx_chalybonitis
+					name_list_romano_gothic = lx_chalybonitis
+
+					#name_list_palmyrene = lx_halab
+					name_list_assyrian = lx_halab
+					#name_list_punic = lx_halab
+					name_list_radhanite = lx_aram_tzova
+
+					name_list_persian = lx_halabistan
+					#name_list_parthian = lx_halabistan
+					name_list_kurdish = lx_heleb
+
+					name_list_armenian = lx_halep
+					name_list_georgian = lx_halabi
+
+					name_list_frankish = lx_alep
+					name_list_french = lx_alep
+					name_list_occitan = lx_alep
+
+					name_list_norse = lx_halopsland
+					name_list_swedish = lx_halopsland
+					name_list_danish = lx_halopsland
+					name_list_norwegian = lx_halopsland
+					#name_list_varangian = lx_halopsland
+					#name_list_geatish = lx_halopsland
+				}
 			c_aleppo = {
 				color = { 91 238 26 }
+					cultural_names = {
+						name_list_hellenistic = lx_beroia
+						#name_list_macedonian = lx_beroia
+						name_list_greek = lx_beroia
+						#name_list_ausonian = lx_beroia
 
+						name_list_roman = lx_beroea
+						#name_list_afro_roman = lx_beroea
+						name_list_gallo_roman = lx_beroea
+						name_list_romano_gothic = lx_beroea
+
+						#name_list_palmyrene = lx_halab
+						name_list_assyrian = lx_halab
+						#name_list_punic = lx_halab
+						name_list_radhanite = lx_aram_tzova
+
+						name_list_persian = lx_halab
+						#name_list_parthian = lx_halab
+						name_list_kurdish = lx_heleb
+
+						name_list_armenian = lx_halep
+						name_list_georgian = lx_halabi
+
+						name_list_frankish = lx_alep
+						name_list_french = lx_alep
+						name_list_occitan = lx_alep
+
+						name_list_norse = lx_halop
+						name_list_swedish = lx_halop
+						name_list_danish = lx_halop
+						name_list_norwegian = lx_halop
+						#name_list_varangian = lx_halop
+						#name_list_geatish = lx_halop
+					}
 				b_halab = {
 					color = { 91 238 26 }
 					province = 5934
+
+						cultural_names = {
+							name_list_hellenistic = lx_beroia
+							#name_list_macedonian = lx_beroia
+							name_list_greek = lx_beroia
+							#name_list_ausonian = lx_beroia
+
+							name_list_roman = lx_beroea
+							#name_list_afro_roman = lx_beroea
+							name_list_gallo_roman = lx_beroea
+							name_list_romano_gothic = lx_beroea
+
+							#name_list_palmyrene = lx_halab
+							name_list_assyrian = lx_halab
+							#name_list_punic = lx_halab
+							name_list_radhanite = lx_aram_tzova
+
+							name_list_persian = lx_halab
+							#name_list_parthian = lx_halab
+							name_list_kurdish = lx_heleb
+
+							name_list_armenian = lx_halep
+							name_list_georgian = lx_halabi
+
+							name_list_frankish = lx_alep
+							name_list_french = lx_alep
+							name_list_occitan = lx_alep
+
+							name_list_norse = lx_halop
+							name_list_swedish = lx_halop
+							name_list_danish = lx_halop
+							name_list_norwegian = lx_halop
+							#name_list_varangian = lx_halop
+							#name_list_geatish = lx_halop
+						}
 				}
+				b_dabiq = {
+					color = { 91 238 26 }
+					province = 13281
+
+					cultural_names = {
+						name_list_hellenistic = lx_kiliza
+						name_list_greek = lx_kiliza
+
+						name_list_roman = lx_ciliza
+						name_list_gallo_roman = lx_ciliza
+						name_list_romano_gothic = lx_ciliza
+
+						name_list_assyrian = lx_dabiq
+						name_list_radhanite = lx_dabiq
+
+						name_list_persian = lx_kiliz
+						name_list_kurdish = lx_kilis
+
+						name_list_armenian = lx_kiliza
+						name_list_georgian = lx_kiliza
+
+						name_list_frankish = lx_cilise
+						name_list_french = lx_cilise
+						name_list_occitan = lx_cilisa
+
+						name_list_norse = lx_kilisa
+						name_list_swedish = lx_kilisa
+						name_list_danish = lx_kilisa
+						name_list_norwegian = lx_kilisa
+					}
+				} 
+				b_atarib = {
+					color = { 91 238 26 }
+					province = 13282
+
+					cultural_names = {
+						name_list_hellenistic = lx_niara
+						name_list_greek = lx_niara
+
+						name_list_roman = lx_niara
+						name_list_gallo_roman = lx_niara
+						name_list_romano_gothic = lx_niara
+
+						name_list_assyrian = lx_atarib
+						name_list_radhanite = lx_atarib
+
+						name_list_persian = lx_niyar
+						name_list_kurdish = lx_niyar
+
+						name_list_armenian = lx_niara
+						name_list_georgian = lx_niara
+
+						name_list_frankish = lx_niare
+						name_list_french = lx_niare
+						name_list_occitan = lx_niara
+
+						name_list_norse = lx_niari
+						name_list_swedish = lx_niari
+						name_list_danish = lx_niari
+						name_list_norwegian = lx_niari
+					}
+				}  
+				b_al_bab_aleppo = {
+					color = { 91 238 26 }
+					province = 13278
+
+					cultural_names = {
+						name_list_hellenistic = lx_batnai
+						name_list_greek = lx_batnai
+
+						name_list_roman = lx_batna
+						name_list_gallo_roman = lx_batna
+						name_list_romano_gothic = lx_batna
+
+						name_list_assyrian = lx_al_bab
+						name_list_radhanite = lx_bab
+
+						name_list_persian = lx_batna
+						name_list_kurdish = lx_bab
+
+						name_list_armenian = lx_batnak
+						name_list_georgian = lx_batnai
+
+						name_list_frankish = lx_batne
+						name_list_french = lx_batne
+						name_list_occitan = lx_batna
+
+						name_list_norse = lx_batna
+						name_list_swedish = lx_batna
+						name_list_danish = lx_batna
+						name_list_norwegian = lx_batna
+					}
+				}  
+				b_buzaa = {
+					color = { 91 238 26 }
+					province = 5938
+
+					cultural_names = {
+						name_list_hellenistic = lx_beselatha
+						#name_list_macedonian = lx_beselatha
+						name_list_greek = lx_beselatha
+						#name_list_ausonian = lx_beselatha
+
+						name_list_roman = lx_beselatha
+						#name_list_afro_roman = lx_beselatha
+						name_list_gallo_roman = lx_beselatha
+						name_list_romano_gothic = lx_beselatha
+
+						#name_list_palmyrene = lx_buzaa
+						name_list_assyrian = lx_buzaa
+						#name_list_punic = lx_buzaa
+						name_list_radhanite = lx_buzaa
+
+						name_list_persian = lx_beslah
+						#name_list_parthian = lx_beslak
+						name_list_kurdish = lx_buza
+
+						name_list_armenian = lx_beselat
+						name_list_georgian = lx_beselati
+
+						name_list_frankish = lx_besalda
+						name_list_french = lx_besalde
+						name_list_occitan = lx_besalda
+
+						name_list_norse = lx_basalti
+						name_list_swedish = lx_basalti
+						name_list_danish = lx_basalti
+						name_list_norwegian = lx_basalti
+						#name_list_varangian = lx_basalti
+						#name_list_geatish = lx_basalti
+					}
+				}
+			}
+			c_cyrrhestica = { #or manbij
+				color = { 101 218 36 }
+
+					cultural_names = {
+						name_list_hellenistic = lx_kyrrhestike
+						name_list_greek = lx_kyrrhestike
+						name_list_roman = lx_cyrrhestica
+						#name_list_afro_roman = lx_cyrrhestica
+						name_list_gallo_roman = lx_cyrrhestica
+						name_list_romano_gothic = lx_cyrrhestica
+
+						name_list_assyrian = lx_qorosh
+						name_list_radhanite = lx_qorosh
+						name_list_persian = lx_qorosh
+						name_list_kurdish = lx_qorosh
+
+						name_list_armenian = lx_kyrrhos
+						name_list_georgian = lx_kyrrhos
+						name_list_frankish = lx_coricie
+						name_list_french = lx_coricie
+						name_list_occitan = lx_coricie
+						name_list_norse = lx_kyrros
+						name_list_swedish = lx_kyrros
+						name_list_danish = lx_kyrros
+						name_list_norwegian = lx_kyrros
+					}
 
 				b_tall_afrin = {
 					color = { 91 238 26 }
 					province = 5906
+
+					cultural_names = {
+						name_list_hellenistic = lx_kyrrhos
+						name_list_greek = lx_kyrrhos
+						name_list_roman = lx_cyrrhus
+						#name_list_afro_roman = lx_cyrrhus
+						name_list_gallo_roman = lx_cyrrhus
+						name_list_romano_gothic = lx_cyrrhus
+
+						name_list_assyrian = lx_qorosh
+						name_list_radhanite = lx_qorosh
+						name_list_persian = lx_qorosh
+						name_list_kurdish = lx_qorosh
+
+						name_list_armenian = lx_kyrrhos
+						name_list_georgian = lx_kyrrhos
+						name_list_frankish = lx_coricie
+						name_list_french = lx_coricie
+						name_list_occitan = lx_coricie
+						name_list_norse = lx_kyrros
+						name_list_swedish = lx_kyrros
+						name_list_danish = lx_kyrros
+						name_list_norwegian = lx_kyrros
+					}
 				}
 
 				b_azaz = {
 					color = { 91 238 26 }
 					province = 5907
+
+					cultural_names = {
+						name_list_hellenistic = lx_azazion
+						#name_list_macedonian = lx_azazion
+						name_list_greek = lx_azazion
+						#name_list_ausonian = lx_azaz
+
+						name_list_roman = lx_azaz
+						#name_list_afro_roman = lx_azaz
+						name_list_gallo_roman = lx_azaz
+						name_list_romano_gothic = lx_azaz
+
+						#name_list_palmyrene = lx_azaz
+						name_list_assyrian = lx_hazazu
+						#name_list_punic = lx_azaz
+						name_list_radhanite = lx_azaz
+
+						name_list_persian = lx_azazag
+						#name_list_parthian = lx_azazak
+						name_list_kurdish = lx_azaz
+
+						name_list_armenian = lx_azazon
+						name_list_georgian = lx_azazoni
+
+						name_list_frankish = lx_azazon
+						name_list_french = lx_azazon
+						name_list_occitan = lx_azazon
+
+						name_list_norse = lx_azasun
+						name_list_swedish = lx_azason
+						name_list_danish = lx_azason
+						name_list_norwegian = lx_azason
+						#name_list_varangian = lx_azason
+						#name_list_geatish = lx_azason
+					}
 				}
 
 				b_manbij = {
 					color = { 91 238 26 }
 					province = 5908
-				}
 
-				b_buzaa = {
-					color = { 91 238 26 }
-					province = 5938
+					cultural_names = {
+						name_list_hellenistic = lx_bambyke
+						#name_list_macedonian = lx_bambyke
+						name_list_greek = lx_hierapolis
+						#name_list_ausonian = lx_hierapolis
+
+						name_list_roman = lx_hierapolis
+						#name_list_afro_roman = lx_hierapolis
+						name_list_gallo_roman = lx_hierapolis
+						name_list_romano_gothic = lx_hierapolis
+
+						#name_list_palmyrene = lx_mabbug
+						name_list_assyrian = lx_nappigu
+						#name_list_punic = lx_mabbug
+						name_list_radhanite = lx_mabbug
+
+						name_list_persian = lx_mabbog
+						#name_list_parthian = lx_mabbak
+						name_list_kurdish = lx_membij
+
+						name_list_armenian = lx_mambeg
+						name_list_georgian = lx_mambegi
+
+						name_list_frankish = lx_bambice
+						name_list_french = lx_bambice
+						name_list_occitan = lx_bambica
+
+						name_list_norse = lx_banvik
+						name_list_swedish = lx_banvik
+						name_list_danish = lx_banvik
+						name_list_norwegian = lx_banvik
+						#name_list_varangian = lx_banvik
+						#name_list_geatish = lx_banvik
+					}
 				}
 			}
 
 			c_suriya = {
 				color = { 87 234 22 }
+				cultural_names = {
+					name_list_hellenistic = lx_androna
+					#name_list_macedonian = lx_androna
+					name_list_greek = lx_androna
+					#name_list_ausonian = lx_androna
 
+					name_list_roman = lx_androna
+					#name_list_afro_roman = lx_androna
+					name_list_gallo_roman = lx_androna
+					name_list_romano_gothic = lx_androna
+
+					#name_list_palmyrene = lx_andarin
+					name_list_assyrian = lx_andarin
+					#name_list_punic = lx_andarin
+					name_list_radhanite = lx_andarin
+
+					name_list_persian = lx_andarin
+					#name_list_parthian = lx_andarin
+					name_list_kurdish = lx_andarin
+
+					name_list_armenian = lx_androna
+					name_list_georgian = lx_androna
+
+					name_list_frankish = lx_androne
+					name_list_french = lx_androne
+					name_list_occitan = lx_androna
+
+					name_list_norse = lx_andron
+					name_list_swedish = lx_androna
+					name_list_danish = lx_androna
+					name_list_norwegian = lx_androna
+					#name_list_varangian = lx_androna
+					#name_list_geatish = lx_androna
+				}
 				b_suriya = {
 					color = { 87 234 22 }
 					province = 5942
+					cultural_names = {
+						name_list_hellenistic = lx_seriana
+						#name_list_macedonian = lx_seriana
+						name_list_greek = lx_seriana
+						#name_list_ausonian = lx_seriana
+
+						name_list_roman = lx_seriana
+						#name_list_afro_roman = lx_seriana
+						name_list_gallo_roman = lx_seriana
+						name_list_romano_gothic = lx_seriana
+
+						#name_list_palmyrene = lx_ithriya
+						name_list_assyrian = lx_ithriya
+						#name_list_punic = lx_ithriya
+						name_list_radhanite = lx_ithriya
+
+						name_list_persian = lx_ithriya
+						#name_list_parthian = lx_ithriya
+						name_list_kurdish = lx_ithriya
+
+						name_list_armenian = lx_seriana
+						name_list_georgian = lx_seriana
+
+						name_list_frankish = lx_seriane
+						name_list_french = lx_seriane
+						name_list_occitan = lx_seriana
+
+						name_list_norse = lx_serian
+						name_list_swedish = lx_seriana
+						name_list_danish = lx_seriana
+						name_list_norwegian = lx_seriana
+						#name_list_varangian = lx_seriana
+						#name_list_geatish = lx_seriana
+					}
 				}
 
 				b_khunasira = {
 					color = { 87 234 22 }
 					province = 5941
+					cultural_names = {
+						name_list_hellenistic = lx_androna
+						#name_list_macedonian = lx_androna
+						name_list_greek = lx_androna
+						#name_list_ausonian = lx_androna
+
+						name_list_roman = lx_androna
+						#name_list_afro_roman = lx_androna
+						name_list_gallo_roman = lx_androna
+						name_list_romano_gothic = lx_androna
+
+						#name_list_palmyrene = lx_andarin
+						name_list_assyrian = lx_andarin
+						#name_list_punic = lx_andarin
+						name_list_radhanite = lx_andarin
+
+						name_list_persian = lx_andarin
+						#name_list_parthian = lx_andarin
+						name_list_kurdish = lx_andarin
+
+						name_list_armenian = lx_androna
+						name_list_georgian = lx_androna
+
+						name_list_frankish = lx_androne
+						name_list_french = lx_androne
+						name_list_occitan = lx_androna
+
+						name_list_norse = lx_andron
+						name_list_swedish = lx_androna
+						name_list_danish = lx_androna
+						name_list_norwegian = lx_androna
+						#name_list_varangian = lx_androna
+						#name_list_geatish = lx_androna
+					}
+
 				}
 			}
 
 			c_syrrusafa = {
 				color = { 84 238 26 }
 
+				cultural_names = {
+					name_list_hellenistic = lx_sergioupolis
+					#name_list_macedonian = lx_sergioupolis
+					name_list_greek = lx_sergioupolis
+					#name_list_ausonian = lx_sergiopolis
+
+					name_list_roman = lx_sergiopolis
+					#name_list_afro_roman = lx_sergiopolis
+					name_list_gallo_roman = lx_sergiopolis
+					name_list_romano_gothic = lx_sergiopolis
+
+					#name_list_palmyrene = lx_rusafa
+					name_list_assyrian = lx_rusafa
+					#name_list_punic = lx_rusafa
+					name_list_radhanite = lx_rusafa
+
+					name_list_persian = lx_rusaf
+					#name_list_parthian = lx_rusaf
+					name_list_kurdish = lx_rusafa
+
+					name_list_armenian = lx_sergiopol
+					name_list_georgian = lx_sergiopoli
+
+					name_list_frankish = lx_sergiople
+					name_list_french = lx_sirjople
+					name_list_occitan = lx_sirgepla
+
+					name_list_norse = lx_serkiborg
+					name_list_swedish = lx_sergiborg
+					name_list_danish = lx_sergiborg
+					name_list_norwegian = lx_sergiborg
+					#name_list_varangian = lx_sergiborg
+					#name_list_geatish = lx_sergiborg
+				}
+
 				b_ar-rusafa = {
 					color = { 84 238 26 }
 					province = 5940
+
+					cultural_names = {
+						name_list_hellenistic = lx_sergioupolis
+						name_list_greek = lx_sergioupolis
+						name_list_roman = lx_sergiopolis
+						name_list_gallo_roman = lx_sergiopolis
+						name_list_romano_gothic = lx_sergiopolis
+						#name_list_hellenistic = lx_resapha
+						#name_list_greek = lx_resapha
+						#name_list_roman = lx_risapa
+						#name_list_gallo_roman = lx_risapa
+						#name_list_romano_gothic = lx_risapa
+
+						name_list_assyrian = lx_rusafa
+						name_list_radhanite = lx_rusafa
+						name_list_persian = lx_rusaf
+						name_list_kurdish = lx_rusafa
+						name_list_armenian = lx_resapha
+						name_list_georgian = lx_resapa
+
+						name_list_frankish = lx_sergiople
+						name_list_french = lx_sirjople
+						name_list_occitan = lx_sirgepla
+						name_list_norse = lx_serkiborg
+						name_list_swedish = lx_sergiborg
+						name_list_danish = lx_sergiborg
+						name_list_norwegian = lx_sergiborg
+					}
 				}
 
 				b_siffin = {
 					color = { 84 238 26 }
 					province = 5939
+
+					cultural_names = {
+						name_list_hellenistic = lx_barbalissos
+						#name_list_macedonian = lx_barbalissos
+						name_list_greek = lx_barbalissos
+						#name_list_ausonian = lx_barbalissus
+
+						name_list_roman = lx_barbalissus
+						name_list_gallo_roman = lx_barbalissus
+						name_list_romano_gothic = lx_barbalissus
+
+						name_list_assyrian = lx_siffin
+						name_list_radhanite = lx_siffin
+
+						name_list_persian = lx_siffin
+						name_list_kurdish = lx_siffin
+
+						name_list_armenian = lx_barbalissos
+						name_list_georgian = lx_barbalissos
+
+						name_list_frankish = lx_barbaris
+						name_list_french = lx_barbaris
+						name_list_occitan = lx_barbaris
+
+						name_list_norse = lx_barbalis
+						name_list_swedish = lx_barbalis
+						name_list_danish = lx_barbalis
+						name_list_norwegian = lx_barbalis
+					}
 				}
 			}
 
 			c_qinnasrin = {
 				color = { 84 220 20 }
+				cultural_names = {
+					name_list_hellenistic = lx_chalkidike
+					name_list_greek = lx_chalkidike
+					name_list_roman = lx_chalcidica
+					name_list_gallo_roman = lx_chalcidica
+					name_list_romano_gothic = lx_chalcidica
 
+					name_list_assyrian = lx_arra
+					name_list_radhanite = lx_arra
+					name_list_persian = lx_arra
+					name_list_kurdish = lx_arra
+					name_list_armenian = lx_chalkidike
+					name_list_georgian = lx_chalkidike
+
+					name_list_frankish = lx_canestrina
+					name_list_french = lx_canestrina
+					name_list_occitan = lx_canestrina
+					name_list_norse = lx_kalkida
+					name_list_swedish = lx_kalkida
+					name_list_danish = lx_kalkida
+					name_list_norwegian = lx_kalkida
+				}
 				b_qinnasrin = {
 					color = { 84 220 20 }
 					province = 5933
+
+					cultural_names = {
+						name_list_hellenistic = lx_chalkis
+						name_list_greek = lx_chalkis
+						name_list_roman = lx_chalcis_ad_belum
+						#name_list_afro_roman = lx_chalcis_ad_belum
+						name_list_gallo_roman = lx_chalcis_ad_belum
+						name_list_romano_gothic = lx_chalcis_ad_belum
+
+						name_list_assyrian = lx_qinnasrin
+						name_list_radhanite = lx_qinnasrin
+						name_list_persian = lx_qinnasrin
+						name_list_kurdish = lx_qinnasrin
+						name_list_armenian = lx_chalkis
+						name_list_georgian = lx_chalkis
+
+						name_list_frankish = lx_canestrina
+						name_list_french = lx_canestrina
+						name_list_occitan = lx_canestrina	
+						name_list_norse = lx_kalkis
+						name_list_swedish = lx_kalkis
+						name_list_danish = lx_kalkis
+						name_list_norwegian = lx_kalkis
+					}
 				}
 
 				b_artah = {
 					color = { 84 220 20 }
 					province = 5935
-				}
 
+					cultural_names = {
+						name_list_hellenistic = lx_arta
+						name_list_greek = lx_arta
+						name_list_roman = lx_arta
+						#name_list_afro_roman = lx_arta
+						name_list_gallo_roman = lx_arta
+						name_list_romano_gothic = lx_arta
+
+						name_list_assyrian = lx_artah
+						name_list_radhanite = lx_artah
+						name_list_persian = lx_artah
+						name_list_kurdish = lx_arta
+						name_list_armenian = lx_artak
+						name_list_georgian = lx_artaki
+
+						name_list_frankish = lx_artas
+						name_list_french = lx_artas
+						name_list_occitan = lx_arta
+
+						name_list_norse = lx_arta
+						name_list_swedish = lx_arta
+						name_list_danish = lx_arta
+						name_list_norwegian = lx_arta
+					}
+				}
+				b_immai = {
+					color = { 84 220 20 }
+					province = 13274 
+
+					cultural_names = {
+						name_list_hellenistic = lx_thelmenissos
+						name_list_greek = lx_thelmenissos
+						name_list_roman = lx_thelmenissus
+						name_list_gallo_roman = lx_thelmenissus
+						name_list_romano_gothic = lx_thelmenissus
+
+						name_list_assyrian = lx_immai
+						name_list_radhanite = lx_immai
+						name_list_persian = lx_immai
+						name_list_kurdish = lx_immai
+
+						name_list_armenian = lx_thelmenis
+						name_list_georgian = lx_thelmenisi
+						name_list_frankish = lx_telmenis
+						name_list_french = lx_telmenis
+						name_list_occitan = lx_telmenis
+						name_list_norse = lx_telmenis
+						name_list_swedish = lx_telmenis
+						name_list_danish = lx_telmenis
+						name_list_norwegian = lx_telmenis
+					}
+
+				}
 				b_ar-rikha = {
 					color = { 84 220 20 }
 					province = 5936
+
+					cultural_names = {
+						name_list_hellenistic = lx_maronias
+						name_list_greek = lx_maronias
+						name_list_roman = lx_maronia
+						#name_list_afro_roman = lx_maronia
+						name_list_gallo_roman = lx_maronia
+						name_list_romano_gothic = lx_maronia
+
+						name_list_assyrian = lx_riha
+						#name_list_punic = lx_ariha
+						name_list_radhanite = lx_ariha
+						name_list_persian = lx_riha
+						name_list_kurdish = lx_riha
+						name_list_armenian = lx_maronias
+						name_list_georgian = lx_maroniasi
+
+						name_list_frankish = lx_maronie
+						name_list_french = lx_maronie
+						name_list_occitan = lx_maronia
+						name_list_norse = lx_maron
+						name_list_swedish = lx_maronia
+						name_list_danish = lx_maronia
+						name_list_norwegian = lx_maronia
+					}
 				}
 			}
 		}
 
-		d_palmyra = {
+		d_palmyra = { #Palmyra and Damascus were the main towns of the Coele-Syria, or the "Empty Syria". Maybe worth a k title?
 			color = { 35 232 20 }
 			capital = c_palmyra
+			cultural_names = {
+				name_list_hellenistic = lx_palmyrene
+				name_list_greek = lx_palmyrene
 
+				name_list_roman = lx_palmyrena
+				name_list_gallo_roman = lx_palmyrena
+				name_list_romano_gothic = lx_palmyrena
+
+				name_list_assyrian = lx_tadmor
+				name_list_radhanite = lx_tadmor
+
+				name_list_persian = lx_tadmor
+				name_list_kurdish = lx_tedmur
+
+				name_list_armenian = lx_palmyra
+				name_list_georgian = lx_palmyra
+
+				name_list_frankish = lx_palmyre
+				name_list_french = lx_palmyre
+				name_list_occitan = lx_palmira
+
+				name_list_norse = lx_palmyra
+				name_list_swedish = lx_palmyra
+				name_list_danish = lx_palmyra
+				name_list_norwegian = lx_palmyra
+			}
 			c_palmyra = {
 				color = { 89 236 24 }
+				cultural_names = {
+					name_list_hellenistic = lx_palmyra
+					name_list_greek = lx_palmyra
 
+					name_list_roman = lx_palmyra
+					name_list_gallo_roman = lx_palmyra
+					name_list_romano_gothic = lx_palmyra
+
+					name_list_assyrian = lx_tadmor
+					name_list_radhanite = lx_tadmor
+
+					name_list_persian = lx_tadmor
+					name_list_kurdish = lx_tedmur
+
+					name_list_armenian = lx_palmyra
+					name_list_georgian = lx_palmyra
+
+					name_list_frankish = lx_palmyre
+					name_list_french = lx_palmyre
+					name_list_occitan = lx_palmira
+
+					name_list_norse = lx_palmyra
+					name_list_swedish = lx_palmyra
+					name_list_danish = lx_palmyra
+					name_list_norwegian = lx_palmyra
+				}
 				b_tadmur = {
 					color = { 89 236 24 }
 					province = 5948
+
+					cultural_names = {
+						name_list_hellenistic = lx_palmyra
+						name_list_greek = lx_palmyra
+
+						name_list_roman = lx_palmyra
+						name_list_gallo_roman = lx_palmyra
+						name_list_romano_gothic = lx_palmyra
+
+						name_list_assyrian = lx_tadmor
+						name_list_radhanite = lx_tadmor
+
+						name_list_persian = lx_tadmor
+						name_list_kurdish = lx_tedmur
+
+						name_list_armenian = lx_palmyra
+						name_list_georgian = lx_palmyra
+
+						name_list_frankish = lx_palmyre
+						name_list_french = lx_palmyre
+						name_list_occitan = lx_palmira
+
+						name_list_norse = lx_palmyra
+						name_list_swedish = lx_palmyra
+						name_list_danish = lx_palmyra
+						name_list_norwegian = lx_palmyra
+					}
 				}
 
 				b_arak = {
 					color = { 89 236 24 }
 					province = 5947
+
+					cultural_names = {
+						name_list_hellenistic = lx_aracha
+						name_list_greek = lx_aracha
+
+						name_list_roman = lx_aracha
+						name_list_gallo_roman = lx_aracha
+						name_list_romano_gothic = lx_aracha
+
+						name_list_assyrian = lx_arak
+						name_list_radhanite = lx_arak
+
+						name_list_persian = lx_arak
+						name_list_kurdish = lx_arak
+
+						name_list_armenian = lx_arakha
+						name_list_georgian = lx_arakha
+
+						name_list_frankish = lx_arac
+						name_list_french = lx_arac
+						name_list_occitan = lx_arac
+
+						name_list_norse = lx_arak
+						name_list_swedish = lx_arak
+						name_list_danish = lx_arak
+						name_list_norwegian = lx_arak
+					}
 				}
 			}
 
@@ -28183,8 +25297,14 @@ e_levant = {
 				b_shayzar = {
 					color = { 93 252 34 }
 					province = 5915
-				}
 
+					cultural_names = {
+						name_list_greek = cn_sezer
+					}
+				}
+			}
+			c_masyaf = {
+				color = { 103 252 54 }
 				b_masyaf = {
 					color = { 93 252 34 }
 					province = 5914
@@ -28198,7 +25318,10 @@ e_levant = {
 					color = { 95 242 30 }
 					province = 5930
 				}
-
+				b_idlib = {
+					color = { 95 242 30 }
+					province = 13275
+				}
 				b_salamiya = {
 					color = { 95 242 30 }
 					province = 5931
@@ -28214,28 +25337,396 @@ e_levant = {
 		d_antioch = {
 			color = { 142 63 129 }
 			capital = c_antiocheia
+			cultural_names = {
+				name_list_hellenistic = lx_antiochis
+				name_list_greek = lx_antiochis
 
+				name_list_roman = lx_antiochis
+				name_list_gallo_roman = lx_antiochis
+				name_list_romano_gothic = lx_antiochis
+
+				name_list_assyrian = lx_antakiya
+				name_list_radhanite = lx_antokhya
+
+				name_list_persian = lx_antakiya
+				name_list_kurdish = lx_antakiya
+
+				name_list_armenian = lx_andiok
+				name_list_georgian = lx_antokia
+
+				name_list_frankish = lx_antioche
+				name_list_french = lx_antioche
+				name_list_occitan = lx_antioca
+
+				name_list_norse = lx_antjokerriki #Attested as Anteócía, which may be read as Antjókia.
+				name_list_swedish = lx_antjokerriki
+				name_list_danish = lx_antjokerriki
+				name_list_norwegian = lx_antjokerriki
+			}
 			c_antiocheia = {
 				color = { 152 69 135 }
+				cultural_names = {
+					name_list_hellenistic = lx_antiocheia
+					name_list_greek = lx_antiocheia
 
+					name_list_roman = lx_antiochia_ad_orontem
+					name_list_gallo_roman = lx_antiochia_ad_orontem
+					name_list_romano_gothic = lx_antiochia_ad_orontem
+
+					name_list_assyrian = lx_antakiya
+					name_list_radhanite = lx_antokhya
+
+					name_list_persian = lx_antakiya
+					name_list_kurdish = lx_antakiya
+
+					name_list_armenian = lx_andiok
+					name_list_georgian = lx_antokia
+
+					name_list_frankish = lx_antioche
+					name_list_french = lx_antioche
+					name_list_occitan = lx_antioca
+
+					name_list_norse = lx_antiok
+					name_list_swedish = lx_antiok
+					name_list_danish = lx_antiok
+					name_list_norwegian = lx_antiok
+				}
 				b_antiocheia = {
 					color = { 152 69 135 }
 					province = 5910
+
+					cultural_names = {
+						name_list_hellenistic = lx_antiocheia
+						name_list_greek = lx_antiocheia
+
+						name_list_roman = lx_antiochia_ad_orontem
+						name_list_gallo_roman = lx_antiochia_ad_orontem
+						name_list_romano_gothic = lx_antiochia_ad_orontem
+
+						name_list_assyrian = lx_antakiya
+						name_list_radhanite = lx_antokhya
+
+						name_list_persian = lx_antakiya
+						name_list_kurdish = lx_antakiya
+
+						name_list_armenian = lx_andiok
+						name_list_georgian = lx_antokia
+
+						name_list_frankish = lx_antioche
+						name_list_french = lx_antioche
+						name_list_occitan = lx_antioca
+
+						name_list_norse = lx_antikisborg
+						name_list_swedish = lx_antikisborg
+						name_list_danish = lx_antikisborg
+						name_list_norwegian = lx_antikisborg
+					}
 				}
 
-				b_as-suwaydiya = {
+				b_as-suwaydiya = { #Gephyra, the Iron Bridge.
 					color = { 152 69 135 }
 					province = 5909
+
+					cultural_names = {
+						name_list_hellenistic = lx_gephyra
+						name_list_greek = lx_gephyra
+
+						name_list_roman = lx_gephyra
+						name_list_gallo_roman = lx_gephyra
+						name_list_romano_gothic = lx_gephyra
+
+						name_list_assyrian = lx_suwaydiya
+						name_list_radhanite = lx_suwaydiya
+
+						name_list_persian = lx_suwaydiya
+						name_list_kurdish = lx_suwaydiya
+
+						name_list_armenian = lx_gephyra
+						name_list_georgian = lx_gephyra
+
+						name_list_frankish = lx_pontfer
+						name_list_french = lx_pontfer
+						name_list_occitan = lx_pontferrat
+
+						name_list_norse = lx_jarnbru
+						name_list_swedish = lx_jarnbru
+						name_list_danish = lx_jarnbru
+						name_list_norwegian = lx_jarnbru
+					}
+				}
+				b_seleukia_pieira = { #Ancient harbor of Antioch, as-Suwadiya, IRL the Orontes filled it with silt and by the time of the Crusades there was a new harbor some km away, called Port St Symeon.
+					color = { 152 69 135 }
+					province = 13270
+
+					cultural_names = {
+						name_list_hellenistic = lx_seleukeia_pieria
+						name_list_greek = lx_seleukeia_pieria
+
+						name_list_roman = lx_seleucia_pieria
+						name_list_gallo_roman = lx_seleucia_pieria
+						name_list_romano_gothic = lx_seleucia_pieria
+
+						name_list_assyrian = lx_suwaydiya
+						name_list_radhanite = lx_suwaydiya
+
+						name_list_persian = lx_suwaydiya
+						name_list_kurdish = lx_suwaydiya
+
+						name_list_armenian = lx_selewkia
+						name_list_georgian = lx_seleukeia
+
+						name_list_frankish = lx_saint_simeon
+						name_list_french = lx_saint_simeon
+						name_list_occitan = lx_sant_simeon
+
+						name_list_norse = lx_seleukja
+						name_list_swedish = lx_seleukja
+						name_list_danish = lx_seleukja
+						name_list_norwegian = lx_seleukja
+					}
+				} 
+				b_daphne_antioch = { #Luxury villae and resort gardens.
+					color = { 152 69 135 }
+					province = 13271
+
+					cultural_names = {
+						name_list_hellenistic = lx_daphne
+						name_list_greek = lx_daphne
+
+						name_list_roman = lx_daphne
+						name_list_gallo_roman = lx_daphne
+						name_list_romano_gothic = lx_daphne
+
+						name_list_assyrian = lx_beit_el_ma
+						name_list_radhanite = lx_daphne
+
+						name_list_persian = lx_dafni
+						name_list_kurdish = lx_dafni
+
+						name_list_armenian = lx_dapne
+						name_list_georgian = lx_dapne
+
+						name_list_frankish = lx_dafne
+						name_list_french = lx_dafne
+						name_list_occitan = lx_dafne
+
+						name_list_norse = lx_tafni
+						name_list_swedish = lx_tafni
+						name_list_danish = lx_tafni
+						name_list_norwegian = lx_tafni
+					}
+				} 
+				b_charandama = {
+					color = { 152 69 135 }
+					province = 13272
+
+					cultural_names = {
+						name_list_hellenistic = lx_charandama
+						name_list_greek = lx_charandama
+
+						name_list_roman = lx_charandama
+						name_list_gallo_roman = lx_charandama
+						name_list_romano_gothic = lx_charandama
+
+						name_list_assyrian = lx_charandama
+						name_list_radhanite = lx_charandama
+
+						name_list_persian = lx_kharandam
+						name_list_kurdish = lx_kharandam
+
+						name_list_armenian = lx_charandam
+						name_list_georgian = lx_charandama
+
+						name_list_frankish = lx_carandame
+						name_list_french = lx_carandame
+						name_list_occitan = lx_carandama
+
+						name_list_norse = lx_karandama
+						name_list_swedish = lx_karandama
+						name_list_danish = lx_karandama
+						name_list_norwegian = lx_karandama
+					}
+				} 
+				b_lysias = {
+					color = { 152 69 135 }
+					province = 13273
+
+					cultural_names = {
+						name_list_hellenistic = lx_lysias
+						name_list_greek = lx_lysias
+
+						name_list_roman = lx_lysias
+						name_list_gallo_roman = lx_lysias
+						name_list_romano_gothic = lx_lysias
+
+						name_list_assyrian = lx_burzay
+						name_list_radhanite = lx_burzay
+
+						name_list_persian = lx_burzay
+						name_list_kurdish = lx_burzay
+
+						name_list_armenian = lx_lisias
+						name_list_georgian = lx_lisiasi
+
+						name_list_frankish = lx_lysias
+						name_list_french = lx_lysias
+						name_list_occitan = lx_lisias
+
+						name_list_norse = lx_lysias
+						name_list_swedish = lx_lysias
+						name_list_danish = lx_lysias
+						name_list_norwegian = lx_lysias
+					}
+				} 
+			}
+			c_latakia = {
+				color = { 142 79 135 }
+
+				cultural_names = {
+					name_list_hellenistic = lx_kasiotis
+					name_list_greek = lx_kasiotis
+					name_list_roman = lx_casiotis
+					name_list_gallo_roman = lx_casiotis
+					name_list_romano_gothic = lx_casiotis
+
+					name_list_assyrian = lx_al_ladhiqiyya
+					name_list_radhanite = lx_ladikya
+					name_list_persian = lx_ladhiqiya
+					name_list_kurdish = lx_latakya
+					name_list_armenian = lx_kasiotis
+					name_list_georgian = lx_kasiotis
+					name_list_frankish = lx_lataquia
+					name_list_french = lx_lataquie
+					name_list_occitan = lx_lataquia
+					name_list_norse = lx_ladikia
+					name_list_swedish = lx_ladikia
+					name_list_danish = lx_ladikia
+					name_list_norwegian = lx_ladikia
 				}
 
 				b_latakia = {
 					color = { 152 69 135 }
 					province = 5912
-				}
 
+					cultural_names = {
+						name_list_hellenistic = lx_laodikeia
+						name_list_greek = lx_laodikeia
+
+						name_list_roman = lx_laodicea_ad_mare
+						name_list_gallo_roman = lx_laodicea_ad_mare
+						name_list_romano_gothic = lx_laodicea_ad_mare
+
+						name_list_assyrian = lx_al_ladhiqiyya
+						name_list_radhanite = lx_ladikya
+
+						name_list_persian = lx_ladhiqiya
+						name_list_kurdish = lx_latakya
+
+						name_list_armenian = lx_ladikia
+						name_list_georgian = lx_laodikeia
+
+						name_list_frankish = lx_lataquie
+						name_list_french = lx_lataquie
+						name_list_occitan = lx_lataquia
+
+						name_list_norse = lx_ladikia
+						name_list_swedish = lx_ladikia
+						name_list_danish = lx_ladikia
+						name_list_norwegian = lx_ladikia
+					}
+				}
+				b_posideion = {
+					color = { 152 69 135 }
+					province = 13276
+
+					cultural_names = {
+						name_list_hellenistic = lx_posideion
+						name_list_greek = lx_posideion
+
+						name_list_roman = lx_posidium
+						name_list_gallo_roman = lx_posidium
+						name_list_romano_gothic = lx_posidium
+
+						name_list_assyrian = lx_al_bassit
+						name_list_radhanite = lx_bassit
+
+						name_list_persian = lx_basit
+						name_list_kurdish = lx_basit
+
+						name_list_armenian = lx_posideion
+						name_list_georgian = lx_posideioni
+
+						name_list_frankish = lx_poside
+						name_list_french = lx_poside
+						name_list_occitan = lx_posidia
+
+						name_list_norse = lx_posideia
+						name_list_swedish = lx_posideia
+						name_list_danish = lx_posideia
+						name_list_norwegian = lx_posideia
+					}
+				} 
+				b_sahyin = {
+					color = { 152 69 135 }
+					province = 13277
+
+					cultural_names = {
+						name_list_hellenistic = lx_sigon
+						name_list_greek = lx_sigon
+
+						name_list_roman = lx_sigon
+						name_list_gallo_roman = lx_sigon
+						name_list_romano_gothic = lx_sigon
+
+						name_list_assyrian = lx_sahyun
+						name_list_radhanite = lx_sahyun
+
+						name_list_persian = lx_sahyun
+						name_list_kurdish = lx_sahyun
+
+						name_list_armenian = lx_sigon
+						name_list_georgian = lx_sigoni
+
+						name_list_frankish = lx_saone
+						name_list_french = lx_saone
+						name_list_occitan = lx_saona
+
+						name_list_norse = lx_sagon
+						name_list_swedish = lx_sagon
+						name_list_danish = lx_sagon
+						name_list_norwegian = lx_sagon
+					}
+				} 
 				b_jabala = {
 					color = { 152 69 135 }
 					province = 5911
+
+					cultural_names = {
+						name_list_hellenistic = lx_gabala
+						name_list_greek = lx_gabala
+
+						name_list_roman = lx_gabala
+						name_list_gallo_roman = lx_gabala
+						name_list_romano_gothic = lx_gabala
+
+						name_list_assyrian = lx_jabala
+						name_list_radhanite = lx_jabala
+
+						name_list_persian = lx_jabala
+						name_list_kurdish = lx_jabala
+
+						name_list_armenian = lx_gabal
+						name_list_georgian = lx_gabala
+
+						name_list_frankish = lx_gibellum
+						name_list_french = lx_gibellum
+						name_list_occitan = lx_gibellum
+
+						name_list_norse = lx_gabala
+						name_list_swedish = lx_gabala
+						name_list_danish = lx_gabala
+						name_list_norwegian = lx_gabala
+					}
 				}
 			}
 
@@ -28249,28 +25740,149 @@ e_levant = {
 					name_list_levantine = cn_iskandarun
 					name_list_maghrebi = cn_iskandarun
 					name_list_turkish = cn_iskandarun
+
+					name_list_hellenistic = lx_pierike
+					name_list_greek = lx_pierike
+
+					name_list_roman = lx_pierica
+					name_list_gallo_roman = lx_pierica
+					name_list_romano_gothic = lx_pierica
+
+					name_list_assyrian = lx_iskandarun
+					name_list_radhanite = lx_iskandarun
+
+					name_list_persian = lx_iskandarun
+					name_list_kurdish = lx_iskenderun
+
+					name_list_armenian = lx_pierike
+					name_list_georgian = lx_pierike
+
+					name_list_frankish = lx_alexandrette
+					name_list_french = lx_alexandrette
+					name_list_occitan = lx_alexandreta
+
+					name_list_norse = lx_iskandrun
+					name_list_swedish = lx_iskandrun
+					name_list_danish = lx_iskandrun
+					name_list_norwegian = lx_iskandrun
 				}
 
 				b_alexandretta = {
 					color = { 112 197 50 }
 					province = 5905
-				}
 
-				b_qurus = {
-					color = { 112 197 50 }
-					province = 5903
+					cultural_names = {
+						name_list_andalusian = cn_iskandarun
+						name_list_bedouin = cn_iskandarun
+						name_list_egyptian = cn_iskandarun
+						name_list_levantine = cn_iskandarun
+						name_list_maghrebi = cn_iskandarun
+						name_list_turkish = cn_iskandarun
+
+						name_list_hellenistic = lx_alexandreia_kat_isson
+						name_list_greek = lx_alexandreia_kat_isson
+
+						name_list_roman = lx_alexandretta
+						name_list_gallo_roman = lx_alexandretta
+						name_list_romano_gothic = lx_alexandretta
+
+						name_list_assyrian = lx_iskandarun
+						name_list_radhanite = lx_iskandarun
+
+						name_list_persian = lx_iskandarun
+						name_list_kurdish = lx_iskenderun
+
+						name_list_armenian = lx_iskandarun
+						name_list_georgian = lx_iskandarun
+
+						name_list_frankish = lx_alexandrette
+						name_list_french = lx_alexandrette
+						name_list_occitan = lx_alexandreta
+
+						name_list_norse = lx_iskandrun
+						name_list_swedish = lx_iskandrun
+						name_list_danish = lx_iskandrun
+						name_list_norwegian = lx_iskandrun
+					}
 				}
+				b_myriandros = {
+					color = { 112 197 50 }
+					province = 13280
+					cultural_names = {
+						name_list_hellenistic = lx_myriandros
+						name_list_greek = lx_myriandros
+
+						name_list_roman = lx_myriandrus
+						name_list_gallo_roman = lx_myriandrus
+						name_list_romano_gothic = lx_myriandrus
+
+						name_list_assyrian = lx_myriandros
+						name_list_radhanite = lx_myriandros
+
+						name_list_persian = lx_miryandur
+						name_list_kurdish = lx_miryandir
+
+						name_list_armenian = lx_myriandros
+						name_list_georgian = lx_myriandrosi
+
+						name_list_frankish = lx_miriandre
+						name_list_french = lx_miriandre
+						name_list_occitan = lx_miriandra
+
+						name_list_norse = lx_myriandr
+						name_list_swedish = lx_myriandr
+						name_list_danish = lx_myriandr
+						name_list_norwegian = lx_myriandr
+					}
+				}
+				b_trapessac = {
+					color = { 112 197 50 }
+					province = 13279
+					cultural_names = {
+						name_list_hellenistic = lx_syriai_pylai
+						name_list_greek = lx_syriai_pylai
+
+						name_list_roman = lx_portae_syriae
+						name_list_gallo_roman = lx_portae_syriae
+						name_list_romano_gothic = lx_portae_syriae
+
+						name_list_assyrian = lx_darbesac
+						name_list_radhanite = lx_darbesac
+
+						name_list_persian = lx_darbasaq
+						name_list_kurdish = lx_darbesaq
+
+						name_list_armenian = lx_trapessak
+						name_list_georgian = lx_trapessaki
+
+						name_list_frankish = lx_trapessac
+						name_list_french = lx_trapessac
+						name_list_occitan = lx_trapessac
+
+						name_list_norse = lx_trapesak
+						name_list_swedish = lx_trapesak
+						name_list_danish = lx_trapesak
+						name_list_norwegian = lx_trapesak
+					}
+				}
+			}
+			c_baghras = {
+				color = { 132 197 60 }
 
 				b_baghras = {
 					color = { 112 197 50 }
 					province = 5904
+				}
+				b_qurus = {
+					color = { 112 197 50 }
+					province = 5903
 				}
 			}
 		}
 
 		d_lebanon = {
 			color = { 71 150 32 }
-			capital = c_beirut
+			capital = c_tripoli
 
 			c_beirut = {
 				color = { 77 156 38 }
@@ -28293,7 +25905,9 @@ e_levant = {
 					color = { 75 154 36 }
 					province = 5918
 				}
-
+			}
+			c_antartus = {
+				color = { 65 144 36 }
 				b_antartus = {
 					color = { 75 154 36 }
 					province = 5916
@@ -28942,6 +26556,7 @@ e_maghreb = {
 		color = { 210 235 87 }
 		capital = c_tahert
 
+
 		ai_primary_priority = {
 			if = {
 				limit = {
@@ -29382,7 +26997,7 @@ e_maghreb = {
 		}
 	}
 
-	k_carthage = {
+	k_kartaga = {
 		color = { 50 50 50 }
 		capital = c_tunis
 
@@ -45996,6 +43611,7 @@ e_spain = {
 	k_visigoths = {
 		color = { 146 13 13 }
 		capital = c_zaragoza
+		definite_form = yes
 
 		can_be_named_after_dynasty = no
 		ai_primary_priority = {
@@ -47604,15 +45220,33 @@ e_spain = {
 		capital = c_lisboa
 
 		cultural_names = {
-			name_list_andalusian = cn_burtughal
-			name_list_baranis = cn_burtughal
-			name_list_bedouin = cn_burtughal
-			name_list_butr = cn_burtughal
-			name_list_egyptian = cn_burtughal
-			name_list_levantine = cn_burtughal
-			name_list_maghrebi = cn_burtughal
-			name_list_yemeni = cn_burtughal
-			name_list_zaghawa = cn_burtughal
+			name_list_roman = lx_lusitania
+			name_list_suebi = lx_lusedanja
+			name_list_portuguese = lx_lughotanja
+			name_list_romano_hispanic = lx_lusitania
+			name_list_romano_gothic = lx_lusidanna
+			name_list_visigothic = lx_lusedanja
+			name_list_basque = lx_lusalde
+			name_list_gallo_roman = lx_lusidanna
+			name_list_occitan = lx_lusodanha
+			name_list_norse = lx_lusaland
+			name_list_danish = lx_lusaland
+			name_list_norwegian = lx_lusaland
+			name_list_swedish = lx_lusaland
+			name_list_breton = lx_luziden
+			name_list_welsh = lx_lusiden
+			name_list_cornish = lx_lusydhen
+			name_list_irish = lx_lusitan
+			name_list_andalusian = lx_rusitaniyya
+			name_list_baranis = lx_rusitaniyya
+			name_list_bedouin = lx_rusitaniyya
+			name_list_butr = lx_rusitaniyya
+			name_list_egyptian = lx_rusitaniyya
+			name_list_levantine = lx_rusitaniyya
+			name_list_maghrebi = lx_rusitaniyya
+			name_list_turkish = lx_rusitaniyya
+			name_list_yemeni = lx_rusitaniyya
+			name_list_zaghawa = lx_rusitaniyya
 		}
 
 		can_be_named_after_dynasty = no

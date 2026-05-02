@@ -1,0 +1,164 @@
+﻿empire_of_bulgaria_decision = { 
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 12
+		duchy = 12
+		kingdom = 36
+		empire = 12
+		hegemony = 12
+	}
+	desc = empire_of_bulgaria_decision_desc
+	is_shown = {
+		OR = {
+			has_culture = culture:bulgarian	
+			has_character_flag = restorer_of_bulgaria
+		}
+		is_lowborn = no			
+		is_landed = yes
+		is_independent_ruler = yes
+		highest_held_title_tier >= tier_duchy
+		NOT = { has_global_variable = bulgarian_empire_bgp }
+		NOR = {
+			highest_held_title_tier = tier_empire
+		}
+		NOT = { exists = title:e_bulgaria.holder }	
+	}	
+
+	is_valid = {
+		religion = religion:christianity_religion			
+		has_primary_title = title:k_bulgaria	
+		completely_controls = title:k_bulgaria
+		completely_controls = title:k_serbia
+		completely_controls = title:k_dacia
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+	cost = {
+		prestige = 1000
+	}	
+	
+	effect = {
+		found_empire_of_bulgaria_decision_effect = yes
+		title:k_bulgaria = { 
+			holder.top_liege = { save_scope_as = king_bulgaria }
+		}
+		scope:king_bulgaria = {
+			trigger_event = {
+				id = slavic_unrest.0013
+			}
+		}
+		hidden_effect = {
+			set_global_variable = { name = bulgarian_empire_bgp months = -1 }
+		}		
+	}
+	
+	ai_potential = {
+		is_ruler = yes
+	}
+
+	ai_will_do = {
+		base = 200
+	}
+}
+
+bzn_defenders_of_paulicianism_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 120
+	sort_order = 1
+	desc = bzn_defenders_of_paulicianism_decision_desc
+
+	is_shown = {
+		faith = faith:paulician
+		#Only once per faith
+		NOR = {
+			AND = {
+				faith = faith:paulician
+				is_target_in_global_variable_list = {
+					name = unavailable_unique_decisions
+					target = flag:defenders_of_paulicianism_decision
+				}
+			}
+		}
+	}
+
+	is_valid = {
+		piety_level >= 4
+	}
+	
+	is_valid_showing_failures_only = {
+		is_independent_ruler = yes
+		is_landed = yes
+	}
+
+
+	effect = {
+		save_scope_as = defender_of_highgod
+		add_piety = 500
+		faith = {
+		save_scope_as = highgod_faith_scope
+		change_fervor = {
+			value = medium_fervor_value
+			desc = fervor_gain_defenders_of_highgod
+		}
+	}
+	add_character_modifier = {
+		modifier = defender_of_the_faith
+	}
+
+	if = {
+		limit = { number_of_commander_traits < commander_trait_limit }
+		add_trait = holy_warrior
+	}
+
+	custom_tooltip = defenders_of_highgod_decision_effects_holy_warriors_tt
+	hidden_effect = {
+		every_vassal_or_below = {
+			add_to_list = warriors
+		}
+		every_courtier = {
+			add_to_list = warriors
+		}
+		every_in_list = {
+			list = warriors
+			limit = {
+				is_adult = yes
+				is_ai = yes
+				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+				number_of_commander_traits < commander_trait_limit
+				faith = root.faith
+			}
+			random = {
+				chance = 50
+				add_trait = holy_warrior
+			}	
+		}
+	}
+		if = {
+		limit = { faith = faith:paulician }
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:defenders_of_paulicianism_decision
+			}
+		}
+	}
+
+	cost = { gold = { value = 100 } }
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

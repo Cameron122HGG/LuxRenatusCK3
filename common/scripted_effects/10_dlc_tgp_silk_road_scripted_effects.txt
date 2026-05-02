@@ -233,7 +233,7 @@ tgp_silk_road_innovation_setup_effect = {
 		culture:viet = {
 			if = {
 				limit = {
-					game_start_date >= 6066.1.1
+					game_start_date >= 1066.1.1
 				}
 				tgp_silk_road_innovation_setup_add_effect = { INNOVATION = champa_rice }
 			}
@@ -255,7 +255,7 @@ tgp_silk_road_innovation_setup_effect = {
 		culture:goryeo = {
 			if = {
 				limit = {
-					game_start_date >= 6066.1.1
+					game_start_date >= 1066.1.1
 				}
 				tgp_silk_road_innovation_setup_add_effect = { INNOVATION = lacquered_armor }
 			}
@@ -282,7 +282,7 @@ tgp_silk_road_innovation_setup_effect = {
 			tgp_silk_road_innovation_setup_add_effect = { INNOVATION = waterworks }
 			if = {
 				limit = {
-					game_start_date >= 6066.1.1
+					game_start_date >= 1066.1.1
 				}
 				# Known by Song
 				tgp_silk_road_innovation_setup_add_effect = { INNOVATION = bulkheads }
@@ -296,6 +296,23 @@ tgp_silk_road_innovation_setup_effect = {
 				tgp_silk_road_innovation_setup_add_effect = { INNOVATION = fire_medicine }
 				# 震天雷 by 1044
 				tgp_silk_road_innovation_setup_add_effect = { INNOVATION = grenades }
+			}
+		}
+		# Chinese heritage cultures without han.txt 1044 entry: match heritage_chinese history date
+		culture:yi = {
+			if = {
+				limit = {
+					game_start_date >= 6044.1.1
+				}
+				tgp_silk_road_innovation_setup_add_effect = { INNOVATION = fire_medicine }
+			}
+		}
+		culture:bai = {
+			if = {
+				limit = {
+					game_start_date >= 6044.1.1
+				}
+				tgp_silk_road_innovation_setup_add_effect = { INNOVATION = fire_medicine }
 			}
 		}
 	}
@@ -332,7 +349,7 @@ tgp_silk_road_movement_stream_effect = {
 
 tgp_silk_road_movement_china_effect = {
 	situation_sub_region:region_silk_road_proper_china = { save_temporary_scope_as = sub_region_temp }
-
+	save_scope_as = silk_road
 	# Find the culture of the province the market of Chang'an is located in
 	title:c_jingzhao = {
 		culture = {
@@ -342,12 +359,12 @@ tgp_silk_road_movement_china_effect = {
 					has_innovation_parameter = silk_road_innovation_parameter
 					is_known_by_culture = scope:region_silk_road_proper_china_market_culture
 					NOR = {
-						this = situation_sub_region:region_silk_road_proper_occident.var:innovation
-						this = situation_sub_region:region_silk_road_proper_transcaspia.var:innovation
-						this = situation_sub_region:region_silk_road_proper_india.var:innovation
-						this = situation_sub_region:region_silk_road_proper_central_asia.var:innovation
-						this = situation_sub_region:region_silk_road_proper_tibet.var:innovation
-						this = situation_sub_region:region_silk_road_proper_china.var:innovation
+						this = scope:silk_road.situation_sub_region:region_silk_road_proper_occident.var:innovation
+						this = scope:silk_road.situation_sub_region:region_silk_road_proper_transcaspia.var:innovation
+						this = scope:silk_road.situation_sub_region:region_silk_road_proper_india.var:innovation
+						this = scope:silk_road.situation_sub_region:region_silk_road_proper_central_asia.var:innovation
+						this = scope:silk_road.situation_sub_region:region_silk_road_proper_tibet.var:innovation
+						this = scope:silk_road.situation_sub_region:region_silk_road_proper_china.var:innovation
 					}
 				}
 				save_scope_as = new_innovation_temp
@@ -475,7 +492,7 @@ tgp_silk_road_raid_effect = { # county scope
 		limit = {
 			title_province = { geographical_region = dlc_tgp_silk_road_route_region } # the actual route
 		}
-		save_temporary_scope_as = county_temp
+		save_scope_as = county_temp
 		random_county_situation = {
 			limit = {
 				situation_type = silk_road_situation

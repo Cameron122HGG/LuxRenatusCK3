@@ -23,6 +23,7 @@
 scripted_trigger tour_grounds_has_artifacts_trigger = {
 	any_character_artifact = {
 		is_equipped = no
+		artifact_can_be_gift_to_trigger = { RECIPIENT = root }
 		exists = var:quality
 		var:quality >= 40
 		count >= 2
@@ -200,6 +201,7 @@ tour_grounds_events.7000 = {
 				random_character_artifact = {
 					limit = {
 						is_equipped = no
+						artifact_can_be_gift_to_trigger = { RECIPIENT = root }
 						exists = var:quality
 						var:quality >= 40
 					}

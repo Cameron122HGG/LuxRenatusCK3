@@ -1,0 +1,2602 @@
+﻿@unstable_frontier = "gfx/interface/illustrations/great_projects/unstable_frontier.dds"
+@combat_map_icon = "gfx/interface/icons/icon_holding_castle.dds"
+@theodosian_walls = "gfx/interface/illustrations/great_projects/theodosian_walls.dds"
+@pacify_slavs = "gfx/interface/illustrations/great_projects/pacify_slavs.dds"
+@combat_map_icon_1 = "gfx/interface/icons/character_interactions/icon_coax_to_war.dds"
+@reinforce_sicily = "gfx/interface/illustrations/great_projects/reinforce_sicily.dds"
+@aegean_coast = "gfx/interface/illustrations/great_projects/aegean_coast.dds"
+@paulician_heresy = "gfx/interface/illustrations/great_projects/paulician_heresy.dds"
+@fortify_armenia = "gfx/interface/illustrations/great_projects/fortify_armenia.dds"
+
+fortify_armenia = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @fortify_armenia
+	}
+	name = {
+		desc = great_project_type_fortify_armenia
+	}
+	is_important = yes
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = {
+				ai_is_controller_of_a_theme_within_armenia = yes
+			}
+			add = 50
+		}
+	}
+
+	construction_time = { value = 730 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = armenian_frontier
+	is_shown = {
+		NOT = { is_planning_great_project = fortify_armenia }
+		NOT = { has_global_variable = fortify_armenia_cooldown }
+		is_ruler = yes
+		has_global_variable = byzantine_1066_disasters
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		is_at_war = no
+		custom_tooltip = {
+			text = "VASPURAKAN_LOCATION_1_TOOLTIP"
+			title:d_vaspurakan = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "MESOPOTAMIA_LOCATION_2_TOOLTIP"
+			title:d_mesopotamia = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		title:d_vaspurakan.holder = { top_liege = scope:owner.top_liege }
+		title:d_mesopotamia.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = abandoned_project_modifier years = 10 }
+			trigger_event = turkish_incursions_events.1001
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		scope:owner = {
+			trigger_event = turkish_incursions_events.1000
+		}
+		set_global_variable = { name = fortify_armenia_cooldown months = -1 }
+		title:c_vaspurakan = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_apahunik = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_bagrewand = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_turuberan = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_vanand = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_hayk = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+			}
+		title:c_bakriya = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_mesopotamia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_melitene = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+	}
+	project_contributions = {
+		walls_of_melitene = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0001
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_armenia = yes
+					}
+				add = 50
+				}
+			}
+		}
+		manzikert_garrison = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_armenia = yes
+					}
+				add = 50
+				}
+			}	
+		}	
+		secure_passes = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_armenia = yes
+					}
+				add = 50
+				}
+			}
+		}
+		rebuild_farms = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_armenia = yes
+					}
+				add = 50
+				}
+			}
+		}
+		patronize_monasteries = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0005
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_armenia = yes
+					}
+				add = 50
+				}
+			}
+		}
+	}
+}
+
+fortify_anatolia = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @unstable_frontier
+	}
+	name = {
+		desc = great_project_type_fortify_anatolia
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = {
+				ai_is_controller_of_a_theme_within_anatolia = yes
+			}
+			add = 50
+		}
+	}
+	is_important = yes
+	construction_time = { value = 730 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = anatolian_frontier
+	is_shown = {
+		NOT = { is_planning_great_project = fortify_anatolia }
+		NOT = { has_global_variable = fortify_anatolia_cooldown }
+		is_ruler = yes
+		has_global_variable = byzantine_1066_disasters
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		is_at_war = no
+		custom_tooltip = {
+			text = "CILICIA_LOCATION_1_TOOLTIP"
+			title:d_cilicia = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "CHARSIANON_LOCATION_2_TOOLTIP"
+			title:d_charsianon = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "CAPPADOCIA_LOCATION_3_TOOLTIP"
+			title:d_cappadocia = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		title:d_cilicia.holder = { top_liege = scope:owner.top_liege }
+		title:d_charsianon.holder = { top_liege = scope:owner.top_liege }
+		title:d_cappadocia.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = abandoned_project_modifier years = 10 }
+			trigger_event = turkish_incursions_events.2001
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		set_global_variable = { name = fortify_anatolia_cooldown months = -1 }
+		scope:owner = {
+			trigger_event = turkish_incursions_events.2000
+			}
+		title:c_seleucia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_cilicia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_lycandus = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_lower_galatia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_cappadocia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_kyzistra = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+			}
+		title:c_charsianon = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_kaisereia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+	}
+	project_contributions = {
+		kaisereia = {
+			cost = { treasury_or_gold = 250 }
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0006
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_anatolia = yes
+					}
+				add = 50
+				}
+			}
+		}
+		cilician_gates = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0007
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_anatolia = yes
+					}
+				add = 50
+				}
+			}	
+		}	
+		veteran_settlements = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0008
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_anatolia = yes
+					}
+				add = 50
+				}
+			}
+		}
+		roads = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0009
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_anatolia = yes
+					}
+				add = 50
+				}
+			}
+		}
+		watchtowers = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0010
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_anatolia = yes
+					}
+				add = 50
+				}
+			}
+		}
+	}
+}
+
+fortify_pontus = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @unstable_frontier
+	}
+	name = {
+		desc = great_project_type_fortify_pontus
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = {
+				ai_is_controller_of_a_theme_within_pontus = yes
+			}
+			add = 50
+		}
+	}
+	is_important = yes
+	construction_time = { value = 730 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = pontus_frontier
+	is_shown = {
+		NOT = { is_planning_great_project = fortify_pontus }
+		NOT = { has_global_variable = fortify_pontus_cooldown }
+		is_ruler = yes
+		has_global_variable = byzantine_1066_disasters
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		is_at_war = no
+		custom_tooltip = {
+			text = "CHALDIA_LOCATION_1_TOOLTIP"
+			title:d_chaldia = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "SEBASTEIA_LOCATION_2_TOOLTIP"
+			title:d_sebasteia = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		title:d_chaldia.holder = { top_liege = scope:owner.top_liege }
+		title:d_sebasteia.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = abandoned_project_modifier years = 10 }
+			trigger_event = turkish_incursions_events.3001
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		set_global_variable = { name = fortify_pontus_cooldown months = -1 }
+		scope:owner = {
+			trigger_event = turkish_incursions_events.3000
+			}
+		title:c_sebasteia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_azysia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_ablastha = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_theodosiopolis = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_colonea = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_trebizond = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+			}
+		title:c_cerasus = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_satala = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+	}
+	project_contributions = {
+		trebizond = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0011
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_pontus = yes
+					}
+				add = 50
+				}
+			}
+		}
+		theodosiopolis = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0012
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_pontus = yes
+					}
+				add = 50
+				}
+			}	
+		}	
+		coastal_patrols = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0013
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_pontus = yes
+					}
+				add = 50
+				}
+			}
+		}
+		mountain_watch = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0014
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_pontus = yes
+					}
+				add = 50
+				}
+			}
+		}
+		monasteries = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0015
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_pontus = yes
+					}
+				add = 50
+				}
+			}
+		}
+	}
+}
+
+fortify_syria = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @unstable_frontier
+	}
+	name = {
+		desc = great_project_type_fortify_syria
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = {
+				ai_is_controller_of_a_theme_within_syria = yes
+			}
+			add = 50
+		}
+	}
+	is_important = yes
+	construction_time = { value = 730 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = syrian_frontier
+	is_shown = {
+		NOT = { is_planning_great_project = fortify_syria }
+		NOT = { has_global_variable = fortify_syria_cooldown }
+		is_ruler = yes
+		has_global_variable = byzantine_1066_disasters
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		is_at_war = no
+		custom_tooltip = {
+			text = "ANTIOCH_LOCATION_1_TOOLTIP"
+			title:d_antioch = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "EDESSA_LOCATION_2_TOOLTIP"
+			title:d_edessa = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		title:d_antioch.holder = { top_liege = scope:owner.top_liege }
+		title:d_edessa.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = abandoned_project_modifier years = 10 }
+			trigger_event = turkish_incursions_events.4001
+		}
+	}
+	on_start_build = {
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		scope:owner = {
+			trigger_event = turkish_incursions_events.4000
+		}
+		set_global_variable = { name = fortify_syria_cooldown months = -1 }
+		title:c_shayzar = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_antiocheia = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_alexandretta = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_aintab = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_edessa = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_marash = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+			}
+		title:c_samosata = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+		title:c_tall_hamid = {
+			remove_county_modifier = roaming_turkish_bands_modifier 
+			add_county_modifier = { modifier = fortified_frontier_modifier months = 1200 } 
+		}
+	}
+	project_contributions = {
+		antioch = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0016
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_syria = yes
+					}
+				add = 50
+				}
+			}
+		}
+		edessa = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0017
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_syria = yes
+					}
+				add = 50
+				}
+			}	
+		}
+		strata = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0018
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_syria = yes
+					}
+				add = 50
+				}
+			}
+		}
+		melkites = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0019
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_syria = yes
+					}
+				add = 50
+				}
+			}
+		}
+		ports = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = turkish_incursions_events.0020
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_syria = yes
+					}
+				add = 50
+				}
+			}
+		}
+	}
+}
+
+pacify_slavs = {
+	icon = {
+		reference = @combat_map_icon_1
+	}
+	illustration = {
+		reference = @pacify_slavs
+	}
+	name = {
+		desc = great_project_type_pacify_slavs
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+		}
+	}
+	ai_will_do = {
+		value = 10
+	}
+	construction_time = { value = 365 }
+	is_important = yes
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = slavic_unrest
+	is_shown = {
+		has_global_variable = byzantine_1066_disasters
+		NOT = { is_planning_great_project = pacify_slavs }
+		NOT = { has_global_variable = pacify_slavs_cooldown }
+		is_ruler = yes
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		custom_tooltip = {
+			text = "VIDIN_LOCATION_1_TOOLTIP"
+			title:d_vidin = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "BULGARIA_LOCATION_2_TOOLTIP"
+			title:d_lykandos = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "TURNOVO_LOCATION_3_TOOLTIP"
+			title:d_turnovo = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		title:d_lykandos.holder = { top_liege = scope:owner.top_liege }
+		title:d_vidin.holder = { top_liege = scope:owner.top_liege }
+		title:d_turnovo.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = balkan_folly_modifier years = 10 }
+			trigger_event = slavic_unrest.1001
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		scope:owner = {
+			trigger_event = slavic_unrest.1000
+		}
+		set_global_variable = { name = pacify_slavs_cooldown months = -1 }
+		title:c_ohrid = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier 
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_skopje = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_strumica = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_velbazhd = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_pirin = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_sredets = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+			}
+		title:c_vratsa = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_naissus = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_sumadija = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier 
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_vidin = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_branicevo = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_hvosno = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_pomoravlje = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_beograd = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+			}
+		title:c_macva = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_szerem = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_kran = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_nikopolis = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_turnovo = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+			}
+		title:c_dorostorum = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_aytos = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_mesembria = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+		title:c_constanta = {
+			remove_county_modifier = smoldering_slavic_resentment_modifier 
+			add_county_modifier = { modifier = restored_balkan_province_modifier months = 120 } 
+		}
+	}
+	project_contributions = {
+		zupans = {
+			cost = { prestige = 400 }
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = slavic_unrest.0001
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_bulgaria = yes
+					}
+				add = 50
+				}
+			}
+		}
+		ohrid = {
+			cost = { piety = 300 }
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = slavic_unrest.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_bulgaria = yes
+					}
+				add = 50
+				}
+			}	
+		}	
+		fortress = {
+			cost = { treasury_or_gold = 150 }
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = slavic_unrest.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_bulgaria = yes
+					}
+				add = 50
+				}
+			}
+		}
+		brigands = {
+			cost = { treasury_or_gold = 100 }
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = slavic_unrest.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_bulgaria = yes
+					}
+				add = 50
+				}
+			}
+		}
+		tax = {
+			cost = { treasury_or_gold = 350 }
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = slavic_unrest.0005
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+				if = {
+					limit = {
+						ai_is_controller_of_a_theme_within_bulgaria = yes
+					}
+				add = 50
+				}
+			}
+		}
+	}
+}
+
+theodosian_walls_maintenance = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @theodosian_walls
+	}
+	name = {
+		desc = great_project_type_theodosian_walls_maintenance
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+		}
+	}
+	ai_will_do = {
+		value = 10
+	}
+	construction_time = { value = 730 }
+	invite_interaction = request_great_project_contribution_interaction
+	is_shown = {
+		NOT = { is_planning_great_project = theodosian_walls_maintenance }
+		NOT = { has_global_variable = theodosian_walls_maintenance_cooldown }
+		is_ruler = yes
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		is_at_war = no
+		custom_tooltip = {
+			text = "BYZANTION_LOCATION_1_TOOLTIP"
+			title:c_byzantion = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		title:c_byzantion.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = abandoned_project_modifier years = 10 }
+			trigger_event = theodosian_walls_maintenance.0007
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		scope:owner = {
+			trigger_event = theodosian_walls_maintenance.0006
+			trigger_event = {
+				id = theodosian_walls_maintenance.0008
+				years = 101
+			}
+			}
+		set_global_variable = { name = theodosian_walls_maintenance_cooldown months = 1200 }
+		title:c_byzantion = {
+			remove_county_modifier = theodosian_walls_neglected_modifier 
+			add_county_modifier = { modifier = theodosian_walls_maintained_modifier months = 1200 } 
+		}
+	}
+	project_contributions = {
+		gold = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = theodosian_walls_maintenance.0001
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+			}
+		}
+		manpower = {
+			cost = { prestige = 400 }
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = theodosian_walls_maintenance.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}	
+		}	
+		stone = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = theodosian_walls_maintenance.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		engineers = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = theodosian_walls_maintenance.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		blessing = {
+			cost = { piety = 350 }
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = theodosian_walls_maintenance.0005
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+	}
+}
+
+reinforce_sicily = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @reinforce_sicily
+	}
+	name = {
+		desc = great_project_type_reinforce_sicily
+	}
+	is_important = yes
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+		}
+	}
+	ai_will_do = {
+		value = 10
+	}
+	construction_time = { value = 93 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = sicily_stronghold
+	is_shown = {
+		NOT = { is_planning_great_project = reinforce_sicily }
+		NOT = { has_global_variable = reinforce_sicily_cooldown }
+		is_ruler = yes
+		has_global_variable = byzantine_867_disasters
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		custom_tooltip = {
+			text = "SICILY_LOCATION_1_TOOLTIP"
+			title:c_siracusa = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		title:c_siracusa.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = abandoned_project_modifier years = 10 }
+			trigger_event = reinforce_sicily.0005
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		title:c_siracusa = {
+			add_county_modifier = { modifier = syracuse_reinforced_modifier months = 630 } 
+		}
+		scope:owner = {
+			trigger_event = reinforce_sicily.0006
+		}
+		set_global_variable = { name = reinforce_sicily_cooldown months = -1 }
+	}
+	project_contributions = {
+		syracuse_fort = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = reinforce_sicily.0001
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+			}
+		}
+		sicily_troops = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = reinforce_sicily.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}	
+		}	
+		sicily_navy = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = reinforce_sicily.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		sicily_war_chest = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = reinforce_sicily.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+	}
+}
+
+paulician_heresy = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @paulician_heresy
+	}
+	name = {
+		desc = great_project_type_paulician_heresy
+	}
+	is_important = yes
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+		}
+	}
+	ai_will_do = {
+		value = 10
+	}
+	construction_time = { value = 730 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = paulician_stronghold
+	is_shown = {
+		NOT = { is_planning_great_project = paulician_heresy }
+		NOT = { has_global_variable = paulician_heresy_cooldown }
+		NOT = { has_global_variable = paulician_all_in }
+		is_ruler = yes
+		has_global_variable = paulicians_restless
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+
+	}
+	is_valid = {
+		title:c_satala.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = abandoned_project_modifier years = 10 }
+			trigger_event = paulician_revolt.0007
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		title:c_satala = {
+			remove_county_modifier = paulician_stronghold_modifier 
+			add_county_modifier = { modifier = paulicians_subdued_modifier months = 600 } 
+		}
+		scope:owner = {
+			trigger_event = paulician_revolt.0006
+		}
+		set_global_variable = { name = paulician_heresy_cooldown months = -1 }
+	}
+	project_contributions = {
+		paulician_conversion = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = paulician_revolt.0005
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+			}
+		}
+		paulician_local_leaders = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = paulician_revolt.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}	
+		}	
+		paulician_resettlement = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = paulician_revolt.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		paulician_forts = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = paulician_revolt.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+	}
+}
+
+fortify_aegean = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @aegean_coast
+	}
+	name = {
+		desc = great_project_type_fortify_aegean
+	}
+	is_important = yes
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+			multiply = 2.5
+		}
+	}
+	ai_will_do = {
+		value = 10
+	}
+	construction_time = { value = 730 }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	province_filter_target = aegean_coastal
+	is_shown = {
+		NOT = { is_planning_great_project = fortify_aegean }
+		NOT = { has_global_variable = fortify_aegean_cooldown }
+		is_ruler = yes
+		has_global_variable = cretan_raids
+		OR = {
+			title:e_byzantium = { holder.top_liege = root.top_liege }
+			title:h_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+		}
+		OR = {
+			has_game_rule = bgp_anyone
+			culture = { has_cultural_pillar = heritage_byzantine }
+			culture = { has_cultural_pillar = heritage_ancient_greek }
+		}
+	}
+	can_start_planning = {
+		custom_tooltip = {
+			text = "ACHAIA_LOCATION_TOOLTIP"
+			title:d_achaia = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "THESSALY_LOCATION_TOOLTIP"
+			title:d_thessaly = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "ATHENS_LOCATION_TOOLTIP"
+			title:d_athens = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "THESSALONIKA_LOCATION_TOOLTIP"
+			title:d_thessalonika = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "STRYMON_LOCATION_TOOLTIP"
+			title:d_strymon = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "AEGEAN_ISLANDS_LOCATION_TOOLTIP"
+			title:d_aegean_islands = { holder.top_liege = root.top_liege }
+		}
+		custom_tooltip = {
+			text = "EPHESE_LOCATION_TOOLTIP"
+			title:d_ephese = { holder.top_liege = root.top_liege }
+		}
+
+	}
+	is_valid = {
+		title:c_laconia.holder = { top_liege = scope:owner.top_liege }
+		title:c_korinthos.holder = { top_liege = scope:owner.top_liege }
+		title:c_attica.holder = { top_liege = scope:owner.top_liege }
+		title:c_euboea.holder = { top_liege = scope:owner.top_liege }
+		title:c_naxos.holder = { top_liege = scope:owner.top_liege }
+		title:c_rhodos.holder = { top_liege = scope:owner.top_liege }
+		title:c_lesbos.holder = { top_liege = scope:owner.top_liege }
+		title:c_demetrias.holder = { top_liege = scope:owner.top_liege }
+		title:c_thessalia.holder = { top_liege = scope:owner.top_liege }
+		title:c_veria.holder = { top_liege = scope:owner.top_liege }
+		title:c_thessalonika.holder = { top_liege = scope:owner.top_liege }
+		title:c_chalkidike.holder = { top_liege = scope:owner.top_liege }
+		title:c_serres.holder = { top_liege = scope:owner.top_liege }
+		title:c_mosynopolis.holder = { top_liege = scope:owner.top_liege }
+		title:c_kalliopolis.holder = { top_liege = scope:owner.top_liege }
+		title:c_abydos.holder = { top_liege = scope:owner.top_liege }
+		title:c_aeolis.holder = { top_liege = scope:owner.top_liege }
+		title:c_chios.holder = { top_liege = scope:owner.top_liege }
+		title:c_ionia.holder = { top_liege = scope:owner.top_liege }
+		title:c_caria.holder = { top_liege = scope:owner.top_liege }
+		title:c_boeotia.holder = { top_liege = scope:owner.top_liege }
+		title:c_neopatras.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = abandoned_project_modifier years = 10 }
+			trigger_event = fortify_aegean.0007
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		remove_global_variable = cretan_raids
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		title:c_laconia = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_korinthos = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_attica = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_euboea = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_naxos = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_rhodos = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_lesbos = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_demetrias = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_thessalia = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_veria = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_thessalonika = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_chalkidike = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_serres = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_mosynopolis = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_kalliopolis = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_abydos = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_aeolis = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_chios = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_ionia = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_caria = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_boeotia = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		title:c_neopatras = {
+			add_county_modifier = { modifier = imperial_aegis_modifier months = 1200 } 
+			remove_county_modifier = cretan_raid_devastation_modifier 
+		}
+		scope:owner = {
+			trigger_event = fortify_aegean.0006
+		}
+		set_global_variable = { name = fortify_aegean_cooldown months = -1 }
+	}
+	project_contributions = {
+		aegean_forts = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_aegean.0001
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+			}
+		}
+		aegean_fleet = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_aegean.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}	
+		}	
+		aegean_militia = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_aegean.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		aegean_arsenals = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 3.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_aegean.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		aegean_beacons = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_aegean.0005
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+	}
+}

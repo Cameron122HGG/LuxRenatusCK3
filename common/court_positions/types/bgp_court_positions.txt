@@ -1,0 +1,593 @@
+﻿aurelian_walls_prefect_court_position = {
+	sort_order = 250
+	max_available_positions = 1
+	skill = martial
+
+	court_position_asset = {
+		animation = reading
+		background = "gfx/interface/illustrations/event_scenes/armory.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 20
+		add = {
+			value = martial
+			multiply = 3.0
+			max = 60
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = { has_trait = education_martial }
+			add = {
+				value = 4
+				if = {
+					limit = { has_trait = education_martial_2 }
+					add = 4
+				}
+				else_if = {
+					limit = { has_trait = education_martial_3 }
+					add = 8
+				}
+				else_if = {
+					limit = { has_trait = education_martial_4 }
+					add = 12
+				}
+				else_if = {
+					limit = { has_trait = education_martial_5 }
+					add = 22
+				}
+				desc = education_martial
+			}
+		}
+		if = {
+			limit = { has_trait = brave }
+			add = { value = 15 desc = court_position_brave_trait }
+		}
+		if = {
+			limit = { has_trait = craven }
+			add = { value = -15 desc = court_position_craven_trait }
+		}
+		if = {
+			limit = { has_trait = patient }
+			add = { value = 15 desc = court_position_patient_trait }
+		}
+		if = {
+			limit = { has_trait = temperate } 
+			add = { value = 20 desc = court_position_temperate_trait }
+		}
+		if = {
+			limit = { has_trait = logistician  } 
+			add = { value = 30 desc = court_position_logistician_trait }
+		}
+		if = {
+			limit = { has_trait = diligent } 
+			add = { value = 20 desc = court_position_diligent_trait }
+		}
+		if = {
+			limit = { has_trait = organizer  } 
+			add = { value = 20 desc = court_position_organizer_trait }
+		}
+		if = {
+			limit = { has_trait = fickle }
+			add = { value = -20 desc = court_position_fickle_trait }
+		}
+		if = {
+			limit = { has_trait = administrator }
+			add = { value = 20 desc = court_position_administrator_trait }
+		}
+		if = {
+			limit = { has_trait = drunkard  } 
+			add = { value = -40 desc = court_position_drunkard_trait }
+		}
+		if = {
+			limit = { has_trait = lazy } 
+			add = { value = -20 desc = court_position_lazy_trait }
+		}
+		if = {
+			limit = { has_trait = arbitrary }
+			add = { value = -15 desc = court_position_arbitrary_trait }
+		}
+		if = { 
+			limit = { has_trait = profligate }
+			add = { value = -50 desc = court_position_profligate_trait }
+		}
+		if = {
+			limit = { has_trait = improvident }
+			add = { value = -50	desc = court_position_improvident_trait }
+		}
+		if = {
+			limit = {
+				has_trait = governor
+			}
+			add = {
+				value = 4
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = governor
+							value >= 100
+						}
+					}
+					add = 16
+				}
+				else_if = {
+					limit = {
+						has_trait_xp = {
+							trait = governor
+							value >= 75
+						}
+					}
+					add = 12
+				}
+				else_if = {
+					limit = {
+						has_trait_xp = {
+							trait = governor
+							value >= 50
+						}
+					}
+					add = 8
+				}
+				else_if = {
+					limit = {
+						has_trait_xp = {
+							trait = governor
+							value >= 25
+						}
+					}
+					add = 4
+				}
+				desc = governor_trait_short_desc
+			}
+		}
+	}
+
+	is_shown = {
+		government_has_flag = government_is_administrative
+		is_independent_ruler = yes
+		title:c_roma = { holder.top_liege = root.top_liege }
+		has_global_variable = aurelian_walls_maintenance_cooldown
+	}
+	
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_position = {
+	}
+
+	valid_character = {
+		scope:employee = {
+			is_imprisoned = no
+			is_adult = yes
+			is_ruler = no
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = major_court_position_prestige_revoke_cost
+			if = {
+				limit = {
+					court_position_obligation_hook_salary_trigger = {
+						POS = eparch
+						LIEGE = scope:liege
+					}
+				}
+				multiply = 0
+			}
+			if = {
+				limit = {
+					exists = this
+					is_ai = yes
+				}
+				multiply = 0
+			}
+		}
+		influence = {
+			value = major_influence_value
+			if = {
+				limit = {
+					exists = this
+					is_ai = yes
+				}
+				multiply = 0
+			}
+		}
+	}
+
+	salary = {
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = bodyguard_total_salary_value
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = bodyguard_total_salary_value
+			}
+		}
+		prestige = {
+			value = major_court_position_prestige_salary
+		}
+		round = no
+	}
+
+	received_salary = {
+		gold = {
+			value = bodyguard_total_salary_value
+		}
+		prestige = {
+			value = major_court_position_prestige_salary
+		}
+		round = no
+	}
+
+	scaling_employer_modifiers = {
+		terrible = {
+			monthly_prestige = 0.02
+			monthly_martial_lifestyle_xp_gain_mult = 0.005
+		}
+		poor = {
+			monthly_prestige = 0.05		
+			supply_duration = 0.060
+			monthly_martial_lifestyle_xp_gain_mult = 0.015
+		}
+		average = {
+			monthly_prestige = 0.1	
+			supply_duration = 0.10
+			monthly_martial_lifestyle_xp_gain_mult = 0.030
+		}
+		good = {
+			monthly_prestige = 0.2	
+			supply_duration = 0.20
+			monthly_martial_lifestyle_xp_gain_mult = 0.050
+		}
+		excellent = {
+			monthly_prestige = 0.3	
+			supply_duration = 0.30
+			monthly_martial_lifestyle_xp_gain_mult = 0.080
+		}
+	}
+
+	custom_employer_modifier_description = aurelian_walls_prefect_employer_custom_effect_description
+
+	modifier = {
+		monthly_prestige = 1
+		monthly_influence_mult = 0.25
+	}
+	
+	on_court_position_received = {
+		basic_gained_court_position_effect = yes
+	}
+	on_court_position_revoked = {
+		basic_revoked_court_position_effect = yes
+	}
+	on_court_position_invalidated = {
+		basic_invalidated_court_position_effect = yes
+	}
+
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+	}
+}
+
+domestikos_of_the_walls_court_position = {
+	sort_order = 250
+	max_available_positions = 1
+	skill = martial
+
+	court_position_asset = {
+		animation = reading
+		background = "gfx/interface/illustrations/event_scenes/armory.dds"
+	}
+
+	opinion = {
+		value = regular_court_position_opinion
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 20
+		add = {
+			value = martial
+			multiply = 3.0
+			max = 60
+			desc = court_position_skill_martial
+		}
+		if = {
+			limit = { has_trait = education_martial }
+			add = {
+				value = 4
+				if = {
+					limit = { has_trait = education_martial_2 }
+					add = 4
+				}
+				else_if = {
+					limit = { has_trait = education_martial_3 }
+					add = 8
+				}
+				else_if = {
+					limit = { has_trait = education_martial_4 }
+					add = 12
+				}
+				else_if = {
+					limit = { has_trait = education_martial_5 }
+					add = 22
+				}
+				desc = education_martial
+			}
+		}
+		if = {
+			limit = { has_trait = brave }
+			add = { value = 15 desc = court_position_brave_trait }
+		}
+		if = {
+			limit = { has_trait = craven }
+			add = { value = -15 desc = court_position_craven_trait }
+		}
+		if = {
+			limit = { has_trait = patient }
+			add = { value = 15 desc = court_position_patient_trait }
+		}
+		if = {
+			limit = { has_trait = temperate } 
+			add = { value = 20 desc = court_position_temperate_trait }
+		}
+		if = {
+			limit = { has_trait = logistician  } 
+			add = { value = 30 desc = court_position_logistician_trait }
+		}
+		if = {
+			limit = { has_trait = diligent } 
+			add = { value = 20 desc = court_position_diligent_trait }
+		}
+		if = {
+			limit = { has_trait = organizer  } 
+			add = { value = 20 desc = court_position_organizer_trait }
+		}
+		if = {
+			limit = { has_trait = fickle }
+			add = { value = -20 desc = court_position_fickle_trait }
+		}
+		if = {
+			limit = { has_trait = administrator }
+			add = { value = 20 desc = court_position_administrator_trait }
+		}
+		if = {
+			limit = { has_trait = drunkard  } 
+			add = { value = -40 desc = court_position_drunkard_trait }
+		}
+		if = {
+			limit = { has_trait = lazy } 
+			add = { value = -20 desc = court_position_lazy_trait }
+		}
+		if = {
+			limit = { has_trait = arbitrary }
+			add = { value = -15 desc = court_position_arbitrary_trait }
+		}
+		if = { 
+			limit = { has_trait = profligate }
+			add = { value = -50 desc = court_position_profligate_trait }
+		}
+		if = {
+			limit = { has_trait = improvident }
+			add = { value = -50	desc = court_position_improvident_trait }
+		}
+		if = {
+			limit = {
+				has_trait = governor
+			}
+			add = {
+				value = 4
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = governor
+							value >= 100
+						}
+					}
+					add = 16
+				}
+				else_if = {
+					limit = {
+						has_trait_xp = {
+							trait = governor
+							value >= 75
+						}
+					}
+					add = 12
+				}
+				else_if = {
+					limit = {
+						has_trait_xp = {
+							trait = governor
+							value >= 50
+						}
+					}
+					add = 8
+				}
+				else_if = {
+					limit = {
+						has_trait_xp = {
+							trait = governor
+							value >= 25
+						}
+					}
+					add = 4
+				}
+				desc = governor_trait_short_desc
+			}
+		}
+	}
+
+	is_shown = {
+		government_has_flag = government_is_administrative
+		is_independent_ruler = yes
+		title:c_byzantion = { holder.top_liege = root.top_liege }
+		has_global_variable = theodosian_walls_maintenance_cooldown
+	}
+	
+	is_shown_character = {
+		scope:employee = {
+			court_position_employee_shown_trigger = yes
+		}
+	}
+
+	valid_position = {
+	}
+
+	valid_character = {
+		scope:employee = {
+			is_imprisoned = no
+			is_adult = yes
+			is_ruler = no
+		}
+	}
+
+	revoke_cost = {
+		prestige = {
+			value = major_court_position_prestige_revoke_cost
+			if = {
+				limit = {
+					court_position_obligation_hook_salary_trigger = {
+						POS = eparch
+						LIEGE = scope:liege
+					}
+				}
+				multiply = 0
+			}
+			if = {
+				limit = {
+					exists = this
+					is_ai = yes
+				}
+				multiply = 0
+			}
+		}
+		influence = {
+			value = major_influence_value
+			if = {
+				limit = {
+					exists = this
+					is_ai = yes
+				}
+				multiply = 0
+			}
+		}
+	}
+
+	salary = {
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = bodyguard_total_salary_value
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = bodyguard_total_salary_value
+			}
+		}
+		prestige = {
+			value = major_court_position_prestige_salary
+		}
+		round = no
+	}
+
+	received_salary = {
+		gold = {
+			value = bodyguard_total_salary_value
+		}
+		prestige = {
+			value = major_court_position_prestige_salary
+		}
+		round = no
+	}
+
+	scaling_employer_modifiers = {
+		terrible = {
+			monthly_prestige = 0.025
+			monthly_martial_lifestyle_xp_gain_mult = 0.010
+		}
+		poor = {
+			monthly_prestige = 0.05		
+			supply_duration = 0.060
+			monthly_martial_lifestyle_xp_gain_mult = 0.015
+		}
+		average = {
+			monthly_prestige = 0.1	
+			supply_duration = 0.15
+			monthly_martial_lifestyle_xp_gain_mult = 0.030
+		}
+		good = {
+			monthly_prestige = 0.2	
+			supply_duration = 0.25
+			monthly_martial_lifestyle_xp_gain_mult = 0.050
+		}
+		excellent = {
+			monthly_prestige = 0.3	
+			supply_duration = 0.35
+			monthly_martial_lifestyle_xp_gain_mult = 0.1
+		}
+	}
+
+	custom_employer_modifier_description = aurelian_walls_prefect_employer_custom_effect_description
+
+	modifier = {
+		monthly_prestige = 2
+		monthly_influence_mult = 0.4
+	}
+	
+	on_court_position_received = {
+		basic_gained_court_position_effect = yes
+	}
+	on_court_position_revoked = {
+		basic_revoked_court_position_effect = yes
+	}
+	on_court_position_invalidated = {
+		basic_invalidated_court_position_effect = yes
+	}
+
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+	}
+}

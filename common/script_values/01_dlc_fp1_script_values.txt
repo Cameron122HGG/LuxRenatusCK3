@@ -49,42 +49,31 @@ gruesome_festival_key_sacrifice_piety_value = {
 					}
 					# Exempt faiths/families you syncretise with.
 					NOR = {
-						AND = { # Eastern
-							has_doctrine = special_doctrine_is_eastern_faith
-							scope:sacrifice.faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
+						# Eastern Family syncretism.
+						AND = {
+							has_doctrine = tenet_eastern_syncretism
+							scope:sacrifice.religion = { is_in_family = rf_eastern }
 						}
-						AND = { # Pagan
-							has_doctrine = pagan_special_hostility_doctrine
-							scope:sacrifice.faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
+						# Unreformed pagans syncretism.
+						AND = {
+							has_doctrine = tenet_unreformed_syncretism
+							scope:sacrifice.faith = { has_doctrine_parameter = unreformed }
 						}
-						AND = { # Christian
-							has_doctrine = special_doctrine_is_christian_faith
-							scope:sacrifice.faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
+						# Christian syncretism.
+						AND = {
+							has_doctrine = tenet_christian_syncretism
+							scope:sacrifice.religion = religion:christianity_religion
 						}
-						AND = { # Islam
-							has_doctrine = special_doctrine_is_islamic_faith
-							scope:sacrifice.faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
+						# Islamic syncretism.
+						AND = {
+							has_doctrine = tenet_islamic_syncretism
+							scope:sacrifice.religion = religion:islam_religion
 						}
-						AND = { # Judaism
-							has_doctrine = special_doctrine_is_jewish_faith
-							scope:sacrifice.faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
+						# Jewish syncretism.
+						AND = {
+							has_doctrine = tenet_jewish_syncretism
+							scope:sacrifice.religion = religion:judaism_religion
 						}
-						AND = { # Greco-Roman
-							has_doctrine = graeco_roman_special_hostility_doctrine
-							scope:sacrifice.faith = { has_doctrine_parameter = graeco_roman_syncretic_actor_opinion_active }
-						}
-						AND = { # Archaic
-							has_doctrine = archaic_special_hostility_doctrine
-							scope:sacrifice.faith = { has_doctrine_parameter = archaic_syncretic_actor_opinion_active }
-						}
-						AND = { # Zoroastrian
-							has_doctrine = special_doctrine_is_zoroastrian_faith
-							scope:sacrifice.faith = { has_doctrine_parameter = persian_syncretic_actor_opinion_active }
-						}
-						AND = { # Gonostic
-							has_doctrine = special_doctrine_is_gnostic_faith
-							scope:sacrifice.faith = { has_doctrine_parameter = gnostic_syncretic_actor_opinion_active }
-						}		
 					}
 				}
 			}
@@ -1141,4 +1130,9 @@ bondi_gold_value = {
 	divide = 5
 	ceiling = yes
 	multiply = 5
+}
+
+north_sea_held_value = {
+	value = 0
+	add = scope:temp_scope.title_held_years
 }

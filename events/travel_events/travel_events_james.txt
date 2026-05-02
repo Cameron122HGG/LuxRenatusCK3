@@ -1632,6 +1632,7 @@ travel_events.4006 = {
 		root.current_travel_plan = {
 			random_entourage_character = {
 				limit = {
+					is_adult = yes
 					opinion = {
 						value <= low_negative_opinion
 						target = root
@@ -5678,7 +5679,7 @@ travel_events.4032 = {
 					}
 					if = {
 						limit = {
-							accolade ?= { is_accolade_active = yes }
+							is_acclaimed = yes
 						}
 						accolade = { add_glory = minor_glory_gain }
 					}
@@ -5697,7 +5698,7 @@ travel_events.4032 = {
 					}
 					if = {
 						limit = {
-							accolade ?= { is_accolade_active = yes }
+							is_acclaimed = yes
 						}
 						accolade = { add_glory = minor_glory_gain }
 					}
@@ -6877,42 +6878,26 @@ travel_events.4037 = {
 		is_location_valid_for_travel_event_on_land = yes
 		location.faith != root.faith
 		OR = {
-			AND = { # Eastern
-				faith = { has_doctrine = special_doctrine_is_eastern_faith }
+			AND = {
+				religion = { is_in_family = rf_eastern }
 				location.faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
 			}
-			AND = { # Pagan
-				faith = { has_doctrine = pagan_special_hostility_doctrine }
+			AND = {
+				faith = { has_doctrine_parameter = unreformed }
 				location.faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
 			}
-			AND = { # Christian
-				faith = { has_doctrine = special_doctrine_is_christian_faith }
+			AND = {
+				religion = religion:christianity_religion
 				location.faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
 			}
-			AND = { # Islam
-				faith = { has_doctrine = special_doctrine_is_islamic_faith }
+			AND = {
+				religion = religion:islam_religion
 				location.faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
 			}
-			AND = { # Judaism
-				faith = { has_doctrine = special_doctrine_is_jewish_faith }
+			AND = {
+				religion = religion:judaism_religion
 				location.faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
 			}
-			AND = { # Greco-Roman
-				faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
-				location.faith = { has_doctrine_parameter = graeco_roman_syncretic_actor_opinion_active }
-			}
-			AND = { # Archaic
-				faith = { has_doctrine = archaic_special_hostility_doctrine }
-				location.faith = { has_doctrine_parameter = archaic_syncretic_actor_opinion_active }
-			}
-			AND = { # Zoroastrian
-				faith = { has_doctrine = special_doctrine_is_zoroastrian_faith }
-				location.faith = { has_doctrine_parameter = persian_syncretic_actor_opinion_active }
-			}
-			AND = { # Gonostic
-				faith = { has_doctrine = special_doctrine_is_gnostic_faith }
-				location.faith = { has_doctrine_parameter = gnostic_syncretic_actor_opinion_active }
-			}		
 		}
 	}
 	immediate = {
@@ -7094,42 +7079,26 @@ travel_events.4038 = {
 			barony.holder != root
 		}
 		OR = {
-			AND = { # Eastern
-				scope:peasant.faith = { has_doctrine = special_doctrine_is_eastern_faith }
-				location.faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
+			AND = {
+				faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
+				location.religion = { is_in_family = rf_eastern }
 			}
-			AND = { # Pagan
-				scope:peasant.faith = { has_doctrine = pagan_special_hostility_doctrine }
-				location.faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
+			AND = {
+				faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
+				location.faith = { has_doctrine_parameter = unreformed }
 			}
-			AND = { # Christian
-				scope:peasant.faith = { has_doctrine = special_doctrine_is_christian_faith }
-				location.faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
+			AND = {
+				faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
+				location.religion = religion:christianity_religion
 			}
-			AND = { # Islam
-				scope:peasant.faith = { has_doctrine = special_doctrine_is_islamic_faith }
-				location.faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
+			AND = {
+				faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
+				location.religion = religion:islam_religion
 			}
-			AND = { # Judaism
-				scope:peasant.faith = { has_doctrine = special_doctrine_is_jewish_faith }
-				location.faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
+			AND = {
+				faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
+				location.religion = religion:judaism_religion
 			}
-			AND = { # Greco-Roman
-				scope:peasant.faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
-				location.faith = { has_doctrine_parameter = graeco_roman_syncretic_actor_opinion_active }
-			}
-			AND = { # Archaic
-				scope:peasant.faith = { has_doctrine = archaic_special_hostility_doctrine }
-				location.faith = { has_doctrine_parameter = archaic_syncretic_actor_opinion_active }
-			}
-			AND = { # Zoroastrian
-				scope:peasant.faith = { has_doctrine = special_doctrine_is_zoroastrian_faith }
-				location.faith = { has_doctrine_parameter = persian_syncretic_actor_opinion_active }
-			}
-			AND = { # Gonostic
-				scope:peasant.faith = { has_doctrine = special_doctrine_is_gnostic_faith }
-				location.faith = { has_doctrine_parameter = gnostic_syncretic_actor_opinion_active }
-			}		
 		}
 	}
 	immediate = {
@@ -7211,13 +7180,7 @@ travel_events.4038 = {
 					add_piety = minor_piety_loss
 					if = {
 						limit = {
-							faith = {
-								OR = {
-									has_doctrine_parameter = eastern_syncretic_actor_opinion_active
-									has_doctrine_parameter = gnostic_syncretic_actor_opinion_active
-									has_doctrine_parameter = persian_syncretic_actor_opinion_active
-								}
-							}
+							faith = { has_doctrine_parameter = eastern_syncretic_actor_opinion_active }
 						}
 						add_character_modifier = {
 							modifier = offended_eastern_modifier
@@ -7226,11 +7189,7 @@ travel_events.4038 = {
 					}
 					else_if = {
 						limit = {
-							OR = {
-								has_doctrine_parameter = unreformed_syncretic_actor_opinion_active
-								has_doctrine_parameter = graeco_roman_syncretic_actor_opinion_active
-								has_doctrine_parameter = archaic_syncretic_actor_opinion_active
-							}
+							faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
 						}
 						add_character_modifier = {
 							modifier = offended_pagan_modifier

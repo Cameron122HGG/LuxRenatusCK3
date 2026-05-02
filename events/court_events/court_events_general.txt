@@ -2486,6 +2486,7 @@ court.3031 = {
 	option = {
 		name = court.3031.c
 		every_sub_realm_county = {
+			custom = every_culture_county_3031
 			limit = {
 				culture = scope:reference_county.culture
 			}
@@ -4708,7 +4709,9 @@ court.5075 = {
 		desc = court.5075.desc_ending
 	}
 	theme = court
-
+	override_background = {
+		reference = courtyard
+	}
 
 	court_scene = {
 		button_position_character = scope:master_of_the_horse
@@ -8732,6 +8735,7 @@ court.8010 = {
 			limit = {
 	        	any_character_artifact = {
 	        		count > 1
+					artifact_can_be_gift_to_trigger = { RECIPIENT = scope:underequipped }
 	        		artifact_slot_type = primary_armament
 	        	}
 	        }
@@ -8739,6 +8743,7 @@ court.8010 = {
 	        	limit = {
 	        		is_equipped = no
 	        		artifact_slot_type = primary_armament
+					artifact_can_be_gift_to_trigger = { RECIPIENT = scope:underequipped }
 	        	}
 	        	order_by = {
 	        		value = 0
@@ -9618,6 +9623,7 @@ court.8040 = {
 	    desc = court.8040.desc.body
     }
     theme = court
+    override_background = { reference = throne_room }
     cooldown = { years = 10 }
     court_scene = {
         button_position_character = scope:courtier_3
@@ -10078,6 +10084,7 @@ court.8050 = {
     title = court.8050.t
     desc = court.8050.desc
     theme = court
+    override_background = { reference = throne_room }
     cooldown = { years = 10 }
     court_scene = {
         button_position_character = scope:servant

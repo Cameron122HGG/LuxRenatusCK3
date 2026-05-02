@@ -129,7 +129,10 @@ tgp_house_blocs.1001 = {
 						liege = scope:bloc_leader
 						liege = root
 					}
-					NOT = { is_at_war_with = house.house_confederation.leading_house.house_head }
+					NOR = {
+						this = root
+						is_at_war_with = house.house_confederation.leading_house.house_head 
+					}
 				}
 				add_to_list = war_joiners
 			}
@@ -138,11 +141,15 @@ tgp_house_blocs.1001 = {
 
 	option = {
 		name = tgp_house_blocs.1001.a
-		scope:war = { add_attacker = root }
+		scope:war = {
+			add_attacker = root
+		}
 		every_in_list = {
 			list = war_joiners
 			save_temporary_scope_as = war_joiner_temp
-			scope:war = { add_attacker = scope:war_joiner_temp }
+			scope:war = {
+				add_attacker = scope:war_joiner_temp 
+			}
 		}
 		ai_chance = {
 			base = 100

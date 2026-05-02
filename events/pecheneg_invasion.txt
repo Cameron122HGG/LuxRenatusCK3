@@ -1,0 +1,80 @@
+﻿namespace = pecheneg_invasion
+
+pecheneg_invasion.0001 = {
+	type = character_event
+	hidden = yes
+	title = pecheneg_invasion.0001.t
+	desc = pecheneg_invasion.0001.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = pecheneg_invasion.0001.a
+		if = {
+			limit = {
+				has_game_rule = pecheneg_invasion_yes
+			}
+			trigger_event = {
+				id = pecheneg_invasion.0002
+			}
+		}
+	}
+}
+
+pecheneg_invasion.0002 = {
+	type = character_event
+	title = pecheneg_invasion.0002.t
+	desc = pecheneg_invasion.0002.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	#option = {
+	#	name = pecheneg_invasion.0002.a
+	#}
+	option = {
+		name = pecheneg_invasion.0002.b
+		hidden_effect = {
+			title:e_byzantium = { 
+				holder.top_liege = { save_scope_as = war_target }
+			}
+			title:k_pechenegs = { 
+				holder.top_liege = { save_scope_as = war_leader }
+			}
+			title:e_byzantium.holder = {
+				trigger_event = {
+					id = pecheneg_invasion.0003
+				}
+			}
+			scope:war_leader = {
+				spawn_army = {
+					location = province:543
+					name = "pecheneg_horde"
+					men_at_arms = { type = light_footmen men = 5500 }
+					men_at_arms = { type = light_horsemen men = 15500 }
+					men_at_arms = { type = horse_archers men = 2000 }
+					men_at_arms = { type = bowmen men = 2000 }
+					levies = 15000
+					war_keep_on_attacker_victory = no
+				}	
+				start_war = {
+					casus_belli = invasion_war
+					target = scope:war_target
+					target_title = title:k_byzantium
+					target_title = title:k_pergamon
+				}
+			}	
+		}
+	}
+}
+
+pecheneg_invasion.0003 = {
+	type = character_event
+	title = pecheneg_invasion.0003.t
+	desc = pecheneg_invasion.0003.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = pecheneg_invasion.0003.a
+	}
+}

@@ -27,68 +27,74 @@ name_of_the_building = {
 
 	type = regular/special/duchy_capital	# Specifies whether this is a regular building, a special building, or a duchy capital building. Regular by default
 
-	# Which asset does the building use
+	# Array of assets used (optional)
+	# Note: This array is optional and reading assets without it works just as well
+	#		It exists to add indention to easily collapse or minimize a bunch of assets at the same time
 	#
-	asset = {
-
-		# specifies wheter to use a mesh or an entity. Meshes are more performant and should be preferred.
+	assets = {
+		# Which asset does the building use
 		#
-		type = pdxmesh/entity
+		asset = {
 
-		# The name of the mesh or the entity ( string )
-		# Can have multiple entries, combined with 'names'
-		# Note that they must all be entities, or all be meshes
-		#
-		name = "western_castle_01_level_03_mesh"
-		name = "western_castle_01_level_04_mesh"
+			# specifies wheter to use a mesh or an entity. Meshes are more performant and should be preferred.
+			#
+			type = pdxmesh/entity
 
-		# Names of meshes or entities ( array of strings )
-		# To randomize between multiple meshes/entities
-		# Note that they must all be entities, or all be meshes
-		# Combined with 'name'
-		#
-		names = { "western_castle_01_level_03a_mesh" "western_castle_01_level_03b_mesh" "western_castle_01_level_03c_mesh" }
+			# The name of the mesh or the entity ( string )
+			# Can have multiple entries, combined with 'names'
+			# Note that they must all be entities, or all be meshes
+			#
+			name = "western_castle_01_level_03_mesh"
+			name = "western_castle_01_level_04_mesh"
 
-		# Path to illustration shown in the county view ( string )
-		# Texture can be accessed in GUI: "[Holding.GetIllustration]"
-		#
-		illustration = "path/to/image.dds"
+			# Names of meshes or entities ( array of strings )
+			# To randomize between multiple meshes/entities
+			# Note that they must all be entities, or all be meshes
+			# Combined with 'name'
+			#
+			names = { "western_castle_01_level_03a_mesh" "western_castle_01_level_03b_mesh" "western_castle_01_level_03c_mesh" }
 
-		# Associated sound effect and an optional parameter
-		# Can also be just soundeffect = "event:..." if no parameter is needed
-		# Can have multiple sound effects
-		#
-		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Generic/sfx_amb_3d_holdings_generic_castle_01" soundparameter = { "Tier" = 2.0 } }
+			# Path to illustration shown in the county view ( string )
+			# Texture can be accessed in GUI: "[Holding.GetIllustration]"
+			#
+			illustration = "path/to/image.dds"
 
-		# Governments that prefer this asset to be shown
-		governments = { tribal_government }
+			# Associated sound effect and an optional parameter
+			# Can also be just soundeffect = "event:..." if no parameter is needed
+			# Can have multiple sound effects
+			#
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Generic/sfx_amb_3d_holdings_generic_castle_01" soundparameter = { "Tier" = 2.0 } }
 
-		# Province IDs in which this asset is preferred ( array of int )
-		# Has a higher priority than graphical region
-		#
-		provinces = { 496 1000 }
+			# Governments that prefer this asset to be shown
+			governments = { tribal_government }
 
-		# Graphical regions in which this asset is preferred ( array of strings )
-		# This is the most important criterion when selecting the asset, with the exception of government and province
-		# Should match entries in geographical regions database
-		#
-		graphical_regions = { graphical_mena graphical_mediterranean }
+			# Province IDs in which this asset is preferred ( array of int )
+			# Has a higher priority than graphical region
+			#
+			provinces = { 496 1000 }
 
-		# Graphical cultures that prefer this asset to be shown ( array of flags )
-		# Should match 'building_gfx' in cultures database
-		#
-		graphical_cultures = { western_building_gfx mediterranean_building_gfx }
+			# Graphical regions in which this asset is preferred ( array of strings )
+			# This is the most important criterion when selecting the asset, with the exception of government and province
+			# Should match entries in geographical regions database
+			#
+			graphical_regions = { graphical_mena graphical_mediterranean }
 
-		# Graphical faiths that prefer this asset to be shown ( array of strings )
-		# Priority is faith > religion > family, so Catholic graphical_faith overrides Abrahamic graphical_faith
-		# Should match 'graphical_faith' in religion database
-		#
-		graphical_faiths = { catholic_gfx orthodox_gfx }
+			# Graphical cultures that prefer this asset to be shown ( array of flags )
+			# Should match 'building_gfx' in cultures database
+			#
+			graphical_cultures = { western_building_gfx mediterranean_building_gfx }
 
-		# Required DLC flag ( dlc flag )
-		# Assets marked with a DLC flag require matching DLC to be enabled
-		#
-		requires_dlc_flag = the_northern_lords
+			# Graphical faiths that prefer this asset to be shown ( array of strings )
+			# Priority is faith > religion > family, so Catholic graphical_faith overrides Abrahamic graphical_faith
+			# Should match 'graphical_faith' in religion database
+			#
+			graphical_faiths = { catholic_gfx orthodox_gfx }
+
+			# Required DLC flag ( dlc flag )
+			# Assets marked with a DLC flag require matching DLC to be enabled
+			#
+			requires_dlc_flag = the_northern_lords
+		}
 	}
 
 	# Trigger: is the building enabled?
@@ -308,12 +314,14 @@ name_of_the_building = {
 	}
 
 	## fallback: modifier collection
-	# Use this field to define an alternative set of modifiers that will be applied if the building is disabled.
+	# Use this field to define an alternative set of modifiers that will be applied if the building is disabled or ruined.
+	# Requires a 'is_enabled' trigger to be configured as well.
+	#
 	# supported modifiers:
 	#	- character_modifier
 	#	- character_culture_modifier
 	#	- character_faith_modifier
-	#	- characer_dynasty_modifier
+	#	- character_dynasty_modifier
 	#	- province_modifier
 	#	- province_culture_modifier
 	#	- province_faith_modifier
@@ -338,6 +346,19 @@ name_of_the_building = {
 	fallback = {
 		character_modifier = {}
 
+		character_dynasty_modifier = {}
+		...
+	}
+
+	## override_modifiers: modifier collection
+	# Use this field to define an alternative set of modifiers if a DLC feature flag is available.
+	# (if disabled, it still uses the general 'fallback' collection)
+	# Multiple 'override_modifiers' collections can be defined, the first valid collection is used.
+	# supported modifiers - see list defined in 'fallback = { ... }' above.
+	override_modifiers = {
+		requires_dlc_flag = <dlc_flag>
+
+		character_modifier = {}
 		character_dynasty_modifier = {}
 		...
 	}

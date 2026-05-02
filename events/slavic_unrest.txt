@@ -1,0 +1,397 @@
+﻿namespace = slavic_unrest
+
+slavic_unrest.1000 = {
+	type = character_event
+	title = slavic_unrest.1000.t
+	desc = slavic_unrest.1000.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = slavic_unrest.1000.a
+	}
+}
+
+slavic_unrest.1001 = {
+	type = character_event
+	title = slavic_unrest.1001.t
+	desc = slavic_unrest.1001.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = slavic_unrest.1001.a
+	}
+}
+
+slavic_unrest.0001 = {
+	type = character_event
+	title = slavic_unrest.0001.t
+	desc = slavic_unrest.0001.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+		
+		add_martial_lifestyle_xp = 500
+		add_character_modifier = { modifier = arbiter_of_the_slavs_modifier months = 60 }
+	}
+	option = {
+		name = slavic_unrest.0001.a
+	}
+}
+
+slavic_unrest.0002 = {
+	type = character_event
+	title = slavic_unrest.0002.t
+	desc = slavic_unrest.0002.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+		
+		add_martial_lifestyle_xp = 500
+		add_character_modifier = { modifier = light_of_the_balkans_modifier months = 60 }
+	}
+	option = {
+		name = slavic_unrest.0002.a
+	}
+}
+
+slavic_unrest.0003 = {
+	type = character_event
+	title = slavic_unrest.0003.t
+	desc = slavic_unrest.0003.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+		
+		add_martial_lifestyle_xp = 500
+		add_character_modifier = { modifier = warden_of_the_haemus_modifier months = 60 }
+	}
+	option = {
+		name = slavic_unrest.0003.a
+	}
+}
+
+slavic_unrest.0004 = {
+	type = character_event
+	title = slavic_unrest.0004.t
+	desc = slavic_unrest.0004.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+		
+		add_martial_lifestyle_xp = 500
+		add_character_modifier = { modifier = scourge_of_the_brigands_modifier months = 60 }
+	}
+	option = {
+		name = slavic_unrest.0004.a
+	}
+}
+
+slavic_unrest.0005 = {
+	type = character_event
+	title = slavic_unrest.0005.t
+	desc = slavic_unrest.0005.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+		
+		add_martial_lifestyle_xp = 500
+		add_character_modifier = { modifier = the_peoples_granary_modifier months = 60 }
+	}
+	option = {
+		name = slavic_unrest.0005.a
+	}
+}
+
+slavic_unrest.0006 = {
+	type = character_event
+	title = slavic_unrest.0006.t
+	desc = slavic_unrest.0006.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+		title:e_byzantium.holder = {
+			trigger_event = {
+				id = slavic_unrest.0007
+				years = 6
+			}
+		}
+	}
+	option = {
+		name = slavic_unrest.0006.a
+	}
+}
+
+slavic_unrest.0007 = {
+	type = character_event
+	hidden = yes
+	title = slavic_unrest.0007.t
+	desc = slavic_unrest.0007.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+	}
+	option = {
+		name = slavic_unrest.0007.a
+		title:e_byzantium = { 
+			holder.top_liege = { save_scope_as = emperor_of_byzantium }
+		}
+		if = {
+			limit = {
+				title:c_skopje = { has_county_modifier = smoldering_slavic_resentment_modifier }
+				scope:emperor_of_byzantium = {
+					title:d_vidin.holder = { top_liege = scope:emperor_of_byzantium }
+					title:d_lykandos.holder = { top_liege = scope:emperor_of_byzantium }
+					title:d_philippopolis.holder = { top_liege = scope:emperor_of_byzantium }
+					title:d_turnovo.holder = { top_liege = scope:emperor_of_byzantium }
+					title:d_dobrudja.holder = { top_liege = scope:emperor_of_byzantium }
+				}
+			}
+			title:e_byzantium.holder = {
+				trigger_event = {
+					id = slavic_unrest.0009
+				}
+			}
+		}
+		else = {
+			title:e_byzantium.holder = {
+				trigger_event = {
+					id = slavic_unrest.0008
+				}
+			}
+		}
+	}
+}
+
+slavic_unrest.0008 = {
+	type = character_event
+	title = slavic_unrest.0008.t
+	desc = slavic_unrest.0008.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+	}
+	option = {
+		name = slavic_unrest.0008.a
+	}
+}
+
+slavic_unrest.0009 = {
+    type = character_event
+    title = slavic_unrest.0009.t
+	desc = slavic_unrest.0009.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+    option = {
+        name = slavic_unrest.0009.a
+		hidden_effect = {
+			title:e_byzantium = { 
+				holder.top_liege = { save_scope_as = war_target }
+			}
+			title:c_skopje = { save_scope_as = skopje_county_title }
+			title:c_skopje = {
+			random_county_province = {
+					limit = { is_county_capital = yes }
+					save_scope_as = rebellion_location
+				}
+			}
+			if = {
+				limit = {
+					scope:georgi_voiteh = {
+						is_alive = yes
+						is_imprisoned = no
+					}
+				}
+				scope:georgi_voiteh = {
+					save_scope_as = rebel_leader
+				}
+			}
+			else = {
+				scope:war_target = {
+					create_character = {
+						name = "generated_rebel_leader_name"
+						employer = this
+						gender = male
+						culture = culture:bulgarian
+						faith = root.faith
+						age = { 25 50 }
+						trait = ambitious
+						trait = brave
+						save_scope_as = rebel_leader
+					}
+				}
+			}
+			scope:rebel_leader = {
+				create_character = {
+					name = "petrilo"
+					employer = this
+					gender = male
+					culture = culture:serbian
+					faith = root.faith
+					age = { 25 50 }
+				}
+			}
+			scope:constantine_bodin = {
+				set_employer = scope:rebel_leader
+			}
+			title:k_bulgaria = { save_scope_as = bulgarian_kingdom_title }
+			title:d_vidin = { save_scope_as = vidin_duchy_title }
+			title:d_macva = { save_scope_as = macva_duchy_title }
+			title:d_rashka = { save_scope_as = rashka_duchy_title }
+			title:d_syrmia = { save_scope_as = syrmia_duchy_title }
+			title:d_lykandos = { save_scope_as = bulgaria_duchy_title }
+			title:d_philippopolis = { save_scope_as = philippopolis_duchy_title }
+			title:d_turnovo = { save_scope_as = turnovo_duchy_title }
+			title:d_dobrudja = { save_scope_as = dobrudja_duchy_title }
+			title:c_ohrid = { save_scope_as = ohrid_county_title }
+			title:c_hvosno = { save_scope_as = hvosno_county_title }
+			title:c_naissus = { save_scope_as = naissus_county_title }
+			title:c_velbazhd = { save_scope_as = velbazhd_county_title }
+			title:c_pomoravlje = { save_scope_as = pomoravlje_county_title }
+			scope:skopje_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			scope:ohrid_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			scope:hvosno_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			scope:naissus_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			scope:velbazhd_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			scope:pomoravlje_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			scope:rebel_leader = { add_gold = 500 }
+			scope:rebel_leader = {
+					scope:constantine_bodin = {
+						add_pressed_claim = scope:bulgarian_kingdom_title
+						give_nickname = "nick_bodin"
+					}
+					spawn_army = {
+						location = scope:rebellion_location
+						name = "georgi_voiteh_rebels"
+						men_at_arms = { type = light_footmen men = 5500 }
+						men_at_arms = { type = bowmen men = 2000 }
+						war_keep_on_attacker_victory = no
+					}  
+					spawn_army = {
+						location = scope:rebellion_location
+						name = "constantine_bodin_contingent"
+						men_at_arms = { type = armored_footmen men = 300 }
+						men_at_arms = { type = light_footmen men = 1500 }
+						war_keep_on_attacker_victory = no
+					}
+					start_war = {
+						casus_belli = bulgarian_independence_cb
+						target = scope:war_target
+						claimant = scope:constantine_bodin
+						target_title = scope:bulgarian_kingdom_title
+						target_title = scope:vidin_duchy_title
+						target_title = scope:macva_duchy_title
+						target_title = scope:rashka_duchy_title
+						target_title = scope:syrmia_duchy_title
+						target_title = scope:bulgaria_duchy_title
+						target_title = scope:philippopolis_duchy_title
+						target_title = scope:turnovo_duchy_title
+						target_title = scope:dobrudja_duchy_title
+					}	
+				}
+			}
+			clear_saved_scope = rebellion_location
+			clear_saved_scope = war_target
+			clear_saved_scope = constantine_bodin
+			clear_saved_scope = rebel_leader
+			clear_saved_scope = bulgarian_kingdom_title
+			clear_saved_scope = skopje_county_title
+			clear_saved_scope = title_change_county
+	}
+}
+
+slavic_unrest.0010 = {
+	type = character_event
+	title = slavic_unrest.0010.t
+	desc = slavic_unrest.0010.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+	}
+	option = {
+		name = slavic_unrest.0010.a
+	}
+}
+
+slavic_unrest.0011 = {
+	type = character_event
+	title = slavic_unrest.0011.t
+	desc = slavic_unrest.0011.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+	}
+	option = {
+		name = slavic_unrest.0011.a
+	}
+}
+
+slavic_unrest.0012 = {
+	type = character_event
+	title = slavic_unrest.0012.t
+	desc = slavic_unrest.0012.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+	}
+	option = {
+		name = slavic_unrest.0012.a
+		character:20493 = { 
+			change_first_name = "petar"
+		}
+	}
+	option = {
+		name = slavic_unrest.0012.b
+	}
+}
+
+slavic_unrest.0013 = {
+	type = character_event
+	title = slavic_unrest.0013.t
+	desc = slavic_unrest.0013.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	immediate = {
+	}
+	option = {
+		name = slavic_unrest.0013.a
+	}
+}

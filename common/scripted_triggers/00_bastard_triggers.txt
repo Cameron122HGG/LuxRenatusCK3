@@ -80,12 +80,12 @@ secret_disputed_heritage_is_valid_trigger = {
 			has_trait = legitimized_bastard
 			real_father = { 
 				government_has_flag = government_is_mandala
-				house ?= { has_house_power_parameter = aspect_of_creation }
+				house ?= { has_house_aspiration_parameter = aspect_of_creation }
 				is_house_head = yes
 			}
 			mother = { 
 				government_has_flag = government_is_mandala
-				house ?= { has_house_power_parameter = aspect_of_creation }
+				house ?= { has_house_aspiration_parameter = aspect_of_creation }
 				is_house_head = yes
 			}
 		}
@@ -100,19 +100,19 @@ bastard_secret_is_criminal = {
 		scope:criminal_participant = {
 			NAND = { 
 				government_has_flag = government_is_mandala
-				house ?= { has_house_power_parameter = aspect_of_creation }
+				house ?= { has_house_aspiration_parameter = aspect_of_creation }
 				is_house_head = yes
 			}
 			OR = {
 				trait_is_criminal_in_faith_trigger = {
 					FAITH = faith
-					TRAIT = adulterer
+					TRAIT = trait:adulterer
 					GENDER_CHARACTER = scope:criminal_participant
 				}
 				any_liege_or_above = {
 					trait_is_criminal_in_faith_trigger = {
 						FAITH = faith
-						TRAIT = adulterer
+						TRAIT = trait:adulterer
 						GENDER_CHARACTER = scope:criminal_participant
 					}
 				}
@@ -161,13 +161,13 @@ bastard_secret_is_shunned = {
 			OR = {
 				trait_is_shunned_in_faith_trigger = {
 					FAITH = faith
-					TRAIT = adulterer
+					TRAIT = trait:adulterer
 					GENDER_CHARACTER = scope:participant
 				}
 				any_liege_or_above = {
 					trait_is_shunned_in_faith_trigger = {
 						FAITH = faith
-						TRAIT = adulterer
+						TRAIT = trait:adulterer
 						GENDER_CHARACTER = scope:participant
 					}
 				}

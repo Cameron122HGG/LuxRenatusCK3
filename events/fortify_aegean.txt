@@ -1,0 +1,542 @@
+﻿namespace = fortify_aegean
+
+fortify_aegean.0001 = {
+	type = character_event
+	title = fortify_aegean.0001.t
+	desc = fortify_aegean.0001.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0001.a
+		add_martial_lifestyle_xp = 500
+		add_prestige = 350
+	}
+}
+
+fortify_aegean.0002 = {
+	type = character_event
+	title = fortify_aegean.0002.t
+	desc = fortify_aegean.0002.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0002.a
+		add_martial_lifestyle_xp = 500
+		add_prestige = 350
+	}
+}
+
+fortify_aegean.0003 = {
+	type = character_event
+	title = fortify_aegean.0003.t
+	desc = fortify_aegean.0003.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0003.a
+		add_martial_lifestyle_xp = 500
+		add_prestige = 350
+	}
+}
+
+fortify_aegean.0004 = {
+	type = character_event
+	title = fortify_aegean.0004.t
+	desc = fortify_aegean.0004.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0004.a
+		add_martial_lifestyle_xp = 500
+		add_prestige = 350
+	}
+}
+
+fortify_aegean.0005 = {
+	type = character_event
+	title = fortify_aegean.0005.t
+	desc = fortify_aegean.0005.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0005.a
+		add_martial_lifestyle_xp = 500
+		add_prestige = 350
+	}
+}
+
+fortify_aegean.0006 = {
+	type = character_event
+	title = fortify_aegean.0006.t
+	desc = fortify_aegean.0006.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0006.a
+		add_martial_lifestyle_xp = 700
+		add_prestige = 500
+	}
+}
+
+fortify_aegean.0007 = {
+	type = character_event
+	title = fortify_aegean.0007.t
+	desc = fortify_aegean.0007.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0007.a
+	}
+}
+
+fortify_aegean.0008 = {
+	type = character_event
+	title = fortify_aegean.0008.t
+	desc = fortify_aegean.0008.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0008.a
+		set_global_variable = { name = cretan_raids months = 1200 }
+		title:c_rhodos = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_naxos = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_chios = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		trigger_event = {
+			id = fortify_aegean.0009
+			years = 4
+		}
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0009 = {
+	type = character_event
+	hidden = yes
+	title = fortify_aegean.0009.t
+	desc = fortify_aegean.0009.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0009.a
+		if = {
+			limit = {
+				has_global_variable = cretan_raids
+				NOT = { title:d_krete = { holder.top_liege = root.top_liege } }
+				NOT = {		
+					title:d_krete = {
+						religion = root.religion
+					}
+				}	
+			}
+			trigger_event = {
+				id = fortify_aegean.0010
+			}
+		}
+	}
+}
+
+fortify_aegean.0010 = {
+	type = character_event
+	title = fortify_aegean.0010.t
+	desc = fortify_aegean.0010.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0010.a
+		title:c_laconia = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_korinthos = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		trigger_event = {
+			id = fortify_aegean.0011
+			years = 3
+		}
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0011 = {
+	type = character_event
+	hidden = yes
+	title = fortify_aegean.0011.t
+	desc = fortify_aegean.0011.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0011.a
+		if = {
+			limit = {
+				has_global_variable = cretan_raids
+				NOT = { title:d_krete = { holder.top_liege = root.top_liege } }
+				NOT = {		
+					title:d_krete = {
+						religion = root.religion
+					}
+				}
+			}
+			trigger_event = {
+				id = fortify_aegean.0012
+			}
+			title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+		}
+	}
+}
+
+fortify_aegean.0012 = {
+	type = character_event
+	title = fortify_aegean.0012.t
+	desc = fortify_aegean.0012.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0012.a
+		title:c_aeolis = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_ionia = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_caria = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		trigger_event = {
+			id = fortify_aegean.0013
+			years = 4
+		}
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0013 = {
+	type = character_event
+	hidden = yes
+	title = fortify_aegean.0013.t
+	desc = fortify_aegean.0013.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0013.a
+		if = {
+			limit = {
+				has_global_variable = cretan_raids
+				NOT = { title:d_krete = { holder.top_liege = root.top_liege } }
+				NOT = {		
+					title:d_krete = {
+						religion = root.religion
+					}
+				}
+			}
+			trigger_event = {
+				id = fortify_aegean.0014
+			}
+		}
+	}
+}
+
+fortify_aegean.0014 = {
+	type = character_event
+	title = fortify_aegean.0014.t
+	desc = fortify_aegean.0014.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0014.a
+		title:c_attica = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_euboea = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_boeotia = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		trigger_event = {
+			id = fortify_aegean.0015
+			years = 2
+		}
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0015 = {
+	type = character_event
+	hidden = yes
+	title = fortify_aegean.0015.t
+	desc = fortify_aegean.0015.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0015.a
+		if = {
+			limit = {
+				has_global_variable = cretan_raids
+				NOT = { title:d_krete = { holder.top_liege = root.top_liege } }
+				NOT = {		
+					title:d_krete = {
+						religion = root.religion
+					}
+				}
+			}
+			trigger_event = {
+				id = fortify_aegean.0016
+			}
+		}
+	}
+}
+
+fortify_aegean.0016 = {
+	type = character_event
+	title = fortify_aegean.0016.t
+	desc = fortify_aegean.0016.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0016.a
+		title:c_neopatras = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_demetrias = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_thessalia = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		trigger_event = {
+			id = fortify_aegean.0017
+			years = 4
+		}
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0017 = {
+	type = character_event
+	hidden = yes
+	title = fortify_aegean.0017.t
+	desc = fortify_aegean.0017.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0017.a
+		if = {
+			limit = {
+				has_global_variable = cretan_raids
+				NOT = { title:d_krete = { holder.top_liege = root.top_liege } }
+				NOT = {		
+					title:d_krete = {
+						religion = root.religion
+					}
+				}
+			}
+			trigger_event = {
+				id = fortify_aegean.0018
+			}
+		}
+	}
+}
+
+fortify_aegean.0018 = {
+	type = character_event
+	title = fortify_aegean.0018.t
+	desc = fortify_aegean.0018.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0018.a
+		title:c_chalkidike = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		trigger_event = {
+			id = fortify_aegean.0019
+			years = 5
+		}
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0019 = {
+	type = character_event
+	hidden = yes
+	title = fortify_aegean.0019.t
+	desc = fortify_aegean.0019.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0019.a
+		if = {
+			limit = {
+				has_global_variable = cretan_raids
+				NOT = { title:d_krete = { holder.top_liege = root.top_liege } }
+				NOT = {		
+					title:d_krete = {
+						religion = root.religion
+					}
+				}
+			}
+			trigger_event = {
+				id = fortify_aegean.0020
+			}
+		}
+	}
+}
+
+fortify_aegean.0020 = {
+	type = character_event
+	title = fortify_aegean.0020.t
+	desc = fortify_aegean.0020.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0020.a
+		title:c_veria = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_thessalonika = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_serres = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_mosynopolis = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		trigger_event = {
+			id = fortify_aegean.0021
+			years = 1
+		}
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0021 = {
+	type = character_event
+	hidden = yes
+	title = fortify_aegean.0021.t
+	desc = fortify_aegean.0021.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0021.a
+		if = {
+			limit = {
+				has_global_variable = cretan_raids
+				NOT = { title:d_krete = { holder.top_liege = root.top_liege } }
+				NOT = {		
+					title:d_krete = {
+						religion = root.religion
+					}
+				}
+			}
+			trigger_event = {
+				id = fortify_aegean.0022
+			}
+		}
+	}
+}
+
+fortify_aegean.0022 = {
+	type = character_event
+	title = fortify_aegean.0022.t
+	desc = fortify_aegean.0022.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0022.a
+		title:c_kalliopolis = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_abydos = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:c_lesbos = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		trigger_event = {
+			id = fortify_aegean.0023
+			years = 2
+		}
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0023 = {
+	type = character_event
+	hidden = yes
+	title = fortify_aegean.0023.t
+	desc = fortify_aegean.0023.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0023.a
+		if = {
+			limit = {
+				has_global_variable = cretan_raids
+				NOT = { title:d_krete = { holder.top_liege = root.top_liege } }
+				NOT = {		
+					title:d_krete = {
+						religion = root.religion
+					}
+				}
+			}
+			trigger_event = {
+				id = fortify_aegean.0024
+			}
+		}
+	}
+}
+
+fortify_aegean.0024 = {
+	type = character_event
+	title = fortify_aegean.0024.t
+	desc = fortify_aegean.0024.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0024.a
+		title:c_byzantion = { add_county_modifier = { modifier = cretan_raid_devastation_modifier months = 600} }
+		title:d_krete.holder = {
+			trigger_event = {
+				id = fortify_aegean.0025
+			}
+		}
+	}
+}
+
+fortify_aegean.0025 = {
+	type = character_event
+	title = fortify_aegean.0025.t
+	desc = fortify_aegean.0025.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = fortify_aegean.0025.a
+		add_martial_lifestyle_xp = 500
+		add_prestige = 350
+		add_gold = 400
+	}
+}

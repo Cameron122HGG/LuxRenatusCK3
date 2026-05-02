@@ -83,7 +83,7 @@ cluny_abbey_01 = {
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -125,6 +125,7 @@ cluny_abbey_01 = {
 	type = special
 	flag = travel_point_of_interest_religious
 	flag = special_university
+	flag = religious_studies_location
 }
 cluny_abbey_02 = {
 	asset = {
@@ -139,7 +140,7 @@ cluny_abbey_02 = {
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -181,6 +182,7 @@ cluny_abbey_02 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 ##########
 # Walls of York
@@ -233,7 +235,7 @@ damascus_mosque_01 = {
 		custom_description = {
 			text = holy_site_muslim_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:islam_religion }
+				islam_or_syncretic_with_islam_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -278,7 +280,12 @@ jokhang_01 = {
 	construction_time = very_slow_construction_time
 	type_icon = "icon_structure_jokhang.dds"
 	can_construct_potential = { building_requirement_tribal = no }
-	is_enabled = { custom_description = { text = buddhas_of_bamian_trigger scope:holder = { religion = { is_in_family = rf_eastern } } } }
+	is_enabled = { 
+		custom_description = { 
+			text = buddhas_of_bamian_trigger 
+			eastern_or_syncretic_with_eastern_trigger = { CHARACTER = scope:holder } 
+		} 
+	}
 	cost_gold = 1000
 	county_holder_character_modifier = {
 		monthly_piety_gain_per_dread_add = 0.02
@@ -302,6 +309,7 @@ jokhang_01 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 ##########
 # Wartburg
@@ -356,7 +364,7 @@ beta_giyorgis_01 = {
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -403,7 +411,7 @@ holy_wisdom_01 = {
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -432,6 +440,7 @@ holy_wisdom_01 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 ##########
 # Kano Earthworks
@@ -514,6 +523,7 @@ somapura_university_01 = {
 	type = special
 	flag = travel_point_of_interest_learning
 	flag = special_university
+	flag = religious_studies_location
 }
 ##########
 # Duomo Florence
@@ -532,7 +542,7 @@ duomo_florence_01 = {
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -558,6 +568,7 @@ duomo_florence_01 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 duomo_florence_02 = {
 	asset = {
@@ -573,7 +584,7 @@ duomo_florence_02 = {
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -602,6 +613,7 @@ duomo_florence_02 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 duomo_florence_03 = {
 	asset = {
@@ -617,7 +629,7 @@ duomo_florence_03 = {
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -648,6 +660,7 @@ duomo_florence_03 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 duomo_florence_04 = {
 	asset = {
@@ -662,7 +675,7 @@ duomo_florence_04 = {
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -695,6 +708,7 @@ duomo_florence_04 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 ##########
 # Konark Sun Temple
@@ -708,7 +722,12 @@ konark_temple_01 = {
 	construction_time = very_slow_construction_time
 	type_icon = "icon_structure_konark_temple.dds"
 	can_construct_potential = { building_requirement_tribal = no }
-	is_enabled = { custom_description = { text = buddhas_of_bamian_trigger scope:holder = { religion = { is_in_family = rf_eastern } } } }
+	is_enabled = { 
+		custom_description = { 
+			text = buddhas_of_bamian_trigger 
+			eastern_or_syncretic_with_eastern_trigger = { CHARACTER = scope:holder } 
+		} 
+	}
 	can_construct = { scope:holder.culture = { has_innovation = innovation_guilds } }
 	cost_gold = 1000
 	county_holder_character_modifier = {
@@ -733,6 +752,7 @@ konark_temple_01 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 ##########
 # al-Qarawiyyin University
@@ -778,6 +798,7 @@ al_qarawiyyin_university_01 = {
 	type = special
 	flag = travel_point_of_interest_learning
 	flag = special_university
+	flag = religious_studies_location
 }
 ##########
 # Kairouan basins
@@ -912,7 +933,7 @@ wawel_cathedral_01 = { #Collegiate Church of St. Mary and St. Alexius
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -945,6 +966,7 @@ wawel_cathedral_01 = { #Collegiate Church of St. Mary and St. Alexius
 	next_building = wawel_cathedral_02
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 
 wawel_cathedral_02 = { #Archcollegiate Church of St. Mary and St. Alexius
@@ -966,7 +988,7 @@ wawel_cathedral_02 = { #Archcollegiate Church of St. Mary and St. Alexius
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -979,8 +1001,8 @@ wawel_cathedral_02 = { #Archcollegiate Church of St. Mary and St. Alexius
 		clergy_opinion = 4
 	}
 	county_modifier = {
-		development_growth_factor = 0.1
-		development_growth = 0.2
+		development_growth_factor = 0.075
+		development_growth = 0.15
 		county_opinion_add = 15
 	}
 	province_modifier = {
@@ -999,6 +1021,7 @@ wawel_cathedral_02 = { #Archcollegiate Church of St. Mary and St. Alexius
 	next_building = wawel_cathedral_03
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 
 wawel_cathedral_03 = { #Cathedral of St. Mary and St. Alexius - althistory upgrade
@@ -1020,7 +1043,7 @@ wawel_cathedral_03 = { #Cathedral of St. Mary and St. Alexius - althistory upgra
 		custom_description = {
 			text = holy_site_christian_or_holy_site_trigger
 			OR = {
-				scope:holder = { religion = religion:christianity_religion }
+				christianity_or_syncretic_with_christianity_trigger = { CHARACTER = scope:holder }
 				custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
 			}
 		}
@@ -1033,8 +1056,8 @@ wawel_cathedral_03 = { #Cathedral of St. Mary and St. Alexius - althistory upgra
 		clergy_opinion = 6
 	}
 	county_modifier = {
-		development_growth_factor = 0.2
-		development_growth = 0.3
+		development_growth_factor = 0.1
+		development_growth = 0.2
 		county_opinion_add = 15
 	}
 	province_modifier = {
@@ -1052,6 +1075,7 @@ wawel_cathedral_03 = { #Cathedral of St. Mary and St. Alexius - althistory upgra
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 ##########
 # Vatapi Caves
@@ -1065,7 +1089,12 @@ vatapi_caves_01 = {
 	construction_time = very_slow_construction_time
 	type_icon = "icon_structure_vatapi_caves.dds"
 	can_construct_potential = { building_requirement_tribal = no }
-	is_enabled = { custom_description = { text = buddhas_of_bamian_trigger scope:holder = { religion = { is_in_family = rf_eastern } } } }
+	is_enabled = { 
+		custom_description = { 
+			text = buddhas_of_bamian_trigger 
+			eastern_or_syncretic_with_eastern_trigger = { CHARACTER = scope:holder } 
+		} 
+	}
 	cost_gold = 1000
 	character_modifier = {
 		monthly_piety = 2
@@ -1086,6 +1115,7 @@ vatapi_caves_01 = {
 	}
 	type = special
 	flag = travel_point_of_interest_religious
+	flag = religious_studies_location
 }
 ##########
 # Golden fort of Jaisalmer

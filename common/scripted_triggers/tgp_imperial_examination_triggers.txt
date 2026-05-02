@@ -191,38 +191,6 @@ has_questionable_score_trigger = {
 	var:$SCORE_VAR$ < imperial_examination_decent_score_value
 }
 
-#Do you have any cheats?
-has_any_exam_cheats_trigger = {
-	OR = {
-		has_variable = has_bribed_examiner
-		has_variable = has_exam_taker
-		has_variable = has_blackmailed_examiner
-		has_variable = has_planted_answers
-		has_variable = parent_has_bribed_examiner
-	}
-}
-
-is_bribed_examiner_trigger = {
-	OR = {
-		AND = {
-			$EXAMINEE$ = { has_variable = has_bribed_examiner }
-			$EXAMINER$ = $EXAMINEE$.var:has_bribed_examiner
-		}
-		AND = {
-			$EXAMINEE$ = { has_variable = has_blackmailed_examiner }
-			$EXAMINER$ = $EXAMINEE$.var:has_blackmailed_examiner
-		}
-		AND = {
-			$EXAMINEE$ = { has_variable = has_planted_answers }
-			$EXAMINER$ = $EXAMINEE$.var:has_planted_answers
-		}
-		AND = {
-			$EXAMINEE$ = { has_variable = parent_has_bribed_examiner }
-			$EXAMINER$ = $EXAMINEE$.var:parent_has_bribed_examiner
-		}
-	}
-}
-
 is_wrong_examination_gender = {
 	OR = {
 		AND = {

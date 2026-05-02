@@ -1,0 +1,368 @@
+﻿namespace = paulician_revolt
+
+paulician_revolt.0001 = {
+    type = character_event
+    title = paulician_revolt.0001.t
+	desc = paulician_revolt.0001.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+    option = {
+        name = paulician_revolt.0001.a
+		hidden_effect = {
+			title:e_byzantium = { 
+				holder.top_liege = { save_scope_as = war_target }
+			}
+			scope:war_target = {
+					create_character = {
+						name = "paulician_leader"
+						employer = this
+						gender = male
+						culture = culture:greek
+						faith = faith:paulician
+						age = { 25 50 }
+						trait = ambitious
+						trait = heresiarch
+						save_scope_as = rebel_leader
+					}
+				}
+			title:c_satala = { save_scope_as = satala_county_title }
+			title:c_satala = { set_county_faith = faith:paulician }
+			title:c_satala = {
+			random_county_province = {
+					limit = { is_county_capital = yes }
+					save_scope_as = rebellion_location
+				}
+			}
+			title:c_azysia = { set_county_faith = faith:paulician }
+			title:c_ablastha = { set_county_faith = faith:paulician }
+			title:k_anatolia = { save_scope_as = anatolia_kingdom_title }
+
+			scope:satala_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			
+			scope:rebel_leader = { add_gold = 500 }
+			scope:rebel_leader = {
+	
+					spawn_army = {
+						location = scope:rebellion_location
+						name = "paulician_army"
+						men_at_arms = { type = skoutatoi men = 2500 }
+						men_at_arms = { type = onager men = 50 }
+						levies = 2000
+						war_keep_on_attacker_victory = no
+						inheritable = no
+					}  
+					start_war = {
+						casus_belli = paulician_invasion
+						target = scope:war_target
+						target_title = scope:anatolia_kingdom_title
+					}	
+				}
+			}
+			clear_saved_scope = rebellion_location
+			clear_saved_scope = war_target
+			clear_saved_scope = rebel_leader
+			clear_saved_scope = anatolia_kingdom_title
+			clear_saved_scope = satala_county_title
+			clear_saved_scope = title_change_county
+	}
+	option = {
+        name = paulician_revolt.0001.b
+		hidden_effect = { 
+			title:e_byzantium = { 
+			holder.top_liege = { save_scope_as = war_target }
+				scope:war_target = {
+					create_character = {
+						name = "paulician_leader"
+						employer = this
+						gender = male
+						culture = culture:greek
+						faith = faith:paulician
+						age = { 25 50 }
+						stewardship = { 5 10 }
+						prowess = { 5 15 }
+						martial = { 5 15 }
+						diplomacy = { 5 10 }
+						learning = { 5 10 }
+						trait = education_martial_3
+						trait = ambitious
+						trait = zealous
+						trait = stubborn
+						trait = heresiarch
+						save_scope_as = rebel_leader
+					}
+				}
+			title:c_satala = { save_scope_as = satala_county_title }
+			title:c_satala = { set_county_faith = faith:paulician }
+			title:c_satala = {
+			random_county_province = {
+					limit = { is_county_capital = yes }
+					save_scope_as = rebellion_location
+				}
+			}
+			title:c_azysia = { set_county_faith = faith:paulician }
+			title:c_ablastha = { set_county_faith = faith:paulician }
+			title:k_anatolia = { save_scope_as = anatolia_kingdom_title }
+
+			scope:satala_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			
+			scope:rebel_leader = { add_gold = 500 add_piety = 1500 add_prestige = 1000 }
+			scope:rebel_leader = {
+	
+					spawn_army = {
+						location = scope:rebellion_location
+						name = "paulician_army"
+						men_at_arms = { type = skoutatoi men = 2000 }
+						men_at_arms = { type = onager men = 50 }
+						levies = 4500
+						war_keep_on_attacker_victory = no
+						inheritable = no
+					}  
+					start_war = {
+						casus_belli = paulician_invasion
+						target = scope:war_target
+						target_title = scope:anatolia_kingdom_title
+					}	
+				}
+			}
+			set_player_character = scope:rebel_leader
+			clear_saved_scope = rebellion_location
+			clear_saved_scope = war_target
+			clear_saved_scope = anatolia_kingdom_title
+			clear_saved_scope = satala_county_title
+			clear_saved_scope = title_change_county
+			clear_saved_scope = rebel_leader
+		}
+	}
+}
+
+paulician_revolt.0002 = {
+	type = character_event
+	title = paulician_revolt.0002.t
+	desc = paulician_revolt.0002.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = paulician_revolt.0002.a
+		add_learning_lifestyle_xp = 500
+		add_piety = 350
+	}
+}
+
+paulician_revolt.0003 = {
+	type = character_event
+	title = paulician_revolt.0003.t
+	desc = paulician_revolt.0003.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = paulician_revolt.0003.a
+		add_learning_lifestyle_xp = 500
+		add_piety = 350
+	}
+}
+
+paulician_revolt.0004 = {
+	type = character_event
+	title = paulician_revolt.0004.t
+	desc = paulician_revolt.0004.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = paulician_revolt.0004.a
+		add_learning_lifestyle_xp = 500
+		add_piety = 350
+	}
+}
+
+paulician_revolt.0005 = {
+	type = character_event
+	title = paulician_revolt.0005.t
+	desc = paulician_revolt.0005.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = paulician_revolt.0005.a
+		add_learning_lifestyle_xp = 500
+		add_piety = 350
+	}
+}
+
+paulician_revolt.0006 = {
+	type = character_event
+	title = paulician_revolt.0006.t
+	desc = paulician_revolt.0006.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = paulician_revolt.0006.a
+		add_learning_lifestyle_xp = 700
+		add_piety = 500
+	}
+}
+
+paulician_revolt.0007 = {
+	type = character_event
+	title = paulician_revolt.0007.t
+	desc = paulician_revolt.0007.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = paulician_revolt.0007.a
+	}
+}
+
+paulician_revolt.0008 = {
+	type = character_event
+	hidden = yes
+	title = paulician_revolt.0008.t
+	desc = paulician_revolt.0008.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+	name = paulician_revolt.0008.a
+		if = {
+			limit = {
+				has_global_variable = paulicians_restless_b
+			}
+			title:e_byzantium.holder = {
+				trigger_event = {
+					id = paulician_revolt.1112
+					years = 10
+				}
+			}
+			remove_global_variable = paulicians_restless_b
+		}
+	}
+}
+
+paulician_revolt.0009 = {
+    type = character_event
+    title = paulician_revolt.0009.t
+	desc = paulician_revolt.0009.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+    option = {
+        name = paulician_revolt.0009.a
+		hidden_effect = {
+			title:e_byzantium = { 
+				holder.top_liege = { save_scope_as = war_target }
+			}
+			set_global_variable = { name = paulician_all_in months = -1 }
+			scope:war_target = {
+					create_character = {
+						name = "paulician_leader_1"
+						employer = this
+						gender = male
+						culture = culture:greek
+						faith = faith:paulician
+						age = { 25 50 }
+						trait = heresiarch
+						save_scope_as = rebel_leader
+					}
+				}
+			title:c_satala = { save_scope_as = satala_county_title }
+			title:c_azysia = { save_scope_as = azysia_county_title }
+			title:c_satala = { set_county_faith = faith:paulician }
+			title:c_satala = {
+			random_county_province = {
+					limit = { is_county_capital = yes }
+					save_scope_as = rebellion_location
+				}
+			}
+			title:k_anatolia = { save_scope_as = anatolia_kingdom_title }
+			scope:satala_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			scope:azysia_county_title = {
+				create_title_and_vassal_change = { type = granted save_scope_as = title_change_county }
+				change_title_holder = { holder = scope:rebel_leader change = scope:title_change_county }
+				resolve_title_and_vassal_change = scope:title_change_county
+			}
+			
+			scope:rebel_leader = { add_gold = 500 }
+			scope:rebel_leader = {
+	
+					spawn_army = {
+						location = scope:rebellion_location
+						name = "paulician_army"
+						men_at_arms = { type = light_footmen men = 12000 }
+						men_at_arms = { type = bowmen men = 2000 }
+						war_keep_on_attacker_victory = no
+						inheritable = no
+					}  
+					start_war = {
+						casus_belli = paulician_invasion
+						target = scope:war_target
+						target_title = scope:anatolia_kingdom_title
+					}	
+				}
+			}
+			clear_saved_scope = rebellion_location
+			clear_saved_scope = war_target
+			clear_saved_scope = rebel_leader
+			clear_saved_scope = anatolia_kingdom_title
+			clear_saved_scope = satala_county_title
+			clear_saved_scope = title_change_county
+	}
+}
+
+paulician_revolt.1111 = {
+	type = character_event
+	hidden = yes
+	title = paulician_revolt.1111.t
+	desc = paulician_revolt.1111.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = paulician_revolt.1111.a
+		if = {
+			limit = {
+				has_game_rule = bgp_paulicians_on
+			}
+			trigger_event = {
+				id = paulician_revolt.0001
+			}
+		}
+	}
+}
+
+paulician_revolt.1112 = {
+	type = character_event
+	hidden = yes
+	title = paulician_revolt.1112.t
+	desc = paulician_revolt.1112.desc
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+	option = {
+		name = paulician_revolt.1112.a
+		if = {
+			limit = {
+				title:c_satala = { has_county_modifier = paulician_stronghold_modifier }
+			}
+			trigger_event = {
+				id = paulician_revolt.0009
+			}
+		}
+	}
+}

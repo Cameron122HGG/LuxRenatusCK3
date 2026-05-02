@@ -1,0 +1,119 @@
+﻿namespace = athonite_aid_project_events
+
+athonite_aid_project_events.0001 = {
+	title = "athonite_aid_project_events.0001.t" # A Beacon of Orthodoxy
+	desc = "athonite_aid_project_events.0001.desc"
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	option = {
+		name = "athonite_aid_project_events.0001.a"
+
+		trigger = {
+			NOT = { has_trait = cynical }
+			NOT = { has_trait = zealous }
+		}
+		random_list = {
+			15 = { add_trait = cynical }
+			85 = {}
+		}
+	}
+	option = {
+		name = "athonite_aid_project_events.0001.b"
+		trigger = {
+			NOT = { has_trait = zealous }
+			NOT = { has_trait = cynical }
+		}	
+		random_list = {
+			15 = { add_trait = zealous }
+			85 = {}
+		}
+	}
+	option = {
+		name = "athonite_aid_project_events.0001.c"
+		trigger = {
+			NOT = { has_trait = greedy }
+			NOT = { has_trait = generous }
+		}
+		random_list = {
+			15 = { add_trait = greedy }
+			85 = {}
+		}
+	}
+	option = {
+		name = "athonite_aid_project_events.0001.d"
+	}
+}
+
+namespace = athonite_aid
+
+athonite_aid.1001 = {
+    type = character_event
+    title = athonite_aid.1001.t
+    desc = athonite_aid.1001.d 
+    
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+
+    option = {
+		name = athonite_aid.1001.a 
+		add_piety = 200                   
+		add_prestige = 100
+		add_stewardship_lifestyle_xp = major_lifestyle_xp
+    }
+}
+
+athonite_aid.1002 = {
+    type = character_event
+    title = athonite_aid.1002.t
+    desc = athonite_aid.1002.d 
+    
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+
+    option = {
+		name = athonite_aid.1002.a 
+		add_piety = 100                  
+		add_prestige = 200
+		add_stewardship_lifestyle_xp = major_lifestyle_xp
+    }
+}
+
+athonite_aid.1003 = {
+    type = character_event
+    title = athonite_aid.1003.t
+    desc = athonite_aid.1003.d 
+    
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+
+    option = {
+		name = athonite_aid.1003.a 
+		add_piety = 200                  
+		add_prestige = 100
+		add_learning_lifestyle_xp = major_lifestyle_xp
+    }
+}
+
+athonite_aid.1004 = {
+    type = character_event
+    title = athonite_aid.1004.t
+    desc = athonite_aid.1004.d 
+    
+	override_background = { reference = throne_room }
+	theme = emperor
+	left_portrait = { character = root }
+
+    option = {
+		name = athonite_aid.1004.a 
+		add_piety = 100                  
+		add_prestige = 200
+		add_martial_lifestyle_xp = major_lifestyle_xp
+    }
+}

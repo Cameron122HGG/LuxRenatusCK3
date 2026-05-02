@@ -608,8 +608,8 @@ laamp_game_over_option_effect = {
 	custom_tooltip = laamp_game_over_tt
 	if = {
 		limit = { exists = scope:new_landless_adventurer_title }
-		hidden_effect = { 
-			destroy_title = scope:new_landless_adventurer_title 
+		hidden_effect = {
+			destroy_title = scope:new_landless_adventurer_title
 			add_character_flag = { flag = declined_become_laamp days = 1 } # The flag is temporary to make the player get a game over if they had no landed heir to take over their lands
 			# While also making it so that if they did have an heir to take over they can later play as the old character if they somehow inherit from the heir
 		}
@@ -802,12 +802,11 @@ ep3_become_landed_transfer_effect = {
 		$TITLE_RECEIVER$ = { laamp_clear_domicile_buildings_liquidator_effect = yes }
 	}
 	$TITLE_RECEIVER$ = {
-		#Lux Renata TBA
-		# if = {
-		# 	limit = { character:90028 ?= this }
-		# 	custom_tooltip = ep3_story_cycle_harrying.3053.b.tt
-		# 	add_character_flag = hereward_settled_flag
-		# }
+		if = {
+			limit = { character:90028 ?= this }
+			custom_tooltip = ep3_story_cycle_harrying.3053.b.tt
+			add_character_flag = hereward_settled_flag
+		}
 		set_variable = {
 			name = ascended_throne_reason
 			value = $REASON$
@@ -850,11 +849,36 @@ ep3_become_landed_transfer_effect = {
 			government_is_administrative = {
 				save_scope_value_as = { name = old_government value = flag:admin }
 			}
+			government_is_feudal = {
+				save_scope_value_as = { name = old_government value = flag:feudal }
+			}
 			government_is_clan = {
 				save_scope_value_as = { name = old_government value = flag:clan }
 			}
 			government_is_tribal = {
 				save_scope_value_as = { name = old_government value = flag:tribal }
+			}
+			government_is_republic = {
+				if = {
+					limit = {
+						scope:government_giver ?= { ep3_is_clan_inclined_trigger = yes }
+					}
+					save_scope_value_as = { name = old_government value = flag:clan }
+				}
+				else = {
+					save_scope_value_as = { name = old_government value = flag:feudal }
+				}
+			}
+			government_is_theocracy = {
+				if = {
+					limit = {
+						scope:government_giver ?= { ep3_is_clan_inclined_trigger = yes }
+					}
+					save_scope_value_as = { name = old_government value = flag:clan }
+				}
+				else = {
+					save_scope_value_as = { name = old_government value = flag:feudal }
+				}
 			}
 			government_is_wanua = {
 				save_scope_value_as = { name = old_government value = flag:wanua }
@@ -902,12 +926,8 @@ ep3_become_landed_transfer_effect = {
 		}
 		scope:new_primary_title ?= {
 			ordered_de_jure_county = {
-				limit = {
-					holder = scope:defender
-				}
-				alternative_limit = {
-					holder.top_liege = scope:defender.top_liege
-				}
+				limit = { holder = scope:defender }
+				alternative_limit = { holder.top_liege = scope:defender.top_liege }
 				order_by = development_level
 				save_scope_as = new_capital
 			}
@@ -1020,18 +1040,12 @@ ep3_become_landed_transfer_effect = {
 	resolve_title_and_vassal_change = scope:title_change
 	# Because target may be either a title or a character, we check if a scope value has been set up in advance if this is being called from the Seize Realm scheme specifically
 	if = {
-		limit = {
-			exists = scope:old_government_type
-		}
-		scope:old_government_type = {
-			save_scope_as = old_government
-		}
+		limit = { exists = scope:old_government_type }
+		scope:old_government_type = { save_scope_as = old_government }
 	}
 	# Set government type
 	if = {
-		limit = {
-			exists = scope:old_government
-		}
+		limit = { exists = scope:old_government }
 		# We don't expect to actually trigger most of the below, as most are not valid targets to begin with, but all are included for completeness and mod support
 		switch = {
 			trigger = scope:old_government
@@ -1060,6 +1074,16 @@ ep3_become_landed_transfer_effect = {
 				change_government = administrative_government
 			}
 			flag:nomad = {
+				#Did you demand a herder's pastureland?
+				if = {
+					limit = {
+						scope:new_capital.title_province = {
+							has_holding = yes
+							NOT = { has_holding_type = nomad_holding }
+						}
+					}
+					scope:new_capital.title_province = { set_holding_type = nomad_holding }
+				}
 				change_government = nomad_government
 			}
 			flag:herder = {
@@ -1077,10 +1101,10 @@ ep3_become_landed_transfer_effect = {
 					#Sort out the House shenanigans
 					if = {
 						limit = { is_house_head = no }
-						house = { 
+						house = {
 							if = {
 								limit = {
-									house_head = { 
+									house_head = {
 										is_landed = no
 										is_courtier_of = root
 									}
@@ -1114,7 +1138,7 @@ ep3_become_landed_transfer_effect = {
 			}
 			flag:japan_administrative = {
 				if = {
-					limit = { 
+					limit = {
 						scope:new_liege ?= { has_government = japan_administrative_government }
 					}
 					change_government = japan_administrative_government
@@ -1191,6 +1215,19 @@ ep3_become_landed_transfer_effect = {
 				}
 				change_government = clan_government
 			}
+			## Republic.
+			else_if = {
+				limit = {
+					scope:new_liege ?= { government_has_flag = government_is_republic }
+				}
+				if = {
+					limit = {
+						scope:new_liege ?= { ep3_is_clan_inclined_trigger = yes }
+					}
+					change_government = clan_government
+				}
+				else = { change_government = feudal_government }
+			}
 			## Tribal.
 			else_if = {
 				limit = {
@@ -1226,10 +1263,10 @@ ep3_become_landed_transfer_effect = {
 				hidden_effect = {
 					if = {
 						limit = { is_house_head = no }
-						house = { 
+						house = {
 							if = {
 								limit = {
-									house_head = { 
+									house_head = {
 										is_landed = no
 										is_courtier_of = $TITLE_RECEIVER$
 									}
@@ -1243,7 +1280,7 @@ ep3_become_landed_transfer_effect = {
 							set_house_aspiration = { type = no_aspect }
 						}
 					}
-				}	
+				}
 			}
 			## Else feudal.
 			else = {
@@ -1324,7 +1361,7 @@ ep3_become_landed_transfer_effect = {
 	destroy_laamp_effect = { ADVENTURER = $TITLE_RECEIVER$ }
 	# Setup NF if valid
 	if = {
-		limit = { government_allows = administrative }
+		limit = { government_allows = noble_families }
 		give_new_noble_family_title_effect = yes
 	}
 }
@@ -1389,11 +1426,10 @@ purchase_land_interaction_effect = {
 
 	hidden_effect = {
 		scope:actor = {
-			#Lux Renata TBA
-			#if = {
-			#	limit = { character:90028 ?= this }
-			#	add_character_flag = hereward_settled_flag
-			#}
+			if = {
+				limit = { character:90028 ?= this }
+				add_character_flag = hereward_settled_flag
+			}
 			if = {
 				limit = {
 					NOT = { has_trait = adventurer }
@@ -1467,44 +1503,42 @@ purchase_land_interaction_effect = {
 			faith = { has_doctrine = doctrine_polytheist }
 		}
 		#Sort out the House shenanigans
-		if = {
-			limit = { is_house_head = no }
-			house = { 
-				if = {
-					limit = {
-						house_head = { 
-							is_landed = no
-							is_courtier_of = root
+		hidden_effect = {
+			if = {
+				limit = { is_house_head = no }
+				house ?= {
+					if = {
+						limit = {
+							house_head = {
+								is_landed = no
+								is_courtier_of = root
+							}
 						}
+						set_house_head = root
 					}
-					set_house_head = root
+				}
+			}
+			else = {
+				house ?= {
+					if = {
+						limit = {
+							NOT = { has_house_aspiration_parameter = no_aspect }
+						}
+						set_house_aspiration = { type = no_aspect }
+					}
 				}
 			}
 		}
-		else = {
-			house ?= {
-				set_house_aspiration = { type = no_aspect }
-			}
-		}	
-	}
-	#Otherwise go vanilla
-	else = {
-		if = {
-			limit = { ep3_is_clan_inclined_trigger = yes }
-			change_government = clan_government
-		}
-		else = { change_government = feudal_government }
 	}
 }
 
 purchase_land_interaction_shortened_effect = {
 	scope:actor = {
-		#Lux Renata TBA
-		#if = {
-		#	limit = { character:90028 ?= this }
-		#	custom_tooltip = ep3_story_cycle_harrying.3053.b.tt
-		#	add_character_flag = hereward_settled_flag
-		#}
+		if = {
+			limit = { character:90028 ?= this }
+			custom_tooltip = ep3_story_cycle_harrying.3053.b.tt
+			add_character_flag = hereward_settled_flag
+		}
 		show_as_tooltip = {
 			pay_short_term_gold = {
 				gold = scope:purchase_land_cost
@@ -3396,6 +3430,17 @@ create_noble_family_effect = {
 						}
 					}
 				}
+				steppe_classical_admin_government = { # Steppe Classical Admin has different government
+					scope:new_noble_family_holder = {
+						give_noble_family_title = {
+							name = noble_family_name
+							tier = county
+							article = DEFAULT_TITLE_NAME_ARTICLE
+							government = steppe_classical_admin_government
+							save_scope_as = new_title
+						}
+					}
+				}
 				classical_administrative_government = {
 					scope:new_noble_family_holder = {
 						give_noble_family_title = {
@@ -3407,6 +3452,17 @@ create_noble_family_effect = {
 						}
 					}
 				}
+				diadochi_administrative_government = {
+					scope:new_noble_family_holder = {
+						give_noble_family_title = {
+							name = noble_family_name
+							tier = duchy
+							article = DEFAULT_TITLE_NAME_ARTICLE
+							government = diadochi_administrative_government
+							save_scope_as = new_title
+						}
+					}
+				}
 				despotic_administrative_government = {
 					scope:new_noble_family_holder = {
 						give_noble_family_title = {
@@ -3414,6 +3470,39 @@ create_noble_family_effect = {
 							tier = duchy
 							article = DEFAULT_TITLE_NAME_ARTICLE
 							government = despotic_administrative_government
+							save_scope_as = new_title
+						}
+					}
+				}
+				gaul_administrative_government = { # Japan has count level NFs
+					scope:new_noble_family_holder = {
+						give_noble_family_title = {
+							name = noble_family_name
+							tier = county
+							article = DEFAULT_TITLE_NAME_ARTICLE
+							government = gaul_administrative_government
+							save_scope_as = new_title
+						}
+					}
+				}
+				gaul_feudal_government = { # Japan has count level NFs
+					scope:new_noble_family_holder = {
+						give_noble_family_title = {
+							name = noble_family_name
+							tier = county
+							article = DEFAULT_TITLE_NAME_ARTICLE
+							government = gaul_feudal_government
+							save_scope_as = new_title
+						}
+					}
+				}
+				roman_imperial_government = { # Meritocratic has different government
+					scope:new_noble_family_holder = {
+						give_noble_family_title = {
+							name = noble_family_name
+							tier = county
+							article = DEFAULT_TITLE_NAME_ARTICLE
+							government = roman_imperial_government
 							save_scope_as = new_title
 						}
 					}
@@ -3562,7 +3651,7 @@ spawn_governance_contract_effect = {
 	trigger_event = {
 		on_action = spawn_admin_governance_contract_on_action
 	}
-	
+
 	play_sound_effect = "event:/DLC/EP3/SFX/Stingers/Byzantine_Flavor/ep3_mx_sting_byzantineflavor_become_governor"
 }
 
@@ -3732,7 +3821,7 @@ remove_other_eparch_modifiers_effect = {
 				}
 			}
 		}
-		
+
 		# Next is the troop modifier
 		scope:liege ?= {
 			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
@@ -3759,7 +3848,7 @@ remove_other_eparch_modifiers_effect = {
 				}
 			}
 		}
-		
+
 		# Next is the county control modifier
 		scope:liege ?= {
 			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
@@ -3786,7 +3875,7 @@ remove_other_eparch_modifiers_effect = {
 				}
 			}
 		}
-		
+
 		# And finally, the development modifier
 		scope:liege ?= {
 			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
@@ -3819,7 +3908,7 @@ remove_other_eparch_modifiers_effect = {
 eparch_neglecting_duty_effect = {
 	custom_tooltip = {
 		text = eparch_neglecting_duty_warning_tt
-		
+
 		# We check if you have neglected duties in the past
 		if = {
 			limit = {
@@ -3827,26 +3916,26 @@ eparch_neglecting_duty_effect = {
 			}
 			# If you have, let's first increase the variable
 			change_variable = { name = eparch_neglecting_duty add = 5 }
-			
+
 			# Then check if the liege notices and decide to take action
 			random = {
 				chance = {
 					# Base value - Increases with each neglecting action
 					value = var:eparch_neglecting_duty
-					
+
 					# Add the difference in intrigue skill
 					add = {
 						value = liege.intrigue
 						subtract = intrigue
 					}
-					
+
 					# Add the difference in influence level
 					add = {
 						value = liege.influence_level
 						subtract = influence_level
 						multiply = 5
 					}
-					
+
 					# Lower the chance if you belong to a powerful or dominant family
 					if = {
 						limit = {
@@ -3860,11 +3949,11 @@ eparch_neglecting_duty_effect = {
 						}
 						subtract = 20
 					}
-					
+
 					min = 5
 					max = 90
 				}
-				
+
 				# The liege have noticed - We reduce the variable slightly as a result (but never below 0)
 				if = {
 					limit = {
@@ -3876,7 +3965,7 @@ eparch_neglecting_duty_effect = {
 				else = {
 					set_variable = { name = eparch_neglecting_duty value = 0 }
 				}
-				
+
 				liege = {
 					trigger_event = { id = ep3_eparch_event.9000 days = { 10 90 } }
 				}
@@ -4106,70 +4195,70 @@ remove_a_criminal_trait_in_faith_effect = {
 		if = {
 			limit = {
 				has_trait = adulterer
-				trait_is_criminal_in_faith_trigger = { TRAIT = adulterer FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:adulterer FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = adulterer
 		}
 		else_if = {
 			limit = {
 				has_trait = fornicator
-				trait_is_criminal_in_faith_trigger = { TRAIT = fornicator FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:fornicator FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = fornicator
 		}
 		else_if = {
 			limit = {
 				has_trait = sodomite
-				trait_is_criminal_in_faith_trigger = { TRAIT = sodomite FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:sodomite FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = sodomite
 		}
 		else_if = {
 			limit = {
 				has_trait = deviant
-				trait_is_criminal_in_faith_trigger = { TRAIT = deviant FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:deviant FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = deviant
 		}
 		else_if = {
 			limit = {
 				has_trait = kinslayer_3
-				trait_is_criminal_in_faith_trigger = { TRAIT = kinslayer_3 FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_3 FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = kinslayer_3
 		}
 		else_if = {
 			limit = {
 				has_trait = kinslayer_2
-				trait_is_criminal_in_faith_trigger = { TRAIT = kinslayer_2 FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_2 FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = kinslayer_2
 		}
 		else_if = {
 			limit = {
 				has_trait = kinslayer_1
-				trait_is_criminal_in_faith_trigger = { TRAIT = kinslayer_1 FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_1 FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = kinslayer_1
 		}
 		else_if = {
 			limit = {
 				has_trait = witch
-				trait_is_criminal_in_faith_trigger = { TRAIT = witch FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:witch FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = witch
 		}
 		else_if = {
 			limit = {
 				has_trait = cannibal
-				trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:cannibal FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = cannibal
 		}
 		else_if = {
 			limit = {
 				has_trait = incestuous
-				trait_is_criminal_in_faith_trigger = { TRAIT = incestuous FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
+				trait_is_criminal_in_faith_trigger = { TRAIT = trait:incestuous FAITH = $FAITH$ GENDER_CHARACTER = $CHARACTER$ }
 			}
 			remove_trait = incestuous
 		}
@@ -8407,10 +8496,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:archer_attribute
+						accolade_attribute_level = {
+							type = archer_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8421,10 +8510,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:skirmisher_attribute
+						accolade_attribute_level = {
+							type = skirmisher_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8435,10 +8524,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:pike_attribute
+						accolade_attribute_level = {
+							type = pike_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8449,10 +8538,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:outrider_attribute
+						accolade_attribute_level = {
+							type = outrider_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8463,10 +8552,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:vanguard_attribute
+						accolade_attribute_level = {
+							type = vanguard_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8477,10 +8566,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:lancer_attribute
+						accolade_attribute_level = {
+							type = lancer_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8491,10 +8580,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:crossbowmen_attribute
+						accolade_attribute_level = {
+							type = crossbowmen_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8505,10 +8594,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:camelry_attribute
+						accolade_attribute_level = {
+							type = camelry_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8519,10 +8608,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:elephantry_attribute
+						accolade_attribute_level = {
+							type = elephantry_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -8533,10 +8622,10 @@ ep3_pick_random_maa_regiment_effect = {
 			1 = {
 				trigger = {
 					any_active_accolade = {
-						primary_type = {
-							this = accolade_type:horse_archer_attribute
+						accolade_attribute_level = {
+							type = horse_archer_attribute
+							level >= 2
 						}
-						accolade_rank >= 3
 					}
 				}
 				save_scope_value_as = {
@@ -9357,7 +9446,7 @@ ep3_missionary_effect = {
 			OR = {
 				$LOCATION$.religion = $PREACHER$.religion
 				$LOCATION$.faith = { has_doctrine_parameter = unreformed }
-				character:41702 ?= $PREACHER$
+				#character:41702 ?= $PREACHER$
 			}
 		}
 		$LOCATION$ = {
@@ -9403,502 +9492,44 @@ ep3_missionary_effect = {
 		}
 	}
 }
-#Lux Renata TBA
-# ep3_hasan_missionary_effect = {
-# 	ep3_hasan_advance_radicalism = yes
-# 	ep3_missionary_effect = {
-# 		PREACHER = $PREACHER$
-# 		LOCATION = $LOCATION$
-# 	}
-# }
-# ep3_hasan_advance_radicalism = {
-# 	if = {
-# 		limit = {
-# 			any_owned_story = {
-# 				type = story_hasan
-# 			}
-# 		}
-# 		custom_tooltip = {
-# 			text = advance_to_the_assassins_tt
-# 			random_owned_story = {
-# 				type = story_hasan
-# 				if = {
-# 					limit = {
-# 						exists = var:radical_points
-# 					}
-# 					change_variable = {
-# 						name = radical_points
-# 						add = 1
-# 					}
-# 				}
-# 				else = {
-# 					set_variable = {
-# 						name = radical_points
-# 						value = 1
-# 					}
-# 				}
-# 			}
-# 		}
-# 	}
-# }
-# hasan_sabbah_ignite_decision_effect = {
-# 	if = {
-# 		limit = {
-# 			hasan_sabbah_event_troops_value <= 1000
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 	}
-# 	else_if = {
-# 		limit = {
-# 			hasan_sabbah_event_troops_value <= 2000
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 1
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 	}
-# 	else_if = {
-# 		limit = {
-# 			hasan_sabbah_event_troops_value <= 3000
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 1
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 	}
-# 	else_if = {
-# 		limit = {
-# 			hasan_sabbah_event_troops_value > 3000
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 2
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 2
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 2
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 2
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 		spawn_army = {
-# 			name = hasan_fanatics
-# 			men_at_arms = {
-# 				type = asawira
-# 				stacks = 2
-# 			}
-# 			men_at_arms = {
-# 				type = ayyar
-# 				stacks = 2
-# 			}
-# 			levies = hasan_sabbah_event_troops_value
-# 			inheritable = yes
-# 			location = root.domicile.domicile_location
-# 			war_keep_on_attacker_victory = yes
-# 		}
-# 	}
-# 	start_war = {
-# 		cb = ep3_hasan_assassin_war
-# 		target = root.location.county.holder.top_liege
-# 		target_title = root.location.county.holder.top_liege.primary_title
-# 	}
-# }
-# hasan_sabbah_end_war = {
-# 	# Offer Hasan the opportunity to become landed
-# 	hidden_effect = {
-# 		if = {
-# 			limit = {
-# 				$SELJUK$ = {
-# 					any_sub_realm_barony = {
-# 						title_province = { has_building_or_higher = alamut_castle_01 }
-# 					}
-# 				}
-# 			}
-# 			$SELJUK$ = {
-# 				random_sub_realm_barony = {
-# 					limit = {
-# 						title_province = { has_building_or_higher = alamut_castle_01 }
-# 					}
-# 					county = {
-# 						save_scope_as = hasan_home
-# 					}
-# 				}
-# 			}
-# 		}
-# 		else_if = {
-# 			limit = {
-# 				$SELJUK$ = {
-# 					any_sub_realm_county = {
-# 						faith = $HASAN$.faith
-# 						holder = { is_ai = yes }
-# 					}
-# 				}
-# 			}
-# 			$SELJUK$ = {
-# 				random_sub_realm_county = {
-# 					limit = {
-# 						faith = $HASAN$.faith
-# 						holder = { is_ai = yes }
-# 					}
-# 					save_scope_as = hasan_home
-# 				}
-# 			}
-# 		}
-# 		else = {
-# 			$SELJUK$ = {
-# 				random_sub_realm_county = {
-# 					limit = {
-# 						holder = { is_ai = yes }
-# 					}
-# 					save_scope_as = hasan_home
-# 				}
-# 			}
-# 		}
-# 		$HASAN$ = {
-# 			if = {
-# 				limit = {
-# 					any_owned_story = {
-# 						type = story_hasan
-# 						exists = var:preferred_caliph
-# 					}
-# 				}
-# 				random_owned_story = {
-# 					type = story_hasan
-# 					var:preferred_caliph = { save_scope_as = caliph }
-# 				}
-# 			}
-# 			trigger_event = {
-# 				id = hasan_sabbah.1050
-# 			}
-# 			if = {
-# 				limit = {
-# 					is_ai = no
-# 				}
-# 				add_achievement_global_variable_effect = {
-# 					VARIABLE = finished_the_old_man_of_the_mountain_achievement
-# 					VALUE = yes
-# 				}
-# 			}
-# 		}
-# 	}
-# 	create_title_and_vassal_change = {
-# 		type = independency
-# 		save_scope_as = change
-# 	}
-# 	$HASAN$ = {
-# 		add_prestige = medium_prestige_value
-# 	}
-# 	$SELJUK$ = {
-# 		add_prestige = {
-# 			value = medium_prestige_value
-# 			multiply = -1
-# 		}
-
-#		every_vassal = {
-#			limit = {
-#				highest_held_title_tier > tier_barony
-#			}
-#			change_liege_or_become_independent = {
-#				CHANGE = scope:change
-#				VASSAL = this
+ep3_hasan_missionary_effect = {
+	ep3_hasan_advance_radicalism = yes
+	ep3_missionary_effect = {
+		PREACHER = $PREACHER$
+		LOCATION = $LOCATION$
+	}
+}
+#ep3_hasan_advance_radicalism = {
+#	if = {
+#		limit = {
+#			any_owned_story = {
+#				type = story_hasan
 #			}
 #		}
+#		custom_tooltip = {
+#			text = advance_to_the_assassins_tt
+#			random_owned_story = {
+#				type = story_hasan
+			#	if = {
+			#		limit = {
+			#			exists = var:radical_points
+			#		}
+			#		change_variable = {
+			#			name = radical_points
+			#			add = 1
+			#		}
+			#	}
+			#	else = {
+			#		set_variable = {
+			#			name = radical_points
+			#			value = 1
+			#		}
+			#	}
+			#}
+		#}
+	#}
+#}
 
-# 		every_vassal = {
-# 			limit = { is_ai = no }
-# 			send_interface_toast = {
-# 				type = msg_gained_independence
-# 				title = liege_primary_title_dissolution
-# 				desc = liege_primary_title_dissolution_desc
-# 				left_icon = $SELJUK$
-# 			}
-# 		}
-# 	}
-# 	resolve_title_and_vassal_change = scope:change
-# 	$SELJUK$ = {
-# 		every_held_title = {
-# 			limit = {
-# 				tier >= tier_duchy
-# 				is_head_of_faith = no
-# 				NOT = { this = $SELJUK$.capital_county.duchy }
-# 			}
-# 			add_to_temporary_list = titles_to_destroy
-# 		}
-# 	}
-# 	every_in_list = {
-# 		list = titles_to_destroy
-# 		$HASAN$ = {
-# 			destroy_title = prev
-# 		}
-# 	}
-# 	$SELJUK$ = {
-# 		if = {
-# 			limit = {
-# 				government_has_flag = government_is_administrative
-# 			}
-# 			admin_government_reset_effect = yes
-# 		}
-# 	}
-# 	# LEGITIMACY FROM LOSING FACTION WAR
-# 	faction_war_end_defeat_legitimacy_effect = yes
-# 	# End Hasan's story cycle
-# 	hidden_effect = {
-# 		$HASAN$ = {
-# 			if = {
-# 				limit = {
-# 					any_owned_story = {
-# 						type = story_hasan
-# 					}
-# 				}
-# 				random_owned_story = {
-# 					type = story_hasan
-# 					end_story = yes
-# 				}
-# 			}
-# 		}
-# 	}
-# }
 reinforce_soldiers_regiment_effect = {
 	save_scope_as = laamp_temp
 	# For the value.
@@ -11383,106 +11014,53 @@ war_task_contracts_completion_effect = {
 #If a landless adventurer was hired as a mercenary and contributed in a war they get paid, used in war_on_actions, relevant flag set by hire_laamp_mercenaries_interaction or ep3_interactions_events.0112
 laamp_as_mercenary_payout_effect = {
 	scope:war = {
-		if = {
+		every_war_participant = {
 			limit = {
-				any_war_participant = {
-					has_character_flag = joined_as_mercenary
-					is_attacker_in_war = scope:war
-					NOT = { is_leader_in_war = scope:war }
-					OR = {
-						has_raised_armies = yes
-						scope:war = {
-							war_contribution = {
-								target = prev
-								value > 0
-							}
-						}
-					}
-				}
+				laamp_as_mercenary_payout_trigger = { WAR = scope:war }
 			}
-			every_war_participant = {
+			if = {
 				limit = {
-					has_character_flag = joined_as_mercenary
-					is_attacker_in_war = scope:war
-					NOT = { is_leader_in_war = scope:war }
-					OR = {
-						has_raised_armies = yes
-						scope:war = {
-							war_contribution = {
-								target = prev
-								value > 0
-							}
-						}
-					}
+					laamp_as_mercenary_payout_last_war_trigger = { WAR = scope:war }
 				}
+				save_scope_as = laamp_temp
 				add_to_list = laamp_mercenaries
-				remove_character_flag = joined_as_mercenary
-			}
-			primary_attacker = {
-				save_scope_as = employer
-				trigger_event = {
-					id = ep3_interactions_events.0121
-					days = { 3 7 }
-				}
-			}
-			every_in_list = {
-				list = laamp_mercenaries
-				scope:employer = {
-					remove_list_variable = {
-					 	name = hired_mercenaries
-					 	target = prev
+				var:joined_as_mercenary = {
+					save_scope_as = employer
+					trigger_event = {
+						id = ep3_interactions_events.0121
+						days = { 3 7 }
 					}
 				}
-			}
-		}
-		if = {
-			limit = {
-				any_war_participant = {
-					has_character_flag = joined_as_mercenary
-					is_defender_in_war = scope:war
-					NOT = { is_leader_in_war = scope:war }
-					OR = {
-						has_raised_armies = yes
-						scope:war = {
-							war_contribution = {
-								target = prev
-								value > 0
-							}
+				every_in_list = {
+					list = laamp_mercenaries
+					scope:employer = {
+						remove_list_variable = {
+						 	name = hired_mercenaries
+						 	target = scope:laamp_temp
 						}
 					}
 				}
+				remove_variable = joined_as_mercenary
 			}
-			every_war_participant = {
-				limit = {
-					has_character_flag = joined_as_mercenary
-					is_defender_in_war = scope:war
-					NOT = { is_leader_in_war = scope:war }
-					OR = {
-						has_raised_armies = yes
-						scope:war = {
-							war_contribution = {
-								target = prev
-								value > 0
-							}
-						}
+			else = {
+				save_scope_as = laamp_temp
+				var:joined_as_mercenary = { save_scope_as = employer }
+				if = {
+					limit = { exists = var:aggregate_war_contribution_value }
+					change_variable = {
+						name = aggregate_war_contribution_value
+						add = scope:laamp_temp.ep3_hire_laamp_mercs_payment_value
+					}
+					# Average
+					change_variable = {
+						name = aggregate_war_contribution_value
+						divide = 2
 					}
 				}
-				add_to_list = laamp_mercenaries
-				remove_character_flag = joined_as_mercenary
-			}
-			primary_defender = {
-				save_scope_as = employer
-				trigger_event = {
-					id = ep3_interactions_events.0121
-					days = { 3 7 }
-				}
-			}
-			every_in_list = {
-				list = laamp_mercenaries
-				scope:employer = {
-					remove_list_variable = {
-					 	name = hired_mercenaries
-					 	target = prev
+				else = {
+					set_variable = {
+						name = aggregate_war_contribution_value
+						value = scope:laamp_temp.ep3_hire_laamp_mercs_payment_value
 					}
 				}
 			}
@@ -11496,184 +11074,66 @@ laamp_as_mercenary_payout_effect = {
 # defender - primary defender from the casus_belli
 laamp_as_mercenary_payout_tooltip_effect = {
 	show_as_tooltip = {
-		scope:defender = {
-			if = {
-				limit = {
-					exists = scope:war
-					any_war_ally = {
-						has_government = landless_adventurer_government
-						OR = {
-							any_character_active_contract = {
-								has_task_contract_type = laamp_join_war_contract
-								var:task_contract_war ?= scope:war
+		scope:war ?= {
+			every_war_participant = {
+				limit = { has_government = landless_adventurer_government }
+				save_scope_as = laamp_temp
+				save_scope_as = actor
+				save_scope_value_as = {
+					name = war_contribution_value
+					value = "scope:war.war_contribution(scope:laamp_temp)"
+				}
+				every_character_active_contract = {
+					limit = {
+						has_task_contract_type = laamp_join_war_contract
+						var:task_contract_war = scope:war
+					}
+					show_as_tooltip = {
+						task_contract_employer = {
+							save_scope_as = employer
+							custom_tooltip = ep3_join_war_payment_tt
+							pay_short_term_gold = {
+								target = scope:laamp_temp
+								gold = scope:laamp_temp.ep3_hire_laamp_mercs_payment_value
 							}
-							AND = {
-								has_variable = owed_contract_assistance_gold
-								var:owed_contract_assistance_war ?= scope:war
-							}
-							has_variable = joined_as_mercenary
 						}
 					}
 				}
-				every_war_ally = {
+				if = {
+					limit = {
+						laamp_as_mercenary_payout_trigger = { WAR = scope:war }
+					}
 					if = {
 						limit = {
-							has_government = landless_adventurer_government
+							laamp_as_mercenary_payout_last_war_trigger = { WAR = scope:war }
 						}
-						save_scope_as = laamp_temp
-						save_scope_as = actor
-						save_scope_value_as = {
-							name = war_contribution_value
-							value = "scope:war.war_contribution(scope:laamp_temp)"
-						}
-						if = {
-							limit = {
-								any_character_active_contract = {
-									has_task_contract_type = laamp_join_war_contract
-									var:task_contract_war = scope:war
-								}
+						var:joined_as_mercenary ?= {
+							save_scope_as = employer
+							custom_description_no_bullet = {
+								text = ep3_hire_laamp_mercs_payment_tt
+								object = scope:laamp_temp
+								subject = scope:employer
 							}
-							every_character_active_contract = {
-								limit = {
-									has_task_contract_type = laamp_join_war_contract
-									var:task_contract_war = scope:war
-								}
-								show_as_tooltip = {
-									task_contract_employer = {
-										save_scope_as = employer
-										custom_tooltip = ep3_join_war_payment_tt
-										pay_short_term_gold = {
-											target = scope:laamp_temp
-											gold = ep3_hire_laamp_mercs_payment_value
-										}
-									}
-								}
-							}
-						}
-						if = {
-							limit = {
-								has_variable = joined_as_mercenary
-								scope:defender = {
-									is_target_in_variable_list = {
-										name = hired_mercenaries
-										target = scope:laamp_temp
-									}
-								}
-							}
-							scope:defender = {
-								save_scope_as = employer
-								custom_tooltip = ep3_hire_laamp_mercs_payment_tt
-								pay_short_term_gold = {
-									target = scope:laamp_temp
-									gold = ep3_hire_laamp_mercs_payment_value
-								}
-							}
-						}
-						if = {
-							limit = {
-								has_variable = owed_contract_assistance_gold
-								var:owed_contract_assistance_war ?= scope:war
-							}
-							save_scope_as = contract_assistance_helper
-							scope:defender = {
-								save_scope_as = recipient
-								custom_tooltip = contract_assistance_interaction_condition_tt
-								pay_short_term_gold = {
-									target = scope:actor
-									gold = scope:actor.var:owed_contract_assistance_gold
-								}
+							pay_short_term_gold = {
+								target = scope:laamp_temp
+								gold = scope:laamp_temp.ep3_hire_laamp_mercs_payment_value
 							}
 						}
 					}
+					else = { custom_tooltip = ep3_hire_laamp_mercs_payment_later_tt }
 				}
-			}
-		}
-		scope:attacker = {
-			if = {
-				limit = {
-					exists = scope:war
-					any_war_ally = {
-						has_government = landless_adventurer_government
-						OR = {
-							any_character_active_contract = {
-								has_task_contract_type = laamp_join_war_contract
-								var:task_contract_war = scope:war
-							}
-							AND = {
-								has_variable = owed_contract_assistance_gold
-								var:owed_contract_assistance_war ?= scope:war
-							}
-							has_variable = joined_as_mercenary
-						}
+				if = {
+					limit = {
+						has_variable = owed_contract_assistance_gold
+						var:owed_contract_assistance_war ?= scope:war
 					}
-				}
-				every_war_ally = {
-					if = {
-						limit = {
-							has_government = landless_adventurer_government
-						}
-						save_scope_as = laamp_temp
-						save_scope_as = actor
-						save_scope_value_as = {
-							name = war_contribution_value
-							value = "scope:war.war_contribution(scope:laamp_temp)"
-						}
-						if = {
-							limit = {
-								any_character_active_contract = {
-									has_task_contract_type = laamp_join_war_contract
-									var:task_contract_war = scope:war
-								}
-							}
-							every_character_active_contract = {
-								limit = {
-									has_task_contract_type = laamp_join_war_contract
-									var:task_contract_war = scope:war
-								}
-								show_as_tooltip = {
-									task_contract_employer = {
-										save_scope_as = employer
-										custom_tooltip = ep3_hire_laamp_mercs_payment_tt
-										pay_short_term_gold = {
-											target = scope:laamp_temp
-											gold = ep3_hire_laamp_mercs_payment_value
-										}
-									}
-								}
-							}
-						}
-						if = {
-							limit = {
-								has_variable = joined_as_mercenary
-								scope:attacker = {
-									is_target_in_variable_list = {
-										name = hired_mercenaries
-										target = scope:laamp_temp
-									}
-								}
-							}
-							scope:attacker = {
-								save_scope_as = employer
-								custom_tooltip = ep3_hire_laamp_mercs_payment_tt
-								pay_short_term_gold = {
-									target = scope:laamp_temp
-									gold = ep3_hire_laamp_mercs_payment_value
-								}
-							}
-						}
-						if = {
-							limit = {
-								has_variable = owed_contract_assistance_gold
-								var:owed_contract_assistance_war ?= scope:war
-							}
-							save_scope_as = contract_assistance_helper
-							scope:attacker = {
-								custom_tooltip = contract_assistance_interaction_condition_tt
-								pay_short_term_gold = {
-									target = scope:actor
-									gold = scope:actor.var:owed_contract_assistance_gold
-								}
-							}
+					save_scope_as = contract_assistance_helper
+					scope:defender = {
+						save_scope_as = recipient
+						custom_description_no_bullet = { text = contract_assistance_interaction_condition_tt }
+						pay_short_term_gold = {
+							target = scope:actor
+							gold = scope:actor.var:owed_contract_assistance_gold
 						}
 					}
 				}
@@ -11930,110 +11390,318 @@ disburse_camp_party_reward_effect = {
 
 			#Host effects
 			scope:host = {
-				hidden_effect = {
-					domicile = {
-						random_list = {
-							1 = {
-								trigger = {
-									has_domicile_building_or_higher = camp_main_01
-									NOT = { has_domicile_building = camp_main_04 }
+				if = {
+					limit = {
+						NOT = {
+							exists = scope:domicile_building #already saved
+						}
+					}
+					hidden_effect = {
+						domicile = {
+							random_list = {
+								1 = {
+									trigger = {
+										has_domicile_building_or_higher = camp_main_01
+										NOT = { has_domicile_building = camp_main_04 }
+									}
+									switch = {
+										trigger = has_domicile_building
+										camp_main_01 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_main_01
+											}
+										}
+										camp_main_02 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_main_02
+											}
+										}
+										camp_main_03 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_main_03
+											}
+										}
+									}
 								}
-								switch = {
-									trigger = has_domicile_building
-									camp_main_01 = { add_domicile_building = camp_main_02 }
-									camp_main_02 = { add_domicile_building = camp_main_03 }
-									camp_main_03 = { add_domicile_building = camp_main_04 }
+								1 = {
+									trigger = {
+										has_domicile_building_or_higher = supply_tent_01
+										NOT = { has_domicile_building = supply_tent_06 }
+									}
+									switch = {
+										trigger = has_domicile_building
+										supply_tent_01 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:supply_tent_01
+											}
+										}
+										supply_tent_02 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:supply_tent_02
+											}
+										}
+										supply_tent_03 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:supply_tent_03
+											}
+										}
+										supply_tent_04 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:supply_tent_04
+											}
+										}
+										supply_tent_05 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:supply_tent_05
+											}
+										}
+									}
 								}
-							}
-							1 = {
-								trigger = {
-									has_domicile_building_or_higher = supply_tent_01
-									NOT = { has_domicile_building = supply_tent_06 }
+								1 = {
+									trigger = {
+										has_domicile_building_or_higher = barber_tent_01
+										NOT = { has_domicile_building = barber_tent_06 }
+									}
+									switch = {
+										trigger = has_domicile_building
+										barber_tent_01 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:barber_tent_01
+											}
+										}
+										barber_tent_02 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:barber_tent_02
+											}
+										}
+										barber_tent_03 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:barber_tent_03
+											}
+										}
+										barber_tent_04 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:barber_tent_04
+											}
+										}
+										barber_tent_05 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:barber_tent_05
+											}
+										}
+									}
 								}
-								switch = {
-									trigger = has_domicile_building
-									supply_tent_01 = { add_domicile_building = supply_tent_02 }
-									supply_tent_02 = { add_domicile_building = supply_tent_03 }
-									supply_tent_03 = { add_domicile_building = supply_tent_04 }
-									supply_tent_04 = { add_domicile_building = supply_tent_05 }
-									supply_tent_05 = { add_domicile_building = supply_tent_06 }
+								1 = {
+									trigger = {
+										has_domicile_building_or_higher = baggage_train_01
+										NOT = { has_domicile_building = baggage_train_06 }
+									}
+									switch = {
+										trigger = has_domicile_building
+										baggage_train_01 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:baggage_train_01
+											}
+										}
+										baggage_train_02 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:baggage_train_02
+											}
+										}
+										baggage_train_03 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:baggage_train_03
+											}
+										}
+										baggage_train_04 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:baggage_train_04
+											}
+										}
+										baggage_train_05 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:baggage_train_05
+											}
+										}
+									}
 								}
-							}
-							1 = {
-								trigger = {
-									has_domicile_building_or_higher = barber_tent_01
-									NOT = { has_domicile_building = barber_tent_06 }
+								1 = {
+									trigger = {
+										has_domicile_building_or_higher = camp_fire_01
+										NOT = { has_domicile_building = camp_fire_06 }
+									}
+									switch = {
+										trigger = has_domicile_building
+										camp_fire_01 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_fire_01
+											}
+										}
+										camp_fire_02 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_fire_02
+											}
+										}
+										camp_fire_03 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_fire_03
+											}
+										}
+										camp_fire_04 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_fire_04
+											}
+										}
+										camp_fire_05 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_fire_05
+											}
+										}
+									}
 								}
-								switch = {
-									trigger = has_domicile_building
-									barber_tent_01 = { add_domicile_building = barber_tent_02 }
-									barber_tent_02 = { add_domicile_building = barber_tent_03 }
-									barber_tent_03 = { add_domicile_building = barber_tent_04 }
-									barber_tent_04 = { add_domicile_building = barber_tent_05 }
-									barber_tent_05 = { add_domicile_building = barber_tent_06 }
+								1 = {
+									trigger = {
+										has_domicile_building_or_higher = proving_grounds_01
+										NOT = { has_domicile_building = proving_grounds_06 }
+									}
+									switch = {
+										trigger = has_domicile_building
+										proving_grounds_01 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:proving_grounds_01
+											}
+										}
+										proving_grounds_02 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:proving_grounds_02
+											}
+										}
+										proving_grounds_03 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:proving_grounds_03
+											}
+										}
+										proving_grounds_04 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:proving_grounds_04
+											}
+										}
+										proving_grounds_05 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:proving_grounds_05
+											}
+										}
+									}
 								}
-							}
-							1 = {
-								trigger = {
-									has_domicile_building_or_higher = baggage_train_01
-									NOT = { has_domicile_building = baggage_train_06 }
-								}
-								switch = {
-									trigger = has_domicile_building
-									baggage_train_01 = { add_domicile_building = baggage_train_02 }
-									baggage_train_02 = { add_domicile_building = baggage_train_03 }
-									baggage_train_03 = { add_domicile_building = baggage_train_04 }
-									baggage_train_04 = { add_domicile_building = baggage_train_05 }
-									baggage_train_05 = { add_domicile_building = baggage_train_06 }
-								}
-							}
-							1 = {
-								trigger = {
-									has_domicile_building_or_higher = camp_fire_01
-									NOT = { has_domicile_building = camp_fire_06 }
-								}
-								switch = {
-									trigger = has_domicile_building
-									camp_fire_01 = { add_domicile_building = camp_fire_02 }
-									camp_fire_02 = { add_domicile_building = camp_fire_03 }
-									camp_fire_03 = { add_domicile_building = camp_fire_04 }
-									camp_fire_04 = { add_domicile_building = camp_fire_05 }
-									camp_fire_05 = { add_domicile_building = camp_fire_06 }
-								}
-							}
-							1 = {
-								trigger = {
-									has_domicile_building_or_higher = proving_grounds_01
-									NOT = { has_domicile_building = proving_grounds_06 }
-								}
-								switch = {
-									trigger = has_domicile_building
-									proving_grounds_01 = { add_domicile_building = proving_grounds_02 }
-									proving_grounds_02 = { add_domicile_building = proving_grounds_03 }
-									proving_grounds_03 = { add_domicile_building = proving_grounds_04 }
-									proving_grounds_04 = { add_domicile_building = proving_grounds_05 }
-									proving_grounds_05 = { add_domicile_building = proving_grounds_06 }
-								}
-							}
-							1 = {
-								trigger = {
-									has_domicile_building_or_higher = camp_perimeter_01
-									NOT = { has_domicile_building = camp_perimeter_06 }
-								}
-								switch = {
-									trigger = has_domicile_building
-									camp_perimeter_01 = { add_domicile_building = camp_perimeter_02 }
-									camp_perimeter_02 = { add_domicile_building = camp_perimeter_03 }
-									camp_perimeter_03 = { add_domicile_building = camp_perimeter_04 }
-									camp_perimeter_04 = { add_domicile_building = camp_perimeter_05 }
-									camp_perimeter_05 = { add_domicile_building = camp_perimeter_06 }
+								1 = {
+									trigger = {
+										has_domicile_building_or_higher = camp_perimeter_01
+										NOT = { has_domicile_building = camp_perimeter_06 }
+									}
+									switch = {
+										trigger = has_domicile_building
+										camp_perimeter_01 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_perimeter_01
+											}
+										}
+										camp_perimeter_02 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_perimeter_02
+											}
+										}
+										camp_perimeter_03 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_perimeter_03
+											}
+										}
+										camp_perimeter_04 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_perimeter_04
+											}
+										}
+										camp_perimeter_05 = {
+											save_scope_value_as = {
+												name = domicile_building
+												value = flag:camp_perimeter_05
+											}
+										}
+									}
 								}
 							}
 						}
 					}
 				}
-
-				custom_tooltip = activity_camp_party_reward_upgrade_building
+				domicile = {
+					switch = {
+						trigger = scope:domicile_building
+						flag:camp_main_01 = { add_domicile_building = camp_main_02 }
+						flag:camp_main_02 = { add_domicile_building = camp_main_03 }
+						flag:camp_main_03 = { add_domicile_building = camp_main_04 }
+						flag:supply_tent_01 = { add_domicile_building = supply_tent_02 }
+						flag:supply_tent_02 = { add_domicile_building = supply_tent_03 }
+						flag:supply_tent_03 = { add_domicile_building = supply_tent_04 }
+						flag:supply_tent_04 = { add_domicile_building = supply_tent_05 }
+						flag:supply_tent_05 = { add_domicile_building = supply_tent_06 }
+						flag:barber_tent_01 = { add_domicile_building = barber_tent_02 }
+						flag:barber_tent_02 = { add_domicile_building = barber_tent_03 }
+						flag:barber_tent_03 = { add_domicile_building = barber_tent_04 }
+						flag:barber_tent_04 = { add_domicile_building = barber_tent_05 }
+						flag:barber_tent_05 = { add_domicile_building = barber_tent_06 }
+						flag:baggage_train_01 = { add_domicile_building = baggage_train_02 }
+						flag:baggage_train_02 = { add_domicile_building = baggage_train_03 }
+						flag:baggage_train_03 = { add_domicile_building = baggage_train_04 }
+						flag:baggage_train_04 = { add_domicile_building = baggage_train_05 }
+						flag:baggage_train_05 = { add_domicile_building = baggage_train_06 }
+						flag:camp_fire_01 = { add_domicile_building = camp_fire_02 }
+						flag:camp_fire_02 = { add_domicile_building = camp_fire_03 }
+						flag:camp_fire_03 = { add_domicile_building = camp_fire_04 }
+						flag:camp_fire_04 = { add_domicile_building = camp_fire_05 }
+						flag:camp_fire_05 = { add_domicile_building = camp_fire_06 }
+						flag:proving_grounds_01 = { add_domicile_building = proving_grounds_02 }
+						flag:proving_grounds_02 = { add_domicile_building = proving_grounds_03 }
+						flag:proving_grounds_03 = { add_domicile_building = proving_grounds_04 }
+						flag:proving_grounds_04 = { add_domicile_building = proving_grounds_05 }
+						flag:proving_grounds_05 = { add_domicile_building = proving_grounds_06 }
+						flag:camp_perimeter_01 = { add_domicile_building = camp_perimeter_02 }
+						flag:camp_perimeter_02 = { add_domicile_building = camp_perimeter_03 }
+						flag:camp_perimeter_03 = { add_domicile_building = camp_perimeter_04 }
+						flag:camp_perimeter_04 = { add_domicile_building = camp_perimeter_05 }
+						flag:camp_perimeter_05 = { add_domicile_building = camp_perimeter_06 }
+					}
+				}
 
 				custom_tooltip = camp_party_100_contracts_get
 
@@ -12210,510 +11878,509 @@ ep3_camp_party_visit_holding_skills_boost = {
 }
 
 #Setting up the Fens as a pseudo-custom region
-#Lux Renata TBA
-#ep3_the_fens_list_effect = {
-#	province:1525 = { add_to_list = the_fens } #b_lynn
-#	province:1534 = { add_to_list = the_fens } #b_cambridgeshire
-#	province:1535 = { add_to_list = the_fens } #b_radfield
-#	province:1536 = { add_to_list = the_fens } #b_papworth
-#	province:1537 = { add_to_list = the_fens } #b_ely
-#	province:1541 = { add_to_list = the_fens } #b_hurstingstone
-#	province:1542 = { add_to_list = the_fens } #b_norman_cross
-#	province:1584 = { add_to_list = the_fens } #b_stamford
-#	province:1585 = { add_to_list = the_fens } #b_boston
-#	province:1601 = { add_to_list = the_fens } #b_peterborough
-#}
+ep3_the_fens_list_effect = {
+	province:1525 = { add_to_list = the_fens } #b_lynn
+	province:1534 = { add_to_list = the_fens } #b_cambridgeshire
+	province:1535 = { add_to_list = the_fens } #b_radfield
+	province:1536 = { add_to_list = the_fens } #b_papworth
+	province:1537 = { add_to_list = the_fens } #b_ely
+	province:1541 = { add_to_list = the_fens } #b_hurstingstone
+	province:1542 = { add_to_list = the_fens } #b_norman_cross
+	province:1584 = { add_to_list = the_fens } #b_stamford
+	province:1585 = { add_to_list = the_fens } #b_boston
+	province:1601 = { add_to_list = the_fens } #b_peterborough
+}
 
-#Lux Renata TBA
-##Used for setting up the Harrying of the North widget for events
-##Requires use of ep3_harrying_widget_clear_effect in the 'after' as well
-#ep3_harrying_widget_setup_effect = {
-#	## First, identify our widget character.
-#	save_scope_as = scope_character
-#	## Then transfer over some suitable variables for the UI.
-#	set_variable = {
-#		name = pacification_gui
-#		value = scope:story.var:pacification
-#	}
-#	set_variable = {
-#		name = resistance_gui
-#		value = scope:story.var:resistance
-#	}
-#}
+#Used for setting up the Harrying of the North widget for events
+#Requires use of ep3_harrying_widget_clear_effect in the 'after' as well
+ep3_harrying_widget_setup_effect = {
+	global_var:harrying_of_the_north = { save_scope_as = story }
+	## First, identify our widget character.
+	save_scope_as = scope_character
+	## Then transfer over some suitable variables for the UI.
+	set_variable = {
+		name = pacification_gui
+		value = scope:story.var:pacification
+	}
+	set_variable = {
+		name = resistance_gui
+		value = scope:story.var:resistance
+	}
+}
 
-##Increase pacification
-#ep3_increase_pacification_effect = {
-#	scope:story = {
-#		change_variable = {
-#			name = pacification
-#			add = $AMOUNT$
-#		}
-#	}
-#	set_variable = {
-#		name = pacification_gui
-#		value = scope:story.var:pacification
-#	}
-#	if = { #Display in red if Anglo-Saxon
-#		limit = {
-#			culture = culture:anglo_saxon
-#		}
-#		custom_tooltip = ep3_increase_pacification_effect_tt_negative
-#	}
-#	else = { #Otherwise in green
-#		custom_tooltip = ep3_increase_pacification_effect_tt_positive
-#	}
+#Increase pacification
+ep3_increase_pacification_effect = {
+	save_scope_as = origin_char
+	scope:story = {
+		change_variable = {
+			name = pacification
+			add = $AMOUNT$
+		}
+	}
+	set_variable = {
+		name = pacification_gui
+		value = scope:story.var:pacification
+	}
+	if = { #Display in red if Anglo-Saxon
+		limit = {
+			culture = culture:anglo_saxon
+		}
+		custom_tooltip = ep3_increase_pacification_effect_tt_negative
+	}
+	else = { #Otherwise in green
+		custom_tooltip = ep3_increase_pacification_effect_tt_positive
+	}
 
-#	if = {
-#		limit = {
-#			exists = scope:story.var:ruler_england
-#		}
-#		scope:story.var:ruler_england = {
-#			send_interface_message = {
-#				type = msg_pacification_rise
-#				title = harrying.notification_pacification_rise
-#				desc = harrying_pacification_rise
-#			}
-#		}
-#	}
+	if = {
+		limit = {
+			exists = scope:story.var:ruler_england
+		}
+		scope:story.var:ruler_england = {
+			send_interface_message = {
+				type = msg_pacification_rise
+				title = harrying.notification_pacification_rise
+				desc = harrying_pacification_rise
+			}
+		}
+	}
 
-#	if = {
-#		limit = {
-#			character:90028 = {
-#				is_alive = yes
-#				NOT = {
-#					has_character_flag = hereward_settled_flag
-#				}
-#			}
-#		}
-#		character:90028 = {
-#			send_interface_message = {
-#				type = msg_pacification_rise
-#				title = harrying.notification_pacification_rise
-#				desc = harrying_pacification_rise
-#			}
-#		}
-#	}
+	if = {
+		limit = {
+			character:90028 = {
+				is_alive = yes
+				NOT = {
+					has_character_flag = hereward_settled_flag
+				}
+			}
+		}
+		character:90028 = {
+			send_interface_message = {
+				type = msg_pacification_rise
+				title = harrying.notification_pacification_rise
+				desc = harrying_pacification_rise
+			}
+		}
+	}
 
-#	if = {
-#		limit = {
-#			scope:story.var:ruler_england = {
-#				any_vassal = {
-#					culture = culture:anglo_saxon
-#				}
-#			}
-#		}
-#		scope:story.var:ruler_england = {
-#			every_vassal = {
-#				limit = {
-#					culture = culture:anglo_saxon
-#				}
-#				send_interface_message = {
-#					type = msg_pacification_rise
-#					title = harrying.notification_pacification_rise
-#					desc = harrying_pacification_rise
-#				}
-#			}
-#		}
-#	}
-#}
+	if = {
+		limit = {
+			scope:story.var:ruler_england = {
+				any_vassal = {
+					culture = culture:anglo_saxon
+				}
+			}
+		}
+		scope:story.var:ruler_england = {
+			every_vassal = {
+				limit = {
+					culture = culture:anglo_saxon
+				}
+				send_interface_message = {
+					type = msg_pacification_rise
+					title = harrying.notification_pacification_rise
+					desc = harrying_pacification_rise
+				}
+			}
+		}
+	}
+}
 
-##Increase pacification - large
-#ep3_increase_pacification_large_effect = {
-#	save_scope_as = origin_char
-#	scope:story = {
-#		change_variable = {
-#			name = pacification
-#			add = 2
-#		}
-#	}
-#	set_variable = {
-#		name = pacification_gui
-#		value = scope:story.var:pacification
-#	}
-#	if = { #Display in red if Anglo-Saxon
-#		limit = {
-#			culture = culture:anglo_saxon
-#		}
-#		custom_tooltip = ep3_increase_pacification_effect_tt_negative_large
-#	}
-#	else = { #Otherwise in green
-#		custom_tooltip = ep3_increase_pacification_effect_tt_positive_large
-#	}
+#Increase pacification - large
+ep3_increase_pacification_large_effect = {
+	save_scope_as = origin_char
+	scope:story = {
+		change_variable = {
+			name = pacification
+			add = 2
+		}
+	}
+	set_variable = {
+		name = pacification_gui
+		value = scope:story.var:pacification
+	}
+	if = { #Display in red if Anglo-Saxon
+		limit = {
+			culture = culture:anglo_saxon
+		}
+		custom_tooltip = ep3_increase_pacification_effect_tt_negative_large
+	}
+	else = { #Otherwise in green
+		custom_tooltip = ep3_increase_pacification_effect_tt_positive_large
+	}
 
-#	if = {
-#		limit = {
-#			exists = scope:story.var:ruler_england
-#		}
-#		scope:story.var:ruler_england = {
-#			send_interface_message = {
-#				type = msg_pacification_rise
-#				title = harrying.notification_pacification_rise
-#				desc = harrying_pacification_rise
-#			}
-#		}
-#	}
+	if = {
+		limit = {
+			exists = scope:story.var:ruler_england
+		}
+		scope:story.var:ruler_england = {
+			send_interface_message = {
+				type = msg_pacification_rise
+				title = harrying.notification_pacification_rise
+				desc = harrying_pacification_rise
+			}
+		}
+	}
 
-#	if = {
-#		limit = {
-#			character:90028 = {
-#				is_alive = yes
-#				NOT = {
-#					has_character_flag = hereward_settled_flag
-#				}
-#			}
-#		}
-#		character:90028 = {
-#			send_interface_message = {
-#				type = msg_pacification_rise
-#				title = harrying.notification_pacification_rise
-#				desc = harrying_pacification_rise
-#			}
-#		}
-#	}
+	if = {
+		limit = {
+			character:90028 = {
+				is_alive = yes
+				NOT = {
+					has_character_flag = hereward_settled_flag
+				}
+			}
+		}
+		character:90028 = {
+			send_interface_message = {
+				type = msg_pacification_rise
+				title = harrying.notification_pacification_rise
+				desc = harrying_pacification_rise
+			}
+		}
+	}
 
-#	if = {
-#		limit = {
-#			scope:story.var:ruler_england = {
-#				any_vassal = {
-#					culture = culture:anglo_saxon
-#				}
-#			}
-#		}
-#		scope:story.var:ruler_england = {
-#			every_vassal = {
-#				limit = {
-#					culture = culture:anglo_saxon
-#				}
-#				send_interface_message = {
-#					type = msg_pacification_rise
-#					title = harrying.notification_pacification_rise
-#					desc = harrying_pacification_rise
-#				}
-#			}
-#		}
-#	}
-#}
+	if = {
+		limit = {
+			scope:story.var:ruler_england = {
+				any_vassal = {
+					culture = culture:anglo_saxon
+				}
+			}
+		}
+		scope:story.var:ruler_england = {
+			every_vassal = {
+				limit = {
+					culture = culture:anglo_saxon
+				}
+				send_interface_message = {
+					type = msg_pacification_rise
+					title = harrying.notification_pacification_rise
+					desc = harrying_pacification_rise
+				}
+			}
+		}
+	}
+}
 
-##Increase resistance
-#ep3_increase_resistance_effect = {
-#	save_scope_as = origin_char
-#	scope:story = {
-#		change_variable = {
-#			name = resistance
-#			add = $AMOUNT$
-#		}
-#	}
-#	set_variable = {
-#		name = resistance_gui
-#		value = scope:story.var:resistance
-#	}
-#	if = { #Display in green if Anglo-Saxon
-#		limit = {
-#			culture = culture:anglo_saxon
-#		}
-#		custom_tooltip = ep3_increase_resistance_effect_tt_positive
-#	}
-#	else = { #Otherwise in green
-#		custom_tooltip = ep3_increase_resistance_effect_tt_negative
-#	}
+#Increase resistance
+ep3_increase_resistance_effect = {
+	save_scope_as = origin_char
+	scope:story = {
+		change_variable = {
+			name = resistance
+			add = $AMOUNT$
+		}
+	}
+	set_variable = {
+		name = resistance_gui
+		value = scope:story.var:resistance
+	}
+	if = { #Display in green if Anglo-Saxon
+		limit = {
+			culture = culture:anglo_saxon
+		}
+		custom_tooltip = ep3_increase_resistance_effect_tt_positive
+	}
+	else = { #Otherwise in green
+		custom_tooltip = ep3_increase_resistance_effect_tt_negative
+	}
 
-#	if = {
-#		limit = {
-#			exists = scope:story.var:ruler_england
-#		}
-#		scope:story.var:ruler_england = {
-#			send_interface_message = {
-#				type = msg_resistance_rise
-#				title = harrying.notification_resistance_rise
-#				desc = harrying_resistance_rise
-#			}
-#		}
-#	}
+	if = {
+		limit = {
+			exists = scope:story.var:ruler_england
+		}
+		scope:story.var:ruler_england = {
+			send_interface_message = {
+				type = msg_resistance_rise
+				title = harrying.notification_resistance_rise
+				desc = harrying_resistance_rise
+			}
+		}
+	}
 
-#	if = {
-#		limit = {
-#			character:90028 = {
-#				is_alive = yes
-#				NOT = {
-#					has_character_flag = hereward_settled_flag
-#				}
-#			}
-#		}
-#		character:90028 = {
-#			send_interface_message = {
-#				type = msg_resistance_rise
-#				title = harrying.notification_resistance_rise
-#				desc = harrying_resistance_rise
-#			}
-#		}
-#	}
+	if = {
+		limit = {
+			character:90028 = {
+				is_alive = yes
+				NOT = {
+					has_character_flag = hereward_settled_flag
+				}
+			}
+		}
+		character:90028 = {
+			send_interface_message = {
+				type = msg_resistance_rise
+				title = harrying.notification_resistance_rise
+				desc = harrying_resistance_rise
+			}
+		}
+	}
 
-#	if = {
-#		limit = {
-#			scope:story.var:ruler_england = {
-#				any_vassal = {
-#					culture = culture:anglo_saxon
-#				}
-#			}
-#		}
-#		scope:story.var:ruler_england = {
-#			every_vassal = {
-#				limit = {
-#					culture = culture:anglo_saxon
-#				}
-#				send_interface_message = {
-#					type = msg_resistance_rise
-#					title = harrying.notification_resistance_rise
-#					desc = harrying_resistance_rise
-#				}
-#			}
-#		}
-#	}
-#}
+	if = {
+		limit = {
+			scope:story.var:ruler_england = {
+				any_vassal = {
+					culture = culture:anglo_saxon
+				}
+			}
+		}
+		scope:story.var:ruler_england = {
+			every_vassal = {
+				limit = {
+					culture = culture:anglo_saxon
+				}
+				send_interface_message = {
+					type = msg_resistance_rise
+					title = harrying.notification_resistance_rise
+					desc = harrying_resistance_rise
+				}
+			}
+		}
+	}
+}
 
-##Increase resistance - large
-#ep3_increase_resistance_large_effect = {
-#	save_scope_as = origin_char
-#	scope:story = {
-#		change_variable = {
-#			name = resistance
-#			add = 2
-#		}
-#	}
-#	set_variable = {
-#		name = resistance_gui
-#		value = scope:story.var:resistance
-#	}
-#	if = { #Display in green if Anglo-Saxon
-#		limit = {
-#			culture = culture:anglo_saxon
-#		}
-#		custom_tooltip = ep3_increase_resistance_effect_tt_positive_large
-#	}
-#	else = { #Otherwise in green
-#		custom_tooltip = ep3_increase_resistance_effect_tt_negative_large
-#	}
+#Increase resistance - large
+ep3_increase_resistance_large_effect = {
+	save_scope_as = origin_char
+	scope:story = {
+		change_variable = {
+			name = resistance
+			add = 2
+		}
+	}
+	set_variable = {
+		name = resistance_gui
+		value = scope:story.var:resistance
+	}
+	if = { #Display in green if Anglo-Saxon
+		limit = {
+			culture = culture:anglo_saxon
+		}
+		custom_tooltip = ep3_increase_resistance_effect_tt_positive_large
+	}
+	else = { #Otherwise in green
+		custom_tooltip = ep3_increase_resistance_effect_tt_negative_large
+	}
 
-#	if = {
-#		limit = {
-#			exists = scope:story.var:ruler_england
-#		}
-#		scope:story.var:ruler_england = {
-#			send_interface_message = {
-#				type = msg_resistance_rise
-#				title = harrying.notification_resistance_rise
-#				desc = harrying_resistance_rise
-#			}
-#		}
-#	}
+	if = {
+		limit = {
+			exists = scope:story.var:ruler_england
+		}
+		scope:story.var:ruler_england = {
+			send_interface_message = {
+				type = msg_resistance_rise
+				title = harrying.notification_resistance_rise
+				desc = harrying_resistance_rise
+			}
+		}
+	}
 
-#	if = {
-#		limit = {
-#			character:90028 = {
-#				is_alive = yes
-#				NOT = {
-#					has_character_flag = hereward_settled_flag
-#				}
-#			}
-#		}
-#		character:90028 = {
-#			send_interface_message = {
-#				type = msg_resistance_rise
-#				title = harrying.notification_resistance_rise
-#				desc = harrying_resistance_rise
-#			}
-#		}
-#	}
+	if = {
+		limit = {
+			character:90028 = {
+				is_alive = yes
+				NOT = {
+					has_character_flag = hereward_settled_flag
+				}
+			}
+		}
+		character:90028 = {
+			send_interface_message = {
+				type = msg_resistance_rise
+				title = harrying.notification_resistance_rise
+				desc = harrying_resistance_rise
+			}
+		}
+	}
 
-#	if = {
-#		limit = {
-#			scope:story.var:ruler_england = {
-#				any_vassal = {
-#					culture = culture:anglo_saxon
-#				}
-#			}
-#		}
-#		scope:story.var:ruler_england = {
-#			random_vassal = {
-#				limit = {
-#					culture = culture:anglo_saxon
-#				}
-#				send_interface_message = {
-#					type = msg_resistance_rise
-#					title = harrying.notification_resistance_rise
-#					desc = harrying_resistance_rise
-#				}
-#			}
-#		}
-#	}
-#}
+	if = {
+		limit = {
+			scope:story.var:ruler_england = {
+				any_vassal = {
+					culture = culture:anglo_saxon
+				}
+			}
+		}
+		scope:story.var:ruler_england = {
+			random_vassal = {
+				limit = {
+					culture = culture:anglo_saxon
+				}
+				send_interface_message = {
+					type = msg_resistance_rise
+					title = harrying.notification_resistance_rise
+					desc = harrying_resistance_rise
+				}
+			}
+		}
+	}
+}
 
-##Decrease pacification
-#ep3_decrease_pacification_effect = {
-#	save_scope_as = origin_char
-#	if = {
-#		limit = { scope:story.var:pacification != 0 }
-#		scope:story = {
-#			change_variable = {
-#				name = pacification
-#				add = -1
-#			}
-#		}
-#		set_variable = {
-#			name = pacification_gui
-#			value = scope:story.var:pacification
-#		}
-#		if = { #Display in green if Anglo-Saxon
-#			limit = {
-#				culture = culture:anglo_saxon
-#			}
-#			custom_tooltip = ep3_decrease_pacification_effect_tt_positive
-#		}
-#		else = { #Otherwise in green
-#			custom_tooltip = ep3_decrease_pacification_effect_tt_negative
-#		}
+#Decrease pacification
+ep3_decrease_pacification_effect = {
+	save_scope_as = origin_char
+	if = {
+		limit = { scope:story.var:pacification != 0 }
+		scope:story = {
+			change_variable = {
+				name = pacification
+				add = -1
+			}
+		}
+		set_variable = {
+			name = pacification_gui
+			value = scope:story.var:pacification
+		}
+		if = { #Display in green if Anglo-Saxon
+			limit = {
+				culture = culture:anglo_saxon
+			}
+			custom_tooltip = ep3_decrease_pacification_effect_tt_positive
+		}
+		else = { #Otherwise in green
+			custom_tooltip = ep3_decrease_pacification_effect_tt_negative
+		}
 
-#		if = {
-#			limit = {
-#				exists = scope:story.var:ruler_england
-#			}
-#			scope:story.var:ruler_england = {
-#				send_interface_message = {
-#					type = msg_pacification_falls
-#					title = harrying.notification_pacification_fall
-#					desc = harrying_pacification_fall
-#				}
-#			}
-#		}
+		if = {
+			limit = {
+				exists = scope:story.var:ruler_england
+			}
+			scope:story.var:ruler_england = {
+				send_interface_message = {
+					type = msg_pacification_falls
+					title = harrying.notification_pacification_fall
+					desc = harrying_pacification_fall
+				}
+			}
+		}
 
-#		if = {
-#			limit = {
-#				character:90028 = {
-#					is_alive = yes
-#					NOT = {
-#						has_character_flag = hereward_settled_flag
-#					}
-#				}
-#			}
-#			character:90028 = {
-#				send_interface_message = {
-#					type = msg_pacification_falls
-#					title = harrying.notification_pacification_fall
-#					desc = harrying_pacification_fall
-#				}
-#			}
-#		}
+		if = {
+			limit = {
+				character:90028 = {
+					is_alive = yes
+					NOT = {
+						has_character_flag = hereward_settled_flag
+					}
+				}
+			}
+			character:90028 = {
+				send_interface_message = {
+					type = msg_pacification_falls
+					title = harrying.notification_pacification_fall
+					desc = harrying_pacification_fall
+				}
+			}
+		}
 
-#		if = {
-#			limit = {
-#				scope:story.var:ruler_england = {
-#					any_vassal = {
-#						culture = culture:anglo_saxon
-#					}
-#				}
-#			}
-#			scope:story.var:ruler_england = {
-#				every_vassal = {
-#					limit = {
-#						culture = culture:anglo_saxon
-#					}
-#					send_interface_message = {
-#						type = msg_pacification_falls
-#						title = harrying.notification_pacification_fall
-#						desc = harrying_pacification_fall
-#					}
-#				}
-#			}
-#		}
-#	}
-#}
+		if = {
+			limit = {
+				scope:story.var:ruler_england = {
+					any_vassal = {
+						culture = culture:anglo_saxon
+					}
+				}
+			}
+			scope:story.var:ruler_england = {
+				every_vassal = {
+					limit = {
+						culture = culture:anglo_saxon
+					}
+					send_interface_message = {
+						type = msg_pacification_falls
+						title = harrying.notification_pacification_fall
+						desc = harrying_pacification_fall
+					}
+				}
+			}
+		}
+	}
+}
 
-##Decrease resistance
-#ep3_decrease_resistance_effect = {
-#	save_scope_as = origin_char
-#	if = {
-#		limit = { scope:story.var:pacification > 0 }
-#		scope:story = {
-#			change_variable = {
-#				name = resistance
-#				add = -1
-#			}
-#		}
-#		set_variable = {
-#			name = resistance_gui
-#			value = scope:story.var:resistance
-#		}
-#		if = { #Display in red if Anglo-Saxon
-#			limit = {
-#				culture = culture:anglo_saxon
-#			}
-#			custom_tooltip = ep3_decrease_resistance_effect_tt_negative
-#		}
-#		else = { #Otherwise in green
-#			custom_tooltip = ep3_decrease_resistance_effect_tt_positive
-#		}
+#Decrease resistance
+ep3_decrease_resistance_effect = {
+	save_scope_as = origin_char
+	if = {
+		limit = { scope:story.var:pacification != 0 }
+		scope:story = {
+			change_variable = {
+				name = resistance
+				add = -1
+			}
+		}
+		set_variable = {
+			name = resistance_gui
+			value = scope:story.var:resistance
+		}
+		if = { #Display in red if Anglo-Saxon
+			limit = {
+				culture = culture:anglo_saxon
+			}
+			custom_tooltip = ep3_decrease_resistance_effect_tt_negative
+		}
+		else = { #Otherwise in green
+			custom_tooltip = ep3_decrease_resistance_effect_tt_positive
+		}
 
-#		if = {
-#			limit = {
-#				exists = scope:story.var:ruler_england
-#			}
-#			scope:story.var:ruler_england = {
-#				send_interface_message = {
-#					type = msg_resistance_falls
-#					title = harrying.notification_resistance_fall
-#					desc = harrying_resistance_fall
-#				}
-#			}
-#		}
+		if = {
+			limit = {
+				exists = scope:story.var:ruler_england
+			}
+			scope:story.var:ruler_england = {
+				send_interface_message = {
+					type = msg_resistance_falls
+					title = harrying.notification_resistance_fall
+					desc = harrying_resistance_fall
+				}
+			}
+		}
 
-#		if = {
-#			limit = {
-#				character:90028 = {
-#					is_alive = yes
-#					NOT = {
-#						has_character_flag = hereward_settled_flag
-#					}
-#				}
-#			}
-#			character:90028 = {
-#				send_interface_message = {
-#					type = msg_resistance_falls
-#					title = harrying.notification_resistance_fall
-#					desc = harrying_resistance_fall
-#				}
-#			}
-#		}
+		if = {
+			limit = {
+				character:90028 = {
+					is_alive = yes
+					NOT = {
+						has_character_flag = hereward_settled_flag
+					}
+				}
+			}
+			character:90028 = {
+				send_interface_message = {
+					type = msg_resistance_falls
+					title = harrying.notification_resistance_fall
+					desc = harrying_resistance_fall
+				}
+			}
+		}
 
-#		if = {
-#			limit = {
-#				scope:story.var:ruler_england = {
-#					any_vassal = {
-#						culture = culture:anglo_saxon
-#					}
-#				}
-#			}
-#			scope:story.var:ruler_england = {
-#				every_vassal = {
-#					limit = {
-#						culture = culture:anglo_saxon
-#					}
-#					send_interface_message = {
-#						type = msg_resistance_falls
-#						title = harrying.notification_resistance_fall
-#						desc = harrying_resistance_fall
-#					}
-#				}
-#			}
-#		}
-#	}
-#}
+		if = {
+			limit = {
+				scope:story.var:ruler_england = {
+					any_vassal = {
+						culture = culture:anglo_saxon
+					}
+				}
+			}
+			scope:story.var:ruler_england = {
+				every_vassal = {
+					limit = {
+						culture = culture:anglo_saxon
+					}
+					send_interface_message = {
+						type = msg_resistance_falls
+						title = harrying.notification_resistance_fall
+						desc = harrying_resistance_fall
+					}
+				}
+			}
+		}
+	}
+}
 
-##Used for clearing widget data from the participants
-#ep3_harrying_widget_clear_effect = {
-#	remove_variable = pacification_gui
-#	remove_variable = resistance_gui
-#}
-#Lux Renata TBA End
+#Used for clearing widget data from the participants
+ep3_harrying_widget_clear_effect = {
+	remove_variable = pacification_gui
+	remove_variable = resistance_gui
+}
 
 # Effect for handling players and AI continuing as landless if deposed
 # Should be used over the standard effect in most cases (except barons/unlanded AI etc.)
@@ -12780,7 +12447,7 @@ banish_effect = {
 	show_as_tooltip = { banish = yes }
 	save_scope_as = allow_imprisoned_landless
 	if = {
-		limit = { is_valid_for_laampdom = yes }
+		limit = { scope:allow_imprisoned_landless = { is_valid_for_laampdom = yes } }
 		custom_tooltip = laamp_may_become_adventurer_tt
 	}
 	$BANISHER$ = { save_scope_as = banisher }
@@ -13026,7 +12693,7 @@ governor_contract_invalidated_message_effect = {
 			left_icon = scope:task_contract_character
 			desc = admin_contract_invalidated_desc
 
-			current_travel_plan ?= { 
+			current_travel_plan ?= {
 				if = {
 					limit = { can_cancel = yes }
 					cancel_travel_plan = yes
@@ -13239,10 +12906,10 @@ add_random_external_estate_building = {
 		random_list = {
 			10 = {
 				trigger = {
-					NOR = { 
+					NOR = {
 						has_domicile_building_or_higher = temple_small_01
 						owner = {
-							government_has_flag = government_is_celestial 
+							government_has_flag = government_is_celestial
 						}
 					}
 				}
@@ -13274,8 +12941,8 @@ add_random_external_estate_building = {
 			}
 			10 = {
 				trigger = {
-					NOR = { 
-						has_domicile_building_or_higher = vineyard_01 
+					NOR = {
+						has_domicile_building_or_higher = vineyard_01
 						owner.culture ?= {
 							has_innovation = innovation_champa_rice
 						}
@@ -13319,7 +12986,7 @@ add_random_external_estate_building = {
 			}
 			10 = {
 				trigger = {
-					NOR = { 
+					NOR = {
 						has_domicile_building_or_higher = grain_field_01
 						owner.culture ?= {
 							has_innovation = innovation_champa_rice
@@ -13334,7 +13001,7 @@ add_random_external_estate_building = {
 			}
 			10 = {
 				trigger = {
-					NOT = { 
+					NOT = {
 						has_domicile_building_or_higher = rice_field_01
 					}
 					owner.culture ?= {
@@ -13389,8 +13056,8 @@ add_random_external_estate_building = {
 			}
 			10 = {
 				trigger = {
-					NOR = { 
-						has_domicile_building_or_higher = olive_01 
+					NOR = {
+						has_domicile_building_or_higher = olive_01
 						owner.culture ?= {
 							has_innovation = innovation_champa_rice
 						}
@@ -13437,10 +13104,10 @@ demand_pastureland_adventurer_interaction_effect = {
 
 	hidden_effect = {
 		scope:actor = {
-			#if = {
-				#limit = { character:90028 ?= this }
-				#add_character_flag = hereward_settled_flag
-			#}
+			if = {
+				limit = { character:90028 ?= this }
+				add_character_flag = hereward_settled_flag
+			}
 			if = {
 				limit = {
 					NOT = { has_trait = adventurer }

@@ -1,0 +1,1609 @@
+template = {
+	ps_blank_template = { # Only for tests
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = "ce_block_02.dds"		
+			color1 = "white"
+			color2 = "white"
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+
+	# Using full sized charges in a plain field
+	# 
+	# Charge has color1 & 2 the same and third as negative
+	# 
+	# TODO rename those to sth less complicated
+	ps_heraldry_full_size_charge_01a = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_charges"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+	# Inverted for metal
+	ps_heraldry_full_size_charge_01b = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_charges"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+	# Using full sized ordinaries in a plain field	
+	# Color1 & 2 are different, and picked from opposite pools
+	ps_heraldry_full_size_ord_01a = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_ordinaries"
+			color1 = color3
+			color2 = color2
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+	# Inverted for metal
+	ps_heraldry_full_size_ord_01b = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_ordinaries"
+			color1 = color3
+			color2 = color2
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+	
+	ps_three_charges_design = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges" # TODO refine a list for 2 & 1
+			color1 = color3
+			color2 = color3
+			color3 = color1
+		instance = { position = { 0.31 0.28 } scale = { 0.5 0.5 }  }
+		instance = { position = { 0.69 0.28 } scale = { 0.5 0.5 }  }
+		instance = { position = { 0.5 0.70 } scale = { 0.5 0.5 }  }		
+		}
+	}	
+	# Inverted for metal
+	ps_three_charges_design_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+		instance = { position = { 0.31 0.28 } scale = { 0.5 0.5 }  }
+		instance = { position = { 0.69 0.28 } scale = { 0.5 0.5 }  }
+		instance = { position = { 0.5 0.70 } scale = { 0.5 0.5 }  }		
+		}
+	}		
+	
+	ps_single_charge_and_border_design = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_charges_border"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+		instance = {	position = { 0.5 0.5 }	scale = { 0.825 0.825 }	}		# Little bit smaller so it is more tolerant
+		}
+		colored_emblem = {
+			texture = list "ps_borders_dim" # not full sized either
+			color1 = color4
+			color2 = list "normal_colors"
+			color3 = color4
+		}		
+	}	
+	ps_single_charge_and_border_design_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_charges_border"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+		instance = {	position = { 0.5 0.5 }	scale = { 0.825 0.825 }	}		# Smaller		
+		}
+		colored_emblem = {
+			texture = list "ps_borders_dim" # not full sized either
+			color1 = color4
+			color2 = list "metal_colors"
+			color3 = color4			
+		}			
+	}			
+	
+	ps_ordinaries_and_border_design = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_ordinaries" # TODO Could possibly work with a restricted list (removing most partitions)
+			color1 = color3
+			color2 = color1
+			color3 = color4
+		instance = {	position = { 0.5 0.5 }	scale = { 0.85 0.85 }	}		# Should work at exact size
+		}
+		colored_emblem = {
+			texture = list "ps_borders_dim" # needs slightly different list without some borders like nebuly
+			color1 = color4
+			color2 = list "normal_colors"
+		}		
+	}		
+	
+	# Lions rampant with a chance for semis in the field
+	ps_lion_rampant_01a = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_charges_lions_ramp"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+		colored_emblem = {
+			texture = list "ps_charges_semis_lions_ramp"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}			
+	}	
+	# Inverted for metal
+	ps_lion_rampant_01b = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_charges_lions_ramp"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+		colored_emblem = {
+			texture = list "ps_charges_semis_lions_ramp"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}		
+	}		
+	ps_fur_designs_ermine = {
+	# c1 is always Sable
+	# c2 is always Argent
+	# c3 is mostly Gules
+		pattern = "pattern_solid.dds"
+		color1 = list "fur_opposite_colors_ermine" # Field has the third colour as default if not textured
+		color2 = "white"
+
+		colored_emblem = {
+			texture = list "ps_fur_designs_ermine_list"
+			color1 = "black"
+			color2 = "white"
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}		
+	ps_fur_designs_vair = {
+	# c1 is always Azure
+	# c2 is always Argent
+	# c3 is mostly Gules
+		pattern = "pattern_solid.dds"
+		color1 = list "fur_opposite_colors_vair" # Field has the third colour as default if not textured
+		color2 = "white"
+
+		colored_emblem = {
+			texture = list "ps_fur_designs_vair_list"
+			color1 = "blue"
+			color2 = "white"
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}		
+	}	
+	
+	# WIP tricolour ordinaries
+	ps_ordinaries_tricolour_azure = { 
+		pattern = "pattern_solid.dds"
+		color1 = "blue"
+		color2 = list "metal_colors"
+		color3 = list "tinctures_opposite_azure"
+		
+		colored_emblem = {
+			texture = list "ps_tricolour_ordinaries"
+			color1 = color2
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }		
+		}
+	}	
+	ps_ordinaries_tricolour_gules = { 
+		pattern = "pattern_solid.dds"
+		color1 = "red"
+		color2 = list "metal_colors"
+		color3 = list "tinctures_opposite_gules"
+		
+		colored_emblem = {
+			texture = list "ps_tricolour_ordinaries"
+			color1 = color2
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }		
+		}
+	}	
+	ps_ordinaries_tricolour_sable = { 
+		pattern = "pattern_solid.dds"
+		color1 = "black"
+		color2 = list "metal_colors"
+		color3 = list "tinctures_opposite_sable"
+		
+		colored_emblem = {
+			texture = list "ps_tricolour_ordinaries"
+			color1 = color2
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }		
+		}
+	}	
+	ps_ordinaries_tricolour_vert = { 
+		pattern = "pattern_solid.dds"
+		color1 = "green"
+		color2 = list "metal_colors"
+		color3 = list "tinctures_opposite_vert"
+		
+		colored_emblem = {
+			texture = list "ps_tricolour_ordinaries"
+			color1 = color2
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }		
+		}
+	}		
+	ps_ordinaries_tricolour_or = {
+		pattern = "pattern_solid.dds"
+		color1 = "yellow"
+		color2 = list "normal_colors"
+		color3 = "white"
+		
+		colored_emblem = {
+			texture = list "ps_tricolour_ordinaries"
+			color1 = color2
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }		
+		}
+	}	
+	ps_ordinaries_tricolour_argent = { 
+		pattern = "pattern_solid.dds"
+		color1 = "white"
+		color2 = list "normal_colors"
+		color3 = "yellow"
+		
+		colored_emblem = {
+			texture = list "ps_tricolour_ordinaries"
+			color1 = color2
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }		
+		}
+	}		
+	
+	ps_lions_eagles_overall_design_azure = {
+		pattern = "pattern_solid.dds"
+		color1 = "blue"
+		color2 = list "metal_colors"
+		color3 = list "tinctures_opposite_azure"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_pattern_overall_lion_eagles"
+			color1 = color2
+			color2 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }					
+		}		
+		colored_emblem = {
+			texture = list "ps_lions_and_eagles"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}		
+	
+	ps_lions_eagles_overall_design_gules = {
+		pattern = "pattern_solid.dds"
+		color1 = "red"
+		color2 = list "metal_colors"
+		color3 = list "tinctures_opposite_gules"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_pattern_overall_lion_eagles"
+			color1 = color2
+			color2 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }					
+		}		
+		colored_emblem = {
+			texture = list "ps_lions_and_eagles"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+	
+	ps_lions_eagles_overall_design_sable = {
+		pattern = "pattern_solid.dds"
+		color1 = "black"
+		color2 = list "metal_colors"
+		color3 = list "tinctures_opposite_sable"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_pattern_overall_lion_eagles"
+			color1 = color2
+			color2 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }					
+		}		
+		colored_emblem = {
+			texture = list "ps_lions_and_eagles"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+
+	ps_lions_eagles_overall_design_or = {
+		pattern = "pattern_solid.dds"
+		color1 = "yellow"
+		color2 = list "normal_colors"
+		color3 = "white"
+
+		colored_emblem = {
+			texture = list "ps_pattern_overall_lion_eagles"
+			color1 = color2
+			color2 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }					
+		}		
+		colored_emblem = {
+			texture = list "ps_lions_and_eagles"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+
+	ps_lions_eagles_overall_design_argent = {
+		pattern = "pattern_solid.dds"
+		color1 = "white"
+		color2 = list "normal_colors"
+		color3 = "yellow"
+
+		colored_emblem = {
+			texture = list "ps_pattern_overall_lion_eagles"
+			color1 = color2
+			color2 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }					
+		}		
+		colored_emblem = {
+			texture = list "ps_lions_and_eagles"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}		
+	
+	# WIP ordinaries w charges
+	ps_three_charges_in_chief = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = "ps_ord_chief.dds"
+			color1 = color2
+			color2 = color2
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_chief"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.24 0.185 } scale = { 0.325 0.325 }  }
+			instance = { position = { 0.50 0.185 } scale = { 0.325 0.325 }  }
+			instance = { position = { 0.76 0.185 } scale = { 0.325 0.325 }  }
+		}	
+	}	
+	ps_three_charges_in_chief_inverted = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = "ps_ord_chief.dds"
+			color1 = color2
+			color2 = color2
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_chief"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.24 0.185 } scale = { 0.325 0.325 }  }
+			instance = { position = { 0.50 0.185 } scale = { 0.325 0.325 }  }
+			instance = { position = { 0.76 0.185 } scale = { 0.325 0.325 }  }
+		}	
+	}
+	
+	ps_three_charges_in_fess = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = "ps_ord_fess.dds"
+			color1 = color2
+			color2 = color2
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_chief"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.25 0.472 } scale = { 0.31 0.31 }  }
+			instance = { position = { 0.5 0.472 } scale = { 0.31 0.31 }  }
+			instance = { position = { 0.75 0.472 } scale = { 0.31 0.31 }  }
+		}			
+	}	
+	ps_three_charges_in_fess_inverted = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = "ps_ord_fess.dds"
+			color1 = color2
+			color2 = color2
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_chief"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.25 0.472 } scale = { 0.31 0.31 }  }
+			instance = { position = { 0.5 0.472 } scale = { 0.31 0.31 }  }
+			instance = { position = { 0.75 0.472 } scale = { 0.31 0.31 }  }
+		}	
+	}	
+	
+	ps_fess_three_charges_in_chief = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = "ps_ord_fess_thin.dds"
+			color1 = color2
+			color2 = color2
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_chief"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.24 0.190 } scale = { 0.325 0.325 }  }
+			instance = { position = { 0.76 0.190 } scale = { 0.325 0.325 }  }
+			instance = { position = { 0.5 0.190 } scale = { 0.325 0.325 }  }
+		}		
+	}	
+	ps_fess_three_charges_in_chief_inverted = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = "ps_ord_fess_thin.dds"
+			color1 = color2
+			color2 = color2
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_chief"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.24 0.190 } scale = { 0.325 0.325 }  }
+			instance = { position = { 0.76 0.190 } scale = { 0.325 0.325 }  }
+			instance = { position = { 0.5 0.190 } scale = { 0.325 0.325 }  }
+		}	
+	}		
+	
+	
+	ps_bend_three_charges = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"	
+
+		colored_emblem = {
+			texture = "ps_ord_bend.dds"
+			color1 = color2
+			color2 = color2	
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_bend"
+			color1 = color3
+			color2 = color3
+			color3 = color2	
+			instance = { position = { 0.282 0.206 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.485 0.415 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.688 0.624 } scale = { 0.32 0.32 }  }
+		}
+	}	
+	ps_bend_three_charges_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"	
+
+		colored_emblem = {
+			texture = "ps_ord_bend.dds"
+			color1 = color2
+			color2 = color2	
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_bend"
+			color1 = color3
+			color2 = color3
+			color3 = color2	
+			instance = { position = { 0.282 0.206 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.485 0.415 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.688 0.624 } scale = { 0.32 0.32 }  }
+		}
+	}		
+	
+	
+	
+	
+	ps_bend_three_charges_bendwise = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"	
+
+		colored_emblem = {
+			texture = "ps_ord_bend.dds"
+			color1 = color2
+			color2 = color2	
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_bend_bendwise" # AS a test
+			color1 = color3
+			color2 = color3
+			color3 = color2	
+			instance = { position = { 0.282 0.206 } rotation = 315 scale = { 0.33 0.33 }  }
+			instance = { position = { 0.485 0.415 } rotation = 315 scale = { 0.33 0.33 }  }
+			instance = { position = { 0.688 0.624 } rotation = 315 scale = { 0.33 0.33 }  }
+		}
+	}	
+	ps_bend_three_charges_bendwise_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"	
+
+		colored_emblem = {
+			texture = "ps_ord_bend.dds"
+			color1 = color2
+			color2 = color2	
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_in_bend_bendwise" # AS a test
+			color1 = color3
+			color2 = color3
+			color3 = color2	
+			instance = { position = { 0.282 0.206 } rotation = 315 scale = { 0.33 0.33 }  }
+			instance = { position = { 0.485 0.415 } rotation = 315 scale = { 0.33 0.33 }  }
+			instance = { position = { 0.688 0.624 } rotation = 315 scale = { 0.33 0.33 }  }
+		}
+	}	
+
+	ps_counterchanged_designs = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_counterchanged_randoms"
+			color1 = color2
+			color2 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}	
+	}		
+	ps_counterchanged_designs_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_counterchanged_randoms"
+			color1 = color2
+			color2 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}	
+	}		
+	
+	ps_per_fess_lion_eagle_chief = { # german style per fess & lion or eagle in chief
+		pattern = "ps_pattern_per_fess.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_lion_eagle_chief_per_fess" # eagle, lion psst, lion ramp, panther
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+		colored_emblem = {
+			texture = "ce_block_02.dds"
+			color1 = color3
+			color2 = color3	
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+			mask = { 2 }
+		}			
+			
+		colored_emblem = {
+			texture = list "ps_invert_per_fess_randoms" # bottom designs
+			color1 = color4
+			color2 = color3
+			mask = { 2 }			
+		}	
+		colored_emblem = {
+			texture = "ps_special_divider_horizontal_thin.dds"
+			color1 = color1
+			color2 = color1
+			instance = { position = { 0.5 0.475 } scale = { 1.0 1.0 }  }
+		}			
+	}
+	ps_per_fess_lion_eagle_chief_inverted = {
+		pattern = "ps_pattern_per_fess.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_lion_eagle_chief_per_fess"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+		colored_emblem = {
+			texture = "ce_block_02.dds"
+			color1 = color3
+			color2 = color3	
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+			mask = { 2 }
+		}			
+			
+		colored_emblem = {
+			texture = list "ps_invert_per_fess_randoms" # bottom designs
+			color1 = color4
+			color2 = color3
+			mask = { 2 }			
+		}	
+		colored_emblem = {
+			texture = "ps_special_divider_horizontal_thin.dds"
+			color1 = color1
+			color2 = color1
+			instance = { position = { 0.5 0.475 } scale = { 1.0 1.0 }  }
+		}			
+	}	
+	
+	ps_eagle_lion_in_chief = { # eagle or lion in chief, imperial chief variant needs a set colour template
+		pattern = "ps_pattern_chief.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_lion_eagle_chief" # mostly lions rampant
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+		colored_emblem = {
+			texture = "ce_block_02.dds"
+			color1 = color3
+			color2 = color3	
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+			mask = { 2 }
+		}			
+		colored_emblem = {
+			texture = list "ps_invert_chief_randoms" # bottom designs
+			color1 = color4
+			color2 = color3
+			mask = { 2 }			
+		}	
+		colored_emblem = {
+			texture = "ps_special_divider_horizontal_thin.dds"
+			color1 = color1
+			color2 = color1
+			instance = { position = { 0.5 0.35 } scale = { 1.0 1.0 }  }
+		}			
+	}		
+	ps_eagle_lion_in_chief_inverted = {
+		pattern = "ps_pattern_chief.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_lion_eagle_chief"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+		colored_emblem = {
+			texture = "ce_block_02.dds"
+			color1 = color3
+			color2 = color3	
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+			mask = { 2 }
+		}			
+		colored_emblem = {
+			texture = list "ps_invert_chief_randoms"
+			color1 = color4
+			color2 = color3
+			mask = { 2 }			
+		}	
+		colored_emblem = {
+			texture = "ps_special_divider_horizontal_thin.dds"
+			color1 = color1
+			color2 = color1
+			instance = { position = { 0.5 0.35 } scale = { 1.0 1.0 }  }
+		}			
+	}		
+	
+	ps_five_charges_2_1_2_a = { # cauldrons only
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_small_charges_2_1_2_a"
+			color1 = color2
+			color2 = color2
+			color3 = color1			
+			instance = { position = { 0.50 0.40 } scale = { 0.48 0.48 }  }
+			instance = { position = { 0.31 0.165 } scale = { 0.48 0.48 }  }
+			instance = { position = { 0.69 0.165 } scale = { 0.48 0.48 }  }
+			instance = { position = { 0.31 0.635 } scale = { 0.48 0.48 }  }
+			instance = { position = { 0.69 0.635 } scale = { 0.48 0.48 }  }
+		}	
+	}		
+	ps_five_charges_2_1_2_b = { # stars
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_small_charges_2_1_2_b"
+			color1 = color2
+			color2 = color2
+			color3 = color1			
+			instance = { position = { 0.50 0.40 } scale = { 0.40 0.40 }  }
+			instance = { position = { 0.31 0.18 } scale = { 0.40 0.40 }  }
+			instance = { position = { 0.69 0.18 } scale = { 0.40 0.40 }  }
+			instance = { position = { 0.31 0.62 } scale = { 0.40 0.40 }  }
+			instance = { position = { 0.69 0.62 } scale = { 0.40 0.40 }  }
+		}		
+	}		
+	ps_five_charges_2_1_2_c = { # medium charges
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_small_charges_2_1_2_c"
+			color1 = color2
+			color2 = color2
+			color3 = color1			
+			instance = { position = { 0.50 0.40 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.31 0.17 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.69 0.17 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.31 0.63 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.69 0.63 } scale = { 0.36 0.36 }  }
+		}			
+	}	
+	ps_five_charges_2_1_2_d = { # larger charges
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_small_charges_2_1_2_d"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.50 0.40 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.31 0.175 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.69 0.175 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.31 0.63 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.69 0.63 } scale = { 0.33 0.33 }  }
+		}			
+	}	
+	
+	ps_five_charges_2_1_2_a_inverted = { # cauldrons only
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_small_charges_2_1_2_a"
+			color1 = color2
+			color2 = color2
+			color3 = color1			
+			instance = { position = { 0.50 0.40 } scale = { 0.48 0.48 }  }
+			instance = { position = { 0.31 0.165 } scale = { 0.48 0.48 }  }
+			instance = { position = { 0.69 0.165 } scale = { 0.48 0.48 }  }
+			instance = { position = { 0.31 0.635 } scale = { 0.48 0.48 }  }
+			instance = { position = { 0.69 0.635 } scale = { 0.48 0.48 }  }
+		}	
+	}		
+	ps_five_charges_2_1_2_b_inverted = { # stars
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_small_charges_2_1_2_b"
+			color1 = color2
+			color2 = color2
+			color3 = color1			
+			instance = { position = { 0.50 0.40 } scale = { 0.40 0.40 }  }
+			instance = { position = { 0.31 0.18 } scale = { 0.40 0.40 }  }
+			instance = { position = { 0.69 0.18 } scale = { 0.40 0.40 }  }
+			instance = { position = { 0.31 0.62 } scale = { 0.40 0.40 }  }
+			instance = { position = { 0.69 0.62 } scale = { 0.40 0.40 }  }
+		}		
+	}		
+	ps_five_charges_2_1_2_c_inverted = { # medium charges
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_small_charges_2_1_2_c"
+			color1 = color2
+			color2 = color2
+			color3 = color1			
+			instance = { position = { 0.50 0.40 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.31 0.17 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.69 0.17 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.31 0.63 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.69 0.63 } scale = { 0.36 0.36 }  }
+		}			
+	}	
+	ps_five_charges_2_1_2_d_inverted = { # larger charges
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = list "ps_small_charges_2_1_2_d"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.50 0.40 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.31 0.175 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.69 0.175 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.31 0.63 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.69 0.63 } scale = { 0.33 0.33 }  }
+		}			
+	}		
+	
+	ps_six_charges_3_2_1 = {
+		pattern = "pattern_solid.dds"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			color3 = list "normal_colors"
+			color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges_6"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.5 0.21 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.5 0.77 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.24 0.21 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.76 0.21 } scale = { 0.33 0.33 } }
+			instance = { position = { 0.37 0.49 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.63 0.49 } scale = { 0.33 0.33 }  }
+		}
+	}	
+	ps_six_charges_3_2_1_inverted = {
+		pattern = "pattern_solid.dds"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			color3 = list "metal_colors"
+			color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges_6"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.5 0.21 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.5 0.77 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.24 0.21 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.76 0.21 } scale = { 0.33 0.33 } }
+			instance = { position = { 0.37 0.49 } scale = { 0.33 0.33 }  }
+			instance = { position = { 0.63 0.49 } scale = { 0.33 0.33 }  }
+		}
+	}		
+	
+	ps_seven_charges_3_3_1 = {
+		pattern = "pattern_solid.dds"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			color3 = list "normal_colors"
+			color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges_7"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.25 0.19 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.50 0.19 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.75 0.19 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.25 0.50 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.50 0.50 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.75 0.50 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.50 0.81 } scale = { 0.32 0.32 }  }
+		}
+	}	
+	ps_seven_charges_3_3_1_inverted = {
+		pattern = "pattern_solid.dds"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			color3 = list "metal_colors"
+			color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges_7"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.25 0.19 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.50 0.19 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.75 0.19 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.25 0.50 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.50 0.50 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.75 0.50 } scale = { 0.32 0.32 }  }
+			instance = { position = { 0.50 0.81 } scale = { 0.32 0.32 }  }
+		}
+	}	
+
+	ps_ten_charges_3_3_3_1 = {
+		pattern = "pattern_solid.dds"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			color3 = list "normal_colors"
+			color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges_10"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.5 0.15 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.26 0.15 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.74 0.15 } scale = { 0.3 0.3 } }	
+			instance = { position = { 0.5 0.37 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.26 0.37 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.74 0.37 } scale = { 0.3 0.3 } }
+			instance = { position = { 0.5 0.59 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.26 0.59 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.74 0.59 } scale = { 0.3 0.3 } }		
+			instance = { position = { 0.5 0.81 } scale = { 0.3 0.3 }  }	
+		}
+	}	
+	ps_ten_charges_3_3_3_1_inverted = {
+		pattern = "pattern_solid.dds"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			color3 = list "metal_colors"
+			color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges_10"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+			instance = { position = { 0.5 0.15 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.26 0.15 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.74 0.15 } scale = { 0.3 0.3 } }	
+			instance = { position = { 0.5 0.37 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.26 0.37 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.74 0.37 } scale = { 0.3 0.3 } }
+			instance = { position = { 0.5 0.59 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.26 0.59 } scale = { 0.3 0.3 }  }
+			instance = { position = { 0.74 0.59 } scale = { 0.3 0.3 } }		
+			instance = { position = { 0.5 0.81 } scale = { 0.3 0.3 }  }	
+		}
+	}	
+	
+	ps_five_charges_in_cross = { # in cross/per cross
+		pattern = "pattern_solid.dds"
+			color1 = list "normal_colors"
+			color2 = list "metal_colors"
+			color3 = list "normal_colors"
+			color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges_5_in_cross"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+		instance = { position = { 0.5 0.46 } scale = { 0.32 0.32 }  }
+		instance = { position = { 0.24 0.46 } scale = { 0.32 0.32 }  }
+		instance = { position = { 0.76 0.46 } scale = { 0.32 0.32 }  }
+		instance = { position = { 0.5 0.17 } scale = { 0.32 0.32 }  }
+		instance = { position = { 0.5 0.76 } scale = { 0.32 0.32 }  }
+		}
+	}		
+	ps_five_charges_in_cross_inverted = {
+		pattern = "pattern_solid.dds"
+			color1 = list "metal_colors"
+			color2 = list "normal_colors"
+			color3 = list "metal_colors"
+			color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_small_size_charges_5_in_cross"
+			color1 = color2
+			color2 = color2
+			color3 = color1
+		instance = { position = { 0.5 0.46 } scale = { 0.32 0.32 }  }
+		instance = { position = { 0.24 0.46 } scale = { 0.32 0.32 }  }
+		instance = { position = { 0.76 0.46 } scale = { 0.32 0.32 }  }
+		instance = { position = { 0.5 0.17 } scale = { 0.32 0.32 }  }
+		instance = { position = { 0.5 0.76 } scale = { 0.32 0.32 }  }
+		}
+	}	
+
+	ps_full_size_charge_offset_mena = { # used for non heraldic charges
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_charges_offset_mena"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.45 }  scale = { 0.95 0.95 }  }			
+		}
+	}	
+	ps_full_size_charge_offset_mena_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "ps_full_size_charges_offset_mena"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.45 }  scale = { 0.95 0.95 }  }			
+		}
+	}	
+	
+	ps_single_charge_in_roundel_mena = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = "ps_special_frame_circle.dds"
+			color1 = color2
+			color2 = color2
+			instance = { position = { 0.5 0.46 } scale = { 0.85 0.85 }  }				
+		}	
+		colored_emblem = {
+			texture = list "ps_charges_centered_roundel"
+			color1 = color3
+			color2 = color4
+			color3 = color2
+			instance = { position = { 0.5 0.46 } scale = { 0.70 0.70 }  }
+		}
+	}	
+	ps_single_charge_in_roundel_mena_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = "ps_special_frame_circle.dds"
+			color1 = color2
+			color2 = color2
+			instance = { position = { 0.5 0.46 } scale = { 0.85 0.85 }  }				
+		}	
+		colored_emblem = {
+			texture = list "ps_charges_centered_roundel"
+			color1 = color3
+			color2 = color4
+			color3 = color2
+			instance = { position = { 0.5 0.46 } scale = { 0.70 0.70 }  }
+		}
+	}	
+	
+	ps_cross_charged_five_charges = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+		
+		colored_emblem = {
+			texture = "ps_ord_cross.dds"
+			color1 = color2
+			color2 = color2
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_cross_charged"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.5 0.19 } scale = { 0.22 0.22 }  }
+			instance = { position = { 0.5 0.75 } scale = { 0.22 0.22 }  }		
+			instance = { position = { 0.5 0.45 } scale = { 0.23 0.23 }  }	
+			instance = { position = { 0.24 0.45 } scale = { 0.22 0.22 }  }					
+			instance = { position = { 0.76 0.45 } scale = { 0.22 0.22 }  }				
+		}		
+	}	
+	ps_cross_charged_five_charges_inverted = { 
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+		
+		colored_emblem = {
+			texture = "ps_ord_cross.dds"
+			color1 = color2
+			color2 = color2
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+		}
+		colored_emblem = {
+			texture = list "ps_small_charges_cross_charged"
+			color1 = color3
+			color2 = color3
+			color3 = color2
+			instance = { position = { 0.5 0.19 } scale = { 0.22 0.22 }  }
+			instance = { position = { 0.5 0.75 } scale = { 0.22 0.22 }  }		
+			instance = { position = { 0.5 0.45 } scale = { 0.23 0.23 }  }	
+			instance = { position = { 0.24 0.45 } scale = { 0.22 0.22 }  }					
+			instance = { position = { 0.76 0.45 } scale = { 0.22 0.22 }  }				
+		}		
+	}		
+	
+	ps_cross_cantonned_four_charges = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+		color5 = list "metal_colors"		
+		
+		colored_emblem = {
+			texture = "ps_ord_cross_thin.dds"
+			color1 = color2
+			color2 = color2
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+		}
+		colored_emblem = {
+			texture = list  "ps_small_charges_cross_cantonned"
+			color1 = color4
+			color2 = color4
+			color3 = color1
+			instance = { position = { 0.735 0.205 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.265 0.205 } scale = { 0.36 0.36 }	}
+			instance = { position = { 0.30 0.67 } scale = { 0.30 0.30 }  }
+			instance = { position = { 0.70 0.67 } scale = { 0.30 0.30 }	}
+		}
+	}	
+	ps_cross_cantonned_four_charges_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+		color5 = list "normal_colors"		
+		
+		colored_emblem = {
+			texture = "ps_ord_cross_thin.dds"
+			color1 = color2
+			color2 = color2
+			instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 }  }
+		}
+		colored_emblem = {
+			texture = list  "ps_small_charges_cross_cantonned"
+			color1 = color4
+			color2 = color4
+			color3 = color1
+			instance = { position = { 0.735 0.205 } scale = { 0.36 0.36 }  }
+			instance = { position = { 0.265 0.205 } scale = { 0.36 0.36 }	}
+			instance = { position = { 0.30 0.67 } scale = { 0.30 0.30 }  }
+			instance = { position = { 0.70 0.67 } scale = { 0.30 0.30 }	}
+		}
+	}		
+
+	# field division (per pale, per fess, per bend) and a charge overall - needs to forced as tricolour
+	ps_field_div_charge_overall_azure = { 
+		pattern = list "ps_div_field_patterns"
+		color1 = "blue"
+		color2 = list "tinctures_opposite_azure"
+		color3 = list "metal_colors"		
+
+		colored_emblem = {
+			texture = list "ps_charge_overall_field_div"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+	ps_field_div_charge_overall_gules = { 
+		pattern = list "ps_div_field_patterns"
+		color1 = "red"
+		color2 = list "tinctures_opposite_gules"
+		color3 = list "metal_colors"		
+
+		colored_emblem = {
+			texture = list "ps_charge_overall_field_div"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+	ps_field_div_charge_overall_sable = { 
+		pattern = list "ps_div_field_patterns"
+		color1 = "black"
+		color2 = list "tinctures_opposite_sable"
+		color3 = list "metal_colors"		
+
+		colored_emblem = {
+			texture = list "ps_charge_overall_field_div"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}		
+	ps_field_div_charge_overall_vert = { 
+		pattern = list "ps_div_field_patterns"
+		color1 = "green"
+		color2 = list "tinctures_opposite_vert"
+		color3 = list "metal_colors"		
+
+		colored_emblem = {
+			texture = list "ps_charge_overall_field_div"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}
+	ps_field_div_charge_overall_or = { 
+		pattern = list "ps_div_field_patterns"
+		color1 = "yellow"
+		color2 = "white"
+		color3 = list "normal_colors"		
+
+		colored_emblem = {
+			texture = list "ps_charge_overall_field_div"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}
+	ps_field_div_charge_overall_argent = { 
+		pattern = list "ps_div_field_patterns"
+		color1 = "white"
+		color2 = "yellow"
+		color3 = list "normal_colors"	
+
+		colored_emblem = {
+			texture = list "ps_charge_overall_field_div"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+	}	
+	
+	ps_lions_eagles_overlay_design = { # Labels, bend, in chief etc TODO REWORK
+		pattern = "pattern_solid.dds"
+		color1 = "blue"
+		color2 = list "metal_colors"
+		color3 = list "tinctures_opposite_azure"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "ps_lions_and_eagles"
+			color1 = color3
+			color2 = color3
+			color3 = color1
+			instance = { position = { 0.5 0.5 }  scale = { 1.0 1.0 }  }			
+		}
+		colored_emblem = {
+			texture = list "ps_overlays_lions_eagles"
+			color1 = color2
+			color2 = color2
+		}		
+	}
+	# Pagan Circled - Baltic, Slavic pagans TODO
+	ps_single_charge_in_roundel_pagan = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+		color4 = list "metal_colors"
+
+		colored_emblem = {
+			texture = "ps_special_frame_circle.dds"
+			color1 = color2
+			color2 = color2
+			instance = { position = { 0.5 0.46 } scale = { 0.85 0.85 }  }				
+		}	
+		colored_emblem = {
+			texture = list "ps_charges_centered_roundel"
+			color1 = color3
+			color2 = color4
+			color3 = color2
+			instance = { position = { 0.5 0.46 } scale = { 0.70 0.70 }  }
+		}
+	}	
+	ps_single_charge_in_roundel_pagan_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+		color4 = list "normal_colors"
+
+		colored_emblem = {
+			texture = "ps_special_frame_circle.dds"
+			color1 = color2
+			color2 = color2
+			instance = { position = { 0.5 0.46 } scale = { 0.85 0.85 }  }				
+		}	
+		colored_emblem = {
+			texture = list "ps_charges_centered_roundel"
+			color1 = color3
+			color2 = color4
+			color3 = color2
+			instance = { position = { 0.5 0.46 } scale = { 0.70 0.70 }  }
+		}
+	}
+	
+	# Temporary Vanilla corrections
+	# Tamghas
+	basic_tamgha_template = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "base_tamgha_charge_list"
+			color1 = color3
+			color2 = color3
+			instance = { position = { 0.5 0.47 } scale = { 0.95 0.95 }  }
+		}
+	}
+	basic_tamgha_template_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "base_tamgha_charge_list"
+			color1 = color3
+			color2 = color3
+			instance = { position = { 0.5 0.47 } scale = { 0.95 0.95 }  }
+		}
+	}
+	
+	# Circled variant
+	circled_tamgha_template = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+
+		colored_emblem = {
+			texture = list "tamgha_circle_frame_list"
+			color1 = list "metal_colors"
+			color2 = color3
+			instance = { position = { 0.5 0.47 } scale = { 0.75 0.75 }  }
+		}
+		colored_emblem = {
+			texture = list "base_tamgha_charge_list"
+			color1 = color3
+			color2 = color3
+			instance = { position = { 0.5 0.47 } scale = { 0.7 0.7 }  }
+		}
+	}
+	circled_tamgha_template_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+
+		colored_emblem = {
+			texture = list "tamgha_circle_frame_list"
+			color1 = list "normal_colors"
+			color2 = color3
+			instance = { position = { 0.5 0.47 } scale = { 0.75 0.75 }  }
+		}
+		colored_emblem = {
+			texture = list "base_tamgha_charge_list"
+			color1 = color3
+			color2 = color3
+			instance = { position = { 0.5 0.47 } scale = { 0.7 0.7 }  }
+		}
+	}
+	
+	# Roundel with Tamgha variant
+	roundel_tamgha_template = {
+		pattern = "pattern_solid.dds"
+		color1 = list "normal_colors"
+		color2 = list "normal_colors"
+		color3 = list "metal_colors"
+
+		colored_emblem = {
+			texture = "ce_tamgha_roundel_frame.dds"
+			color1 = color3
+			color2 = list "metal_colors"
+			instance = { position = { 0.5 0.47 } scale = { 0.75 0.75 }  }
+		}
+		colored_emblem = {
+			texture = list "base_tamgha_charge_list"
+			color1 = color1
+			color2 = color1
+			instance = { position = { 0.5 0.47 } scale = { 0.7 0.7 }  }
+		}
+	}
+	roundel_tamgha_template_inverted = {
+		pattern = "pattern_solid.dds"
+		color1 = list "metal_colors"
+		color2 = list "metal_colors"
+		color3 = list "normal_colors"
+
+		colored_emblem = {
+			texture = "ce_tamgha_roundel_frame.dds"
+			color1 = color3
+			color2 = list "normal_colors"
+			instance = { position = { 0.5 0.47 } scale = { 0.75 0.75 }  }
+		}
+		colored_emblem = {
+			texture = list "base_tamgha_charge_list"
+			color1 = color1
+			color2 = color1
+			instance = { position = { 0.5 0.47 } scale = { 0.7 0.7 }  }
+		}
+	}	
+}

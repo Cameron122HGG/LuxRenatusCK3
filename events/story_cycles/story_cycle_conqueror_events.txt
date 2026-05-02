@@ -4,23 +4,24 @@ namespace = conqueror
 # Become a Conqueror
 conqueror.0001 = {
 	type = character_event
+	window = big_event_window
 	title = conqueror.0001.t
 	desc = {
 		desc = conqueror.0001.desc
-		#Lux Renata TBA no Genghis Khan
-		#first_valid = {
-		#	triggered_desc = {
-		#		trigger = {
-		#			is_ai = no
-		#			this = character:dynamic_mongol_1
-		#			has_mpo_dlc_trigger = yes
-		#		}
-		#		desc = conqueror.0001.desc.temujin
-		#	}
-		#}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					is_ai = no
+					#this = character:125501
+					has_mpo_dlc_trigger = yes
+				}
+				desc = conqueror.0001.desc.temujin
+			}
+		}
 	}
 	theme = war
 	override_background = { reference = courtyard }
+	widget = { gui = event_window_widget_vfx_godray container = foreground_shader_vfx_container }
 	left_portrait = {
 		character = root
 		animation = sword_coup_degrace
@@ -122,19 +123,19 @@ conqueror.0001 = {
 				}
 			}
 		}
-		#Lux Renata TBA no Genghis Khan
+	
 		# Special stuff for player Temüjin -- AI Temüjin gets his own thing
 		#if = {
 		#	limit = {
 		#		is_ai = no
-		#		this = character:dynamic_mongol_1
+		#		this = character:125501
 		#		has_mpo_dlc_trigger = yes
 		#	}
 		#	temujin_conqueror_bonuses_effect = yes
 		#}
 		#ai_chance = {
-		#	base = 100 
-		#}
+	#		base = 100 
+	#	}
 	}
 
 	option = { 

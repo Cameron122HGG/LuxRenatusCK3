@@ -35,6 +35,7 @@
 # Setting AI Intent
 fp2_struggle.0003 = {
 	hidden = yes
+	scope = none
 	scope = struggle
 
 	trigger = { # Should not need this, but, redundancy check!
@@ -553,7 +554,7 @@ fp2_struggle.0900 = { # Hostility
 	immediate = {
 		# Add all involved rulers to a list, for ping event
 		play_music_cue = "mx_Struggle_ending_hostility"
-		fp2_stuggle_ending_involved_list_effect = yes
+		fp2_struggle_ending_involved_list_effect = yes
 		give_nickname = nick_the_conquistador
 		dynasty = { add_dynasty_prestige = 10000 }
 	}
@@ -837,7 +838,7 @@ fp2_struggle.0901 = { # Compromise
 			value = yes
 		}
 		# Add all involved rulers to a list, for ping event
-		fp2_stuggle_ending_involved_list_effect = yes
+		fp2_struggle_ending_involved_list_effect = yes
 	}
 
 	# Ok
@@ -992,7 +993,7 @@ fp2_struggle.0902 = { # Conciliation
 			value = yes
 		}
 		# Add all involved rulers to a list, for ping event
-		fp2_stuggle_ending_involved_list_effect = yes
+		fp2_struggle_ending_involved_list_effect = yes
 
 		# Add all involved cultures with counties to a list, for marriage and holy war checks
 		fp2_struggle_ending_culture_list_effect = yes
@@ -1762,7 +1763,7 @@ fp2_struggle.1001 = {
 			fp2_struggle.1001_weird_option_traits = no
 			trait_is_shunned_or_criminal_in_faith_trigger = {
 				FAITH = faith
-				TRAIT = adulterer
+				TRAIT = trait:adulterer
 				GENDER_CHARACTER = dummy_female
 			}
 		}
@@ -4093,7 +4094,10 @@ fp2_struggle.1020 = {
 			every_close_or_extended_family_member = {
 				custom = all_family_members
 				if = {
-					limit = { is_ai = yes }
+					limit = { 
+						is_ai = yes 
+						this != root
+					}
 					add_opinion = {
 						target = root
 						opinion = -20
@@ -6178,8 +6182,8 @@ fp2_struggle.2003 = {
 	
 					add_prestige = medium_prestige_loss
 
-					scope:fp2_2003_county_town = {
-						add_county_modifier = {
+					scope:fp2_2003_county_town.title_province = {
+						add_province_modifier = {
 							modifier = recently_looted_modifier
 							years = 5
 						}
@@ -6312,9 +6316,11 @@ fp2_struggle.2003 = {
 							modifier = fp2_local_garrison_slaughtered_modifier
 							years = 5
 						}
-						add_county_modifier = {
-							modifier = recently_looted_modifier
-							years = 5
+						title_province = {
+							add_province_modifier = {
+								modifier = recently_looted_modifier
+								years = 5
+							}
 						}
 					}
 				}
@@ -6331,9 +6337,11 @@ fp2_struggle.2003 = {
 								years = 5
 							}
 							hidden_effect = {
-								add_county_modifier = {
-									modifier = recently_looted_modifier
-									years = 5
+								title_province = {
+									add_province_modifier = {
+										modifier = recently_looted_modifier
+										years = 5
+									}
 								}
 							}
 						}
@@ -6468,9 +6476,11 @@ fp2_struggle.2003 = {
 					title = fp2_struggle.2003.e.notif.a
 					
 					scope:fp2_2003_county_town = {
-						add_county_modifier = {
-							modifier = recently_looted_modifier
-							years = 5
+						title_province = {
+							add_province_modifier = {
+								modifier = recently_looted_modifier
+								years = 5
+							}
 						}
 					} 
 				}
@@ -7360,13 +7370,13 @@ fp2_struggle.2006 = {
 				if = {
 					limit = {
 						trait_is_criminal_in_faith_trigger = {
-							TRAIT = witch
+							TRAIT = trait:witch
 							GENDER_CHARACTER = scope:fp2_2006_vassal_in_crisis
 							FAITH = scope:fp2_2006_vassal_in_crisis.faith
 						}
 						NOT = {
 							trait_is_criminal_in_faith_trigger = {
-								TRAIT = witch
+								TRAIT = trait:witch
 								GENDER_CHARACTER = scope:fp2_2006_vassal_in_crisis
 								FAITH = scope:fp2_2006_foreign_faith
 							}
@@ -10128,12 +10138,14 @@ fp2_struggle.2014 = {
 						any_character_artifact = {
 							NOT = { has_variable = historical_unique_artifact }
 							artifact_high_rarity_trigger = yes
+							artifact_can_be_gift_to_trigger = { RECIPIENT = root }
 						}
 					}
 					random_character_artifact = {
 						limit = {
 							NOT = { has_variable = historical_unique_artifact }
 							artifact_high_rarity_trigger = yes
+							artifact_can_be_gift_to_trigger = { RECIPIENT = root }
 						}
 						set_owner = root # If it breaks, use set_artifact_owner
 					}
@@ -10198,12 +10210,14 @@ fp2_struggle.2014 = {
 						any_character_artifact = {
 							NOT = { has_variable = historical_unique_artifact }
 							artifact_low_rarity_trigger = yes
+							artifact_can_be_gift_to_trigger = { RECIPIENT = root }
 						}
 					}
 					random_character_artifact = {
-						limit = { 
+						limit = {
 							NOT = { has_variable = historical_unique_artifact }
 							artifact_low_rarity_trigger = yes
+							artifact_can_be_gift_to_trigger = { RECIPIENT = root }
 						}
 						set_owner = root
 					}

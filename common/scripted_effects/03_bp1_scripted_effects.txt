@@ -80,7 +80,7 @@ house_feud_start_effect = {
 			house_feud_forgiving_stress_effect = yes
 		}
 		# Save reasons for reference
-		scope:relation = {
+		scope:relation ?= {
 			# Save Feud attacker
 			set_variable = { name = house_feud_attacker value = scope:house_feud_attacker }
 			# Save Feud victim
@@ -935,11 +935,11 @@ set_war_memory_casus_belli_effect = {
 						set_variable = { name = war_cb value = flag:war_memory_cb_varangian }
 					}
 				}
-				#fp1_scandi_adventurer_conquest = {
-				#	scope:memory = {
-				#		set_variable = { name = war_cb value = flag:war_memory_cb_varangian }
-				#	}
-				#}
+				fp1_scandi_adventurer_conquest = {
+					scope:memory = {
+						set_variable = { name = war_cb value = flag:war_memory_cb_varangian }
+					}
+				}
 				fp2_expel_interloper = {
 					scope:memory = {
 						set_variable = { name = war_cb value = flag:war_memory_cb_expel }

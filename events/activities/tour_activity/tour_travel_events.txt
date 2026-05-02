@@ -1739,7 +1739,10 @@ tour_travel.3120 = {
 				chance = 50
 				set_variable = inn_artifact_var
 				scope:vassal_inn = {
-					random_character_artifact = { save_scope_as = vassal_artifact }
+					random_character_artifact = {
+						limit = { artifact_can_be_gift_to_trigger = { RECIPIENT = root } }
+						save_scope_as = vassal_artifact
+					}
 				}
 			}
 		}
@@ -2043,7 +2046,7 @@ tour_travel.3130 = {
 		trigger = {
 			has_activity_intent = justice_intent
 		}
-		custom_tooltip = available_because_intent_tt
+		reason = activity_intent
 		capital_province.county = {
 			add_county_modifier = {
 				modifier = peasant_influx_modifier
@@ -2272,7 +2275,7 @@ tour_travel.3140 = {
 }
 
 ##################################################
-# Danger! Ghino di Tacco-ish local ruler invites you to a banquet before stealing from you, then he confesses there are not that many options here to survive and needs money for his family and subjects. Changed the story so much that's almost unrecognisible, apologies.
+# Danger! Ghino di Tacco-ish local ruler invites you to a banquet before stealing from you, then he confesses there are not that many options here to survive and needs money for his family and subjects. Changed the story so much that's almost unrecognizable, apologies.
 # by Veronica Pazos
 # 3110-3111
 ##################################################

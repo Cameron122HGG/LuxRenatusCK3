@@ -38,7 +38,7 @@ widget = {
 			parentanchor = center
 			size = { 100% 100% }
 			name = "main_menu_background"
-			texture = "gfx/interface/illustrations/loading_screens/Lux_MM_02.dds"
+			texture = "gfx/interface/illustrations/loading_screens/Lux_MM_03_02.dds"
 		}
 		icon = {
 			parentanchor = left
@@ -677,8 +677,10 @@ widget = {
 								datacontext = "[FrontEndLoadView.GetContinueSave]"
 								visible = "[FrontEndLoadView.CanDoContinue]"
 								enabled = "[Not( SaveGameItem.HasMissingDLCs )]"
-								onclick = "[PdxGuiTriggerAllAnimations('main_menu_continue')]"
+								onclick = "[FrontEndLoadView.OnContinue]"
 								clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_start_game"
+								shortcut = confirm
+								shortcut = confirm_2
 
 								state = {
 									name = _mouse_hierarchy_enter
@@ -691,10 +693,11 @@ widget = {
 									on_start = "[PdxGuiInterruptThenTriggerAllAnimations('main_menu_glow_continue_enter','main_menu_glow_continue_leave')]"
 								}
 
+								# Triggered from code, don't re-name.
 								state = {
 									name = "main_menu_continue"
 									delay = 1.5
-									on_finish = "[FrontEndLoadView.OnContinue]"
+									on_finish = "[FrontEndLoadView.PostContinueFade]"
 								}
 
 								state = {
@@ -738,38 +741,40 @@ widget = {
 									}
 
 									widget = {
-										size = { 64 68 }
+										size = { 64 64 }
 
 										coa_realm_shadow = {
 											texture = "[SaveGameItem.GetPlayerGovernment.GetRealmFrameShadow('(int32)62')]"
 											frame = "[SaveGameItem.GetPlayerTier]"
-											framesize = { 64 68 }
-											size = { 64 68 }
+											framesize = { 64 64 }
+											size = { 64 64 }
 										}
-										
+
 										coat_of_arms_icon = {
 											name = "realm_flag"
 											parentanchor = center
 											alwaystransparent = yes
 
-											size = { 64 68 }
+											size = { 64 64 }
 											coat_of_arms_slot = "[SaveGameItem.GetCoatOfArms.GetSlot('(int32)124','(int32)124')]"
 											coat_of_arms = "[SaveGameItem.GetCoatOfArms.GetTexture('(int32)124','(int32)124')]"
 											coat_of_arms_mask = "[SaveGameItem.GetPlayerGovernment.GetRealmMask]"
+											coat_of_arms_offset = "[SaveGameItem.GetPlayerGovernment.GetRealmMaskOffset]"
+											coat_of_arms_scale = "[SaveGameItem.GetPlayerGovernment.GetRealmMaskScale]"
 
 											coa_realm_overlay  = {
 												texture = "[SaveGameItem.GetPlayerGovernment.GetRealmFrame('(int32)62')]"
 												frame = "[SaveGameItem.GetPlayerTier]"
-												framesize = { 64 68 }
-												size = { 64 68 }
+												framesize = { 64 64 }
+												size = { 64 64 }
 											}
 
 											coa_realm_topframe  = {
 												texture = "gfx/interface/coat_of_arms/topframe_62.dds"
 												frame = "[SaveGameItem.GetPlayerTier]"
-												framesize = { 64 68 }
-												position = { 0 -2 }
-												size = { 64 68 }
+												framesize = { 64 64 }
+												position = { 0 -8 }
+												size = { 64 64 }
 											}
 										}
 									}
@@ -780,8 +785,10 @@ widget = {
 						button_frontend = {
 							name = "new_game_button"
 							text = "NEW_GAME"
+							tooltip = "NEW_GAME"
 							fontsize = 20
 							onclick = "[FrontEndMainView.OnNewGame]"
+							shortcut = menu_1
 
 							state = {
 								name = _mouse_hierarchy_enter
@@ -811,8 +818,10 @@ widget = {
 								name = "load_game_button"
 								visible = "[FrontEndLoadView.CanDoContinue]"
 								text = "LOAD"
+								tooltip  ="LOAD"
 								fontsize = 20
 								onclick = "[FrontEndMainView.OnLoad]"
+								shortcut = menu_2
 
 								state = {
 									name = _mouse_hierarchy_enter
@@ -840,7 +849,7 @@ widget = {
 						}
 
 						vbox = {
-							visible = "[And( POPSStatusIsLoggedIn, Not( POPStatusIsUserNameEmpty ) )]"
+							visible = "[And( StatusIsLoggedIn, Not( StatusIsUserNameEmpty ) )]"
 							spacing = 5
 
 							button_frontend = {
@@ -851,6 +860,7 @@ widget = {
 								onclick = "[RefreshIllustration]"
 								enabled = "[JominiIsMultiplayerAccessible]"
 								tooltip = "[JominiGetMultiplayerAccessibleString]"
+								shortcut = menu_3
 
 								state = {
 									name = _mouse_hierarchy_enter
@@ -871,6 +881,7 @@ widget = {
 								onclick = "[RefreshIllustration]"
 								enabled = "[JominiIsMultiplayerAccessible]"
 								tooltip = "[JominiGetMultiplayerAccessibleString]"
+								shortcut = menu_4
 
 								state = {
 									name = _mouse_hierarchy_enter
@@ -885,7 +896,7 @@ widget = {
 						}
 
 						vbox = {
-							visible = "[Or( Not( POPSStatusIsLoggedIn ), POPStatusIsUserNameEmpty )]"
+							visible = "[Or( Not( StatusIsLoggedIn ), StatusIsUserNameEmpty )]"
 							spacing = 5
 
 							button_frontend = {
@@ -1059,7 +1070,7 @@ widget = {
 						flowcontainer = {
 							spacing = 18
 
-							pops_login_accountwidget = {
+							sdk_login_accountwidget = {
 								parentanchor = vcenter
 								size = { 25 25 }
 								alpha = 0.7
@@ -1084,6 +1095,7 @@ widget = {
 
 					button_group = {
 						onclick = "[FrontEndMainView.OnSettings]"
+						shortcut = "menu_10"
 
 						flowcontainer = {
 							spacing = 5
@@ -1108,6 +1120,241 @@ widget = {
 							}
 						}
 					}
+				}
+			}
+
+			### Subscription Button
+
+			widget = {
+				size = { 372 64 }
+				parentanchor = bottom|hcenter
+				position = { 2 -15 }
+				visible = "[FrontEndMainView.IsSteamAvailable]"
+
+				button_normal = {
+					onclick = "[PdxGuiTriggerAllAnimations('start_game_audio')]"
+					onclick = "[FrontEndMainView.OnSubscription]"
+
+					gfxtype = framedbuttongfx
+					effectname = "NoHighlight"
+					upframe = 1
+					downframe = 2
+					overframe = 1
+					disableframe = 1
+
+					size = { 100% 100% }
+					texture = "gfx/interface/component_decoration/subscribe_button.dds"
+
+					modify_texture = {
+						texture = "gfx/interface/buttons/button_fancy_overlay.dds"
+						blend_mode = overlay
+					}
+
+					modify_texture = {
+						name = "glow"
+						texture = "gfx/interface/buttons/button_fancy_glow.dds"
+						blend_mode = colordodge
+						alpha = 0
+
+						spriteborder = { 20 0 }
+						spritetype = corneredStretched
+					}
+
+					modify_texture = {
+						texture = "gfx/interface/component_masks/mask_center_shimmer.dds"
+						blend_mode = mask
+					}
+
+					modify_texture = {
+						name = "shimmer"
+						texture = "gfx/interface/component_masks/mask_clouds_solid.dds"
+						blend_mode = colordodge
+						spriteType = corneredTiled
+						rotate_uv = 0
+					}
+
+					modify_texture = {
+						name = "shimmer_2"
+						texture = "gfx/interface/component_masks/mask_clouds_solid.dds"
+						blend_mode = colordodge
+						spriteType = corneredTiled
+						rotate_uv = 0
+					}
+
+					modify_texture = {
+						name = "shimmer_3"
+						texture = "gfx/interface/component_masks/mask_clouds_solid.dds"
+						blend_mode = colordodge
+						spriteType = corneredTiled
+					}
+
+					modify_texture = {
+						name = "shimmer_4"
+						texture = "gfx/interface/component_masks/mask_clouds_solid.dds"
+						blend_mode = colordodge
+						spriteType = corneredTiled
+					}
+
+					state = {
+						trigger_on_create = yes
+						name = a
+						next = b
+						duration = 0
+
+						modify_texture = {
+							name = "shimmer"
+							translate_uv = { -0.1 0 }
+							alpha = 0.1
+							rotate_uv = 0
+						}
+
+						modify_texture = {
+							name = "shimmer_2"
+							translate_uv = { 0.1 0 }
+							alpha = 0.3
+							rotate_uv = 0
+						}
+
+						modify_texture = {
+							name = "shimmer_3"
+							translate_uv = { 1 0 }
+							alpha = 0.1
+						}
+
+						modify_texture = {
+							name = "shimmer_4"
+							translate_uv = { -1 0 }
+							alpha = 0.5
+						}
+					}
+
+					state = {
+						name = b
+						next = c
+						duration = 10
+
+						modify_texture = {
+							name = "shimmer"
+							translate_uv = { 0.1 0 }
+							alpha = 0.3
+							rotate_uv = 180
+						}
+
+						modify_texture = {
+							name = "shimmer_2"
+							translate_uv = { -0.1 0 }
+							alpha = 0.1
+							rotate_uv = -180
+						}
+
+						modify_texture = {
+							name = "shimmer_3"
+							translate_uv = { 0 0 }
+							alpha = 0.5
+						}
+
+						modify_texture = {
+							name = "shimmer_4"
+							translate_uv = { 0 0 }
+							alpha = 0.1
+						}
+					}
+
+					state = {
+						name = c
+						next = a
+						duration = 10
+
+						modify_texture = {
+							name = "shimmer"
+							translate_uv = { -0.1 0 }
+							alpha = 0.1
+							rotate_uv = 360
+						}
+
+						modify_texture = {
+							name = "shimmer_2"
+							translate_uv = { 0.1 0 }
+							alpha = 0.3
+							rotate_uv = -360
+						}
+
+						modify_texture = {
+							name = "shimmer_3"
+							translate_uv = { -1 0 }
+							alpha = 0.1
+						}
+
+						modify_texture = {
+							name = "shimmer_4"
+							translate_uv = { 1 0 }
+							alpha = 0.5
+						}
+					}
+
+					state = {
+						name = _mouse_hierarchy_enter
+
+						modify_texture = {
+							name = "glow"
+							alpha = 1
+						}
+					}
+
+					state = {
+						name = _mouse_hierarchy_leave
+						duration = 0.2
+						using = Animation_Curve_Default
+
+						modify_texture = {
+							name = "glow"
+							alpha = 0
+						}
+					}
+
+					state = {
+						name = _mouse_press
+						duration = 0
+						using = Animation_Curve_Default
+
+						modify_texture = {
+							name = "glow"
+							alpha = 0
+						}
+					}
+
+					state = {
+						name = start_game_audio
+						duration = 0.1
+
+						start_sound = {
+							soundeffect = "event:/SFX/UI/Generic/sfx_ui_generic_start_game"
+						}
+					}
+
+					text_single = {
+						parentanchor = center
+						text = "[FrontEndMainView.GetSubscriptionStatusText]"
+						max_width = 312
+						align = nobaseline
+						using = Font_Size_Small
+						default_format = "#clickable;glow_color:{0,0,0,1}"
+						background = {
+							texture ="gfx/interface/colors/black.dds"
+							alpha = 0.75
+							margin = { 100 20 }
+							modify_texture = {
+								texture = "gfx/interface/component_masks/mask_fade_circle.dds"
+								blend_mode = alphamultiply
+
+							}
+						}
+					}
+				}
+
+				icon = {
+					size = { 100% 100% }
+					texture = "gfx/interface/component_decoration/subscribe_button_frame.dds"
 				}
 			}
 		}

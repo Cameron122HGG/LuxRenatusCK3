@@ -1,14 +1,15 @@
 ﻿hungarian_migration_valid_ai_mogyer_ruler_trigger = {
 	culture = culture:mogyer
 	is_ai = yes
-	government_has_flag = government_is_tribal
+	OR = {
+		government_has_flag = government_is_tribal
+		government_has_flag = government_is_nomadic
+	}
 	is_at_war = no
 	highest_held_title_tier <= tier_kingdom
 	OR = {
 		top_liege = this
-		NOT = {
-			liege = { culture = culture:mogyer }
-		}
+		liege.culture != culture:mogyer
 	}
 }
 
@@ -77,7 +78,7 @@ harm_game_rule_enablement_trigger = {
 		player_heir.dynasty ?= dynasty
 	}
 	# Immortals do not receive harm events, as they would be inevitably killed by them over a long enough period of time.
-	NOT = { has_trait = immortal }
+	NOT = { has_trait_with_flag = is_immortal }
 }
 
 # Who do we care about when recording variable logs for harm events?
@@ -279,3 +280,21 @@ rule_title_creation_imperial_power_projection_title_creation_trigger = {
 #		}
 #	}
 #}
+game_rule_can_create_hybird_culture_trigger = {
+	trigger_if = {
+		limit = { is_ai = yes }
+		NOR = {
+			has_game_rule = none_hybrid_culture_ai_frequency
+			has_global_variable = has_ai_hybrid_event_cooldown
+		}
+	}
+}
+
+game_rule_unrestricted_dynasty_legacies_trigger = {
+	switch = {
+		trigger = has_game_rule
+		unrestricted_dynasty_legacies_all = { always = yes }
+		unrestricted_dynasty_legacies_player_only = { is_ai = no }
+		fallback = { always = no }
+	}
+}

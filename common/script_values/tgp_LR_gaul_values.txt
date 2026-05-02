@@ -1,0 +1,264 @@
+﻿gaul_demand_administrative_ai_score_value = {
+	value = -15
+	scope:attacker = {
+		if = {
+			limit = { current_strength_with_allies_fifty_percent_value > scope:defender.current_strength_with_allies_value }
+			add = 25
+		}
+		if = {
+			limit = { ai_boldness >= medium_positive_ai_value }
+			add = 5
+		}
+		if = {
+			limit = { ai_boldness >= very_high_positive_ai_value }
+			add = 5
+		}
+	}
+}
+
+gaul_demand_administrative_war_influence_value = {
+	value = 0
+	scope:attacker = {
+		every_held_title = {
+			limit = {
+				is_landless_type_title = no
+				is_noble_family_title = no
+			}
+			add = medium_influence_gain
+		}
+	}
+}
+
+gaul_demand_administrative_war_prestige_value = {
+	value = 0
+	scope:attacker = {
+		every_held_title = {
+			limit = {
+				is_landless_type_title = no
+				is_noble_family_title = no
+			}
+			add = minor_prestige_value
+		}
+	}
+}
+
+gaul_sacral_expansion_war_influence_value = {
+	value = 0
+	scope:attacker = {
+		every_held_title = {
+			limit = {
+				is_landless_type_title = no
+				is_noble_family_title = no
+			}
+			add = medium_influence_gain
+		}
+	}
+}
+
+gaul_sacral_expansion_war_prestige_value = {
+	value = 0
+	scope:attacker = {
+		every_held_title = {
+			limit = {
+				is_landless_type_title = no
+				is_noble_family_title = no
+			}
+			add = minor_prestige_value
+		}
+	}
+}
+
+gaul_sacral_expansion_ai_score_value = {
+	value = 25
+	scope:attacker = {
+		if = {
+			limit = { current_strength_with_allies_fifty_percent_value > scope:defender.current_strength_with_allies_value }
+			add = 25
+		}
+		if = {
+			limit = { ai_boldness >= medium_positive_ai_value }
+			add = 5
+		}
+		if = {
+			limit = { ai_boldness >= very_high_positive_ai_value }
+			add = 5
+		}
+	}
+}
+
+gaul_sacral_reconquest_ai_score_value = {
+	value = 25
+	scope:attacker = {
+		if = {
+			limit = { current_strength_with_allies_fifty_percent_value > scope:defender.current_strength_with_allies_value }
+			add = 25
+		}
+		if = {
+			limit = { ai_boldness >= medium_positive_ai_value }
+			add = 5
+		}
+		if = {
+			limit = { ai_boldness >= very_high_positive_ai_value }
+			add = 5
+		}
+	}
+}
+
+gaul_sacral_reconquest_war_prestige_value = {
+	value = 0
+	scope:defender = {
+		every_held_title = {
+			limit = { empire = title:e_high_kingdom_gaul }
+			add = minor_prestige_value
+		}
+	}
+}
+
+gaul_sacral_reconquest_war_influence_value = {
+	value = 0
+	scope:defender = {
+		every_held_title = {
+			limit = { empire = title:e_high_kingdom_gaul }
+			add = minor_influence_value
+		}
+	}
+}
+
+# Sacral Policies gaul
+tgp_LR_gaul_religious_reform_law_faith_conversion_mult_value = 2
+tgp_LR_gaul_disarmament_law_increased_cb_cost_value = 0.5
+
+tgp_gaul_dictatorship_procuratio_county_current_value = {
+	value = 0
+	title:e_high_kingdom_gaul = {
+		every_de_jure_county = {
+			limit = {
+				holder = { has_government = gaul_administrative_government }
+			}
+			add = 1
+		}
+	}
+}
+
+#gaul_admin_province_military_max_value = 4
+# Bloc war
+gaul_bloc_war_ai_score_value = {
+	value = 10
+	scope:attacker = {
+		# Personality
+		if = {
+			limit = { ai_boldness >= medium_positive_ai_value }
+			add = 5
+		}
+		if = {
+			limit = { ai_boldness >= very_high_positive_ai_value }
+			add = ai_boldness
+		}
+		# Cohesion
+		if = {
+			limit = { house.house_confederation.cohesion < 50 }
+			add = 10
+		}
+		if = {
+			limit = { house.house_confederation.cohesion < 25 }
+			add = 10
+		}
+	}
+	# Gained Bloc members
+	scope:defender.house.house_confederation = {
+		every_confederation_member_house = {
+			limit = {
+				house_head = {
+					tgp_bloc_war_transfer_trigger = { BLOC_LEADER = scope:loser_temp }
+				}
+			}
+			add = 5
+		}
+	}
+}
+
+# Bloc Expansion
+gaul_install_bloc_member_ai_score_value = {
+	value = 10
+	scope:attacker = {
+		if = {
+			limit = {
+				exists = house
+				house.house_confederation.leading_house ?= this.house
+			}
+			add = 10
+		}
+		if = {
+			limit = { ai_boldness >= medium_positive_ai_value }
+			add = 5
+		}
+		if = {
+			limit = { ai_boldness >= very_high_positive_ai_value }
+			add = ai_boldness
+		}
+	}
+}
+
+# Number of Governorships held by House
+gaul_regent_house_governorship_score_value = {
+	value = 5
+	multiply = gaul_regent_house_governorship_value
+}
+
+gaul_regent_house_governorship_value = {
+	value = 0
+	add = {
+		value = 0
+		house ?= {
+			if = {
+				limit = { tgp_is_in_ceremonial_house_trigger = no }
+				every_house_member = {
+					limit = { is_governor = yes }
+					add = 1
+				}
+			}
+		}
+	}
+}
+
+# Number of Devoted House members
+gaul_regent_house_devoted_score_value = {
+	value = 3
+	multiply = gaul_regent_house_devoted_value
+}
+
+gaul_regent_house_devoted_value = {
+	value = 0
+	add = {
+		value = 0
+		if = {
+			limit = { exists = house }
+			house = {
+				every_house_member = {
+					limit = { has_trait = devoted }
+					add = 1
+				}
+			}
+		}
+	}
+}
+
+gaul_house_power_value = {
+	value = 0
+	add = {
+		house = {
+			if = {
+				limit = { is_powerful_family = yes }
+				add = 1
+			}
+			if = {
+				limit = { is_dominant_family = yes }
+				add = 2
+			}
+		}
+	}
+}
+
+# House Aspirations Service Aspiration
+
+gaul_manor_local_theme_cost_reduction_value = -0.25

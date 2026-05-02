@@ -518,10 +518,10 @@ GetRealmOrDomicileTooltip = {
 		trigger = {
 			trigger_if = {
 				limit = { is_ruler = yes }
-				is_governor = yes
+				is_governor_or_admin_count = yes
 			}
 			trigger_else = {
-				liege ?= { is_governor = yes }
+				liege ?= { is_governor_or_admin_count = yes }
 			}
 		}
 		localization_key = GOVERNORSHIP_TOOLTIP
@@ -1049,10 +1049,10 @@ GetGovernmentIcon = {
 			trigger_else = {
 				trigger_if = {
 					limit = { is_ruler = yes }
-					government_has_flag = government_is_iqta
+					government_has_flag = government_is_clan
 				}
 				trigger_else = {
-					liege ?= { government_has_flag = government_is_iqta }
+					liege ?= { government_has_flag = government_is_clan }
 				}
 			}
 		}
@@ -1075,6 +1075,42 @@ GetGovernmentIcon = {
 			}
 		}
 		localization_key = japan_administrative_icon_concept
+	}
+	text = { # Gallic Admin
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = gaul_administrative_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					has_government = gaul_administrative_government
+				}
+				trigger_else = {
+					liege ?= { has_government = gaul_administrative_government }
+				}
+			}
+		}
+		localization_key = gaul_administrative_icon_concept
+	}
+	text = { # Gallic Feudal
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = gaul_feudal_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					has_government = gaul_feudal_government
+				}
+				trigger_else = {
+					liege ?= { has_government = gaul_feudal_government }
+				}
+			}
+		}
+		localization_key = gaul_feudal_icon_concept
 	}
 	text = { # Admin
 		trigger = {
@@ -1172,12 +1208,29 @@ GetGovernmentIcon = {
 		}
 		localization_key = steppe_admin_icon_concept
 	}
+	text = { # Imperial
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = roman_imperial_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					government_has_flag = government_is_roman_imperial
+				}
+				trigger_else = {
+					liege ?= { government_has_flag = government_is_roman_imperial }
+				}
+			}
+		}
+		localization_key = roman_imperial_icon_concept
+	}
 	text = { # Feudal
 		trigger = { always = no }
 		localization_key = feudal_icon_concept
 		fallback = yes
 	}
-	
 	text = { # Classical Feudal
 		trigger = {
 			trigger_if = {
@@ -1287,6 +1340,24 @@ GetGovernmentIcon = {
 			}
 		}
 		localization_key = despotic_administrative_icon_concept
+	}
+	text = { # Diadochi Admin
+		trigger = {
+			trigger_if = {
+				limit = { is_alive = no }
+				has_government = diadochi_administrative_government
+			}
+			trigger_else = {
+				trigger_if = {
+					limit = { is_ruler = yes }
+					has_government = diadochi_administrative_government
+				}
+				trigger_else = {
+					liege ?= { has_government = diadochi_administrative_government }
+				}
+			}
+		}
+		localization_key = diadochi_administrative_icon_concept
 	}
 }
 

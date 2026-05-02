@@ -593,9 +593,10 @@
 			NOR = {
 				government_has_flag = government_is_celestial
 				government_has_flag = government_is_japan_administrative
+				government_has_flag = government_is_gaul_administrative
 				government_has_flag = government_is_meritocratic
 				government_has_flag = government_is_steppe_admin
-				#government_has_flag = government_is_classical_administrative
+				government_has_flag = government_is_gaul_administrative
 			}
 		}
 	}
@@ -624,6 +625,7 @@
 			NOR = {
 				government_has_flag = government_is_celestial
 				government_has_flag = government_is_japan_administrative
+				government_has_flag = government_is_gaul_administrative
 				government_has_flag = government_is_meritocratic
 				government_has_flag = government_is_steppe_admin
 			}
@@ -666,6 +668,7 @@
 			NOR = { # ... Unless you have a unique succession available
 				government_has_flag = government_is_celestial
 				government_has_flag = government_is_japan_administrative
+				government_has_flag = government_is_gaul_administrative
 				government_has_flag = government_is_meritocratic
 			}
 			is_independent_ruler = no
@@ -1399,6 +1402,174 @@
 			is_independent_ruler = no
 		}
 	}
+
+	gallic_regency_succession_law = {
+		can_keep = {
+			can_have_gallic_regency_succession_law_trigger = yes
+		}
+		can_pass = {
+			can_have_gallic_regency_succession_law_trigger = yes
+		}
+		can_have = {
+			can_have_gallic_regency_succession_law_trigger = yes
+		}
+		can_title_have = {
+			exists = var:administrative_ui_special_title
+		}
+		should_show_for_title = { # Never show this in the UI, just apply it through script
+			always = no
+		}
+		can_remove_from_title = {
+			always = no
+		}
+		should_start_with = {
+			always = no
+		}
+		succession = {
+			order_of_succession = appointment
+			appointment_type = gallic_regent
+		}
+		flag = advanced_succession_law
+		flag = can_designate_heirs
+		flag = appointment_type_succession
+		pass_cost = {
+			prestige = change_succession_law_prestige_cost
+		}
+		ai_will_do = {
+			if = {
+				limit = { has_realm_law = confederate_partition_succession_law }
+				value = 1
+			}
+		}
+		potential = {
+			government_has_flag = government_is_gaul_administrative
+		}
+	}
+
+	gallic_appointment_succession_law = {
+		can_keep = {
+			can_keep_gallic_appointment_succession_law_trigger = yes
+		}
+		can_pass = {
+			can_change_gallic_appointment_succession_law_trigger = yes
+		}
+		can_have = {
+			can_have_gallic_appointment_succession_law_trigger = yes
+		}
+		should_start_with = {
+			government_has_flag = government_is_gaul_administrative
+			is_independent_ruler = no
+			NOT = { has_title = title:k_sacral_king_gaul_throne }
+		}
+		succession = {
+			order_of_succession = appointment
+			appointment_type = gallic_governor
+		}
+		flag = advanced_succession_law
+		flag = appointment_type_succession
+		modifier = {
+			glory_hound_opinion = -10
+			parochial_opinion = -5
+			player_heir_opinion = 20
+			eligible_child_except_player_heir_opinion = -5
+		}
+		pass_cost = {
+			prestige = change_succession_law_prestige_cost
+		}
+		revoke_cost = {
+			prestige = change_succession_law_prestige_cost
+		}
+
+		ai_will_do = {
+			if = {
+				limit = {
+					OR = {
+						has_realm_law = confederate_partition_succession_law
+						has_realm_law = partition_succession_law
+						has_realm_law = high_partition_succession_law
+					}
+				}
+				value = 3
+			}
+		}
+
+		potential = {
+			government_has_flag = government_is_gaul_administrative
+			is_independent_ruler = no
+		}
+	}
+
+	gallic_military_appointment_succession_law = {
+		can_keep = {
+			government_allows = administrative
+			is_independent_ruler = no
+			custom_tooltip = {
+				text = celestial_military_appointment_allowed_desc
+				vassal_contract_has_flag = japan_administrative_military_appointment
+			}
+			# Vassal Contract allows it
+			custom_description = {
+				NAND = {
+					is_independent_ruler = no
+					vassal_contract_has_flag = locked_to_partition
+				}
+			}
+		}
+		can_have = {
+			government_allows = administrative
+			is_independent_ruler = no
+		}
+		can_pass = {
+			can_change_succession_law_trigger = yes
+			government_allows = administrative
+			is_independent_ruler = no
+		}
+		should_start_with = {
+			government_has_flag = government_is_gaul_administrative
+			is_independent_ruler = no
+			custom_tooltip = {
+				text = celestial_military_appointment_allowed_desc
+				vassal_contract_has_flag = japan_administrative_military_appointment
+			}
+		}
+		succession = {
+			order_of_succession = appointment
+			appointment_type = gallic_military_governor
+		}
+		flag = advanced_succession_law
+		flag = appointment_type_succession
+		modifier = {
+			glory_hound_opinion = 5
+			courtly_opinion = -10
+			player_heir_opinion = 20
+			eligible_child_except_player_heir_opinion = -5
+		}
+		pass_cost = {
+			prestige = change_succession_law_prestige_cost
+		}
+		revoke_cost = {
+			prestige = change_succession_law_prestige_cost
+		}
+
+		ai_will_do = {
+			if = {
+				limit = {
+					OR = {
+						has_realm_law = confederate_partition_succession_law
+						has_realm_law = partition_succession_law
+						has_realm_law = high_partition_succession_law
+					}
+				}
+				value = 3
+			}
+		}
+
+		potential = {
+			government_has_flag = government_is_gaul_administrative
+			is_independent_ruler = no
+		}
+	}
+
 
 	mandala_succession_law = {
 		can_keep = {

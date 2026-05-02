@@ -90,7 +90,8 @@
 
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
 	flags = {
-		government_is_steppe_admin
+		government_is_classical_steppe_admin
+		government_is_classical_group
 		government_can_raid_rule
 		government_can_use_tributary_men_at_arms
 		government_has_merit
@@ -122,7 +123,7 @@
 	realm_mask_scale = { 0.78 0.78 }
 }
 
-roman_imperial_government = { # e.g. WRE/ERE
+roman_imperial_government = { # e.g. Restored Roman Empire, Gallic Empire, Western Roman Empire, Eastern Roman Empire
 	government_rules = {
 		create_cadet_branches = yes
 		rulers_should_have_dynasty = yes
@@ -147,10 +148,10 @@ roman_imperial_government = { # e.g. WRE/ERE
 	royal_court = any
 	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government steppe_classical_admin_government }
 
-	domicile_type = estate
-	main_administrative_tier = duchy
+	domicile_type = east_asian_estate
+	main_administrative_tier = county
 	min_appointment_tier = county
-	minimum_provincial_maa_tier = duchy
+	minimum_provincial_maa_tier = county
 
 	primary_holding = castle_holding
 	valid_holdings = { city_holding temple_citadel_holding tribal_holding }
@@ -208,8 +209,8 @@ roman_imperial_government = { # e.g. WRE/ERE
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
 	flags = {
 		government_is_roman_imperial
-		# These flags only exist for loc and in-game descriptions
-		#government_has_merit
+		government_is_roman
+		government_is_classical_group
 		government_has_influence
 		government_has_treasury
 		government_has_title_men_at_arms
@@ -221,13 +222,15 @@ roman_imperial_government = { # e.g. WRE/ERE
 		government_uses_admin_province_obligations
 		#government_uses_merit_family_aspirations
 		#has_special_house_aspirations
+		#government_has_merit
+
 	}
 
 	currency_levels_cap = {
 		merit = 5
 	}
 
-	color = { 250 100 0 }
+	color = { 155 28 85 }
 	realm_mask_offset = { 0.0 0.12 }
 	realm_mask_scale = { 0.92 0.92 }
 }

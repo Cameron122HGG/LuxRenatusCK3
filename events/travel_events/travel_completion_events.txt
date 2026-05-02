@@ -70,11 +70,11 @@ travel_completion_event.1000 = {
 			desc = travel_completion_event.1000.desc.memory
 		}
 	}
-	theme = realm 
+	theme = realm
 	override_background = { reference = terrain }
 	override_icon = "gfx/interface/icons/event_types/type_travel_stewardship.dds"
 	left_portrait = {
-		character = root 
+		character = root
 		animation = holding_staff
 	}
 	right_portrait = {
@@ -120,7 +120,7 @@ travel_completion_event.1000 = {
 			}
 			if = {
 				limit = {
-					exists = var:travel_plan_start_date 
+					exists = var:travel_plan_start_date
 					exists = var:travel_plan_end_date
 					exists = var:travel_plan_elapsed_days
 				}
@@ -158,35 +158,10 @@ travel_completion_event.1000 = {
 				value = tournament_hastiludes_xp_gain_miniscule_value
 			}
 		}
-		# Send all the hired companions back to the pool
-		root.current_travel_plan = {
-			every_entourage_character = {
-				limit = {
-					has_character_flag = travel_option_added_character
-				}
-				if = { #Characters that should in fact not leave because of _stuff_ that happened en route
-					limit = {
-						NOT = { is_spouse_of = root }
-						NOT = { is_consort_of = root }
-						has_any_court_position = no
-						trigger_if  = {
-							limit = {
-								inspiration ?= {
-									exists = inspiration_sponsor
-								}
-							}
-							NOT = { root = inspiration.inspiration_sponsor }
-						}
-					}
-					select_and_move_to_pool_effect = yes
-				}
-				remove_character_flag = travel_option_added_character #We always clean up the flag.
-			}
-		}	
 	}
 
 	#Yay, we're home
-	option = { 
+	option = {
 		name = travel_completion_event.1000.a
 		name = {
 			trigger = { has_government = landless_adventurer_government }
@@ -200,7 +175,7 @@ travel_completion_event.1000 = {
 	}
 
 	#Let's return home
-	option = { 
+	option = {
 		name = travel_completion_event.1000.b
 		name = {
 			trigger = { has_government = landless_adventurer_government }
@@ -210,7 +185,7 @@ travel_completion_event.1000 = {
 			location != root.default_location
 		}
 		#Nooo not more outdoors!
-		stress_impact = {   
+		stress_impact = {
 			craven = miniscule_stress_impact_gain
 		    paranoid = miniscule_stress_impact_gain
 		}

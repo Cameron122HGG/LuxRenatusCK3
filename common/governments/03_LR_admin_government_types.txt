@@ -6,9 +6,10 @@
 		administrative = yes
 		landless_playable = yes
 		legitimacy = yes
-		#state_faith = yes
+		state_faith = yes
 		use_as_base_on_landed = yes
 		use_as_base_on_rank_up = yes
+		allow_as_base_for_baronies = no
 		inherit_from_dynastic_government = no
 		sticky_government = yes
 		house_aspirations = yes
@@ -16,6 +17,7 @@
 		admin_allows_holding_multiple_primary_tier_titles = yes
 		treasury = yes
 		replace_gold_cost_by_treasury = yes
+		allow_accolades = yes
 	}
 
 	royal_court = top_liege
@@ -31,9 +33,9 @@
 	primary_holding = castle_holding
 	valid_holdings = { city_holding temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	preferred_religions = { hellenism_religion roman_religion mithras_religion neoplatonic_religion solar_religion }
+	preferred_religions = { roman_religion mithras_religion solar_religion }
 
-	vassal_contract_group = admin_vassal
+	vassal_contract_group = classical_admin_vassal
 
 	can_get_government = {
 		#The LAAMP Construct Holding decision
@@ -50,17 +52,17 @@
 
 	character_modifier = {
 		levy_size = -0.5
-		#feudal_government_tax_contribution_mult = -0.5
-		#feudal_government_levy_contribution_mult = -0.5
-		#clan_government_tax_contribution_mult = -0.5
-		#clan_government_levy_contribution_mult = -0.5
+		feudal_government_tax_contribution_mult = -0.5
+		feudal_government_levy_contribution_mult = -0.5
+		clan_government_tax_contribution_mult = -0.5
+		clan_government_levy_contribution_mult = -0.5
 		men_at_arms_cap = -2
 		men_at_arms_limit = -2
 		knight_limit = -5
 		vassal_limit = 100
 		active_accolades = -1
 		title_creation_cost_mult = -0.5
-		mercenary_hire_cost_mult = 2
+		#mercenary_hire_cost_mult = 2
 		men_at_arms_maintenance = 0.5
 
 		# Vassals get Treasury income that is this percentage less than their taxes to their liege
@@ -70,8 +72,8 @@
 	top_liege_character_modifier = {
 		# 85% of vassal income goes to the treasury
 		monthly_treasury_from_vassals = 0.85
-		men_at_arms_maintenance = 1.5
-		men_at_arms_recruitment_cost = 1
+		#men_at_arms_maintenance = 1.5
+		#men_at_arms_recruitment_cost = 1
 	}
 
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
@@ -95,7 +97,7 @@
 	mechanic_type = administrative
 	is_mechanic_type_default = no
 
-	color = { 249 34 105 }
+	color = rgb { 255 255 255 }
 	realm_mask_offset = { 0.0 0.01 }
 	realm_mask_scale = { 1 1 }
 }
@@ -198,7 +200,7 @@ diadochi_administrative_government = {
 	mechanic_type = administrative
 	is_mechanic_type_default = no
 
-	color = { 187 249 1 }
+	color = { 32 63 86 }
 	realm_mask_offset = { 0.0 0.01 }
 	realm_mask_scale = { 1 1 }
 }
@@ -300,7 +302,7 @@ despotic_administrative_government = {
 	mechanic_type = administrative
 	is_mechanic_type_default = no
 
-	color = { 228 144 18 }
+	color = { 228 18 119 }
 	realm_mask_offset = { 0.0 0.01 }
 	realm_mask_scale = { 1 1 }
 }

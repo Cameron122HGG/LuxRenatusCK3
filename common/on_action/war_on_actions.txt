@@ -617,7 +617,7 @@ on_war_started = {
 				#Ye ain't serene anymore, son
 				if = {
 					limit = {
-						house ?= { has_house_power_parameter = aspect_of_serenity }
+						house ?= { has_house_aspiration_parameter = aspect_of_serenity }
 					}
 					if = {
 						limit = { has_character_modifier = mandala_increments_of_peace_modifier }
@@ -1248,6 +1248,80 @@ on_war_won_attacker = { # As in, won BY attacker. Only one of the two on_actions
 		# 	}
 		# }
 
+		# Give out a legend seed for beating ya boi G Khan
+		if = {
+			limit = {
+				scope:loser = {
+					OR = {
+						mpo_has_greatest_of_khans_nickname_trigger = yes
+						has_trait = greatest_of_khans
+					}
+				}
+				scope:winner = {
+					NOT = {
+						has_character_flag = khan_beater
+					}
+				}
+			}
+			scope:winner = {
+				if = {
+					limit = { has_dlc_feature = legends }
+					add_character_flag = khan_beater
+					send_interface_toast = {
+						title = heroic_legend_seed_drop.t
+						create_legend_seed = {
+							type = heroic
+							quality = famed
+							chronicle = legendary_battle
+							properties = {
+								winner = scope:winner
+								loser = scope:loser
+								location = scope:winner.location
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# Give out Legend Seed if GHW
+		if = {
+			limit = {
+				scope:attacker = {
+					has_dlc_feature = legends
+					NOT = { has_triggered_legend_seed = holy_warrior }
+					NOT = { has_game_rule = historical_legends_only }
+				}
+				scope:war ={
+					OR = {
+						using_cb = undirected_great_holy_war
+						using_cb = directed_great_holy_war
+					}
+				}
+				OR = {
+					scope:target_title.tier ?= tier_empire
+					scope:target_title.tier ?= tier_kingdom
+				}
+			}
+			random = {
+				chance = 75
+				scope:attacker = {
+					send_interface_toast = {
+						title = heroic_legend_seed_drop.t
+						create_legend_seed = {
+							type = heroic
+							quality = famed
+							chronicle = holy_warrior
+							properties = {
+								ancestor = scope:attacker
+								religion = scope:attacker.faith.religion
+							}
+						}
+					}
+				}
+			}
+		}
+
 		# Change legend chapters if this was a neat war
 		scope:winner = {
 			if = {
@@ -1337,6 +1411,7 @@ on_war_won_attacker = { # As in, won BY attacker. Only one of the two on_actions
 						NOT = { has_variable = used_for_struggle_catalyst_on_war_ended }
 						using_civil_war_cb_trigger = yes
 					}
+					exists = struggle:persian_struggle
 				}
 				# Direct scope because this is caliph-specific.
 				struggle:persian_struggle = {
@@ -1715,6 +1790,7 @@ on_war_won_attacker = { # As in, won BY attacker. Only one of the two on_actions
 
 		# EP3 - Become Adventurer - Conquest/Deposition
 		# Previous holders of any contested title, which lost all titles through this war, can become landless adventurers
+		clear_saved_scope = lost_primary_title
 		scope:war.casus_belli = {
 			every_in_list = {
 				list = target_titles
@@ -1781,7 +1857,6 @@ on_war_won_attacker = { # As in, won BY attacker. Only one of the two on_actions
 			}
 		}
 
-		#Lux Renata TBA
 		#if = {
 		#	limit = {
 		#		scope:attacker = {
@@ -2062,7 +2137,7 @@ on_war_won_defender = {
 			}
 		}
 		## During the Persian Struggle, a supporter wins any war in the region.
-		#scope:attacker = { fp3_struggle_apply_supporter_detractor_war_won_catalysts_effect = yes }
+		scope:attacker = { fp3_struggle_apply_supporter_detractor_war_won_catalysts_effect = yes }
 		# TGP situation catalysts
 		scope:attacker = {
 			if = {
@@ -2225,7 +2300,6 @@ on_war_won_defender = {
 			}
 		}
 
-		#Lux Renata TBA
 		#if = {
 		#	limit = {
 		#		scope:defender = {
@@ -2340,7 +2414,7 @@ on_war_white_peace = {
 			if = {
 				limit = {
 					government_has_flag = government_is_mandala
-					house ?= { has_house_power_parameter = aspect_of_destruction }
+					house ?= { has_house_aspiration_parameter = aspect_of_destruction }
 				}
 				add_piety = {
 					add = minor_piety_loss
