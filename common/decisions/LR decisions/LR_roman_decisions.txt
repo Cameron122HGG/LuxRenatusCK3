@@ -2075,7 +2075,7 @@ restore_gallic_empire_decision = {
 						}
 					}
 				}
-				change_government = classical_feudal_government
+				change_government = roman_imperial_government
 			}
 		}
 		title:e_gallic_empire = {
@@ -2089,6 +2089,14 @@ restore_gallic_empire_decision = {
 			save_scope_as = title_e_gallic_empire
 		}
 		resolve_title_and_vassal_change = scope:title_change
+		if = {
+			limit = { exists = title:k_sacral_king_gaul_throne.holder }
+			destroy_title = title:k_sacral_king_gaul_throne
+		}
+		if = {
+			limit = { exists = title:e_high_kingdom_gaul.holder }
+			destroy_title = title:e_high_kingdom_gaul
+		}
 		
 		#trigger_event = {
 		#	id = province_events.0040
@@ -2097,7 +2105,8 @@ restore_gallic_empire_decision = {
 		add_prestige = 2000
 		
 		hidden_effect = {
-			restore_roman_provinces_gallia_viennensis_decision_effect = yes
+
+			#restore_roman_provinces_gallia_viennensis_decision_effect = yes
 
 			add_to_global_variable_list = {
 				name = unavailable_unique_decisions
