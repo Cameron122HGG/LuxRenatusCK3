@@ -1,0 +1,105 @@
+﻿spawn_bgp_historical_characters_effect = {
+	
+	if = { # Leo the Mathematician
+		limit = {
+			current_year <= 867
+			NOT = { exists = global_var:hchar_mathematician }
+		}
+		set_global_variable = { name = hchar_mathematician value = yes }
+		title:b_constantinople = {
+			save_scope_as = birth_location
+			holder.top_liege = { save_scope_as = byz_emp }
+			scope:byz_emp = {
+				create_character = {
+					age = 77
+					name = "Leo"
+					gender_female_chance = 0
+					employer = this
+					random_traits = no
+				#	location = scope:birth_location.title_province
+					faith = faith:iconoclast
+					culture = culture:armenian
+					dynasty = none
+					trait = scholarly_court_2
+					trait = architect
+					trait = intellect_good_3
+					trait = scholar
+					trait = education_learning_5
+					diplomacy = { min_template_low_skill max_template_low_skill }
+					martial = { min_template_low_skill max_template_low_skill }
+					stewardship = { min_template_decent_skill max_template_decent_skill }
+					intrigue = { min_template_low_skill max_template_low_skill }
+					learning = { min_template_high_skill max_template_high_skill }
+					prowess = { min_template_low_skill max_template_low_skill }
+					save_scope_as = historical_character
+				}
+			}
+			scope:historical_character ?= {
+				bgp_historical_character_finalization_effect = yes
+				set_variable = mathematician
+				set_variable = legendary_author
+				add_character_flag = ai_will_not_convert
+				give_nickname = nick_the_mathematician
+			}
+			if = { limit = { has_variable = mathematician 	 } } # Error suppression
+			spawn_bgp_historical_characters_boilerplate_effect = yes
+			
+		}
+	}
+}
+
+bgp_historical_character_finalization_effect = {
+	add_trait = historical_character_bgp
+	house ?= {
+		generate_coa = yes
+	}
+	dynasty ?= {
+		set_coa = scope:historical_character.house
+	}
+	set_variable = {
+		name = show_historical_gui
+		value = 1
+	}
+}
+
+spawn_bgp_historical_characters_boilerplate_effect = {
+	county = { save_scope_as = county_scope }
+	county.holder = {
+		if = {
+			limit = {
+				is_ai = no
+			}
+			trigger_event = historical_char_creation_events.1
+		}
+		else_if = {
+			limit = {
+				OR = {
+					exists = scope:major
+					has_game_rule = all_historical_characters
+				}
+				any_liege_or_above = {
+					is_ai = no
+				}
+			}
+			random_liege_or_above = {
+				limit = {
+					is_ai = no
+				}
+				trigger_event = historical_char_creation_events.1
+			}
+		}
+		else_if = {
+			limit = {
+				exists = scope:county_scope.duchy.holder
+			}
+			scope:county_scope.duchy.holder = {
+				trigger_event = historical_char_creation_events.1
+			}
+		}
+		else = {
+			top_liege = {
+				trigger_event = historical_char_creation_events.1
+			}
+		}
+	}
+}

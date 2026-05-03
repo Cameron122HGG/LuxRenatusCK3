@@ -205,6 +205,7 @@ slavic_unrest.0009 = {
 					save_scope_as = rebellion_location
 				}
 			}
+			character:34463 = { save_scope_as = georgi_voiteh }
 			if = {
 				limit = {
 					scope:georgi_voiteh = {
@@ -241,6 +242,7 @@ slavic_unrest.0009 = {
 					age = { 25 50 }
 				}
 			}
+			character:20493 = { save_scope_as = constantine_bodin }
 			scope:constantine_bodin = {
 				set_employer = scope:rebel_leader
 			}
@@ -294,19 +296,57 @@ slavic_unrest.0009 = {
 						add_pressed_claim = scope:bulgarian_kingdom_title
 						give_nickname = "nick_bodin"
 					}
-					spawn_army = {
-						location = scope:rebellion_location
-						name = "georgi_voiteh_rebels"
-						men_at_arms = { type = light_footmen men = 5500 }
-						men_at_arms = { type = bowmen men = 2000 }
-						war_keep_on_attacker_victory = no
-					}  
-					spawn_army = {
-						location = scope:rebellion_location
-						name = "constantine_bodin_contingent"
-						men_at_arms = { type = armored_footmen men = 300 }
-						men_at_arms = { type = light_footmen men = 1500 }
-						war_keep_on_attacker_victory = no
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "georgi_voiteh_rebels"
+							men_at_arms = { type = light_footmen men = 7500 }
+							men_at_arms = { type = bowmen men = 4000 }
+							war_keep_on_attacker_victory = no
+						}
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "constantine_bodin_contingent"
+							men_at_arms = { type = armored_footmen men = 1000 }
+							men_at_arms = { type = light_footmen men = 2500 }
+							men_at_arms = { type = onager men = 100 }
+							war_keep_on_attacker_victory = no
+						}
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "georgi_voiteh_rebels"
+							men_at_arms = { type = light_footmen men = 10500 }
+							men_at_arms = { type = bowmen men = 4000 }
+							war_keep_on_attacker_victory = no
+						}
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "constantine_bodin_contingent"
+							men_at_arms = { type = armored_footmen men = 1300 }
+							men_at_arms = { type = light_footmen men = 2500 }
+							men_at_arms = { type = onager men = 200 }
+							war_keep_on_attacker_victory = no
+						}
+					}
+					else = {
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "georgi_voiteh_rebels"
+							men_at_arms = { type = light_footmen men = 5500 }
+							men_at_arms = { type = bowmen men = 2000 }
+							war_keep_on_attacker_victory = no
+						}
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "constantine_bodin_contingent"
+							men_at_arms = { type = armored_footmen men = 300 }
+							men_at_arms = { type = light_footmen men = 1500 }
+							war_keep_on_attacker_victory = no
+						}
 					}
 					start_war = {
 						casus_belli = bulgarian_independence_cb

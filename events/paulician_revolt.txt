@@ -46,21 +46,56 @@ paulician_revolt.0001 = {
 			
 			scope:rebel_leader = { add_gold = 500 }
 			scope:rebel_leader = {
-	
-					spawn_army = {
-						location = scope:rebellion_location
-						name = "paulician_army"
-						men_at_arms = { type = skoutatoi men = 2500 }
-						men_at_arms = { type = onager men = 50 }
-						levies = 2000
-						war_keep_on_attacker_victory = no
-						inheritable = no
-					}  
-					start_war = {
-						casus_belli = paulician_invasion
-						target = scope:war_target
-						target_title = scope:anatolia_kingdom_title
-					}	
+				if = {
+					limit = { has_game_rule = difficulty_bgp_harsh }
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "paulician_army"
+							men_at_arms = { type = skoutatoi men = 5000 }
+							men_at_arms = { type = onager men = 100 }
+							levies = 4000
+							war_keep_on_attacker_victory = no
+							inheritable = no
+						}  
+						start_war = {
+							casus_belli = paulician_invasion
+							target = scope:war_target
+							target_title = scope:anatolia_kingdom_title
+						}	
+					}
+					else_if = {
+					limit = { has_game_rule = difficulty_bgp_unfair }
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "paulician_army"
+							men_at_arms = { type = skoutatoi men = 8000 }
+							men_at_arms = { type = onager men = 200 }
+							levies = 8000
+							war_keep_on_attacker_victory = no
+							inheritable = no
+						}  
+						start_war = {
+							casus_belli = paulician_invasion
+							target = scope:war_target
+							target_title = scope:anatolia_kingdom_title
+						}	
+					}
+					else = {
+						spawn_army = {
+							location = scope:rebellion_location
+							name = "paulician_army"
+							men_at_arms = { type = skoutatoi men = 2500 }
+							men_at_arms = { type = onager men = 50 }
+							levies = 2000
+							war_keep_on_attacker_victory = no
+							inheritable = no
+						}  
+						start_war = {
+							casus_belli = paulician_invasion
+							target = scope:war_target
+							target_title = scope:anatolia_kingdom_title
+						}	
+					}
 				}
 			}
 			clear_saved_scope = rebellion_location
@@ -116,7 +151,41 @@ paulician_revolt.0001 = {
 			
 			scope:rebel_leader = { add_gold = 500 add_piety = 1500 add_prestige = 1000 }
 			scope:rebel_leader = {
-	
+				if = {
+					limit = { has_game_rule = difficulty_bgp_harsh }
+					spawn_army = {
+						location = scope:rebellion_location
+						name = "paulician_army"
+						men_at_arms = { type = skoutatoi men = 3000 }
+						men_at_arms = { type = onager men = 100 }
+						levies = 8000
+						war_keep_on_attacker_victory = no
+						inheritable = no
+					}  
+					start_war = {
+						casus_belli = paulician_invasion
+						target = scope:war_target
+						target_title = scope:anatolia_kingdom_title
+					}	
+				}
+				else_if = {
+					limit = { has_game_rule = difficulty_bgp_unfair }
+					spawn_army = {
+						location = scope:rebellion_location
+						name = "paulician_army"
+						men_at_arms = { type = skoutatoi men = 5000 }
+						men_at_arms = { type = onager men = 250 }
+						levies = 10000
+						war_keep_on_attacker_victory = no
+						inheritable = no
+					}  
+					start_war = {
+						casus_belli = paulician_invasion
+						target = scope:war_target
+						target_title = scope:anatolia_kingdom_title
+					}	
+				}
+				else = {
 					spawn_army = {
 						location = scope:rebellion_location
 						name = "paulician_army"
@@ -133,6 +202,7 @@ paulician_revolt.0001 = {
 					}	
 				}
 			}
+		}
 			set_player_character = scope:rebel_leader
 			clear_saved_scope = rebellion_location
 			clear_saved_scope = war_target

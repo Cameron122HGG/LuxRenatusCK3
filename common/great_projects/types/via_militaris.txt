@@ -13,8 +13,19 @@ via_militaris_restoration = {
 	}
 	cost = {
 		treasury_or_gold = {
-			value = great_project_base_contribution_cost
-			multiply = 2
+			if = {
+				limit = { has_game_rule = difficulty_bgp_harsh }
+				value = great_project_base_contribution_cost
+				multiply = 2
+			}
+			else_if = {
+				limit = { has_game_rule = difficulty_bgp_unfair }
+				value = great_project_base_contribution_cost
+				multiply = 4
+			}
+			else = {
+				value = great_project_base_contribution_cost
+			}
 		}
 	}
 	ai_will_do = {
@@ -37,12 +48,21 @@ via_militaris_restoration = {
 		OR = {
 			title:e_byzantium = { holder.top_liege = root.top_liege }
 			title:h_roman_empire = { holder.top_liege = root.top_liege }
-			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }	
+			AND = {
+				has_game_rule = empire_requirements_bgp_pretenders
+				OR = {
+					title:e_hre = { holder.top_liege = root.top_liege }
+					title:e_latin_empire = { holder.top_liege = root.top_liege }
+					title:e_byzantium = { holder.top_liege = root.top_liege }
+				}
+			}
+			has_game_rule = empire_requirements_bgp_everyone
 		}
 		OR = {
 			has_game_rule = bgp_anyone
 			culture = { has_cultural_pillar = heritage_byzantine }
-			culture = { has_cultural_pillar = heritage_ancient_greek }
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
 		}
 	}
 	can_start_planning = {
@@ -168,7 +188,19 @@ via_militaris_restoration = {
 		imperial_survey = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -204,8 +236,20 @@ via_militaris_restoration = {
 		open_imperial_quarries = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 2
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 8
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -241,8 +285,20 @@ via_militaris_restoration = {
 		paving_the_strata = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -278,7 +334,19 @@ via_militaris_restoration = {
 		finance_laborers = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -314,7 +382,19 @@ via_militaris_restoration = {
 		establish_road_outposts = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -350,8 +430,20 @@ via_militaris_restoration = {
 		construct_imperial_bridges = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -387,8 +479,20 @@ via_militaris_restoration = {
 		organize_the_cursus = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -424,8 +528,20 @@ via_militaris_restoration = {
 		found_imperial_stud_farms = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -470,8 +586,20 @@ via_militaris_improvement = {
 	}
 	cost = {
 		treasury_or_gold = {
-			value = great_project_base_contribution_cost
-			multiply = 4
+			if = {
+				limit = { has_game_rule = difficulty_bgp_harsh }
+				value = great_project_base_contribution_cost
+				multiply = 10
+			}
+			else_if = {
+				limit = { has_game_rule = difficulty_bgp_unfair }
+				value = great_project_base_contribution_cost
+				multiply = 16
+			}
+			else = {
+				value = great_project_base_contribution_cost
+				multiply = 4
+			}
 		}
 	}
 	ai_will_do = {
@@ -499,12 +627,21 @@ via_militaris_improvement = {
 		OR = {
 			title:e_byzantium = { holder.top_liege = root.top_liege }
 			title:h_roman_empire = { holder.top_liege = root.top_liege }
-			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }	
+			AND = {
+				has_game_rule = empire_requirements_bgp_pretenders
+				OR = {
+					title:e_hre = { holder.top_liege = root.top_liege }
+					title:e_latin_empire = { holder.top_liege = root.top_liege }
+					title:e_byzantium = { holder.top_liege = root.top_liege }
+				}
+			}
+			has_game_rule = empire_requirements_bgp_everyone
 		}
 		OR = {
 			has_game_rule = bgp_anyone
 			culture = { has_cultural_pillar = heritage_byzantine }
-			culture = { has_cultural_pillar = heritage_ancient_greek }
+			culture = { has_cultural_pillar = heritage_hellenistic_greek }
 		}
 	}
 
@@ -633,7 +770,19 @@ via_militaris_improvement = {
 		establish_road_magistracies = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -665,8 +814,20 @@ via_militaris_improvement = {
 		erect_milestones = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 2
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 8
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -698,8 +859,20 @@ via_militaris_improvement = {
 		organize_maintenance = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -731,8 +904,20 @@ via_militaris_improvement = {
 		subsidize_caravanserais = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -764,8 +949,20 @@ via_militaris_improvement = {
 		institute_patrols = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -797,8 +994,20 @@ via_militaris_improvement = {
 		toll_bridges = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -831,8 +1040,20 @@ via_militaris_improvement = {
 		expand_relay_network = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 1.5
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 5
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 7
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 1.5
+					}
 				}
 			}
 			contributor_is_valid = { 
@@ -865,8 +1086,20 @@ via_militaris_improvement = {
 		breeding_programs = {
 			cost = {
 				treasury_or_gold = {
-					value = great_project_base_contribution_cost
-					multiply = 2
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 8
+					}
+					else = {
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
 				}
 			}
 			contributor_is_valid = { 

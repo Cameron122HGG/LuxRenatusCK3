@@ -11,8 +11,22 @@ athonite_aid = {
 	province_filter = geographical_region
 	province_filter_target = mount_athos_region
 	cost = {
-		gold = major_gold_value
-	}	
+		gold = {
+			if = {
+				limit = { has_game_rule = difficulty_bgp_harsh }
+				value = major_gold_value
+				multiply = 2
+			}
+			else_if = {
+				limit = { has_game_rule = difficulty_bgp_unfair }
+				value = major_gold_value
+				multiply = 4
+			}
+			else = {
+				value = major_gold_value
+			}
+		}
+	}
 	name = {
 		desc = great_project_type_athonite_aid
 	}
@@ -36,7 +50,16 @@ athonite_aid = {
 		OR = {
 			title:e_byzantium = { holder.top_liege = root.top_liege }
 			title:h_roman_empire = { holder.top_liege = root.top_liege }
-			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }
+			title:h_eastern_roman_empire = { holder.top_liege = root.top_liege }	
+			AND = {
+				has_game_rule = empire_requirements_bgp_pretenders
+				OR = {
+					title:e_hre = { holder.top_liege = root.top_liege }
+					title:e_latin_empire = { holder.top_liege = root.top_liege }
+					title:e_byzantium = { holder.top_liege = root.top_liege }
+				}
+			}
+			has_game_rule = empire_requirements_bgp_everyone
 		}
 		top_liege = {
 			any_realm_county = {
@@ -93,7 +116,21 @@ athonite_aid = {
 		athonite_aid_laborers = {
 			is_required = yes
 			cost = {
-				treasury_or_gold = great_project_base_contribution_cost
+				treasury_or_gold = {
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
+				}
 			}
 			contributor_is_valid = {
 				faith = faith:orthodox
@@ -136,7 +173,21 @@ athonite_aid = {
 		athonite_aid_materials = {
 			is_required = yes
 			cost = {
-				treasury_or_gold = great_project_base_contribution_cost
+				treasury_or_gold = {
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
+				}
 			}
 			contributor_is_valid = {
 				faith = faith:orthodox
@@ -179,7 +230,21 @@ athonite_aid = {
 		athonite_aid_artists = {
 			is_required = yes
 			cost = {
-				treasury_or_gold = great_project_base_contribution_cost
+				treasury_or_gold = {
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
+				}
 			}
 			contributor_cooldown = individual_contribution_cooldown_value
 			contributor_is_valid = {
@@ -222,7 +287,21 @@ athonite_aid = {
 		athonite_aid_towers = {
 			is_required = yes
 			cost = {
-				treasury_or_gold = great_project_base_contribution_cost
+				treasury_or_gold = {
+					if = {
+						limit = { has_game_rule = difficulty_bgp_harsh }
+						value = great_project_base_contribution_cost
+						multiply = 2
+					}
+					else_if = {
+						limit = { has_game_rule = difficulty_bgp_unfair }
+						value = great_project_base_contribution_cost
+						multiply = 4
+					}
+					else = {
+						value = great_project_base_contribution_cost
+					}
+				}
 			}
 			contributor_cooldown = individual_contribution_cooldown_value
 			contributor_is_valid = {

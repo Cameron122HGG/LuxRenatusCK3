@@ -16,3 +16,93 @@
 	type = special
 	flag = travel_point_of_interest_diplomatic
 }
+
+bgp_byzantine_beacon_unlit = {
+	type_icon = "icon_structure_my_son_sanctuary.dds"
+	cost_gold = main_building_tier_1_cost
+	construction_time = slow_construction_time
+	asset = { type = pdxmesh name = byzantine_beacon_mesh }
+	can_construct = {
+	}
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+	}
+	ai_value = { base = 100 }
+	type = special
+	flag = travel_point_of_interest_diplomatic
+}
+
+bgp_byzantine_beacon_lit = {
+	type_icon = "icon_structure_my_son_sanctuary.dds"
+	cost_gold = main_building_tier_1_cost
+	construction_time = slow_construction_time
+	asset = { type = entity name = byzantine_beacon_entity soundeffect = "event:/SFX/Events/Backgrounds/sittingroom_fireplace"}
+	can_construct = {
+	}
+	province_modifier = {
+		tax_mult = -0.2
+	}
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.1
+	}
+	ai_value = { base = 100 }
+	type = special
+	flag = travel_point_of_interest_diplomatic
+}
+
+bgp_hagia_sophia_03 = {
+	effect_desc = {
+		triggered_desc = {
+			trigger = { has_dlc_feature = legends_of_the_dead }
+			desc = building_funeral_effect_desc
+		}
+	}
+
+	asset = {
+		type = pdxmesh
+		name = "building_special_hagia_sophia_mesh"
+	}
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_structure_hagia_sophia.dds"
+	
+	can_construct = {
+	}
+	is_enabled = { 
+		barony.holder.religion = religion:hellenism_religion
+		custom_description = { text = "bgp_temple_of_athena" } 
+	}
+	character_modifier = {
+		monthly_piety_gain_per_knight_add = 0.15
+		intrigue_per_prestige_level = 3
+		learning = 3
+		knight_limit = 2
+		knight_effectiveness_mult = 0.25
+		monthly_dynasty_prestige_mult = 0.05
+	}
+	
+	county_modifier = {
+		development_growth_factor = 0.25
+	}
+
+	on_complete = {
+		#Regular Mandala Boon
+		mandala_built_piety_duchy_building_t3_effect = yes
+	}
+	
+	ai_value = {
+		base = 100
+		ai_pious_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for special buildings
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+	
+	next_building = hagia_sophia_02
+	
+	type = special
+
+	flag = travel_point_of_interest_religious
+	flag = holy_building
+}
