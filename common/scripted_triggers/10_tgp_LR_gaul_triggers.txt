@@ -179,7 +179,6 @@ LR_gaul_tgp_ceremonial_candidacy_restriction_trigger = {
 				scope:target.holder = {
 					OR = {
 						has_realm_law = gallic_regency_succession_law
-						has_realm_law = meritocratic_regency_succession_law
 					}
 				}
 			}
@@ -488,14 +487,6 @@ tgp_gaul_install_regent_faction_can_create_trigger = {
 		}
 		government_is_gallic_trigger = yes
 	}
-	trigger_if = {
-		limit = {
-			scope:target ?= {
-				has_government = meritocratic_government # am I a compatible government type?
-			}
-		}
-		has_government = meritocratic_government
-	}
 }
 
 gaul_faction_cohesion_trigger = {
@@ -735,7 +726,7 @@ gaul_government_gaul_kingdom_restriction_trigger = {
 			OR = {
 				is_independent_ruler = no
 				AND = {
-					NOT = { highest_held_title_tier = tier_kingdom }
+					NOT = { highest_held_title_tier = tier_empire }
 					has_title = title:e_high_kingdom_gaul
 				}
 			}
@@ -752,9 +743,9 @@ gaul_government_gaul_duchy_restriction_trigger = {
 		limit = {
 			OR = {
 				government_has_flag = government_is_gaul_administrative
-				AND = { # Soryo can create duchies if they're already a duke
+				AND = { # Manorial can create Kingdoms if they're already a King
 					government_has_flag = government_is_gaul_feudal
-					primary_title.tier = tier_county
+					primary_title.tier = tier_duchy
 				}
 			}
 			NAND = {
@@ -779,7 +770,7 @@ gaul_castle_construction_trigger = {
 		}
 		custom_tooltip = {
 			text = gaul_castle_construction_trigger_tt
-			county.holder.top_liege ?= { has_realm_law_flag = disarmament_law }
+			county.holder.top_liege ?= { has_realm_law_flag = gallic_disarmament_law }
 		}
 	}
 }
