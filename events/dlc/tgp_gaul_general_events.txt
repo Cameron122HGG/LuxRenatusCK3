@@ -547,7 +547,7 @@ tgp_gaul_general.8800 = {
 	}
 }
 
-## NEW CEREMONIAL EMPEROR NOTIFICATION
+## NEW CEREMONIAL SACRAL KING NOTIFICATION
 
 scripted_effect tgp_new_ceremonial_liege_notification_effect = {
 	$TITLE$ = {
@@ -680,8 +680,8 @@ tgp_gaul_general.9100 = {
 				}
 				### CLEANUP RELEVANT TRAITS
 				if = {
-					limit = { has_trait = former_emperor }
-					remove_trait = former_emperor
+					limit = { has_trait = former_sacral_king }
+					remove_trait = former_sacral_king
 				}
 			}
 		}
@@ -693,7 +693,7 @@ tgp_gaul_general.9100 = {
 	}
 }
 
-## BECOME CLOISTRED EMPEROR DECISION FOR CEREMONIAL EMPEROR REGENT
+## BECOME CLOISTRED SACRAL KING DECISION FOR CEREMONIAL SACRAL KING REGENT
 
 tgp_gaul_general.9120 = {
 	type = character_event
@@ -705,7 +705,7 @@ tgp_gaul_general.9120 = {
 		animation = holding_hu
 	}
 	lower_left_portrait = {
-		character = scope:emperor_player_heir
+		character = scope:sacral_king_player_heir
 		trigger = { this != title:e_high_kingdom_gaul.previous_holder }
 	}
 	lower_right_portrait = {
@@ -726,10 +726,10 @@ tgp_gaul_general.9120 = {
 	}
 
 	immediate = {
-		player_heir = { save_scope_as = emperor_player_heir }
+		player_heir = { save_scope_as = sacral_king_player_heir }
 	}
 
-	# Become Cloistered Emperor
+	# Become Cloistered Sacral King
 	option = {
 		name = tgp_gaul_general.9120.a
 		gaul_clear_flavour_flags_effect = yes
@@ -743,9 +743,9 @@ tgp_gaul_general.9120 = {
 		}
 		if = {
 			limit = {
-				NOT = { has_trait = former_emperor }
+				NOT = { has_trait = former_sacral_king }
 			}
-			add_trait = former_emperor
+			add_trait = former_sacral_king
 		}
 		create_title_and_vassal_change = {
 			type = appointment
@@ -754,12 +754,12 @@ tgp_gaul_general.9120 = {
 		}
 		title:k_sacral_king_gaul_throne = {
 			change_title_holder = {
-				holder = scope:emperor_player_heir
+				holder = scope:sacral_king_player_heir
 				change = scope:title_change
 			}
 		}
 		resolve_title_and_vassal_change = scope:title_change
-		scope:emperor_player_heir = { add_character_flag = ceremonial_liege_flag }
+		scope:sacral_king_player_heir = { add_character_flag = ceremonial_liege_flag }
 		tgp_new_ceremonial_liege_notification_effect = { TITLE = title:k_sacral_king_gaul_throne }
 		ai_chance = {
 			base = 50
@@ -780,14 +780,14 @@ tgp_gaul_general.9120 = {
 				opinion = -25
 			}
 		}
-		custom_tooltip = tgp_gaul_emperor_restoration_decision_faction_effect
+		custom_tooltip = tgp_gaul_sacral_king_restoration_decision_faction_effect
 		ai_chance = {
 			base = 0
 		}
 	}
 }
 
-# IMPERIAL POLICY NOTIFICATION
+# GALLIC POLICY NOTIFICATION
 
 tgp_gaul_general.9300 = {
 	type = character_event
@@ -826,7 +826,7 @@ tgp_gaul_general.9300 = {
 					scope:liege ?= root
 					scope:ceremonial_liege != root
 				}
-				desc = tgp_gaul_general.9300.restored_emperor
+				desc = tgp_gaul_general.9300.restored_sacral_king
 			}
 			triggered_desc = {
 				trigger = {
@@ -840,7 +840,7 @@ tgp_gaul_general.9300 = {
 					scope:ceremonial_liege ?= root
 					scope:liege = root
 				}
-				desc = tgp_gaul_general.9300.restored_emperor
+				desc = tgp_gaul_general.9300.restored_sacral_king
 			}
 			triggered_desc = {
 				trigger = { scope:ceremonial_liege != scope:liege }
@@ -891,7 +891,7 @@ tgp_gaul_general.9300 = {
 	override_background = { reference = throne_room_scope }
 
 	immediate = {
-		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_restoring_gallic_emperor"
+		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_restoring_gallic_sacral_king"
 		tgp_save_realm_ceremonial_liege_effect = yes
 		if = {
 			limit = { tgp_realm_has_ceremonial_liege_trigger = no }
@@ -1594,7 +1594,7 @@ tgp_gaul_general.9551 = {
 	}
 }
 
-# Event to force the historical birth of Emperor Antoku for Genpei content
+# Event to force the historical birth of Sacral King Antoku for Genpei content
 tgp_gaul_general.9910 = {
 	type = character_event
 	hidden = yes
