@@ -316,6 +316,20 @@ has_valid_realm_laws_for_liberty_faction_trigger = {
 		}
 	}
 	trigger_else_if = {
+		limit = { $TARGET$ = { realm_law_use_gallic_bureaucracy = yes } }
+		custom_description = {
+			text = has_lowest_gallic_bureaucracy
+			subject = $TARGET$
+			$TARGET$ = {
+				OR = {
+					has_realm_law = gallic_bureaucracy_1
+					has_realm_law = gallic_bureaucracy_2
+					has_realm_law = gallic_bureaucracy_3
+				}
+			}
+		}
+	}
+	trigger_else_if = {
 		limit = { $TARGET$ = { realm_law_use_nomadic_authority = yes } }
 		$TARGET$ = {
 			realm_law_use_nomadic_authority = no
