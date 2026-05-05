@@ -280,3 +280,139 @@ lux_tradition_western_roman = {
 
 	ai_will_do = { value = 0 }
 }
+
+
+#####GAUL########
+tradition_tgp_sacred_chivalry = {
+	category = regional
+
+	layers = {
+		0 = martial
+		1 = asian
+		4 = samurai.dds
+	}
+
+	is_shown = {
+		culture_head = {
+			top_liege = { has_character_flag = shogun_flag }
+			has_government = gaul_feudal_government
+		}
+	}
+	can_pick = {
+		culture_head = {
+			top_liege = { has_character_flag = shogun_flag }
+			has_government = gaul_feudal_government
+		}
+		# Mutually exclusive with Imperial Peace and other Horse Archer MaA
+		NOR = {
+			culture_tradition:tradition_horse_lords = { is_in_list = traits }
+			culture_tradition:tradition_devoted_horsemanship = { is_in_list = traits }
+			culture_tradition:tradition_tgp_sacral_peace = { is_in_list = traits }
+			culture_tradition:tradition_tgp_sacral_peace = { is_in_list = traits }
+		}
+	}
+
+	parameters = {
+		unlock_mounted_samurai_units = yes
+		unlock_infantry_samurai_units = yes
+		must_pledge_loyalty_to_liege = yes
+		honorable_trait_bonuses = yes
+		prowess_from_martial_education = yes
+		stalwart_leader_non_admin_duels = yes
+		non_admin_close_family_non_martial_gender_knights_in_defensive_wars = yes
+	}
+
+	character_modifier = {
+		character_opinion_from_high_prowess_add = 2
+		character_opinion_from_low_prowess_add = -1
+	}
+
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_double_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+		}
+	}
+
+	ai_will_do = {
+		value = 1000 # AI should always try to pick this when they can
+	}
+}
+tradition_tgp_sacral_peace = {
+	category = regional
+
+	layers = {
+		0 = martial
+		1 = asian
+		4 = samurai.dds
+	}
+
+	is_shown = {
+		has_tgp_dlc_trigger = yes
+		culture_head = {
+			government_is_gallic_trigger = yes
+		}
+	}
+	
+	can_pick = {
+		# Mutually exclusive with Bushido and other Horse Archer MaA
+		NOR = {
+			culture_tradition:tradition_horse_lords = { is_in_list = traits }
+			culture_tradition:tradition_devoted_horsemanship = { is_in_list = traits }
+			culture_tradition:tradition_tgp_sacral_peace = { is_in_list = traits }
+			culture_tradition:tradition_tgp_sacred_chivalry = { is_in_list = traits }
+		}
+	}
+
+	parameters = {
+		unlock_mounted_samurai_units = yes
+		prowess_from_martial_education = yes
+		non_admin_close_family_non_martial_gender_knights_in_defensive_wars = yes
+		stalwart_leader_non_admin_duels = yes
+	}
+
+	character_modifier = {
+		defender_holding_advantage = 2
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_double_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_courtly = { is_in_list = traits }
+						culture_pillar:ethos_communal = { is_in_list = traits }
+						culture_pillar:ethos_spiritual = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_courtly_communal_or_spiritual_desc
+				}
+			}
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 50
+		if = {
+			# Only Courtly cultures should pick this
+			limit = { NOT = { culture_pillar:ethos_courtly = { is_in_list = traits } } }
+			multiply = 0
+		}
+		if = {
+		 	# AI should avoid stacking traditions for courtly court positions
+			limit = { culture_tradition:tradition_music_theory = { is_in_list = traits } }
+			multiply = 0.25
+		}
+	}
+}
