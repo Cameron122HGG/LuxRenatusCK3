@@ -29,7 +29,7 @@ LR_restore_western_empire_decision = {
 		NOT = { exists = title:h_roman_empire.holder }
 
 		#Just to guarantee
-		#is_roman_emperor_trigger = no
+		is_roman_emperor_trigger = no
 	}
 
 	is_valid = {
@@ -210,6 +210,7 @@ restore_roman_empire_spqr_decision = {
 			government_has_flag = government_is_republic
 			government_has_flag = government_is_clan
 			government_has_flag = government_is_classical_group
+			government_has_flag = government_is_roman
 		}
 	}
 
@@ -1708,7 +1709,7 @@ restore_roman_empire_decision = {
 
 		OR = {
 			religion = { is_in_family = rf_abrahamic }
-			religion = religion:hellenism_religion
+			religion = { is_in_family = rf_graeco_roman }
 			culture = { has_cultural_pillar = heritage_latin }
 			culture = { has_cultural_pillar = heritage_byzantine }
 		}

@@ -34,7 +34,7 @@ tgp_gaul_establish_house_fief_decision = {
 	}
 
 	is_valid = {
-		# Is a Ritsuryo Governor
+		# Is a Palatine Governor
 		tgp_is_gallic_governor_trigger = yes
 		trigger_if = {
 			limit = { is_ai = no } # AI are an exception as they can continue to play despite not being House Heads
@@ -146,7 +146,7 @@ tgp_gaul_establish_house_fief_decision = {
 				limit = { is_house_head = no }
 				custom_tooltip = create_noble_family_tt
 			}
-			# Change from Ritsuryo (Admin) to Soryo (Feudal)
+			# Change from Palatine (Admin) to Soryo (Feudal)
 			custom_tooltip = tgp_gaul_establish_house_fief_change_government_type_effect
 			# Crime to Kampaku
 			if = {
@@ -367,7 +367,7 @@ tgp_gaul_establish_house_fief_decision = {
 			add = 75
 		}
 		modifier = {
-			vassal_contract_has_flag = japan_administrative_province_military
+			vassal_contract_has_flag = gaul_administrative_province_military
 			add = 75
 		}
 		modifier = {
@@ -435,7 +435,7 @@ tgp_gaul_establish_regnulum_manor_decision = {
 	}
 
 	is_valid = {
-		# Is a Ritsuryo Governor
+		# Is a Palatine Governor
 		has_government = gaul_administrative_government
 		trigger_if = {
 			limit = { is_ai = no } # AI are an exception as they can continue to play despite not being House Heads
@@ -482,7 +482,7 @@ tgp_gaul_establish_regnulum_manor_decision = {
 		# Not Yamato
 		tgp_is_in_ceremonial_house_trigger = no
 		# Must be a Count or Higher
-		highest_held_title_tier >= tier_county
+		highest_held_title_tier >= tier_duchy
 		# Is not Regent
 		is_independent_ruler = no
 	}
@@ -580,7 +580,7 @@ tgp_gaul_establish_regnulum_administration_decision = {
 		government_is_gallic_trigger = yes
 		NOR = { 
 			government_has_flag = government_is_gaul_feudal 
-			has_global_variable = dictatorship_established
+			has_global_variable = gallic_dictatorship_established
 		}
 	}
 
@@ -603,7 +603,7 @@ tgp_gaul_establish_regnulum_administration_decision = {
 			}
 		}
 		custom_tooltip = {
-			text = house_head_adopt_soryo_regency_tt
+			text = house_head_adopt_manorial_regency_tt
 			house.house_confederation ?= {
 				leading_house ?= root.house
 				has_cohesion_level_parameter = house_head_adopt_soryo_regency
@@ -664,7 +664,7 @@ tgp_gaul_become_gallic_dictator_decision = {
 		government_has_flag = government_is_gaul_feudal
 		top_liege = { has_title = title:e_high_kingdom_gaul }
 		NOR = {
-			has_global_variable = dictatorship_established
+			has_global_variable = gallic_dictatorship_established
 			has_global_variable = sacral_king_gaul_restored
 		}
 	}
@@ -755,7 +755,7 @@ tgp_gaul_sacral_king_restoration_decision = {
 			text = tgp_is_ceremonial_liege_tt
 			tgp_has_ceremonial_liege_title_trigger = yes
 		}
-		NOT = { has_global_variable = tenno_restored }
+		NOT = { has_global_variable = sacral_king_gaul_restored }
 	}
 
 	is_valid = {
@@ -839,8 +839,8 @@ tgp_gaul_become_a_poet_decision = {
 		trigger = {
 			OR = {
 				government_is_gallic_trigger = yes
-				government_has_flag = government_is_celestial
-				government_has_flag = government_is_meritocratic
+				#government_has_flag = government_is_celestial
+				#government_has_flag = government_is_meritocratic
 			}
 		}
 		reference = "gfx/interface/illustrations/decisions/tgp_poet.dds"
@@ -1027,13 +1027,13 @@ tgp_gaul_become_a_monk_decision = {
 	}
 
 	is_shown = {
-		religion = religion:buddhism_religion
+		religion = religion:christianity_religion
 		is_adult = yes
-		NOT = { government_has_flag = government_is_mandala }
+		NOT = { government_has_flag = government_is_tribal }
 	}
 
 	is_valid = {
-		religion = religion:buddhism_religion
+		religion = religion:christianity_religion
 		trigger_if = {
 			limit = { is_ai = no }
 			custom_tooltip = {
@@ -1224,7 +1224,7 @@ tgp_gaul_restore_gallic_monarchy_decision = {
 	ai_will_do = { base = 100 }
 }
 
-# Restore Ritsuryo
+# Restore Palatine
 ### Restore Ritsuryō Bureaucracy ###
 tgp_gaul_restore_gallic_government_decision = {
 	decision_group_type = major
@@ -1306,7 +1306,7 @@ tgp_gaul_assert_regional_dominion_government_decision = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					has_global_variable = dictatorship_established
+					has_global_variable = gallic_dictatorship_established
 				}
 				desc = tgp_gaul_assert_regional_dominion_government_decision_gallic_dictator_desc
 			}
@@ -1325,7 +1325,7 @@ tgp_gaul_assert_regional_dominion_government_decision = {
 	is_shown = {
 		has_tgp_dlc_trigger = yes
 		is_landed = yes
-		highest_held_title_tier = tier_county
+		highest_held_title_tier = tier_duchy
 		government_has_flag = government_is_gaul_feudal
 	}
 	  
@@ -1411,14 +1411,14 @@ tgp_gaul_assert_regional_dominion_government_decision = {
 					OR = {
 						AND = {
 							has_realm_law = gallic_bureaucracy_3
-							culture = { has_cultural_tradition = tradition_tgp_bushido }
+							culture = { has_cultural_tradition = tradition_tgp_sacred_chivalry }
 						}
 						has_realm_law = gallic_bureaucracy_2
 					}
 				}
 				trigger_if = {
 					limit = {
-						culture = { has_cultural_tradition = tradition_tgp_bushido }
+						culture = { has_cultural_tradition = tradition_tgp_sacred_chivalry }
 					}
 					NOT = { has_realm_law = gallic_bureaucracy_3 }
 				}
@@ -1477,10 +1477,10 @@ move_gallic_dictatorship_court_decision = {
 	is_shown = {
 		has_tgp_dlc_trigger = yes
 		is_landed = yes
-		has_global_variable = dictatorship_established
+		has_global_variable = gallic_dictatorship_established
 		NOT = { has_variable = moved_dictatorship_court }
 		domain_size > 1
-		capital_county = title:c_yamashiro
+		capital_county = title:c_lyon
 	}
 
 	is_valid = {
@@ -1519,7 +1519,7 @@ move_gallic_dictatorship_court_decision = {
 	
 	ai_potential = {
 		is_playable_character = yes
-		has_global_variable = dictatorship_established
+		has_global_variable = gallic_dictatorship_established
 	}
 
 	ai_check_interval_by_tier = {

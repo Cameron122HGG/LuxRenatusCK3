@@ -1338,6 +1338,7 @@
 						scope:actor = { government_has_flag = government_is_classical_steppe_admin }
 						scope:actor = { government_has_flag = government_is_meritocratic }
 						scope:actor = { government_has_flag = government_is_japan_administrative }
+						scope:actor = { government_has_flag = government_is_gaul_administrative }
 					}
 					scope:landed_title.title_province = { has_holding_type = city_holding }
 				}
@@ -1514,6 +1515,17 @@
 				}
 				trigger_else = { highest_held_title_tier >= tier_duchy }
 			}
+			scope:recipient = {
+				NOT = { highest_held_title_tier = tier_barony }
+				government_allows = administrative
+				trigger_if = {
+					limit = {
+						scope:actor = { has_government = gaul_administrative_government }
+					}
+					highest_held_title_tier >= tier_duchy
+				}
+				trigger_else = { highest_held_title_tier >= tier_kingdom }
+			}
 			factor = { # Honorable AI's will never revoke titles without a reason
 				value = 0
 				if = {
@@ -1551,6 +1563,36 @@
 			}
 			scope:recipient = {
 				government_has_flag = government_is_japan_administrative
+				is_imprisoned = yes
+				house != scope:actor.house
+			}
+		}
+		# Gallic Admin wants to revoke Gallic Feudal if they have a reason
+		modifier = {
+			add = 5000
+			scope:actor = {
+				government_has_flag = government_is_gaul_administrative
+				exists = house
+				has_revoke_title_reason = scope:recipient
+				NOT = { has_relation_friend = scope:recipient }
+			}
+			scope:recipient = {
+				government_has_flag = government_is_gaul_feudal
+				is_imprisoned = yes
+				house != scope:actor.house
+			}
+		}
+		# And Gallic Feudal wants to revoke Gallic Admin if they have a reason		
+		modifier = {
+			add = 5000
+			scope:actor = {
+				government_has_flag = government_is_gaul_feudal
+				exists = house
+				has_revoke_title_reason = scope:recipient
+				NOT = { has_relation_friend = scope:recipient }
+			}
+			scope:recipient = {
+				government_has_flag = government_is_gaul_administrative
 				is_imprisoned = yes
 				house != scope:actor.house
 			}

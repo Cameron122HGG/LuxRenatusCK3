@@ -4687,3 +4687,35 @@ imperial_policy_faction_modifiers = {
 		}
 	}
 }
+gallic_policy_faction_modifiers = {
+	modifier = {
+		desc = "FACTION_REASON_DESIRES_SORYO_POLICY"
+		add = 15
+		government_has_flag = government_is_gaul_feudal
+		$FACTION_TARGET$ = {
+			NOT = {
+				has_realm_law = gallic_expansion_law
+			}
+		}
+	}
+	modifier = {
+		desc = "FACTION_REASON_ANTI_POLICY"
+		add = 15
+		government_has_flag = government_is_gaul_feudal
+		$FACTION_TARGET$ = {
+			OR = {
+				has_realm_law = gallic_disarmament_law
+			}
+		}
+	}
+	modifier = {
+		desc = "FACTION_REASON_DESIRES_RITSURYO_POLICY"
+		add = 15
+		government_has_flag = government_is_gaul_administrative
+		$FACTION_TARGET$ = {
+			NOR = {
+				has_realm_law = gallic_manor_reform_law
+			}
+		}
+	}
+}

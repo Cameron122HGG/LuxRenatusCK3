@@ -106,8 +106,20 @@ tgp_examination_should_spend_treasury_trigger = {
 
 # Trigger to enable ministry features in script - Made into a scripted trigger for ease of changing it if needed
 tgp_has_access_to_ministry_trigger = {
-	has_title = title:h_china
-	government_has_flag = government_is_celestial
+	OR = {
+		AND = {
+			has_title = title:h_china
+			government_has_flag = government_is_celestial
+		}
+		AND = {
+			OR = {
+				has_title = title:h_western_roman_empire
+				has_title = title:h_eastern_roman_empire
+				has_title = title:h_roman_empire
+			}
+			government_has_flag = government_is_roman_imperial
+		}
+	}
 }
 
 tgp_is_any_minister = {
@@ -126,6 +138,17 @@ tgp_has_minister_title = {
 		has_title = title:e_minister_of_war
 		has_title = title:e_minister_of_justice
 		has_title = title:e_minister_of_works
+		
+		has_title = title:e_praetorian_prefect_oriens
+		has_title = title:e_praetorian_prefect_illyricum
+		has_title = title:e_praetorian_prefect_gallia
+		has_title = title:e_praetorian_prefect_italia
+		has_title = title:e_praetorian_prefect_hispania
+		has_title = title:e_praetorian_prefect_macedonia
+		has_title = title:e_praetorian_prefect_aegyptus
+		has_title = title:e_praetorian_prefect_africa
+		has_title = title:e_praetorian_prefect_illyricum
+
 	}
 }
 
@@ -139,6 +162,16 @@ tgp_has_civilian_minister_title = {
 		has_title = title:e_minister_of_war
 		has_title = title:e_minister_of_justice
 		has_title = title:e_minister_of_works
+		
+		has_title = title:e_praetorian_prefect_oriens
+		has_title = title:e_praetorian_prefect_illyricum
+		has_title = title:e_praetorian_prefect_gallia
+		has_title = title:e_praetorian_prefect_italia
+		has_title = title:e_praetorian_prefect_hispania
+		has_title = title:e_praetorian_prefect_macedonia
+		has_title = title:e_praetorian_prefect_aegyptus
+		has_title = title:e_praetorian_prefect_africa
+		has_title = title:e_praetorian_prefect_illyricum
 	}
 }
 
@@ -152,6 +185,16 @@ tgp_is_civilian_minister_title = {
 		this = title:e_minister_of_war
 		this = title:e_minister_of_justice
 		this = title:e_minister_of_works
+		
+		this = title:e_praetorian_prefect_oriens
+		this = title:e_praetorian_prefect_illyricum
+		this = title:e_praetorian_prefect_gallia
+		this = title:e_praetorian_prefect_italia
+		this = title:e_praetorian_prefect_hispania
+		this = title:e_praetorian_prefect_macedonia
+		this = title:e_praetorian_prefect_aegyptus
+		this = title:e_praetorian_prefect_africa
+		this = title:e_praetorian_prefect_illyricum
 	}
 }
 
@@ -166,6 +209,16 @@ tgp_is_minister_title = {
 		this = title:e_minister_of_war
 		this = title:e_minister_of_justice
 		this = title:e_minister_of_works
+
+		this = title:e_praetorian_prefect_oriens
+		this = title:e_praetorian_prefect_illyricum
+		this = title:e_praetorian_prefect_gallia
+		this = title:e_praetorian_prefect_italia
+		this = title:e_praetorian_prefect_hispania
+		this = title:e_praetorian_prefect_macedonia
+		this = title:e_praetorian_prefect_aegyptus
+		this = title:e_praetorian_prefect_africa
+		this = title:e_praetorian_prefect_illyricum
 	}
 }
 
@@ -175,6 +228,7 @@ tgp_can_be_a_minister_trigger = {
 	OR = {
 		is_ruler = no
 		government_has_flag = government_is_celestial
+		government_has_flag = government_is_roman_imperial
 	}
 	# Gender is based on laws of the liege
 	OR = {
@@ -537,6 +591,18 @@ tgp_can_become_japan_administrative_trigger = {
 		}
 		government_is_japanese_trigger = yes
 		has_character_flag = tgp_japan_restore_japanese_government_flag
+	}
+}
+tgp_can_become_gaul_administrative_trigger = {
+	OR = {
+		top_liege = {
+			OR = {
+				government_is_gallic_trigger = yes
+				has_character_flag = tgp_gaul_restore_gallic_government_flag
+			}
+		}
+		government_is_gallic_trigger = yes
+		has_character_flag = tgp_gaul_restore_gallic_government_flag
 	}
 }
 

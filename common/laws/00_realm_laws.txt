@@ -2819,7 +2819,7 @@ japanese_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Govern
 			courtly_opinion = -5
 			minority_opinion = -10
 		}
-		flag = uses_celestial_bureaucracy
+		flag = uses_japanese_bureaucracy
 		flag = title_revocation_allowed
 		flag = vassal_retraction_allowed
 		flag = can_change_partition_succession_laws
@@ -3081,7 +3081,7 @@ japanese_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Govern
 	}
 }
 
-gallic_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Government
+gallic_bureaucracy = { # A variant of Imperial Bureaucracy for Palatine Government
 	default = gallic_bureaucracy_1
 	cumulative = yes
 	flag = realm_law
@@ -3134,7 +3134,7 @@ gallic_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Governme
 			courtly_opinion = -5
 			minority_opinion = -10
 		}
-		flag = uses_celestial_bureaucracy
+		flag = uses_gallic_bureaucracy
 		flag = title_revocation_allowed
 		flag = vassal_retraction_allowed
 		flag = can_change_partition_succession_laws
@@ -3199,8 +3199,8 @@ gallic_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Governme
 			calculate_authority_cooldown_break_effect = yes
 			# Set regular cooldown.
 			set_variable = {
-				name = imperial_bureaucracy_cooldown
-				years = @imperial_bureaucracy_cooldown_years_1
+				name = gallic_bureaucracy_cooldown
+				years = @gallic_bureaucracy_cooldown_years_1
 			}
 			# Remove modifiers.
 			remove_law_related_modifiers_effect = yes
@@ -3238,17 +3238,6 @@ gallic_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Governme
 		can_keep = {
 			realm_law_use_gallic_bureaucracy = yes
 			trigger_if = {
-				limit = {
-					this = title:h_china.holder
-				}
-				situation:dynastic_cycle ?= {
-					NOR = {
-						situation_current_phase = situation_dynastic_cycle_phase_instability
-						situation_current_phase = situation_dynastic_cycle_phase_instability_conquest
-					}
-				}
-			}
-			trigger_if = {
 				limit = { is_independent_ruler = no }
 				liege = { has_realm_law = gallic_bureaucracy_2 }
 			}
@@ -3265,7 +3254,7 @@ gallic_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Governme
 					subject = root
 					text = "has_gallic_bureaucracy_cooldown"
 					NAND = {
-						has_variable = imperial_bureaucracy_cooldown
+						has_variable = gallic_bureaucracy_cooldown
 						NOT = {
 							culture = { has_innovation = innovation_all_things }
 						}
@@ -3301,8 +3290,8 @@ gallic_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Governme
 			calculate_authority_cooldown_break_effect = yes
 			# Set regular cooldown.
 			set_variable = {
-				name = imperial_bureaucracy_cooldown
-				years = @imperial_bureaucracy_cooldown_years_2
+				name = gallic_bureaucracy_cooldown
+				years = @gallic_bureaucracy_cooldown_years_2
 			}
 			# Remove modifiers.
 			remove_law_related_modifiers_effect = yes
@@ -3351,7 +3340,7 @@ gallic_bureaucracy = { # A variant of Imperial Bureaucracy for Ritsuryo Governme
 					subject = root
 					text = "has_gallic_bureaucracy_cooldown"
 					NAND = {
-						has_variable = imperial_bureaucracy_cooldown
+						has_variable = gallic_bureaucracy_cooldown
 						NOT = {
 							culture = { has_innovation = innovation_all_things }
 						}
