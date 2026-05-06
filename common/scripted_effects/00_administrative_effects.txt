@@ -178,6 +178,32 @@ change_to_administrative_effect = {
 			}
 			change_government = japan_administrative_government
 		}
+		if = { # Palatine
+			limit = {
+				trigger_if = {
+					limit = {
+						exists = scope:has_selected_a_government
+					}
+					scope:has_selected_a_government = flag:gaul_administrative
+				}
+				trigger_else_if = {
+					limit = {
+						top_liege = this
+					}
+					has_tgp_dlc_trigger = yes
+					tgp_can_become_gaul_administrative_trigger = yes
+				}
+				trigger_else = {
+					scope:governor_liege = { government_has_flag = government_is_gaul_administrative }
+				}
+			}
+			change_to_administrative_holding_effect = yes
+			tgp_domicile_conversion_when_changing_government_type = {
+				NEW_DOMICILE_TYPE = gallic_manor
+				NEW_GOVERNMENT_TYPE = gaul_administrative_government
+			}
+			change_government = gaul_administrative_government
+		}
 		else_if = { # Celestial
 			limit = {
 				trigger_if = {
