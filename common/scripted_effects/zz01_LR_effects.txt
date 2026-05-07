@@ -32,8 +32,7 @@ LR_generate_noble_families_on_start = {
 	}
 	every_ruler = {
 		limit = { 
-			is_independent_ruler = no
-			government_allows = administrative
+			government_has_flag = government_is_gaul_feudal
 			NOT = { any_held_title = { is_noble_family_title = yes } }
 		}
 		save_temporary_scope_as = this_ruler
@@ -41,12 +40,14 @@ LR_generate_noble_families_on_start = {
 	}
 	every_ruler = {
 		limit = { 
-			government_has_flag = government_is_gaul_feudal
+			is_independent_ruler = no
+			government_allows = administrative
 			NOT = { any_held_title = { is_noble_family_title = yes } }
 		}
 		save_temporary_scope_as = this_ruler
 		create_noble_family_effect = { GOVERNMENT_GIVER = scope:this_ruler.liege }
-	}		
+	}
+		
 }
 
 LR_generate_maa_on_start = {
