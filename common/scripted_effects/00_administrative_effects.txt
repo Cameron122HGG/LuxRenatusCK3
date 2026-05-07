@@ -576,6 +576,40 @@ set_up_domicile_estate_effect = {
 		}
 		fill_external_east_asian_estate_building_effect = yes
 	}
+	else_if = {
+		limit = { is_domicile_type = gallic_manor }
+		# Intentionally one level lower than what you can get
+		if = {
+			limit = {
+				NOT = { has_domicile_building_or_higher = gallic_manor_main_02 }
+				owner.culture ?= { has_innovation = innovation_city_planning }
+			}
+			add_domicile_building = gallic_manor_main_02
+		}
+		if = {
+			limit = {
+				has_domicile_building = gallic_manor_main_02
+				NOT = { has_domicile_building_or_higher = japanese_manor_main_03 }
+				owner.culture ?= { has_innovation = innovation_manorialism }
+			}
+			add_domicile_building = gallic_manor_main_03
+		}
+		hidden_effect = {
+			switch = {
+				trigger = has_domicile_building
+				gallic_manor_main_03 = {
+					while = {
+						count = 2
+						add_random_internal_gallic_manor_building = yes
+					}
+				}
+				gallic_manor_main_02 = {
+					add_random_internal_gallic_manor_building = yes
+				}
+			}
+		}
+		fill_external_gallic_manor_building_effect = yes
+	}
 }
 
 noble_family_title_realm_setup_effect = {
