@@ -15,6 +15,10 @@ LR_choose_epithet = {
 	}
 
 	is_valid_showing_failures_only = {
+		is_alive = yes
+		is_available_healthy_adult = yes
+		NOT = { exists = involved_activity }
+		is_imprisoned = no
 	}
 
 	widget = {
@@ -32,8 +36,8 @@ LR_choose_epithet = {
 			current_description = choose_epithet_nicator_desc
 			localization = choose_epithet_nicator
 		}
-		ai_chance = {
-			value = 10
+		ai_chance = { value = 10 }
+
 
 			modifier = {
 				factor = 1.1
@@ -282,9 +286,6 @@ LR_choose_epithet = {
 		highest_held_title_tier > 3 #Only Kings and Emperors
 		is_independent_ruler = yes
 	}
-	ai_will_do = {
-		base = 0
-	}
-	}
+
 	}
 }
