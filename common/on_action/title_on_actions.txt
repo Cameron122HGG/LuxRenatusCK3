@@ -1606,43 +1606,9 @@ on_title_gain = {
 				}
 			}
 			# West Francia becomes France when no longer controlled by a Karling
-			else_if = {
-				limit = {
-					scope:title = {
-						this = title:k_france
-					}
-					NOR = {
-						dynasty = { this = dynasty:25061 } # Not held by a Karling
-						any_liege_or_above = {
-							dynasty = { this = dynasty:25061 } # And does not have a liege that is a Karling
-						}
-						has_global_variable = west_francia_renamed
-					}
-				}
-				trigger_event = {
-					id = title_event.0001
-					days = 1
-				}
-			}
+
 			# East Francia becomes Germany when no longer controlled by a Karling
-			else_if = {
-				limit = {
-					scope:title = {
-						this = title:k_east_francia
-					}
-					NOR = {
-						dynasty = { this = dynasty:25061 }  # Not held by a Karling
-						any_liege_or_above = {
-							dynasty = { this = dynasty:25061 } # And does not have a liege that is a Karling
-						}
-						has_global_variable = east_francia_renamed
-					}
-				}
-				trigger_event = {
-					id = title_event.0002
-					days = 1
-				}
-			}
+
 			# Hidden management event to determine if we need to axe Asturias &, if we do, what notification events to send out afterwards.
 			else_if = {
 				limit = {
@@ -2621,8 +2587,8 @@ on_title_gain = {
 		delay = { days = 1 }
 		realm_maintenance.2001		#Big notification about inheriting emperor tier title
 		#british_isles.1032			# Danelaw-England partition calc.
-		title_event.0001			# Rename West Francia to France
-		title_event.0002			# Rename East Francia to Germany
+		#title_event.0001			# Rename West Francia to France
+		#title_event.0002			# Rename East Francia to Germany
 		title_event.0011			# Asturias becomes Leon upon emergence of Castille
 		# If we weren't already in a diarchy but should be, put us in one.
 		diarchy.0011
