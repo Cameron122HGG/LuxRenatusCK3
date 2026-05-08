@@ -2665,7 +2665,7 @@ tgp_gaul_decision.9901 = {
 	desc = tgp_gaul_decision.9901.desc
 	theme = realm
 	left_portrait = {
-		character = scope:mayor_of_the_palace
+		character = scope:gallic_regent_admin
 		triggered_animation = {
 			trigger = { this = scope:scion }
 			animation = war_over_tie
@@ -2675,7 +2675,7 @@ tgp_gaul_decision.9901 = {
 	right_portrait = {
 		character = scope:scion
 		animation = war_over_tie
-		trigger = { this != scope:mayor_of_the_palace }
+		trigger = { this != scope:gallic_regent_admin }
 	}
 	override_background = { reference = throne_room_scope }
 
@@ -2707,7 +2707,7 @@ tgp_gaul_decision.9902 = {
 	desc = tgp_gaul_decision.9902.desc
 	theme = family
 	left_portrait = {
-		character = scope:mayor_of_the_palace
+		character = scope:gallic_regent_admin
 		triggered_animation = {
 			trigger = { this = scope:scion }
 			animation = war_over_tie
@@ -2717,14 +2717,14 @@ tgp_gaul_decision.9902 = {
 	right_portrait = {
 		character = scope:scion
 		animation = war_over_tie
-		trigger = { this != scope:mayor_of_the_palace }
+		trigger = { this != scope:gallic_regent_admin }
 	}
 	override_background = { reference = throne_room_scope }
 
 	immediate = {
 		play_music_cue = "mx_cue_sacredrite"
 		show_as_tooltip = {
-			scope:mayor_of_the_palace = {
+			scope:gallic_regent_admin = {
 				tgp_restore_gallic_monarchy_decision_effect = yes
 				tgp_restore_gallic_monarchy_yamato_restoration_effect = yes
 			}
@@ -2750,7 +2750,7 @@ tgp_gaul_decision.9911 = {
 	}
 	theme = crown
 	left_portrait = {
-		character = scope:mayor_of_the_palace
+		character = scope:gallic_regent_admin
 		animation = chaplain
 	}
 	right_portrait = {
@@ -2782,18 +2782,18 @@ tgp_gaul_decision.9912 = {
 	}
 	theme = realm
 	left_portrait = {
-		character = scope:mayor_of_the_palace
+		character = scope:gallic_regent_admin
 		animation = war_over_tie
 	}
 	override_background = { reference = throne_room_scope }
 
 	trigger = {
-		NOT = { is_at_war_with = scope:mayor_of_the_palace }
+		NOT = { is_at_war_with = scope:gallic_regent_admin }
 	}
 
 	immediate = {
 		show_as_tooltip = {
-			scope:mayor_of_the_palace = { tgp_restore_gallic_government_decision_effect = yes }
+			scope:gallic_regent_admin = { tgp_restore_gallic_government_decision_effect = yes }
 		}
 	}
 
@@ -2812,7 +2812,7 @@ tgp_gaul_decision.9912 = {
 		trigger = {
 			is_ai = no
 			NOR = {
-				is_at_war_with = scope:mayor_of_the_palace
+				is_at_war_with = scope:gallic_regent_admin
 				has_government = gaul_administrative_government
 			}
 		}
@@ -2825,7 +2825,7 @@ tgp_gaul_decision.9912 = {
 			add_attacker = root
 		}
 		reverse_add_opinion = {
-			target = scope:mayor_of_the_palace
+			target = scope:gallic_regent_admin
 			modifier = rebellious_vassal_opinion
 		}
 	}

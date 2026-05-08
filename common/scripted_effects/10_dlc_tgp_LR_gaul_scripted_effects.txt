@@ -700,7 +700,7 @@ tgp_gaul_schoolhouse_education_boost_effect = {
 }
 
 tgp_restore_gallic_monarchy_decision_effect = {
-	save_scope_as = mayor_of_the_palace
+	save_scope_as = gallic_regent_admin
 	tgp_restore_gallic_monarchy_merovingian_scion_effect = yes
 	add_prestige = major_prestige_value
 	if = {
@@ -723,12 +723,12 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 	dynasty:frankish_merovingian.dynasty_founder.house ?= {
 		save_scope_as = house_merovingian
 		if = {
-			limit = { this = scope:mayor_of_the_palace.house }
+			limit = { this = scope:gallic_regent_admin.house }
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
 				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_created_tt
 			}
-			scope:mayor_of_the_palace = { save_scope_as = gaul_scion }
+			scope:gallic_regent_admin = { save_scope_as = gaul_scion }
 		}
 		else_if = {
 			limit = {
@@ -851,12 +851,12 @@ tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 		}
 		if = {
 			limit = {
-				scope:gaul_scion.liege != scope:mayor_of_the_palace
-				scope:gaul_scion != scope:mayor_of_the_palace
+				scope:gaul_scion.liege != scope:gallic_regent_admin
+				scope:gaul_scion != scope:gallic_regent_admin
 			}
 			scope:gaul_scion ?= {
 				change_liege = {
-					liege = scope:mayor_of_the_palace
+					liege = scope:gallic_regent_admin
 					change = scope:change
 				}
 			}
@@ -879,7 +879,7 @@ tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 	create_character = {
 		template = tgp_gaul_imperial_scion_template
-		location = scope:mayor_of_the_palace.capital_province
+		location = scope:gallic_regent_admin.capital_province
 		age = { 16 38 }
 		save_scope_as = scion
 	}
@@ -888,19 +888,19 @@ tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 			limit = { is_female = yes }
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
-				location = scope:mayor_of_the_palace.capital_province
+				location = scope:gallic_regent_admin.capital_province
 				mother = scope:gaul_scion
 				age = { 11 12 }
 			}
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
-				location = scope:mayor_of_the_palace.capital_province
+				location = scope:gallic_regent_admin.capital_province
 				mother = scope:gaul_scion
 				age = { 7 8 }
 			}
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
-				location = scope:mayor_of_the_palace.capital_province
+				location = scope:gallic_regent_admin.capital_province
 				mother = scope:gaul_scion
 				age = { 3 4  }
 			}
@@ -908,19 +908,19 @@ tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 		else = {
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
-				location = scope:mayor_of_the_palace.capital_province
+				location = scope:gallic_regent_admin.capital_province
 				father = scope:gaul_scion
 				age = { 11 12 }
 			}
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
-				location = scope:mayor_of_the_palace.capital_province
+				location = scope:gallic_regent_admin.capital_province
 				father = scope:gaul_scion
 				age = { 7 8 }
 			}
 			create_character = {
 				template = tgp_gaul_imperial_scion_template
-				location = scope:mayor_of_the_palace.capital_province
+				location = scope:gallic_regent_admin.capital_province
 				father = scope:gaul_scion
 				age = { 3 4 }
 			}
@@ -930,7 +930,7 @@ tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 
 tgp_restore_gallic_government_decision_effect = {
 	gaul_clear_flavour_flags_effect = yes
-	save_scope_as = mayor_of_the_palace
+	save_scope_as = gallic_regent_admin
 	save_scope_as = background_throne_room_scope
 	add_character_flag = tgp_gaul_restore_gallic_government_flag
 	# Change government if relevant
@@ -946,7 +946,7 @@ tgp_restore_gallic_government_decision_effect = {
 		custom = every_gaul_feudal_vassal_custom
 		limit = { government_has_flag = government_is_gaul_feudal }
 		add_opinion = {
-			target = scope:mayor_of_the_palace
+			target = scope:gallic_regent_admin
 			modifier = restored_procuratio_opinion
 		}
 	}
@@ -960,15 +960,15 @@ tgp_restore_gallic_government_decision_effect = {
 				is_ai = yes
 				NOR = {
 					government_allows = administrative
-					is_allied_to = scope:mayor_of_the_palace
+					is_allied_to = scope:gallic_regent_admin
 				}
 				opinion = {
-					target = scope:mayor_of_the_palace
+					target = scope:gallic_regent_admin
 					value < 25
 				}
 				save_temporary_scope_as = vassal_temp
 				NOT = {
-					scope:mayor_of_the_palace = { has_usable_hook = scope:vassal_temp }
+					scope:gallic_regent_admin = { has_usable_hook = scope:vassal_temp }
 				}
 			}
 			order_by = military_power
@@ -983,12 +983,12 @@ tgp_restore_gallic_government_decision_effect = {
 					is_ai = yes
 					NOT = { government_allows = administrative }
 					opinion = {
-						target = scope:mayor_of_the_palace
+						target = scope:gallic_regent_admin
 						value < 25
 					}
 					save_temporary_scope_as = vassal_temp
 					NOT = {
-						scope:mayor_of_the_palace = { has_usable_hook = scope:vassal_temp }
+						scope:gallic_regent_admin = { has_usable_hook = scope:vassal_temp }
 					}
 				}
 				order_by = military_power
@@ -999,7 +999,7 @@ tgp_restore_gallic_government_decision_effect = {
 			limit = { exists = scope:rebel }
 			tgp_restore_procuratio_civil_war_effect = {
 				REBEL = scope:rebel
-				LIEGE = scope:mayor_of_the_palace
+				LIEGE = scope:gallic_regent_admin
 			}
 		}
 	}
@@ -1008,7 +1008,7 @@ tgp_restore_gallic_government_decision_effect = {
 		every_vassal_or_below = {
 			limit = {
 				primary_title.tier >= tier_county
-				culture = { has_same_culture_heritage = scope:mayor_of_the_palace.culture }
+				culture = { has_same_culture_heritage = scope:gallic_regent_admin.culture }
 			}
 			trigger_event = {
 				id = tgp_gaul_decision.9912
@@ -1290,7 +1290,7 @@ tgp_restore_procuratio_civil_war_effect = {
 tgp_gaul_assert_regional_dominion_government_decision_effect = {
 	save_scope_as = super_regnulum
 	scope:super_regnulum.primary_title.duchy ?= { save_scope_as = title_scope }
-	# Crime to mayor_of_the_palace
+	# Crime to gallic_regent_admin
 	if = {
 		limit = {
 			top_liege = { government_allows = administrative }
