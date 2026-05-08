@@ -79,9 +79,25 @@ LR_choose_epithet = {
 					has_trait = ambitious
 					has_trait = lunatic_1
 				}
-			}
+				NOT = {
+					faith = { has_doctrine = doctrine_monotheist }
+				}
 			current_description = choose_epithet_theos_desc
 			localization = choose_epithet_theos
+			ai_chance = { value = 10 }
+			}
+		}
+		item = { #Eusebes 
+			value = choose_epithet_eusebes 
+			is_shown = {
+				OR = {
+					has_trait = zealous
+					has_trait = humble
+					has_trait = ambitious
+				}
+			}
+			current_description = choose_epithet_eusebes_desc
+			localization = choose_epithet_eusebes
 			ai_chance = { value = 10 }
 		}
 		item = { # Euergetes
@@ -136,6 +152,50 @@ LR_choose_epithet = {
 			localization = choose_epithet_eupator
 			ai_chance = { value = 10 }
 		}
+		item = { #Philadelphus
+			value = choose_epithet_philadelphus
+			is_shown = {
+				OR = {
+					any_sibling = {
+						OR = {
+							has_relation_friend = root
+							has_relation_best_friend = root
+							has_relation_lover = root
+							has_relation_soulmate = root
+							is_spouse_of = root
+						}
+					}
+				}
+			current_description = choose_epithet_philadelphus_desc
+			localization = choose_epithet_philadelphus
+			ai_chance = { value = 10 }
+			}
+		}
+		item = { #Dikaios
+			value = choose_epithet_dikaios
+			is_shown = {
+				OR = {
+					has_trait = just
+					has_trait = compassionate
+				}
+				NAND = {
+					has_trait = callous
+					has_trait = sadistic
+					has_trait = arbitrary
+			}
+			current_description = choose_epithet_dikaios_desc
+			localization = choose_epithet_dikaios
+			ai_chance = { value = 10 }
+		}
+		item = { # Ktistes
+			value = choose_epithet_ktistes
+			is_shown = {
+					always = yes #Until I can think of something better. 
+			}
+			current_description = choose_epithet_ktistes_desc
+			localization = choose_epithet_ktistes
+			ai_chance = { value = 10 }
+		}
 		item = { #Frangopoulos (Mostly for the funny.)
 			value = choose_epithet_frangopoulos
 			is_shown = {
@@ -186,6 +246,15 @@ LR_choose_epithet = {
 			scope:choose_epithet_theos = {
 				give_nickname = nick_theos
 			}
+			scope:choose_epithet_eusebes = {
+				give_nickname = nick_eusebes
+			}
+			scope:choose_epithet_dikaios = {
+				give_nickname = nick_dikaios
+			}
+			scope:choose_epithet_ktistes = {
+				give_nickname = nick_ktistes
+			}
 			scope:choose_epithet_euergetes = {
 				give_nickname = nick_euergetes
 			}
@@ -197,6 +266,9 @@ LR_choose_epithet = {
 			}
 			scope:choose_epithet_eupator = {
 				give_nickname = nick_eupator
+			}
+			scope:choose_epithet_philadelphus = {
+				give_nickname = nick_philadelphus
 			}
 			scope:choose_epithet_frangopoulos = {
 				give_nickname = nick_frangopoulos
@@ -213,6 +285,6 @@ LR_choose_epithet = {
 	ai_will_do = {
 		base = 0
 	}
-
+	}
 	}
 }
