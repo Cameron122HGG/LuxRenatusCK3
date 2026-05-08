@@ -228,3 +228,34 @@ e_gallic_empire = {
 	color = { 22 103 7 }
 	
 }
+
+h_gallic_empire = {
+	capital = c_lyon
+	ruler_uses_title_name = yes
+	definite_form = yes
+    
+	can_create = {
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
+	}
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = { has_cultural_pillar = heritage_latin }
+			}
+			add = @correct_culture_primary_score
+			add = @better_than_the_alternatives_score
+		}
+	}
+		cultural_names = {
+			name_list_roman = lx_galliarum
+			name_list_gallo_roman = lx_galliarum
+			name_list_romano_gothic = lx_galliarum
+			name_list_romano_hispanic = lx_galliarum
+			name_list_romano_briton = lx_galliarum
+			name_list_sarmato_briton = lx_galliarum
+		}
+
+	color = { 12 63 3 }
+	
+}
