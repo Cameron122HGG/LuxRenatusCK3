@@ -6,7 +6,6 @@ LR_choose_epithet = {
 	sort_order = 40
 	decision_group_type = hellenic
 
-
 	is_shown = {
 		OR = {
 			culture = { has_cultural_pillar = heritage_hellenistic_greek }
@@ -15,6 +14,10 @@ LR_choose_epithet = {
 	}
 
 	is_valid_showing_failures_only = {
+		is_alive = yes
+		is_available_healthy_adult = yes
+		NOT = { exists = involved_activity }
+		is_imprisoned = no
 	}
 
 	widget = {
@@ -31,29 +34,28 @@ LR_choose_epithet = {
 			value = choose_epithet_nicator
 			current_description = choose_epithet_nicator_desc
 			localization = choose_epithet_nicator
-		}
-		ai_chance = {
-			value = 10
-
-			modifier = {
-				factor = 1.1
-				has_trait = brave
-			}
-			modifier = {
-				factor = 1.05
-				has_trait = wrathful
-			}
-			modifier = {
-				factor = 1.05
-				has_trait = ambitious
-			}
-			modifier = {
-				factor = 1.2
-				has_trait = education_martial
-			}
-			modifier = {
-				factor = 1.1
-				has_trait = strategist
+			ai_chance = {
+				value = 10
+				modifier = {
+					factor = 1.1
+					has_trait = brave
+				}
+				modifier = {
+					factor = 1.05
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 1.05
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 1.2
+					has_trait = education_martial
+				}
+				modifier = {
+					factor = 1.1
+					has_trait = strategist
+				}
 			}
 		}
 		item = { # Soter
@@ -79,9 +81,25 @@ LR_choose_epithet = {
 					has_trait = ambitious
 					has_trait = lunatic_1
 				}
+				NOT = {
+					faith = { has_doctrine = doctrine_monotheist }
+				}
 			}
 			current_description = choose_epithet_theos_desc
 			localization = choose_epithet_theos
+			ai_chance = { value = 10 }
+		}
+		item = { # Eusebes
+			value = choose_epithet_eusebes
+			is_shown = {
+				OR = {
+					has_trait = zealous
+					has_trait = humble
+					has_trait = ambitious
+				}
+			}
+			current_description = choose_epithet_eusebes_desc
+			localization = choose_epithet_eusebes
 			ai_chance = { value = 10 }
 		}
 		item = { # Euergetes
@@ -136,7 +154,52 @@ LR_choose_epithet = {
 			localization = choose_epithet_eupator
 			ai_chance = { value = 10 }
 		}
-		item = { #Frangopoulos (Mostly for the funny.)
+		item = { # Philadelphus
+			value = choose_epithet_philadelphus
+			is_shown = {
+				OR = {
+					any_sibling = {
+						OR = {
+							has_relation_friend = root
+							has_relation_best_friend = root
+							has_relation_lover = root
+							has_relation_soulmate = root
+							is_spouse_of = root
+						}
+					}
+				}
+			}
+			current_description = choose_epithet_philadelphus_desc
+			localization = choose_epithet_philadelphus
+			ai_chance = { value = 10 }
+		}
+		item = { # Dikaios
+			value = choose_epithet_dikaios
+			is_shown = {
+				OR = {
+					has_trait = just
+					has_trait = compassionate
+				}
+				NAND = {
+					has_trait = callous
+					has_trait = sadistic
+					has_trait = arbitrary
+				}
+			}
+			current_description = choose_epithet_dikaios_desc
+			localization = choose_epithet_dikaios
+			ai_chance = { value = 10 }
+		}
+		item = { # Ktistes
+			value = choose_epithet_ktistes
+			is_shown = {
+				always = yes #Until I can think of something better.
+			}
+			current_description = choose_epithet_ktistes_desc
+			localization = choose_epithet_ktistes
+			ai_chance = { value = 10 }
+		}
+		item = { # Frangopoulos (Mostly for the funny.)
 			value = choose_epithet_frangopoulos
 			is_shown = {
 				OR = {
@@ -154,7 +217,7 @@ LR_choose_epithet = {
 			localization = choose_epithet_frangopoulos
 			ai_chance = { value = 10 }
 		}
-		item = { #Voulgaropoulos (Mostly for the funny.)
+		item = { # Voulgaropoulos (Mostly for the funny.)
 			value = choose_epithet_voulgaropoulos
 			is_shown = {
 				OR = {
@@ -172,7 +235,7 @@ LR_choose_epithet = {
 			localization = choose_epithet_voulgaropoulos
 			ai_chance = { value = 10 }
 		}
-	}
+	} # end widget
 
 	effect = {
 		switch = {
@@ -186,6 +249,15 @@ LR_choose_epithet = {
 			scope:choose_epithet_theos = {
 				give_nickname = nick_theos
 			}
+			scope:choose_epithet_eusebes = {
+				give_nickname = nick_eusebes
+			}
+			scope:choose_epithet_dikaios = {
+				give_nickname = nick_dikaios
+			}
+			scope:choose_epithet_ktistes = {
+				give_nickname = nick_ktistes
+			}
 			scope:choose_epithet_euergetes = {
 				give_nickname = nick_euergetes
 			}
@@ -198,21 +270,21 @@ LR_choose_epithet = {
 			scope:choose_epithet_eupator = {
 				give_nickname = nick_eupator
 			}
+			scope:choose_epithet_philadelphus = {
+				give_nickname = nick_philadelphus
+			}
 			scope:choose_epithet_frangopoulos = {
 				give_nickname = nick_frangopoulos
 			}
 			scope:choose_epithet_voulgaropoulos = {
 				give_nickname = nick_voulgaropoulos
 			}
-	}
+		}
+	} # end effect
+
 	ai_check_interval = 60
 	ai_potential = {
-		highest_held_title_tier > 3 #Only Kings and Emperors
+		highest_held_title_tier > 3 # Only Kings and Emperors
 		is_independent_ruler = yes
-	}
-	ai_will_do = {
-		base = 0
-	}
-
 	}
 }
