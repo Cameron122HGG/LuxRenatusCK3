@@ -1,0 +1,43 @@
+﻿k_karls_throne = {
+	color = { 220 205 250 }
+	capital = c_gaeseong
+	landless = yes
+
+	can_be_named_after_dynasty = no
+	figurehead = yes
+	allow_domicile = no
+	always_follows_primary_heir = yes
+	definite_form = yes
+	can_create = {
+		always = no
+	}
+	personal_relation_entry = {
+		first_valid = {
+			triggered_desc = {
+			trigger = {
+				exists = scope:target
+				scope:liege ?= scope:target
+			}
+			desc = gaul_personal_relation_ceremonial_liege_same
+		}
+			triggered_desc = {
+			trigger = {
+				exists = scope:liege
+			}
+			desc = gaul_personal_relation_ceremonial_liege_other
+		}
+
+		}
+	}
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = {
+					has_cultural_pillar = heritage_central_germanic
+				}
+			}
+			add = @correct_culture_primary_score
+		}
+	}
+}
+
