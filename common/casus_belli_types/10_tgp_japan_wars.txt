@@ -1,6 +1,6 @@
 ﻿
 # War to install Bloc member -- Bloc Expansion
-gaul_install_bloc_member_cb = {
+japan_install_bloc_member_cb = {
 	icon = bloc
 	group = subjugation
 	combine_into_one = yes
@@ -16,18 +16,18 @@ gaul_install_bloc_member_cb = {
 	allowed_for_character = {
 		has_tgp_dlc_trigger = yes
 		is_landed = yes
-		highest_held_title_tier >= tier_duchy
-		tgp_manorial_or_bushido_trigger = yes # manorial
+		highest_held_title_tier >= tier_county
+		tgp_soryo_or_bushido_trigger = yes # Soryo
 		exists = house.house_confederation # In a Bloc
 	}
 
 	# scope:defender
 	allowed_against_character = {
 		is_landed = yes
-		highest_held_title_tier >= tier_duchy
+		highest_held_title_tier >= tier_county
 		top_liege = scope:attacker.top_liege # Same realm
 		NOT = { this = scope:attacker.top_liege } # Not top liege
-		government_is_gallic_trigger = yes # manorial or palatine
+		government_is_japanese_trigger = yes # Soryo or Ritsuryo
 		trigger_if = { # Not in same Bloc
 			limit = { exists = house.house_confederation }
 			house.house_confederation != scope:attacker.house.house_confederation
@@ -52,36 +52,36 @@ gaul_install_bloc_member_cb = {
 
 	should_invalidate = {
 		OR = {
-			scope:attacker = { tgp_manorial_or_bushido_trigger = no }
+			scope:attacker = { tgp_soryo_or_bushido_trigger = no }
 			scope:defender.house.house_confederation ?= scope:attacker.house.house_confederation # Same bloc already
 			NOT = { exists = scope:attacker.house.house_confederation } # Bloc destroyed
 		}
 	}
 
 	on_invalidated_desc = {
-		desc = gaul_install_bloc_member_cb_ended_invalid.desc
+		desc = japan_install_bloc_member_cb_ended_invalid.desc
 	}
 
 	on_declaration = {
 		on_declared_war = yes
 		if = {
-			limit = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+			limit = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
 			scope:attacker = {
 				# Message for attacker
 				send_interface_toast = {
 					type = event_war_bad
-					title = tgp_gaul_manorial_war_is_crime_title
+					title = tgp_japan_soryo_war_is_crime_title
 					left_icon = scope:defender
 					right_icon = top_liege
 					top_liege = {
 						send_interface_toast = {
 							type = event_war_bad
-							title = tgp_gaul_manorial_war_is_crime_sacral_king_gaul_title
+							title = tgp_japan_soryo_war_is_crime_kampaku_title
 							left_icon = scope:attacker
 							right_icon = scope:defender
 							add_opinion = {
 								target = scope:attacker
-								modifier = admin_manorial_conquest_crime
+								modifier = admin_soryo_conquest_crime
 							}
 						}
 					}
@@ -92,10 +92,10 @@ gaul_install_bloc_member_cb = {
 
 	on_victory_desc = {
 		desc = {
-			desc = gaul_install_bloc_member_cb_victory_desc
+			desc = japan_install_bloc_member_cb_victory_desc
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -150,7 +150,7 @@ gaul_install_bloc_member_cb = {
 
 		scope:attacker = { 
 			trigger_event = {
-				id = tgp_gaul_general.8800 
+				id = tgp_japan_general.8800 
 				days = 1 
 			}
 		}
@@ -182,10 +182,10 @@ gaul_install_bloc_member_cb = {
 
 	on_white_peace_desc = {
 		desc = {
-			desc = gaul_install_bloc_member_cb_white_peace_desc
+			desc = japan_install_bloc_member_cb_white_peace_desc
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -224,10 +224,10 @@ gaul_install_bloc_member_cb = {
 
 	on_defeat_desc = {
 		desc = {
-			desc = gaul_install_bloc_member_cb_defeat_desc
+			desc = japan_install_bloc_member_cb_defeat_desc
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -291,9 +291,9 @@ gaul_install_bloc_member_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_INSTALL_BLOC_MEMBER_WAR_NAME"
-	war_name_base = "GAUL_INSTALL_BLOC_MEMBER_WAR_NAME_BASE"
-	cb_name = "GAUL_INSTALL_BLOC_MEMBER_CB_NAME"
+	war_name = "JAPAN_INSTALL_BLOC_MEMBER_WAR_NAME"
+	war_name_base = "JAPAN_INSTALL_BLOC_MEMBER_WAR_NAME_BASE"
+	cb_name = "JAPAN_INSTALL_BLOC_MEMBER_CB_NAME"
 	interface_priority = 100
 
 	ticking_war_score_targets_entire_realm = no
@@ -313,7 +313,7 @@ gaul_install_bloc_member_cb = {
 	max_ai_diplo_distance_to_title = 500
 	
 	ai_score = {
-		value = gaul_install_bloc_member_ai_score_value
+		value = japan_install_bloc_member_ai_score_value
 	}
 
 	ai_score_mult = {
@@ -323,7 +323,7 @@ gaul_install_bloc_member_cb = {
 }
 
 # War for landless feudal to take land
-gaul_manorial_conquest_county_landless_cb = {
+japan_soryo_conquest_county_landless_cb = {
 	icon = soryo
 	group = conquest
 	combine_into_one = yes
@@ -341,15 +341,15 @@ gaul_manorial_conquest_county_landless_cb = {
 	allowed_for_character = {
 		has_tgp_dlc_trigger = yes
 		is_landed = no
-		government_is_gallic_trigger = yes
-		tgp_manorial_or_bushido_trigger = yes
+		government_is_japanese_trigger = yes
+		tgp_soryo_or_bushido_trigger = yes
 	}
 
 	# scope:defender
 	allowed_against_character = {
 		is_landed = yes
 		highest_held_title_tier >= tier_county
-		government_is_gallic_trigger = yes
+		government_is_japanese_trigger = yes
 		top_liege = {
 			# Must be part of same realm
 			this = scope:attacker.top_liege
@@ -386,29 +386,29 @@ gaul_manorial_conquest_county_landless_cb = {
 	}
 
 	on_invalidated_desc = {
-		desc = gaul_manorial_conquest_cb_ended_invalid.desc
+		desc = japan_soryo_conquest_cb_ended_invalid.desc
 	}
 
 	on_declaration = {
 		on_declared_war = yes
 		if = {
-			limit = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+			limit = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
 			scope:attacker = {
 				# Message for attacker
 				send_interface_toast = {
 					type = event_war_bad
-					title = tgp_gaul_manorial_war_is_crime_title
+					title = tgp_japan_soryo_war_is_crime_title
 					left_icon = scope:defender
 					right_icon = top_liege
 					top_liege = {
 						send_interface_toast = {
 							type = event_war_bad
-							title = tgp_gaul_manorial_war_is_crime_sacral_king_gaul_title
+							title = tgp_japan_soryo_war_is_crime_kampaku_title
 							left_icon = scope:attacker
 							right_icon = scope:defender
 							add_opinion = {
 								target = scope:attacker
-								modifier = admin_manorial_conquest_crime
+								modifier = admin_soryo_conquest_crime
 							}
 						}
 					}
@@ -427,8 +427,8 @@ gaul_manorial_conquest_county_landless_cb = {
 				desc = county_conquest_cb_victory_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -517,8 +517,8 @@ gaul_manorial_conquest_county_landless_cb = {
 				desc = county_conquest_cb_white_peace_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -565,8 +565,8 @@ gaul_manorial_conquest_county_landless_cb = {
 				desc = county_conquest_cb_defeat_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -643,9 +643,9 @@ gaul_manorial_conquest_county_landless_cb = {
 	max_defender_score_from_occupation = 150
 	max_attacker_score_from_occupation = 150
 
-	war_name = "GAUL_MANORIAL_CONQUEST_LANDLESS_WAR_NAME"
-	war_name_base = "GAUL_MANORIAL_CONQUEST_LANDLESS_WAR_NAME_BASE"
-	cb_name = "GAUL_MANORIAL_CONQUEST_LANDLESS_COUNTY_CB_NAME"
+	war_name = "JAPAN_SORYO_CONQUEST_LANDLESS_WAR_NAME"
+	war_name_base = "JAPAN_SORYO_CONQUEST_LANDLESS_WAR_NAME_BASE"
+	cb_name = "JAPAN_SORYO_CONQUEST_LANDLESS_COUNTY_CB_NAME"
 
 	ai_score_mult = {
 		value = 1
@@ -660,7 +660,7 @@ gaul_manorial_conquest_county_landless_cb = {
 }
 
 # War for feudal to take land
-gaul_manorial_conquest_county_cb = {
+japan_soryo_conquest_county_cb = {
 	icon = soryo
 	group = conquest
 	combine_into_one = yes
@@ -678,8 +678,8 @@ gaul_manorial_conquest_county_cb = {
 	allowed_for_character = {
 		has_tgp_dlc_trigger = yes
 		is_landed = yes
-		# Attacker must be gallic Feudal, or have the Bushido tradition
-		tgp_manorial_or_bushido_trigger = yes
+		# Attacker must be Japanese Feudal, or have the Bushido tradition
+		tgp_soryo_or_bushido_trigger = yes
 	}
 
 	# scope:defender
@@ -705,7 +705,7 @@ gaul_manorial_conquest_county_cb = {
 	should_invalidate = {
 		OR = {
 			NOT = {
-				scope:attacker = { tgp_manorial_or_bushido_trigger = yes }
+				scope:attacker = { tgp_soryo_or_bushido_trigger = yes }
 			}
 			scope:defender = {
 				top_liege != scope:attacker.top_liege
@@ -714,29 +714,29 @@ gaul_manorial_conquest_county_cb = {
 	}
 
 	on_invalidated_desc = {
-		desc = gaul_manorial_conquest_cb_ended_invalid.desc
+		desc = japan_soryo_conquest_cb_ended_invalid.desc
 	}
 
 	on_declaration = {
 		on_declared_war = yes
 		if = {
-			limit = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+			limit = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
 			scope:attacker = {
 				# Message for attacker
 				send_interface_toast = {
 					type = event_war_bad
-					title = tgp_gaul_manorial_war_is_crime_title
+					title = tgp_japan_soryo_war_is_crime_title
 					left_icon = scope:defender
 					right_icon = top_liege
 					top_liege = {
 						send_interface_toast = {
 							type = event_war_bad
-							title = tgp_gaul_manorial_war_is_crime_sacral_king_gaul_title
+							title = tgp_japan_soryo_war_is_crime_kampaku_title
 							left_icon = scope:attacker
 							right_icon = scope:defender
 							add_opinion = {
 								target = scope:attacker
-								modifier = admin_manorial_conquest_crime
+								modifier = admin_soryo_conquest_crime
 							}
 						}
 					}
@@ -755,8 +755,8 @@ gaul_manorial_conquest_county_cb = {
 				desc = county_conquest_cb_victory_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -845,8 +845,8 @@ gaul_manorial_conquest_county_cb = {
 				desc = county_conquest_cb_white_peace_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -893,8 +893,8 @@ gaul_manorial_conquest_county_cb = {
 				desc = county_conquest_cb_defeat_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
-				desc = gaul_manorial_conquest_cb_admin_warning
+				trigger = { tgp_japan_internal_soryo_war_is_crime_trigger = yes }
+				desc = japan_soryo_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -958,9 +958,9 @@ gaul_manorial_conquest_county_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_MANORIAL_CONQUEST_WAR_NAME"
-	war_name_base = "GAUL_MANORIAL_CONQUEST_WAR_NAME_BASE"
-	cb_name = "GAUL_MANORIAL_CONQUEST_COUNTY_CB_NAME"
+	war_name = "JAPAN_SORYO_CONQUEST_WAR_NAME"
+	war_name_base = "JAPAN_SORYO_CONQUEST_WAR_NAME_BASE"
+	cb_name = "JAPAN_SORYO_CONQUEST_COUNTY_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -986,7 +986,7 @@ gaul_manorial_conquest_county_cb = {
 }
 
 # War to enforce return to Administrative
-gaul_demand_administrative_cb = {
+japan_demand_administrative_cb = {
 	icon = ritsuryo
 	group = subjugation
 	allow_hostages = no
@@ -995,15 +995,15 @@ gaul_demand_administrative_cb = {
 
 	# scope:attacker
 	allowed_for_character = {
-		government_has_flag = government_is_gaul_administrative
-		top_liege = { government_has_flag = government_is_gaul_administrative } # Cannot enforce admin in a manorial realm
+		government_has_flag = government_is_japan_administrative
+		top_liege = { government_has_flag = government_is_japan_administrative } # Cannot enforce admin in a Soryo realm
 		tgp_is_ceremonial_liege_trigger = no
 	}
 
 	# scope:defender
 	allowed_against_character = {
 		is_landed = yes
-		government_has_flag = government_is_gaul_feudal
+		government_has_flag = government_is_japan_feudal
 		top_liege = scope:attacker.top_liege
 		NOT = { is_liege_or_above_of = scope:attacker }
 	}
@@ -1026,13 +1026,13 @@ gaul_demand_administrative_cb = {
 		OR = {
 			NOT = {
 				scope:attacker = {
-					government_has_flag = government_is_gaul_administrative
+					government_has_flag = government_is_japan_administrative
 					tgp_is_ceremonial_liege_trigger = no
 				}
 			}
 			NOT = {
 				scope:defender = {
-					government_has_flag = government_is_gaul_feudal
+					government_has_flag = government_is_japan_feudal
 					top_liege = scope:attacker.top_liege
 					NOT = { is_liege_or_above_of = scope:attacker }
 				}
@@ -1047,14 +1047,14 @@ gaul_demand_administrative_cb = {
 				trigger = {
 					NOT = {
 						scope:attacker = {
-							government_has_flag = government_is_gaul_administrative
+							government_has_flag = government_is_japan_administrative
 							tgp_is_ceremonial_liege_trigger = no
 						}
 					}
 				}
-				desc = gaul_demand_administrative_cb_ended_invalid.desc.attacker
+				desc = japan_demand_administrative_cb_ended_invalid.desc.attacker
 			}
-			desc = gaul_demand_administrative_cb_ended_invalid.desc
+			desc = japan_demand_administrative_cb_ended_invalid.desc
 		}
 	}
 
@@ -1064,12 +1064,12 @@ gaul_demand_administrative_cb = {
 
 	on_victory_desc = {
 		desc = {
-			desc = gaul_demand_administrative_cb_victory_desc
+			desc = japan_demand_administrative_cb_victory_desc
 			triggered_desc = {
 				trigger = {
 					scope:attacker = { is_independent_ruler = no }
 				}
-				desc = gaul_demand_administrative_cb_victory_vassal_desc
+				desc = japan_demand_administrative_cb_victory_vassal_desc
 			}
 		}
 	}
@@ -1124,9 +1124,9 @@ gaul_demand_administrative_cb = {
 				limit = { is_independent_ruler = no }
 				if = {
 					limit = { government_allows = administrative }
-					change_influence = gaul_demand_administrative_war_influence_value
+					change_influence = japan_demand_administrative_war_influence_value
 				}
-				else = { add_prestige_experience = gaul_demand_administrative_war_prestige_value }
+				else = { add_prestige_experience = japan_demand_administrative_war_prestige_value }
 			}
 		}
 
@@ -1155,7 +1155,7 @@ gaul_demand_administrative_cb = {
 	}
 
 	on_white_peace_desc = {
-		desc = gaul_demand_administrative_cb_white_peace_desc
+		desc = japan_demand_administrative_cb_white_peace_desc
 	}
 
 	on_white_peace = {
@@ -1194,9 +1194,9 @@ gaul_demand_administrative_cb = {
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:attacker = scope:defender.top_liege }
-				desc = gaul_demand_administrative_cb_defeat_desc_independence
+				desc = japan_demand_administrative_cb_defeat_desc_independence
 			}
-			desc = gaul_demand_administrative_cb_defeat_desc
+			desc = japan_demand_administrative_cb_defeat_desc
 		}
 	}
 
@@ -1219,9 +1219,9 @@ gaul_demand_administrative_cb = {
 				add_prestige = major_prestige_loss
 				switch = {
 					trigger = has_realm_law
-					gallic_bureaucracy_3 = { add_realm_law = gallic_bureaucracy_2 }
-					gallic_bureaucracy_2 = { add_realm_law = gallic_bureaucracy_1 }
-					gallic_bureaucracy_1 = { add_realm_law = gallic_bureaucracy_0 }
+					japanese_bureaucracy_3 = { add_realm_law = japanese_bureaucracy_2 }
+					japanese_bureaucracy_2 = { add_realm_law = japanese_bureaucracy_1 }
+					japanese_bureaucracy_1 = { add_realm_law = japanese_bureaucracy_0 }
 					fallback = { force_step_down_landed_titles = yes }
 				}
 			}
@@ -1252,9 +1252,9 @@ gaul_demand_administrative_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_DEMAND_ADMINISTRATIVE_WAR_NAME"
-	war_name_base = "GAUL_DEMAND_ADMINISTRATIVE_WAR_NAME_BASE"
-	cb_name = "GAUL_DEMAND_ADMINISTRATIVE_CB_NAME"
+	war_name = "JAPAN_DEMAND_ADMINISTRATIVE_WAR_NAME"
+	war_name_base = "JAPAN_DEMAND_ADMINISTRATIVE_WAR_NAME_BASE"
+	cb_name = "JAPAN_DEMAND_ADMINISTRATIVE_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -1274,7 +1274,7 @@ gaul_demand_administrative_cb = {
 	max_ai_diplo_distance_to_title = 500
 	
 	ai_score = {
-		value = gaul_demand_administrative_ai_score_value
+		value = japan_demand_administrative_ai_score_value
 	}
 
 	ai_score_mult = {
@@ -1283,8 +1283,8 @@ gaul_demand_administrative_cb = {
 	}
 }
 
-# War to conquer gaul
-gaul_sacral_expansion_cb = {
+# War to conquer Japan
+japan_imperial_expansion_cb = {
 	icon = ritsuryo
 	group = conquest
 	combine_into_one = yes
@@ -1310,25 +1310,25 @@ gaul_sacral_expansion_cb = {
 
 	# root = scope:attacker
 	allowed_for_character = {
-		gaul_sacral_expansion_cb_allowed_for_character_trigger = yes
+		japan_imperial_expansion_cb_allowed_for_character_trigger = yes
 	}
 
 	# root = scope:attacker
 	allowed_for_character_display_regardless = {
 		# Required Policy
-		top_liege = { has_realm_law = sacral_expansion_law }
+		top_liege = { has_realm_law = imperial_expansion_law }
 	}
 
 	# root = scope:defender, scope:attacker
 	allowed_against_character = {
-		gaul_sacral_expansion_cb_allowed_against_character_trigger = yes
+		japan_imperial_expansion_cb_allowed_against_character_trigger = yes
 	}
 
 	# root = scope:defender, scope:attacker
 	allowed_against_character_display_regardless = {
 		# Must be neighbours, but we want to show casus belli in list regardless
 		custom_tooltip = {
-			text = gaul_sacral_expansion_cb_neighbour_tt
+			text = japan_imperial_expansion_cb_neighbour_tt
 			any_sub_realm_county = {
 				any_title_to_title_neighboring_and_across_water_county = { holder.top_liege = scope:attacker.top_liege }
 			}
@@ -1338,14 +1338,15 @@ gaul_sacral_expansion_cb = {
 	# root = scope:attacker, scope:defender, scope:target
 	valid_to_start_display_regardless = {
 		custom_tooltip = {
-			text = tgp_gaul_pacification_war_valid_empire_tt
-			NOT = { scope:target.empire ?= title:e_high_kingdom_gaul }
+			text = tgp_japan_pacification_war_valid_empire_tt
+			NOT = { scope:target.empire ?= title:e_japan }
 		}
 		custom_tooltip = {
-			text = tgp_gaul_pacification_war_valid_region_tt
+			text = tgp_japan_pacification_war_valid_region_tt
 			scope:target.title_province ?= {
 				OR = {
-					geographical_region = LR_world_europe_gaul
+					geographical_region = world_asia_japan
+					geographical_region = world_asia_sakhalin_hokkaido
 				}
 			}
 		}
@@ -1359,8 +1360,8 @@ gaul_sacral_expansion_cb = {
 
 	should_invalidate = {
 		OR = {
-			scope:attacker = { gaul_sacral_expansion_cb_allowed_for_character_trigger = no }
-			scope:defender = { gaul_sacral_expansion_cb_allowed_against_character_trigger = no }
+			scope:attacker = { japan_imperial_expansion_cb_allowed_for_character_trigger = no }
+			scope:defender = { japan_imperial_expansion_cb_allowed_against_character_trigger = no }
 		}
 	}
 
@@ -1368,11 +1369,11 @@ gaul_sacral_expansion_cb = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					scope:attacker = { gaul_sacral_expansion_cb_allowed_for_character_trigger = no }
+					scope:attacker = { japan_imperial_expansion_cb_allowed_for_character_trigger = no }
 				}
-				desc = gaul_sacral_expansion_cb_ended_invalid.desc.attacker
+				desc = japan_imperial_expansion_cb_ended_invalid.desc.attacker
 			}
-			desc = gaul_sacral_expansion_cb_ended_invalid.desc
+			desc = japan_imperial_expansion_cb_ended_invalid.desc
 		}
 	}
 
@@ -1390,15 +1391,15 @@ gaul_sacral_expansion_cb = {
 							is_independent_ruler = yes
 						}
 					}
-					desc = gaul_sacral_expansion_cb_victory_desc_attacker
+					desc = japan_imperial_expansion_cb_victory_desc_attacker
 				}
-				desc = gaul_sacral_expansion_cb_victory_desc
+				desc = japan_imperial_expansion_cb_victory_desc
 			}
 			triggered_desc = {
 				trigger = {
 					scope:attacker = { is_independent_ruler = no }
 				}
-				desc = gaul_demand_administrative_cb_victory_vassal_desc
+				desc = japan_demand_administrative_cb_victory_vassal_desc
 			}
 		}
 	}
@@ -1449,9 +1450,9 @@ gaul_sacral_expansion_cb = {
 				limit = { is_independent_ruler = no }
 				if = {
 					limit = { government_allows = administrative }
-					change_influence = gaul_sacral_expansion_war_influence_value
+					change_influence = japan_imperial_expansion_war_influence_value
 				}
-				else = { add_prestige_experience = gaul_sacral_expansion_war_prestige_value }
+				else = { add_prestige_experience = japan_imperial_expansion_war_prestige_value }
 			}
 			else = {
 				# Prestige Progress for the Attacker
@@ -1600,9 +1601,9 @@ gaul_sacral_expansion_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_SACRAL_EXPANSION_WAR_NAME"
-	war_name_base = "GAUL_SACRAL_EXPANSION_WAR_NAME_BASE"
-	cb_name = "GAUL_SACRAL_EXPANSION_CB_NAME"
+	war_name = "JAPAN_IMPERIAL_EXPANSION_WAR_NAME"
+	war_name_base = "JAPAN_IMPERIAL_EXPANSION_WAR_NAME_BASE"
+	cb_name = "JAPAN_IMPERIAL_EXPANSION_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -1622,7 +1623,7 @@ gaul_sacral_expansion_cb = {
 	max_ai_diplo_distance_to_title = 500
 	
 	ai_score = {
-		value = gaul_sacral_expansion_ai_score_value
+		value = japan_imperial_expansion_ai_score_value
 	}
 
 	ai_score_mult = {
@@ -1631,14 +1632,14 @@ gaul_sacral_expansion_cb = {
 	}
 }
 
-# War to reconquer gaul
-gaul_sacral_reconquest_cb = {
+# War to reconquer Japan
+japan_imperial_reconquest_cb = {
 	icon = ritsuryo
 	group = de_jure
 
-	war_name = "GAUL_SACRAL_RECONQUEST_WAR_NAME"
-	war_name_base = "GAUL_SACRAL_RECONQUEST_WAR_NAME_BASE"
-	cb_name = "GAUL_SACRAL_RECONQUEST_CB_NAME"
+	war_name = "JAPAN_IMPERIAL_RECONQUEST_WAR_NAME"
+	war_name_base = "JAPAN_IMPERIAL_RECONQUEST_WAR_NAME_BASE"
+	cb_name = "JAPAN_IMPERIAL_RECONQUEST_CB_NAME"
 	interface_priority = 80
 
 	combine_into_one = yes
@@ -1649,10 +1650,10 @@ gaul_sacral_reconquest_cb = {
 		prestige = {
 			scope:defender = {
 				every_sub_realm_county = {
-					limit = { empire = title:e_high_kingdom_gaul }
+					limit = { empire = title:e_japan }
 					add = {
 						value = 50
-						desc = gaul_sacral_reconquest_cb_cost_tt
+						desc = japan_imperial_reconquest_cb_cost_tt
 					}
 				}
 			}
@@ -1670,7 +1671,7 @@ gaul_sacral_reconquest_cb = {
 
 	# root = scope:attacker
 	allowed_for_character = {
-		gaul_sacral_reconquest_cb_allowed_for_character_trigger = yes
+		japan_imperial_reconquest_cb_allowed_for_character_trigger = yes
 	}
 
 	# root = scope:attacker
@@ -1680,28 +1681,28 @@ gaul_sacral_reconquest_cb = {
 
 	# root = scope:defender, scope:attacker
 	allowed_against_character = {
-		gaul_sacral_reconquest_cb_allowed_against_character_trigger = yes
+		japan_imperial_reconquest_cb_allowed_against_character_trigger = yes
 	}
 
 	valid_to_start = {
 		scope:target = {
 			tier = tier_duchy
-			empire = title:e_high_kingdom_gaul
+			empire = title:e_japan
 		}
 	}
 
 	# root = scope:attacker, scope:defender, scope:target
 	valid_to_start_display_regardless = {
 		custom_tooltip = {
-			text = tgp_gaul_reconquest_war_valid_de_jure_tt
-			scope:target.empire ?= title:e_high_kingdom_gaul
+			text = tgp_japan_reconquest_war_valid_de_jure_tt
+			scope:target.empire ?= title:e_japan
 		}
 	}
 
 	should_invalidate = {
 		OR = {
-			scope:attacker = { gaul_sacral_reconquest_cb_allowed_for_character_trigger = no }
-			scope:defender = { gaul_sacral_reconquest_cb_allowed_against_character_trigger = no }
+			scope:attacker = { japan_imperial_reconquest_cb_allowed_for_character_trigger = no }
+			scope:defender = { japan_imperial_reconquest_cb_allowed_against_character_trigger = no }
 		}
 	}
 
@@ -1709,11 +1710,11 @@ gaul_sacral_reconquest_cb = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					scope:attacker = { gaul_sacral_reconquest_cb_allowed_for_character_trigger = no }
+					scope:attacker = { japan_imperial_reconquest_cb_allowed_for_character_trigger = no }
 				}
-				desc = gaul_sacral_reconquest_cb_ended_invalid.desc.attacker
+				desc = japan_imperial_reconquest_cb_ended_invalid.desc.attacker
 			}
-			desc = gaul_sacral_reconquest_cb_ended_invalid.desc
+			desc = japan_imperial_reconquest_cb_ended_invalid.desc
 		}
 	}
 
@@ -1728,13 +1729,13 @@ gaul_sacral_reconquest_cb = {
 					trigger = { scope:attacker = { is_local_player = yes } }
 					desc = de_jure_cb_victory_desc_attacker
 				}
-				desc = gaul_sacral_reconquest_cb_victory_desc
+				desc = japan_imperial_reconquest_cb_victory_desc
 			}
 			triggered_desc = {
 				trigger = {
 					scope:attacker = { is_independent_ruler = no }
 				}
-				desc = gaul_demand_administrative_cb_victory_vassal_desc
+				desc = japan_demand_administrative_cb_victory_vassal_desc
 			}
 		}
 	}
@@ -1754,9 +1755,9 @@ gaul_sacral_reconquest_cb = {
 				limit = { is_independent_ruler = no }
 				if = {
 					limit = { government_allows = administrative }
-					change_influence = gaul_sacral_reconquest_war_influence_value
+					change_influence = japan_imperial_reconquest_war_influence_value
 				}
-				else = { add_prestige_experience = gaul_sacral_reconquest_war_prestige_value }
+				else = { add_prestige_experience = japan_imperial_reconquest_war_prestige_value }
 			}
 		}
 
@@ -1897,7 +1898,7 @@ gaul_sacral_reconquest_cb = {
 	max_ai_diplo_distance_to_title = 500
 	
 	ai_score = {
-		value = gaul_sacral_reconquest_ai_score_value
+		value = japan_imperial_reconquest_ai_score_value
 	}
 
 	ai_score_mult = {
@@ -1906,8 +1907,8 @@ gaul_sacral_reconquest_cb = {
 	}
 }
 
-# War to reimpose palatine
-gaul_refused_palatine_cb = {
+# War to reimpose Ritsuryo
+japan_refused_ritsuryo_cb = {
 	icon = dissolution_war
 	group = civil_war
 	ai_only_against_liege = yes
@@ -1915,7 +1916,7 @@ gaul_refused_palatine_cb = {
 	allowed_for_character = {
 		scope:attacker = {
 			liege = scope:defender
-			NOT = { government_has_flag = government_is_gaul_administrative }
+			NOT = { government_has_flag = government_is_japan_administrative }
 		}
 	}
 
@@ -1969,7 +1970,7 @@ gaul_refused_palatine_cb = {
 						scope:defender.primary_title.tier <= scope:attacker.var:target_tier
 					}
 				}
-				desc = gaul_refused_palatine_cb_victory_desc_defender
+				desc = japan_refused_ritsuryo_cb_victory_desc_defender
 			}
 			triggered_desc = {
 				trigger = {
@@ -1979,7 +1980,7 @@ gaul_refused_palatine_cb = {
 						scope:defender.primary_title.tier <= scope:attacker.var:target_tier
 					}
 				}
-				desc = gaul_refused_palatine_cb_victory_desc
+				desc = japan_refused_ritsuryo_cb_victory_desc
 			}
 		}
 	}
@@ -2000,7 +2001,7 @@ gaul_refused_palatine_cb = {
 
 			add_prestige = -500
 
-			# gaul - liege is replaced by the attacker
+			# JAPAN - liege is replaced by the attacker
 			create_title_and_vassal_change = {
 				type = conquest
 				save_scope_as = title_change
@@ -2048,9 +2049,9 @@ gaul_refused_palatine_cb = {
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:defender = { is_local_player = yes } }
-				desc = gaul_refused_palatine_cb_white_peace_desc_defender
+				desc = japan_refused_ritsuryo_cb_white_peace_desc_defender
 			}
-			desc = gaul_refused_palatine_cb_white_peace_desc
+			desc = japan_refused_ritsuryo_cb_white_peace_desc
 		}
 
 	}
@@ -2086,9 +2087,9 @@ gaul_refused_palatine_cb = {
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:defender = { is_local_player = yes } }
-				desc = gaul_refused_palatine_cb_defeat_desc_defender
+				desc = japan_refused_ritsuryo_cb_defeat_desc_defender
 			}
-			desc = gaul_refused_palatine_cb_defeat_desc
+			desc = japan_refused_ritsuryo_cb_defeat_desc
 		}
 
 	}
@@ -2142,7 +2143,7 @@ gaul_refused_palatine_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_REFUSED_palatine_WAR_NAME"
+	war_name = "JAPAN_REFUSED_RITSURYO_WAR_NAME"
 
 	interface_priority = 80
 
@@ -2160,7 +2161,7 @@ gaul_refused_palatine_cb = {
 }
 
 # Eradicate Rival House
-gallic_eradicate_house_cb = {
+eradicate_house_cb = {
 	icon = execute
 	group = subjugation
 	combine_into_one = yes
@@ -2293,14 +2294,14 @@ gallic_eradicate_house_cb = {
 		}
 		#Show land transfer
 		show_as_tooltip = {
-			#loser/winner scopes are only being set here to correctly display the effects of tgp_gaul_manorial_eradicate_cb_transfer_effect in the tooltip!
+			#loser/winner scopes are only being set here to correctly display the effects of tgp_japan_soryo_eradicate_cb_transfer_effect in the tooltip!
 			scope:defender = {
 				save_scope_as = loser
 			}
 			scope:attacker = {
 				save_scope_as = winner
 			}
-			tgp_gaul_manorial_eradicate_cb_transfer_effect = yes	
+			tgp_japan_soryo_eradicate_cb_transfer_effect = yes	
 		}
 		#show death
 		show_as_tooltip = {
@@ -2344,7 +2345,7 @@ gallic_eradicate_house_cb = {
 
 		#Eradicate House follow up event
 		scope:defender = {
-			trigger_event = tgp_gaul_general.9550
+			trigger_event = tgp_japan_general.9550
 		}
 	}
 
@@ -2421,14 +2422,14 @@ gallic_eradicate_house_cb = {
 		}
 		#Show land transfer
 		show_as_tooltip = {
-			#loser/winner scopes are only being set here to correctly display the effects of tgp_gaul_manorial_eradicate_cb_transfer_effect in the tooltip!
+			#loser/winner scopes are only being set here to correctly display the effects of tgp_japan_soryo_eradicate_cb_transfer_effect in the tooltip!
 			scope:defender = {
 				save_scope_as = winner
 			}
 			scope:attacker = {
 				save_scope_as = loser
 			}
-			tgp_gaul_manorial_eradicate_cb_transfer_effect = yes
+			tgp_japan_soryo_eradicate_cb_transfer_effect = yes
 		}
 		#Show killing
 		show_as_tooltip = {
@@ -2474,7 +2475,7 @@ gallic_eradicate_house_cb = {
 		laamp_as_mercenary_payout_tooltip_effect = yes
 		#Eradicate House follow up event
 		scope:attacker = {
-			trigger_event = tgp_gaul_general.9550
+			trigger_event = tgp_japan_general.9550
 		}
 	}
 
@@ -2511,8 +2512,8 @@ gallic_eradicate_house_cb = {
 	}
 }
 
-# War to become manorial as gallic_regent_admin
-gaul_establish_manorial_administration_cb = {
+# War to become Soryo as Kampaku
+japan_establish_soryo_administration_cb = {
 	icon = soryo
 	group = subjugation
 	combine_into_one = yes
@@ -2526,15 +2527,15 @@ gaul_establish_manorial_administration_cb = {
 	}
 
 	should_invalidate = {
-		scope:defender = { government_has_flag = government_is_gaul_feudal }
+		scope:defender = { government_has_flag = government_is_japan_feudal }
 	}
 
 	on_invalidated_desc = {
-		desc = gaul_establish_manorial_administration_cb_ended_invalid.desc
+		desc = japan_establish_soryo_administration_cb_ended_invalid.desc
 	}
 
 	on_victory_desc = {
-		desc = gaul_establish_manorial_administration_cb_victory_desc
+		desc = japan_establish_soryo_administration_cb_victory_desc
 	}
 
 	on_victory = {
@@ -2543,7 +2544,7 @@ gaul_establish_manorial_administration_cb = {
 			save_scope_as = leader
 		}
 		scope:defender = {
-			save_scope_as = gallic_regent_feudal
+			save_scope_as = daijo_daijin
 		}
 		
 		# Legitimacy
@@ -2623,7 +2624,7 @@ gaul_establish_manorial_administration_cb = {
 	}
 
 	on_white_peace_desc = {
-		desc = gaul_establish_manorial_administration_cb_white_peace_desc
+		desc = japan_establish_soryo_administration_cb_white_peace_desc
 	}
 
 	on_white_peace = {
@@ -2659,7 +2660,7 @@ gaul_establish_manorial_administration_cb = {
 	}
 
 	on_defeat_desc = {
-		desc = gaul_establish_manorial_administration_cb_defeat_desc
+		desc = japan_establish_soryo_administration_cb_defeat_desc
 	}
 
 	on_defeat = {
@@ -2668,9 +2669,9 @@ gaul_establish_manorial_administration_cb = {
 			save_scope_as = leader
 		}
 		scope:defender = {
-			save_scope_as = gallic_regent_feudal
-			show_as_tooltip = { gallic_establish_manorial_administration_reward_effect = yes }
-			trigger_event = tgp_gaul_decision.9606
+			save_scope_as = daijo_daijin
+			show_as_tooltip = { japanese_establish_soryo_administration_reward_effect = yes }
+			trigger_event = tgp_japan_decision.9606
 		}
 
 		# Legitimacy
@@ -2745,9 +2746,9 @@ gaul_establish_manorial_administration_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_ESTABLISH_MANORIAL_ADMINISTRATION_WAR_NAME"
-	war_name_base = "GAUL_ESTABLISH_MANORIAL_ADMINISTRATION_WAR_NAME_BASE"
-	cb_name = "GAUL_ESTABLISH_MANORIAL_ADMINISTRATION_CB_NAME"
+	war_name = "JAPAN_ESTABLISH_SORYO_ADMINISTRATION_WAR_NAME"
+	war_name_base = "JAPAN_ESTABLISH_SORYO_ADMINISTRATION_WAR_NAME_BASE"
+	cb_name = "JAPAN_ESTABLISH_SORYO_ADMINISTRATION_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -2766,7 +2767,7 @@ gaul_establish_manorial_administration_cb = {
 }
 
 # War to disrupt Bloc
-gaul_bloc_war_cb = {
+japan_bloc_war_cb = {
 	icon = bloc
 	group = subjugation
 	combine_into_one = yes
@@ -2777,8 +2778,8 @@ gaul_bloc_war_cb = {
 	# scope:attacker
 	allowed_for_character = {
 		has_tgp_dlc_trigger = yes
-		# manorial Bloc leader checks
-		tgp_manorial_or_bushido_trigger = yes
+		# Soryo Bloc leader checks
+		tgp_soryo_or_bushido_trigger = yes
 		is_house_head = yes
 		house.house_confederation.leading_house ?= house
 		any_held_title = { is_noble_family_title = yes }
@@ -2786,14 +2787,14 @@ gaul_bloc_war_cb = {
 
 	allowed_for_character_display_regardless = {
 		custom_tooltip = {
-			text = gaul_bloc_war_cb_cohesion_requirement_tt
+			text = japan_bloc_war_cb_cohesion_requirement_tt
 			house.house_confederation.cohesion >= 25
 		}
 	}
 
 	# scope:defender
 	allowed_against_character = {
-		tgp_manorial_or_bushido_trigger = yes
+		tgp_soryo_or_bushido_trigger = yes
 		is_house_head = yes
 		house.house_confederation.leading_house ?= house
 		NOR = {
@@ -2804,7 +2805,7 @@ gaul_bloc_war_cb = {
 			}
 			# Not any ongoing bloc war
 			any_character_war = {
-				using_cb = gaul_bloc_war_cb
+				using_cb = japan_bloc_war_cb
 				save_temporary_scope_as = war_temp
 				scope:attacker = { is_participant_in_war = scope:war_temp }
 			}
@@ -2815,10 +2816,10 @@ gaul_bloc_war_cb = {
 
 	should_invalidate = {
 		OR = {
-			scope:attacker = { tgp_manorial_or_bushido_trigger = no }
+			scope:attacker = { tgp_soryo_or_bushido_trigger = no }
 			scope:defender = {
 				OR = {
-					tgp_manorial_or_bushido_trigger = no
+					tgp_soryo_or_bushido_trigger = no
 					NOT = { exists = house.house_confederation } # Left bloc
 					house.house_confederation ?= scope:attacker.house.house_confederation # Same bloc
 					is_landed = no
@@ -2838,7 +2839,7 @@ gaul_bloc_war_cb = {
 	}
 
 	on_invalidated_desc = {
-		desc = gaul_bloc_war_cb_ended_invalid.desc
+		desc = japan_bloc_war_cb_ended_invalid.desc
 	}
 
 	on_declaration = {
@@ -2847,7 +2848,7 @@ gaul_bloc_war_cb = {
 	}
 
 	on_victory_desc = {
-		desc = gaul_bloc_war_cb_victory_desc
+		desc = japan_bloc_war_cb_victory_desc
 	}
 
 	on_victory = {
@@ -2931,7 +2932,7 @@ gaul_bloc_war_cb = {
 	}
 
 	on_white_peace_desc = {
-		desc = gaul_bloc_war_cb_white_peace_desc
+		desc = japan_bloc_war_cb_white_peace_desc
 	}
 
 	on_white_peace = {
@@ -2967,7 +2968,7 @@ gaul_bloc_war_cb = {
 	}
 
 	on_defeat_desc = {
-		desc = gaul_bloc_war_cb_defeat_desc
+		desc = japan_bloc_war_cb_defeat_desc
 	}
 
 	on_defeat = {
@@ -3056,9 +3057,9 @@ gaul_bloc_war_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_BLOC_WAR_NAME"
-	war_name_base = "GAUL_BLOC_WAR_NAME_BASE"
-	cb_name = "GAUL_BLOC_WAR_CB_NAME"
+	war_name = "JAPAN_BLOC_WAR_NAME"
+	war_name_base = "JAPAN_BLOC_WAR_NAME_BASE"
+	cb_name = "JAPAN_BLOC_WAR_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -3078,7 +3079,7 @@ gaul_bloc_war_cb = {
 	max_ai_diplo_distance_to_title = 500
 	
 	ai_score = {
-		value = gaul_bloc_war_ai_score_value
+		value = japan_bloc_war_ai_score_value
 	}
 
 	ai_score_mult = {
