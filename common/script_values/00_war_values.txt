@@ -1057,23 +1057,23 @@ house_relation_ai_score_value = {
 house_relation_less_likely_war_target_value = -150
 house_relation_more_likely_war_target_value = 150
 
-#frankokratia_leader_protection_value = {
+frankokratia_leader_protection_value = {
 	#Added at the end of every ai_score_mult in all CBs for now.
 
 	#Fourth Crusade flavor:
 	#We protect the Frankokratia leader to avoid breaking the story cycle.
-	#if = {
-	#	limit = {
-	#		scope:defender = {
-	#			any_owned_story = {
-	#				type = frankokratia_story
-	#				NOT = { has_variable = franko_war_complete }
-	#			}
-	#		}
-	#	}
-	#	multiply = 0
-	#}
-#}
+	if = {
+		limit = {
+			scope:defender = {
+				any_owned_story = {
+					type = frankokratia_story
+					NOT = { has_variable = franko_war_complete }
+				}
+			}
+		}
+		multiply = 0
+	}
+}
 
 ### Overlord join probability (fixed point between 0 and 1)
 # fallback value if the value is not defined in the selected casus belli.
