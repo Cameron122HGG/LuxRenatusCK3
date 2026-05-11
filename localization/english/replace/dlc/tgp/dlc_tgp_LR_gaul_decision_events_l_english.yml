@@ -31,7 +31,7 @@
  gallic_house_name: "[new_head.GetHouse.GetNameNoTooltip]"
  gallic_dynasty_name: "[new_head.GetDynasty.GetNameNoTooltip]"
  tgp_gaul_decision.9005.t: "$tgp_gaul_establish_house_fief_decision$: Family Splits"
- tgp_gaul_decision.9005.t.landless: "$tgp_gaul_establish_regnulum_manor_decision$: Family Splits"
+ tgp_gaul_decision.9005.t.landless: "$tgp_gaul_establish_manorial_manor_decision$: Family Splits"
  tgp_gaul_decision.9005.desc: "My [ROOT.Char.Custom2('RelationToMeShort', new_head)], [new_head.GetTitledFirstName], has boldly proclaimed the beginnings of a new noble house, the [new_head.GetHouse.GetBaseName], with [new_head.GetHerselfHimself] at its head.\n\nI cannot pretend to welcome this flagrant dismissal of my authority over Panaca [ROOT.Char.GetHouse.GetBaseName] — let us see how [new_head.GetSheHe] fares without my protection..."
  tgp_gaul_decision.9005.a: "The sun burns brightly, without the [ROOT.Char.GetHouse.GetBaseNameNoTooltip]'s shade."
  # tgp_gaul_become_magister_militum_decision
@@ -45,8 +45,8 @@
  tgp_gaul_decision.9102.feudal: "Our lands remain secure, and the authority falls back into our hands. In this new era, strength determines all."
  tgp_gaul_decision.9102.fallback: "Hopefully, in time, this proves to be a fruitful decision."
  tgp_gaul_decision.9102.a.admin: "It is a harsh new order."
- become_magister_militum_procuratio_vassals_tooltip: "#N [procuratio_count|0V] [governor|E] [vassals|E] will fight against you#!"
- become_magister_militum_regnulum_vassals_tooltip: "#P [regnulum_count|0V] [feudal|E] [vassals|E] will join you#!"
+ become_magister_militum_palatine_vassals_tooltip: "#N [palatine_count|0V] [governor|E] [vassals|E] will fight against you#!"
+ become_magister_militum_manorial_vassals_tooltip: "#P [manorial_count|0V] [feudal|E] [vassals|E] will join you#!"
  become_magister_militum_allied_vassals_tooltip: "#P [allied_count|0V] [allied|E] or same [house|E] [vassals|E] will join you#!"
 
  # tgp_gaul_imperial_branch_decision
@@ -125,7 +125,7 @@
  tgp_gaul_decision.9960.a: "...Perhaps they will find wisdom in the next life."
  tgp_gaul_decision.9960.b: "...and all concede to my dominion."
  tgp_bloc_members_join_war_effect_tt: "If you lead a [bloc|E], its members will join your [war|E]"
- tgp_gaul_assert_regional_dominion_mayor_crime_effect: "@warning_icon! #X The [ceremonial_regent|E] is [procuratio|E] and will consider this a [crime_i|E][crime|E]#!"
+ tgp_gaul_assert_regional_dominion_mayor_crime_effect: "@warning_icon! #X The [ceremonial_regent|E] is [palatine|E] and will consider this a [crime_i|E][crime|E]#!"
 
  tgp_gaul_decision.9961.t: "[title_scope.GetNameNoTierNoTooltip] Under One Banner"
  tgp_gaul_decision.9961.desc: "A bright day for [title_scope.GetNameNoTier]! Some were slow to see the wisdom in my rule, but a storm of arrows and fire can be a diligent school master.\n\nSoon this quarrel will be forgotten. The blood of the fallen will grow maize for tomorrow's children. May our display of unity paint the path for the empire at large."
@@ -136,13 +136,13 @@
  tgp_gaul_decision.9962.a: "What now?"
 
  tgp_gaul_decision.9963.opening: "[ROOT.Char.GetName], my banner calls,"
- tgp_gaul_decision.9963.desc: "You've born witness to the strife that plagues our empire. I, [super_regnulum.GetName], will unite [title_scope.GetName] and carve out a bastion for peace and stability. Submit to my banner or join the small minded in the folly of their defiance."
+ tgp_gaul_decision.9963.desc: "You've born witness to the strife that plagues our empire. I, [super_manorial.GetName], will unite [title_scope.GetName] and carve out a bastion for peace and stability. Submit to my banner or join the small minded in the folly of their defiance."
  tgp_gaul_decision.9963.a: "I submit"
  tgp_gaul_decision.9963.b: "To war!"
- tgp_gaul_decision.9963.a.tt: "If [super_regnulum.GetShortUIName] wins the [super_regnulum_war.GetName] [super_regnulum.GetSheHe] will hold [title_scope.GetName] and you will become [super_regnulum.GetHerHis] [vassal|E]"
- super_regnulum_war_no_holder_custom_tooltip: "Start a [domination_war|E] against [main_defender.GetShortUIName] over [title_scope.GetName]\n\t$BULLET$Every [de_jure|E] [county|E] [holder|E] of [title_scope.GetName] will join [main_defender.GetShortUIName] as a defender #weak (@soldier_icon![super_regnulum_war_current_enemy_strength|N0])#!"
- super_regnulum_potential_peaceful: "@alert_icon!To have every [de_jure|E] [county|E] [holder|E] of [title_scope.GetName], become your [vassal|E] without a fight:\n$EFFECT_LIST_BULLET$Your [prestige_level|E] is [prestige_i][GetModifier( 'prestige_level_4' ).GetNameWithTooltip|L]\n$EFFECT_LIST_BULLET$Your [legitimacy_level|E] is greater or equal to #V 3#!\n$EFFECT_LIST_BULLET$Have high [dread_i][dread|E]\n$EFFECT_LIST_BULLET$Overwhelming @soldier_icon!Military Strength#!"
- super_regnulum_reward_peaceful: "Every [de_jure|E] [county|E] [holder|E] of [title_scope.GetName] will become your [vassal|E]"
+ tgp_gaul_decision.9963.a.tt: "If [super_manorial.GetShortUIName] wins the [super_manorial_war.GetName] [super_manorial.GetSheHe] will hold [title_scope.GetName] and you will become [super_manorial.GetHerHis] [vassal|E]"
+ super_manorial_war_no_holder_custom_tooltip: "Start a [domination_war|E] against [main_defender.GetShortUIName] over [title_scope.GetName]\n\t$BULLET$Every [de_jure|E] [county|E] [holder|E] of [title_scope.GetName] will join [main_defender.GetShortUIName] as a defender #weak (@soldier_icon![super_manorial_war_current_enemy_strength|N0])#!"
+ super_manorial_potential_peaceful: "@alert_icon!To have every [de_jure|E] [county|E] [holder|E] of [title_scope.GetName], become your [vassal|E] without a fight:\n$EFFECT_LIST_BULLET$Your [prestige_level|E] is [prestige_i][GetModifier( 'prestige_level_4' ).GetNameWithTooltip|L]\n$EFFECT_LIST_BULLET$Your [legitimacy_level|E] is greater or equal to #V 3#!\n$EFFECT_LIST_BULLET$Have high [dread_i][dread|E]\n$EFFECT_LIST_BULLET$Overwhelming @soldier_icon!Military Strength#!"
+ super_manorial_reward_peaceful: "Every [de_jure|E] [county|E] [holder|E] of [title_scope.GetName] will become your [vassal|E]"
  gallic_expansion_internal_peace_trigger: "Internal Peace in [title_scope.GetNameNoTier]"
  gallic_dynasty_name: "[new_head.GetDynasty.GetNameNoTooltip]"
  is_mayor_tt: "This decision is only available to the Mayor of the Palace."

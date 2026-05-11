@@ -913,7 +913,7 @@ tgp_gaul_general.9300 = {
 				scope:liege = { has_realm_law = gallic_disarmament_law }
 				government_has_flag = government_is_gaul_feudal
 			}
-			text = tgp_gaul_general.9300.a.disarmament_regnulum
+			text = tgp_gaul_general.9300.a.disarmament_manorial
 		}
 		name = {
 			text = tgp_gaul_general.9300.a
@@ -937,7 +937,7 @@ tgp_gaul_general.9300 = {
 #scripted stuff for Eradicate House cb post war events tgp_gaul_general.9550
 
 #valid courtiers to kill
-scripted_trigger tgp_gaul_regnulum_eradicate_cb_valid_courtier = {
+scripted_trigger tgp_gaul_manorial_eradicate_cb_valid_courtier = {
 	NOR = {
 		scope:loser_spouse ?= this
 		scope:loser_heir ?= this
@@ -945,7 +945,7 @@ scripted_trigger tgp_gaul_regnulum_eradicate_cb_valid_courtier = {
 	}
 }
 #valid house members to kill
-scripted_trigger tgp_gaul_regnulum_eradicate_cb_valid_family = {
+scripted_trigger tgp_gaul_manorial_eradicate_cb_valid_family = {
 	NOT = {
 		scope:loser_heir ?= this
 	}
@@ -955,7 +955,7 @@ scripted_trigger tgp_gaul_regnulum_eradicate_cb_valid_family = {
 	}
 }
 #If loser isn't house head (i.e. has no manor), their heir becomes a landless adventurer. If not we move their manor to a friendly lord's land.
-scripted_effect tgp_gaul_regnulum_eradicate_cb_heir_go_to_savior = {
+scripted_effect tgp_gaul_manorial_eradicate_cb_heir_go_to_savior = {
 	scope:loser_heir ?= {
 		if = {
 			limit = {
@@ -971,7 +971,7 @@ scripted_effect tgp_gaul_regnulum_eradicate_cb_heir_go_to_savior = {
 		}
 		else = {
 			custom_tooltip = {
-				text = tgp_gaul_regnulum_eradicate_cb_heir_move_manor_to_savior_tt
+				text = tgp_gaul_manorial_eradicate_cb_heir_move_manor_to_savior_tt
 				scope:loser.domicile = {
 					move_domicile = scope:savior.capital_province
 				}
@@ -980,7 +980,7 @@ scripted_effect tgp_gaul_regnulum_eradicate_cb_heir_go_to_savior = {
 	}
 }
 #If loser successfully flees and isn't house head (i.e. has no manor), they becomes a landless adventurer. If not we move their manor to a friendly lord's land.
-scripted_effect tgp_gaul_regnulum_eradicate_cb_loser_go_to_savior = {
+scripted_effect tgp_gaul_manorial_eradicate_cb_loser_go_to_savior = {
 	if = {
 		limit = {
 			NOT = {
@@ -998,7 +998,7 @@ scripted_effect tgp_gaul_regnulum_eradicate_cb_loser_go_to_savior = {
 			exists = scope:savior
 		}
 		custom_tooltip = {
-			text = tgp_gaul_regnulum_eradicate_cb_heir_move_to_savior_tt
+			text = tgp_gaul_manorial_eradicate_cb_heir_move_to_savior_tt
 			scope:loser.domicile = {
 				move_domicile = scope:savior.capital_province
 			}
@@ -1006,7 +1006,7 @@ scripted_effect tgp_gaul_regnulum_eradicate_cb_loser_go_to_savior = {
 	}
 	else = {
 		custom_tooltip = {
-			text = tgp_gaul_regnulum_eradicate_cb_heir_move_to_cap_tt
+			text = tgp_gaul_manorial_eradicate_cb_heir_move_to_cap_tt
 			scope:loser.domicile = {
 				move_domicile = scope:loser_heir.top_liege.capital_province
 			}
@@ -1014,7 +1014,7 @@ scripted_effect tgp_gaul_regnulum_eradicate_cb_loser_go_to_savior = {
 	}
 }
 #Loser kills loser's family to avoid dishonor
-scripted_effect tgp_gaul_regnulum_eradicate_cb_kill_family = {
+scripted_effect tgp_gaul_manorial_eradicate_cb_kill_family = {
 	scope:loser = {
 		every_courtier = {
 			custom = every_close_family_house_member_in_court
@@ -1042,7 +1042,7 @@ scripted_effect tgp_gaul_regnulum_eradicate_cb_kill_family = {
 	}
 }
 #Winner kills loser's family
-scripted_effect tgp_gaul_regnulum_eradicate_cb_kill_house = {
+scripted_effect tgp_gaul_manorial_eradicate_cb_kill_house = {
 	scope:loser = {
 		every_courtier = {
 			custom = every_house_member_in_court
@@ -1172,7 +1172,7 @@ tgp_gaul_general.9550 = {
 		#Find courtiers to kill
 		ordered_courtier = {
 			limit = {
-				tgp_gaul_regnulum_eradicate_cb_valid_courtier = yes
+				tgp_gaul_manorial_eradicate_cb_valid_courtier = yes
 			}
 			#the more they like you the more it hurts
 			order_by = "opinion(root)"
@@ -1248,8 +1248,8 @@ tgp_gaul_general.9550 = {
 		}
 		#Heir sets up manor in land of savior
 		show_as_tooltip = {
-			tgp_gaul_regnulum_eradicate_cb_heir_go_to_savior = yes
-			tgp_gaul_regnulum_eradicate_cb_kill_family =  yes
+			tgp_gaul_manorial_eradicate_cb_heir_go_to_savior = yes
+			tgp_gaul_manorial_eradicate_cb_kill_family =  yes
 
 			#then kill yourself
 			death = {
@@ -1296,7 +1296,7 @@ tgp_gaul_general.9550 = {
 					title = tgp_gaul_general.9550.b.success
 					left_icon = scope:loser
 					right_icon = scope:winner
-					tgp_gaul_regnulum_eradicate_cb_loser_go_to_savior = yes
+					tgp_gaul_manorial_eradicate_cb_loser_go_to_savior = yes
 				}
 				save_scope_as = flee_success
 			}
@@ -1327,7 +1327,7 @@ tgp_gaul_general.9550 = {
 						death_reason = death_eradicated
 						killer = scope:winner
 					}
-					tgp_gaul_regnulum_eradicate_cb_kill_house = yes
+					tgp_gaul_manorial_eradicate_cb_kill_house = yes
 				}
 				send_interface_toast = {
 					title = tgp_gaul_general.9550.b.failure
@@ -1469,11 +1469,11 @@ tgp_gaul_general.9551 = {
 		}
 		if = {
 			limit = { exists = scope:suicide }
-			tgp_gaul_regnulum_eradicate_cb_heir_go_to_savior = yes
-			tgp_gaul_regnulum_eradicate_cb_kill_family =  yes
+			tgp_gaul_manorial_eradicate_cb_heir_go_to_savior = yes
+			tgp_gaul_manorial_eradicate_cb_kill_family =  yes
 		}
 		#take land
-		tgp_gaul_regnulum_eradicate_cb_transfer_effect = yes
+		tgp_gaul_manorial_eradicate_cb_transfer_effect = yes
 		if = {
 			limit = { exists = scope:suicide }
 			scope:loser = {
@@ -1524,7 +1524,7 @@ tgp_gaul_general.9551 = {
 		scope:loser = {
 			ordered_courtier = {
 				limit = {
-					tgp_gaul_regnulum_eradicate_cb_valid_family = yes
+					tgp_gaul_manorial_eradicate_cb_valid_family = yes
 				}
 				order_by = "opinion(scope:loser)"
 				max = 3
@@ -1571,7 +1571,7 @@ tgp_gaul_general.9551 = {
 			}
 		}
 		#kill house
-		tgp_gaul_regnulum_eradicate_cb_kill_house = yes
+		tgp_gaul_manorial_eradicate_cb_kill_house = yes
 		add_dread = medium_dread_gain
 		house = {
 			add_house_modifier = {

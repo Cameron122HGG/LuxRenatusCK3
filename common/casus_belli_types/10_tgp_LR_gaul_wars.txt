@@ -17,7 +17,7 @@ gaul_install_bloc_member_cb = {
 		has_tgp_dlc_trigger = yes
 		is_landed = yes
 		highest_held_title_tier >= tier_duchy
-		tgp_regnulum_or_bushido_trigger = yes # regnulum
+		tgp_manorial_or_bushido_trigger = yes # manorial
 		exists = house.house_confederation # In a Bloc
 	}
 
@@ -27,7 +27,7 @@ gaul_install_bloc_member_cb = {
 		highest_held_title_tier >= tier_duchy
 		top_liege = scope:attacker.top_liege # Same realm
 		NOT = { this = scope:attacker.top_liege } # Not top liege
-		government_is_gallic_trigger = yes # regnulum or procuratio
+		government_is_gallic_trigger = yes # manorial or palatine
 		trigger_if = { # Not in same Bloc
 			limit = { exists = house.house_confederation }
 			house.house_confederation != scope:attacker.house.house_confederation
@@ -52,7 +52,7 @@ gaul_install_bloc_member_cb = {
 
 	should_invalidate = {
 		OR = {
-			scope:attacker = { tgp_regnulum_or_bushido_trigger = no }
+			scope:attacker = { tgp_manorial_or_bushido_trigger = no }
 			scope:defender.house.house_confederation ?= scope:attacker.house.house_confederation # Same bloc already
 			NOT = { exists = scope:attacker.house.house_confederation } # Bloc destroyed
 		}
@@ -65,23 +65,23 @@ gaul_install_bloc_member_cb = {
 	on_declaration = {
 		on_declared_war = yes
 		if = {
-			limit = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
+			limit = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
 			scope:attacker = {
 				# Message for attacker
 				send_interface_toast = {
 					type = event_war_bad
-					title = tgp_gaul_regnulum_war_is_crime_title
+					title = tgp_gaul_manorial_war_is_crime_title
 					left_icon = scope:defender
 					right_icon = top_liege
 					top_liege = {
 						send_interface_toast = {
 							type = event_war_bad
-							title = tgp_gaul_regnulum_war_is_crime_sacral_king_gaul_title
+							title = tgp_gaul_manorial_war_is_crime_sacral_king_gaul_title
 							left_icon = scope:attacker
 							right_icon = scope:defender
 							add_opinion = {
 								target = scope:attacker
-								modifier = admin_regnulum_conquest_crime
+								modifier = admin_manorial_conquest_crime
 							}
 						}
 					}
@@ -94,8 +94,8 @@ gaul_install_bloc_member_cb = {
 		desc = {
 			desc = gaul_install_bloc_member_cb_victory_desc
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -184,8 +184,8 @@ gaul_install_bloc_member_cb = {
 		desc = {
 			desc = gaul_install_bloc_member_cb_white_peace_desc
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -226,8 +226,8 @@ gaul_install_bloc_member_cb = {
 		desc = {
 			desc = gaul_install_bloc_member_cb_defeat_desc
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -323,7 +323,7 @@ gaul_install_bloc_member_cb = {
 }
 
 # War for landless feudal to take land
-gaul_regnulum_conquest_county_landless_cb = {
+gaul_manorial_conquest_county_landless_cb = {
 	icon = japan_feudal_government
 	group = conquest
 	combine_into_one = yes
@@ -342,7 +342,7 @@ gaul_regnulum_conquest_county_landless_cb = {
 		has_tgp_dlc_trigger = yes
 		is_landed = no
 		government_is_gallic_trigger = yes
-		tgp_regnulum_or_bushido_trigger = yes
+		tgp_manorial_or_bushido_trigger = yes
 	}
 
 	# scope:defender
@@ -386,29 +386,29 @@ gaul_regnulum_conquest_county_landless_cb = {
 	}
 
 	on_invalidated_desc = {
-		desc = gaul_regnulum_conquest_cb_ended_invalid.desc
+		desc = gaul_manorial_conquest_cb_ended_invalid.desc
 	}
 
 	on_declaration = {
 		on_declared_war = yes
 		if = {
-			limit = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
+			limit = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
 			scope:attacker = {
 				# Message for attacker
 				send_interface_toast = {
 					type = event_war_bad
-					title = tgp_gaul_regnulum_war_is_crime_title
+					title = tgp_gaul_manorial_war_is_crime_title
 					left_icon = scope:defender
 					right_icon = top_liege
 					top_liege = {
 						send_interface_toast = {
 							type = event_war_bad
-							title = tgp_gaul_regnulum_war_is_crime_sacral_king_gaul_title
+							title = tgp_gaul_manorial_war_is_crime_sacral_king_gaul_title
 							left_icon = scope:attacker
 							right_icon = scope:defender
 							add_opinion = {
 								target = scope:attacker
-								modifier = admin_regnulum_conquest_crime
+								modifier = admin_manorial_conquest_crime
 							}
 						}
 					}
@@ -427,8 +427,8 @@ gaul_regnulum_conquest_county_landless_cb = {
 				desc = county_conquest_cb_victory_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -517,8 +517,8 @@ gaul_regnulum_conquest_county_landless_cb = {
 				desc = county_conquest_cb_white_peace_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -565,8 +565,8 @@ gaul_regnulum_conquest_county_landless_cb = {
 				desc = county_conquest_cb_defeat_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -643,9 +643,9 @@ gaul_regnulum_conquest_county_landless_cb = {
 	max_defender_score_from_occupation = 150
 	max_attacker_score_from_occupation = 150
 
-	war_name = "GAUL_REGNULUM_CONQUEST_LANDLESS_WAR_NAME"
-	war_name_base = "GAUL_REGNULUM_CONQUEST_LANDLESS_WAR_NAME_BASE"
-	cb_name = "GAUL_REGNULUM_CONQUEST_LANDLESS_COUNTY_CB_NAME"
+	war_name = "GAUL_MANORIAL_CONQUEST_LANDLESS_WAR_NAME"
+	war_name_base = "GAUL_MANORIAL_CONQUEST_LANDLESS_WAR_NAME_BASE"
+	cb_name = "GAUL_MANORIAL_CONQUEST_LANDLESS_COUNTY_CB_NAME"
 
 	ai_score_mult = {
 		value = 1
@@ -660,7 +660,7 @@ gaul_regnulum_conquest_county_landless_cb = {
 }
 
 # War for feudal to take land
-gaul_regnulum_conquest_county_cb = {
+gaul_manorial_conquest_county_cb = {
 	icon = japan_feudal_government
 	group = conquest
 	combine_into_one = yes
@@ -679,7 +679,7 @@ gaul_regnulum_conquest_county_cb = {
 		has_tgp_dlc_trigger = yes
 		is_landed = yes
 		# Attacker must be gallic Feudal, or have the Bushido tradition
-		tgp_regnulum_or_bushido_trigger = yes
+		tgp_manorial_or_bushido_trigger = yes
 	}
 
 	# scope:defender
@@ -705,7 +705,7 @@ gaul_regnulum_conquest_county_cb = {
 	should_invalidate = {
 		OR = {
 			NOT = {
-				scope:attacker = { tgp_regnulum_or_bushido_trigger = yes }
+				scope:attacker = { tgp_manorial_or_bushido_trigger = yes }
 			}
 			scope:defender = {
 				top_liege != scope:attacker.top_liege
@@ -714,29 +714,29 @@ gaul_regnulum_conquest_county_cb = {
 	}
 
 	on_invalidated_desc = {
-		desc = gaul_regnulum_conquest_cb_ended_invalid.desc
+		desc = gaul_manorial_conquest_cb_ended_invalid.desc
 	}
 
 	on_declaration = {
 		on_declared_war = yes
 		if = {
-			limit = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
+			limit = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
 			scope:attacker = {
 				# Message for attacker
 				send_interface_toast = {
 					type = event_war_bad
-					title = tgp_gaul_regnulum_war_is_crime_title
+					title = tgp_gaul_manorial_war_is_crime_title
 					left_icon = scope:defender
 					right_icon = top_liege
 					top_liege = {
 						send_interface_toast = {
 							type = event_war_bad
-							title = tgp_gaul_regnulum_war_is_crime_sacral_king_gaul_title
+							title = tgp_gaul_manorial_war_is_crime_sacral_king_gaul_title
 							left_icon = scope:attacker
 							right_icon = scope:defender
 							add_opinion = {
 								target = scope:attacker
-								modifier = admin_regnulum_conquest_crime
+								modifier = admin_manorial_conquest_crime
 							}
 						}
 					}
@@ -755,8 +755,8 @@ gaul_regnulum_conquest_county_cb = {
 				desc = county_conquest_cb_victory_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -845,8 +845,8 @@ gaul_regnulum_conquest_county_cb = {
 				desc = county_conquest_cb_white_peace_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -893,8 +893,8 @@ gaul_regnulum_conquest_county_cb = {
 				desc = county_conquest_cb_defeat_desc
 			}
 			triggered_desc = {
-				trigger = { tgp_gaul_internal_regnulum_war_is_crime_trigger = yes }
-				desc = gaul_regnulum_conquest_cb_admin_warning
+				trigger = { tgp_gaul_internal_manorial_war_is_crime_trigger = yes }
+				desc = gaul_manorial_conquest_cb_admin_warning
 			}
 		}
 	}
@@ -958,9 +958,9 @@ gaul_regnulum_conquest_county_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_REGNULUM_CONQUEST_WAR_NAME"
-	war_name_base = "GAUL_REGNULUM_CONQUEST_WAR_NAME_BASE"
-	cb_name = "GAUL_REGNULUM_CONQUEST_COUNTY_CB_NAME"
+	war_name = "GAUL_MANORIAL_CONQUEST_WAR_NAME"
+	war_name_base = "GAUL_MANORIAL_CONQUEST_WAR_NAME_BASE"
+	cb_name = "GAUL_MANORIAL_CONQUEST_COUNTY_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -996,7 +996,7 @@ gaul_demand_administrative_cb = {
 	# scope:attacker
 	allowed_for_character = {
 		government_has_flag = government_is_gaul_administrative
-		top_liege = { government_has_flag = government_is_gaul_administrative } # Cannot enforce admin in a regnulum realm
+		top_liege = { government_has_flag = government_is_gaul_administrative } # Cannot enforce admin in a manorial realm
 		tgp_is_ceremonial_liege_trigger = no
 	}
 
@@ -1906,8 +1906,8 @@ gaul_sacral_reconquest_cb = {
 	}
 }
 
-# War to reimpose procuratio
-gaul_refused_procuratio_cb = {
+# War to reimpose palatine
+gaul_refused_palatine_cb = {
 	icon = dissolution_war
 	group = civil_war
 	ai_only_against_liege = yes
@@ -1969,7 +1969,7 @@ gaul_refused_procuratio_cb = {
 						scope:defender.primary_title.tier <= scope:attacker.var:target_tier
 					}
 				}
-				desc = gaul_refused_procuratio_cb_victory_desc_defender
+				desc = gaul_refused_palatine_cb_victory_desc_defender
 			}
 			triggered_desc = {
 				trigger = {
@@ -1979,7 +1979,7 @@ gaul_refused_procuratio_cb = {
 						scope:defender.primary_title.tier <= scope:attacker.var:target_tier
 					}
 				}
-				desc = gaul_refused_procuratio_cb_victory_desc
+				desc = gaul_refused_palatine_cb_victory_desc
 			}
 		}
 	}
@@ -2048,9 +2048,9 @@ gaul_refused_procuratio_cb = {
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:defender = { is_local_player = yes } }
-				desc = gaul_refused_procuratio_cb_white_peace_desc_defender
+				desc = gaul_refused_palatine_cb_white_peace_desc_defender
 			}
-			desc = gaul_refused_procuratio_cb_white_peace_desc
+			desc = gaul_refused_palatine_cb_white_peace_desc
 		}
 
 	}
@@ -2086,9 +2086,9 @@ gaul_refused_procuratio_cb = {
 		first_valid = {
 			triggered_desc = {
 				trigger = { scope:defender = { is_local_player = yes } }
-				desc = gaul_refused_procuratio_cb_defeat_desc_defender
+				desc = gaul_refused_palatine_cb_defeat_desc_defender
 			}
-			desc = gaul_refused_procuratio_cb_defeat_desc
+			desc = gaul_refused_palatine_cb_defeat_desc
 		}
 
 	}
@@ -2142,7 +2142,7 @@ gaul_refused_procuratio_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_REFUSED_PROCURATIO_WAR_NAME"
+	war_name = "GAUL_REFUSED_palatine_WAR_NAME"
 
 	interface_priority = 80
 
@@ -2293,14 +2293,14 @@ gallic_eradicate_house_cb = {
 		}
 		#Show land transfer
 		show_as_tooltip = {
-			#loser/winner scopes are only being set here to correctly display the effects of tgp_gaul_regnulum_eradicate_cb_transfer_effect in the tooltip!
+			#loser/winner scopes are only being set here to correctly display the effects of tgp_gaul_manorial_eradicate_cb_transfer_effect in the tooltip!
 			scope:defender = {
 				save_scope_as = loser
 			}
 			scope:attacker = {
 				save_scope_as = winner
 			}
-			tgp_gaul_regnulum_eradicate_cb_transfer_effect = yes	
+			tgp_gaul_manorial_eradicate_cb_transfer_effect = yes	
 		}
 		#show death
 		show_as_tooltip = {
@@ -2421,14 +2421,14 @@ gallic_eradicate_house_cb = {
 		}
 		#Show land transfer
 		show_as_tooltip = {
-			#loser/winner scopes are only being set here to correctly display the effects of tgp_gaul_regnulum_eradicate_cb_transfer_effect in the tooltip!
+			#loser/winner scopes are only being set here to correctly display the effects of tgp_gaul_manorial_eradicate_cb_transfer_effect in the tooltip!
 			scope:defender = {
 				save_scope_as = winner
 			}
 			scope:attacker = {
 				save_scope_as = loser
 			}
-			tgp_gaul_regnulum_eradicate_cb_transfer_effect = yes
+			tgp_gaul_manorial_eradicate_cb_transfer_effect = yes
 		}
 		#Show killing
 		show_as_tooltip = {
@@ -2511,8 +2511,8 @@ gallic_eradicate_house_cb = {
 	}
 }
 
-# War to become regnulum as gallic_regent_admin
-gaul_establish_regnulum_administration_cb = {
+# War to become manorial as gallic_regent_admin
+gaul_establish_manorial_administration_cb = {
 	icon = japan_feudal_government
 	group = subjugation
 	combine_into_one = yes
@@ -2530,11 +2530,11 @@ gaul_establish_regnulum_administration_cb = {
 	}
 
 	on_invalidated_desc = {
-		desc = gaul_establish_regnulum_administration_cb_ended_invalid.desc
+		desc = gaul_establish_manorial_administration_cb_ended_invalid.desc
 	}
 
 	on_victory_desc = {
-		desc = gaul_establish_regnulum_administration_cb_victory_desc
+		desc = gaul_establish_manorial_administration_cb_victory_desc
 	}
 
 	on_victory = {
@@ -2623,7 +2623,7 @@ gaul_establish_regnulum_administration_cb = {
 	}
 
 	on_white_peace_desc = {
-		desc = gaul_establish_regnulum_administration_cb_white_peace_desc
+		desc = gaul_establish_manorial_administration_cb_white_peace_desc
 	}
 
 	on_white_peace = {
@@ -2659,7 +2659,7 @@ gaul_establish_regnulum_administration_cb = {
 	}
 
 	on_defeat_desc = {
-		desc = gaul_establish_regnulum_administration_cb_defeat_desc
+		desc = gaul_establish_manorial_administration_cb_defeat_desc
 	}
 
 	on_defeat = {
@@ -2669,7 +2669,7 @@ gaul_establish_regnulum_administration_cb = {
 		}
 		scope:defender = {
 			save_scope_as = gallic_regent_feudal
-			show_as_tooltip = { gallic_establish_regnulum_administration_reward_effect = yes }
+			show_as_tooltip = { gallic_establish_manorial_administration_reward_effect = yes }
 			trigger_event = tgp_gaul_decision.9606
 		}
 
@@ -2745,9 +2745,9 @@ gaul_establish_regnulum_administration_cb = {
 	attacker_allies_inherit = yes
 	defender_allies_inherit = yes
 
-	war_name = "GAUL_ESTABLISH_REGNULUM_ADMINISTRATION_WAR_NAME"
-	war_name_base = "GAUL_ESTABLISH_REGNULUM_ADMINISTRATION_WAR_NAME_BASE"
-	cb_name = "GAUL_ESTABLISH_REGNULUM_ADMINISTRATION_CB_NAME"
+	war_name = "GAUL_ESTABLISH_MANORIAL_ADMINISTRATION_WAR_NAME"
+	war_name_base = "GAUL_ESTABLISH_MANORIAL_ADMINISTRATION_WAR_NAME_BASE"
+	cb_name = "GAUL_ESTABLISH_MANORIAL_ADMINISTRATION_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes
@@ -2777,8 +2777,8 @@ gaul_bloc_war_cb = {
 	# scope:attacker
 	allowed_for_character = {
 		has_tgp_dlc_trigger = yes
-		# regnulum Bloc leader checks
-		tgp_regnulum_or_bushido_trigger = yes
+		# manorial Bloc leader checks
+		tgp_manorial_or_bushido_trigger = yes
 		is_house_head = yes
 		house.house_confederation.leading_house ?= house
 		any_held_title = { is_noble_family_title = yes }
@@ -2793,7 +2793,7 @@ gaul_bloc_war_cb = {
 
 	# scope:defender
 	allowed_against_character = {
-		tgp_regnulum_or_bushido_trigger = yes
+		tgp_manorial_or_bushido_trigger = yes
 		is_house_head = yes
 		house.house_confederation.leading_house ?= house
 		NOR = {
@@ -2815,10 +2815,10 @@ gaul_bloc_war_cb = {
 
 	should_invalidate = {
 		OR = {
-			scope:attacker = { tgp_regnulum_or_bushido_trigger = no }
+			scope:attacker = { tgp_manorial_or_bushido_trigger = no }
 			scope:defender = {
 				OR = {
-					tgp_regnulum_or_bushido_trigger = no
+					tgp_manorial_or_bushido_trigger = no
 					NOT = { exists = house.house_confederation } # Left bloc
 					house.house_confederation ?= scope:attacker.house.house_confederation # Same bloc
 					is_landed = no
