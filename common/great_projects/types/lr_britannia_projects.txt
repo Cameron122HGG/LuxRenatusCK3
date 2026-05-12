@@ -4,6 +4,8 @@
 @learning_map_icon = "gfx/interface/icons/icon_skill_learning.dds"
 @offa_dyke = "gfx/interface/illustrations/great_projects/offa_dyke.dds"
 @cyfraith_cymru = "gfx/interface/illustrations/great_projects/cyfraith_cymru.dds"
+@fortify_tintagel = "gfx/interface/illustrations/great_projects/fortify_tintagel.dds"
+@christus_victor_temple = "gfx/interface/illustrations/great_projects/christus_victor_temple.dds"
 
 dinas_emrys = {
 	icon = {
@@ -629,16 +631,18 @@ offa_dyke = {
 	ai_province_filter = geographical_region
 	province_filter_target = offa_dyke
 	is_shown = {
-		#title:c_hereford = { holder.top_liege = root.top_liege }
-		#title:c_shropshire = { holder.top_liege = root.top_liege }
-		#title:c_cheshire = { holder.top_liege = root.top_liege }
-		
+		OR = {
+			title:c_hereford = { holder.top_liege = root.top_liege }
+			title:c_shropshire = { holder.top_liege = root.top_liege }
+			title:c_cheshire = { holder.top_liege = root.top_liege }
+		}
 		NOT = { is_planning_great_project = offa_dyke }
 		NOT = { has_global_variable = offa_dyke_cooldown }
 		is_ruler = yes
 		OR = {
 			culture = { has_cultural_pillar = heritage_brythonic }
 			culture = { has_cultural_pillar = heritage_goidelic }
+			culture = { has_cultural_pillar = heritage_west_germanic }
 		}
 	}
 	can_start_planning = {
@@ -1142,6 +1146,556 @@ cyfraith_cymru = {
 					text = "discover_primogeniture"
 				}
 				scope:owner.culture = { add_innovation = innovation_primogeniture }
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+	}
+}
+
+fortify_tintagel = {
+	icon = {
+		reference = @combat_map_icon
+	}
+	illustration = {
+		reference = @fortify_tintagel
+	}
+	name = {
+		desc = great_project_type_fortify_tintagel
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+			multiply = 2
+		}
+	}
+	ai_will_do = {
+		value = 10
+	}
+	construction_time = { value = great_project_base_construction_time }
+	invite_interaction = request_great_project_contribution_interaction
+	province_filter = geographical_region
+	ai_province_filter = geographical_region
+	province_filter_target = tintagel
+	is_shown = {
+		NOT = { is_planning_great_project = fortify_tintagel }
+		NOT = { has_global_variable = fortify_tintagel_cooldown }
+		is_ruler = yes
+		OR = {
+			culture = { has_cultural_pillar = heritage_brythonic }
+			culture = { has_cultural_pillar = heritage_goidelic }
+			title:c_cornwall = {
+				holder.top_liege = root.top_liege
+			}
+		}
+	}
+	can_start_planning = {
+		custom_tooltip = {
+			text = "TINTAGEL_LOCATION_TOOLTIP"
+			title:c_cornwall = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		title:c_cornwall.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = lr_abandoned_project_modifier years = 10 }
+			trigger_event = fortify_tintagel.0006
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		scope:owner = {
+			trigger_event = fortify_tintagel.0005
+		}
+		set_global_variable = { name = fortify_tintagel_cooldown months = -1 }
+		title:b_tintagel.title_province = { add_special_building = lr_fortified_tintagel }
+
+	}
+	project_contributions = {
+		bridge = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_tintagel.0001
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+			}
+		}
+		seagate = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_tintagel.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}	
+		}	
+		citadel = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+                prestige = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_tintagel.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		ward = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = fortify_tintagel.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+  
+	}
+}
+
+christus_victor_temple = {
+	icon = {
+		reference = @learning_map_icon
+	}
+	illustration = {
+		reference = @christus_victor_temple
+	}
+	name = {
+		desc = great_project_type_christus_victor_temple
+	}
+	cost = {
+		treasury_or_gold = {
+			value = great_project_base_contribution_cost
+			multiply = 2
+		}
+	}
+	ai_will_do = {
+		value = 10
+	}
+	construction_time = { value = great_project_base_construction_time }
+	invite_interaction = request_great_project_contribution_interaction
+	is_shown = {
+		faith = faith:sol_victor
+		NOT = { is_planning_great_project = christus_victor_temple }
+		NOT = { has_global_variable = christus_victor_temple_cooldown }
+		is_ruler = yes
+	}
+	can_start_planning = {
+		custom_description = {
+			text = "YARLESTRE_LOCATION_TOOLTIP"
+			title:b_yarlestre = { holder.top_liege = root.top_liege }
+		}
+	}
+	is_valid = {
+		scope:owner = { faith = faith:sol_victor }
+		title:b_yarlestre.holder = { top_liege = scope:owner.top_liege }
+	}
+	on_cancel = {
+		scope:owner = {
+			add_prestige = -500 
+			add_stress = 40
+			add_character_modifier = { modifier = lr_abandoned_project_modifier years = 10 }
+			trigger_event = christus_victor_temple.0009
+		}
+	}
+	on_start_build = { 
+		scope:owner = {
+			add_legitimacy_effect = { LEGITIMACY = minor_legitimacy_gain }
+		}
+		scope:great_project = {
+			every_contribution = {
+				limit = {
+					contribution_is_funded = yes
+				}
+				contributor = {
+					add_prestige = minor_prestige_value 
+				}	
+			}
+		}
+	}
+	on_complete = {
+		great_project_notify_completion = { CHARACTER = scope:owner }
+		scope:owner = {
+			trigger_event = christus_victor_temple.0010
+		}
+		set_global_variable = { name = christus_victor_temple_cooldown months = -1 }
+		title:b_yarlestre.title_province = { add_special_building = lr_christus_victor_temple }
+	}
+	project_contributions = {
+		foundations = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+                piety = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+					root.faith = { religion_tag = christianity_religion }
+				}
+			} 
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = christus_victor_temple.0001
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }	
+			ai_will_do = {
+				value = 10
+			}
+		}
+		colonnade = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+					root.faith = { religion_tag = christianity_religion }
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = christus_victor_temple.0002
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}	
+		}	
+		apse = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+                prestige = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+					root.faith = { religion_tag = christianity_religion }
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = christus_victor_temple.0003
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		dome = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+					root.faith = { religion_tag = christianity_religion }
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = christus_victor_temple.0004
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+        mosaics = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 1.5
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+					root.faith = { religion_tag = christianity_religion }
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = christus_victor_temple.0005
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		shrine = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+                prestige = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+					root.faith = { religion_tag = christianity_religion }
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = { 
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = christus_victor_temple.0006
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+		mausoleum = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+				}
+                piety = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+					root.faith = { religion_tag = christianity_religion }
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = christus_victor_temple.0007
+				}
+			}
+			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
+			ai_will_do = {
+				value = 10
+			}
+		}
+        schola = {
+			cost = {
+				treasury_or_gold = {
+					value = great_project_base_contribution_cost
+					multiply = 2
+				}
+			}
+			contributor_is_valid = { 
+				OR = {
+					this = scope:owner 
+					is_vassal_or_below_of = scope:owner 
+					is_tributary_of = scope:owner 
+					root.faith = { religion_tag = christianity_religion }
+				} 	
+			}
+			is_required = yes
+			on_contribution_funded = {
+				great_project_notify_contribution = yes
+				great_project_contribution_catalyst_effect = yes
+			}
+			contributor_cooldown = individual_contribution_cooldown_value
+			on_complete = {
+				if = {
+					limit = { is_alive = yes }
+					trigger_event = christus_victor_temple.0008
+				}
 			}
 			ai_check_interval_by_tier = { barony = 0 county = 12 duchy = 9 kingdom = 6 empire = 6 hegemony = 6 }
 			ai_will_do = {

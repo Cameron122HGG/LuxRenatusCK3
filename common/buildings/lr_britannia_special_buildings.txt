@@ -129,3 +129,116 @@ lr_offa_dyke = {
 
 	flag = travel_point_of_interest_martial_minor
 }
+
+lr_fortified_tintagel = {
+
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_structure_the_citadel_of_aleppo.dds" 
+	
+	can_construct_potential = {
+	}
+
+	province_modifier = {
+		defender_holding_advantage = 5
+		stationed_maa_toughness_mult = 0.1
+		fort_level = 6
+		hostile_raid_time = 0.7
+		garrison_size = 0.2
+	}
+	character_modifier = {
+		embarkation_cost_mult = -0.5
+	}
+	ai_value = {
+		base = 100
+		modifier = { 
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+	
+	type = special
+
+	flag = travel_point_of_interest_martial_minor
+}
+
+lr_christus_victor_temple = {
+	effect_desc = {
+		triggered_desc = {
+			trigger = { has_dlc_feature = legends_of_the_dead }
+			desc = building_funeral_effect_desc
+		}
+	}
+	construction_time = very_slow_construction_time
+	
+	asset = {
+		type = pdxmesh
+		name = "ep2_building_special_canterbury_01_mesh"
+	}
+
+	type_icon = "icon_structure_parthenon_theotokos.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	
+	can_construct = {
+		
+	}
+	
+	is_enabled = {
+		custom_description = {
+			text = holy_site_christian_or_holy_site_trigger
+			OR = {
+				scope:holder = {
+					faith = faith:sol_victor
+				}
+				custom_description = {
+					text = holy_site_building_trigger
+					barony = {
+						is_holy_site_of = scope:holder.faith
+					}
+				}
+			}
+		}
+	}
+	
+	show_disabled = yes
+	
+	cost_gold = 1000
+
+	character_modifier = {
+		monthly_piety = 0.25
+		monthly_dynasty_prestige_mult = 0.1
+		monthly_county_control_growth_factor = 0.1
+		monthly_piety_gain_per_happy_powerful_vassal_add = 0.15
+	}
+	
+	county_modifier = {
+		tax_mult = 0.15
+		development_growth_factor = 0.15
+		development_growth = 0.1
+	}
+	
+	province_modifier = {
+		monthly_income = 3
+	}
+
+	on_complete = {
+		mandala_built_piety_duchy_building_t3_effect = yes
+	}
+
+	ai_value = {
+		base = 100
+		ai_pious_building_preference_modifier = yes
+		modifier = { # Fill all building slots before going for special buildings
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+	
+	type = special
+
+	flag = travel_point_of_interest_religious
+	flag = holy_building
+}
