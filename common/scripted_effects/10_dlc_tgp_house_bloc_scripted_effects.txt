@@ -21,6 +21,7 @@ tgp_create_house_bloc_effect = {
 			limit = {
 				OR = {
 					has_house_aspiration_parameter = ceremony_cheaper_feasts
+					has_house_aspiration_parameter = is_gallic_ceremony
 					scope:type = flag:ceremony
 				}
 			}
@@ -36,6 +37,7 @@ tgp_create_house_bloc_effect = {
 			limit = {
 				OR = {
 					has_house_aspiration_parameter = unlocks_japanese_manor_watch_house
+					has_house_aspiration_parameter = is_gallic_determination
 					scope:type = flag:determination
 				}
 			}
@@ -51,6 +53,7 @@ tgp_create_house_bloc_effect = {
 			limit = {
 				OR = {
 					has_house_aspiration_parameter = unlocks_japanese_manor_shrine
+					has_house_aspiration_parameter = is_gallic_humility
 					scope:type = flag:humility
 				}
 			}
@@ -66,6 +69,7 @@ tgp_create_house_bloc_effect = {
 			limit = {
 				OR = {
 					has_house_aspiration_parameter = unlocks_japanese_manor_brewery
+					has_house_aspiration_parameter = is_gallic_prosperity
 					scope:type = flag:prosperity
 				}
 			}
@@ -81,6 +85,7 @@ tgp_create_house_bloc_effect = {
 			limit = {
 				OR = {
 					has_house_aspiration_parameter = unlocks_japanese_manor_archive
+					has_house_aspiration_parameter = is_gallic_service
 					scope:type = flag:service
 				}
 			}
@@ -96,6 +101,7 @@ tgp_create_house_bloc_effect = {
 			limit = {
 				OR = {
 					has_house_aspiration_parameter = unlocks_japanese_manor_armory
+					has_house_aspiration_parameter = is_gallic_strength
 					scope:type = flag:strength
 				}
 			}
@@ -107,6 +113,16 @@ tgp_create_house_bloc_effect = {
 				}
 			}
 		}
+		###LR - added Ceremony Block as a fallback
+		else = {
+			house_head = {
+				create_confederation = {
+					name = CONFEDERATION_HOUSE_NAME
+					type = confederation_type:house_bloc_ceremony
+					leader = house
+				}
+			}
+		}		
 		house_confederation ?= {
 			save_scope_as = bloc
 			set_coa = scope:bloc_creator
