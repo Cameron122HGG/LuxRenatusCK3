@@ -283,13 +283,13 @@ lux_tradition_western_roman = {
 
 
 #####GAUL########
-tradition_tgp_sacred_chivalry = {
+lux_tradition_tgp_sacred_chivalry = {
 	category = regional
 
 	layers = {
 		0 = martial
-		1 = asian
-		4 = samurai.dds
+		1 = western
+		4 = roman_ceremonies.dds
 	}
 
 	is_shown = {
@@ -300,31 +300,27 @@ tradition_tgp_sacred_chivalry = {
 	}
 	can_pick = {
 		culture_head = {
-			top_liege = { has_character_flag = shogun_flag }
+			#top_liege = { has_character_flag = shogun_flag }
 			has_government = gaul_feudal_government
 		}
-		# Mutually exclusive with Imperial Peace and other Horse Archer MaA
-		NOR = {
-			culture_tradition:tradition_horse_lords = { is_in_list = traits }
-			culture_tradition:tradition_devoted_horsemanship = { is_in_list = traits }
-			culture_tradition:tradition_tgp_sacral_peace = { is_in_list = traits }
-			culture_tradition:tradition_tgp_sacral_peace = { is_in_list = traits }
+		NOT = {
+			culture_tradition:lux_tradition_tgp_sacral_peace = { is_in_list = traits }
 		}
 	}
 
 	parameters = {
-		unlock_mounted_samurai_units = yes
-		unlock_infantry_samurai_units = yes
-		must_pledge_loyalty_to_liege = yes
+		rowdy_trait_more_common = yes
+		#must_pledge_loyalty_to_liege = yes
 		honorable_trait_bonuses = yes
 		prowess_from_martial_education = yes
 		stalwart_leader_non_admin_duels = yes
-		non_admin_close_family_non_martial_gender_knights_in_defensive_wars = yes
+		#non_admin_close_family_non_martial_gender_knights_in_defensive_wars = yes
 	}
 
 	character_modifier = {
 		character_opinion_from_high_prowess_add = 2
 		character_opinion_from_low_prowess_add = -1
+		heavy_cavalry_max_size_add = 1
 	}
 
 	cost = {
@@ -334,20 +330,41 @@ tradition_tgp_sacred_chivalry = {
 				desc = BASE
 				format = "BASE_VALUE_FORMAT"
 			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_courtly = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_or_courtly_desc
+				}
+			}
+			multiply = tradition_replacement_cost_if_relevant
 		}
 	}
 
 	ai_will_do = {
-		value = 1000 # AI should always try to pick this when they can
+		value = 50
+		if = {
+			limit = { NOT = { culture_pillar:ethos_courtly = { is_in_list = traits } } }
+			multiply = 0.25
+		}
+		if = {
+			limit = { culture_pillar:ethos_bellicose = { is_in_list = traits } }
+			multiply = 1.5
+		}
 	}
 }
-tradition_tgp_sacral_peace = {
+lux_tradition_tgp_sacral_peace = {
 	category = regional
 
 	layers = {
-		0 = martial
-		1 = asian
-		4 = samurai.dds
+		0 = steward
+		1 = western
+		4 = palace_politics.dds
 	}
 
 	is_shown = {
@@ -359,23 +376,23 @@ tradition_tgp_sacral_peace = {
 	
 	can_pick = {
 		# Mutually exclusive with Bushido and other Horse Archer MaA
-		NOR = {
-			culture_tradition:tradition_horse_lords = { is_in_list = traits }
-			culture_tradition:tradition_devoted_horsemanship = { is_in_list = traits }
-			culture_tradition:tradition_tgp_sacral_peace = { is_in_list = traits }
-			culture_tradition:tradition_tgp_sacred_chivalry = { is_in_list = traits }
+		NOT = {
+			culture_tradition:lux_tradition_tgp_sacred_chivalry = { is_in_list = traits }
 		}
 	}
 
 	parameters = {
-		unlock_mounted_samurai_units = yes
-		prowess_from_martial_education = yes
-		non_admin_close_family_non_martial_gender_knights_in_defensive_wars = yes
-		stalwart_leader_non_admin_duels = yes
+		pensive_trait_more_common = yes
+		guardian_education_better_outcomes = yes
+		can_adopt_administrative_government_as_kingdom_tier = yes
+		unlock_co_emperors = yes
+		unlock_junior_emperors = yes
+		#allows_noble_family_adoption = yes		
 	}
 
 	character_modifier = {
-		defender_holding_advantage = 2
+		monthly_influence_mult = 0.10	
+		stewardship_per_influence_level = 1
 	}
 	
 	cost = {
@@ -388,14 +405,14 @@ tradition_tgp_sacral_peace = {
 			if = {
 				limit = {
 					NOR = {
+						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
 						culture_pillar:ethos_courtly = { is_in_list = traits }
-						culture_pillar:ethos_communal = { is_in_list = traits }
-						culture_pillar:ethos_spiritual = { is_in_list = traits }
+						culture_pillar:ethos_egalitarian = { is_in_list = traits }
 					}
 				}
 				add = {
 					value = tradition_incompatible_ethos_penalty
-					desc = not_courtly_communal_or_spiritual_desc
+					desc = not_bureaucratic_courtly_or_egalitarian_desc
 				}
 			}
 			multiply = tradition_replacement_cost_if_relevant
@@ -405,14 +422,93 @@ tradition_tgp_sacral_peace = {
 	ai_will_do = {
 		value = 50
 		if = {
-			# Only Courtly cultures should pick this
 			limit = { NOT = { culture_pillar:ethos_courtly = { is_in_list = traits } } }
-			multiply = 0
+			multiply = 0.25
 		}
 		if = {
-		 	# AI should avoid stacking traditions for courtly court positions
-			limit = { culture_tradition:tradition_music_theory = { is_in_list = traits } }
-			multiply = 0.25
+			limit = { culture_pillar:ethos_bureaucratic = { is_in_list = traits } }
+			multiply = 1.5
 		}
 	}
 }
+
+lux_tradition_tgp_sacral_harmony = {
+	category = regional
+
+	layers = {
+		0 = diplo
+		1 = western
+		4 = cultivated_sophistication.dds
+	}
+
+	is_shown = {
+		has_tgp_dlc_trigger = yes
+		culture_head = {
+			government_is_gallic_trigger = yes
+		}
+	}
+	
+	can_pick = {
+		any_culture_county = {
+			title_province = {
+				geographical_region = LR_world_europe_gaul
+			}
+		}
+	}
+
+	parameters = {
+		holds_triumphs = yes
+		frontier_themes_borrow_neighbor_troops = yes
+		peasant_and_populist_factions_less_common = yes
+		doesnt_care_about_culture_faith_in_factions = yes
+	}
+
+	culture_modifier = {
+		cultural_acceptance_gain_mult = 0.10
+	}
+	character_modifier = {
+		heavy_cavalry_max_size_add = 1
+		light_cavalry_max_size_add = 1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_double_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
+						culture_pillar:ethos_courtly = { is_in_list = traits }
+						culture_pillar:ethos_egalitarian = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bureaucratic_courtly_or_egalitarian_desc
+				}
+			}
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 50
+		if = {
+			limit = { NOT = { culture_pillar:ethos_courtly = { is_in_list = traits } } }
+			multiply = 0.50
+		}
+		if = {
+			limit = { culture_pillar:ethos_bellicose = { is_in_list = traits } }
+			multiply = 1.50
+		}
+	}
+}
+
+
+
+
+
