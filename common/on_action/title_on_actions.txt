@@ -156,6 +156,56 @@ on_title_destroyed = {
 # scope:previous_holder = previous holder. Might be dead
 on_title_gain = {
 	effect = {
+		#####Again, as in 'on vassal change', just to be sure, checks either on primary title change
+		####Remove Gallic gov if no gallic liege
+		###LR Gaul - Change Feudal to Gallic Feudal, and Admin govs to Gallic Admin
+		#if = {
+		#	limit = {
+		#		root.top_liege = { government_is_gallic_trigger = yes }
+		#		root = {
+		#			government_has_flag = government_is_feudal
+		#			government_is_gallic_trigger = no
+		#		}
+		#	}
+		#	scope:vassal = {
+		#		tgp_domicile_conversion_when_changing_government_type = {
+		#			NEW_DOMICILE_TYPE = gallic_manor
+		#			NEW_GOVERNMENT_TYPE = gaul_administrative_government
+		#		}
+		#		change_government = gaul_feudal_government
+		#		create_noble_family_effect = { GOVERNMENT_GIVER = root.top_liege }
+		#	}
+		#}
+		#else_if = {
+		#	limit = {
+		#		root.top_liege = { government_is_gallic_trigger = yes }
+		#		root = {
+		#			government_has_flag = government_is_administrative
+		#			government_is_gallic_trigger = no
+		#		}
+		#	}
+		#	scope:vassal = {
+		#		tgp_domicile_conversion_when_changing_government_type = {
+		#			NEW_DOMICILE_TYPE = gallic_manor
+		#			NEW_GOVERNMENT_TYPE = gaul_administrative_government
+		#		}
+		#		change_government = gaul_administrative_government
+		#		create_noble_family_effect = { GOVERNMENT_GIVER = root.top_liege }
+		#	}
+		#}
+		###Now the remove gallic gov if your top liege is not Gallic
+		#if = {
+		#	limit = {
+		#		root.top_liege = {
+		#			government_is_gallic_trigger = no
+		#		}
+		#		root = { government_is_gallic_trigger = yes }
+		#	}
+		#	root = {
+		#		change_government = feudal_government
+		#	}
+		#}
+	
 		######################
 		# COUNTY-TIER TITLES #
 		######################
@@ -3943,54 +3993,76 @@ on_vassal_gained = {
 		realm_maintenance.1000 # Notify vassals of new liege
 	}
 	effect = {
-		###Remove Gallic gov if no gallic liege
-		##LR Gaul - Change Feudal to Gallic Feudal, and Admin govs to Gallic Admin
-		if = {
-			limit = {
-				root = { government_is_gallic_trigger = yes }
-				scope:vassal = {
-					government_has_flag = government_is_feudal
-					government_is_gallic_trigger = no
-				}
-			}
-			scope:vassal = {
-				tgp_domicile_conversion_when_changing_government_type = {
-					NEW_DOMICILE_TYPE = gallic_manor
-					NEW_GOVERNMENT_TYPE = gaul_administrative_government
-				}
-				change_government = gaul_feudal_government
-				create_noble_family_effect = { GOVERNMENT_GIVER = root }
-			}
-		}
-		else_if = {
-			limit = {
-				root = { government_is_gallic_trigger = yes }
-				scope:vassal = {
-					government_has_flag = government_is_administrative
-					government_is_gallic_trigger = no
-				}
-			}
-			scope:vassal = {
-				tgp_domicile_conversion_when_changing_government_type = {
-					NEW_DOMICILE_TYPE = gallic_manor
-					NEW_GOVERNMENT_TYPE = gaul_administrative_government
-				}
-				change_government = gaul_administrative_government
-				create_noble_family_effect = { GOVERNMENT_GIVER = root }
-			}
-		}
-		##Now the remove gallic gov if your top liege is not Gallic
-		if = {
-			limit = {
-				scope:vassal.top_liege = {
-					government_is_gallic_trigger = no
-				}
-				scope:vassal = { government_is_gallic_trigger = yes }
-			}
-			scope:vassal = {
-				change_government = feudal_government
-			}
-		}		
+		####Remove Gallic gov if no gallic liege
+		###LR Gaul - Change Feudal to Gallic Feudal, and Admin govs to Gallic Admin
+		#if = {
+		#	limit = {
+		#		root = { government_is_gallic_trigger = yes }
+		#		scope:vassal = {
+		#			government_has_flag = government_is_feudal
+		#			government_is_gallic_trigger = no
+		#		}
+		#	}
+		#	scope:vassal = {
+		#		tgp_domicile_conversion_when_changing_government_type = {
+		#			NEW_DOMICILE_TYPE = gallic_manor
+		#			NEW_GOVERNMENT_TYPE = gaul_administrative_government
+		#		}
+		#		change_government = gaul_feudal_government
+		#		create_noble_family_effect = { GOVERNMENT_GIVER = root }
+		#		every_vassal_or_below = {
+		#			limit = { government_has_flag = government_is_feudal }
+		#			tgp_domicile_conversion_when_changing_government_type = {
+		#				NEW_DOMICILE_TYPE = gallic_manor
+		#				NEW_GOVERNMENT_TYPE = gaul_administrative_government
+		#			}
+		#			change_government = gaul_feudal_government
+		#			create_noble_family_effect = { GOVERNMENT_GIVER = root }				
+		#		}
+		#	}
+		#}
+		#else_if = {
+		#	limit = {
+		#		root = { government_is_gallic_trigger = yes }
+		#		scope:vassal = {
+		#			government_has_flag = government_is_administrative
+		#			government_is_gallic_trigger = no
+		#		}
+		#	}
+		#	scope:vassal = {
+		#		tgp_domicile_conversion_when_changing_government_type = {
+		#			NEW_DOMICILE_TYPE = gallic_manor
+		#			NEW_GOVERNMENT_TYPE = gaul_administrative_government
+		#		}
+		#		change_government = gaul_administrative_government
+		#		create_noble_family_effect = { GOVERNMENT_GIVER = root }
+		#		every_vassal_or_below = {
+		#			limit = { government_has_flag = government_is_administrative }
+		#			tgp_domicile_conversion_when_changing_government_type = {
+		#				NEW_DOMICILE_TYPE = gallic_manor
+		#				NEW_GOVERNMENT_TYPE = gaul_administrative_government
+		#			}
+		#			change_government = gaul_administrative_government
+		#			create_noble_family_effect = { GOVERNMENT_GIVER = root }				
+		#		}
+		#	}
+		#}
+		###Now the remove gallic gov if your top liege is not Gallic
+		#if = {
+		#	limit = {
+		#		scope:vassal.top_liege = {
+		#			government_is_gallic_trigger = no
+		#		}
+		#		scope:vassal = { government_is_gallic_trigger = yes }
+		#	}
+		#	scope:vassal = {
+		#		change_government = feudal_government
+		#		every_vassal_or_below = { 
+		#			limit = { government_is_gallic_trigger = yes }
+		#			change_government = feudal_government 
+		#		}
+		#	}
+		#}		
 	
 		#Nomadic Confederation members must be independent
 		if = {
@@ -4461,56 +4533,6 @@ on_realm_capital_change = {
 # Not called if new primary title is the same as the previous primary title
 on_primary_title_change = {
 	effect = {
-		#####Again, as in 'on vassal change', just to be sure, checks either on primary title change
-		####Remove Gallic gov if no gallic liege
-		###LR Gaul - Change Feudal to Gallic Feudal, and Admin govs to Gallic Admin
-		#if = {
-		#	limit = {
-		#		root.top_liege = { government_is_gallic_trigger = yes }
-		#		root = {
-		#			government_has_flag = government_is_feudal
-		#			government_is_gallic_trigger = no
-		#		}
-		#	}
-		#	scope:vassal = {
-		#		tgp_domicile_conversion_when_changing_government_type = {
-		#			NEW_DOMICILE_TYPE = gallic_manor
-		#			NEW_GOVERNMENT_TYPE = gaul_administrative_government
-		#		}
-		#		change_government = gaul_feudal_government
-		#		create_noble_family_effect = { GOVERNMENT_GIVER = root.top_liege }
-		#	}
-		#}
-		#else_if = {
-		#	limit = {
-		#		root.top_liege = { government_is_gallic_trigger = yes }
-		#		root = {
-		#			government_has_flag = government_is_administrative
-		#			government_is_gallic_trigger = no
-		#		}
-		#	}
-		#	scope:vassal = {
-		#		tgp_domicile_conversion_when_changing_government_type = {
-		#			NEW_DOMICILE_TYPE = gallic_manor
-		#			NEW_GOVERNMENT_TYPE = gaul_administrative_government
-		#		}
-		#		change_government = gaul_administrative_government
-		#		create_noble_family_effect = { GOVERNMENT_GIVER = root.top_liege }
-		#	}
-		#}
-		###Now the remove gallic gov if your top liege is not Gallic
-		#if = {
-		#	limit = {
-		#		root.top_liege = {
-		#			government_is_gallic_trigger = no
-		#		}
-		#		root = { government_is_gallic_trigger = yes }
-		#	}
-		#	root = {
-		#		change_government = feudal_government
-		#	}
-		#}
-		
 		###Checking if character should be named Pharaoh
 		remove_variable = should_be_pharaoh
 		if = {
