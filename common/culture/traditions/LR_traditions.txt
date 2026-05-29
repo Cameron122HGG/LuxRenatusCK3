@@ -509,7 +509,142 @@ lux_tradition_tgp_sacral_harmony = {
 	}
 }
 
+###
+lux_tradition_nile = {
+	category = realm
 
+	layers = {
+		0 = diplo
+		1 = indian
+		4 = farmland.dds
+	}
+
+	is_shown = {
+		NOT = {
+			culture_tradition:tradition_intensive_farming = { is_in_list = traits }
+		}
+	}
+	
+	can_pick = {
+		custom_tooltip = {
+			text = culture_in_farmlands_or_floodplains_terrain_desc
+			any_culture_county = {
+				county_has_province_with_terrain = {
+					terrain = farmlands
+					terrain = floodplains
+				}
+			}
+		}
+		custom_tooltip = {
+			text = cultrad_not_nomadic_government_type
+			scope:character = {
+				NOT = {
+					government_has_flag = government_is_nomadic
+				}
+			}
+		}
+	}
+	
+	parameters = {
+		can_travel_along_rivers = yes
+		hard_working_traits_more_valued = yes
+		unlocks_waterworks_buildings = yes
+		waterworks_additional_bonuses = yes		
+	}
+	character_modifier = {
+		men_at_arms_recruitment_cost = 0.25
+		prowess = -2
+		floodplains_travel_danger = floodplains_medium_danger_reduction
+	}
+	county_modifier = {
+		#farmlands_development_growth_factor = 0.3
+		#farmlands_construction_gold_cost = -0.1
+		floodplains_development_growth_factor = 0.3
+		floodplains_construction_gold_cost = -0.1
+		oasis_development_growth_factor = 0.3
+		oasis_construction_gold_cost = -0.1		
+		#farmlands_levy_size = 0.1
+		floodplains_levy_size = 0.1
+		oasis_levy_size = 0.1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					culture_pillar:ethos_bellicose = { is_in_list = traits }
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = culture_not_bellicose
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_culture_county = {
+							count >= 5
+							county_has_province_with_terrain = {
+								terrain = farmlands
+								terrain = floodplains
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = culture_in_farmlands_or_floodplains_terrain_count_desc
+				}
+			}
+
+			if = {
+				limit = {
+					culture_tradition_reduction_trigger = { TRADITION = tradition_agrarian }
+				}
+				multiply = {
+					value = 0.5
+					desc = inspired_by_culture_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 400
+		if = {
+			limit = {
+				NOT = {
+					scope:character = {
+						any_sub_realm_county = {
+							count >= 2
+							culture = scope:character.culture
+							county_has_province_with_terrain = {
+								terrain = farmlands
+								terrain = floodplains
+							}
+						}
+					}
+				}
+			}
+			multiply = 0
+		}
+		if = {
+			limit = {
+				scope:character = {
+					government_has_flag = government_is_tribal
+				}
+			}
+			multiply = 0
+		}
+	}
+}
 
 
 
