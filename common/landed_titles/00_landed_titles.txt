@@ -8319,8 +8319,8 @@ e_britannia = {
 			name_list_sarmato_briton = lx_logres
 		}
 
-		d_bedford = { #Essex or Trinovantia
-			color = { 241 15 15 }
+		d_london = { #London separated from Essex
+			color = { 230 5 5 }
 			capital = c_middlesex
 
 			cultural_names = {
@@ -8361,6 +8361,16 @@ e_britannia = {
 					color = { 230 5 5 }
 					province = 1530
 				}
+			}
+		}
+		d_bedford = { #Essex or Trinovantia
+			color = { 241 15 15 }
+			capital = c_bedford
+
+			cultural_names = {
+				name_list_anglo_saxon = cn_east_seaxe
+				name_list_old_saxon = cn_east_seaxe
+				name_list_sarmato_briton = lx_trinuid
 			}
 
 			c_essex = {
@@ -9101,6 +9111,61 @@ e_britannia = {
 				}
 			}
 		}
+	}
+
+	k_wales = {
+		color = { 135 25 3 }
+		capital = c_cardiganshire
+			cultural_names = {
+				name_list_gaelic = lx_chuimrigh
+				name_list_irish = lx_cuimrig
+				name_list_pictish = lx_cumbr
+				name_list_norse = lx_valskaland
+				name_list_norwegian = lx_valskaland
+				name_list_swedish = lx_valskaland
+				name_list_danish = lx_valskaland
+				name_list_welsh = lx_cymru
+				name_list_cumbrian = lx_cumbr
+				name_list_breton = lx_kembre
+				name_list_cornish = lx_kembra
+				name_list_scottish = lx_wales
+				name_list_romano_briton = lx_combrogia
+				name_list_roman = lx_cambria
+				name_list_norman = lx_gales
+				name_list_english = lx_wales
+				name_list_anglo_saxon = lx_wealas
+				name_list_sarmato_briton = lx_combrogia
+			}
+		can_create = {
+			trigger_if = {
+				limit = {
+					is_ai = yes
+				}
+				culture = {
+					has_cultural_pillar = heritage_brythonic
+				}
+			}
+		}
+		ai_primary_priority = {
+			if = {
+			limit = {
+				culture = culture:welsh
+			}
+			add = @correct_culture_primary_score
+		}
+			if = {
+			limit = {
+				OR = {
+					culture = culture:cumbrian
+					culture = culture:cornish
+					culture = culture:breton
+
+				}
+			}
+			add = @better_than_the_alternatives_score
+		}
+
+		}
 
 		d_magonsaete = {
 			color = { 25 140 12 }
@@ -9193,62 +9258,6 @@ e_britannia = {
 				}
 			}
 		}
-	}
-
-	k_wales = {
-		color = { 135 25 3 }
-		capital = c_cardiganshire
-			cultural_names = {
-				name_list_gaelic = lx_chuimrigh
-				name_list_irish = lx_cuimrig
-				name_list_pictish = lx_cumbr
-				name_list_norse = lx_valskaland
-				name_list_norwegian = lx_valskaland
-				name_list_swedish = lx_valskaland
-				name_list_danish = lx_valskaland
-				name_list_welsh = lx_cymru
-				name_list_cumbrian = lx_cumbr
-				name_list_breton = lx_kembre
-				name_list_cornish = lx_kembra
-				name_list_scottish = lx_wales
-				name_list_romano_briton = lx_combrogia
-				name_list_roman = lx_cambria
-				name_list_norman = lx_gales
-				name_list_english = lx_wales
-				name_list_anglo_saxon = lx_wealas
-				name_list_sarmato_briton = lx_combrogia
-			}
-		can_create = {
-			trigger_if = {
-				limit = {
-					is_ai = yes
-				}
-				culture = {
-					has_cultural_pillar = heritage_brythonic
-				}
-			}
-		}
-		ai_primary_priority = {
-			if = {
-			limit = {
-				culture = culture:welsh
-			}
-			add = @correct_culture_primary_score
-		}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:cumbrian
-					culture = culture:cornish
-					culture = culture:breton
-
-				}
-			}
-			add = @better_than_the_alternatives_score
-		}
-
-		}
-
 		d_gwynedd = {
 			color = { 100 0 0 }
 			capital = c_cardiganshire
@@ -9815,23 +9824,22 @@ e_britannia = {
 		}
 		ai_primary_priority = {
 			if = {
-			limit = {
-				culture = culture:cornish
-			}
-			add = @correct_culture_primary_score
-		}
-			if = {
-			limit = {
-				OR = {
-					culture = culture:welsh
-					culture = culture:cumbrian
-					culture = culture:breton
-
+				limit = {
+					culture = culture:cornish
 				}
+				add = @correct_culture_primary_score
 			}
-			add = @better_than_the_alternatives_score
-		}
-
+			if = {
+				limit = {
+					OR = {
+						culture = culture:welsh
+						culture = culture:cumbrian
+						culture = culture:breton
+	
+					}
+				}
+				add = @better_than_the_alternatives_score
+			}
 		}
 
 			cultural_names = {
@@ -10404,7 +10412,7 @@ e_britannia = {
 		}
 	}
 
-	k_petty_eanglia = {
+	d_petty_eanglia = {
 		color = { 188 0 7 }
 		capital = c_norfolk
 
@@ -10430,7 +10438,7 @@ e_britannia = {
 		}
 	}
 
-	k_petty_powys = {
+	d_petty_powys = {
 		color = { 34 135 125 }
 		capital = c_maldwyn
 
@@ -10456,12 +10464,12 @@ e_britannia = {
 		}
 	}
 
-	k_petty_gwynedd = {
+	d_petty_gwynedd = {
 		color = { 170 95 20 }
 		capital = c_cardiganshire
 	}
 
-	k_petty_dyfed = {
+	d_petty_dyfed = {
 		color = { 0 86 148 }
 		capital = c_carmarthenshire
 
@@ -10487,7 +10495,7 @@ e_britannia = {
     	}
 	}
 
-	k_petty_sussex = {
+	d_petty_sussex = {
 		color = { 60 115 185 }
 		capital = c_sussex
 
@@ -10513,7 +10521,7 @@ e_britannia = {
 		}
 	}
 
-	k_petty_kent = {
+	d_petty_kent = {
 		color = { 110 25 50 }
 		capital = c_kent
 
@@ -10539,7 +10547,7 @@ e_britannia = {
 				}
 	}
 
-	k_petty_essex = {
+	d_petty_essex = {
 		color = { 191 15 35 }
 		capital = c_essex
 
@@ -10565,7 +10573,7 @@ e_britannia = {
 		}
 	}
 
-	k_petty_york = {
+	d_petty_york = {
 		color = { 213 216 212 }
 		capital = c_north_riding
 
@@ -10590,12 +10598,12 @@ e_britannia = {
 		}
 	}
 
-	k_petty_brythonia = {
+	d_petty_brythonia = {
 		color = { 155 145 5 }
 		capital = c_hereford
 	}
 
-	k_petty_cornovia = {
+	d_petty_cornovia = {
 		color = { 20 60 65 }
 		capital = c_cornwall
 
@@ -10622,7 +10630,7 @@ e_britannia = {
 		}
 	}
 
-	k_petty_danelaw = {
+	d_petty_danelaw = {
 		color = { 20 60 65 }
 		capital = c_nottinghamshire
 

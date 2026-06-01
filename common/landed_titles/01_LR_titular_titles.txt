@@ -153,7 +153,7 @@ k_east_francia = {
 #	ai_primary_priority = { add = @never_primary_score }
 #}
 
-k_titular_northumbria = {
+d_titular_northumbria = {
 	color = { 165 15 55 }
 	
 	capital = c_cheshire
@@ -190,19 +190,19 @@ k_titular_bosporus = {
 	capital = c_kerch
 }
 
-k_titular_strathclyde = {
+d_titular_strathclyde = {
 	color = { 10 164 243 }
 
 	capital = c_lennox
 }
 
-k_titular_caledonia = {
+d_titular_caledonia = {
 	color = { 110 140 50 }
 
 	capital = c_gowrie
 }
 
-k_titular_dalriada = {
+d_titular_dalriada = {
 	color = { 31 138 40 }
 
 	capital = c_argyll
@@ -297,3 +297,96 @@ k_frisia_titular = {
 
 	capital = c_westfriesland
 }
+
+
+###Britain Update
+k_london = {
+	color = { 230 5 5 }
+	definite_form = yes
+	capital = c_middlesex	
+}
+e_london = {
+	color = { 230 5 5 }
+	definite_form = yes
+	capital = c_middlesex	
+}
+e_england = {
+	color = { 202 26 26 }
+	definite_form = yes
+	capital = c_kent
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				OR = {
+					culture = culture:english
+					culture = culture:anglo_saxon
+
+				}
+			}
+			add = @correct_culture_primary_score
+		}
+	}
+}
+e_britons = {
+	color = { 10 105 56 }
+	definite_form = yes
+	capital = c_somerset
+	
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = culture:cornish
+			}
+			add = @correct_culture_primary_score
+		}
+		if = {
+			limit = {
+				OR = {
+					culture = culture:welsh
+					culture = culture:cumbrian
+					culture = culture:breton
+	
+				}
+			}
+			add = @better_than_the_alternatives_score
+		}
+	}	
+}
+e_anglo_danes = {
+	color = { 20 60 65 }
+	definite_form = yes
+	capital = c_north_riding
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = {
+					has_cultural_pillar = heritage_north_germanic
+				}
+			}
+			add = @correct_culture_primary_score
+			add = @better_than_the_alternatives_score
+
+		}
+	}	
+}
+e_scotland = {
+	color = { 230 140 0 }
+	capital = c_lothian
+}
+e_ireland = {
+	color = { 6 127 2 }
+	capital = c_dublin
+}
+
+
+
+
+
+
+
+
+
+
+
+
