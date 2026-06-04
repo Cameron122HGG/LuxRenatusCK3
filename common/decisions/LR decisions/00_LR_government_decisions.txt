@@ -511,12 +511,50 @@ abandon_ancient_government_decision = {
 				liege = {
 					has_government = clan_government
 				}	
-			}			
+			}
+			AND = {
+				OR = {
+					has_government = gaul_feudal_government
+					has_government = gaul_administrative_government	
+				}
+				NOR = {
+					liege = {
+						has_government = gaul_feudal_government
+					}
+					liege = {
+						has_government = gaul_administrative_government			
+					}			
+				}	
+			}
 		}
 	}
 
 	is_valid = {
 		trigger_if = {
+			limit = {
+				OR = {
+					has_government = gaul_feudal_government
+					has_government = gaul_administrative_government	
+				}
+				NOR = {
+					liege = {
+						has_government = gaul_feudal_government
+					}
+					liege = {
+						has_government = gaul_administrative_government			
+					}			
+				}
+			}
+			NOR = {
+				liege = {
+					has_government = gaul_feudal_government
+				}
+				liege = {
+					has_government = gaul_administrative_government			
+				}			
+			}
+		}
+		trigger_else_if = {
 			limit = {
 				is_independent_ruler = no
 			}
@@ -544,7 +582,6 @@ abandon_ancient_government_decision = {
 	}
 
 	effect = {
-		#gain_legitimizing_legend_seed_tooltip_effect = yes		
 		if = {
 			limit = {
 				liege = { has_government = clan_government }
@@ -604,4 +641,110 @@ abandon_ancient_government_decision = {
 		base = 100
 	}
 }
+
+adopt_gaul_gov_decision = {
+	picture = {
+		trigger = {
+			has_tgp_dlc_trigger = yes
+			liege = {
+				culture = { has_cultural_pillar = heritage_japonic }
+			}
+		}
+		reference = "gfx/interface/illustrations/decisions/tgp_dominance.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
+	desc = adopt_gaul_gov_from_liege_decision_desc
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 72
+		duchy = 36
+		kingdom = 36
+		empire = 36
+		hegemony = 12
+	}
+
+	is_shown = {
+		is_independent_ruler = no
+		OR = {
+			liege = {
+				has_government = gaul_feudal_government
+			}
+			liege = {
+				has_government = gaul_administrative_government			
+			}			
+		}
+		NOR = {
+			has_government = gaul_feudal_government
+			has_government = gaul_administrative_government	
+		}
+		OR = {
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_administrative
+		}		
+	}
+
+	is_valid = {
+		OR = {
+			liege = {
+				has_government = gaul_feudal_government
+			}
+			liege = {
+				has_government = gaul_administrative_government			
+			}			
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		custom_tooltip = {
+			text = permafrost_feudal_ban
+			NOT = { culture = { has_cultural_parameter = permafrost_cannot_become_feudal } }
+		}
+	}
+
+	cost = {
+		prestige = 100
+	}
+
+	effect = {
+		change_government = gaul_feudal_government
+		hidden_effect = {
+			create_noble_family_effect = { GOVERNMENT_GIVER = root }
+		}
+		custom_tooltip = {
+			text = LR_high_tribal_vassal_adoption		
+			every_vassal_or_below = {
+				limit = {
+					OR = {
+						government_has_flag = government_is_feudal
+						government_has_flag = government_is_administrative
+					}
+				}
+				change_government = gaul_feudal_government
+			}
+		}
+		save_scope_as = actor
+		trigger_event = lr_gov_events.0009
+		hidden_effect = {
+			every_vassal = {
+				trigger_event = {
+					id = lr_gov_events.0010
+					days = 3
+				}
+			}
+		}		
+	}
+
+	ai_potential = {
+		NOT = { mpo_has_gok_mongol_empire_trigger = yes } #Stop the Mongols from slowing their conquest. 
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
 
