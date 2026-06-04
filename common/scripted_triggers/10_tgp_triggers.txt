@@ -549,6 +549,39 @@ tgp_is_ceremonial_regent_trigger = {
 	tgp_has_ceremonial_liege_title_trigger = no
 }
 
+should_become_classical_admin_trigger = {
+	has_ep3_dlc_trigger = yes
+	OR = {
+		top_liege = {
+			has_government = classical_administrative_government
+		}
+		OR = {
+			is_independent_ruler = yes
+			liege = {
+				NOT = {
+					government_has_flag = government_is_administrative
+				}
+			}
+		}
+	}
+}
+should_become_diadochi_admin_trigger = {
+	has_ep3_dlc_trigger = yes
+	OR = {
+		top_liege = {
+			has_government = diadochi_administrative_government
+		}
+		OR = {
+			is_independent_ruler = yes
+			liege = {
+				NOT = {
+					government_has_flag = government_is_administrative
+				}
+			}
+		}
+	}
+}
+
 tgp_should_become_meritocratic_trigger = {
 	has_tgp_dlc_trigger = yes
 	OR = {
