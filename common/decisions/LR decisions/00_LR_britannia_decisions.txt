@@ -837,7 +837,7 @@ unify_england_anglo_saxon_decision = {
 
 	effect = {
 		show_as_tooltip = {
-			get_title = title:k_united_england
+			get_title = title:k_anglo_saxons
 		}
 		hidden_effect = {
 			root = { save_scope_as = united_england_founder }
@@ -845,16 +845,16 @@ unify_england_anglo_saxon_decision = {
 			root.primary_title = {
 				every_in_de_jure_hierarchy = {
 					limit = { tier = tier_duchy }
-					set_de_jure_liege_title = title:k_united_england
+					set_de_jure_liege_title = title:k_anglo_saxons
 				}
 			}
-			title:k_united_england = { set_de_jure_liege_title = scope:former_imperial_liege }
+			title:k_anglo_saxons = { set_de_jure_liege_title = scope:former_imperial_liege }
 		
 			create_title_and_vassal_change = {
 				type = created
 				save_scope_as = title_change
 			}
-			title:k_united_england = {
+			title:k_anglo_saxons = {
 				change_title_holder = {
 					holder = scope:united_england_founder
 					change = scope:title_change
@@ -865,13 +865,13 @@ unify_england_anglo_saxon_decision = {
 				limit = { 
 					title_capital_county.title_province = { geographical_region = ghw_region_england } 
 				}
-				set_de_jure_liege_title = title:k_united_england
+				set_de_jure_liege_title = title:k_anglo_saxons
 			}
 			every_kingdom = {
 				limit = { 
 					title_capital_county.title_province = { geographical_region = ghw_region_england } 
 					#this = exists
-					NOT = { this = title:k_united_england } 
+					NOT = { this = title:k_anglo_saxons } 
 				}
 				holder = { 
 					destroy_title = prev 
@@ -942,7 +942,7 @@ unify_england_briton_decision = {
 
 	effect = {
 		show_as_tooltip = {
-			get_title = title:k_united_england_briton
+			get_title = title:k_logres
 		}
 		hidden_effect = {
 			root = { save_scope_as = united_england_founder }
@@ -950,16 +950,16 @@ unify_england_briton_decision = {
 			root.primary_title = {
 				every_in_de_jure_hierarchy = {
 					limit = { tier = tier_duchy }
-					set_de_jure_liege_title = title:k_united_england_briton
+					set_de_jure_liege_title = title:k_logres
 				}
 			}
-			title:k_united_england_briton = { set_de_jure_liege_title = scope:former_imperial_liege }
+			title:k_logres = { set_de_jure_liege_title = scope:former_imperial_liege }
 		
 			create_title_and_vassal_change = {
 				type = created
 				save_scope_as = title_change
 			}
-			title:k_united_england_briton = {
+			title:k_logres = {
 				change_title_holder = {
 					holder = scope:united_england_founder
 					change = scope:title_change
@@ -970,13 +970,13 @@ unify_england_briton_decision = {
 				limit = { 
 					title_capital_county.title_province = { geographical_region = ghw_region_england } 
 				}
-				set_de_jure_liege_title = title:k_united_england_briton
+				set_de_jure_liege_title = title:k_logres
 			}
 			every_kingdom = {
 				limit = { 
 					title_capital_county.title_province = { geographical_region = ghw_region_england } 
 					#this = exists
-					NOT = { this = title:k_united_england_briton } 
+					NOT = { this = title:k_logres } 
 				}
 				holder = { 
 					destroy_title = prev 
