@@ -284,7 +284,59 @@ change_to_administrative_effect = {
 			}
 			change_government = meritocratic_government
 		}
-		else = { # Administrative
+		else_if = { ##Classical Admin
+			limit = {
+				trigger_if = {
+					limit = {
+						exists = scope:has_selected_a_government
+					}
+					scope:has_selected_a_government = flag:classical_administrative
+				}
+				trigger_else_if = {
+					limit = {
+						scope:governor_liege ?= this
+					}
+					has_ep3_dlc_trigger = yes
+					should_become_classical_admin_trigger = yes
+				}
+				trigger_else = {
+					scope:governor_liege = { government_has_flag = government_is_classical_administrative }
+				}
+			}
+			change_to_administrative_holding_effect = yes
+			tgp_domicile_conversion_when_changing_government_type = {
+				NEW_DOMICILE_TYPE = estate
+				NEW_GOVERNMENT_TYPE = classical_administrative_government
+			}
+			change_government = classical_administrative_government
+		}
+		else_if = { ##Diadochi Admin
+			limit = {
+				trigger_if = {
+					limit = {
+						exists = scope:has_selected_a_government
+					}
+					scope:has_selected_a_government = flag:diadochi_administrative
+				}
+				trigger_else_if = {
+					limit = {
+						scope:governor_liege ?= this
+					}
+					has_ep3_dlc_trigger = yes
+					should_become_diadochi_admin_trigger = yes
+				}
+				trigger_else = {
+					scope:governor_liege = { government_has_flag = government_is_diadochi_administrative }
+				}
+			}
+			change_to_administrative_holding_effect = yes
+			tgp_domicile_conversion_when_changing_government_type = {
+				NEW_DOMICILE_TYPE = estate
+				NEW_GOVERNMENT_TYPE = diadochi_administrative_government
+			}
+			change_government = diadochi_administrative_government
+		}
+		else_if = { # Administrative
 			add_character_flag = new_government_is_byz_admin
 			change_to_administrative_holding_effect = yes
 			tgp_domicile_conversion_when_changing_government_type = {

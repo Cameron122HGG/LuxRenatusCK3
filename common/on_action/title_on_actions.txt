@@ -4411,4 +4411,19 @@ on_realm_capital_change = {
 # scope:previous_title = previous primary title held by character
 # Not called if new primary title is the same as the previous primary title
 on_primary_title_change = {
+	effect = {
+		###Checking if character should be named Pharaoh
+		remove_variable = should_be_pharaoh
+		if = {
+			limit = {
+				OR = {
+					root.primary_title = title:k_egypt
+					root.primary_title = title:k_upper_egypt
+					root.primary_title = title:e_egypt
+					root.primary_title = title:e_ptolemaic_empire
+				}
+			}
+			set_variable = should_be_pharaoh
+		}
+	}
 }
