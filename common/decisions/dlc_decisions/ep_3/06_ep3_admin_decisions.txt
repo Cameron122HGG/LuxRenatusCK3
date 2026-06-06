@@ -1184,6 +1184,7 @@ convert_to_administrative_decision = {
 		item = { # Classical Admin Roman branch
 			value = go_classical_administrative_government
 			is_shown = {
+				#religion = religion:islam_religion
 				has_ep3_dlc_trigger = yes
 			}
 			is_valid = {
@@ -1232,24 +1233,27 @@ convert_to_administrative_decision = {
 			}
 		}	
 		
-		item = { # palatine / AKA Gaul Administrative
+		item = { # Palatine / AKA Gaul Administrative
 			value = go_gaul_administrative_government
 			is_shown = {
 				has_tgp_dlc_trigger = yes
+				any_realm_county = {
+					title_province = { geographical_region = LR_world_europe_gaul }
+				}				
 			}
 			is_valid = {
-			top_liege = {
-				NOR = {
-					has_government = administrative_government
-					has_government = celestial_government
-					has_government = meritocratic_government
-					has_government = japan_administrative_government
-					has_government = classical_administrative_government
-					has_government = despotic_administrative_government
-					has_government = diadochi_administrative_government
-					#has_government = gaul_administrative_government
+				top_liege = {
+					NOR = {
+						has_government = administrative_government
+						has_government = celestial_government
+						has_government = meritocratic_government
+						has_government = japan_administrative_government
+						has_government = classical_administrative_government
+						has_government = despotic_administrative_government
+						has_government = diadochi_administrative_government
+						#has_government = gaul_administrative_government
+					}
 				}
-			}
 				custom_tooltip = {
 					text = convert_to_administrative_japanese_desc
 					tgp_can_become_japan_administrative_trigger = yes
@@ -1260,32 +1264,6 @@ convert_to_administrative_decision = {
 			icon = "gfx/interface/icons/government_types/japan_administrative_government.dds"
 			ai_chance = {
 				value = 100
-			}
-		}
-
-	item = { # Roman Imperial
-			value = go_roman_imperial_government
-			is_shown = {
-				has_tgp_dlc_trigger = yes
-			}
-			is_valid = {
-				top_liege = {
-					NOR = {
-						has_government = administrative_government
-						has_government = celestial_government
-						has_government = meritocratic_government
-						has_government = japan_administrative_government
-						has_government = classical_administrative_government
-						#has_government = roman_imperial_government
-						has_government = diadochi_administrative_government
-						has_government = gaul_administrative_government
-					}
-				}
-			}
-			localization = go_roman_imperial_government_name
-			icon = "gfx/interface/icons/government_types/roman_imperial_government.dds"
-			ai_chance = {
-				value = 20
 			}
 		}
 	}
@@ -1321,19 +1299,8 @@ convert_to_administrative_decision = {
 			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:diadochi_administrative }
 		}
 		else_if = {
-			limit = { scope:go_despotic_administrative_government = yes
-			}
-			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:despotic_administrative }
-		}
-		else_if = {
-			limit = { scope:go_gaul_administrative_government = yes
-			}
+			limit = { scope:go_gaul_administrative_government = yes }
 			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:gaul_administrative }
-		}
-		else_if = {
-			limit = { scope:go_roman_imperial_government = yes
-			}
-			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:roman_imperial }
 		}
 		save_scope_as = actor
 		if = {

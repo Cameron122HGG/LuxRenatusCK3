@@ -649,7 +649,7 @@ tgp_gaul_become_gallic_dictator_decision = {
 	title = tgp_gaul_become_gallic_dictator_decision
 	desc = tgp_gaul_become_gallic_dictator_decision_desc
 	selection_tooltip = tgp_gaul_become_gallic_dictator_decision_tooltip
-	picture = { reference = "gfx/interface/illustrations/event_story/tgp_japanese_shogunate.dds" }
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds" }
 	sort_order = 80
 
 	cost = {
@@ -801,10 +801,6 @@ tgp_gaul_sacral_king_restoration_decision = {
 			limit = {
 				is_ai = no
 				has_title = title:k_sacral_king_gaul_throne
-			}
-			add_achievement_global_variable_effect = {
-				VARIABLE = finished_ep4_03_sword_of_gaul_achievement
-				VALUE = yes
 			}
 		}
 		trigger_event = tgp_gaul_decision.9301
@@ -1264,11 +1260,8 @@ tgp_gaul_restore_gallic_government_decision = {
 		is_at_war = no
 		has_realm_law = gallic_bureaucracy_3
 		prestige_level >= 4
-		completely_controls = title:d_kinai
-		completely_controls = title:d_nankaido
-		completely_controls = title:d_hokurikudo
-		completely_controls = title:d_west_bando
-		completely_controls = title:d_north_saikaido
+		completely_controls = title:k_france
+		completely_controls = title:k_neustria
 		OR = {
 			government_allows = administrative
 			government_allows = create_cadet_branches
@@ -1314,7 +1307,7 @@ tgp_gaul_assert_regional_dominion_government_decision = {
 		}
 	}
 	selection_tooltip = tgp_gaul_assert_regional_dominion_government_decision_tooltip
-	picture = { reference = "gfx/interface/illustrations/decisions/tgp_dominance.dds" }
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_realm.dds" }
 
 	sort_order = 85
 	cost = {
@@ -1538,104 +1531,6 @@ move_gallic_dictatorship_court_decision = {
 
 # high_king Starting a Ceremonial Monarch War
 ### Begin the Restoration War ###
-tgp_gaul_high_king_war_decision = {
-	decision_group_type = major
-	confirm_text = commit_suicide_decision_confirm
-	picture = { reference = "gfx/interface/illustrations/decisions/tgp_kowtow.dds" }
-	sort_order = 80
-
-	cost = {
-		prestige = {
-			value = massive_prestige_gain
-		}
-	}
-
-	is_shown = {
-		is_ai = no
-		has_tgp_dlc_trigger = yes
-		tgp_is_ceremonial_liege_trigger = yes
-		tgp_is_ceremonial_regent_trigger = no
-		joined_faction ?= {
-			OR = {
-				faction_leader ?= {
-					is_ai = yes
-					is_leading_faction_type = restore_ceremonial_liege_faction
-				}
-				any_faction_member = {
-					this != root
-					is_ai = yes
-					is_landed = yes
-				}
-			}
-		}
-		NOT = { is_at_war_with = root.top_liege }
-	}
-
-	is_valid = {
-		is_at_war = no
-	}
-
-	is_valid_showing_failures_only = {
-		is_available_adult = yes
-	}
-
-	effect = {
-		joined_faction ?= {
-			save_scope_as = ongoing_faction
-			if = {
-				limit = {
-					exists = faction_leader
-				}
-				faction_leader = {
-					save_scope_as = faction_leader_scope
-				}
-			}
-			else = {
-				ordered_faction_member = {
-					order_by = current_military_strength
-					limit = {
-						this != root	
-						is_ai = yes
-						is_landed = yes
-					}
-					save_scope_as = faction_leader_scope
-				}
-			}
-		}
-
-		show_as_tooltip = {
-			scope:faction_leader_scope = {
-				start_war = {
-					cb = restore_ceremonial_liege_faction_war
-					target = root.top_liege
-				}
-			}
-		}
-
-		hidden_effect = {
-			scope:ongoing_faction = {
-				faction_start_war = {}
-			}
-		}
-	}
-	
-	ai_potential = {
-		is_playable_character = yes
-	}
-
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 0
-		hegemony = 0
-	}
-
-	ai_will_do = {
-		base = 200
-	}
-}
 
 #Become King of the Franks
 become_king_of_franks_decision = {
