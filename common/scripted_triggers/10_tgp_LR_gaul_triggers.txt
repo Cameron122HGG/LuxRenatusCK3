@@ -489,57 +489,7 @@ tgp_gaul_install_regent_faction_can_create_trigger = {
 	}
 }
 
-gaul_faction_cohesion_trigger = {
-	trigger_if = {
-		limit = { 
-			government_has_flag = government_has_house_blocs_gaul 
-			is_confederation_member = yes
-		}
-		custom_tooltip = {
-			text = house_head_create_faction_cohesion_tt
-			OR = {
-				house.house_confederation ?= { cohesion >= 50 }
-				joined_faction ?= {
-					OR = {
-						faction_is_at_war = yes
-						any_faction_member = {
-							OR = {
-								this = root.house.house_confederation.leading_house.house_head
-								is_ai = no
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
 
-gaul_faction_cohesion_hard_trigger = {
-	trigger_if = {
-		limit = { 
-			government_has_flag = government_has_house_blocs_gaul 
-			is_confederation_member = yes
-		}
-		custom_tooltip = {
-			text = house_head_create_faction_cohesion_hard_tt
-			OR = {
-				house.house_confederation ?= { cohesion >= 75 }
-				joined_faction ?= {
-					OR = {
-						faction_is_at_war = yes
-						any_faction_member = {
-							OR = {
-								this = root.house.house_confederation.leading_house.house_head
-								is_ai = no
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
 
 LR_gaul_restore_ceremonial_liege_faction_can_create_trigger = {
 	tgp_realm_has_ceremonial_liege_trigger = yes
