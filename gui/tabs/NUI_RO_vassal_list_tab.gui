@@ -1,0 +1,661 @@
+﻿types NUIRealmOverview
+{
+	type NUI_RL_vassal_list_tab = widget {
+		visible = "[And( GetGlobalVariable( 'NUI_RL_open_tab' ).IsSet, VariableSystem.HasValue( 'NUI_RL_tabs', 'tab_vassal_list' ) )]"
+		size = { 100% 100% }
+		allow_outside = yes
+
+		using = Animation_Tab_Switch
+
+		state = {
+			name = _show
+			on_start = "[GetScriptedGui( 'NUI_RL_open_vassal_list_tab' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			on_start = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+		}
+		state = {
+			name = _hide
+			on_start = "[GetScriptedGui( 'NUI_RL_close_vassal_list_tab' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			on_start = "[GetVariableSystem.Clear( 'NUI_RL_filter_group_opinion' )]"
+			on_start = "[GetVariableSystem.Clear( 'NUI_RL_filter_group_rightful_vassal' )]"
+			on_start = "[GetVariableSystem.Clear( 'NUI_RL_filter_group_faith' )]"
+			on_start = "[GetVariableSystem.Clear( 'NUI_RL_filter_group_culture' )]"
+			on_start = "[GetVariableSystem.Clear( 'NUI_RL_vassal_list_show_dynasty' )]"
+		}
+
+		NUI_RL_character_list = {
+
+			blockoverride "filter_reset" {
+				datacontext = "[GetScriptedGui( 'NUI_RL_reset_vassal_list_filter' )]"
+				onclick = "[GetVariableSystem.Clear( 'NUI_RL_filter_group_opinion' )]"
+				onclick = "[GetVariableSystem.Clear( 'NUI_RL_filter_group_rightful_vassal' )]"
+				onclick = "[GetVariableSystem.Clear( 'NUI_RL_filter_group_faith' )]"
+				onclick = "[GetVariableSystem.Clear( 'NUI_RL_filter_group_culture' )]"
+			}
+
+			blockoverride "filter_buttons" {
+				vbox = {
+					widget = {
+						size = { 160 0 }
+					}
+					# 称号階級 / Title Tier
+					widget = {
+						visible = "[GetScriptedGui( 'NUI_RL_show_filter_title_tiers' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+						size = { 160 40 }
+						hbox = {
+							NUI_RL_filter_title_tier_button = {
+								visible = "[GetScriptedGui( 'NUI_RL_show_filter_kingdom_tier' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+								datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_kingdom_tier' )]"
+								blockoverride "tier_frame" {
+									frame = 5
+								}
+								blockoverride "tooltip" {
+									tooltip = "[kingdom|E]"
+								}
+							}
+							NUI_RL_filter_title_tier_button = {
+								visible = "[GetScriptedGui( 'NUI_RL_show_filter_duchy_tier' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+								datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_duchy_tier' )]"
+								blockoverride "tier_frame" {
+									frame = 4
+								}
+								blockoverride "tooltip" {
+									tooltip = "[duchy|E]"
+								}
+							}
+							NUI_RL_filter_title_tier_button = {
+								visible = "[GetScriptedGui( 'NUI_RL_show_filter_county_tier' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+								datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_county_tier' )]"
+								blockoverride "tier_frame" {
+									frame = 3
+								}
+								blockoverride "tooltip" {
+									tooltip = "[county|E]"
+								}
+							}
+							NUI_RL_filter_title_tier_button = {
+								visible = "[GetScriptedGui( 'NUI_RL_show_filter_barony_tier' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+								datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_barony_tier' )]"
+								blockoverride "tier_frame" {
+									frame = 2
+								}
+								blockoverride "tooltip" {
+									tooltip = "[barony|E]"
+								}
+							}
+						}
+					}
+
+					# 有力の封臣 / Powerful Vassal
+					NUI_RL_filter_checkbox = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_powerful_vassal' )]"
+						blockoverride "filter_label" {
+							text = "NUI_RL_filter_powerful_vassal_TEXT"
+						}
+					}
+
+					# 評議員 / Councillor
+					NUI_RL_filter_checkbox = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_councillor' )]"
+						blockoverride "filter_label" {
+							text = "NUI_RL_filter_councillor_TEXT"
+						}
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { -3 5 }
+						divider_light = {
+							layoutpolicy_horizontal = expanding
+						}
+					}
+				}
+
+				# 評価 / Opinion
+				NUI_RL_filter_button_expand = {
+					onclick = "[GetVariableSystem.Toggle( 'NUI_RL_filter_group_opinion' )]"
+					text = "NUI_RL_filter_group_opinion_TEXT"
+					blockoverride "checked" {
+						checked = "[VariableSystem.Exists( 'NUI_RL_filter_group_opinion' )]"
+					}
+					blockoverride "filter_enabled" {
+						visible = "[Or( Or( GetGlobalVariable( 'NUI_RL_filter_high_opinion' ).IsSet, GetGlobalVariable( 'NUI_RL_filter_low_opinion' ).IsSet ), GetGlobalVariable( 'NUI_RL_filter_opinion_for_player' ).IsSet )]"
+					}
+				}
+				vbox = {
+					visible = "[VariableSystem.Exists( 'NUI_RL_filter_group_opinion' )]"
+					using = Animation_ShowHide_Quick
+
+					NUI_RL_filter_button = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_high_opinion' )]"
+						text = "NUI_RL_filter_high_opinion_TEXT"
+					}
+					NUI_RL_filter_button = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_low_opinion' )]"
+						text = "NUI_RL_filter_low_opinion_TEXT"
+					}
+					NUI_RL_filter_checkbox = {
+						visible = "[Not( ObjectsEqual( Character.Self, GetPlayer ) )]"
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_opinion_for_player' )]"
+						blockoverride "filter_label" {
+							text = "NUI_RL_filter_opinion_for_player_TEXT"
+						}
+						blockoverride "tooltip" {}
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { -10 5 }
+						divider_light = {
+							layoutpolicy_horizontal = expanding
+						}
+					}
+				}
+
+				# 正当な封臣 / Rightful Vassal
+				NUI_RL_filter_button_expand = {
+					visible = "[GetScriptedGui( 'NUI_RL_show_filter_group_rightful_vassal' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+					onclick = "[GetVariableSystem.Toggle( 'NUI_RL_filter_group_rightful_vassal' )]"
+					text = "NUI_RL_filter_group_rightful_vassal_TEXT"
+					blockoverride "checked" {
+						checked = "[VariableSystem.Exists( 'NUI_RL_filter_group_rightful_vassal' )]"
+					}
+					blockoverride "filter_enabled" {
+						visible = "[Or( GetGlobalVariable( 'NUI_RL_filter_is_rightful' ).IsSet, GetGlobalVariable( 'NUI_RL_filter_not_rightful' ).IsSet )]"
+					}
+				}
+				vbox = {
+					visible = "[VariableSystem.Exists( 'NUI_RL_filter_group_rightful_vassal' )]"
+					using = Animation_ShowHide_Quick
+
+					NUI_RL_filter_button = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_is_rightful' )]"
+						text = "NUI_RL_filter_is_rightful_TEXT"
+					}
+					NUI_RL_filter_button = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_not_rightful' )]"
+						text = "NUI_RL_filter_not_rightful_TEXT"
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { -10 5 }
+						divider_light = {
+							layoutpolicy_horizontal = expanding
+						}
+					}
+				}
+
+				# 信仰 / Faith
+				NUI_RL_filter_button_expand = {
+					visible = "[GetScriptedGui( 'NUI_RL_show_filter_group_faith' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+					onclick = "[GetVariableSystem.Toggle( 'NUI_RL_filter_group_faith' )]"
+					text = "NUI_RL_filter_group_faith_TEXT"
+					blockoverride "checked" {
+						checked = "[VariableSystem.Exists( 'NUI_RL_filter_group_faith' )]"
+					}
+					blockoverride "filter_enabled" {
+						visible = "[Or( GetGlobalVariable( 'NUI_RL_filter_same_faith' ).IsSet, GetGlobalVariable( 'NUI_RL_filter_diff_faith' ).IsSet )]"
+					}
+				}
+				vbox = {
+					visible = "[VariableSystem.Exists( 'NUI_RL_filter_group_faith' )]"
+					using = Animation_ShowHide_Quick
+
+					NUI_RL_filter_button = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_same_faith' )]"
+						text = "NUI_RL_filter_same_faith_TEXT"
+					}
+					NUI_RL_filter_button = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_diff_faith' )]"
+						text = "NUI_RL_filter_diff_faith_TEXT"
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { -3 5 }
+						divider_light = {
+							layoutpolicy_horizontal = expanding
+						}
+					}
+				}
+
+				# 文化 / Culture
+				NUI_RL_filter_button_expand = {
+					visible = "[GetScriptedGui( 'NUI_RL_show_filter_group_culture' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+					onclick = "[GetVariableSystem.Toggle( 'NUI_RL_filter_group_culture' )]"
+					text = "NUI_RL_filter_group_culture_TEXT"
+					blockoverride "checked" {
+						checked = "[VariableSystem.Exists( 'NUI_RL_filter_group_culture' )]"
+					}
+					blockoverride "filter_enabled" {
+						visible = "[Or( GetGlobalVariable( 'NUI_RL_filter_same_culture' ).IsSet, GetGlobalVariable( 'NUI_RL_filter_diff_culture' ).IsSet )]"
+					}
+				}
+				vbox = {
+					visible = "[VariableSystem.Exists( 'NUI_RL_filter_group_culture' )]"
+					using = Animation_ShowHide_Quick
+
+					NUI_RL_filter_button = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_same_culture' )]"
+						text = "NUI_RL_filter_same_culture_TEXT"
+					}
+					NUI_RL_filter_button = {
+						datacontext = "[GetScriptedGui( 'NUI_RL_toggle_filter_diff_culture' )]"
+						text = "NUI_RL_filter_diff_culture_TEXT"
+					}
+				}
+
+				# その他 / Other
+				vbox = {
+					widget = {
+						size = { 160 0 }
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { -3 5 }
+						divider_light = {
+							layoutpolicy_horizontal = expanding
+						}
+					}
+					NUI_RL_filter_checkbox = {
+						onclick = "[VariableSystem.Toggle( 'NUI_RL_vassal_list_show_dynasty' )]"
+						datacontext = "[GetScriptedGui( 'NUI_reset_targeting_house_dynasty' )]"
+
+						blockoverride "checked" {
+							checked = "[VariableSystem.Exists( 'NUI_RL_vassal_list_show_dynasty' )]"
+						}
+						blockoverride "filter_label" {
+							text = "NUI_RL_show_dynasty_TEXT"
+						}
+						blockoverride "tooltip" {}
+					}
+					NUI_RL_filter_checkbox = {
+						layoutpolicy_horizontal = expanding
+						onclick = "[GetScriptedGui( 'NUI_RL_set_realm_percentage' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+
+						blockoverride "no_effect" {}
+						blockoverride "checked" {
+							checked = "[Character.MakeScope.Var( 'NUI_RL_realm_percentage' ).IsSet]"
+						}
+						blockoverride "filter_label" {
+							text = "NUI_RL_show_realm_percentage_TEXT"
+						}
+						blockoverride "tooltip" {}
+					}
+				}
+			}
+
+			blockoverride "list_header" {
+				text_single = {
+					text = "NUI_RL_realm_size_TEXT"
+					fontsize = 16
+					default_format = "#bold;light_background"
+					align = nobaseline
+				}
+				text_single = {
+					text = "NUI_RL_vassal_realm_size_TEXT"
+					fontsize = 16
+					default_format = "#bold;light_background"
+					align = nobaseline
+				}
+				text_single = {
+					text = "NUI_RL_num_of_vassals"
+					fontsize = 16
+					default_format = "#bold;light_background"
+					align = nobaseline
+				}
+			}
+
+			blockoverride "target_character" {
+				NUI_RL_vassal_list_button = {
+					name = "liege_info"
+					blockoverride "background" {
+						background = {
+							using = Background_Area
+						}
+					}
+					blockoverride "is_liege" {
+						visible = no
+					}
+					blockoverride "not_targeting_forcus" {
+						visible = no
+					}
+					blockoverride "domain_size" {
+						text = "[Character.GetDomainSize]"
+					}
+				}
+			}
+
+			blockoverride "list_contant" {
+				vbox = {
+					datamodel = "[Character.MakeScope.GetList( 'NUI_RL_character_list' )]"
+					ignoreinvisible = yes
+
+					item = {
+						NUI_RL_vassal_list_button = {
+							visible = "[GetScriptedGui( 'NUI_RL_vassal_list_filter' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'LIEGE', GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+							using = Animation_ShowHide_Quick
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+	######################
+	### タイプ / Types ###
+	######################
+	type NUI_RL_vassal_list_button = button_standard_hover {
+		size = { 850 48 }
+		datacontext = "[Scope.GetCharacter]"
+		onclick = "[DefaultOnCharacterClick( Character.GetID )]"
+		onrightclick = "[DefaultOnCharacterRightClick( Character.GetID )]"
+		button_ignore = none
+
+		state = {
+			name = _mouse_enter
+			on_start = "[Character.OnMouseEnter]"
+		}
+		state = {
+			name = _mouse_leave
+			on_start = "[Character.OnMouseLeave]"
+		}
+
+		block "background" {}
+
+		# ツールチップ / Tooltip
+		tooltip_visible = "[Not( IsInteractionMenuOpenForCharacter( Character.GetID ) )]"
+		tooltipwidget = {
+			cooltip_type = {
+				blockoverride "extra_info" {
+					portrait_shoulders = {
+						blockoverride "coa" {}
+						blockoverride "opinion_box" {}
+						blockoverride "status_icons" {}
+					}
+				}
+				blockoverride "interaction_info" {
+					text = "CHARACTER_TOOLTIP_INSTRUCTION"
+				}
+			}
+		}
+
+		using = Animation_ShowHide_Quick
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
+			widget = {
+				size = { 28 48 }
+
+				icon = {
+					block "is_liege" {
+						visible = "[And( Character.IsCouncillor, Not( Character.IsPowerfulVassal ) )]"
+					}
+					parentanchor = center
+					texture = "gfx/interface/icons/message_feed/council.dds"
+					size = { 28 28 }
+					tooltip = "game_concept_councillor_desc"
+				}
+				icon = {
+					block "is_liege" {
+						visible = "[Character.IsPowerfulVassal]"
+					}
+					parentanchor = center
+					texture = "gfx/interface/icons/portraits/powerful_vassal.dds"
+					size = { 28 28 }
+					framesize = { 40 40 }
+					frame = "[Character.GetPowerfulVassalFrame]"
+					tooltip = "[Character.GetPowerfulVassalTooltip]"
+				}
+			}
+
+			# 称号紋章 / Title CoA
+			widget = {
+				name = "title_coa"
+				size = { 40 48 }
+
+				coa_realm_tiny_crown = {
+					parentanchor = center
+					position = { 0 -3 }
+				}
+			}
+
+			# キャラクター名 / Character Name
+			text_multi = {
+				name = "character_name"
+				raw_text = "[Character.GetNameNoTooltip], [Character.GetAge]"
+				autoresize = yes
+				fontsize = 18
+				fontsize_min = 13
+				default_format = "#bold;light_background"
+				align = nobaseline
+
+				minimumsize = { 280 0 }
+				maximumsize = { 280 46 }
+			}
+
+			# 主君またはプレイヤーへの評価 / Opinion for Liege or Player
+			widget = {
+				name = "opinion_for_liege_or_player"
+				size = { 60 48 }
+
+				portrait_opinion = {
+					name = "opinion_for_liege"
+					block "is_liege" {
+						visible = "[Not( GetGlobalVariable( 'NUI_RL_filter_opinion_for_player' ).IsSet )]"
+					}
+					parentanchor = vcenter|right
+
+					using = Animation_ShowHide_Quick
+
+					blockoverride "dread_logic" {
+						visible = "[Character.ShouldShowDreadEffectIconFor( Character.GetLiege )]"
+						frame = "[Character.GetDreadEffectIconFrameFor( Character.GetLiege )]"
+						tooltip = "[Character.GetDreadEffectTooltipFor( Character.GetLiege )]"
+					}
+
+					blockoverride "opinion_text" {
+						text = "[Character.GetOpinionOf( Character.GetLiege )|=]"
+						fonttintcolor = "[Character.GetOpinionOfTint( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter )]"
+					}
+
+					blockoverride "ott_heading_text" {
+						text = "[Character.GetOpinionHeadingText( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter )]"
+					}
+
+					blockoverride "ott_opinion_value_text" {
+						text = "[Character.GetOpinionOf( Character.GetLiege )|=]"
+						fonttintcolor = "[Character.GetOpinionOfTint( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter )]"
+					}
+
+					blockoverride "ott_opinion_breakdown_text" {
+						text = "[Character.GetOpinionBreakdownText( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter )]"
+					}
+				}
+				portrait_opinion = {
+					name = "opinion_for_player"
+					visible = "[And( GetGlobalVariable( 'NUI_RL_filter_opinion_for_player' ).IsSet,  Not( ObjectsEqual( Character.Self, GetPlayer )  ) )]"
+					parentanchor = vcenter|right
+
+					using = Animation_ShowHide_Quick
+				}
+			}
+
+			# 封臣のスタンス / Vassal Stance
+			widget = {
+				name = "vassal_stance"
+				size = { 32 48 }
+
+				vassal_stance_icon = {
+					parentanchor = center
+					block "is_liege" {
+						visible = "[Character.IsValid]"
+					}
+					size = { 30 30 }
+				}
+			}
+
+			# 領国のサイズ / Realm Size
+			widget = {
+				name = "realm_size"
+				size = { 55 48 }
+
+				icon = {
+					visible = "[GreaterThan_int32( Character.RealmSize, '(int32)0' )]"
+					parentanchor = center
+					position = { 0 -3 }
+					size = { 50 50 }
+					texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+					framesize = { 104 104 }
+					frame = 2
+					alpha = 0.5
+				}
+
+				text_single = {
+					visible = "[And( Not( Character.MakeScope.Var( 'NUI_RL_realm_percentage' ).IsSet ), GreaterThan_int32( Character.RealmSize, '(int32)0' ) )]"
+					parentanchor = center
+					block "domain_size" {
+						text = "[Character.RealmSize]"
+					}
+					fontsize = 18
+					default_format = "#bold;light_background"
+					align = nobaseline
+					using = Animation_ShowHide_Quick
+					tooltip = "REALM_WINDOW_SIZE_TT"
+					using = tooltip_es
+				}
+				text_single = {
+					visible = "[And( Character.MakeScope.Var( 'NUI_RL_realm_percentage' ).IsSet, GreaterThan_int32( Character.RealmSize, '(int32)0' ) )]"
+					parentanchor = center
+					raw_text = "[Character.MakeScope.Var( 'NUI_RL_realm_percentage' ).GetValue|1]%"
+					fontsize = 16
+					default_format = "#bold;light_background"
+					align = nobaseline
+					using = Animation_ShowHide_Quick
+					tooltip = "REALM_WINDOW_SIZE_TT"
+					using = tooltip_es
+				}
+			}
+
+			# 軍事力 / Military Strength
+			widget = {
+				name = "military_strength"
+				size = { 60 48 }
+
+				icon = {
+					parentanchor = center
+					position = { 0 -3 }
+					size = { 40 40 }
+					texture = "gfx/interface/icons/icon_soldier.dds"
+					alpha = 0.3
+				}
+
+				text_single = {
+					parentanchor = center
+					text = "[Character.GetMilitaryStrengthText]"
+					fontsize = 16
+					default_format = "#bold;light_background"
+					align = nobaseline
+					using = Animation_ShowHide_Quick
+				}
+				tooltip = "NUI_RL_military_strength_TT"
+			}
+
+			# 正当な主君 / Rightful Liege
+			widget = {
+				name = "rightful_liege_icon"
+				size = { 32 48 }
+
+				icon = {
+					block "is_liege" {
+						visible = "[Not( Character.GetVassalContract.IsRightfulLiege )]"
+					}
+					parentanchor = center
+					size = { 30 30 }
+					texture = "gfx/interface/icons/levy_tax_reduction.dds"
+					tooltip = "MRW_TT_NOT_RIGHTFUL_LIEGE"
+				}
+			}
+
+			vbox = {
+				layoutpolicy_vertical = expanding
+				margin = { 2 5 }
+				divider_light = {
+					layoutpolicy_vertical = expanding
+				}
+			}
+
+			NUI_RL_targeting_buttons = {}
+
+			vbox = {
+				layoutpolicy_vertical = expanding
+				margin = { 2 5 }
+				divider_light = {
+					layoutpolicy_vertical = expanding
+				}
+			}
+
+			widget = {
+				block "is_liege" {
+					visible = "[ObjectsEqual( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter, GetPlayer )]"
+				}
+				size = { 60 48 }
+
+				flowcontainer = {
+					parentanchor = vcenter|left
+					ignoreinvisible = yes
+
+					icon = {
+						visible = "[GetScriptedGui( 'NUI_RL_is_allied' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'TARGET', GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).End )]"
+						size = { 26 26 }
+						texture = "gfx/interface/icons/message_feed/alliance.dds"
+						tooltip = "[alliance|E]"
+					}
+
+					icon = {
+						name = "criminal"
+						visible = "[And( Character.CanBePunished, Not( Character.PlayerHasHooksOrHookableSecrets ) )]"
+						size = { 26 26 }
+
+						texture = "gfx/interface/icons/portraits/punishment.dds"
+						tooltip = "[Character.PunishmentTooltip]"
+					}
+
+					icon = {
+						name = "hook"
+						visible = "[Character.PlayerHasHooksOrHookableSecrets]"
+						size = { 26 26 }
+
+						texture = "gfx/interface/icons/portraits/hook_secret_small.dds"
+						framesize = { 28 28 }
+						frame = "[Character.GetHookOrHookableSecretsFrame]"
+						tooltip = "[Character.HookTooltip]"
+					}
+
+					icon = {
+						visible = "[GetScriptedGui( 'NUI_RL_has_gift_opinion' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'LIEGE', GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).End )]"
+						size = { 26 26 }
+						texture = "gfx/interface/icons/icon_gold.dds"
+						tooltip = "[gift|E]"
+					}
+				}
+			}
+
+			expand = {}
+		}
+		widget = {
+			name = "under_line"
+			parentanchor = bottom|left
+			size = { 850 4 }
+
+			background = {
+				using = Background_Area_Dark
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+					blend_mode = alphamultiply
+				}
+			}
+		}
+	}
+}

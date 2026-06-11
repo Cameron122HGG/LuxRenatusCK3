@@ -1,0 +1,57 @@
+﻿window = {
+	name = "NUI_realm_ledger_hud_button"
+	visible =  "[And( GetPlayer.IsValid, And( Not( IsPauseMenuShown ), And( IsDefaultGUIMode, And( Not( IsGameViewOpen( 'barbershop' ) ), Not( GetVariableSystem.Exists( 'hide_bottom_left_HUD' ) ) ) ) ) )]"
+	datacontext = "[GetVariableSystem]"
+	datacontext = "[GetPlayer]"
+	parentanchor = bottom|left
+	size = { 0 0 }
+	allow_outside = yes
+
+	layer = bottom
+	movable = no
+
+	state = {
+		name = _show
+		using = Animation_Curve_Default
+		duration = 0.15
+
+		position = { 216 14 }
+		alpha = 1
+	}
+	state = {
+		name = _hide
+		using = Animation_Curve_Default
+		duration = 0.15
+
+		position = { 216 14 }
+		alpha = 0
+	}
+
+	flowcontainer = {
+		parentanchor = bottom|left
+		direction = vertical
+		ignoreinvisible = no
+
+		button_round = {
+			size = { 48 48 }
+
+			onclick = "[GetScriptedGui( 'NUI_RL_hud_button' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			down = "[GetScriptedGui( 'NUI_RL_hud_button' ).IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			tooltip = "NUI_RL_realm_ledger_hud_button_TT"
+			
+			icon_round_button_base = {}
+			button_icon = {
+			alwaystransparent = yes
+			texture = "gfx/interface/icons/flat_icons/NUI_realmledger_flat.dds"
+			size = { 31 31 }
+			parentanchor = center
+			}
+		}
+
+		spacer = {
+			visible = "[Or( Character.IsTraveling, Activity.IsValid )]"
+			datacontext = "[Character.GetInvolvedActivity]"
+			size = { 0 75 }
+		}
+	}
+}

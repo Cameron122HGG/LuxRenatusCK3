@@ -1,0 +1,141 @@
+﻿types NUIRealmOverview
+{
+	type NUI_RL_knight_list_tab = widget {
+		visible = "[And( GetGlobalVariable( 'NUI_RL_open_tab' ).IsSet, VariableSystem.HasValue( 'NUI_RL_tabs', 'tab_knight_list' ) )]"
+		size = { 100% 100% }
+		allow_outside = yes
+
+		using = Animation_Tab_Switch
+
+		state = {
+			name = _show
+			on_start = "[GetScriptedGui( 'NUI_RL_open_knight_list_tab' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			on_start = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+		}
+		state = {
+			name = _hide
+			on_start = "[GetScriptedGui( 'NUI_RL_close_knight_list_tab' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+		}
+
+		NUI_RL_character_list = {
+			blockoverride "filter_box" {}
+
+			blockoverride "list_header" {
+				text_single = {
+					text = "NUI_RL_num_of_knights_TEXT"
+					fontsize = 16
+					default_format = "#bold;light_background"
+					align = nobaseline
+				}
+				text_single = {
+					text = "NUI_RL_average_prowess_TEXT"
+					fontsize = 16
+					default_format = "#bold;light_background"
+					align = nobaseline
+				}
+			}
+
+			blockoverride "list_contant" {
+				dynamicgridbox = {
+					datamodel = "[Character.MakeScope.GetList( 'NUI_RL_character_list' )]"
+					flipdirection = yes
+					datamodel_wrap = 5
+
+					item = {
+						widget = {
+							datacontext = "[Scope.GetCharacter]"
+							size = { 200 240 }
+
+							NUI_RL_portrait_torso = {
+								parentanchor = top|hcenter
+							}
+
+							# 軍事と武勇 / Martial and Prowess
+							flowcontainer = {
+								name = "martial_and_prowess"
+								visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+								parentanchor = top|left
+								position = { 10 20 }
+								direction = vertical
+								spacing = -2
+
+								using = Animation_ShowHide_Quick
+
+								background = {
+									using = Background_Area_Dark
+									margin = { 0 2 }
+									margin_left = 2
+									margin_right = 10
+									alpha = 0.7
+								}
+
+								flowcontainer = {
+									name = "skill_martial"
+									icon = {
+										size = { 30 30 }
+										texture = "gfx/interface/icons/icon_skills.dds"
+										frame = 2
+										framesize = { 60 60 }
+									}
+									text_single = {
+										text = "[Character.GetSkill( 'martial' )|V]"
+										fontsize = 18
+										align = nobaseline
+									}
+									tooltip = "[martial|E]"
+								}
+
+								flowcontainer = {
+									name = "skill_prowess"
+									icon = {
+										size = { 30 30 }
+										texture = "gfx/interface/icons/icon_skills.dds"
+										frame = 6
+										framesize = { 60 60 }
+									}
+									text_single = {
+										text = "[Character.GetProwess|V]"
+										fontsize = 18
+										align = nobaseline
+									}
+									tooltip = "[prowess|E]"
+								}
+							}
+
+							icon = {
+								name = "acclaimed_knights_icon"
+								visible = "[Character.IsAcclaimedKnight]"
+								parentanchor = top|right
+								position = { -20 20 }
+								size = { 45 45 }
+								texture = "gfx/interface/icons/icon_knight_acclaimed.dds"
+
+								glow = {
+									using = Color_Blue
+									using = Glow_Standard
+									block "glow_radius"
+									{
+										glow_radius = 3
+									}
+								}
+								tooltip = "[acclaimed_knight|E]"
+							}
+
+							text_multi = {
+								parentanchor = top|hcenter
+								position = { 0 195 }
+								text = "[Select_CString( StringIsEmpty( Character.GetNickname ), Character.GetFullNameNoTooltip, Character.GetFullNameNicknamedNoTooltip )]"
+								autoresize = yes
+								fontsize = 20
+								fontsize_min = 16
+								default_format = "#bold;light_background"
+								align = nobaseline|hcenter
+								maximumsize = { 180 45 }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

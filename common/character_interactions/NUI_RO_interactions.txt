@@ -1,0 +1,23 @@
+﻿NUI_RL_realm_ledger_interaction = {
+	category = interaction_category_diplomacy
+	desc = NUI_RL_realm_ledger_interaction_desc
+	use_diplomatic_range = no
+
+	is_shown = {
+		scope:recipient = {
+			is_ruler = yes
+			highest_held_title_tier >= tier_county
+		}
+		trigger_if = {
+			limit = { exists = global_var:NUI_RL_target }
+			NOT = { scope:recipient = global_var:NUI_RL_target }
+		}
+	}
+	on_accept = {
+		custom_tooltip = NUI_RL_realm_ledger_interaction_desc
+		hidden_effect = {
+			NUI_RL_open_realm_ledger_effect = { TARGET = scope:recipient }
+		}
+	}
+	auto_accept = yes
+}

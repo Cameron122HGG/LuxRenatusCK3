@@ -1,0 +1,209 @@
+﻿types PortraitTypes
+{
+	type NUI_RL_portrait_torso = widget {
+		block "portrait_frame_size" {
+			size = { 165 200 }
+		}
+		allow_outside = yes
+
+		widget = {
+			size = { 100% 100% }
+			using = Portrait_Background_Glows
+		}
+
+		portrait_button = {
+			parentanchor = bottom|hcenter
+			block "portrait_size" {
+				size = { 195 225 }
+			}
+			using = portrait_base
+			portrait_texture = "[Character.GetPortrait( 'environment_torso', 'camera_torso', 'idle', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+			mask = "gfx/portraits/portrait_mask_torso.dds"
+			effectname = "NoHighlight"
+		}
+
+		block "realm_coa" {
+			coa_realm_medium_crown = {
+				visible = "[Character.HasLandedTitles]"
+				parentanchor = bottom|left
+				position = { 0 0 }
+			}
+		}
+
+		block "opinion_and_status" {
+			NUI_RL_opinion = {
+				parentanchor = bottom|hcenter
+				position = { 0 -10 }
+				
+			}
+
+			NUI_RL_status_icons = {
+				parentanchor = bottom|right
+				position = { -15 -15 }
+				scale = 0.9
+			}
+		}
+	}
+
+	type NUI_RL_portrait_shoulders = widget {
+		visible = "[Character.IsValid]"
+		size = { 125 160 }
+		allow_outside = yes
+
+		widget = {
+			size = { 100% 100% }
+			using = Portrait_Background_Glows
+		}
+
+		portrait_button = {
+			parentanchor = bottom|hcenter
+			block "portrait_position" {}
+			size = { 145 175 }
+			using = portrait_base
+
+			block "portrait_texture" {
+				portrait_texture = "[Character.GetPortrait( 'environment_shoulders', 'camera_shoulders', 'idle', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+			}
+			mask = "gfx/portraits/portrait_mask_shoulders.dds"
+			effectname = "NoHighlight"
+		}
+
+		# 評議員アイコン / Councillor Icon
+		icon = {
+			name = "councillor_icon"
+			block "councillor_icon" {
+				visible = no
+			}
+			parentanchor = bottom|left
+			position = { -10 -75 }
+			size = { 40 40 }
+
+			using = Animation_ShowHide_Quick
+
+			background = {
+				using = Background_Area_Dark
+				margin = { 8 8 }
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/mask_fade_circle.dds"
+					blend_mode = alphamultiply
+				}
+			}
+		}
+
+		block "realm_coa" {
+			coa_realm_small_crown = {
+				visible = "[Character.HasLandedTitles]"
+
+				parentanchor = bottom|left
+				position = { -5 0 }
+			}
+		}
+
+		NUI_RL_opinion = {
+			parentanchor = bottom|hcenter
+			position = { 0 -10 }
+		}
+
+		NUI_RL_status_icons = {
+			parentanchor = bottom|right
+			position = { -15 -15 }
+			scale = 0.9
+		}
+	}
+
+	type NUI_RL_portrait_head = widget {
+		size = { 110 120 }
+
+		widget = {
+			size = { 100% 100% }
+			using = Portrait_Background_Glows
+		}
+
+		portrait_button = {
+			parentanchor = bottom|hcenter
+			size = { 100 125 }
+			using = portrait_base
+			portrait_texture = "[Character.GetPortrait( 'environment_head', 'camera_head', 'idle', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+			mask = "gfx/portraits/portrait_mask_torso.dds"
+			effectname = "NoHighlight"
+		}
+
+		coa_realm_small_crown = {
+			visible = "[Character.HasLandedTitles]"
+			scale = 0.9
+
+			parentanchor = bottom|left
+			position = { -5 0 }
+		}
+
+		flowcontainer = {
+			parentanchor = bottom|right
+			position = { -5 0 }
+			direction = vertical
+
+			NUI_RL_status_icons = {
+				parentanchor = right
+				scale = 0.85
+			}
+
+			NUI_RL_opinion = {
+				scale = 0.95
+			}
+		}
+	}
+
+	type NUI_RL_opinion = flowcontainer {
+		name = "character_opinion"
+		visible = "[And( Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) ), Not( ObjectsEqual( Character.Self, GetPlayer ) ) )]"
+		direction = vertical
+		spacing = -2
+
+		using = Animation_ShowHide_Quick
+
+		portrait_opinion = {
+			parentanchor = right
+		}
+
+		portrait_opinion = {
+			visible = "[And( Not( ObjectsEqual( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter, Character.Self ) ), Not( ObjectsEqual( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter, GetPlayer ) ) )]"
+			parentanchor = right
+			blockoverride "dread_logic" {
+				visible = "[Character.ShouldShowDreadEffectIconFor( Character.GetLiege )]"
+				frame = "[Character.GetDreadEffectIconFrameFor( Character.GetLiege )]"
+				tooltip = "[Character.GetDreadEffectTooltipFor( Character.GetLiege )]"
+			}
+
+			blockoverride "opinion_text" {
+				text = "[Character.GetOpinionOf( Character.GetLiege )|=]"
+				fonttintcolor = "[Character.GetOpinionOfTint( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter )]"
+			}
+
+			blockoverride "ott_heading_text" {
+				text = "[Character.GetOpinionHeadingText( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter )]"
+			}
+
+			blockoverride "ott_opinion_value_text" {
+				text = "[Character.GetOpinionOf( Character.GetLiege )|=]"
+				fonttintcolor = "[Character.GetOpinionOfTint( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter )]"
+			}
+
+			blockoverride "ott_opinion_breakdown_text" {
+				text = "[Character.GetOpinionBreakdownText( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter )]"
+			}
+		}
+	}
+
+	type NUI_RL_status_icons = portrait_status_icons {
+		name = "character_status"
+		visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+
+		using = Animation_ShowHide_Quick
+
+		background = {
+			using = Background_Area_Dark
+			margin = { 2 3 }
+			alpha = 0.8
+		}
+	}
+}

@@ -1,0 +1,295 @@
+﻿### 封臣一覧フィルター / Vassal List Filter ###
+NUI_RL_vassal_list_filter_trigger = {
+
+	# 称号階級 / Title Tier
+	trigger_if = {
+		limit = {
+			OR = {
+				exists = global_var:NUI_RL_filter_kingdom_tier
+				exists = global_var:NUI_RL_filter_duchy_tier
+				exists = global_var:NUI_RL_filter_county_tier
+				exists = global_var:NUI_RL_filter_barony_tier
+			}
+		}
+		OR = {
+			AND = {
+				exists = global_var:NUI_RL_filter_kingdom_tier
+				highest_held_title_tier = tier_kingdom
+			}
+			AND = {
+				exists = global_var:NUI_RL_filter_duchy_tier
+				highest_held_title_tier = tier_duchy
+			}
+			AND = {
+				exists = global_var:NUI_RL_filter_county_tier
+				highest_held_title_tier = tier_county
+			}
+			AND = {
+				exists = global_var:NUI_RL_filter_barony_tier
+				highest_held_title_tier = tier_barony
+			}
+		}
+	}
+	trigger_else = {
+		always = yes
+	}
+
+	# 有力な封臣 / Powerful Vassal
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_powerful_vassal }
+		is_powerful_vassal = yes
+	}
+
+	# 評議員 / Councillor
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_councillor }
+		is_councillor = yes
+	}
+
+	# 慣習的封臣 / De Jure Vassal
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_is_rightful }
+		primary_title.de_jure_liege.holder = $LIEGE$
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_not_rightful }
+		NOT = { primary_title.de_jure_liege.holder = $LIEGE$ }
+	}
+
+	# 評価 / Opinion
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_high_opinion }
+		trigger_if = {
+			limit = { exists = global_var:NUI_RL_filter_opinion_for_player }
+			opinion = {
+				target = $PLAYER$
+				value >= 1
+			}
+		}
+		trigger_else = {
+			opinion = {
+				target = $LIEGE$
+				value >= 1
+			}
+		}
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_low_opinion }
+		trigger_if = {
+			limit = { exists = global_var:NUI_RL_filter_opinion_for_player }
+			opinion = {
+				target = $PLAYER$
+				value < 1
+			}
+		}
+		trigger_else = {
+			opinion = {
+				target = $LIEGE$
+				value < 1
+			}
+		}
+	}
+
+	# 信仰 / Faith
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_same_faith }
+		faith = $LIEGE$.faith
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_diff_faith }
+		NOT = { faith = $LIEGE$.faith }
+	}
+
+	# 文化 / Faith
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_same_culture }
+		culture = $LIEGE$.culture
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_diff_culture }
+		NOT = { culture = $LIEGE$.culture }
+	}
+
+	# ターゲティング / Targeting
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_targeting_house }
+		house = global_var:NUI_RL_filter_targeting_house
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_targeting_dynasty }
+		dynasty = global_var:NUI_RL_filter_targeting_dynasty
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_targeting_faith }
+		faith = global_var:NUI_RL_filter_targeting_faith
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_targeting_culture }
+		culture = global_var:NUI_RL_filter_targeting_culture
+	}
+}
+
+### 外交一覧対象トリガー / Diplomatic List Target Trigger ###
+NUI_RL_diplomatic_list_target_trigger = {
+	is_landed = yes
+	in_diplomatic_range = root
+	highest_held_title_tier >= tier_county
+	is_landed = yes
+
+	NOT = {
+		this = root
+		this.liege = root
+		this.top_liege = root
+	}
+
+	OR = {
+		this = root.liege
+		this = root.top_liege
+
+		has_any_cb_on = root
+		is_allied_to = root
+
+		trigger_if = {
+			limit = { is_at_war_with = root }
+			save_temporary_scope_as = ENEMY
+			root = {
+				any_character_war = {
+					OR = {
+						primary_attacker = scope:ENEMY
+						primary_defender = scope:ENEMY
+					}
+				}
+			}
+		}
+
+		trigger_if = {
+			limit = {
+				OR = {
+					is_independent_ruler = yes
+					this.liege = root.liege
+					this.top_liege = root.top_liege
+				}
+			}
+			OR = {
+				character_is_realm_neighbor = root
+				any_sub_realm_county = { is_neighbor_to_realm = root }
+				root = { has_any_cb_on = this }
+			}
+		}
+	}
+}
+
+### 外交一覧フィルター / Diplomatic Filter ###
+NUI_RL_diplomatic_list_filter_trigger = {
+
+	# 称号階級 / Title Tier
+	trigger_if = {
+		limit = {
+			OR = {
+				exists = global_var:NUI_RL_filter_empire_tier
+				exists = global_var:NUI_RL_filter_kingdom_tier
+				exists = global_var:NUI_RL_filter_duchy_tier
+				exists = global_var:NUI_RL_filter_county_tier
+			}
+		}
+		OR = {
+			AND = {
+				exists = global_var:NUI_RL_filter_empire_tier
+				highest_held_title_tier = tier_empire
+			}
+			AND = {
+				exists = global_var:NUI_RL_filter_kingdom_tier
+				highest_held_title_tier = tier_kingdom
+			}
+			AND = {
+				exists = global_var:NUI_RL_filter_duchy_tier
+				highest_held_title_tier = tier_duchy
+			}
+			AND = {
+				exists = global_var:NUI_RL_filter_county_tier
+				highest_held_title_tier = tier_county
+			}
+		}
+	}
+	trigger_else = {
+		always = yes
+	}
+
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_is_independent }
+		is_independent_ruler = yes
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_is_neighboring }
+		any_sub_realm_county = { is_neighbor_to_realm = $TARGET$ }
+	}
+
+	# 評価 / Opinion
+	trigger_if = {
+		limit = {
+			exists = global_var:NUI_RL_filter_high_opinion
+			$TARGET$ = $PLAYER$
+		}
+		opinion = {
+			target = $PLAYER$
+			value >= 1
+		}
+	}
+	trigger_if = {
+		limit = {
+			exists = global_var:NUI_RL_filter_low_opinion
+			$TARGET$ = $PLAYER$
+		}
+		opinion = {
+			target = $PLAYER$
+			value < 1
+		}
+	}
+
+	# 大義名分 / Casus Belli
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_cb_they_has }
+		save_temporary_scope_as = CHARACTER
+		$TARGET$ = { has_any_cb_on = scope:CHARACTER }
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_cb_against_them }
+		has_any_cb_on = $TARGET$
+	}
+
+	# 信仰 / Faith
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_same_faith }
+		faith = $TARGET$.faith
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_diff_faith }
+		NOT = { faith = $TARGET$.faith }
+	}
+
+	# ターゲティング / Targeting
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_targeting_house }
+		house = global_var:NUI_RL_filter_targeting_house
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_targeting_dynasty }
+		dynasty = global_var:NUI_RL_filter_targeting_dynasty
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_targeting_faith }
+		faith = global_var:NUI_RL_filter_targeting_faith
+	}
+	trigger_if = {
+		limit = { exists = global_var:NUI_RL_filter_targeting_culture }
+		culture = global_var:NUI_RL_filter_targeting_culture
+	}
+}
+
+NUI_RL_show_filter_tier_trigger = {
+	any_in_list = {
+		variable = NUI_RL_character_list
+		highest_held_title_tier = tier_$TIER$
+		count >= 1
+	}
+}

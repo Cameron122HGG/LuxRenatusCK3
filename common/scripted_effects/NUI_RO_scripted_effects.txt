@@ -1,0 +1,227 @@
+﻿### 領国概要を開く / Open Realm Overview ###
+NUI_RL_open_realm_ledger_effect = {
+	if = {
+		limit = { exists = global_var:NUI_RL_target }
+		remove_global_variable = NUI_RL_open_tab
+
+		remove_global_variable = NUI_RL_num_of_characters
+		remove_global_variable = NUI_RL_meets_conditions
+		remove_global_variable = NUI_RL_vassal_realm_size
+
+		NUI_RL_reset_vassal_list_filter_effect = yes
+		NUI_RL_reset_diplomatic_list_filter_effect = yes
+
+		global_var:NUI_RL_target = {
+			clear_variable_list = NUI_RL_character_list
+			remove_variable = NUI_RL_realm_percentage
+			every_vassal = { remove_variable = NUI_RL_realm_percentage }
+		}
+	}
+	set_global_variable = {
+		name = NUI_RL_target
+		value = $TARGET$
+	}
+
+	# リストの設定 / Set List
+	$TARGET$ = {
+		every_vassal = {
+			limit = {
+				is_councillor = no
+				highest_held_title_tier = tier_kingdom
+			}
+			$TARGET$ = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+		every_vassal = {
+			limit = {
+				is_councillor = no
+				highest_held_title_tier = tier_duchy
+			}
+			$TARGET$ = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+		every_vassal = {
+			limit = {
+				is_councillor = no
+				highest_held_title_tier = tier_county
+			}
+			$TARGET$ = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+		every_vassal = {
+			limit = {
+				is_councillor = no
+				highest_held_title_tier = tier_barony
+			}
+			$TARGET$ = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+	}
+}
+
+### 領国概要を閉じる / Close Realm Overview ###
+NUI_RL_close_realm_ledger_effect = {
+	$TARGET$ = {
+		remove_global_variable = NUI_RL_open_tab
+
+		remove_global_variable = NUI_RL_target
+		remove_global_variable = NUI_RL_list_type
+		remove_global_variable = NUI_RL_num_of_characters
+		remove_global_variable = NUI_RL_meets_conditions
+		remove_global_variable = NUI_RL_vassal_realm_size
+	
+		NUI_RL_reset_vassal_list_filter_effect = yes
+		NUI_RL_reset_diplomatic_list_filter_effect = yes
+
+		clear_variable_list = NUI_RL_character_list
+
+		remove_variable = NUI_RL_realm_percentage
+		every_vassal = { remove_variable = NUI_RL_realm_percentage }
+	}
+}
+
+### リストフィルターのリセット / Reset List Filter ###
+
+# 封臣一覧 / Vassal List
+NUI_RL_reset_vassal_list_filter_effect = {
+	remove_global_variable = NUI_RL_filter_kingdom_tier
+	remove_global_variable = NUI_RL_filter_duchy_tier
+	remove_global_variable = NUI_RL_filter_county_tier
+	remove_global_variable = NUI_RL_filter_barony_tier
+	remove_global_variable = NUI_RL_filter_powerful_vassal
+	remove_global_variable = NUI_RL_filter_councillor
+
+	remove_global_variable = NUI_RL_filter_high_opinion
+	remove_global_variable = NUI_RL_filter_low_opinion
+	remove_global_variable = NUI_RL_filter_opinion_for_player
+
+	remove_global_variable = NUI_RL_filter_is_rightful
+	remove_global_variable = NUI_RL_filter_not_rightful
+
+	remove_global_variable = NUI_RL_filter_same_faith
+	remove_global_variable = NUI_RL_filter_diff_faith
+
+	remove_global_variable = NUI_RL_filter_same_culture
+	remove_global_variable = NUI_RL_filter_diff_culture
+
+	remove_global_variable = NUI_RL_filter_targeting_house
+	remove_global_variable = NUI_RL_filter_targeting_dynasty
+	remove_global_variable = NUI_RL_filter_targeting_faith
+	remove_global_variable = NUI_RL_filter_targeting_culture
+}
+
+# 外交一覧 / Diplomatic List
+NUI_RL_reset_diplomatic_list_filter_effect = {
+	remove_global_variable = NUI_RL_filter_empire_tier
+	remove_global_variable = NUI_RL_filter_kingdom_tier
+	remove_global_variable = NUI_RL_filter_duchy_tier
+	remove_global_variable = NUI_RL_filter_county_tier
+
+	remove_global_variable = NUI_RL_filter_is_independent
+	remove_global_variable = NUI_RL_filter_is_neighboring
+
+	remove_global_variable = NUI_RL_filter_high_opinion
+	remove_global_variable = NUI_RL_filter_low_opinion
+
+	remove_global_variable = NUI_RL_filter_cb_they_has
+	remove_global_variable = NUI_RL_filter_cb_against_them
+
+	remove_global_variable = NUI_RL_filter_same_faith
+	remove_global_variable = NUI_RL_filter_diff_faith
+}
+
+### キャラクター数を算出 / Calculate the number of characters ###
+NUI_set_num_of_characters = {
+	set_global_variable = {
+		name = NUI_RL_num_of_characters
+		value = 0
+	}
+	every_in_list = {
+		variable = NUI_RL_character_list
+		change_global_variable = {
+			name = NUI_RL_num_of_characters
+			add = 1
+		}
+	}
+}
+
+### フィルターを設定 / Set Filter ###
+NUI_RL_set_filter_effect = {
+	if = {
+		limit = { exists = global_var:$VARIABLE$ }
+		remove_global_variable = $VARIABLE$
+	}
+	else = {
+		set_global_variable = {
+			name = $VARIABLE$
+			value = flag:yes
+		}
+	}
+}
+
+### フィルターを切り替える / Switching Filters ###
+NUI_RL_switch_filter_effect = {
+	remove_global_variable = $PREV_VAR$
+	if = {
+		limit = { exists = global_var:$VARIABLE$ }
+		remove_global_variable = $VARIABLE$
+	}
+	else = {
+		set_global_variable = {
+			name = $VARIABLE$
+			value = flag:yes
+		}
+	}
+}
+
+### 階級フィルターを切り替える / Switching Tier Filters ###
+NUI_RL_switch_filter_tier_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = {
+					NUI_RL_show_filter_tier_trigger = { TIER = $TIER_1$ }
+				}
+				exists = global_var:NUI_RL_filter_$TIER_1$_tier
+			}
+			trigger_if = {
+				limit = {
+					NUI_RL_show_filter_tier_trigger = { TIER = $TIER_2$ }
+				}
+				exists = global_var:NUI_RL_filter_$TIER_2$_tier
+			}
+			trigger_if = {
+				limit = {
+					NUI_RL_show_filter_tier_trigger = { TIER = $TIER_3$ }
+				}
+				exists = global_var:NUI_RL_filter_$TIER_3$_tier
+			}
+			trigger_if = {
+				limit = {
+					NUI_RL_show_filter_tier_trigger = { TIER = $TIER_4$ }
+				}
+				exists = global_var:NUI_RL_filter_$TIER_4$_tier
+			}
+		}
+		remove_global_variable = NUI_RL_filter_$TIER_1$_tier
+		remove_global_variable = NUI_RL_filter_$TIER_2$_tier
+		remove_global_variable = NUI_RL_filter_$TIER_3$_tier
+		remove_global_variable = NUI_RL_filter_$TIER_4$_tier
+	}
+}

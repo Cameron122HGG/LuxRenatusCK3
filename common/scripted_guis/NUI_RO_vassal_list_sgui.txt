@@ -1,0 +1,238 @@
+﻿### 封臣一覧タブ / Vassal List Tab ###
+NUI_RL_open_vassal_list_tab = {
+	scope = character
+
+	effect = {
+		clear_variable_list = NUI_RL_character_list
+
+		set_global_variable = {
+			name = NUI_RL_list_type
+			value = flag:vassal
+		}
+
+		# リストの設定 / Set List
+		every_vassal = {
+			limit = {
+				is_alive = yes
+				highest_held_title_tier = tier_kingdom
+			}
+			root = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+		every_vassal = {
+			limit = {
+				is_alive = yes
+				highest_held_title_tier = tier_duchy
+			}
+			root = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+		every_vassal = {
+			limit = {
+				is_alive = yes
+				highest_held_title_tier = tier_county
+			}
+			root = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+		every_vassal = {
+			limit = {
+				is_alive = yes
+				highest_held_title_tier = tier_barony
+			}
+			root = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+
+		NUI_set_num_of_characters = yes
+	}
+}
+NUI_RL_close_vassal_list_tab = {
+	scope = character
+
+	effect = {
+		NUI_RL_reset_vassal_list_filter_effect = yes
+
+		remove_global_variable = NUI_RL_vassal_realm_size
+		remove_variable = NUI_RL_realm_percentage
+		every_vassal = { remove_variable = NUI_RL_realm_percentage }
+	}
+}
+
+### 領国割合をセット / Set Realm Percentage
+NUI_RL_set_realm_percentage = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = { exists = var:NUI_RL_realm_percentage }
+			remove_variable = NUI_RL_realm_percentage
+			every_vassal = { remove_variable = NUI_RL_realm_percentage }
+		}
+		else = {
+			set_variable = {
+				name = NUI_RL_realm_percentage
+				value = {
+					add = root.domain_size
+					divide = root.sub_realm_size
+					multiply = 100
+				}
+			}
+			every_vassal = {
+				limit = {
+					is_alive = yes
+					sub_realm_size >= 1
+				}
+				set_variable = {
+					name = NUI_RL_realm_percentage
+					value = {
+						add = this.sub_realm_size
+						divide = root.sub_realm_size
+						multiply = 100
+					}
+				}
+			}
+		}
+	}
+}
+
+### 情報の表示 / Show Informations ###
+NUI_RL_has_gift_opinion = {
+	scope = character
+	saved_scopes = { LIEGE }
+
+	is_shown = {
+		has_opinion_modifier = {
+			target = scope:LIEGE
+			modifier = gift_opinion
+		}
+	}
+}
+
+### フィルター / Filter ###
+NUI_RL_vassal_list_filter = {
+	scope = character
+	saved_scopes = { LIEGE PLAYER }
+
+	is_shown = {
+		NUI_RL_vassal_list_filter_trigger = {
+			LIEGE = scope:LIEGE
+			PLAYER = scope:PLAYER
+		}
+	}
+}
+NUI_RL_reset_vassal_list_filter = {
+	scope = character
+
+	effect = {
+		NUI_RL_reset_vassal_list_filter_effect = yes
+	}
+}
+
+# 有力の封臣 / Powerful Vassals
+NUI_RL_toggle_filter_powerful_vassal = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_powerful_vassal }
+	effect = {
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_powerful_vassal }
+	}
+}
+
+# 評議員 / Councillor
+NUI_RL_toggle_filter_councillor = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_councillor }
+	effect = {
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_councillor }
+	}
+}
+
+# 慣習的封臣 / De Jure Vassal
+NUI_RL_show_filter_group_rightful_vassal = {
+	scope = character
+
+	is_shown = {
+		any_in_list = {
+			variable = NUI_RL_character_list
+			NOT = { this.primary_title.de_jure_liege.holder = root }
+			count >= 1
+		}
+	}
+}
+
+NUI_RL_toggle_filter_is_rightful = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_is_rightful }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_is_rightful
+			PREV_VAR = NUI_RL_filter_not_rightful
+		}
+	}
+}
+NUI_RL_toggle_filter_not_rightful = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_not_rightful }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_not_rightful
+			PREV_VAR = NUI_RL_filter_is_rightful
+		}
+	}
+}
+
+# 文化 / Culture
+NUI_RL_show_filter_group_culture = {
+	scope = character
+
+	is_shown = {
+		any_in_list = {
+			variable = NUI_RL_character_list
+			NOT = { this.culture = root.culture }
+			count >= 1
+		}
+	}
+}
+
+NUI_RL_toggle_filter_same_culture = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_same_culture }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_same_culture
+			PREV_VAR = NUI_RL_filter_diff_culture
+		}
+	}
+}
+NUI_RL_toggle_filter_diff_culture = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_diff_culture }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_diff_culture
+			PREV_VAR = NUI_RL_filter_same_culture
+		}
+	}
+}

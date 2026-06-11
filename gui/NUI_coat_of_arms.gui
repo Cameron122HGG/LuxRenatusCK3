@@ -1,0 +1,102 @@
+﻿types CoATypes
+{
+    type coa_house_tiny_big = widget
+    {
+        size = { 48 48 }   # 枠と同じサイズ
+
+        hbox = {
+            margin = { 4 4 }
+
+            # House COA は CultureTemplateData が必須
+            block "culture_template_data_datacontext"
+            {
+                datacontext = "[DynastyHouse.GetCulture.GetTemplateData]"
+            }
+
+            coa_house_lowborn_widget = {
+                parentanchor = center
+                size = { 40 40 }
+
+                blockoverride "icon_size"
+                {
+                    size = { 32 32 }
+                }
+            }
+
+            coa_house_widget = {
+                size = { 40 40 }   # ★ バニラは 40×40 → 48×48 に拡大
+                using = CoA_House_Defaults
+                parentanchor = center
+
+                coat_of_arms_icon = {
+                    parentanchor = center
+                    size = { 30 30 }   # ★ バニラは 28×28 → 40×40 に拡大
+					position = { -4 -4 }   # ← ここを調整して Dynasty と完全一致させる
+
+                    coat_of_arms = "[DynastyHouse.GetHouseCoA.GetTexture('(int32)56','(int32)56')]"
+                    coat_of_arms_slot = "[DynastyHouse.GetHouseCoA.GetSlot('(int32)56','(int32)56')]"
+
+                    coat_of_arms_mask   = "[CultureTemplateData.GetCultureHouseCoAMask]"
+                    coat_of_arms_offset = "[CultureTemplateData.GetCultureHouseCoAOffset]"
+                    coat_of_arms_scale  = "[CultureTemplateData.GetCultureHouseCoAScale]"
+
+                    modify_texture = {
+                        texture = "gfx/interface/coat_of_arms/coa_overlay.dds"
+                        blend_mode = overlay
+                        alpha = 0.5
+                    }
+                }
+
+                coa_house_frame = {
+                    size = { 40 40 }   # 枠はそのまま
+                    texture = "[CultureTemplateData.GetCultureHouseCoAFrame]"
+					position = { -4 -4 }
+                }
+            }
+        }
+    }
+
+
+    type coa_dynasty_tiny_big = widget
+    {
+        size = { 48 48 }   # 枠と同じサイズ
+
+        coa_dynasty_lowborn_widget = {
+            parentanchor = center
+            size = { 40 40 }
+
+            blockoverride "icon_size"
+            {
+                size = { 32 32 }
+            }
+        }
+
+        coa_dynasty_widget = {
+            size = { 48 48 }   # ★ バニラは 40×40 → 48×48 に拡大
+            using = CoA_Dynasty_Defaults
+            parentanchor = center
+
+            coat_of_arms_icon = {
+                parentanchor = center
+                size = { 40 40 }   # ★ バニラは 28×28 → 40×40 に拡大
+                coat_of_arms = "[Dynasty.GetDynastyCoA.GetTexture('(int32)56','(int32)56')]"
+                coat_of_arms_slot = "[Dynasty.GetDynastyCoA.GetSlot('(int32)56','(int32)56')]"
+                coat_of_arms_mask = "[Dynasty.GetCulture.GetCultureDynastyCoAMask]"
+                coat_of_arms_offset = "[Dynasty.GetCulture.GetCultureDynastyCoAOffset]"
+                coat_of_arms_scale = "[Dynasty.GetCulture.GetCultureDynastyCoAScale]"
+
+                modify_texture = {
+                    texture = "gfx/interface/coat_of_arms/coa_overlay.dds"
+                    blend_mode = overlay
+                    alpha = 0.5
+                }
+            }
+
+            coa_dynasty_frame = {
+                size = { 48 48 }   # 枠はそのまま
+                texture = "[Dynasty.GetCulture.GetCultureDynastyCoAFrame]"
+            }
+        }
+    }
+}
+

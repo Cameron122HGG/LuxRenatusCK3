@@ -1,0 +1,297 @@
+﻿#### * * * * * * * * * * * * * * * * * * * * * * ####
+####   .#####  .###  .####   .###  .#####        ####
+####   |###### |###  |####   |###   |###   .##   ####
+####   |####\##|###  |####   |###   |###         ####
+####   |#### \#####  |####   /###   |###   .##   ####
+####   |####  \####   \#########   .#####        ####
+#### * * * *  ALL NEW UI: REALM LEDGER   * * * * ####
+
+window = {
+	name = "NUI_realm_ledger_window"
+	visible = "[GetGlobalVariable( 'NUI_RL_target' ).IsSet]"
+	datacontext = "[GetVariableSystem]"
+	datacontext = "[GetGlobalVariable( 'NUI_RL_target' ).GetCharacter]"
+
+	size = { 1100 900 }
+
+	parentanchor = center
+	layer = middle
+
+	using = Window_Movable
+	using = Background_Letter
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Standard
+		on_start = "[CloseGameView( 'character_interaction_menu' )]"
+		on_start = "[VariableSystem.Set( 'NUI_RL_tabs', 'tab_overview' )]"
+		on_start = "[GetScriptedGui( 'NUI_RL_open_realm_ledger_tab' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+	}
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Standard
+		on_start = "[GetVariableSystem.Clear( 'NUI_RL_tabs' )]"
+		on_start = "[GetVariableSystem.Clear( 'NUI_RL_hide_council_view' )]"
+		on_start = "[GetVariableSystem.Clear( 'NUI_RL_hide_items' )]"
+	}
+
+	background = {
+		texture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+		fittype = centercrop
+		alpha = 0.25
+
+		modify_texture = {
+			texture = "gfx/interface/component_masks/mask_fade_halfcircle_inverted.dds"
+			blend_mode = alphamultiply
+		}
+	}
+
+	### 装飾ヘッダー、フッター / Decorative Header, Footer ###
+	widget = {
+		name = "deco_header"
+		size = { 1135 40 }
+		widgetanchor = center
+		parentanchor = top|hcenter
+		position = { 0 8 }
+
+		background = {
+			texture = "gfx/interface/skinned/window_letter/letter_event_edge_top.dds"
+			spriteType = Corneredstretched
+			spriteborder = { 35 5 }
+		}
+	}
+	widget = {
+		name = "deco_footer"
+		size = { 1135 40 }
+		widgetanchor = center
+		parentanchor = bottom|hcenter
+		position = { 0 -8 }
+
+		background = {
+			texture = "gfx/interface/skinned/window_letter/letter_event_edge_bottom.dds"
+			spriteType = Corneredstretched
+			spriteborder = { 35 5 }
+		}
+	}
+
+	vbox = {
+		name = "window_content"
+		margin_left = 15
+		margin_right = 15
+		margin_top = 18
+		margin_bottom = 20
+
+		text_single = {
+			text = "[Character.GetPrimaryTitle.GetNameNoTooltip|U]"
+			fontsize = 30
+			default_format = "#bold;light_background"
+			align = nobaseline
+		}
+		text_single = {
+			visible = "[Character.IsIndependentRuler]"
+			text = "NUI_RL_is_independent_ruler_TEXT"
+			fontsize = 14
+			default_format = "#bold;light_background"
+			align = nobaseline
+		}
+		text_single = {
+			visible = "[Not( Character.IsIndependentRuler )]"
+			text = "NUI_RL_is_vassal_TEXT"
+			fontsize = 14
+			default_format = "#bold;light_background"
+			align = nobaseline
+		}
+
+		widget = {
+			name = "decorative_header"
+			layoutpolicy_horizontal = expanding
+			size = { -1 21 }
+			allow_outside = yes
+
+			background = {
+				texture = "gfx/interface/component_masks/patterns/mask_pattern_01.dds"
+				spriteType = corneredtiled
+				color = { 0.12 0.12 0.14 1 }
+				texture_density = 1.5
+				margin_top = -1
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+					blend_mode = alphamultiply
+				}
+			}
+
+			### ボタン / Buttons ###
+			flowcontainer = {
+				parentanchor = top|right
+				position = { 0 -50 }
+				spacing = 5
+				ignoreinvisible = yes
+
+				background = {
+					using = Background_Area_Dark
+					margin = { 4 4 }
+					alpha = 0.3
+				}
+
+				button_icon = {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+					texture = "gfx/interface/icons/flat_icons/RNUI_hide_items.dds"
+					size = { 32 32 }
+					onclick = "[GetVariableSystem.Toggle( 'NUI_RL_hide_items' )]"
+				}
+				button_icon = {
+					visible = "[VariableSystem.Exists( 'NUI_RL_hide_items' )]"
+					texture = "gfx/interface/icons/flat_icons/RNUI_show_items.dds"
+					size = { 32 32 }
+					onclick = "[GetVariableSystem.Toggle( 'NUI_RL_hide_items' )]"
+				}
+
+				button_close = {
+					name = "close_button"
+					size = { 32 32 }
+					onclick = "[GetScriptedGui( 'NUI_RL_close_realm_ledger' ).Execute( GuiScope.SetRoot( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).End )]"
+					shortcut = "close_window"
+				}
+			}
+		}
+
+		NUI_RL_council_view = {}
+
+		hbox = {
+			name = "hide_council_view"
+			layoutpolicy_horizontal = expanding
+
+			button_standard_hover = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 22 }
+				onclick = "[GetVariableSystem.Toggle( 'NUI_RL_hide_council_view' )]"
+
+				background = {
+					using = Background_Area
+					alpha = 0.5
+				}
+
+				button_icon_highlight = {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_council_view' ) )]"
+					parentanchor = vcenter|right
+					position = { -20 0 }
+
+					using = Animation_ShowHide_Standard
+
+					size = { 30 20 }
+					texture = "gfx/interface/icons/flat_icons/button_expand_arrow.dds"
+				}
+				button_icon_highlight = {
+					visible = "[VariableSystem.Exists( 'NUI_RL_hide_council_view' )]"
+					parentanchor = vcenter|right
+					position = { -20 0 }
+
+					using = Animation_ShowHide_Standard
+
+					size = { 30 20 }
+					texture = "gfx/interface/icons/flat_icons/button_expand_arrow.dds"
+					mirror = vertical
+				}
+			}
+		}
+
+		widget = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			allow_outside = yes
+
+			# 領国紋章背景 / Realm CoA Background
+			coat_of_arms_icon = {
+				datacontext = "[Character.GetPrimaryTitle]"
+				parentanchor = center
+				size = { 620 620 }
+
+				coat_of_arms = "[Title.GetTitleCoA.GetTexture( '(int32)256', '(int32)256' )]"
+				coat_of_arms_slot = "[Title.GetTitleCoA.GetSlot( '(int32)256', '(int32)256' )]"
+				coat_of_arms_mask = "gfx/interface/frontend/mask_coa_flag.dds"
+
+				modify_texture = {
+					texture = "gfx/interface/coat_of_arms/coa_overlay.dds"
+					blend_mode = overlay
+					spritetype = corneredTiled
+					alpha = 0.4
+				}
+				modify_texture = {
+					texture = "gfx/interface/component_masks/mask_glow.dds"
+					blend_mode = alphamultiply
+				}
+				alpha = 0.5
+			}
+
+			NUI_RL_overview_tab = {}
+
+			NUI_RL_vassal_list_tab = {}
+
+			NUI_RL_knight_list_tab = {}
+
+			NUI_RL_diplomatic_relations_tab = {}
+		}
+
+		expand = {}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			margin = { -12 0 }
+
+			NUI_RL_tab_button = {
+				onclick = "[VariableSystem.Set( 'NUI_RL_tabs', 'tab_overview' )]"
+				text = "NUI_RL_overview_tab_TEXT"
+				blockoverride "down" {
+					visible = "[Not( VariableSystem.HasValue( 'NUI_RL_tabs', 'tab_overview' ) )]"
+				}
+			}
+
+			NUI_RL_tab_button = {
+				onclick = "[VariableSystem.Set( 'NUI_RL_tabs', 'tab_vassal_list' )]"
+				text = "NUI_RL_vassal_list_tab_TEXT"
+				blockoverride "down" {
+					visible = "[Not( VariableSystem.HasValue( 'NUI_RL_tabs', 'tab_vassal_list' ) )]"
+				}
+			}
+
+			NUI_RL_tab_button = {
+				onclick = "[VariableSystem.Set( 'NUI_RL_tabs', 'tab_knight_list' )]"
+				text = "NUI_RL_knight_list_tab_TEXT"
+				blockoverride "down" {
+					visible = "[Not( VariableSystem.HasValue( 'NUI_RL_tabs', 'tab_knight_list' ) )]"
+				}
+			}
+
+			NUI_RL_tab_button = {
+				onclick = "[VariableSystem.Set( 'NUI_RL_tabs', 'tab_diplomatic_list' )]"
+				text = "NUI_RL_diplomatic_list_tab_TEXT"
+				blockoverride "down" {
+					visible = "[Not( VariableSystem.HasValue( 'NUI_RL_tabs', 'tab_diplomatic_list' ) )]"
+				}
+				tooltip = "NUI_RL_diplomatic_list_note_TT"
+			}
+		}
+	}
+}
+
+types NUIRealmOverview
+{
+	type NUI_RL_tab_button = button_standard_clean {
+		layoutpolicy_horizontal = expanding
+		size = { 0 30 }
+		default_format = "#bold;light_background"
+		onclick = "[GetScriptedGui( 'NUI_RL_open_tab' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+
+		texture = "gfx/interface/buttons/button_standard_clean.dds"
+		upframe = 8
+
+		background = {
+			block "down" {
+				visible = no
+			}
+			using = Background_Area_Border
+		}
+		using = tooltip_se
+	}
+}

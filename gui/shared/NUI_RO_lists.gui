@@ -1,0 +1,106 @@
+﻿types Lists
+{
+	type NUI_RL_scrollarea = scrollarea {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+
+		scrollbarpolicy_horizontal = always_off
+		scrollbar_vertical = {
+			using = Scrollbar_Vertical
+		}
+
+		scrollwidget = {
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+
+				block "scroll_content" {}
+
+				expand = {}
+			}
+		}
+	}
+}
+
+types NuiRealmOverview
+{
+	type NUI_RL_character_list = hbox {
+		layoutpolicy_horizontal = expanding
+		allow_outside = yes
+
+		### フィルターボタン / Filter Buttons ###
+		block "filter_box" {
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				max_width = 190
+
+				background = {
+					using = Background_Area
+					margin_right = 5
+				}
+
+				spacer = {
+					size = { 0 10 }
+				}
+
+				NUI_RL_filter_button = {
+					block "filter_reset" {}
+
+					text = "NUI_RL_filter_reset_TEXT"
+
+					blockoverride "button_down" {
+						visible = no
+					}
+					blockoverride "tooltip" {
+						tooltip = "NUI_RL_filter_reset_TT"
+					}
+				}
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					margin = { 5 5 }
+					divider_light = {
+						layoutpolicy_horizontal = expanding
+					}
+				}
+
+				### フィルター / Filters ###
+				NUI_RL_scrollarea = {
+					scrollbaralign_vertical = left
+					blockoverride "scroll_content" {
+						margin_left = 5
+
+						block "filter_buttons" {}
+
+						expand = {}
+					}
+				}
+			}
+		}
+
+		### 封臣一覧 / Vassal List ###
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin_bottom = 3
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				margin = { 20 3 }
+				spacing = 30
+
+				block "list_header" {}
+
+				expand = {}
+			}
+
+			block "target_character" {}
+
+			NUI_RL_scrollarea = {
+				blockoverride "scroll_content" {
+					block "list_contant" {}
+				}
+			}
+		}
+	}
+}

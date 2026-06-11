@@ -1,0 +1,253 @@
+﻿### 外交一覧タブ / Diplomatic List Tab ###
+NUI_RL_open_diplomatic_list = {
+	scope = character
+
+	effect = {
+		clear_variable_list = NUI_RL_character_list
+
+		set_global_variable = {
+			name = NUI_RL_list_type
+			value = flag:diplomatic
+		}
+
+		# リストの設定 / Set List
+		every_ruler = {
+			limit = {
+				NUI_RL_diplomatic_list_target_trigger = yes
+			}
+			root = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+
+		NUI_set_num_of_characters = yes
+	}
+}
+NUI_RL_close_diplomatic_list = {
+	scope = character
+
+	effect = {
+		NUI_RL_reset_diplomatic_list_filter_effect = yes
+	}
+}
+
+### 情報の表示 / Show Informations ###
+
+# 大義名分を持っている / Has Casus Belli
+NUI_RL_has_cb = {
+	scope = character
+	saved_scopes = { TARGET }
+
+	is_shown = {
+		NOT = {
+			liege = scope:TARGET
+			scope:TARGET.liege = root
+		}
+		has_any_cb_on = scope:TARGET
+	}
+}
+
+# 請求権 / Claim
+NUI_RL_has_claim = {
+	scope = character
+	saved_scopes = { TARGET }
+
+	is_shown = {
+		NOT = {
+			liege = scope:TARGET
+			scope:TARGET.liege = root
+		}
+		OR = {
+			any_claim = {
+				OR = {
+					holder = scope:TARGET
+					holder.liege = scope:TARGET
+					holder.top_liege = scope:TARGET
+				}
+			}
+			any_vassal_or_below = {
+				any_claim = {
+					OR = {
+						holder = scope:TARGET
+						holder.liege = scope:TARGET
+						holder.top_liege = scope:TARGET
+					}
+				}
+			}
+			any_courtier = {
+				NOR = {
+					this = root.primary_spouse
+					this = root.father
+					this = root.mother
+				}
+				any_claim = {
+					OR = {
+						holder = scope:TARGET
+						holder.liege = scope:TARGET
+						holder.top_liege = scope:TARGET
+					}
+				}
+			}
+		}
+	}
+}
+
+# 慣習的領土請求権 / De Jure Claim
+NUI_RL_has_de_jure_claim = {
+	scope = character
+	saved_scopes = { TARGET }
+
+	is_shown = {
+		NOT = {
+			liege = scope:TARGET
+			scope:TARGET.liege = root
+		}
+		OR = {
+			has_de_jure_claim_on = scope:TARGET
+			any_vassal_or_below = {
+				highest_held_title_tier >= tier_duchy
+				has_de_jure_claim_on = scope:TARGET
+			}
+		}
+	}
+}
+
+### フィルター / Filter ###
+NUI_RL_diplomatic_list_filter = {
+	scope = character
+	saved_scopes = { TARGET PLAYER }
+
+	is_shown = {
+		NUI_RL_diplomatic_list_filter_trigger = {
+			TARGET = scope:TARGET
+			PLAYER = scope:PLAYER
+		}
+	}
+}
+NUI_RL_reset_diplomatic_list_filter = {
+	scope = character
+
+	effect = {
+		NUI_RL_reset_diplomatic_list_filter_effect = yes
+	}
+}
+
+# 独立している / Is Independent
+NUI_RL_show_filter_is_independent = {
+	scope = character
+
+	is_shown = {
+		any_in_list = {
+			variable = NUI_RL_character_list
+			is_independent_ruler = yes
+			count >= 1
+		}
+		any_in_list = {
+			variable = NUI_RL_character_list
+			NOT = { is_independent_ruler = yes }
+			count >= 1
+		}
+	}
+}
+NUI_RL_toggle_filter_is_independent = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_is_independent }
+	effect = {
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_is_independent }
+	}
+}
+
+# 隣接している / Is neighboring
+NUI_RL_show_filter_is_neighboring = {
+	scope = character
+
+	is_shown = {
+		any_in_list = {
+			variable = NUI_RL_character_list
+			any_sub_realm_county = { is_neighbor_to_realm = root }
+			count >= 1
+		}
+		any_in_list = {
+			variable = NUI_RL_character_list
+			NOT = {
+				any_sub_realm_county = { is_neighbor_to_realm = root }
+			}
+			count >= 1
+		}
+	}
+}
+NUI_RL_toggle_filter_is_neighboring = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_is_neighboring }
+	effect = {
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_is_neighboring }
+	}
+}
+
+# 大義名分 / Casus Belli
+NUI_RL_show_filter_group_cb = {
+	scope = character
+
+	is_shown = {
+		any_in_list = {
+			variable = NUI_RL_character_list
+			save_temporary_scope_as = TARGET
+			OR = {
+				has_any_cb_on = root
+				root = { has_any_cb_on = scope:TARGET }
+			}
+			count >= 1
+		}
+	}
+}
+NUI_RL_toggle_filter_cb_they_has = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_cb_they_has }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_cb_they_has
+			PREV_VAR = NUI_RL_filter_cb_against_them
+		}
+	}
+}
+NUI_RL_toggle_filter_cb_against_them = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_cb_against_them }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_cb_against_them
+			PREV_VAR = NUI_RL_filter_cb_they_has
+		}
+	}
+}
+
+# 軍事力 / Military Strength
+#NUI_RL_toggle_filter_mightier_than_them = {
+#	scope = character
+#
+#	is_shown = { exists = global_var:NUI_RL_filter_mightier_than_them }
+#	effect = {
+#		NUI_RL_switch_filter_effect = {
+#			VARIABLE = NUI_RL_filter_mightier_than_them
+#			PREV_VAR = NUI_RL_filter_weaker_than_them
+#		}
+#	}
+#}
+#NUI_RL_toggle_filter_weaker_than_them = {
+#	scope = character
+#
+#	is_shown = { exists = global_var:NUI_RL_filter_weaker_than_them }
+#	effect = {
+#		NUI_RL_switch_filter_effect = {
+#			VARIABLE = NUI_RL_filter_weaker_than_them
+#			PREV_VAR = NUI_RL_filter_mightier_than_them
+#		}
+#	}
+#}

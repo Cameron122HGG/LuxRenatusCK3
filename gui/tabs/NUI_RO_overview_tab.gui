@@ -1,0 +1,135 @@
+﻿types NUIRealmOverview
+{
+	type NUI_RL_overview_tab = widget {
+		visible = "[Or( Not( GetGlobalVariable( 'NUI_RL_open_tab' ).IsSet ), VariableSystem.HasValue( 'NUI_RL_tabs', 'tab_overview' ) )]"
+		size = { 100% 100% }
+		allow_outside = yes
+
+		using = Animation_Tab_Switch
+
+		state = {
+			name = _show
+			on_start = "[VariableSystem.Set( 'NUI_RL_tabs', 'tab_overview' )]"
+			on_start = "[GetScriptedGui( 'NUI_RL_open_realm_ledger_tab' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+		}
+
+		vbox = {
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 30 }
+
+				button_standard = {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+					parentanchor = left
+					position = { 20 0 }
+					size = { 80 30 }
+					onclick = "[VariableSystem.Toggle( 'NUI_RL_only_coa' )]"
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { 3 0 }
+						button_icon_highlight = {
+							texture = "gfx/interface/icons/flat_icons/replace.dds"
+							size = { 30 30 }
+						}
+						button_icon_highlight = {
+							visible = "[Not( VariableSystem.Exists( 'NUI_RL_only_coa' ) )]"
+							texture = "gfx/interface/icons/flat_icons/window_me.dds"
+							size = { 30 30 }
+						}
+						button_icon_highlight = {
+							visible = "[VariableSystem.Exists( 'NUI_RL_only_coa' )]"
+							texture = "gfx/interface/icons/flat_icons/title.dds"
+							size = { 30 30 }
+						}
+					}
+				}
+
+				text_single = {
+					visible = "[GreaterThanOrEqualTo_int32( GetDataModelSize( Character.MakeScope.GetList( 'NUI_RL_character_list' ) ), '(int32)1' )]"
+					parentanchor = center
+					text = "NUI_RL_vassals_TEXT"
+					fontsize = 20
+					default_format = "#bold;light_background"
+					align = nobaseline
+				}
+			}
+
+			NUI_RL_scrollarea = {
+				visible = "[Not( VariableSystem.Exists( 'NUI_RL_only_coa' ) )]"
+				using = Animation_Tab_Switch
+
+				blockoverride "scroll_content" {
+					dynamicgridbox = {
+						visible = "[LessThanOrEqualTo_int32( GetDataModelSize( Character.MakeScope.GetList( 'NUI_RL_character_list' ) ), '(int32)12' )]"
+						datamodel = "[Character.MakeScope.GetList( 'NUI_RL_character_list' )]"
+						flipdirection = yes
+						datamodel_wrap = 6
+
+						item = {
+							NUI_RL_portrait_torso = {
+								datacontext = "[Scope.GetCharacter]"
+							}
+						}
+					}
+					dynamicgridbox = {
+						visible = "[And( GreaterThan_int32( GetDataModelSize( Character.MakeScope.GetList( 'NUI_RL_character_list' ) ), '(int32)12' ), LessThanOrEqualTo_int32( GetDataModelSize( Character.MakeScope.GetList( 'NUI_RL_character_list' ) ), '(int32)24' ) )]"
+						datamodel = "[Character.MakeScope.GetList( 'NUI_RL_character_list' )]"
+						flipdirection = yes
+						datamodel_wrap = 8
+
+						item = {
+							NUI_RL_portrait_shoulders = {
+								datacontext = "[Scope.GetCharacter]"
+							}
+						}
+					}
+					dynamicgridbox = {
+						visible = "[GreaterThan_int32( GetDataModelSize( Character.MakeScope.GetList( 'NUI_RL_character_list' ) ), '(int32)24' )]"
+						datamodel = "[Character.MakeScope.GetList( 'NUI_RL_character_list' )]"
+						flipdirection = yes
+						datamodel_wrap = 9
+
+						item = {
+							NUI_RL_portrait_head = {
+								datacontext = "[Scope.GetCharacter]"
+							}
+						}
+					}
+				}
+			}
+
+			NUI_RL_scrollarea = {
+				visible = "[VariableSystem.Exists( 'NUI_RL_only_coa' )]"
+				using = Animation_Tab_Switch
+
+				blockoverride "scroll_content" {
+					dynamicgridbox = {
+						visible = "[LessThanOrEqualTo_int32( GetDataModelSize( Character.MakeScope.GetList( 'NUI_RL_character_list' ) ), '(int32)33' )]"
+						datamodel = "[Character.MakeScope.GetList( 'NUI_RL_character_list' )]"
+						flipdirection = yes
+						datamodel_wrap = 11
+
+						item = {
+							coa_realm_big_crown = {
+								datacontext = "[Scope.GetCharacter]"
+							}
+						}
+					}
+					dynamicgridbox = {
+						visible = "[GreaterThan_int32( GetDataModelSize( Character.MakeScope.GetList( 'NUI_RL_character_list' ) ), '(int32)33' )]"
+						datamodel = "[Character.MakeScope.GetList( 'NUI_RL_character_list' )]"
+						flipdirection = yes
+						datamodel_wrap = 15
+
+						item = {
+							coa_realm_medium_crown = {
+								datacontext = "[Scope.GetCharacter]"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

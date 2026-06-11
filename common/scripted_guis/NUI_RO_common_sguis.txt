@@ -1,0 +1,484 @@
+﻿### HUDボタン / HUD Button ###
+NUI_RL_hud_button = {
+	scope = character
+
+	is_shown = {
+		exists = global_var:NUI_RL_target
+		global_var:NUI_RL_target = root
+	}
+	effect = {
+		if = {
+			limit = {
+				exists = global_var:NUI_RL_target
+				global_var:NUI_RL_target = root
+			}
+			NUI_RL_close_realm_ledger_effect = { TARGET = root }
+		}
+		else = {
+
+			NUI_RL_open_realm_ledger_effect = { TARGET = root }
+		}
+	}
+}
+
+### ウィンドウを閉じる / Close Window ###
+NUI_RL_close_realm_ledger = {
+	scope = character
+
+	effect = {
+		NUI_RL_close_realm_ledger_effect = { TARGET = root }
+	}
+}
+
+### 領国概要 / Realm Overview ###
+NUI_RL_open_realm_ledger_tab = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = { exists = global_var:NUI_RL_open_tab }
+			clear_variable_list = NUI_RL_character_list
+
+			set_global_variable = {
+				name = NUI_RL_list_type
+				value = flag:overview
+			}
+
+			# リストの設定 / Set List
+			every_vassal = {
+				limit = {
+					is_councillor = no
+					highest_held_title_tier = tier_kingdom
+				}
+				root = {
+					add_to_variable_list = {
+						name = NUI_RL_character_list
+						target = prev
+					}
+				}
+			}
+			every_vassal = {
+				limit = {
+					is_councillor = no
+					highest_held_title_tier = tier_duchy
+				}
+				root = {
+					add_to_variable_list = {
+						name = NUI_RL_character_list
+						target = prev
+					}
+				}
+			}
+			every_vassal = {
+				limit = {
+					is_councillor = no
+					highest_held_title_tier = tier_county
+				}
+				root = {
+					add_to_variable_list = {
+						name = NUI_RL_character_list
+						target = prev
+					}
+				}
+			}
+			every_vassal = {
+				limit = {
+					is_councillor = no
+					highest_held_title_tier = tier_barony
+				}
+				root = {
+					add_to_variable_list = {
+						name = NUI_RL_character_list
+						target = prev
+					}
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = NUI_RL_num_of_characters
+			value = 0
+		}
+	}
+}
+
+### タブを開く / Open Tab ###
+NUI_RL_open_tab = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				NOT = { exists = global_var:NUI_RL_open_tab }
+			}
+			set_global_variable = {
+				name = NUI_RL_open_tab
+				value = flag:yes
+			}
+		}
+	}
+}
+
+### 外交 / Diplomacy
+NUI_RL_is_allied = {
+	scope = character
+	saved_scopes = { TARGET }
+
+	is_shown = {
+		is_allied_to = scope:TARGET
+	}
+}
+NUI_RL_is_at_war = {
+	scope = character
+	saved_scopes = { TARGET }
+
+	is_shown = {
+		is_at_war_with = scope:TARGET
+	}
+}
+NUI_RL_has_truce = {
+	scope = character
+	saved_scopes = { TARGET }
+
+	is_shown = {
+		has_truce = scope:TARGET
+	}
+}
+
+### 条件を満たす封臣の数を算出
+NUI_RL_set_meets_conditions = {
+	scope = character
+	saved_scopes = { PLAYER }
+
+	effect = {
+		set_global_variable = {
+			name = NUI_RL_meets_conditions
+			value = 0
+		}
+
+		# 封臣一覧 / Vassal List
+		if = {
+			limit = { global_var:NUI_RL_list_type = flag:vassal }
+			every_in_list = {
+				variable = NUI_RL_character_list
+				limit = {
+					NUI_RL_vassal_list_filter_trigger = {
+						LIEGE = root
+						PLAYER = scope:PLAYER
+					}
+				}
+				change_global_variable = {
+					name = NUI_RL_meets_conditions
+					add = 1
+				}
+			}
+			set_global_variable = {
+				name = NUI_RL_vassal_realm_size
+				value = 0
+			}
+			every_in_list = {
+				variable = NUI_RL_character_list
+				limit = {
+					NUI_RL_vassal_list_filter_trigger = {
+						LIEGE = root
+						PLAYER = scope:PLAYER
+					}
+				}
+				change_global_variable = {
+					name = NUI_RL_vassal_realm_size
+					add = this.sub_realm_size
+				}
+			}
+		}
+
+		# 外交一覧 / Diplomatic List
+		else_if = {
+			limit = { global_var:NUI_RL_list_type = flag:diplomatic }
+			every_in_list = {
+				variable = NUI_RL_character_list
+				limit = {
+					NUI_RL_diplomatic_list_filter_trigger = {
+						TARGET = root
+						PLAYER = scope:PLAYER
+					}
+				}
+				change_global_variable = {
+					name = NUI_RL_meets_conditions
+					add = 1
+				}
+			}
+		}
+	}
+}
+
+### フィルター・共通 / Filter - Common ###
+
+# 称号階級 / Title Tiers
+NUI_RL_show_filter_title_tiers = {
+	scope = character
+
+	is_shown = {
+		calc_true_if = {
+			amount >= 2
+			NUI_RL_show_filter_tier_trigger = { TIER = empire }
+			NUI_RL_show_filter_tier_trigger = { TIER = kingdom }
+			NUI_RL_show_filter_tier_trigger = { TIER = duchy }
+			NUI_RL_show_filter_tier_trigger = { TIER = county }
+			NUI_RL_show_filter_tier_trigger = { TIER = barony }
+		}
+	}
+}
+NUI_RL_show_filter_empire_tier = {
+	scope = character
+
+	is_shown = {
+		NUI_RL_show_filter_tier_trigger = { TIER = empire }
+	}
+}
+NUI_RL_show_filter_kingdom_tier = {
+	scope = character
+
+	is_shown = {
+		NUI_RL_show_filter_tier_trigger = { TIER = kingdom }
+	}
+}
+NUI_RL_show_filter_duchy_tier = {
+	scope = character
+
+	is_shown = {
+		NUI_RL_show_filter_tier_trigger = { TIER = duchy }
+	}
+}
+NUI_RL_show_filter_county_tier = {
+	scope = character
+
+	is_shown = {
+		NUI_RL_show_filter_tier_trigger = { TIER = county }
+	}
+}
+NUI_RL_show_filter_barony_tier = {
+	scope = character
+
+	is_shown = {
+		NUI_RL_show_filter_tier_trigger = { TIER = barony }
+	}
+}
+
+NUI_RL_toggle_filter_empire_tier = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_empire_tier }
+	effect = {
+		NUI_RL_switch_filter_tier_effect = {
+			TIER_1 = kingdom
+			TIER_2 = duchy
+			TIER_3 = county
+			TIER_4 = barony
+		}
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_empire_tier }
+	}
+}
+NUI_RL_toggle_filter_kingdom_tier = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_kingdom_tier }
+	effect = {
+		NUI_RL_switch_filter_tier_effect = {
+			TIER_1 = empire
+			TIER_2 = duchy
+			TIER_3 = county
+			TIER_4 = barony
+		}
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_kingdom_tier }
+	}
+}
+NUI_RL_toggle_filter_duchy_tier = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_duchy_tier }
+	effect = {
+		NUI_RL_switch_filter_tier_effect = {
+			TIER_1 = empire
+			TIER_2 = kingdom
+			TIER_3 = county
+			TIER_4 = barony
+		}
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_duchy_tier }
+	}
+}
+NUI_RL_toggle_filter_county_tier = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_county_tier }
+	effect = {
+		NUI_RL_switch_filter_tier_effect = {
+			TIER_1 = empire
+			TIER_2 = kingdom
+			TIER_3 = duchy
+			TIER_4 = barony
+		}
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_county_tier }
+	}
+}
+NUI_RL_toggle_filter_barony_tier = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_barony_tier }
+	effect = {
+		NUI_RL_switch_filter_tier_effect = {
+			TIER_1 = empire
+			TIER_2 = kingdom
+			TIER_3 = duchy
+			TIER_4 = county
+		}
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_barony_tier }
+	}
+}
+
+# 評価 / Opinion
+NUI_RL_toggle_filter_high_opinion = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_high_opinion }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_high_opinion
+			PREV_VAR = NUI_RL_filter_low_opinion
+		}
+
+	}
+}
+NUI_RL_toggle_filter_low_opinion = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_low_opinion }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_low_opinion
+			PREV_VAR = NUI_RL_filter_high_opinion
+		}
+	}
+}
+NUI_RL_toggle_filter_opinion_for_player = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_opinion_for_player }
+	effect = {
+		NUI_RL_set_filter_effect = { VARIABLE = NUI_RL_filter_opinion_for_player }
+	}
+}
+
+# 信仰 / Faith
+NUI_RL_show_filter_group_faith = {
+	scope = character
+
+	is_shown = {
+		any_in_list = {
+			variable = NUI_RL_character_list
+			NOT = { this.faith = root.faith }
+			count >= 1
+		}
+	}
+}
+
+NUI_RL_toggle_filter_same_faith = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_same_faith }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_same_faith
+			PREV_VAR = NUI_RL_filter_diff_faith
+		}
+	}
+}
+NUI_RL_toggle_filter_diff_faith = {
+	scope = character
+
+	is_shown = { exists = global_var:NUI_RL_filter_diff_faith }
+	effect = {
+		NUI_RL_switch_filter_effect = {
+			VARIABLE = NUI_RL_filter_diff_faith
+			PREV_VAR = NUI_RL_filter_same_faith
+		}
+	}
+}
+
+# ターゲティング / Targeting
+NUI_reset_targeting_house_dynasty = {
+	scope = character
+
+	effect = {
+		remove_global_variable = NUI_RL_filter_targeting_house
+		remove_global_variable = NUI_RL_filter_targeting_dynasty
+	}
+}
+
+NUI_RL_toggle_filter_targeting_house = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = { exists = global_var:NUI_RL_filter_targeting_house }
+			remove_global_variable = NUI_RL_filter_targeting_house
+		}
+		else = {
+			set_global_variable = {
+				name = NUI_RL_filter_targeting_house
+				value = root.house
+			}
+		}
+	}
+}
+NUI_RL_toggle_filter_targeting_dynasty = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = { exists = global_var:NUI_RL_filter_targeting_dynasty }
+			remove_global_variable = NUI_RL_filter_targeting_dynasty
+		}
+		else = {
+			set_global_variable = {
+				name = NUI_RL_filter_targeting_dynasty
+				value = root.dynasty
+			}
+		}
+	}
+}
+NUI_RL_toggle_filter_targeting_faith = {
+	scope = character
+
+	effect = {
+		remove_global_variable = NUI_RL_filter_same_faith
+		remove_global_variable = NUI_RL_filter_diff_faith
+		if = {
+			limit = { exists = global_var:NUI_RL_filter_targeting_faith }
+			remove_global_variable = NUI_RL_filter_targeting_faith
+		}
+		else = {
+			set_global_variable = {
+				name = NUI_RL_filter_targeting_faith
+				value = root.faith
+			}
+		}
+	}
+}
+NUI_RL_toggle_filter_targeting_culture = {
+	scope = character
+
+	effect = {
+		remove_global_variable = NUI_RL_filter_same_culture
+		remove_global_variable = NUI_RL_filter_diff_culture
+		if = {
+			limit = { exists = global_var:NUI_RL_filter_targeting_culture }
+			remove_global_variable = NUI_RL_filter_targeting_culture
+		}
+		else = {
+			set_global_variable = {
+				name = NUI_RL_filter_targeting_culture
+				value = root.culture
+			}
+		}
+	}
+}

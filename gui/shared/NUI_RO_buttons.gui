@@ -1,0 +1,233 @@
+﻿types Buttons
+{
+	type NUI_RL_filter_button_expand = button_standard_hover {
+		size = { 165 30 }
+
+		background = {
+			using = Background_Area
+		}
+
+		button_list_expand = {
+			parentanchor = vcenter|left
+			position = { 5 0 }
+			block "checked" {}
+			alwaystransparent = yes
+		}
+
+		background = {
+			block "filter_enabled" {
+				visible = no
+			}
+			texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+			color = { 0 0.6 0.1 0.5 }
+
+			modify_texture = {
+				texture = "gfx/interface/component_masks/mask_fade_circle.dds"
+				blend_mode = alphamultiply
+			}
+		}
+	}
+
+	type NUI_RL_filter_button = button_standard {
+		size = { 160 30 }
+		onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+		onclick = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+
+		background = {
+			block "button_down" {
+				visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+			using = Background_Area
+			color = { 0 0.6 0.1 0.75 }
+		}
+		block "tooltip" {
+			tooltip = "NUI_RL_filter_TT"
+		}
+	}
+
+	type NUI_RL_filter_checkbox = button_checkbox_label {
+		layoutpolicy_horizontal = expanding
+		onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+		block "no_effect" {
+			onclick = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+		}
+
+		blockoverride "checkbox" {
+			block "checked" {
+				checked = "[ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+		}
+		blockoverride "text" {
+			block "filter_label" {
+				raw_text = ""
+			}
+			default_format = "#bold;light_background"
+		}
+		block "tooltip" {
+			tooltip = "NUI_RL_filter_TT"
+		}
+	}
+
+	type NUI_RL_filter_title_tier_button = button_standard {
+		layoutpolicy_horizontal = expanding
+		size = { 0 40 }
+		onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+		onclick = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+
+		icon = {
+			visible = "[Not( ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).End ) )]"
+			parentanchor = center
+			texture = "gfx/interface/coat_of_arms/crown_strip_62.dds"
+			size = { 34 23 }
+			framesize = { 64 40 }
+			block "tier_frame" {
+				frame = 1
+			}
+			alpha = 0.7
+		}
+		icon = {
+			visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			parentanchor = center
+			texture = "gfx/interface/coat_of_arms/crown_strip_62.dds"
+			size = { 34 23 }
+			framesize = { 64 40 }
+			block "tier_frame" {
+				frame = 1
+			}
+		}
+		background = {
+			visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			using = Background_Area
+			color = { 0 0.6 0.1 0.75 }
+		}
+		block "tooltip" {
+			tooltip = "NUI_RL_filter_TT"
+		}
+	}
+
+	type NUI_RL_targeting_buttons = hbox {
+		layoutpolicy_vertical = expanding
+		minimumsize = { 170 48 }
+
+		widget = {
+			name = "dynasty_house_coa"
+			size = { 40 40 }
+
+			# 王朝または家 / Dynasty or House ###
+			coa_house_tiny_big = {
+				name = "character_house"
+				visible = "[And( Character.GetHouse.IsValid, Not( VariableSystem.Exists( 'NUI_RL_vassal_list_show_dynasty' ) ) )]"
+				parentanchor = center
+				datacontext = "[Character.GetHouse]"
+				scale = 0.85
+
+				blockoverride "coa_button" {
+					onclick = "[GetScriptedGui( 'NUI_RL_toggle_filter_targeting_house' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+					onclick = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+				}
+				tooltipwidget = {
+					using = dynasty_house_tooltip
+				}
+			}
+			coa_dynasty_tiny_big = {
+				name = "character_dynasty"
+				visible = "[And( Character.GetHouse.IsValid, VariableSystem.Exists( 'NUI_RL_vassal_list_show_dynasty' ) )]"
+				parentanchor = center
+				datacontext = "[Character.GetDynasty]"
+				scale = 0.85
+				
+				blockoverride "coa_dynasty_widget"
+				{
+                    blockoverride "coat_of_arms_icon"
+					{
+                        size = { 36 36 }   # ← ここを調整すれば大きさが変わる
+                    }
+                }
+
+				blockoverride "coa_button" {
+					onclick = "[GetScriptedGui( 'NUI_RL_toggle_filter_targeting_dynasty' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+					onclick = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+				}
+				tooltipwidget = {
+					using = DynastyTooltip
+				}
+			}
+			background = {
+				block "not_targeting_forcus" {
+					visible = "[Or( GetGlobalVariable( 'NUI_RL_filter_targeting_house' ).IsSet, GetGlobalVariable( 'NUI_RL_filter_targeting_dynasty' ).IsSet )]"
+				}
+				using = Background_Frame_Gold
+			}
+		}
+
+		# 信仰 / Faith
+		button = {
+			name = "faith_icon"
+			datacontext = "[Character.GetFaith]"
+			size = { 40 40 }
+			onclick = "[GetScriptedGui( 'NUI_RL_toggle_filter_targeting_faith' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			onclick = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+			tooltipwidget = {
+				faith_tooltip_click = {}
+			}
+			texture = "[Faith.GetIcon]"
+
+			background = {
+				using = Background_Area_Dark
+				margin = { 2 2 }
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/mask_fade_circle.dds"
+					blend_mode = alphamultiply
+				}
+				alpha = 0.8
+			}
+			background = {
+				block "not_targeting_forcus" {
+					visible = "[GetGlobalVariable( 'NUI_RL_filter_targeting_faith' ).IsSet]"
+				}
+				using = Background_Frame_Gold
+			}
+		}
+
+		# 文化 / Culture
+		widget = {
+			name = "culture_name"
+			size = { 90 40 }
+			datacontext = "[Character.GetCulture]"
+
+			tooltipwidget = {
+				culture_tooltip = {}
+			}
+			using = tooltip_es
+
+			icon = {
+				parentanchor = center
+				texture = "gfx/interface/icons/icon_culture.dds"
+				size = { 40 40 }
+				alpha = 0.3
+			}
+			text_multi = {
+				parentanchor = center
+				text = "[Culture.GetName]"
+				autoresize = yes
+				fontsize = 16
+				fontsize_min = 13
+				default_format = "#bold;light_background"
+				align = nobaseline|hcenter
+				maximumsize = { 90 40 }
+			}
+			button = {
+				size = { 100% 100% }
+				onclick = "[GetScriptedGui( 'NUI_RL_toggle_filter_targeting_culture' ).Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+				onclick = "[GetScriptedGui( 'NUI_RL_set_meets_conditions' ).Execute( GuiScope.SetRoot( GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.MakeScope ).AddScope( 'PLAYER', GetPlayer.MakeScope ).End )]"
+			}
+			background = {
+				block "not_targeting_forcus" {
+					visible = "[GetGlobalVariable( 'NUI_RL_filter_targeting_culture' ).IsSet]"
+				}
+				using = Background_Frame_Gold
+			}
+		}
+	}
+}

@@ -1,0 +1,49 @@
+﻿### 騎士一覧タブ / Knight List Tab ###
+NUI_RL_open_knight_list_tab = {
+	scope = character
+
+	effect = {
+		clear_variable_list = NUI_RL_character_list
+
+		set_global_variable = {
+			name = NUI_RL_list_type
+			value = flag:knight
+		}
+
+		# リストの設定 / Set List
+		every_knight = {
+			root = {
+				add_to_variable_list = {
+					name = NUI_RL_character_list
+					target = prev
+				}
+			}
+		}
+
+		NUI_set_num_of_characters = yes
+
+		# 平均武勇を算出 / Calculate Average Prowess
+		set_global_variable = {
+			name = NUI_RL_average_prowess
+			value = 0
+		}
+		every_in_list = {
+			variable = NUI_RL_character_list
+			change_global_variable = {
+				name = NUI_RL_average_prowess
+				add = this.prowess
+			}
+		}
+		change_global_variable = {
+			name = NUI_RL_average_prowess
+			divide = global_var:NUI_RL_num_of_characters
+		}
+	}
+}
+NUI_RL_close_knight_list_tab = {
+	scope = character
+
+	effect = {
+		NUI_RL_reset_vassal_list_filter_effect = yes
+	}
+}

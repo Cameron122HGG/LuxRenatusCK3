@@ -1,0 +1,390 @@
+﻿NuiRoListCharacterRelation = {
+	type = character
+
+	# 彼自身 / Themself
+	text = {
+		trigger = { root = scope:second }
+		localization_key = NUI_RL_THEY
+	}
+
+	# 彼の主君 / Their Liege
+	text = {
+		trigger = { root = scope:second.liege }
+		localization_key = NUI_RL_THEIR_LIEGE
+	}
+
+	# 彼の最上位の主君 / Their Top Liege
+	text = {
+		trigger = {
+			NOT = { root = scope:second.liege }
+			root = scope:second.top_liege
+		}
+		localization_key = NUI_RL_THEIR_TOP_LIEGE
+	}
+
+	# 独立した統治者 / Independent Ruler
+	text = {
+		trigger = {
+			is_independent_ruler = yes
+			NOT = {
+				root = scope:second.liege
+				root = scope:second.top_liege
+				any_sub_realm_county = { is_neighbor_to_realm = scope:second }
+			}
+		}
+		localization_key = NUI_RL_INDEPENDENT_RULER
+	}
+
+	# 彼の隣人 / Their Neighbor
+	text = {
+		trigger = {
+			is_independent_ruler = yes
+			NOT = {
+				root = scope:second.liege
+				root = scope:second.top_liege
+			}
+			any_sub_realm_county = { is_neighbor_to_realm = scope:second }
+		}
+		localization_key = NUI_RL_THEIR_NEIGHBOR
+	}
+
+	# Xの封臣 / Vassal in the X
+	text = {
+		trigger = {
+			is_independent_ruler = no
+			NOT = {
+				root = scope:second.liege
+				liege = scope:second.liege
+				any_sub_realm_county = { is_neighbor_to_realm = scope:second }
+			}
+		}
+		localization_key = NUI_RL_VASSAL_IN_REALM
+	}
+
+	# 彼の隣人、Xの封臣 / Their Neighbor, and Vassal in the X
+	text = {
+		trigger = {
+			is_independent_ruler = no
+			NOT = {
+				root = scope:second.liege
+				liege = scope:second.liege
+			}
+			any_sub_realm_county = { is_neighbor_to_realm = scope:second }
+		}
+		localization_key = NUI_RL_THEIR_NEIGHBOR_AND_VASSAL_IN_REALM
+	}
+
+	# 彼の仲間の封臣 / Their Fellow Vassal
+	text = {
+		trigger = {
+			is_independent_ruler = no
+			liege = scope:second.liege
+			NOT = {
+				any_sub_realm_county = { is_neighbor_to_realm = scope:second }
+			}
+		}
+		localization_key = NUI_RL_THEIR_FELLOW_VASSAL
+	}
+
+	# 彼の隣人にして仲間の封臣 / Their Neighbor and Fellow Vassal
+	text = {
+		trigger = {
+			is_independent_ruler = no
+			liege = scope:second.liege
+			any_sub_realm_county = { is_neighbor_to_realm = scope:second }
+		}
+		localization_key = NUI_RL_THEIR_NEIGHBOR_AND_FELLOW_VASSAL
+	}
+}
+
+NuiRoCasusBelliToolTip = {
+	type = character
+
+	text = {
+		trigger = {
+			NOT = { has_any_cb_on = scope:second }
+			scope:second = { has_any_cb_on = root }
+		}
+
+		localization_key = NUI_RL_CB_THEY_HAS
+	}
+
+	text = {
+		trigger = {
+			has_any_cb_on = scope:second
+			NOT = {
+				scope:second = { has_any_cb_on = root }
+			}
+		}
+		localization_key = NUI_RL_CB_AGAINST_THEM
+	}
+
+	text = {
+		trigger = {
+			has_any_cb_on = scope:second
+			scope:second = { has_any_cb_on = root }
+		}
+		localization_key = NUI_RL_BOTH_SIDE_HAVE_CB
+	}
+}
+
+NuiRoClaimToolTip = {
+	type = character
+
+	text = {
+		trigger = {
+			NOT = {
+				any_claim = {
+					OR = {
+						holder = scope:second
+						holder.liege = scope:second
+						holder.top_liege = scope:second
+					}
+				}
+				any_vassal_or_below = {
+					any_claim = {
+						OR = {
+							holder = scope:second
+							holder.liege = scope:second
+							holder.top_liege = scope:second
+						}
+					}
+				}
+				any_courtier = {
+					any_claim = {
+						OR = {
+							holder = scope:second
+							holder.liege = scope:second
+							holder.top_liege = scope:second
+						}
+					}
+				}
+			}
+			scope:second = {
+				OR = {
+					any_claim = {
+						OR = {
+							holder = root
+							holder.liege = root
+							holder.top_liege = root
+						}
+					}
+					any_vassal_or_below = {
+						any_claim = {
+							OR = {
+								holder = root
+								holder.liege = root
+								holder.top_liege = root
+							}
+						}
+					}
+					any_courtier = {
+						any_claim = {
+							OR = {
+								holder = root
+								holder.liege = root
+								holder.top_liege = root
+							}
+						}
+					}
+				}
+			}
+		}
+		localization_key = NUI_RL_CLAIM_THEY_HAS
+	}
+
+	text = {
+		trigger = {
+			OR = {
+				any_claim = {
+					OR = {
+						holder = scope:second
+						holder.liege = scope:second
+						holder.top_liege = scope:second
+					}
+				}
+				any_vassal_or_below = {
+					any_claim = {
+						OR = {
+							holder = scope:second
+							holder.liege = scope:second
+							holder.top_liege = scope:second
+						}
+					}
+				}
+				any_courtier = {
+					any_claim = {
+						OR = {
+							holder = scope:second
+							holder.liege = scope:second
+							holder.top_liege = scope:second
+						}
+					}
+				}
+			}
+			scope:second = {
+				NOT = {
+					any_claim = {
+						OR = {
+							holder = root
+							holder.liege = root
+							holder.top_liege = root
+						}
+					}
+					any_vassal_or_below = {
+						any_claim = {
+							OR = {
+								holder = root
+								holder.liege = root
+								holder.top_liege = root
+							}
+						}
+					}
+					any_courtier = {
+						any_claim = {
+							OR = {
+								holder = root
+								holder.liege = root
+								holder.top_liege = root
+							}
+						}
+					}
+				}
+			}
+		}
+		localization_key = NUI_RL_CLAIM_AGAINST_THEM
+	}
+
+	text = {
+		trigger = {
+			OR = {
+				any_claim = {
+					OR = {
+						holder = scope:second
+						holder.liege = scope:second
+						holder.top_liege = scope:second
+					}
+				}
+				any_vassal_or_below = {
+					any_claim = {
+						OR = {
+							holder = scope:second
+							holder.liege = scope:second
+							holder.top_liege = scope:second
+						}
+					}
+				}
+				any_courtier = {
+					any_claim = {
+						OR = {
+							holder = scope:second
+							holder.liege = scope:second
+							holder.top_liege = scope:second
+						}
+					}
+				}
+			}
+			scope:second = {
+				OR = {
+					any_claim = {
+						OR = {
+							holder = root
+							holder.liege = root
+							holder.top_liege = root
+						}
+					}
+					any_vassal_or_below = {
+						any_claim = {
+							OR = {
+								holder = root
+								holder.liege = root
+								holder.top_liege = root
+							}
+						}
+					}
+					any_courtier = {
+						any_claim = {
+							OR = {
+								holder = root
+								holder.liege = root
+								holder.top_liege = root
+							}
+						}
+					}
+				}
+			}
+		}
+		localization_key = NUI_RL_BOTH_SIDE_HAVE_CLAIM
+	}
+}
+
+
+NuiRoDeJureClaimToolTip = {
+	type = character
+
+	text = {
+		trigger = {
+			NOT = {
+				has_de_jure_claim_on = scope:second
+				any_vassal_or_below = {
+					highest_held_title_tier >= tier_duchy
+					has_de_jure_claim_on = scope:second
+				}
+			}
+			scope:second = {
+				OR = {
+					has_de_jure_claim_on = root
+					any_vassal_or_below = {
+						highest_held_title_tier >= tier_duchy
+						has_de_jure_claim_on = root
+					}
+				}
+			}
+		}
+		localization_key = NUI_RL_DE_JURE_CLAIM_THEY_HAS
+	}
+
+	text = {
+		trigger = {
+			OR = {
+				has_de_jure_claim_on = scope:second
+				any_vassal_or_below = {
+					highest_held_title_tier >= tier_duchy
+					has_de_jure_claim_on = scope:second
+				}
+			}
+			scope:second = {
+				NOT = {
+					has_de_jure_claim_on = root
+					any_vassal_or_below = {
+						highest_held_title_tier >= tier_duchy
+						has_de_jure_claim_on = root
+					}
+				}
+			}
+		}
+		localization_key = NUI_RL_DE_JURE_CLAIM_AGAINST_THEM
+	}
+
+	text = {
+		trigger = {
+			OR = {
+				has_de_jure_claim_on = scope:second
+				any_vassal_or_below = {
+					highest_held_title_tier >= tier_duchy
+					has_de_jure_claim_on = scope:second
+				}
+			}
+			scope:second = {
+				OR = {
+					has_de_jure_claim_on = root
+					any_vassal_or_below = {
+						highest_held_title_tier >= tier_duchy
+						has_de_jure_claim_on = root
+					}
+				}
+			}
+		}
+		localization_key = NUI_RL_BOTH_SIDE_HAVE_DE_JURE_CLAIM
+	}
+}

@@ -1,0 +1,206 @@
+﻿types NUIRealmOverview
+{
+	type NUI_RL_council_view = widget {
+		name = "council_view"
+		visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_council_view' ) )]"
+		layoutpolicy_horizontal = expanding
+		size = { -1 200 }
+		datacontext = "[GetIllustration( 'character_view_bg' )]"
+
+		using = Animation_ShowHide_Standard
+
+		background = {
+			texture = "[Illustration.GetTexture( Character.MakeScope )]"
+			fittype = centercrop
+			margin_bottom = 50
+
+			modify_texture = {
+				texture = "gfx/interface/component_masks/mask_fade_halfcircle.dds"
+				blend_mode = alphamultiply
+			}
+		}
+
+		flowcontainer = {
+			parentanchor = bottom|left
+			position = { 25 0 }
+			spacing = 10
+
+			NUI_RL_portrait_shoulders = {
+				datacontext = "[GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.GetCouncillor( 'councillor_chancellor' )]"
+				blockoverride "portrait_position" {
+					position = { 0 5 }
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Character.GetPortrait( 'environment_shoulders', 'camera_shoulders', 'chancellor', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+				}
+				blockoverride "councillor_icon" {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+					texture = "gfx/interface/icons/message_feed/chancellor_job.dds"
+					tooltip = "[Concept( 'chancellor', Character.GetCouncilTitle )|E]"
+				}
+				blockoverride "realm_coa" {
+					coa_realm_medium_crown = {
+						visible = "[Character.HasLandedTitles]"
+						scale = 0.9
+
+						parentanchor = bottom|left
+						position = { -15 10 }
+					}
+				}
+			}
+			NUI_RL_portrait_shoulders = {
+				datacontext = "[GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.GetCouncillor( 'councillor_marshal' )]"
+				blockoverride "portrait_position" {
+					position = { 0 5 }
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Character.GetPortrait( 'environment_shoulders', 'camera_shoulders', 'marshal', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+				}
+				blockoverride "councillor_icon" {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+					texture = "gfx/interface/icons/message_feed/marshal_job.dds"
+					tooltip = "[Concept( 'marshal', Character.GetCouncilTitle )|E]"
+				}
+				blockoverride "realm_coa" {
+					coa_realm_medium_crown = {
+						visible = "[Character.HasLandedTitles]"
+						scale = 0.9
+
+						parentanchor = bottom|left
+						position = { -15 10 }
+					}
+				}
+			}
+			NUI_RL_portrait_shoulders = {
+				datacontext = "[GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.GetCouncillor( 'councillor_steward' )]"
+				blockoverride "portrait_position" {
+					position = { 0 5 }
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Character.GetPortrait( 'environment_shoulders', 'camera_shoulders', 'steward', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+				}
+				blockoverride "councillor_icon" {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+					texture = "gfx/interface/icons/message_feed/steward_job.dds"
+					tooltip = "[Concept( 'steward', Character.GetCouncilTitle )|E]"
+				}
+				blockoverride "realm_coa" {
+					coa_realm_medium_crown = {
+						visible = "[Character.HasLandedTitles]"
+						scale = 0.9
+
+						parentanchor = bottom|left
+						position = { -15 10 }
+					}
+				}
+			}
+		}
+
+		NUI_RL_portrait_torso = {
+			parentanchor = top|hcenter
+			blockoverride "portrait_frame_size" {
+				size = { 175 210 }
+			}
+			blockoverride "portrait_size" {
+				size = { 205 235 }
+			}
+			blockoverride "realm_coa" {
+				coa_realm_big_crown = {
+					parentanchor = bottom|hcenter
+					position = { 0 5 }
+					scale = 0.9
+				}
+			}
+			blockoverride "opinion_and_status" {
+				flowcontainer = {
+					direction = vertical
+					parentanchor = bottom|right
+					position = { -12 -15 }
+
+					NUI_RL_status_icons = {
+						parentanchor = right
+					}
+					NUI_RL_opinion = {
+						parentanchor = right
+					}
+				}
+			}
+		}
+
+		flowcontainer = {
+			parentanchor = bottom|right
+			position = { -25 0 }
+			spacing = 10
+
+			NUI_RL_portrait_shoulders = {
+				datacontext = "[GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.GetCouncillor( 'councillor_spouse' )]"
+				blockoverride "portrait_position" {
+					position = { 0 5 }
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Character.GetPortrait( 'environment_shoulders', 'camera_shoulders', 'idle', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+				}
+				blockoverride "councillor_icon" {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+					texture = "gfx/interface/icons/message_feed/spouse_job.dds"
+					tooltip = "[Concept( 'spouse', Character.GetCouncilTitle )|E]"
+				}
+				blockoverride "realm_coa" {
+					coa_realm_medium_crown = {
+						visible = "[Character.HasLandedTitles]"
+						scale = 0.9
+
+						parentanchor = bottom|left
+						position = { -15 10 }
+					}
+				}
+			}
+			NUI_RL_portrait_shoulders = {
+				datacontext = "[GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.GetCouncillor( 'councillor_spymaster' )]"
+				blockoverride "portrait_position" {
+					position = { 0 5 }
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Character.GetPortrait( 'environment_shoulders', 'camera_shoulders', 'spymaster', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+				}
+				blockoverride "councillor_icon" {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+					texture = "gfx/interface/icons/message_feed/spy_master.dds"
+					tooltip = "[Concept( 'spymaster', Character.GetCouncilTitle )|E]"
+				}
+				blockoverride "realm_coa" {
+					coa_realm_medium_crown = {
+						visible = "[Character.HasLandedTitles]"
+						scale = 0.9
+
+						parentanchor = bottom|left
+						position = { -15 10 }
+					}
+				}
+			}
+			NUI_RL_portrait_shoulders = {
+				datacontext = "[GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.GetCouncillor( 'councillor_court_chaplain' )]"
+				blockoverride "portrait_position" {
+					position = { 0 5 }
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Character.GetPortrait( 'environment_shoulders', 'camera_shoulders', 'chaplain', PdxGetWidgetScreenSize( PdxGuiWidget.Self ) )]"
+				}
+				blockoverride "councillor_icon" {
+					visible = "[Not( VariableSystem.Exists( 'NUI_RL_hide_items' ) )]"
+					texture = "[Character.GetFaith.GetIcon]"
+					tooltip = "[Concept( 'court_chaplain', Character.GetCouncilTitle )|E]"
+				}
+				blockoverride "realm_coa" {
+					coa_realm_medium_crown = {
+						visible = "[Character.HasLandedTitles]"
+						scale = 0.9
+
+						parentanchor = bottom|left
+						position = { -15 10 }
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,93 @@
+﻿l_english:
+
+ NUI_RL_realm_ledger_interaction:0 "Open Realm Ledger"
+ NUI_RL_realm_ledger_interaction_desc:0 "Open #high [recipient.GetShortUINamePossessiveNoTooltip]#! Realm Ledger"
+
+ NUI_RL_realm_ledger_hud_button_TEXT:0 "Realm Ledger"
+ NUI_RL_realm_ledger_hud_button_TT:0 "$NUI_RL_realm_ledger_interaction$"
+
+ NUI_RL_is_independent_ruler_TEXT:0 "[Character.GetFirstNameNicknamedPossessiveNoTooltipRegnal] Realm"
+ NUI_RL_is_vassal_TEXT:0 "[Character.GetFirstNameNicknamedPossessiveNoTooltipRegnal] Realm, Vassal in the [Character.GetLiege.GetPrimaryTitle.GetBaseName]"
+ NUI_RL_vassals_TEXT:0 "$game_concept_vassals$"
+
+ NUI_RL_overview_tab_TEXT:0 "Overview"
+
+ ### 共通 / Common ###
+ NUI_RL_filter_reset_TEXT:0 "Reset" 
+ NUI_RL_filter_TT:0 "#I Show only characters that meet this condition#!"
+ NUI_RL_filter_reset_TT:0 "#I Reset all conditions#!"
+
+ NUI_RL_military_strength_TT:0 "Military Strength"
+ NUI_RL_show_dynasty_TEXT:0 "$game_concept_dynasty$"
+
+ NUI_RL_filter_group_opinion_TEXT:0 "$game_concept_opinion$"
+ NUI_RL_filter_high_opinion_TEXT:0 "High $game_concept_opinion$"
+ NUI_RL_filter_low_opinion_TEXT:0 "Low $game_concept_opinion$"
+ NUI_RL_filter_opinion_for_player_TEXT:0 "for You"
+
+ NUI_RL_filter_group_faith_TEXT:0 "$game_concept_faith$"
+ NUI_RL_filter_same_faith_TEXT:0 "Same as [Select_CString( ObjectsEqual( Character.Self, GetPlayer ), 'You', Character.GetHerHim )]"
+ NUI_RL_filter_diff_faith_TEXT:0 "Different from [Select_CString( ObjectsEqual( Character.Self, GetPlayer ), 'You', Character.GetHerHim )]"
+
+ ### 封臣一覧 / Vassal List ###
+ NUI_RL_vassal_list_tab_TEXT:0 "$game_concept_vassals$"
+ NUI_RL_realm_size_TEXT:0 "[realm_size]: [Character.RealmSize]"
+ NUI_RL_vassal_realm_size_TEXT:0 "Vassal Realm: [GetGlobalVariable( 'NUI_RL_vassal_realm_size' ).GetValue]/[Subtract_int32( Character.RealmSize, Character.GetDomainSize )]"
+ NUI_RL_num_of_vassals:0 "[vassals]: [GetGlobalVariable( 'NUI_RL_meets_conditions' ).GetValue|0]/[GetGlobalVariable( 'NUI_RL_num_of_characters' ).GetValue|0]"
+
+ NUI_RL_show_realm_percentage_TEXT:0 "Realm Percentage"
+
+ # フィルター / Filters
+ NUI_RL_filter_powerful_vassal_TEXT:0 "$game_concept_powerful_vassal$"
+ NUI_RL_filter_councillor_TEXT:0 "$game_concept_councillor$"
+
+ NUI_RL_filter_group_rightful_vassal_TEXT:0 "Rightful Vassal"
+ NUI_RL_filter_is_rightful_TEXT:0 "Is Rightful"
+ NUI_RL_filter_not_rightful_TEXT:0 "Not Rightful"
+
+ NUI_RL_filter_group_culture_TEXT:0 "$game_concept_culture$"
+ NUI_RL_filter_same_culture_TEXT:0 "$NUI_RL_filter_same_faith_TEXT$"
+ NUI_RL_filter_diff_culture_TEXT:0 "$NUI_RL_filter_diff_faith_TEXT$"
+
+ ### 騎士一覧 / Knight List ###
+ NUI_RL_knight_list_tab_TEXT:0 "[GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.Custom( 'KnightCulturePluralNoTooltip' )]"
+ NUI_RL_num_of_knights_TEXT:0 "[Concept( 'knight', GetGlobalVariable( 'NUI_RL_target' ).GetCharacter.Custom( 'KnightCulturePluralNoTooltip' ) )]: [GetGlobalVariable( 'NUI_RL_num_of_characters' ).GetValue|0]"
+ NUI_RL_average_prowess_TEXT:0 "Average [prowess]: [GetGlobalVariable( 'NUI_RL_average_prowess' ).GetValue|1]"
+
+ ### 外交一覧 / Diplomatic List ###
+ NUI_RL_diplomatic_list_tab_TEXT:0 "Diplomacy"
+ NUI_RL_diplomatic_list_note_TT:0 "@warning_icon! #warning Characters with a lot of neighboring rulers can slow down the game (close the window and it will come back)#!"
+ NUI_RL_num_of_rulers_TEXT:0 "[rulers]: [GetGlobalVariable( 'NUI_RL_meets_conditions' ).GetValue|0]/[GetGlobalVariable( 'NUI_RL_num_of_characters' ).GetValue|0]"
+
+ NUI_RL_at_war_with_them:0 "At war with [Select_CString( ObjectsEqual( Character.Self, GetPlayer ), 'you', Character.GetHerHim )]"
+
+ # フィルター / Filters
+ NUI_RL_filter_is_independent_TEXT:0 "Is Independent"
+ NUI_RL_filter_is_neighboring_TEXT:0 "Is Neighboring"
+
+ NUI_RL_filter_group_cb_TEXT:0 "[casus_belli]"
+ NUI_RL_filter_cb_they_has_TEXT:0 "[Select_CString( ObjectsEqual( Character.Self, GetPlayer ), 'You', Character.GetSheHe )|U] [Select_CString( ObjectsEqual( Character.Self, GetPlayer ), 'have', 'has' )]"
+ NUI_RL_filter_cb_against_them_TEXT:0 "Against [Select_CString( ObjectsEqual( Character.Self, GetPlayer ), 'you', Character.GetHerHim )]"
+
+ ### カスタムローカライゼーション / Customizable Localization ###
+ NUI_RL_THEY:0 "[Select_CString( ObjectsEqual( second, GetPlayer ), 'You', second.GetSheHe )|U]"
+ NUI_RL_THEIR_LIEGE:0 "[Select_CString( ObjectsEqual( second, GetPlayer ), 'Your', second.GetHerHis )|U] liege"
+ NUI_RL_THEIR_TOP_LIEGE:0 "[Select_CString( ObjectsEqual( second, GetPlayer ), 'Your', second.GetHerHis )|U] top liege"
+ NUI_RL_INDEPENDENT_RULER:0 "$game_concept_independent_ruler$"
+ NUI_RL_THEIR_NEIGHBOR:0 "[Select_CString( ObjectsEqual( second, GetPlayer ), 'Your', second.GetHerHis )|U] neighbor"
+ NUI_RL_VASSAL_IN_REALM:0 "Vassal in the [ROOT.Char.GetLiege.GetPrimaryTitle.GetBaseName]"
+ NUI_RL_THEIR_NEIGHBOR_AND_VASSAL_IN_REALM:0 "[Select_CString( ObjectsEqual( second, GetPlayer ), 'Your', second.GetHerHis )|U] neighbor and vassal in the [ROOT.Char.GetLiege.GetPrimaryTitle.GetBaseName]"
+ NUI_RL_THEIR_FELLOW_VASSAL:0 "[Select_CString( ObjectsEqual( second, GetPlayer ), 'Your', second.GetHerHis )|U] fellow vassal"
+ NUI_RL_THEIR_NEIGHBOR_AND_FELLOW_VASSAL:0 "[Select_CString( ObjectsEqual( second, GetPlayer ), 'Your', second.GetHerHis )|U] neighbor and fellow vassal"
+
+ NUI_RL_CB_THEY_HAS:0 "#high [Select_CString( ObjectsEqual( second, GetPlayer ), 'You', second.GetSheHe )|U]#! [Select_CString( ObjectsEqual( second, GetPlayer ), 'have', 'has' )] [casus_belli|E] that can be used against #high [Character.GetShortUIName]#!"
+ NUI_RL_CB_AGAINST_THEM:0 "#high [Character.GetShortUIName]#! has [casus_belli|E] that can be used against #high [Select_CString( ObjectsEqual( second, GetPlayer ), 'you', second.GetHerHim )]#!"
+ NUI_RL_BOTH_SIDE_HAVE_CB:0 "$NUI_RL_CB_THEY_HAS$\n$NUI_RL_CB_AGAINST_THEM$"
+
+ NUI_RL_CLAIM_THEY_HAS:0 "#high [Select_CString( ObjectsEqual( second, GetPlayer ), 'You', second.GetSheHe )|U]#! [Select_CString( ObjectsEqual( second, GetPlayer ), 'have', 'has' )] [claim|E] that can be used against #high [Character.GetShortUIName]#!"
+ NUI_RL_CLAIM_AGAINST_THEM:0 "#high [Character.GetShortUIName]#! has [claim|E] that can be used against #high [Select_CString( ObjectsEqual( second, GetPlayer ), 'you', second.GetHerHim )]#!"
+ NUI_RL_BOTH_SIDE_HAVE_CLAIM:0 "$NUI_RL_CLAIM_THEY_HAS$\n$NUI_RL_CLAIM_AGAINST_THEM$"
+
+ NUI_RL_DE_JURE_CLAIM_THEY_HAS:0 "#high [Select_CString( ObjectsEqual( second, GetPlayer ), 'You', second.GetSheHe )|U]#! [Select_CString( ObjectsEqual( second, GetPlayer ), 'have', 'has' )] [de_jure|E] [claim|E] that can be used against #high [Character.GetShortUIName]#!"
+ NUI_RL_DE_JURE_CLAIM_AGAINST_THEM:0 "#high [Character.GetShortUIName]#! has [de_jure|E] [claim|E] that can be used against #high [Select_CString( ObjectsEqual( second, GetPlayer ), 'you', second.GetHerHim )]#!"
+ NUI_RL_BOTH_SIDE_HAVE_DE_JURE_CLAIM:0 "$NUI_RL_DE_JURE_CLAIM_THEY_HAS$\n$NUI_RL_DE_JURE_CLAIM_AGAINST_THEM$"
