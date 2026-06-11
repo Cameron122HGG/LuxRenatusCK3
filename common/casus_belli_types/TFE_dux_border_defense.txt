@@ -1,0 +1,94 @@
+﻿dux_border_defense_cb = {
+	group = event
+
+	valid_to_start = {
+		always = no
+	}
+
+	allowed_for_character = {
+	}
+
+	allowed_against_character = {
+	}
+
+	target_titles = none
+
+	# Battle-only warscore
+	attacker_ticking_warscore = 0
+	defender_ticking_warscore = 0
+	attacker_score_from_occupation_scale = 0
+	defender_score_from_occupation_scale = 0
+	max_attacker_score_from_occupation = 0
+	max_defender_score_from_occupation = 0
+	max_attacker_score_from_battles = 100
+	max_defender_score_from_battles = 100
+	attacker_score_from_battles_scale = 200
+	defender_score_from_battles_scale = 200
+
+	white_peace_possible = no
+	allow_hostages = no
+	landless_attacker_needs_armies = no
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = invalidate
+	transfer_behavior = invalidate
+
+	ai = no
+	truce_days = 365
+
+	cost = {
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+	}
+
+	war_name = dux_border_defense_war_name
+
+	on_victory_desc = {
+		desc = dux_border_defense_attacker_victory_desc
+	}
+
+	on_victory = {
+		scope:defender = {
+			add_prestige = -200
+		}
+		scope:attacker = {
+			add_prestige = 200
+		}
+	}
+
+	on_white_peace_desc = {
+		desc = dux_border_defense_white_peace_desc
+	}
+
+	on_white_peace = {
+	}
+
+	on_defeat_desc = {
+		desc = dux_border_defense_defender_victory_desc
+	}
+
+	on_defeat = {
+		scope:defender = {
+			add_prestige = 300
+		}
+		scope:attacker = {
+			add_prestige = -100
+		}
+	}
+
+	on_invalidated_desc = {
+		desc = dux_border_defense_invalidated_desc
+	}
+
+	on_invalidated = {
+	}
+
+	should_invalidate = {
+		OR = {
+			scope:attacker = { is_alive = no }
+			scope:defender = { is_alive = no }
+		}
+	}
+}

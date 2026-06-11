@@ -1,0 +1,337 @@
+﻿roman_imperial_military_minister = {
+	allow_same_tier_candidates = yes
+	default_candidates = { holder_close_family holder_close_extended_family holder_house_member landed_vassal unlanded_noble_house_head unlanded_noble_close_family unlanded_noble_close_extended_family unlanded_noble_house_member holder_councilor holder_court_position }
+
+	candidate_score = {
+		value = {
+			# --- PRESTIGE (+15 per level above 1) ---
+			add = {
+				value = 15
+				multiply = {
+					value = prestige_level
+					subtract = 1
+				}
+				desc = PRESTIGE_LEVEL_CONCEPT
+			}
+
+			# --- INFLUENCE (+10 per level above 1) ---
+			if = {
+				limit = { influence_level != 1 }
+				add = {
+					value = 10
+					multiply = {
+						value = influence_level
+						subtract = 1
+					}
+					desc = "[influence_level|E]"
+				}
+			}
+
+			# --- MARTIAL SKILL (x1) ---
+			add = {
+				value = martial
+				desc = "[martial_skill|E]"
+			}
+
+			# --- DIPLOMACY (x0.5) ---
+			add = {
+				value = diplomacy
+				multiply = 0.5
+				desc = "[diplomacy_skill|E]"
+			}
+
+			# --- PROWESS (x0.5) ---
+			add = {
+				value = prowess
+				multiply = 0.5
+				desc = prowess_concept
+			}
+
+			# --- COMMANDER TRAITS (x25 each) ---
+			add = {
+				value = number_of_commander_traits
+				multiply = 25
+				desc = number_of_commander_traits_desc
+			}
+
+			# --- MARTIAL EDUCATION HARD GATE ---
+			if = {
+				limit = {
+					NOR = {
+						has_trait = education_martial_1
+						has_trait = education_martial_2
+						has_trait = education_martial_3
+						has_trait = education_martial_4
+						has_trait = education_martial_5
+					}
+				}
+				add = { value = -10000 desc = "lacks_martial_education" }
+			}
+
+			# Martial education tier bonus
+			if = {
+				limit = {
+					OR = {
+						has_trait = education_martial_4
+						has_trait = education_martial_5
+					}
+				}
+				add = { value = 15 desc = LR_roman_education_bonus_desc }
+			}
+
+			# --- HARD EXCLUSIONS ---
+			if = {
+				limit = {
+					NOT = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = top_liege } }
+				}
+				add = { value = -10000 desc = cannot_be_commander }
+			}
+			if = {
+				limit = { is_independent_ruler = yes }
+				add = { value = -10000 desc = appointment_is_top_liege }
+			}
+			if = {
+				limit = { is_independent_ruler = yes }
+				add = { value = -10000 desc = appointment_is_top_liege }
+			}
+
+			# --- AGE ---
+			if = {
+				limit = { age >= 40 }
+				add = { value = 15 desc = old_age_desc }
+			}
+			else_if = {
+				limit = { age < 30 }
+				add = { value = -10 desc = young_age_desc }
+			}
+
+			# --- LOWBORN BONUS (Stilicho/Aetius/Ricimer pattern) ---
+			if = {
+				limit = { is_lowborn = yes }
+				add = { value = 30 desc = lowborn_desc_succession }
+			}
+
+			# --- SAME DYNASTY PENALTY (risk of usurpation) ---
+			if = {
+				limit = {
+					exists = scope:title.holder
+					dynasty ?= scope:title.holder.dynasty
+				}
+				add = { value = -50 desc = same_dynasty_desc }
+			}
+
+			# --- CRIMINAL ---
+			if = {
+				limit = {
+					has_trait = deviant
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:deviant FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = { value = -50 desc = "deviant_and_criminal_desc" }
+			}
+			if = {
+				limit = {
+					has_trait = incestuous
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:incestuous FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = { value = -75 desc = "incestuous_and_criminal_desc" }
+			}
+			if = {
+				limit = {
+					has_trait = kinslayer_1
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_1 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = { value = -75 desc = "kinslayer_1_and_criminal_desc" }
+			}
+
+			# Excluded traits
+			if = {
+				limit = { has_trait = disinherited }
+				subtract = { value = 200 desc = trait_disinherited }
+			}
+			if = {
+				limit = { has_trait = gallivanter }
+				subtract = { value = 250 desc = trait_gallivanter }
+			}
+
+			# --- FAITH HOSTILITY ---
+			if = {
+				limit = {
+					scope:title.holder.primary_title.state_faith ?= {
+						faith_hostility_level = {
+							target = root.faith
+							value = faith_astray_level
+						}
+					}
+				}
+				subtract = { value = 20 desc = astray_faith_succession_desc }
+			}
+			if = {
+				limit = {
+					scope:title.holder.primary_title.state_faith ?= {
+						faith_hostility_level = {
+							target = root.faith
+							value = faith_hostile_level
+						}
+					}
+				}
+				subtract = { value = 50 desc = hostile_faith_succession_desc }
+			}
+
+			# --- RELATIONS ---
+			if = {
+				limit = { scope:title.holder ?= { has_relation_elder = root } }
+				add = { value = 25 desc = governor_elder_desc }
+			}
+			if = {
+				limit = { scope:title.holder ?= { has_relation_disciple = root } }
+				add = { value = 15 desc = governor_disciple_desc }
+			}
+			if = {
+				limit = { scope:title.holder ?= { has_relation_friend = root } }
+				add = { value = 15 desc = governor_friend_desc }
+			}
+			if = {
+				limit = { scope:title.holder ?= { has_relation_rival = root } }
+				add = { value = -40 desc = governor_rival_desc }
+			}
+
+			# Claims — dangerous to give military power to claimants
+			if = {
+				limit = { has_strong_claim_on = scope:title }
+				add = { value = -30 desc = title_claim_desc }
+			}
+			if = {
+				limit = { has_weak_claim_on = scope:title }
+				add = { value = -15 desc = title_weak_claim_desc }
+			}
+
+			# --- SCHEMES ---
+			if = {
+				limit = { has_character_modifier = scheme_slandered_modifier }
+				add = { value = slander_appointment_score_value desc = scheme_slandered_modifier }
+			}
+			if = {
+				limit = { has_character_modifier = scheme_promoted_modifier }
+				add = { value = promote_appointment_score_value desc = scheme_promoted_modifier }
+			}
+
+			# Career influence from admin window
+			if = {
+				limit = { exists = var:merit_military_career_score_bonus }
+				add = { value = var:merit_military_career_score_bonus desc = merit_career_score_bonus_desc }
+			}
+
+			# --- EXPANDED POWER BASE ---
+			save_temporary_value_as = temp_total
+			if = {
+				limit = { has_character_modifier = ep3_expanded_power_base_minor_modifier }
+				add = {
+					value = scope:temp_total
+					multiply = 0.15
+					round = yes
+					min = 25
+					desc = ep3_expanded_power_base_minor_modifier
+				}
+			}
+			if = {
+				limit = { has_character_modifier = ep3_expanded_power_base_medium_modifier }
+				add = {
+					value = scope:temp_total
+					multiply = 0.25
+					round = yes
+					min = 50
+					desc = ep3_expanded_power_base_medium_modifier
+				}
+			}
+			if = {
+				limit = { has_character_modifier = ep3_expanded_power_base_major_modifier }
+				add = {
+					value = scope:temp_total
+					multiply = 0.40
+					round = yes
+					min = 75
+					desc = ep3_expanded_power_base_major_modifier
+				}
+			}
+
+			# --- CAREER LADDER (after all skill scoring) ---
+			# Field army generals (kingdom-tier military) — strong promotion
+			if = {
+				limit = {
+					any_held_title = {
+						tier = tier_kingdom
+						OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+					}
+				}
+				add = { value = 30 desc = "military_rank_promotion" }
+			}
+			# Dux holders (duchy-tier military) — intermediate career step
+			else_if = {
+				limit = {
+					any_held_title = {
+						tier = tier_duchy
+						OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+					}
+				}
+				add = { value = 15 desc = "military_rank_promotion" }
+			}
+			# No military command — harsh penalty
+			else_if = {
+				limit = {
+					NOT = {
+						any_held_title = {
+							OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+						}
+					}
+				}
+				multiply = { value = 0.3 desc = "should_hold_lower_military_rank_first" }
+			}
+
+			# --- GENDER LAW — MUST BE LAST ---
+			if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = male_preference_law }
+					is_female = yes
+				}
+				multiply = {
+					value = { value = 1 subtract = appointment_non_preferred_gender_penalty_value }
+					desc = appointment_male_preference_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = male_only_law }
+					is_female = yes
+				}
+				multiply = {
+					value = { value = 1 subtract = appointment_opposite_gender_penalty_value }
+					desc = appointment_male_only_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = female_preference_law }
+					is_female = no
+				}
+				multiply = {
+					value = { value = 1 subtract = appointment_non_preferred_gender_penalty_value }
+					desc = appointment_female_preference_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = female_only_law }
+					is_female = no
+				}
+				multiply = {
+					value = { value = 1 subtract = appointment_opposite_gender_penalty_value }
+					desc = appointment_female_only_desc
+				}
+			}
+
+		}
+	}
+}

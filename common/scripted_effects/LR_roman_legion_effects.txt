@@ -1,0 +1,1455 @@
+﻿### Roman Military Command Effects
+
+# Resolves a deploy county within a diocese: prefers de jure capital county
+# if held within the realm hierarchy; falls back to any realm-held de jure county.
+# Saves scope:deploy_county. Caller MUST guard with `if = { limit = { exists = scope:deploy_county } ... }`
+# because if no realm-held county exists in the diocese, no scope is saved.
+#
+# Parameters:
+#   $DIOCESE$ — landed_title (duchy or kingdom)
+#   $EMPEROR$ — character (the realm-membership reference)
+resolve_deploy_county_effect = {
+	$DIOCESE$ = {
+		if = {
+			limit = {
+				exists = title_capital_county
+				title_capital_county.holder = { target_is_liege_or_above = $EMPEROR$ }
+			}
+			title_capital_county = { save_scope_as = deploy_county }
+		}
+		else = {
+			random_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_county
+					holder = { target_is_liege_or_above = $EMPEROR$ }
+				}
+				save_scope_as = deploy_county
+			}
+		}
+	}
+}
+
+# Creates a new military command title at a duchy and auto-appoints
+# the best candidate via appointment succession.
+# Must be called from the emperor's scope (root = emperor).
+# $DEPLOY_TITLE$ — a duchy or kingdom-tier title scope for deployment.
+create_military_command_at_duchy_effect = {
+	# 0. Save deploy target for dynamic naming
+	$DEPLOY_TITLE$ = { save_scope_as = target }
+
+	# 1. Create the dynamic title
+	create_dynamic_title = {
+		tier = duchy
+		name = ROMAN_MILITARY_COMMAND_REGION
+	}
+	scope:new_title = {
+		set_capital_county = scope:target.title_capital_county
+		set_landless_title = yes
+		set_no_automatic_claims = yes
+		set_can_be_named_after_dynasty = no
+		generate_coa = yes
+		set_variable = { name = is_military_command }
+		set_variable = { name = command_created value = current_year }
+		# Set de jure liege to emperor's hegemony — needed for WRE/ERE flavorization split
+		set_de_jure_liege_title = root.primary_title
+	}
+
+	# 2. Grant title to the emperor temporarily
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	scope:new_title = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	# 3. Find the best candidate — promote from existing Duces (county-tier military commands)
+	root = {
+		ordered_vassal = {
+			limit = {
+				any_held_title = {
+					tier = tier_county
+					OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				}
+				is_adult = yes
+				is_female = no
+				NOT = { is_imprisoned = yes }
+			}
+			order_by = {
+				value = martial
+				multiply = 2
+				add = prowess
+				add = {
+					value = number_of_commander_traits
+					multiply = 20
+				}
+				add = {
+					value = prestige_level
+					multiply = 10
+				}
+			}
+			max = 1
+			save_scope_as = new_commander
+		}
+		# Fallback: if no Dux exists, pick best martial courtier
+		if = {
+			limit = { NOT = { exists = scope:new_commander } }
+			ordered_courtier = {
+				limit = {
+					is_adult = yes
+					is_female = no
+					NOT = { is_imprisoned = yes }
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+				}
+				order_by = {
+					value = martial
+					multiply = 2
+					add = prowess
+					add = {
+						value = number_of_commander_traits
+						multiply = 20
+					}
+				}
+				max = 1
+				save_scope_as = new_commander
+			}
+		}
+	}
+
+	# 4. Transfer title to the best candidate
+	create_title_and_vassal_change = {
+		type = appointment
+		save_scope_as = appoint_change
+		add_claim_on_loss = no
+	}
+	scope:new_title = {
+		change_title_holder = {
+			holder = scope:new_commander
+			change = scope:appoint_change
+		}
+	}
+	resolve_title_and_vassal_change = scope:appoint_change
+
+	# 5. Add military succession law AFTER transfer (holder is now a vassal — vanilla pattern)
+	scope:new_title = {
+		add_title_law = LR_roman_imperial_military_appointment_succession_law
+	}
+
+	# 6. Ensure roman_imperial_government
+	scope:new_commander = {
+		if = {
+			limit = { NOT = { government_has_flag = government_is_roman_imperial } }
+			change_government = roman_imperial_government
+		}
+		set_primary_title_to = scope:new_title
+	}
+
+	# 7. Set military contract + character flag for flavorization
+	scope:new_commander = {
+		add_character_flag = LR_military_contract_setup
+		vassal_contract_set_obligation_level = {
+			type = roman_imperial_assignments
+			level = roman_imperial_military_appointment
+		}
+		vassal_contract_set_obligation_level = {
+			type = roman_imperial_military_title_maa
+			level = roman_imperial_military_title_maa_border
+		}
+		remove_character_flag = LR_military_contract_setup
+	}
+
+	# 8. Mark deploy target as occupied + deploy
+	$DEPLOY_TITLE$ = {
+		set_variable = { name = has_military_deployment }
+	}
+	resolve_deploy_county_effect = {
+		DIOCESE = $DEPLOY_TITLE$
+		EMPEROR = root
+	}
+	if = {
+		limit = { exists = scope:deploy_county }
+		scope:new_title = {
+			set_capital_county = scope:deploy_county
+			set_variable = {
+				name = current_deployment_county
+				value = scope:deploy_county
+			}
+		}
+		scope:new_commander = {
+			domicile ?= {
+				move_domicile = scope:deploy_county.title_province
+			}
+			# Physically move the character to the new post
+			if = {
+				limit = { is_travelling = no }
+				start_travel_plan = {
+					destination = scope:deploy_county.title_province
+					on_arrival_destinations = last
+					return_trip = no
+				}
+			}
+		}
+	}
+
+	# 9. Seed MAA + personal light_footmen (enables title MAA raising)
+	scope:new_commander = {
+		# Destroy any auto-populated title MAA first
+		every_maa_regiment = {
+			limit = { is_title_maa_regiment = yes }
+			destroy_maa_regiment = yes
+		}
+		create_maa_regiment = { type = light_footmen size = 1 }
+		create_maa_regiment = { type = roman_limitanei check_can_recruit = no title = scope:new_title size = 5 }
+		add_treasury = 100
+	}
+
+	# 10. Apply border garrison modifiers to operational duchy
+	apply_dux_garrison_to_duchy_effect = { DUCHY = $DEPLOY_TITLE$ }
+
+	# 11. Pin the home de jure duchy on the new command title so subsequent
+	# recalcs can never drift away from it. Use the deploy duchy.
+	scope:new_title = {
+		if = {
+			limit = { NOT = { has_variable = home_de_jure_duchy } }
+			set_variable = {
+				name = home_de_jure_duchy
+				value = $DEPLOY_TITLE$
+			}
+		}
+	}
+
+	# 12. Deduct gold
+	root = {
+		remove_treasury = 500
+	}
+}
+
+# Creates a new kingdom-tier Magister Militum command.
+# Must be called from the emperor's scope (root = emperor).
+# $DEPLOY_TITLE$ — a kingdom-tier title scope for deployment location.
+create_military_command_at_kingdom_effect = {
+	# 0. Save deploy target for dynamic naming
+	$DEPLOY_TITLE$ = { save_scope_as = target }
+
+	# 1. Create the dynamic title — flavorization adds "Magister Militum" or "Comes", engine adds "of [Name]"
+	create_dynamic_title = {
+		tier = kingdom
+		name = ROMAN_MILITARY_COMMAND_REGION
+	}
+	scope:new_title = {
+		set_capital_county = scope:target.title_capital_county
+		set_landless_title = yes
+		set_no_automatic_claims = yes
+		set_can_be_named_after_dynasty = no
+		generate_coa = yes
+		# Mark as military command — contract is_valid checks this variable
+		set_variable = { name = is_military_command }
+		set_variable = { name = command_created value = current_year }
+		# Set de jure liege to emperor's hegemony — needed for WRE/ERE flavorization split
+		set_de_jure_liege_title = root.primary_title
+	}
+
+	# 2. Grant title to the emperor temporarily
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	scope:new_title = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	# 3. Find the best candidate — promote from existing Comites (duchy-tier military commands)
+	root = {
+		ordered_vassal = {
+			limit = {
+				any_held_title = {
+					tier = tier_duchy
+					OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				}
+				is_adult = yes
+				is_female = no
+				NOT = { is_imprisoned = yes }
+			}
+			order_by = {
+				value = martial
+				multiply = 2
+				add = prowess
+				add = {
+					value = number_of_commander_traits
+					multiply = 20
+				}
+				add = {
+					value = prestige_level
+					multiply = 10
+				}
+			}
+			max = 1
+			save_scope_as = new_commander
+		}
+		# Fallback: pick best martial vassal or courtier
+		if = {
+			limit = { NOT = { exists = scope:new_commander } }
+			ordered_courtier = {
+				limit = {
+					is_adult = yes
+					is_female = no
+					NOT = { is_imprisoned = yes }
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+				}
+				order_by = {
+					value = martial
+					multiply = 2
+					add = prowess
+					add = {
+						value = number_of_commander_traits
+						multiply = 20
+					}
+				}
+				max = 1
+				save_scope_as = new_commander
+			}
+		}
+	}
+
+	# 4. Transfer title to the best candidate
+	create_title_and_vassal_change = {
+		type = appointment
+		save_scope_as = appoint_change
+		add_claim_on_loss = no
+	}
+	scope:new_title = {
+		change_title_holder = {
+			holder = scope:new_commander
+			change = scope:appoint_change
+		}
+	}
+	resolve_title_and_vassal_change = scope:appoint_change
+
+	# 5. Add military succession law AFTER transfer (holder is now a vassal — vanilla pattern)
+	scope:new_title = {
+		add_title_law = LR_roman_imperial_military_appointment_succession_law
+	}
+
+	# 6. Ensure roman_imperial_government
+	scope:new_commander = {
+		if = {
+			limit = { NOT = { government_has_flag = government_is_roman_imperial } }
+			change_government = roman_imperial_government
+		}
+		set_primary_title_to = scope:new_title
+	}
+
+	# 7. Set military contracts via flag bypass — MM gets kingdom-tier MAA
+	scope:new_commander = {
+		add_character_flag = LR_military_contract_setup
+		vassal_contract_set_obligation_level = {
+			type = roman_imperial_assignments
+			level = roman_imperial_military_appointment
+		}
+		vassal_contract_set_obligation_level = {
+			type = roman_imperial_military_title_maa
+			level = roman_imperial_military_title_maa_field
+		}
+		remove_character_flag = LR_military_contract_setup
+	}
+
+
+	# 8. Mark deploy target as occupied + deploy
+	$DEPLOY_TITLE$ = {
+		set_variable = { name = has_mm_deployment }
+	}
+	resolve_deploy_county_effect = {
+		DIOCESE = $DEPLOY_TITLE$
+		EMPEROR = root
+	}
+	if = {
+		limit = { exists = scope:deploy_county }
+		scope:new_title = {
+			set_capital_county = scope:deploy_county
+			set_variable = {
+				name = current_deployment_county
+				value = scope:deploy_county
+			}
+		}
+		scope:new_commander = {
+			domicile ?= {
+				move_domicile = scope:deploy_county.title_province
+			}
+			if = {
+				limit = { is_travelling = no }
+				start_travel_plan = {
+					destination = scope:deploy_county.title_province
+					on_arrival_destinations = last
+					return_trip = no
+				}
+			}
+		}
+	}
+
+	# 9. Seed MAA + personal light_footmen (enables title MAA raising)
+	scope:new_commander = {
+		# Destroy any auto-populated title MAA first
+		every_maa_regiment = {
+			limit = { is_title_maa_regiment = yes }
+			destroy_maa_regiment = yes
+		}
+		create_maa_regiment = { type = light_footmen size = 1 }
+		create_maa_regiment = { type = legio check_can_recruit = no title = scope:new_title size = 3 }
+		create_maa_regiment = { type = legio check_can_recruit = no title = scope:new_title size = 3 }
+		create_maa_regiment = { type = legio check_can_recruit = no title = scope:new_title size = 3 }
+		create_maa_regiment = { type = siege_towers check_can_recruit = no title = scope:new_title size = 1 }
+		add_treasury = 200
+	}
+
+	# 10. Deduct gold
+	root = {
+		remove_treasury = 1000
+	}
+}
+
+# Replaces the current commander with a selected candidate.
+# Called from roman_military_command.0110 event options.
+# Requires scopes: root = emperor, scope:old_commander, scope:replace_title, scope:replacement
+replace_commander_with_candidate_effect = {
+	# Called from interaction on_accept:
+	# scope:replacement = player-picked (scope:secondary_actor)
+	# scope:old_commander = current holder (scope:recipient)
+	# scope:replace_title = the military command title
+	# scope:emperor = old_commander's top_liege
+
+	# 1. Suppress auto-reappoint
+	scope:replace_title = { set_variable = { name = LR_being_replaced } }
+
+	# 2. Convert candidate to Roman Imperial government BEFORE the title
+	# transfer. Order matters: when the title transfers (step 3), the new
+	# vassal contract is created based on the holder's government type.
+	# If the candidate is still on bureaucratic/celestial/feudal/etc. at
+	# transfer time, the contract is locked to that type and later
+	# vassal_contract_set_obligation_level calls fail with
+	# "contract does not have roman_imperial_assignments obligation type".
+	scope:replacement = {
+		if = {
+			limit = { NOT = { government_has_flag = government_is_roman_imperial } }
+			change_government = roman_imperial_government
+		}
+	}
+
+	# 3. Transfer title
+	create_title_and_vassal_change = {
+		type = appointment
+		save_scope_as = replace_change
+		add_claim_on_loss = no
+	}
+	scope:replace_title = {
+		change_title_holder = {
+			holder = scope:replacement
+			change = scope:replace_change
+		}
+	}
+	resolve_title_and_vassal_change = scope:replace_change
+
+	# 4. Remove suppression
+	scope:replace_title = { remove_variable = LR_being_replaced }
+
+	# 5. Set primary title + vassal contract obligations
+	scope:replacement = {
+		set_primary_title_to = scope:replace_title
+		add_character_flag = LR_military_contract_setup
+		vassal_contract_set_obligation_level = {
+			type = roman_imperial_assignments
+			level = roman_imperial_military_appointment
+		}
+		vassal_contract_set_obligation_level = {
+			type = roman_imperial_military_title_maa
+			level = roman_imperial_military_title_maa_border
+		}
+		remove_character_flag = LR_military_contract_setup
+	}
+
+	# 6. Opinion penalty
+	scope:old_commander = {
+		add_opinion = {
+			target = scope:emperor
+			modifier = replaced_military_commander_opinion
+			opinion = -30
+		}
+	}
+}
+
+# Redeploys a commander to a title's de jure capital.
+# Works for both Comes (kingdom target) and Dux (duchy target).
+# Parameters: $DIOCESE$ — a kingdom or duchy-tier title scope
+redeploy_commander_to_diocese_effect = {
+	# Resolve emperor for realm-membership tests (commander's top_liege).
+	scope:redeploy_commander.top_liege = { save_scope_as = redeploy_emperor }
+
+	# Save new target.
+	$DIOCESE$ = { save_scope_as = target }
+	resolve_deploy_county_effect = {
+		DIOCESE = $DIOCESE$
+		EMPEROR = scope:redeploy_emperor
+	}
+
+	# Clear deployment variable from OLD target + remove garrison modifiers.
+	# Source the OLD county from the tracked variable (var is reliable; the
+	# title_capital_county on landless titles is not).
+	scope:redeploy_commander = {
+		every_held_title = {
+			limit = {
+				OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+			}
+			# Find old deploy target via tracked variable, fallback to title_capital_county
+			if = {
+				limit = { has_variable = current_deployment_county }
+				var:current_deployment_county = {
+					duchy = {
+						save_temporary_scope_as = old_duchy
+						remove_variable = has_military_deployment
+					}
+					kingdom = { remove_variable = has_comes_deployment }
+					kingdom = { remove_variable = has_mm_deployment }
+				}
+			}
+			else_if = {
+				limit = { exists = title_capital_county }
+				title_capital_county = {
+					duchy = {
+						save_temporary_scope_as = old_duchy
+						remove_variable = has_military_deployment
+					}
+					kingdom = { remove_variable = has_comes_deployment }
+					kingdom = { remove_variable = has_mm_deployment }
+				}
+			}
+		}
+		# Remove garrison modifiers from old duchy (Dux only)
+		if = {
+			limit = {
+				highest_held_title_tier = tier_duchy
+				exists = scope:old_duchy
+			}
+			remove_dux_garrison_from_duchy_effect = { DUCHY = scope:old_duchy }
+		}
+	}
+
+	# Safety guard: degenerate diocese (no realm-held de jure county) — skip the move.
+	# Old deployment variables / garrison have already been cleared above.
+	if = {
+		limit = { exists = scope:deploy_county }
+
+		# Set deployment variable on NEW target
+		$DIOCESE$ = {
+			if = {
+				limit = { tier = tier_duchy }
+				set_variable = { name = has_military_deployment }
+			}
+			else = {
+				# Kingdom target — check if this is Comes or MM based on commander's title tier
+				if = {
+					limit = { scope:redeploy_commander = { any_held_title = { tier = tier_kingdom OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command } } } }
+					set_variable = { name = has_mm_deployment }
+				}
+				else = {
+					set_variable = { name = has_comes_deployment }
+				}
+			}
+		}
+
+		scope:redeploy_commander = {
+			if = {
+				limit = { exists = domicile }
+				domicile = {
+					move_domicile = scope:deploy_county.title_province
+				}
+			}
+			every_held_title = {
+				limit = {
+					OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				}
+				set_capital_county = scope:deploy_county
+				# Track explicitly — set_capital_county on landless titles is
+				# unreliable; this variable is what dispatch keys off of.
+				set_variable = {
+					name = current_deployment_county
+					value = scope:deploy_county
+				}
+				$DIOCESE$ = { save_scope_as = target }
+				set_title_name_dynamic = ROMAN_MILITARY_COMMAND_REGION
+			}
+			# Physically move the character to the new post
+			if = {
+				limit = { is_travelling = no }
+				start_travel_plan = {
+					destination = scope:deploy_county.title_province
+					on_arrival_destinations = last
+					return_trip = no
+				}
+			}
+			add_character_flag = {
+				flag = recently_redeployed_command
+				years = 3
+			}
+			trigger_event = {
+				id = roman_military_command.0001
+				days = 1
+			}
+		}
+
+		# Apply garrison modifiers to new duchy (Dux only)
+		if = {
+			limit = {
+				scope:redeploy_commander = { highest_held_title_tier = tier_duchy }
+				$DIOCESE$ = { tier = tier_duchy }
+			}
+			apply_dux_garrison_to_duchy_effect = { DUCHY = $DIOCESE$ }
+
+			# Update the home_de_jure_duchy pin on the duchy command titles to
+			# the new diocese so subsequent recalcs key off the correct duchy.
+			scope:redeploy_commander = {
+				every_held_title = {
+					limit = {
+						tier = tier_duchy
+						has_variable = is_military_command
+					}
+					set_variable = {
+						name = home_de_jure_duchy
+						value = $DIOCESE$
+					}
+				}
+			}
+		}
+	}
+}
+
+# Applies dux_border_garrison_modifier to all de jure counties in a duchy.
+# Scope: any. $DUCHY$ = duchy-tier title.
+apply_dux_garrison_to_duchy_effect = {
+	$DUCHY$ = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			add_county_modifier = {
+				modifier = dux_border_garrison_modifier
+				years = 100
+			}
+		}
+	}
+}
+
+# Removes dux_border_garrison_modifier from all de jure counties in a duchy.
+# Scope: any. $DUCHY$ = duchy-tier title.
+remove_dux_garrison_from_duchy_effect = {
+	$DUCHY$ = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			remove_county_modifier = dux_border_garrison_modifier
+		}
+	}
+}
+
+# Called from on_raid_action_start via emperor scope.
+# Finds the Dux whose operational duchy matches scope:raided_duchy and spawns
+# a defensive army at the raid location. The spawned army inherits raid hostility
+# through the emperor's liege chain and engages the raider automatically.
+# Scope: emperor character. Requires scope:raider, scope:raided_duchy, scope:barony.
+LR_dux_raid_intercept_effect = {
+	every_vassal = {
+		limit = {
+			# Duchy-tier military command holder.
+			# Match the Dux's CURRENT deployment duchy (var) — falling back to
+			# title_capital_county for titles not yet pinned.
+			any_held_title = {
+				tier = tier_duchy
+				OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				OR = {
+					AND = {
+						has_variable = current_deployment_county
+						var:current_deployment_county = { duchy = scope:raided_duchy }
+					}
+					AND = {
+						NOT = { has_variable = current_deployment_county }
+						exists = title_capital_county
+						title_capital_county = { duchy = scope:raided_duchy }
+					}
+				}
+			}
+			is_alive = yes
+			# Not already at war with this raider
+			NOT = { is_at_war_with = scope:raider }
+		}
+		save_scope_as = intercepting_dux
+		# Raider attacks, Dux defends - Dux will raise army to fight
+		scope:raider = {
+			start_war = {
+				cb = dux_border_defense_cb
+				target = scope:intercepting_dux
+			}
+		}
+	}
+}
+
+# Pre-pass: clears stale has_*_deployment variables on duchies/kingdoms
+# whose de jure counties are no longer held within the emperor's realm hierarchy.
+# Symmetric for both duchy (has_military_deployment) and kingdom (has_mm_deployment, has_comes_deployment) tiers.
+# Scope: emperor character (caller may pre-save scope:recalc_emperor; we save it locally to be safe).
+clear_stale_deployment_vars_effect = {
+	save_scope_as = recalc_emperor
+
+	# Resolve the emperor's hegemony (same pattern recalculate_military_borders_effect uses)
+	ordered_held_title = {
+		limit = {
+			OR = {
+				this = title:h_roman_empire
+				this = title:h_eastern_roman_empire
+				this = title:h_western_roman_empire
+			}
+		}
+		max = 1
+		save_scope_as = recalc_hegemony
+	}
+
+	# Defensive guard: skip pre-pass blocks if emperor doesn't hold a hegemony title
+	# (interregnum / engine edge case where ordered_held_title silently no-ops)
+	if = {
+		limit = { exists = scope:recalc_hegemony }
+
+		# Duchy pre-pass: clear has_military_deployment on any duchy where emperor holds zero counties
+		scope:recalc_hegemony = {
+			every_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_duchy
+					has_variable = has_military_deployment
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							tier = tier_county
+							holder = { target_is_liege_or_above = scope:recalc_emperor }
+						}
+					}
+				}
+				remove_variable = has_military_deployment
+			}
+		}
+
+		# Kingdom pre-pass: clear has_mm_deployment / has_comes_deployment on any kingdom
+		# where emperor holds zero counties
+		scope:recalc_hegemony = {
+			every_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_kingdom
+					OR = {
+						has_variable = has_mm_deployment
+						has_variable = has_comes_deployment
+					}
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							tier = tier_county
+							holder = { target_is_liege_or_above = scope:recalc_emperor }
+						}
+					}
+				}
+				remove_variable = has_mm_deployment
+				remove_variable = has_comes_deployment
+			}
+		}
+	}
+}
+
+# Recalculates military command deployments after border shifts.
+# Called from war-end on_actions and yearly pulse.
+# Scope: emperor character (root = emperor).
+recalculate_military_borders_effect = {
+	save_scope_as = recalc_emperor
+
+	# Save hegemony title once for later use
+	ordered_held_title = {
+		limit = {
+			OR = {
+				this = title:h_roman_empire
+				this = title:h_eastern_roman_empire
+				this = title:h_western_roman_empire
+			}
+		}
+		max = 1
+		save_scope_as = recalc_hegemony
+	}
+
+	# === Consolidated duchy-tier pass (Dux) ===
+	# Capital-county-driven dispatch. For each duchy-tier command title:
+	#   A. capital_county still in realm                      → no action
+	#   B. capital lost + duchy still has any realm county    → re-anchor in same duchy
+	#   C. capital lost + duchy has zero realm counties       → cross-duchy redeploy
+	#
+	# Border status drops out of the dispatch entirely (still used for redeploy
+	# *target* selection in Case C). Interior duchies with valid deployments
+	# stay deployed — Dux do not migrate toward borders unconditionally.
+	scope:recalc_emperor = {
+		every_vassal = {
+			limit = {
+				any_held_title = {
+					tier = tier_duchy
+					has_variable = is_military_command
+				}
+			}
+			save_scope_as = candidate_dux
+
+			every_held_title = {
+				limit = {
+					tier = tier_duchy
+					has_variable = is_military_command
+					exists = title_capital_county
+				}
+				save_scope_as = command_title
+
+				# Resolve command_duchy. Prefer the pinned home_de_jure_duchy
+				# variable. Fallback to title_capital_county.duchy for old saves.
+				if = {
+					limit = { has_variable = home_de_jure_duchy }
+					var:home_de_jure_duchy = { save_scope_as = command_duchy }
+				}
+				else_if = {
+					limit = { exists = title_capital_county }
+					title_capital_county.duchy = { save_scope_as = command_duchy }
+					# Backfill the pin so future recalcs use the variable.
+					save_scope_as = pin_target_title
+					scope:command_duchy = { save_scope_as = pin_target_duchy }
+					scope:pin_target_title = {
+						set_variable = {
+							name = home_de_jure_duchy
+							value = scope:pin_target_duchy
+						}
+					}
+				}
+
+				# Resolve current_deployed_county. We track this via a variable
+				# because set_capital_county on landless Dux titles may not
+				# persist as title_capital_county returns the static
+				# landed_titles `capital = c_X` value.
+				# For old-save backfill: prefer the holder's actual domicile
+				# location (truth source) over title_capital_county (potentially
+				# the static capital, which may not match where the Dux is).
+				if = {
+					limit = { has_variable = current_deployment_county }
+					var:current_deployment_county = { save_scope_as = current_county }
+				}
+				else_if = {
+					limit = {
+						scope:candidate_dux = {
+							exists = location
+							location = { exists = county }
+						}
+					}
+					save_scope_as = pin_county_title
+					scope:candidate_dux = {
+						location = {
+							county = { save_scope_as = current_county }
+						}
+					}
+					scope:current_county = { save_scope_as = pin_current_county }
+					scope:pin_county_title = {
+						set_variable = {
+							name = current_deployment_county
+							value = scope:pin_current_county
+						}
+					}
+				}
+				else_if = {
+					# Last-resort fallback: use title_capital_county (may be
+					# static landed_titles capital, but it's better than nothing).
+					limit = { exists = title_capital_county }
+					save_scope_as = pin_county_title
+					title_capital_county = { save_scope_as = current_county }
+					scope:current_county = { save_scope_as = pin_current_county }
+					scope:pin_county_title = {
+						set_variable = {
+							name = current_deployment_county
+							value = scope:pin_current_county
+						}
+					}
+				}
+
+
+				if = {
+					# Case A: current_deployed_county still in realm AND inside
+					# the pinned home de jure duchy → no action.
+					# We key off the tracked deployment county, NOT title_capital_county,
+					# because set_capital_county on landless titles doesn't always persist.
+					limit = {
+						exists = scope:current_county
+						scope:current_county = {
+							holder = { target_is_liege_or_above = scope:recalc_emperor }
+						}
+						scope:current_county.duchy = scope:command_duchy
+					}
+				}
+				else_if = {
+					# Case B: capital lost but duchy still has at least one realm county → re-anchor in same duchy
+					limit = {
+						scope:command_duchy = {
+							any_in_de_jure_hierarchy = {
+								tier = tier_county
+								holder = { target_is_liege_or_above = scope:recalc_emperor }
+							}
+						}
+					}
+					scope:command_duchy = {
+						random_in_de_jure_hierarchy = {
+							limit = {
+								tier = tier_county
+								holder = { target_is_liege_or_above = scope:recalc_emperor }
+							}
+							save_scope_as = reanchor_county
+						}
+					}
+					if = {
+						limit = { exists = scope:reanchor_county }
+						scope:candidate_dux = {
+							domicile ?= { move_domicile = scope:reanchor_county.title_province }
+							every_held_title = {
+								limit = {
+									has_variable = is_military_command
+									OR = { tier = tier_duchy  tier = tier_county }
+								}
+								set_capital_county = scope:reanchor_county
+								# Track the new deployment county explicitly via a
+								# variable, since set_capital_county on landless
+								# titles doesn't reliably update title_capital_county.
+								set_variable = {
+									name = current_deployment_county
+									value = scope:reanchor_county
+								}
+							}
+						}
+					}
+				}
+				else = {
+					# Case C: capital lost + zero realm counties left in duchy → cross-duchy redeploy
+					scope:candidate_dux = { save_scope_as = redeploy_commander }
+
+					# Resolve the lost duchy's parent kingdom (if any) so we can
+					# prefer regional fits over distant interior border duchies.
+					scope:command_duchy ?= {
+						if = {
+							limit = { exists = de_jure_liege }
+							de_jure_liege = { save_scope_as = command_kingdom }
+						}
+					}
+
+					# First pass: prefer a border duchy in the SAME kingdom as the
+					# lost duchy (regional-fit). Use a global list to track
+					# claimed duchies — random_in_de_jure_hierarchy snapshots
+					# its candidate set and doesn't see set_variable changes
+					# from prior iterations within the same every_vassal block.
+					# A global list is explicitly checked and is reliable.
+					if = {
+						limit = { exists = scope:command_kingdom }
+						scope:command_kingdom = {
+							random_in_de_jure_hierarchy = {
+								limit = {
+									tier = tier_duchy
+									is_border_duchy_trigger = { RULER = scope:recalc_emperor }
+									NOT = { has_variable = has_military_deployment }
+									NOT = { is_target_in_global_variable_list = { name = recalc_claimed_targets target = this } }
+								}
+								save_scope_as = redeploy_target
+							}
+						}
+					}
+
+					# Second pass: if no in-kingdom border duchy was found, fall
+					# back to any border duchy in the empire's de jure tree.
+					if = {
+						limit = { NOT = { exists = scope:redeploy_target } }
+						scope:recalc_hegemony = {
+							random_in_de_jure_hierarchy = {
+								limit = {
+									tier = tier_duchy
+									is_border_duchy_trigger = { RULER = scope:recalc_emperor }
+									NOT = { has_variable = has_military_deployment }
+									NOT = { is_target_in_global_variable_list = { name = recalc_claimed_targets target = this } }
+								}
+								save_scope_as = redeploy_target
+							}
+						}
+					}
+
+					if = {
+						limit = { exists = scope:redeploy_target }
+						# Add target to a global list to deduplicate against the
+						# next every_vassal iteration's random pick.
+						# Global lists are reliable across iterations.
+						add_to_global_variable_list = {
+							name = recalc_claimed_targets
+							target = scope:redeploy_target
+						}
+						scope:redeploy_target = {
+							set_variable = { name = has_military_deployment }
+						}
+						redeploy_commander_to_diocese_effect = { DIOCESE = scope:redeploy_target }
+					}
+					else = {
+						# No valid target anywhere — hold at emperor's capital.
+						scope:candidate_dux = {
+							if = {
+								limit = { has_domicile = yes }
+								domicile = { move_domicile = scope:recalc_emperor.capital_province }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# Clear the per-cycle dedup global list so it doesn't carry over to
+	# subsequent recalc cycles.
+	clear_global_variable_list = recalc_claimed_targets
+
+	# Orphan-deployment-var cleanup: clear has_military_deployment on any duchy
+	# with no commander pointing to it (e.g. dux destroyed, leaving stale var on
+	# a duchy that still has realm counties so clear_stale_deployment_vars_effect missed it).
+	# Border status no longer gates this — under capital-driven dispatch, interior
+	# duchies can legitimately have deployments, so the orphan check is purely
+	# "var set + no commander pointing here".
+	scope:recalc_hegemony = {
+		every_in_de_jure_hierarchy = {
+			limit = {
+				tier = tier_duchy
+				has_variable = has_military_deployment
+			}
+			save_scope_as = orphan_check_duchy
+			if = {
+				limit = {
+					NOT = {
+						scope:recalc_emperor = {
+							any_vassal = {
+								any_held_title = {
+									tier = tier_duchy
+									has_variable = is_military_command
+									OR = {
+										AND = {
+											has_variable = current_deployment_county
+											var:current_deployment_county.duchy = scope:orphan_check_duchy
+										}
+										AND = {
+											NOT = { has_variable = current_deployment_county }
+											exists = title_capital_county
+											title_capital_county.duchy = scope:orphan_check_duchy
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				remove_variable = has_military_deployment
+			}
+		}
+	}
+
+	# === Consolidated kingdom-tier pass (Comes / MM) ===
+	# Single walk over emperor's vassals, per kingdom command:
+	#   1. Kingdom fully lost → cross-kingdom redeploy
+	#   2. Kingdom has realm counties but capital_county foreign → re-anchor in same kingdom
+	#   3. Kingdom + realm capital → no action
+	# Replaces former passes D (kingdom redeploy) and E (kingdom re-anchor).
+	scope:recalc_emperor = {
+		every_vassal = {
+			limit = {
+				any_held_title = {
+					tier = tier_kingdom
+					has_variable = is_military_command
+				}
+			}
+			save_scope_as = candidate_commander
+
+			every_held_title = {
+				limit = {
+					tier = tier_kingdom
+					has_variable = is_military_command
+					exists = title_capital_county
+				}
+				save_scope_as = command_kingdom_title
+
+				# Resolve current_deployed_county via tracked variable (same
+				# rationale as duchy-tier — set_capital_county on landless
+				# titles doesn't reliably persist).
+				if = {
+					limit = { has_variable = current_deployment_county }
+					var:current_deployment_county = { save_scope_as = current_kingdom_county }
+				}
+				else_if = {
+					limit = { exists = title_capital_county }
+					title_capital_county = { save_scope_as = current_kingdom_county }
+					save_scope_as = pin_kingdom_title
+					scope:current_kingdom_county = { save_scope_as = pin_kingdom_county }
+					scope:pin_kingdom_title = {
+						set_variable = {
+							name = current_deployment_county
+							value = scope:pin_kingdom_county
+						}
+					}
+				}
+
+				scope:current_kingdom_county.kingdom = {
+					save_scope_as = command_kingdom
+					# Cache fully-lost status once per title
+					if = {
+						limit = { kingdom_diocese_lost_trigger = { RULER = scope:recalc_emperor } }
+						save_temporary_scope_value_as = { name = kingdom_is_lost  value = 1 }
+					}
+					else = {
+						save_temporary_scope_value_as = { name = kingdom_is_lost  value = 0 }
+					}
+				}
+
+				if = {
+					# Case 1: kingdom fully lost → redeploy to another kingdom
+					limit = { scope:kingdom_is_lost = 1 }
+					scope:candidate_commander = { save_scope_as = redeploy_commander }
+					scope:recalc_hegemony = {
+						random_in_de_jure_hierarchy = {
+							limit = {
+								tier = tier_kingdom
+								kingdom_available_for_deployment_trigger = { RULER = scope:recalc_emperor }
+							}
+							save_scope_as = redeploy_target
+						}
+					}
+					if = {
+						limit = { exists = scope:redeploy_target }
+						redeploy_commander_to_diocese_effect = { DIOCESE = scope:redeploy_target }
+					}
+					else = {
+						# No valid target — clear stale deployment vars, hold at emperor's capital
+						scope:command_kingdom = { remove_variable = has_mm_deployment }
+						scope:command_kingdom = { remove_variable = has_comes_deployment }
+						scope:candidate_commander = {
+							if = {
+								limit = { has_domicile = yes }
+								domicile = { move_domicile = scope:recalc_emperor.capital_province }
+							}
+						}
+					}
+				}
+				else_if = {
+					# Case 2: kingdom still has realm counties, but current deployment county foreign → re-anchor
+					# Key off the tracked deployment county, not title_capital_county
+					# (which may return the static landed_titles capital on landless titles).
+					limit = {
+						scope:kingdom_is_lost = 0
+						exists = scope:current_kingdom_county
+						scope:current_kingdom_county = {
+							NOT = { holder = { target_is_liege_or_above = scope:recalc_emperor } }
+						}
+					}
+					scope:command_kingdom = {
+						random_in_de_jure_hierarchy = {
+							limit = {
+								tier = tier_county
+								holder = { target_is_liege_or_above = scope:recalc_emperor }
+							}
+							save_scope_as = reanchor_kingdom_county
+						}
+					}
+					if = {
+						limit = { exists = scope:reanchor_kingdom_county }
+						scope:candidate_commander = {
+							domicile ?= { move_domicile = scope:reanchor_kingdom_county.title_province }
+							every_held_title = {
+								limit = {
+									has_variable = is_military_command
+									tier = tier_kingdom
+								}
+								set_capital_county = scope:reanchor_kingdom_county
+								# Track the new deployment county explicitly.
+								set_variable = {
+									name = current_deployment_county
+									value = scope:reanchor_kingdom_county
+								}
+							}
+						}
+					}
+				}
+				# Case 3: no action
+			}
+		}
+	}
+}
+
+# Destroys a military command title and cleans up all associated state.
+# Scope: emperor character (root = emperor).
+# $TITLE$ — the military command title to destroy.
+destroy_military_command_effect = {
+	# 1. Save the current holder before we destroy anything
+	$TITLE$ = {
+		save_scope_as = destroy_title
+		holder = { save_scope_as = destroy_holder }
+	}
+
+	# 2. Remove Dux garrison modifiers if duchy-tier command.
+	# Source the deploy duchy from var:current_deployment_county (truth);
+	# fall back to title_capital_county for unpinned titles.
+	if = {
+		limit = { scope:destroy_title = { tier = tier_duchy } }
+		if = {
+			limit = { scope:destroy_title = { has_variable = current_deployment_county } }
+			scope:destroy_title = {
+				var:current_deployment_county = {
+					duchy = { save_scope_as = destroy_duchy }
+				}
+			}
+		}
+		else_if = {
+			limit = { scope:destroy_title = { exists = title_capital_county } }
+			scope:destroy_title = {
+				title_capital_county = {
+					duchy = { save_scope_as = destroy_duchy }
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:destroy_duchy }
+			remove_dux_garrison_from_duchy_effect = { DUCHY = scope:destroy_duchy }
+		}
+	}
+
+	# 3. Clear deployment variables on the operational duchy/kingdom
+	# (var preferred, title_capital_county fallback).
+	scope:destroy_title = {
+		if = {
+			limit = { has_variable = current_deployment_county }
+			var:current_deployment_county = {
+				duchy = { remove_variable = has_military_deployment }
+				kingdom = { remove_variable = has_mm_deployment }
+				kingdom = { remove_variable = has_comes_deployment }
+			}
+		}
+		else_if = {
+			limit = { exists = title_capital_county }
+			title_capital_county = {
+				duchy = { remove_variable = has_military_deployment }
+				kingdom = { remove_variable = has_mm_deployment }
+				kingdom = { remove_variable = has_comes_deployment }
+			}
+		}
+	}
+
+	# 4. Destroy all title MAA on the holder
+	scope:destroy_holder = {
+		every_maa_regiment = {
+			limit = { is_title_maa_regiment = yes }
+			destroy_maa_regiment = yes
+		}
+	}
+
+	# 5. Destroy the title
+	scope:destroy_holder = {
+		destroy_title = scope:destroy_title
+	}
+
+	# Note: this effect does NOT call recalculate_military_borders_effect.
+	# Callers that need a recalc (e.g., manual UI destroy / disband
+	# interaction) should invoke reconcile_roman_imperial_state_effect
+	# themselves on the appropriate emperor scope. Internal callers
+	# (enforce_military_command_limits_effect) already run recalc upstream
+	# and don't need it duplicated.
+}
+
+# Top-level reconciliation wrapper — runs the full imperial military state reconcile chain in order.
+# Scope: emperor character (root = emperor).
+# Use this in place of bare recalculate_military_borders_effect at war-end and yearly hooks
+# so stale deployment variables are cleared before the recalc walks them.
+reconcile_roman_imperial_state_effect = {
+	save_scope_as = recalc_emperor
+
+	# 1. Clear stale deployment vars first so recalc doesn't redeploy against ghost variables
+	clear_stale_deployment_vars_effect = yes
+
+	# 2. Existing recalc (duchy + kingdom redeployment with orphan-dux sweep)
+	recalculate_military_borders_effect = yes
+
+	# 3. PR-4 hook: sync_imperial_minister_domiciles_effect — wired in PR-4
+	# 4. Enforce command count limits (auto-disband excess)
+	enforce_military_command_limits_effect = yes
+}
+
+# Auto-disbands excess Field Army (kingdom-tier) and Border Army (duchy-tier) commands
+# when count exceeds the respective limit. Selection priority (lowest-value commands first):
+#   D — Zombie: deployment kingdom/duchy has no realm-held counties
+#   C — Non-border (border tier only): duchy isn't a border duchy
+#   A — Most recently created: highest command_created variable
+#   B — Lowest holder prestige
+# Static (pre-395) titles lack command_created and are protected (treated as year 0).
+# Scope: emperor character (root = emperor).
+enforce_military_command_limits_effect = {
+	save_scope_as = limit_emperor
+
+	# === Border armies (duchy-tier Dux) ===
+	# No is_at_war guard — border armies should disband on territory loss even mid-war
+	while = {
+		limit = {
+			roman_military_dux_count > roman_military_max_dux
+		}
+		scope:limit_emperor = {
+			ordered_vassal = {
+				limit = {
+					any_held_title = {
+						tier = tier_duchy
+						has_variable = is_military_command
+					}
+				}
+				order_by = {
+					value = 0
+					# Tier D: zombie (deploy duchy has no realm counties).
+					# Use var:current_deployment_county.duchy for the deploy
+					# duchy lookup; fall back to title_capital_county for old
+					# titles that haven't been pinned yet.
+					if = {
+						limit = {
+							any_held_title = {
+								tier = tier_duchy
+								has_variable = is_military_command
+								OR = {
+									AND = {
+										has_variable = current_deployment_county
+										var:current_deployment_county.duchy = {
+											NOT = {
+												any_in_de_jure_hierarchy = {
+													tier = tier_county
+													holder = { target_is_liege_or_above = scope:limit_emperor }
+												}
+											}
+										}
+									}
+									AND = {
+										NOT = { has_variable = current_deployment_county }
+										exists = title_capital_county
+										title_capital_county.duchy = {
+											NOT = {
+												any_in_de_jure_hierarchy = {
+													tier = tier_county
+													holder = { target_is_liege_or_above = scope:limit_emperor }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						add = 1000000
+					}
+					# Tier C: non-border duchy (var preferred, title_capital_county fallback)
+					if = {
+						limit = {
+							any_held_title = {
+								tier = tier_duchy
+								has_variable = is_military_command
+								OR = {
+									AND = {
+										has_variable = current_deployment_county
+										var:current_deployment_county.duchy = {
+											NOT = { is_border_duchy_trigger = { RULER = scope:limit_emperor } }
+										}
+									}
+									AND = {
+										NOT = { has_variable = current_deployment_county }
+										exists = title_capital_county
+										title_capital_county.duchy = {
+											NOT = { is_border_duchy_trigger = { RULER = scope:limit_emperor } }
+										}
+									}
+								}
+							}
+						}
+						add = 100000
+					}
+					# Tier A: most recently created (newest dux disbands first).
+					# Adds the max command_created year across the vassal's duchy
+					# command titles. Implemented as a script_value because
+					# order_by only accepts script values, not iterators.
+					add = roman_military_dux_command_created_max_value
+					# Tier B: inverse prestige
+					subtract = prestige_level
+				}
+				max = 1
+				save_scope_as = doomed_dux
+			}
+		}
+		scope:doomed_dux = {
+			random_held_title = {
+				limit = {
+					tier = tier_duchy
+					has_variable = is_military_command
+				}
+				save_scope_as = doomed_title
+			}
+		}
+		destroy_military_command_effect = { TITLE = scope:doomed_title  }
+	}
+
+	# === Field armies (kingdom-tier Comes/MM) ===
+	# Skip during active war — disbanding field armies mid-war is bad UX
+	if = {
+		limit = { NOT = { scope:limit_emperor = { is_at_war = yes } } }
+		while = {
+			limit = {
+				roman_military_field_army_count > roman_military_max_field_army
+			}
+			scope:limit_emperor = {
+				ordered_vassal = {
+					limit = {
+						any_held_title = {
+							tier = tier_kingdom
+							has_variable = is_military_command
+						}
+					}
+					order_by = {
+						value = 0
+						# Tier D: zombie kingdom (no realm counties)
+						if = {
+							limit = {
+								any_held_title = {
+									tier = tier_kingdom
+									has_variable = is_military_command
+									NOT = {
+										any_in_de_jure_hierarchy = {
+											tier = tier_county
+											holder = { target_is_liege_or_above = scope:limit_emperor }
+										}
+									}
+								}
+							}
+							add = 1000000
+						}
+						# Tier A: most recently created (newest field army disbands first).
+						# script_value walks held kingdom command titles for max command_created.
+						add = roman_military_field_command_created_max_value
+						# Tier B: inverse prestige
+						subtract = prestige_level
+					}
+					max = 1
+					save_scope_as = doomed_field
+				}
+			}
+			scope:doomed_field = {
+				random_held_title = {
+					limit = {
+						tier = tier_kingdom
+						has_variable = is_military_command
+					}
+					save_scope_as = doomed_title
+				}
+			}
+			destroy_military_command_effect = { TITLE = scope:doomed_title  }
+		}
+	}
+}

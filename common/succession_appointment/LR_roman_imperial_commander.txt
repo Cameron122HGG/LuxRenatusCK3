@@ -1,0 +1,262 @@
+﻿roman_imperial_military_commander = {
+	default_candidates = { holder_close_family holder_close_extended_family holder_house_member landed_vassal unlanded_noble_house_head unlanded_noble_close_family unlanded_noble_close_extended_family unlanded_noble_house_member holder_councilor holder_court_position }
+
+	candidate_score = {
+		value = {
+			# --- PRESTIGE SCORE BONUS (+10 per level) ---
+			add = {
+				value = 10
+				multiply = {
+					value = prestige_level
+					subtract = 1
+				}
+				desc = PRESTIGE_LEVEL_CONCEPT
+			}
+
+			# Martial skills
+			add = {
+				value = martial
+				multiply = 2
+				desc = "[martial_skill|E]"
+			}
+			add = {
+				value = prowess
+				desc = prowess_concept
+			}
+			add = {
+				value = number_of_commander_traits
+				multiply = 20
+				desc = number_of_commander_traits_desc
+			}
+
+			# --- MARTIAL EDUCATION REQUIRED ---
+			if = {
+				limit = {
+					NOR = {
+						has_trait = education_martial_1
+						has_trait = education_martial_2
+						has_trait = education_martial_3
+						has_trait = education_martial_4
+						has_trait = education_martial_5
+					}
+				}
+				add = { value = -1000; desc = "lacks_martial_education" }
+			}
+
+
+			# Independent rulers (Pope, other emperors) cannot be military commanders
+			if = {
+				limit = { is_independent_ruler = yes }
+				add = { value = -10000; desc = appointment_is_top_liege }
+			}
+			# Top liege cannot hold command titles
+			if = {
+				limit = { is_independent_ruler = yes }
+				multiply = { value = 0; desc = appointment_is_top_liege }
+			}
+
+			# Temporary career influence from the admin window "Influence Career" action.
+			if = {
+				limit = {
+					exists = var:merit_military_career_score_bonus
+				}
+				add = {
+					value = var:merit_military_career_score_bonus
+					desc = merit_career_score_bonus_desc
+				}
+			}
+
+			# Emperor-appointed replacement — guarantees this candidate is selected
+			if = {
+				limit = {
+					has_character_flag = LR_emperor_appointed_commander
+				}
+				add = { value = 100000 desc = "emperor_appointed_commander" }
+			}
+
+			# CRIMINAL
+			if = {
+				limit = {
+					has_trait = deviant
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:deviant FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = { value = -30; desc = "deviant_and_criminal_desc" }
+			}
+			if = {
+				limit = {
+					has_trait = incestuous
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:incestuous FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = { value = -30; desc = "incestuous_and_criminal_desc" }
+			}
+			if = {
+				limit = {
+					has_trait = kinslayer_1
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_1 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = { value = -30; desc = "kinslayer_1_and_criminal_desc" }
+			}
+
+			# Excluded traits
+			if = {
+				limit = { has_trait = disinherited }
+				subtract = { value = 200; desc = trait_disinherited }
+			}
+			if = {
+				limit = { has_trait = gallivanter }
+				subtract = { value = 200; desc = trait_gallivanter }
+			}
+
+			# Faith hostility
+			if = {
+				limit = {
+					scope:title.holder.primary_title.state_faith ?= {
+						faith_hostility_level = {
+							target = root.faith
+							value = faith_astray_level
+						}
+					}
+				}
+				subtract = { value = 10; desc = astray_faith_succession_desc }
+			}
+			if = {
+				limit = {
+					scope:title.holder.primary_title.state_faith ?= {
+						faith_hostility_level = {
+							target = root.faith
+							value = faith_hostile_level
+						}
+					}
+				}
+				subtract = { value = 20; desc = hostile_faith_succession_desc }
+			}
+
+			# Lowborn bonus — the Late Roman military was the ultimate vehicle for
+			# social mobility; emperors elevated loyal soldiers over scheming aristocrats.
+			if = {
+				limit = { is_lowborn = yes }
+				add = { value = 10; desc = lowborn_desc_succession }
+			}
+
+			# Must be combat-eligible
+			if = {
+				limit = {
+					NOT = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = top_liege } }
+				}
+				add = { value = -1000; desc = cannot_be_commander }
+			}
+
+			# Military age brackets — penalty under 25, bonus at 35+
+			if = {
+				limit = { age >= 35 }
+				add = { value = 10; desc = old_age_desc }
+			}
+			if = {
+				limit = { age < 25 }
+				add = { value = -15; desc = young_age_desc }
+			}
+
+			# Military education bonus
+			if = {
+				limit = {
+					OR = {
+						has_trait = education_martial_5
+						has_trait = education_martial_4
+					}
+				}
+				add = { value = 10; desc = LR_roman_education_bonus_desc }
+			}
+
+			# Friend of title holder
+			if = {
+				limit = {
+					scope:title.holder ?= { has_relation_friend = root }
+				}
+				add = { value = 15; desc = governor_friend_desc }
+			}
+
+			# Claims on the title — giving an army to a claimant is begging for civil war.
+			if = {
+				limit = { has_strong_claim_on = scope:title }
+				add = { value = -30; desc = title_claim_desc }
+			}
+			if = {
+				limit = { has_weak_claim_on = scope:title }
+				add = { value = -15; desc = title_weak_claim_desc }
+			}
+
+			# Domicile bonuses
+			if = {
+				limit = {
+					exists = dynasty
+					dynasty.dynast ?= {
+						has_domicile = yes
+						domicile ?= { has_domicile_parameter = meritocratic_civilian_score_bonus_1 }
+					}
+				}
+				add = { value = 5; desc = ep3_domicile_score_bonus_desc }
+			}
+
+			# Schemes
+			if = {
+				limit = { has_character_modifier = scheme_slandered_modifier }
+				add = { value = slander_appointment_score_value; desc = scheme_slandered_modifier }
+			}
+			if = {
+				limit = { has_character_modifier = scheme_promoted_modifier }
+				add = { value = promote_appointment_score_value; desc = scheme_promoted_modifier }
+			}
+
+			# Gender law adjustment - must go at end
+			if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = male_preference_law }
+					is_female = yes
+				}
+				multiply = {
+					value = { value = 1 subtract = appointment_non_preferred_gender_penalty_value }
+					desc = appointment_male_preference_desc
+				}
+			}
+			if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = male_only_law }
+					is_female = yes
+				}
+				multiply = {
+					value = { value = 1 subtract = appointment_opposite_gender_penalty_value }
+					desc = appointment_male_only_desc
+				}
+			}
+			if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = female_preference_law }
+					is_female = no
+				}
+				multiply = {
+					value = { value = 1 subtract = appointment_non_preferred_gender_penalty_value }
+					desc = appointment_female_preference_desc
+				}
+			}
+			if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = female_only_law }
+					is_female = no
+				}
+				multiply = {
+					value = { value = 1 subtract = appointment_opposite_gender_penalty_value }
+					desc = appointment_female_only_desc
+				}
+			}
+
+			# Top liege cannot inherit command titles
+			if = {
+				limit = { is_independent_ruler = yes }
+				add = { value = -10000; desc = appointment_is_top_liege }
+			}
+		}
+	}
+}

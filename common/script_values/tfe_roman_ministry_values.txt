@@ -1,0 +1,19 @@
+﻿# Roman Imperial ministry scale values
+# Parallel to council_scaled_celestial_ministry_value but for Roman Imperial government
+
+council_scaled_roman_ministry_value = {
+	value = 0 # This value should be 0 for anyone who isn't on the Roman ministry
+	if = {
+		limit = {
+			liege = {
+				highest_held_title_tier >= tier_empire
+				government_has_flag = government_is_roman_imperial
+			}
+		}
+		# Scale based on influence level (Romans don't use disciples for scaling)
+		add = {
+			value = influence_level
+			min = 1
+		}
+	}
+}

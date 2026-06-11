@@ -347,6 +347,125 @@
 		flag = appointment_type_succession
 		flag = appointment_with_level_requirement
 	}
+
+	# Roman Imperial Offices
+	roman_imperial_ministry_appointment_succession_law = {
+		can_have = {
+			government_has_flag = government_is_roman_imperial
+		}
+		can_pass = {
+			always = no
+		}
+		can_title_have = {
+			OR = {
+				this = title:k_minister_magister_officiorum
+				this = title:k_minister_praepositus_sacri_cubiculi
+				this = title:k_minister_comes_sacrarum_largitionum
+				this = title:k_minister_quaestor_sacri_palatii
+				this = title:k_minister_primicerius_notariorum
+				this = title:k_minister_praefectus_urbi
+				this = title:k_minister_wre_magister_officiorum
+				this = title:k_minister_wre_praepositus_sacri_cubiculi
+				this = title:k_minister_wre_primicerius_notariorum
+				this = title:k_minister_wre_comes_sacrarum_largitionum
+				this = title:k_minister_wre_praefectus_urbi
+				this = title:k_minister_wre_quaestor_sacri_palatii
+				this = title:k_praetorian_prefect_oriens
+				this = title:k_praetorian_prefect_illyricum
+				this = title:k_praetorian_prefect_gallia
+				this = title:k_praetorian_prefect_italia
+			}
+		}
+		can_realm_have = {
+			always = no
+		}
+		can_remove_from_title = {
+			custom_tooltip = {
+				text = celestial_ministry_appointment_cannot_remove_desc
+				always = no
+			}
+		}
+		succession = {
+			order_of_succession = appointment
+			appointment_type = roman_imperial_minister
+		}
+		modifier = {
+		}
+		flag = appointment_type_succession
+	}
+
+	# Roman Imperial Grand Marshal Succession
+	roman_imperial_grand_marshal_appointment_succession_law = {
+		can_have = {
+			government_has_flag = government_is_roman_imperial
+		}
+		can_pass = {
+			always = no
+		}
+		can_title_have = {
+			OR = {
+				this = title:k_minister_magister_militum_praesentalis
+				this = title:k_minister_comes_domesticorum
+				this = title:k_minister_magister_utriusque_militiae
+				this = title:k_minister_wre_comes_domesticorum
+			}
+		}
+		can_realm_have = {
+			always = no
+		}
+		can_remove_from_title = {
+			custom_tooltip = {
+				text = celestial_ministry_appointment_cannot_remove_desc
+				always = no
+			}
+		}
+		succession = {
+			order_of_succession = appointment
+			appointment_type = roman_imperial_military_minister
+			gender_law = male_only
+		}
+		modifier = {
+		}
+		flag = appointment_type_succession
+		flag = LR_roman_imperial_military_title_law
+	}
+
+	LR_roman_imperial_military_appointment_succession_law = {
+		can_have = {
+			government_has_flag = government_is_roman_imperial
+		}
+		can_pass = {
+			always = no
+		}
+		can_title_have = {
+			is_landless_type_title = yes
+			# Exclude minister titles — they have their own succession laws
+			NOR = {
+				has_title_law = roman_imperial_ministry_appointment_succession_law
+				has_title_law = roman_imperial_grand_marshal_appointment_succession_law
+			}
+		}
+		can_realm_have = {
+			always = no
+		}
+		can_remove_from_title = {
+			custom_tooltip = {
+				text = celestial_ministry_appointment_cannot_remove_desc
+				always = no
+			}
+		}
+		succession = {
+			order_of_succession = appointment
+			appointment_type = roman_imperial_military_commander
+			gender_law = male_only
+		}
+		flag = advanced_succession_law
+		flag = appointment_type_succession
+		flag = LR_roman_imperial_military_title_law
+		potential = {
+			government_has_flag = government_is_roman_imperial
+		}
+	}
 }
 
 

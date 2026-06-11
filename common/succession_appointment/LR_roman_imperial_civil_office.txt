@@ -1,0 +1,350 @@
+﻿roman_imperial_civil_governor = {
+	allow_same_tier_candidates = yes
+
+	# Influence gates civil rank: higher influence = eligible for higher-tier governorships.
+	# With level set, default_candidates is ignored — C++ uses the influence pool.
+	level = influence
+
+	candidate_score = {
+		value = {
+			# --- INFLUENCE SCORE BONUS (primary advancement axis) ---
+			add = {
+				value = 20
+				multiply = {
+					value = influence_level
+					subtract = 1
+				}
+				desc = "[influence_level|E]"
+			}
+
+			# Skills — court politics and patronage networks dominate civil office
+			add = {
+				value = diplomacy
+				multiply = 0.5
+				round = yes
+				desc = "[diplomacy_skill|E]"
+			}
+			add = {
+				value = intrigue
+				multiply = 0.5
+				round = yes
+				desc = "[intrigue_skill|E]"
+			}
+			add = {
+				value = stewardship
+				multiply = 0.25
+				round = yes
+				desc = "[stewardship_skill|E]"
+			}
+			add = {
+				value = learning
+				multiply = 0.25
+				round = yes
+				desc = "[learning_skill|E]"
+			}
+
+			# Temporary career influence from the admin window "Influence Career" action.
+			if = {
+				limit = {
+					exists = var:merit_civilian_career_score_bonus
+				}
+				add = {
+					value = var:merit_civilian_career_score_bonus
+					desc = merit_career_score_bonus_desc
+				}
+			}
+
+			# CRIMINAL
+			if = {
+				limit = {
+					has_trait = deviant
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:deviant FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = {
+					value = -50
+					desc = "deviant_and_criminal_desc"
+				}
+			}
+			if = {
+				limit = {
+					has_trait = incestuous
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:incestuous FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = {
+					value = -50
+					desc = "incestuous_and_criminal_desc"
+				}
+			}
+			if = {
+				limit = {
+					has_trait = kinslayer_1
+					exists = top_liege.primary_title.state_faith
+					trait_is_criminal_in_faith_trigger = { TRAIT = trait:kinslayer_1 FAITH = top_liege.primary_title.state_faith GENDER_CHARACTER = root }
+				}
+				add = {
+					value = -50
+					desc = "kinslayer_1_and_criminal_desc"
+				}
+			}
+
+			# Unsound mind
+			if = {
+				limit = {
+					OR = {
+						has_trait = lunatic
+						has_trait = possessed
+						has_trait = incapable
+						has_trait = intellect_bad_3
+					}
+				}
+				add = {
+					value = -100
+					desc = "unsound_mind_desc"
+				}
+			}
+
+			# Excluded traits
+			if = {
+				limit = { has_trait = disinherited }
+				subtract = {
+					value = 200
+					desc = trait_disinherited
+				}
+			}
+			if = {
+				limit = { has_trait = gallivanter }
+				subtract = {
+					value = 200
+					desc = trait_gallivanter
+				}
+			}
+
+			# Faith hostility
+			if = {
+				limit = {
+					scope:title.holder.primary_title.state_faith ?= {
+						faith_hostility_level = {
+							target = root.faith
+							value = faith_astray_level
+						}
+					}
+				}
+				subtract = {
+					value = 10
+					desc = astray_faith_succession_desc
+				}
+			}
+			if = {
+				limit = {
+					scope:title.holder.primary_title.state_faith ?= {
+						faith_hostility_level = {
+							target = root.faith
+							value = faith_hostile_level
+						}
+					}
+				}
+				subtract = {
+					value = 20
+					desc = hostile_faith_succession_desc
+				}
+			}
+			if = {
+				limit = {
+					scope:title.holder.primary_title.state_faith ?= {
+						faith_hostility_level = {
+							target = root.faith
+							value >= faith_evil_level
+						}
+					}
+				}
+				subtract = {
+					value = 30
+					desc = evil_faith_sucession_desc
+				}
+			}
+
+			# Lowborn penalty
+			if = {
+				limit = { is_lowborn = yes }
+				subtract = {
+					value = 25
+					desc = lowborn_desc_succession
+				}
+			}
+
+			# Cursus honorum age brackets
+			if = {
+				limit = { age >= 40 }
+				add = {
+					value = 10
+					desc = old_age_desc
+				}
+			}
+			else_if = {
+				limit = { age < 30 }
+				add = {
+					value = -15
+					desc = young_age_desc
+				}
+			}
+
+			# Education trait bonus
+			if = {
+				limit = {
+					OR = {
+						has_trait = education_stewardship_5
+						has_trait = education_diplomacy_5
+						has_trait = education_learning_5
+					}
+				}
+				add = {
+					value = 10
+					desc = LR_roman_education_bonus_desc
+				}
+			}
+
+			# Friend of title holder
+			if = {
+				limit = {
+					scope:title.holder ?= { has_relation_friend = root }
+				}
+				add = {
+					value = 15
+					desc = governor_friend_desc
+				}
+			}
+
+			# Popular opinion — county holders who like the candidate govern better
+			if = {
+				limit = {
+					exists = scope:title
+					scope:title.tier >= tier_county
+				}
+				add = {
+					value = scope:title.holder.capital_county.county_holder_opinion
+					multiply = 0.25
+					round = yes
+					desc = county_holder_opinion_desc
+				}
+			}
+
+			# Claims on the title — usurpation risk; bureaucracies rotated governors
+			# to prevent local roots, so claims are a liability not an asset.
+			if = {
+				limit = { has_strong_claim_on = scope:title }
+				add = {
+					value = -30
+					desc = title_claim_desc
+				}
+			}
+			else_if = {
+				limit = { has_weak_claim_on = scope:title }
+				add = {
+					value = -15
+					desc = title_weak_claim_desc
+				}
+			}
+
+
+
+			# Domicile bonuses
+			if = {
+				limit = {
+					exists = dynasty
+					dynasty.dynast ?= {
+						has_domicile = yes
+						domicile ?= { has_domicile_parameter = meritocratic_civilian_score_bonus_1 }
+					}
+				}
+				add = {
+					value = 5
+					desc = ep3_domicile_score_bonus_desc
+				}
+			}
+
+			# Schemes
+			if = {
+				limit = { has_character_modifier = scheme_slandered_modifier }
+				add = {
+					value = slander_appointment_score_value
+					desc = scheme_slandered_modifier
+				}
+			}
+			if = {
+				limit = { has_character_modifier = scheme_promoted_modifier }
+				add = {
+					value = promote_appointment_score_value
+					desc = scheme_promoted_modifier
+				}
+			}
+
+			# Gender law adjustment — must go at end
+			if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = male_preference_law }
+					is_female = yes
+				}
+				multiply = {
+					value = {
+						value = 1
+						subtract = appointment_non_preferred_gender_penalty_value
+					}
+					desc = appointment_male_preference_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = male_only_law }
+					is_female = yes
+				}
+				multiply = {
+					value = {
+						value = 1
+						subtract = appointment_opposite_gender_penalty_value
+					}
+					desc = appointment_male_only_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = female_preference_law }
+					is_female = no
+				}
+				multiply = {
+					value = {
+						value = 1
+						subtract = appointment_non_preferred_gender_penalty_value
+					}
+					desc = appointment_female_preference_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = female_only_law }
+					is_female = no
+				}
+				multiply = {
+					value = {
+						value = 1
+						subtract = appointment_opposite_gender_penalty_value
+					}
+					desc = appointment_female_only_desc
+				}
+			}
+
+			# Top liege cannot inherit governorships
+			if = {
+				limit = {
+					is_independent_ruler = yes
+				}
+				multiply = {
+					value = 0
+					desc = appointment_is_top_liege
+				}
+			}
+		}
+	}
+}
+

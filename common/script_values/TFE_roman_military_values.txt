@@ -1,0 +1,114 @@
+﻿### Roman Military Command Limits
+# Scope: character (emperor)
+
+# Count of existing duchy-tier military commands (Dux)
+roman_military_dux_count = {
+	value = 0
+	every_vassal = {
+		limit = {
+			any_held_title = {
+				tier = tier_duchy
+				OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+			}
+		}
+		add = 1
+	}
+}
+
+# Count of field armies: kingdom-tier military commands + military ministers (MMP, CD)
+roman_military_field_army_count = {
+	value = 0
+	every_vassal = {
+		limit = {
+			OR = {
+				# Kingdom-tier military commands
+				any_held_title = {
+					tier = tier_kingdom
+					OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				}
+				# Military ministers (MMP, CD — both ERE and WRE)
+				has_title = title:k_minister_magister_militum_praesentalis
+				has_title = title:k_minister_comes_domesticorum
+				has_title = title:k_minister_magister_utriusque_militiae
+				has_title = title:k_minister_wre_comes_domesticorum
+			}
+		}
+		add = 1
+	}
+}
+
+# Max Dux = de jure kingdoms with realm territory × 2
+roman_military_max_dux = {
+	value = 0
+	every_held_title = {
+		limit = {
+			OR = {
+				this = title:h_roman_empire
+				this = title:h_eastern_roman_empire
+				this = title:h_western_roman_empire
+			}
+		}
+		every_in_de_jure_hierarchy = {
+			limit = {
+				tier = tier_kingdom
+				has_realm_territory_trigger = { EMPEROR = root }
+			}
+			add = 1
+		}
+	}
+	multiply = 2
+	min = 2
+}
+
+# Max field army = de jure kingdoms * 3 / 2 (includes static ministers like CD/MMP)
+roman_military_max_field_army = {
+	value = 0
+	every_held_title = {
+		limit = {
+			OR = {
+				this = title:h_roman_empire
+				this = title:h_eastern_roman_empire
+				this = title:h_western_roman_empire
+			}
+		}
+		every_in_de_jure_hierarchy = {
+			limit = {
+				tier = tier_kingdom
+				has_realm_territory_trigger = { EMPEROR = root }
+			}
+			add = 1
+		}
+	}
+	min = 2
+}
+
+
+# Max command_created year value across the vassal's duchy-tier military
+# command titles. Used by enforce_military_command_limits_effect's Tier A
+# priority sort (newer commands disband first when over the limit).
+# Returns 0 if no such title exists; otherwise the highest command_created
+# year among held duchy-tier military command titles.
+roman_military_dux_command_created_max_value = {
+	value = 0
+	every_held_title = {
+		limit = {
+			tier = tier_duchy
+			has_variable = is_military_command
+			exists = var:command_created
+		}
+		max = var:command_created
+	}
+}
+
+# Same for kingdom-tier (field-army) military command titles.
+roman_military_field_command_created_max_value = {
+	value = 0
+	every_held_title = {
+		limit = {
+			tier = tier_kingdom
+			has_variable = is_military_command
+			exists = var:command_created
+		}
+		max = var:command_created
+	}
+}

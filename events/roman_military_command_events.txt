@@ -1,0 +1,949 @@
+﻿namespace = roman_military_command
+
+# Notification: Commander redeployed to new province
+roman_military_command.0001 = {
+	type = character_event
+	title = roman_military_command.0001.t
+	desc = roman_military_command.0001.desc
+	theme = war
+
+	left_portrait = {
+		character = root
+		animation = marshal
+	}
+
+	option = {
+		name = roman_military_command.0001.a
+	}
+}
+
+###########################################################
+# Diocese selection — emperor picks where to deploy commander
+###########################################################
+
+# Diocese selection event
+roman_military_command.0010 = {
+	type = character_event
+	title = roman_military_command.0010.t
+	desc = roman_military_command.0010.desc
+	theme = war
+
+	left_portrait = {
+		character = scope:redeploy_commander
+		animation = marshal
+	}
+
+	immediate = {
+		# Save the commander's current deployment location to exclude it
+		scope:redeploy_commander = {
+			domicile = {
+				domicile_location = { county = { save_scope_as = current_deploy_county } }
+			}
+		}
+
+		# Check if the commander holds a county-tier command (Dux) vs duchy+ (Comes)
+		scope:redeploy_commander = {
+			if = {
+				limit = {
+					any_held_title = {
+						tier = tier_county
+						has_title_law_flag = LR_roman_imperial_military_title_law
+					}
+				}
+				root = { set_variable = { name = is_dux_redeploy value = yes } }
+			}
+		}
+
+		if = {
+			limit = { has_variable = is_dux_redeploy }
+			# DUX: list duchies that border non-realm territory
+			every_held_title = {
+				limit = {
+					OR = {
+						this = title:h_roman_empire
+						this = title:h_eastern_roman_empire
+						this = title:h_western_roman_empire
+					}
+				}
+				every_in_de_jure_hierarchy = {
+					limit = {
+						tier = tier_duchy
+						# Exclude current deployment duchy
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								tier = tier_county
+								this = scope:current_deploy_county
+							}
+						}
+						# Must have a realm county bordering non-realm territory
+						any_in_de_jure_hierarchy = {
+							tier = tier_county
+							holder = {
+								exists = this
+								OR = {
+									this = root
+									target_is_liege_or_above = root
+								}
+							}
+							any_neighboring_county = {
+								holder = {
+									exists = this
+									NOR = {
+										this = root
+										target_is_liege_or_above = root
+									}
+								}
+							}
+						}
+					}
+					add_to_list = available_destinations
+				}
+			}
+		}
+		else = {
+			# COMES: list dioceses (kingdoms) with realm territory, excluding current
+			every_held_title = {
+				limit = {
+					OR = {
+						this = title:h_roman_empire
+						this = title:h_eastern_roman_empire
+						this = title:h_western_roman_empire
+					}
+				}
+				every_in_de_jure_hierarchy = {
+					limit = {
+						tier = tier_kingdom
+						# Exclude diocese the commander is already deployed in
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								tier = tier_county
+								this = scope:current_deploy_county
+							}
+						}
+						# Must have territory in the realm
+						any_in_de_jure_hierarchy = {
+							tier = tier_county
+							holder = {
+								exists = this
+								OR = {
+									this = root
+									target_is_liege_or_above = root
+								}
+							}
+						}
+					}
+					add_to_list = available_destinations
+				}
+			}
+		}
+		# Assign each diocese to a numbered scope using a counter
+		set_variable = { name = diocese_counter value = 0 }
+		every_in_list = {
+			list = available_destinations
+			if = {
+				limit = { root.var:diocese_counter = 0 }
+				save_scope_as = diocese_1
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 1 }
+				save_scope_as = diocese_2
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 2 }
+				save_scope_as = diocese_3
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 3 }
+				save_scope_as = diocese_4
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 4 }
+				save_scope_as = diocese_5
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 5 }
+				save_scope_as = diocese_6
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 6 }
+				save_scope_as = diocese_7
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 7 }
+				save_scope_as = diocese_8
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 8 }
+				save_scope_as = diocese_9
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 9 }
+				save_scope_as = diocese_10
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 10 }
+				save_scope_as = diocese_11
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 11 }
+				save_scope_as = diocese_12
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 12 }
+				save_scope_as = diocese_13
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 13 }
+				save_scope_as = diocese_14
+			}
+			else_if = {
+				limit = { root.var:diocese_counter = 14 }
+				save_scope_as = diocese_15
+			}
+			root = { change_variable = { name = diocese_counter add = 1 } }
+		}
+		remove_variable = diocese_counter
+	}
+
+	# One option per destination slot — deploy to the selected title's capital
+	option = {
+		name = roman_military_command.0010.deploy_1
+		trigger = { exists = scope:diocese_1 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_1 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_2
+		trigger = { exists = scope:diocese_2 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_2 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_3
+		trigger = { exists = scope:diocese_3 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_3 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_4
+		trigger = { exists = scope:diocese_4 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_4 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_5
+		trigger = { exists = scope:diocese_5 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_5 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_6
+		trigger = { exists = scope:diocese_6 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_6 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_7
+		trigger = { exists = scope:diocese_7 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_7 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_8
+		trigger = { exists = scope:diocese_8 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_8 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_9
+		trigger = { exists = scope:diocese_9 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_9 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_10
+		trigger = { exists = scope:diocese_10 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_10 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_11
+		trigger = { exists = scope:diocese_11 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_11 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_12
+		trigger = { exists = scope:diocese_12 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_12 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_13
+		trigger = { exists = scope:diocese_13 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_13 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_14
+		trigger = { exists = scope:diocese_14 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_14 }
+	}
+	option = {
+		name = roman_military_command.0010.deploy_15
+		trigger = { exists = scope:diocese_15 }
+		redeploy_commander_to_diocese_effect = { DIOCESE = scope:diocese_15 }
+	}
+
+	# Cancel option
+	option = {
+		name = roman_military_command.0010.cancel
+	}
+
+	after = {
+		if = {
+			limit = { has_variable = is_dux_redeploy }
+			remove_variable = is_dux_redeploy
+		}
+	}
+}
+
+###########################################################
+# Create Regiment — Step 1: Commander selection
+###########################################################
+
+# Emperor picks a courtier as the new commander.
+# Top 10 sorted by military merit, shown as event options.
+roman_military_command.0020 = {
+	type = character_event
+	title = roman_military_command.0020.t
+	desc = roman_military_command.0020.desc
+	theme = war
+
+	immediate = {
+		# Build sorted courtier list by military merit
+		every_courtier = {
+			limit = {
+				is_adult = yes
+				NOT = { is_imprisoned = yes }
+			}
+			add_to_list = eligible_commanders
+		}
+
+		# Pick top 10 using ordered_in_list (proven counter pattern)
+		set_variable = { name = cmd_counter value = 0 }
+		ordered_in_list = {
+			list = eligible_commanders
+			order_by = {
+				value = martial
+				multiply = 2
+				add = prowess
+				add = {
+					value = number_of_commander_traits
+					multiply = 10
+				}
+			}
+			max = 10
+			check_range_bounds = no
+			if = {
+				limit = { root.var:cmd_counter = 0 }
+				save_scope_as = candidate_1
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 1 }
+				save_scope_as = candidate_2
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 2 }
+				save_scope_as = candidate_3
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 3 }
+				save_scope_as = candidate_4
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 4 }
+				save_scope_as = candidate_5
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 5 }
+				save_scope_as = candidate_6
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 6 }
+				save_scope_as = candidate_7
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 7 }
+				save_scope_as = candidate_8
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 8 }
+				save_scope_as = candidate_9
+			}
+			else_if = {
+				limit = { root.var:cmd_counter = 9 }
+				save_scope_as = candidate_10
+			}
+			root = { change_variable = { name = cmd_counter add = 1 } }
+		}
+		remove_variable = cmd_counter
+	}
+
+	option = {
+		name = roman_military_command.0020.pick_1
+		trigger = { exists = scope:candidate_1 }
+		scope:candidate_1 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_2
+		trigger = { exists = scope:candidate_2 }
+		scope:candidate_2 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_3
+		trigger = { exists = scope:candidate_3 }
+		scope:candidate_3 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_4
+		trigger = { exists = scope:candidate_4 }
+		scope:candidate_4 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_5
+		trigger = { exists = scope:candidate_5 }
+		scope:candidate_5 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_6
+		trigger = { exists = scope:candidate_6 }
+		scope:candidate_6 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_7
+		trigger = { exists = scope:candidate_7 }
+		scope:candidate_7 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_8
+		trigger = { exists = scope:candidate_8 }
+		scope:candidate_8 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_9
+		trigger = { exists = scope:candidate_9 }
+		scope:candidate_9 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+	option = {
+		name = roman_military_command.0020.pick_10
+		trigger = { exists = scope:candidate_10 }
+		scope:candidate_10 = { save_scope_as = new_commander }
+		trigger_event = roman_military_command.0030
+	}
+
+	# Cancel
+	option = {
+		name = roman_military_command.0020.cancel
+	}
+}
+
+###########################################################
+# Create Regiment — Step 2: duchy selection
+###########################################################
+
+# Emperor picks a de jure duchy to deploy the new regiment.
+# scope:new_commander is the selected courtier from the interaction.
+roman_military_command.0030 = {
+	type = character_event
+	title = roman_military_command.0030.t
+	desc = roman_military_command.0030.desc
+	theme = war
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	immediate = {
+		# Build list of border duchies — must have a realm county neighboring non-realm territory
+		every_held_title = {
+			limit = {
+				OR = {
+					this = title:h_roman_empire
+					this = title:h_eastern_roman_empire
+					this = title:h_western_roman_empire
+				}
+			}
+			every_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_duchy
+					# Must have a realm county bordering non-realm territory
+					any_in_de_jure_hierarchy = {
+						tier = tier_county
+						holder = {
+							exists = this
+							OR = {
+								this = root
+								target_is_liege_or_above = root
+							}
+						}
+						any_neighboring_county = {
+							holder = {
+								exists = this
+								NOR = {
+									this = root
+									target_is_liege_or_above = root
+								}
+							}
+						}
+					}
+				}
+				add_to_list = available_duchies
+			}
+		}
+
+		# Assign numbered scopes via counter
+		set_variable = { name = duchy_counter value = 0 }
+		every_in_list = {
+			list = available_duchies
+			if = {
+				limit = { root.var:duchy_counter = 0 }
+				save_scope_as = duchy_1
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 1 }
+				save_scope_as = duchy_2
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 2 }
+				save_scope_as = duchy_3
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 3 }
+				save_scope_as = duchy_4
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 4 }
+				save_scope_as = duchy_5
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 5 }
+				save_scope_as = duchy_6
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 6 }
+				save_scope_as = duchy_7
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 7 }
+				save_scope_as = duchy_8
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 8 }
+				save_scope_as = duchy_9
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 9 }
+				save_scope_as = duchy_10
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 10 }
+				save_scope_as = duchy_11
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 11 }
+				save_scope_as = duchy_12
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 12 }
+				save_scope_as = duchy_13
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 13 }
+				save_scope_as = duchy_14
+			}
+			else_if = {
+				limit = { root.var:duchy_counter = 14 }
+				save_scope_as = duchy_15
+			}
+			root = { change_variable = { name = duchy_counter add = 1 } }
+		}
+		remove_variable = duchy_counter
+	}
+
+	# Options — one per duchy slot
+	option = {
+		name = roman_military_command.0030.deploy_1
+		trigger = { exists = scope:duchy_1 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_1 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_2
+		trigger = { exists = scope:duchy_2 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_2 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_3
+		trigger = { exists = scope:duchy_3 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_3 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_4
+		trigger = { exists = scope:duchy_4 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_4 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_5
+		trigger = { exists = scope:duchy_5 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_5 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_6
+		trigger = { exists = scope:duchy_6 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_6 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_7
+		trigger = { exists = scope:duchy_7 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_7 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_8
+		trigger = { exists = scope:duchy_8 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_8 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_9
+		trigger = { exists = scope:duchy_9 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_9 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_10
+		trigger = { exists = scope:duchy_10 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_10 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_11
+		trigger = { exists = scope:duchy_11 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_11 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_12
+		trigger = { exists = scope:duchy_12 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_12 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_13
+		trigger = { exists = scope:duchy_13 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_13 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_14
+		trigger = { exists = scope:duchy_14 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_14 }
+	}
+	option = {
+		name = roman_military_command.0030.deploy_15
+		trigger = { exists = scope:duchy_15 }
+		create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:duchy_15 }
+	}
+
+	# Cancel
+	option = {
+		name = roman_military_command.0030.cancel
+	}
+}
+
+###########################################################
+# Auto-reappoint military title that reverted to emperor
+###########################################################
+
+# Hidden event fired 1 day after emperor gains a military command title.
+# Finds the best candidate and force-appoints them.
+# scope:reverted_military_title = the title to reassign
+roman_military_command.0050 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		exists = scope:reverted_military_title
+		scope:reverted_military_title = {
+			holder = root
+		}
+	}
+
+	immediate = {
+		# Find best candidate based on title tier
+		if = {
+			limit = { scope:reverted_military_title = { tier >= tier_kingdom } }
+			# MM: promote from Comites
+			ordered_vassal = {
+				limit = {
+					any_held_title = {
+						tier = tier_duchy
+						has_title_law_flag = LR_roman_imperial_military_title_law
+					}
+					is_adult = yes
+					NOT = { is_imprisoned = yes }
+				}
+				order_by = {
+					value = martial
+					multiply = 2
+					add = prowess
+					add = { value = number_of_commander_traits multiply = 20 }
+					add = { value = prestige_level multiply = 10 }
+				}
+				max = 1
+				save_scope_as = new_commander
+			}
+		}
+		else = {
+			# Comes: promote from Duces
+			ordered_vassal = {
+				limit = {
+					any_held_title = {
+						tier = tier_county
+						has_title_law_flag = LR_roman_imperial_military_title_law
+					}
+					is_adult = yes
+					NOT = { is_imprisoned = yes }
+				}
+				order_by = {
+					value = martial
+					multiply = 2
+					add = prowess
+					add = { value = number_of_commander_traits multiply = 20 }
+					add = { value = prestige_level multiply = 10 }
+				}
+				max = 1
+				save_scope_as = new_commander
+			}
+		}
+
+		# Fallback: best martial courtier
+		if = {
+			limit = { NOT = { exists = scope:new_commander } }
+			ordered_courtier = {
+				limit = {
+					is_adult = yes
+					NOT = { is_imprisoned = yes }
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+				}
+				order_by = {
+					value = martial
+					multiply = 2
+					add = prowess
+					add = { value = number_of_commander_traits multiply = 20 }
+				}
+				max = 1
+				save_scope_as = new_commander
+			}
+		}
+
+		# Transfer title
+		if = {
+			limit = { exists = scope:new_commander }
+			create_title_and_vassal_change = {
+				type = appointment
+				save_scope_as = revert_change
+				add_claim_on_loss = no
+			}
+			scope:reverted_military_title = {
+				change_title_holder = {
+					holder = scope:new_commander
+					change = scope:revert_change
+				}
+			}
+			resolve_title_and_vassal_change = scope:revert_change
+
+			scope:new_commander = {
+				if = {
+					limit = { NOT = { government_has_flag = government_is_roman_imperial } }
+					change_government = roman_imperial_government
+				}
+				add_character_flag = LR_military_contract_setup
+				vassal_contract_set_obligation_level = {
+					type = roman_imperial_assignments
+					level = roman_imperial_military_appointment
+				}
+				remove_character_flag = LR_military_contract_setup
+			}
+		}
+	}
+}
+
+# Deferred reconcile — fired with days = 0 from on_actions to avoid blocking the tick.
+# Root = Roman emperor. Cooldown flag is still set synchronously by the caller.
+roman_military_command.0950 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		reconcile_roman_imperial_state_effect = yes
+	}
+}
+
+# Yearly AI: auto-create Dux at ungarrisoned border duchy.
+# Fired from yearly_global_pulse via trigger_event so root = emperor.
+roman_military_command.0100 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		gold >= 500
+		roman_military_dux_count < roman_military_max_dux
+	}
+
+	immediate = {
+		every_held_title = {
+			limit = {
+				OR = {
+					this = title:h_roman_empire
+					this = title:h_eastern_roman_empire
+					this = title:h_western_roman_empire
+				}
+			}
+			random_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_duchy
+					is_border_duchy_trigger = { RULER = root }
+					NOT = { has_variable = has_military_deployment }
+				}
+				save_temporary_scope_as = ai_deploy_target
+				root = {
+					create_military_command_at_duchy_effect = { DEPLOY_TITLE = scope:ai_deploy_target }
+				}
+			}
+		}
+	}
+}
+
+# Day-1 event: Destroy all auto-populated MAA, then seed correct amounts.
+# Fires 1 day after game start so title history + contracts fully settle.
+# Root = Roman emperor
+roman_military_command.0300 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		# Military commands (Dux + field armies) — destroy then seed
+		every_vassal = {
+			limit = {
+				any_held_title = { has_variable = is_military_command }
+			}
+			save_temporary_scope_as = mil_commander
+			every_maa_regiment = { destroy_maa_regiment = yes }
+			create_maa_regiment = { type = light_footmen size = 1 }
+			every_held_title = {
+				limit = { has_variable = is_military_command }
+				save_temporary_scope_as = mil_title
+				if = {
+					limit = { tier = tier_duchy }
+					scope:mil_commander = {
+						create_maa_regiment = { type = roman_limitanei check_can_recruit = no title = scope:mil_title size = 5 }
+					}
+					# Apply garrison protection modifier to the REALM duchy where
+					# the Dux is stationed. Pre-seeded Dux command titles bypass
+					# create_military_command_at_duchy_effect, so the modifier is
+					# missing until first redeploy. The realm duchy is the duchy
+					# containing the Dux title's capital_county (set automatically
+					# from `capital = c_X` in landed_titles).
+					if = {
+						limit = { exists = scope:mil_title.title_capital_county }
+						scope:mil_title.title_capital_county.duchy = {
+							save_scope_as = dux_realm_duchy
+						}
+						scope:mil_title.title_capital_county = {
+							save_scope_as = dux_initial_county
+						}
+						apply_dux_garrison_to_duchy_effect = { DUCHY = scope:dux_realm_duchy }
+						# Pin home de jure duchy AND initial deployment county as
+						# permanent title variables so subsequent recalcs can't drift.
+						scope:mil_title = {
+							if = {
+								limit = { NOT = { has_variable = home_de_jure_duchy } }
+								set_variable = {
+									name = home_de_jure_duchy
+									value = scope:dux_realm_duchy
+								}
+							}
+							if = {
+								limit = { NOT = { has_variable = current_deployment_county } }
+								set_variable = {
+									name = current_deployment_county
+									value = scope:dux_initial_county
+								}
+							}
+						}
+					}
+				}
+				else_if = {
+					limit = { tier = tier_kingdom }
+					scope:mil_commander = {
+						create_maa_regiment = { type = legio check_can_recruit = no title = scope:mil_title size = 3 }
+						create_maa_regiment = { type = legio check_can_recruit = no title = scope:mil_title size = 3 }
+						create_maa_regiment = { type = legio check_can_recruit = no title = scope:mil_title size = 3 }
+						create_maa_regiment = { type = roman_equites check_can_recruit = no title = scope:mil_title size = 1 }
+					}
+					# Pin initial deployment county on the kingdom command title.
+					if = {
+						limit = {
+							exists = scope:mil_title.title_capital_county
+							NOT = { scope:mil_title = { has_variable = current_deployment_county } }
+						}
+						scope:mil_title.title_capital_county = {
+							save_scope_as = mm_initial_county
+						}
+						scope:mil_title = {
+							set_variable = {
+								name = current_deployment_county
+								value = scope:mm_initial_county
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# MMP
+		if = {
+			limit = { exists = title:k_minister_magister_militum_praesentalis.holder }
+			title:k_minister_magister_militum_praesentalis.holder = {
+				every_maa_regiment = { destroy_maa_regiment = yes }
+				create_maa_regiment = { type = light_footmen size = 1 }
+				create_maa_regiment = { type = cataphract check_can_recruit = no title = title:k_minister_magister_militum_praesentalis size = 10 }
+				create_maa_regiment = { type = palatinae check_can_recruit = no title = title:k_minister_magister_militum_praesentalis size = 5 }
+				create_maa_regiment = { type = legio check_can_recruit = no title = title:k_minister_magister_militum_praesentalis size = 3 }
+				create_maa_regiment = { type = roman_equites check_can_recruit = no title = title:k_minister_magister_militum_praesentalis size = 1 }
+			}
+		}
+		# MUM
+		if = {
+			limit = { exists = title:k_minister_magister_utriusque_militiae.holder }
+			title:k_minister_magister_utriusque_militiae.holder = {
+				every_maa_regiment = { destroy_maa_regiment = yes }
+				create_maa_regiment = { type = light_footmen size = 1 }
+				create_maa_regiment = { type = palatinae check_can_recruit = no title = title:k_minister_magister_utriusque_militiae size = 10 }
+				create_maa_regiment = { type = legio check_can_recruit = no title = title:k_minister_magister_utriusque_militiae size = 3 }
+				create_maa_regiment = { type = roman_equites check_can_recruit = no title = title:k_minister_magister_utriusque_militiae size = 1 }
+			}
+		}
+		# CD ERE
+		if = {
+			limit = { exists = title:k_minister_comes_domesticorum.holder }
+			title:k_minister_comes_domesticorum.holder = {
+				every_maa_regiment = { destroy_maa_regiment = yes }
+				create_maa_regiment = { type = light_footmen size = 1 }
+				create_maa_regiment = { type = palatinae check_can_recruit = no title = title:k_minister_comes_domesticorum size = 5 }
+			}
+		}
+		# CD WRE
+		if = {
+			limit = { exists = title:k_minister_wre_comes_domesticorum.holder }
+			title:k_minister_wre_comes_domesticorum.holder = {
+				every_maa_regiment = { destroy_maa_regiment = yes }
+				create_maa_regiment = { type = light_footmen size = 1 }
+				create_maa_regiment = { type = palatinae check_can_recruit = no title = title:k_minister_wre_comes_domesticorum size = 5 }
+			}
+		}
+	}
+
+	option = { name = ok }
+}

@@ -1,0 +1,462 @@
+﻿# Roman Imperial Government — game start setup
+# Applies civilian appointment succession law to all civil province titles
+# at game start so the appointment UI works correctly.
+on_game_start_after_lobby = {
+	on_actions = {
+		LR_roman_imperial_game_start
+	}
+}
+
+# Quarterly safety net: Roman military command holders without personal MAA
+# get a small starter regiment so AI commanders can raise armies. Day-1 seed
+# event roman_military_command.0300 covers game start; this catches gaps from
+# title transfers, appointments, and edge cases the revert check misses.
+quarterly_playable_pulse = {
+	on_actions = {
+		LR_roman_military_maa_topup
+	}
+}
+
+LR_roman_military_maa_topup = {
+	effect = {
+		if = {
+			limit = {
+				government_has_flag = government_is_roman_imperial
+				any_held_title = {
+					OR = {
+						has_variable = is_military_command
+						this = title:k_minister_magister_militum_praesentalis
+						this = title:k_minister_magister_utriusque_militiae
+						this = title:k_minister_comes_domesticorum
+						this = title:k_minister_wre_comes_domesticorum
+					}
+				}
+				NOT = { any_maa_regiment = { is_personal_maa_regiment = yes } }
+			}
+			create_maa_regiment = { type = light_footmen size = 1 }
+		}
+	}
+}
+
+
+LR_roman_imperial_game_start = {
+	effect = {
+		# Existing governors should meet the minimum influence gate for the
+		# highest Roman civilian office they already hold at bookmark start.
+		# Civilian appointments still need raw influence top-up because the
+		# runtime does not accept a working influence-level-only effect.
+		every_ruler = {
+			limit = {
+				is_governor_or_admin_count = yes
+				government_has_flag = government_is_roman_imperial
+				has_realm_law = LR_roman_imperial_appointment_succession_law
+			}
+			if = {
+				limit = {
+					influence < 4000
+					any_held_title = {
+						tier = tier_kingdom
+						is_landless_type_title = no
+					}
+				}
+				change_influence = {
+					value = 4000
+					subtract = influence
+				}
+			}
+			else_if = {
+				limit = {
+					influence < 2000
+					any_held_title = {
+						tier = tier_duchy
+						is_landless_type_title = no
+					}
+				}
+				change_influence = {
+					value = 2000
+					subtract = influence
+				}
+			}
+			else_if = {
+				limit = {
+					influence < 1000
+					any_held_title = {
+						tier = tier_county
+						is_landless_type_title = no
+					}
+				}
+				change_influence = {
+					value = 1000
+					subtract = influence
+				}
+			}
+		}
+		# Existing military commanders should meet the minimum prestige gate for
+		# the highest Roman command office they already hold at bookmark start.
+		# Use prestige-level effects directly to avoid handing out spendable fame.
+		every_ruler = {
+			limit = {
+				government_has_flag = government_is_roman_imperial
+			}
+			if = {
+				limit = {
+					prestige_level < 3
+					any_held_title = {
+						tier = tier_kingdom
+						OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+					}
+				}
+				add_prestige_level = 1
+			}
+			else_if = {
+				limit = {
+					prestige_level < 2
+					any_held_title = {
+						tier = tier_duchy
+						OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+					}
+				}
+				add_prestige_level = 1
+			}
+		}
+		# Sync military command domiciles to their title capitals.
+		# Generic: iterates all military command holders and places domicile at title capital.
+		every_ruler = {
+			limit = {
+				government_has_flag = government_is_roman_imperial
+				any_held_title = {
+					OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				}
+				has_domicile = yes
+			}
+			ordered_held_title = {
+				limit = {
+					OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				}
+				max = 1
+				title_capital_county = {
+					save_temporary_scope_as = deploy_county
+				}
+			}
+			if = {
+				limit = { exists = scope:deploy_county }
+				domicile = { move_domicile = scope:deploy_county.title_province }
+			}
+		}
+
+		# Sync Roman ministers (civilian + military council) to the emperor's capital at game start.
+		# Field/border commanders are NOT included — they're handled by the military-command
+		# sync above (their seats are operational, not capital-bound).
+		every_independent_ruler = {
+			limit = {
+				government_has_flag = government_is_roman_imperial
+				OR = {
+					has_title = title:h_eastern_roman_empire
+					has_title = title:h_western_roman_empire
+					has_title = title:h_roman_empire
+				}
+			}
+			sync_imperial_minister_domiciles_effect = yes
+		}
+
+		# Initialize deployment tracking variables for all military commands.
+		# Sets has_military_deployment on the deploy duchy (for Dux) or
+		# has_mm_deployment on the deploy kingdom (for field armies).
+		every_ruler = {
+			limit = {
+				government_has_flag = government_is_roman_imperial
+				any_held_title = {
+					OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				}
+			}
+			every_held_title = {
+				limit = {
+					OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+				}
+				title_capital_county = {
+					if = {
+						limit = { prev = { tier = tier_duchy } }
+						duchy = { set_variable = { name = has_military_deployment } }
+					}
+					else = {
+						kingdom = { set_variable = { name = has_mm_deployment } }
+					}
+				}
+			}
+		}
+
+		# Enforce de_jure_liege on Roman landless kingdom-tier minister titles.
+		# Title history sets this, but it can be lost if titles are recreated
+		# by the appointment system. Sets to emperor's hegemony for WRE/ERE flavorization split.
+		# Only kingdom/empire tier titles can sit directly under hegemony (h_) tier;
+		# duchy-tier landless titles (e.g. d_dux_* military commands) are excluded.
+		if = {
+			limit = { exists = title:h_eastern_roman_empire.holder }
+			title:h_eastern_roman_empire.holder = {
+				every_vassal = {
+					every_held_title = {
+						limit = {
+							is_landless_type_title = yes
+							tier >= tier_kingdom
+						}
+						set_de_jure_liege_title = title:h_eastern_roman_empire
+					}
+				}
+			}
+		}
+		if = {
+			limit = { exists = title:h_western_roman_empire.holder }
+			title:h_western_roman_empire.holder = {
+				every_vassal = {
+					every_held_title = {
+						limit = {
+							is_landless_type_title = yes
+							tier >= tier_kingdom
+						}
+						set_de_jure_liege_title = title:h_western_roman_empire
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = title:h_roman_empire.holder
+				NOT = { exists = title:h_eastern_roman_empire.holder }
+			}
+			title:h_roman_empire.holder = {
+				every_vassal = {
+					every_held_title = {
+						limit = {
+							is_landless_type_title = yes
+							tier >= tier_kingdom
+						}
+						set_de_jure_liege_title = title:h_roman_empire
+					}
+				}
+			}
+		}
+
+		# Seed MAA on day 1 — delayed so title history + contracts settle first
+		every_ruler = {
+			limit = {
+				is_independent_ruler = yes
+				government_has_flag = government_is_roman_imperial
+			}
+			trigger_event = { id = roman_military_command.0300 days = 1 }
+		}
+
+		# Run the Roman education correction
+		if = {
+			limit = { exists = title:h_eastern_roman_empire.holder }
+			title:h_eastern_roman_empire.holder = { add_to_list = LR_roman_education_flip_list }
+		}
+		if = {
+			limit = { exists = title:h_western_roman_empire.holder }
+			title:h_western_roman_empire.holder = { add_to_list = LR_roman_education_flip_list }
+		}
+		if = {
+			limit = { exists = title:h_roman_empire.holder }
+			title:h_roman_empire.holder = { add_to_list = LR_roman_education_flip_list }
+		}
+		every_in_list = {
+			list = LR_roman_education_flip_list
+			every_vassal_or_below = {
+				limit = {
+					is_ai = yes
+					OR = {
+						# Military appointment (Magister Militum etc.) but has civilian education -> flip to martial
+						AND = {
+							any_held_title = { OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command } }
+							has_trait_with_flag = civilian_province
+						}
+						# Civilian appointment (diocese, exarchate, ministry) but has military education -> flip to civilian.
+						# Title-scoped: holding a civilian-governor or ministry title.
+						# Excludes anyone who *also* holds a military command (Dux/Comes/MM) — those
+						# are correctly martial-educated and must not be flipped to civilian.
+						# (The realm-law check we used to use was over-broad: LR_roman_imperial_appointment_succession_law
+						# auto-applies to *every* Roman Imperial vassal via should_start_with, so it matched
+						# Dux/Comes/MM holders too and turned their education_martial_4 into civilian tracks.)
+						AND = {
+							NOT = {
+								any_held_title = {
+									OR = {
+										has_title_law_flag = LR_roman_imperial_military_title_law
+										has_variable = is_military_command
+									}
+								}
+							}
+							OR = {
+								any_held_title = { has_title_law = LR_roman_imperial_appointment_succession_law }
+								any_held_title = { has_title_law = roman_imperial_ministry_appointment_succession_law }
+							}
+							has_trait_with_flag = military_province
+						}
+					}
+				}
+				tgp_flip_education_track_on_game_start = yes
+			}
+		}
+	}
+}
+
+# When a military command title reverts to the emperor (holder dies, no valid heir),
+# force-appoint the best candidate so the emperor never holds it directly.
+# No trigger block — all conditions in effect to avoid silent trigger failures.
+# Scope: root = new holder, scope:title = the title gained
+LR_military_title_revert_check = {
+	trigger = {
+		scope:title = {
+			is_landless_type_title = yes
+		}
+		root = {
+			government_has_flag = government_is_roman_imperial
+			OR = {
+				has_title = title:h_roman_empire
+				has_title = title:h_eastern_roman_empire
+				has_title = title:h_western_roman_empire
+			}
+		}
+	}
+	effect = {
+		# Find best candidate based on title tier
+		if = {
+				limit = { scope:title = { tier >= tier_kingdom } }
+				root = {
+					ordered_vassal = {
+						limit = {
+							any_held_title = {
+								tier = tier_duchy
+								OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+							}
+							is_adult = yes
+							is_female = no
+							NOT = { is_imprisoned = yes }
+						}
+						order_by = {
+							value = martial
+							multiply = 2
+							add = prowess
+							add = { value = number_of_commander_traits multiply = 20 }
+							add = { value = prestige_level multiply = 10 }
+						}
+						max = 1
+						save_scope_as = new_commander
+					}
+				}
+			}
+			else = {
+				root = {
+					ordered_vassal = {
+						limit = {
+							any_held_title = {
+								tier = tier_county
+								OR = { has_title_law_flag = LR_roman_imperial_military_title_law has_variable = is_military_command }
+							}
+							is_adult = yes
+							is_female = no
+							NOT = { is_imprisoned = yes }
+						}
+						order_by = {
+							value = martial
+							multiply = 2
+							add = prowess
+							add = { value = number_of_commander_traits multiply = 20 }
+							add = { value = prestige_level multiply = 10 }
+						}
+						max = 1
+						save_scope_as = new_commander
+					}
+				}
+			}
+
+			# Fallback: best martial courtier
+			if = {
+				limit = { NOT = { exists = scope:new_commander } }
+				root = {
+					ordered_courtier = {
+						limit = {
+							is_adult = yes
+							is_female = no
+							NOT = { is_imprisoned = yes }
+							can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+						}
+						order_by = {
+							value = martial
+							multiply = 2
+							add = prowess
+							add = { value = number_of_commander_traits multiply = 20 }
+						}
+						max = 1
+						save_scope_as = new_commander
+					}
+				}
+			}
+
+			# Transfer title
+			if = {
+				limit = { exists = scope:new_commander }
+				create_title_and_vassal_change = {
+					type = appointment
+					save_scope_as = revert_change
+					add_claim_on_loss = no
+				}
+				scope:title = {
+					change_title_holder = {
+						holder = scope:new_commander
+						change = scope:revert_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:revert_change
+
+				# Ensure government FIRST (may trigger defaults_to_highest_valid_level)
+				scope:new_commander = {
+					if = {
+						limit = { NOT = { government_has_flag = government_is_roman_imperial } }
+						change_government = roman_imperial_government
+					}
+					set_primary_title_to = scope:title
+				}
+				# Set military assignment contract only — MAA tier handled by
+				# defaults_to_highest_valid_level (setting it explicitly causes duplication)
+				scope:new_commander = {
+					add_character_flag = LR_military_contract_setup
+					vassal_contract_set_obligation_level = {
+						type = roman_imperial_assignments
+						level = roman_imperial_military_appointment
+					}
+					remove_character_flag = LR_military_contract_setup
+				}
+
+				# Move new commander's domicile to the title's deploy location
+				scope:title = {
+					title_capital_county = {
+						save_temporary_scope_as = revert_deploy_county
+					}
+				}
+				scope:new_commander = {
+					if = {
+						limit = { has_domicile = yes }
+						domicile = { move_domicile = scope:revert_deploy_county.title_province }
+					}
+					# Physically move character to post
+					if = {
+						limit = { is_travelling = no }
+						start_travel_plan = {
+							destination = scope:revert_deploy_county.title_province
+							on_arrival_destinations = last
+							return_trip = no
+						}
+					}
+					# Clean non-roman_limitanei MAA for Dux
+					if = {
+						limit = { scope:title = { tier = tier_duchy } }
+						every_maa_regiment = {
+							limit = { NOT = { is_maa_type = roman_limitanei } }
+						}
+					}
+				}
+			}
+	}
+}
+
+

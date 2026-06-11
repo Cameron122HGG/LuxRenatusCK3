@@ -1,0 +1,228 @@
+﻿l_english:
+ # Roman Military Command Titles — Historical names from Notitia Dignitatum
+ # Flavorization adds "Magister Militum of" / "Comes of" / "Dux of" prefix
+
+ # ERE Field Armies (kingdom-tier)
+ k_mm_illyricum:0 "Illyricum"
+ k_mm_thraciae:0 "Thracias"
+ k_mm_orientem:0 "Orientem"
+ k_mm_aegypti:0 "Aegyptum"
+ k_mm_pontica:0 "Pontica"
+
+ # ERE Border Armies (duchy-tier)
+ d_dux_moesiae_primae:0 "Moesia I"
+ d_dux_daciae_ripensis:0 "Dacia Ripensis"
+ d_dux_moesiae_secundae:0 "Moesia II"
+ d_dux_scythiae:0 "Scythia"
+ d_dux_pontus:0 "Pontus"
+ d_dux_armeniae:0 "Armenia"
+ d_dux_osroenae:0 "Osroene"
+ d_dux_amidae:0 "Amida"
+ d_dux_arabiae:0 "Arabia"
+ d_dux_thebaidos:0 "Thebais"
+
+ # WRE Field Armies (kingdom-tier)
+ k_comes_galliae:0 "Gallia"
+ k_comes_illyrici:0 "Illyricum"
+ k_comes_africae:0 "Africa"
+ k_comes_britanniae:0 "Britannia"
+
+ # WRE Border Armies (duchy-tier)
+ d_dux_moguntiacensis:0 "Moguntiacum"
+ d_dux_pannoniae_ii:0 "Pannonia II"
+ d_dux_germaniae_ii:0 "Germania II"
+ d_dux_raetiae:0 "Raetia"
+ d_dux_pannoniae:0 "Pannonia I"
+ d_dux_tripolitaniae:0 "Tripolitania"
+ d_dux_noricum:0 "Noricum"
+ d_dux_britanniarum:0 "Britanniarum"
+ d_dux_raetiae_ii:0 "Raetia II"
+ d_dux_tingitaniae:0 "Tingitania"
+
+ # Redeploy Military Command Interaction
+ redeploy_military_command_interaction:0 "Redeploy Command"
+ redeploy_military_command_interaction_desc:0 "Order [recipient.GetTitledFirstName] to redeploy their garrison to a different province. Their troops will raise at the new location."
+ redeploy_military_command_cooldown_tt:0 "This command has not been recently redeployed"
+ redeploy_military_command_at_war_tt:0 "This commander is not currently at war"
+
+ # Redeploy Notification Event
+ roman_military_command.0001.t:0 "Orders to Redeploy"
+ roman_military_command.0001.desc:0 "Word has arrived from the Emperor. We are to relocate our garrison and establish a new base of operations. The troops must be made ready to march."
+
+ # Replace Commander
+ REPLACE_MILITARY_COMMANDER_TOOLTIP: "Replace Commander\nRemove the current commander and appoint a new one."
+ replace_military_commander_interaction:0 "Replace Commander"
+ replace_military_commander_interaction_desc:0 "Remove the current military commander from their post and appoint a new one through the standard appointment process."
+ replace_military_commander_interaction_prompt:0 "Select Replacement"
+ replaced_military_commander_opinion:0 "Replaced as Commander"
+
+ replace_commander_effect_tt:0 "The selected candidate will replace the current commander. The old commander will be relieved of duty and return to court."
+ REPLACE_COMMANDER_NOTIFICATION:0 "You are appointing a new military commander."
+ emperor_appointed_commander:0 "Appointed by Emperor"
+ recipient_secondary_recipient_sex_replace_military_commander_interaction:0 "Replace Commander"
+ actor_secondary_recipient_sex_replace_military_commander_interaction:0 "Replace Commander"
+
+ # Replace Commander — Candidate Picker Event (unused, kept for reference)
+ roman_military_command.0110.t:0 "Replace Commander"
+ roman_military_command.0110.desc:0 "Select a replacement for [old_commander.GetTitledFirstName] as commander of [replace_title.GetName]. Candidates are ranked by military ability."
+ roman_military_command.0110.pick_1:0 "[candidate_1.GetFirstName] — Martial [candidate_1.GetSkill('martial')], Prowess [candidate_1.GetSkill('prowess')]"
+ roman_military_command.0110.pick_2:0 "[candidate_2.GetFirstName] — Martial [candidate_2.GetSkill('martial')], Prowess [candidate_2.GetSkill('prowess')]"
+ roman_military_command.0110.pick_3:0 "[candidate_3.GetFirstName] — Martial [candidate_3.GetSkill('martial')], Prowess [candidate_3.GetSkill('prowess')]"
+ roman_military_command.0110.pick_4:0 "[candidate_4.GetFirstName] — Martial [candidate_4.GetSkill('martial')], Prowess [candidate_4.GetSkill('prowess')]"
+ roman_military_command.0110.pick_5:0 "[candidate_5.GetFirstName] — Martial [candidate_5.GetSkill('martial')], Prowess [candidate_5.GetSkill('prowess')]"
+ roman_military_command.0110.pick_6:0 "[candidate_6.GetFirstName] — Martial [candidate_6.GetSkill('martial')], Prowess [candidate_6.GetSkill('prowess')]"
+ roman_military_command.0110.pick_7:0 "[candidate_7.GetFirstName] — Martial [candidate_7.GetSkill('martial')], Prowess [candidate_7.GetSkill('prowess')]"
+ roman_military_command.0110.pick_8:0 "[candidate_8.GetFirstName] — Martial [candidate_8.GetSkill('martial')], Prowess [candidate_8.GetSkill('prowess')]"
+ roman_military_command.0110.pick_9:0 "[candidate_9.GetFirstName] — Martial [candidate_9.GetSkill('martial')], Prowess [candidate_9.GetSkill('prowess')]"
+ roman_military_command.0110.pick_10:0 "[candidate_10.GetFirstName] — Martial [candidate_10.GetSkill('martial')], Prowess [candidate_10.GetSkill('prowess')]"
+ roman_military_command.0110.cancel:0 "Cancel"
+
+ # Destroy Command
+ DESTROY_MILITARY_COMMAND_TOOLTIP: "Destroy Command\nDisband this military command and all its troops."
+ destroy_military_command_interaction:0 "Destroy Military Command"
+ destroy_military_command_interaction_desc:0 "Disband this military command, destroying the title and all associated troops. This action cannot be undone."
+ roman_military_command.0001.a:0 "It shall be done."
+
+ # Military Tab Button
+ REDEPLOY_MILITARY_COMMAND_TOOLTIP:0 "Redeploy this command to a different diocese"
+
+ # Diocese Selection Event
+ roman_military_command.0010.t:0 "Redeploy Command"
+ roman_military_command.0010.desc:0 "Select a diocese to redeploy [redeploy_commander.GetTitledFirstName] and their garrison to. They will establish their base at the diocese capital."
+ roman_military_command.0010.deploy_1:0 "Deploy to [diocese_1.GetName]"
+ roman_military_command.0010.deploy_2:0 "Deploy to [diocese_2.GetName]"
+ roman_military_command.0010.deploy_3:0 "Deploy to [diocese_3.GetName]"
+ roman_military_command.0010.deploy_4:0 "Deploy to [diocese_4.GetName]"
+ roman_military_command.0010.deploy_5:0 "Deploy to [diocese_5.GetName]"
+ roman_military_command.0010.deploy_6:0 "Deploy to [diocese_6.GetName]"
+ roman_military_command.0010.deploy_7:0 "Deploy to [diocese_7.GetName]"
+ roman_military_command.0010.deploy_8:0 "Deploy to [diocese_8.GetName]"
+ roman_military_command.0010.deploy_9:0 "Deploy to [diocese_9.GetName]"
+ roman_military_command.0010.deploy_10:0 "Deploy to [diocese_10.GetName]"
+ roman_military_command.0010.deploy_11:0 "Deploy to [diocese_11.GetName]"
+ roman_military_command.0010.deploy_12:0 "Deploy to [diocese_12.GetName]"
+ roman_military_command.0010.deploy_13:0 "Deploy to [diocese_13.GetName]"
+ roman_military_command.0010.deploy_14:0 "Deploy to [diocese_14.GetName]"
+ roman_military_command.0010.deploy_15:0 "Deploy to [diocese_15.GetName]"
+ roman_military_command.0010.cancel:0 "Cancel"
+
+
+ # Create Regiment — Step 1: Commander Selection Event
+ roman_military_command.0020.t:0 "Appoint Commander"
+ roman_military_command.0020.desc:0 "Select a courtier to command the new regiment. Candidates are ranked by military ability."
+ roman_military_command.0020.pick_1:0 "[candidate_1.GetFirstName] — Martial [candidate_1.GetSkill('martial')], Prowess [candidate_1.GetSkill('prowess')]"
+ roman_military_command.0020.pick_2:0 "[candidate_2.GetFirstName] — Martial [candidate_2.GetSkill('martial')], Prowess [candidate_2.GetSkill('prowess')]"
+ roman_military_command.0020.pick_3:0 "[candidate_3.GetFirstName] — Martial [candidate_3.GetSkill('martial')], Prowess [candidate_3.GetSkill('prowess')]"
+ roman_military_command.0020.pick_4:0 "[candidate_4.GetFirstName] — Martial [candidate_4.GetSkill('martial')], Prowess [candidate_4.GetSkill('prowess')]"
+ roman_military_command.0020.pick_5:0 "[candidate_5.GetFirstName] — Martial [candidate_5.GetSkill('martial')], Prowess [candidate_5.GetSkill('prowess')]"
+ roman_military_command.0020.pick_6:0 "[candidate_6.GetFirstName] — Martial [candidate_6.GetSkill('martial')], Prowess [candidate_6.GetSkill('prowess')]"
+ roman_military_command.0020.pick_7:0 "[candidate_7.GetFirstName] — Martial [candidate_7.GetSkill('martial')], Prowess [candidate_7.GetSkill('prowess')]"
+ roman_military_command.0020.pick_8:0 "[candidate_8.GetFirstName] — Martial [candidate_8.GetSkill('martial')], Prowess [candidate_8.GetSkill('prowess')]"
+ roman_military_command.0020.pick_9:0 "[candidate_9.GetFirstName] — Martial [candidate_9.GetSkill('martial')], Prowess [candidate_9.GetSkill('prowess')]"
+ roman_military_command.0020.pick_10:0 "[candidate_10.GetFirstName] — Martial [candidate_10.GetSkill('martial')], Prowess [candidate_10.GetSkill('prowess')]"
+ roman_military_command.0020.cancel:0 "Cancel"
+
+ # Create Regiment — Step 2: Duchy Selection Event
+ roman_military_command.0030.t:0 "Deploy Regiment"
+ roman_military_command.0030.desc:0 "Select a duchy to deploy the new regiment to. The best available commander will be appointed automatically."
+ roman_military_command.0030.deploy_1:0 "Deploy to [duchy_1.GetName]"
+ roman_military_command.0030.deploy_2:0 "Deploy to [duchy_2.GetName]"
+ roman_military_command.0030.deploy_3:0 "Deploy to [duchy_3.GetName]"
+ roman_military_command.0030.deploy_4:0 "Deploy to [duchy_4.GetName]"
+ roman_military_command.0030.deploy_5:0 "Deploy to [duchy_5.GetName]"
+ roman_military_command.0030.deploy_6:0 "Deploy to [duchy_6.GetName]"
+ roman_military_command.0030.deploy_7:0 "Deploy to [duchy_7.GetName]"
+ roman_military_command.0030.deploy_8:0 "Deploy to [duchy_8.GetName]"
+ roman_military_command.0030.deploy_9:0 "Deploy to [duchy_9.GetName]"
+ roman_military_command.0030.deploy_10:0 "Deploy to [duchy_10.GetName]"
+ roman_military_command.0030.deploy_11:0 "Deploy to [duchy_11.GetName]"
+ roman_military_command.0030.deploy_12:0 "Deploy to [duchy_12.GetName]"
+ roman_military_command.0030.deploy_13:0 "Deploy to [duchy_13.GetName]"
+ roman_military_command.0030.deploy_14:0 "Deploy to [duchy_14.GetName]"
+ roman_military_command.0030.deploy_15:0 "Deploy to [duchy_15.GetName]"
+ roman_military_command.0030.cancel:0 "Cancel"
+
+ # Validation tooltips
+ create_military_command_gold_requirement:0 "Requires at least 500 gold"
+
+ # Appointment scoring
+ already_holds_same_tier_command:0 "Already holds a military command at this rank"
+ should_hold_lower_military_rank_first:0 "Has not served in a lower military command"
+ lacks_martial_education:0 "Lacks martial education"
+
+ # Appointment scoring
+ lacks_prior_military_rank:0 "Has not served in a lower military command"
+ military_rank_promotion:0 "Currently serving in a lower military command"
+ excluded_from_military_office:0 "Women are excluded from military offices"
+
+ # Spawned army
+ roman_military_command_army:0 "Garrison Force"
+
+ # Dux Border Defense CB
+ dux_border_defense_cb:0 "Border Defense"
+ dux_border_defense_war_name:0 "Border Defense"
+ dux_border_defense_attacker_victory_desc:0 "The raiders have overwhelmed the border garrison."
+ dux_border_defense_defender_victory_desc:0 "The border garrison has repelled the raiders."
+ dux_border_defense_invalidated_desc:0 "The border skirmish has ended."
+
+ # County modifier — Dux border garrison (limitanei)
+ dux_border_garrison_modifier:0 "Limitanei Garrison"
+ dux_border_garrison_modifier_desc:0 "A Roman Dux commands border garrison troops (limitanei) in this region, fortifying defenses and deterring raiders."
+
+ # Character flavorization — rank prefix
+ tfe_roman_military_dux_male:0 "Dux"
+ tfe_roman_military_dux_female:0 "Ducissa"
+ tfe_roman_military_wre_comes_male:0 "Comes"
+ tfe_roman_military_wre_comes_female:0 "Comitissa"
+ tfe_roman_military_ere_mm_male:0 "Magister Militum"
+ tfe_roman_military_ere_mm_female:0 "Magistra Militum"
+
+ # Title-type flavorization (tier labels)
+ tfe_roman_military_duchy_title:0 "Dux"
+ tfe_roman_military_kingdom_title:0 "Magister Militum"
+ tfe_roman_military_wre_kingdom_title:0 "Comes"
+
+ # Military command limits
+ roman_military_dux_limit_desc:0 "Maximum number of border commanders reached"
+ roman_military_field_army_limit_desc:0 "Maximum number of field commanders reached"
+
+ # Dynamic military command title name
+ ROMAN_MILITARY_COMMAND_REGION:0 "[target.GetNameNoTierNoTooltip]"
+
+ # Sectioned Provincial Armies headers
+ ROMAN_MILITARY_FIELD_ARMIES_HEADER:0 "Field Armies ([GetPlayer.MakeScope.ScriptValue('roman_military_field_army_count')|0] / [GetPlayer.MakeScope.ScriptValue('roman_military_max_field_army')|0])"
+ ROMAN_MILITARY_BORDER_ARMIES_HEADER:0 "Border Armies ([GetPlayer.MakeScope.ScriptValue('roman_military_dux_count')|0] / [GetPlayer.MakeScope.ScriptValue('roman_military_max_dux')|0])"
+
+ # Military tab buttons
+ CREATE_DUX_LABEL:0 "Appoint New Border Commander"
+ CREATE_DUX_TOOLTIP:0 "Appoint a new border army commander to a frontier duchy.\nCost: 500 Gold\nBorder commanders: [GetPlayer.MakeScope.ScriptValue('roman_military_dux_count')|0] / [GetPlayer.MakeScope.ScriptValue('roman_military_max_dux')|0]"
+ CREATE_MM_LABEL:0 "Appoint New Field Commander"
+ CREATE_MM_TOOLTIP:0 "Appoint a new field army commander to a kingdom.\nCost: 1000 Gold\nField commanders: [GetPlayer.MakeScope.ScriptValue('roman_military_field_army_count')|0] / [GetPlayer.MakeScope.ScriptValue('roman_military_max_field_army')|0]"
+
+ # Deploy window — Dux mode
+ DEPLOY_DUX_WINDOW_TITLE:0 "Appoint New Dux"
+ DEPLOY_DUX_WINDOW_DESC:0 "Select a duchy to station a new garrison commander. The Dux will defend the frontier with roman_limitanei troops."
+ DEPLOY_DUX_COST:0 "Cost: 500 Gold"
+
+ # Deploy window — Comes mode
+ DEPLOY_COMES_WINDOW_TITLE:0 "Appoint New Comes"
+ DEPLOY_COMES_WINDOW_DESC:0 "Select a kingdom to deploy a field army commander. The Comes will command mobile legio troops."
+ DEPLOY_COMES_COST:0 "Cost: 500 Gold"
+
+ # Deploy window — Magister Militum mode
+ DEPLOY_MM_WINDOW_TITLE:0 "Appoint New Magister Militum"
+ DEPLOY_MM_WINDOW_DESC:0 "Select a kingdom to assign a theater commander. The Magister Militum will command the regional field army."
+ DEPLOY_MM_COST:0 "Cost: 1000 Gold"
+
+ # Deploy window — Redeploy mode
+ REDEPLOY_WINDOW_TITLE:0 "Redeploy Military Command"
+ REDEPLOY_WINDOW_DESC:0 "Select a new region to redeploy this commander. The garrison and domicile will relocate to the target's capital."
+
+ # Shared
+ DEPLOY_REGIMENT_NO_TARGETS:0 "No valid deployment targets available."
+ # Field Army Mobilization
+ mobilize_field_army_treasury_requirement:0 "Requires §Y500§! [treasury_icon] treasury"
+ mobilize_field_army_button_label:0 "Mobilize"
+ mobilize_field_army_button_tooltip:0 "Call this field army to war.\nCosts §Y500§! [treasury_icon] from the imperial treasury.\nTroops will disband when the war ends."
+ roman_field_army_mobilization_cost:0 "Field Army Mobilization"
+ destroy_military_command_at_war_tt:0 "Cannot destroy military commands while at war"

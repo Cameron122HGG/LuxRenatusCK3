@@ -1,0 +1,305 @@
+﻿roman_imperial_minister = {
+	default_candidates = { landed_vassal unlanded_noble_house_head }
+
+	allow_same_tier_candidates = yes
+
+	level = influence
+
+	candidate_score = {
+		value = {
+			# Cannot already be a minister (exclude current holder of this title)
+			if = {
+				limit = {
+					tgp_is_any_minister = yes
+					NOT = { has_title = root }
+				}
+				add = {
+					value = -10000
+					desc = is_a_minister_desc
+				}
+			}
+
+			# Independent ruler cannot be a minister
+			if = {
+				limit = {
+					is_independent_ruler = yes
+				}
+				add = {
+					value = -10000
+					desc = appointment_is_top_liege
+				}
+			}
+
+			# Age — under 30 penalized, over 40 rewarded (experience)
+			if = {
+				limit = {
+					age >= 40
+				}
+				add = {
+					value = 10
+					desc = old_age_desc
+				}
+			}
+			else_if = {
+				limit = {
+					age < 30
+				}
+				add = {
+					value = -5
+					desc = young_age_desc
+				}
+			}
+
+			# Influence — +10 per level above 1
+			if = {
+				limit = {
+					influence_level != 1
+				}
+				add = {
+					value = 10
+					multiply = {
+						value = influence_level
+						subtract = 1
+					}
+					desc = "[influence_level|E]"
+				}
+			}
+
+			# Influenced career score
+			if = {
+				limit = {
+					exists = var:merit_civilian_career_score_bonus
+				}
+				add = {
+					value = var:merit_civilian_career_score_bonus
+					desc = merit_career_score_bonus_desc
+				}
+			}
+
+			# Relations
+			if = { # Is holder's elder
+				limit = {
+					scope:title.holder ?= { has_relation_elder = root }
+				}
+				add = {
+					value = 20
+					desc = governor_elder_desc
+				}
+			}
+			if = { # Is holder's disciple
+				limit = {
+					scope:title.holder ?= { has_relation_disciple = root }
+				}
+				add = {
+					value = 10
+					desc = governor_disciple_desc
+				}
+			}
+
+			# Schemes
+			if = {
+				limit = { has_character_modifier = scheme_slandered_modifier }
+				add = {
+					value = slander_appointment_score_value
+					desc = scheme_slandered_modifier
+				}
+			}
+			if = {
+				limit = { has_character_modifier = scheme_promoted_modifier }
+				add = {
+					value = promote_appointment_score_value
+					desc = scheme_promoted_modifier
+				}
+			}
+
+			# Same dynasty bonus — reduced for Late Roman ministers; emperors
+			# preferred career bureaucrats and eunuchs over ambitious dynasts.
+			if = {
+				limit = {
+					exists = scope:title.holder
+					dynasty ?= scope:title.holder.dynasty
+				}
+				add = {
+					value = 15
+					desc = same_dynasty_desc
+				}
+			}
+
+			# Eunuch bonus — castrati were the ultimate trusted civil administrators,
+			# especially in the East, because they could never usurp the throne.
+			if = {
+				limit = {
+					has_trait = eunuch
+				}
+				add = {
+					value = 50
+					desc = LR_eunuch_minister_desc
+				}
+			}
+
+			# Base court politics skills — all Palatine ministers need these
+			add = {
+				value = diplomacy
+				multiply = 0.5
+				round = yes
+				desc = "[diplomacy_skill|E]"
+			}
+			add = {
+				value = intrigue
+				multiply = 0.5
+				round = yes
+				desc = "[intrigue_skill|E]"
+			}
+
+			# Minister-specific skill scoring per title
+			if = {
+				limit = {
+					scope:title = {
+						OR = {
+							this = title:k_minister_magister_officiorum
+							this = title:k_minister_primicerius_notariorum
+							this = title:k_minister_wre_magister_officiorum
+							this = title:k_minister_wre_primicerius_notariorum
+						}
+					}
+				}
+				add = {
+					value = diplomacy
+					desc = diplomacy_concept
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title = {
+						OR = {
+							this = title:k_minister_praepositus_sacri_cubiculi
+							this = title:k_minister_wre_praepositus_sacri_cubiculi
+						}
+					}
+				}
+				add = {
+					value = intrigue
+					desc = intrigue_concept
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title = {
+						OR = {
+							this = title:k_minister_comes_sacrarum_largitionum
+							this = title:k_minister_praefectus_urbi
+							this = title:k_minister_wre_comes_sacrarum_largitionum
+							this = title:k_minister_wre_praefectus_urbi
+						}
+					}
+				}
+				add = {
+					value = stewardship
+					desc = stewardship_concept
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title = {
+						OR = {
+							this = title:k_minister_quaestor_sacri_palatii
+							this = title:k_minister_wre_quaestor_sacri_palatii
+						}
+					}
+				}
+				add = {
+					value = learning
+					desc = learning_concept
+				}
+			}
+
+			### EXPANDED POWER BASE
+			save_temporary_value_as = temp_total
+			if = {
+				limit = { has_character_modifier = ep3_expanded_power_base_minor_modifier }
+				add = {
+					value = scope:temp_total
+					multiply = 0.10
+					round = yes
+					min = 25
+					desc = ep3_expanded_power_base_minor_modifier
+				}
+			}
+			if = {
+				limit = { has_character_modifier = ep3_expanded_power_base_medium_modifier }
+				add = {
+					value = scope:temp_total
+					multiply = 0.20
+					round = yes
+					min = 50
+					desc = ep3_expanded_power_base_medium_modifier
+				}
+			}
+			if = {
+				limit = { has_character_modifier = ep3_expanded_power_base_major_modifier }
+				add = {
+					value = scope:temp_total
+					multiply = 0.30
+					round = yes
+					min = 75
+					desc = ep3_expanded_power_base_major_modifier
+				}
+			}
+
+			# ADJUST BASED ON GENDER LAW — MUST GO AT THE END
+			if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = male_preference_law }
+					is_female = yes
+				}
+				multiply = {
+					value = {
+						value = 1
+						subtract = appointment_non_preferred_gender_penalty_value
+					}
+					desc = appointment_male_preference_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = male_only_law }
+					is_female = yes
+				}
+				multiply = {
+					value = {
+						value = 1
+						subtract = appointment_opposite_gender_penalty_value
+					}
+					desc = appointment_male_only_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = female_preference_law }
+					is_female = no
+				}
+				multiply = {
+					value = {
+						value = 1
+						subtract = appointment_non_preferred_gender_penalty_value
+					}
+					desc = appointment_female_preference_desc
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title.holder.top_liege ?= { has_realm_law = female_only_law }
+					is_female = no
+				}
+				multiply = {
+					value = {
+						value = 1
+						subtract = appointment_opposite_gender_penalty_value
+					}
+					desc = appointment_female_only_desc
+				}
+			}
+
+		}
+	}
+}
