@@ -730,8 +730,8 @@ merge_pontus_decision = {
 			}
 		}
 		OR = {
-        culture = { has_cultural_pillar = heritage_byzantine }
-        culture = { has_cultural_pillar = heritage_hellenistic_greek }
+        #culture = { has_cultural_pillar = heritage_byzantine }
+        #culture = { has_cultural_pillar = heritage_hellenistic_greek }
         has_title = title:e_pontus
 		has_title = title:e_byzantium
 		}
@@ -1777,10 +1777,6 @@ LR_restore_eastern_hegemony_decision = {
 	is_shown = {
 		has_ep3_dlc_trigger = yes
 		has_title = title:e_byzantium
-		is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:merged_pontus
-			}
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -1792,6 +1788,10 @@ LR_restore_eastern_hegemony_decision = {
 	is_valid = {
 		government_has_flag = government_is_administrative
 		completely_controls_region = custom_theodosian_ere
+		is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:merged_pontus
+			}
 		custom_tooltip = {
 			text = eastern_kingdoms_held_or_vassals_tt
 			trigger_if = {
