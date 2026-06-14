@@ -110,7 +110,7 @@
 					}
 				}
 			}
-			change_government = despotic_government
+			change_government = despotic_feudal_government
 		}
 		else_if = {
 			limit = {
@@ -138,7 +138,7 @@
 				liege = this
 				faith.religion = { is_in_family = rf_archaic }
 			}
-			change_government = despotic_government
+			change_government = despotic_feudal_government
 		}
 		else_if = {
 			limit = {
@@ -167,7 +167,7 @@
 				}
 				every_vassal_or_below = {
 					limit = { government_has_flag = government_is_high_tribal }
-					change_government = despotic_government
+					change_government = despotic_feudal_government
 				}
 			}
 			else_if = {
@@ -188,11 +188,11 @@
 		}
 		
 		save_scope_as = actor
-		trigger_event = lr_gov_events.0001
+		trigger_event = LR_gov_events.0001
 		hidden_effect = {
 			every_vassal = {
 				trigger_event = {
-					id = lr_gov_events.0002
+					id = LR_gov_events.0002
 					days = 3
 				}
 			}
@@ -240,7 +240,7 @@ convert_classical_feudal_decision = {
 			government_has_flag = government_is_clan
 			AND = {
 				is_independent_ruler = no
-				has_government = despotic_government
+				has_government = despotic_feudal_government
 				liege = {
 					has_government = classical_feudal_government
 				}
@@ -256,7 +256,7 @@ convert_classical_feudal_decision = {
 				}	
 				NOR = {
 					has_government = classical_feudal_government
-					has_government = despotic_government
+					has_government = despotic_feudal_government
 				}
 			}
 			AND = {
@@ -311,11 +311,11 @@ convert_classical_feudal_decision = {
 			}
 		}
 		save_scope_as = actor
-		trigger_event = lr_gov_events.0003
+		trigger_event = LR_gov_events.0003
 		hidden_effect = {
 			every_vassal = {
 				trigger_event = {
-					id = lr_gov_events.0004
+					id = LR_gov_events.0004
 					days = 3
 				}
 			}
@@ -363,7 +363,7 @@ convert_despotic_decision = {
 			government_has_flag = government_is_clan
 			AND = {
 				is_independent_ruler = no
-				has_government = despotic_government
+				has_government = despotic_feudal_government
 				liege = {
 					has_government = classical_feudal_government
 				}
@@ -381,14 +381,14 @@ convert_despotic_decision = {
 				}
 				NOR = { 
 					has_government = classical_feudal_government
-					has_government = despotic_government
+					has_government = despotic_feudal_government
 				}
 			}
 			AND = {
 				NOT = { liege = this }
-				NOT = { has_government = despotic_government }
+				NOT = { has_government = despotic_feudal_government }
 				liege = {
-					has_government = despotic_government			
+					has_government = despotic_feudal_government			
 				}
 			}
 		}		
@@ -405,7 +405,7 @@ convert_despotic_decision = {
 					is_independent_ruler = no
 				}			
 				liege = {
-					has_government = despotic_government			
+					has_government = despotic_feudal_government			
 				}
 			}
 		}			
@@ -424,7 +424,7 @@ convert_despotic_decision = {
 
 	effect = {
 		#gain_legitimizing_legend_seed_tooltip_effect = yes		
-		change_government = despotic_government	
+		change_government = despotic_feudal_government	
 		custom_tooltip = {
 			text = LR_high_tribal_vassal_adoption		
 			every_vassal_or_below = {
@@ -434,15 +434,15 @@ convert_despotic_decision = {
 						government_has_flag = government_is_clan
 					}
 				}
-				change_government = despotic_government
+				change_government = despotic_feudal_government
 			}
 		}
 		save_scope_as = actor
-		trigger_event = lr_gov_events.0005
+		trigger_event = LR_gov_events.0005
 		hidden_effect = {
 			every_vassal = {
 				trigger_event = {
-					id = lr_gov_events.0006
+					id = LR_gov_events.0006
 					days = 3
 				}
 			}
@@ -489,7 +489,7 @@ abandon_ancient_government_decision = {
 			AND = {
 				OR = {
 					has_government = classical_feudal_government
-					has_government = despotic_government
+					has_government = despotic_feudal_government
 				}
 				OR = {
 					liege = {
@@ -601,7 +601,7 @@ abandon_ancient_government_decision = {
 					limit = {
 						OR = {
 							has_government = classical_feudal_government
-							has_government = despotic_government
+							has_government = despotic_feudal_government
 							has_government = feudal_government
 						}					
 					}
@@ -613,7 +613,7 @@ abandon_ancient_government_decision = {
 					limit = {
 						OR = {
 							has_government = classical_feudal_government
-							has_government = despotic_government
+							has_government = despotic_feudal_government
 							has_government = clan_government
 						}					
 					}
@@ -622,11 +622,11 @@ abandon_ancient_government_decision = {
 			}
 		}
 		save_scope_as = actor
-		trigger_event = lr_gov_events.0007
+		trigger_event = LR_gov_events.0007
 		hidden_effect = {
 			every_vassal = {
 				trigger_event = {
-					id = lr_gov_events.0008
+					id = LR_gov_events.0008
 					days = 3
 				}
 			}
@@ -727,11 +727,11 @@ adopt_gaul_gov_decision = {
 			}
 		}
 		save_scope_as = actor
-		trigger_event = lr_gov_events.0009
+		trigger_event = LR_gov_events.0009
 		hidden_effect = {
 			every_vassal = {
 				trigger_event = {
-					id = lr_gov_events.0010
+					id = LR_gov_events.0010
 					days = 3
 				}
 			}

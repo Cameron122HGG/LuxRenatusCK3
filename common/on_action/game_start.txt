@@ -1445,7 +1445,7 @@ on_game_start = {
 							has_government = gaul_administrative_government
 							has_government = gaul_feudal_government
 							has_government = steppe_classical_admin_government
-							has_government = roman_imperial_government
+							has_government = roman_autocratic_government
 						}
 					}
 					change_government = feudal_government
@@ -1539,28 +1539,27 @@ on_game_start = {
 			}
 		}
 		# DYNASTIC CYCLE SETUP
-		#Lux Renata TBA
-		# situation:dynastic_cycle ?= {
-		# 	title:h_china = {
-		# 		set_variable = {
-		# 			name = years_since_imperial_examination
-		# 			value = 0
-		# 		}
-		# 	}
-		# 	if = {
-		# 		limit = { game_start_date < 868.1.1 }
-		# 		tgp_set_wuking_element_effect = { ELEMENT = earth } # Tang
-		# 		every_situation_sub_region = {
-		# 			add_takeover_phase_points = {
-		# 			   phase = situation_dynastic_cycle_phase_chaos
-		# 			   points = 800
-		# 			}
-		# 		}
-		# 	}
-		# 	else = {
-		# 		tgp_set_wuking_element_effect = { ELEMENT = fire } # Song
-		# 	}
-		# }
+	situation:dynastic_cycle ?= {
+		title:h_china = {
+		 	set_variable = {
+		 		name = years_since_imperial_examination
+		 		value = 0
+		 	}
+		}
+		if = {
+		 	limit = { game_start_date < 5868.1.1 }
+		 	tgp_set_wuking_element_effect = { ELEMENT = earth } # Tang
+			every_situation_sub_region = {
+		 		add_takeover_phase_points = {
+		 			phase = situation_dynastic_cycle_phase_chaos
+		 			points = 800
+		 		}
+		 	}
+		}
+		else = {
+		 	tgp_set_wuking_element_effect = { ELEMENT = fire } # Song
+		}
+	}
 		setup_tributaries_effect = yes # defined in 00_tributary_setup_effect.txt
 		# Sort custom regencies.
 		## Fatimid Caliphate - basically stuck in the back-end of an entrenched regencies from game start.

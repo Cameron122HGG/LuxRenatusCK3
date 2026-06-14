@@ -1309,17 +1309,17 @@ celestial_retirement_law = {
 		}
 	}
 }
-roman_imperial_army_liege_law = {
-	# NOTE: This law is mirrored by `roman_imperial_army_vassal_law`!
-	# The top-liege has `roman_imperial_army_liege_law` and all vassals have the `roman_imperial_army_vassal_law` at the same level.
+roman_autocratic_army_liege_law = {
+	# NOTE: This law is mirrored by `roman_autocratic_army_vassal_law`!
+	# The top-liege has `roman_autocratic_army_liege_law` and all vassals have the `roman_autocratic_army_vassal_law` at the same level.
 
-	default = roman_imperial_army_liege_law_0
+	default = roman_autocratic_army_liege_law_0
 	cumulative = no
 	flag = admin_law
 
-	roman_imperial_army_liege_law_0 = {
+	roman_autocratic_army_liege_law_0 = {
 		modifier = {
-			roman_imperial_government_tax_contribution_add = -0.05
+			roman_autocratic_government_tax_contribution_add = -0.05
 		}
 
 		can_keep = {
@@ -1347,9 +1347,9 @@ roman_imperial_army_liege_law = {
 			if = {
 				limit = {
 					NOR = { # Rulers should keep any higher levels
-						has_realm_law = roman_imperial_army_liege_law_1
-						has_realm_law = roman_imperial_army_liege_law_2
-						has_realm_law = roman_imperial_army_liege_law_3
+						has_realm_law = roman_autocratic_army_liege_law_1
+						has_realm_law = roman_autocratic_army_liege_law_2
+						has_realm_law = roman_autocratic_army_liege_law_3
 					}
 				}
 				add = 1
@@ -1357,9 +1357,9 @@ roman_imperial_army_liege_law = {
 		}
 	}
 
-	roman_imperial_army_liege_law_1 = {
+	roman_autocratic_army_liege_law_1 = {
 		modifier = {
-			roman_imperial_government_vassal_opinion = -5
+			roman_autocratic_government_vassal_opinion = -5
 			men_at_arms_title_cap = 1
 		}
 		flag = admin_title_troop_cost_reduction
@@ -1404,8 +1404,8 @@ roman_imperial_army_liege_law = {
 			if = {
 				limit = {
 					NOR = { # Rulers should keep any higher levels
-						has_realm_law = roman_imperial_army_liege_law_2
-						has_realm_law = roman_imperial_army_liege_law_3
+						has_realm_law = roman_autocratic_army_liege_law_2
+						has_realm_law = roman_autocratic_army_liege_law_3
 					}
 					OR = {
 						ai_has_cautious_personality = yes
@@ -1417,9 +1417,9 @@ roman_imperial_army_liege_law = {
 		}
 	}
 
-	roman_imperial_army_liege_law_2 = {
+	roman_autocratic_army_liege_law_2 = {
 		modifier = {
-			roman_imperial_government_vassal_opinion = -10
+			roman_autocratic_government_vassal_opinion = -10
 		}
 		flag = admin_title_troop_cost_reduction_high
 
@@ -1462,7 +1462,7 @@ roman_imperial_army_liege_law = {
 			if = {
 				limit = {
 					NOT = { # Rulers should keep any higher levels
-						has_realm_law = roman_imperial_army_liege_law_3
+						has_realm_law = roman_autocratic_army_liege_law_3
 					}
 					OR = { # AI should want this if warlike, or if in the expansion phase, regardless of personality
 						ai_has_warlike_personality = yes
@@ -1476,9 +1476,9 @@ roman_imperial_army_liege_law = {
 		}
 	}
 
-	roman_imperial_army_liege_law_3 = {
+	roman_autocratic_army_liege_law_3 = {
 		modifier = {
-			roman_imperial_government_vassal_opinion = -15
+			roman_autocratic_government_vassal_opinion = -15
 			men_at_arms_title_cap = 2
 		}
 		flag = admin_title_troop_cost_reduction_very_high
@@ -1534,14 +1534,14 @@ roman_imperial_army_liege_law = {
 	}
 }
 
-roman_imperial_army_vassal_law = {
-	default = roman_imperial_army_vassal_law_0
+roman_autocratic_army_vassal_law = {
+	default = roman_autocratic_army_vassal_law_0
 	cumulative = no
 	flag = admin_law
 
-	roman_imperial_army_vassal_law_0 = {
+	roman_autocratic_army_vassal_law_0 = {
 		modifier = {
-			roman_imperial_government_tax_contribution_add = -0.05
+			roman_autocratic_government_tax_contribution_add = -0.05
 			men_at_arms_cap = 2
 		}
 
@@ -1552,10 +1552,10 @@ roman_imperial_army_vassal_law = {
 				limit = {
 					liege = { is_independent_ruler = yes }
 				}
-				liege = { has_realm_law = roman_imperial_army_liege_law_0 }
+				liege = { has_realm_law = roman_autocratic_army_liege_law_0 }
 			}
 			trigger_else = {
-				liege = { has_realm_law = roman_imperial_army_vassal_law_0 }
+				liege = { has_realm_law = roman_autocratic_army_vassal_law_0 }
 			}
 		}
 
@@ -1564,8 +1564,8 @@ roman_imperial_army_vassal_law = {
 				limit = {
 					liege = {
 						OR = {
-							has_realm_law = roman_imperial_army_liege_law_0
-							has_realm_law = roman_imperial_army_vassal_law_0
+							has_realm_law = roman_autocratic_army_liege_law_0
+							has_realm_law = roman_autocratic_army_vassal_law_0
 						}
 					}
 				}
@@ -1589,7 +1589,7 @@ roman_imperial_army_vassal_law = {
 		}
 	}
 
-	roman_imperial_army_vassal_law_1 = {
+	roman_autocratic_army_vassal_law_1 = {
 		modifier = {
 			men_at_arms_cap = -2
 			men_at_arms_title_cap = 1
@@ -1602,10 +1602,10 @@ roman_imperial_army_vassal_law = {
 				limit = {
 					liege = { is_independent_ruler = yes }
 				}
-				liege = { has_realm_law = roman_imperial_army_liege_law_1 }
+				liege = { has_realm_law = roman_autocratic_army_liege_law_1 }
 			}
 			trigger_else = {
-				liege = { has_realm_law = roman_imperial_army_vassal_law_1 }
+				liege = { has_realm_law = roman_autocratic_army_vassal_law_1 }
 			}
 		}
 
@@ -1614,8 +1614,8 @@ roman_imperial_army_vassal_law = {
 				limit = {
 					liege = {
 						OR = {
-							has_realm_law = roman_imperial_army_liege_law_1
-							has_realm_law = roman_imperial_army_vassal_law_1
+							has_realm_law = roman_autocratic_army_liege_law_1
+							has_realm_law = roman_autocratic_army_vassal_law_1
 						}
 					}
 				}
@@ -1645,7 +1645,7 @@ roman_imperial_army_vassal_law = {
 		}
 	}
 
-	roman_imperial_army_vassal_law_2 = {
+	roman_autocratic_army_vassal_law_2 = {
 		modifier = {
 			men_at_arms_cap = -20
 			men_at_arms_title_cap = 2
@@ -1658,10 +1658,10 @@ roman_imperial_army_vassal_law = {
 				limit = {
 					liege = { is_independent_ruler = yes }
 				}
-				liege = { has_realm_law = roman_imperial_army_liege_law_2 }
+				liege = { has_realm_law = roman_autocratic_army_liege_law_2 }
 			}
 			trigger_else = {
-				liege = { has_realm_law = roman_imperial_army_vassal_law_2 }
+				liege = { has_realm_law = roman_autocratic_army_vassal_law_2 }
 			}
 		}
 
@@ -1670,8 +1670,8 @@ roman_imperial_army_vassal_law = {
 				limit = {
 					liege = {
 						OR = {
-							has_realm_law = roman_imperial_army_liege_law_2
-							has_realm_law = roman_imperial_army_vassal_law_2
+							has_realm_law = roman_autocratic_army_liege_law_2
+							has_realm_law = roman_autocratic_army_vassal_law_2
 						}
 					}
 				}
@@ -1701,7 +1701,7 @@ roman_imperial_army_vassal_law = {
 		}
 	}
 
-	roman_imperial_army_vassal_law_3 = {
+	roman_autocratic_army_vassal_law_3 = {
 		modifier = {
 			men_at_arms_cap = -20
 			men_at_arms_title_cap = 4
@@ -1714,10 +1714,10 @@ roman_imperial_army_vassal_law = {
 				limit = {
 					liege = { is_independent_ruler = yes }
 				}
-				liege = { has_realm_law = roman_imperial_army_liege_law_3 }
+				liege = { has_realm_law = roman_autocratic_army_liege_law_3 }
 			}
 			trigger_else = {
-				liege = { has_realm_law = roman_imperial_army_vassal_law_3 }
+				liege = { has_realm_law = roman_autocratic_army_vassal_law_3 }
 			}
 		}
 
@@ -1726,8 +1726,8 @@ roman_imperial_army_vassal_law = {
 				limit = {
 					liege = {
 						OR = {
-							has_realm_law = roman_imperial_army_liege_law_3
-							has_realm_law = roman_imperial_army_vassal_law_3
+							has_realm_law = roman_autocratic_army_liege_law_3
+							has_realm_law = roman_autocratic_army_vassal_law_3
 						}
 					}
 				}
@@ -1758,14 +1758,14 @@ roman_imperial_army_vassal_law = {
 	}
 }
 
-roman_imperial_retirement_law = {
-	default = roman_imperial_retirement_law_5
+roman_autocratic_retirement_law = {
+	default = roman_autocratic_retirement_law_5
 	cumulative = no
 	flag = admin_law
 
-	roman_imperial_retirement_law_0 = {
-		flag = roman_imperial_retirement_age_0
-		flag = roman_imperial_retirement_law
+	roman_autocratic_retirement_law_0 = {
+		flag = roman_autocratic_retirement_age_0
+		flag = roman_autocratic_retirement_law
 
 		can_keep = {
 			realm_law_use_imperial_bureaucracy = yes
@@ -1782,7 +1782,7 @@ roman_imperial_retirement_law = {
 				limit = {
 					top_liege != this
 				}
-				liege = { has_realm_law = roman_imperial_retirement_law_0 }
+				liege = { has_realm_law = roman_autocratic_retirement_law_0 }
 			}
 		}
 
@@ -1827,9 +1827,9 @@ roman_imperial_retirement_law = {
 		}
 	}
 
-	roman_imperial_retirement_law_1 = {
-		flag = roman_imperial_retirement_age_1
-		flag = roman_imperial_retirement_law
+	roman_autocratic_retirement_law_1 = {
+		flag = roman_autocratic_retirement_age_1
+		flag = roman_autocratic_retirement_law
 
 		can_keep = {
 			realm_law_use_imperial_bureaucracy = yes
@@ -1846,7 +1846,7 @@ roman_imperial_retirement_law = {
 				limit = {
 					top_liege != this
 				}
-				liege = { has_realm_law = roman_imperial_retirement_law_1 }
+				liege = { has_realm_law = roman_autocratic_retirement_law_1 }
 			}
 		}
 
@@ -1863,7 +1863,7 @@ roman_imperial_retirement_law = {
 			trigger_if = {
 				limit = {
 					top_liege != this
-					liege = { has_realm_law = roman_imperial_retirement_law_1 }
+					liege = { has_realm_law = roman_autocratic_retirement_law_1 }
 				}
 				custom_tooltip = {
 					text = imperial_bureaucracy_pending_law_change
@@ -1891,9 +1891,9 @@ roman_imperial_retirement_law = {
 		}
 	}
 
-	roman_imperial_retirement_law_2 = {
-		flag = roman_imperial_retirement_age_2
-		flag = roman_imperial_retirement_law
+	roman_autocratic_retirement_law_2 = {
+		flag = roman_autocratic_retirement_age_2
+		flag = roman_autocratic_retirement_law
 
 		can_keep = {
 			realm_law_use_imperial_bureaucracy = yes
@@ -1910,7 +1910,7 @@ roman_imperial_retirement_law = {
 				limit = {
 					top_liege != this
 				}
-				liege = { has_realm_law = roman_imperial_retirement_law_2 }
+				liege = { has_realm_law = roman_autocratic_retirement_law_2 }
 			}
 		}
 
@@ -1927,7 +1927,7 @@ roman_imperial_retirement_law = {
 			trigger_if = {
 				limit = {
 					top_liege != this
-					liege = { has_realm_law = roman_imperial_retirement_law_2 }
+					liege = { has_realm_law = roman_autocratic_retirement_law_2 }
 				}
 				custom_tooltip = {
 					text = imperial_bureaucracy_pending_law_change
@@ -1955,9 +1955,9 @@ roman_imperial_retirement_law = {
 		}
 	}
 
-	roman_imperial_retirement_law_3 = {
-		flag = roman_imperial_retirement_age_3
-		flag = roman_imperial_retirement_law
+	roman_autocratic_retirement_law_3 = {
+		flag = roman_autocratic_retirement_age_3
+		flag = roman_autocratic_retirement_law
 
 		can_keep = {
 			realm_law_use_imperial_bureaucracy = yes
@@ -1974,7 +1974,7 @@ roman_imperial_retirement_law = {
 				limit = {
 					top_liege != this
 				}
-				liege = { has_realm_law = roman_imperial_retirement_law_3 }
+				liege = { has_realm_law = roman_autocratic_retirement_law_3 }
 			}
 		}
 
@@ -1991,7 +1991,7 @@ roman_imperial_retirement_law = {
 			trigger_if = {
 				limit = {
 					top_liege != this
-					liege = { has_realm_law = roman_imperial_retirement_law_3 }
+					liege = { has_realm_law = roman_autocratic_retirement_law_3 }
 				}
 				custom_tooltip = {
 					text = imperial_bureaucracy_pending_law_change
@@ -2019,9 +2019,9 @@ roman_imperial_retirement_law = {
 		}
 	}
 
-	roman_imperial_retirement_law_4 = {
-		flag = roman_imperial_retirement_age_4
-		flag = roman_imperial_retirement_law
+	roman_autocratic_retirement_law_4 = {
+		flag = roman_autocratic_retirement_age_4
+		flag = roman_autocratic_retirement_law
 
 		can_keep = {
 			realm_law_use_imperial_bureaucracy = yes
@@ -2038,7 +2038,7 @@ roman_imperial_retirement_law = {
 				limit = {
 					top_liege != this
 				}
-				liege = { has_realm_law = roman_imperial_retirement_law_4 }
+				liege = { has_realm_law = roman_autocratic_retirement_law_4 }
 			}
 		}
 
@@ -2055,7 +2055,7 @@ roman_imperial_retirement_law = {
 			trigger_if = {
 				limit = {
 					top_liege != this
-					liege = { has_realm_law = roman_imperial_retirement_law_4 }
+					liege = { has_realm_law = roman_autocratic_retirement_law_4 }
 				}
 				custom_tooltip = {
 					text = imperial_bureaucracy_pending_law_change
@@ -2083,9 +2083,9 @@ roman_imperial_retirement_law = {
 		}
 	}
 
-	roman_imperial_retirement_law_5 = {
-		flag = roman_imperial_retirement_age_5
-		flag = roman_imperial_retirement_law
+	roman_autocratic_retirement_law_5 = {
+		flag = roman_autocratic_retirement_age_5
+		flag = roman_autocratic_retirement_law
 
 		can_keep = {
 			realm_law_use_imperial_bureaucracy = yes
@@ -2093,7 +2093,7 @@ roman_imperial_retirement_law = {
 				limit = {
 					top_liege != this
 				}
-				liege = { has_realm_law = roman_imperial_retirement_law_5 }
+				liege = { has_realm_law = roman_autocratic_retirement_law_5 }
 			}
 		}
 
@@ -2101,7 +2101,7 @@ roman_imperial_retirement_law = {
 			trigger_if = {
 				limit = {
 					top_liege != this
-					liege = { has_realm_law = roman_imperial_retirement_law_5 }
+					liege = { has_realm_law = roman_autocratic_retirement_law_5 }
 				}
 				custom_tooltip = {
 					text = imperial_bureaucracy_pending_law_change

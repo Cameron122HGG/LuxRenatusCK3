@@ -33,7 +33,7 @@
 	minimum_provincial_maa_tier = duchy
 
 	primary_holding = castle_holding
-	valid_holdings = { city_holding temple_citadel_holding }
+	valid_holdings = { city_holding temple_citadel_holding nomad_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
 
 	vassal_contract_group = meritocratic_vassal
@@ -123,7 +123,7 @@
 	realm_mask_scale = { 0.78 0.78 }
 }
 
-roman_imperial_government = { # e.g. Restored Roman Empire, Gallic Empire, Western Roman Empire, Eastern Roman Empire
+roman_autocratic_government = { # e.g. Restored Roman Empire, Gallic Empire, Western Roman Empire, Eastern Roman Empire
 	government_rules = {
 		create_cadet_branches = yes
 		rulers_should_have_dynasty = yes
@@ -148,7 +148,7 @@ roman_imperial_government = { # e.g. Restored Roman Empire, Gallic Empire, Weste
 	royal_court = any
 	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government steppe_classical_admin_government }
 
-	domicile_type = east_asian_estate
+	domicile_type = western_roman_estate
 	main_administrative_tier = county
 	min_appointment_tier = county
 	minimum_provincial_maa_tier = county
@@ -157,7 +157,7 @@ roman_imperial_government = { # e.g. Restored Roman Empire, Gallic Empire, Weste
 	valid_holdings = { city_holding temple_citadel_holding tribal_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
 
-	vassal_contract_group = roman_imperial_vassal
+	vassal_contract_group = roman_autocratic_vassal
 
 	character_modifier = {
 		levy_size = -0.5
@@ -208,7 +208,7 @@ roman_imperial_government = { # e.g. Restored Roman Empire, Gallic Empire, Weste
 
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
 	flags = {
-		government_is_roman_imperial
+		government_is_roman_autocratic
 		government_is_roman
 		government_is_classical_group
 		government_has_influence

@@ -1,5 +1,5 @@
 ﻿
-tgp_is_gallic_mayor_trigger = {
+tgp_is_gallic_gallic_regent_admin_trigger = {
 	has_title = title:e_high_kingdom_gaul
 	NOR = {
 		has_title = title:k_sacral_king_gaul_throne
@@ -439,7 +439,7 @@ tgp_gaul_defense_mobilization_valid_trigger = {
 
 tgp_gaul_valid_restore_monarchy_scion_trigger = {
 	is_landed = no
-	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:mayor }
+	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:gallic_regent_admin }
 	is_healthy = yes
 }
 
@@ -467,7 +467,7 @@ tgp_gaul_install_regent_faction_can_create_trigger = {
 	has_tgp_dlc_trigger = yes
 	scope:target ?= { tgp_install_regent_faction_target_valid_trigger = yes }
 	custom_tooltip = {
-		text = replace_ceremonial_regent_faction_mayor_trigger
+		text = replace_ceremonial_regent_faction_gallic_regent_admin_trigger
 		NOR = {
 			has_global_variable = gallic_dictatorship_established
 			has_global_variable = sacral_king_gaul_restored
@@ -489,57 +489,7 @@ tgp_gaul_install_regent_faction_can_create_trigger = {
 	}
 }
 
-gaul_faction_cohesion_trigger = {
-	trigger_if = {
-		limit = { 
-			government_has_flag = government_has_house_blocs 
-			is_confederation_member = yes
-		}
-		custom_tooltip = {
-			text = house_head_create_faction_cohesion_tt
-			OR = {
-				house.house_confederation ?= { cohesion >= 50 }
-				joined_faction ?= {
-					OR = {
-						faction_is_at_war = yes
-						any_faction_member = {
-							OR = {
-								this = root.house.house_confederation.leading_house.house_head
-								is_ai = no
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
 
-gaul_faction_cohesion_hard_trigger = {
-	trigger_if = {
-		limit = { 
-			government_has_flag = government_has_house_blocs 
-			is_confederation_member = yes
-		}
-		custom_tooltip = {
-			text = house_head_create_faction_cohesion_hard_tt
-			OR = {
-				house.house_confederation ?= { cohesion >= 75 }
-				joined_faction ?= {
-					OR = {
-						faction_is_at_war = yes
-						any_faction_member = {
-							OR = {
-								this = root.house.house_confederation.leading_house.house_head
-								is_ai = no
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
 
 LR_gaul_restore_ceremonial_liege_faction_can_create_trigger = {
 	tgp_realm_has_ceremonial_liege_trigger = yes
