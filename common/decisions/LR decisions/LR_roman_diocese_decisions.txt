@@ -194,9 +194,48 @@ restore_western_administration_decision = {
 
     }			
 
-
-
     effect = {
+    		if = {
+			limit = {
+			has_dlc_feature = all_under_heaven
+			}
+			change_government = roman_autocratic_government
+			save_scope_as = actor
+			#restore_gallic_empire_provinces_gallia_viennensis_decision_effect = yes
+		}
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		every_vassal_or_below = {
+			if = {
+				limit = {
+					has_dlc_feature = all_under_heaven
+					OR = {
+						government_has_flag = government_is_gaul_administrative
+						AND = {
+							government_has_flag = government_is_roman
+							highest_held_title_tier > tier_county
+						}
+					}
+				}
+				change_government = roman_autocratic_government
+			}
+			else_if = {
+				limit = {
+					NOT = { has_dlc_feature = all_under_heaven }
+					OR = {
+						government_has_flag = government_is_gaul_feudal
+						AND = {
+							government_has_flag = government_is_roman
+							highest_held_title_tier > tier_county
+						}
+					}
+				}
+				change_government = roman_autocratic_government
+			}
+		}
         custom_tooltip = restore_western_diocese_system_effect_tooltip
         custom_tooltip = restore_western_diocese_system_unlock_tooltip
 		
