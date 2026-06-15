@@ -109,13 +109,13 @@ restore_backwater_counties_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_estate.dds"
 	}
-	decision_group_type = major
+	decision_group_type = eastern_anarchy
 	ai_check_interval_by_tier = {
 		barony = 0
 		county = 0
 		duchy = 120
 		kingdom = 120
-		empire = 0
+		empire = 120
 		hegemony = 0
 	}
 
@@ -123,7 +123,7 @@ restore_backwater_counties_decision = {
 
 	desc = restore_backwater_counties_decision_desc
 	selection_tooltip = restore_backwater_counties_decision_tooltip
-	decision_group_type = roman
+	decision_group_type = eastern_anarchy
 
 	is_shown = {
 		has_ep3_dlc_trigger = yes
@@ -386,167 +386,6 @@ prepare_greek_fire_dromons_decision = {
 	}
 }
 
-### Re-Establish the Theodosian Borders ###
-#LR_restore_eastern_hegemony_decision = {
-#	picture = {
-#		reference = "gfx/interface/illustrations/decisions/ep3_decision_roman_restoration.dds"
-#	}
-#
-#	ai_check_interval_by_tier = {
-#		barony = 0
-#		county = 0
-#		duchy = 0
-#		kingdom = 0
-#		empire = 120
-#		hegemony = 120
-#	}
-#
-#	sort_order = 50
-#
-#	desc = LR_restore_eastern_hegemony_decision_desc
-#	selection_tooltip = LR_restore_eastern_hegemony_decision_tooltip
-#	decision_group_type = roman
-#
-#	is_shown = {
-#		has_ep3_dlc_trigger = yes
-#		has_title = title:e_byzantium
-#		NOT = {
-#			is_target_in_global_variable_list = {
-#				name = unavailable_unique_decisions
-#				target = flag:LR_restore_eastern_hegemony_decision
-#			}
-#		}
-#	}
-#
-#	is_valid = {
-#		government_has_flag = government_is_administrative
-#		completely_controls_region = custom_theodosian_ere
-#		custom_tooltip = {
-#			text = eastern_kingdoms_held_or_vassals_tt
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_bulgaria.holder
-#				}
-#				title:k_bulgaria.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_epirus.holder
-#				}
-#				title:k_epirus.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_hellas.holder
-#				}
-#				title:k_hellas.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_byzantium.holder
-#				}
-#				title:k_byzantium.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_krete.holder
-#				}
-#				title:k_krete.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_cyprus.holder
-#				}
-#				title:k_cyprus.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_pergamon.holder
-#				}
-#				title:k_pergamon.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_anatolia.holder
-#				}
-#				title:k_anatolia.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_pontus.holder
-#				}
-#				title:k_pontus.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_syria.holder
-#				}
-#				title:k_syria.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_jerusalem.holder
-#				}
-#				title:k_jerusalem.holder = { liege = root }
-#			}
-#			trigger_if = {
-#				limit = {
-#					exists = title:k_egypt.holder
-#				}
-#				title:k_egypt.holder = { liege = root }
-#			}
-##	}
-#
-#	is_valid_showing_failures_only = {
-#		is_at_war = no
-#		NOT = { exists = involved_activity }
-#		is_imprisoned = no
-#		has_contagious_deadly_disease_trigger = no
-#	}
-#
-#	cost = {
-#		prestige = {
-#			value = 1000		
-#		}
-#	}
-#
-#	effect = {
-#		show_as_tooltip = {
-#			LR_restore_eastern_hegemony_decision_effect = yes
-#		}
-#		trigger_event = {
-#			id = ep3_decisions_event.4000
-#			days = 1
-#		}
-#		#Can only be done once
-#		add_to_global_variable_list = {
-#			name = unavailable_unique_decisions
-#			target = flag:LR_restore_eastern_hegemony_decision
-#		}
-#		if = {
-#			limit = {
-#				is_ai = no
-#				game_start_date >= 6178.10.1
-#			}
-#			add_achievement_global_variable_effect = {
-#				VARIABLE = achieved_against_the_odds_achievement
-#				VALUE = yes
-#			}
-#		}
-#	}
-##	ai_potential = {
-#		has_title = title:e_byzantium
-#		is_at_war = no
-#		NOT = { exists = involved_activity }
-#		is_imprisoned = no
-#		has_contagious_deadly_disease_trigger = no
-#	}
-#
-#	ai_will_do = {
-#		base = 100
-#	}
-#}
-
 ### Refound the Pandidakterion ###
 refound_pandidakterion_decision = {
 	picture = {
@@ -662,7 +501,7 @@ ask_western_help_decision = {
 
 	desc = ask_western_help_decision_desc
 	selection_tooltip = ask_western_help_decision_tooltip
-	decision_group_type = roman
+	decision_group_type = eastern_anarchy
 
 	is_shown = {
 		has_ep3_dlc_trigger = yes
@@ -1381,7 +1220,7 @@ reinstitute_grain_dole_decision = {
 	}
 
 	is_valid = {
-		government_has_flag = government_is_administrative
+		government_has_flag = government_is_roman_autocratic
 		OR = {
 			capital_county = title:c_byzantion
 			capital_county = title:c_roma

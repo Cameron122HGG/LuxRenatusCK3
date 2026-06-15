@@ -1920,9 +1920,11 @@ c_thessalia = {
 	5867.1.1 = { change_development_level = 10 }
 	6066.1.1 = { change_development_level = 15 }
 	6178.1.1 = { change_development_level = 20 }
-	
-	5330.1.1 = {
-		government = classical_administrative_government
+
+	6060.1.1 = {
+		liege = d_thessalonika
+		government = diadochi_administrative_government
+		holder = 49
 		effect = {
 			if = {
 				limit = {
@@ -1934,10 +1936,7 @@ c_thessalia = {
 				}
 			}
 		}
-	}
-	6060.1.1 = {
-		liege = 0
-		holder = 49
+		
 	}
 }
 
@@ -2078,23 +2077,9 @@ k_macedonia = {
 	4833.1.1 = {
 		holder = 0
 	}
-	6063.1.1 = {
-		holder = 49 # Rudradeva, "instead of submitting himself to the usurper Bijjala, he proclaimed independence"
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}	
-	}
-	
-	6083.1.1 = {
-		holder = 0
-	}
-	6108.1.1 = {
-		holder = 0
-	}
-	6163.1.1 = {
-		holder = 0 # Rudradeva, "instead of submitting himself to the usurper Bijjala, he proclaimed independence"		
-	}
+	#6060.1.1 = {
+	#	holder = 49 #Thessalonika
+	#}
 }
 
 d_strymon = {
@@ -2152,7 +2137,7 @@ d_thessalonika = {
 	6060.1.1 = {
 		liege = 0
 		holder = 49
-		government = classical_administrative_government	
+		government = diadochi_administrative_government	
 		effect = {
 			if = {
 				limit = {
@@ -2165,12 +2150,17 @@ d_thessalonika = {
 			}
 		}
 	}
+	tributary_of = {
+		suzerain = e_byzantium
+		contract_group = tributary_byzantine
+	}	
+	
 }
 c_thessalonika = {
 	6060.1.1 = {
 		liege = d_thessalonika
 		holder = 49
-		government = classical_administrative_government
+		government = diadochi_administrative_government
 		effect = {
 			if = {
 				limit = {
