@@ -1267,6 +1267,9 @@
 	6060.1.1 = {
 		holder = 1
 	}
+	6066.9.15 = {
+		holder = 71
+	}
 }
 
 k_byzantium = {
@@ -1397,40 +1400,40 @@ k_byzantium = {
 	6033.1.1 = { 
 		holder = 1712480 
 	}
-	6060.1.1 = {
-		holder = 0 #holder = 71
-		#government = classical_administrative_government
-		#succession_laws = {
-		#	acclamation_succession_law
-		#}
-		#effect = {
-		#	if = {
-		#		limit = {
-		#			exists = holder
-		#			holder = { has_government = classical_feudal_government }
-		#		}
-		#		set_state_faith = faith:sol_imperial
-		#	}
-		#	if = {
-		#		limit = {
-		#			exists = holder
-		#			has_dlc_feature = royal_court
-		#		}
-		#		holder = {
-		#			set_court_type = court_warlike
-		#		}
-		#	}
-		#	if = {
-		#		limit = {
-		#			exists = holder
-		#			NOT = { has_dlc_feature = roads_to_power }
-		#		}
-		#		holder = {
-		#			change_government = classical_feudal_government
-		#			add_realm_law_skip_effects = single_heir_succession_law
-		#		}
-		#	}
-		#}
+	6066.9.15 = { #warlord startdate
+		holder = 71
+		government = classical_administrative_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_feudal_government }
+				}
+				set_state_faith = faith:sol_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
 	}
 	#6061.1.1 = {
 		#tributary_of = {
@@ -1460,6 +1463,7 @@ d_thrace = {
 	}
 
 }
+
 d_philippopolis = {
 	6062.1.1 = {
 		holder = 71
@@ -1488,6 +1492,42 @@ c_byzantion = {
 			}		
 		}		
 	}
+	6066.9.15 = { #warlord startdate
+		liege = k_byzantium
+		holder = 71
+		government = classical_administrative_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_government = classical_feudal_government
+				}
+				set_state_faith = faith:sol_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
+	}
 }
 
 # C Kalliopolis
@@ -1508,6 +1548,42 @@ c_kalliopolis = {
 				}
 			}		
 		}		
+	}
+	6066.9.15 = { #warlord startdate
+		liege = k_byzantium
+		holder = 71
+		government = classical_administrative_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_government = classical_feudal_government
+				}
+				set_state_faith = faith:sol_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
 	}
 }
 
@@ -1691,11 +1767,46 @@ c_phrygia = {
 
 # D Optimatoi
 d_optimatoi = {
-	6066.1.1 = {
+	6060.1.1 = {
 		liege = 0
 		holder = 1
 		government = classical_administrative_government
 		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+				}
+			}
+		}
+	}
+	6066.9.15 = { #warlord startdate
+		liege = k_byzantium
+		holder = 71
+		government = classical_administrative_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_government = classical_feudal_government
+				}
+				set_state_faith = faith:sol_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
 			if = {
 				limit = {
 					exists = holder
