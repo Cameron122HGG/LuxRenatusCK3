@@ -402,19 +402,19 @@ el_cid = {
 		NOT = {
 			has_global_variable = el_cid_legend
 		}
-		character:107590 ?= { is_alive = yes } #El Cid
-		this = character:107590
+		character:1820000 ?= { is_alive = yes } #El Cid
+		this = character:1820000
 	}
 	is_valid = {
-		character:107590 ?= { is_alive = yes } 
-		this = character:107590
+		character:1820000 ?= { is_alive = yes } 
+		this = character:1820000
 		is_playable_character = yes
 		highest_held_title_tier >= tier_kingdom
 	}
 
 	chronicle = ancestral_glory
 	chronicle_properties = {
-		ancestor = character:107590
+		ancestor = character:1820000
 		title = title:e_spain
 	}
 }
@@ -427,13 +427,13 @@ alfred_of_wessex = {
 		NOT = {
 			has_global_variable = alfred_of_wessex_legend
 		}
-		exists = character:7627
-		character:7627 = { #Good ol' Alfy
+		exists = character:AlfredSaxon
+		character:AlfredSaxon = { #Good ol' Alfy
 			religion = religion:christianity_religion
 		}
 		OR = {
-			this = character:7627
-			dynasty = character:7627.dynasty
+			this = character:AlfredSaxon
+			dynasty = character:AlfredSaxon.dynasty
 		}
 	}
 	is_valid = {
@@ -441,7 +441,7 @@ alfred_of_wessex = {
 		piety_level >= high_piety_level
 		trigger_if = {
 			limit = {
-				this = character:7627
+				this = character:AlfredSaxon
 			}
 			custom_tooltip = {
 				text = no_pagans_in_britannia_tt
@@ -457,7 +457,7 @@ alfred_of_wessex = {
 
 	chronicle = saintly_deed
 	chronicle_properties = {
-		ancestor = character:7627
+		ancestor = character:AlfredSaxon
 		religion = religion:christianity_religion
 	}
 }
@@ -614,7 +614,7 @@ sceafa = { # Claims to be descended from Noah
 		NOT = {
 			has_global_variable = sceafa_legend
 		}
-		dynasty = character:7627.dynasty
+		dynasty = character:AlfredSaxon.dynasty
 		religion = { is_in_family = rf_abrahamic }
 	}
 	is_valid = {
