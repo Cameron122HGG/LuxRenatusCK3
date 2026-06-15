@@ -1539,31 +1539,31 @@ tgp_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 					NOT = { has_character_flag = found_cadet_branch }
 				}
 				if = {
-					limit = { domicile.domicile_location.county ?= title:c_yamashiro }
+					limit = { domicile.domicile_location.county ?= title:c_ile_de_france }
 					while = {
 						count = 3
-						assign_gallic_house_name_options_kyoto_effect = yes
+						#assign_gallic_house_name_options_kyoto_effect = yes
 					}
 				}
 				else = {
 					while = {
 						count = 3
-						assign_gallic_house_name_options_effect = yes
+						#assign_gallic_house_name_options_effect = yes
 					}
 				}
 			}
 			else = {
 				if = {
-					limit = { domicile.domicile_location.county ?= title:c_yamashiro }
+					limit = { domicile.domicile_location.county ?= title:c_ile_de_france }
 					while = {
 						count = 1
-						assign_gallic_house_name_options_kyoto_effect = yes
+						#assign_gallic_house_name_options_kyoto_effect = yes
 					}
 				}
 				else = {
 					while = {
 						count = 1
-						assign_gallic_house_name_options_effect = yes
+						#assign_gallic_house_name_options_effect = yes
 					}
 				}
 			}
@@ -1680,7 +1680,7 @@ tgp_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 			found_cadet_branch = { remove_character_flag = found_cadet_branch }
 			establish_house_fief = { remove_character_flag = establish_house_fief }
 		}
-		if = { # Help AI with Manors to propogate Soryo
+		if = { # Help AI with Manors to propogate manorial
 			limit = {
 				is_ai = yes
 				exists = scope:new_title
@@ -1822,7 +1822,7 @@ tgp_gaul_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
 						NOT = { var:petition_liege_house_fief_allowed_flag ?= scope:regent }
 					}
 					reverse_add_opinion = {
-						modifier = admin_soryo_conquest_crime
+						modifier = admin_manorial_conquest_crime
 						target = scope:regent
 					}
 				}
@@ -2115,7 +2115,7 @@ tgp_gaul_decision.9500 = {
 	}
 }
 
-# tgp_gaul_establish_soryo_administration_decision
+# tgp_gaul_establish_manorial_administration_decision
 
 tgp_gaul_decision.9601 = {
 	type = character_event
@@ -2322,7 +2322,7 @@ tgp_gaul_decision.9603 = { # Vassal player event
 		show_as_tooltip = {
 			scope:gallic_regent_feudal = {
 				custom_description_no_bullet = { text = if_you_win_effect }
-				show_as_tooltip = { gallic_establish_soryo_administration_reward_effect = yes }
+				show_as_tooltip = { gallic_establish_manorial_administration_reward_effect = yes }
 			}
 		}
 	}
@@ -2538,16 +2538,16 @@ tgp_gaul_decision.9605 = { # War start event
 				limit = { any_in_list = { list = bloc_leaders } }
 				every_in_list = {
 					list = bloc_leaders
-					custom_tooltip = tgp_establish_soryo_administration_bloc_leaders_tt
+					custom_tooltip = tgp_establish_manorial_administration_bloc_leaders_tt
 				}
 			}
 			# Tooltip
 			if = {
 				limit = { any_in_list = { list = other_joiners } }
-				custom_tooltip = tgp_establish_soryo_administration_other_joiners_tt
+				custom_tooltip = tgp_establish_manorial_administration_other_joiners_tt
 			}
 		}
-		else = { gallic_establish_soryo_administration_reward_effect = yes }
+		else = { gallic_establish_manorial_administration_reward_effect = yes }
 	}
 
 	option = {
@@ -2555,7 +2555,7 @@ tgp_gaul_decision.9605 = { # War start event
 		trigger = { exists = scope:war }
 		show_as_tooltip = {
 			custom_description_no_bullet = { text = if_you_win_effect }
-			show_as_tooltip = { gallic_establish_soryo_administration_reward_effect = yes }
+			show_as_tooltip = { gallic_establish_manorial_administration_reward_effect = yes }
 		}
 	}
 
@@ -2564,7 +2564,7 @@ tgp_gaul_decision.9605 = { # War start event
 		trigger = {
 			NOT = { exists = scope:war }
 		}
-		gallic_establish_soryo_administration_reward_effect = yes
+		gallic_establish_manorial_administration_reward_effect = yes
 		every_player = {
 			limit = {
 				top_liege = scope:gallic_regent_feudal
@@ -2649,7 +2649,7 @@ tgp_gaul_decision.9607 = { # War won vassal event
 
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
-		show_as_tooltip = { gallic_establish_soryo_administration_reward_effect = yes }
+		show_as_tooltip = { gallic_establish_manorial_administration_reward_effect = yes }
 	}
 
 	option = {
@@ -2933,7 +2933,7 @@ tgp_gaul_decision.9960 = {
 		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_diplomacy"
 	}
 	left_portrait = {
-		character = scope:super_soryo
+		character = scope:super_manorial
 		triggered_animation = {
 			trigger = {
 				is_adult = yes
@@ -3076,7 +3076,7 @@ tgp_gaul_decision.9963 = {
 	type = letter_event
 	opening = tgp_gaul_decision.9963.opening
 	desc = tgp_gaul_decision.9963.desc
-	sender = scope:super_soryo
+	sender = scope:super_manorial
 	#decline war
 	option = {
 		name = tgp_gaul_decision.9963.a
@@ -3086,7 +3086,7 @@ tgp_gaul_decision.9963 = {
 	#join war
 	option = {
 		name = tgp_gaul_decision.9963.b
-		scope:super_soryo_war = {
+		scope:super_manorial_war = {
 			add_defender = root
 			hidden_effect = {
 				set_called_to = root
