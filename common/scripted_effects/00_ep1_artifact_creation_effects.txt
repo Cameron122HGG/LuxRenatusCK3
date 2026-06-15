@@ -14814,21 +14814,21 @@ generate_historical_artifact_based_on_location_effect = {
 			}
 			create_artifact_wall_banner_edessa_effect = { OWNER = root }
 		}
-		#10 = { #El Cid's Sword
-		#	trigger = {
-		#		current_year >= 6097
-		#		NOT = {
-		#			any_artifact = { has_variable = sword_cid }
-		#		}
-		#		$LOCATION$ ?= {
-		#			OR = {
-		#				geographical_region = world_middle_east
-		#				geographical_region = world_asia_minor
-		#			}
-		#		}
-		#	}
-		#	create_artifact_wall_cid_sword_effect = { OWNER = root }
-		#}
+		10 = { #El Cid's Sword
+			trigger = {
+				current_year >= 6097
+				NOT = {
+					any_artifact = { has_variable = sword_cid }
+				}
+				$LOCATION$ ?= {
+					OR = {
+						geographical_region = world_middle_east
+						geographical_region = world_asia_minor
+					}
+				}
+			}
+			create_artifact_wall_cid_sword_effect = { OWNER = root }
+		}
 		10 = { #Muhammad's Sword
 			trigger = {
 				any_artifact = {
