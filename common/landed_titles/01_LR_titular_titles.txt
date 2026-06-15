@@ -297,3 +297,152 @@ k_frisia_titular = {
 
 	capital = c_westfriesland
 }
+
+
+###Britain Update
+k_london = {
+	color = { 230 5 5 }
+	definite_form = yes
+	capital = c_middlesex	
+}
+e_london = {
+	color = { 230 5 5 }
+	definite_form = yes
+	capital = c_middlesex	
+}
+e_england = {
+	color = { 202 26 26 }
+	definite_form = yes
+	capital = c_kent
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				OR = {
+					culture = culture:english
+					culture = culture:anglo_saxon
+
+				}
+			}
+			add = @correct_culture_primary_score
+		}
+	}
+}
+e_britons = {
+	color = { 10 105 80 }
+	definite_form = yes
+	capital = c_somerset
+	
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = culture:cornish
+			}
+			add = @correct_culture_primary_score
+		}
+		if = {
+			limit = {
+				OR = {
+					culture = culture:welsh
+					culture = culture:cumbrian
+					culture = culture:breton
+	
+				}
+			}
+			add = @better_than_the_alternatives_score
+		}
+	}	
+}
+e_anglo_danes = {
+	color = { 20 60 65 }
+	definite_form = yes
+	capital = c_north_riding
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = {
+					has_cultural_pillar = heritage_north_germanic
+				}
+			}
+			add = @correct_culture_primary_score
+			add = @better_than_the_alternatives_score
+
+		}
+	}	
+}
+e_scotland = {
+	color = { 230 140 0 }
+	capital = c_lothian
+}
+e_ireland = {
+	color = { 6 127 2 }
+	capital = c_dublin
+}
+
+k_hk_england = {
+	color = { 202 26 26 }
+	capital = c_kent
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				OR = {
+					culture = culture:english
+					culture = culture:anglo_saxon
+
+				}
+			}
+			add = @correct_culture_primary_score
+		}
+	}
+}
+k_hk_britons = {
+	color = { 10 105 80 }
+	capital = c_somerset
+	
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = culture:cornish
+			}
+			add = @correct_culture_primary_score
+		}
+		if = {
+			limit = {
+				OR = {
+					culture = culture:welsh
+					culture = culture:cumbrian
+					culture = culture:breton
+	
+				}
+			}
+			add = @better_than_the_alternatives_score
+		}
+	}	
+}
+k_hk_anglo_danes = {
+	color = { 20 60 65 }
+	capital = c_north_riding
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = {
+					has_cultural_pillar = heritage_north_germanic
+				}
+			}
+			add = @correct_culture_primary_score
+			add = @better_than_the_alternatives_score
+
+		}
+	}	
+}
+
+
+
+
+
+
+
+
+
+
