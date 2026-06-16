@@ -1,4 +1,4 @@
-﻿e_byzantium = {
+﻿e_byzantium= {
 	4974.1.16 = {
 		holder = 12500
 		government = classical_administrative_government
@@ -1274,15 +1274,15 @@
 
 k_byzantium = {
 	5001.1.1 = { change_development_level = 24 }
-	5001.1.10 = {
-		holder = 12500
-	}
-	5014.1.1 = { 
-		holder = 12501 
-	}
-	5036.1.1 = { 
-		holder = 12502 
-	}
+	#5001.1.10 = {
+	#	holder = 12500
+	#}
+	#5014.1.1 = { 
+	#	holder = 12501 
+	#}
+	#5036.1.1 = { 
+	#	holder = 12502 
+	#}
 	
 	6066.9.15 = { #warlord startdate
 		holder = 71
@@ -1365,24 +1365,12 @@ d_philippopolis = {
 
 c_byzantion = {
 	5200.1.1 = {
-		liege = "e_byzantium"
+		liege = e_byzantium
 	}
 	6060.1.1 = {
 		liege = e_byzantium
 		holder = 1
-		government = classical_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_feudal_government
-					add_realm_law_skip_effects = single_heir_succession_law
-				}
-			}		
-		}		
+		
 	}
 	6066.9.15 = { #warlord startdate
 		liege = k_byzantium
