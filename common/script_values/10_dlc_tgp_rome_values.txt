@@ -56,7 +56,7 @@ maximum_roman_merit_level = {
 		}
 		if = {
 			limit = {
-				government_has_flag = government_is_roman_imperial
+				government_has_flag = government_is_roman_autocratic
 			}
 			add = 9
 		}
@@ -66,8 +66,8 @@ maximum_roman_merit_level = {
 	}
 }
 
-roman_imperial_province_military_max_value = 8
-roman_imperial_province_protectorate_max_value = {
+roman_autocratic_province_military_max_value = 8
+roman_autocratic_province_protectorate_max_value = {
 	value = 5
 	#if = {
 	#	limit = {
@@ -78,8 +78,8 @@ roman_imperial_province_protectorate_max_value = {
 }
 #dynastic_cycle_protectorate_bonus_value = 4
 
-roman_imperial_province_industrial_max_value = 8
-roman_imperial_province_metropolitan_max_value = {
+roman_autocratic_province_industrial_max_value = 8
+roman_autocratic_province_metropolitan_max_value = {
 	value = 5
 	#if = {
 	#	limit = {
@@ -165,13 +165,13 @@ assign_roman_merit_based_on_tier_value = {
 	}
 }
 # Ministry/council values
-council_scaled_roman_imperial_ministry_value = {
-	value = 0 # This value should be 0 for anyone who isn't on the roman_imperial ministry
+council_scaled_roman_autocratic_ministry_value = {
+	value = 0 # This value should be 0 for anyone who isn't on the roman_caesar_cult ministry
 	if = {
 		limit = {
 			liege = {
 				highest_held_title_tier >= tier_hegemony
-				government_has_flag = government_is_roman_imperial
+				government_has_flag = government_is_roman_autocratic
 			}
 		}
 		add = {
@@ -183,7 +183,7 @@ council_scaled_roman_imperial_ministry_value = {
 		}
 	}
 }
-council_scaled_roman_imperial_ministry_favored_value = {
+council_scaled_roman_autocratic_ministry_favored_value = {
 	value = 0 # This value should be 0 for everyone except the favored minister
 	if = {
 		limit = {
@@ -205,31 +205,31 @@ roman_retirement_age_current_value = {
 	value = 0
 	if = {
 		limit = {
-			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_4 }
+			top_liege = { has_realm_law_flag = roman_autocratic_retirement_age_4 }
 		}
 		add = roman_retirement_age_4_value
 	}
 	else_if = {
 		limit = {
-			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_3 }
+			top_liege = { has_realm_law_flag = roman_autocratic_retirement_age_3 }
 		}
 		add = roman_retirement_age_3_value
 	}
 	else_if = {
 		limit = {
-			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_2 }
+			top_liege = { has_realm_law_flag = roman_autocratic_retirement_age_2 }
 		}
 		add = roman_retirement_age_2_value
 	}
 	else_if = {
 		limit = {
-			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_1 }
+			top_liege = { has_realm_law_flag = roman_autocratic_retirement_age_1 }
 		}
 		add = roman_retirement_age_1_value
 	}
 	else_if = {
 		limit = {
-			top_liege = { has_realm_law_flag = roman_imperial_retirement_age_0 }
+			top_liege = { has_realm_law_flag = roman_autocratic_retirement_age_0 }
 		}
 		add = roman_retirement_age_0_value
 	}
@@ -245,20 +245,20 @@ automated_nomination_roman_merit_investment_value = {
 }
 
 
-roman_imperial_civilian_score_bonus_1_value = 10
-roman_imperial_civilian_score_bonus_2_value = 20
-roman_imperial_civilian_score_bonus_3_value = 40
-roman_imperial_civilian_score_bonus_4_value = 80
+roman_autocratic_civilian_score_bonus_1_value = 10
+roman_autocratic_civilian_score_bonus_2_value = 20
+roman_autocratic_civilian_score_bonus_3_value = 40
+roman_autocratic_civilian_score_bonus_4_value = 80
 
-roman_imperial_military_score_bonus_1_value = 10
-roman_imperial_military_score_bonus_2_value = 20
-roman_imperial_military_score_bonus_3_value = 40
-roman_imperial_military_score_bonus_4_value = 80
+roman_autocratic_military_score_bonus_1_value = 10
+roman_autocratic_military_score_bonus_2_value = 20
+roman_autocratic_military_score_bonus_3_value = 40
+roman_autocratic_military_score_bonus_4_value = 80
 
-roman_imperial_ministry_score_bonus_1_value = 10
-roman_imperial_ministry_score_bonus_2_value = 20
-roman_imperial_ministry_score_bonus_3_value = 40
-roman_imperial_ministry_score_bonus_4_value = 80
+roman_autocratic_ministry_score_bonus_1_value = 10
+roman_autocratic_ministry_score_bonus_2_value = 20
+roman_autocratic_ministry_score_bonus_3_value = 40
+roman_autocratic_ministry_score_bonus_4_value = 80
 
 
 estate_roman_merit_rank_increase_bonus_1_value = 50
