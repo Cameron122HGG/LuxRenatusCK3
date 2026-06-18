@@ -1,4 +1,4 @@
-﻿e_byzantium = {
+﻿e_byzantium= {
 	4974.1.16 = {
 		holder = 12500
 		government = classical_administrative_government
@@ -1274,15 +1274,15 @@
 
 k_byzantium = {
 	5001.1.1 = { change_development_level = 24 }
-	5001.1.10 = {
-		holder = 12500
-	}
-	5014.1.1 = { 
-		holder = 12501 
-	}
-	5036.1.1 = { 
-		holder = 12502 
-	}
+	#5001.1.10 = {
+	#	holder = 12500
+	#}
+	#5014.1.1 = { 
+	#	holder = 12501 
+	#}
+	#5036.1.1 = { 
+	#	holder = 12502 
+	#}
 	
 	6066.9.15 = { #warlord startdate
 		holder = 71
@@ -1365,24 +1365,12 @@ d_philippopolis = {
 
 c_byzantion = {
 	5200.1.1 = {
-		liege = "e_byzantium"
+		liege = e_byzantium
 	}
 	6060.1.1 = {
 		liege = e_byzantium
 		holder = 1
-		government = classical_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_feudal_government
-					add_realm_law_skip_effects = single_heir_succession_law
-				}
-			}		
-		}		
+		
 	}
 	6066.9.15 = { #warlord startdate
 		liege = k_byzantium
@@ -2954,19 +2942,19 @@ k_pergamon = {
 	6066.1.1 = { change_development_level = 8 }
 	6178.1.1 = { change_development_level = 24 }
 	
-	4719.1.9= { holder=1710867 } #Dynast Philetaerus, founder of the Attalids
-	4738.1.10= { holder=1710868 } #Dynast Eumenes I
+	4719.1.1= { holder=1710867 } #Dynast Philetaerus, founder of the Attalids
+	4738.1.1= { holder=1710868 } #Dynast Eumenes I
 	#maybe make dynast tributary government to reflect the fact that they were independent but still nominally under the Seleucids
-	4760.1.11= { holder=1710869 } #Basileus Attalus I Soter
-	4804.1.11= { holder=1710870 } #Basileus Eumenes II
-	5001.1.13= { holder=1710871 }
-	5001.1.14= { holder=1710872 }
-	5001.1.15= { holder=1710873 }
-	5001.1.16= { holder=1710874 }
-	5001.1.17= { holder=1710875 }
-	5001.1.18= { holder=1710876 }
-	5001.1.19= { holder=1710877 }
-	5001.1.20= { holder=1710878 }
+	4760.1.1= { holder=1710869 } #Basileus Attalus I Soter
+	4804.1.1= { holder=1710870 } #Basileus Eumenes II
+	4842.1.1= { holder=1710871 }
+	4863.1.1= { holder=1710872 }
+	4881.1.1= { holder=1710873 }
+	4902.1.1= { holder=1710874 }
+	4904.1.1= { holder=1710875 }
+	4912.1.1= { holder=1710876 }
+	4964.1.1= { holder=1710877 }
+	4974.1.1= { holder=1710878 }
 	5044.1.1= { holder=1710879 }
 	5069.1.1= { holder=1710880 }
 	5112.1.1= { holder=1710881 }
@@ -3211,55 +3199,15 @@ k_krete = {
 }
 
 d_krete = {
-	4934.1.1 = {
-		holder = 1730195
-	}
-	4940.1.1 = {
-		holder = 1730196
-	}
-	4960.1.1 = {
-		holder = 1730197
-	}
-	4970.1.1 = {
-		holder = 1730198
-	}
-	5045.1.1 = {
-		holder = 1730200
-	}
-	5070.1.1 = {
-		holder = 1730201
-	}
-	5075.1.1 = {
-		holder = 1730202
-	}
-	5120.1.1 = {
-		holder = 1730203
-	}
-	5144.1.1 = {
-		holder = 1730204
-	}
-	5200.1.1 = {
-		holder = 1730206
-	}
-	5240.1.1 = {
-		holder = 1730207
-	}
-	5290.1.1 = {
-		holder = 1730208
-	}
-	5312.1.1 = {
-		holder = 1730209
-	}
-	5330.1.1 = {
-		holder = 1730210
-	}
-	5369.1.1 = {
-		holder = 0
-	}
 	6060.1.1 = {
 		liege = 0
-		government = classical_feudal_government
-		holder = 20 #446 held temporarily, but I think it makes more sense for the island to be under a local ruler rather than the Byzantines at the start of the game
+		government = classical_administrative_government
+		holder = 446 #446 held temporarily, but I think it makes more sense for the island to be under a local ruler rather than the Byzantines at the start of the game
+	}
+	6066.3.15 = {
+		liege = 0
+		holder = 20
+		government = diadochi_administrative_government
 	}
 }
 
