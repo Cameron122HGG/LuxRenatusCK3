@@ -1,4 +1,4 @@
-﻿e_byzantium = {
+﻿e_byzantium= {
 	4974.1.16 = {
 		holder = 12500
 		government = classical_administrative_government
@@ -1267,170 +1267,57 @@
 	6060.1.1 = {
 		holder = 1
 	}
+	6066.9.15 = {
+		holder = 0
+	}
 }
 
 k_byzantium = {
 	5001.1.1 = { change_development_level = 24 }
-	5001.1.10 = {
-		holder = 12500
-	}
-	5014.1.1 = { 
-		holder = 12501 
-	}
-	5036.1.1 = { 
-		holder = 12502 
-	}
-	5069.1.1 = { 
-		holder = 1712443 
-	}
-	5087.1.1 = { 
-		holder = 1712444 
-	}
-	5112.1.1 = { 
-		holder = 1712445 
-	}
-	5141.1.1 = { 
-		holder = 1712446 
-	}
-	5201.1.1 = { 
-		holder = 1712447 
-	}
-	5242.1.1 = { 
-		holder = 1712448 
-	}
-	5278.1.1 = { 
-		holder = 1712449 
-	}
-	5302.1.1 = { 
-		holder = 1712450 
-	}
-	5361.1.1 = { 
-		holder = 1712451 
-	}
-	5409.1.1 = { 
-		holder = 1712452 
-	}
-	5418.1.1 = { 
-		holder = 1712453 
-	}
-	5465.1.1 = { 
-		holder = 1712454 
-	}
-	5522.1.1 = { 
-		holder = 1712455 
-	}
-	5534.1.1 = { 
-		holder = 1712456 
-	}
-	5547.1.1 = { 
-		holder = 1712457 
-	}
-	5561.1.1 = { 
-		holder = 1712458 
-	}
-	5572.1.1 = { 
-		holder = 1712459 
-	}
-	5580.1.1 = { 
-		holder = 1712460 
-	}
-	5598.1.1 = { 
-		holder = 1712461 
-	}
-	5627.1.1 = { 
-		holder = 1712462 
-	}
-	5642.1.1 = { 
-		holder = 1712463 
-	}
-	5650.1.1 = { 
-		holder = 12532 
-	}
-	5681.1.1 = { 
-		holder = 12533 
-	}
-	5682.1.1 = { 
-		holder = 1712464 
-	}
-	5708.1.1 = { 
-		holder = 11518 
-	}
-	5735.1.1 = { 
-		holder = 1712467 
-	}
-	5780.1.1 = { 
-		holder = 1712468 
-	}
-	5786.1.1 = { 
-		holder = 1712469 
-	}
-	5830.1.1 = { 
-		holder = 1712470 
-	}
-	5876.1.1 = { 
-		holder = 1712471 
-	}
-	5881.1.1 = { 
-		holder = 1712472 
-	}
-	5923.1.1 = { 
-		holder = 1712473 
-	}
-	5937.1.1 = { 
-		holder = 1712474 
-	}
-	5958.1.1 = { 
-		holder = 1712475 
-	}
-	5994.1.1 = { 
-		holder = 1712476 
-	}
-	6008.1.1 = { 
-		holder = 1712477 
-	}
-	6015.1.1 = { 
-		holder = 1712478 
-	}
-	6022.1.1 = { 
-		holder = 1712479 
-	}
-	6033.1.1 = { 
-		holder = 1712480 
-	}
-	6060.1.1 = {
-		holder = 0 #holder = 71
-		#government = classical_administrative_government
-		#succession_laws = {
-		#	acclamation_succession_law
-		#}
-		#effect = {
-		#	if = {
-		#		limit = {
-		#			exists = holder
-		#			holder = { has_government = classical_feudal_government }
-		#		}
-		#		set_state_faith = faith:sol_imperial
-		#	}
-		#	if = {
-		#		limit = {
-		#			exists = holder
-		#			has_dlc_feature = royal_court
-		#		}
-		#		holder = {
-		#			set_court_type = court_warlike
-		#		}
-		#	}
-		#	if = {
-		#		limit = {
-		#			exists = holder
-		#			NOT = { has_dlc_feature = roads_to_power }
-		#		}
-		#		holder = {
-		#			change_government = classical_feudal_government
-		#			add_realm_law_skip_effects = single_heir_succession_law
-		#		}
-		#	}
-		#}
+	#5001.1.10 = {
+	#	holder = 12500
+	#}
+	#5014.1.1 = { 
+	#	holder = 12501 
+	#}
+	#5036.1.1 = { 
+	#	holder = 12502 
+	#}
+	
+	6066.9.15 = { #warlord startdate
+		holder = 71
+		government = classical_administrative_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					holder = { has_government = classical_administrative_government }
+				}
+				set_state_faith = faith:sol_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
 	}
 	#6061.1.1 = {
 		#tributary_of = {
@@ -1458,10 +1345,19 @@ d_thrace = {
 			}		
 		}		
 	}
+	6066.9.15 = {
+		liege = k_byzantium
+		holder = 71
+	}
 
 }
+
 d_philippopolis = {
 	6062.1.1 = {
+		holder = 71
+	}
+	6066.9.15 = {
+		liege = k_byzantium
 		holder = 71
 	}
 
@@ -1469,13 +1365,37 @@ d_philippopolis = {
 
 c_byzantion = {
 	5200.1.1 = {
-		liege = "e_byzantium"
+		liege = e_byzantium
 	}
 	6060.1.1 = {
 		liege = e_byzantium
 		holder = 1
+		
+	}
+	6066.9.15 = { #warlord startdate
+		liege = k_byzantium
+		holder = 71
 		government = classical_administrative_government
+		succession_laws = {
+			acclamation_succession_law
+		}
 		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_government = classical_administrative_government
+				}
+				set_state_faith = faith:sol_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
 			if = {
 				limit = {
 					exists = holder
@@ -1485,8 +1405,8 @@ c_byzantion = {
 					change_government = classical_feudal_government
 					add_realm_law_skip_effects = single_heir_succession_law
 				}
-			}		
-		}		
+			}
+		}
 	}
 }
 
@@ -1509,12 +1429,65 @@ c_kalliopolis = {
 			}		
 		}		
 	}
+	6066.9.15 = { #warlord startdate
+		liege = k_byzantium
+		holder = 71
+		government = classical_administrative_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					has_government = classical_administrative_government
+				}
+				set_state_faith = faith:sol_imperial
+			}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}
+		}
+	}
 }
 
 # C Brysis
 c_brysis = {
 	6060.1.1 = {
 		liege = e_byzantium
+		holder = 50
+		government = classical_administrative_government
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}		
+		}		
+	}
+	6066.9.15 = {
+		liege = k_byzantium
 		holder = 50
 		government = classical_administrative_government
 		effect = {
@@ -1537,6 +1510,23 @@ c_burgas = {
 	6060.1.1 = {
 		liege = e_byzantium
 		holder = 50
+		government = classical_administrative_government
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+					add_realm_law_skip_effects = single_heir_succession_law
+				}
+			}		
+		}		
+	}
+	6066.9.15 = {
+		liege = k_byzantium
+		holder = 71
 		government = classical_administrative_government
 		effect = {
 			if = {
@@ -1656,6 +1646,142 @@ d_opsikion = {
 			}
 		}
 	}
+	6066.9.15 = {
+		liege = 0
+		holder = 2
+		government = classical_administrative_government
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+				}
+			}
+		}
+	}
+}
+
+d_phrygia = {
+	5518.1.1 = { 
+	holder = 1712501 
+	}
+	5527.1.1 = { 
+		holder = 1712502 
+	}
+	5532.1.1 = { 
+		holder = 1712503 
+	}
+	5547.1.1 = { 
+		holder = 1712504 
+	}
+	5561.1.1 = { 
+		holder = 1712505 
+	}
+	5572.1.1 = { 
+		holder = 1712506 
+	}
+	5580.1.1 = { 
+		holder = 1712507 
+	}
+	5598.1.1 = { 
+		holder = 12529 
+	}
+	5609.1.1 = { 
+		holder = 1712508 
+	}
+	5627.1.1 = { 
+		holder = 1712509 
+	}
+	5642.1.1 = { 
+		holder = 1712510 
+	}
+	5650.1.1 = { 
+		holder = 1712511 
+	}
+	5704.1.1 = { 
+		holder = 12534 
+	}
+	5714.12.11 = { 
+		holder = 1712512 
+	}
+	5780.1.1 = { 
+		holder = 1712513 
+	}
+	5786.1.1 = { 
+		holder = 1712514 
+	}
+	5830.1.1 = { 
+		holder = 1712515 
+	}
+	5876.1.1 = { 
+		holder = 1712516 
+	}
+	5881.1.1 = { 
+		holder = 1712517 
+	}
+	5923.1.1 = { 
+		holder = 1712518 
+	}
+	5937.1.1 = { 
+		holder = 1712519 
+	}
+	5958.1.1 = { 
+		holder = 1712520 
+	}
+	5994.1.1 = { 
+		holder = 1712521 
+	}
+	6008.1.1 = { 
+		holder = 1712522 
+	}
+	6015.1.1 = { 
+		holder = 1712523 
+	}
+	6022.1.1 = { 
+		holder = 1712524 
+	}
+	6033.1.1 = { 
+		holder = 1712525 
+	}
+	6066.1.1 = {
+		liege = e_byzantium
+		holder = 2
+		government = classical_administrative_government
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+				}
+			}
+		}
+	}
+	6066.9.15 = {
+		liege = 0
+		holder = 2
+		government = classical_administrative_government
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+				}
+			}
+		}
+	}
 }
 
 # C Nikaea
@@ -1691,11 +1817,46 @@ c_phrygia = {
 
 # D Optimatoi
 d_optimatoi = {
-	6066.1.1 = {
+	6060.1.1 = {
 		liege = 0
 		holder = 1
 		government = classical_administrative_government
 		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+				}
+			}
+		}
+	}
+	6066.9.15 = { #warlord startdate
+		liege = k_byzantium
+		holder = 71
+		government = classical_administrative_government
+		succession_laws = {
+			acclamation_succession_law
+		}
+		effect = {
+			#if = {
+			#	limit = {
+			#		exists = holder
+			#		has_government = classical_administrative_government
+			#	}
+			#	set_state_faith = faith:sol_imperial
+			#}
+			if = {
+				limit = {
+					exists = holder
+					has_dlc_feature = royal_court
+				}
+				holder = {
+					set_court_type = court_warlike
+				}
+			}
 			if = {
 				limit = {
 					exists = holder
@@ -1723,7 +1884,7 @@ k_hellas = {
 	5001.1.1 = { change_development_level = 24 }
 
 	6066.1.1 = {
-		#holder = 7
+		holder = 7
 		#tributary_of = {
 		#	suzerain = e_byzantium
 		#	contract_group = tributary_byzantine
@@ -1753,11 +1914,14 @@ d_athens = {
 
 	6060.1.1 = {
 		holder = 7
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}		
 	}
+	#6066.9.15 = {
+	#	end_tributary = yes
+	#}
 }
 
 c_neopatras = {
@@ -1823,11 +1987,14 @@ c_lesbos = {
 		liege = 0
 		government = classical_feudal_government
 		holder = 448
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}		
 	}
+	#6066.9.15 = {
+	#	end_tributary = yes
+	#}
 }
 
 c_chios = {
@@ -1853,11 +2020,14 @@ c_chios = {
 		liege = 0
 		government = classical_feudal_government
 		holder = 447
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}		
 	}
+	#6066.9.15 = {
+	#	end_tributary = yes
+	#}
 }
 
 c_euboea = {
@@ -2117,6 +2287,10 @@ c_zherkovo = {
 			}
 		}
 	}
+	6066.9.15 = {
+		liege = k_byzantium
+		holder = 71
+	}
 }
 c_serres = {
 	
@@ -2130,6 +2304,10 @@ c_mosynopolis = {
 	6066.1.1 = {
 		holder = 71 #Poranti Venna
 		liege = k_julio_argedai_byz
+	}
+	6066.9.15 = {
+		holder = 71 #Poranti Venna
+		liege = k_byzantium
 	}
 }
 
@@ -2150,10 +2328,10 @@ d_thessalonika = {
 			}
 		}
 	}
-	tributary_of = {
-		suzerain = e_byzantium
-		contract_group = tributary_byzantine
-	}	
+	#tributary_of = {
+	#	suzerain = e_byzantium
+	#	contract_group = tributary_byzantine
+	#}	
 	
 }
 c_thessalonika = {
@@ -2203,11 +2381,14 @@ k_galatia = {
 		liege = 0
 		holder = 12
 		government = classical_feudal_government
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}		
 	}
+	#6066.9.15 = {
+		#end_tributary = yes
+	#}
 }
 
 # D Cappadocia
@@ -2673,11 +2854,14 @@ d_achaia = {
 		liege = k_titular_morea
 		government = feudal_government
 		holder = 8
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+			#suzerain = e_byzantium
+			#contract_group = tributary_byzantine
+		#}		
 	}
+	#6066.9.15 = {
+	#	end_tributary = yes
+	#}
 }
 
 
@@ -2758,19 +2942,19 @@ k_pergamon = {
 	6066.1.1 = { change_development_level = 8 }
 	6178.1.1 = { change_development_level = 24 }
 	
-	4719.1.9= { holder=1710867 } #Dynast Philetaerus, founder of the Attalids
-	4738.1.10= { holder=1710868 } #Dynast Eumenes I
+	4719.1.1= { holder=1710867 } #Dynast Philetaerus, founder of the Attalids
+	4738.1.1= { holder=1710868 } #Dynast Eumenes I
 	#maybe make dynast tributary government to reflect the fact that they were independent but still nominally under the Seleucids
-	4760.1.11= { holder=1710869 } #Basileus Attalus I Soter
-	4804.1.11= { holder=1710870 } #Basileus Eumenes II
-	5001.1.13= { holder=1710871 }
-	5001.1.14= { holder=1710872 }
-	5001.1.15= { holder=1710873 }
-	5001.1.16= { holder=1710874 }
-	5001.1.17= { holder=1710875 }
-	5001.1.18= { holder=1710876 }
-	5001.1.19= { holder=1710877 }
-	5001.1.20= { holder=1710878 }
+	4760.1.1= { holder=1710869 } #Basileus Attalus I Soter
+	4804.1.1= { holder=1710870 } #Basileus Eumenes II
+	4842.1.1= { holder=1710871 }
+	4863.1.1= { holder=1710872 }
+	4881.1.1= { holder=1710873 }
+	4902.1.1= { holder=1710874 }
+	4904.1.1= { holder=1710875 }
+	4912.1.1= { holder=1710876 }
+	4964.1.1= { holder=1710877 }
+	4974.1.1= { holder=1710878 }
 	5044.1.1= { holder=1710879 }
 	5069.1.1= { holder=1710880 }
 	5112.1.1= { holder=1710881 }
@@ -2812,11 +2996,14 @@ k_pergamon = {
 	6060.1.1 = {
 		liege = 0
 		holder = 68
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}		
 	}
+	#6066.9.15 = {
+	#	end_tributary = yes
+	#}
 }
 
 d_thracesia = {	
@@ -3012,55 +3199,15 @@ k_krete = {
 }
 
 d_krete = {
-	4934.1.1 = {
-		holder = 1730195
-	}
-	4940.1.1 = {
-		holder = 1730196
-	}
-	4960.1.1 = {
-		holder = 1730197
-	}
-	4970.1.1 = {
-		holder = 1730198
-	}
-	5045.1.1 = {
-		holder = 1730200
-	}
-	5070.1.1 = {
-		holder = 1730201
-	}
-	5075.1.1 = {
-		holder = 1730202
-	}
-	5120.1.1 = {
-		holder = 1730203
-	}
-	5144.1.1 = {
-		holder = 1730204
-	}
-	5200.1.1 = {
-		holder = 1730206
-	}
-	5240.1.1 = {
-		holder = 1730207
-	}
-	5290.1.1 = {
-		holder = 1730208
-	}
-	5312.1.1 = {
-		holder = 1730209
-	}
-	5330.1.1 = {
-		holder = 1730210
-	}
-	5369.1.1 = {
-		holder = 0
-	}
 	6060.1.1 = {
 		liege = 0
-		government = classical_feudal_government
-		holder = 20 #446 held temporarily, but I think it makes more sense for the island to be under a local ruler rather than the Byzantines at the start of the game
+		government = classical_administrative_government
+		holder = 446 #446 held temporarily, but I think it makes more sense for the island to be under a local ruler rather than the Byzantines at the start of the game
+	}
+	6066.3.15 = {
+		liege = 0
+		holder = 20
+		government = diadochi_administrative_government
 	}
 }
 
@@ -3074,10 +3221,13 @@ k_anatolia = {
 		holder = 11
 		government = despotic_feudal_government #despotism
 		change_development_level = 10
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}
+		#6066.9.15 = {
+		#	end_tributary = yes
+		#}
 	}
 	
 	6178.1.1 = {
@@ -3105,11 +3255,14 @@ d_cilicia = {
 	6060.1.1 = {
 		liege = 0
 		holder = 24
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}		
 	}
+	#6066.9.15 = {
+	#	end_tributary = yes
+	#}
 }
 
 # C Cilicia
@@ -3146,11 +3299,14 @@ d_mesopotamia = {
 		liege = 0
 		holder = 16
 		government = classical_feudal_government
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}		
 	}
+	#6066.9.15 = {
+	#	end_tributary = yes
+	#}
 }
 
 # C Melitene
@@ -3188,10 +3344,23 @@ d_edessa = {
 	6060.1.1 = {
 		liege = 0
 		holder = 952
-		tributary_of = {
-			suzerain = e_byzantium
-			contract_group = tributary_byzantine
-		}		
+		#tributary_of = {
+		#	suzerain = e_byzantium
+		#	contract_group = tributary_byzantine
+		#}		
+	}
+	6066.9.15 = {
+		liege = 0
+		holder = 952
+	#	tributary_of = {
+	#		suzerain = k_syria
+	#		contract_group = tributary_byzantine
+	#	}		
+	}
+	6067.9.15 = {
+		effect = {
+			destroy_landless_title_no_dlc_effect = { DATE = 6066.9.15 }
+		}
 	}
 }
 
