@@ -18,10 +18,18 @@ e_antipatrid_empire = {
 }
 
 e_ptolemaic_empire = {
-	color = { 243 209 23 }
+	color = { 16 52 166 }
 	capital = c_alexandria
 
 	definite_form = yes
+		ai_primary_priority = {
+			if = {
+				limit = {
+					culture = culture:hellenistic
+				}
+				add = @always_primary_score
+			}
+		}
 }
 
 e_seleukid_empire = {
