@@ -307,12 +307,18 @@ LR_restore_eastern_hegemony_decision = {
 	decision_group_type = roman
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		is_ruler = yes
+		is_playable_character = yes
 		has_title = title:e_byzantium
+		is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:eastern_roman_diocese_restored
+			}
+		
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
-				target = flag:LR_restore_eastern_hegemony_decision
+				target = flag:retake_eastern_provinces_decision
 			}
 		}
 	}
