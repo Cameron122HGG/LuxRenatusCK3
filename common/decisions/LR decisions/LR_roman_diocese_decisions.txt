@@ -603,245 +603,9 @@ restore_eastern_administration_decision = {
     }
 }
 
-# Restore the Roman Administrative System of Gaul
-restore_diocese_gallia_viennensis_decision = {
-    picture = {
-        reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
-    }
-    ai_check_interval = 120
 
-    sort_order = 50
+# Eastern Roman Diocese Decisions
 
-    desc = restore_diocese_gallia_viennensis_decision_desc
-    selection_tooltip = restore_diocese_gallia_viennensis_decision_tooltip
-    
-    decision_group_type = roman
-
-    is_shown = {
-        has_ep3_dlc_trigger = yes
-        is_ruler = yes
-        is_playable_character = yes
-        OR = {
-            is_roman_emperor_excluding_byzantium_trigger = yes
-        }
-        NOT = { #Can only do it once.
-            is_target_in_global_variable_list = {
-                name = unavailable_unique_decisions
-                target = flag:diocese_viennensis_restored_decision
-            }
-        }
-        is_target_in_global_variable_list = { #Only available after restoring the old diocese.
-            name = unavailable_unique_decisions
-            target = flag:western_roman_diocese_restored
-        }
-    }
-
-    is_valid = {    
-        #government_has_flag = government_is_administrative
-        completely_controls_region = custom_roman_viennensis
-        completely_controls_region = custom_roman_gallia
-
-        custom_tooltip = {
-            text = viennensis_kingdoms_held_or_vassals_tt
-            trigger_if = {
-                limit = {
-                    exists = title:k_burgundy.holder
-                }
-                title:k_burgundy.holder = { liege = root }
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_aquitaine.holder
-                }
-                title:k_aquitaine.holder = { liege = root }
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_france.holder
-                }
-                title:k_france.holder = { liege = root }
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_brittany.holder
-                }
-                title:k_brittany.holder = { liege = root }
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_lotharingia.holder
-                }
-                title:k_lotharingia.holder = { liege = root }
-            }
-        }
-    }
-
-    effect = {
-        custom_tooltip = restore_diocese_gallia_effect_tooltip
-        custom_tooltip = restore_diocese_viennensis_effect_tooltip
-		
-		##adding to number of provinces restored
-		change_global_variable = {
-			name = num_of_provinces_restored_wre
-			add = 1
-		}	
-		
-        hidden_effect = {
-            add_to_global_variable_list = {
-                name = unavailable_unique_decisions
-                target = flag:diocese_viennensis_restored_decision
-            }
-        }
-        trigger_event = LR_major_decisions.0008
-    }   
-
-    cost = {
-        prestige = {
-            value = 1000        
-        }
-    }
-
-    is_valid_showing_failures_only = {
-        is_at_war = no
-        NOT = { exists = involved_activity }
-        is_imprisoned = no
-        has_contagious_deadly_disease_trigger = no
-    }
-
-    ai_potential = {
-        OR = {
-            has_title = title:e_spqr
-			has_title = title:e_gallic_empire
-			has_title = title:h_western_roman_empire
-            has_title = title:h_roman_empire
-        }
-        
-        is_at_war = no
-        NOT = { exists = involved_activity }
-        is_imprisoned = no
-        has_contagious_deadly_disease_trigger = no
-    }
-
-    ai_will_do = {
-        base = 100
-    }
-}
-# Restore the Roman Dioceses of Africa and Mauretania
-restore_diocese_africa_mauretania_decision = {
-    picture = {
-        reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
-    }
-    ai_check_interval = 120
-
-    sort_order = 50
-
-    desc = restore_diocese_africa_mauretania_decision_desc
-    selection_tooltip = restore_diocese_africa_mauretania_decision_tooltip
-    
-    decision_group_type = roman
-
-    is_shown = {
-        has_ep3_dlc_trigger = yes
-        is_ruler = yes
-        is_playable_character = yes
-        OR = {
-            is_roman_emperor_excluding_byzantium_trigger = yes
-            has_title = title:e_spqr
-			has_title = title:e_gallic_empire
-			has_title = title:h_western_roman_empire
-			has_title = title:h_roman_empire
-        }
-        NOT = { #Can only do it once.
-            is_target_in_global_variable_list = {
-                name = unavailable_unique_decisions
-                target = flag:diocese_africa_mauretania_restored_decision
-            }
-        }
-        is_target_in_global_variable_list = { #Only available after restoring the old diocese.
-            name = unavailable_unique_decisions
-            target = flag:western_roman_diocese_restored
-        }
-    }
-
-    is_valid = {    
-        #government_has_flag = government_is_administrative
-        completely_controls_region = custom_roman_africa
-        completely_controls_region = custom_roman_mauretania
-        custom_tooltip = {
-            text = africa_kingdoms_held_or_vassals_tt
-            trigger_if = {
-                limit = {
-                    exists = title:k_africa.holder
-                }
-                title:k_africa.holder = { liege = root }
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_tahert.holder
-                }
-                title:k_tahert.holder = { liege = root }
-            }
-			trigger_if = {
-				limit = {
-					exists = title:k_kartaga.holder
-				}
-				title:k_kartaga.holder = { liege = root }
-			}
-        }
-    }
-
-    effect = {
-        custom_tooltip = restore_diocese_africa_effect_tooltip
-        custom_tooltip = restore_diocese_mauretania_effect_tooltip
-		
-		##adding to number of provinces restored
-		change_global_variable = {
-			name = num_of_provinces_restored_wre
-			add = 1
-		}		
-		
-        hidden_effect = {
-            add_to_global_variable_list = {
-                name = unavailable_unique_decisions
-                target = flag:diocese_africa_mauretania_restored_decision
-            }
-        }
-        trigger_event = LR_major_decisions.0011
-    }   
-
-    cost = {
-        prestige = {
-            value = 1000        
-        }
-    }
-
-    is_valid_showing_failures_only = {
-        is_at_war = no
-        NOT = { exists = involved_activity }
-        is_imprisoned = no
-        has_contagious_deadly_disease_trigger = no
-    }
-
-    ai_potential = {
-        OR = {
-            has_title = title:e_spqr
-			has_title = title:e_gallic_empire
-            has_title = title:h_western_roman_empire
-			has_title = title:h_eastern_roman_empire
-			has_title = title:h_roman_empire
-        }
-        
-        is_at_war = no
-        NOT = { exists = involved_activity }
-        is_imprisoned = no
-        has_contagious_deadly_disease_trigger = no
-    }
-
-    ai_will_do = {
-        base = 100
-    }
-}
-# Restore the Roman Diocese of Aegyptus
 restore_diocese_aegyptus_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -1044,6 +808,7 @@ restore_diocese_syria_decision = {
     }
 }
 # Restore the Roman of Diocese of Hispania
+
 restore_diocese_hispania_decision = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
@@ -1306,3 +1071,241 @@ restore_diocese_britannia_decision = {
     }
 }
 
+# Restore the Roman Administrative System of Gaul
+restore_diocese_gallia_viennensis_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
+    }
+    ai_check_interval = 120
+
+    sort_order = 50
+
+    desc = restore_diocese_gallia_viennensis_decision_desc
+    selection_tooltip = restore_diocese_gallia_viennensis_decision_tooltip
+    
+    decision_group_type = roman
+
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        is_ruler = yes
+        is_playable_character = yes
+        OR = {
+            is_roman_emperor_excluding_byzantium_trigger = yes
+        }
+        NOT = { #Can only do it once.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:diocese_viennensis_restored_decision
+            }
+        }
+        is_target_in_global_variable_list = { #Only available after restoring the old diocese.
+            name = unavailable_unique_decisions
+            target = flag:western_roman_diocese_restored
+        }
+    }
+
+    is_valid = {    
+        #government_has_flag = government_is_administrative
+        completely_controls_region = custom_roman_viennensis
+        completely_controls_region = custom_roman_gallia
+
+        custom_tooltip = {
+            text = viennensis_kingdoms_held_or_vassals_tt
+            trigger_if = {
+                limit = {
+                    exists = title:k_burgundy.holder
+                }
+                title:k_burgundy.holder = { liege = root }
+            }
+            trigger_if = {
+                limit = {
+                    exists = title:k_aquitaine.holder
+                }
+                title:k_aquitaine.holder = { liege = root }
+            }
+            trigger_if = {
+                limit = {
+                    exists = title:k_france.holder
+                }
+                title:k_france.holder = { liege = root }
+            }
+            trigger_if = {
+                limit = {
+                    exists = title:k_brittany.holder
+                }
+                title:k_brittany.holder = { liege = root }
+            }
+            trigger_if = {
+                limit = {
+                    exists = title:k_lotharingia.holder
+                }
+                title:k_lotharingia.holder = { liege = root }
+            }
+        }
+    }
+
+    effect = {
+        custom_tooltip = restore_diocese_gallia_effect_tooltip
+        custom_tooltip = restore_diocese_viennensis_effect_tooltip
+		
+		##adding to number of provinces restored
+		change_global_variable = {
+			name = num_of_provinces_restored_wre
+			add = 1
+		}	
+		
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:diocese_viennensis_restored_decision
+            }
+        }
+        trigger_event = LR_major_decisions.0008
+    }   
+
+    cost = {
+        prestige = {
+            value = 1000        
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        is_at_war = no
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+        has_contagious_deadly_disease_trigger = no
+    }
+
+    ai_potential = {
+        OR = {
+            has_title = title:e_spqr
+			has_title = title:e_gallic_empire
+			has_title = title:h_western_roman_empire
+            has_title = title:h_roman_empire
+        }
+        
+        is_at_war = no
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+        has_contagious_deadly_disease_trigger = no
+    }
+
+    ai_will_do = {
+        base = 100
+    }
+}
+# Restore the Roman Dioceses of Africa and Mauretania
+restore_diocese_africa_mauretania_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
+    }
+    ai_check_interval = 120
+
+    sort_order = 50
+
+    desc = restore_diocese_africa_mauretania_decision_desc
+    selection_tooltip = restore_diocese_africa_mauretania_decision_tooltip
+    
+    decision_group_type = roman
+
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        is_ruler = yes
+        is_playable_character = yes
+        OR = {
+            is_roman_emperor_excluding_byzantium_trigger = yes
+            has_title = title:e_spqr
+			has_title = title:e_gallic_empire
+			has_title = title:h_western_roman_empire
+			has_title = title:h_roman_empire
+        }
+        NOT = { #Can only do it once.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:diocese_africa_mauretania_restored_decision
+            }
+        }
+        is_target_in_global_variable_list = { #Only available after restoring the old diocese.
+            name = unavailable_unique_decisions
+            target = flag:western_roman_diocese_restored
+        }
+    }
+
+    is_valid = {    
+        #government_has_flag = government_is_administrative
+        completely_controls_region = custom_roman_africa
+        completely_controls_region = custom_roman_mauretania
+        custom_tooltip = {
+            text = africa_kingdoms_held_or_vassals_tt
+            trigger_if = {
+                limit = {
+                    exists = title:k_africa.holder
+                }
+                title:k_africa.holder = { liege = root }
+            }
+            trigger_if = {
+                limit = {
+                    exists = title:k_tahert.holder
+                }
+                title:k_tahert.holder = { liege = root }
+            }
+			trigger_if = {
+				limit = {
+					exists = title:k_kartaga.holder
+				}
+				title:k_kartaga.holder = { liege = root }
+			}
+        }
+    }
+
+    effect = {
+        custom_tooltip = restore_diocese_africa_effect_tooltip
+        custom_tooltip = restore_diocese_mauretania_effect_tooltip
+		
+		##adding to number of provinces restored
+		change_global_variable = {
+			name = num_of_provinces_restored_wre
+			add = 1
+		}		
+		
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:diocese_africa_mauretania_restored_decision
+            }
+        }
+        trigger_event = LR_major_decisions.0011
+    }   
+
+    cost = {
+        prestige = {
+            value = 1000        
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        is_at_war = no
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+        has_contagious_deadly_disease_trigger = no
+    }
+
+    ai_potential = {
+        OR = {
+            has_title = title:e_spqr
+			has_title = title:e_gallic_empire
+            has_title = title:h_western_roman_empire
+			has_title = title:h_eastern_roman_empire
+			has_title = title:h_roman_empire
+        }
+        
+        is_at_war = no
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+        has_contagious_deadly_disease_trigger = no
+    }
+
+    ai_will_do = {
+        base = 100
+    }
+}

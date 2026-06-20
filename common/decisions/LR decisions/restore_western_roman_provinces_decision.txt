@@ -1,0 +1,1507 @@
+﻿restore_western_roman_provinces_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_roman_officers.dds"
+	}
+	decision_group_type = roman
+
+	desc = restore_western_roman_provinces_decision_desc
+	selection_tooltip = restore_western_roman_provinces_decision_tooltip
+
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		OR = {
+			has_primary_title = title:e_spqr
+			has_primary_title = title:h_western_roman_empire
+			has_primary_title = title:h_roman_empire
+		}
+		OR = {
+			culture = { has_cultural_pillar = heritage_latin }
+			culture = { has_cultural_pillar = heritage_byzantine }
+		}
+		OR = {
+			OR = {
+				title:k_diocese_pannonia = {
+					is_titular = yes
+				}
+				title:k_diocese_pannonia = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_italia_suburbicaria = {
+					is_titular = yes
+				}
+				title:k_diocese_italia_suburbicaria = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_italia_annonaria = {
+					is_titular = yes
+				}
+				title:k_diocese_italia_annonaria = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_hispania = {
+					is_titular = yes
+				}
+				title:k_diocese_hispania = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_viennensis = {
+					is_titular = yes
+				}
+				title:k_diocese_viennensis = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_galliarum = {
+					is_titular = yes
+				}
+				title:k_diocese_galliarum = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_britannia = {
+					is_titular = yes
+				}
+				title:k_diocese_britannia = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_africa = {
+					is_titular = yes
+				}
+				title:k_diocese_africa = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_syria = {
+					is_titular = yes
+				}
+				title:k_diocese_syria = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+			OR = {
+				title:k_diocese_aegyptus = {
+					is_titular = yes
+				}
+				title:k_diocese_aegyptus = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+		}
+	}
+
+	cost = {
+		treasury = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = yes
+                }
+                add = 500
+            }
+        }
+		gold = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = no
+                }
+                add = 500
+           }
+        }
+		prestige = 500
+	}
+
+	is_valid = {
+		OR = {
+			has_title = title:e_spqr
+			has_title = title:h_western_roman_empire
+			has_title = title:h_roman_empire
+		}
+		OR = {
+			culture = { has_cultural_pillar = heritage_latin }
+			culture = { has_cultural_pillar = heritage_byzantine }
+		}
+		OR = {
+			religion = religion:christianity_religion
+			religion = religion:hellenism_religion
+			religion = religion:roman_religion
+			religion = religion:solar_religion
+			religion = religion:mithras_religion
+		#	is_greek_or_roman = yes 
+		}
+		prestige_level >= medium_prestige_level
+		custom_description = {
+			text = restore_western_roman_provinces_decision_trigger_1
+			subject = root
+			OR = {
+				AND = {
+					completely_controls_region = illyricum_pannoniae_diocese_region
+					OR = {
+						title:k_diocese_pannonia = {
+							is_titular = yes
+						}
+						title:k_diocese_pannonia = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = italia_suburbicariae_diocese_region
+					OR = {
+						title:k_diocese_italia_suburbicaria = {
+							is_titular = yes
+						}
+						title:k_diocese_italia_suburbicaria = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = italia_annonariae_diocese_region
+					OR = {
+						title:k_diocese_italia_annonaria = {
+							is_titular = yes
+						}
+						title:k_diocese_italia_annonaria = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = hispania_diocese_region
+					OR = {
+						title:k_diocese_hispania = {
+							is_titular = yes
+						}
+						title:k_diocese_hispania = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = septem_provinciae_diocese_region
+					OR = {
+						title:k_diocese_viennensis = {
+							is_titular = yes
+						}
+						title:k_diocese_viennensis = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = gallia_diocese_region
+					OR = {
+						title:k_diocese_galliarum = {
+							is_titular = yes
+						}
+						title:k_diocese_galliarum = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = britannia_diocese_region
+					OR = {
+						title:k_diocese_britannia = {
+							is_titular = yes
+						}
+						title:k_diocese_britannia = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = africae_diocese_region
+					OR = {
+						title:k_diocese_africa = {
+							is_titular = yes
+						}
+						title:k_diocese_africa = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = orientis_diocese_region
+					OR = {
+						title:k_diocese_syria = {
+							is_titular = yes
+						}
+						title:k_diocese_syria = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = aegyptus_diocese_region
+					OR = {
+						title:k_diocese_aegyptus = {
+							is_titular = yes
+						}
+						title:k_diocese_aegyptus = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	widget = {
+		gui = "decision_view_widget_recover_fallen_dioceses"
+		controller = decision_option_list_controller
+    	
+		decision_has_second_step = yes
+		decision_custom_widget_container = "custom_widgets_container_step_two"
+		decision_to_second_step_button = "CHOOSE_DIOCESE_BUTTON" 
+
+		item = {
+			value = illyricum_pannoniae_diocese
+			current_description = {
+				desc = illyricum_pannoniae_diocese_desc
+			}
+			localization  = {
+				desc = illyricum_pannoniae_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/illyricum.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_pannonia = {
+						is_titular = yes
+					}
+					title:k_diocese_pannonia = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+			
+			is_valid = {
+				completely_controls_region = illyricum_pannoniae_diocese_region
+			}
+	
+			ai_chance = {
+				value = 0
+			}
+		}
+
+		item = {
+			value = italia_suburbicariae_diocese
+			current_description = {
+				desc = italia_suburbicariae_diocese_desc
+			}
+			localization  = {
+				desc = italia_suburbicariae_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/italia_suburbicariae.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_italia_suburbicaria = {
+						is_titular = yes
+					}
+					title:k_diocese_italia_suburbicaria = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = italia_suburbicariae_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+
+		item = {
+			value = italia_annonariae_diocese
+			current_description = {
+				desc = italia_annonariae_diocese_desc
+			}
+			localization  = {
+				desc = italia_annonariae_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/italia_annonariae.dds"
+
+			is_shown = {
+				OR = {
+					title:k_diocese_italia_annonaria = {
+						is_titular = yes
+					}
+					title:k_diocese_italia_annonaria = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = italia_annonariae_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+
+		item = {
+			value = hispania_diocese
+			current_description = {
+				desc = hispania_diocese_desc
+			}
+			localization  = {
+				desc = hispania_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/hispania.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_hispania = {
+						is_titular = yes
+					}
+					title:k_diocese_hispania = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = hispania_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+
+		item = {
+			value = septem_provinciae_diocese
+			current_description = {
+				desc = septem_provinciae_diocese_desc
+			}
+			localization  = {
+				desc = septem_provinciae_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/septem_provinciae.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_viennensis = {
+						is_titular = yes
+					}
+					title:k_diocese_viennensis = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+			
+			is_valid = {
+				completely_controls_region = septem_provinciae_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+
+		item = {
+			value = gallia_diocese
+			current_description = {
+				desc = gallia_diocese_desc
+			}
+			localization  = {
+				desc = gallia_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/gallia.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_galliarum = {
+						is_titular = yes
+					}
+					title:k_diocese_galliarum = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = gallia_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+		
+		item = {
+			value = britannia_diocese
+			current_description = {
+				desc = britannia_diocese_desc
+			}
+			localization  = {
+				desc = britannia_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/britannia.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_britannia = {
+						is_titular = yes
+					}
+					title:k_diocese_britannia = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = britannia_diocese_region
+				custom_tooltip = { 
+					text = gallia_first_restore_tt
+					OR = { # must first restore diocese of gallia
+						any_vassal = {
+							has_title = title:k_diocese_galliarum
+						}
+						has_title = title:k_diocese_galliarum
+					}
+				}
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+
+
+		item = {
+			value = africae_diocese
+			current_description = {
+				desc = africae_diocese_desc
+			}
+			localization  = {
+				desc = africae_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/africae.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_africa = {
+						is_titular = yes
+					}
+					title:k_diocese_africa = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = africae_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+		item = {
+			value = orientis_diocese
+			current_description = {
+				desc = orientis_diocese_desc
+			}
+			localization  = {
+				desc = orientis_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/oriens.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_syria = {
+						is_titular = yes
+					}
+					title:k_diocese_syria = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = orientis_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+		item = {
+			value = aegyptus_diocese
+			current_description = {
+				desc = aegyptus_diocese_desc
+			}
+			localization  = {
+				desc = aegyptus_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/aegyptus.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_aegyptus = {
+						is_titular = yes
+					}
+					title:k_diocese_aegyptus = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = aegyptus_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = restore_western_roman_provinces_decision_tooltip_1
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:italia_suburbicariae_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_italia_suburbicaria = {
+					save_scope_as = title_k_diocese_italia_suburbicaria
+				}
+				title:k_diocese_italia_suburbicaria = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_italia_suburbicariae_dioceses_effect = yes
+				#trigger_event = {
+				#	id = tfe_roman_event.0009
+				#}
+			}
+		}
+	
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:illyricum_pannoniae_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_pannonia = {
+					save_scope_as = title_k_diocese_pannonia
+				}
+				title:k_diocese_pannonia = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_pannonia_dioceses_effect = yes
+				#trigger_event = {
+					#id = tfe_roman_event.0008
+				#}
+			}
+		}
+	
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:italia_annonariae_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_italia_annonaria = {
+					save_scope_as = title_k_diocese_italia_annonaria
+				}
+				title:k_diocese_italia_annonaria = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_italia_annonariae_dioceses_effect = yes
+				#trigger_event = {
+					#id = tfe_roman_event.00010
+				#}
+			}
+		}
+	
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:hispania_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_hispania = {
+					save_scope_as = title_k_diocese_hispania
+				}
+				title:k_diocese_hispania = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_hispania_dioceses_dioceses_effect = yes
+				#trigger_event = {
+					#id = tfe_roman_event.0004
+				#}
+			}
+		}
+	
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:septem_provinciae_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_viennensis = {
+					save_scope_as = title_k_diocese_viennensis
+				}
+				title:k_diocese_viennensis = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_septem_provinciae_dioceses_effect = yes
+				#trigger_event = {
+					#id = tfe_roman_event.0002
+				#}
+			}
+		}
+	
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:gallia_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_galliarum = {
+					save_scope_as = title_k_diocese_galliarum
+				}
+				title:k_diocese_galliarum = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_gallia_dioceses_effect = yes
+				#trigger_event = {
+				#	id = tfe_roman_event.0003
+				#}
+			}
+		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:britannia_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_britannia = {
+					save_scope_as = title_k_diocese_britannia
+				}
+				title:k_diocese_britannia = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_britannia_dioceses_effect = yes
+				#trigger_event = {
+				#	id = tfe_roman_event.0001
+				#}
+			}
+		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:africae_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_africa = {
+					save_scope_as = title_k_diocese_africa
+				}
+				title:k_diocese_africa = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_africae_dioceses_effect = yes
+				#trigger_event = {
+				#	id = tfe_roman_event.0007
+				#}
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:orientis_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_syria = {
+					save_scope_as = title_k_diocese_syria
+				}
+				title:k_diocese_syria = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_orientis_dioceses_effect = yes
+				#trigger_event = {
+				#	id = tfe_roman_event.0005
+				#}
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:aegyptus_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_aegyptus = {
+					save_scope_as = title_k_diocese_aegyptus
+				}
+				title:k_diocese_aegyptus = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				restore_aegyptus_dioceses_effect = yes
+				#trigger_event = {
+					#id = tfe_roman_event.0006
+				#}
+			}
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+restore_eastern_roman_provinces_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_roman_proclamation.dds"
+	}
+	decision_group_type = roman
+
+	desc = restore_eastern_roman_provinces_decision_desc
+	selection_tooltip = restore_eastern_roman_provinces_decision_tooltip
+
+	is_shown = {
+		is_ruler = yes
+		is_landed = yes
+		#has_primary_title = title:e_byzantium
+		OR = {
+			culture = { has_cultural_pillar = heritage_latin }
+			culture = { has_cultural_pillar = heritage_byzantine }
+		}
+		OR = {
+			has_title = title:e_byzantium
+			has_title = title:h_eastern_roman_empire
+			has_title = title:h_roman_empire
+		}
+	}
+
+	cost = {
+		gold = 100
+		prestige = 100
+	}
+
+	is_valid = {
+		OR = {
+			has_title = title:e_byzantium
+			has_title = title:h_eastern_roman_empire
+			has_title = title:h_roman_empire
+		}
+		OR = {
+			culture = { has_cultural_pillar = heritage_latin }
+			culture = { has_cultural_pillar = heritage_byzantine }
+		}
+		OR = {
+			religion = religion:christianity_religion
+			religion = religion:hellenism_religion
+			religion = religion:roman_religion
+			religion = religion:solar_religion
+			religion = religion:mithras_religion
+		#	is_greek_or_roman = yes 
+		}
+		prestige_level >= medium_prestige_level
+		custom_description = {
+			text = restore_eastern_roman_provinces_decision_trigger_1
+			subject = root
+			OR = {
+				AND = {
+					completely_controls_region = thessalonika_diocese_region
+					OR = {
+						title:k_diocese_thracia = {
+							is_titular = yes
+						}
+						title:k_diocese_thracia = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = custom_roman_moesia
+					OR = {
+						title:k_diocese_moesia = {
+							is_titular = yes
+						}
+						title:k_diocese_moesia = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = daciae_diocese_region
+					OR = {
+						title:k_diocese_dardania = {
+							is_titular = yes
+						}
+						title:k_diocese_dardania = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = nikaea_diocese_region
+					OR = {
+						title:k_diocese_pontus = {
+							is_titular = yes
+						}
+						title:k_diocese_pontus = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					completely_controls_region = asiae_diocese_region
+					OR = {
+						title:k_diocese_asia = {
+							is_titular = yes
+						}
+						title:k_diocese_asia = {
+							NOT = {
+								any_in_de_jure_hierarchy = {
+									is_titular = no
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	widget = {
+		gui = "decision_view_widget_recover_fallen_dioceses"
+		controller = decision_option_list_controller
+    	
+		decision_has_second_step = yes
+		decision_custom_widget_container = "custom_widgets_container_step_two"
+		decision_to_second_step_button = "CHOOSE_DIOCESE_BUTTON" 
+		item = {
+			value = thessalonika_diocese
+			current_description = {
+				desc = thessalonika_diocese_desc
+			}
+			localization  = {
+				desc = thessalonika_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/thrace.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_thracia = {
+						is_titular = yes
+					}
+					title:k_diocese_thracia = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = thessalonika_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+		item = {
+			value = macedon_diocese
+			current_description = {
+				desc = macedon_diocese_desc
+			}
+			localization  = {
+				desc = macedon_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/macedon.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_moesia = {
+						is_titular = yes
+					}
+					title:k_diocese_moesia = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = custom_roman_moesia
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+		item = {
+			value = daciae_diocese
+			current_description = {
+				desc = daciae_diocese_desc
+			}
+			localization  = {
+				desc = daciae_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/dacia.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_dardania = {
+						is_titular = yes
+					}
+					title:k_diocese_dardania = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = daciae_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+		item = {
+			value = nikaea_diocese
+			current_description = {
+				desc = nikaea_diocese_desc
+			}
+			localization  = {
+				desc = nikaea_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/bendu.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_pontus = {
+						is_titular = yes
+					}
+					title:k_diocese_pontus = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = nikaea_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+		item = {
+			value = asiae_diocese
+			current_description = {
+				desc = asiae_diocese_desc
+			}
+			localization  = {
+				desc = asiae_diocese_desc
+			}
+			icon = "gfx/interface/icons/diocese_restoration/yaxiya.dds"
+			is_shown = {
+				OR = {
+					title:k_diocese_asia = {
+						is_titular = yes
+					}
+					title:k_diocese_asia = {
+						NOT = {
+							any_in_de_jure_hierarchy = {
+								is_titular = no
+							}
+						}
+					}
+				}
+			}
+
+			is_valid = {
+				completely_controls_region = asiae_diocese_region
+			}
+
+			ai_chance = {
+				value = 0
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = restore_eastern_roman_provinces_decision_tooltip_1
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:thessalonika_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_thracia = {
+					save_scope_as = title_k_diocese_thracia
+				}
+				title:k_diocese_thracia = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				reestablish_thessalonika_dioceses_effect = yes
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:macedon_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_moesia = {
+					save_scope_as = title_k_diocese_moesia
+				}
+				title:k_diocese_moesia = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				reestablish_macedon_dioceses_effect = yes
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:daciae_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_dardania = {
+					save_scope_as = title_k_diocese_dardania
+				}
+				title:k_diocese_dardania = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				reestablish_daciae_dioceses_effect = yes
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:nikaea_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_pontus = {
+					save_scope_as = title_k_diocese_pontus
+				}
+				title:k_diocese_pontus = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				reestablish_nikaea_dioceses_effect = yes
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:asiae_diocese = yes
+				}
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				title:k_diocese_asia = {
+					save_scope_as = title_k_diocese_asia
+				}
+				title:k_diocese_asia = {
+					set_de_jure_liege_title = root.primary_title
+					change_title_holder = {
+						holder = root
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+				reestablish_asiae_dioceses_effect = yes
+			}
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
+#放弃高加索
+relinquish_caucasus_region_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
+	}
+	desc = relinquish_caucasus_region_decision_desc
+	selection_tooltip = relinquish_caucasus_region_decision_tooltip
+	decision_group_type = roman
+
+	ai_check_interval = 0
+
+	is_shown = {
+		is_ruler = yes
+		is_playable_character = yes
+		exists = title:e_persia.holder
+		OR = {
+			has_title = title:h_roman_empire
+			has_title = title:h_western_roman_empire
+			has_title = title:e_byzantium
+		}
+		NOT = {
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_relinquish_caucasus_region_decision
+            }
+        }
+	}
+
+	is_valid = {
+		prestige_level >= 4
+		piety_level >= 3
+		OR = {
+			has_title = title:h_roman_empire
+			has_title = title:h_western_roman_empire
+			has_title = title:e_byzantium
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_landed = yes
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	effect = {
+		custom_description_no_bullet = { text = relinquish_caucasus_region_tt }
+		custom_tooltip = relinquish_caucasus_region_will_happen_tt
+        show_as_tooltip = {
+            stress_impact = {
+			base = medium_stress_impact_gain
+			}
+			add_legitimacy = monumental_legitimacy_loss
+			custom_tooltip = relinquish_caucasus_region_vassals_tt
+			custom_tooltip = relinquish_caucasus_region_gain_tt
+			add_short_term_gold = major_gold_value
+			title:e_persia.holder  = {
+				add_opinion = {
+				target = root
+				modifier = friendliness_opinion
+				opinion = 50
+				}
+				pay_short_term_gold = {
+					target = root 
+					gold = major_gold_value
+				}
+				add_legitimacy = medium_legitimacy_gain
+			}
+        }
+		#trigger_event = {
+			#id = br_augustus_of_wr.030
+		#}
+	}
+	
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}

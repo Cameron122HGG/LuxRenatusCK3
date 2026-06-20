@@ -1074,7 +1074,7 @@ restore_eastern_roman_provinces_system_effect = {
 	#Sort the diocese
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_diocese_dacia = {
+		title:k_diocese_dardania = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_thracia = {
@@ -1097,7 +1097,7 @@ restore_eastern_roman_provinces_system_effect = {
 	}
 	else_if = {
 		limit = { exists = title:e_byzantium.holder }
-		title:k_diocese_dacia = {
+		title:k_diocese_dardania = {
 			set_de_jure_liege_title = title:e_byzantium
 		}
 		title:k_diocese_thracia = {
@@ -1118,7 +1118,7 @@ restore_eastern_roman_provinces_system_effect = {
 	}
 	else_if = {
 		limit = { exists = title:h_eastern_roman_empire.holder }
-		title:k_diocese_dacia = {
+		title:k_diocese_dardania = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_thracia = {
@@ -1169,9 +1169,9 @@ restore_eastern_roman_provinces_system_effect = {
 		every_in_list = {
 			list = custom_roman_dardania_list
 			limit = {
-				NOT = { de_jure_liege = title:k_diocese_dacia }
+				NOT = { de_jure_liege = title:k_diocese_dardania }
 			}
-			set_de_jure_liege_title = title:k_diocese_dacia
+			set_de_jure_liege_title = title:k_diocese_dardania
 		}	
 
 		# diocese of Macedonia
@@ -1239,7 +1239,7 @@ restore_eastern_roman_provinces_system_effect = {
 		}	
 
 		# Fix. Bulgaria. For. Reasons
-		title:d_naissus = { set_de_jure_liege_title = title:k_diocese_dacia }
+		title:d_naissus = { set_de_jure_liege_title = title:k_diocese_dardania }
 	}
 	
 	# Destroy useless kingdoms
@@ -2031,9 +2031,9 @@ create_wre_roman_empire_scripted_effect = {
 		every_in_list = {
 			list = custom_roman_dardania_list
 			limit = {
-				NOT = { de_jure_liege = title:k_diocese_dacia }
+				NOT = { de_jure_liege = title:k_diocese_dardania }
 			}
-			set_de_jure_liege_title = title:k_diocese_dacia
+			set_de_jure_liege_title = title:k_diocese_dardania
 		}	
 
 		# diocese of Macedonia
@@ -2050,7 +2050,7 @@ create_wre_roman_empire_scripted_effect = {
 		}	
 
 		title:k_diocese_thracia = { set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia }
-		title:k_diocese_dacia = { set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia }
+		title:k_diocese_dardania = { set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia }
 		title:k_diocese_moesia = { set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia }
 
 		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
