@@ -124,74 +124,6 @@ restore_western_administration_decision = {
 
     is_valid = {
 		completely_controls_region = custom_western_imperial_core
-        
-        custom_tooltip = {
-            text = western_diocese_kingdoms_held_or_vassals_tt
-            trigger_if = {
-                limit = {
-                    exists = title:k_lombardy.holder
-                }
-				OR = {
-					title:k_lombardy.holder = root
-					title:k_lombardy.holder = { liege = root }
-				}
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_venice.holder
-                }
-				OR = {
-					title:k_venice.holder = root
-					title:k_venice.holder = { liege = root }
-				}
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_rome.holder
-                }
-				OR = {
-					title:k_rome.holder = root
-					title:k_rome.holder = { liege = root }
-				}
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_sardinia.holder
-                }
-				OR = {
-					title:k_sardinia.holder = root
-					title:k_sardinia.holder = { liege = root }
-				}
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_sicily.holder
-                }
-				OR = {
-					title:k_sicily.holder = root
-					title:k_sicily.holder = { liege = root }
-				}
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_siracusa.holder
-                }
-				OR = {
-					title:k_siracusa.holder = root
-					title:k_siracusa.holder = { liege = root }
-				}
-            }
-            trigger_if = {
-                limit = {
-                    exists = title:k_genoa.holder
-                }
-				OR = {
-					title:k_genoa.holder = root
-					title:k_genoa.holder = { liege = root }
-				}
-            }
-        }
-
     }			
 
     effect = {
@@ -615,6 +547,10 @@ restore_western_roman_provinces_decision = {
 	is_shown = {
 		is_ruler = yes
 		is_landed = yes
+		is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:western_roman_diocese_restored
+			}
 		OR = {
 			has_primary_title = title:e_spqr
 			has_primary_title = title:h_western_roman_empire
