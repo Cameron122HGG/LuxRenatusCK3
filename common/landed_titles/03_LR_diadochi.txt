@@ -25,14 +25,16 @@ e_ptolemaic_empire = {
 	ignore_titularity_for_title_weighting = yes
 
 	definite_form = yes
-		ai_primary_priority = {
-			if = {
-				limit = {
-					culture = culture:hellenistic
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = {
+					has_cultural_pillar = heritage_hellenistic_greek
 				}
-				add = @always_primary_score
 			}
+			add = @correct_culture_primary_score
 		}
+	}
 }
 
 e_seleukid_empire = {
@@ -81,11 +83,27 @@ k_antipatrid_kingdom = {
 }
 
 k_ptolemaic_kingdom = {
-	color = { 243 209 23 }
+	color = { 47 86 215 }
 	capital = c_alexandria
-	ignore_titularity_for_title_weighting = yes
-
+	cultural_names = {
+		name_list_greek = lx_ptolemaic_basileia
+		name_list_hellenistic = lx_ptolemaic_basileia
+	}
 	definite_form = yes
+	ignore_titularity_for_title_weighting = yes
+	ai_primary_priority = {
+		if = {
+			limit = {
+				culture = {
+					has_cultural_pillar = heritage_hellenistic_greek
+				}
+			}
+			add = @correct_culture_primary_score
+		}
+	}
+
+
+	
 }
 
 k_seleukid_kingdom = {
