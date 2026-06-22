@@ -6,6 +6,7 @@
 e_antigonid_empire = {
 	color = { 255 140 48 }
 	capital = c_galatia
+	ignore_titularity_for_title_weighting = yes
 
 	definite_form = yes
 }
@@ -13,6 +14,7 @@ e_antigonid_empire = {
 e_antipatrid_empire = {
 	color = { 23 53 53 }
 	capital = c_thessalonika
+	ignore_titularity_for_title_weighting = yes
 
 	definite_form = yes
 }
@@ -20,6 +22,7 @@ e_antipatrid_empire = {
 e_ptolemaic_empire = {
 	color = { 16 52 166 }
 	capital = c_alexandria
+	ignore_titularity_for_title_weighting = yes
 
 	definite_form = yes
 		ai_primary_priority = {
@@ -35,6 +38,7 @@ e_ptolemaic_empire = {
 e_seleukid_empire = {
 	color = { 206 203 203 }
 	capital = c_antiocheia
+	ignore_titularity_for_title_weighting = yes
 
 	definite_form = yes
 }
@@ -61,6 +65,8 @@ h_alexander_empire = {
 k_antigonid_kingdom = {
 	color = { 199 110 48 }
 	capital = c_galatia
+	ignore_titularity_for_title_weighting = yes
+
 
 	definite_form = yes
 }
@@ -68,6 +74,8 @@ k_antigonid_kingdom = {
 k_antipatrid_kingdom = {
 	color = { 23 53 53 }
 	capital = c_thessalonika
+	ignore_titularity_for_title_weighting = yes
+
 
 	definite_form = yes
 }
@@ -75,6 +83,7 @@ k_antipatrid_kingdom = {
 k_ptolemaic_kingdom = {
 	color = { 243 209 23 }
 	capital = c_alexandria
+	ignore_titularity_for_title_weighting = yes
 
 	definite_form = yes
 }
@@ -82,6 +91,7 @@ k_ptolemaic_kingdom = {
 k_seleukid_kingdom = {
 	color = { 206 203 203 }
 	capital = c_antiocheia
+	ignore_titularity_for_title_weighting = yes
 
 	definite_form = yes
 }
@@ -121,10 +131,19 @@ e_argead_throne = {
 		if = {
 			limit = {
 				culture = {
-					has_cultural_pillar = heritage_central_germanic
+					has_cultural_pillar = heritage_hellenistic_greek
 				}
 			}
 			add = @correct_culture_primary_score
 		}
 	}
+}
+
+#SATRAP TITLES
+e_satrapy_egypt = {
+	color = { 217 239 11 }
+	capital = c_alexandria
+	ignore_titularity_for_title_weighting = yes
+
+	definite_form = yes
 }
