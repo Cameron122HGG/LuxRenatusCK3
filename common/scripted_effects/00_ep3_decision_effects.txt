@@ -339,41 +339,9 @@ apply_historic_administrative_game_rule_effect = {
 		}
 	}
 	# Maghreb.
-	if = {
-		limit = {
-			NOT = { has_game_rule = historicity_extra_admin_maghreb_gameplay_not_administrative }
-			exists = title:k_maghreb
-		}
-		if = {
-			limit = {
-				game_start_date >= 6066.1.1
-				has_game_rule = historicity_extra_admin_maghreb_historic_post_1066
-			}
-			title:k_maghreb.holder ?= { convert_to_administrative_from_feudalism_game_start_effect = yes }
-		}
-		else_if = {
-			limit = { has_game_rule = historicity_extra_admin_maghreb_alt_historic_always }
-			title:k_maghreb.holder ?= { convert_to_administrative_from_feudalism_game_start_effect = yes }
-		}
-	}
+
 	# Tamilakam/the Cholas.
-	if = {
-		limit = {
-			NOT = { has_game_rule = historicity_extra_admin_tamilakam_gameplay_not_administrative }
-			exists = title:k_tamilakam
-		}
-		if = {
-			limit = {
-				game_start_date = 6066.1.1
-				has_game_rule = historicity_extra_admin_tamilakam_historic_1066
-			}
-			title:k_tamilakam.holder ?= { convert_to_administrative_from_feudalism_game_start_effect = yes }
-		}
-		else_if = {
-			limit = { has_game_rule = historicity_extra_admin_tamilakam_alt_historic_always }
-			title:k_tamilakam.holder ?= { convert_to_administrative_from_feudalism_game_start_effect = yes }
-		}
-	}
+
 	# The Carolingians.
 	if = {
 		limit = {
