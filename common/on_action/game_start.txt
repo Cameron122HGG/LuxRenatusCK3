@@ -4,6 +4,7 @@ on_game_start = {
 	on_actions = {
 		LR_initial_effect
 		LR_assign_blank_syncretism
+		lux_bloodline_initialize_on_start
 	}
 
 	events = {
@@ -2730,7 +2731,7 @@ on_game_start = {
 				}
 			}
 		}
-
+		
 		# TGP: extra legitimacy for the Hegemon, so you don't fold over immediately
 		#Lux Renata TBA
 		# if = {
@@ -8281,3 +8282,11 @@ on_game_start_after_lobby = {
 #			}
 #		}
 
+lux_bloodline_initialize_on_start = {
+    effect = {
+        # This fires the global variable registration that the GUI needs
+        # Use the same character scope as wherever you assign your traits
+        extra_historical_character_initialize_effect = yes
+        extra_historical_family_initialize_effect = yes
+    }
+}
