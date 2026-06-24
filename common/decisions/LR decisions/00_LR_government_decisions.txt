@@ -116,9 +116,9 @@
 			limit = {
 				liege != this
 				OR = {
-					liege = { government_has_flag = government_is_clan }
+					liege = { has_government = clan_government }
 					AND = {
-						liege = { government_has_flag = government_is_clan }
+						liege = { has_government = clan_government }
 						religion = religion:islam_religion
 					}
 				}
@@ -172,7 +172,7 @@
 			}
 			else_if = {
 				limit = {
-					government_has_flag = government_is_clan
+					has_government = clan_government
 				}
 				every_vassal_or_below = {
 					limit = { government_has_flag = government_is_high_tribal }
@@ -236,8 +236,8 @@ convert_classical_feudal_decision = {
 
 	is_shown = {
 		OR = {
-			government_has_flag = government_is_feudal 
-			government_has_flag = government_is_clan
+			has_government = feudal_government 
+			has_government = clan_government
 			AND = {
 				is_independent_ruler = no
 				has_government = despotic_feudal_government
@@ -303,8 +303,8 @@ convert_classical_feudal_decision = {
 			every_vassal_or_below = {
 				limit = { 
 					OR = {
-						government_has_flag = government_is_feudal 
-						government_has_flag = government_is_clan
+						has_government = feudal_government 
+						has_government = clan_government
 					}
 				}
 				change_government = classical_feudal_government
@@ -359,8 +359,8 @@ convert_despotic_decision = {
 
 	is_shown = {
 		OR = {
-			government_has_flag = government_is_feudal 
-			government_has_flag = government_is_clan
+			has_government = feudal_government 
+			has_government = clan_government
 			AND = {
 				is_independent_ruler = no
 				has_government = despotic_feudal_government
@@ -430,8 +430,8 @@ convert_despotic_decision = {
 			every_vassal_or_below = {
 				limit = { 
 					OR = {
-						government_has_flag = government_is_feudal 
-						government_has_flag = government_is_clan
+						has_government = feudal_government 
+						has_government = clan_government
 					}
 				}
 				change_government = despotic_feudal_government
@@ -682,7 +682,7 @@ adopt_gaul_gov_decision = {
 			has_government = gaul_administrative_government	
 		}
 		OR = {
-			government_has_flag = government_is_feudal
+			has_government = feudal_government
 			government_has_flag = government_is_administrative
 		}		
 	}
@@ -719,7 +719,7 @@ adopt_gaul_gov_decision = {
 			every_vassal_or_below = {
 				limit = {
 					OR = {
-						government_has_flag = government_is_feudal
+						has_government = feudal_government
 						government_has_flag = government_is_administrative
 					}
 				}
