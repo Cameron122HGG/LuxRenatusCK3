@@ -1,4 +1,4 @@
-﻿LR_situationS = {
+﻿LR_eastern_anarchy = {
 	
 	is_unique = yes # It can only exist once in the world
 
@@ -11,17 +11,17 @@
 	# Regions
 	##################################################
 	sub_regions = {
-		steppe_west = {
+		byzantine_thunderdome = {
 			icon = "gfx/interface/icons/situations/debug_situation/steppe_west.dds"
-			geographical_regions = { world_steppe_west }
+			geographical_regions = { custom_eastern_imperial_core }
 		}
-		steppe_central = {
+		byzantine_border = {
 			icon = "gfx/interface/icons/situations/debug_situation/steppe_central.dds"
-			geographical_regions = { world_steppe_central }
+			geographical_regions = { custom_roman_aegyptus custom_roman_palestina }
 		}
-		steppe_east = {
+		roman_italy = {
 			icon = "gfx/interface/icons/situations/debug_situation/steppe_east.dds"
-			geographical_regions = { world_steppe_east }
+			geographical_regions = { custom_western_imperial_core }
 		}
 	}
 	
@@ -35,11 +35,11 @@
 	# Groups
 	##################################################
 	participant_groups = {
-		nomad_rulers = {
+		byzantine_rulers = {
 			icon = "gfx/interface/icons/situations/debug_situation/group_nomad.dds"
 
 			is_character_valid = {
-				has_government = nomad_government
+				has_government = classical_administrative_government
 				highest_held_title_tier >= tier_duchy
 			}
 
@@ -50,7 +50,7 @@
 				trigger_event = debug_situation.0004
 			}
 
-			map_color = hsv{ 0.37 1.00 0.78 }
+			map_color = hsv { 301.43 0.88 0.19 }
 		}
 
 		debug_other_rulers = {
@@ -66,7 +66,7 @@
 			map_color = hsv{ 0.8 0.75 0.83 }
 		}
 
-		out_of_realm = {
+		latin_interlopers = {
 			icon = "gfx/interface/icons/situations/debug_situation/group_out_of_realm.dds"
 
 			on_join = {
@@ -80,18 +80,18 @@
 					is_manual_participant = root
 				}
 			}
-			require_realm_in_sub_region = no
-			map_color = hsv{ 0.37 0.50 0.9 }
+			require_realm_in_sub_region = yes
+			map_color = hsv { 0.00 0.93 0.57 }
 		}
 	}
 	
 	##################################################
 	# Phases
 	##################################################
-	start_phase = eastern_anarchy_peace
+	start_phase = situation_phase_eastern_anarchy_peace
 
 	phases = {
-		eastern_anarchy_peace = {
+		situation_phase_eastern_anarchy_peace = {
 			icon = "gfx/interface/icons/situations/debug_situation/plentiful_harvest.dds"
 
 			on_start = {
@@ -114,15 +114,15 @@
 			max_duration_next_phase = weighted_random_points
 
 			future_phases = {
-				eastern_anarchy_tension = {
+				situation_phase_eastern_anarchy_tension = {
 					takeover_type = duration
 					takeover_duration = { days = 20 }
 				}
-				eastern_anarchy_war = {
+				situation_phase_eastern_anarchy_war = {
 					takeover_type = duration
 					takeover_duration = { days = 20 }
 				}
-				eastern_anarchy_test = {
+				situation_phase_eastern_anarchy_test = {
 					takeover_type = points
 					takeover_points = 1000
 
@@ -144,7 +144,7 @@
 						}
 					}
 
-					nomad_rulers = {
+					byzantine_rulers = {
 						character_modifier = {
 							tax_mult = 0.1
 						}
@@ -170,7 +170,7 @@
 				debug_situation_effect_set_2 = {
 					icon = "gfx/interface/icons/situations/debug_situation/test_effects_2.dds"
 
-					nomad_rulers = {
+					byzantine_rulers = {
 						character_modifier = {
 							stewardship = -2
 						}
@@ -184,7 +184,7 @@
 			}
 		}
 
-		eastern_anarchy_tension = {
+		situation_phase_eastern_anarchy_tension = {
 			icon = "gfx/interface/icons/situations/debug_situation/severe_drought.dds"
 
 			max_duration = { days = 80 }
@@ -207,9 +207,9 @@
 			max_duration_next_phase = weighted_random_points
 
 			future_phases = {
-				eastern_anarchy_peace = {
+				situation_phase_eastern_anarchy_peace = {
 				}
-				eastern_anarchy_war = {
+				situation_phase_eastern_anarchy_war = {
 				}
 			}
 
@@ -217,7 +217,7 @@
 				debug_situation_effect_set_1 = {
 					icon = "gfx/interface/icons/situations/debug_situation/test_effects.dds"
 
-					nomad_rulers = {
+					byzantine_rulers = {
 						character_modifier = {
 							tax_mult = -0.2
 						}
@@ -253,7 +253,7 @@
 				debug_situation_effect_set_2 = {
 					icon = "gfx/interface/icons/situations/debug_situation/test_effects_2.dds"
 
-					nomad_rulers = {
+					byzantine_rulers = {
 						character_modifier = {
 							stewardship = 2
 						}
@@ -267,7 +267,7 @@
 			}
 		}
 
-		eastern_anarchy_war = {
+		situation_phase_eastern_anarchy_war = {
 			icon = "gfx/interface/icons/situations/debug_situation/flood.dds"
 
 			max_duration = { days = 30 }
@@ -290,9 +290,9 @@
 			max_duration_next_phase = weighted_random_points
 
 			future_phases = {
-				eastern_anarchy_tension = {
+				situation_phase_eastern_anarchy_tension = {
 				}
-				eastern_anarchy_peace = {
+				situation_phase_eastern_anarchy_peace = {
 				}
 			}
 
@@ -300,7 +300,7 @@
 				debug_situation_effect_set_1 = {
 					icon = "gfx/interface/icons/situations/debug_situation/test_effects.dds"
 
-					nomad_rulers = {
+					byzantine_rulers = {
 						character_modifier = {
 							tax_mult = 0.1
 						}
@@ -342,7 +342,7 @@
 				debug_situation_effect_set_2 = {
 					icon = "gfx/interface/icons/situations/debug_situation/test_effects_2.dds"
 
-					nomad_rulers = {
+					byzantine_rulers = {
 						character_modifier = {
 							stewardship = 1
 						}
@@ -357,18 +357,18 @@
 		}
 
 
-		eastern_anarchy_test = {
+		situation_phase_eastern_anarchy_test = {
 			icon = "gfx/interface/icons/situations/debug_situation/test_with_catalysts.dds"
 
 			max_duration = { days = 30 }
 			max_duration_next_phase = weighted_random_points
 
 			future_phases = {
-				eastern_anarchy_peace = {
+				situation_phase_eastern_anarchy_peace = {
 					takeover_type = points
 					takeover_points = 10
 				}
-				eastern_anarchy_war = {
+				situation_phase_eastern_anarchy_war = {
 					takeover_type = points
 					takeover_points = 10
 				}
