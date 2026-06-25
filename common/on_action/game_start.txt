@@ -2664,7 +2664,37 @@ on_game_start = {
 			}
 		}
 
-
+	eastern_roman_cultures_name_rule = {
+	effect = {
+		if = {
+			limit = {
+				has_game_rule = eastern_roman
+			}
+			culture:greek = {
+				set_culture_name = {
+					noun = eastern_roman_name
+					collective_noun = eastern_roman_collective
+					prefix = eastern_roman_prefix
+				}
+			}
+		}
+	}
+	western_roman_cultures_name_rule = {
+	effect = {
+		if = {
+			limit = {
+				has_game_rule = romae
+			}
+			culture:roman = {
+				set_culture_name = {
+					noun = western_roman_name
+					collective_noun = western_roman_collective
+					prefix = western_roman_prefix
+				}
+			}
+		}
+	}
+}
 		# Remove Coronation Doctrine if you don't have the DLC
 		if = {
 			limit = {
