@@ -11,22 +11,23 @@
  doctrine_parameter_can_use_zoroastrian_artefacts: "Can use Zoroastrian [artifacts|E] at full benefit"
  
  ###Left Empty on purpose, as to not clutter the tooltips
- doctrine_parameter_hostility_override_LR_doctrine_ascendant_pure: ""
- doctrine_parameter_hostility_override_LR_doctrine_graeco_roman_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_christian_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_islamic_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_persian_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_jewish_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_dualist_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_sinitic_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_eastern_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_steppe_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_norse_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_slavic_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_celtic_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_folk_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_archaic_ascendant: ""
- doctrine_parameter_hostility_override_LR_doctrine_subsaharan_ascendant: ""
+ ##lower case 'lr' is needed for hostility override desc, since the game reads capital 'LR', as lower case for localisation
+ doctrine_parameter_hostility_override_lr_doctrine_ascendant_pure: ""
+ doctrine_parameter_hostility_override_lr_doctrine_graeco_roman_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_christian_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_islamic_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_persian_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_jewish_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_dualist_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_sinitic_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_eastern_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_steppe_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_norse_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_slavic_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_celtic_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_folk_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_archaic_ascendant: ""
+ doctrine_parameter_hostility_override_lr_doctrine_subsaharan_ascendant: ""
 
  doctrine_parameter_hostility_override_tenet_unreformed_syncretism: ""
  doctrine_parameter_hostility_override_tenet_christian_syncretism: ""
@@ -44,6 +45,9 @@
  ##
  
  doctrine_parameter_hostility_override_is_eastern_faith: "Considers Eastern [faiths|E], and is considered by them, to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_special_doctrine_is_christian_faith: "Considers Christian [faiths|E], and is considered by them, to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_special_doctrine_is_islamic_faith: "Considers Islamic [faiths|E], and is considered by them, to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
+ doctrine_parameter_hostility_override_special_doctrine_is_jewish_faith: "Considers Jewish [faiths|E], and is considered by them, to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
  
  doctrine_parameter_hostility_override_is_zoroastrian_faith: "Considers Zoroastrian [faiths|E], and is considered by them, to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
  doctrine_parameter_hostility_override_pagan_special_hostility_doctrine: "Considers Folk [faiths|E], and is considered by them, to be [GetHostilityLevelName( TOKEN_PARAMETER.GetIntValue )|V]"
@@ -107,12 +111,15 @@
  LR_doctrine_clerical_soul_desc:0 "This faith places a strong emphasis on the role of the clergy and religious leaders in guiding the community."  
  
  ##New Faith Doctrines
- special_doctrine_is_zoroastrian_faith_name:0 "Wisdom of Zoroaster"
- special_doctrine_is_zoroastrian_faith_desc:0 ""
- special_doctrine_is_anti_zoroastrian_faith_name:0 "Cult of Darkness"
- special_doctrine_is_anti_zoroastrian_faith_desc:0 "" 
- is_zoroastrian_faith_name:0 "$special_doctrine_is_zoroastrian_faith_name$"
- is_zoroastrian_faith_desc:0 ""
+ special_doctrine_is_zoroastrian_faith_group_name:0 "Wisdom of Zoroaster"
+ special_doctrine_is_zoroastrian_faith_group_desc:0 ""
+ special_doctrine_is_zoroastrian_faith_name:0 "$special_doctrine_is_zoroastrian_faith_group_name$" 
+ special_doctrine_is_zoroastrian_faith_desc:0 "" 
+ 
+ special_doctrine_is_anti_zoroastrian_faith_group_name:0 "Cult of Darkness"
+ special_doctrine_is_anti_zoroastrian_faith_group_desc:0 ""
+ special_doctrine_is_anti_zoroastrian_faith_name:0 "$special_doctrine_is_anti_zoroastrian_faith_group_name$" 
+ special_doctrine_is_anti_zoroastrian_faith_desc:0 ""  
  
  pagan_special_hostility_doctrine_group_name:0 "Folk Faith"
  pagan_special_hostility_doctrine_group_desc:0 ""
@@ -144,6 +151,5 @@
 
  ##Misc
  needs_one_syncretic_doctrine_trigger:0 "A Syncretic Aspect needs to be picked first" 
- 
 
  
