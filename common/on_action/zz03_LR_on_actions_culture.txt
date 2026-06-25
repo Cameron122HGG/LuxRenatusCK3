@@ -1,0 +1,40 @@
+﻿on_game_start_after_lobby = {
+	on_actions = {
+		romans_check_gamerule_eastern_roman
+		romans_check_gamerule_western_roman
+	}
+}
+
+romans_check_gamerule_eastern_roman = {
+	effect = {
+		if = {
+			limit = {
+				has_game_rule = eastern_roman
+			}
+			culture:greek = {
+				set_culture_name = {
+					noun = eastern_roman_name
+					collective_noun = eastern_roman_collective
+					prefix = eastern_roman_prefix
+				}
+			}
+		}
+	}
+}
+
+romans_check_gamerule_western_roman = {
+	effect = {
+		if = {
+			limit = {
+				has_game_rule = western_roman
+			}
+			culture:greek = {
+				set_culture_name = {
+					noun = western_roman_name
+					collective_noun = western_roman_collective
+					prefix = western_roman_prefix
+				}
+			}
+		}
+	}
+}
