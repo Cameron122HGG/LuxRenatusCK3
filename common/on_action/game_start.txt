@@ -4,7 +4,6 @@ on_game_start = {
 	on_actions = {
 		LR_initial_effect
 		LR_assign_blank_syncretism
-		lux_bloodline_initialize_on_start
 	}
 
 	events = {
@@ -17,6 +16,185 @@ on_game_start = {
 		#Lux Renata TBA
 		#easteregg_event.0001				# Charna and Jakub duel.
 	}
+	##Eastern Roman Empire name game rule
+		title:e_byzantium = {
+			if = {
+				limit = {
+					has_game_rule = eastern_rome_name_of_byzantium
+				}
+				set_title_name = e_eastern_roman_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = eastern_rome_name_latin_of_byzantium
+				}
+				set_title_name = e_eastern_roman_empire_latin
+			}
+			else_if = {
+				limit = {
+					has_game_rule = roman_empire_name_of_byzantium
+				}
+				set_title_name = h_roman_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = romania_name_of_byzantium
+				}
+				set_title_name = e_romania_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = empire_of_the_greeks_name_of_byzantium
+				}
+				set_title_name = e_empire_of_the_greeks
+			}
+			else_if = {
+				limit = {
+					has_game_rule = rhomaion_name_of_byzantium
+				}
+				set_title_name = e_rhomaion
+			}
+			else_if = {
+				limit = {
+					has_game_rule = unholy_roman_empire_name_of_byzantium
+				}
+				set_title_name = e_unholy_roman_empire
+			}
+		}
+		title:h_eastern_roman_empire = {
+			if = {
+				limit = {
+					has_game_rule = eastern_rome_name_of_byzantium
+				}
+				set_title_name = h_eastern_roman_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = eastern_rome_name_latin_of_byzantium
+				}
+				set_title_name = h_eastern_roman_empire_latin
+			}
+			else_if = {
+				limit = {
+					has_game_rule = roman_empire_name_of_byzantium
+				}
+				set_title_name = h_roman_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = romania_name_of_byzantium
+				}
+				set_title_name = h_romania_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = empire_of_the_greeks_name_of_byzantium
+				}
+				set_title_name = h_empire_of_the_greeks
+			}
+			else_if = {
+				limit = {
+					has_game_rule = rhomaion_name_of_byzantium
+				}
+				set_title_name = h_rhomaion
+			}
+			else_if = {
+				limit = {
+					has_game_rule = unholy_roman_empire_name_of_byzantium
+				}
+				set_title_name = h_unholy_roman_empire
+			}
+		}
+	#Western Roman Empire name game rule
+				title:e_spqr = {
+			if = {
+				limit = {
+					has_game_rule = western_rome_name_of_spqr
+				}
+				set_title_name = e_spqr
+			}
+			else_if = {
+				limit = {
+					has_game_rule = western_rome_name_latin_of_spqr
+				}
+				set_title_name = e_spqr_latin
+			}
+			else_if = {
+				limit = {
+					has_game_rule = roman_empire_name_of_spqr
+				}
+				set_title_name = h_roman_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = romania_name_of_spqr
+				}
+				set_title_name = e_romania_spqr
+			}
+			else_if = {
+				limit = {
+					has_game_rule = empire_of_the_romans_name_of_spqr
+				}
+				set_title_name = e_empire_of_the_romans
+			}
+			else_if = {
+				limit = {
+					has_game_rule = res_publica_romana_name_of_spqr
+				}
+				set_title_name = e_res_publica_romana
+			}
+			else_if = {
+				limit = {
+					has_game_rule = unholy_roman_empire_name_of_spqr
+				}
+				set_title_name = e_unholy_roman_empire
+			}
+		}
+		title:h_western_roman_empire = {
+			if = {
+				limit = {
+					has_game_rule = western_rome_name_of_spqr
+				}
+				set_title_name = h_western_roman_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = western_rome_name_latin_of_spqr
+				}
+				set_title_name = h_western_roman_empire_latin
+			}
+			else_if = {
+				limit = {
+					has_game_rule = roman_empire_name_of_spqr
+				}
+				set_title_name = h_roman_empire
+			}
+			else_if = {
+				limit = {
+					has_game_rule = romania_name_of_spqr
+				}
+				set_title_name = h_romania_spqr
+			}
+			else_if = {
+				limit = {
+					has_game_rule = empire_of_the_romans_name_of_spqr
+				}
+				set_title_name = h_empire_of_the_romans
+			}
+			else_if = {
+				limit = {
+					has_game_rule = res_publica_romana_name_of_spqr
+				}
+				set_title_name = h_res_publica_romana
+			}
+			else_if = {
+				limit = {
+					has_game_rule = unholy_roman_empire_name_of_spqr
+				}
+				set_title_name = h_unholy_roman_empire_spqr
+			}
+		}
+
 
 	effect = {
 		set_global_variable = { name = is_game_start_date days = 1 }
@@ -2731,7 +2909,7 @@ on_game_start = {
 				}
 			}
 		}
-		
+
 		# TGP: extra legitimacy for the Hegemon, so you don't fold over immediately
 		#Lux Renata TBA
 		# if = {
@@ -8282,11 +8460,3 @@ on_game_start_after_lobby = {
 #			}
 #		}
 
-lux_bloodline_initialize_on_start = {
-    effect = {
-        # This fires the global variable registration that the GUI needs
-        # Use the same character scope as wherever you assign your traits
-        extra_historical_character_initialize_effect = yes
-        extra_historical_family_initialize_effect = yes
-    }
-}
