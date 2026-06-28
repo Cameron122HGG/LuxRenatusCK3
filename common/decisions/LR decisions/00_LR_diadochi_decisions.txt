@@ -189,6 +189,102 @@ LR_diadochi_ptolemaic_kingdom_decision = {
         base = 1000000
     }
 }
+LR_diadochi_antigonid_kingdom_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
+    }
+    desc = LR_diadochi_antigonid_kingdom_desc
+    selection_tooltip = LR_diadochi_antigonid_kingdom_tooltip
+	confirm_text = LR_diadochi_antigonid_kingdom_confirm
+    decision_group_type = hellenic
+    ai_check_interval = 120
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+		NOT = { exists = title:k_antigonid_kingdom.holder }
+		NOT = { has_primary_title = title:e_byzantium }
+		NOT = { has_primary_title = title:e_antipatrid_empire }
+		NOT = { has_primary_title = title:e_seleukid_empire }
+		NOT = { dynasty = dynasty:dynasty_hellenic_ptolemaios }
+		NOT = { dynasty = dynasty:dynasty_hellenic_antipater }
+		NOT = { dynasty = dynasty:dynasty_hellenic_seleukid }
+		OR = {
+			dynasty = dynasty:dynasty_hellenic_antigonid
+			has_trait = trait:bloodline_antigonos
+		}
+        NOT = {
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_lux_antigonos_reborn
+            }
+        }		
+    }
+
+    is_valid = {
+        is_landed = yes
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+		is_at_war = no
+		culture = culture:hellenistic
+		OR = {
+		   NOT = { has_title = title:e_byzantium }
+		   NOT = { exists = title:e_byzantium.holder }
+		}
+		OR = {
+		dynasty = dynasty:dynasty_hellenic_antigonid
+		}
+		OR = {
+			faith = { religion_tag = solar_religion }
+			faith = { religion_tag = anatolian_religion }
+			faith = { religion_tag = hellenism_religion }
+		}
+		prestige_level >= 3
+
+		completely_controls = title:k_anatolia
+		completely_controls = title:k_galatia
+		completely_controls = title:k_krete
+		custom_tooltip = {
+			text = primary_title_is_kingdom_tooltip
+			primary_title.tier = tier_kingdom
+		}		
+	}
+    
+
+    cost = {
+		gold = 1000
+    }
+
+    effect = {
+		custom_tooltip = LR_diadochi_antigonid_kingdom_effect_tooltip
+
+		hidden_effect = {
+		    change_government = diadochi_administrative_government
+		}
+
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_lux_antigonos_reborn
+			}
+			set_global_variable = {
+				name = flag_lux_antigonos_reborn
+				value = root
+			}
+			create_antigonid_kingdom_scripted_effect = yes
+		}
+		root = { save_scope_as = scoped_ruler }
+		trigger_event = LR_diadochi_kingdoms_events.0005
+    }
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 1000000
+    }
+}
 
 LR_create_alexander_hegemony_decision = {
 	picture = {

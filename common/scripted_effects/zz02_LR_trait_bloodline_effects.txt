@@ -2019,3 +2019,43 @@ add_trait_bloodline_harald = {
 		}
 	}
 }
+
+add_trait_bloodline_syagrius = {
+	add_trait = bloodline_syagrius
+	every_child = {
+		even_if_dead = yes
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						OR = { has_game_rule = ck2 has_game_rule = ck2_realfather }
+						is_male = yes
+					}
+					has_game_rule = all_descendants
+					has_game_rule = all_descendants_realfather
+				}
+			}
+			add_trait_bloodline_syagrius = yes
+		}
+	}
+}
+
+add_trait_bloodline_antigonos = {
+	add_trait = bloodline_antigonos
+	every_child = {
+		even_if_dead = yes
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						OR = { has_game_rule = ck2 has_game_rule = ck2_realfather }
+						is_male = yes
+					}
+					has_game_rule = all_descendants
+					has_game_rule = all_descendants_realfather
+				}
+			}
+			add_trait_bloodline_antigonos = yes
+		}
+	}
+}
