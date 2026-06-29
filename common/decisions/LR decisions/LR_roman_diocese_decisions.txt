@@ -657,30 +657,7 @@ restore_western_roman_provinces_decision = {
 					}
 				}
 			}
-			OR = {
-				title:k_diocese_syria = {
-					is_titular = yes
-				}
-				title:k_diocese_syria = {
-					NOT = {
-						any_in_de_jure_hierarchy = {
-							is_titular = no
-						}
-					}
-				}
-			}
-			OR = {
-				title:k_diocese_aegyptus = {
-					is_titular = yes
-				}
-				title:k_diocese_aegyptus = {
-					NOT = {
-						any_in_de_jure_hierarchy = {
-							is_titular = no
-						}
-					}
-				}
-			}
+
 		}
 	}
 
@@ -1539,7 +1516,7 @@ restore_eastern_roman_provinces_decision = {
 	is_shown = {
 		is_ruler = yes
 		is_landed = yes
-		#has_primary_title = title:e_byzantium
+		target = flag:eastern_roman_diocese_restored
 		OR = {
 			culture = { has_cultural_pillar = heritage_latin }
 			culture = { has_cultural_pillar = heritage_byzantine }
@@ -1594,7 +1571,7 @@ restore_eastern_roman_provinces_decision = {
 						}
 					}
 				}
-				AND = {
+				OR = {
 					completely_controls_region = custom_roman_moesia
 					OR = {
 						title:k_diocese_moesia = {
@@ -1609,7 +1586,7 @@ restore_eastern_roman_provinces_decision = {
 						}
 					}
 				}
-				AND = {
+				OR = {
 					completely_controls_region = custom_roman_dardania_region
 					OR = {
 						title:k_diocese_dardania = {
@@ -1624,7 +1601,7 @@ restore_eastern_roman_provinces_decision = {
 						}
 					}
 				}
-				AND = {
+				OR = {
 					completely_controls_region = custom_roman_pontus_region
 					OR = {
 						title:k_diocese_pontus = {
@@ -1639,7 +1616,7 @@ restore_eastern_roman_provinces_decision = {
 						}
 					}
 				}
-				AND = {
+				OR = {
 					completely_controls_region = custom_roman_asia_region
 					OR = {
 						title:k_diocese_asia = {
@@ -1654,9 +1631,34 @@ restore_eastern_roman_provinces_decision = {
 						}
 					}
 				}
+			OR = {
+				title:k_diocese_syria = {
+					is_titular = yes
+				}
+				title:k_diocese_syria = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
 			}
+			OR = {
+				title:k_diocese_aegyptus = {
+					is_titular = yes
+				}
+				title:k_diocese_aegyptus = {
+					NOT = {
+						any_in_de_jure_hierarchy = {
+							is_titular = no
+						}
+					}
+				}
+			}
+
 		}
 	}
+}
 
 	is_valid_showing_failures_only = {
 		is_capable_adult = yes
