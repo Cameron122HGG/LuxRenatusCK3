@@ -1668,6 +1668,10 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 
 	#Sort the Dioceses
 	title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
+	if = {
+		limit = { exists = title:e_byzantium.holder }
+		title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_byzantium }
+	}
 		hidden_effect = {	
 		#To Fezzan
 		#title:c_awjila = { set_de_jure_liege_title = title:d_fezzan }
