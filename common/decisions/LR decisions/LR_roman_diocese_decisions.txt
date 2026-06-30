@@ -685,10 +685,10 @@ restore_western_roman_provinces_decision = {
 				AND = {
 					completely_controls_region = custom_roman_noricum
 					OR = {
-						title:k_diocese_pannonia = {
+						title:k_diocese_noricum = {
 							is_titular = yes
 						}
-						title:k_diocese_pannonia = {
+						title:k_diocese_noricum = {
 							NOT = {
 								any_in_de_jure_hierarchy = {
 									is_titular = no
@@ -1900,50 +1900,7 @@ restore_eastern_roman_provinces_decision = {
 				value = 0
 			}
 		}
-		
-		item = {
-			value = custom_roman_aegyptus
-			current_description = {
-				desc = aegyptus_diocese_desc
-			}
-			localization  = {
-				desc = aegyptus_diocese_desc
-			}
-			icon = "gfx/interface/icons/diocese_restoration/roman_aegyptus.dds"
-			is_shown = {
-				OR = {
-					title:k_diocese_aegyptus = {
-						is_titular = yes
-					}
-					title:k_diocese_aegyptus = {
-						NOT = {
-							any_in_de_jure_hierarchy = {
-								is_titular = no
-							}
-						}
-					}
-				}
-			}
-
-			is_valid = {
-				completely_controls_region = custom_roman_aegyptus
-				custom_tooltip = { 
-					text = syria_first_restore_tt
-					OR = { # must first restore diocese of syria
-						any_vassal = {
-							has_title = title:k_diocese_syria
-						}
-						has_title = title:k_diocese_syria
-					}
-				}
-			}
-
-			ai_chance = {
-				value = 0
-			}
-		}
-
-
+	
 		item = {
 			value = custom_roman_palestine
 			current_description = {
