@@ -174,3 +174,109 @@ lighthouse_of_alexandria_02 = {
 	type = duchy_capital
 }
 
+###Wawel Castle
+karkow_wonders_01 = {
+	effect_desc = {
+		desc = unlocks_building_desc
+	}
+	#asset = {
+	#	type = pdxmesh
+	#	name = "building_special_wawel_cathedral_01_mesh"
+	#	requires_dlc_flag = medieval_monuments
+	#}
+	construction_time = very_slow_construction_time
+	type_icon = "icon_structure_wawel_cathedral.dds"
+	next_building = karkow_wonders_02
+	can_construct_potential = { building_requirement_tribal = no }
+	is_enabled = {
+		always = yes
+		#custom_description = {
+		#	text = holy_site_christian_or_holy_site_trigger
+		#	OR = {
+		#		scope:holder = { religion = religion:christianity_religion }
+		#		custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
+		#	}
+		#}
+	}
+	can_construct = { scope:holder.culture = { has_innovation = innovation_crop_rotation } }
+	cost_gold = 500
+	character_modifier = {
+		monthly_county_control_growth_factor = 0.10
+		#monthly_dynasty_prestige_mult = 0.05
+		#monthly_piety_gain_mult = 0.05
+		##clergy_opinion = 5
+	}
+	county_modifier = {
+		development_growth_factor = 0.10
+		development_growth = 0.10
+		##county_opinion_add = 10
+		monthly_county_control_growth_add = 0.10
+	}
+	province_modifier = {
+		fort_level = 2
+		monthly_income = 0.50
+	}
+	ai_value = {
+		base = 100
+		modifier = { # Fill all building slots before going for special buildings
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+	type = special
+	flag = travel_point_of_interest_religious
+}
+
+karkow_wonders_02 = {
+	effect_desc = {
+		desc = unlocks_building_desc
+	}
+	#asset = {
+	#	type = pdxmesh
+	#	name = "building_special_wawel_cathedral_01_mesh"
+	#	requires_dlc_flag = medieval_monuments
+	#}
+	construction_time = very_slow_construction_time
+	type_icon = "icon_structure_wawel_cathedral.dds"
+	can_construct_potential = { building_requirement_tribal = no }
+	is_enabled = {
+		always = yes
+		#custom_description = {
+		#	text = holy_site_christian_or_holy_site_trigger
+		#	OR = {
+		#		scope:holder = { religion = religion:christianity_religion }
+		#		custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
+		#	}
+		#}
+	}
+	can_construct = { scope:holder.culture = { has_innovation = innovation_crop_rotation } }
+	cost_gold = 750
+	character_modifier = {
+		monthly_county_control_growth_factor = 0.20
+		stewardship_per_prestige_level = 1
+		#monthly_piety_gain_mult = 0.05
+		##clergy_opinion = 5
+	}
+	county_modifier = {
+		development_growth_factor = 0.20
+		development_growth = 0.20
+		#county_opinion_add = 5
+		monthly_county_control_growth_add = 0.20
+		tax_mult = 0.10
+		levy_size = 0.10
+	}
+	province_modifier = {
+		fort_level = 4
+		monthly_income = 1.0
+	}
+	ai_value = {
+		base = 100
+		modifier = { # Fill all building slots before going for special buildings
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+	type = special
+	flag = travel_point_of_interest_martial
+}
+

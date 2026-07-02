@@ -1074,7 +1074,7 @@ restore_eastern_roman_provinces_system_effect = {
 	#Sort the diocese
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_diocese_dacia = {
+		title:k_diocese_dardania = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_thracia = {
@@ -1097,7 +1097,7 @@ restore_eastern_roman_provinces_system_effect = {
 	}
 	else_if = {
 		limit = { exists = title:e_byzantium.holder }
-		title:k_diocese_dacia = {
+		title:k_diocese_dardania = {
 			set_de_jure_liege_title = title:e_byzantium
 		}
 		title:k_diocese_thracia = {
@@ -1118,7 +1118,7 @@ restore_eastern_roman_provinces_system_effect = {
 	}
 	else_if = {
 		limit = { exists = title:h_eastern_roman_empire.holder }
-		title:k_diocese_dacia = {
+		title:k_diocese_dardania = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:k_diocese_thracia = {
@@ -1163,15 +1163,15 @@ restore_eastern_roman_provinces_system_effect = {
 
 		# diocese of Dacia
 		every_county_in_region = {
-			region = custom_roman_dacia
-			duchy = { add_to_list = custom_roman_dacia_list }
+			region = custom_roman_dardania
+			duchy = { add_to_list = custom_roman_dardania_list }
 		}	
 		every_in_list = {
-			list = custom_roman_dacia_list
+			list = custom_roman_dardania_list
 			limit = {
-				NOT = { de_jure_liege = title:k_diocese_dacia }
+				NOT = { de_jure_liege = title:k_diocese_dardania }
 			}
-			set_de_jure_liege_title = title:k_diocese_dacia
+			set_de_jure_liege_title = title:k_diocese_dardania
 		}	
 
 		# diocese of Macedonia
@@ -1239,7 +1239,7 @@ restore_eastern_roman_provinces_system_effect = {
 		}	
 
 		# Fix. Bulgaria. For. Reasons
-		title:d_naissus = { set_de_jure_liege_title = title:k_diocese_dacia }
+		title:d_naissus = { set_de_jure_liege_title = title:k_diocese_dardania }
 	}
 	
 	# Destroy useless kingdoms
@@ -1644,10 +1644,10 @@ restore_roman_provinces_syria_decision_effect  = {
 		# Shift the provinces
 		every_county_in_region = {
 			region = custom_roman_syria
-			duchy = { add_to_list = custom_roman_orientis_list }
+			duchy = { add_to_list = custom_roman_syria_list }
 		}	
 		every_in_list = {
-			list = custom_roman_orientis_list
+			list = custom_roman_syria_list
 			limit = {
 				NOT = { de_jure_liege = title:k_diocese_syria }
 			}
@@ -2025,15 +2025,15 @@ create_wre_roman_empire_scripted_effect = {
 
 		# diocese of Dacia
 		every_county_in_region = {
-			region = custom_roman_dacia
-			duchy = { add_to_list = custom_roman_dacia_list }
+			region = custom_roman_dardania
+			duchy = { add_to_list = custom_roman_dardania_list }
 		}	
 		every_in_list = {
-			list = custom_roman_dacia_list
+			list = custom_roman_dardania_list
 			limit = {
-				NOT = { de_jure_liege = title:k_diocese_dacia }
+				NOT = { de_jure_liege = title:k_diocese_dardania }
 			}
-			set_de_jure_liege_title = title:k_diocese_dacia
+			set_de_jure_liege_title = title:k_diocese_dardania
 		}	
 
 		# diocese of Macedonia
@@ -2050,7 +2050,7 @@ create_wre_roman_empire_scripted_effect = {
 		}	
 
 		title:k_diocese_thracia = { set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia }
-		title:k_diocese_dacia = { set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia }
+		title:k_diocese_dardania = { set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia }
 		title:k_diocese_moesia = { set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia }
 
 		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
@@ -2625,5 +2625,197 @@ restore_gallic_empire_provinces_gallia_viennensis_decision_effect = {
 
 
 
+dejure_shift_create_caledonia_effect = { #Create Caledonia
+	#Destroy barbaric titles
+	title:d_western_isles = {
+		holder = {
+			destroy_title = title:d_western_isles 
+		}
+	}
+	title:d_the_isles = {
+		holder = {
+			destroy_title = title:d_the_isles 
+		}
+	}
+	title:d_moray = {
+		holder = {
+			destroy_title = title:d_moray 
+		}
+	}
+	title:d_galloway = {
+		holder = {
+			destroy_title = title:d_galloway 
+		}
+	}
+	title:d_lothian = {
+		holder = {
+			destroy_title = title:d_lothian 
+		}
+	}
+	title:d_albany = {
+		holder = {
+			destroy_title = title:d_albany 
+		}
+	}
+
+	### Valentia ###
+	title:c_teviotdale = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	title:c_dunbar = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	title:c_annandale = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	title:c_lothian = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	title:c_lanarkshire = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	title:c_galloway = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	title:c_carrick = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	title:c_ayrshire = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	title:c_isle_of_man = {
+		set_de_jure_liege_title = title:d_northumberland
+	}
+	### Caledonia Superior ###
+	title:c_gowrie = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_fife = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_atholl = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_angus = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_mearns = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_buchan = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_moray = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_inverness = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_argyll = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_ross = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_sutherland = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_caithness = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_outer_hebrides = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_inner_hebrides = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_lennox = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+	title:c_strathearn = {
+		set_de_jure_liege_title = title:d_caledonia	
+	}
+	title:c_linlithgowshire = {
+		set_de_jure_liege_title = title:d_caledonia
+	}
+}
+
+dejure_shift_create_hibernia_effect = { #Create Hibernia
+	#Destory barbaric duchy titles
+	title:d_connacht = {
+		holder = {
+			destroy_title = title:d_connacht 
+		}
+	}
+	title:d_ulster = {
+		holder = {
+			destroy_title = title:d_ulster 
+		}
+	}
+	title:d_munster = {
+		holder = {
+			destroy_title = title:d_munster 
+		}
+	}
+	title:d_leinster = {
+		holder = {
+			destroy_title = title:d_leinster 
+		}
+	}
+	title:d_meath = {
+		holder = {
+			destroy_title = title:d_meath 
+		}
+	}
+
+	title:c_oriel = {
+		set_de_jure_liege_title = title:d_hibernia_inferior
+	}
+	title:c_ennis = {
+		set_de_jure_liege_title = title:d_hibernia_inferior
+	}
+	title:c_mayo = {
+		set_de_jure_liege_title = title:d_hibernia_inferior
+	}
+	title:c_ulster = {
+		set_de_jure_liege_title = title:d_hibernia_inferior
+	}
+	title:c_ailech = {
+		set_de_jure_liege_title = title:d_hibernia_inferior
+	}
+	title:c_connacht = {
+		set_de_jure_liege_title = title:d_hibernia_inferior
+	}
+	title:c_breifne = {
+		set_de_jure_liege_title = title:d_hibernia_inferior
+	}
+	title:c_ormond = {
+		set_de_jure_liege_title = title:d_hibernia_superior
+	}
+	title:c_athlone = {
+		set_de_jure_liege_title = title:d_hibernia_superior
+	}
+	title:c_dublin = {
+		set_de_jure_liege_title = title:d_hibernia_superior
+	}
+	title:c_leinster = {
+		set_de_jure_liege_title = title:d_hibernia_superior
+	}
+	title:c_ossory = {
+		set_de_jure_liege_title = title:d_hibernia_superior
+	}
+	title:c_thomond = {
+		set_de_jure_liege_title = title:d_hibernia_superior
+	}
+	title:c_desmond = {
+		set_de_jure_liege_title = title:d_hibernia_superior
+	}
+	title:d_hibernia_superior = {
+		set_de_jure_liege_title = title:k_ireland
+	}
+	title:d_hibernia_inferior = {
+		set_de_jure_liege_title = title:k_ireland
+	}
+}
 
 
