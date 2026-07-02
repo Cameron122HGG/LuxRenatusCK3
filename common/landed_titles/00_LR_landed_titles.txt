@@ -7034,7 +7034,7 @@ e_arabia = {
 		}
 	}
 
-	k_osroene = {
+	k_nineveh = {
 		color = { 255 120 0 }
 		capital = c_mosul
 
@@ -12976,6 +12976,19 @@ e_byzantium = {
 					province = 3705
 				}
 			}
+			c_buthrotum = {
+				color = { 196 108 117 }
+
+				b_buthrotum = {
+					color = { 196 108 117 }
+					province = 472
+				}
+
+				b_corfu = {
+					color = { 196 108 117 }
+					province = 3710
+				}
+			}
 		}
 
 		d_dyrrachion = {
@@ -13622,6 +13635,9 @@ e_byzantium = {
 			}
 			add = @better_than_the_alternatives_score
 		}
+		cultural_names = {
+			name_list_greek = lx_lakedaimon
+		}
 
 		}
 
@@ -13645,6 +13661,19 @@ e_byzantium = {
 				b_kalavryta = { #Kynaithai
 					color = { 120 0 20 }
 					province = 3738
+				}
+			}
+			c_cephalonia = {
+				color = { 153 76 112 }
+
+				b_cephalonia = {
+					color = { 153 76 112 }
+					province = 474
+				}
+
+				b_zakynthos = {
+					color = { 153 76 112 }
+					province = 3696
 				}
 			}
 
@@ -26497,6 +26526,30 @@ e_levant = {
 				add = @always_primary_score
 			}
 		}
+	}
+	k_judah = {
+		color = { 175 175 175 }
+		capital = c_jerusalem
+
+		can_create = {
+			always = yes
+			#faith = {
+			#	religion_tag = christianity_religion
+			#}
+		}
+		can_create_on_partition = {
+			faith = {
+				religion_tag = judaism_religion
+			}
+		}
+		ai_primary_priority = {
+			if = {
+				limit = {
+					faith = faith:rabbinism
+				}
+				add = @always_primary_score
+			}
+		}
 
 		d_oultrejourdain = {
 			color = { 154 154 154 }
@@ -26668,99 +26721,14 @@ e_levant = {
 				}
 			}
 		}
-
-		d_damascus = {
-			color = { 207 207 207 }
-			capital = c_damascus
-
-			c_damascus = {
-				color = { 189 189 189 }
-
-				b_damascus = {
-					color = { 189 189 189 }
-					province = 5924
-				}
-
-				b_nawa = {
-					color = { 189 189 189 }
-					province = 5923
-				}
-
-				b_darayya = {
-					color = { 189 189 189 }
-					province = 5953
-				}
-
-				b_zurra = {
-					color = { 189 189 189 }
-					province = 5954
-				}
-			}
-
-			c_juwair = {
-				color = { 201 201 201 }
-
-				b_juwair = {
-					color = { 201 201 201 }
-					province = 5951
-				}
-
-				b_al-qastal = {
-					color = { 201 201 201 }
-					province = 5927
-				}
-
-				b_marj-rahit = {
-					color = { 201 201 201 }
-					province = 5952
-				}
-			}
-
-			c_baalbek = {
-				color = { 213 213 213 }
-
-				b_baalbak = {
-					color = { 213 213 213 }
-					province = 5926
-				}
-
-				b_az-zabadani = {
-					color = { 213 213 213 }
-					province = 5925
-				}
-
-				b_anjar = {
-					color = { 213 213 213 }
-					province = 5937
-				}
-			}
-
-			c_hauran = {
-				color = { 225 225 225 }
-
-				b_busra = {
-					color = { 225 225 225 }
-					province = 5955
-				}
-
-				b_sarkhad = {
-					color = { 225 225 225 }
-					province = 5956
-				}
-
-				b_as-suwaida-hauran = {
-					color = { 225 225 225 }
-					province = 5957
-				}
-			}
-		}
 	}
-
 	k_israel = {
 		color = { 20 138 255 }
 		capital = c_jerusalem
 	}
-
+	k_samaria = {
+		color = { 105 154 202 }
+	}
 	k_syria = {
 		color = { 145 130 88 }
 		capital = c_antiocheia
@@ -28347,6 +28315,91 @@ e_levant = {
 				}
 			}
 		}
+		d_damascus = {
+			color = { 207 207 207 }
+			capital = c_damascus
+
+			c_damascus = {
+				color = { 189 189 189 }
+
+				b_damascus = {
+					color = { 189 189 189 }
+					province = 5924
+				}
+
+				b_nawa = {
+					color = { 189 189 189 }
+					province = 5923
+				}
+
+				b_darayya = {
+					color = { 189 189 189 }
+					province = 5953
+				}
+
+				b_zurra = {
+					color = { 189 189 189 }
+					province = 5954
+				}
+			}
+
+			c_juwair = {
+				color = { 201 201 201 }
+
+				b_juwair = {
+					color = { 201 201 201 }
+					province = 5951
+				}
+
+				b_al-qastal = {
+					color = { 201 201 201 }
+					province = 5927
+				}
+
+				b_marj-rahit = {
+					color = { 201 201 201 }
+					province = 5952
+				}
+			}
+
+			c_baalbek = {
+				color = { 213 213 213 }
+
+				b_baalbak = {
+					color = { 213 213 213 }
+					province = 5926
+				}
+
+				b_az-zabadani = {
+					color = { 213 213 213 }
+					province = 5925
+				}
+
+				b_anjar = {
+					color = { 213 213 213 }
+					province = 5937
+				}
+			}
+
+			c_hauran = {
+				color = { 225 225 225 }
+
+				b_busra = {
+					color = { 225 225 225 }
+					province = 5955
+				}
+
+				b_sarkhad = {
+					color = { 225 225 225 }
+					province = 5956
+				}
+
+				b_as-suwaida-hauran = {
+					color = { 225 225 225 }
+					province = 5957
+				}
+			}
+		}
 	}
 }
 
@@ -28986,7 +29039,7 @@ e_maghreb = {
 	}
 
 	k_tahert = {
-		color = { 210 235 87 }
+		color = { 111 131 10 }
 		capital = c_tahert
 
 
@@ -29000,97 +29053,6 @@ e_maghreb = {
 					}
 				}
 				add = @correct_culture_primary_score
-			}
-		}
-
-		d_tlemcen = {
-			color = { 222 192 0 }
-			capital = c_tlemcen
-
-			c_tlemcen = {
-				color = { 221 166 0 }
-
-				b_tlemcen = {
-					color = { 221 166 0 }
-					province = 4672
-				}
-
-				b_muaskar = {
-					color = { 221 166 0 }
-					province = 4663
-				}
-
-				b_qasr-ibn-sinan = {
-					color = { 221 166 0 }
-					province = 4667
-				}
-
-				b_aintekbalet = {
-					color = { 221 166 0 }
-					province = 4671
-				}
-
-				b_tafraoua-sebdou = {
-					color = { 221 166 0 }
-					province = 4673
-				}
-			}
-
-			c_wajda = {
-				color = { 222 183 0 }
-
-				b_wajda = {
-					color = { 222 183 0 }
-					province = 4674
-				}
-
-				b_saa = {
-					color = { 222 183 0 }
-					province = 4675
-				}
-
-				b_debdou = {
-					color = { 222 183 0 }
-					province = 4676
-				}
-			}
-
-			c_orania = {
-				color = { 222 201 31 }
-
-				b_oran = {
-					color = { 222 201 31 }
-					province = 4666
-				}
-
-				b_marsafarukh = {
-					color = { 222 201 31 }
-					province = 4664
-				}
-
-				b_arzew = {
-					color = { 222 201 31 }
-					province = 4665
-				}
-			}
-
-			c_hunyan = {
-				color = { 220 218 64 }
-
-				b_hunyan = {
-					color = { 220 218 64 }
-					province = 4669
-				}
-
-				b_arsgul = {
-					color = { 220 218 64 }
-					province = 4668
-				}
-
-				b_nadruma = {
-					color = { 220 218 64 }
-					province = 4670
-				}
 			}
 		}
 
@@ -29186,97 +29148,6 @@ e_maghreb = {
 				b_mecheria = {
 					color = { 214 235 86 }
 					province = 4751
-				}
-			}
-		}
-
-		d_alger = {
-			color = { 213 227 72 }
-			capital = c_algier
-
-			c_algier = {
-				color = { 217 201 4 }
-
-				b_algiers = {
-					color = { 217 201 4 }
-					province = 4650
-				}
-
-				b_medea = {
-					color = { 217 201 4 }
-					province = 4648
-				}
-
-				b_tadallis = {
-					color = { 217 201 4 }
-					province = 4649
-				}
-
-				b_mattija = {
-					color = { 217 201 4 }
-					province = 4651
-				}
-			}
-
-			c_tanas = {
-				color = { 205 253 115 }
-
-				b_tanas = {
-					color = { 205 253 115 }
-					province = 4653
-				}
-
-				b_sharshal = {
-					color = { 205 253 115 }
-					province = 4652
-				}
-
-				b_miliyana = {
-					color = { 205 253 115 }
-					province = 4654
-				}
-			}
-		}
-
-		d_bejaia = {
-			color = { 206 243 101 }
-			capital = c_bejaia
-
-			c_bejaia = {
-				color = { 213 217 56 }
-
-				b_bejaia = {
-					color = { 213 217 56 }
-					province = 4637
-				}
-
-				b_jijel = {
-					color = { 213 217 56 }
-					province = 4636
-				}
-			}
-
-			c_satif = {
-				color = { 192 255 138 }
-
-				b_satif = {
-					color = { 192 255 138 }
-					province = 4639
-				}
-
-				b_mila_satif = {
-					color = { 192 255 138 }
-					province = 4635
-				}
-
-				b_ikjan = {
-					color = { 192 255 138 }
-					province = 4638
-				}
-
-				b_qalaa_bhammad = {
-					color = { 192 255 138 }
-					province = 4640
 				}
 			}
 		}
@@ -29428,6 +29299,207 @@ e_maghreb = {
 				}
 			}
 		}
+	}
+	k_numidia = {
+		color = { 222 148 0 }
+		capital = c_tlemcen
+
+
+		ai_primary_priority = {
+			if = {
+				limit = {
+					OR = {
+						culture = culture:butr
+						culture = culture:baranis
+
+					}
+				}
+				add = @correct_culture_primary_score
+			}
+		}
+
+		d_tlemcen = {
+			color = { 222 192 0 }
+			capital = c_tlemcen
+
+			c_tlemcen = {
+				color = { 221 166 0 }
+
+				b_tlemcen = {
+					color = { 221 166 0 }
+					province = 4672
+				}
+
+				b_muaskar = {
+					color = { 221 166 0 }
+					province = 4663
+				}
+
+				b_qasr-ibn-sinan = {
+					color = { 221 166 0 }
+					province = 4667
+				}
+
+				b_aintekbalet = {
+					color = { 221 166 0 }
+					province = 4671
+				}
+
+				b_tafraoua-sebdou = {
+					color = { 221 166 0 }
+					province = 4673
+				}
+			}
+
+			c_wajda = {
+				color = { 222 183 0 }
+
+				b_wajda = {
+					color = { 222 183 0 }
+					province = 4674
+				}
+
+				b_saa = {
+					color = { 222 183 0 }
+					province = 4675
+				}
+
+				b_debdou = {
+					color = { 222 183 0 }
+					province = 4676
+				}
+			}
+
+			c_orania = {
+				color = { 222 201 31 }
+
+				b_oran = {
+					color = { 222 201 31 }
+					province = 4666
+				}
+
+				b_marsafarukh = {
+					color = { 222 201 31 }
+					province = 4664
+				}
+
+				b_arzew = {
+					color = { 222 201 31 }
+					province = 4665
+				}
+			}
+
+			c_hunyan = {
+				color = { 220 218 64 }
+
+				b_hunyan = {
+					color = { 220 218 64 }
+					province = 4669
+				}
+
+				b_arsgul = {
+					color = { 220 218 64 }
+					province = 4668
+				}
+
+				b_nadruma = {
+					color = { 220 218 64 }
+					province = 4670
+				}
+			}
+		}
+
+		d_alger = {
+			color = { 213 227 72 }
+			capital = c_algier
+
+			c_algier = {
+				color = { 217 201 4 }
+
+				b_algiers = {
+					color = { 217 201 4 }
+					province = 4650
+				}
+
+				b_medea = {
+					color = { 217 201 4 }
+					province = 4648
+				}
+
+				b_tadallis = {
+					color = { 217 201 4 }
+					province = 4649
+				}
+
+				b_mattija = {
+					color = { 217 201 4 }
+					province = 4651
+				}
+			}
+
+			c_tanas = {
+				color = { 205 253 115 }
+
+				b_tanas = {
+					color = { 205 253 115 }
+					province = 4653
+				}
+
+				b_sharshal = {
+					color = { 205 253 115 }
+					province = 4652
+				}
+
+				b_miliyana = {
+					color = { 205 253 115 }
+					province = 4654
+				}
+			}
+		}
+
+		d_bejaia = {
+			color = { 206 243 101 }
+			capital = c_bejaia
+
+			c_bejaia = {
+				color = { 213 217 56 }
+
+				b_bejaia = {
+					color = { 213 217 56 }
+					province = 4637
+				}
+
+				b_jijel = {
+					color = { 213 217 56 }
+					province = 4636
+				}
+			}
+
+			c_satif = {
+				color = { 192 255 138 }
+
+				b_satif = {
+					color = { 192 255 138 }
+					province = 4639
+				}
+
+				b_mila_satif = {
+					color = { 192 255 138 }
+					province = 4635
+				}
+
+				b_ikjan = {
+					color = { 192 255 138 }
+					province = 4638
+				}
+
+				b_qalaa_bhammad = {
+					color = { 192 255 138 }
+					province = 4640
+				}
+			}
+		}
+
 	}
 
 	k_kartaga = {
@@ -34827,7 +34899,8 @@ e_mongolia = {
 }
 
 e_persia = {
-	color = { 30 240 230 }
+	color = {243 209 23 }
+	#color = { 30 240 230 }
 	capital = c_isfahan
 
 	definite_form = yes
@@ -34844,7 +34917,8 @@ e_persia = {
 	}
 
 	k_persia = {
-		color = { 60 44 230 }
+		color = { 246 188 0 }
+		#color = { 60 44 230 }
 		capital = c_shiraz
 
 		ai_primary_priority = {
@@ -37302,6 +37376,11 @@ e_pontus = {
 		k_trebizond = {
 			color = { 102 97 97 }
 			capital = c_trebizond
+			cultural_names = {
+				name_list_greek = lx_trapezounta
+				name_list_hellenistic = lx_trapezous
+				name_list_roman = lx_trebizond
+			}
 
 			ai_primary_priority = {
 				if = {
@@ -37696,6 +37775,11 @@ e_pontus = {
 	k_pontus = {
 		color = { 10 81 243 }
 		capital = c_helenopontus
+			cultural_names = {
+				name_list_greek = lx_pontos
+				name_list_hellenistic = lx_pontos
+				name_list_roman = lx_pontus
+			}
 
 		ai_primary_priority = {
 			if = {
@@ -60833,311 +60917,7 @@ e_wendish_empire = {
 		}
 	}
 
-	k_pomerania = {
-		color = { 145 130 40 }
-		capital = c_stettin
 
-		can_create = {
-			trigger_if = {
-				limit = {
-					is_ai = yes
-				}
-				culture = culture:pommeranian
-			}
-		}
-		ai_primary_priority = {
-			if = {
-				limit = {
-					culture = culture:pommeranian
-				}
-				add = @correct_culture_primary_score
-			}
-		}
-
-		d_pommerania = {
-			color = { 137 96 0 }
-			capital = c_stettin
-
-			c_stettin = {
-				color = { 127 75 0 }
-
-				cultural_names = {
-					name_list_bavarian = cn_stettin
-					name_list_franconian = cn_stettin
-					name_list_saxon = cn_stettin
-					name_list_swabian = cn_stettin
-				}
-
-				b_szczecin = {
-					color = { 127 75 0 }
-					province = 2823
-				}
-
-				b_ucramund = {
-					color = { 127 75 0 }
-					province = 2822
-				}
-
-				b_gryfino = {
-					color = { 127 75 0 }
-					province = 3155
-				}
-			}
-
-			c_kolobrzeg = {
-				color = { 131 84 0 }
-
-				cultural_names = {
-					name_list_bavarian = cn_wollin
-					name_list_franconian = cn_wollin
-					name_list_saxon = cn_wollin
-					name_list_swabian = cn_wollin
-				}
-
-				b_swinoujscie = {
-					color = { 131 84 0 }
-					province = 2818
-				}
-
-				b_kolobrzeg = {
-					color = { 131 84 0 }
-					province = 2824
-				}
-
-				b_stargad = {
-					color = { 131 84 0 }
-					province = 2825
-				}
-
-				b_lobez = {
-					color = { 131 84 0 }
-					province = 2836
-				}
-			}
-
-			c_soldin = {
-				color = { 135 92 0 }
-
-				cultural_names = {
-					name_list_bavarian = cn_zehden
-					name_list_franconian = cn_zehden
-					name_list_saxon = cn_zehden
-					name_list_swabian = cn_zehden
-				}
-
-				b_soldin = {
-					color = { 135 92 0 }
-					province = 3154
-				}
-
-				b_kostschin = {
-					color = { 135 92 0 }
-					province = 3153
-				}
-			}
-
-			c_cammin = {
-				color = { 139 100 5 }
-
-				cultural_names = {
-					name_list_bavarian = cn_kolberg
-					name_list_franconian = cn_kolberg
-					name_list_saxon = cn_kolberg
-					name_list_swabian = cn_kolberg
-				}
-
-				b_cammin = {
-					color = { 139 100 5 }
-					province = 2826
-				}
-
-				b_dramberg = {
-					color = { 139 100 5 }
-					province = 3184
-				}
-
-				b_belgard = {
-					color = { 139 100 5 }
-					province = 3185
-				}
-			}
-
-			c_pila = {
-				color = { 142 109 17 }
-
-				cultural_names = {
-					name_list_bavarian = cn_deutsch_krone
-					name_list_franconian = cn_deutsch_krone
-					name_list_saxon = cn_deutsch_krone
-					name_list_swabian = cn_deutsch_krone
-				}
-
-				b_walcz = {
-					color = { 142 109 17 }
-					province = 3187
-				}
-
-				b_pila = {
-					color = { 142 109 17 }
-					province = 3186
-				}
-
-				b_szczecinek = {
-					color = { 142 109 17 }
-					province = 3188
-				}
-			}
-
-			c_landsberg = {
-				color = { 145 117 28 }
-
-				cultural_names = {
-					name_list_bavarian = cn_zantoch
-					name_list_franconian = cn_zantoch
-					name_list_saxon = cn_zantoch
-					name_list_swabian = cn_zantoch
-				}
-
-				b_landsberg = {
-					color = { 145 117 28 }
-					province = 3152
-				}
-
-				b_driesen = {
-					color = { 145 117 28 }
-					province = 3151
-				}
-
-				b_arnswalde = {
-					color = { 145 117 28 }
-					province = 3156
-				}
-
-				b_kreuz = {
-					color = { 145 117 28 }
-					province = 3183
-				}
-			}
-		}
-
-		d_pomerelia = {
-			color = { 147 165 83 }
-
-			c_danzig = {
-				color = { 144 143 56 }
-
-				cultural_names = {
-					name_list_bavarian = cn_danzig
-					name_list_franconian = cn_danzig
-					name_list_saxon = cn_danzig
-					name_list_swabian = cn_danzig
-				}
-
-				b_gdansk = {
-					color = { 144 143 56 }
-					province = 2830
-				}
-
-				b_sopot = {
-					color = { 144 143 56 }
-					province = 2833
-				}
-
-				b_wladyslawowo = {
-					color = { 144 143 56 }
-					province = 2832
-				}
-
-				b_trsow = {
-					color = { 144 143 56 }
-					province = 3194
-				}
-			}
-
-			c_slupsk = {
-				color = { 146 158 74 }
-
-				cultural_names = {
-					name_list_bavarian = cn_stolp
-					name_list_franconian = cn_stolp
-					name_list_saxon = cn_stolp
-					name_list_swabian = cn_stolp
-				}
-
-				b_slupsk = {
-					color = { 146 158 74 }
-					province = 2827
-				}
-
-				b_koszalin = {
-					color = { 146 158 74 }
-					province = 2828
-				}
-
-				b_lebno = {
-					color = { 146 158 74 }
-					province = 2829
-				}
-
-				b_bytow = {
-					color = { 146 158 74 }
-					province = 3191
-				}
-			}
-
-			c_miastko = {
-				color = { 148 172 92 }
-
-				cultural_names = {
-					name_list_bavarian = cn_ziethen
-					name_list_franconian = cn_ziethen
-					name_list_saxon = cn_ziethen
-					name_list_swabian = cn_ziethen
-				}
-
-				b_hammerstein = {
-					color = { 148 172 92 }
-					province = 3190
-				}
-
-				b_miastko = {
-					color = { 148 172 92 }
-					province = 3189
-				}
-			}
-
-			c_berent = {
-				color = { 148 186 111 }
-
-				cultural_names = {
-					name_list_bavarian = cn_schwetz
-					name_list_franconian = cn_schwetz
-					name_list_saxon = cn_schwetz
-					name_list_swabian = cn_schwetz
-				}
-
-				b_schwetz = {
-					color = { 148 186 111 }
-					province = 3196
-				}
-
-				b_berent = {
-					color = { 148 186 111 }
-					province = 3195
-				}
-
-				b_tuchowna = {
-					color = { 148 186 111 }
-					province = 3193
-				}
-
-				b_konitz = {
-					color = { 148 186 111 }
-					province = 3192
-				}
-			}
-		}
-	}
 
 	k_lithuania = {
 		color = { 90 10 0 }
@@ -61998,6 +61778,311 @@ e_west_slavia = {
 				}
 			}
 			add = @better_than_the_alternatives_score
+		}
+	}
+	k_pomerania = {
+		color = { 145 130 40 }
+		capital = c_stettin
+
+		can_create = {
+			trigger_if = {
+				limit = {
+					is_ai = yes
+				}
+				culture = culture:pommeranian
+			}
+		}
+		ai_primary_priority = {
+			if = {
+				limit = {
+					culture = culture:pommeranian
+				}
+				add = @correct_culture_primary_score
+			}
+		}
+
+		d_pommerania = {
+			color = { 137 96 0 }
+			capital = c_stettin
+
+			c_stettin = {
+				color = { 127 75 0 }
+
+				cultural_names = {
+					name_list_bavarian = cn_stettin
+					name_list_franconian = cn_stettin
+					name_list_saxon = cn_stettin
+					name_list_swabian = cn_stettin
+				}
+
+				b_szczecin = {
+					color = { 127 75 0 }
+					province = 2823
+				}
+
+				b_ucramund = {
+					color = { 127 75 0 }
+					province = 2822
+				}
+
+				b_gryfino = {
+					color = { 127 75 0 }
+					province = 3155
+				}
+			}
+
+			c_kolobrzeg = {
+				color = { 131 84 0 }
+
+				cultural_names = {
+					name_list_bavarian = cn_wollin
+					name_list_franconian = cn_wollin
+					name_list_saxon = cn_wollin
+					name_list_swabian = cn_wollin
+				}
+
+				b_swinoujscie = {
+					color = { 131 84 0 }
+					province = 2818
+				}
+
+				b_kolobrzeg = {
+					color = { 131 84 0 }
+					province = 2824
+				}
+
+				b_stargad = {
+					color = { 131 84 0 }
+					province = 2825
+				}
+
+				b_lobez = {
+					color = { 131 84 0 }
+					province = 2836
+				}
+			}
+
+			c_soldin = {
+				color = { 135 92 0 }
+
+				cultural_names = {
+					name_list_bavarian = cn_zehden
+					name_list_franconian = cn_zehden
+					name_list_saxon = cn_zehden
+					name_list_swabian = cn_zehden
+				}
+
+				b_soldin = {
+					color = { 135 92 0 }
+					province = 3154
+				}
+
+				b_kostschin = {
+					color = { 135 92 0 }
+					province = 3153
+				}
+			}
+
+			c_cammin = {
+				color = { 139 100 5 }
+
+				cultural_names = {
+					name_list_bavarian = cn_kolberg
+					name_list_franconian = cn_kolberg
+					name_list_saxon = cn_kolberg
+					name_list_swabian = cn_kolberg
+				}
+
+				b_cammin = {
+					color = { 139 100 5 }
+					province = 2826
+				}
+
+				b_dramberg = {
+					color = { 139 100 5 }
+					province = 3184
+				}
+
+				b_belgard = {
+					color = { 139 100 5 }
+					province = 3185
+				}
+			}
+
+			c_pila = {
+				color = { 142 109 17 }
+
+				cultural_names = {
+					name_list_bavarian = cn_deutsch_krone
+					name_list_franconian = cn_deutsch_krone
+					name_list_saxon = cn_deutsch_krone
+					name_list_swabian = cn_deutsch_krone
+				}
+
+				b_walcz = {
+					color = { 142 109 17 }
+					province = 3187
+				}
+
+				b_pila = {
+					color = { 142 109 17 }
+					province = 3186
+				}
+
+				b_szczecinek = {
+					color = { 142 109 17 }
+					province = 3188
+				}
+			}
+
+			c_landsberg = {
+				color = { 145 117 28 }
+
+				cultural_names = {
+					name_list_bavarian = cn_zantoch
+					name_list_franconian = cn_zantoch
+					name_list_saxon = cn_zantoch
+					name_list_swabian = cn_zantoch
+				}
+
+				b_landsberg = {
+					color = { 145 117 28 }
+					province = 3152
+				}
+
+				b_driesen = {
+					color = { 145 117 28 }
+					province = 3151
+				}
+
+				b_arnswalde = {
+					color = { 145 117 28 }
+					province = 3156
+				}
+
+				b_kreuz = {
+					color = { 145 117 28 }
+					province = 3183
+				}
+			}
+		}
+
+		d_pomerelia = {
+			color = { 147 165 83 }
+
+			c_danzig = {
+				color = { 144 143 56 }
+
+				cultural_names = {
+					name_list_bavarian = cn_danzig
+					name_list_franconian = cn_danzig
+					name_list_saxon = cn_danzig
+					name_list_swabian = cn_danzig
+				}
+
+				b_gdansk = {
+					color = { 144 143 56 }
+					province = 2830
+				}
+
+				b_sopot = {
+					color = { 144 143 56 }
+					province = 2833
+				}
+
+				b_wladyslawowo = {
+					color = { 144 143 56 }
+					province = 2832
+				}
+
+				b_trsow = {
+					color = { 144 143 56 }
+					province = 3194
+				}
+			}
+
+			c_slupsk = {
+				color = { 146 158 74 }
+
+				cultural_names = {
+					name_list_bavarian = cn_stolp
+					name_list_franconian = cn_stolp
+					name_list_saxon = cn_stolp
+					name_list_swabian = cn_stolp
+				}
+
+				b_slupsk = {
+					color = { 146 158 74 }
+					province = 2827
+				}
+
+				b_koszalin = {
+					color = { 146 158 74 }
+					province = 2828
+				}
+
+				b_lebno = {
+					color = { 146 158 74 }
+					province = 2829
+				}
+
+				b_bytow = {
+					color = { 146 158 74 }
+					province = 3191
+				}
+			}
+
+			c_miastko = {
+				color = { 148 172 92 }
+
+				cultural_names = {
+					name_list_bavarian = cn_ziethen
+					name_list_franconian = cn_ziethen
+					name_list_saxon = cn_ziethen
+					name_list_swabian = cn_ziethen
+				}
+
+				b_hammerstein = {
+					color = { 148 172 92 }
+					province = 3190
+				}
+
+				b_miastko = {
+					color = { 148 172 92 }
+					province = 3189
+				}
+			}
+
+			c_berent = {
+				color = { 148 186 111 }
+
+				cultural_names = {
+					name_list_bavarian = cn_schwetz
+					name_list_franconian = cn_schwetz
+					name_list_saxon = cn_schwetz
+					name_list_swabian = cn_schwetz
+				}
+
+				b_schwetz = {
+					color = { 148 186 111 }
+					province = 3196
+				}
+
+				b_berent = {
+					color = { 148 186 111 }
+					province = 3195
+				}
+
+				b_tuchowna = {
+					color = { 148 186 111 }
+					province = 3193
+				}
+
+				b_konitz = {
+					color = { 148 186 111 }
+					province = 3192
+				}
+			}
 		}
 	}
 

@@ -62,6 +62,7 @@ LR_random_title_granting_on_start = {
 				title_capital_county.holder = scope:overlord_to_grant
 				tier = tier_duchy
 			}
+			title_capital_county.title_province = { save_temporary_scope_as = province_for_culture }
 			## Create an elevated peasant to claim the county.
 			#create_character = {
 			#	location = scope:current_county.title_province
@@ -74,7 +75,7 @@ LR_random_title_granting_on_start = {
 					gender = male
 					location = scope:current_county.title_province
 					faith = scope:overlord_to_grant.faith
-					culture = scope:overlord_to_grant.culture
+					culture = scope:province_for_culture.culture
 					dynasty = generate
 					save_temporary_scope_as = local_warlord
 				}
@@ -85,7 +86,7 @@ LR_random_title_granting_on_start = {
 					gender = female
 					location = scope:current_county.title_province
 					faith = scope:overlord_to_grant.faith
-					culture = scope:overlord_to_grant.culture
+					culture = scope:province_for_culture.culture
 					dynasty = generate
 					save_temporary_scope_as = local_warlord
 				}
@@ -97,7 +98,7 @@ LR_random_title_granting_on_start = {
 							gender = male
 							location = scope:current_county.title_province
 							faith = scope:overlord_to_grant.faith
-							culture = scope:overlord_to_grant.culture
+							culture = scope:province_for_culture.culture
 							dynasty = generate
 							save_temporary_scope_as = local_warlord
 						}
@@ -107,7 +108,7 @@ LR_random_title_granting_on_start = {
 							gender = female
 							location = scope:current_county.title_province
 							faith = scope:overlord_to_grant.faith
-							culture = scope:overlord_to_grant.culture
+							culture = scope:province_for_culture.culture
 							dynasty = generate
 							save_temporary_scope_as = local_warlord
 						}
@@ -193,8 +194,8 @@ LR_random_title_granting_on_start = {
 				create_character = {
 					gender = male
 					location = scope:current_county.title_province
-					faith = scope:overlord_to_grant.faith
-					culture = scope:overlord_to_grant.culture
+					faith = scope:current_county.faith
+					culture = scope:current_county.culture
 					dynasty = generate
 					save_temporary_scope_as = local_warlord
 				}
@@ -204,8 +205,8 @@ LR_random_title_granting_on_start = {
 				create_character = {
 					gender = female
 					location = scope:current_county.title_province
-					faith = scope:overlord_to_grant.faith
-					culture = scope:overlord_to_grant.culture
+					faith = scope:current_county.faith
+					culture = scope:current_county.culture
 					dynasty = generate
 					save_temporary_scope_as = local_warlord
 				}
@@ -216,8 +217,8 @@ LR_random_title_granting_on_start = {
 						create_character = {
 							gender = male
 							location = scope:current_county.title_province
-							faith = scope:overlord_to_grant.faith
-							culture = scope:overlord_to_grant.culture
+							faith = scope:current_county.faith
+							culture = scope:current_county.culture
 							dynasty = generate
 							save_temporary_scope_as = local_warlord
 						}
@@ -226,8 +227,8 @@ LR_random_title_granting_on_start = {
 						create_character = {
 							gender = female
 							location = scope:current_county.title_province
-							faith = scope:overlord_to_grant.faith
-							culture = scope:overlord_to_grant.culture
+							faith = scope:current_county.faith
+							culture = scope:current_county.culture
 							dynasty = generate
 							save_temporary_scope_as = local_warlord
 						}
@@ -376,6 +377,5 @@ LR_generate_maa_on_start = {
 		}
 	}
 }
-
 
 

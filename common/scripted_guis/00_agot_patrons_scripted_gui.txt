@@ -1,0 +1,302 @@
+﻿## By Eskarina
+
+
+patron_tooltip_god_name = {
+	is_shown = {
+		AND = {
+			has_variable = patron_god
+		}
+	}
+
+	is_valid = {
+
+	}
+}
+
+
+choose_patron_generic = {
+	saved_scopes = {
+		patron_name
+	}
+
+	is_shown = {
+
+	}
+
+	is_valid = {
+		piety >= minor_piety_value
+		var:selected_faith = faith
+	}
+
+	effect = {
+		parse_patron_name_flag_complex = { PATRON = scope:patron_name APPLY = agot_set_patron_effect }
+	}
+}
+
+get_patron_god_list = {
+	is_shown = {
+
+	}
+
+	is_valid = {
+
+	}
+
+	# possible issue: if the player changes religion while the patron god screen is open, they can pick a patron from their previous
+	# religion post-conversion and keep it
+
+	effect = {
+		clear_variable_list = patron_gods
+		if = {
+			limit = {
+				scope:faith.religion = { 
+					save_temporary_scope_as = religion 
+				}
+				scope:religion = religion:roman_religion		
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:the_almighty
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:ol_miss
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:iron_horse
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:the_marshall
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:the_smith
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:the_peacemaker
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:calamity_jane
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:marobalra
+			}
+		}
+		if= {
+			limit = {
+				scope:faith.religion = {
+					save_temporary_scope_as = religion
+				}
+				scope:religion = religion:mithras_religion
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:john_henry
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:osha
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:carnegie
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:hill
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:ford
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:rockefeller
+			}
+			
+		}
+		if= {
+			limit = {
+				scope:faith.religion = {
+					save_temporary_scope_as = religion
+				}
+				scope:religion = religion:solar_religion
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:aurelian
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:elagabalus
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:sol_invictus
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:commodus
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:julian
+			}
+					
+		}
+		if= {
+			limit = {
+				scope:faith.religion = {
+					save_temporary_scope_as = religion
+				}
+				scope:religion = religion:celtic_religion
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:jack
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:old_man_of_the_sea
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:father_patrick
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:little_fellas
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:sacred_cod
+			}
+	
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:sheila_nageira
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:pegg_bearskin
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:three_women_in_white
+			}
+		}
+					
+		}
+		if= {
+			limit = {
+				scope:faith.religion = {
+					save_temporary_scope_as = religion
+				}
+				scope:religion = religion:hellenism_religion
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:washington
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:jefferson
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:franklin
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:hamilton
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:madison
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:adams
+			}	
+		}
+		if= {
+			limit = {
+				scope:faith.religion = {
+					save_temporary_scope_as = religion
+				}
+				scope:religion = religion:hinduism_religion
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:nakura
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:ram
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:kali_mai
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:ganesh
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:munishvaran
+			}
+			add_to_variable_list = {
+				name = patron_gods
+				target = flag:chankani_karuppu
+			}	
+			
+		}
+	}
+
+
+clear_patron_god_list = {
+	is_shown = {
+
+	}
+
+	is_valid = {
+
+	}
+
+	effect = {
+		clear_variable_list = patron_gods
+	}
+}
+
+religion_has_patron_gods = {
+	is_shown = {
+		has_doctrine = tenet_bhakti
+	}
+}
+
+faith_switch_effect = {
+	scope = character
+	saved_scopes = { faith }
+	effect = {
+		if = {
+			limit = { NOT = { var:selected_faith ?= scope:faith } }
+			set_variable = {
+				name = selected_faith
+				value = scope:faith
+			}
+		}
+	}
+}
+
+has_this_patron_god = {
+	is_valid = {
+		var:patron_god ?= scope:patron_name
+	}
+}
+

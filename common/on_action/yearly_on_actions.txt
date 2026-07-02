@@ -17,23 +17,23 @@ yearly_global_pulse = {
 		# if = {
 		# 	limit = {
 		# 		always = no
-		# 		current_date <= 920.1.1 # No need to check this in later starts
+		# 		current_date <= 5920.1.1 # No need to check this in later starts
 		# 		NOT = { has_global_variable = visigothic_culture_split }
-		# 		current_date >= 850.1.1
+		# 		current_date >= 5850.1.1
 		# 	}
 		# 	random = {
 		# 		chance = 0 # No chance the first year of play if starting in 867
 		# 		modifier = {
 		# 			add = 10
-		# 			current_date >= 868.1.1
+		# 			current_date >= 5868.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 10 # 20% chance
-		# 			current_date >= 875.1.1
+		# 			current_date >= 5875.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 10 # 30% chance
-		# 			current_date >= 890.1.1
+		# 			current_date >= 5890.1.1
 		# 		}
 		# 		set_global_variable = {
 		# 			name = visigothic_culture_split
@@ -49,23 +49,23 @@ yearly_global_pulse = {
 		# Norse culture split.
 		# if = {
 		# 	limit = {
-		# 		current_date < 990.1.1
+		# 		current_date < 5990.1.1
 		# 		NOT = { has_global_variable = norse_culture_split }
-		# 		current_date >= 950.1.1
+		# 		current_date >= 5950.1.1
 		# 	}
 		# 	random = {
 		# 		chance = 10
 		# 		modifier = {
 		# 			add = 20 # 30% chance
-		# 			current_date >= 960.1.1
+		# 			current_date >= 5960.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 30 # 60% chance
-		# 			current_date >= 970.1.1
+		# 			current_date >= 5970.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 40 # 100% chance
-		# 			current_date >= 980.1.1
+		# 			current_date >= 5980.1.1
 		# 		}
 		# 		set_global_variable = {
 		# 			name = norse_culture_split
@@ -89,15 +89,15 @@ yearly_global_pulse = {
 		# 		chance = 0 # No chance the first year of play if starting in 867
 		# 		modifier = {
 		# 			add = 2 # 2% chance per year
-		# 			current_date >= 900.1.1
+		# 			current_date >= 5900.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 8 # 10% chance per year
-		# 			current_date >= 950.1.1
+		# 			current_date >= 5950.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 15 # 25% chance per year
-		# 			current_date >= 1000.1.1
+		# 			current_date >= 6000.1.1
 		# 		}
 		# 		set_global_variable = {
 		# 			name = scottish_culture_creation
@@ -110,105 +110,105 @@ yearly_global_pulse = {
 		# 	}
 		# }
 		#Lux Renata TBA
-		# Mongol Invasion
-		#if = { limit = { has_game_rule = never_mongol_invasion } }
-		#else_if = {
-		#	limit = {
-		#		has_game_rule = random_mongol_invasion
-		#		NOT = { has_global_variable = mongols_have_appeared }
-		#		#Greatest of khans hasn't come along
-		#		NOT = { has_global_variable = greatest_of_khans_title }
-		#		#Someone's not currently trying to be greatest of khans
-		#		NOT = { has_global_variable = mpo_gok_war_ongoing }
-		#		#Temujin dying prevents Mongol invasion for at least 50 years
-		#		NOT = {
-		#			has_global_variable = temujin_failed
-		#		}
-		#	}
-		#	random = {
-		#		chance = temujin_appearance_base_chance
-		#		modifier = {
-		#			factor = 0.25
-		#			current_date < 1180.1.1
-		#		}
-		#		modifier = {
-		#			add = 3
-		#			current_date > 1200.1.1
-		#		}
-		#		modifier = {
-		#			add = 5
-		#			current_date > 1220.1.1
-		#		}
-		#		modifier = {
-		#			add = 5
-		#			current_date > 1235.1.1
-		#		}
-		#		set_global_variable = {
-		#			name = mongols_have_appeared
-		#			value = yes
-		#		}
-		#		debug_log = "Attempting to spawn mongol invasion within 240 days"
-		#		trigger_event = {
-		#			id = mongol_invasion.0001
-		#			days = { 2 240 }
-		#		}
-		#	}
-		#}
-		#else = {
-		#	if = {
-		#		limit = {
-		#			current_date > 1180.1.1
-		#			current_date < 1250.1.1
-		#			NOT = { has_global_variable = mongols_have_appeared }
-		#			#Greatest of khans hasn't come along
-		#			NOT = { has_global_variable = greatest_of_khans_title }
-		#			#Someone's not currently trying to be greatest of khans
-		#			NOT = { has_global_variable = mpo_gok_war_ongoing }
-		#			trigger_if = {
-		#				limit = {
-		#					game_start_date = 6178.10.1
-		#				}
-		#				years_from_game_start >= 20
-		#			}
-		#			#Temujin dying prevents Mongol invasion for at least 50 years
-		#			NOT = {
-		#				has_global_variable = temujin_failed
-		#			}
-		#		}
-		#		debug_log = "Checking for chance of spawning mongols under historical settings"
-		#		random = {
-		#			chance = temujin_appearance_base_chance
-		#			modifier = {
-		#				add = 9
-		#				current_date > 1200.1.1
-		#			}
-		#			modifier = {
-		#				add = 10
-		#				current_date > 1220.1.1
-		#			}
-		#			modifier = {
-		#				add = 20
-		#				current_date > 1235.1.1
-		#			}
-		#			modifier = {
-		#				add = 30
-		#				exists = character:dynamic_mongol_1 # Temüjin
-		#				character:dynamic_mongol_1 = {
-		#					is_physically_able_ai_adult = yes
-		#				}
-		#			}
-		#			set_global_variable = {
-		#				name = mongols_have_appeared
-		#				value = yes
-		#			}
-		#			debug_log = "Attempting to spawn mongol invasion within 240 days"
-		#			trigger_event = {
-		#				id = mongol_invasion.0001
-		#				days = { 2 240 }
-		#			}
-		#		}
-		#	}
-		#}
+		#Mongol Invasion
+		if = { limit = { has_game_rule = never_mongol_invasion } }
+		else_if = {
+			limit = {
+				has_game_rule = random_mongol_invasion
+				NOT = { has_global_variable = mongols_have_appeared }
+				#Greatest of khans hasn't come along
+				NOT = { has_global_variable = greatest_of_khans_title }
+				#Someone's not currently trying to be greatest of khans
+				NOT = { has_global_variable = mpo_gok_war_ongoing }
+				#Temujin dying prevents Mongol invasion for at least 50 years
+				NOT = {
+					has_global_variable = temujin_failed
+				}
+			}
+			random = {
+				chance = temujin_appearance_base_chance
+				modifier = {
+					factor = 0.25
+					current_date < 6180.1.1
+				}
+				modifier = {
+					add = 3
+					current_date > 6200.1.1
+				}
+				modifier = {
+					add = 5
+					current_date > 6220.1.1
+				}
+				modifier = {
+					add = 5
+					current_date > 6235.1.1
+				}
+				set_global_variable = {
+					name = mongols_have_appeared
+					value = yes
+				}
+				debug_log = "Attempting to spawn mongol invasion within 240 days"
+				trigger_event = {
+					id = mongol_invasion.0001
+					days = { 2 240 }
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					current_date > 6180.1.1
+					current_date < 6250.1.1
+					NOT = { has_global_variable = mongols_have_appeared }
+					Greatest of khans hasn't come along
+					NOT = { has_global_variable = greatest_of_khans_title }
+					Someone's not currently trying to be greatest of khans
+					NOT = { has_global_variable = mpo_gok_war_ongoing }
+					trigger_if = {
+						limit = {
+							game_start_date = 6178.10.1
+						}
+						years_from_game_start >= 20
+					}
+					Temujin dying prevents Mongol invasion for at least 50 years
+					NOT = {
+						has_global_variable = temujin_failed
+					}
+				}
+				debug_log = "Checking for chance of spawning mongols under historical settings"
+				random = {
+					chance = temujin_appearance_base_chance
+					modifier = {
+						add = 9
+						current_date > 6200.1.1
+					}
+					modifier = {
+						add = 10
+						current_date > 6220.1.1
+					}
+					modifier = {
+						add = 20
+						current_date > 6235.1.1
+					}
+					modifier = {
+						add = 30
+						exists = character:125501  #Temüjin
+						character:125501 = {
+							is_physically_able_ai_adult = yes
+						}
+					}
+					set_global_variable = {
+						name = mongols_have_appeared
+						value = yes
+					}
+					debug_log = "Attempting to spawn mongol invasion within 240 days"
+					trigger_event = {
+						id = mongol_invasion.0001
+						days = { 2 240 }
+					}
+				}
+			}
+		}
 		#Lux Renata TBA
 		# Almohad Invasion
 		# if = {

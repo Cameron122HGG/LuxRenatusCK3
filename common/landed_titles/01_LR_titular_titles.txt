@@ -498,12 +498,47 @@ k_hk_anglo_danes = {
 		}
 	}	
 }
+	k_dublin = {
+		color = { 42 33 133 }
+		cultural_names = {
+			name_list_irish = cn_dubhlinn
+			name_list_norse = cn_dyflinn
+			name_list_norwegian = cn_dyflinn
+			name_list_welsh = cn_dulyn
+		}
+		capital = c_dublin
 
+		can_create = {
+			trigger_if = {
+				limit = {
+					is_ai = yes
+				}
+				culture = {
+					has_cultural_pillar = heritage_north_germanic
+				}
+			}
+		}
+		ai_primary_priority = {
+			if = {
+			limit = {
+				culture = culture:norse
+			}
+			add = @correct_culture_primary_score
+		}
+			if = {
+			limit = {
+				culture = culture:norsegael
+			}
+			add = @better_than_the_alternatives_score
+		}
 
+		}
+	}
 
-
-
-
+e_lotus_throne = {
+	color = { 155 23 14 }
+	capital = c_magadha
+}
 
 
 

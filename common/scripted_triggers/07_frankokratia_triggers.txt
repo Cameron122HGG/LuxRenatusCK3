@@ -26,40 +26,40 @@ ep3_frankokratia_ghw_trigger = {
 		}
 	}
 	
-	trigger_if = {
-		limit = {
-			has_game_rule = historicity_frankokratia_default
-		}
-		OR = {
-			exists = global_var:cath_crusade_1
-			current_date >= 6178.1.1
-		}
-	}
-	trigger_else_if = {
-		limit = {
-			has_game_rule = historicity_frankokratia_blocked
-		}
-		always = no
-	}
-	trigger_else_if = {
-		limit = {
-			has_game_rule = historicity_frankokratia_fourth_crusade
-		}
-		OR = {
-			AND = {
-				current_date < 6178.1.1
-				exists = global_var:cath_crusade_1
-				global_var:cath_crusade_1 >= 3
-			}
-			AND = {
-				current_date >= 6178.1.1
-				exists = global_var:cath_crusade_1
-			}
-		}
-	}
-	trigger_else = {
+	#trigger_if = {
+	#	limit = {
+	#		has_game_rule = historicity_frankokratia_default
+	#	}
+	#	OR = {
+	#		exists = global_var:cath_crusade_1
+	#		current_date >= 6178.1.1
+	#	}
+	#}
+	#trigger_else_if = {
+	#	limit = {
+	#		has_game_rule = historicity_frankokratia_blocked
+	#	}
+	#	always = no
+	#}
+	#trigger_else_if = {
+	#	limit = {
+	#		has_game_rule = historicity_frankokratia_fourth_crusade
+	#	}
+	#	OR = {
+	#		AND = {
+	#			current_date < 6178.1.1
+	#			exists = global_var:cath_crusade_1
+	#			global_var:cath_crusade_1 >= 3
+	#		}
+	#		AND = {
+	#			current_date >= 6178.1.1
+	#			exists = global_var:cath_crusade_1
+	#		}
+	#	}
+	#}
+	#trigger_else = {
 		#historicity_frankokratia_high game rule has no start date-based restrictions
-	}
+	#}
 	
 	#Byz emperor or By capital is some kind of Greek
 	OR = {

@@ -18,7 +18,7 @@
 		title:k_syria = { set_de_jure_liege_title = title:e_seleukid_empire }
 		title:k_jerusalem = { set_de_jure_liege_title = title:e_seleukid_empire }
 		title:k_mesopotamia = { set_de_jure_liege_title = title:e_seleukid_empire }
-		title:k_osroene = { set_de_jure_liege_title = title:e_seleukid_empire }
+		title:k_nineveh = { set_de_jure_liege_title = title:e_seleukid_empire }
 		#scope:previous_title = { set_de_jure_liege_title = title:e_seleukid_empire }
 
 		if = {
@@ -31,6 +31,27 @@
 				}
 			}
 		}		
+	}
+}
+
+create_antigonid_kingdom_scripted_effect = {
+	#save_scope_as = scoped_ruler
+	primary_title = { save_scope_as = previous_title }
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_antigonid_kingdom = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+	hidden_effect = {
+		set_primary_title_to = title:k_antigonid_kingdom
+		
 	}
 }
 
@@ -69,5 +90,7 @@ create_ptolemaic_kingdom_scripted_effect = {
 		}		
 	}
 }
+
+
 
 

@@ -57,8 +57,15 @@ LR_assign_blank_syncretism = {
 	}
 }
 
-on_action_LR_bloodlines = {
-	effect = {
-		LR_give_bloodline_on_birth = yes
+on_birth_child = {
+	on_actions = {
+		historical_bloodlines_inherit_action
 	}
 }
+
+historical_bloodlines_inherit_action = {
+	effect = {
+		historical_bloodlines_inherit_effect = yes
+	}
+}
+

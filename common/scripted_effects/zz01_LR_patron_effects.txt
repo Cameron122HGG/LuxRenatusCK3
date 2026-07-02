@@ -1,0 +1,1197 @@
+﻿#patron test
+ate_bhakti_effect = {
+	# Remove any previous personal god relation
+	## GURUISM IS SEPARATE, SINCE IT RELIES ON A SEPARATE PARAMETER/TENET FROM BHAKTI/PATRON GODS
+
+	## DIVINA PATRIOTA
+	if = {
+		limit = { religion = religion:solar_religion }
+		if = {
+			limit = {
+				has_character_modifier = patron_solar_imperator_modifier
+			}
+			remove_character_modifier = patron_solar_imperator_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_elagabalus_modifier
+			}
+			remove_character_modifier = patron_elagabalus_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_sol_invictus_modifier
+			}
+			remove_character_modifier = patron_sol_invictus_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_aurelian_modifier
+			}
+			remove_character_modifier = patron_aurelian_modifier
+			add_piety = massive_piety_loss
+		}
+	}
+	## AFRO-DIASPORIC & CATHOLICISM, I GUESS
+	else_if = {
+		limit = {
+			OR = {
+				#religion = religion:afro_diasporic_religion
+				religion = religion:kemetic_religion
+			}
+		}
+		## GENERIC PATRONS
+		if = {
+			limit = {
+				has_character_modifier = devotee_of_chango
+			}
+			remove_character_modifier = devotee_of_chango
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_babalu_aye
+			}
+			remove_character_modifier = devotee_of_babalu_aye
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_obatala
+			}
+			remove_character_modifier = devotee_of_obatala
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_oshun
+			}
+			remove_character_modifier = devotee_of_oshun
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_yemaya
+			}
+			remove_character_modifier = devotee_of_yemaya
+			add_piety = massive_piety_loss
+		}
+		## WINTI PANTHEON
+		else_if = {
+			limit = {
+				has_character_modifier = earth_pantheon
+			}
+			remove_character_modifier = earth_pantheon
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = sky_pantheon
+			}
+			remove_character_modifier = sky_pantheon
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = forest_pantheon
+			}
+			remove_character_modifier = forest_pantheon
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = water_pantheon
+			}
+			remove_character_modifier = water_pantheon
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = death_pantheon
+			}
+			remove_character_modifier = death_pantheon
+			add_piety = massive_piety_loss
+		}
+		# CANDOMBLE ORIXAS
+		else_if = {
+			limit = {
+				has_character_modifier = xango_orixa
+			}
+			remove_character_modifier = xango_orixa
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = exu_orixa
+			}
+			remove_character_modifier = exu_orixa
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = iansa_orixa
+			}
+			remove_character_modifier = iansa_orixa
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = oxala_orixa
+			}
+			remove_character_modifier = oxala_orixa
+			add_piety = massive_piety_loss
+		}
+		# NAGÔ-EBÁ ORIXÁS
+		else_if = {
+			limit = {
+				has_character_modifier = bhakti_nago_xango
+			}
+			remove_character_modifier = bhakti_nago_xango
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = bhakti_nago_ogum
+			}
+			remove_character_modifier = bhakti_nago_ogum
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = bhakti_nago_oxum
+			}
+			remove_character_modifier = bhakti_nago_oxum
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = bhakti_nago_exu
+			}
+			remove_character_modifier = bhakti_nago_exu
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = bhakti_nago_ossaim
+			}
+			remove_character_modifier = bhakti_nago_ossaim
+			add_piety = massive_piety_loss
+		}
+		# TAMBOR DE MINA HOUSES
+		else_if = {
+			limit = {
+				has_character_modifier = house_davice
+			}
+			remove_character_modifier = house_davice
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = house_dambira
+			}
+			remove_character_modifier = house_dambira
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = house_encantados
+			}
+			remove_character_modifier = house_encantados
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = house_orixa
+			}
+			remove_character_modifier = house_orixa
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = house_quevioco
+			}
+			remove_character_modifier = house_quevioco
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = house_savaluno
+			}
+			remove_character_modifier = house_savaluno
+			add_piety = massive_piety_loss
+		}
+		# 21 DIVISIONES MISTERIOS
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_papa_legba
+			}
+			remove_character_modifier = devotee_of_papa_legba
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_ogun_balendyo
+			}
+			remove_character_modifier = devotee_of_ogun_balendyo
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_el_baron_del_cementerio
+			}
+			remove_character_modifier = devotee_of_el_baron_del_cementerio
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_belie_belcan
+			}
+			remove_character_modifier = devotee_of_belie_belcan
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_metresili
+			}
+			remove_character_modifier = devotee_of_metresili
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_tindjo_alawe
+			}
+			remove_character_modifier = devotee_of_tindjo_alawe
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_papa_candelo
+			}
+			remove_character_modifier = devotee_of_papa_candelo
+			add_piety = massive_piety_loss
+		}
+
+	}
+	## SEASPRAY
+	else_if = {
+		limit = { religion = religion:celtic_religion }
+		if = {
+			limit = {
+				has_character_modifier = patron_jack_modifier
+			}
+			remove_character_modifier = patron_jack_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_old_man_of_the_sea_modifier
+			}
+			remove_character_modifier = patron_old_man_of_the_sea_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_father_patrick_modifier
+			}
+			remove_character_modifier = patron_father_patrick_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_little_fellas_modifier
+			}
+			remove_character_modifier = patron_little_fellas_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_sacred_cod_modifier
+			}
+			remove_character_modifier = patron_sacred_cod_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_sheila_nageira_modifier
+			}
+			remove_character_modifier = patron_sheila_nageira_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_pegg_bearskin_modifier
+			}
+			remove_character_modifier = patron_pegg_bearskin_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_three_women_in_white_modifier
+			}
+			remove_character_modifier = patron_three_women_in_white_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_fingal_and_glooscap_modifier
+			}
+			remove_character_modifier = patron_fingal_and_glooscap_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_cu_chulainn_modifier
+			}
+			remove_character_modifier = patron_cu_chulainn_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_salmon_of_knowledge_modifier
+			}
+			remove_character_modifier = patron_salmon_of_knowledge_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_bluenose_modifier
+			}
+			remove_character_modifier = patron_bluenose_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_singing_miner_modifier
+			}
+			remove_character_modifier = patron_singing_miner_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_sesus_modifier
+			}
+			remove_character_modifier = patron_sesus_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_mikumwesu_modifier
+			}
+			remove_character_modifier = patron_mikumwesu_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_ayashe_modifier
+			}
+			remove_character_modifier = patron_ayashe_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_papakashtshihku_modifier
+			}
+			remove_character_modifier = patron_papakashtshihku_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_tshiuetinush_modifier
+			}
+			remove_character_modifier = patron_tshiuetinush_modifier
+			add_piety = massive_piety_loss
+		}
+	}
+	## INDUSTRIALIST
+	else_if = {
+		limit = { religion = religion:mithras_religion }
+		if = {
+			limit = {
+				has_character_modifier = patron_john_henry_modifier
+			}
+			remove_character_modifier = patron_john_henry_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_osha_modifier
+			}
+			remove_character_modifier = patron_osha_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_carnegie_modifier
+			}
+			remove_character_modifier = patron_carnegie_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_rockefeller_modifier
+			}
+			remove_character_modifier = patron_rockefeller_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_hill_modifier
+			}
+			remove_character_modifier = patron_hill_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_ford_modifier
+			}
+			remove_character_modifier = patron_ford_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_westing_modifier
+			}
+			remove_character_modifier = patron_westing_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_reuther_modifier
+			}
+			remove_character_modifier = patron_reuther_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_kellog_modifier
+			}
+			remove_character_modifier = patron_kellog_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_sears_modifier
+			}
+			remove_character_modifier = patron_sears_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_guardian_modifier
+			}
+			remove_character_modifier = patron_guardian_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_mackinaw_modifier
+			}
+			remove_character_modifier = patron_mackinaw_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_indy_500_modifier
+			}
+			remove_character_modifier = patron_indy_500_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_wright_modifier
+			}
+			remove_character_modifier = patron_wright_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_stubblefield_modifier
+			}
+			remove_character_modifier = patron_stubblefield_modifier
+			add_piety = massive_piety_loss
+		}
+	}
+	## HINDUISM
+	else_if = {
+		limit = { religion = religion:hinduism_religion }
+		if = {
+			limit = {
+				has_character_modifier = patron_nakura_modifier
+			}
+			remove_character_modifier = patron_nakura_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_ram_modifier
+			}
+			remove_character_modifier = patron_ram_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_kali_mai_modifier
+			}
+			remove_character_modifier = patron_kali_mai_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_ganesh_modifier
+			}
+			remove_character_modifier = patron_ganesh_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_munishvaran_modifier
+			}
+			remove_character_modifier = patron_munishvaran_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_chankani_karuppu_modifier
+			}
+			remove_character_modifier = patron_chankani_karuppu_modifier
+			add_piety = massive_piety_loss
+		}
+	}
+	## ISLAM
+	else_if = {
+		limit = { religion = religion:islam_religion }
+		if = {
+			limit = {
+				has_character_modifier = patron_sang_hyung_tungga
+			}
+			remove_character_modifier = patron_sang_hyung_tungga
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_wali_songo
+			}
+			remove_character_modifier = patron_wali_songo
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_rama_wijaya
+			}
+			remove_character_modifier = patron_rama_wijaya
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_batara_guru
+			}
+			remove_character_modifier = patron_batara_guru
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_dewa_sri
+			}
+			remove_character_modifier = patron_dewa_sri
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_mokamat
+			}
+			remove_character_modifier = patron_mokamat
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_ratu_kidil
+			}
+			remove_character_modifier = patron_ratu_kidil
+			add_piety = massive_piety_loss
+		}
+	}
+	## SPIRITUALISM
+	else_if = {
+		limit = { religion = religion:zoroastrianism_religion }
+		if = {
+			limit = {
+				has_character_modifier = umbanda_caboclos
+			}
+			remove_character_modifier = umbanda_caboclos
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = umbanda_pretos_velhos
+			}
+			remove_character_modifier = umbanda_pretos_velhos
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = umbanda_malandros
+			}
+			remove_character_modifier = umbanda_malandros
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = umbanda_eres
+			}
+			remove_character_modifier = umbanda_eres
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = umbanda_pomba_giras
+			}
+			remove_character_modifier = umbanda_pomba_giras
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = umbanda_exus
+			}
+			remove_character_modifier = umbanda_exus
+			add_piety = massive_piety_loss
+		}
+	}
+	## CATHOLICISM
+	else_if = {
+		limit = { religion = religion:christianity_religion }
+		if = {
+			limit = {
+				has_character_modifier = devotee_of_san_pedro
+			}
+			remove_character_modifier = devotee_of_san_pedro
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_san_santiago
+			}
+			remove_character_modifier = devotee_of_san_santiago
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_san_elias
+			}
+			remove_character_modifier = devotee_of_san_elias
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_san_miguel_arcangel
+			}
+			remove_character_modifier = devotee_of_san_miguel_arcangel
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_nuestra_senora_dolorosa
+			}
+			remove_character_modifier = devotee_of_nuestra_senora_dolorosa
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_san_rafael
+			}
+			remove_character_modifier = devotee_of_san_rafael
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_san_lazaro
+			}
+			remove_character_modifier = devotee_of_san_lazaro
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_luis_de_cancer
+			}
+			remove_character_modifier = devotee_of_luis_de_cancer
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_la_virgen_de_la_altagracia
+			}
+			remove_character_modifier = devotee_of_la_virgen_de_la_altagracia
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = devotee_of_santa_barbara
+			}
+			remove_character_modifier = devotee_of_santa_barbara
+			add_piety = massive_piety_loss
+		}
+	}
+	#JUDAISM
+	else_if = {
+		limit = { religion = religion:judaism_religion }
+		if = {
+			limit = {
+				has_character_modifier = judaism_sarah
+			}
+			remove_character_modifier = judaism_sarah
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = judaism_miriam
+			}
+			remove_character_modifier = judaism_miriam
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = judaism_abraham
+			}
+			remove_character_modifier = judaism_abraham
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = judaism_moses
+			}
+			remove_character_modifier = judaism_moses
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = judaism_esther
+			}
+			remove_character_modifier = judaism_esther
+			add_piety = massive_piety_loss
+		}
+	}
+	#ATLANTEAN
+	else_if = {
+		limit = { religion = religion:anatolian_religion }
+		if = {
+			limit = {
+				has_character_modifier = theosophy_morya
+			}
+			remove_character_modifier = theosophy_morya
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = theosophy_koot_hoomi
+			}
+			remove_character_modifier = theosophy_koot_hoomi
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = theosophy_the_venetian
+			}
+			remove_character_modifier = theosophy_the_venetian
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = theosophy_serapis_bey
+			}
+			remove_character_modifier = theosophy_serapis_bey
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = theosophy_hilarion
+			}
+			remove_character_modifier = theosophy_hilarion
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = theosophy_master_jesus
+			}
+			remove_character_modifier = theosophy_master_jesus
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = theosophy_saint_germaine
+			}
+			remove_character_modifier = theosophy_saint_germaine
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = theosophy_madame_blavatsky
+			}
+			remove_character_modifier = theosophy_madame_blavatsky
+			add_piety = massive_piety_loss
+		}
+	}
+	#TRAILWALKER
+	else_if = {
+		limit =  { religion = religion:roman_religion }
+		if = {
+			limit = {
+				has_character_modifier = patron_ol_miss_modifier
+			}
+			remove_character_modifier = patron_ol_miss_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_calamity_jane_modifier
+			}
+			remove_character_modifier = patron_calamity_jane_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_the_marshall_modifier
+			}
+			remove_character_modifier = patron_the_marshall_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = trailwalker_council_eastson
+			}
+			remove_character_modifier = trailwalker_council_eastson
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = trailwalker_council_westson
+			}
+			remove_character_modifier = trailwalker_council_westson
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_the_almighty_modifier
+			}
+			remove_character_modifier = patron_the_almighty_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_iron_horse_modifier
+			}
+			remove_character_modifier = patron_iron_horse_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_marobalra_modifier
+			}
+			remove_character_modifier = patron_marobalra_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = trailwalker_council_sureshot
+			}
+			remove_character_modifier = trailwalker_council_sureshot
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = trailwalker_council_silent_spike
+			}
+			remove_character_modifier = trailwalker_council_silent_spike
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_the_smith_modifier
+			}
+			remove_character_modifier = patron_the_smith_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_the_peacemaker_modifier
+			}
+			remove_character_modifier = patron_the_peacemaker_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = trailwalker_council_buffalo_god
+			}
+			remove_character_modifier = trailwalker_council_buffalo_god
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = trailwalker_council_nameless
+			}
+			remove_character_modifier = trailwalker_council_nameless
+			add_piety = massive_piety_loss
+		}
+	}
+	## AMERICANISM
+	else_if = {
+		limit = { religion = religion:hellenism_religion }
+		if = {
+			limit = {
+				has_character_modifier = patron_washington_modifier
+			}
+			remove_character_modifier = patron_washington_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_jefferson_modifier
+			}
+			remove_character_modifier = patron_jefferson_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_franklin_modifier
+			}
+			remove_character_modifier = patron_franklin_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_hamilton_modifier
+			}
+			remove_character_modifier = patron_hamilton_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_madison_modifier
+			}
+			remove_character_modifier = patron_madison_modifier
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = patron_adams_modifier
+			}
+			remove_character_modifier = patron_adams_modifier
+			add_piety = massive_piety_loss
+		}
+	}
+	## PROTESTANTISM
+	else_if = {
+		limit = { religion = religion:dualism_religion }
+		if = {
+			limit = {
+				has_character_modifier = juxtaposition_shangoist
+			}
+			remove_character_modifier = juxtaposition_shangoist
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = juxtaposition_spiritual_baptist
+			}
+			remove_character_modifier = juxtaposition_spiritual_baptist
+			add_piety = massive_piety_loss
+		}
+	}
+	else = {
+		# If no current bhakti, cost is reduced.
+		add_piety = medium_piety_loss
+	}
+
+	add_character_modifier = $BHAKTI$
+}
+
+ate_guru_effect = {
+	# Remove any previous personal god relation
+	## GURUISM IS SEPARATE, SINCE IT RELIES ON A SEPARATE PARAMETER/TENET FROM BHAKTI/PATRON GODS
+
+	if = {
+		limit = {
+			has_character_modifier = guru_muir
+		}
+		remove_character_modifier = guru_muir
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_moses
+		}
+		remove_character_modifier = guru_moses
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_schwarzenegger
+		}
+		remove_character_modifier = guru_schwarzenegger
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_muhammad
+		}
+		remove_character_modifier = guru_muhammad
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_darwin
+		}
+		remove_character_modifier = guru_darwin
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_sagan
+		}
+		remove_character_modifier = guru_sagan
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_jesus
+		}
+		remove_character_modifier = guru_jesus
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_kal_el
+		}
+		remove_character_modifier = guru_kal_el
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_king
+		}
+		remove_character_modifier = guru_king
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_armstrong
+		}
+		remove_character_modifier = guru_armstrong
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_lee
+		}
+		remove_character_modifier = guru_lee
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_duke_surf
+		}
+		remove_character_modifier = guru_duke_surf
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_gautama
+		}
+		remove_character_modifier = guru_gautama
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_lucas
+		}
+		remove_character_modifier = guru_lucas
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_walt
+		}
+		remove_character_modifier = guru_walt
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_le_guin
+		}
+		remove_character_modifier = guru_le_guin
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_machiavelli
+		}
+		remove_character_modifier = guru_machiavelli
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_rand
+		}
+		remove_character_modifier = guru_rand
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_mulan
+		}
+		remove_character_modifier = guru_mulan
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_laozi
+		}
+		remove_character_modifier = guru_laozi
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_califa
+		}
+		remove_character_modifier = guru_califa
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_elton_the_lawgiver
+		}
+		remove_character_modifier = guru_elton_the_lawgiver
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_emperor_norton
+		}
+		remove_character_modifier = guru_emperor_norton
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_wild_stallion_gurus
+		}
+		remove_character_modifier = guru_wild_stallion_gurus
+		add_piety = massive_piety_loss
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = guru_eternal_living_guru
+		}
+		remove_character_modifier = guru_eternal_living_guru
+		add_piety = massive_piety_loss
+	}
+	else = {
+		# If no current bhakti, cost is reduced.
+		add_piety = medium_piety_loss
+	}
+
+	add_character_modifier = $GURU$
+}
+
+
+
