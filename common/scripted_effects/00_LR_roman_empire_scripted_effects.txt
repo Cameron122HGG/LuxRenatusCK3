@@ -410,6 +410,7 @@ split_byzantine_empire_effect = {
 						title:k_arabia ?= this
 						title:k_yemen ?= this
 						title:k_cyprus ?= this
+						title:k_judah ?= this
 					}
 				}
 				set_de_jure_liege_title = title:e_praetorian_prefecture_oriens
@@ -623,7 +624,7 @@ create_eastern_roman_empire_scripted_effect = {
 		title:e_byzantium ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_prefecture_illyricum ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_prefecture_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
-		title:e_praetorian_prefecture_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_prefecture_oriens ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:h_eastern_roman_empire = { # They get the new Roman Empire title
 			change_title_holder = {
 				holder = scope:new_holder
@@ -1058,7 +1059,10 @@ restore_eastern_roman_provinces_system_effect = {
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
 		title:k_diocese_dardania = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
+			set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum
+		}
+		title:k_diocese_illyricum = {
+			set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum
 		}
 		title:k_diocese_thracia = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
@@ -1102,7 +1106,10 @@ restore_eastern_roman_provinces_system_effect = {
 	else_if = {
 		limit = { exists = title:h_eastern_roman_empire.holder }
 		title:k_diocese_dardania = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
+			set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum
+		}
+		title:k_diocese_illyricum = {
+			set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum
 		}
 		title:k_diocese_thracia = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
@@ -1760,7 +1767,7 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 					}
 				}
 			}
-			title:d_sinai = { set_de_jure_liege_title = title:k_jerusalem }
+			#title:d_sinai = { set_de_jure_liege_title = title:k_jerusalem }
 			}
 		}
 		# Shift the provinces
