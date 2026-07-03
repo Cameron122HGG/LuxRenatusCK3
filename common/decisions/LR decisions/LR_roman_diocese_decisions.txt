@@ -1703,39 +1703,6 @@ restore_eastern_roman_provinces_decision = {
 		decision_to_second_step_button = "CHOOSE_DIOCESE_BUTTON" 
 
 		item = {
-			value = roman_noricum
-			current_description = {
-				desc = noricum_diocese_desc
-			}
-			localization  = {
-				desc = noricum_diocese_desc
-			}
-			icon = "gfx/interface/icons/diocese_restoration/roman_illyricum.dds"
-			is_shown = {
-				OR = {
-					title:k_diocese_noricum = {
-						is_titular = yes
-					}
-					title:k_diocese_noricum = {
-						NOT = {
-							any_in_de_jure_hierarchy = {
-								is_titular = no
-							}
-						}
-					}
-				}
-			}
-			
-			is_valid = {
-				completely_controls_region = custom_roman_noricum
-			}
-	
-			ai_chance = {
-				value = 0
-			}
-		}
-
-		item = {
 			value = roman_moesia
 			current_description = {
 				desc = moesia_diocese_desc
@@ -1776,8 +1743,7 @@ restore_eastern_roman_provinces_decision = {
 			localization  = {
 				desc = dardania_diocese_desc
 			}
-			icon = "gfx/interface/icons/diocese_restoration/roman_dardania.dds"
-
+			icon = "gfx/interface/icons/diocese_restoration/roman_illyricum.dds"
 			is_shown = {
 				OR = {
 					title:k_diocese_dardania = {
@@ -1792,11 +1758,11 @@ restore_eastern_roman_provinces_decision = {
 					}
 				}
 			}
-
+			
 			is_valid = {
 				completely_controls_region = custom_roman_dardania
 			}
-
+	
 			ai_chance = {
 				value = 0
 			}
@@ -2186,7 +2152,7 @@ restore_eastern_roman_provinces_decision = {
 					}
 				}
 				resolve_title_and_vassal_change = scope:title_change
-				restore_roman_provinces_syria_decision_effect = yes
+				restore_roman_provinces_palestine_decision_effect = yes
 				trigger_event = {
 					id = tfe_roman_event.0007
 				}
