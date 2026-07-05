@@ -1233,6 +1233,19 @@ restore_eastern_roman_provinces_system_effect = {
 			set_de_jure_liege_title = title:k_diocese_armenia
 		}
 
+		every_county_in_region = {
+			region = custom_roman_imperial_court_constantinople
+			duchy = { add_to_list = custom_roman_imperial_court_constantinople_list }
+		}	
+		every_in_list = {
+			list = custom_roman_imperial_court_constantinople_list
+			limit = {
+				NOT = { de_jure_liege = title:k_constantinople_court }
+			}
+			set_de_jure_liege_title = title:k_constantinople_court
+		}
+
+
 		if = {
 			limit = {
 				is_target_in_global_variable_list = { 
