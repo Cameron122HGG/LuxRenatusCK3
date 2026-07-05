@@ -817,15 +817,30 @@ LR_restore_western_hegemony_decision_effect = {
 
 		# Creating the Praetorian Prefectures
 
+		# Illyricum
+		# Shift the Kingdoms
+		every_county_in_region = {
+			region = custom_roman_prefecture_illyricum
+			kingdom = { add_to_list = custom_roman_prefecture_illyricum_list }
+		}	
+		every_in_list = {
+			list = custom_roman_prefecture_illyricum_list
+			limit = {
+				NOT = { de_jure_liege = title:e_praetorian_prefecture_illyricum }
+			}
+			set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum
+		}
+		title:e_praetorian_prefecture_illyricum = { set_de_jure_liege_title = title:h_western_roman_empire }
+
 		#Italia
 		# Shift the Kingdoms
 		title:e_praetorian_prefecture_italia = { set_de_jure_liege_title = title:h_western_roman_empire }
 		every_county_in_region = {
-			region = custom_spqr_imperial_core
-			kingdom = { add_to_list = custom_spqr_imperial_core }
+			region = custom_western_imperial_core
+			kingdom = { add_to_list = custom_western_imperial_core }
 		}	
 		every_in_list = {
-			list = custom_spqr_imperial_core
+			list = custom_western_imperial_core
 			limit = {
 				NOT = { de_jure_liege = title:e_praetorian_prefecture_italia }
 			}
