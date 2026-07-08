@@ -1,0 +1,421 @@
+﻿###############################################################
+# Different Administrative — minister side-effect pulse events
+#
+# Triggered quarterly (~25% chance per minister, so ≈ once / year
+# per filled ministry slot) from the admin top liege's
+# quarterly_playable_pulse. Each event picks an outcome from an
+# internal random_list, applies effects to scope:minister and
+# root (top liege), and shows a single-option letter to the liege.
+#
+# Scope contract:
+#   root        = top liege (council owner)
+#   scope:minister = the councillor character in that ministry
+###############################################################
+
+namespace = da_minister_pulse
+
+###############################################################
+# 1 — Minister of Personnel (diplomacy)
+###############################################################
+da_minister_pulse.1 = {
+	type = letter_event
+	opening = da_minister_pulse.1.opening
+	sender = scope:minister
+	title = da_minister_pulse.1.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_talent }
+				desc = da_minister_pulse.1.desc.talent
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_scandal }
+				desc = da_minister_pulse.1.desc.scandal
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_smooth }
+				desc = da_minister_pulse.1.desc.smooth
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_coup }
+				desc = da_minister_pulse.1.desc.coup
+			}
+			desc = da_minister_pulse.1.desc.smooth
+		}
+	}
+	theme = council
+	left_portrait = {
+		character = scope:minister
+		animation = personality_bold
+	}
+
+	immediate = {
+		random_list = {
+			# Talent discovered — scaled by minister diplomacy
+			40 = {
+				modifier = { add = scope:minister.diplomacy factor = 0.05 }
+				scope:minister = { set_variable = { name = da_pulse_outcome_talent days = 30 } }
+				add_prestige = 75
+			}
+			# Smooth diplomacy
+			25 = {
+				scope:minister = {
+					set_variable = { name = da_pulse_outcome_smooth days = 30 }
+					add_prestige = 50
+				}
+			}
+			# Major coup
+			10 = {
+				modifier = { add = scope:minister.diplomacy factor = 0.03 }
+				scope:minister = {
+					set_variable = { name = da_pulse_outcome_coup days = 30 }
+					add_prestige = 100
+				}
+				add_prestige = 100
+				add_legitimacy = 25
+			}
+		}
+	}
+
+	option = {
+		name = da_minister_pulse.option.acknowledge
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_talent } }
+	}
+	option = {
+		name = da_minister_pulse.option.acknowledge_negative
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_scandal } }
+		add_opinion = {
+			modifier = displeased_opinion
+			target = scope:minister
+			opinion = -10
+		}
+	}
+	option = {
+		name = da_minister_pulse.option.well_done
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_smooth } }
+		add_character_modifier = {
+			modifier = da_minister_smooth_diplomacy_modifier
+			years = 5
+		}
+	}
+	option = {
+		name = da_minister_pulse.option.outstanding
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_coup } }
+		add_opinion = {
+			modifier = pleased_opinion
+			target = scope:minister
+			opinion = 15
+		}
+	}
+
+	after = {
+		scope:minister = {
+			remove_variable = da_pulse_outcome_talent
+			remove_variable = da_pulse_outcome_scandal
+			remove_variable = da_pulse_outcome_smooth
+			remove_variable = da_pulse_outcome_coup
+		}
+	}
+}
+
+###############################################################
+# 2 — Minister of Justice (learning)
+###############################################################
+da_minister_pulse.2 = {
+	type = letter_event
+	opening = da_minister_pulse.2.opening
+	sender = scope:minister
+	title = da_minister_pulse.2.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_tyranny_reduced }
+				desc = da_minister_pulse.2.desc.tyranny_reduced
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_reform }
+				desc = da_minister_pulse.2.desc.reform
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_corrupt }
+				desc = da_minister_pulse.2.desc.corrupt
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_blunder }
+				desc = da_minister_pulse.2.desc.blunder
+			}
+			desc = da_minister_pulse.2.desc.reform
+		}
+	}
+	theme = council
+	left_portrait = {
+		character = scope:minister
+		animation = personality_rational
+	}
+
+	immediate = {
+		random_list = {
+			40 = {
+				trigger = { tyranny > 0 }
+				modifier = { add = scope:minister.learning factor = 0.04 }
+				scope:minister = { set_variable = { name = da_pulse_outcome_tyranny_reduced days = 30 } }
+				add_tyranny = -10
+			}
+			25 = {
+				modifier = { add = scope:minister.learning factor = 0.04 }
+				scope:minister = { set_variable = { name = da_pulse_outcome_reform days = 30 } }
+				scope:minister = { add_prestige = 50 }
+			}
+		}
+
+	}
+
+	option = {
+		name = da_minister_pulse.option.well_done
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_tyranny_reduced } }
+	}
+	option = {
+		name = da_minister_pulse.option.outstanding
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_reform } }
+		add_character_modifier = {
+			modifier = da_minister_legal_reformer_modifier
+			years = 10
+		}
+		add_opinion = {
+			modifier = pleased_opinion
+			target = scope:minister
+			opinion = 10
+		}
+	}
+	option = {
+		name = da_minister_pulse.option.acknowledge_negative
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_corrupt } }
+	}
+	option = {
+		name = da_minister_pulse.option.disappointed
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_blunder } }
+		add_character_modifier = {
+			modifier = da_minister_judicial_blunder_modifier
+			years = 2
+		}
+		add_opinion = {
+			modifier = displeased_opinion
+			target = scope:minister
+			opinion = -15
+		}
+	}
+
+	after = {
+		scope:minister = {
+			remove_variable = da_pulse_outcome_tyranny_reduced
+			remove_variable = da_pulse_outcome_reform
+			remove_variable = da_pulse_outcome_corrupt
+			remove_variable = da_pulse_outcome_blunder
+		}
+	}
+}
+
+###############################################################
+# 3 — Minister of Works (stewardship)
+###############################################################
+da_minister_pulse.3 = {
+	type = letter_event
+	opening = da_minister_pulse.3.opening
+	sender = scope:minister
+	title = da_minister_pulse.3.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_efficient }
+				desc = da_minister_pulse.3.desc.efficient
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_embezzle }
+				desc = da_minister_pulse.3.desc.embezzle
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_strike }
+				desc = da_minister_pulse.3.desc.strike
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_treasure }
+				desc = da_minister_pulse.3.desc.treasure
+			}
+			desc = da_minister_pulse.3.desc.efficient
+		}
+	}
+	theme = council
+	left_portrait = {
+		character = scope:minister
+		animation = personality_rational
+	}
+
+	immediate = {
+		random_list = {
+			40 = {
+				modifier = { add = scope:minister.stewardship factor = 0.04 }
+				scope:minister = { set_variable = { name = da_pulse_outcome_efficient days = 30 } }
+			}
+			10 = {
+				modifier = { add = scope:minister.stewardship factor = 0.03 }
+				scope:minister = {
+					set_variable = { name = da_pulse_outcome_treasure days = 30 }
+					add_prestige = 50
+				}
+				add_gold = 250
+			}
+		}
+	}
+
+	option = {
+		name = da_minister_pulse.option.well_done
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_efficient } }
+		add_character_modifier = {
+			modifier = da_minister_efficient_works_modifier
+			years = 5
+		}
+	}
+	option = {
+		name = da_minister_pulse.option.acknowledge_negative
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_embezzle } }
+		add_opinion = {
+			modifier = displeased_opinion
+			target = scope:minister
+			opinion = -5
+		}
+	}
+	option = {
+		name = da_minister_pulse.option.disappointed
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_strike } }
+		add_character_modifier = {
+			modifier = da_minister_works_strike_modifier
+			years = 2
+		}
+	}
+	option = {
+		name = da_minister_pulse.option.outstanding
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_treasure } }
+		add_opinion = {
+			modifier = pleased_opinion
+			target = scope:minister
+			opinion = 10
+		}
+	}
+
+	after = {
+		scope:minister = {
+			remove_variable = da_pulse_outcome_efficient
+			remove_variable = da_pulse_outcome_embezzle
+			remove_variable = da_pulse_outcome_strike
+			remove_variable = da_pulse_outcome_treasure
+		}
+	}
+}
+
+###############################################################
+# 4 — Minister Grand Marshal (martial)
+###############################################################
+da_minister_pulse.4 = {
+	type = letter_event
+	opening = da_minister_pulse.4.opening
+	sender = scope:minister
+	title = da_minister_pulse.4.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_training }
+				desc = da_minister_pulse.4.desc.training
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_veteran }
+				desc = da_minister_pulse.4.desc.veteran
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_discipline }
+				desc = da_minister_pulse.4.desc.discipline
+			}
+			triggered_desc = {
+				trigger = { has_variable = da_pulse_outcome_legend }
+				desc = da_minister_pulse.4.desc.legend
+			}
+			desc = da_minister_pulse.4.desc.training
+		}
+	}
+	theme = council
+	left_portrait = {
+		character = scope:minister
+		animation = personality_bold
+	}
+
+	immediate = {
+		random_list = {
+			40 = {
+				modifier = { add = scope:minister.martial factor = 0.04 }
+				scope:minister = { set_variable = { name = da_pulse_outcome_training days = 30 } }
+			}
+			25 = {
+				modifier = { add = scope:minister.martial factor = 0.03 }
+				scope:minister = {
+					set_variable = { name = da_pulse_outcome_veteran days = 30 }
+					add_prestige = 50
+				}
+				add_prestige = 50
+			}
+			10 = {
+				modifier = { add = scope:minister.martial factor = 0.04 }
+				scope:minister = {
+					set_variable = { name = da_pulse_outcome_legend days = 30 }
+					add_prestige = 150
+					if = {
+						limit = { NOT = { has_trait = brilliant_strategist } }
+						add_trait = brilliant_strategist
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = da_minister_pulse.option.well_done
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_training } }
+		add_character_modifier = {
+			modifier = da_minister_trained_troops_modifier
+			years = 5
+		}
+	}
+	option = {
+		name = da_minister_pulse.option.well_done
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_veteran } }
+	}
+	option = {
+		name = da_minister_pulse.option.disappointed
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_discipline } }
+		add_character_modifier = {
+			modifier = da_minister_discipline_breakdown_modifier
+			years = 1
+		}
+		add_opinion = {
+			modifier = displeased_opinion
+			target = scope:minister
+			opinion = -10
+		}
+	}
+	option = {
+		name = da_minister_pulse.option.outstanding
+		trigger = { scope:minister = { has_variable = da_pulse_outcome_legend } }
+		add_opinion = {
+			modifier = pleased_opinion
+			target = scope:minister
+			opinion = 20
+		}
+	}
+
+	after = {
+		scope:minister = {
+			remove_variable = da_pulse_outcome_training
+			remove_variable = da_pulse_outcome_veteran
+			remove_variable = da_pulse_outcome_discipline
+			remove_variable = da_pulse_outcome_legend
+		}
+	}
+}

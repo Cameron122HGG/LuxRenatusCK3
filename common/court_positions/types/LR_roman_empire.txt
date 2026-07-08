@@ -1,4 +1,4 @@
-### Roman Imperial Ministers — custom court_position_types
+﻿### Roman Imperial Ministers — custom court_position_types
 ### Restricted to characters whose primary title is the Roman Empire (or its de jure
 ### successor tag if you're using a custom title). Adjust title:h_eastern_roman_empire to match
 ### the actual title key in your mod's landed_titles files.
@@ -165,5 +165,106 @@ magister_militum_court_position = {
 
 	ai_will_do = {
 		value = 1
+	}
+}
+
+eparch_court_position = {
+	sort_order = 371
+	max_available_positions = 1
+	minimum_rank = empire
+	skill = stewardship
+
+	court_position_asset = {
+		animation = reading
+		background = "gfx/interface/illustrations/event_scenes/ep3_constantinople.dds"
+	}
+
+	opinion = {
+		value = 20
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = stewardship
+			multiply = 1
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = diplomacy
+			multiply = 1
+			max = 50
+			desc = court_position_skill_diplomacy
+		}
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		government_has_flag = government_is_administrative
+		OR = {
+			is_independent_ruler = yes
+			highest_held_title_tier >= tier_empire
+		}
+	}
+	
+	is_shown_character = {
+		scope:employee = {
+			OR = {
+				has_council_position = minister_works
+				has_character_flag = is_eparch_candidate
+			}
+			is_landed = no
+			is_lowborn = no
+		}
+	}
+
+	valid_position = {
+		highest_held_title_tier >= tier_empire
+	}
+
+	valid_character = {
+		scope:employee = {
+			liege = scope:liege
+			OR = {
+				has_council_position = minister_works
+				has_character_flag = is_eparch_candidate
+			}
+			is_landed = no
+			is_lowborn = no
+		}
+	}
+
+	revoke_cost = {
+		gold = { value = 0 }
+		prestige = { value = 0 }
+	}
+
+	salary = {
+		gold = { value = 0 }
+	}
+
+	on_court_position_received = {
+		basic_gained_court_position_effect = yes
+	}
+	on_court_position_revoked = {
+		# Fail-safe: if the character is still on the council, re-appoint them immediately
+		if = {
+			limit = {
+				scope:employee = { has_character_flag = eparch_unfireable }
+			}
+			scope:liege = {
+				appoint_court_position = {
+					recipient = scope:employee
+					court_position = eparch_court_position
+				}
+			}
+		}
+		basic_revoked_court_position_effect = yes
+	}
+	on_court_position_invalidated = {
+		basic_invalidated_court_position_effect = yes
 	}
 }

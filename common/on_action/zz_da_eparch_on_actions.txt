@@ -1,0 +1,19 @@
+﻿# DA edit: only the eparch on_action is ported. Byzantine-title check stripped
+# in favour of administrative government — works for any admin ruler.
+basileus_eparch_appointed_on_action = {
+	trigger = {
+		# root is the character (The Praefectus / Minister of Works)
+		liege_or_court_owner = {
+			government_has_flag = government_is_administrative
+		}
+	}
+	effect = {
+		# We target the liege to appoint us
+		liege_or_court_owner = {
+			appoint_court_position = {
+				recipient = root
+				court_position = eparch_court_position
+			}
+		}
+	}
+}
