@@ -11,7 +11,7 @@ tgp_has_access_to_ministry_trigger = {
 		}
 		# DA: any independent administrative ruler
 		AND = {
-			government_has_flag = government_is_administrative
+			government_has_flag = government_is_roman_autocratic
 			is_independent_ruler = yes
 		}
 	}
@@ -30,7 +30,7 @@ tgp_can_be_a_minister_trigger = {
 	OR = {
 		is_ruler = no
 		government_has_flag = government_is_celestial
-		government_has_flag = government_is_administrative
+		government_has_flag = government_is_roman_autocratic
 	}
 	OR = {
 		has_variable = can_be_councillor_override
@@ -61,7 +61,7 @@ tgp_can_be_grand_marshal_trigger = {
 	OR = {
 		is_ruler = no
 		government_has_flag = government_is_celestial
-		government_has_flag = government_is_administrative
+		government_has_flag = government_is_roman_autocratic
 	}
 	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = $COURT_OWNER$ }
 }
@@ -71,7 +71,7 @@ tgp_can_be_grand_marshal_trigger = {
 
 # Legacy alias — true for any independent admin ruler.
 dominus_is_basileus_trigger = {
-	government_has_flag = government_is_administrative
+	government_has_flag = government_is_roman_autocratic
 	is_independent_ruler = yes
 }
 
@@ -84,7 +84,7 @@ dominus_is_byzantine_ruler_trigger = {
 			is_character = yes
 			is_ruler = yes
 			is_independent_ruler = yes
-			government_has_flag = government_is_administrative
+			government_has_flag = government_is_roman_autocratic
 		}
 		# Case 2: Landed title whose holder is an independent admin ruler
 		AND = {
@@ -92,7 +92,7 @@ dominus_is_byzantine_ruler_trigger = {
 			exists = this.holder
 			this.holder = {
 				is_independent_ruler = yes
-				government_has_flag = government_is_administrative
+				government_has_flag = government_is_roman_autocratic
 			}
 		}
 		# Case 3: Councillor serving an independent admin liege/court owner
@@ -101,7 +101,7 @@ dominus_is_byzantine_ruler_trigger = {
 			is_councillor = yes
 			liege_or_court_owner = {
 				is_independent_ruler = yes
-				government_has_flag = government_is_administrative
+				government_has_flag = government_is_roman_autocratic
 			}
 		}
 	}
@@ -122,7 +122,7 @@ dominus_is_byzantine_court_trigger = {
 		AND = {
 			NOT = { exists = this }
 			any_player = {
-				government_has_flag = government_is_administrative
+				government_has_flag = government_is_roman_autocratic
 				is_independent_ruler = yes
 			}
 		}
@@ -141,7 +141,7 @@ tgp_celestial_military_governor_can_join_war_trigger = {
 		has_title = title:e_minister_grand_marshal
 		AND = {
 			is_landed = yes
-			government_has_flag = government_is_administrative
+			government_has_flag = government_is_roman_autocratic
 			highest_held_title_tier >= tier_duchy
 			OR = {
 				vassal_contract_has_flag = admin_theme_military
