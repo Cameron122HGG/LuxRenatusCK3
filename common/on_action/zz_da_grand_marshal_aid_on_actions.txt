@@ -1,4 +1,4 @@
-###############################################################
+﻿###############################################################
 # Different Administrative — Grand Marshal automatic war aid
 #
 # Every quarter, any admin ruler at war with a filled Grand
@@ -15,23 +15,23 @@
 
 quarterly_playable_pulse = {
 	on_actions = {
-		da_grand_marshal_war_aid_pulse
+		LR_grand_marshal_war_aid_pulse
 	}
 }
 
-da_grand_marshal_war_aid_pulse = {
+LR_grand_marshal_war_aid_pulse = {
 	effect = {
-		da_grand_marshal_war_aid_effect = yes
+		LR_grand_marshal_war_aid_effect = yes
 		# Schedule the off-cycle (half-quarter) follow-up attempt.
 		trigger_event = {
-			on_action = da_grand_marshal_war_aid_offcycle
+			on_action = LR_grand_marshal_war_aid_offcycle
 			months    = { 1 2 }
 		}
 	}
 }
 
-da_grand_marshal_war_aid_offcycle = {
+LR_grand_marshal_war_aid_offcycle = {
 	effect = {
-		da_grand_marshal_war_aid_effect = yes
+		LR_grand_marshal_war_aid_effect = yes
 	}
 }

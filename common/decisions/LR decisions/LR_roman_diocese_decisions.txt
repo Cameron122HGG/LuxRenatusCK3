@@ -47,7 +47,7 @@
 			title:k_diocese_italia_annonaria.holder = { liege = root }
 			title:k_diocese_italia_suburbicaria.holder = { liege = root }
 			title:k_diocese_illyricum.holder = { liege = root }
-			title:k_diocese_galliarum.holder = { liege = root }
+			title:k_diocese_lugdunensis.holder = { liege = root }
 			title:k_diocese_viennensis.holder = { liege = root }
 			title:k_diocese_africa.holder = { liege = root }
 			title:k_diocese_mauretania.holder = { liege = root }
@@ -597,10 +597,10 @@ restore_western_roman_provinces_decision = {
 				}
 			}
 			OR = {
-				title:k_diocese_galliarum = {
+				title:k_diocese_lugdunensis = {
 					is_titular = yes
 				}
-				title:k_diocese_galliarum = {
+				title:k_diocese_lugdunensis = {
 					NOT = {
 						any_in_de_jure_hierarchy = {
 							is_titular = no
@@ -757,12 +757,12 @@ restore_western_roman_provinces_decision = {
 					}
 				}
 				AND = {
-					completely_controls_region = custom_roman_galliarum
+					completely_controls_region = custom_roman_lugdunensis
 					OR = {
-						title:k_diocese_galliarum = {
+						title:k_diocese_lugdunensis = {
 							is_titular = yes
 						}
-						title:k_diocese_galliarum = {
+						title:k_diocese_lugdunensis = {
 							NOT = {
 								any_in_de_jure_hierarchy = {
 									is_titular = no
@@ -955,10 +955,10 @@ restore_western_roman_provinces_decision = {
 		item = {
 			value = roman_viennensis
 			current_description = {
-				desc = septem_provincia_diocese_desc
+				desc = viennensis_diocese_desc
 			}
 			localization  = {
-				desc = septem_provincia_diocese_desc
+				desc = viennensis_diocese_desc
 			}
 			#icon = "gfx/interface/icons/diocese_restoration/roman_viennensis.dds"
 			is_shown = {
@@ -986,20 +986,20 @@ restore_western_roman_provinces_decision = {
 		}
 
 		item = {
-			value = roman_galliarum
+			value = roman_lugdunensis
 			current_description = {
-				desc = galliarum_diocese_desc
+				desc = lugdunensis_diocese_desc
 			}
 			localization  = {
-				desc = galliarum_diocese_desc
+				desc = lugdunensis_diocese_desc
 			}
-			#icon = "gfx/interface/icons/diocese_restoration/roman_galliarum.dds"
+			#icon = "gfx/interface/icons/diocese_restoration/roman_lugdunensis.dds"
 			is_shown = {
 				OR = {
-					title:k_diocese_galliarum = {
+					title:k_diocese_lugdunensis = {
 						is_titular = yes
 					}
-					title:k_diocese_galliarum = {
+					title:k_diocese_lugdunensis = {
 						NOT = {
 							any_in_de_jure_hierarchy = {
 								is_titular = no
@@ -1010,7 +1010,7 @@ restore_western_roman_provinces_decision = {
 			}
 
 			is_valid = {
-				completely_controls_region = custom_roman_galliarum
+				completely_controls_region = custom_roman_lugdunensis
 			}
 
 			ai_chance = {
@@ -1046,11 +1046,11 @@ restore_western_roman_provinces_decision = {
 				completely_controls_region = custom_roman_britannia
 				custom_tooltip = { 
 					text = gallia_first_restore_tt
-					OR = { # must first restore diocese of galliarum
+					OR = { # must first restore diocese of lugdunensis
 						any_vassal = {
-							has_title = title:k_diocese_galliarum
+							has_title = title:k_diocese_lugdunensis
 						}
-						has_title = title:k_diocese_galliarum
+						has_title = title:k_diocese_lugdunensis
 					}
 				}
 			}
@@ -1184,7 +1184,7 @@ restore_western_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_italia_suburbicaria_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0009
+					id = LR_roman_diocese_event.0009
 				}
 			}
 		}
@@ -1212,7 +1212,7 @@ restore_western_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_pannonia_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0008
+					id = LR_roman_diocese_event.0008
 				}
 			}
 		}
@@ -1240,7 +1240,7 @@ restore_western_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_italia_annonaria_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.00010
+					id = LR_roman_diocese_event.00010
 				}
 			}
 		}
@@ -1268,7 +1268,7 @@ restore_western_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_hispania_decision_effect = yes
 				#trigger_event = {
-					#id = tfe_roman_event.0004
+					#id = LR_roman_diocese_event.0004
 				#}
 			}
 		}
@@ -1296,7 +1296,7 @@ restore_western_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_viennensis_decision_effect = yes
 				#trigger_event = {
-					#id = tfe_roman_event.0002
+					#id = LR_roman_diocese_event.0002
 				#}
 			}
 		}
@@ -1304,17 +1304,17 @@ restore_western_roman_provinces_decision = {
 		hidden_effect = {
 			if = {
 				limit = {
-					scope:roman_galliarum = yes
+					scope:roman_lugdunensis = yes
 				}
 				create_title_and_vassal_change = {
 					type = created
 					save_scope_as = title_change
 					add_claim_on_loss = no
 				}
-				title:k_diocese_galliarum = {
-					save_scope_as = title_k_diocese_galliarum
+				title:k_diocese_lugdunensis = {
+					save_scope_as = title_k_diocese_lugdunensis
 				}
-				title:k_diocese_galliarum = {
+				title:k_diocese_lugdunensis = {
 					set_de_jure_liege_title = root.primary_title
 					change_title_holder = {
 						holder = root
@@ -1322,9 +1322,9 @@ restore_western_roman_provinces_decision = {
 					}
 				}
 				resolve_title_and_vassal_change = scope:title_change
-				restore_roman_provinces_galliarum_decision_effect = yes
+				restore_roman_provinces_lugdunensis_decision_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0003
+					id = LR_roman_diocese_event.0003
 				}
 			}
 		}
@@ -1352,7 +1352,7 @@ restore_western_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_britannia_decision_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0001
+					id = LR_roman_diocese_event.0001
 				}
 			}
 		}
@@ -1380,7 +1380,7 @@ restore_western_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_africa_mauretania_decision_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0007
+					id = LR_roman_diocese_event.0007
 				}
 			}
 		}
@@ -1957,7 +1957,7 @@ restore_eastern_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_moesia_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0009
+					id = LR_roman_diocese_event.0009
 				}
 			}
 		}
@@ -1985,7 +1985,7 @@ restore_eastern_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_pannonia_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0008
+					id = LR_roman_diocese_event.0008
 				}
 			}
 		}
@@ -2013,7 +2013,7 @@ restore_eastern_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_dardania_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.00010
+					id = LR_roman_diocese_event.00010
 				}
 			}
 		}
@@ -2041,7 +2041,7 @@ restore_eastern_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_pontus_decision_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0004
+					id = LR_roman_diocese_event.0004
 				}
 			}
 		}
@@ -2069,7 +2069,7 @@ restore_eastern_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_asia_decision_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0002
+					id = LR_roman_diocese_event.0002
 				}
 			}
 		}
@@ -2097,7 +2097,7 @@ restore_eastern_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_syria_decision_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0003
+					id = LR_roman_diocese_event.0003
 				}
 			}
 		}
@@ -2125,7 +2125,7 @@ restore_eastern_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_aegyptus_decision_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0001
+					id = LR_roman_diocese_event.0001
 				}
 			}
 		}
@@ -2153,7 +2153,7 @@ restore_eastern_roman_provinces_decision = {
 				resolve_title_and_vassal_change = scope:title_change
 				restore_roman_provinces_palestine_decision_effect = yes
 				trigger_event = {
-					id = tfe_roman_event.0007
+					id = LR_roman_diocese_event.0007
 				}
 			}
 		}

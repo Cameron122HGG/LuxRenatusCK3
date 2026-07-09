@@ -851,15 +851,15 @@ LR_restore_western_hegemony_decision_effect = {
 		#Gallia
 		# Shift the Kingdoms
 		every_county_in_region = { #Galliarum
-			region = custom_roman_galliarum
-			kingdom = { add_to_list = custom_roman_galliarum_list }
+			region = custom_roman_lugdunensis
+			kingdom = { add_to_list = custom_roman_lugdunensis_list }
 		}	
 		every_county_in_region = { #Viennensis
 			region = custom_roman_viennensis
-			kingdom = { add_to_list = custom_roman_galliarum_list }
+			kingdom = { add_to_list = custom_roman_lugdunensis_list }
 		}
 		every_in_list = {
-			list = custom_roman_galliarum_list
+			list = custom_roman_lugdunensis_list
 			limit = {
 				NOT = { de_jure_liege = title:e_praetorian_prefecture_gallia }
 			}
@@ -1257,7 +1257,7 @@ restore_roman_provinces_viennensis_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_diocese_galliarum = {
+	title:k_diocese_lugdunensis = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -1285,18 +1285,18 @@ restore_roman_provinces_viennensis_decision_effect = {
 	}
 
 	#Sort the Dioceses
-		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
+		title:k_diocese_lugdunensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 	if = {
 		limit = { exists = title:h_roman_empire.holder }
-		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
+		title:k_diocese_lugdunensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 
 		title:e_praetorian_prefecture_gallia = { set_de_jure_liege_title = title:h_roman_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_spqr.holder }
-		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_diocese_lugdunensis = { set_de_jure_liege_title = title:e_spqr }
 		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_spqr }
 	}
 	# Destroy useless kingdoms
@@ -1402,15 +1402,15 @@ restore_roman_provinces_viennensis_decision_effect = {
 		}
 
 		every_county_in_region = {
-			region = custom_roman_galliarum
-			duchy = { add_to_list = custom_roman_galliarum_list }
+			region = custom_roman_lugdunensis
+			duchy = { add_to_list = custom_roman_lugdunensis_list }
 		}	
 		every_in_list = {
-			list = custom_roman_galliarum_list
+			list = custom_roman_lugdunensis_list
 			limit = {
-				NOT = { de_jure_liege = title:k_diocese_galliarum }
+				NOT = { de_jure_liege = title:k_diocese_lugdunensis }
 			}
-			set_de_jure_liege_title = title:k_diocese_galliarum
+			set_de_jure_liege_title = title:k_diocese_lugdunensis
 		}
 
 		# Then shift all Kingdoms back.
@@ -2503,7 +2503,7 @@ restore_gallic_empire_provinces_viennensis_decision_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	title:k_diocese_galliarum = {
+	title:k_diocese_lugdunensis = {
 		change_title_holder = {
 			holder = root
 			change = scope:change
@@ -2531,18 +2531,18 @@ restore_gallic_empire_provinces_viennensis_decision_effect = {
 	}
 
 	#Sort the Dioceses
-		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
+		title:k_diocese_lugdunensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 	if = {
 		limit = { exists = title:h_gallic_empire.holder }
-		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
+		title:k_diocese_lugdunensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_praetorian_prefecture_gallia }
 
 		title:e_praetorian_prefecture_gallia = { set_de_jure_liege_title = title:h_gallic_empire }
 	}
 	else_if = {
 		limit = { exists = title:e_gallic_empire.holder }
-		title:k_diocese_galliarum = { set_de_jure_liege_title = title:e_gallic_empire }
+		title:k_diocese_lugdunensis = { set_de_jure_liege_title = title:e_gallic_empire }
 		title:k_diocese_viennensis = { set_de_jure_liege_title = title:e_gallic_empire }
 	}
 	# Destroy useless kingdoms
@@ -2648,15 +2648,15 @@ restore_gallic_empire_provinces_viennensis_decision_effect = {
 		}
 
 		every_county_in_region = {
-			region = custom_roman_galliarum
-			duchy = { add_to_list = custom_roman_galliarum_list }
+			region = custom_roman_lugdunensis
+			duchy = { add_to_list = custom_roman_lugdunensis_list }
 		}	
 		every_in_list = {
-			list = custom_roman_galliarum_list
+			list = custom_roman_lugdunensis_list
 			limit = {
-				NOT = { de_jure_liege = title:k_diocese_galliarum }
+				NOT = { de_jure_liege = title:k_diocese_lugdunensis }
 			}
-			set_de_jure_liege_title = title:k_diocese_galliarum
+			set_de_jure_liege_title = title:k_diocese_lugdunensis
 		}
 
 		# Then shift all Kingdoms back.
