@@ -226,7 +226,7 @@
 ## Realm
 		icon_button_mapmode = {
 			name = "map_mode_realms_button"
-			position = { -35 39 }
+			position = { 0 25 }
 			size = { 50 50 }
 			visible = "[And(CanChangeMapMode, Not( GreaterThan_CFixedPoint( GetPlayer.MakeScope.Var('hide_ui_timeline').GetValue, '(CFixedPoint)0' ) ))]"
 
@@ -263,45 +263,18 @@
 			visible = "[And(CanChangeMapMode, Not( GreaterThan_CFixedPoint( GetPlayer.MakeScope.Var('hide_ui_timeline').GetValue, '(CFixedPoint)0' ) ))]"
 
 			## De Jure
-				
-		
 			flowcontainer = {
 				visible = "[CanChangeMapMode]"
 				parentanchor = hcenter
 				direction = horizontal
 				ignoreinvisible = yes
-				spacing = -2
-
-				icon_button_mapmode = {
-					name = "map_mode_counties_button"
-					block "map_mode_tutorial"{}
-					size = { 32 32 }
-
-					blockoverride "mm_datacontext"
-					{
-						datacontext = "[GetMapMode('dejure_counties')]"
-					}
-
-					blockoverride = "mm_icon"
-					{
-						size = { 20 20 }
-					}
-
-					blockoverride "mm_button"
-					{
-						shortcut = "map_mode_6"
-					}
-
-					blockoverride "button_bg_color"
-					{
-						color = { 0.18 0.18 0.0 1 }
-					}
-				}
+				spacing = -3
 
 				icon_button_mapmode = {
 					name = "map_mode_duchies_button"
 					block "map_mode_tutorial"{}
-					size = { 32 32 }
+
+					size = { 38 38 }
 
 					blockoverride "mm_datacontext"
 					{
@@ -315,13 +288,13 @@
 
 					blockoverride "button_bg_color"
 					{
-						color = { 0.0 0.18 0.0 1 }
+						color = { 0.1 0.14 0.1 1 }
 					}
 				}
 
 				icon_button_mapmode = {
 					name = "map_mode_kingdoms_button"
-					size = { 32 32 }
+					size = { 38 38 }
 
 					blockoverride "mm_datacontext"
 					{
@@ -335,13 +308,13 @@
 
 					blockoverride "button_bg_color"
 					{
-						color = { 0.0 0.0 0.18 1 }
+						color = { 0.18 0.1 0.1 1 }
 					}
 				}
 
 				icon_button_mapmode = {
 					name = "map_mode_empires_button"
-					size = { 32 32 }
+					size = { 38 38 }
 
 					blockoverride "mm_datacontext"
 					{
@@ -355,27 +328,7 @@
 
 					blockoverride "button_bg_color"
 					{
-						color = { 0.09 0.0 0.18 1 }
-					}
-				}
-				
-				icon_button_mapmode = {
-					name = "map_mode_hegemonies_button"
-					size = { 32 32 }
-
-					blockoverride "mm_datacontext"
-					{
-						datacontext = "[GetMapMode('dejure_hegemonies')]"
-					}
-
-					blockoverride "mm_button"
-					{
-						shortcut = "map_mode_20"
-					}
-
-					blockoverride "button_bg_color"
-					{
-						color = { 0.18 0.0 0.0 1 }
+						color = { 0.12 0.12 0.18 1 }
 					}
 				}
 
@@ -400,11 +353,6 @@
 						datacontext = "[GetMapMode('religions')]"
 					}
 
-					blockoverride "mm_icon"
-					{
-						size = { 20 20 }
-					}
-
 					blockoverride "mm_button"
 					{
 						shortcut = "map_mode_3"
@@ -421,11 +369,6 @@
 						datacontext = "[GetMapMode('cultures')]"
 					}
 
-					blockoverride "mm_icon"
-					{
-						size = { 20 20 }
-					}
-
 					blockoverride "mm_button"
 					{
 						shortcut = "map_mode_2"
@@ -440,11 +383,6 @@
 					blockoverride "mm_datacontext"
 					{
 						datacontext = "[GetMapMode('houses')]"
-					}
-
-					blockoverride "mm_icon"
-					{
-						size = { 20 20 }
 					}
 
 					blockoverride "mm_button"
@@ -587,35 +525,9 @@
 			flowcontainer = {
 				ignoreinvisible = yes
 				parentanchor = hcenter
-				direction = horizontal
-				spacing = -2
-				direction = horizontal
-				spacing = -2
 
 				icon_button_mapmode = {
-					name = "map_mode_landless_rulers_button"
-					visible = "[And( HasDlcFeature( 'landless_playable' ), CanChangeMapMode )]"
-					parentanchor = vcenter
-					size = { 32 32 }
-
-					blockoverride "mm_datacontext"
-					{
-						datacontext = "[GetMapMode( 'landless_rulers' )]"
-					}
-
-					blockoverride "mm_icon"
-					{
-						size = { 20 20 }
-					}
-
-					blockoverride "mm_button"
-					{
-						shortcut = "map_mode_18"
-					}
-				}
-
-                icon_button_mapmode = {
-                	name = "county_fertility"
+					name = "county_fertility"
 					parentanchor = vcenter
 					size = { 32 32 }
 					visible = "[HasDlcFeature( 'khans_of_the_steppe' )]"
@@ -625,35 +537,9 @@
 						datacontext = "[GetMapMode( 'migration_counties' )]"
 					}
 
-					blockoverride "mm_icon"
-					{
-						size = { 20 20 }
-					}
-
 					blockoverride "mm_button"
 					{
 						shortcut = "map_mode_19"
-					}
-				}
-
-				icon_button_mapmode = {
-					name = "county_control"
-					parentanchor = vcenter
-					size = { 32 32 }
-
-					blockoverride "mm_datacontext"
-					{
-						datacontext = "[GetMapMode( 'county_control' )]"
-					}
-
-					blockoverride "mm_icon"
-					{
-						size = { 20 20 }
-					}
-
-					blockoverride "mm_button"
-					{
-							
 					}
 				}
 
@@ -738,17 +624,16 @@
 			flowcontainer = {
 				ignoreinvisible = yes
 				parentanchor = hcenter
-				direction = horizontal
-				spacing = -2
 
 				icon_button_mapmode = {
-					name = "map_mode_houses_button"
-					size = { 32 32 }
+					name = "map_mode_landless_rulers_button"
+					visible = "[And( HasDlcFeature( 'landless_playable' ), CanChangeMapMode )]"
 					parentanchor = vcenter
+					size = { 32 32 }
 
 					blockoverride "mm_datacontext"
 					{
-						datacontext = "[GetMapMode('houses')]"
+						datacontext = "[GetMapMode( 'landless_rulers' )]"
 					}
 
 					blockoverride "mm_icon"
@@ -758,8 +643,7 @@
 
 					blockoverride "mm_button"
 					{
-						onclick = "[ClearExploringHouses]"
-						shortcut = "map_mode_4"
+						shortcut = "map_mode_18"
 					}
 				}
 
@@ -784,7 +668,7 @@
 						shortcut = "map_mode_confederations"
 					}
 				}
-				
+
 				icon_button_mapmode = {
 					name = "map_mode_epidemics_button"
 					parentanchor = vcenter
@@ -795,17 +679,13 @@
 						datacontext = "[GetMapMode( 'epidemics' )]"
 					}
 
-					blockoverride "mm_icon"
-					{
-						size = { 20 20 }
-					}
-
 					blockoverride "mm_button"
 					{
 						shortcut = "map_mode_16"
 					}
 				}
-				
+
+
 				icon_button_mapmode = {
 					name = "map_mode_legends_button"
 					visible = "[And( HasDlcFeature( 'legends' ), CanChangeMapMode )]"
@@ -827,7 +707,6 @@
 			widget ={
 				size = {0 4}
 			}
-
 			divider_light = {
 				min_width = 100
 				parentanchor = hcenter
@@ -839,9 +718,54 @@
 			flowcontainer = {
 				ignoreinvisible = yes
 				parentanchor = hcenter
-				direction = horizontal
-				spacing = -2
-				
+
+				icon_button_mapmode = {
+					name = "map_mode_counties_button"
+					parentanchor = vcenter
+					size = { 32 32 }
+
+					blockoverride "mm_datacontext"
+					{
+						datacontext = "[GetMapMode( 'dejure_counties' )]"
+					}
+
+					blockoverride "mm_icon"
+					{
+						size = { 20 20 }
+					}
+
+					blockoverride "mm_button"
+					{
+						shortcut = "map_mode_6"
+					}
+				}
+
+				icon_button_mapmode = {
+					name = "map_mode_hegemonies_button"
+					size = { 32 32 }
+
+					blockoverride "mm_datacontext"
+					{
+						datacontext = "[GetMapMode('dejure_hegemonies')]"
+					}
+
+					blockoverride "mm_icon"
+					{
+						size = { 26 26 }
+						position = { 0 2}
+					}
+
+					blockoverride "mm_button"
+					{
+						shortcut = "map_mode_20"
+					}
+
+					blockoverride "button_bg_color"
+					{
+						color = { 0.12 0.12 0.18 1 }
+					}
+				}
+
 				icon_button_mapmode = {
 					name = "map_mode_government_button"
 					parentanchor = vcenter
@@ -862,7 +786,7 @@
 						shortcut = "map_mode_5"
 					}
 				}
-				
+
 				icon_button_mapmode = {
 					name = "map_mode_court_languages_button"
 					visible = "[And( HasDlcFeature( 'royal_court' ), CanChangeMapMode )]"
@@ -884,53 +808,91 @@
 						shortcut = "map_mode_7"
 					}
 				}
+			}
 
-					icon_button_mapmode = {
-						name = "county_development"
-						parentanchor = vcenter
-						size = { 32 32 }
+			widget ={
+				size = {0 4}
+			}
 
-						blockoverride "mm_datacontext"
-						{
-							datacontext = "[GetMapMode( 'county_development' )]"
-						}
+			divider_light = {
+				min_width = 100
+				parentanchor = hcenter
+			}
+			widget ={
+				size = {0 4}
+			}
 
-						blockoverride "mm_icon"
-						{
-							size = { 20 20 }
-						}
+			flowcontainer = {
+				ignoreinvisible = yes
+				parentanchor = hcenter
 
-						blockoverride "mm_button"
-						{
-							shortcut = "map_mode_13"
-						}
+				icon_button_mapmode = {
+					name = "county_development"
+					parentanchor = vcenter
+					size = { 32 32 }
+
+					blockoverride "mm_datacontext"
+					{
+						datacontext = "[GetMapMode( 'county_development' )]"
 					}
 
-					icon_button_mapmode = {
-						name = "economy_buildings"
-						parentanchor = vcenter
-						size = { 32 32 }
-
-						blockoverride "mm_datacontext"
-						{
-							datacontext = "[GetMapMode( 'economy_buildings' )]"
-						}
-
-						blockoverride "mm_icon"
-						{
-							size = { 20 20 }
-						}
-
-						blockoverride "mm_button"
-						{
-							shortcut = "map_mode_14"
-						}
+					blockoverride "mm_icon"
+					{
+						size = { 20 20 }
 					}
 
-					icon_button_mapmode = {
-						name = "diplomatic_relations"
-						parentanchor = vcenter
-						size = { 32 32 }
+					blockoverride "mm_button"
+					{
+						shortcut = "map_mode_13"
+					}
+				}
+
+				icon_button_mapmode = {
+					name = "county_control"
+					parentanchor = vcenter
+					size = { 32 32 }
+
+					blockoverride "mm_datacontext"
+					{
+						datacontext = "[GetMapMode( 'county_control' )]"
+					}
+
+					blockoverride "mm_icon"
+					{
+						size = { 22 22 }
+					}
+
+					blockoverride "mm_button"
+					{
+						shortcut = "map_mode_15"
+					}
+				}
+
+				icon_button_mapmode = {
+					name = "economy_buildings"
+					parentanchor = vcenter
+					size = { 32 32 }
+
+					blockoverride "mm_datacontext"
+					{
+						datacontext = "[GetMapMode( 'economy_buildings' )]"
+					}
+
+					blockoverride "mm_icon"
+					{
+						size = { 20 20 }
+					}
+
+					blockoverride "mm_button"
+					{
+						shortcut = "map_mode_14"
+					}
+				}
+
+				icon_button_mapmode = {
+					name = "diplomatic_relations"
+					parentanchor = vcenter
+					size = { 32 32 }
 
 					blockoverride "mm_datacontext"
 					{
@@ -1127,77 +1089,7 @@
 
 			expand = {}
 
-			flowcontainer = {
-				name = "map_mode_buttons"
-				direction = horizontal
-				parentanchor = vcenter
-				ignoreinvisible = yes
-				spacing = -2
-
-				icon_button_mapmode = {
-					name = "map_mode_religion_button"
-					size = { 28 28 }
-					parentanchor = vcenter
-
-					blockoverride "mm_datacontext"
-					{
-						datacontext = "[GetMapMode('religions')]"
-					}
-
-					blockoverride "mm_icon"
-					{
-						size = { 16 16 }
-					}
-
-					blockoverride "mm_button"
-					{
-						shortcut = "map_mode_3"
-					}
-				}
-
-				icon_button_mapmode = {
-					name = "map_mode_cultures_button"
-					size = { 28 28 }
-					parentanchor = vcenter
-
-					blockoverride "mm_datacontext"
-					{
-						datacontext = "[GetMapMode('cultures')]"
-					}
-
-					blockoverride "mm_icon"
-					{
-						size = { 16 16 }
-					}
-
-					blockoverride "mm_button"
-					{
-						shortcut = "map_mode_2"
-					}
-				}
-
-				icon_button_mapmode = {
-					name = "map_mode_houses_button"
-					size = { 28 28 }
-					parentanchor = vcenter
-
-					blockoverride "mm_datacontext"
-					{
-						datacontext = "[GetMapMode('houses')]"
-					}
-
-					blockoverride "mm_icon"
-					{
-						size = { 18 18 }
-					}
-
-					blockoverride "mm_button"
-					{
-						onclick = "[ClearExploringHouses]"
-						shortcut = "map_mode_4"
-					}
-				}
-			}
+			block "map_mode_buttons" {}
 
 			widget = {
 				size = { 32 32 }
