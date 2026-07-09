@@ -12,8 +12,9 @@
 	primary_holding = castle_holding
 	valid_holdings = { temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	
-	preferred_religions = { hellenism_religion roman_religion mithras_religion neoplatonic_religion solar_religion bud_hellenic_religion indo_hellenic_religion }
+	primary_heritages = { heritage_latin heritage_byzantine heritage_hellenistic_greek heritage_indo_hellenic heritage_sino_hellenic }
+
+	#preferred_religions = { hellenism_religion roman_religion mithras_religion neoplatonic_religion solar_religion bud_hellenic_religion indo_hellenic_religion }
 
 	vassal_contract_group = classical_feudal
 	tax_slot_type = classical_tax_slot
@@ -79,7 +80,8 @@ classical_administrative_government = { #Roman Administrative Government, Hellen
 	primary_holding = castle_holding
 	valid_holdings = { city_holding temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	preferred_religions = { roman_religion mithras_religion solar_religion }
+	#primary_heritages = { heritage_latin heritage_byzantine }
+	#preferred_religions = { roman_religion mithras_religion solar_religion }
 
 	vassal_contract_group = classical_administrative_vassal
 
@@ -187,8 +189,8 @@ diadochi_administrative_government = { #Alexandrian-style government used by the
 	primary_holding = castle_holding
 	valid_holdings = { city_holding temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	preferred_religions = { hellenism_religion neoplatonic_religion }
-	primary_heritages = { heritage_hellenistic_greek }
+	#preferred_religions = { hellenism_religion neoplatonic_religion }
+	#primary_heritages = { heritage_hellenistic_greek }
 
 	vassal_contract_group = diadochi_admin_vassal
 
@@ -287,7 +289,7 @@ roman_autocratic_government = { # e.g. Restored Roman Empire, Gallic Empire, Wes
 	royal_court = any
 	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government steppe_classical_admin_government }
 
-	domicile_type = western_roman_estate
+	domicile_type = estate
 	main_administrative_tier = duchy
 	min_appointment_tier = county
 	minimum_provincial_maa_tier = duchy
@@ -347,6 +349,7 @@ roman_autocratic_government = { # e.g. Restored Roman Empire, Gallic Empire, Wes
 
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
 	flags = {
+		government_is_administrative		
 		government_is_roman_autocratic
 		government_is_roman
 		government_is_classical_group

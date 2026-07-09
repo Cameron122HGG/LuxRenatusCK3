@@ -410,6 +410,7 @@ split_byzantine_empire_effect = {
 						title:k_arabia ?= this
 						title:k_yemen ?= this
 						title:k_cyprus ?= this
+						title:k_judah ?= this
 					}
 				}
 				set_de_jure_liege_title = title:e_praetorian_prefecture_oriens
@@ -623,7 +624,7 @@ create_eastern_roman_empire_scripted_effect = {
 		title:e_byzantium ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_prefecture_illyricum ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:e_praetorian_prefecture_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
-		title:e_praetorian_prefecture_macedonia ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_praetorian_prefecture_oriens ?= { set_de_jure_liege_title = title:h_eastern_roman_empire }
 		title:h_eastern_roman_empire = { # They get the new Roman Empire title
 			change_title_holder = {
 				holder = scope:new_holder
@@ -755,7 +756,7 @@ create_eastern_roman_empire_scripted_effect = {
 	}
 }
 
-retake_western_provinces_decision_effect = {
+LR_restore_western_hegemony_decision_effect = {
 	save_scope_as = root_scope
 	add_trait = augustus
 	give_nickname = nick_the_great
@@ -816,15 +817,30 @@ retake_western_provinces_decision_effect = {
 
 		# Creating the Praetorian Prefectures
 
+		# Illyricum
+		# Shift the Kingdoms
+		every_county_in_region = {
+			region = custom_roman_prefecture_illyricum
+			kingdom = { add_to_list = custom_roman_prefecture_illyricum_list }
+		}	
+		every_in_list = {
+			list = custom_roman_prefecture_illyricum_list
+			limit = {
+				NOT = { de_jure_liege = title:e_praetorian_prefecture_illyricum }
+			}
+			set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum
+		}
+		title:e_praetorian_prefecture_illyricum = { set_de_jure_liege_title = title:h_western_roman_empire }
+
 		#Italia
 		# Shift the Kingdoms
 		title:e_praetorian_prefecture_italia = { set_de_jure_liege_title = title:h_western_roman_empire }
 		every_county_in_region = {
-			region = custom_spqr_imperial_core
-			kingdom = { add_to_list = custom_spqr_imperial_core }
+			region = custom_western_imperial_core
+			kingdom = { add_to_list = custom_western_imperial_core }
 		}	
 		every_in_list = {
-			list = custom_spqr_imperial_core
+			list = custom_western_imperial_core
 			limit = {
 				NOT = { de_jure_liege = title:e_praetorian_prefecture_italia }
 			}
@@ -901,62 +917,36 @@ restore_western_roman_provinces_system_decision_effect = {
 	#Sort the diocese
 	if = {
 		limit = { exists = title:h_western_roman_empire.holder }
-		#title:k_diocese_illyricum = { set_de_jure_liege_title = title:e_praetorian_prefecture_italia }
+		title:k_diocese_illyricum = { set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum }
+		title:k_diocese_dardania = { set_de_jure_liege_title = title:e_praetorian_prefecture_illyricum }
 		title:k_diocese_italia_annonaria = { set_de_jure_liege_title = title:e_praetorian_prefecture_italia }
 		title:k_diocese_italia_suburbicaria = { set_de_jure_liege_title = title:e_praetorian_prefecture_italia }
+		title:k_roma_court = { set_de_jure_liege_title = title:e_roma_court }
 
 		title:e_praetorian_prefecture_italia = { set_de_jure_liege_title = title:h_western_roman_empire }
+		title:e_praetorian_prefecture_illyricum = { set_de_jure_liege_title = title:h_western_roman_empire }	
+		title:e_roma_court = { set_de_jure_liege_title = title:h_western_roman_empire }
 	}
 	else_if = { 
 		limit = { exists = title:e_spqr.holder }
-		#title:k_diocese_illyricum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_diocese_illyricum = { set_de_jure_liege_title = title:e_spqr }
+		title:k_diocese_dardania = { set_de_jure_liege_title = title:e_spqr }
 		title:k_diocese_italia_annonaria = { set_de_jure_liege_title = title:e_spqr }
 		title:k_diocese_italia_suburbicaria = { set_de_jure_liege_title = title:e_spqr }
+		title:k_roma_court = { set_de_jure_liege_title = title:e_spqr }
 	}
-
-	#hidden_effect = {
-	#	if = {
-	#		limit = { NOT = { exists = title:h_western_roman_empire.holder } }
-			#Shift counties
-			#To Moravia
-			#title:c_hohenau = { set_de_jure_liege_title = title:d_moravia }
-			#title:c_krems = { set_de_jure_liege_title = title:d_moravia }
-			#title:c_freistadt = { set_de_jure_liege_title = title:d_moravia }
-			#To Bohemia
-			#title:c_passau = { set_de_jure_liege_title = title:d_bohemia }
-			#To Carinthia
-			#title:c_lienz = { set_de_jure_liege_title = title:d_carinthia }
-			#To Curezzia
-			#title:c_grunningen = { set_de_jure_liege_title = title:d_currezia }
-			#To Romagna
-			#title:c_urbino = { set_de_jure_liege_title = title:d_flaminia }
-
-			#Shift duchies
-			#To Germany
-			#title:d_nordgau = { set_de_jure_liege_title = title:k_east_francia }
-			
-			#To Bavaria
-			#title:d_currezia = { set_de_jure_liege_title = title:k_bavaria }	
-			#To Croatia
-			#title:d_somogy = { set_de_jure_liege_title = title:k_croatia }
-			#title:d_visegrad = { set_de_jure_liege_title = title:k_croatia }
-			#title:d_gyor = { set_de_jure_liege_title = title:k_croatia }
-			#title:d_syrmia = { set_de_jure_liege_title = title:k_croatia }	
-		#}	
-	#}
-
 	hidden_effect = {
-		#every_county_in_region = {
-		#	region = custom_roman_illyricum
-		#	duchy = { add_to_list = custom_roman_illyricum_list }
-		#}	
-		#every_in_list = {
-		#	list = custom_roman_illyricum_list
-		#	limit = {
-		#		NOT = { de_jure_liege = title:k_diocese_illyricum }
-		#	}
-		#	set_de_jure_liege_title = title:k_diocese_illyricum
-		#}
+		every_county_in_region = {
+			region = custom_roman_illyricum
+			duchy = { add_to_list = custom_roman_illyricum_list }
+		}	
+		every_in_list = {
+			list = custom_roman_illyricum_list
+			limit = {
+				NOT = { de_jure_liege = title:k_diocese_illyricum }
+			}
+			set_de_jure_liege_title = title:k_diocese_illyricum
+		}
 	
 		every_county_in_region = {
 			region = custom_roman_italia_annonaria
@@ -980,6 +970,18 @@ restore_western_roman_provinces_system_decision_effect = {
 				NOT = { de_jure_liege = title:k_diocese_italia_suburbicaria }
 			}
 			set_de_jure_liege_title = title:k_diocese_italia_suburbicaria
+		}
+
+		every_county_in_region = {
+			region = custom_roman_court_title_roma
+			duchy = { add_to_list = custom_roman_court_title_roma_list }
+		}
+		every_in_list = {
+			list = custom_roman_court_title_roma_list
+			limit = {
+				NOT = { de_jure_liege = title:k_roma_court }
+			}
+			set_de_jure_liege_title = title:k_roma_court
 		}
 	}
 
@@ -1053,34 +1055,11 @@ restore_western_roman_provinces_system_decision_effect = {
 	}	
 }
 
-restore_eastern_roman_provinces_system_effect = {
+restore_eastern_roman_provinces_system_decision_effect = {
 	#Sort the diocese
 	if = {
-		limit = { exists = title:h_roman_empire.holder }
-		title:k_diocese_dardania = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
-		}
-		title:k_diocese_thracia = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
-		}
-		title:k_diocese_asia = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
-		}
-		title:k_diocese_moesia = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
-		}
-		title:k_diocese_pontus = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
-		}
-		title:k_diocese_armenia = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
-		}
-
-		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_roman_empire }
-	}
-	else_if = {
 		limit = { exists = title:e_byzantium.holder }
-		title:k_diocese_dardania = {
+		title:k_constantinople_court = {
 			set_de_jure_liege_title = title:e_byzantium
 		}
 		title:k_diocese_thracia = {
@@ -1101,9 +1080,6 @@ restore_eastern_roman_provinces_system_effect = {
 	}
 	else_if = {
 		limit = { exists = title:h_eastern_roman_empire.holder }
-		title:k_diocese_dardania = {
-			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
-		}
 		title:k_diocese_thracia = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
@@ -1119,7 +1095,11 @@ restore_eastern_roman_provinces_system_effect = {
 		title:k_diocese_armenia = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
+		title:k_constantinople_court = {
+			set_de_jure_liege_title = title:e_constantinople_court
+		}
 		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
+		title:e_constantinople_court = { set_de_jure_liege_title = title:h_eastern_roman_empire }
 	}
 
 	hidden_effect = {
@@ -1145,17 +1125,7 @@ restore_eastern_roman_provinces_system_effect = {
 		}
 
 		# diocese of Dacia
-		every_county_in_region = {
-			region = custom_roman_dardania
-			duchy = { add_to_list = custom_roman_dardania_list }
-		}	
-		every_in_list = {
-			list = custom_roman_dardania_list
-			limit = {
-				NOT = { de_jure_liege = title:k_diocese_dardania }
-			}
-			set_de_jure_liege_title = title:k_diocese_dardania
-		}	
+	
 
 		# diocese of Macedonia
 		every_county_in_region = {
@@ -1208,6 +1178,19 @@ restore_eastern_roman_provinces_system_effect = {
 			set_de_jure_liege_title = title:k_diocese_armenia
 		}
 
+		every_county_in_region = {
+			region = custom_roman_court_title_constantinople
+			duchy = { add_to_list = custom_roman_court_title_constantinople_list }
+		}	
+		every_in_list = {
+			list = custom_roman_court_title_constantinople_list
+			limit = {
+				NOT = { de_jure_liege = title:k_constantinople_court }
+			}
+			set_de_jure_liege_title = title:k_constantinople_court
+		}
+
+
 		if = {
 			limit = {
 				is_target_in_global_variable_list = { 
@@ -1222,7 +1205,7 @@ restore_eastern_roman_provinces_system_effect = {
 		}	
 
 		# Fix. Bulgaria. For. Reasons
-		title:d_naissus = { set_de_jure_liege_title = title:k_diocese_dardania }
+		#title:d_naissus = { set_de_jure_liege_title = title:k_diocese_dardania }
 	}
 	
 	# Destroy useless kingdoms
@@ -1609,6 +1592,10 @@ restore_roman_provinces_syria_decision_effect  = {
 		limit = { exists = title:k_jerusalem.holder }
 		destroy_title = title:k_jerusalem
 	}
+	if = {
+		limit = { exists = title:k_judah.holder }
+		destroy_title = title:k_judah
+		}
 
 	hidden_effect = {
 		#Shift counties
@@ -1641,7 +1628,82 @@ restore_roman_provinces_syria_decision_effect  = {
 		title:k_syria = { 
 			set_de_jure_liege_title = title:e_levant
 		}
+		title:k_cilicia = { 
+			set_de_jure_liege_title = title:e_levant
+		}
+	}	
+}
+
+restore_roman_provinces_palestine_decision_effect  = {
+	#Restore the provinces of Oriens
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:k_diocese_palestine = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+
+	#Sort the Diocese
+	title:k_diocese_palestine = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
+	if = {
+		limit = { exists = title:e_byzantium.holder }
+		title:k_diocese_palestine = { set_de_jure_liege_title = title:e_byzantium }
+	}
+	# Destroy useless kingdoms
+	if = {
+		limit = { exists = title:k_israel.holder }
+		destroy_title = title:k_israel
+	}
+	if = {
+		limit = { exists = title:k_jerusalem.holder }
+		destroy_title = title:k_jerusalem
+	}
+	if = {
+		limit = { exists = title:k_judah.holder }
+		destroy_title = title:k_judah
+		}
+
+	hidden_effect = {
+		#Shift counties
+		#title:c_upper_khabur = { set_de_jure_liege_title = title:d_diyarmudar }
+		#title:c_khabur = { set_de_jure_liege_title = title:d_diyarmudar }
+		#title:c_tall_basma = { set_de_jure_liege_title = title:d_diyarrabia }
+		#title:c_hakkari = { set_de_jure_liege_title = title:d_diyarrabia }
+
+		#title:d_diyarbakr = { set_de_jure_liege_title = title:k_palestine }
+		#title:d_diyarmudar = { set_de_jure_liege_title = title:k_palestine }
+		#title:d_amman = { set_de_jure_liege_title = title:k_jerusalem }
+		
+		#Fix Mesopotamia
+		#title:d_mesopotamia = { set_de_jure_liege_title = title:k_diocese_pontus }
+		
+		# Shift the provinces
+		every_county_in_region = {
+			region = custom_roman_palestine
+			duchy = { add_to_list = custom_roman_palestine_list }
+		}	
+		every_in_list = {
+			list = custom_roman_palestine_list
+			limit = {
+				NOT = { de_jure_liege = title:k_diocese_palestine }
+			}
+			set_de_jure_liege_title = title:k_diocese_palestine
+		}
+
+		# Then shift all Kingdoms back.
+		title:k_judah = { 
+			set_de_jure_liege_title = title:e_levant
+		}
 		title:k_israel = { 
+			set_de_jure_liege_title = title:e_levant
+		}
+		title:k_jerusalem = { 
 			set_de_jure_liege_title = title:e_levant
 		}
 	}	
@@ -1664,6 +1726,10 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 
 	#Sort the Dioceses
 	title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_praetorian_prefecture_oriens }
+	if = {
+		limit = { exists = title:e_byzantium.holder }
+		title:k_diocese_aegyptus = { set_de_jure_liege_title = title:e_byzantium }
+	}
 		hidden_effect = {	
 		#To Fezzan
 		#title:c_awjila = { set_de_jure_liege_title = title:d_fezzan }
@@ -1677,7 +1743,7 @@ restore_roman_provinces_aegyptus_decision_effect  = {
 					}
 				}
 			}
-			title:d_sinai = { set_de_jure_liege_title = title:k_jerusalem }
+			#title:d_sinai = { set_de_jure_liege_title = title:k_jerusalem }
 			}
 		}
 		# Shift the provinces
@@ -2164,6 +2230,21 @@ LR_restore_eastern_hegemony_decision_effect = {
 			set_de_jure_liege_title = title:e_praetorian_prefecture_macedonia
 		}
 		title:e_praetorian_prefecture_macedonia = { set_de_jure_liege_title = title:h_eastern_roman_empire }
+
+		#Byzantium Imperial Court
+		#Shift the kingdoms
+		every_county_in_region = {
+			region = custom_roman_court_title_constantinople_kingdom
+			kingdom = { add_to_list = custom_roman_court_title_constantinople_kingdom_list }
+		}	
+		every_in_list = {
+			list = custom_roman_court_title_constantinople_kingdom_list
+			limit = {
+				NOT = { de_jure_liege = title:e_constantinople_court }
+			}
+			set_de_jure_liege_title = title:e_constantinople_court
+		}
+		title:e_constantinople_court = { set_de_jure_liege_title = title:h_eastern_roman_empire }
 
 	}
 	
