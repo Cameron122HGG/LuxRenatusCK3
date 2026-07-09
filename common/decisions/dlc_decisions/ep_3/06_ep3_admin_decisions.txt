@@ -1073,9 +1073,9 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = classical_administrative_government
+						has_government = roman_administrative_government
 						has_government = despotic_administrative_government
-						has_government = diadochi_administrative_government
+						has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
 				}
@@ -1103,9 +1103,9 @@ convert_to_administrative_decision = {
 						#has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = classical_administrative_government
+						has_government = roman_administrative_government
 						has_government = despotic_administrative_government
-						has_government = diadochi_administrative_government
+						has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
 				}
@@ -1133,9 +1133,9 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						#has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = classical_administrative_government
+						has_government = roman_administrative_government
 						has_government = despotic_administrative_government
-						has_government = diadochi_administrative_government
+						has_government = alexandrian_administrative_government
 					}
 				}
 				custom_tooltip = {
@@ -1162,9 +1162,9 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						#has_government = japan_administrative_government
-						has_government = classical_administrative_government
+						has_government = roman_administrative_government
 						has_government = despotic_administrative_government
-						has_government = diadochi_administrative_government
+						has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
 				}
@@ -1182,7 +1182,7 @@ convert_to_administrative_decision = {
 		}#LR Gov
 		
 		item = { # Classical Admin Roman branch
-			value = go_classical_administrative_government
+			value = go_roman_administrative_government
 			is_shown = {
 				#religion = religion:islam_religion
 				has_ep3_dlc_trigger = yes
@@ -1194,21 +1194,21 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						#has_government = classical_administrative_government
+						#has_government = roman_administrative_government
 						has_government = despotic_administrative_government
-						has_government = diadochi_administrative_government
+						has_government = alexandrian_administrative_government
 					}
 				}
 			}
-			localization = go_classical_administrative_government_name
-			icon = "gfx/interface/icons/government_types/classical_administrative_government.dds"
+			localization = go_roman_administrative_government_name
+			icon = "gfx/interface/icons/government_types/roman_administrative_government.dds"
 			ai_chance = {
 				value = 20
 			}
 		}
 		
 		item = { # Classical Admin Diadochi branch
-			value = go_diadochi_administrative_government
+			value = go_alexandrian_administrative_government
 			is_shown = {
 				has_ep3_dlc_trigger = yes
 			}
@@ -1219,15 +1219,15 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = classical_administrative_government
+						has_government = roman_administrative_government
 						has_government = despotic_administrative_government
-						#has_government = diadochi_administrative_government
+						#has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
 				}
 			}
-			localization = go_diadochi_administrative_government_name
-			icon = "gfx/interface/icons/government_types/diadochi_administrative_government.dds"
+			localization = go_alexandrian_administrative_government_name
+			icon = "gfx/interface/icons/government_types/alexandrian_administrative_government.dds"
 			ai_chance = {
 				value = 20
 			}
@@ -1248,9 +1248,9 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = classical_administrative_government
+						has_government = roman_administrative_government
 						has_government = despotic_administrative_government
-						has_government = diadochi_administrative_government
+						has_government = alexandrian_administrative_government
 						#has_government = gaul_administrative_government
 					}
 				}
@@ -1289,14 +1289,14 @@ convert_to_administrative_decision = {
 			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:japan_administrative }
 		}
 		else_if = {
-			limit = { scope:go_classical_administrative_government = yes }
-			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:classical_administrative }
+			limit = { scope:go_roman_administrative_government = yes }
+			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:roman_administrative }
 		}
 		else_if = {
 			limit = { 
-				scope:go_diadochi_administrative_government = yes 
+				scope:go_alexandrian_administrative_government = yes 
 			}
-			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:diadochi_administrative }
+			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:alexandrian_administrative }
 		}
 		else_if = {
 			limit = { scope:go_gaul_administrative_government = yes }
