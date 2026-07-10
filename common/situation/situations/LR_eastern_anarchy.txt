@@ -38,11 +38,12 @@
 	participant_groups = {
 		byzantine_rulers = {
 			icon = "gfx/interface/icons/situations/debug_situation/group_nomad.dds"
-
+			require_capital_in_sub_region = yes
 			is_character_valid = {
-				has_government = roman_administrative_government
-				highest_held_title_tier >= tier_duchy
+				is_landed = yes
+				highest_held_title_tier >= tier_county
 				is_independent_ruler = yes
+				capital_province = { geographical_region = custom_eastern_imperial_core }
 			}
 
 			on_join = {
@@ -51,11 +52,16 @@
 			on_leave = {
 				trigger_event = LR_eastern_anarchy_situation.0004
 			}
-
+			is_character_valid = {
+				is_landed = yes
+				highest_held_title_tier >= tier_county
+				is_independent_ruler = yes
+				capital_province = { geographical_region = custom_eastern_imperial_borderlands }
+			}
 			map_color = hsv { 301.43 0.88 0.19 }
 		}
 
-		debug_other_rulers = {
+		byzantine_marches = {
 			icon = "gfx/interface/icons/situations/debug_situation/group_other.dds"
 
 			on_join = {
@@ -78,9 +84,10 @@
 				trigger_event = LR_eastern_anarchy_situation.0004
 			}
 			is_character_valid = {
-				scope:situation = {
-					is_manual_participant = root
-				}
+				is_landed = yes
+				highest_held_title_tier >= tier_county
+				is_independent_ruler = yes
+				capital_province = { geographical_region = western_imperial_core }
 			}
 			require_realm_in_sub_region = yes
 			map_color = hsv { 0.00 0.93 0.57 }
@@ -157,7 +164,7 @@
 							unlocks_special_thingy_interaction = yes
 						}
 					}
-					debug_other_rulers = {
+					byzantine_marches = {
 						character_modifier = {
 							tax_mult = -0.1
 						}
@@ -177,7 +184,7 @@
 							stewardship = -2
 						}
 					}
-					debug_other_rulers = {
+					byzantine_marches = {
 						character_modifier = {
 							learning = -1
 						}
@@ -235,7 +242,7 @@
 							same_faith_opinion = -3
 						}
 					}
-					debug_other_rulers = {
+					byzantine_marches = {
 						character_modifier = {
 							tax_mult = -0.5
 						}
@@ -260,7 +267,7 @@
 							stewardship = 2
 						}
 					}
-					debug_other_rulers = {
+					byzantine_marches = {
 						character_modifier = {
 							learning = -1
 						}
@@ -318,7 +325,7 @@
 							same_faith_opinion = 3
 						}
 					}
-					debug_other_rulers = {
+					byzantine_marches = {
 						character_modifier = {
 							tax_mult = -0.1
 						}
@@ -349,7 +356,7 @@
 							stewardship = 1
 						}
 					}
-					debug_other_rulers = {
+					byzantine_marches = {
 						character_modifier = {
 							learning = 1
 						}
