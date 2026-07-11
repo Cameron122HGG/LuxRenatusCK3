@@ -2,10 +2,10 @@
 # PRIMEMINISTERSHIPS
 ## Power sharing arrangements where the diarch is expected to hold authority semi-permanently in order to assist their liege, but still derives that authority from their liege rather than themselves.
 
-# Vizierates
+# ephorates
 ## A type of diarchy accessible to clans, where the chief minister exercises huge amounts of discretion on behalf of their ruler. This frees the ruler up to better perform at many tasks, but poses greater long-term risks.
 ## Generally intended to be lower tempo than regencies.
-vizierate = {
+ephorate = {
 	# Handled via content - this is only for power sharing arrangements we want to start automatically.
 	start = { always = yes }
 
@@ -33,7 +33,7 @@ vizierate = {
 		swing = 0
 		parameter = unlock_syphon_treasury_interaction
 		parameter = unlock_shift_privileges_interaction
-		parameter = unlock_mulct_vizier_interaction
+		parameter = unlock_mulct_proto_ephor_interaction
 		parameter = lieges_swing_more_against_diarchs
 		# We put a toggle on here so we can early out of diarchy checks for tax collectors a little faster + explicitly list the diarch bonus.
 		parameter = diarch_aptitude_helps_tax_collectors_toggle
@@ -59,7 +59,7 @@ vizierate = {
 	}
 	power_level = {
 		swing = 60
-		hidden_parameter = vizier_cannot_be_snaked
+		hidden_parameter = proto_ephor_cannot_be_snaked
 	}
 	## 70
 	power_level = {
@@ -83,42 +83,30 @@ vizierate = {
 	swing_balance = {
 		value = 40
 
-		# FP3: some phases empower viziers.
-		if = {
-			limit = {
-				liege = {
-					any_character_struggle = {
-						involvement = involved
-						has_struggle_phase_parameter = empowered_vizierate
-					}
-				}
-			}
-			add = fp3_empower_viziers_swing_value
-		}
 	}
 
 	succession = yes
 	# Candidate scoring for succession.
-	candidate_score = { add = diarchy_vizier_succession_score_value }
+	candidate_score = { add = diarchy_proto_ephor_succession_score_value }
 
 	# Container for hidden parameters.
 	power_level = {
 		swing = 0
-		hidden_parameter = diarchy_is_vizierate
-		hidden_parameter = vizier_sits_in_the_council_instead_of_spouse
+		hidden_parameter = diarchy_is_ephorate
+		hidden_parameter = proto_ephor_sits_in_the_council_instead_of_spouse
 		# This one isn't hooked up to anything yet - just here to establish a parameter standard for mods & potential... _future_ diarchies.
 		hidden_parameter = diarchy_is_primeministership
 		hidden_parameter = mandate_tempo_slow
 	}
 
-	loyalty_score = { add = diarch_loyalty_score_type_vizierate_value }
+	loyalty_score = { add = diarch_loyalty_score_type_ephorate_value }
 
-	end_interaction = liege_dismiss_vizier_interaction
+	end_interaction = liege_dismiss_proto_ephor_interaction
 
 	liege_modifier = {
 		name = from_diarch_domain_limit_bonus
 		tax_slot_add = 1
-		scale = { add = vizier_bonus_tax_jurisdictions_value }
+		scale = { add = proto_ephor_bonus_tax_jurisdictions_value }
 	}
 
 	diarch_modifier = {
