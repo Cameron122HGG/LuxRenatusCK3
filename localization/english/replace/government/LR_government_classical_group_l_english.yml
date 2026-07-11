@@ -93,8 +93,8 @@
  alexandrian_administrative_government_realm: "Alexandrian Realm"
  alexandrian_administrative_government_desc: "\n$game_concept_alexandrian_administrative_desc$\n\n#F The Alexandrian Administrative Monarchy is a form of government inspired by the Hellenistic Successor Kingdoms left in the wake of Alexander the Great's Empire. It emphasizes strong rule by the monarch, with a well-developed administrative system taking inspirations from both Greek and Near Eastern World. This government type allows for efficient governance, urban development, and strong military organization, reflecting the principles of Enlightened Monarchy. #!"
  alexandrian_administrative_government_vassals_label: "Diadochi [obligations|E] are based on [GetPlayer.Custom('GetProvinceAdministrationConcept')]"
- diadochi_admin_vassal: "Alexandrian Classical Administrative"
- diadochi_admin_vassal_desc: "$game_concept_alexandrian_administrative_desc$"
+ alexandrian_admin_vassal: "Alexandrian Classical Administrative"
+ alexandrian_admin_vassal_desc: "$game_concept_alexandrian_administrative_desc$"
  alexandrian_administrative_obligations: "Alexandrian Administrative Obligations"
  alexandrian_administrative_themes: "Available Administration Types"
  alexandrian_administrative_theme_balanced: "@balanced_administration! Balanced Administration"
@@ -126,11 +126,11 @@
  alexandrian_administrative_theme_naval_text_icon: "@naval_administration!"
  alexandrian_administrative_theme_naval_benefits: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] for every controlled #high [GetBuilding('common_tradeport_01').GetTypeName]#!#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_building_increase_value')|+0%/] for each [GetBuilding('common_tradeport_01').GetTypeName]#!#!\nUnlocks the #high $NAVAL_EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]"
  alexandrian_administrative_theme_naval_desc: "#flavor The navy is the backbone of any expansive realm. With a dedicated naval administration, safety and efficiency at sea will be highly increased.#!"
- diadochi_CONTRACT: "[Character.Custom( 'GetProvinceConceptNoTooltip' )] Appointment"
+ ALEXANDRIAN_ADMINISTRATIVE_CONTRACT: "[Character.Custom( 'GetProvinceConceptNoTooltip' )] Appointment"
  alexandrian_administrative_theme_frontier_valid_desc: "The [subject.Custom( 'GetProvinceConceptNoTooltip' )] must border another [realm|E]"
  alexandrian_administrative_theme_imperial_valid_desc: "Only one [subject.Custom( 'GetProvinceConceptNoTooltip' )] can have this administration active"
  alexandrian_administrative_theme_naval_valid_desc: "The [subject.Custom( 'GetProvinceConceptNoTooltip' )] must be Coastal"
- diadochi_contract_forbids_revocation_desc: "You cannot revoke [titles|E] or Appointments from a [subject|E] governing with the [GetSubjectContractType( 'alexandrian_administrative_themes' ).GetObligationName( 'alexandrian_administrative_theme_imperial' )] unless you have a [revoke_title_reason|E]"
+ alexandrian_administrative_forbids_revocation_desc: "You cannot revoke [titles|E] or Appointments from a [subject|E] governing with the [GetSubjectContractType( 'alexandrian_administrative_themes' ).GetObligationName( 'alexandrian_administrative_theme_imperial' )] unless you have a [revoke_title_reason|E]"
 
  # Principate
  decayed_principate_government: "Principate"
@@ -179,82 +179,82 @@
  principate_contract_forbids_revocation_desc: "You cannot revoke [titles|E] or Appointments from a [subject|E] governing with the [GetSubjectContractType( 'principate_themes' ).GetObligationName( 'principate_theme_imperial' )] unless you have a [revoke_title_reason|E]"
  
  ####
- diadochi_admin_state_ownership: "@civilian_administration! State Land Ownership"
+ alexandrian_admin_state_ownership: "@civilian_administration! State Land Ownership"
  
- diadochi_admin_state_ownership_20: "Minor"
- diadochi_admin_state_ownership_20_short: "Minor"
- diadochi_admin_state_ownership_20_text_icon: "@civilian_administration!"
- #diadochi_admin_state_ownership_20_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x1.20 due to relaxed oversight"
- #diadochi_admin_state_ownership_20_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+ alexandrian_admin_state_ownership_20: "Minor"
+ alexandrian_admin_state_ownership_20_short: "Minor"
+ alexandrian_admin_state_ownership_20_text_icon: "@civilian_administration!"
+ #alexandrian_admin_state_ownership_20_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x1.20 due to relaxed oversight"
+ #alexandrian_admin_state_ownership_20_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
 
- diadochi_admin_state_ownership_30: "Sizeable"
- diadochi_admin_state_ownership_30_short: "Sizeable"
- diadochi_admin_state_ownership_30_text_icon: "@civilian_administration!"
- #diadochi_admin_state_ownership_30_benefits: "$EFFECT_LIST_BULLET$ [governor_efficiency|E] is unchanged"
- #diadochi_admin_state_ownership_30_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+ alexandrian_admin_state_ownership_30: "Sizeable"
+ alexandrian_admin_state_ownership_30_short: "Sizeable"
+ alexandrian_admin_state_ownership_30_text_icon: "@civilian_administration!"
+ #alexandrian_admin_state_ownership_30_benefits: "$EFFECT_LIST_BULLET$ [governor_efficiency|E] is unchanged"
+ #alexandrian_admin_state_ownership_30_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
 
- diadochi_admin_state_ownership_40: "Extensive"
- diadochi_admin_state_ownership_40_short: "Extensive"
- diadochi_admin_state_ownership_40_text_icon: "@civilian_administration!"
- #diadochi_admin_state_ownership_40_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x0.85 due to increased workload"
- #diadochi_admin_state_ownership_40_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+ alexandrian_admin_state_ownership_40: "Extensive"
+ alexandrian_admin_state_ownership_40_short: "Extensive"
+ alexandrian_admin_state_ownership_40_text_icon: "@civilian_administration!"
+ #alexandrian_admin_state_ownership_40_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x0.85 due to increased workload"
+ #alexandrian_admin_state_ownership_40_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
 
- diadochi_admin_state_ownership_50: "Dominant"
- diadochi_admin_state_ownership_50_short: "Dominant"
- diadochi_admin_state_ownership_50_text_icon: "@civilian_administration!"
- #diadochi_admin_state_ownership_50_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x0.70 due to increased workload"
- #diadochi_admin_state_ownership_50_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
-
- ##
- diadochi_admin_citizenship: "@imperial_administration! Citizenship Inclusion Policy"
- 
- diadochi_admin_citizenship_1: "Minimal"
- diadochi_admin_citizenship_1_short: "Minimal"
- diadochi_admin_citizenship_1_text_icon: "@imperial_administration!"
- diadochi_admin_citizenship_1_benefits: ""
-
- diadochi_admin_citizenship_2: "Limited"
- diadochi_admin_citizenship_2_short: "Limited"
- diadochi_admin_citizenship_2_text_icon: "@imperial_administration!"
- diadochi_admin_citizenship_2_benefits: "" 
-
- diadochi_admin_citizenship_3: "Full"
- diadochi_admin_citizenship_3_short: "Full"
- diadochi_admin_citizenship_3_text_icon: "@imperial_administration!"
- diadochi_admin_citizenship_3_benefits: ""  
- 
- ##
- diadochi_admin_military_designation: "@frontier_administration! Province Militarization"
- 
- diadochi_admin_military_designation_1: "Minimal"
- diadochi_admin_military_designation_1_short: " Minimal"
- diadochi_admin_military_designation_1_text_icon: "@frontier_administration!"
- diadochi_admin_military_designation_1_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\n$EFFECT_LIST_BULLET$ Increases [governor_efficiency|E] based on [stewardship|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\n[influence|E] gained from constructing [buildings|E] in held [counties|E] is increased"
- diadochi_admin_military_designation_1_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!" 
- 
- diadochi_admin_military_designation_2: "Limited"
- diadochi_admin_military_designation_2_short: "Limited"
- diadochi_admin_military_designation_2_text_icon: "@frontier_administration!"
- diadochi_admin_military_designation_2_desc: "#flavor A well balanced administration seeks moderation to ensure equal attention in all areas of governance.#!" 
- 
- diadochi_admin_military_designation_3: "Full"
- diadochi_admin_military_designation_3_short: "Full"
- diadochi_admin_military_designation_3_text_icon: "@frontier_administration!"
- diadochi_admin_military_designation_3_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!"
- diadochi_admin_military_designation_3_desc: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\nUnlocks the #high $EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]\nEnables [raiding|E]"
+ alexandrian_admin_state_ownership_50: "Dominant"
+ alexandrian_admin_state_ownership_50_short: "Dominant"
+ alexandrian_admin_state_ownership_50_text_icon: "@civilian_administration!"
+ #alexandrian_admin_state_ownership_50_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x0.70 due to increased workload"
+ #alexandrian_admin_state_ownership_50_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
 
  ##
- diadochi_admin_hereditary_appointment: "@government_type_feudal! Governor Appointment" 
+ alexandrian_admin_citizenship: "@imperial_administration! Citizenship Inclusion Policy"
  
- diadochi_admin_hereditary_appointment_no: "Open"
- diadochi_admin_hereditary_appointment_no_short: "Open"
- diadochi_admin_hereditary_appointment_no_text_icon: "@government_type_feudal!"
- diadochi_admin_hereditary_appointment_no_benefits: "" 
+ alexandrian_admin_citizenship_1: "Minimal"
+ alexandrian_admin_citizenship_1_short: "Minimal"
+ alexandrian_admin_citizenship_1_text_icon: "@imperial_administration!"
+ alexandrian_admin_citizenship_1_benefits: ""
+
+ alexandrian_admin_citizenship_2: "Limited"
+ alexandrian_admin_citizenship_2_short: "Limited"
+ alexandrian_admin_citizenship_2_text_icon: "@imperial_administration!"
+ alexandrian_admin_citizenship_2_benefits: "" 
+
+ alexandrian_admin_citizenship_3: "Full"
+ alexandrian_admin_citizenship_3_short: "Full"
+ alexandrian_admin_citizenship_3_text_icon: "@imperial_administration!"
+ alexandrian_admin_citizenship_3_benefits: ""  
  
- diadochi_admin_hereditary_appointment_yes: "Hereditary"
- diadochi_admin_hereditary_appointment_yes_short: "Hereditary"
- diadochi_admin_hereditary_appointment_yes_text_icon: "@government_type_feudal!"
- diadochi_admin_hereditary_appointment_yes_benefits: "$EFFECT_LIST_BULLET$ Gives current Governor's children and [house|E] primacy in appointment to this Governorship" 
+ ##
+ alexandrian_admin_military_designation: "@frontier_administration! Province Militarization"
+ 
+ alexandrian_admin_military_designation_1: "Minimal"
+ alexandrian_admin_military_designation_1_short: " Minimal"
+ alexandrian_admin_military_designation_1_text_icon: "@frontier_administration!"
+ alexandrian_admin_military_designation_1_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\n$EFFECT_LIST_BULLET$ Increases [governor_efficiency|E] based on [stewardship|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\n[influence|E] gained from constructing [buildings|E] in held [counties|E] is increased"
+ alexandrian_admin_military_designation_1_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!" 
+ 
+ alexandrian_admin_military_designation_2: "Limited"
+ alexandrian_admin_military_designation_2_short: "Limited"
+ alexandrian_admin_military_designation_2_text_icon: "@frontier_administration!"
+ alexandrian_admin_military_designation_2_desc: "#flavor A well balanced administration seeks moderation to ensure equal attention in all areas of governance.#!" 
+ 
+ alexandrian_admin_military_designation_3: "Full"
+ alexandrian_admin_military_designation_3_short: "Full"
+ alexandrian_admin_military_designation_3_text_icon: "@frontier_administration!"
+ alexandrian_admin_military_designation_3_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!"
+ alexandrian_admin_military_designation_3_desc: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\nUnlocks the #high $EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]\nEnables [raiding|E]"
+
+ ##
+ alexandrian_admin_hereditary_appointment: "@government_type_feudal! Governor Appointment" 
+ 
+ alexandrian_admin_hereditary_appointment_no: "Open"
+ alexandrian_admin_hereditary_appointment_no_short: "Open"
+ alexandrian_admin_hereditary_appointment_no_text_icon: "@government_type_feudal!"
+ alexandrian_admin_hereditary_appointment_no_benefits: "" 
+ 
+ alexandrian_admin_hereditary_appointment_yes: "Hereditary"
+ alexandrian_admin_hereditary_appointment_yes_short: "Hereditary"
+ alexandrian_admin_hereditary_appointment_yes_text_icon: "@government_type_feudal!"
+ alexandrian_admin_hereditary_appointment_yes_benefits: "$EFFECT_LIST_BULLET$ Gives current Governor's children and [house|E] primacy in appointment to this Governorship" 
  
  ###
  STATE_OWNERSHIP_IMPACT_20: "State Workload Mult."
@@ -266,11 +266,11 @@
  hereditary_post_grandchild_desc: "Administrative Post is Hereditary - Grandchild"
  admin_top_liege_valid_desc: "You are NOT the [top_liege|E]"
  
- diadochi_admin_count_dev_fund: "The amount of [development|E] the province contributes to the liege's realm is determined by the [GetPlayer.Custom('GetProvinceAdministrationConcept')] of the province. The higher the contribution, the more obligations the province has towards its liege, but also the more benefits it receives in return."
- diadochi_admin_count_dev_fund_count: "Low Rank"
- diadochi_admin_count_dev_fund_count_short: "Low"
- diadochi_admin_count_dev_fund_none: "None"
- diadochi_admin_count_dev_fund_none_short: "None"
+ alexandrian_admin_count_dev_fund: "The amount of [development|E] the province contributes to the liege's realm is determined by the [GetPlayer.Custom('GetProvinceAdministrationConcept')] of the province. The higher the contribution, the more obligations the province has towards its liege, but also the more benefits it receives in return."
+ alexandrian_admin_count_dev_fund_count: "Low Rank"
+ alexandrian_admin_count_dev_fund_count_short: "Low"
+ alexandrian_admin_count_dev_fund_none: "None"
+ alexandrian_admin_count_dev_fund_none_short: "None"
 
  steppe_classical_admin_government:0 "Nomadic Roman Classical"
  steppe_classical_admin_government_desc:0 "The Nomadic Roman Classical Hybrid Government is a unique government type that combines elements of both Nomadic and Roman Classical governments. It is characterized by a strong emphasis on mobility and adaptability, allowing for swift movement across vast territories while maintaining a structured administrative system. This government type is often associated with steppe cultures, where the ability to quickly respond to changing circumstances is crucial for survival and success."
