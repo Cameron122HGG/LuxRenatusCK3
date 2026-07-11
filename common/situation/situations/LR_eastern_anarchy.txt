@@ -2,7 +2,7 @@
 	
 	is_unique = yes # It can only exist once in the world
 
-	gui_window_name = window_situation
+	gui_window_name = "window_situation"
 	gui_participation_window_name = "window_situation_participation"
 	illustration = "gfx/interface/illustrations/terrain_types/mpo_season_abudant_grazing.dds"
 	situation_group_type = major
@@ -18,7 +18,7 @@
 		}
 		byzantine_border = {
 			map_color = rgb { 255 200 100 }
-			geographical_regions = { custom_roman_aegyptus custom_roman_palestine }
+			geographical_regions = { custom_roman_aegyptus custom_roman_palestine custom_roman_syria }
 		}
 		roman_italy = {
 			map_color = rgb { 255 55 80 }
@@ -63,7 +63,7 @@
 
 		byzantine_marches = {
 			icon = "gfx/interface/icons/situations/debug_situation/group_other.dds"
-
+			require_realm_in_sub_region = yes
 			on_join = {
 				trigger_event = LR_eastern_anarchy_situation.0003
 			}
@@ -76,6 +76,7 @@
 
 		latin_interlopers = {
 			icon = "gfx/interface/icons/situations/debug_situation/group_out_of_realm.dds"
+			require_realm_in_sub_region = yes
 
 			on_join = {
 				trigger_event = LR_eastern_anarchy_situation.0003
