@@ -266,5 +266,18 @@ on_noble_family_title_created = {
 				domicile = { move_domicile = scope:domicile_owner.capital_province }
 			}
 		}
+		if = {
+			limit = {
+				domicile ?= { is_domicile_type = gallic_manor }
+			}
+			save_scope_as = domicile_owner
+			if = {
+				limit = {
+					has_government = gaul_feudal_government
+					domicile.domicile_location != scope:domicile_owner.capital_province
+				}
+				domicile = { move_domicile = scope:domicile_owner.capital_province }
+			}
+		}
 	}
 }
