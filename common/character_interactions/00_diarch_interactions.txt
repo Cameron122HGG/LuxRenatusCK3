@@ -10502,3 +10502,278 @@ overthrow_regent_scheme_interaction = {
 		}
 	}
 }
+
+
+liege_dismiss_proto_ephor_interaction = {
+	category = interaction_category_diarch
+	common_interaction = yes
+	icon = icon_dismiss_temporary_regency
+
+	desc = liege_dismiss_proto_ephor_interaction_desc
+
+	is_shown = {
+		# The obvious.
+		scope:actor != scope:recipient
+		# Diarchy checks for scope:actor.
+		scope:actor = {
+			# If you're not in a diarchy, we don't care.
+			diarch ?= scope:recipient
+			# With the extra consideration that we only want this to appear for ephorates.
+			has_diarchy_parameter = primeminister_dismissal_will_upset_administration
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		# Basic requirements must be fulfilled.
+		scope:actor = { can_leave_diarchy_trigger = yes }
+	}
+
+	cooldown = { years = 5 }
+
+	on_accept = {
+		scope:actor = {
+			# We've dismissed your proto_ephor!
+			## Do we need to give a warning tooltip first?
+			if = {
+				limit = { has_diarchy_active_parameter = primeminister_dismissal_will_upset_administration }
+				custom_tooltip = liege_dismiss_proto_ephor_interaction.tt.problematic_dismissal.proto_ephor_too_entrenched
+			}
+			## Now apply the real effects.
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = liege_dismiss_proto_ephor_interaction.toast.t
+				left_icon = scope:actor
+				# Will this have ripple effects (actual)?
+				if = {
+					limit = { has_diarchy_active_parameter = primeminister_dismissal_will_upset_administration }
+					# Apply the modifier, scaling to how much we dun goofed.
+					add_character_modifier = {
+						modifier = civil_service_in_chaos_modifier
+						years = 10
+					}
+				}
+				# End the diarchy.
+				end_diarchy = yes
+			}
+		}
+		# How badly do they take it?
+		scope:recipient = {
+			# Vengeful takes it badly.
+			if = {
+				limit = {
+					has_trait = vengeful
+					can_set_relation_rival_trigger = { CHARACTER = scope:actor }
+				}
+				set_relation_rival = {
+					target = scope:actor
+					reason = rival_dismissed_me_from_ephorate
+				}
+				add_opinion = {
+					target = scope:actor
+					modifier = insult_opinion
+					opinion = -50
+				}
+			}
+			# Even if they have something stopping them from becoming a rival (e.g., they're already your proto_ephor).
+			else_if = {
+				limit = { has_trait = vengeful }
+				add_opinion = {
+					target = scope:actor
+					modifier = insult_opinion
+					opinion = -50
+				}
+			}
+			# Forgiving isn't mad, they're just disappointed.
+			else_if = {
+				limit = { has_trait = forgiving }
+				add_opinion = {
+					target = scope:actor
+					modifier = insult_opinion
+					opinion = -10
+				}
+			}
+			# Otherwise, a bit of pain is to be expected.
+			else = {
+				progress_towards_rival_effect = {
+					REASON = rival_dismissed_me_from_ephorate
+					CHARACTER = scope:actor
+					OPINION = 0
+				}
+				# Throw the opinion manually so we can keep the type unified.
+				add_opinion = {
+					target = scope:actor
+					modifier = insult_opinion
+					opinion = -25
+				}
+			}
+			# Plus some stress.
+			stress_impact = {
+				lazy = major_stress_impact_loss
+				humble = medium_stress_impact_loss
+				content = medium_stress_impact_loss
+				diligent = medium_stress_impact_gain
+				ambitious = major_stress_impact_gain
+				arrogant = major_stress_impact_gain
+			}
+			# Extravagance modifiers taken care of in the on_action.
+		}
+		# Plus, remember to advertise to the player that there are alternatives.
+		## We're deliberately doing this outside of scope:actor so we can make it a lil subtitle rather than something lumped in with the effect block.
+		## Just give 'em a duchy.
+		if = {
+			limit = {
+				scope:actor = { has_diarchy_active_parameter = primeminister_requires_duchy }
+			}
+			custom_tooltip = liege_dismiss_proto_ephor_interaction.tt.problematic_dismissal.bribe.duchy
+		}
+		## Just give 'em a county.
+		else_if = {
+			limit = {
+				scope:actor = { has_diarchy_active_parameter = primeminister_requires_county }
+			}
+			custom_tooltip = liege_dismiss_proto_ephor_interaction.tt.problematic_dismissal.bribe.county
+		}
+
+		# Object explorer logging.
+		scope:actor = {
+			diarch_interaction_set_or_update_global_variable_effect = { VARIABLE = di_track_dismviz_accept }
+			diarch_interaction_add_to_global_list_effect = { VARIABLE_LIST = di_track_dismviz_accept_actor_list }
+		}
+		scope:recipient = {
+			diarch_interaction_add_to_global_list_effect = { VARIABLE_LIST = di_track_dismviz_accept_recipient_list }
+		}
+	}
+
+	auto_accept = yes
+
+	# AI
+	ai_targets = { ai_recipients = diarch }
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 120
+		duchy = 24
+		kingdom = 24
+		empire = 24
+		hegemony = 24
+	}
+	ai_potential = { has_active_diarchy = yes }
+
+	ai_will_do = {
+		# You should actively want to get rid of them.
+		base = -25
+
+		# If you appointed this proto_ephor, don't remove them unless you get booted down to county or something.
+		modifier = {
+			add = -500
+			var:my_proto_ephor ?= scope:recipient
+		}
+
+		# Realm.
+		## Weight up heavily for counts; they shouldn't generally get them, but they don't want to keep them if they do.
+		modifier = {
+			add = 1000
+			highest_held_title_tier = tier_county
+		}
+		## Weight up for dukes.
+		modifier = {
+			add = 25
+			highest_held_title_tier = tier_duchy
+		}
+		## Weight down for kings.
+		modifier = {
+			add = -25
+			highest_held_title_tier = tier_kingdom
+		}
+		## Weight down for emperors.
+		modifier = {
+			add = -50
+			highest_held_title_tier >= tier_empire
+		}
+		## Realm Size.
+		### Smaller you are, the more likely you are to do this.
+		### Tiny or less.
+		modifier = {
+			add = 50
+			realm_size <= tiny_realm_size
+		}
+		### Minor.
+		modifier = {
+			add = 25
+			realm_size > tiny_realm_size
+			realm_size <= minor_realm_size
+		}
+		### Major.
+		modifier = {
+			add = -25
+			realm_size >= major_realm_size
+			realm_size < massive_realm_size
+		}
+		### Massive or more.
+		modifier = {
+			add = -50
+			realm_size >= massive_realm_size
+		}
+
+		# Traits.
+		## +++ Ambitious.
+		modifier = {
+			add = 25
+			has_trait = ambitious
+		}
+		## +++ Arrogant.
+		modifier = {
+			add = 25
+			has_trait = arrogant
+		}
+		## ++ Diligent.
+		modifier = {
+			add = 15
+			has_trait = diligent
+		}
+		## ++ Patient.
+		modifier = {
+			add = 15
+			has_trait = patient
+		}
+		## + Gregarious.
+		modifier = {
+			add = 5
+			has_trait = gregarious
+		}
+		## - Shy.
+		modifier = {
+			add = -5
+			has_trait = shy
+		}
+		## - Content.
+		modifier = {
+			add = -5
+			has_trait = content
+		}
+		## -- Impatient.
+		modifier = {
+			add = -15
+			has_trait = impatient
+		}
+		## -- Content.
+		modifier = {
+			add = -15
+			has_trait = content
+		}
+		## -- Humble.
+		modifier = {
+			add = -15
+			has_trait = humble
+		}
+		## --- Greedy.
+		modifier = {
+			add = -25
+			has_trait = greedy
+		}
+		## --- Lazy.
+		modifier = {
+			add = -25
+			has_trait = lazy
+		}
+	}
+}

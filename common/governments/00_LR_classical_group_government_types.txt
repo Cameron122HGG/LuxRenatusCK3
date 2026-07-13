@@ -12,8 +12,9 @@
 	primary_holding = castle_holding
 	valid_holdings = { temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	
-	preferred_religions = { hellenism_religion roman_religion mithras_religion neoplatonic_religion solar_religion bud_hellenic_religion indo_hellenic_religion }
+	primary_heritages = { heritage_latin heritage_byzantine heritage_hellenistic_greek heritage_indo_hellenic heritage_sino_hellenic }
+
+	#preferred_religions = { hellenism_religion roman_religion mithras_religion neoplatonic_religion solar_religion bud_hellenic_religion indo_hellenic_religion }
 
 	vassal_contract_group = classical_feudal
 	tax_slot_type = classical_tax_slot
@@ -44,7 +45,7 @@
 	realm_mask_scale = { 1 1 }
 }
 
-classical_administrative_government = { #Roman Administrative Government, Hellenistic Administrative Government, etc.
+roman_administrative_government = { #Roman Administrative Government, Hellenistic Administrative Government, etc.
 	government_rules = {
 		create_cadet_branches = yes
 		rulers_should_have_dynasty = yes
@@ -79,9 +80,10 @@ classical_administrative_government = { #Roman Administrative Government, Hellen
 	primary_holding = castle_holding
 	valid_holdings = { city_holding temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	preferred_religions = { roman_religion mithras_religion solar_religion }
+	#primary_heritages = { heritage_latin heritage_byzantine }
+	#preferred_religions = { roman_religion mithras_religion solar_religion }
 
-	vassal_contract_group = classical_administrative_vassal
+	vassal_contract_group = roman_administrative_vassal
 
 	can_get_government = {
 		#The LAAMP Construct Holding decision
@@ -127,7 +129,7 @@ classical_administrative_government = { #Roman Administrative Government, Hellen
 		government_is_administrative
 	
 		government_is_classical_group
-		government_is_classical_administrative
+		government_is_roman_administrative
 		government_is_roman
 		may_elevate_co_monarch
 
@@ -154,7 +156,7 @@ classical_administrative_government = { #Roman Administrative Government, Hellen
 	realm_mask_scale = { 1 1 }
 }
 
-diadochi_administrative_government = { #Alexandrian-style government used by the Successor States after the death of Alexander the Great
+alexandrian_administrative_government = { #Alexandrian-style government used by the Successor States after the death of Alexander the Great
 	government_rules = {
 		create_cadet_branches = yes
 		rulers_should_have_dynasty = yes
@@ -187,10 +189,10 @@ diadochi_administrative_government = { #Alexandrian-style government used by the
 	primary_holding = castle_holding
 	valid_holdings = { city_holding temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	preferred_religions = { hellenism_religion neoplatonic_religion }
+	#preferred_religions = { hellenism_religion neoplatonic_religion }
 	primary_heritages = { heritage_hellenistic_greek }
 
-	vassal_contract_group = diadochi_admin_vassal
+	vassal_contract_group = alexandrian_admin_vassal
 
 	can_get_government = {
 		#The LAAMP Construct Holding decision
@@ -236,7 +238,8 @@ diadochi_administrative_government = { #Alexandrian-style government used by the
 		government_is_administrative
 	
 		government_is_classical_group
-		government_is_diadochi_administrative
+		government_is_alexandrian_administrative
+		government_is_hellenic
 
 		# These flags only exist for loc and in-game descriptions
 		government_has_influence
@@ -285,7 +288,7 @@ roman_autocratic_government = { # e.g. Restored Roman Empire, Gallic Empire, Wes
 	}
 
 	royal_court = any
-	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government steppe_classical_admin_government }
+	blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government hellenic_khanate_government }
 
 	domicile_type = estate
 	main_administrative_tier = duchy

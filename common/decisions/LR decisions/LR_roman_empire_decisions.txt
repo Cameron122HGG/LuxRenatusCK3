@@ -38,7 +38,7 @@ LR_restore_western_empire_decision = {
 		NOT = { exists = title:h_western_roman_empire }
 		NOT = { exists = title:h_roman_empire }
 		prestige_level >= very_high_prestige_level
-		has_title = title:k_rome
+		has_title = title:k_urbs
 		completely_controls_region = custom_western_imperial_core
 	}
 
@@ -59,7 +59,7 @@ LR_restore_western_empire_decision = {
 		if = {
 			limit = { has_ep3_dlc_trigger = yes }			
 			convert_to_administrative_from_feudalism_effect = { 
-				GOVERNMENT_TO_ADOPT = flag:classical_administrative 
+				GOVERNMENT_TO_ADOPT = flag:roman_administrative 
 			}
 		}
 
@@ -105,7 +105,7 @@ restore_roman_empire_spqr_decision = {
 		is_ruler = yes
 		is_playable_character = yes
 		has_title = title:h_western_roman_empire
-		is_roman_emperor_excluding_eastern_roman_emperor_trigger = yes
+		is_major_western_roman_emperor_trigger = yes
 		NOT = { primary_title = title:e_hre }
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
@@ -702,7 +702,7 @@ restore_gallic_empire_decision = {
 				highest_held_title_tier = tier_empire
 				liege = {
 					OR = {
-						government_has_flag = government_is_classical_administrative
+						government_has_flag = government_is_roman_administrative
 						government_has_flag = government_is_roman_autocratic
 						government_has_flag = government_is_gaul_administrative
 					}

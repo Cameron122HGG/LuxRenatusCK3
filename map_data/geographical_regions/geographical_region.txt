@@ -111,11 +111,11 @@
 world_europe_west_britannia = {
 	duchies = {
 		# England
-		d_bedford d_northumberland d_lancaster d_york d_norfolk d_hereford d_gloucester d_canterbury d_belgarum
+		d_bedford d_northumberland d_lancaster d_york d_norfolk d_hereford d_gloucester d_canterbury d_belgarum d_lindsey d_cumbria d_london
 		# Wales
 		d_gwynedd d_powys d_deheubarth d_cornwall d_magonsaete
 		# Scotland
-		d_albany d_the_isles d_galloway d_western_isles d_lothian d_moray
+		d_albany d_the_isles d_galloway d_western_isles d_lothian d_moray d_fib_scotland d_strathclyde d_fidach d_cait_scotland
 		#Ireland
 		d_meath d_ulster d_connacht d_leinster d_munster
 	}
@@ -140,12 +140,12 @@ world_europe_west_germania = {
 }
 world_europe_west_francia = {
 	duchies = {
-		d_berry d_anjou d_normandy d_rouen d_orleans d_champagne d_valois d_soissons d_burgundy d_bar d_aquitaine d_toulouse d_languedoc d_armagnac d_gascogne d_poitou d_auvergne d_bourbon d_brittany d_provence d_savoie d_dauphine d_upper_burgundy d_transjurania #d_brabant d_flanders
+		d_berry d_anjou d_normandy d_rouen d_orleans d_champagne d_valois d_soissons d_burgundy d_bar d_aquitaine d_toulouse d_languedoc d_armagnac d_gascogne d_poitou d_auvergne d_bourbon d_brittany d_provence d_savoie d_dauphine d_upper_burgundy d_transjurania d_soissons d_rouen
 	}
 }
 world_europe_west_iberia = {
 	duchies = {
-		d_castilla d_aragon d_barcelona d_valencia d_mallorca d_navarra d_asturias d_leon d_galicia d_porto d_beja d_algarve d_cordoba d_murcia d_granada d_sevilla d_badajoz d_toledo d_coimbra d_cantabria d_viscaya
+		d_castilla d_aragon d_barcelona d_valencia d_mallorca d_navarra d_asturias d_leon d_galicia d_porto d_beja d_algarve d_cordoba d_murcia d_granada d_sevilla d_badajoz d_toledo d_coimbra d_cantabria d_viscaya d_arevacia d_tarraconense d_arranosia
 	}
 }
 world_europe_west = {
@@ -173,7 +173,7 @@ world_europe_north = {
 world_europe_south_east = {
 	duchies = {
 		#West ERE
-		d_thrace d_strymon d_thessalonika d_thessaly d_dyrrachion d_cephalonia d_epirus d_athens d_achaia d_krete d_cyprus d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis d_rashka d_macva d_slavonia d_croatia d_dalmatia d_usora
+		d_thrace d_strymon d_thessalonika d_thessaly d_dyrrachion d_cephalonia d_epirus d_athens d_achaia d_krete d_cyprus d_vidin d_turnovo d_dobrudja d_naissus d_philippopolis d_rashka d_macva d_slavonia d_croatia d_dalmatia d_usora d_lykandos d_macedonia d_euboea d_aeolis d_caria d_pisidia d_pamphylia d_isauria
 		#d_adrianopolis d_karvuna d_dioclea
 		d_bosna d_lower_bosna d_krain d_istria  d_duklja	
 		#Wallachia
@@ -218,7 +218,7 @@ world_europe_east = {
 world_asia_minor = {
 	duchies = {
 		#Anatolia
-		d_aegean_islands d_ephese d_opsikion d_cilicia d_cibyrrhaeot d_anatolia d_thracesia d_optimatoi d_bucellaria d_paphlagonia d_charsianon d_cappadocia d_chaldia #d_armeniac d_sebasteia
+		d_aegean_islands d_ephese d_opsikion d_cilicia d_cibyrrhaeot d_anatolia d_thracesia d_optimatoi d_bucellaria d_paphlagonia d_charsianon d_cappadocia d_chaldia d_phrygia d_honorias d_helenopontus d_tibarene d_sebasteia d_karin d_cilicia_trachaea
 		#Armenia
 		d_mesopotamia d_vaspurakan d_greater_armenia
 		#Georgia
@@ -1296,7 +1296,7 @@ custom_rhineland = {
 }
 custom_northern_italy = {
 	duchies = {
-		#k_rome
+		#k_urbs
 		d_histria d_verona d_piedmonte d_lombardia d_genoa d_emilia d_pisa d_toscana
 		#k_romagna
 		d_flaminia d_ancona d_valeria
@@ -1424,7 +1424,7 @@ custom_roman_thracia = {
 		d_turnovo
 		d_philippopolis
 		d_strymon
-		d_thrace
+		#d_thrace #I know its fucked up
 		d_macedonia
 
 	}
@@ -1441,14 +1441,71 @@ custom_roman_armenia = {
 
 custom_roman_prefecture_macedonia = {
 	regions = {
-		custom_roman_asia
-		custom_roman_pontus
 		custom_roman_thracia
 		custom_roman_moesia
-		custom_roman_armenia
 	}
 }
 
+custom_roman_prefecture_asia = {
+	regions = {
+		custom_roman_asia
+		custom_roman_pontus
+	}
+}
+
+
+
+
+custom_roman_illyricum = {
+	duchies = {
+		d_bosna
+		d_usora
+		d_istria
+		d_krain
+		d_slavonia
+		d_croatia
+		d_dalmatia
+		d_histria
+		d_tyrol
+		d_lower_bosna		
+	}
+}
+
+custom_roman_dardania = {
+	duchies = {
+		d_vidin
+		d_macva
+		d_rashka
+		d_duklja
+		d_syrmia
+		d_naissus
+	}
+}
+
+custom_roman_prefecture_illyricum = {
+	regions = {
+		custom_roman_illyricum
+		custom_roman_dardania
+	}
+}
+
+custom_roman_prefecture_italia = {
+	regions = {
+		custom_roman_italia_annonaria
+		custom_roman_italia_suburbicaria
+		custom_roman_africa
+	}
+}
+
+custom_roman_prefecture_gallia = {
+	regions = {
+		custom_roman_lugdunensis
+		custom_roman_viennensis
+		custom_roman_hispania
+		custom_roman_mauretania
+		custom_roman_britannia
+	}
+}
 
 custom_roman_aegyptus = {
 	duchies = {
@@ -1482,47 +1539,39 @@ custom_roman_africa = {
 	}
 }
 
-custom_roman_illyricum = {
-	duchies = {
-		d_bosna
-		d_usora
-		d_istria
-		d_krain
-		d_slavonia
-		d_croatia
-		d_dalmatia
-		d_histria
-		d_tyrol
-		d_lower_bosna		
+custom_roman_court_title_roma_kingdom = {
+	kingdoms = {
+		k_roma_court
 	}
 }
 
-custom_roman_dardania = {
-	duchies = {
-		d_vidin
-		d_macva
-		d_rashka
-		d_duklja
-		d_syrmia
-		d_naissus
+custom_roman_court_title_roma_empire = {
+	kingdoms = {
+		e_roma_court
 	}
 }
 
-custom_roman_italia_suburbicaria = {
+custom_roman_court_title_roma = {
 	duchies = {
-		d_toscana
-		d_pisa
-		d_ancona
-		d_valeria
-		d_samnium
 		d_latium
-		d_salerno
-		d_sicily
-		d_calabria
-		d_corsica
-		d_capua
-		d_apulia
-		d_sardinia
+	}
+}
+
+custom_roman_court_title_constantinople = {
+	duchies = {
+		d_thrace
+	}
+}
+
+custom_roman_court_title_constantinople_kingdom = {
+	kingdoms = {
+		k_constantinople_court
+	}
+}
+
+custom_roman_court_title_constantinople_empire = {
+	empires = {
+		e_constantinople_court
 	}
 }
 
@@ -1540,6 +1589,24 @@ custom_roman_italia_annonaria = {
 		d_venice
 		d_krain
 
+	}
+}
+
+custom_roman_italia_suburbicaria = {
+	duchies = {
+		d_toscana
+		d_pisa
+		d_ancona
+		d_valeria
+		d_samnium
+		#d_latium
+		d_salerno
+		d_sicily
+		d_calabria
+		d_corsica
+		d_capua
+		d_apulia
+		d_sardinia
 	}
 }
 custom_roman_noricum = {
@@ -1627,7 +1694,7 @@ custom_roman_viennensis = {
 	}
 }
 
-custom_roman_galliarum = {
+custom_roman_lugdunensis = {
 	counties = {
 		c_anjou
 		c_maine
@@ -1824,12 +1891,7 @@ custom_roman_hibernia = {
 	}
 }
 
-custom_roman_prefecture_illyricum = {
-	regions = {
-		custom_roman_illyricum
-		custom_roman_dardania
-	}
-}
+
 
 custom_roman_palestine = {
 	duchies = {
@@ -1859,8 +1921,6 @@ custom_roman_syria = {
 
 custom_roman_prefecture_oriens = {
 	regions = {
-		#custom_roman_asia
-		#custom_roman_pontus
 		custom_roman_syria
 		custom_roman_aegyptus
 		custom_roman_palestine
@@ -1878,7 +1938,6 @@ custom_roman_asia = {
 		d_aegean_islands
 		d_isauria
 		d_opsikion
-		#d_edessa
 		d_cilicia_trachaea
 		d_pisidia
 		d_pamphylia
@@ -1895,7 +1954,6 @@ custom_roman_asia = {
 custom_roman_pontus = {
 	duchies = {
 		d_optimatoi
-
 		d_paphlagonia
 		d_honorias
 		d_sebasteia
@@ -1913,6 +1971,13 @@ custom_eastern_imperial_core = {
 		custom_roman_moesia
 		custom_roman_asia
 		custom_roman_pontus
+		custom_roman_court_title_constantinople
+	}
+}
+
+custom_eastern_imperial_borderlands = {
+	regions = {
+		custom_roman_prefecture_oriens
 	}
 }
 
@@ -1933,30 +1998,23 @@ custom_western_imperial_core = {
 	regions = {
 		custom_roman_italia_annonaria
 		custom_roman_italia_suburbicaria
-		#custom_roman_illyricum
 	}
 }
 
 custom_theodosian_ere = {
 	regions = {
-		custom_roman_palestine
-		custom_roman_aegyptus
-		custom_eastern_imperial_core
+		custom_roman_prefecture_oriens		
+		custom_roman_prefecture_macedonia
+		custom_roman_prefecture_asia
 
 	}
 }
 
 custom_theodosian_wre = {
 	regions = {
-		custom_roman_galliarum
-		custom_roman_viennensis
-		custom_roman_hispania
-		custom_roman_illyricum
-		custom_roman_italia_annonaria
-		custom_roman_italia_suburbicaria
-		custom_roman_mauretania
-		custom_roman_africa
-		custom_roman_britannia
+		custom_roman_prefecture_gallia
+		custom_roman_prefecture_illyricum
+		custom_roman_prefecture_italia
 	}
 }
 
@@ -2083,7 +2141,7 @@ custom_bactria = {
 
 custom_west_francia_minus_mediterranean = {
 	duchies = {
-		d_berry d_anjou d_normandy d_orleans d_champagne d_valois d_bar d_brittany
+		d_berry d_anjou d_normandy d_orleans d_champagne d_valois d_bar d_brittany d_rouen d_soissons
 	}
 }
 
@@ -4671,7 +4729,7 @@ dlc_mpo_867_herders = {
 
 dlc_mpo_1066_herders = {
 	counties = {
-		c_achu c_agairik c_akkityk c_astana c_aksuyek c_almaty c_altay c_astrakhanka c_atamansku c_barnaul c_ufa c_besinada c_bratsk c_shchuchinsk c_burqin c_buzachi c_birsk c_durovka c_ebi-nor c_gatsuurgazar c_igaran c_ilga c_jaksybai c_jilali c_jinghiz c_jinsko c_julym c_kandygatai c_karabaigal c_karauda c_kash c_katu_yaryk c_kbumak c_khasagt_khairkhan c_khentii c_khokhoo c_kojuk c_kolyvan c_kostanay c_kulan_utmas c_kumertau c_lower_dniepr c_lozova c_narim c_naushki c_ob c_otrar c_pecheneg c_qoshagyl c_qyzylyaitsk c_samar c_shishina c_sighnaq c_songuu_aallar c_stoyanka c_prigoro_tabynsk c_tagul c_tapsa c_taskyl c_teke c_tengiz c_terektai c_tesiin_gol c_tokumbay c_torangy_kul c_turgay c_tomorbulag c_uch_katyn c_ulu_jitanjik c_uman c_vargashi c_western_tannu c_yaitsk
+		c_achu c_agairik c_akkityk c_astana c_aksuyek c_almaty c_altay c_astrakhanka c_atamansku c_barnaul c_ufa c_besinada c_bratsk c_shchuchinsk c_burqin c_buzachi c_birsk c_durovka c_ebi-nor c_gatsuurgazar c_igaran c_ilga c_jaksybai c_jilali c_jinghiz c_jinsko c_julym c_kandygatai c_karabaigal c_karauda c_kash c_katu_yaryk c_kbumak c_khasagt_khairkhan c_khentii c_khokhoo c_kojuk c_kolyvan c_kostanay c_kulan_utmas c_kumertau c_lower_dniepr c_lozova c_narim c_naushki c_ob c_otrar c_pecheneg c_qmithras_deity_2gyl c_qyzylyaitsk c_samar c_shishina c_sighnaq c_songuu_aallar c_stoyanka c_prigoro_tabynsk c_tagul c_tapsa c_taskyl c_teke c_tengiz c_terektai c_tesiin_gol c_tokumbay c_torangy_kul c_turgay c_tomorbulag c_uch_katyn c_ulu_jitanjik c_uman c_vargashi c_western_tannu c_yaitsk
 	}
 }
 
@@ -4778,7 +4836,7 @@ dlc_mpo_1178_nomads = {
 		# d_pecheneg, minus c_jambalar
 			c_pecheneg c_qyzylyaitsk c_yaitsk
 
-		# d_jemba minus c_qoshagyl, so the Khwarezmid prince isn't a nomad and somehow shaped from birth by the harsh life on the steppe when his brothers aren't
+		# d_jemba minus c_qmithras_deity_2gyl, so the Khwarezmid prince isn't a nomad and somehow shaped from birth by the harsh life on the steppe when his brothers aren't
 			c_tengiz c_churuk c_kos-buwak c_akkityk c_namastau
 	}
 }
@@ -4798,6 +4856,9 @@ dlc_mpo_steppe_east_buryatia_addon = {
 }
 
 dlc_mpo_steppe_east_andong_addon = {
+	regions = {
+		world_asia_sakhalin_hokkaido
+	}
 	duchies = {
 		d_LIAO_zhongjing d_liaoxi d_yanyun_yuyi
 		d_LIAO_shangjing d_LIAO_linhuang
@@ -4808,6 +4869,15 @@ dlc_mpo_steppe_east_andong_addon = {
 		d_LIAO_dongjing d_BAL_amnok_jangryeong d_BAL_parhae d_BAL_southern_balhae d_BAL_yeojintang
 		#k_amur
 		d_eman_boli d_eman_sikhotebei d_eman_samagero d_eman_nivkhia d_eman_amar d_eman_bureya
+	}
+}
+
+dlc_mpo_steppe_east_china_addon = {
+	duchies = {
+		# k_xia
+		d_tiande d_langshan d_xiutu d_juyan
+		# k_daibei
+		d_sanggan d_xinan
 	}
 }
 
@@ -4842,6 +4912,52 @@ dlc_mpo_steppe_siberia_further_expansion = { # k_yugra and bits of k_ob and k_si
 		d_sibir d_ishim d_tara
 		# k_ob
 		d_vasyugan_mire
+	}
+}
+
+dlc_mpo_steppe_e_amur_expansion = {
+	regions = {
+		world_asia_sakhalin_hokkaido
+	}
+	duchies = {		
+		#k_amur
+		d_eman_boli d_eman_sikhotebei d_eman_samagero d_eman_nivkhia d_eman_amar d_eman_bureya
+	}
+}
+
+dlc_mpo_steppe_hexi_tarim_expansion = {
+	regions = {
+		world_steppe_tarim
+	}
+	duchies = {
+		# k_hexi
+		d_hexi d_longyou d_qilian d_gansu d_guasha
+	}
+}
+
+dlc_mpo_steppe_north_china_expansion = {
+	duchies = {
+		# k_xia
+		d_shuofang d_xiasui
+		# k_daibei
+		d_yunshuo
+		#k_hebei
+		d_weibo d_xingming d_chengde d_cangjing d_heyang
+		#k_hedong
+		d_hedong d_yanmen d_hezhong d_zelu
+		#k_youji
+		d_youzhou d_yideng d_yingmo
+		# k_guannei
+		d_yongxing d_fengxiang d_jinshang d_binning d_fufang d_jingyuan d_qincheng d_xingfeng
+	}
+}
+
+dlc_mpo_steppe_central_china_expansion = {
+	duchies = {
+		#k_henan
+		d_dongji d_biansong d_shanguo d_zhenghua d_chenxu
+		#k_qingxu
+		d_ziqing d_yanhai d_xusi d_yuncao
 	}
 }
 

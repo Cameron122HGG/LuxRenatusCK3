@@ -1,0 +1,270 @@
+﻿### Roman Imperial Ministers — custom court_position_types
+### Restricted to characters whose primary title is the Roman Empire (or its de jure
+### successor tag if you're using a custom title). Adjust title:h_eastern_roman_empire to match
+### the actual title key in your mod's landed_titles files.
+###
+### VERIFY BEFORE USE: the exact field names below (is_shown, character, vassal,
+### effects.on_court_position_received/lost/invalidated) follow the standard court
+### position pattern used since the Court Positions system was added, but I could not
+### diff this against your installed game files in this session. Open
+### game/common/court_positions/types/00_court_position_types.txt in your own CK3
+### install and compare field-for-field before relying on this in game — if the
+### game silently drops the position or throws an error.log warning, that file is
+### the definitive fix reference.
+
+magister_officiorum_court_position = {
+	skill = diplomacy
+	vassal = no
+	minimum_age = 16
+	max_number = 1
+
+	is_shown = {
+		liege = {
+			primary_title = title:h_eastern_roman_empire
+		}
+	}
+
+	character = {
+		is_adult = yes
+		is_imprisoned = no
+	}
+
+	effects = {
+		on_court_position_received = {
+			liege = { add_character_modifier = { modifier = court_diplomacy_bonus_modifier } }
+		}
+		on_court_position_lost = {
+			liege = { remove_character_modifier = court_diplomacy_bonus_modifier }
+		}
+		on_court_position_invalidated = {}
+	}
+
+	ai_will_do = {
+		value = 1
+	}
+}
+
+comes_sacrarum_largitionum_court_position = {
+	skill = stewardship
+	vassal = no
+	minimum_age = 16
+	max_number = 1
+
+	is_shown = {
+		liege = {
+			primary_title = title:h_eastern_roman_empire
+		}
+	}
+
+	character = {
+		is_adult = yes
+		is_imprisoned = no
+	}
+
+	effects = {
+		on_court_position_received = {
+			liege = { add_gold = 1 }
+		}
+		on_court_position_lost = {}
+		on_court_position_invalidated = {}
+	}
+
+	ai_will_do = {
+		value = 1
+	}
+}
+
+quaestor_sacri_palatii_court_position = {
+	skill = learning
+	vassal = no
+	minimum_age = 16
+	max_number = 1
+
+	is_shown = {
+		liege = {
+			primary_title = title:h_eastern_roman_empire
+		}
+	}
+
+	character = {
+		is_adult = yes
+		is_imprisoned = no
+	}
+
+	effects = {
+		on_court_position_received = {
+			liege = { add_prestige = 1 }
+		}
+		on_court_position_lost = {}
+		on_court_position_invalidated = {}
+	}
+
+	ai_will_do = {
+		value = 1
+	}
+}
+
+primicerius_sacri_cubiculi_court_position = {
+	skill = intrigue
+	vassal = no
+	minimum_age = 16
+	max_number = 1
+
+	is_shown = {
+		liege = {
+			primary_title = title:h_eastern_roman_empire
+		}
+	}
+
+	character = {
+		is_adult = yes
+		is_imprisoned = no
+	}
+
+	effects = {
+		on_court_position_received = {
+			liege = { add_character_modifier = { modifier = court_intrigue_bonus_modifier } }
+		}
+		on_court_position_lost = {
+			liege = { remove_character_modifier = court_intrigue_bonus_modifier }
+		}
+		on_court_position_invalidated = {}
+	}
+
+	ai_will_do = {
+		value = 1
+	}
+}
+
+magister_militum_court_position = {
+	skill = martial
+	vassal = no
+	minimum_age = 16
+	max_number = 1
+
+	is_shown = {
+		liege = {
+			primary_title = title:h_eastern_roman_empire
+		}
+	}
+
+	character = {
+		is_adult = yes
+		is_imprisoned = no
+	}
+
+	effects = {
+		on_court_position_received = {
+			liege = { add_character_modifier = { modifier = court_martial_bonus_modifier } }
+		}
+		on_court_position_lost = {
+			liege = { remove_character_modifier = court_martial_bonus_modifier }
+		}
+		on_court_position_invalidated = {}
+	}
+
+	ai_will_do = {
+		value = 1
+	}
+}
+
+eparch_court_position = {
+	sort_order = 371
+	max_available_positions = 1
+	minimum_rank = empire
+	skill = stewardship
+
+	court_position_asset = {
+		animation = reading
+		background = "gfx/interface/illustrations/event_scenes/ep3_constantinople.dds"
+	}
+
+	opinion = {
+		value = 20
+	}
+
+	aptitude_level_breakpoints = { 20 40 60 80 }
+
+	aptitude = {
+		value = 1
+		add = {
+			value = stewardship
+			multiply = 1
+			max = 50
+			desc = court_position_skill_stewardship
+		}
+		add = {
+			value = diplomacy
+			multiply = 1
+			max = 50
+			desc = court_position_skill_diplomacy
+		}
+		add = general_aptitude_bonus
+	}
+
+	is_shown = {
+		government_has_flag = government_is_administrative
+		OR = {
+			is_independent_ruler = yes
+			highest_held_title_tier >= tier_empire
+		}
+	}
+	
+	is_shown_character = {
+		scope:employee = {
+			OR = {
+				has_council_position = minister_works
+				has_character_flag = is_eparch_candidate
+			}
+			is_landed = no
+			is_lowborn = no
+		}
+	}
+
+	valid_position = {
+		highest_held_title_tier >= tier_empire
+	}
+
+	valid_character = {
+		scope:employee = {
+			liege = scope:liege
+			OR = {
+				has_council_position = minister_works
+				has_character_flag = is_eparch_candidate
+			}
+			is_landed = no
+			is_lowborn = no
+		}
+	}
+
+	revoke_cost = {
+		gold = { value = 0 }
+		prestige = { value = 0 }
+	}
+
+	salary = {
+		gold = { value = 0 }
+	}
+
+	on_court_position_received = {
+		basic_gained_court_position_effect = yes
+	}
+	on_court_position_revoked = {
+		# Fail-safe: if the character is still on the council, re-appoint them immediately
+		if = {
+			limit = {
+				scope:employee = { has_character_flag = eparch_unfireable }
+			}
+			scope:liege = {
+				appoint_court_position = {
+					recipient = scope:employee
+					court_position = eparch_court_position
+				}
+			}
+		}
+		basic_revoked_court_position_effect = yes
+	}
+	on_court_position_invalidated = {
+		basic_invalidated_court_position_effect = yes
+	}
+}

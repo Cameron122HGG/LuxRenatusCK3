@@ -122,6 +122,11 @@ tgp_has_access_to_ministry_trigger = {
 	}
 }
 
+# Alias kept so the renamed council-position files keep working.
+basileus_has_ministry_access = {
+	tgp_has_access_to_ministry_trigger = yes
+}
+
 tgp_is_any_minister = {
 	liege ?= { tgp_has_access_to_ministry_trigger = yes }
 	tgp_has_minister_title = yes
@@ -138,6 +143,16 @@ tgp_has_minister_title = {
 		has_title = title:e_minister_of_war
 		has_title = title:e_minister_of_justice
 		has_title = title:e_minister_of_works
+
+		has_title = title:e_minister_chancellor_ERE
+		has_title = title:e_minister_censor_ERE
+		has_title = title:e_minister_magister_militum_ERE
+		has_title = title:e_minister_of_personnel_ERE
+		has_title = title:e_minister_of_revenue_ERE
+		has_title = title:e_minister_of_rites_ERE
+		has_title = title:e_minister_of_war_ERE
+		has_title = title:e_minister_of_justice_ERE
+		has_title = title:e_minister_of_works_ERE
 		
 		has_title = title:e_praetorian_prefect_oriens
 		has_title = title:e_praetorian_prefect_illyricum
@@ -162,6 +177,16 @@ tgp_has_civilian_minister_title = {
 		has_title = title:e_minister_of_war
 		has_title = title:e_minister_of_justice
 		has_title = title:e_minister_of_works
+
+		has_title = title:e_minister_chancellor_ERE
+		has_title = title:e_minister_censor_ERE
+		#has_title = title:e_minister_magister_militum_ERE
+		has_title = title:e_minister_of_personnel_ERE
+		has_title = title:e_minister_of_revenue_ERE
+		has_title = title:e_minister_of_rites_ERE
+		has_title = title:e_minister_of_war_ERE
+		has_title = title:e_minister_of_justice_ERE
+		has_title = title:e_minister_of_works_ERE
 		
 		has_title = title:e_praetorian_prefect_oriens
 		has_title = title:e_praetorian_prefect_illyricum
@@ -185,6 +210,16 @@ tgp_is_civilian_minister_title = {
 		this = title:e_minister_of_war
 		this = title:e_minister_of_justice
 		this = title:e_minister_of_works
+
+		this = title:e_minister_chancellor_ERE
+		this = title:e_minister_censor_ERE
+		#this = title:e_minister_magister_militum_ERE
+		this = title:e_minister_of_personnel_ERE
+		this = title:e_minister_of_revenue_ERE
+		this = title:e_minister_of_rites_ERE
+		this = title:e_minister_of_war_ERE
+		this = title:e_minister_of_justice_ERE
+		this = title:e_minister_of_works_ERE
 		
 		this = title:e_praetorian_prefect_oriens
 		this = title:e_praetorian_prefect_illyricum
@@ -210,6 +245,16 @@ tgp_is_minister_title = {
 		this = title:e_minister_of_justice
 		this = title:e_minister_of_works
 
+		this = title:e_minister_chancellor_ERE
+		this = title:e_minister_censor_ERE
+		#this = title:e_minister_magister_militum_ERE
+		this = title:e_minister_of_personnel_ERE
+		this = title:e_minister_of_revenue_ERE
+		this = title:e_minister_of_rites_ERE
+		this = title:e_minister_of_war_ERE
+		this = title:e_minister_of_justice_ERE
+		this = title:e_minister_of_works_ERE
+
 		this = title:e_praetorian_prefect_oriens
 		this = title:e_praetorian_prefect_illyricum
 		this = title:e_praetorian_prefect_gallia
@@ -221,7 +266,9 @@ tgp_is_minister_title = {
 		this = title:e_praetorian_prefect_illyricum
 	}
 }
-
+basileus_has_ministry_access = {
+	tgp_has_access_to_ministry_trigger = yes
+}
 tgp_can_be_a_minister_trigger = {
 	can_be_councillor_basics_trigger = yes
 	# Has to be celestial or a non-ruler
@@ -271,12 +318,12 @@ tgp_can_be_a_minister_trigger = {
 
 tgp_can_be_grand_marshal_trigger = {
 	can_be_councillor_basics_trigger = yes
-	# Has to be celestial or a non-ruler
+	# Has to be celestial/admin or a non-ruler (see note on tgp_can_be_a_minister_trigger).
 	OR = {
 		is_ruler = no
 		government_has_flag = government_is_celestial
+		government_has_flag = government_is_roman_autocratic
 	}
-	# Has to be able to lead armies
 	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = $COURT_OWNER$ }
 }
 
@@ -379,6 +426,16 @@ tgp_celestial_military_governor_can_join_war_trigger = {
 		vassal_contract_has_flag = celestial_military_appointment
 		vassal_contract_has_flag = meritocratic_military_appointment
 		has_title = title:e_minister_grand_marshal
+		AND = {
+			is_landed = yes
+			government_has_flag = government_is_roman_autocratic
+			highest_held_title_tier >= tier_duchy
+			OR = {
+				vassal_contract_has_flag = admin_theme_military
+				vassal_contract_has_flag = admin_theme_frontier
+				vassal_contract_has_flag = admin_theme_naval
+			}
+		}
 	}
 	NOR = {
 		scope:joining_governor = $TARGET_GOVERNOR$
@@ -553,29 +610,29 @@ should_become_classical_admin_trigger = {
 	has_ep3_dlc_trigger = yes
 	OR = {
 		top_liege = {
-			has_government = classical_administrative_government
+			has_government = roman_administrative_government
 		}
 		OR = {
 			is_independent_ruler = yes
 			liege = {
 				NOT = {
-					government_has_flag = government_is_classical_administrative
+					government_has_flag = government_is_roman_administrative
 				}
 			}
 		}
 	}
 }
-should_become_diadochi_admin_trigger = {
+should_become_alexandrian_admin_trigger = {
 	has_ep3_dlc_trigger = yes
 	OR = {
 		top_liege = {
-			has_government = diadochi_administrative_government
+			has_government = alexandrian_administrative_government
 		}
 		OR = {
 			is_independent_ruler = yes
 			liege = {
 				NOT = {
-					government_has_flag = government_is_diadochi_administrative
+					government_has_flag = government_is_alexandrian_administrative
 				}
 			}
 		}
