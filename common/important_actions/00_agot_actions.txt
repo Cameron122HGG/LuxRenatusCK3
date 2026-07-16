@@ -1,0 +1,28 @@
+﻿action_pick_patron = {
+	type = alert
+	check_create_action = {
+		if = {
+			limit = {
+				is_adult = yes
+				agot_has_patron_god_char_modifier = no
+				faith = {
+					religion_has_patron_gods = yes
+				}
+			}
+			try_create_important_action = {
+				important_action_type = action_pick_patron
+				actor = root
+			}
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			faith = {
+				open_view_data = {
+					view = faith
+				}
+			}
+		}
+	}
+}
