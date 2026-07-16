@@ -38,7 +38,6 @@ types PatronWindow {
 								margin_bottom = 8
 								margin_top = 0
 								patron_selection = {
-									datacontext = "[GetScriptedGui('choose_patron_generic')]"
 									datacontext = "[GetModifier(Concatenate('patron_', Concatenate(Scope.GetFlagName ,'_modifier')))]"
 								}
 							}
@@ -90,8 +89,7 @@ types PatronWindow {
 
 		button_standard = {
 			size = { 560 140 }
-			enabled="[Or(And(GetPlayer.MakeScope.Var('recent_patron_selected').IsSet,EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName,Scope.GetFlagName)),And(Not(GetPlayer.MakeScope.Var('recent_patron_selected').IsSet),ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('faith',FaithWindow.GetFaith.MakeScope).End)))]"
-			
+			enabled = "[Or(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, Scope.GetFlagName), ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('faith', FaithWindow.GetFaith.MakeScope).End))]"			
 
 
 			modify_texture = {
