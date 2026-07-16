@@ -1,10 +1,10 @@
 ﻿# Siphon Treasury (scheme)
-celestial_syphon_treasury_interaction = {
+celestial_siphon_treasury_interaction = {
 	icon = icon_imperial_treasury
 	category = interaction_category_hostile
 	send_name = START_SCHEME
-	scheme = celestial_syphon_treasury
-	desc = celestial_syphon_treasury_interaction_desc
+	scheme = celestial_siphon_treasury
+	desc = celestial_siphon_treasury_interaction_desc
 	common_interaction = yes
 
 	interface_priority = 60
@@ -68,22 +68,22 @@ celestial_syphon_treasury_interaction = {
 	## Balanced agents.
 	send_option = {
 		flag = agent_focus_balance
-		current_description = celestial_syphon_treasury_interaction.tt.agent_focus_balance
+		current_description = celestial_siphon_treasury_interaction.tt.agent_focus_balance
 	}
 	## Focused on Success Chance.
 	send_option = {
 		flag = agent_focus_success
-		current_description = celestial_syphon_treasury_interaction.tt.agent_focus_success
+		current_description = celestial_siphon_treasury_interaction.tt.agent_focus_success
 	}
 	## Focused on Speed.
 	send_option = {
 		flag = agent_focus_speed
-		current_description = celestial_syphon_treasury_interaction.tt.agent_focus_speed
+		current_description = celestial_siphon_treasury_interaction.tt.agent_focus_speed
 	}
 	## Focused on Secrecy.
 	send_option = {
 		flag = agent_focus_secrecy
-		current_description = celestial_syphon_treasury_interaction.tt.agent_focus_secrecy
+		current_description = celestial_siphon_treasury_interaction.tt.agent_focus_secrecy
 	}
 
 	on_accept = {
@@ -97,7 +97,7 @@ celestial_syphon_treasury_interaction = {
 				if = {
 					limit = { scope:agent_focus_success ?= yes }
 					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = celestial_syphon_treasury
+						SCHEME_TYPE = celestial_siphon_treasury
 						TARGET_TYPE = target_title
 						TARGET_SCOPE = scope:recipient.primary_title
 						# Success.
@@ -114,7 +114,7 @@ celestial_syphon_treasury_interaction = {
 				else_if = {
 					limit = { scope:agent_focus_speed ?= yes }
 					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = celestial_syphon_treasury
+						SCHEME_TYPE = celestial_siphon_treasury
 						TARGET_TYPE = target_title
 						TARGET_SCOPE = scope:recipient.primary_title
 						# Speed.
@@ -131,7 +131,7 @@ celestial_syphon_treasury_interaction = {
 				else_if = {
 					limit = { scope:agent_focus_secrecy ?= yes }
 					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = celestial_syphon_treasury
+						SCHEME_TYPE = celestial_siphon_treasury
 						TARGET_TYPE = target_title
 						TARGET_SCOPE = scope:recipient.primary_title
 						# Secrecy.
@@ -147,7 +147,7 @@ celestial_syphon_treasury_interaction = {
 				# Balanced.
 				else = {
 					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = celestial_syphon_treasury
+						SCHEME_TYPE = celestial_siphon_treasury
 						TARGET_TYPE = target_title
 						TARGET_SCOPE = scope:recipient.primary_title
 						# Success.
@@ -199,10 +199,10 @@ celestial_syphon_treasury_interaction = {
 				limit = {
 					scope:recipient = scope:actor
 				}
-				custom_tooltip = celestial_syphon_treasury_gain_gold_tt
+				custom_tooltip = celestial_siphon_treasury_gain_gold_tt
 			}
 			else = {
-				custom_tooltip = celestial_syphon_treasury_gain_gold_or_treasury_tt
+				custom_tooltip = celestial_siphon_treasury_gain_gold_or_treasury_tt
 			}
 			show_as_tooltip = {
 				if = {
