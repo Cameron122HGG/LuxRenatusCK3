@@ -1,6 +1,6 @@
-﻿classical_in_kind_tax_collector = {
-	tax_factor = 0.20
-	levies_factor = 0.20
+﻿iqta_in_kind_tax_collector = {
+	tax_factor = -0.05
+	levies_factor = -0.05
 	subject_modifier = {
 		development_growth_factor = 0.10
 		opinion_of_liege = 10
@@ -13,62 +13,33 @@
 			limit = { scope:num_slots_with_obligation = 0 }
 			add = 100
 		}
-		#if = {
-		#	limit = { scope:liege.culture = { has_cultural_parameter = unlock_tax_obligation_deqhan } }
-		#	add = -1000
-		#}
+		if = {
+			limit = { scope:liege.culture = { has_cultural_parameter = unlock_tax_obligation_deqhan } }
+			add = -1000
+		}
 	}
 }
 
-classical_in_cash_taxation_tax_collector = {
-	#is_valid = {
-	#	custom_tooltip = {
-	#		text = classical_in_cash_taxation_tax_collector_tooltip
-	#		scope:liege.culture = {
-	#			has_innovation = innovation_manorialism
-	#		}
-	#	}
-	#}
+iqta_in_cash_taxation_tax_collector = {
+	is_valid = {
+		custom_tooltip = {
+			text = in_cash_taxation_tax_collector_tooltip
+			scope:liege.culture = {
+				has_innovation = innovation_manorialism
+			}
+		}
+	}
 
-	tax_factor = 0.60
+	tax_factor = 0.20
+	levies_factor = -0.40
 	
 	liege_modifier = {
 		#build_speed = -0.01
 		#development_growth_factor = 0.01
 		domain_tax_mult = 0.01
 	}
-	#subject_modifier = {
-	#	development_growth_factor = -0.10
-	#}
-
-	ai_will_do = {
-		value = tax_obligation_base_ai_will_do
-		if = {
-			limit = {
-				scope:liege = {
-					ai_rationality >= 60 # The AI has to be very greedy
-					ai_compassion <= 0 # And not kind enough to have qualms about it
-				}
-			}
-			add = 2
-		}
-	}
-}
-
-classical_in_labour_taxation_tax_collector = {
-	is_shown = {
-		always = yes
-	}
-	tax_factor = 0.10
-	levies_factor = 0.30
-
-	liege_modifier = {
-		#build_speed = -0.01
-		development_growth_factor = 0.01
-	}
-
 	subject_modifier = {
-		#domaclassical_in_tax_mult = -0.10
+		development_growth_factor = -0.10
 	}
 
 	ai_will_do = {
@@ -85,13 +56,44 @@ classical_in_labour_taxation_tax_collector = {
 	}
 }
 
-classical_in_service_taxation_tax_collector = {
+iqta_in_labour_taxation_tax_collector = {
+	is_shown = {
+		always = yes
+	}
+	tax_factor = -0.15
+	#levies_factor = 0.10
+
+	liege_modifier = {
+		#build_speed = -0.01
+		development_growth_factor = 0.01
+	}
+
+	subject_modifier = {
+		#domain_tax_mult = -0.10
+	}
+
+	ai_will_do = {
+		value = tax_obligation_base_ai_will_do
+		if = {
+			limit = {
+				scope:liege = {
+					ai_rationality >= 60 # The AI has to be very greedy
+					ai_compassion <= 0 # And not kind enough to have qualms about it
+				}
+			}
+			add = 2
+		}
+	}
+}
+
+iqta_in_service_taxation_tax_collector = {
 	is_shown = {
 		always = yes
 	}
 	is_valid = {
 	}
-	levies_factor = 0.60
+	tax_factor = -0.20
+	levies_factor = 0.40
 
 	liege_modifier = {
 		levy_size = 0.01
