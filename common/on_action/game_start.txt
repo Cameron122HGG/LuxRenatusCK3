@@ -1558,7 +1558,7 @@ on_game_start = {
 					limit = {
 						highest_held_title_tier > tier_kingdom
 						trigger_if = { # Heinich IV crowned April 1st 1084 by Pope Clement III
-							limit = { has_title = title:e_hre }
+							limit = { has_title = title:k_karls_throne }
 							NOT = { game_start_date = 6066.9.15 }
 						}
 					}
@@ -7283,7 +7283,7 @@ on_game_start_after_lobby = {
 					}
 				}
 			}
-			title:e_high_kingdom_gaul = {
+			title:e_sacral_kingdom_gaul = {
 				# More starting house relations
 				holder = {
 					every_noble_family = {
@@ -7365,7 +7365,7 @@ on_game_start_after_lobby = {
 				}
 			}
 			
-			title:e_high_kingdom_gaul.holder ?= {
+			title:e_sacral_kingdom_gaul.holder ?= {
 				add_realm_law_skip_effects = gallic_bureaucracy_1
 				noble_family_title_realm_setup_effect = yes
 				every_vassal_or_below = { # Move Regnulum domiciles to their own realm
@@ -7378,7 +7378,7 @@ on_game_start_after_lobby = {
 					limit = {
 						government_has_flag = government_is_gaul_administrative
 					}
-					domicile ?= { move_domicile = title:e_high_kingdom_gaul.holder.capital_province }
+					domicile ?= { move_domicile = title:e_sacral_kingdom_gaul.holder.capital_province }
 				}
 			} #GALLIC HIGH KING
 			title:k_sacral_king_gaul_throne.holder ?= {

@@ -1,6 +1,6 @@
 ﻿
-tgp_is_gallic_gallic_regent_admin_trigger = {
-	has_title = title:e_high_kingdom_gaul
+LR_tgp_is_gaul_gallic_regent_admin_trigger = {
+	has_title = title:e_sacral_kingdom_gaul
 	NOR = {
 		has_title = title:k_sacral_king_gaul_throne
 		has_global_variable = sacral_king_gaul_restored
@@ -8,9 +8,9 @@ tgp_is_gallic_gallic_regent_admin_trigger = {
 	}
 }
 
-tgp_is_gallic_governor_trigger = {
+LR_tgp_is_gallic_governor_trigger = {
 	custom_tooltip = {
-		text = tgp_is_gallic_governor_trigger
+		text = LR_tgp_is_gallic_governor_trigger
 		government_has_flag = government_is_gaul_administrative
 		is_landed = yes
 		is_ruler = yes
@@ -19,7 +19,7 @@ tgp_is_gallic_governor_trigger = {
 		tgp_is_ceremonial_liege_trigger = no
 	}
 }
-can_have_gallic_regency_succession_law_trigger = {
+LR_tgp_can_have_gallic_regency_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
 	is_independent_ruler = yes
 	government_has_flag = government_is_gaul_administrative
@@ -32,33 +32,32 @@ can_have_gallic_regency_succession_law_trigger = {
 	}
 }
 
-can_keep_gallic_regency_succession_law_trigger = {
+LR_can_keep_gallic_regency_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
 	trigger_if = {
 		limit = {
 			has_realm_law = gallic_regency_succession_law
-			has
 		}
 		OR = {
-			can_have_gallic_regency_succession_law_trigger = yes
-			has_title = title:e_high_kingdom_gaul
+			LR_tgp_can_have_gallic_regency_succession_law_trigger = yes
+			has_title = title:e_sacral_kingdom_gaul
 		}
 	}
 }
 
-LR_gaul_any_descendants_are_governors = {
+LR_tgp_gaul_any_descendants_are_governors = {
 	# A direct descendant is currently a Governor
 	any_child = { # Children
 		OR = {
-			tgp_is_gallic_governor_trigger = yes
+			LR_tgp_is_gallic_governor_trigger = yes
 			any_child = { # Grandchildren
 				OR = {
-					tgp_is_gallic_governor_trigger = yes
+					LR_tgp_is_gallic_governor_trigger = yes
 					any_child = { # Great-grandchildren
 						OR = {
-							tgp_is_gallic_governor_trigger = yes
+							LR_tgp_is_gallic_governor_trigger = yes
 							any_child = { # Great-great-grandchildren
-								tgp_is_gallic_governor_trigger = yes
+								LR_tgp_is_gallic_governor_trigger = yes
 							}
 						}
 					}
@@ -68,7 +67,7 @@ LR_gaul_any_descendants_are_governors = {
 	}
 }
 
-LR_gaul_any_liege_or_above_is_descendant = {
+LR_tgp_gaul_any_liege_or_above_is_descendant = {
 	any_liege_or_above = {
 		is_liege_or_above_of = root
 		OR = {
@@ -79,7 +78,7 @@ LR_gaul_any_liege_or_above_is_descendant = {
 	}
 }
 
-LR_gaul_is_a_previous_title_holder_trigger = {
+LR_tgp_gaul_is_a_previous_title_holder_trigger = {
 	save_temporary_scope_as = previous_holder_compare
 	$TITLE$ ?= {
 		# Easy out
@@ -96,7 +95,7 @@ LR_gaul_is_a_previous_title_holder_trigger = {
 
 # Filter out dynasties of Emperors further away from you
 # e.g. your father's brother's son
-LR_gaul_target_shares_nearest_related_title_holder_trigger = {
+LR_tgp_gaul_target_shares_nearest_related_title_holder_trigger = {
 	trigger_if = {
 		limit = {
 			any_parent = {
@@ -121,7 +120,7 @@ LR_gaul_target_shares_nearest_related_title_holder_trigger = {
 	trigger_else = { is_great_grandchild_of = $COMPARE$ }
 }
 
-LR_gaul_is_culture_or_descended_from_trigger = {
+LR_tgp_gaul_is_culture_or_descended_from_trigger = {
 	culture = {
 		OR = {
 			this = $CULTURE$
@@ -130,12 +129,12 @@ LR_gaul_is_culture_or_descended_from_trigger = {
 	}
 }
 
-tgp_gaul_offensive_wars_ban_trigger = {
+LR_tgp_gaul_offensive_wars_ban_trigger = {
 	trigger_if = {
 		limit = {
 			exists = scope:defender.top_liege
 			scope:attacker.top_liege ?= {
-				has_title = title:e_high_kingdom_gaul
+				has_title = title:e_sacral_kingdom_gaul
 				scope:defender.top_liege != this
 				government_is_gallic_trigger = yes
 				realm_law_use_gallic_policy_trigger = yes
@@ -148,7 +147,7 @@ tgp_gaul_offensive_wars_ban_trigger = {
 	}
 }
 
-LR_gaul_tgp_is_ceremonial_liege_or_direct_heir_trigger = {
+LR_tgp_gaul_tgp_is_ceremonial_liege_or_direct_heir_trigger = {
 	save_temporary_scope_as = char_temp
 	top_liege.primary_title.var:administrative_ui_special_title ?= {
 		OR = {
@@ -166,7 +165,7 @@ LR_gaul_tgp_is_ceremonial_liege_or_direct_heir_trigger = {
 	}
 }
 
-LR_gaul_tgp_ceremonial_candidacy_restriction_trigger = {
+LR_tgp_gaul_tgp_ceremonial_candidacy_restriction_trigger = {
 	trigger_if = {
 		limit = {
 			exists = scope:target
@@ -216,7 +215,7 @@ LR_gaul_tgp_ceremonial_candidacy_restriction_trigger = {
 	}
 }
 
-tgp_gaul_grant_titles_restriction_trigger = {
+LR_tgp_gaul_grant_titles_restriction_trigger = {
 	trigger_if = {
 		limit = {
 			$GRANTER$ ?= { tgp_realm_has_ceremonial_liege_trigger = yes }
@@ -269,7 +268,7 @@ tgp_gaul_single_heir_succession_override_trigger = {
 		title:k_sacral_king_gaul_throne.holder ?= scope:holder_temp
 		AND = {
 			has_global_variable = sacral_king_gaul_restored
-			title:e_high_kingdom_gaul.holder ?= scope:holder_temp
+			title:e_sacral_kingdom_gaul.holder ?= scope:holder_temp
 		}
 	}
 }
@@ -370,7 +369,7 @@ gaul_sacral_expansion_cb_allowed_against_character_trigger = {
 	NOT = { top_liege ?= scope:attacker.top_liege }
 	# Must own Japanese non-de-jure land
 	any_sub_realm_county = {
-		NOT = { empire = title:e_high_kingdom_gaul }
+		NOT = { empire = title:e_sacral_kingdom_gaul }
 		title_province = {
 			OR = {
 				geographical_region = LR_world_europe_gaul
@@ -392,7 +391,7 @@ gaul_sacral_reconquest_cb_allowed_against_character_trigger = {
 	# Cannot also be part of Japan
 	scope:defender.top_liege != scope:attacker.top_liege
 	# Must own Japanese de-jure land
-	any_sub_realm_county = { empire = title:e_high_kingdom_gaul }
+	any_sub_realm_county = { empire = title:e_sacral_kingdom_gaul }
 }
 
 realm_law_use_gallic_policy_trigger = {
@@ -491,7 +490,7 @@ tgp_gaul_install_regent_faction_can_create_trigger = {
 
 
 
-LR_gaul_restore_ceremonial_liege_faction_can_create_trigger = {
+LR_tgp_gaul_restore_ceremonial_liege_faction_can_create_trigger = {
 	tgp_realm_has_ceremonial_liege_trigger = yes
 	trigger_if = {
 		limit = { government_is_gallic_trigger = yes }
@@ -529,7 +528,7 @@ LR_gaul_restore_ceremonial_liege_faction_can_create_trigger = {
 	}
 }
 
-LR_gaul_ceremonial_claimant_faction_can_create_trigger = {
+LR_tgp_gaul_ceremonial_claimant_faction_can_create_trigger = {
 	scope:target ?= {
 		is_independent_ruler = yes
 		tgp_realm_has_ceremonial_liege_trigger = yes
@@ -677,7 +676,7 @@ gaul_government_gaul_kingdom_restriction_trigger = {
 				is_independent_ruler = no
 				AND = {
 					NOT = { highest_held_title_tier = tier_empire }
-					has_title = title:e_high_kingdom_gaul
+					has_title = title:e_sacral_kingdom_gaul
 				}
 			}
 		}

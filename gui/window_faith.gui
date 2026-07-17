@@ -552,7 +552,7 @@ window = {
 
 							text_label_center = {
 								layoutpolicy_horizontal = expanding
-								text = "LR_FAITH_DOCTRINES_MATRIX"
+								text = "LUX_FAITH_DOCTRINES_MATRIX"
 								default_format = "#low"
 							}
 
@@ -560,8 +560,8 @@ window = {
 								layoutpolicy_horizontal = expanding
 
 								hbox = {
-									name = "LR_Matrix_doctrines"
-									datamodel = "[FaithWindow.GetCategoryHelper( 'LR_matrix_group' ).GetCategory]"
+									name = "lux_matrix_doctrines"
+									datamodel = "[FaithWindow.GetCategoryHelper( 'lux_matrix_group' ).GetCategory]"
 									spacing = -6
 									layoutpolicy_vertical = expanding
 									minimumsize = { 0 108 }
@@ -595,6 +595,29 @@ window = {
 											expand = {}
 										}
 									}
+								}
+							}
+						}
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 12
+							margin_bottom = -10
+
+							text_label_center = {
+								layoutpolicy_horizontal = expanding
+								text = "FAITH_DOCTRINES_PANTHEON"
+								default_format = "#low"
+							}
+
+							fixedgridbox = {
+								flipdirection = yes
+								addcolumn = 225
+								addrow = 67
+								datamodel_wrap = 2
+
+								datamodel = "[FaithWindow.GetCategoryHelper( 'lux_pantheon' ).GetCategory]"
+								item = {
+									widget_doctrine_item = {}
 								}
 							}
 						}						
@@ -1518,7 +1541,7 @@ types FaithWindow
 									visible = "[Faith.IsSelected]"
 									using = Background_Area
 								}
-
+								visible = "[Not( Faith.HasDoctrineByKey( 'unavailable_doctrine' ) )]"
 								onclick = "[PdxGuiTriggerAllAnimations('faith_view_refresh')]"
 								tooltipwidget = { faith_tooltip_click = {} }
 								using = tooltip_es
