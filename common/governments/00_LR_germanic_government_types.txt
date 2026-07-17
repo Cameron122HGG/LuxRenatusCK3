@@ -1,0 +1,46 @@
+﻿### Brief: feudal_government
+#
+# This is referenced in code
+#
+carolingian_feudal_government = {
+	government_rules = {
+		create_cadet_branches = yes
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = yes
+		legitimacy = yes
+		allow_accolades = yes
+	}
+
+	royal_court = any
+
+	fallback = 1
+
+	primary_holding = castle_holding
+	valid_holdings = { temple_citadel_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+	primary_heritages = { heritage_frankish heritage_central_germanic heritage_north_germanic heritage_west_germanic }
+	
+	#preferred_religions = { christianity_religion }
+
+	vassal_contract_group = feudal_vassal
+
+	ai = {
+		use_legends = yes
+	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	flags = {
+		government_is_feudal
+		government_is_settled
+		may_elevate_co_monarch
+		government_uses_crown_authority
+		government_uses_domain_limit
+	}
+
+	mechanic_type = feudal
+	is_mechanic_type_default = yes
+
+	color = hsv{ 0.67 1.00 0.78 }
+	realm_mask_offset = { 0.0 0.01 }
+	realm_mask_scale = { 1 1 }
+}
