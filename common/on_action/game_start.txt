@@ -1144,7 +1144,7 @@ on_game_start = {
 		#Lux Renata TBA
 		#if = {
 		#	limit = {
-		#		game_start_date <= 1000.1.1
+		#		game_start_date <= 6000.1.1
 		#	}
 		#	title:e_scandinavia = { set_coa = e_scandinavia_norse }
 		#	title:k_sweden = { set_coa = k_sweden_norse }
@@ -1248,13 +1248,13 @@ on_game_start = {
 		#}
 		#if = {
 		#	limit = {
-		#		game_start_date >= 1067.12.25
+		#		game_start_date >= 6067.12.25
 		#	}
 		#	title:k_england = { set_coa = k_england_norman }
 		#}
 		# if = {
 		# 	limit = {
-		# 		game_start_date >= 938.1.1
+		# 		game_start_date >= 5938.1.1
 		# 	}
 		# 	title:k_viet = { set_coa = k_dai_viet }
 		# }
@@ -1587,6 +1587,34 @@ on_game_start = {
 							limit = {
 								age >= 50
 								has_government = japan_administrative_government
+							}
+							add = {
+								value = age
+								divide = 4
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_governor = yes
+					NOT = { has_trait = governor }
+					OR = {
+						government_allows = administrative
+						government_is_gallic_trigger = yes
+					}
+				}
+				add_trait = governor
+				add_trait_xp = {
+					trait = governor
+					value = {
+						add = primary_title.title_held_years
+						multiply = 2
+						if = {
+							limit = {
+								age >= 50
+								has_government = gaul_administrative_government
 							}
 							add = {
 								value = age
