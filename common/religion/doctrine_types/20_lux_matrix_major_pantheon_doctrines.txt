@@ -13,7 +13,7 @@
 					has_doctrine = lux_doctrine_islamic_pantheon
 					has_doctrine = lux_doctrine_persian_pantheon
 					has_doctrine = lux_doctrine_jewish_pantheon
-					has_doctrine = lux_doctrine_graeco_roman_pantheon
+					has_doctrine = lux_doctrine_roman_pantheon
 					has_doctrine = lux_doctrine_eastern_pantheon
 					has_doctrine = lux_doctrine_dualist_pantheon
 					has_doctrine = lux_doctrine_archaic_pantheon
@@ -31,7 +31,7 @@
 	}
 }
 	
-lux_doctrine_graeco_roman_pantheon = {
+lux_doctrine_roman_pantheon = {
 	icon = "lux_doctrine_graeco_roman_pantheon" 
 	piety_cost = {
 		if = {
@@ -48,7 +48,47 @@ lux_doctrine_graeco_roman_pantheon = {
 
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_graeco_roman_pantheon }
+			limit = { has_doctrine = lux_doctrine_roman_pantheon }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+
+	is_shown = {
+		NOT = { has_doctrine = graeco_roman_special_hostility_doctrine }
+	}
+	can_pick = { always = yes }
+	parameters = {
+		hostility_override_graeco_roman_special_hostility_doctrine = 1
+		graeco_roman_syncretic_actor_opinion_active = yes
+		#opinion_of_graeco_roman_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+		#unreformed_syncretic_conversion_malus_active = yes
+	}
+		
+	traits = {
+		virtues = { calm }
+		sins = { wrathful }
+	}
+}
+
+lux_doctrine_hellenic_pantheon = {
+	icon = "lux_doctrine_graeco_roman_pantheon" 
+	piety_cost = {
+		if = {
+			limit = { doctrine:doctrine_pluralism_pluralistic = {is_in_list = selected_doctrines} }
+			value = faith_tenet_cost_low
+		}
+		else_if = {
+			limit = { doctrine:doctrine_pluralism_fundamentalist = {is_in_list = selected_doctrines} }
+			value = faith_tenet_cost_high
+		}
+		else = {
+			value = faith_tenet_cost_mid
+		}
+
+		# Multiplier for keeping same tenet
+		if = {
+			limit = { has_doctrine = lux_doctrine_hellenic_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
