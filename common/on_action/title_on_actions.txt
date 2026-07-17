@@ -1434,19 +1434,19 @@ on_title_gain = {
 				}
 				# TGP gaul
 				else_if = {
-					limit = { scope:title = title:e_high_kingdom_gaul }
+					limit = { scope:title = title:e_sacral_kingdom_gaul }
 					# TGP RETIRED EMPEROR
 					if = {
 						limit = {
-							exists = title:e_high_kingdom_gaul.var:administrative_ui_special_title
-							has_title = title:e_high_kingdom_gaul.var:administrative_ui_special_title
+							exists = title:e_sacral_kingdom_gaul.var:administrative_ui_special_title
+							has_title = title:e_sacral_kingdom_gaul.var:administrative_ui_special_title
 						}
 						# Flavourization setup
-						title:e_high_kingdom_gaul = { remove_variable = gallic_dictator_flag }
+						title:e_sacral_kingdom_gaul = { remove_variable = gallic_dictator_flag }
 						remove_character_flag = gallic_dictator_flag
 						if = { # Flavourization setup
 							limit = { has_global_variable = sacral_king_gaul_restored }
-							title:e_high_kingdom_gaul = { set_variable = ceremonial_liege_flag }
+							title:e_sacral_kingdom_gaul = { set_variable = ceremonial_liege_flag }
 							add_character_flag = ceremonial_liege_flag
 							trigger_event = {
 								id = tgp_gaul_general.9100
@@ -1466,16 +1466,16 @@ on_title_gain = {
 							has_government = gaul_feudal_government
 							has_global_variable = gallic_dictatorship_established
 						}
-						title:e_high_kingdom_gaul = { remove_variable = ceremonial_liege_flag }
+						title:e_sacral_kingdom_gaul = { remove_variable = ceremonial_liege_flag }
 						remove_character_flag = ceremonial_liege_flag
-						title:e_high_kingdom_gaul = { set_variable = gallic_dictator_flag }
+						title:e_sacral_kingdom_gaul = { set_variable = gallic_dictator_flag }
 						add_character_flag = gallic_dictator_flag
 					}
 					# TGP KAMPAKU
 					else = {
-						title:e_high_kingdom_gaul = { remove_variable = ceremonial_liege_flag }
+						title:e_sacral_kingdom_gaul = { remove_variable = ceremonial_liege_flag }
 						remove_character_flag = ceremonial_liege_flag
-						title:e_high_kingdom_gaul = { remove_variable = gallic_dictator_flag }
+						title:e_sacral_kingdom_gaul = { remove_variable = gallic_dictator_flag }
 						remove_character_flag = gallic_dictator_flag
 					}
 					# gallic regent laws
