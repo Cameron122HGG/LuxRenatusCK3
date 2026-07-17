@@ -276,459 +276,315 @@ lux_doctrine_dualist_pantheon = {
 	}
 }
 
-	lux_doctrine_sinitic_pantheon = {
-		icon = lux_doctrine_sinitic_pantheon
-		piety_cost = {
-			if = {
-				limit = {
-					OR = {
-						religion_tag = buddhism_religion
-						has_doctrine = pagan_special_hostility_doctrine
-					}
+lux_doctrine_sinitic_pantheon = {
+	icon = lux_doctrine_sinitic_pantheon
+	piety_cost = {
+		if = {
+			limit = {
+				OR = {
+					religion_tag = buddhism_religion
+					has_doctrine = pagan_special_hostility_doctrine
 				}
-				value = faith_tenet_cost_low
 			}
-			else_if = {
-				limit = {
-					religion_tag = islam_religion
-				}
-				value = faith_tenet_cost_high
+			value = faith_tenet_cost_low
+		}
+		else_if = {
+			limit = {
+				religion_tag = islam_religion
 			}
-			else = {
-				value = faith_tenet_cost_mid
-			}
+			value = faith_tenet_cost_high
+		}
+		else = {
+			value = faith_tenet_cost_mid
+		}
+		# Multiplier for keeping same tenet
+		if = {
+			limit = { has_doctrine = lux_doctrine_sinitic_pantheon }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+	is_shown = {
+		NOT = {
+			religion = { is_in_family = rf_sinitic }
+		}
+	}
+	can_pick = { always = yes }
+	parameters = {
+		hostility_override_special_doctrine_immaterial_harmony = 1
+		#For loc:
+		#is_eastern_faith_bilateral_loc_override = 1
+		eastern_syncretic_actor_opinion_active = yes
+		#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+	}
+	traits = {
+		virtues = { honest }
+		sins = { wrathful }
+	}
+}
 
-			# Multiplier for keeping same tenet
-			if = {
-				limit = { has_doctrine = lux_doctrine_sinitic_pantheon }
-				multiply = faith_unchanged_doctrine_cost_mult
+lux_doctrine_eastern_pantheon = {
+	icon = lux_doctrine_eastern_pantheon
+	piety_cost = {
+		if = {
+			limit = {
+				OR = {
+					religion_tag = dualism_religion
+					has_doctrine = pagan_special_hostility_doctrine
+				}
 			}
+			value = faith_tenet_cost_low
+		}
+		else_if = {
+			limit = {
+				religion_tag = islam_religion
+			}
+			value = faith_tenet_cost_high
+		}
+		else = {
+			value = faith_tenet_cost_mid
+		}
+		# Multiplier for keeping same tenet
+		if = {
+			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+	is_shown = {
+		OR = {
+			NOT = { has_doctrine = special_doctrine_is_eastern_faith }
+			religion = { is_in_family = rf_sinitic }
+		}
+	}
+	can_pick = { always = yes }
+		parameters = {
+		hostility_override_special_doctrine_is_eastern_faith = 1
+		#For loc:
+		#is_eastern_faith_bilateral_loc_override = 1
+		eastern_syncretic_actor_opinion_active = yes
+		#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
+	}
+	traits = {
+		virtues = { honest }
+		sins = { wrathful }
+	}
+}
+
+lux_doctrine_steppe_pantheon = {
+	icon = lux_doctrine_steppe_pantheon
+	piety_cost = {
+		if = {
+			limit = {
+				OR = {
+					religion_tag = dualism_religion
+					has_doctrine = pagan_special_hostility_doctrine
+				}
+			}
+			value = faith_tenet_cost_low
+		}
+		else_if = {
+			limit = {
+				religion_tag = islam_religion
+			}
+			value = faith_tenet_cost_high
+		}
+		else = {
+			value = faith_tenet_cost_mid
 		}
 
-		is_shown = {
+		 Multiplier for keeping same tenet
+		if = {
+			limit = { has_doctrine = lux_doctrine_steppe_pantheon }
+			multiply = faith_unchanged_doctrine_cost_mult
+		}
+	}
+
+	is_shown = {
+		OR = {
+			NOT = { has_doctrine = eastern_special_hostility_doctrine }
+			religion = { is_in_family = rf_sinitic }
+		}
+	}
+	can_pick = {
+		custom_description = {
+			text = incompatible_tenet_gnosticism_trigger
 			NOT = {
-				religion = { is_in_family = rf_sinitic }
+				doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
 			}
 		}
-		can_pick = { always = yes }
-		parameters = {
-			hostility_override_special_doctrine_immaterial_harmony = 1
-			#For loc:
-			#is_eastern_faith_bilateral_loc_override = 1
-			eastern_syncretic_actor_opinion_active = yes
-			#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-		}
-		#traits = {
-		#	virtues = { honest }
-		#	sins = { wrathful }
-		#}
 	}
+	parameters = {
+		hostility_override_unreformed_faith_doctrine = 2
+		unreformed_syncretic_actor_opinion_active = yes
+		opinion_of_unreformed_syncretic_recipient_opinion_active = 30 Sync this to syncretic_mutual_opinion_bonus_value
+		unreformed_syncretic_conversion_malus_active = yes
+	}
+	traits = {
+		virtues = { honest }
+		sins = { wrathful }
+	}
+}
 
-	lux_doctrine_eastern_pantheon = {
-		icon = lux_doctrine_eastern_pantheon
-		piety_cost = {
-			if = {
-				limit = {
-					OR = {
-						religion_tag = dualism_religion
-						has_doctrine = pagan_special_hostility_doctrine
-					}
+lux_doctrine_norse_pantheon = {
+	icon = lux_doctrine_norse_pantheon
+	piety_cost = {
+		if = {
+			limit = {
+				OR = {
+					religion_tag = dualism_religion
+					has_doctrine = pagan_special_hostility_doctrine
 				}
-				value = faith_tenet_cost_low
 			}
-			else_if = {
-				limit = {
-					religion_tag = islam_religion
-				}
-				value = faith_tenet_cost_high
+			value = faith_tenet_cost_low
+		}
+		else_if = {
+			limit = {
+				religion_tag = islam_religion
 			}
-			else = {
-				value = faith_tenet_cost_mid
-			}
-
-			# Multiplier for keeping same tenet
-			if = {
-				limit = { has_doctrine = lux_doctrine_eastern_pantheon }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
+			value = faith_tenet_cost_high
+		}
+		else = {
+			value = faith_tenet_cost_mid
 		}
 
-		is_shown = {
-			OR = {
-				NOT = { has_doctrine = special_doctrine_is_eastern_faith }
-				religion = { is_in_family = rf_sinitic }
-			}
-		}
-		can_pick = { always = yes }
-		parameters = {
-			hostility_override_special_doctrine_is_eastern_faith = 1
-			#For loc:
-			#is_eastern_faith_bilateral_loc_override = 1
-			eastern_syncretic_actor_opinion_active = yes
-			#opinion_of_eastern_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-		}
-		traits = {
-			virtues = { honest }
-			sins = { wrathful }
+		 Multiplier for keeping same tenet
+		if = {
+			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
+			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
 
-	#lux_doctrine_steppe_pantheon = {
-	#	icon = lux_doctrine_steppe_pantheon
-	#	piety_cost = {
-	#		if = {
-	#			limit = {
-	#				OR = {
-	#					religion_tag = dualism_religion
-	#					has_doctrine = pagan_special_hostility_doctrine
-	#				}
-	#			}
-	#			value = faith_tenet_cost_low
-	#		}
-	#		else_if = {
-	#			limit = {
-	#				religion_tag = islam_religion
-	#			}
-	#			value = faith_tenet_cost_high
-	#		}
-	#		else = {
-	#			value = faith_tenet_cost_mid
-	#		}
-	#
-	#		# Multiplier for keeping same tenet
-	#		if = {
-	#			limit = { has_doctrine = lux_doctrine_steppe_pantheon }
-	#			multiply = faith_unchanged_doctrine_cost_mult
-	#		}
-	#	}
-	#
-	#	is_shown = {
-	#		OR = {
-	#			NOT = { has_doctrine = eastern_special_hostility_doctrine }
-	#			religion = { is_in_family = rf_sinitic }
-	#		}
-	#	}
-	#	can_pick = {
-	#		custom_description = {
-	#			text = incompatible_tenet_gnosticism_trigger
-	#			NOT = {
-	#				doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
-	#			}
-	#		}
-	#	}
-	#	parameters = {
-	#		hostility_override_unreformed_faith_doctrine = 2
-	#		#unreformed_syncretic_actor_opinion_active = yes
-	#		#opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-	#		#unreformed_syncretic_conversion_malus_active = yes
-	#	}
-	#	#traits = {
-	#	#	virtues = { honest }
-	#	#	sins = { wrathful }
-	#	#}
-	#}
-	#
-	#lux_doctrine_norse_pantheon = {
-	#	icon = lux_doctrine_norse_pantheon
-	#	piety_cost = {
-	#		if = {
-	#			limit = {
-	#				OR = {
-	#					religion_tag = dualism_religion
-	#					has_doctrine = pagan_special_hostility_doctrine
-	#				}
-	#			}
-	#			value = faith_tenet_cost_low
-	#		}
-	#		else_if = {
-	#			limit = {
-	#				religion_tag = islam_religion
-	#			}
-	#			value = faith_tenet_cost_high
-	#		}
-	#		else = {
-	#			value = faith_tenet_cost_mid
-	#		}
-	#
-	#		# Multiplier for keeping same tenet
-	#		if = {
-	#			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
-	#			multiply = faith_unchanged_doctrine_cost_mult
-	#		}
-	#	}
-	#
-	#	is_shown = {
-	#		OR = {
-	#			NOT = { has_doctrine = eastern_special_hostility_doctrine }
-	#			religion = { is_in_family = rf_sinitic }
-	#		}
-	#	}
-	#	can_pick = {
-	#		custom_description = {
-	#			text = incompatible_tenet_gnosticism_trigger
-	#			NOT = {
-	#				doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
-	#			}
-	#		}
-	#	}
-	#	parameters = {
-	#		hostility_override_unreformed_faith_doctrine = 2
-	#		#unreformed_syncretic_actor_opinion_active = yes
-	#		#opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-	#		#unreformed_syncretic_conversion_malus_active = yes
-	#	}
-	#	#traits = {
-	#	#	virtues = { honest }
-	#	#	sins = { wrathful }
-	#	#}
-	#}
-	#
-	#lux_doctrine_slavic_pantheon = {
-	#	icon = lux_doctrine_slavic_pantheon
-	#	piety_cost = {
-	#		if = {
-	#			limit = {
-	#				OR = {
-	#					religion_tag = dualism_religion
-	#					has_doctrine = pagan_special_hostility_doctrine
-	#				}
-	#			}
-	#			value = faith_tenet_cost_low
-	#		}
-	#		else_if = {
-	#			limit = {
-	#				religion_tag = islam_religion
-	#			}
-	#			value = faith_tenet_cost_high
-	#		}
-	#		else = {
-	#			value = faith_tenet_cost_mid
-	#		}
-	#
-	#		# Multiplier for keeping same tenet
-	#		if = {
-	#			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
-	#			multiply = faith_unchanged_doctrine_cost_mult
-	#		}
-	#	}
-	#
-	#	is_shown = {
-	#		OR = {
-	#			NOT = { has_doctrine = eastern_special_hostility_doctrine }
-	#			religion = { is_in_family = rf_pagan }
-	#		}
-	#	}
-	#	can_pick = {
-	#		custom_description = {
-	#			text = incompatible_tenet_gnosticism_trigger
-	#			NOT = {
-	#				doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
-	#			}
-	#		}
-	#	}
-	#	parameters = {
-	#		hostility_override_unreformed_faith_doctrine = 2
-	#		#unreformed_syncretic_actor_opinion_active = yes
-	#		#opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-	#		#unreformed_syncretic_conversion_malus_active = yes
-	#	}
-	#	#traits = {
-	#	#	virtues = { honest }
-	#	#	sins = { wrathful }
-	#	#}
-	#}
-	#
-	#lux_doctrine_celtic_pantheon = {
-	#	icon = lux_doctrine_celtic_pantheon
-	#	piety_cost = {
-	#		if = {
-	#			limit = {
-	#				OR = {
-	#					religion_tag = dualism_religion
-	#					has_doctrine = pagan_special_hostility_doctrine
-	#				}
-	#			}
-	#			value = faith_tenet_cost_low
-	#		}
-	#		else_if = {
-	#			limit = {
-	#				religion_tag = islam_religion
-	#			}
-	#			value = faith_tenet_cost_high
-	#		}
-	#		else = {
-	#			value = faith_tenet_cost_mid
-	#		}
-	#
-	#		# Multiplier for keeping same tenet
-	#		if = {
-	#			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
-	#			multiply = faith_unchanged_doctrine_cost_mult
-	#		}
-	#	}
-	#
-	#	is_shown = {
-	#		OR = {
-	#			NOT = { has_doctrine = eastern_special_hostility_doctrine }
-	#			religion = { is_in_family = rf_sinitic }
-	#		}
-	#	}
-	#	can_pick = {
-	#		custom_description = {
-	#			text = incompatible_tenet_gnosticism_trigger
-	#			NOT = {
-	#				doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
-	#			}
-	#		}
-	#	}
-	#	parameters = {
-	#		hostility_override_unreformed_faith_doctrine = 2
-	#		#unreformed_syncretic_actor_opinion_active = yes
-	#		#opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-	#		#unreformed_syncretic_conversion_malus_active = yes
-	#	}
-	#	#traits = {
-	#	#	virtues = { honest }
-	#	#	sins = { wrathful }
-	#	#}
-	#}
-
-	lux_doctrine_folk_pantheon = {
-		icon = lux_doctrine_old_gods_pantheon
-		piety_cost = {
-			if = {
-				limit = {
-					OR = {
-						religion_tag = dualism_religion
-						has_doctrine = pagan_special_hostility_doctrine
-					}
-				}
-				value = faith_tenet_cost_low
-			}
-			else_if = {
-				limit = {
-					religion_tag = islam_religion
-				}
-				value = faith_tenet_cost_high
-			}
-			else = {
-				value = faith_tenet_cost_mid
-			}
-	
-			# Multiplier for keeping same tenet
-			if = {
-				limit = { has_doctrine = lux_doctrine_eastern_pantheon }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
+	is_shown = {
+		OR = {
+			NOT = { has_doctrine = eastern_special_hostility_doctrine }
+			religion = { is_in_family = rf_sinitic }
 		}
-	
-		is_shown = {
+	}
+	can_pick = {
+		custom_description = {
+			text = incompatible_tenet_gnosticism_trigger
 			NOT = {
-				has_doctrine = pagan_special_hostility_doctrine
-				#religion = { is_in_family = rf_pagan }
+				doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
 			}
 		}
-		can_pick = { always = yes }
-		parameters = {
-			hostility_override_pagan_special_hostility_doctrine = 2
-			unreformed_syncretic_actor_opinion_active = yes
-			#opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-			#unreformed_syncretic_conversion_malus_active = yes
+	}
+	parameters = {
+		hostility_override_unreformed_faith_doctrine = 2
+		unreformed_syncretic_actor_opinion_active = yes
+		opinion_of_unreformed_syncretic_recipient_opinion_active = 30 Sync this to syncretic_mutual_opinion_bonus_value
+		unreformed_syncretic_conversion_malus_active = yes
+	}
+	traits = {
+		virtues = { honest }
+		sins = { wrathful }
+	}
+}
+
+lux_doctrine_slavic_pantheon = {
+	icon = lux_doctrine_slavic_pantheon
+	piety_cost = {
+		if = {
+			limit = {
+				OR = {
+					religion_tag = dualism_religion
+					has_doctrine = pagan_special_hostility_doctrine
+				}
+			}
+			value = faith_tenet_cost_low
 		}
-		traits = {
-			virtues = { gregarious }
-			sins = { craven }
+		else_if = {
+			limit = {
+				religion_tag = islam_religion
+			}
+			value = faith_tenet_cost_high
+		}
+		else = {
+			value = faith_tenet_cost_mid
+		}
+
+		 Multiplier for keeping same tenet
+		if = {
+			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
+			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
 
-	lux_doctrine_archaic_pantheon = {
-		icon = lux_doctrine_archaic_pantheon
-		piety_cost = {
-			if = {
-				limit = {
-					OR = {
-						religion_tag = dualism_religion
-						has_doctrine = pagan_special_hostility_doctrine
-					}
-				}
-				value = faith_tenet_cost_low
+	is_shown = {
+		OR = {
+			NOT = { has_doctrine = eastern_special_hostility_doctrine }
+			religion = { is_in_family = rf_pagan }
+		}
+	}
+	can_pick = {
+		custom_description = {
+			text = incompatible_tenet_gnosticism_trigger
+			NOT = {
+				doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
 			}
-			else_if = {
-				limit = {
-					religion_tag = islam_religion
-				}
-				value = faith_tenet_cost_high
-			}
-			else = {
-				value = faith_tenet_cost_mid
-			}
+		}
+	}
+	parameters = {
+		hostility_override_unreformed_faith_doctrine = 2
+		unreformed_syncretic_actor_opinion_active = yes
+		opinion_of_unreformed_syncretic_recipient_opinion_active = 30 Sync this to syncretic_mutual_opinion_bonus_value
+		unreformed_syncretic_conversion_malus_active = yes
+	}
+	traits = {
+		virtues = { honest }
+		sins = { wrathful }
+	}
+}
 
-			# Multiplier for keeping same tenet
-			if = {
-				limit = { has_doctrine = lux_doctrine_eastern_pantheon }
-				multiply = faith_unchanged_doctrine_cost_mult
+lux_doctrine_celtic_pantheon = {
+	icon = lux_doctrine_celtic_pantheon
+	piety_cost = {
+		if = {
+			limit = {
+				OR = {
+					religion_tag = dualism_religion
+					has_doctrine = pagan_special_hostility_doctrine
+				}
 			}
+			value = faith_tenet_cost_low
+		}
+		else_if = {
+			limit = {
+				religion_tag = islam_religion
+			}
+			value = faith_tenet_cost_high
+		}
+		else = {
+			value = faith_tenet_cost_mid
 		}
 
-		is_shown = {
-			NOT = { has_doctrine = archaic_special_hostility_doctrine }
-		}
-		can_pick = { always = yes }
-		parameters = {
-			hostility_override_archaic_special_hostility_doctrine = 1
-			archaic_syncretic_actor_opinion_active = yes
-			#opinion_of_archaic_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-			#archaic_syncretic_conversion_malus_active = yes
-		}
-		traits = {
-			virtues = { arrogant }
-			sins = { cynical }
+		 Multiplier for keeping same tenet
+		if = {
+			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
+			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
 
-	lux_doctrine_subsaharan_pantheon = {
-		icon = lux_doctrine_sub_sahara_pantheon
-		piety_cost = {
-			if = {
-				limit = {
-					OR = {
-						religion_tag = dualism_religion
-						has_doctrine = pagan_special_hostility_doctrine
-					}
-				}
-				value = faith_tenet_cost_low
-			}
-			else_if = {
-				limit = {
-					religion_tag = islam_religion
-				}
-				value = faith_tenet_cost_high
-			}
-			else = {
-				value = faith_tenet_cost_mid
-			}
-
-			# Multiplier for keeping same tenet
-			#if = {
-			#	limit = { has_doctrine = lux_doctrine_steppe_pantheon }
-			#	multiply = faith_unchanged_doctrine_cost_mult
-			#}
-		}
-
-		is_shown = {
-			NOT = { has_doctrine = west_african_unreformed_faith_doctrine }
-		}
-		can_pick = { always = yes }
-		parameters = {
-			#hostility_override_unreformed_faith_doctrine = 2
-			hostility_override_west_african_unreformed_faith_doctrine = 2
-			unreformed_syncretic_actor_opinion_active = yes
-			#opinion_of_unreformed_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-			##unreformed_syncretic_conversion_malus_active = yes
-		}
-		traits = {
-			virtues = { patient }
-			sins = { arbitrary }
+	is_shown = {
+		OR = {
+			NOT = { has_doctrine = eastern_special_hostility_doctrine }
+			religion = { is_in_family = rf_sinitic }
 		}
 	}
-
+	can_pick = {
+		custom_description = {
+			text = incompatible_tenet_gnosticism_trigger
+			NOT = {
+				doctrine:tenet_gnosticism = { is_in_list = selected_doctrines }
+			}
+		}
+	}
+	parameters = {
+		hostility_override_unreformed_faith_doctrine = 2
+		unreformed_syncretic_actor_opinion_active = yes
+		opinion_of_unreformed_syncretic_recipient_opinion_active = 30 Sync this to syncretic_mutual_opinion_bonus_value
+		unreformed_syncretic_conversion_malus_active = yes
+	}
+	traits = {
+		virtues = { honest }
+		sins = { wrathful }
+	}
+}
