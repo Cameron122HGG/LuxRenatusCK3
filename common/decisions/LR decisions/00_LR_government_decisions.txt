@@ -116,14 +116,14 @@
 			limit = {
 				liege != this
 				OR = {
-					liege = { has_government = clan_government }
+					liege = { has_government = iqta_government }
 					AND = {
-						liege = { has_government = clan_government }
+						liege = { has_government = iqta_government }
 						religion = religion:islam_religion
 					}
 				}
 			}
-			change_government = clan_government
+			change_government = iqta_government
 		}		
 		##Independent
 		else_if = {
@@ -145,9 +145,9 @@
 				liege = this
 				faith = { religion_tag = islam_religion }
 			}
-			change_government = clan_government
+			change_government = iqta_government
 		}		
-		else = { change_government = feudal_government }
+		else = { change_government = western_feudal_government }
 		
 		##Convert Vassals
 		custom_tooltip = {
@@ -172,17 +172,17 @@
 			}
 			else_if = {
 				limit = {
-					has_government = clan_government
+					has_government = iqta_government
 				}
 				every_vassal_or_below = {
 					limit = { government_has_flag = government_is_high_tribal }
-					change_government = clan_government
+					change_government = iqta_government
 				}
 			}		
 			else = {
 				every_vassal_or_below = {
 					limit = { government_has_flag = government_is_high_tribal }
-					change_government = feudal_government
+					change_government = western_feudal_government
 				}
 			}
 		}
@@ -236,8 +236,8 @@ convert_classical_feudal_decision = {
 
 	is_shown = {
 		OR = {
-			has_government = feudal_government 
-			has_government = clan_government
+			has_government = western_feudal_government 
+			has_government = iqta_government
 			AND = {
 				is_independent_ruler = no
 				has_government = despotic_feudal_government
@@ -303,8 +303,8 @@ convert_classical_feudal_decision = {
 			every_vassal_or_below = {
 				limit = { 
 					OR = {
-						has_government = feudal_government 
-						has_government = clan_government
+						has_government = western_feudal_government 
+						has_government = iqta_government
 					}
 				}
 				change_government = classical_feudal_government
@@ -359,8 +359,8 @@ convert_despotic_decision = {
 
 	is_shown = {
 		OR = {
-			has_government = feudal_government 
-			has_government = clan_government
+			has_government = western_feudal_government 
+			has_government = iqta_government
 			AND = {
 				is_independent_ruler = no
 				has_government = despotic_feudal_government
@@ -430,8 +430,8 @@ convert_despotic_decision = {
 			every_vassal_or_below = {
 				limit = { 
 					OR = {
-						has_government = feudal_government 
-						has_government = clan_government
+						has_government = western_feudal_government 
+						has_government = iqta_government
 					}
 				}
 				change_government = despotic_feudal_government
@@ -493,23 +493,23 @@ abandon_ancient_government_decision = {
 				}
 				OR = {
 					liege = {
-						has_government = feudal_government
+						has_government = western_feudal_government
 					}
 					liege = {
-						has_government = clan_government			
+						has_government = iqta_government			
 					}			
 				}
 			}
 			AND = {
-				has_government = clan_government
+				has_government = iqta_government
 				liege = {
-					has_government = feudal_government
+					has_government = western_feudal_government
 				}	
 			}
 			AND = {
-				has_government = feudal_government
+				has_government = western_feudal_government
 				liege = {
-					has_government = clan_government
+					has_government = iqta_government
 				}	
 			}
 			AND = {
@@ -560,10 +560,10 @@ abandon_ancient_government_decision = {
 			}
 			OR = {
 				liege = {
-					has_government = feudal_government			
+					has_government = western_feudal_government			
 				}
 				liege = {
-					has_government = clan_government			
+					has_government = iqta_government			
 				}			
 			}
 		}
@@ -584,28 +584,28 @@ abandon_ancient_government_decision = {
 	effect = {
 		if = {
 			limit = {
-				liege = { has_government = clan_government }
+				liege = { has_government = iqta_government }
 			}
-			change_government = clan_government
+			change_government = iqta_government
 		}
 		else = {
-			change_government = feudal_government
+			change_government = western_feudal_government
 		}
 		custom_tooltip = {
 			text = LR_high_tribal_vassal_adoption		
 			if = {
 				limit = {
-					liege = { has_government = clan_government }
+					liege = { has_government = iqta_government }
 				}
 				every_vassal_or_below = {
 					limit = {
 						OR = {
 							has_government = classical_feudal_government
 							has_government = despotic_feudal_government
-							has_government = feudal_government
+							has_government = western_feudal_government
 						}					
 					}
-					change_government = clan_government
+					change_government = iqta_government
 				}
 			}
 			else = {
@@ -614,10 +614,10 @@ abandon_ancient_government_decision = {
 						OR = {
 							has_government = classical_feudal_government
 							has_government = despotic_feudal_government
-							has_government = clan_government
+							has_government = iqta_government
 						}					
 					}
-					change_government = feudal_government
+					change_government = western_feudal_government
 				}
 			}
 		}
@@ -682,7 +682,7 @@ adopt_gaul_gov_decision = {
 			has_government = gaul_administrative_government	
 		}
 		OR = {
-			has_government = feudal_government
+			has_government = western_feudal_government
 			government_has_flag = government_is_administrative
 		}		
 	}
@@ -719,7 +719,7 @@ adopt_gaul_gov_decision = {
 			every_vassal_or_below = {
 				limit = {
 					OR = {
-						has_government = feudal_government
+						has_government = western_feudal_government
 						government_has_flag = government_is_administrative
 					}
 				}
