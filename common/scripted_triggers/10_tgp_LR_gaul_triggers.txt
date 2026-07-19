@@ -1,6 +1,6 @@
 ﻿
-LR_tgp_is_gallic_gallic_regent_admin_trigger = {
-	has_title = title:e_high_kingdom_gaul
+LR_tgp_is_gaul_gallic_regent_admin_trigger = {
+	has_title = title:e_sacral_kingdom_gaul
 	NOR = {
 		has_title = title:k_sacral_king_gaul_throne
 		has_global_variable = sacral_king_gaul_restored
@@ -37,11 +37,10 @@ LR_can_keep_gallic_regency_succession_law_trigger = {
 	trigger_if = {
 		limit = {
 			has_realm_law = gallic_regency_succession_law
-			has
 		}
 		OR = {
 			LR_tgp_can_have_gallic_regency_succession_law_trigger = yes
-			has_title = title:e_high_kingdom_gaul
+			has_title = title:e_sacral_kingdom_gaul
 		}
 	}
 }
@@ -135,7 +134,7 @@ LR_tgp_gaul_offensive_wars_ban_trigger = {
 		limit = {
 			exists = scope:defender.top_liege
 			scope:attacker.top_liege ?= {
-				has_title = title:e_high_kingdom_gaul
+				has_title = title:e_sacral_kingdom_gaul
 				scope:defender.top_liege != this
 				government_is_gallic_trigger = yes
 				realm_law_use_gallic_policy_trigger = yes
@@ -269,7 +268,7 @@ tgp_gaul_single_heir_succession_override_trigger = {
 		title:k_sacral_king_gaul_throne.holder ?= scope:holder_temp
 		AND = {
 			has_global_variable = sacral_king_gaul_restored
-			title:e_high_kingdom_gaul.holder ?= scope:holder_temp
+			title:e_sacral_kingdom_gaul.holder ?= scope:holder_temp
 		}
 	}
 }
@@ -370,7 +369,7 @@ gaul_sacral_expansion_cb_allowed_against_character_trigger = {
 	NOT = { top_liege ?= scope:attacker.top_liege }
 	# Must own Japanese non-de-jure land
 	any_sub_realm_county = {
-		NOT = { empire = title:e_high_kingdom_gaul }
+		NOT = { empire = title:e_sacral_kingdom_gaul }
 		title_province = {
 			OR = {
 				geographical_region = LR_world_europe_gaul
@@ -392,7 +391,7 @@ gaul_sacral_reconquest_cb_allowed_against_character_trigger = {
 	# Cannot also be part of Japan
 	scope:defender.top_liege != scope:attacker.top_liege
 	# Must own Japanese de-jure land
-	any_sub_realm_county = { empire = title:e_high_kingdom_gaul }
+	any_sub_realm_county = { empire = title:e_sacral_kingdom_gaul }
 }
 
 realm_law_use_gallic_policy_trigger = {
@@ -677,7 +676,7 @@ gaul_government_gaul_kingdom_restriction_trigger = {
 				is_independent_ruler = no
 				AND = {
 					NOT = { highest_held_title_tier = tier_empire }
-					has_title = title:e_high_kingdom_gaul
+					has_title = title:e_sacral_kingdom_gaul
 				}
 			}
 		}
