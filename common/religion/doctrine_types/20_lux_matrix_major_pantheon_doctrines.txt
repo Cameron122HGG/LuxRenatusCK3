@@ -1,26 +1,25 @@
-﻿lux_doctrine_solar_major_pantheon = {
-	icon = lux_doctrine_roman_major_pantheon
+﻿lux_doctrine_pantheon_solar = {
+	icon = lux_doctrine_pantheon_solar
 	piety_cost = {
 		value = 0
 		if = {
-			limit = { has_doctrine = lux_doctrine_solar_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_pantheon_solar }
 			value = 0
 		}
 		else_if = {
 			limit = { 
-				OR = { 	
+				OR = {
+					has_doctrine = lux_doctrine_roman_pantheon
+					has_doctrine = lux_doctrine_hellenic_pantheon
+					has_doctrine = lux_doctrine_mithras_pantheon
 					has_doctrine = lux_doctrine_christian_pantheon
 					has_doctrine = lux_doctrine_islamic_pantheon
 					has_doctrine = lux_doctrine_persian_pantheon
 					has_doctrine = lux_doctrine_jewish_pantheon
-					has_doctrine = lux_doctrine_roman_pantheon
 					has_doctrine = lux_doctrine_eastern_pantheon
-					has_doctrine = lux_doctrine_dualist_pantheon
-					has_doctrine = lux_doctrine_archaic_pantheon
-					has_doctrine = lux_doctrine_subsaharan_pantheon
-					has_doctrine = lux_doctrine_folk_pantheon
 					has_doctrine = lux_doctrine_sinitic_pantheon
-				} 
+					has_doctrine = lux_doctrine_dualist_pantheon
+				}
 			}
 			value = faith_tenet_cost_high
 		}
@@ -31,8 +30,8 @@
 	}
 }
 	
-lux_doctrine_roman_major_pantheon = {
-	icon = "lux_doctrine_roman_major_pantheon" 
+lux_doctrine_roman_pantheon = {
+	icon = "lux_doctrine_roman_pantheon" 
 	piety_cost = {
 		if = {
 			limit = { doctrine:doctrine_pluralism_pluralistic = {is_in_list = selected_doctrines} }
@@ -48,7 +47,7 @@ lux_doctrine_roman_major_pantheon = {
 
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_roman_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_roman_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -71,8 +70,8 @@ lux_doctrine_roman_major_pantheon = {
 	}
 }
 
-lux_doctrine_hellenic_major_pantheon = {
-	icon = "lux_doctrine_hellenic_major_pantheon" 
+lux_doctrine_hellenic_pantheon = {
+	icon = "lux_doctrine_hellenic_pantheon" 
 	piety_cost = {
 		if = {
 			limit = { doctrine:doctrine_pluralism_pluralistic = {is_in_list = selected_doctrines} }
@@ -88,7 +87,7 @@ lux_doctrine_hellenic_major_pantheon = {
 
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_hellenic_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_hellenic_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -111,8 +110,8 @@ lux_doctrine_hellenic_major_pantheon = {
 	}
 }
 
-lux_doctrine_mithras_major_pantheon = {
-	icon = "lux_doctrine_roman_major_pantheon" 
+lux_doctrine_mithras_pantheon = {
+	icon = "lux_doctrine_roman_pantheon" 
 	piety_cost = {
 		if = {
 			limit = { doctrine:doctrine_pluralism_pluralistic = {is_in_list = selected_doctrines} }
@@ -128,7 +127,7 @@ lux_doctrine_mithras_major_pantheon = {
 
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_mithras_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_mithras_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -151,7 +150,7 @@ lux_doctrine_mithras_major_pantheon = {
 	}
 }
 	
-lux_doctrine_christian_major_pantheon = {
+lux_doctrine_christian_pantheon = {
 	icon = lux_doctrine_christian_pantheon
 
 	piety_cost = {
@@ -170,7 +169,7 @@ lux_doctrine_christian_major_pantheon = {
 
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_christian_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_christian_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -194,8 +193,8 @@ lux_doctrine_christian_major_pantheon = {
 	}
 }
 
-lux_doctrine_islamic_major_pantheon = {
-	icon = lux_doctrine_islamic_major_pantheon
+lux_doctrine_islamic_pantheon = {
+	icon = lux_doctrine_islamic_pantheon
 	piety_cost = {
 		if = {
 			limit = {
@@ -211,7 +210,7 @@ lux_doctrine_islamic_major_pantheon = {
 		}
 		# Multiplier for keeping same tenet
 			if = {
-			limit = { has_doctrine = lux_doctrine_islamic_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_islamic_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -232,8 +231,8 @@ lux_doctrine_islamic_major_pantheon = {
 	}
 }
 
-lux_doctrine_persian_major_pantheon = {
-	icon = lux_doctrine_persian_major_pantheon
+lux_doctrine_persian_pantheon = {
+	icon = lux_doctrine_persian_pantheon
 	piety_cost = {
 		if = {
 			limit = {
@@ -249,7 +248,7 @@ lux_doctrine_persian_major_pantheon = {
 		}
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_persian_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_persian_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -272,7 +271,7 @@ lux_doctrine_persian_major_pantheon = {
 	}
 }
 
-lux_doctrine_jewish_major_pantheon = {
+lux_doctrine_jewish_pantheon = {
 	icon = lux_doctrine_jewish_pantheon
 	piety_cost = {
 		if = {
@@ -291,7 +290,7 @@ lux_doctrine_jewish_major_pantheon = {
 
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_jewish_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_jewish_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -314,7 +313,7 @@ lux_doctrine_jewish_major_pantheon = {
 	}
 }
 
-lux_doctrine_dualist_major_pantheon = {
+lux_doctrine_dualist_pantheon = {
 	icon = lux_doctrine_gnostic_pantheon
 	piety_cost = {
 		if = {
@@ -332,7 +331,7 @@ lux_doctrine_dualist_major_pantheon = {
 		}
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_dualist_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_dualist_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -355,7 +354,7 @@ lux_doctrine_dualist_major_pantheon = {
 	}
 }
 
-lux_doctrine_sinitic_major_pantheon = {
+lux_doctrine_sinitic_pantheon = {
 	icon = lux_doctrine_sinitic_pantheon
 	piety_cost = {
 		if = {
@@ -378,7 +377,7 @@ lux_doctrine_sinitic_major_pantheon = {
 		}
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_sinitic_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_sinitic_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -401,7 +400,7 @@ lux_doctrine_sinitic_major_pantheon = {
 	}
 }
 
-lux_doctrine_eastern_major_pantheon = {
+lux_doctrine_eastern_pantheon = {
 	icon = lux_doctrine_eastern_pantheon
 	piety_cost = {
 		if = {
@@ -424,7 +423,7 @@ lux_doctrine_eastern_major_pantheon = {
 		}
 		# Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_eastern_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -448,7 +447,7 @@ lux_doctrine_eastern_major_pantheon = {
 	}
 }
 
-lux_doctrine_steppe_major_pantheon = {
+lux_doctrine_steppe_pantheon = {
 	icon = lux_doctrine_steppe_pantheon
 	piety_cost = {
 		if = {
@@ -472,7 +471,7 @@ lux_doctrine_steppe_major_pantheon = {
 
 		 Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_steppe_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_steppe_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -503,7 +502,7 @@ lux_doctrine_steppe_major_pantheon = {
 	}
 }
 
-lux_doctrine_norse_major_pantheon = {
+lux_doctrine_norse_pantheon = {
 	icon = lux_doctrine_norse_pantheon
 	piety_cost = {
 		if = {
@@ -527,7 +526,7 @@ lux_doctrine_norse_major_pantheon = {
 
 		 Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_eastern_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -558,7 +557,7 @@ lux_doctrine_norse_major_pantheon = {
 	}
 }
 
-lux_doctrine_slavic_major_pantheon = {
+lux_doctrine_slavic_pantheon = {
 	icon = lux_doctrine_slavic_pantheon
 	piety_cost = {
 		if = {
@@ -582,7 +581,7 @@ lux_doctrine_slavic_major_pantheon = {
 
 		 Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_eastern_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
@@ -613,7 +612,7 @@ lux_doctrine_slavic_major_pantheon = {
 	}
 }
 
-lux_doctrine_celtic_major_pantheon = {
+lux_doctrine_celtic_pantheon = {
 	icon = lux_doctrine_celtic_pantheon
 	piety_cost = {
 		if = {
@@ -637,7 +636,7 @@ lux_doctrine_celtic_major_pantheon = {
 
 		 Multiplier for keeping same tenet
 		if = {
-			limit = { has_doctrine = lux_doctrine_eastern_major_pantheon }
+			limit = { has_doctrine = lux_doctrine_eastern_pantheon }
 			multiply = faith_unchanged_doctrine_cost_mult
 		}
 	}
