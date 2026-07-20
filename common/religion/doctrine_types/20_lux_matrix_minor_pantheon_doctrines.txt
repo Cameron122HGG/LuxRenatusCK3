@@ -629,45 +629,19 @@ lux_doctrine_celtic_pantheon_cult = {
 }
 
 lux_doctrine_pantheon_cult_alexandros = {
-	icon = "lux_doctrine_pantheon_cult_alexandros"
+	icon = lux_doctrine_pantheon_hellenic
 	piety_cost = {
-		if = {
-			limit = {
-				OR = {
-					religion_tag = dualism_religion
-					has_doctrine = pagan_special_hostility_doctrine
-				}
-			}
-			value = faith_tenet_cost_low
-		}
-		else_if = {
-			limit = {
-				religion_tag = islam_religion
-			}
-			value = faith_tenet_cost_high
-		}
-		else = {
-			value = faith_tenet_cost_mid
-		}
-		# Multiplier for keeping same tenet
-		if = {
-			limit = { has_doctrine = lux_doctrine_pantheon_cult_alexandros }
-			multiply = faith_unchanged_doctrine_cost_mult
-		}
+		value = 0
 	}
-	is_shown = {
-		NOT = { has_doctrine = archaic_special_hostility_doctrine }
+	can_pick = {
+		religion_tag = hellenism_religion
+	}	
+	character_modifier = {
+		name = lux_doctrine_pure_effect
+		opinion_of_different_faith = -5
 	}
-	can_pick = { always = yes }
 	parameters = {
-		hostility_override_archaic_special_hostility_doctrine = 1
-		archaic_syncretic_actor_opinion_active = yes
-		#opinion_of_archaic_syncretic_recipient_opinion_active = 30 #Sync this to syncretic_mutual_opinion_bonus_value
-		#archaic_syncretic_conversion_malus_active = yes
-	}
-	traits = {
-		virtues = { arrogant }
-		sins = { cynical }
+		alexandros_patrons_cult = yes
 	}
 }
 
