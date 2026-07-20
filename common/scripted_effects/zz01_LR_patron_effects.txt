@@ -5,7 +5,7 @@ LR_patron_doctrine_effect = {
 
 	## DIVINA sol_imperial
 	if = {
-		limit = { religion = religion:solar_religion }
+		limit = { has_doctrine_parameter = solar_patrons }
 		if = {
 			limit = {
 				has_character_modifier = patron_solar_deity_1_modifier
@@ -35,12 +35,11 @@ LR_patron_doctrine_effect = {
 			add_piety = massive_piety_loss
 		}
 	}
-	## AFRO-DIASPORIC & CATHOLICISM, I GUESS
+	## EGYPTIAN
 	else_if = {
 		limit = {
 			OR = {
-				#religion = religion:afro_diasporic_religion
-				religion = religion:kemetic_religion
+				has_doctrine_parameter = kemetic_patrons
 			}
 		}
 		## GENERIC PATRONS
@@ -79,7 +78,7 @@ LR_patron_doctrine_effect = {
 			remove_character_modifier = kemetic_deity_5
 			add_piety = massive_piety_loss
 		}
-		## WINTI PANTHEON
+		## ALEXANDROS MINOR?
 		else_if = {
 			limit = {
 				has_character_modifier = earth_pantheon
@@ -277,7 +276,7 @@ LR_patron_doctrine_effect = {
 	}
 	## SEASPRAY
 	else_if = {
-		limit = { religion = religion:celtic_religion }
+		limit = { has_doctrine_parameter = celtic_patrons }
 		if = {
 			limit = {
 				has_character_modifier = patron_celtic_deity_1_modifier
@@ -407,7 +406,7 @@ LR_patron_doctrine_effect = {
 	}
 	## MITHRAS
 	else_if = {
-		limit = { religion = religion:mithras_religion }
+		limit = { has_doctrine_parameter = mithras_patrons }
 		if = {
 			limit = {
 				has_character_modifier = patron_mithras_deity_1_modifier
@@ -516,7 +515,7 @@ LR_patron_doctrine_effect = {
 	}
 	## HINDUISM
 	else_if = {
-		limit = { religion = religion:hinduism_religion }
+		limit = { has_doctrine_parameter = dharmic_patrons }
 		if = {
 			limit = {
 				has_character_modifier = patron_nakura_modifier
@@ -562,33 +561,33 @@ LR_patron_doctrine_effect = {
 	}
 	## ISLAM
 	else_if = {
-		limit = { religion = religion:islam_religion }
+		limit = { has_doctrine_parameter = islam_patrons }
 		if = {
 			limit = {
-				has_character_modifier = patron_sang_hyung_tungga
+				has_character_modifier = patron_islam_deity_1
 			}
-			remove_character_modifier = patron_sang_hyung_tungga
+			remove_character_modifier = patron_islam_deity_1
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_wali_songo
+				has_character_modifier = patron_islam_deity_2
 			}
-			remove_character_modifier = patron_wali_songo
+			remove_character_modifier = patron_islam_deity_2
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_rama_wijaya
+				has_character_modifier = patron_patron_islam_deity_3
 			}
-			remove_character_modifier = patron_rama_wijaya
+			remove_character_modifier = patron_patron_islam_deity_3
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_batara_guru
+				has_character_modifier = patron_islam_deity_4
 			}
-			remove_character_modifier = patron_batara_guru
+			remove_character_modifier = patron_islam_deity_4
 			add_piety = massive_piety_loss
 		}
 		else_if = {
@@ -615,7 +614,7 @@ LR_patron_doctrine_effect = {
 	}
 	## ZOROASTRIANISM
 	else_if = {
-		limit = { religion = religion:zoroastrianism_religion }
+		limit = { has_doctrine_parameter = zoroastrian_patrons }
 		if = {
 			limit = {
 				has_character_modifier = umbanda_caboclos
@@ -837,30 +836,30 @@ LR_patron_doctrine_effect = {
 		limit =  { religion = religion:roman_religion }
 		if = {
 			limit = {
-				has_character_modifier = patron_diana_deity_modifier
+				has_character_modifier = patron_roman_deity_7_modifier
 			}
-			remove_character_modifier = patron_diana_deity_modifier
+			remove_character_modifier = patron_roman_deity_7_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_minerva_deity_modifier
+				has_character_modifier = patron_roman_deity_6_modifier
 			}
-			remove_character_modifier = patron_minerva_deity_modifier
+			remove_character_modifier = patron_roman_deity_6_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_mars_deity_modifier
+				has_character_modifier = patron_roman_deity_3_modifier
 			}
-			remove_character_modifier = patron_mars_deity_modifier
+			remove_character_modifier = patron_roman_deity_3_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = roman_pagan_council_eastson
+				has_character_modifier = patron_roman_deity_4
 			}
-			remove_character_modifier = roman_pagan_council_eastson
+			remove_character_modifier = patron_roman_deity_4
 			add_piety = massive_piety_loss
 		}
 		else_if = {
@@ -872,16 +871,16 @@ LR_patron_doctrine_effect = {
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_jupiter_deity_modifier
+				has_character_modifier = patron_roman_deity_1_modifier
 			}
-			remove_character_modifier = patron_jupiter_deity_modifier
+			remove_character_modifier = patron_roman_deity_1_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_neptune_deity_modifier
+				has_character_modifier = patron_roman_deity_2_modifier
 			}
-			remove_character_modifier = patron_neptune_deity_modifier
+			remove_character_modifier = patron_roman_deity_2_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
