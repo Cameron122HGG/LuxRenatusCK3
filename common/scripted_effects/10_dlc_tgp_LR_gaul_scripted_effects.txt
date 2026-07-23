@@ -3,7 +3,7 @@
 	save_scope_as = new_head
 	# Dynasty
 	if = {
-		limit = { tgp_gaul_cadet_creates_dynasty_trigger = yes }
+		limit = { LR_tgp_gaul_cadet_creates_dynasty_trigger = yes }
 		if = {
 			limit = { exists = var:new_gallic_house_name }
 			create_dynasty = {
@@ -91,7 +91,7 @@
 					target = root
 				}
 			}
-			trigger_event = tgp_gaul_decision.9005
+			trigger_event = LR_tgp_gaul_decision.9005
 		}
 	}
 	# Crime to Regent
@@ -117,7 +117,7 @@
 			hidden_effect = {
 				send_interface_message = {
 					type = event_toast_effect_bad
-					title = tgp_gaul_establish_house_fief_mayor_gaul_toast
+					title = LR_tgp_gaul_establish_house_fief_mayor_gaul_toast
 					left_icon = scope:new_head
 					right_icon = scope:new_head.primary_title
 					show_as_tooltip = {
@@ -170,7 +170,7 @@ gaul_set_house_effect = {
 	$NEW_HOUSE$ = { save_scope_as = new_house }
 	set_house = scope:new_house
 	custom_tooltip = {
-		text = tgp_gaul_establish_house_fief_direct_descendents_effect
+		text = LR_tgp_gaul_establish_house_fief_direct_descendents_effect
 		if = {
 			limit = { exists = $NEW_HOUSE$ }
 			set_house_of_all_descendants_effect = {
@@ -539,7 +539,7 @@ gallic_restore_ceremonial_liege_faction_combined_effect = {
 	}
 	show_as_tooltip = { restore_ceremonial_liege_faction_reward_effect = yes }
 	# Event for Ceremonial Liege
-	scope:ceremonial_liege_temp = { trigger_event = tgp_gaul_decision.9301 }
+	scope:ceremonial_liege_temp = { trigger_event = LR_tgp_gaul_decision.9301 }
 }
 
 gallic_restore_ceremonial_liege_faction_reward_effect = {
@@ -679,7 +679,7 @@ gallic_faction_demand_regent_transfer_effect = {
 	}
 }
 
-tgp_gaul_schoolhouse_education_boost_effect = {
+LR_tgp_gaul_schoolhouse_education_boost_effect = {
 	save_scope_as = student
 	house.house_head.domicile ?= {
 		if = {
@@ -732,7 +732,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 		}
 		else_if = {
 			limit = {
-				scope:last_sacral_king_gaul ?= { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
+				scope:last_sacral_king_gaul ?= { LR_tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 			}
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
@@ -743,7 +743,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 		else_if = {
 			limit = {
 				scope:last_sacral_king_gaul ?= {
-					any_child = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
+					any_child = { LR_tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 				}
 			}
 			if = { # Avoid display of short tooltips after creation
@@ -752,7 +752,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			}
 			scope:last_sacral_king_gaul = {
 				ordered_child = {
-					limit = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
+					limit = { LR_tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 					order_by = age
 					save_scope_as = scion
 				}
@@ -761,7 +761,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 		else_if = {
 			limit = {
 				scope:last_sacral_king_gaul ?= {
-					any_close_family_member = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
+					any_close_family_member = { LR_tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 				}
 			}
 			if = { # Avoid display of short tooltips after creation
@@ -770,7 +770,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			}
 			scope:last_sacral_king_gaul = {
 				ordered_close_family_member = {
-					limit = { tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
+					limit = { LR_tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 					order_by = age
 					save_scope_as = scion
 				}
@@ -826,7 +826,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 }
 
 tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
-	add_character_flag = tgp_gaul_restore_gallic_monarchy_flag
+	add_character_flag = LR_tgp_gaul_restore_gallic_monarchy_flag
 	if = {
 		limit = { exists = scope:gaul_scion }
 		if = {
@@ -863,7 +863,7 @@ tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 		}
 		resolve_title_and_vassal_change = scope:change
 	}
-	remove_character_flag = tgp_gaul_restore_gallic_monarchy_flag
+	remove_character_flag = LR_tgp_gaul_restore_gallic_monarchy_flag
 	hidden_effect = {
 		scope:gaul_scion = {
 			if = {
@@ -878,7 +878,7 @@ tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 
 tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 	create_character = {
-		template = tgp_gaul_imperial_scion_template
+		template = LR_tgp_gaul_imperial_scion_template
 		location = scope:gallic_regent_admin.capital_province
 		age = { 16 38 }
 		save_scope_as = scion
@@ -887,19 +887,19 @@ tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 		if = {
 			limit = { is_female = yes }
 			create_character = {
-				template = tgp_gaul_imperial_scion_template
+				template = LR_tgp_gaul_imperial_scion_template
 				location = scope:gallic_regent_admin.capital_province
 				mother = scope:gaul_scion
 				age = { 11 12 }
 			}
 			create_character = {
-				template = tgp_gaul_imperial_scion_template
+				template = LR_tgp_gaul_imperial_scion_template
 				location = scope:gallic_regent_admin.capital_province
 				mother = scope:gaul_scion
 				age = { 7 8 }
 			}
 			create_character = {
-				template = tgp_gaul_imperial_scion_template
+				template = LR_tgp_gaul_imperial_scion_template
 				location = scope:gallic_regent_admin.capital_province
 				mother = scope:gaul_scion
 				age = { 3 4  }
@@ -907,19 +907,19 @@ tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 		}
 		else = {
 			create_character = {
-				template = tgp_gaul_imperial_scion_template
+				template = LR_tgp_gaul_imperial_scion_template
 				location = scope:gallic_regent_admin.capital_province
 				father = scope:gaul_scion
 				age = { 11 12 }
 			}
 			create_character = {
-				template = tgp_gaul_imperial_scion_template
+				template = LR_tgp_gaul_imperial_scion_template
 				location = scope:gallic_regent_admin.capital_province
 				father = scope:gaul_scion
 				age = { 7 8 }
 			}
 			create_character = {
-				template = tgp_gaul_imperial_scion_template
+				template = LR_tgp_gaul_imperial_scion_template
 				location = scope:gallic_regent_admin.capital_province
 				father = scope:gaul_scion
 				age = { 3 4 }
@@ -932,7 +932,7 @@ tgp_restore_gallic_government_decision_effect = {
 	gaul_clear_flavour_flags_effect = yes
 	save_scope_as = gallic_regent_admin
 	save_scope_as = background_throne_room_scope
-	add_character_flag = tgp_gaul_restore_gallic_government_flag
+	add_character_flag = LR_tgp_gaul_restore_gallic_government_flag
 	# Change government if relevant
 	change_government = gaul_administrative_government
 	if = {
@@ -952,7 +952,7 @@ tgp_restore_gallic_government_decision_effect = {
 	}
 	if = {
 		limit = { NOT = { exists = scope:vassal } }
-		custom_tooltip = tgp_gaul_restore_gallic_government_decision_civil_war_tt
+		custom_tooltip = LR_tgp_gaul_restore_gallic_government_decision_civil_war_tt
 	}
 	hidden_effect = {
 		ordered_powerful_vassal = {
@@ -1004,19 +1004,19 @@ tgp_restore_gallic_government_decision_effect = {
 		}
 	}
 	custom_tooltip = {
-		text = tgp_gaul_restore_gallic_government_decision_vassal_tt
+		text = LR_tgp_gaul_restore_gallic_government_decision_vassal_tt
 		every_vassal_or_below = {
 			limit = {
 				primary_title.tier >= tier_county
 				culture = { has_same_culture_heritage = scope:gallic_regent_admin.culture }
 			}
 			trigger_event = {
-				id = tgp_gaul_decision.9912
+				id = LR_tgp_gaul_decision.9912
 				delayed = yes
 			}
 		}
 	}
-	remove_character_flag = tgp_gaul_restore_gallic_government_flag
+	remove_character_flag = LR_tgp_gaul_restore_gallic_government_flag
 }
 
 gallic_tgp_destroy_ceremonial_throne_effect = {
@@ -1108,7 +1108,7 @@ gallic_tgp_destroy_ceremonial_liege_title_effect = {
 	}
 }
 
-tgp_gaul_demand_administrative_refusal_effect = {
+LR_tgp_gaul_demand_administrative_refusal_effect = {
 	if = {
 		limit = {
 			scope:actor = { government_has_flag = government_is_gaul_administrative }
@@ -1277,7 +1277,7 @@ tgp_restore_palatine_civil_war_effect = {
 			}
 			$REBEL$ = { save_scope_as = recipient }
 			$LIEGE$ = { save_scope_as = actor }
-			trigger_event = tgp_gaul_decision.9913
+			trigger_event = LR_tgp_gaul_decision.9913
 		}
 	}
 }
@@ -1287,7 +1287,7 @@ tgp_restore_palatine_civil_war_effect = {
 
 
 
-tgp_gaul_assert_regional_dominion_government_decision_effect = {
+LR_tgp_gaul_assert_regional_dominion_government_decision_effect = {
 	save_scope_as = super_manorial
 	scope:super_manorial.primary_title.duchy ?= { save_scope_as = title_scope }
 	# Crime to gallic_regent_admin
@@ -1298,13 +1298,13 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 		# Message for attacker
 		send_interface_toast = {
 			type = event_war_bad
-			title = tgp_gaul_manorial_war_is_crime_title
+			title = LR_tgp_gaul_manorial_war_is_crime_title
 			left_icon = top_liege
 			right_icon = scope:title_scope
 			top_liege = {
 				send_interface_toast = {
 					type = event_war_bad
-					title = tgp_gaul_manorial_war_is_crime_sacral_king_gaul_title
+					title = LR_tgp_gaul_manorial_war_is_crime_sacral_king_gaul_title
 					left_icon = scope:super_manorial
 					right_icon = scope:title_scope
 					add_opinion = {
@@ -1465,7 +1465,7 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 				limit = {
 					is_ai = no
 				}
-				trigger_event = tgp_gaul_decision.9963
+				trigger_event = LR_tgp_gaul_decision.9963
 			}
 		}
 		if = {
@@ -1511,7 +1511,7 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 		custom_tooltip = super_manorial_potential_peaceful
 	}
 	else = {
-		scope:title_scope = { tgp_gaul_assert_regional_dominance_war_outcome_effect = yes }
+		scope:title_scope = { LR_tgp_gaul_assert_regional_dominance_war_outcome_effect = yes }
 		add_dread = 15
 		add_legitimacy = 50
 		dynasty = { add_dynasty_prestige = 150 }
@@ -1519,7 +1519,7 @@ tgp_gaul_assert_regional_dominion_government_decision_effect = {
 	}
 }
 
-tgp_gaul_assert_regional_dominance_war_outcome_effect = {
+LR_tgp_gaul_assert_regional_dominance_war_outcome_effect = {
 	create_title_and_vassal_change = {
 		type = created
 		save_scope_as = change
@@ -1573,7 +1573,7 @@ tgp_gaul_assert_regional_dominance_war_outcome_effect = {
 
 
 
-tgp_gaul_manorial_eradicate_cb_transfer_effect = {
+LR_tgp_gaul_manorial_eradicate_cb_transfer_effect = {
 	scope:loser = {
 		every_held_title = {
 			limit = {
@@ -1660,7 +1660,7 @@ tgp_gallic_policy_event_effect = {
 	save_scope_as = liege
 	every_player = {
 		limit = { top_liege = scope:liege }
-		trigger_event = tgp_gaul_general.9300
+		trigger_event = LR_tgp_gaul_general.9300
 	}
 }
 
