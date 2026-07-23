@@ -1,0 +1,28 @@
+# MOD名 / MOD Name .......... 历史血脉 / Historical Bloodline
+# 互換性ID / Comp ID ........ HIBL
+# 作成者 / Author ........... 放生莲
+# Workshop ID ............... 2822080557
+# 対応日付 / Support Date ... 2025/01/06
+
+types CharacterWindow
+{
+	type RUI_Ch_HIBL_type_01 = Historical_Bloodline_Button {
+		blockoverride "size" {
+			size = { 40 40 }
+		}
+		blockoverride "button_icon_size" {
+			size = { 35 35 }
+		}
+	}
+}
+template RUI_Ch_HIBL_template_01 {
+	using = Historical_Bloodline
+}
+
+template RUI_Ch_trait_datamodel {
+	datamodel = "[Character.MakeScope.GetList( 'traits' )]"
+}
+
+template RUI_Ch_trait_icon {
+	datacontext = "[Scope.Trait]"
+}
