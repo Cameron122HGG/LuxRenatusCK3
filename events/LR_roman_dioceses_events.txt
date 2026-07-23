@@ -563,64 +563,7 @@ LR_roman_diocese_event.0020 = {
 	}
 }
 
-LR_roman_diocese_event.0030 = {
-	type = character_event
-	title = LR_roman_diocese_event.0030.t
-	desc = LR_roman_diocese_event.0030.desc
-	theme = realm
-	left_portrait = {
-		character = root
-		animation = personality_rational
-	}
-	right_portrait = {
-		character = title:e_byzantium.holder
-		animation = personality_greedy
-	}
 
-	immediate = {
-		play_music_cue = "mx_cue_epic_sacral_moment"
-		root = {
-			save_scope_as = nepos
-		}
-	}
-
-	option = { # Become Allies
-		name = LR_roman_diocese_event.0030.a
-		flavor = LR_roman_diocese_event.0030.a.flavor
-		create_alliance = {
-			target = title:e_byzantium.holder
-			allied_through_owner = root
-			allied_through_target = title:e_byzantium.holder
-		}
-		title:e_byzantium.holder = { # This opinion modifier controls the interaction, and is removed when breaking the alliance in any way (though on_actions)
-			add_opinion = {
-					target = root
-					opinion = 25
-					modifier = friendliness_opinion
-				}
-				add_prestige = 500
-			}
-			add_prestige = 250
-		ai_chance = {
-			base = 70
-		}
-	}
-
-	option = { # Remain Independent
-		name = LR_roman_diocese_event.0030.b
-		flavor = LR_roman_diocese_event.0030.b.flavor
-		title:e_byzantium.holder = {
-			add_opinion = {
-				target = root
-				opinion = -20
-				modifier = disappointed_opinion
-			}
-		}
-		ai_chance = {
-			base = 30
-		}
-	}
-}
 
 LR_roman_diocese_event.0050 = {
 	title = LR_roman_diocese_event.0050.t
