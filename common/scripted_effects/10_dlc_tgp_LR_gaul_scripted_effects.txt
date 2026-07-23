@@ -699,9 +699,9 @@ LR_tgp_gaul_schoolhouse_education_boost_effect = {
 	}
 }
 
-tgp_restore_gallic_monarchy_decision_effect = {
+LR_tgp_restore_gallic_monarchy_decision_effect = {
 	save_scope_as = gallic_regent_admin
-	tgp_restore_gallic_monarchy_merovingian_scion_effect = yes
+	LR_tgp_restore_gallic_monarchy_merovingian_scion_effect = yes
 	add_prestige = major_prestige_value
 	if = {
 		limit = { government_allows = administrative }
@@ -715,10 +715,10 @@ tgp_restore_gallic_monarchy_decision_effect = {
 			target = scope:gaul_scion
 		}
 	}
-	else = { custom_tooltip = tgp_restore_gallic_monarchy_decision_hook_tt }
+	else = { custom_tooltip = LR_tgp_restore_gallic_monarchy_decision_hook_tt }
 }
 
-tgp_restore_gallic_monarchy_merovingian_scion_effect = {
+LR_tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 	title:k_sacral_king_gaul_throne.previous_holder ?= { save_scope_as = last_sacral_king_gaul }
 	dynasty:frankish_merovingian.dynasty_founder.house ?= {
 		save_scope_as = house_merovingian
@@ -726,7 +726,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			limit = { this = scope:gallic_regent_admin.house }
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_created_tt
+				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_created_tt
 			}
 			scope:gallic_regent_admin = { save_scope_as = gaul_scion }
 		}
@@ -736,7 +736,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			}
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_tt
+				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_last_tt
 			}
 			scope:last_sacral_king_gaul = { save_scope_as = gaul_scion }
 		}
@@ -748,7 +748,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			}
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_child_tt
+				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_last_child_tt
 			}
 			scope:last_sacral_king_gaul = {
 				ordered_child = {
@@ -766,7 +766,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			}
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_last_close_family_tt
+				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_last_close_family_tt
 			}
 			scope:last_sacral_king_gaul = {
 				ordered_close_family_member = {
@@ -786,7 +786,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			}
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_found_tt
+				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_found_tt
 			}
 			ordered_house_member = {
 				limit = {
@@ -800,10 +800,10 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			}
 		}
 		else = {
-			tgp_restore_gallic_monarchy_merovingian_creation_effect = yes
+			LR_tgp_restore_gallic_monarchy_merovingian_creation_effect = yes
 			if = { # Avoid display of short tooltips after creation
 				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = tgp_restore_gallic_monarchy_merovingian_scion_created_tt
+				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_created_tt
 			}
 		}
 		# Save children for portraits
@@ -816,8 +816,8 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 				order_by = age
 				switch = {
 					trigger = exists
-					scope:gaul_gaul_scion_child_2 = { save_scope_as = gaul_scion_child_3 }
-					scope:gaul_gaul_scion_child_1 = { save_scope_as = gaul_scion_child_2 }
+					scope:gaul_scion_child_2 = { save_scope_as = gaul_scion_child_3 }
+					scope:gaul_scion_child_1 = { save_scope_as = gaul_scion_child_2 }
 					fallback = { save_scope_as = gaul_scion_child_1 }
 				}
 			}
@@ -825,7 +825,7 @@ tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 	}
 }
 
-tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
+LR_tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 	add_character_flag = LR_tgp_gaul_restore_gallic_monarchy_flag
 	if = {
 		limit = { exists = scope:gaul_scion }
@@ -876,7 +876,7 @@ tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 	}
 }
 
-tgp_restore_gallic_monarchy_merovingian_creation_effect = {
+LR_tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 	create_character = {
 		template = LR_tgp_gaul_imperial_scion_template
 		location = scope:gallic_regent_admin.capital_province
@@ -928,7 +928,7 @@ tgp_restore_gallic_monarchy_merovingian_creation_effect = {
 	}
 }
 
-tgp_restore_gallic_government_decision_effect = {
+LR_tgp_restore_gallic_government_decision_effect = {
 	gaul_clear_flavour_flags_effect = yes
 	save_scope_as = gallic_regent_admin
 	save_scope_as = background_throne_room_scope
