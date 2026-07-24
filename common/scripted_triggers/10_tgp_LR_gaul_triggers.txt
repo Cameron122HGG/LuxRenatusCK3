@@ -1,4 +1,13 @@
-﻿
+﻿is_valid_for_gaul_events_trigger = {
+	OR = {
+		government_has_flag = government_is_gallic_group
+		any_realm_county = {
+			title_province = { geographical_region = LR_world_europe_gaul }
+		}
+	}
+
+}
+
 LR_tgp_is_gaul_gallic_regent_admin_trigger = {
 	has_title = title:e_sacral_kingdom_gaul
 	NOR = {
@@ -228,7 +237,7 @@ LR_tgp_gaul_grant_titles_restriction_trigger = {
 	}
 }
 
-tgp_gaul_ceremonial_title_revoke_restriction_trigger = {
+LR_tgp_gaul_ceremonial_title_revoke_restriction_trigger = {
 	trigger_if = {
 		limit = {
 			exists = scope:recipient.house
@@ -262,7 +271,7 @@ can_change_gallic_appointment_succession_law_trigger = {
 	has_tgp_dlc_trigger = yes
 }
 
-tgp_gaul_single_heir_succession_override_trigger = {
+LR_tgp_gaul_single_heir_succession_override_trigger = {
 	save_temporary_scope_as = holder_temp
 	OR = {
 		title:k_sacral_king_gaul_throne.holder ?= scope:holder_temp
@@ -338,7 +347,7 @@ gaul_house_name_trigger = {
 	}
 }
 
-tgp_gaul_internal_manorial_war_is_crime_trigger = {
+LR_tgp_gaul_internal_manorial_war_is_crime_trigger = {
 	scope:defender = {
 		government_has_flag = government_is_gaul_administrative
 		top_liege = {
@@ -401,7 +410,7 @@ realm_law_use_gallic_policy_trigger = {
 	}
 }
 
-tgp_gaul_defense_mobilization_valid_trigger = {
+LR_tgp_gaul_defense_mobilization_valid_trigger = {
 	custom_tooltip = {
 		text = defense_mobilization_law_valid_trigger
 		OR = {
@@ -436,13 +445,13 @@ tgp_gaul_defense_mobilization_valid_trigger = {
 	}
 }
 
-tgp_gaul_valid_restore_monarchy_scion_trigger = {
+LR_tgp_gaul_valid_restore_monarchy_scion_trigger = {
 	is_landed = no
 	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:gallic_regent_admin }
 	is_healthy = yes
 }
 
-tgp_gaul_sacral_expansion_internal_peace_trigger = {
+LR_tgp_gaul_sacral_expansion_internal_peace_trigger = {
 	custom_tooltip = {
 		text = sacral_expansion_internal_peace_trigger
 		top_liege = {
@@ -457,14 +466,14 @@ tgp_gaul_sacral_expansion_internal_peace_trigger = {
 	}
 }
 
-tgp_gaul_install_regent_faction_target_valid_trigger = {
+LR_tgp_gaul_install_regent_faction_target_valid_trigger = {
 	is_independent_ruler = yes
 	tgp_realm_has_ceremonial_liege_trigger = yes
 }
 
-tgp_gaul_install_regent_faction_can_create_trigger = {
+LR_tgp_gaul_install_regent_faction_can_create_trigger = {
 	has_tgp_dlc_trigger = yes
-	scope:target ?= { tgp_install_regent_faction_target_valid_trigger = yes }
+	scope:target ?= { LR_tgp_gaul_install_regent_faction_target_valid_trigger = yes }
 	custom_tooltip = {
 		text = replace_ceremonial_regent_faction_regent_admin_trigger
 		NOR = {
@@ -546,19 +555,19 @@ gallic_policy_faction_can_create_trigger = {
 	japan_faction_cohesion_trigger = yes
 }
 
-tgp_gaul_palatine_bloc_house_head_trigger = {
+LR_tgp_gaul_palatine_bloc_house_head_trigger = {
 	top_liege = root.top_liege
 	government_has_flag = government_is_gaul_administrative
 }
 
-tgp_gaul_house_bloc_interaction_valid_trigger = {
+LR_tgp_gaul_house_bloc_interaction_valid_trigger = {
 	is_ruler = yes
 	tgp_uses_house_blocs_trigger = yes
 	highest_held_title_tier >= tier_county
 	top_liege = { tgp_uses_house_blocs_trigger = yes }
 }
 
-tgp_gaul_house_bloc_interaction_valid_showing_failures_trigger = {
+LR_tgp_gaul_house_bloc_interaction_valid_showing_failures_trigger = {
 	custom_tooltip = {
 		text = tgp_house_bloc_house_head_tt
 		is_house_head = yes
@@ -566,7 +575,7 @@ tgp_gaul_house_bloc_interaction_valid_showing_failures_trigger = {
 	}
 }
 
-tgp_gaul_has_house_relation_level_trigger = {
+LR_tgp_gaul_has_house_relation_level_trigger = {
 	exists = $HOUSE_1_MEMBER$.house
 	exists = $HOUSE_2_MEMBER$.house
 	$HOUSE_1_MEMBER$.house != $HOUSE_2_MEMBER$.house
@@ -584,7 +593,7 @@ tgp_gaul_has_house_relation_level_trigger = {
 #
 # root: possibly viable character
 #
-tgp_gaul_should_join_house_bloc_trigger = {
+LR_tgp_gaul_should_join_house_bloc_trigger = {
 	# Not in a Bloc
 	NOT = { exists = confederation }
 	# Not vassal - TODO_CD_TGP
@@ -604,7 +613,7 @@ tgp_gaul_should_join_house_bloc_trigger = {
 	#trigger_else = { government_has_flag = government_is_gaul_feudal }
 }
 
-tgp_gaul_house_bloc_inviter_or_leader_trigger = {
+LR_tgp_gaul_house_bloc_inviter_or_leader_trigger = {
 	$JOINER$ = { save_temporary_scope_as = joiner_temp }
 	trigger_if = {
 		limit = { exists = $INVITER$.confederation.leading_house.house_head }
@@ -613,7 +622,7 @@ tgp_gaul_house_bloc_inviter_or_leader_trigger = {
 	trigger_else = { $INVITER$ = { save_temporary_scope_as = inviter_temp } }
 }
 
-tgp_gaul_cadet_creates_dynasty_trigger = {
+LR_tgp_gaul_cadet_creates_dynasty_trigger = {
 	NOR = {
 		this = dynasty.dynast
 		this = house.house_head
@@ -621,7 +630,7 @@ tgp_gaul_cadet_creates_dynasty_trigger = {
 	dynasty.dynast ?= { government_has_flag = government_is_gallic_group }
 }
 
-tgp_roman_or_frank_trigger = {
+LR_tgp_roman_or_frank_trigger = {
 	custom_tooltip = {
 		text = soryo_or_bushido_trigger
 		OR = {
