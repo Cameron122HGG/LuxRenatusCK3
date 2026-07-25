@@ -780,8 +780,8 @@ convert_to_administrative_decision = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
 			government_has_flag = government_is_japan_feudal
-			government_has_flag = government_is_classical_feudal
-			government_has_flag = government_is_despotic_feudal
+			government_has_flag = government_is_classical
+			government_has_flag = government_is_despotic
 			government_has_flag = government_is_western_feudal
 			government_has_flag = government_is_iqta
 		}
@@ -1374,7 +1374,7 @@ convert_to_administrative_decision = {
 		OR = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
-			government_has_flag = government_is_classical_feudal
+			government_has_flag = government_is_classical
 		}
 		top_liege = this
 	}
@@ -1478,6 +1478,7 @@ convert_to_feudalism_from_administrative_decision = {
 		trigger_if = {
 			limit = { has_title = title:h_china }
 			NOT = { government_has_flag = government_is_celestial }
+
 		}
 		government_allows = administrative
 		tgp_is_ceremonial_liege_trigger = no
@@ -1486,6 +1487,12 @@ convert_to_feudalism_from_administrative_decision = {
 		# Ritsuryo gov has its own decisions
 		NOT = { government_has_flag = government_is_japan_administrative }
 		NOT = { government_has_flag = government_is_gaul_administrative }
+		NOT = { government_has_flag = government_is_classical_group }
+		NOT = { government_has_flag = government_is_despotic_group }
+		NOT = { government_has_flag = government_is_western_group }
+		NOT = { government_has_flag = government_is_sinic_group }
+		NOT = { government_has_flag = government_is_islamic_group }
+		NOT = { government_has_flag = government_is_dharmic_group }
 	}
 
 	is_valid = {
