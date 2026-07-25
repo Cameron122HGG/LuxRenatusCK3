@@ -28,17 +28,17 @@ agot_set_patron_effect = {
 			value = flag:$PATRON$
 		}
 		add_character_modifier = patron_$PATRON$_modifier
-		set_variable = { name = recent_patron_selected value = yes years = 5 }
+		set_variable = { name = recent_patron_god_selected value = yes years = 5 }
 	}
 }
 
 agot_clear_patron = {
-	every_patron_god_name_complex = { APPLY = agot_remove_patron_modifier }
+	every_patron_god_name_complex = { APPLY = agot_remove_patron_god_modifier }
 
 	remove_variable = patron_god
 }
 
-agot_remove_patron_modifier = {
+agot_remove_patron_god_modifier = {
 	remove_character_modifier = patron_$PATRON$_modifier
 }
 debug_log_patron_choice = {
