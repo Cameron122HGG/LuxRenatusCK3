@@ -38,7 +38,7 @@ types PatronWindow {
 								margin_bottom = 8
 								margin_top = 0
 								patron_selection = {
-									datacontext = "[GetModifier(Concatenate('patron_', Concatenate(Scope.GetFlagName ,'_modifier')))]"
+									datacontext = "[GetModifier(Concatenate('patron_god_', Concatenate(Scope.GetFlagName ,'_modifier')))]"
 								}
 							}
 
@@ -292,7 +292,7 @@ types PatronWindow {
 				}
 
 				text_multi = {
-					text = "[GetModifier(Concatenate('patron_', Concatenate(GetVariableSystem.Get('selected_patron_god') ,'_modifier'))).GetDescWithEffects]"
+					text = "[GetModifier(Concatenate('patron_god_', Concatenate(GetVariableSystem.Get('selected_patron_god') ,'_modifier'))).GetDescWithEffects]"
 					using = Font_Size_Medium
 					autoresize = yes
 					max_width = 800
