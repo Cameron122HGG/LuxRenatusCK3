@@ -858,13 +858,13 @@ fertility_dance_bonus_growth_value = {
 mpo_paiza_abuse_khan_reaction_value = {
 	value = 0
 	add = {
-		value = "scope:paiza_patron.opinion(scope:paiza_abuser)"
+		value = "scope:paiza_grantor.opinion(scope:paiza_abuser)"
 		divide = 10
 	}
 	add = {
-		value = scope:paiza_patron.max_military_strength
+		value = scope:paiza_grantor.max_military_strength
 		subtract = scope:paiza_abuser.max_military_strength
-		divide = scope:paiza_patron.max_military_strength
+		divide = scope:paiza_grantor.max_military_strength
 		multiply = 10
 	}
 
@@ -1697,8 +1697,8 @@ obedience_value = {
 						}
 						any_equipped_character_artifact = {
 							root = { can_benefit_from_artifact = prev }
-							exists = var:paiza_patron
-							var:paiza_patron = {
+							exists = var:paiza_grantor
+							var:paiza_grantor = {
 								this = obedience_target
 								is_gurkhan = yes
 							}

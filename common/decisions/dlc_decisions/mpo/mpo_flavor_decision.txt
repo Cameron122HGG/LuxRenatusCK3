@@ -492,10 +492,10 @@ mpo_abuse_authority_paiza_decision = {
         is_imprisoned = no
         any_character_artifact = {
             root = { can_benefit_from_artifact = prev }
-            exists = var:paiza_patron 
+            exists = var:paiza_grantor 
             NOT = {
-                root = var:paiza_patron
-                var:paiza_patron = {
+                root = var:paiza_grantor
+                var:paiza_grantor = {
                     is_at_war_with = root
                 }
             }                    
@@ -519,11 +519,11 @@ mpo_abuse_authority_paiza_decision = {
 
     is_valid_showing_failures_only = {
         custom_tooltip = {
-            text = mpo_abuse_authority_paiza_decision.paiza_patron_not_topdog
+            text = mpo_abuse_authority_paiza_decision.paiza_grantor_not_topdog
             any_character_artifact = {
                 root = { can_benefit_from_artifact = prev }
-                exists = var:paiza_patron
-                var:paiza_patron ?= {
+                exists = var:paiza_grantor
+                var:paiza_grantor ?= {
                     is_gurkhan = yes
                 }    
             }
@@ -547,14 +547,14 @@ mpo_abuse_authority_paiza_decision = {
             random_character_artifact = {
                 limit = {
                     root = { can_benefit_from_artifact = prev }
-                    exists = var:paiza_patron
+                    exists = var:paiza_grantor
                 }        
-                var:paiza_patron ?= {
-                    save_temporary_scope_as = paiza_patron
+                var:paiza_grantor ?= {
+                    save_temporary_scope_as = paiza_grantor
                 }
                 root = {
                     mpo_paiza_abuse_counter_effect = {
-                        PAIZA_PATRON = scope:paiza_patron
+                        PAIZA_GRANTOR = scope:paiza_grantor
                         PAIZA_ABUSER = root
                     }
                 }   
@@ -608,21 +608,21 @@ mpo_abuse_authority_paiza_decision = {
 
         modifier = {
             add = -25
-            var:paiza_patron ?= {
+            var:paiza_grantor ?= {
                 domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_3 }
             }
         }
 
         modifier = {
             add = -15
-            var:paiza_patron ?= {
+            var:paiza_grantor ?= {
                 domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_2 }
             }
         }
 
         modifier = {
             add = -10
-            var:paiza_patron ?= {
+            var:paiza_grantor ?= {
                 domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_1 }
             }
         }

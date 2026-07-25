@@ -3878,8 +3878,8 @@ mpo_interaction_grant_paiza = {
 			NOT = {
 				any_character_artifact = {
 					scope:recipient = { can_benefit_from_artifact = prev }
-					scope:artifact.var:paiza_patron ?= { is_gurkhan = yes }
-					scope:artifact.var:paiza_patron ?= scope:actor
+					scope:artifact.var:paiza_grantor ?= { is_gurkhan = yes }
+					scope:artifact.var:paiza_grantor ?= scope:actor
 				}
 			}
 		}
@@ -3894,7 +3894,7 @@ mpo_interaction_grant_paiza = {
 		make_obedient_recipient_to_actor_effect = yes
 		scope:recipient = {
 			mpo_create_paiza_artifact_effect = {
-				PATRON = scope:actor
+				GRANTOR = scope:actor
 				GRANTEE = scope:recipient
 			}
 			custom_tooltip = mpo_establish_paiza_system_decision.paiza_abuse_authority_unlocked
@@ -4038,7 +4038,7 @@ mpo_interaction_ask_for_paiza = {
 				NOT = {
 					any_character_artifact = {
 						scope:actor = { can_benefit_from_artifact = prev }
-						var:paiza_patron ?= scope:recipient
+						var:paiza_grantor ?= scope:recipient
 					}
 				}
 			}
@@ -4081,7 +4081,7 @@ mpo_interaction_ask_for_paiza = {
 				type = event_toast_effect_good
 				title = mpo_decisions_events.paiza_granted
 				mpo_create_paiza_artifact_effect = {
-					PATRON = scope:recipient
+					GRANTOR = scope:recipient
 					GRANTEE = scope:actor
 				}
 				left_icon = scope:recipient
@@ -4300,9 +4300,9 @@ mpo_interaction_leverage_khan_authority = {
 		scope:actor = {
 			any_character_artifact = {
 				scope:actor = { can_benefit_from_artifact = prev }
-				has_variable = paiza_patron
+				has_variable = paiza_grantor
 				OR = {
-					scope:recipient.top_liege = var:paiza_patron
+					scope:recipient.top_liege = var:paiza_grantor
 					scope:recipient = {
 						is_independent_ruler = yes
 						primary_title.tier < scope:actor.primary_title.tier
@@ -4312,7 +4312,7 @@ mpo_interaction_leverage_khan_authority = {
 						liege = {
 							OR = {
 								government_has_flag = government_is_nomadic
-								scope:recipient.top_liege = prev.var:paiza_patron
+								scope:recipient.top_liege = prev.var:paiza_grantor
 							}
 						}
 					}
@@ -4339,11 +4339,11 @@ mpo_interaction_leverage_khan_authority = {
 				NOT = { has_character_flag = no_more_paiza_abuse }
 			}
 			custom_tooltip = {
-        	    text = mpo_abuse_authority_paiza_decision.paiza_patron_not_topdog
+        	    text = mpo_abuse_authority_paiza_decision.paiza_grantor_not_topdog
         	    any_character_artifact = {
         	        scope:actor = { can_benefit_from_artifact = prev }
-        	        exists = var:paiza_patron
-        	        var:paiza_patron ?= {
+        	        exists = var:paiza_grantor
+        	        var:paiza_grantor ?= {
         	            is_gurkhan = yes
         	        }
         	    }
@@ -4437,19 +4437,19 @@ mpo_interaction_leverage_khan_authority = {
         }
 		modifier = {
 			add = -10
-			var:paiza_patron ?= {
+			var:paiza_grantor ?= {
 				domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_1 }
 			}
 		}
 		modifier = {
 			add = -20
-			var:paiza_patron ?= {
+			var:paiza_grantor ?= {
 				domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_2 }
 			}
 		}
 		modifier = {
 			add = -35
-			var:paiza_patron ?= {
+			var:paiza_grantor ?= {
 				domicile ?= { has_domicile_parameter = nomad_yurt_paiza_abuse_less_likely_lvl_3 }
 			}
 		}
@@ -4526,12 +4526,12 @@ mpo_interaction_leverage_khan_authority = {
 			random_character_artifact = {
 				limit = {
 					scope:actor = { can_benefit_from_artifact = prev }
-					has_variable = paiza_patron
+					has_variable = paiza_grantor
 				}
-				var:paiza_patron = {
+				var:paiza_grantor = {
 					scope:actor = {
 						mpo_paiza_abuse_counter_effect = {
-							PAIZA_PATRON = prev
+							PAIZA_GRANTOR = prev
 							PAIZA_ABUSER = scope:actor
 						}
 					}

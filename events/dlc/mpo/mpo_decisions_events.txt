@@ -3524,7 +3524,7 @@ mpo_decisions_events.0099 = {
 
 	immediate = {
 		mpo_create_paiza_artifact_effect = {
-			PATRON = root
+			GRANTOR = root
 			GRANTEE = root
 		}	 
 	}
@@ -4001,7 +4001,7 @@ mpo_decisions_events.0100 = { #mpo_call_for_merchants_decision initial event
 			gold <= 2400
 		}
 		mpo_create_paiza_artifact_effect = {
-			PATRON = root
+			GRANTOR = root
 			GRANTEE = scope:paiza_merchant
 		}
 		pay_short_term_gold = {
@@ -4037,7 +4037,7 @@ mpo_decisions_events.0100 = { #mpo_call_for_merchants_decision initial event
 		name = mpo_decisions_events.0100.b
 
 		mpo_create_paiza_artifact_effect = {
-			PATRON = root
+			GRANTOR = root
 			GRANTEE = scope:paiza_merchant
 		}
 
@@ -4078,7 +4078,7 @@ mpo_decisions_events.0100 = { #mpo_call_for_merchants_decision initial event
 			gold <= 1600
 		}
 		mpo_create_paiza_artifact_effect = {
-			PATRON = root
+			GRANTOR = root
 			GRANTEE = scope:paiza_merchant
 		}
 		pay_short_term_gold = {
@@ -4728,7 +4728,7 @@ mpo_decisions_events.0110 = { #mpo_abuse_authority_paiza_decision initial event
 	}
 
 	lower_center_portrait = {
-		character = scope:paiza_patron
+		character = scope:paiza_grantor
 	}
 
 	artifact = {
@@ -4740,15 +4740,15 @@ mpo_decisions_events.0110 = { #mpo_abuse_authority_paiza_decision initial event
 		random_character_artifact = {
 			limit = {
             	root = { can_benefit_from_artifact = prev }
-            	exists = var:paiza_patron
-            	var:paiza_patron = {
+            	exists = var:paiza_grantor
+            	var:paiza_grantor = {
             		is_alive = yes
             		is_gurkhan = yes
             	}
             }
             save_scope_as = paiza_artifact
-            var:paiza_patron ?= {
-            	save_scope_as = paiza_patron
+            var:paiza_grantor ?= {
+            	save_scope_as = paiza_grantor
             }
         }
         location.duchy = {
@@ -4774,7 +4774,7 @@ mpo_decisions_events.0110 = { #mpo_abuse_authority_paiza_decision initial event
 	option = { #yeah, go for it
 		name = mpo_decisions_events.0110.a
 		mpo_paiza_abuse_counter_effect = {
-			PAIZA_PATRON = scope:paiza_patron
+			PAIZA_GRANTOR = scope:paiza_grantor
 			PAIZA_ABUSER = root
 		}
 		mpo_abuse_authority_county_effect = yes	
@@ -4799,7 +4799,7 @@ mpo_decisions_events.0110 = { #mpo_abuse_authority_paiza_decision initial event
 					title = mpo_decisions_events.0110.b.success
 					custom_tooltip = mpo_decisions_events.0110.b.success_desc
 					left_icon = root
-					right_icon = scope:paiza_patron
+					right_icon = scope:paiza_grantor
 				}
             }
 			50 = {
@@ -4813,9 +4813,9 @@ mpo_decisions_events.0110 = { #mpo_abuse_authority_paiza_decision initial event
                		type = event_toast_effect_bad
 					title = mpo_decisions_events.0110.b.failure
 					left_icon = root
-					right_icon = scope:paiza_patron
+					right_icon = scope:paiza_grantor
 					mpo_paiza_abuse_counter_effect = {
-						PAIZA_PATRON = scope:paiza_patron
+						PAIZA_GRANTOR = scope:paiza_grantor
 						PAIZA_ABUSER = root
 					}
                	}       	
@@ -4844,7 +4844,7 @@ mpo_decisions_events.0111 = { #mpo_abuse_authority_paiza_decision consequences
 	}
 
 	right_portrait = {
-		character = scope:paiza_patron
+		character = scope:paiza_grantor
 		animation = anger
 	}
 
@@ -4854,21 +4854,21 @@ mpo_decisions_events.0111 = { #mpo_abuse_authority_paiza_decision consequences
 	}
 
 	immediate = {
-		liege = { save_scope_as = paiza_patron }
+		liege = { save_scope_as = paiza_grantor }
 		add_character_flag = no_more_paiza_abuse
 
 		random_equipped_character_artifact = {
 			limit = {
             	root = { can_benefit_from_artifact = prev }
-            	exists = var:paiza_patron
-            	var:paiza_patron = {
+            	exists = var:paiza_grantor
+            	var:paiza_grantor = {
             		is_alive = yes
             		is_gurkhan = yes
             	}
             }
             save_scope_as = paiza_artifact
-            var:paiza_patron ?= {
-            	save_scope_as = paiza_patron
+            var:paiza_grantor ?= {
+            	save_scope_as = paiza_grantor
             }
         }
 	}
@@ -4877,7 +4877,7 @@ mpo_decisions_events.0111 = { #mpo_abuse_authority_paiza_decision consequences
 		name = mpo_decisions_events.0111.a
 		#what do you mean my actions have consequences
 		custom_tooltip = mpo_decisions_events.0111.a.effects
-		scope:paiza_patron = {
+		scope:paiza_grantor = {
 			add_opinion = {
 				target = root
 				modifier = abused_paiza_authority
@@ -4887,7 +4887,7 @@ mpo_decisions_events.0111 = { #mpo_abuse_authority_paiza_decision consequences
 
 	option = { #its a prank bro
 		trigger = {
-			scope:paiza_patron = {
+			scope:paiza_grantor = {
 				is_ai = yes
 			}
 		}
@@ -4895,7 +4895,7 @@ mpo_decisions_events.0111 = { #mpo_abuse_authority_paiza_decision consequences
 		add_prestige_level = -1
 		duel = {
 			skill = diplomacy
-			target = scope:paiza_patron
+			target = scope:paiza_grantor
 			30 = {
                	compare_modifier = {
                	    value = scope:duel_value
@@ -4904,7 +4904,7 @@ mpo_decisions_events.0111 = { #mpo_abuse_authority_paiza_decision consequences
                	}
                	min = 5
                	custom_tooltip = mpo_decisions_events.0111.a.survived_khans_wrath
-               	scope:paiza_patron = {
+               	scope:paiza_grantor = {
                		add_opinion = {
                			target = root
                			modifier = angry_opinion
@@ -4920,7 +4920,7 @@ mpo_decisions_events.0111 = { #mpo_abuse_authority_paiza_decision consequences
                 }
                 min = 10
                 custom_tooltip = mpo_decisions_events.0111.a.severe_effects
-                scope:paiza_patron = {
+                scope:paiza_grantor = {
 					add_opinion = {
 						target = root
 						modifier = gravely_abused_paiza_authority
@@ -4930,7 +4930,7 @@ mpo_decisions_events.0111 = { #mpo_abuse_authority_paiza_decision consequences
 					limit = {
 					 	is_ai = yes
 					}
-					scope:paiza_patron = {
+					scope:paiza_grantor = {
 						add_opinion = {
 							target = prev
 							modifier = abused_paiza_authority_family
@@ -4992,15 +4992,15 @@ mpo_decisions_events.0112 = { #mpo_abuse_authority_paiza_decision consequences d
 			random_equipped_character_artifact = {
 				limit = {
         	    	root = { can_benefit_from_artifact = prev }
-        	    	exists = var:paiza_patron
-        	    	var:paiza_patron = {
+        	    	exists = var:paiza_grantor
+        	    	var:paiza_grantor = {
         	    		is_alive = yes
         	    		is_gurkhan = yes
         	    	}
         	    }
         	    save_scope_as = paiza_artifact
-        	    var:paiza_patron ?= {
-        	    	save_scope_as = paiza_patron
+        	    var:paiza_grantor ?= {
+        	    	save_scope_as = paiza_grantor
         	    }
         	}
 		}

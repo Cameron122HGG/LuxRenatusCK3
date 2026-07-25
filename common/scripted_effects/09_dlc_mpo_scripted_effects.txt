@@ -1473,12 +1473,12 @@ ai_paiza_giveaway_effect = {
 		limit = {
 			NOT = {
 				any_character_artifact = {
-					scope:artifact.var:paiza_patron ?= root
+					scope:artifact.var:paiza_grantor ?= root
 				}
 			}
 		}
 		mpo_create_paiza_artifact_effect = {
-			PATRON = root
+			GRANTOR = root
 			GRANTEE = this
 		}
 	}
@@ -1486,12 +1486,12 @@ ai_paiza_giveaway_effect = {
 		limit = {
 			NOT = {
 				any_character_artifact = {
-					scope:artifact.var:paiza_patron ?= root
+					scope:artifact.var:paiza_grantor ?= root
 				}
 			}
 		}
 		mpo_create_paiza_artifact_effect = {
-			PATRON = root
+			GRANTOR = root
 			GRANTEE = this
 		}
 	}
@@ -1743,11 +1743,11 @@ mpo_find_suitable_merchant_effect = {
 	}	
 }
 
-#scope:patron is the creator
+#scope:grantor is the creator
 #scope:receiver is who gets it
 mpo_create_paiza_artifact_effect = {
-	$PATRON$ = {
-		save_scope_as = patron
+	$GRANTOR$ = {
+		save_scope_as = grantor
 	}
 	$GRANTEE$ = {
 		save_scope_as = grantee
@@ -1757,8 +1757,8 @@ mpo_create_paiza_artifact_effect = {
 		value = {
 			value = 20
 			multiply = {
-				value = scope:patron.primary_title.tier 
-				add = scope:patron.dominance_value
+				value = scope:grantor.primary_title.tier 
+				add = scope:grantor.dominance_value
 			}
 		}
 	}
@@ -1767,8 +1767,8 @@ mpo_create_paiza_artifact_effect = {
 		value = {
 			value = 20
 			multiply = {
-				value = scope:patron.primary_title.tier 
-				add = scope:patron.dominance_value
+				value = scope:grantor.primary_title.tier 
+				add = scope:grantor.dominance_value
 			}
 		}
 	}
@@ -1777,7 +1777,7 @@ mpo_create_paiza_artifact_effect = {
 			name = paiza_artifact_title
 			type = miscellaneous
 			template = paiza_artifact_template
-			creator = scope:patron
+			creator = scope:grantor
 			description = paiza_artifact_desc 
 			visuals = paiza
 			wealth = scope:wealth
@@ -1789,8 +1789,8 @@ mpo_create_paiza_artifact_effect = {
 	}
 	scope:created_paiza = {
 		set_variable = {
-			name = paiza_patron
-			value = scope:patron
+			name = paiza_grantor
+			value = scope:grantor
 		}
 	}
 }
@@ -2086,16 +2086,16 @@ mpo_paiza_improve_maa_effect = {
 }
 
 mpo_paiza_abuse_counter_effect = {
-	$PAIZA_PATRON$ = { save_scope_as = paiza_patron }
+	$PAIZA_GRANTOR$ = { save_scope_as = paiza_grantor }
 	$PAIZA_ABUSER$ = { save_scope_as = paiza_abuser }
 	if = {
 		limit = {
-			scope:paiza_patron = {
+			scope:paiza_grantor = {
 				is_ai = no
 			}	
 		}
 		custom_tooltip = mpo_paiza_abuse_counter_effect.random
-		scope:paiza_patron = {
+		scope:paiza_grantor = {
 			trigger_event = {
 				id = mpo_decisions_events.0112
 				days = { 1 4 }
