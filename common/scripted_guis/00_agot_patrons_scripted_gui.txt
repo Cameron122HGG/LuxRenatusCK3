@@ -14,7 +14,7 @@ patron_tooltip_god_name = {
 
 choose_patron_god_generic = {
 	saved_scopes = {
-		patron_name
+		patron_god_name
 	}
 
 	is_shown = {
@@ -27,7 +27,7 @@ choose_patron_god_generic = {
 	}
 
 	effect = {
-		parse_patron_name_flag_complex = { PATRON = scope:patron_name APPLY = agot_set_patron_effect }
+		parse_patron_god_name_flag_complex = { PATRON = scope:patron_god_name APPLY = agot_set_patron_effect }
 	}
 }
 
@@ -284,7 +284,7 @@ faith_switch_effect = {
 
 has_this_patron_god = {
 	is_valid = {
-		var:patron_god ?= scope:patron_name
+		var:patron_god ?= scope:patron_god_name
 	}
 }
 

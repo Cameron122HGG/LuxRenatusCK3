@@ -104,19 +104,19 @@ types PatronWindow {
 			tooltip_visible = "[Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, Scope.GetFlagName))]"
 			onclick = "[GetVariableSystem.Set('selected_patron_god', Scope.GetFlagName)]"
 			onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'true')]"
-			#onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_name', MakeScopeFlag( GetVariableSystem.Get( 'selected_patron_god' ))).End )]"
+			#onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_god_name', MakeScopeFlag( GetVariableSystem.Get( 'selected_patron_god' ))).End )]"
 
 			hbox = {
 				icon = { # Standard
-					visible = "[GetScriptedGui('has_this_patron_god').IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_name', MakeScopeFlag( Scope.GetFlagName)).End)]"
+					visible = "[GetScriptedGui('has_this_patron_god').IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_god_name', MakeScopeFlag( Scope.GetFlagName)).End)]"
 					size = { 140 140 }
 					texture = "[GetCultureInnovationType(Concatenate(Scope.GetFlagName, '_patron_icon')).GetIcon]"
 					using = Mask_Rough_Edges
 					alpha = 0.75
 				}
 				icon = { # PATRON_ICON_DARK
-					visible = "[Not(GetScriptedGui('has_this_patron_god').IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_name', MakeScopeFlag(Scope.GetFlagName)).End))]"
-					#visible = "[Or(Not(GetScriptedGui('has_this_patron_god').IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_name', MakeScopeFlag(Scope.GetFlagName)).End)),Not(ScriptedGui.IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).End)))]"
+					visible = "[Not(GetScriptedGui('has_this_patron_god').IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_god_name', MakeScopeFlag(Scope.GetFlagName)).End))]"
+					#visible = "[Or(Not(GetScriptedGui('has_this_patron_god').IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_god_name', MakeScopeFlag(Scope.GetFlagName)).End)),Not(ScriptedGui.IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).End)))]"
 					size = { 140 140 }
 					texture = "[GetCultureInnovationType(Concatenate(Scope.GetFlagName, '_patron_icon')).GetIcon]"
 					using = Mask_Rough_Edges
@@ -127,7 +127,7 @@ types PatronWindow {
 						alpha = 0.65
 					}
 					modify_texture = {
-						visible = "[Or(Not(GetScriptedGui('has_this_patron_god').IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_name', MakeScopeFlag(Scope.GetFlagName)).End)),Not(ScriptedGui.IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).End)))]"
+						visible = "[Or(Not(GetScriptedGui('has_this_patron_god').IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_god_name', MakeScopeFlag(Scope.GetFlagName)).End)),Not(ScriptedGui.IsValid(GuiScope.SetRoot( GetPlayer.MakeScope ).End)))]"
 						texture = "gfx/interface/colors/grey.dds"
 						blend_mode = normal
 						alpha = 0.25
@@ -315,7 +315,7 @@ types PatronWindow {
 				button_primary_big = {
 					text = patron_select_confirm
 					
-					onclick = "[GetScriptedGui('choose_patron_god_generic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('patron_name', MakeScopeFlag(GetVariableSystem.Get('selected_patron_god'))).End )]"
+					onclick = "[GetScriptedGui('choose_patron_god_generic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('patron_god_name', MakeScopeFlag(GetVariableSystem.Get('selected_patron_god'))).End )]"
 					onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'false')]"
 				}
 
