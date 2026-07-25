@@ -102,9 +102,9 @@ types PatronWindow {
 
 			tooltip = PATRON_SELECTION_TOOLTIP
 			tooltip_visible = "[Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, Scope.GetFlagName))]"
-			onclick = "[GetVariableSystem.Set('selected_patron', Scope.GetFlagName)]"
-			onclick = "[GetVariableSystem.Set('show_patron_select_confirm', 'true')]"
-			#onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_name', MakeScopeFlag( GetVariableSystem.Get( 'selected_patron' ))).End )]"
+			onclick = "[GetVariableSystem.Set('selected_patron_god', Scope.GetFlagName)]"
+			onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'true')]"
+			#onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_name', MakeScopeFlag( GetVariableSystem.Get( 'selected_patron_god' ))).End )]"
 
 			hbox = {
 				icon = { # Standard
@@ -164,7 +164,7 @@ types PatronWindow {
 							
 							text_multi = { # Desc not highlighted
 								size = { 180 60 }
-								visible = "[Not(And(GetVariableSystem.HasValue( 'show_patron_modifiers', StaticModifier.GetName ), ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)))]"
+								visible = "[Not(And(GetVariableSystem.HasValue( 'show_patron_god_modifiers', StaticModifier.GetName ), ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)))]"
 								parentanchor = left
 								default_format = "#low"
 								block "flavor_text" {
@@ -239,7 +239,7 @@ types PatronWindow {
 	{
 		name = "patron_select_confirm"
 
-		visible = "[And(GetVariableSystem.HasValue('show_patron_select_confirm','true'), Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, GetVariableSystem.Get('selected_patron'))))]"
+		visible = "[And(GetVariableSystem.HasValue('show_patron_god_select_confirm','true'), Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, GetVariableSystem.Get('selected_patron_god'))))]"
 
 		datacontext = "[GetVariableSystem]"
 		datacontext = "[GetScriptedGui('choose_patron_generic')]"
@@ -272,10 +272,10 @@ types PatronWindow {
 			header_pattern = {
 				layoutpolicy_horizontal = expanding
 				blockoverride "button_close" {
-					onclick = "[GetVariableSystem.Set('show_patron_select_confirm', 'false')]"
+					onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'false')]"
 				}
 				blockoverride "header_text" {
-					text = "[Localize(Concatenate('patron_god_', GetVariableSystem.Get('selected_patron')))]"
+					text = "[Localize(Concatenate('patron_god_', GetVariableSystem.Get('selected_patron_god')))]"
 				}
 			}
 
@@ -285,14 +285,14 @@ types PatronWindow {
 				spacing = 20
 
 				text_multi = {
-					text = "[Concatenate(Concatenate(Localize('select_patron_god_confirm_text_01'), Localize(Concatenate('patron_god_', GetVariableSystem.Get('selected_patron')))), Localize('select_patron_god_confirm_text_02'))]"
+					text = "[Concatenate(Concatenate(Localize('select_patron_god_confirm_text_01'), Localize(Concatenate('patron_god_', GetVariableSystem.Get('selected_patron_god')))), Localize('select_patron_god_confirm_text_02'))]"
 					using = Font_Size_Medium
 					autoresize = yes
 					max_width = 800
 				}
 
 				text_multi = {
-					text = "[GetModifier(Concatenate('patron_', Concatenate(GetVariableSystem.Get('selected_patron') ,'_modifier'))).GetDescWithEffects]"
+					text = "[GetModifier(Concatenate('patron_', Concatenate(GetVariableSystem.Get('selected_patron_god') ,'_modifier'))).GetDescWithEffects]"
 					using = Font_Size_Medium
 					autoresize = yes
 					max_width = 800
@@ -315,8 +315,8 @@ types PatronWindow {
 				button_primary_big = {
 					text = patron_select_confirm
 					
-					onclick = "[GetScriptedGui('choose_patron_generic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('patron_name', MakeScopeFlag(GetVariableSystem.Get('selected_patron'))).End )]"
-					onclick = "[GetVariableSystem.Set('show_patron_select_confirm', 'false')]"
+					onclick = "[GetScriptedGui('choose_patron_generic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('patron_name', MakeScopeFlag(GetVariableSystem.Get('selected_patron_god'))).End )]"
+					onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'false')]"
 				}
 
 				
