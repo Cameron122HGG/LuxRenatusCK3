@@ -242,7 +242,7 @@ types PatronWindow {
 		visible = "[And(GetVariableSystem.HasValue('show_patron_god_select_confirm','true'), Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, GetVariableSystem.Get('selected_patron_god'))))]"
 
 		datacontext = "[GetVariableSystem]"
-		datacontext = "[GetScriptedGui('choose_patron_generic')]"
+		datacontext = "[GetScriptedGui('choose_patron_god_generic')]"
 
 		allow_outside = no
 		position = { 50% 50% }
@@ -315,7 +315,7 @@ types PatronWindow {
 				button_primary_big = {
 					text = patron_select_confirm
 					
-					onclick = "[GetScriptedGui('choose_patron_generic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('patron_name', MakeScopeFlag(GetVariableSystem.Get('selected_patron_god'))).End )]"
+					onclick = "[GetScriptedGui('choose_patron_god_generic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('patron_name', MakeScopeFlag(GetVariableSystem.Get('selected_patron_god'))).End )]"
 					onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'false')]"
 				}
 
