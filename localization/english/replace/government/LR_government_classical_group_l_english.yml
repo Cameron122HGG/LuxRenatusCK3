@@ -1,18 +1,21 @@
 ﻿l_english:
 #Classical Feudal
- classical_feudal_government: "Classical"
- classical_feudal_icon_concept: "@government_type_classical_feudal!"
- classical_feudal_government_with_icon: "@government_type_classical_feudal!$classical_feudal$"
+ classical_government: "Classical"
+ classical_icon_concept: "@government_type_classical!"
+ classical_government_with_icon: "@government_type_classical!$classical$"
  
- classical_feudal_government_adjective: "Classical"
- classical_feudal_government_realm: "Classical Realm"
- classical_feudal_government_desc: "\n$game_concept_classical_feudal_desc$\n\n#F The Roman Classical Dynastic Monarchy is a form of government inspired by the classical Roman and Hellenistic political models. It emphasizes enlightened rule by the monarch, with a well-developed administrative system that maintains the Graeco-Roman legal framework. This government type allows for efficient governance, urban development, and strong military organization, reflecting the principles of classical administration. #!"
+ classical_government_adjective: "Classical"
+ classical_government_realm: "Classical Realm"
+ classical_government_desc: "\n$game_concept_classical_desc$\n\n#F The Classical Monarchy is a form of government inspired by the classical Roman and Hellenistic political models. It emphasizes enlightened rule by the monarch, with a well-developed administrative system that maintains the Graeco-Roman legal framework. This government type allows for efficient governance, urban development, and strong military organization, reflecting the principles of classical administration. #!"
  
- classical_feudal: "Classical"
- classical_feudal_desc: "$game_concept_classical_feudal_desc$"
+ classical: "Classical"
+ classical_desc: "$game_concept_classical_desc$"
 
- classical_feudal_vassals: "Client"
- classical_feudal_vassals_desc: "$game_concept_classical_feudal_desc$"
+ classical_vassals: "Client"
+ classical_vassals_desc: "$game_concept_classical_desc$"
+
+ classical_vassal_desc: "$game_concept_classical_desc$"
+ classical_vassal: "Classical"
 
  classical_tax_collector_obligations: "[tax_collector|E] Aptitude"
  classical_tax_slot: "Tax Jurisdiction"
@@ -91,7 +94,7 @@
  alexandrian_administrative_government_realm: "Alexandrian Realm"
  alexandrian_administrative_government_desc: "\n$game_concept_alexandrian_administrative_desc$\n\n#F The Alexandrian Administrative Monarchy is a form of government inspired by the Hellenistic Successor Kingdoms left in the wake of Alexander the Great's Empire. It emphasizes strong rule by the monarch, with a well-developed administrative system taking inspirations from both Greek and Near Eastern World. This government type allows for efficient governance, urban development, and strong military organization, reflecting the principles of Enlightened Monarchy. #!"
  alexandrian_administrative_government_vassals_label: "Alexandrian [obligations|E] are based on [GetPlayer.Custom('GetProvinceAdministrationConcept')]"
- alexandrian_admin_vassal: "Alexandrian Classical Administrative"
+ alexandrian_admin_vassal: "Alexandrian Administrative"
  alexandrian_admin_vassal_desc: "$game_concept_alexandrian_administrative_desc$"
  alexandrian_administrative_obligations: "Alexandrian Administrative Obligations"
  alexandrian_administrative_themes: "Available Administration Types"
@@ -170,7 +173,7 @@
  principate_theme_naval_text_icon: "@naval_administration!"
  principate_theme_naval_benefits: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] for every controlled #high [GetBuilding('common_tradeport_01').GetTypeName]#!#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_building_increase_value')|+0%/] for each [GetBuilding('common_tradeport_01').GetTypeName]#!#!\nUnlocks the #high $NAVAL_EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]"
  principate_theme_naval_desc: "#flavor The navy is the backbone of any expansive realm. With a dedicated naval administration, safety and efficiency at sea will be highly increased.#!"
- principate_CONTRACT: "[Character.Custom( 'GetProvinceConceptNoTooltip' )] Appointment"
+ PRINCIPATE_CONTRACT: "[Character.Custom( 'GetProvinceConceptNoTooltip' )] Appointment"
  principate_theme_frontier_valid_desc: "The [subject.Custom( 'GetProvinceConceptNoTooltip' )] must border another [realm|E]"
  principate_theme_imperial_valid_desc: "Only one [subject.Custom( 'GetProvinceConceptNoTooltip' )] can have this administration active"
  principate_theme_naval_valid_desc: "The [subject.Custom( 'GetProvinceConceptNoTooltip' )] must be Coastal"
@@ -375,148 +378,3 @@
  have_imperial_bureaucracy_1_or_higher: "$game_concept_imperial_bureaucracy_desc$"
  have_imperial_bureaucracy_2_or_higher: "$game_concept_imperial_bureaucracy_desc$"
  have_imperial_bureaucracy_3: "$game_concept_imperial_bureaucracy_desc$"
-
-
-#Spartan Administration
- spartan_administrative_government: "Spartan Diarchy"
- spartan_administrative_icon_concept: "@government_type_alexandrian_administrative!"
- spartan_administrative_government_with_icon: "@government_type_alexandrian_administrative! $spartan_administrative_government$"
- spartan_administrative_government_adjective: "Spartan"
- spartan_administrative_government_realm: "Spartan Realm"
- spartan_administrative_government_desc: "\n$game_concept_spartan_administrative_desc$\n\n#F The Spartan Administrative Monarchy is a form of government inspired by the Hellenistic Successor Kingdoms left in the wake of Alexander the Great's Empire. It emphasizes strong rule by the monarch, with a well-developed administrative system taking inspirations from both Greek and Near Eastern World. This government type allows for efficient governance, urban development, and strong military organization, reflecting the principles of Enlightened Monarchy. #!"
- spartan_administrative_government_vassals_label: "Alexandrian [obligations|E] are based on [GetPlayer.Custom('GetProvinceAdministrationConcept')]"
- spartan_admin_vassal: "Spartan Classical Administrative"
- spartan_admin_vassal_desc: "$game_concept_spartan_administrative_desc$"
- spartan_administrative_obligations: "Spartan Administrative Obligations"
- spartan_administrative_themes: "Available Administration Types"
- spartan_administrative_theme_balanced: "@balanced_administration! Balanced Administration"
- spartan_administrative_theme_balanced_short: "@balanced_administration! Balanced"
- spartan_administrative_theme_balanced_text_icon: "@balanced_administration!"
- spartan_administrative_theme_balanced_desc: "#flavor A well balanced administration seeks moderation to ensure equal attention in all areas of governance.#!"
- spartan_administrative_theme_military: "@military_administration! Military Administration"
- spartan_administrative_theme_military_short: "@military_administration! Military"
- spartan_administrative_theme_military_text_icon: "@military_administration!"
- spartan_administrative_theme_military_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!"
- spartan_administrative_theme_military_desc: "#flavor A military administration puts all energy on recruiting and training formidable troops for the imperial army.#!"
- spartan_administrative_theme_civilian: "@civilian_administration! Civilian Administration"
- spartan_administrative_theme_civilian_short: "@civilian_administration! Civilian"
- spartan_administrative_theme_civilian_text_icon: "@civilian_administration!"
- spartan_administrative_theme_civilian_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [stewardship|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\n[influence|E] gained from constructing [buildings|E] in held [counties|E] is increased"
- spartan_administrative_theme_civilian_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
- spartan_administrative_theme_frontier: "@frontier_administration! Frontier Administration"
- spartan_administrative_theme_frontier_short: "@frontier_administration! Frontier"
- spartan_administrative_theme_frontier_text_icon: "@frontier_administration!"
- spartan_administrative_theme_frontier_benefits: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [prowess|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\nUnlocks the #high $EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]\nEnables [raiding|E]"
- spartan_administrative_theme_frontier_desc: "#flavor One cannot leave the borders undefended. A frontier administration will ensure the realm's defenses and stand ready to repel any potential invaders.#!"
- spartan_administrative_theme_imperial: "@imperial_administration! Imperial Administration"
- spartan_administrative_theme_imperial_short: "@imperial_administration! Imperial"
- spartan_administrative_theme_imperial_text_icon: "@imperial_administration!"
- spartan_administrative_theme_imperial_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [prestige_level|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_currency_level_increase_value')|+0%/] for each level#!#!\nIncreases [powerful_family|E] Rating\nCannot have appointment revoked without a [revoke_title_reason|E]"
- spartan_administrative_theme_imperial_desc: "#flavor An imperial administration provides a significant level of autonomy and freedom from many regular responsibilities. It is the most prestigious administration one can have.#!"
- spartan_administrative_theme_naval: "@naval_administration! Naval Administration"
- spartan_administrative_theme_naval_short: "@naval_administration! Naval"
- spartan_administrative_theme_naval_text_icon: "@naval_administration!"
- spartan_administrative_theme_naval_benefits: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] for every controlled #high [GetBuilding('common_tradeport_01').GetTypeName]#!#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_building_increase_value')|+0%/] for each [GetBuilding('common_tradeport_01').GetTypeName]#!#!\nUnlocks the #high $NAVAL_EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]"
- spartan_administrative_theme_naval_desc: "#flavor The navy is the backbone of any expansive realm. With a dedicated naval administration, safety and efficiency at sea will be highly increased.#!"
- SPARTAN_ADMINISTRATIVE_CONTRACT: "[Character.Custom( 'GetProvinceConceptNoTooltip' )] Appointment"
- spartan_administrative_theme_frontier_valid_desc: "The [subject.Custom( 'GetProvinceConceptNoTooltip' )] must border another [realm|E]"
- spartan_administrative_theme_imperial_valid_desc: "Only one [subject.Custom( 'GetProvinceConceptNoTooltip' )] can have this administration active"
- spartan_administrative_theme_naval_valid_desc: "The [subject.Custom( 'GetProvinceConceptNoTooltip' )] must be Coastal"
- spartan_administrative_forbids_revocation_desc: "You cannot revoke [titles|E] or Appointments from a [subject|E] governing with the [GetSubjectContractType( 'spartan_administrative_themes' ).GetObligationName( 'spartan_administrative_theme_imperial' )] unless you have a [revoke_title_reason|E]"
-
-
- spartan_admin_state_ownership: "@civilian_administration! State Land Ownership"
- 
- spartan_admin_state_ownership_20: "Minor"
- spartan_admin_state_ownership_20_short: "Minor"
- spartan_admin_state_ownership_20_text_icon: "@civilian_administration!"
- #spartan_admin_state_ownership_20_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x1.20 due to relaxed oversight"
- #spartan_admin_state_ownership_20_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
-
- spartan_admin_state_ownership_30: "Sizeable"
- spartan_admin_state_ownership_30_short: "Sizeable"
- spartan_admin_state_ownership_30_text_icon: "@civilian_administration!"
- #spartan_admin_state_ownership_30_benefits: "$EFFECT_LIST_BULLET$ [governor_efficiency|E] is unchanged"
- #spartan_admin_state_ownership_30_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
-
- spartan_admin_state_ownership_40: "Extensive"
- spartan_admin_state_ownership_40_short: "Extensive"
- spartan_admin_state_ownership_40_text_icon: "@civilian_administration!"
- #spartan_admin_state_ownership_40_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x0.85 due to increased workload"
- #spartan_admin_state_ownership_40_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
-
- spartan_admin_state_ownership_50: "Dominant"
- spartan_admin_state_ownership_50_short: "Dominant"
- spartan_admin_state_ownership_50_text_icon: "@civilian_administration!"
- #spartan_admin_state_ownership_50_benefits: "$EFFECT_LIST_BULLET$ Multiplies [governor_efficiency|E] by x0.70 due to increased workload"
- #spartan_admin_state_ownership_50_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
-
- ##
- spartan_admin_citizenship: "@imperial_administration! Citizenship Inclusion Policy"
- 
- spartan_admin_citizenship_1: "Minimal"
- spartan_admin_citizenship_1_short: "Minimal"
- spartan_admin_citizenship_1_text_icon: "@imperial_administration!"
- spartan_admin_citizenship_1_benefits: ""
-
- spartan_admin_citizenship_2: "Limited"
- spartan_admin_citizenship_2_short: "Limited"
- spartan_admin_citizenship_2_text_icon: "@imperial_administration!"
- spartan_admin_citizenship_2_benefits: "" 
-
- spartan_admin_citizenship_3: "Full"
- spartan_admin_citizenship_3_short: "Full"
- spartan_admin_citizenship_3_text_icon: "@imperial_administration!"
- spartan_admin_citizenship_3_benefits: ""  
- 
- ##
- spartan_admin_military_designation: "@frontier_administration! Province Militarization"
- 
- spartan_admin_military_designation_1: "Minimal"
- spartan_admin_military_designation_1_short: " Minimal"
- spartan_admin_military_designation_1_text_icon: "@frontier_administration!"
- spartan_admin_military_designation_1_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\n$EFFECT_LIST_BULLET$ Increases [governor_efficiency|E] based on [stewardship|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\n[influence|E] gained from constructing [buildings|E] in held [counties|E] is increased"
- spartan_admin_military_designation_1_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!" 
- 
- spartan_admin_military_designation_2: "Limited"
- spartan_admin_military_designation_2_short: "Limited"
- spartan_admin_military_designation_2_text_icon: "@frontier_administration!"
- spartan_admin_military_designation_2_desc: "#flavor A well balanced administration seeks moderation to ensure equal attention in all areas of governance.#!" 
- 
- spartan_admin_military_designation_3: "Full"
- spartan_admin_military_designation_3_short: "Full"
- spartan_admin_military_designation_3_text_icon: "@frontier_administration!"
- spartan_admin_military_designation_3_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!"
- spartan_admin_military_designation_3_desc: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\nUnlocks the #high $EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]\nEnables [raiding|E]"
-
- ##
- spartan_admin_hereditary_appointment: "@government_type_feudal! Governor Appointment" 
- 
- spartan_admin_hereditary_appointment_no: "Open"
- spartan_admin_hereditary_appointment_no_short: "Open"
- spartan_admin_hereditary_appointment_no_text_icon: "@government_type_feudal!"
- spartan_admin_hereditary_appointment_no_benefits: "" 
- 
- spartan_admin_hereditary_appointment_yes: "Hereditary"
- spartan_admin_hereditary_appointment_yes_short: "Hereditary"
- spartan_admin_hereditary_appointment_yes_text_icon: "@government_type_feudal!"
- spartan_admin_hereditary_appointment_yes_benefits: "$EFFECT_LIST_BULLET$ Gives current Governor's children and [house|E] primacy in appointment to this Governorship" 
- 
- ###
- STATE_OWNERSHIP_IMPACT_20: "State Workload Mult."
- STATE_OWNERSHIP_IMPACT_40: "State Workload Mult." 
- STATE_OWNERSHIP_IMPACT_50: "State Workload Mult." 
-
- hereditary_post_desc: "Administrative Post is Hereditary - House"
- hereditary_post_child_desc: "Administrative Post is Hereditary - Child"
- hereditary_post_grandchild_desc: "Administrative Post is Hereditary - Grandchild"
- admin_top_liege_valid_desc: "You are NOT the [top_liege|E]"
- 
- spartan_admin_count_dev_fund: "The amount of [development|E] the province contributes to the liege's realm is determined by the [GetPlayer.Custom('GetProvinceAdministrationConcept')] of the province. The higher the contribution, the more obligations the province has towards its liege, but also the more benefits it receives in return."
- spartan_admin_count_dev_fund_count: "Low Rank"
- spartan_admin_count_dev_fund_count_short: "Low"
- spartan_admin_count_dev_fund_none: "None"
- spartan_admin_count_dev_fund_none_short: "None"
-
- rival_dismissed_me_from_ephorate: "[CHARACTER.GetShortUIName] loathes [TARGET_CHARACTER.GetShortUIName] for dismissing [CHARACTER.GetHerHim] from [CHARACTER.GetHerHis] role as proto_ephor."
- rival_dismissed_me_from_ephorate_corresponding: "[TARGET_CHARACTER.GetShortUIName] loathes [CHARACTER.GetShortUIName] for dismissing [TARGET_CHARACTER.GetHerHim] from [TARGET_CHARACTER.GetHerHis] role as proto_ephor."

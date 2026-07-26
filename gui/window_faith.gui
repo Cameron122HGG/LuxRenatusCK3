@@ -301,7 +301,8 @@ window = {
 
 		vbox = {
 			name = "tab_beliefs"
-			visible = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'beliefs' )]"
+			visible = "[Or(Not(GetVariableSystem.Exists('faith_view_tabs')), GetVariableSystem.HasValue('faith_view_tabs', 'beliefs'))]"
+			# visible = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'beliefs' )]"
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
 
@@ -600,28 +601,58 @@ window = {
 						}
 						vbox = {
 							layoutpolicy_horizontal = expanding
-							spacing = 12
-							margin_bottom = -10
+							spacing = 8
+
+							margin_bottom = -8
 
 							text_label_center = {
 								layoutpolicy_horizontal = expanding
-								text = "FAITH_DOCTRINES_PANTHEON"
+								text = "LUX_FAITH_DOCTRINES_PANTHEON"
 								default_format = "#low"
 							}
 
-							fixedgridbox = {
-								flipdirection = yes
-								addcolumn = 225
-								addrow = 67
-								datamodel_wrap = 2
+							hbox = {
+								layoutpolicy_horizontal = expanding
 
-								datamodel = "[FaithWindow.GetCategoryHelper( 'lux_pantheon' ).GetCategory]"
-								item = {
-									widget_doctrine_item = {}
+								hbox = {
+									name = "lux_pantheon_doctrines"
+									datamodel = "[FaithWindow.GetCategoryHelper( 'lux_pantheon' ).GetCategory]"
+									spacing = -6
+									layoutpolicy_vertical = expanding
+									minimumsize = { 0 108 }
+
+									item = {
+										vbox = {
+											name = "doctrine_list_item"
+											datacontext = "[DoctrineItem.GetDoctrine]"
+											visible = "[FaithDoctrine.IsVisible]"
+											minimumsize = { 100 0 }
+											layoutpolicy_vertical = expanding
+											
+											tooltip = "FAITH_WINDOW_DOCTRINE_TOOLTIP"
+											using = tooltip_se
+
+											icon_doctrine = {
+												name = "doctrine_group_icon"
+												size = { 60 60 }
+												texture = "[FaithDoctrine.GetIcon]"
+											}
+
+											text_single = {
+												name = "doctrine_name"
+												align = center
+												text = "[FaithDoctrine.GetNameNoTooltip( DoctrineItem.GetFaith )]"
+												default_format = "#high"
+												multiline = yes
+												max_width = 104
+											}
+
+											expand = {}
+										}
+									}
 								}
 							}
 						}						
-
 						vbox = {
 							layoutpolicy_horizontal = expanding
 							spacing = 12
@@ -985,7 +1016,7 @@ window = {
 
 				button_standard = {
 					name = "create_faith"
-					visible = "[And( ObjectsEqual(Faith.Self, GetPlayer.GetFaith ), GetVariableSystem.HasValue( 'faith_view_tabs', 'beliefs' ))]"
+					#visible = "[And( ObjectsEqual(Faith.Self, GetPlayer.GetFaith ), GetVariableSystem.HasValue( 'faith_view_tabs', 'beliefs' ))]"
 					visible = "[Not(Or(GetVariableSystem.HasValue('faith_view_tabs', 'holy_sites'), GetVariableSystem.HasValue('faith_view_tabs', 'patron')))]"
 					minimumsize = { 240 0 }
 

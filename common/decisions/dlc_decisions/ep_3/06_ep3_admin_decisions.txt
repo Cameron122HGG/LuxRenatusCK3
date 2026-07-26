@@ -512,7 +512,7 @@ admin_confirmation_decision = {
 	decision_group_type = admin
 
 	cost = {
-		prestige = standard_activity_cost
+		prestige = standard_activity_base_cost
 	}
 
 	is_shown = {
@@ -603,7 +603,7 @@ admin_confirmation_decision = {
 		base = 0
 		modifier = {
 			add = 50
-			prestige > standard_activity_cost
+			prestige > standard_activity_base_cost
 		}
 		modifier = {
 			add = -50
@@ -780,7 +780,10 @@ convert_to_administrative_decision = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
 			government_has_flag = government_is_japan_feudal
-			government_has_flag = government_is_classical_feudal
+			government_has_flag = government_is_classical
+			government_has_flag = government_is_despotic
+			government_has_flag = government_is_western_feudal
+			government_has_flag = government_is_iqta
 		}
 		trigger_if = {
 			limit = { top_liege != this }
@@ -1231,6 +1234,32 @@ convert_to_administrative_decision = {
 			ai_chance = {
 				value = 20
 			}
+		}
+
+		item = { # Despotic Admin
+			value = go_despotic_administrative_government
+			is_shown = {
+				has_ep3_dlc_trigger = yes
+			}
+			is_valid = {
+				top_liege = {
+					NOR = {
+						has_government = administrative_government
+						has_government = celestial_government
+						has_government = meritocratic_government
+						has_government = japan_administrative_government
+						has_government = roman_administrative_government
+						has_government = despotic_administrative_government
+						#has_government = alexandrian_administrative_government
+						has_government = gaul_administrative_government
+					}
+				}
+			}
+			localization = go_alexandrian_administrative_government_name
+			icon = "gfx/interface/icons/government_types/alexandrian_administrative_government.dds"
+			ai_chance = {
+				value = 20
+			}
 		}	
 		
 		item = { # Palatine / AKA Gaul Administrative
@@ -1259,9 +1288,9 @@ convert_to_administrative_decision = {
 					tgp_can_become_japan_administrative_trigger = yes
 				}
 			}
-			current_description = go_japan_administrative_government_desc
-			localization = go_japan_administrative_government_name
-			icon = "gfx/interface/icons/government_types/japan_administrative_government.dds"
+			current_description = go_gaul_administrative_government_desc
+			localization = go_gaul_administrative_government_name
+			icon = "gfx/interface/icons/government_types/gaul_administrative_government.dds"
 			ai_chance = {
 				value = 100
 			}
@@ -1274,7 +1303,7 @@ convert_to_administrative_decision = {
 			limit = {
 				scope:go_administrative_government = yes
 			}
-			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:administrative }
+			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:western_administrative }
 		}
 		else_if = {
 			limit = { scope:go_celestial_government = yes }
@@ -1345,7 +1374,7 @@ convert_to_administrative_decision = {
 		OR = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
-			government_has_flag = government_is_classical_feudal
+			government_has_flag = government_is_classical
 		}
 		top_liege = this
 	}
@@ -1449,6 +1478,7 @@ convert_to_feudalism_from_administrative_decision = {
 		trigger_if = {
 			limit = { has_title = title:h_china }
 			NOT = { government_has_flag = government_is_celestial }
+
 		}
 		government_allows = administrative
 		tgp_is_ceremonial_liege_trigger = no
@@ -1456,6 +1486,13 @@ convert_to_feudalism_from_administrative_decision = {
 		tgp_is_any_minister = no
 		# Ritsuryo gov has its own decisions
 		NOT = { government_has_flag = government_is_japan_administrative }
+		NOT = { government_has_flag = government_is_gaul_administrative }
+		NOT = { government_has_flag = government_is_classical_group }
+		NOT = { government_has_flag = government_is_despotic_group }
+		NOT = { government_has_flag = government_is_western_group }
+		NOT = { government_has_flag = government_is_sinic_group }
+		NOT = { government_has_flag = government_is_islamic_group }
+		NOT = { government_has_flag = government_is_dharmic_group }
 	}
 
 	is_valid = {

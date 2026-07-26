@@ -12,9 +12,9 @@ patron_tooltip_god_name = {
 }
 
 
-choose_patron_generic = {
+choose_patron_god_generic = {
 	saved_scopes = {
-		patron_name
+		patron_god_name
 	}
 
 	is_shown = {
@@ -27,7 +27,7 @@ choose_patron_generic = {
 	}
 
 	effect = {
-		parse_patron_name_flag_complex = { PATRON = scope:patron_name APPLY = agot_set_patron_effect }
+		parse_patron_god_name_flag_complex = { PATRON = scope:patron_god_name APPLY = agot_set_patron_god_effect }
 	}
 }
 
@@ -47,10 +47,9 @@ get_patron_god_list = {
 		clear_variable_list = patron_gods
 		if = {
 			limit = {
-				scope:faith.religion = { 
-					save_temporary_scope_as = religion 
+				scope:faith = { 
+					has_doctrine_parameter = roman_patrons
 				}
-				scope:religion = religion:roman_religion		
 			}
 			add_to_variable_list = {
 				name = patron_gods
@@ -87,10 +86,9 @@ get_patron_god_list = {
 		}
 		if= {
 			limit = {
-				scope:faith.religion = {
-					save_temporary_scope_as = religion
+				scope:faith = {
+					has_doctrine_parameter = mithras_patrons
 				}
-				scope:religion = religion:mithras_religion
 			}
 			add_to_variable_list = {
 				name = patron_gods
@@ -120,10 +118,9 @@ get_patron_god_list = {
 		}
 		if= {
 			limit = {
-				scope:faith.religion = {
-					save_temporary_scope_as = religion
+				scope:faith = {
+					has_doctrine_parameter = solar_patrons
 				}
-				scope:religion = religion:solar_religion
 			}
 			add_to_variable_list = {
 				name = patron_gods
@@ -149,10 +146,9 @@ get_patron_god_list = {
 		}
 		if= {
 			limit = {
-				scope:faith.religion = {
-					save_temporary_scope_as = religion
+				scope:faith = {
+					has_doctrine_parameter = celtic_patrons
 				}
-				scope:religion = religion:celtic_religion
 			}
 			add_to_variable_list = {
 				name = patron_gods
@@ -189,10 +185,9 @@ get_patron_god_list = {
 		}				
 		if= {
 			limit = {
-				scope:faith.religion = {
-					save_temporary_scope_as = religion
+				scope:faith = {
+					has_doctrine_parameter = hellenic_patrons
 				}
-				scope:religion = religion:hellenism_religion
 			}
 			add_to_variable_list = {
 				name = patron_gods
@@ -221,10 +216,9 @@ get_patron_god_list = {
 		}
 		if= {
 			limit = {
-				scope:faith.religion = {
-					save_temporary_scope_as = religion
+				scope:faith = {
+					has_doctrine_parameter = dharmic_patrons
 				}
-				scope:religion = religion:hinduism_religion
 			}
 			add_to_variable_list = {
 				name = patron_gods
@@ -270,7 +264,7 @@ clear_patron_god_list = {
 
 religion_has_patron_gods = {
 	is_shown = {
-		has_doctrine = doctrine_polytheist
+		agot_faith_has_patron_gods = yes
 	}
 }
 
@@ -290,7 +284,7 @@ faith_switch_effect = {
 
 has_this_patron_god = {
 	is_valid = {
-		var:patron_god ?= scope:patron_name
+		var:patron_god ?= scope:patron_god_name
 	}
 }
 

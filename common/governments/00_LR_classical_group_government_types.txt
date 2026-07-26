@@ -1,4 +1,4 @@
-﻿classical_feudal_government = {
+﻿classical_government = {
 	government_rules = {
 		create_cadet_branches = yes
 		rulers_should_have_dynasty = yes
@@ -12,11 +12,11 @@
 	primary_holding = castle_holding
 	valid_holdings = { temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	primary_heritages = { heritage_latin heritage_byzantine heritage_hellenistic_greek heritage_indo_hellenic heritage_sino_hellenic heritage_caucasian }
+	primary_heritages = { heritage_ostrogothic heritage_latin heritage_byzantine heritage_hellenistic_greek heritage_indo_hellenic heritage_sino_hellenic heritage_caucasian heritage_vandalic heritage_visigothic heritage_suevic }
 
 	#preferred_religions = { hellenism_religion roman_religion mithras_religion neoplatonic_religion solar_religion bud_hellenic_religion indo_hellenic_religion }
 
-	vassal_contract_group = classical_feudal
+	vassal_contract_group = classical_vassal
 	tax_slot_type = classical_tax_slot
 	
 	#character_modifier = {
@@ -32,7 +32,7 @@
 	flags = {
 		government_is_feudal
 		government_is_classical_group
-		government_is_classical_feudal
+		government_is_classical
 		government_is_settled
 		may_elevate_co_monarch
 		government_uses_crown_authority
@@ -70,7 +70,7 @@ roman_administrative_government = { #Roman Administrative Government, Hellenisti
 	royal_court = top_liege
 	#blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government }
 
-	domicile_type = estate
+	domicile_type = classical_group_estate
 	main_administrative_tier = duchy
 	min_appointment_tier = county
 	minimum_provincial_maa_tier = duchy
@@ -80,7 +80,7 @@ roman_administrative_government = { #Roman Administrative Government, Hellenisti
 	primary_holding = castle_holding
 	valid_holdings = { city_holding temple_citadel_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
-	primary_heritages = { heritage_latin heritage_byzantine heritage_caucasian }
+	primary_heritages = { heritage_latin heritage_byzantine heritage_caucasian heritage_vandalic heritage_visigothic heritage_suevic heritage_ostrogothic }
 	#preferred_religions = { roman_religion mithras_religion solar_religion }
 
 	vassal_contract_group = roman_administrative_vassal
@@ -108,7 +108,6 @@ roman_administrative_government = { #Roman Administrative Government, Hellenisti
 		men_at_arms_limit = -2
 		knight_limit = -5
 		vassal_limit = 100
-		active_accolades = -1
 		title_creation_cost_mult = -0.5
 		#mercenary_hire_cost_mult = 2
 		men_at_arms_maintenance = 0.5
@@ -151,7 +150,7 @@ roman_administrative_government = { #Roman Administrative Government, Hellenisti
 	mechanic_type = administrative
 	is_mechanic_type_default = no
 
-	color = rgb { 255 255 255 }
+	color = rgb { 119 38 38 }
 	realm_mask_offset = { 0.0 0.01 }
 	realm_mask_scale = { 1 1 }
 }
@@ -164,7 +163,7 @@ alexandrian_administrative_government = { #Alexandrian-style government used by 
 		administrative = yes
 		landless_playable = yes
 		legitimacy = yes
-		#state_faith = yes
+		state_faith = yes
 		use_as_base_on_landed = yes
 		use_as_base_on_rank_up = yes
 		inherit_from_dynastic_government = no
@@ -179,7 +178,7 @@ alexandrian_administrative_government = { #Alexandrian-style government used by 
 	royal_court = top_liege
 	#blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government }
 
-	domicile_type = estate
+	domicile_type = classical_group_estate
 	main_administrative_tier = duchy
 	min_appointment_tier = county
 	minimum_provincial_maa_tier = duchy
@@ -217,7 +216,6 @@ alexandrian_administrative_government = { #Alexandrian-style government used by 
 		men_at_arms_limit = -2
 		knight_limit = -5
 		vassal_limit = 100
-		active_accolades = -1
 		title_creation_cost_mult = -0.5
 		mercenary_hire_cost_mult = 2
 		men_at_arms_maintenance = 0.5
@@ -290,7 +288,7 @@ roman_autocratic_government = { # e.g. Restored Roman Empire, Gallic Empire, Wes
 	royal_court = top_liege
 	#blocked_subject_courts = { meritocratic_government celestial_government japan_administrative_government administrative_government steppe_admin_government hellenic_khanate_government }
 
-	domicile_type = estate
+	domicile_type = classical_group_estate
 	main_administrative_tier = duchy
 	min_appointment_tier = county
 	minimum_provincial_maa_tier = duchy
@@ -313,7 +311,6 @@ roman_autocratic_government = { # e.g. Restored Roman Empire, Gallic Empire, Wes
 		men_at_arms_limit = -2
 		knight_limit = -5
 		vassal_limit = 20
-		active_accolades = -1
 		title_creation_cost_mult = -0.5
 		character_max_merit_level_add = 2
 		mercenary_hire_cost_mult = 2

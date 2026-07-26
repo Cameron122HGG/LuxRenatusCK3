@@ -808,7 +808,58 @@ great_holy_war.0005 = {
 	hidden = yes
 	scope = ghw
 
-
+	immediate = {
+		if = {
+			limit = {
+				any_pledged_attacker = {
+					primary_title = { is_head_of_faith = yes }
+					faith = faith:catholic
+				}
+				exists = global_var:byz_claimant_champion
+				global_var:byz_claimant_champion = {
+					is_alive = yes
+					is_ruler = yes
+					any_owned_story = {
+						type = frankokratia_story
+					}
+				}
+				exists = title:e_byzantium.holder
+			}
+			#Check claimant isn't dead, invalidate if they are
+			if = {
+				limit = {
+					global_var:byz_claimant_champion = {
+						any_owned_story = {
+							type = frankokratia_story
+							var:byz_claimant = { is_alive = no }
+						}
+					}
+				}
+				global_var:byz_claimant_champion = {
+					random_owned_story = {
+						type = frankokratia_story
+						every_in_list = {
+							variable = frankokratia_leaders
+							limit = {
+								is_ai = no
+							}
+							trigger_event = ep3_frankokratia_events.0005
+						}
+					}
+				}
+			}
+			else = {
+				ep3_frankokratia_remove_pledged_attackers_effect = yes
+			}
+		}
+		
+		start_ghw_war = undirected_great_holy_war
+		divide_war_chest = {
+			fraction = 0.2
+			prestige = no
+			gold = no
+		}
+	}
 }
 
 #Unlocking Holy Wars. (on later dates Crusades and Jihads start already unlocked from Character History)
@@ -841,11 +892,11 @@ scripted_trigger great_holy_war_0010_byzantion_reason_trigger = {
 				this = religion:christianity_religion
 			}
 		}
-		#title:c_paphlagonia.holder.top_liege.religion = { # Ankyra
-		#	NOT = {
-		#		this = religion:christianity_religion
-		#	}
-		#}
+		title:c_ionopolis.holder.top_liege.religion = { # Ankyra
+			NOT = {
+				this = religion:christianity_religion
+			}
+		}
 		title:c_attica.holder.top_liege.religion = { # Athens
 			NOT = {
 				this = religion:christianity_religion

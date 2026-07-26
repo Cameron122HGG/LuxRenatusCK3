@@ -90,14 +90,14 @@
 			limit = {
 				liege != this
 				OR = {
-					liege = { government_has_flag = government_is_classical_feudal }
+					liege = { government_has_flag = government_is_classical }
 					AND = {
-						liege = { government_has_flag = government_is_classical_feudal }
+						liege = { government_has_flag = government_is_classical }
 						faith.religion = { is_in_family = rf_graeco_roman }
 					}
 				}
 			}
-			change_government = classical_feudal_government
+			change_government = classical_government
 		}
 		else_if = {
 			limit = {
@@ -110,20 +110,20 @@
 					}
 				}
 			}
-			change_government = despotic_feudal_government
+			change_government = despotic_government
 		}
 		else_if = {
 			limit = {
 				liege != this
 				OR = {
-					liege = { has_government = clan_government }
+					liege = { has_government = iqta_government }
 					AND = {
-						liege = { has_government = clan_government }
+						liege = { has_government = iqta_government }
 						religion = religion:islam_religion
 					}
 				}
 			}
-			change_government = clan_government
+			change_government = iqta_government
 		}		
 		##Independent
 		else_if = {
@@ -131,34 +131,34 @@
 				liege = this
 				faith.religion = { is_in_family = rf_graeco_roman }
 			}
-			change_government = classical_feudal_government
+			change_government = classical_government
 		}
 		else_if = {
 			limit = {
 				liege = this
 				faith.religion = { is_in_family = rf_archaic }
 			}
-			change_government = despotic_feudal_government
+			change_government = despotic_government
 		}
 		else_if = {
 			limit = {
 				liege = this
 				faith = { religion_tag = islam_religion }
 			}
-			change_government = clan_government
+			change_government = iqta_government
 		}		
-		else = { change_government = feudal_government }
+		else = { change_government = western_feudal_government }
 		
 		##Convert Vassals
 		custom_tooltip = {
 			text = LR_high_tribal_vassal_adoption
 			if = {
 				limit = {
-					government_has_flag = government_is_classical_feudal
+					government_has_flag = government_is_classical
 				}
 				every_vassal_or_below = {
 					limit = { government_has_flag = government_is_high_tribal }
-					change_government = classical_feudal_government
+					change_government = classical_government
 				}
 			}
 			else_if = {
@@ -167,22 +167,22 @@
 				}
 				every_vassal_or_below = {
 					limit = { government_has_flag = government_is_high_tribal }
-					change_government = despotic_feudal_government
+					change_government = despotic_government
 				}
 			}
 			else_if = {
 				limit = {
-					has_government = clan_government
+					has_government = iqta_government
 				}
 				every_vassal_or_below = {
 					limit = { government_has_flag = government_is_high_tribal }
-					change_government = clan_government
+					change_government = iqta_government
 				}
 			}		
 			else = {
 				every_vassal_or_below = {
 					limit = { government_has_flag = government_is_high_tribal }
-					change_government = feudal_government
+					change_government = western_feudal_government
 				}
 			}
 		}
@@ -209,7 +209,7 @@
 }
 
 ####
-convert_classical_feudal_decision = {
+convert_classical_decision = {
 	picture = {
 		trigger = {
 			#has_tgp_dlc_trigger = yes
@@ -223,7 +223,7 @@ convert_classical_feudal_decision = {
 		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
 	}
 	decision_group_type = major
-	desc = convert_classical_feudal_decision_desc
+	desc = convert_classical_decision_desc
 
 	ai_check_interval_by_tier = {
 		barony = 0
@@ -236,13 +236,13 @@ convert_classical_feudal_decision = {
 
 	is_shown = {
 		OR = {
-			has_government = feudal_government 
-			has_government = clan_government
+			has_government = western_feudal_government 
+			has_government = iqta_government
 			AND = {
 				is_independent_ruler = no
-				has_government = despotic_feudal_government
+				has_government = despotic_government
 				liege = {
-					has_government = classical_feudal_government
+					has_government = classical_government
 				}
 			}
 		}
@@ -255,15 +255,15 @@ convert_classical_feudal_decision = {
 					faith = { has_doctrine = graeco_roman_special_hostility_doctrine }
 				}	
 				NOR = {
-					has_government = classical_feudal_government
-					has_government = despotic_feudal_government
+					has_government = classical_government
+					has_government = despotic_government
 				}
 			}
 			AND = {
 				NOT = { liege = this }
-				NOT = { has_government = classical_feudal_government }
+				NOT = { has_government = classical_government }
 				liege = {
-					has_government = classical_feudal_government
+					has_government = classical_government
 				}
 			}
 		}
@@ -278,7 +278,7 @@ convert_classical_feudal_decision = {
 					is_independent_ruler = no
 				}
 				liege = {
-					has_government = classical_feudal_government			
+					has_government = classical_government			
 				}
 			}
 		}
@@ -297,17 +297,17 @@ convert_classical_feudal_decision = {
 
 	effect = {
 		#gain_legitimizing_legend_seed_tooltip_effect = yes		
-		change_government = classical_feudal_government
+		change_government = classical_government
 		custom_tooltip = {
 			text = LR_high_tribal_vassal_adoption			
 			every_vassal_or_below = {
 				limit = { 
 					OR = {
-						has_government = feudal_government 
-						has_government = clan_government
+						has_government = western_feudal_government 
+						has_government = iqta_government
 					}
 				}
-				change_government = classical_feudal_government
+				change_government = classical_government
 			}
 		}
 		save_scope_as = actor
@@ -359,13 +359,13 @@ convert_despotic_decision = {
 
 	is_shown = {
 		OR = {
-			has_government = feudal_government 
-			has_government = clan_government
+			has_government = western_feudal_government 
+			has_government = iqta_government
 			AND = {
 				is_independent_ruler = no
-				has_government = despotic_feudal_government
+				has_government = despotic_government
 				liege = {
-					has_government = classical_feudal_government
+					has_government = classical_government
 				}
 			}			
 		}
@@ -380,15 +380,15 @@ convert_despotic_decision = {
 					faith = { has_doctrine = special_doctrine_is_zoroastrian_faith }
 				}
 				NOR = { 
-					has_government = classical_feudal_government
-					has_government = despotic_feudal_government
+					has_government = classical_government
+					has_government = despotic_government
 				}
 			}
 			AND = {
 				NOT = { liege = this }
-				NOT = { has_government = despotic_feudal_government }
+				NOT = { has_government = despotic_government }
 				liege = {
-					has_government = despotic_feudal_government			
+					has_government = despotic_government			
 				}
 			}
 		}		
@@ -405,7 +405,7 @@ convert_despotic_decision = {
 					is_independent_ruler = no
 				}			
 				liege = {
-					has_government = despotic_feudal_government			
+					has_government = despotic_government			
 				}
 			}
 		}			
@@ -424,17 +424,17 @@ convert_despotic_decision = {
 
 	effect = {
 		#gain_legitimizing_legend_seed_tooltip_effect = yes		
-		change_government = despotic_feudal_government	
+		change_government = despotic_government	
 		custom_tooltip = {
 			text = LR_high_tribal_vassal_adoption		
 			every_vassal_or_below = {
 				limit = { 
 					OR = {
-						has_government = feudal_government 
-						has_government = clan_government
+						has_government = western_feudal_government 
+						has_government = iqta_government
 					}
 				}
-				change_government = despotic_feudal_government
+				change_government = despotic_government
 			}
 		}
 		save_scope_as = actor
@@ -458,189 +458,7 @@ convert_despotic_decision = {
 	}
 }
 
-abandon_ancient_government_decision = {
-	picture = {
-		trigger = {
-			has_tgp_dlc_trigger = yes
-			liege = {
-				culture = { has_cultural_pillar = heritage_japonic }
-			}
-		}
-		reference = "gfx/interface/illustrations/decisions/tgp_dominance.dds"
-	}
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
-	}
-	decision_group_type = major
-	desc = abandon_ancient_government_decision_desc
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 72
-		duchy = 36
-		kingdom = 36
-		empire = 36
-		hegemony = 36
-	}
-
-	is_shown = {
-		is_independent_ruler = no
-		OR = {
-			AND = {
-				OR = {
-					has_government = classical_feudal_government
-					has_government = despotic_feudal_government
-				}
-				OR = {
-					liege = {
-						has_government = feudal_government
-					}
-					liege = {
-						has_government = clan_government			
-					}			
-				}
-			}
-			AND = {
-				has_government = clan_government
-				liege = {
-					has_government = feudal_government
-				}	
-			}
-			AND = {
-				has_government = feudal_government
-				liege = {
-					has_government = clan_government
-				}	
-			}
-			AND = {
-				OR = {
-					has_government = gaul_feudal_government
-					has_government = gaul_administrative_government	
-				}
-				NOR = {
-					liege = {
-						has_government = gaul_feudal_government
-					}
-					liege = {
-						has_government = gaul_administrative_government			
-					}			
-				}	
-			}
-		}
-	}
-
-	is_valid = {
-		trigger_if = {
-			limit = {
-				OR = {
-					has_government = gaul_feudal_government
-					has_government = gaul_administrative_government	
-				}
-				NOR = {
-					liege = {
-						has_government = gaul_feudal_government
-					}
-					liege = {
-						has_government = gaul_administrative_government			
-					}			
-				}
-			}
-			NOR = {
-				liege = {
-					has_government = gaul_feudal_government
-				}
-				liege = {
-					has_government = gaul_administrative_government			
-				}			
-			}
-		}
-		trigger_else_if = {
-			limit = {
-				is_independent_ruler = no
-			}
-			OR = {
-				liege = {
-					has_government = feudal_government			
-				}
-				liege = {
-					has_government = clan_government			
-				}			
-			}
-		}
-		trigger_else = { always = no }
-	}
-
-	is_valid_showing_failures_only = {
-		custom_tooltip = {
-			text = permafrost_feudal_ban
-			NOT = { culture = { has_cultural_parameter = permafrost_cannot_become_feudal } }
-		}
-	}
-
-	cost = {
-		prestige = 100
-	}
-
-	effect = {
-		if = {
-			limit = {
-				liege = { has_government = clan_government }
-			}
-			change_government = clan_government
-		}
-		else = {
-			change_government = feudal_government
-		}
-		custom_tooltip = {
-			text = LR_high_tribal_vassal_adoption		
-			if = {
-				limit = {
-					liege = { has_government = clan_government }
-				}
-				every_vassal_or_below = {
-					limit = {
-						OR = {
-							has_government = classical_feudal_government
-							has_government = despotic_feudal_government
-							has_government = feudal_government
-						}					
-					}
-					change_government = clan_government
-				}
-			}
-			else = {
-				every_vassal_or_below = {
-					limit = {
-						OR = {
-							has_government = classical_feudal_government
-							has_government = despotic_feudal_government
-							has_government = clan_government
-						}					
-					}
-					change_government = feudal_government
-				}
-			}
-		}
-		save_scope_as = actor
-		trigger_event = LR_gov_events.0007
-		hidden_effect = {
-			every_vassal = {
-				trigger_event = {
-					id = LR_gov_events.0008
-					days = 3
-				}
-			}
-		}		
-	}
-
-	ai_potential = {
-		NOT = { mpo_has_gok_mongol_empire_trigger = yes } #Stop the Mongols from slowing their conquest. 
-	}
-
-	ai_will_do = {
-		base = 100
-	}
-}
 
 adopt_gaul_gov_decision = {
 	picture = {
@@ -682,7 +500,7 @@ adopt_gaul_gov_decision = {
 			has_government = gaul_administrative_government	
 		}
 		OR = {
-			has_government = feudal_government
+			has_government = western_feudal_government
 			government_has_flag = government_is_administrative
 		}		
 	}
@@ -719,7 +537,7 @@ adopt_gaul_gov_decision = {
 			every_vassal_or_below = {
 				limit = {
 					OR = {
-						has_government = feudal_government
+						has_government = western_feudal_government
 						government_has_flag = government_is_administrative
 					}
 				}

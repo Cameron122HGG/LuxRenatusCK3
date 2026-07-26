@@ -160,9 +160,9 @@ yearly_global_pulse = {
 					current_date > 6180.1.1
 					current_date < 6250.1.1
 					NOT = { has_global_variable = mongols_have_appeared }
-					Greatest of khans hasn't come along
+					#Greatest of khans hasn't come along
 					NOT = { has_global_variable = greatest_of_khans_title }
-					Someone's not currently trying to be greatest of khans
+					#Someone's not currently trying to be greatest of khans
 					NOT = { has_global_variable = mpo_gok_war_ongoing }
 					trigger_if = {
 						limit = {
@@ -170,7 +170,7 @@ yearly_global_pulse = {
 						}
 						years_from_game_start >= 20
 					}
-					Temujin dying prevents Mongol invasion for at least 50 years
+					#Temujin dying prevents Mongol invasion for at least 50 years
 					NOT = {
 						has_global_variable = temujin_failed
 					}
@@ -241,8 +241,8 @@ yearly_global_pulse = {
 		# 		# Do we have the correct flavour pack?
 		# 		has_fp1_dlc_trigger = yes
 		# 		# Must be within the 10th century.
-		# 		current_date >= 900.1.1
-		# 		current_date < 1000.1.1
+		# 		current_date >= 5900.1.1
+		# 		current_date < 6000.1.1
 		# 		# The Jomsvikings cannot have already formed for any reason & by any method.
 		# 		fp1_jomsvikings_have_not_existed_trigger = yes
 		# 		# Must be a valid target somewhere in the appropriate region.
@@ -257,28 +257,28 @@ yearly_global_pulse = {
 		# 		# Add 5% every decade for the first half of the century.
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date >= 910.1.1
+		# 			current_date >= 5910.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date >= 920.1.1
+		# 			current_date >= 5920.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date >= 930.1.1
+		# 			current_date >= 5930.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date >= 940.1.1
+		# 			current_date >= 5940.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date >= 950.1.1
+		# 			current_date >= 5950.1.1
 		# 		}
 		# 		# And then add another 25% solid chance for the whole of the latter half of the century.
 		# 		modifier = {
 		# 			add = 25
-		# 			current_date >= 960.1.1
+		# 			current_date >= 5960.1.1
 		# 		}
 		# 		# Fire the event.
 		# 		trigger_event = {
@@ -294,7 +294,7 @@ yearly_global_pulse = {
 		# 		# Do we have the correct flavour pack?
 		# 		has_fp2_dlc_trigger = yes
 		# 		# Must be before the monk would likely die.
-		# 		current_date <= 880.1.1
+		# 		current_date <= 5880.1.1
 		# 		# The monk hasn't already tried to turn up somewhere.
 		# 		NOT = {
 		# 			is_target_in_global_variable_list = {
@@ -317,7 +317,7 @@ yearly_global_pulse = {
 		# 						capital_province = { geographical_region = dlc_fp2_lyonese_monk_region }
 		# 						fp2_lyonese_monk_0002_valid_character_configuration_trigger = yes
 		# 					}
-		# 					current_date = 880.1.1
+		# 					current_date = 5880.1.1
 		# 				}
 		# 			}
 		# 			# Fire the event.
@@ -341,19 +341,19 @@ yearly_global_pulse = {
 		# 			# Slowly ramp up the chance till *someone* is selected, assuming we have any valid candidates.
 		# 			modifier = {
 		# 				add = 20
-		# 				current_date >= 870.1.1
+		# 				current_date >= 5870.1.1
 		# 			}
 		# 			modifier = {
 		# 				add = 25
-		# 				current_date >= 873.1.1
+		# 				current_date >= 5873.1.1
 		# 			}
 		# 			modifier = {
 		# 				add = 25
-		# 				current_date >= 876.1.1
+		# 				current_date >= 5876.1.1
 		# 			}
 		# 			modifier = {
 		# 				add = 25
-		# 				current_date = 880.1.1
+		# 				current_date = 5880.1.1
 		# 			}
 		# 			# Fire the event.
 		# 			trigger_event = {
@@ -368,7 +368,7 @@ yearly_global_pulse = {
 		# if = {
 		# 	limit = {
 		# 		# Rabbi Gershom bans polygamy sometime in the 11th century
-		# 		current_date > "1000.01.01"
+		# 		current_date > "6000.01.01"
 		# 		# Make sure this hasn't happened already
 		# 		faith:rabbinism = {
 		# 			has_doctrine = doctrine_polygamy
@@ -441,15 +441,15 @@ yearly_global_pulse = {
 		# 		chance = fp3_seljuk_chance_of_appearance
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date > 965.1.1
+		# 			current_date > 5965.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date > 985.1.1
+		# 			current_date > 5985.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date > 1005.1.1
+		# 			current_date > 6005.1.1
 		# 		}
 		# 		modifier = {
 		# 			factor = 0.25
@@ -472,7 +472,7 @@ yearly_global_pulse = {
 		# else_if = { # Historical Seljuk Invasion
 		# 	limit = {
 		# 		current_date < 6066.1.1
-		# 		current_date >= 945.1.1
+		# 		current_date >= 5945.1.1
 		# 		NOR = {
 		# 			exists = global_var:seljuk_invasion_happened
 		# 			exists = struggle:persian_struggle # We don't allow it during the struggle (not that it can happen in 930)
@@ -482,15 +482,15 @@ yearly_global_pulse = {
 		# 		chance = fp3_seljuk_chance_of_appearance
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date > 965.1.1
+		# 			current_date > 5965.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date > 985.1.1
+		# 			current_date > 5985.1.1
 		# 		}
 		# 		modifier = {
 		# 			add = 5
-		# 			current_date > 1005.1.1
+		# 			current_date > 6005.1.1
 		# 		}
 		# 		modifier = {
 		# 			factor = 0.25
@@ -515,7 +515,7 @@ yearly_global_pulse = {
 		#Lux Renata TBA
 		# if = {
 		# 	limit = {
-		# 		current_date = 868.1.2
+		# 		current_date = 5868.1.2
 		# 		NOT = { exists = global_var:zanj_rebellion_happened }
 		# 	}
 		# 	debug_log = "Zanj Rebellion Story Cycle Started"

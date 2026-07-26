@@ -2,7 +2,7 @@
 	effect = {
 		LR_fix_title_granting_on_start = yes
 		LR_random_title_granting_on_start = yes
-		#LR_change_traits_to_dyn_traditions_effect = yes
+		#LR_change_traits_to_dynn_traditions_effect = yes
 		LR_generate_noble_families_on_start = yes
 		
 		
@@ -68,4 +68,20 @@ historical_bloodlines_inherit_action = {
 		historical_bloodlines_inherit_effect = yes
 	}
 }
+
+on_game_start = {
+	on_actions = {
+		Historical_Bloodline_compat
+	}
+}
+
+Historical_Bloodline_compat = {
+	effect = {
+		set_global_variable = {
+			name = Historical_Bloodline_is_loaded
+			value = yes
+		}
+	}
+}
+
 

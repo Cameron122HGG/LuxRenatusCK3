@@ -1,14 +1,14 @@
 ﻿### GoT mod - Set Patron Effect
 ### Used for selecting a patron god
-agot_set_patron_effect = {
+agot_set_patron_god_effect = {
 	if = {
 		limit = {
 			NOT = {
-				has_character_modifier = patron_$PATRON$_modifier
+				has_character_modifier = patron_god_$PATRON$_modifier
 			}
 		}
 
-		agot_clear_patron = yes
+		agot_clear_patron_god = yes
 		if = {
 			limit = {
 				NOT = {
@@ -27,22 +27,22 @@ agot_set_patron_effect = {
 			name = patron_god
 			value = flag:$PATRON$
 		}
-		add_character_modifier = patron_$PATRON$_modifier
-		set_variable = { name = recent_patron_selected value = yes years = 5 }
+		add_character_modifier = patron_god_$PATRON$_modifier
+		set_variable = { name = recent_patron_god_selected value = yes years = 5 }
 	}
 }
 
-agot_clear_patron = {
-	every_patron_name_complex = { APPLY = agot_remove_patron_modifier }
+agot_clear_patron_god = {
+	every_patron_god_name_complex = { APPLY = agot_remove_patron_god_modifier }
 
 	remove_variable = patron_god
 }
 
-agot_remove_patron_modifier = {
-	remove_character_modifier = patron_$PATRON$_modifier
+agot_remove_patron_god_modifier = {
+	remove_character_modifier = patron_god_$PATRON$_modifier
 }
 debug_log_patron_choice = {
-	log = "DEBUG: Patron confirm button clicked"
+	debug_log = "DEBUG: Patron confirm button clicked"
 }
 
 

@@ -1,85 +1,84 @@
 ﻿#patron test
-LR_patron_doctrine_effect = {
+LR_patron_god_doctrine_effect = {
 	# Remove any previous personal god relation
 	## GURUISM IS SEPARATE, SINCE IT RELIES ON A SEPARATE PARAMETER/TENET FROM BHAKTI/PATRON GODS
 
 	## DIVINA sol_imperial
 	if = {
-		limit = { religion = religion:solar_religion }
+		limit = { has_doctrine_parameter = solar_patrons }
 		if = {
 			limit = {
-				has_character_modifier = patron_solar_deity_1_modifier
+				has_character_modifier = patron_god_solar_deity_01_modifier
 			}
-			remove_character_modifier = patron_solar_deity_1_modifier
+			remove_character_modifier = patron_god_solar_deity_01_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_solar_deity_2_modifier
+				has_character_modifier = patron_god_solar_deity_02_modifier
 			}
-			remove_character_modifier = patron_solar_deity_2_modifier
+			remove_character_modifier = patron_god_solar_deity_02_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_solar_deity_3_modifier
+				has_character_modifier = patron_god_solar_deity_03_modifier
 			}
-			remove_character_modifier = patron_solar_deity_3_modifier
+			remove_character_modifier = patron_god_solar_deity_03_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_solar_deity_4_modifier
+				has_character_modifier = patron_god_solar_deity_04_modifier
 			}
-			remove_character_modifier = patron_solar_deity_4_modifier
+			remove_character_modifier = patron_god_solar_deity_04_modifier
 			add_piety = massive_piety_loss
 		}
 	}
-	## AFRO-DIASPORIC & CATHOLICISM, I GUESS
+	## EGYPTIAN
 	else_if = {
 		limit = {
 			OR = {
-				#religion = religion:afro_diasporic_religion
-				religion = religion:kemetic_religion
+				has_doctrine_parameter = kemetic_patrons
 			}
 		}
 		## GENERIC PATRONS
 		if = {
 			limit = {
-				has_character_modifier = devotee_of_chango
+				has_character_modifier = patron_god_kemetic_deity_01_modifier
 			}
-			remove_character_modifier = devotee_of_chango
+			remove_character_modifier = patron_god_kemetic_deity_01_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = devotee_of_babalu_aye
+				has_character_modifier = patron_god_kemetic_deity_02_modifier
 			}
-			remove_character_modifier = devotee_of_babalu_aye
+			remove_character_modifier = patron_god_kemetic_deity_02_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = devotee_of_obatala
+				has_character_modifier = patron_god_kemetic_deity_03_modifier
 			}
-			remove_character_modifier = devotee_of_obatala
+			remove_character_modifier = patron_god_kemetic_deity_03_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = devotee_of_oshun
+				has_character_modifier = patron_god_kemetic_deity_04_modifier
 			}
-			remove_character_modifier = devotee_of_oshun
+			remove_character_modifier = patron_god_kemetic_deity_04_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = devotee_of_yemaya
+				has_character_modifier = patron_god_kemetic_deity_05_modifier
 			}
-			remove_character_modifier = devotee_of_yemaya
+			remove_character_modifier = patron_god_kemetic_deity_05_modifier
 			add_piety = massive_piety_loss
 		}
-		## WINTI PANTHEON
+		## ALEXANDROS MINOR?
 		else_if = {
 			limit = {
 				has_character_modifier = earth_pantheon
@@ -275,112 +274,113 @@ LR_patron_doctrine_effect = {
 		}
 
 	}
-	## SEASPRAY
+	## Celtic Pantheon
 	else_if = {
-		limit = { religion = religion:celtic_religion }
+		limit = { has_doctrine_parameter = celtic_patrons }
 		if = {
 			limit = {
-				has_character_modifier = patron_jack_modifier
+				has_character_modifier = patron_god_celtic_deity_01_modifier
 			}
-			remove_character_modifier = patron_jack_modifier
+			remove_character_modifier = patron_god_celtic_deity_01_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_old_man_of_the_sea_modifier
+				has_character_modifier = patron_god_celtic_deity_02_modifier
 			}
-			remove_character_modifier = patron_old_man_of_the_sea_modifier
+			remove_character_modifier = patron_god_celtic_deity_02_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_father_patrick_modifier
+				has_character_modifier = patron_god_celtic_deity_03_modifier
 			}
-			remove_character_modifier = patron_father_patrick_modifier
+			remove_character_modifier = patron_god_celtic_deity_03_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_little_fellas_modifier
+				has_character_modifier = patron_god_celtic_deity_04_modifier
 			}
-			remove_character_modifier = patron_little_fellas_modifier
+			remove_character_modifier = patron_god_celtic_deity_04_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_sacred_cod_modifier
+				has_character_modifier = patron_god_celtic_deity_05_modifier
 			}
-			remove_character_modifier = patron_sacred_cod_modifier
+			remove_character_modifier = patron_god_celtic_deity_05_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_sheila_nageira_modifier
+				has_character_modifier = patron_god_celtic_deity_06_modifier
 			}
-			remove_character_modifier = patron_sheila_nageira_modifier
+			remove_character_modifier = patron_god_celtic_deity_06_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_pegg_bearskin_modifier
+				has_character_modifier = patron_god_celtic_deity_07_modifier
 			}
-			remove_character_modifier = patron_pegg_bearskin_modifier
+			remove_character_modifier = patron_god_celtic_deity_07_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_three_women_in_white_modifier
+				has_character_modifier = patron_god_celtic_deity_08_modifier
 			}
-			remove_character_modifier = patron_three_women_in_white_modifier
+			remove_character_modifier = patron_god_celtic_deity_08_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_fingal_and_glooscap_modifier
+				has_character_modifier = patron_god_celtic_deity_09_modifier
 			}
-			remove_character_modifier = patron_fingal_and_glooscap_modifier
+			remove_character_modifier = patron_god_celtic_deity_09_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_cu_chulainn_modifier
+				has_character_modifier = patron_god_celtic_deity_10_modifier
 			}
-			remove_character_modifier = patron_cu_chulainn_modifier
+			remove_character_modifier = patron_god_celtic_deity_10_modifier
+			add_piety = massive_piety_loss
+		}
+
+		else_if = {
+			limit = {
+				has_character_modifier = patron_god_celtic_deity_11_modifier
+			}
+			remove_character_modifier = patron_god_celtic_deity_11_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_salmon_of_knowledge_modifier
+				has_character_modifier = patron_god_celtic_deity_12_modifier
 			}
-			remove_character_modifier = patron_salmon_of_knowledge_modifier
+			remove_character_modifier = patron_god_celtic_deity_12_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_bluenose_modifier
+				has_character_modifier = patron_god_celtic_deity_13_modifier
 			}
-			remove_character_modifier = patron_bluenose_modifier
+			remove_character_modifier = patron_god_celtic_deity_13_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_singing_miner_modifier
+				has_character_modifier = patron_god_celtic_deity_14
 			}
-			remove_character_modifier = patron_singing_miner_modifier
+			remove_character_modifier = patron_god_celtic_deity_14
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_sesus_modifier
+				has_character_modifier = patron_god_celtic_deity_15
 			}
-			remove_character_modifier = patron_sesus_modifier
-			add_piety = massive_piety_loss
-		}
-		else_if = {
-			limit = {
-				has_character_modifier = patron_mikumwesu_modifier
-			}
-			remove_character_modifier = patron_mikumwesu_modifier
+			remove_character_modifier = patron_god_celtic_deity_15
 			add_piety = massive_piety_loss
 		}
 		else_if = {
@@ -392,230 +392,230 @@ LR_patron_doctrine_effect = {
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_papakashtshihku_modifier
+				has_character_modifier = patron_god_celtic_deity_17_modifier
 			}
-			remove_character_modifier = patron_papakashtshihku_modifier
+			remove_character_modifier = patron_god_celtic_deity_17_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_tshiuetinush_modifier
+				has_character_modifier = patron_god_celtic_deity_18_modifier
 			}
-			remove_character_modifier = patron_tshiuetinush_modifier
+			remove_character_modifier = patron_god_celtic_deity_18_modifier
 			add_piety = massive_piety_loss
 		}
 	}
 	## MITHRAS
 	else_if = {
-		limit = { religion = religion:mithras_religion }
+		limit = { has_doctrine_parameter = mithras_patrons }
 		if = {
 			limit = {
-				has_character_modifier = patron_mithras_deity_1_modifier
+				has_character_modifier = patron_god_mithras_deity_01_modifier
 			}
-			remove_character_modifier = patron_mithras_deity_1_modifier
+			remove_character_modifier = patron_god_mithras_deity_01_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_mithras_deity_2_modifier
+				has_character_modifier = patron_god_mithras_deity_02_modifier
 			}
-			remove_character_modifier = patron_mithras_deity_2_modifier
+			remove_character_modifier = patron_god_mithras_deity_02_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_mithras_deity_3_modifier
+				has_character_modifier = patron_god_mithras_deity_03_modifier
 			}
-			remove_character_modifier = patron_mithras_deity_3_modifier
+			remove_character_modifier = patron_god_mithras_deity_03_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_mithras_deity_4_modifier
+				has_character_modifier = patron_god_mithras_deity_04_modifier
 			}
-			remove_character_modifier = patron_mithras_deity_4_modifier
+			remove_character_modifier = patron_god_mithras_deity_04_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_hill_modifier
+				has_character_modifier = patron_god_mithras_deity_05_modifier
 			}
-			remove_character_modifier = patron_hill_modifier
+			remove_character_modifier = patron_god_mithras_deity_05_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_ford_modifier
+				has_character_modifier = patron_god_mithras_deity_06_modifier
 			}
-			remove_character_modifier = patron_ford_modifier
+			remove_character_modifier = patron_god_mithras_deity_06_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_westing_modifier
+				has_character_modifier = patron_god_mithras_deity_07_modifier
 			}
-			remove_character_modifier = patron_westing_modifier
+			remove_character_modifier = patron_god_mithras_deity_07_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_reuther_modifier
+				has_character_modifier = patron_god_mithras_deity_08_modifier
 			}
-			remove_character_modifier = patron_reuther_modifier
+			remove_character_modifier = patron_god_mithras_deity_08_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_kellog_modifier
+				has_character_modifier = patron_god_kellog_modifier
 			}
-			remove_character_modifier = patron_kellog_modifier
+			remove_character_modifier = patron_god_kellog_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_sears_modifier
+				has_character_modifier = patron_god_sears_modifier
 			}
-			remove_character_modifier = patron_sears_modifier
+			remove_character_modifier = patron_god_sears_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_guardian_modifier
+				has_character_modifier = patron_god_guardian_modifier
 			}
-			remove_character_modifier = patron_guardian_modifier
+			remove_character_modifier = patron_god_guardian_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_mackinaw_modifier
+				has_character_modifier = patron_god_mackinaw_modifier
 			}
-			remove_character_modifier = patron_mackinaw_modifier
+			remove_character_modifier = patron_god_mackinaw_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_indy_500_modifier
+				has_character_modifier = patron_god_indy_500_modifier
 			}
-			remove_character_modifier = patron_indy_500_modifier
+			remove_character_modifier = patron_god_indy_500_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_wright_modifier
+				has_character_modifier = patron_god_wright_modifier
 			}
-			remove_character_modifier = patron_wright_modifier
+			remove_character_modifier = patron_god_wright_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_stubblefield_modifier
+				has_character_modifier = patron_god_stubblefield_modifier
 			}
-			remove_character_modifier = patron_stubblefield_modifier
+			remove_character_modifier = patron_god_stubblefield_modifier
 			add_piety = massive_piety_loss
 		}
 	}
 	## HINDUISM
 	else_if = {
-		limit = { religion = religion:hinduism_religion }
+		limit = { has_doctrine_parameter = dharmic_patrons }
 		if = {
 			limit = {
-				has_character_modifier = patron_nakura_modifier
+				has_character_modifier = patron_god_nakura_modifier
 			}
-			remove_character_modifier = patron_nakura_modifier
+			remove_character_modifier = patron_god_nakura_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_ram_modifier
+				has_character_modifier = patron_god_ram_modifier
 			}
-			remove_character_modifier = patron_ram_modifier
+			remove_character_modifier = patron_god_ram_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_kali_mai_modifier
+				has_character_modifier = patron_god_kali_mai_modifier
 			}
-			remove_character_modifier = patron_kali_mai_modifier
+			remove_character_modifier = patron_god_kali_mai_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_ganesh_modifier
+				has_character_modifier = patron_god_ganesh_modifier
 			}
-			remove_character_modifier = patron_ganesh_modifier
+			remove_character_modifier = patron_god_ganesh_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_munishvaran_modifier
+				has_character_modifier = patron_god_munishvaran_modifier
 			}
-			remove_character_modifier = patron_munishvaran_modifier
+			remove_character_modifier = patron_god_munishvaran_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_chankani_karuppu_modifier
+				has_character_modifier = patron_god_chankani_karuppu_modifier
 			}
-			remove_character_modifier = patron_chankani_karuppu_modifier
+			remove_character_modifier = patron_god_chankani_karuppu_modifier
 			add_piety = massive_piety_loss
 		}
 	}
 	## ISLAM
 	else_if = {
-		limit = { religion = religion:islam_religion }
+		limit = { has_doctrine_parameter = islam_patrons }
 		if = {
 			limit = {
-				has_character_modifier = patron_sang_hyung_tungga
+				has_character_modifier = patron_god_islam_wali_01
 			}
-			remove_character_modifier = patron_sang_hyung_tungga
+			remove_character_modifier = patron_god_islam_wali_01
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_wali_songo
+				has_character_modifier = patron_god_islam_wali_02
 			}
-			remove_character_modifier = patron_wali_songo
+			remove_character_modifier = patron_god_islam_wali_02
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_rama_wijaya
+				has_character_modifier = patron_god_islam_wali_03
 			}
-			remove_character_modifier = patron_rama_wijaya
+			remove_character_modifier = patron_god_islam_wali_03
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_batara_guru
+				has_character_modifier = patron_god_islam_wali_04
 			}
-			remove_character_modifier = patron_batara_guru
+			remove_character_modifier = patron_god_islam_wali_04
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_dewa_sri
+				has_character_modifier = patron_god_islam_wali_05
 			}
-			remove_character_modifier = patron_dewa_sri
+			remove_character_modifier = patron_god_islam_wali_05
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_mokamat
+				has_character_modifier = patron_god_islam_wali_06
 			}
-			remove_character_modifier = patron_mokamat
+			remove_character_modifier = patron_god_islam_wali_06
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_ratu_kidil
+				has_character_modifier = patron_god_islam_wali_07
 			}
-			remove_character_modifier = patron_ratu_kidil
+			remove_character_modifier = patron_god_islam_wali_07
 			add_piety = massive_piety_loss
 		}
 	}
-	## SPIRITUALISM
+	## ZOROASTRIANISM
 	else_if = {
-		limit = { religion = religion:zoroastrianism_religion }
+		limit = { has_doctrine_parameter = zoroastrian_patrons }
 		if = {
 			limit = {
 				has_character_modifier = umbanda_caboclos
@@ -659,7 +659,7 @@ LR_patron_doctrine_effect = {
 			add_piety = massive_piety_loss
 		}
 	}
-	## CATHOLICISM
+	## CHRISTIANITY
 	else_if = {
 		limit = { religion = religion:christianity_religion }
 		if = {
@@ -772,7 +772,7 @@ LR_patron_doctrine_effect = {
 			add_piety = massive_piety_loss
 		}
 	}
-	#ATLANTEAN
+	#ANATOLIAN
 	else_if = {
 		limit = { religion = religion:anatolian_religion }
 		if = {
@@ -832,35 +832,35 @@ LR_patron_doctrine_effect = {
 			add_piety = massive_piety_loss
 		}
 	}
-	#roman_pagan
+	#Roman Pantheon
 	else_if = {
 		limit =  { religion = religion:roman_religion }
 		if = {
 			limit = {
-				has_character_modifier = patron_diana_deity_modifier
+				has_character_modifier = patron_god_roman_deity_07_modifier
 			}
-			remove_character_modifier = patron_diana_deity_modifier
+			remove_character_modifier = patron_god_roman_deity_07_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_minerva_deity_modifier
+				has_character_modifier = patron_god_roman_deity_06_modifier
 			}
-			remove_character_modifier = patron_minerva_deity_modifier
+			remove_character_modifier = patron_god_roman_deity_06_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_mars_deity_modifier
+				has_character_modifier = patron_god_roman_deity_03_modifier
 			}
-			remove_character_modifier = patron_mars_deity_modifier
+			remove_character_modifier = patron_god_roman_deity_03_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = roman_pagan_council_eastson
+				has_character_modifier = patron_god_roman_deity_4
 			}
-			remove_character_modifier = roman_pagan_council_eastson
+			remove_character_modifier = patron_god_roman_deity_4
 			add_piety = massive_piety_loss
 		}
 		else_if = {
@@ -872,23 +872,23 @@ LR_patron_doctrine_effect = {
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_jupiter_deity_modifier
+				has_character_modifier = patron_god_roman_deity_01_modifier
 			}
-			remove_character_modifier = patron_jupiter_deity_modifier
+			remove_character_modifier = patron_god_roman_deity_01_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_neptune_deity_modifier
+				has_character_modifier = patron_god_roman_deity_02_modifier
 			}
-			remove_character_modifier = patron_neptune_deity_modifier
+			remove_character_modifier = patron_god_roman_deity_02_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_juno_deity_modifier
+				has_character_modifier = patron_god_juno_deity_modifier
 			}
-			remove_character_modifier = patron_juno_deity_modifier
+			remove_character_modifier = patron_god_juno_deity_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
@@ -907,16 +907,16 @@ LR_patron_doctrine_effect = {
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_mercury_deity_modifier
+				has_character_modifier = patron_god_mercury_deity_modifier
 			}
-			remove_character_modifier = patron_mercury_deity_modifier
+			remove_character_modifier = patron_god_mercury_deity_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_pax_deity_modifier
+				has_character_modifier = patron_god_pax_deity_modifier
 			}
-			remove_character_modifier = patron_pax_deity_modifier
+			remove_character_modifier = patron_god_pax_deity_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
@@ -934,49 +934,49 @@ LR_patron_doctrine_effect = {
 			add_piety = massive_piety_loss
 		}
 	}
-	## AMERICANISM
+	## HELLENISM
 	else_if = {
 		limit = { religion = religion:hellenism_religion }
 		if = {
 			limit = {
-				has_character_modifier = patron_zeus_deity_modifier
+				has_character_modifier = patron_god_zeus_deity_modifier
 			}
-			remove_character_modifier = patron_zeus_deity_modifier
+			remove_character_modifier = patron_god_zeus_deity_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_jefferson_modifier
+				has_character_modifier = patron_god_jefferson_modifier
 			}
-			remove_character_modifier = patron_jefferson_modifier
+			remove_character_modifier = patron_god_jefferson_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_franklin_modifier
+				has_character_modifier = patron_god_franklin_modifier
 			}
-			remove_character_modifier = patron_franklin_modifier
+			remove_character_modifier = patron_god_franklin_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_hamilton_modifier
+				has_character_modifier = patron_god_hamilton_modifier
 			}
-			remove_character_modifier = patron_hamilton_modifier
+			remove_character_modifier = patron_god_hamilton_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_madison_modifier
+				has_character_modifier = patron_god_madison_modifier
 			}
-			remove_character_modifier = patron_madison_modifier
+			remove_character_modifier = patron_god_madison_modifier
 			add_piety = massive_piety_loss
 		}
 		else_if = {
 			limit = {
-				has_character_modifier = patron_adams_modifier
+				has_character_modifier = patron_god_adams_modifier
 			}
-			remove_character_modifier = patron_adams_modifier
+			remove_character_modifier = patron_god_adams_modifier
 			add_piety = massive_piety_loss
 		}
 	}

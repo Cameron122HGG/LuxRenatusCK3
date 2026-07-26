@@ -4,7 +4,7 @@
 ### the actual title key in your mod's landed_titles files.
 ###
 ### VERIFY BEFORE USE: the exact field names below (is_shown, character, vassal,
-### effects.on_court_position_received/lost/invalidated) follow the standard court
+### effect.on_court_position_received/lost/invalidated) follow the standard court
 ### position pattern used since the Court Positions system was added, but I could not
 ### diff this against your installed game files in this session. Open
 ### game/common/court_positions/types/00_court_position_types.txt in your own CK3
@@ -14,9 +14,9 @@
 
 magister_officiorum_court_position = {
 	skill = diplomacy
-	vassal = no
-	minimum_age = 16
-	max_number = 1
+	is_landed = no
+	age >= 16
+	max_available_positions = 1
 
 	is_shown = {
 		liege = {
@@ -29,26 +29,29 @@ magister_officiorum_court_position = {
 		is_imprisoned = no
 	}
 
-	effects = {
+	effect = {
 		on_court_position_received = {
 			liege = { add_character_modifier = { modifier = court_diplomacy_bonus_modifier } }
 		}
-		on_court_position_lost = {
+		on_court_position_revoked = {
 			liege = { remove_character_modifier = court_diplomacy_bonus_modifier }
 		}
 		on_court_position_invalidated = {}
 	}
 
-	ai_will_do = {
-		value = 1
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
 	}
 }
 
 comes_sacrarum_largitionum_court_position = {
 	skill = stewardship
-	vassal = no
-	minimum_age = 16
-	max_number = 1
+	is_landed = no
+	age >= 16
+	max_available_positions = 1
 
 	is_shown = {
 		liege = {
@@ -61,24 +64,27 @@ comes_sacrarum_largitionum_court_position = {
 		is_imprisoned = no
 	}
 
-	effects = {
+	effect = {
 		on_court_position_received = {
 			liege = { add_gold = 1 }
 		}
-		on_court_position_lost = {}
+		on_court_position_revoked = {}
 		on_court_position_invalidated = {}
 	}
 
-	ai_will_do = {
-		value = 1
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
 	}
 }
 
 quaestor_sacri_palatii_court_position = {
 	skill = learning
-	vassal = no
-	minimum_age = 16
-	max_number = 1
+	is_landed = no
+	age >= 16
+	max_available_positions = 1
 
 	is_shown = {
 		liege = {
@@ -91,24 +97,27 @@ quaestor_sacri_palatii_court_position = {
 		is_imprisoned = no
 	}
 
-	effects = {
+	effect = {
 		on_court_position_received = {
 			liege = { add_prestige = 1 }
 		}
-		on_court_position_lost = {}
+		on_court_position_revoked = {}
 		on_court_position_invalidated = {}
 	}
 
-	ai_will_do = {
-		value = 1
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
 	}
 }
 
 primicerius_sacri_cubiculi_court_position = {
 	skill = intrigue
-	vassal = no
-	minimum_age = 16
-	max_number = 1
+	is_landed = no
+	age >= 16
+	max_available_positions = 1
 
 	is_shown = {
 		liege = {
@@ -121,26 +130,29 @@ primicerius_sacri_cubiculi_court_position = {
 		is_imprisoned = no
 	}
 
-	effects = {
+	effect = {
 		on_court_position_received = {
 			liege = { add_character_modifier = { modifier = court_intrigue_bonus_modifier } }
 		}
-		on_court_position_lost = {
+		on_court_position_revoked = {
 			liege = { remove_character_modifier = court_intrigue_bonus_modifier }
 		}
 		on_court_position_invalidated = {}
 	}
 
-	ai_will_do = {
-		value = 1
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
 	}
 }
 
 magister_militum_court_position = {
 	skill = martial
-	vassal = no
-	minimum_age = 16
-	max_number = 1
+	is_landed = no
+	age >= 16
+	max_available_positions = 1
 
 	is_shown = {
 		liege = {
@@ -153,18 +165,21 @@ magister_militum_court_position = {
 		is_imprisoned = no
 	}
 
-	effects = {
+	effect = {
 		on_court_position_received = {
 			liege = { add_character_modifier = { modifier = court_martial_bonus_modifier } }
 		}
-		on_court_position_lost = {
+		on_court_position_revoked = {
 			liege = { remove_character_modifier = court_martial_bonus_modifier }
 		}
 		on_court_position_invalidated = {}
 	}
 
-	ai_will_do = {
-		value = 1
+	ai_candidate_score = {
+		value = 100
+		add = scope:base_value
+		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
 	}
 }
 
