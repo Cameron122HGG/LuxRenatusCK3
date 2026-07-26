@@ -21,9 +21,7 @@ e_sacral_kingdom_gaul = { # Kampaku/Shogun
 	5622.1.1 = { holder = 1730028 }
 	5629.10.18 = { holder = 16707 }
 	5634.1.1 = { holder = 1730034 }
-	5639.1.1 = { holder = 16707 }
-	
-	5640.2.27 = {
+	5639.1.1 = {
 		holder = OttoMayor
 		government = gaul_administrative_government
 	} 
@@ -76,7 +74,9 @@ e_sacral_kingdom_gaul = { # Kampaku/Shogun
 	6060.1.1 = { 
 		holder = 205
 		government = gaul_administrative_government
-		add_title_law = { gallic_regency_succession_law }
+		effect = {
+			add_title_law = { gallic_regency_succession_law }
+		}
 	}
 	6066.3.15 = {
 		holder = 0
@@ -1058,10 +1058,6 @@ k_sacral_king_gaul_throne = { # Ceremonial King/Ten'nō
 	}
 	5481.1.1 = {
 		holder = 1730009
-		effect = {
-			add_title_law = single_heir_succession_law # Regency inherited separately
-			destroy_landless_title_no_tgp_dlc_effect = { DATE = 5481.1.1 }
-		}
 	}
 	5511.11.27 = {
 		holder = 1730014 
@@ -1079,7 +1075,11 @@ k_sacral_king_gaul_throne = { # Ceremonial King/Ten'nō
 		holder = 1730034 
 	}
 	5639.1.1 = {
-		holder = 1730039 
+		holder = 1730039
+		effect = {
+			add_title_law = single_heir_succession_law # Regency inherited separately
+			destroy_landless_title_no_tgp_dlc_effect = { DATE = 5639.1.1 }
+		} 
 	}
 	5658.11.27 = {
 		holder = 1730040 
