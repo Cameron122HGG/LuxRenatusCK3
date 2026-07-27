@@ -11,9 +11,8 @@ e_sacral_kingdom_gaul = { # Kampaku/Shogun
 		holder = 0 
 	}
 	5481.1.1 = { 
-		holder = 1730009 
-		succession_laws = { single_heir_succession_law }
-	} # King Cholodowig
+		holder = 1730009  # King Cholodowig
+	}
 	5511.11.27 = { holder = 1730014 } # King Ctholar
 	5561.1.1 = { holder = 1730018 } # Charibert
 	5567.12.1 = { holder = 1730025 } # Kusakabe
@@ -22,11 +21,9 @@ e_sacral_kingdom_gaul = { # Kampaku/Shogun
 	5622.1.1 = { holder = 1730028 }
 	5629.10.18 = { holder = 16707 }
 	5634.1.1 = { holder = 1730034 }
-	5639.1.1 = { holder = 16707 }
-	
-	5640.2.27 = { holder = OttoMayor
+	5639.1.1 = {
+		holder = OttoMayor
 		government = gaul_administrative_government
-		succession_laws = { gallic_regency_succession_law }
 	} 
 
 	
@@ -63,7 +60,6 @@ e_sacral_kingdom_gaul = { # Kampaku/Shogun
 					name = administrative_ui_special_title
 					value = title:k_sacral_king_gaul_throne
 				}
-				add_realm_law = gallic_regency_succession_law
 			}
 		}
 	}
@@ -78,7 +74,9 @@ e_sacral_kingdom_gaul = { # Kampaku/Shogun
 	6060.1.1 = { 
 		holder = 205
 		government = gaul_administrative_government
-		succession_laws = { gallic_regency_succession_law }
+		effect = {
+			add_title_law = { gallic_regency_succession_law }
+		}
 	}
 	6066.3.15 = {
 		holder = 0
@@ -223,31 +221,31 @@ d_poitou = {
 		liege = e_sacral_kingdom_gaul
 		government = gaul_administrative_government 
 	}
-	5464.1.1 = { holder = 1712280 }
-	5498.1.1 = { holder = 1712281 }
-	5534.1.1 = { holder = 1712282 }
-	5547.1.1 = { holder = 1712283 }
-	5561.1.1 = { holder = 1712284 }
-	5572.1.1 = { holder = 1712285 }
-	5580.1.1 = { holder = 11515 }
-	5628.1.1 = { holder = 11516 }
-	5657.1.1 = { holder = 1712286 }
-	5686.1.1 = { holder = 1712287 }
-	5727.1.1 = { holder = 1712288 }
-	5780.1.1 = { holder = 1712289 }
-	5786.1.1 = { holder = 1712290 }
-	5830.1.1 = { holder = 1712291 }
-	5876.1.1 = { holder = 1712292 }
-	5881.1.1 = { holder = 1712293 }
-	5923.1.1 = { holder = 1712294 } 
-	5937.1.1 = { holder = 1712295 }
-	5958.1.1 = { holder = 1712296 }
-	5994.1.1 = { holder = 1712297 }
-	6008.1.1 = { holder = 1712298 }
-	6015.1.1 = { holder = 1712299 }
-	6022.1.1 = { holder = 1712300 }
-	6033.1.1 = { holder = 1712301 }
-	6060.1.1 = {
+	5464.1.2 = { holder = 1712280 }
+	5498.1.2 = { holder = 1712281 }
+	5534.1.2 = { holder = 1712282 }
+	5547.1.2 = { holder = 1712283 }
+	5561.1.2 = { holder = 1712284 }
+	5572.1.2 = { holder = 1712285 }
+	5580.1.2 = { holder = 11515 }
+	5628.1.2 = { holder = 11516 }
+	5657.1.2 = { holder = 1712286 }
+	5686.1.2 = { holder = 1712287 }
+	5727.1.2 = { holder = 1712288 }
+	5780.1.2 = { holder = 1712289 }
+	5786.1.2 = { holder = 1712290 }
+	5830.1.2 = { holder = 1712291 }
+	5876.1.2 = { holder = 1712292 }
+	5881.1.2 = { holder = 1712293 }
+	5923.1.2 = { holder = 1712294 } 
+	5937.1.2 = { holder = 1712295 }
+	5958.1.2 = { holder = 1712296 }
+	5994.1.2 = { holder = 1712297 }
+	6008.1.2 = { holder = 1712298 }
+	6015.1.2 = { holder = 1712299 }
+	6022.1.2 = { holder = 1712300 }
+	6033.1.2 = { holder = 1712301 }
+	6060.1.2 = {
 		government = gaul_administrative_government
 		holder = 234
 		liege = e_sacral_kingdom_gaul
@@ -825,8 +823,8 @@ k_arles = {
 	6033.1.1 = { holder = 1712049 }
 	6060.1.1 = {
 		holder = 208
-		liege = e_sacral_kingdom_gaul
-		government = gaul_administrative_government
+		liege = 0
+		government = roman_administrative_government
 	}
 	6066.3.15 = {
 		holder = 0
@@ -970,16 +968,16 @@ d_savoie = {
 	6178.1.1 = { change_development_level = 24 }
 	6051.7.1 = {
 		holder = 236
-		#liege = e_sacral_kingdom_gaul
-		#government = _feudal_government
+		liege = 0
+		government = western_feudal_government
 	}
 }
 
 d_dauphine = {
 	6052.2.15 = {
 		holder = 219
-		#liege = e_sacral_kingdom_gaul
-		#government = gaul_administrative_government
+		liege = 0
+		government = western_administrative_government
 	}
 
 }
@@ -1060,7 +1058,6 @@ k_sacral_king_gaul_throne = { # Ceremonial King/Ten'nō
 	}
 	5481.1.1 = {
 		holder = 1730009
-		succession_law = primogeniture 
 	}
 	5511.11.27 = {
 		holder = 1730014 
@@ -1078,7 +1075,11 @@ k_sacral_king_gaul_throne = { # Ceremonial King/Ten'nō
 		holder = 1730034 
 	}
 	5639.1.1 = {
-		holder = 1730039 
+		holder = 1730039
+		effect = {
+			add_title_law = single_heir_succession_law # Regency inherited separately
+			destroy_landless_title_no_tgp_dlc_effect = { DATE = 5639.1.1 }
+		} 
 	}
 	5658.11.27 = {
 		holder = 1730040 
@@ -1914,7 +1915,7 @@ d_burgundy = {
 	}
 	6066.3.15 = {
 		holder = RichardBoudinid
-		#liege = e_sacral_kingdom_gaul
+		liege = 0
 		government = western_feudal_government
 	}
 	
@@ -1952,7 +1953,7 @@ c_nevers = {
 	}
 	6066.3.15 = {
 		holder = 210
-		#liege = e_sacral_kingdom_gaul
+		liege = d_burgundy
 		government = western_feudal_government
 	}
 }
@@ -1973,7 +1974,7 @@ c_tonnerrois = {
 	}
 	6066.3.15 = {
 		holder = GuillaumeIvera
-		#liege = e_sacral_kingdom_gaul
+		liege = d_burgundy
 		government = western_feudal_government
 	}
 }
@@ -1994,7 +1995,7 @@ c_macon = {
 	}
 	6066.3.15 = {
 		holder = Guy_IIII_Ivera
-		#liege = d_burgundy
+		liege = d_burgundy
 		government = western_feudal_government
 	}
 }
@@ -2166,11 +2167,11 @@ d_anjou = {
 
 }
 
-c_vendome = {
+d_orleans = {
 	5866.1.1 = {
 		holder = Bouchard_II_Bouchard
 		government = gaul_administrative_government
-		liege = k_neustria
+		liege = e_sacral_kingdom_gaul
 	}
 	5905.1.1 = {
 		holder = Bouchard_III_Bouchard
@@ -2185,8 +2186,39 @@ c_vendome = {
 	6016.1.1 = {
 		holder = Bouchard_V_Bouchard
 	}
-	6066.3.15 = {
+	6056.1.1 = {
 		holder = Renaud_II_Bouchard
+	}
+	6066.3.15 = {
+		liege = 0
+		government = western_feudal_government
+	}
+}
+
+c_vendome = {
+	5866.1.1 = {
+		holder = Bouchard_II_Bouchard
+		government = gaul_administrative_government
+		liege = d_orleans
+	}
+	5905.1.1 = {
+		holder = Bouchard_III_Bouchard
+	}
+	5955.1.1 = {
+		holder = Bouchard_IV_Bouchard
+		government = gaul_administrative_government	
+	}
+	6007.1.1 = {
+		holder = Renaud_I_Bouchard
+	}
+	6016.1.1 = {
+		holder = Bouchard_V_Bouchard
+	}
+	6056.1.1 = {
+		holder = Renaud_II_Bouchard
+	}
+	6066.3.15 = {
+		liege = 0
 		government = western_feudal_government
 	}
 }
