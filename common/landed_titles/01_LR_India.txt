@@ -426,6 +426,7 @@ e_punjab = {
 			}
 		}
 	}
+	
 	k_sindh = {
 		color = { 225 135 20 }
 		capital = c_debul
@@ -669,6 +670,7 @@ e_punjab = {
 			}
 		}
 	}	
+	
 	k_kashmir = {
 		color = { 245 155 31 }
 		capital = c_kasmira
@@ -5644,23 +5646,27 @@ e_rajastan = {
 
 }
 
-h_dar_al_islam = {
-	color = { 20 160 30 }
-	capital = c_mecca
+h_india = {		# Titular, created by special decision only if entire India is united by a native
+	color = { 255 110 0 }
+	capital = c_delhi
 
-	definite_form = yes
-	no_automatic_claims = yes
-	always_follows_primary_heir = yes
-	destroy_if_invalid_heir = yes
-	can_be_named_after_dynasty = no
-	can_use_nomadic_naming = no
 	can_create = {
-		has_global_variable = created_dar_al_islam
+		rule_title_creation_imperial_power_projection_title_creation_trigger = yes
 	}
-	can_destroy = { }
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
 }
 
-h_india = {
+
+
+
+
+
+
+
+h_greek_india = {
 	color = { 153 0 255 }
 	capital = c_magadha
 	definite_form = yes
@@ -5673,4 +5679,6 @@ h_india = {
 		add = @always_primary_score
 	}
 }
+
+
 
