@@ -1505,10 +1505,11 @@ middle_east_decisions.1102 = {
 				get_title = title:h_dar_al_islam
 			}
 		}
-		if = {
-			limit = { exists = var:old_hof_title }
-			destroy_title = var:old_hof_title
-			remove_variable = old_hof_title
+		every_held_title = {
+			limit = {
+				is_in_list = old_hof_title
+			}
+			prev = { destroy_title = prev }
 		}
 	}
 	
