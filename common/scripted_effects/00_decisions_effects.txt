@@ -1595,7 +1595,7 @@ convert_whole_realm_to_feudalism_effect = {
 				}
 			}
 		}
-		change_government = clan_government
+		change_government = iqta_government
 	}
 	##Liege has feudal? Convert to feudal!
 	else_if = {
@@ -1609,7 +1609,7 @@ convert_whole_realm_to_feudalism_effect = {
 				}
 			}
 		}
-		change_government = feudal_government
+		change_government = western_feudal_government
 	}
 	##You're an independent Japanese Heritage Character? Convert to Soryo!
 	else_if = {
@@ -1642,10 +1642,10 @@ convert_whole_realm_to_feudalism_effect = {
 			top_liege = this
 			faith = { religion_tag = islam_religion }
 		}
-		change_government = clan_government
+		change_government = iqta_government
 	}
 	##You're an independent anything else? Convert to feudal!
-	else = { change_government = feudal_government }
+	else = { change_government = western_feudal_government }
 	if = {
 		limit = {
 			government_has_flag = government_is_tribal
@@ -1782,7 +1782,7 @@ convert_whole_realm_to_feudalism_effect = {
 			}
 			every_vassal_or_below = {
 				limit = { government_has_flag = government_is_tribal }
-				change_government = clan_government
+				change_government = iqta_government
 				#Nuke tribal authorities.
 				if = {
 					limit = { has_realm_law = tribal_authority_0 }
@@ -1812,7 +1812,7 @@ convert_whole_realm_to_feudalism_effect = {
 		else = {
 			every_vassal_or_below = {
 				limit = { government_has_flag = government_is_tribal }
-				change_government = feudal_government
+				change_government = western_feudal_government
 				#Nuke tribal authorities.
 				if = {
 					limit = { has_realm_law = tribal_authority_0 }
