@@ -1050,7 +1050,7 @@ ep3_become_landed_transfer_effect = {
 		switch = {
 			trigger = scope:old_government
 			flag:feudal = {
-				change_government = feudal_government
+				change_government = western_feudal_government
 			}
 			flag:republic = {
 				change_government = republic_government
@@ -1124,7 +1124,7 @@ ep3_become_landed_transfer_effect = {
 						limit = { ep3_is_clan_inclined_trigger = yes }
 						change_government = iqta_government
 					}
-					else = { change_government = feudal_government }
+					else = { change_government = western_feudal_government }
 				}
 			}
 			flag:steppe_admin = {
@@ -1143,7 +1143,7 @@ ep3_become_landed_transfer_effect = {
 					}
 					change_government = japan_administrative_government
 				}
-				else = { change_government = feudal_government }
+				else = { change_government = western_feudal_government }
 			}
 		}
 	}
@@ -1226,7 +1226,7 @@ ep3_become_landed_transfer_effect = {
 					}
 					change_government = iqta_government
 				}
-				else = { change_government = feudal_government }
+				else = { change_government = western_feudal_government }
 			}
 			## Tribal.
 			else_if = {
@@ -1284,7 +1284,7 @@ ep3_become_landed_transfer_effect = {
 			}
 			## Else feudal.
 			else = {
-				change_government = feudal_government
+				change_government = western_feudal_government
 			}
 		}
 		# Ennobled adventurer penalties
@@ -4063,7 +4063,7 @@ admin_change_government_effect = {
 				}
 			}
 		}
-		change_government = feudal_government
+		change_government = western_feudal_government
 	}
 	# If you're an independent Muslim ruler - Become clan!
 	else_if = {
@@ -4074,7 +4074,7 @@ admin_change_government_effect = {
 		change_government = iqta_government
 	}
 	# If you're an independent ruler with anything else - Become feudal!
-	else = { change_government = feudal_government }
+	else = { change_government = western_feudal_government }
 
 	# Finally, let's double-check and see if there are any remaining family titles we should destroy
 	if = {
@@ -9662,7 +9662,7 @@ admin_government_reset_effect = {
 			change_government = iqta_government
 		}
 		### FEUDAL - fallback playable case
-		else = { change_government = feudal_government }
+		else = { change_government = western_feudal_government }
 	}
 }
 
