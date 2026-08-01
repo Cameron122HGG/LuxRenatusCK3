@@ -78,11 +78,11 @@ gallo_roman = { # Gallic
 	}
 }
 
-afro_roman = {
-	parents = { roman }
+afro_roman = { # Afri
+	parents = { roman carthaginian }
 	#history_loc_override = romano_germanic_heritage_loc
 
-	color = { 39 230 44 }
+	color = { 145 20 50 }
 	created = 5476.1.1
 	ethos = ethos_stoic
 	heritage = heritage_latin
@@ -91,24 +91,26 @@ afro_roman = {
 	head_determination = head_determination_domain
 	traditions = {
 		tradition_formation_fighting
+		tradition_warriors_of_the_dry
 		tradition_legalistic
-		tradition_stand_and_fight
-		tradition_hereditary_hierarchy
+		tradition_ce1_ritual_washing
+	}
+	dlc_tradition = {
+		trait = lux_tradition_western_roman
+		requires_dlc_flag = roads_to_power
+		fallback = tradition_hereditary_hierarchy
 	}
    
 	name_list = name_list_roman #romano german
    
-	coa_gfx = { roman_group_coa_gfx } 
-	building_gfx = { mediterranean_building_gfx } 
-	clothing_gfx = { western_clothing_gfx } 
-	unit_gfx = { eastern_unit_gfx } 
+	coa_gfx = { roman_group_coa_gfx }
+	building_gfx = { mediterranean_building_gfx }
+	clothing_gfx = { western_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
 	house_coa_frame = house_frame_05
 
 	ethnicities = {
-		5 = caucasian_blond
-		30 = caucasian_ginger
-		35 = caucasian_brown_hair
-		30 = caucasian_dark_hair
+		10 = mediterranean
    }
 }
 
@@ -128,7 +130,12 @@ romano_hispanic = { # Hispan
 	   tradition_legalistic
 	   tradition_hill_dwellers
 	   tradition_horse_breeder
-   }
+	}
+	dlc_tradition = {
+		trait = lux_tradition_western_roman
+		requires_dlc_flag = roads_to_power
+		fallback = tradition_hereditary_hierarchy
+	}
   
    name_list = name_list_romano_hispanic #Romano-Hispanic
   
@@ -164,7 +171,11 @@ romano_gothic = { # Valagothic
 		tradition_formation_fighting
 		tradition_poetry
 	}
-
+	dlc_tradition = {
+		trait = lux_tradition_western_roman
+		requires_dlc_flag = roads_to_power
+		fallback = tradition_hereditary_hierarchy
+	}
 	dlc_tradition = {
 		trait = tradition_fp2_ritualised_friendship
 		requires_dlc_flag = the_fate_of_iberia
@@ -185,7 +196,7 @@ romano_gothic = { # Valagothic
 	}
 }
 
-romano_briton = {
+romano_briton = { # Bretan
 	parents = { roman brythonic }
 	#history_loc_override = romano_british_heritage_loc
 
@@ -201,6 +212,11 @@ romano_briton = {
 		tradition_zealous_people
 		tradition_forest_fighters
 		tradition_by_the_sword
+	}
+	dlc_tradition = {
+		trait = lux_tradition_western_roman
+		requires_dlc_flag = roads_to_power
+		fallback = tradition_hereditary_hierarchy
 	}
 	
 	name_list = name_list_romano_briton
@@ -251,7 +267,7 @@ dacian = {
 	}
 }
 ###Polish/Silesian-Roman
-roman_slavic = {
+roman_slavic = { # Vacinian
 	color = { 211 88 27 }
 	
 	parents = { roman polish }
@@ -284,6 +300,4 @@ roman_slavic = {
 		15 = slavic_dark_hair
 	}
 }
-
-
 
