@@ -5,8 +5,9 @@
 	doctrine_background_icon = core_tenet_banner_christian.dds
 	doctrine = graeco_roman_hostility_doctrine
 	doctrine = graeco_roman_special_hostility_doctrine
-	doctrine = lux_doctrine_pantheon_solar
 
+	#Pantheon
+	doctrine = lux_doctrine_pantheon_solar
 
 	#Main Group
 	doctrine = doctrine_henotheist
@@ -16,38 +17,37 @@
 	doctrine = doctrine_theocracy_temporal
 
 	#Marriage
-	doctrine = doctrine_monogamy
-	doctrine = doctrine_divorce_approval
+	doctrine = doctrine_concubines
+	doctrine = doctrine_divorce_allowed
 	doctrine = doctrine_bastardry_legitimization
 	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
 
 	#Crimes
-	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_homosexuality_accepted
 	doctrine = doctrine_adultery_men_shunned
 	doctrine = doctrine_adultery_women_crime
 	doctrine = doctrine_kinslaying_close_kin_crime
-	doctrine = doctrine_deviancy_crime
+	doctrine = doctrine_deviancy_shunned
 	doctrine = doctrine_witchcraft_crime
 
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_taxation
 	doctrine = doctrine_clerical_gender_male_only
-	doctrine = doctrine_clerical_marriage_disallowed
-	doctrine = doctrine_clerical_succession_spiritual_appointment
-
-	#Special Doctrine for Christian Syncretism
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
 
 	#Allow pilgrimages
 	doctrine = doctrine_pilgrimage_encouraged
 
 	#Funeral tradition
-	doctrine = doctrine_funeral_stoic
+	doctrine = doctrine_funeral_cremation
+
 	#Coronation tradition
-	doctrine = doctrine_imperial_anointment
+	doctrine = doctrine_anointment_permitted
 
 	traits = {
-		virtues = { forgiving compassionate chaste }
-		sins = { vengeful sadistic lustful }
+		virtues = { generous just temperate }
+		sins = { greedy arbitrary gluttonous }
 	}
 
 	reserved_male_names = {
@@ -62,21 +62,18 @@
 	}
 
 	holy_order_names = {
-		{ name = "holy_order_knights_of_the_chalice" }
-		{ name = "holy_order_order_of_the_holy_communion" }
-		{ name = "holy_order_knights_of_the_first_gospel" }
-		{ name = "holy_order_guardians_of_the_shroud" }
-		{ name = "holy_order_knights_of_the_reliquary" }
-		{ name = "holy_order_warriors_of_the_cross" }
-		{ name = "holy_order_christian" coat_of_arms = "ho_christian" }
+		{ name = "holy_order_guardians_of_divinerealm" }
+		{ name = "holy_order_faithful_of_highgod" }
+		{ name = "holy_order_warriors_of_the_symbol" }
 	}
 
-	holy_order_maa = { teutonic_knights }
+	holy_order_maa = { praetorian }
 
 	localization = {
 		#HighGod
 		HighGodName = solar_high_god_name
 		HighGodName2 = solar_high_god_name_2
+		HighGodName3 = solar_high_god_name_2
 		HighGodNamePossessive = solar_high_god_name_possessive
 		HighGodNameSheHe = CHARACTER_SHEHE_HE
 		HighGodHerselfHimself = CHARACTER_HIMSELF
@@ -235,7 +232,7 @@
 		GHWNamePlural = ghw_crusades
 	}
 	
-	piety_icon_group = "christian"
+	piety_icon_group = "pagan"
 
 	faiths = {
 		sol_imperial = {
@@ -249,22 +246,24 @@
 			holy_site = carthage
 			holy_site = emesa
 
-			#Special Tolerance
+			# Pantheon 
 			doctrine = lux_doctrine_pantheon_solar
-			#Soul
+
+			# Faith Aspects
 			doctrine = lux_doctrine_statist_soul
+
 			#Tenets
 			doctrine = tenet_sun_worship
 			doctrine = tenet_pentarchy
 			doctrine = tenet_monasticism
 
 			holy_order_names = {
-				{ name = "holy_order_brotherhood_of_the_holy_sepulchre" }
-				{ name = "holy_order_knights_of_the_first_patrirchate" }
-				{ name = "holy_order_order_of_the_holy_virgin" }
+				{ name = "holy_order_legio_lux_invicta" }
+				{ name = "holy_order_ordo_solis_invicti" }
+				{ name = "holy_order_juliani" }
 			}
 
-			localization = { # Utilizes the 'West Christian' Saints, shared by Catholics and Orthodox
+			localization = {
 				#FertilityGod
 				FertilityGodName = sol_imperial_fertility_god_name
 				FertilityGodNamePossessive = sol_imperial_fertility_god_name_possessive
@@ -313,168 +312,6 @@
 			}			
 		}
 
-		sol_sahara = {
-			color = { 182 120 0 }
-			religious_head = d_sol_sahara
-			icon = sol_sahara
-
-			holy_site = el_fasher
-			holy_site = jerusalem
-			holy_site = siwa
-			holy_site = carthage
-			holy_site = napata
-			#Special Tolerance
-
-			#Main Group
-			doctrine = doctrine_pluralism_pluralistic
-			#Soul
-			doctrine = lux_doctrine_messianic_soul
-			doctrine = doctrine_concubines
-
-			#Clerical
-			doctrine = doctrine_spiritual_head
-			doctrine = doctrine_theocracy_temporal
-
-			#Tenets
-			doctrine = tenet_sun_worship
-			doctrine = tenet_ancestor_worship
-			doctrine = tenet_communal_identity
-
-			holy_order_names = {
-				{ name = "holy_order_order_of_saint_anthony" }
-			}
-		}
-
-		sol_tsahay = {
-			color = { 163 72 116 }
-			icon = sol_tsahay
-			holy_site = siwa
-			holy_site = kaffa
-			holy_site = antioch
-			holy_site = aksum
-			holy_site = napata
-			#Special Tolerance
-
-			doctrine = lux_doctrine_archaic_ascendant
-			doctrine = lux_doctrine_martial_soul
-
-			#Main Group
-			doctrine = doctrine_pluralism_pluralistic
-
-			doctrine = doctrine_concubines
-
-			#Tenets
-			doctrine = tenet_sun_worship
-			doctrine = tenet_warmonger
-			doctrine = tenet_communal_identity
-
-			holy_order_names = {
-				{ name = "holy_order_order_of_saint_anthony" }
-			}
-
-			localization = {
-				#HighGod
-				HighGodName = sol_tsahay_high_god_name
-				HighGodName2 = sol_tsahay_high_god_name_2
-				HighGodNamePossessive = sol_tsahay_high_god_name_possessive
-				HighGodNameSheHe = CHARACTER_SHEHE_HE
-				HighGodHerselfHimself = CHARACTER_HIMSELF
-				HighGodHerHis = CHARACTER_HERHIS_HIS
-				HighGodNameAlternate = sol_tsahay_high_god_name_alternate
-				HighGodNameAlternatePossessive = sol_tsahay_high_god_name_alternate_possessive
-
-				#Creator
-				CreatorName = sol_tsahay_creator_god_name
-				CreatorNamePossessive = sol_tsahay_creator_god_name_possessive
-				CreatorSheHe = CHARACTER_SHEHE_HE
-				CreatorHerHis = CHARACTER_HERHIS_HIS
-				CreatorHerHim = CHARACTER_HERHIM_HIM
-
-				#HealthGod
-				HealthGodName = sol_tsahay_health_god_name
-				HealthGodNamePossessive = sol_tsahay_health_god_name_possessive
-				HealthGodSheHe = CHARACTER_SHEHE_HE
-				HealthGodHerHis = CHARACTER_HERHIS_HIS
-				HealthGodHerHim = CHARACTER_HERHIM_HIM
-				
-				#FertilityGod
-				FertilityGodName = sol_tsahay_fertility_god_name
-				FertilityGodNamePossessive = sol_tsahay_fertility_god_name_possessive
-				FertilityGodSheHe = CHARACTER_SHEHE_HE
-				FertilityGodHerHis = CHARACTER_HERHIS_HIS
-				FertilityGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WealthGod
-				WealthGodName = sol_tsahay_wealth_god_name
-				WealthGodNamePossessive = sol_tsahay_wealth_god_name_possessive
-				WealthGodSheHe = CHARACTER_SHEHE_HE
-				WealthGodHerHis = CHARACTER_HERHIS_HIS
-				WealthGodHerHim = CHARACTER_HERHIM_HIM
-
-				#HouseholdGod
-				HouseholdGodName = sol_tsahay_household_god_name
-				HouseholdGodNamePossessive = sol_tsahay_household_god_name_possessive
-				HouseholdGodSheHe = CHARACTER_SHEHE_HE
-				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
-				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
-
-				#FateGod
-				FateGodName = sol_tsahay_fate_god_name
-				FateGodNamePossessive = sol_tsahay_fate_god_name_possessive
-				FateGodSheHe = CHARACTER_SHEHE_HE
-				FateGodHerHis = CHARACTER_HERHIS_HIS
-				FateGodHerHim = CHARACTER_HERHIM_HIM
-
-				#KnowledgeGod
-				KnowledgeGodName = sol_tsahay_knowledge_god_name
-				KnowledgeGodNamePossessive = sol_tsahay_knowledge_god_name_possessive
-				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
-				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
-				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WarGod
-				WarGodName = sol_tsahay_war_god_name
-				WarGodNamePossessive = sol_tsahay_war_god_name_possessive
-				WarGodSheHe = CHARACTER_SHEHE_HE
-				WarGodHerHis = CHARACTER_HERHIS_HIS
-				WarGodHerHim = CHARACTER_HERHIM_HIM
-
-				#TricksterGod
-				TricksterGodName = sol_tsahay_trickster_god_name
-				TricksterGodNamePossessive = sol_tsahay_trickster_god_name_possessive
-				TricksterGodSheHe = CHARACTER_SHEHE_SHE
-				TricksterGodHerHis = CHARACTER_HERHIS_HER
-				TricksterGodHerHim = CHARACTER_HERHIM_HER
-
-				#NightGod
-				NightGodName = sol_tsahay_night_god_name
-				NightGodNamePossessive = sol_tsahay_night_god_name_possessive
-				NightGodSheHe = CHARACTER_SHEHE_SHE
-				NightGodHerHis = CHARACTER_HERHIS_HER
-				NightGodHerHim = CHARACTER_HERHIM_HER
-
-				#WaterGod
-				WaterGodName = sol_tsahay_water_god_name
-				WaterGodNamePossessive = sol_tsahay_water_god_name_possessive
-				WaterGodSheHe = CHARACTER_SHEHE_HE
-				WaterGodHerHis = CHARACTER_HERHIS_HIS
-				WaterGodHerHim = CHARACTER_HERHIM_HIM
-
-				#GoodGod
-				GoodGodNames = {
-					sol_tsahay_high_god_name
-				}
-				DevilName = sol_tsahay_devil_name
-				DevilNamePossessive = sol_tsahay_devil_name_possessive
-				DevilSheHe = CHARACTER_SHEHE_THEY
-				DevilHerHis = CHARACTER_HERHIS_THEIR
-				DevilHerselfHimself = CHARACTER_THEMSELF
-				EvilGodNames = {
-					sol_tsahay_devil_name
-				}
-			}
-		}
-
 		sol_apollo = {
 			color = { 209 209 150 }
 			icon = sol_apollo
@@ -486,33 +323,57 @@
 			holy_site = siwa
 			holy_site = antioch
 
-			#Special Tolerance
+			reserved_male_names = {
+				Alexandros Amasis Amenemhat Amenmeses Amenophis Ammonios Amyrtaeus Antiochos Archelaus Cleomenes Cheops Chephren Merikheres Menes Menkheres Neferkheres Nerikheres Osokhor Ozymandias Philippos Ramesses Seleukos Serapion Sesostris Sethos Thutmosis 
+				}
+			reserved_female_names = {
+				Alexandra Arsinoe Aset Berenike Cleopatra Eurydice Hatshepsut Hetepheres Meresankh Meritamen Meritites Nefertites Nitocris Parysatis Philippa Roxana Sitamen Sothis Stateira Tausret Theoxena
+				}
+			
+			#Faith Aspects
 			doctrine = lux_doctrine_archaic_ascendant
 			doctrine = lux_doctrine_statist_soul
+
+			#Tenets
+			doctrine = tenet_sun_worship
+			doctrine = tenet_divine_marriage
+			doctrine = tenet_household_gods
 
 			#Main Group
 			doctrine = doctrine_pluralism_pluralistic
 
+			#Marriage
 			doctrine = doctrine_concubines
 			doctrine = doctrine_consanguinity_unrestricted
+
+			#Crimes
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_adultery_men_shunned
+			doctrine = doctrine_adultery_women_shunned
+			doctrine = doctrine_kinslaying_close_kin_crime
+			doctrine = doctrine_deviancy_shunned
+			doctrine = doctrine_witchcraft_shunned
 
 			#Clerical
 			doctrine = doctrine_spiritual_head
 			doctrine = doctrine_theocracy_temporal
+			doctrine = doctrine_clerical_succession_spiritual_appointment
 
-			#Tenets
-			doctrine = tenet_sun_worship
-			doctrine = tenet_astrology
-			doctrine = tenet_ritual_celebrations
+			#Funeral tradition
+			doctrine = doctrine_funeral_mummification
+
+			#Coronation tradition
+			doctrine = doctrine_no_anointment
 
 			holy_order_names = {
-				{ name = "holy_order_order_of_saint_anthony" }
+				{ name = "holy_order_apollon_helios_agema" }
 			}
 
 			localization = {
 				#HighGod
 				HighGodName = sol_apollo_high_god_name
 				HighGodName2 = sol_apollo_high_god_name_2
+				HighGodName3 = sol_apollo_high_god_name_2
 				HighGodNamePossessive = sol_apollo_high_god_name_possessive
 				HighGodNameSheHe = CHARACTER_SHEHE_HE
 				HighGodHerselfHimself = CHARACTER_HIMSELF
@@ -619,37 +480,58 @@
 		sol_boreas = {
 			color = { 106 190 190 }
 			icon = sol_boreas
+
 			holy_site = constantinople
 			holy_site = sarysyn
 			holy_site = kerch
 			holy_site = sinope
 			holy_site = olvia
 
-			#Special Tolerance
+			#Faith Aspect
 			doctrine = lux_doctrine_folk_ascendant
 			doctrine = lux_doctrine_statist_soul
 
-			doctrine = doctrine_concubines
-
-			#Clerical
-			doctrine = doctrine_spiritual_head
-			doctrine = doctrine_theocracy_temporal
+			doctrine = unreformed_faith_doctrine
 
 			#Tenets
 			doctrine = tenet_sun_worship
 			doctrine = tenet_ritual_celebrations
 			doctrine = tenet_warmonger
 
+			#Main Group
+			doctrine = doctrine_no_head
+			doctrine = doctrine_pluralism_pluralistic
+
+			#Marriage
+			doctrine = doctrine_concubines
+			doctrine = doctrine_consanguinity_cousins
+
+			#Crimes
+			doctrine = doctrine_homosexuality_crime
+			doctrine = doctrine_adultery_men_crime
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_kinslaying_close_kin_crime
+			doctrine = doctrine_deviancy_crime
+			doctrine = doctrine_witchcraft_crime
+
+			#Clerical Functions
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_clerical_gender_either
+			doctrine = doctrine_clerical_marriage_allowed
+			doctrine = doctrine_clerical_succession_temporal_appointment
+
+			#Funeral tradition
+			doctrine = doctrine_funeral_sky_burial
+
 			holy_order_names = {
-				{ name = "holy_order_brotherhood_of_the_holy_sepulchre" }
-				{ name = "holy_order_knights_of_the_first_patrirchate" }
-				{ name = "holy_order_order_of_the_holy_virgin" }
+				{ name = "holy_order_sacred_band_of_boreas" }
 			}
 
 			localization = {
 				#HighGod
 				HighGodName = sol_boreas_high_god_name
 				HighGodName2 = sol_boreas_high_god_name_2
+				HighGodName3 = sol_boreas_high_god_name_2
 				HighGodNamePossessive = sol_boreas_high_god_name_possessive
 				HighGodNameSheHe = CHARACTER_SHEHE_HE
 				HighGodHerselfHimself = CHARACTER_HIMSELF
@@ -794,45 +676,53 @@
 			holy_site = constantinople
 			holy_site = antioch
 
-			##Faith Aspects
-			doctrine = lux_doctrine_statist_soul
+			#Faith Aspects
 			doctrine = lux_doctrine_christian_ascendant
-
-			#Main Group
-			doctrine = doctrine_pluralism_righteous
-
-			#Marriage
-			doctrine = doctrine_divorce_approval
-
-			#Crimes
-			doctrine = doctrine_kinslaying_any_dynasty_member_crime #A dramatic crime under medieval Irish law.
-
-			#Clerical Functions
-			doctrine = doctrine_spiritual_head
-			doctrine = doctrine_theocracy_temporal
-			doctrine = doctrine_clerical_function_alms_and_pacification
-			doctrine = doctrine_clerical_succession_spiritual_appointment
-			doctrine = doctrine_clerical_marriage_allowed
+			doctrine = lux_doctrine_statist_soul
 
 			#Tenets
 			doctrine = tenet_sun_worship
 			doctrine = tenet_communion
 			doctrine = tenet_monasticism
-			
-			doctrine = doctrine_funeral_bewailment # Keening
 
+			#Main Group
+			doctrine = doctrine_spiritual_head
+			doctrine = doctrine_pluralism_righteous
+			doctrine = doctrine_theocracy_temporal
+
+			#Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_adultery_men_shunned
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_kinslaying_close_kin_crime
+			doctrine = doctrine_deviancy_crime
+			doctrine = doctrine_witchcraft_crime
+
+			#Marriage
+			doctrine = doctrine_monogamy
+			doctrine = doctrine_divorce_approval
+			
+			#Clerical Functions
+			doctrine = doctrine_clerical_function_taxation
+			doctrine = doctrine_clerical_succession_spiritual_appointment
+			doctrine = doctrine_clerical_marriage_allowed
+
+			#Funeral Tradition
+			doctrine = doctrine_funeral_stoic
+
+			#Coronation Tradition
+			doctrine = doctrine_imperial_anointment
 
 			holy_order_names = {
-				{ name = "holy_order_brotherhood_of_the_holy_sepulchre" }
-				{ name = "holy_order_knights_of_the_first_patrirchate" }
-				{ name = "holy_order_order_of_the_holy_virgin" }
+				{ name = "holy_order_ordo_christi_illuminatoris" }
+				{ name = "holy_order_order_of_saint_georgius" }
 			}
 
 			localization = {
 				#HighGod
 				HighGodName = sol_christ_high_god_name
 				HighGodName2 = sol_christ_high_god_name_2
-				#HighGodName3 = sol_christ_high_god_name_3
+				HighGodName3 = sol_christ_high_god_name_3
 				HighGodNamePossessive = sol_christ_high_god_name_possessive
 				HighGodNameSheHe = CHARACTER_SHEHE_HE
 				HighGodHerselfHimself = CHARACTER_HIMSELF
@@ -939,414 +829,6 @@
 			}
 		}
 
-		sol_norse = {
-			color = { 208 208 149 }
-			icon = sol_norse
-			reformed_icon = sol_norse_reformed
-
-			holy_site = uppsala
-			holy_site = novgorod
-			holy_site = rugen
-			holy_site = konugardr
-			holy_site = constantinople
-
-			doctrine = lux_doctrine_folk_ascendant
-			doctrine = lux_doctrine_statist_soul
-			
-			doctrine = unreformed_faith_doctrine
-
-			doctrine = doctrine_concubines
-
-			doctrine = tenet_sun_worship
-			# Gruesome Festivals, else Human Sacrifice. #MORE BURNING
-			doctrine_selection_pair = {
-				requires_dlc_flag = the_northern_lords
-				doctrine = tenet_gruesome_festivals
-				fallback_doctrine = tenet_human_sacrifice
-			}
-			# Bhakti, else Ancestor Worship.
-			doctrine_selection_pair = {
-				requires_dlc_flag = the_northern_lords
-				doctrine = tenet_bhakti
-				fallback_doctrine = tenet_ancestor_worship
-			}
-			
-			localization = {
-				#HighGod
-				HighGodName = sol_norse_high_god_name
-				HighGodName2 = sol_norse_high_god_name_2
-				HighGodNamePossessive = sol_norse_high_god_name_possessive
-				HighGodNameSheHe = CHARACTER_SHEHE_HE
-				HighGodHerselfHimself = CHARACTER_HIMSELF
-				HighGodHerHis = CHARACTER_HERHIS_HIS
-				HighGodNameAlternate = sol_norse_high_god_name_alternate
-				HighGodNameAlternatePossessive = sol_norse_high_god_name_alternate_possessive
-
-				#Creator
-				CreatorName = sol_norse_creator_god_name
-				CreatorNamePossessive = sol_norse_creator_god_name_possessive
-				CreatorSheHe = CHARACTER_SHEHE_HE
-				CreatorHerHis = CHARACTER_HERHIS_HIS
-				CreatorHerHim = CHARACTER_HERHIM_HIM
-
-				#HealthGod
-				HealthGodName = sol_norse_health_god_name
-				HealthGodNamePossessive = sol_norse_health_god_name_possessive
-				HealthGodSheHe = CHARACTER_SHEHE_HE
-				HealthGodHerHis = CHARACTER_HERHIS_HIS
-				HealthGodHerHim = CHARACTER_HERHIM_HIM
-				
-				#FertilityGod
-				FertilityGodName = sol_norse_fertility_god_name
-				FertilityGodNamePossessive = sol_norse_fertility_god_name_possessive
-				FertilityGodSheHe = CHARACTER_SHEHE_HE
-				FertilityGodHerHis = CHARACTER_HERHIS_HIS
-				FertilityGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WealthGod
-				WealthGodName = sol_norse_wealth_god_name
-				WealthGodNamePossessive = sol_norse_wealth_god_name_possessive
-				WealthGodSheHe = CHARACTER_SHEHE_HE
-				WealthGodHerHis = CHARACTER_HERHIS_HIS
-				WealthGodHerHim = CHARACTER_HERHIM_HIM
-
-				#HouseholdGod
-				HouseholdGodName = sol_norse_household_god_name
-				HouseholdGodNamePossessive = sol_norse_household_god_name_possessive
-				HouseholdGodSheHe = CHARACTER_SHEHE_HE
-				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
-				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
-
-				#FateGod
-				FateGodName = sol_norse_fate_god_name
-				FateGodNamePossessive = sol_norse_fate_god_name_possessive
-				FateGodSheHe = CHARACTER_SHEHE_HE
-				FateGodHerHis = CHARACTER_HERHIS_HIS
-				FateGodHerHim = CHARACTER_HERHIM_HIM
-
-				#KnowledgeGod
-				KnowledgeGodName = sol_norse_knowledge_god_name
-				KnowledgeGodNamePossessive = sol_norse_knowledge_god_name_possessive
-				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
-				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
-				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WarGod
-				WarGodName = sol_norse_war_god_name
-				WarGodNamePossessive = sol_norse_war_god_name_possessive
-				WarGodSheHe = CHARACTER_SHEHE_HE
-				WarGodHerHis = CHARACTER_HERHIS_HIS
-				WarGodHerHim = CHARACTER_HERHIM_HIM
-
-				#TricksterGod
-				TricksterGodName = sol_norse_trickster_god_name
-				TricksterGodNamePossessive = sol_norse_trickster_god_name_possessive
-				TricksterGodSheHe = CHARACTER_SHEHE_SHE
-				TricksterGodHerHis = CHARACTER_HERHIS_HER
-				TricksterGodHerHim = CHARACTER_HERHIM_HER
-
-				#NightGod
-				NightGodName = sol_norse_night_god_name
-				NightGodNamePossessive = sol_norse_night_god_name_possessive
-				NightGodSheHe = CHARACTER_SHEHE_SHE
-				NightGodHerHis = CHARACTER_HERHIS_HER
-				NightGodHerHim = CHARACTER_HERHIM_HER
-
-				#WaterGod
-				WaterGodName = sol_norse_water_god_name
-				WaterGodNamePossessive = sol_norse_water_god_name_possessive
-				WaterGodSheHe = CHARACTER_SHEHE_HE
-				WaterGodHerHis = CHARACTER_HERHIS_HIS
-				WaterGodHerHim = CHARACTER_HERHIM_HIM
-
-				#GoodGod
-				GoodGodNames = {
-					sol_norse_high_god_name
-				}
-				DevilName = sol_norse_devil_name
-				DevilNamePossessive = sol_norse_devil_name_possessive
-				DevilSheHe = CHARACTER_SHEHE_THEY
-				DevilHerHis = CHARACTER_HERHIS_THEIR
-				DevilHerselfHimself = CHARACTER_THEMSELF
-				EvilGodNames = {
-					sol_norse_devil_name
-				}
-				ReligiousText = sol_norse_religious_text
-				ReligiousSymbol = solar_religious_symbol_solar_cross
-			}
-		}
-
-		sol_slav = {
-			color = { 149 208 179 }
-			icon = sol_slav
-			reformed_icon = sol_slav_reformed
-
-			holy_site = kiev
-			holy_site = novgorod
-			holy_site = barlad
-			holy_site = plock
-			holy_site = constantinople
-
-			doctrine = lux_doctrine_folk_ascendant
-			doctrine = lux_doctrine_statist_soul
-			
-			doctrine = unreformed_faith_doctrine
-
-			doctrine = doctrine_concubines
-
-			doctrine = tenet_sun_worship
-			doctrine = tenet_ritual_celebrations
-			doctrine = tenet_communal_identity
-
-			localization = {
-				#HighGod
-				HighGodName = sol_slav_high_god_name
-				HighGodName2 = sol_slav_high_god_name_2
-				HighGodNamePossessive = sol_slav_high_god_name_possessive
-				HighGodNameSheHe = CHARACTER_SHEHE_HE
-				HighGodHerselfHimself = CHARACTER_HIMSELF
-				HighGodHerHis = CHARACTER_HERHIS_HIS
-				HighGodNameAlternate = sol_slav_high_god_name_alternate
-				HighGodNameAlternatePossessive = sol_slav_high_god_name_alternate_possessive
-
-				#Creator
-				CreatorName = sol_slav_creator_god_name
-				CreatorNamePossessive = sol_slav_creator_god_name_possessive
-				CreatorSheHe = CHARACTER_SHEHE_HE
-				CreatorHerHis = CHARACTER_HERHIS_HIS
-				CreatorHerHim = CHARACTER_HERHIM_HIM
-
-				#HealthGod
-				HealthGodName = sol_slav_health_god_name
-				HealthGodNamePossessive = sol_slav_health_god_name_possessive
-				HealthGodSheHe = CHARACTER_SHEHE_HE
-				HealthGodHerHis = CHARACTER_HERHIS_HIS
-				HealthGodHerHim = CHARACTER_HERHIM_HIM
-				
-				#FertilityGod
-				FertilityGodName = sol_slav_fertility_god_name
-				FertilityGodNamePossessive = sol_slav_fertility_god_name_possessive
-				FertilityGodSheHe = CHARACTER_SHEHE_HE
-				FertilityGodHerHis = CHARACTER_HERHIS_HIS
-				FertilityGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WealthGod
-				WealthGodName = sol_slav_wealth_god_name
-				WealthGodNamePossessive = sol_slav_wealth_god_name_possessive
-				WealthGodSheHe = CHARACTER_SHEHE_HE
-				WealthGodHerHis = CHARACTER_HERHIS_HIS
-				WealthGodHerHim = CHARACTER_HERHIM_HIM
-
-				#HouseholdGod
-				HouseholdGodName = sol_slav_household_god_name
-				HouseholdGodNamePossessive = sol_slav_household_god_name_possessive
-				HouseholdGodSheHe = CHARACTER_SHEHE_HE
-				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
-				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
-
-				#FateGod
-				FateGodName = sol_slav_fate_god_name
-				FateGodNamePossessive = sol_slav_fate_god_name_possessive
-				FateGodSheHe = CHARACTER_SHEHE_HE
-				FateGodHerHis = CHARACTER_HERHIS_HIS
-				FateGodHerHim = CHARACTER_HERHIM_HIM
-
-				#KnowledgeGod
-				KnowledgeGodName = sol_slav_knowledge_god_name
-				KnowledgeGodNamePossessive = sol_slav_knowledge_god_name_possessive
-				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
-				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
-				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WarGod
-				WarGodName = sol_slav_war_god_name
-				WarGodNamePossessive = sol_slav_war_god_name_possessive
-				WarGodSheHe = CHARACTER_SHEHE_HE
-				WarGodHerHis = CHARACTER_HERHIS_HIS
-				WarGodHerHim = CHARACTER_HERHIM_HIM
-
-				#TricksterGod
-				TricksterGodName = sol_slav_trickster_god_name
-				TricksterGodNamePossessive = sol_slav_trickster_god_name_possessive
-				TricksterGodSheHe = CHARACTER_SHEHE_HE
-				TricksterGodHerHis = CHARACTER_HERHIS_HIS
-				TricksterGodHerHim = CHARACTER_HERHIM_HIM
-
-				#NightGod
-				NightGodName = sol_slav_night_god_name
-				NightGodNamePossessive = sol_slav_night_god_name_possessive
-				NightGodSheHe = CHARACTER_SHEHE_HE
-				NightGodHerHis = CHARACTER_HERHIS_HIS
-				NightGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WaterGod
-				WaterGodName = sol_slav_water_god_name
-				WaterGodNamePossessive = sol_slav_water_god_name_possessive
-				WaterGodSheHe = CHARACTER_SHEHE_HE
-				WaterGodHerHis = CHARACTER_HERHIS_HIS
-				WaterGodHerHim = CHARACTER_HERHIM_HIM
-
-				#GoodGod
-				GoodGodNames = {
-					sol_slav_high_god_name
-				}
-				DevilName = sol_slav_devil_name
-				DevilNamePossessive = sol_slav_devil_name_possessive
-				DevilSheHe = CHARACTER_SHEHE_HE
-				DevilHerHis = CHARACTER_HERHIS_HIS
-				DevilHerselfHimself = CHARACTER_HIMSELF
-				EvilGodNames = {
-					sol_slav_devil_name
-				}
-				ReligiousSymbol = sol_slav_religious_symbol
-			}
-		}
-	
-		sol_mani = {
-			color = { 209 105 0 }
-			icon = sol_mani
-			religious_head = "d_sol_mani"
-
-			holy_site = rome
-			holy_site = constantinople
-			holy_site = alexandria
-			holy_site = poszony
-			holy_site = ahvaz
-
-			doctrine = lux_doctrine_dualist_ascendant
-			doctrine = lux_doctrine_statist_soul
-			doctrine = doctrine_monotheist
-			
-			doctrine = tenet_sun_worship
-			doctrine = tenet_esotericism
-			doctrine = tenet_mendicant_preachers
-
-			#Doctrines
-			#Marriage
-			doctrine = doctrine_bastardry_none
-			doctrine = doctrine_consanguinity_cousins
-
-			#Crimes
-			doctrine = doctrine_homosexuality_shunned
-			doctrine = doctrine_adultery_men_shunned
-			doctrine = doctrine_adultery_women_shunned
-			doctrine = doctrine_kinslaying_any_dynasty_member_crime
-			doctrine = doctrine_deviancy_shunned
-			doctrine = doctrine_witchcraft_crime
-
-			#Clerical Functions
-			doctrine = doctrine_spiritual_head
-			doctrine = doctrine_theocracy_temporal
-			doctrine = doctrine_clerical_gender_either
-			doctrine = doctrine_clerical_marriage_allowed
-			doctrine = doctrine_clerical_succession_spiritual_appointment
-
-			localization = {
-				#HighGodName
-				HighGodName = sol_mani_high_god_name
-				HighGodName2 = sol_mani_high_god_name_2
-				HighGodName3 = sol_mani_high_god_name_3
-				HighGodNamePossessive = sol_mani_high_god_name_possessive
-				HighGodNameSheHe = CHARACTER_SHEHE_HE
-				HighGodHerselfHimself = CHARACTER_HIMSELF
-				HighGodHerHis = CHARACTER_HERHIS_HIS
-				HighGodNameAlternate = sol_mani_high_god_name_alternate
-				HighGodNameAlternatePossessive = sol_mani_high_god_name_alternate_possessive
-
-				#Creator
-				CreatorName = sol_mani_creator_god_name
-				CreatorNamePossessive = sol_mani_creator_god_name_possessive
-				CreatorSheHe = CHARACTER_SHEHE_HE
-				CreatorHerHis = CHARACTER_HERHIS_HIS
-				CreatorHerHim = CHARACTER_HERHIM_HIM
-
-				#HealthGod
-				HealthGodName = sol_mani_health_god_name
-				HealthGodNamePossessive = sol_mani_health_god_name_possessive
-				HealthGodSheHe = CHARACTER_SHEHE_HE
-				HealthGodHerHis = CHARACTER_HERHIS_HIS
-				HealthGodHerHim = CHARACTER_HERHIM_HIM
-				
-				#FertilityGod
-				FertilityGodName = sol_mani_fertility_god_name
-				FertilityGodNamePossessive = sol_mani_fertility_god_name_possessive
-				FertilityGodSheHe = CHARACTER_SHEHE_HE
-				FertilityGodHerHis = CHARACTER_HERHIS_HIS
-				FertilityGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WealthGod
-				WealthGodName = sol_mani_wealth_god_name
-				WealthGodNamePossessive = sol_mani_wealth_god_name_possessive
-				WealthGodSheHe = CHARACTER_SHEHE_HE
-				WealthGodHerHis = CHARACTER_HERHIS_HIS
-				WealthGodHerHim = CHARACTER_HERHIM_HIM
-
-				#HouseholdGod
-				HouseholdGodName = sol_mani_household_god_name
-				HouseholdGodNamePossessive = sol_mani_household_god_name_possessive
-				HouseholdGodSheHe = CHARACTER_SHEHE_HE
-				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
-				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
-
-				#KnowledgeGod
-				KnowledgeGodName = sol_mani_knowledge_god_name
-				KnowledgeGodNamePossessive = sol_mani_knowledge_god_name_possessive
-				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
-				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
-				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WarGod
-				WarGodName = sol_mani_war_god_name
-				WarGodNamePossessive = sol_mani_war_god_name_possessive
-				WarGodSheHe = CHARACTER_SHEHE_HE
-				WarGodHerHis = CHARACTER_HERHIS_HIS
-				WarGodHerHim = CHARACTER_HERHIM_HIM
-
-				#NightGod
-				NightGodName = sol_mani_night_god_name
-				NightGodNamePossessive = sol_mani_night_god_name_possessive
-				NightGodSheHe = CHARACTER_SHEHE_HE
-				NightGodHerHis = CHARACTER_HERHIS_HIS
-				NightGodHerHim = CHARACTER_HERHIM_HIM
-
-				#WaterGod
-				WaterGodName = sol_mani_water_god_name
-				WaterGodNamePossessive = sol_mani_water_god_name_possessive
-				WaterGodSheHe = CHARACTER_SHEHE_HE
-				WaterGodHerHis = CHARACTER_HERHIS_HIS
-				WaterGodHerHim = CHARACTER_HERHIM_HIM
-
-				#Yamags, not High Priests
-				ReligiousHeadName = sol_mani_religious_head_title
-				ReligiousHeadTitleName = sol_mani_religious_head_title_name
-
-				GoodGodNames = {
-					sol_mani_high_god_name
-					sol_mani_high_god_name_2
-					sol_mani_high_god_name_alternate
-				}
-				DevilName = sol_mani_devil_name
-				DevilNamePossessive = sol_mani_devil_name_possessive
-				DevilSheHe = CHARACTER_SHEHE_HE
-				DevilHerHis = CHARACTER_HERHIS_HIS
-				DevilHerselfHimself = CHARACTER_HIMSELF
-				EvilGodNames = {
-					sol_mani_devil_name
-					dualism_devil_name
-					dualism_evil_god_archons
-					dualism_evil_god_matter
-					dualism_evil_god_ignorance
-				}
-				WitchGodName = sol_mani_devil_name
-				WitchGodNamePossessive = sol_mani_devil_name_possessive
-				WitchGodHerHis = CHARACTER_HERHIS_HIS
-				WitchGodSheHe = CHARACTER_SHEHE_HE
-				WitchGodHerHim = CHARACTER_HERHIM_HIM
-				WitchGodMistressMaster = master
-				WitchGodMotherFather = father
-			}
-		}
-
 		sol_islam = {
 			color = { 184 219 148 }
 			icon = sol_islam
@@ -1358,6 +840,7 @@
 			holy_site = baghdad
 			holy_site = alexandria
 
+			#Faith Aspect
 			doctrine = lux_doctrine_islamic_ascendant
 			doctrine = lux_doctrine_statist_soul
 			doctrine = doctrine_monotheist
@@ -1367,7 +850,6 @@
 			doctrine = tenet_religious_legal_pronouncements
 			doctrine = tenet_struggle_submission
 
-			#DOCTRINES
 			#Main Group
 			doctrine = doctrine_temporal_head
 			doctrine = doctrine_pluralism_pluralistic
@@ -1384,15 +866,27 @@
 			doctrine = doctrine_adultery_women_shunned
 			doctrine = doctrine_kinslaying_accepted
 			doctrine = doctrine_deviancy_shunned
+			doctrine = doctrine_witchcraft_crime
 
 			#Clerical Functions
-			doctrine = doctrine_clerical_succession_temporal_fixed_appointment
+			doctrine = doctrine_clerical_succession_temporal_appointment
 			doctrine = doctrine_clerical_marriage_allowed
 
+			#Funeral Tradition
+			doctrine = doctrine_funeral_stoic
+
+			#Coronation Tradition
+			doctrine = doctrine_no_anointment
+
+			holy_order_names = {
+				{ name = "holy_order_sons_of_the_sun" }
+			}
+			
 			localization = {
 				#HighGod
 				HighGodName = sol_islam_high_god_name
 				HighGodName2 = sol_islam_high_god_name_2
+				HighGodName3 = sol_islam_high_god_name_2
 				HighGodNamePossessive = sol_islam_high_god_name_possessive
 				HighGodNameSheHe = CHARACTER_SHEHE_HE
 				HighGodHerselfHimself = CHARACTER_HIMSELF
@@ -1548,7 +1042,703 @@
 				WitchGodMotherFather = father
 			}
 		}
+	
+		sol_mani = {
+			color = { 209 105 0 }
+			icon = sol_mani
+			religious_head = "d_sol_mani"
+
+			holy_site = rome
+			holy_site = constantinople
+			holy_site = alexandria
+			holy_site = poszony
+			holy_site = ahvaz
+
+			#Faith Aspect
+			doctrine = lux_doctrine_dualist_ascendant
+			doctrine = lux_doctrine_statist_soul
 			
+			#Tenets
+			doctrine = tenet_sun_worship
+			doctrine = tenet_esotericism
+			doctrine = tenet_mendicant_preachers
+
+			#Main Group
+			doctrine = doctrine_monotheist
+
+			#Marriage
+			doctrine = doctrine_bastardry_none
+			doctrine = doctrine_consanguinity_cousins
+
+			#Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_adultery_men_shunned
+			doctrine = doctrine_adultery_women_shunned
+			doctrine = doctrine_kinslaying_any_dynasty_member_crime
+			doctrine = doctrine_deviancy_shunned
+			doctrine = doctrine_witchcraft_crime
+
+			#Clerical Functions
+			doctrine = doctrine_spiritual_head
+			doctrine = doctrine_theocracy_temporal
+			doctrine = doctrine_clerical_gender_either
+			doctrine = doctrine_clerical_marriage_allowed
+			doctrine = doctrine_clerical_succession_temporal_appointment
+
+			holy_order_names = {
+				{ name = "holy_order_order_of_the_all_knowing_sun" }
+			}
+
+			localization = {
+				#HighGodName
+				HighGodName = sol_mani_high_god_name
+				HighGodName2 = sol_mani_high_god_name_2
+				HighGodName3 = sol_mani_high_god_name_3
+				HighGodNamePossessive = sol_mani_high_god_name_possessive
+				HighGodNameSheHe = CHARACTER_SHEHE_HE
+				HighGodHerselfHimself = CHARACTER_HIMSELF
+				HighGodHerHis = CHARACTER_HERHIS_HIS
+				HighGodNameAlternate = sol_mani_high_god_name_alternate
+				HighGodNameAlternatePossessive = sol_mani_high_god_name_alternate_possessive
+
+				#Creator
+				CreatorName = sol_mani_creator_god_name
+				CreatorNamePossessive = sol_mani_creator_god_name_possessive
+				CreatorSheHe = CHARACTER_SHEHE_HE
+				CreatorHerHis = CHARACTER_HERHIS_HIS
+				CreatorHerHim = CHARACTER_HERHIM_HIM
+
+				#HealthGod
+				HealthGodName = sol_mani_health_god_name
+				HealthGodNamePossessive = sol_mani_health_god_name_possessive
+				HealthGodSheHe = CHARACTER_SHEHE_HE
+				HealthGodHerHis = CHARACTER_HERHIS_HIS
+				HealthGodHerHim = CHARACTER_HERHIM_HIM
+				
+				#FertilityGod
+				FertilityGodName = sol_mani_fertility_god_name
+				FertilityGodNamePossessive = sol_mani_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_HE
+				FertilityGodHerHis = CHARACTER_HERHIS_HIS
+				FertilityGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WealthGod
+				WealthGodName = sol_mani_wealth_god_name
+				WealthGodNamePossessive = sol_mani_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = sol_mani_household_god_name
+				HouseholdGodNamePossessive = sol_mani_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = sol_mani_knowledge_god_name
+				KnowledgeGodNamePossessive = sol_mani_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WarGod
+				WarGodName = sol_mani_war_god_name
+				WarGodNamePossessive = sol_mani_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#NightGod
+				NightGodName = sol_mani_night_god_name
+				NightGodNamePossessive = sol_mani_night_god_name_possessive
+				NightGodSheHe = CHARACTER_SHEHE_HE
+				NightGodHerHis = CHARACTER_HERHIS_HIS
+				NightGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = sol_mani_water_god_name
+				WaterGodNamePossessive = sol_mani_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+
+				#Yamags, not High Priests
+				ReligiousHeadName = sol_mani_religious_head_title
+				ReligiousHeadTitleName = sol_mani_religious_head_title_name
+
+				GoodGodNames = {
+					sol_mani_high_god_name
+					sol_mani_high_god_name_2
+					sol_mani_high_god_name_alternate
+				}
+				DevilName = sol_mani_devil_name
+				DevilNamePossessive = sol_mani_devil_name_possessive
+				DevilSheHe = CHARACTER_SHEHE_HE
+				DevilHerHis = CHARACTER_HERHIS_HIS
+				DevilHerselfHimself = CHARACTER_HIMSELF
+				EvilGodNames = {
+					sol_mani_devil_name
+					dualism_devil_name
+					dualism_evil_god_archons
+					dualism_evil_god_matter
+					dualism_evil_god_ignorance
+				}
+				WitchGodName = sol_mani_devil_name
+				WitchGodNamePossessive = sol_mani_devil_name_possessive
+				WitchGodHerHis = CHARACTER_HERHIS_HIS
+				WitchGodSheHe = CHARACTER_SHEHE_HE
+				WitchGodHerHim = CHARACTER_HERHIM_HIM
+				WitchGodMistressMaster = master
+				WitchGodMotherFather = father
+			}
+		}
+
+		sol_norse = {
+			color = { 208 208 149 }
+			icon = sol_norse
+			reformed_icon = sol_norse_reformed
+
+			holy_site = uppsala
+			holy_site = novgorod
+			holy_site = rugen
+			holy_site = konugardr
+			holy_site = constantinople
+
+			reserved_male_names = {
+				Anund AsbjO_rn Aslak Audun Bagge Balder Brage Egil Emund Frej Gnupa Gorm Gudmund GudrO_d Hardeknud Helge Odd Orm Orvar Ottar Rikulfr Rurik SigbjO_rn StyrbjO_rn Starkad Styrkar SA_mund SO_lve SO_rkver Thorolf Tjudmund Toke Tolir TorbjO_rn Torbrand Torfinn Torgeir Toste Tyke
+			}
+			reserved_female_names = {
+				Aslaug Bothild BjO_rg Freja Grima Gytha KrA_ka Malmfrid Thora Thordis Thyra Ragnfrid Ragnhild Svanhild Ulvhilde
+			}
+
+			holy_order_names = {
+				{ name = "holy_order_sons_of_odinn_sol" }
+				{ name = "holy_order_sol_hersir" }
+			}
+
+			holy_order_maa = { varangian_veterans }
+
+			# Faith Aspects
+			doctrine = lux_doctrine_folk_ascendant
+			doctrine = lux_doctrine_statist_soul
+
+			doctrine = unreformed_faith_doctrine
+			
+			# Tenets
+			doctrine = tenet_sun_worship
+			# Gruesome Festivals, else Human Sacrifice. #MORE BURNING
+			doctrine_selection_pair = {
+				requires_dlc_flag = the_northern_lords
+				doctrine = tenet_gruesome_festivals
+				fallback_doctrine = tenet_human_sacrifice
+			}
+			# Bhakti, else Ancestor Worship.
+			doctrine_selection_pair = {
+				requires_dlc_flag = the_northern_lords
+				doctrine = tenet_bhakti
+				fallback_doctrine = tenet_ancestor_worship
+			}
+
+			#Main Group
+			doctrine = doctrine_gender_male_dominated
+			doctrine = doctrine_pluralism_pluralistic
+
+			#Marriage
+			doctrine = doctrine_concubines
+			doctrine = doctrine_divorce_allowed
+			doctrine = doctrine_bastardry_legitimization
+			doctrine = doctrine_consanguinity_cousins
+
+			#Crimes
+			doctrine = doctrine_homosexuality_crime
+			doctrine = doctrine_adultery_men_crime
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_kinslaying_close_kin_crime
+			doctrine = doctrine_deviancy_crime
+			doctrine = doctrine_witchcraft_crime
+
+			#Clerical Functions
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_clerical_gender_either
+			doctrine = doctrine_clerical_marriage_allowed
+			doctrine = doctrine_clerical_succession_temporal_appointment
+
+			#Funeral tradition
+			doctrine = doctrine_funeral_cremation
+			
+			localization = {
+				#HighGod
+				HighGodName = sol_norse_high_god_name
+				HighGodName2 = sol_norse_high_god_name_2
+				HighGodName3 = sol_norse_high_god_name_2
+				HighGodNamePossessive = sol_norse_high_god_name_possessive
+				HighGodNameSheHe = CHARACTER_SHEHE_HE
+				HighGodHerselfHimself = CHARACTER_HIMSELF
+				HighGodHerHis = CHARACTER_HERHIS_HIS
+				HighGodNameAlternate = sol_norse_high_god_name_alternate
+				HighGodNameAlternatePossessive = sol_norse_high_god_name_alternate_possessive
+
+				#Creator
+				CreatorName = sol_norse_creator_god_name
+				CreatorNamePossessive = sol_norse_creator_god_name_possessive
+				CreatorSheHe = CHARACTER_SHEHE_HE
+				CreatorHerHis = CHARACTER_HERHIS_HIS
+				CreatorHerHim = CHARACTER_HERHIM_HIM
+
+				#HealthGod
+				HealthGodName = sol_norse_health_god_name
+				HealthGodNamePossessive = sol_norse_health_god_name_possessive
+				HealthGodSheHe = CHARACTER_SHEHE_HE
+				HealthGodHerHis = CHARACTER_HERHIS_HIS
+				HealthGodHerHim = CHARACTER_HERHIM_HIM
+				
+				#FertilityGod
+				FertilityGodName = sol_norse_fertility_god_name
+				FertilityGodNamePossessive = sol_norse_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_HE
+				FertilityGodHerHis = CHARACTER_HERHIS_HIS
+				FertilityGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WealthGod
+				WealthGodName = sol_norse_wealth_god_name
+				WealthGodNamePossessive = sol_norse_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = sol_norse_household_god_name
+				HouseholdGodNamePossessive = sol_norse_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#FateGod
+				FateGodName = sol_norse_fate_god_name
+				FateGodNamePossessive = sol_norse_fate_god_name_possessive
+				FateGodSheHe = CHARACTER_SHEHE_HE
+				FateGodHerHis = CHARACTER_HERHIS_HIS
+				FateGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = sol_norse_knowledge_god_name
+				KnowledgeGodNamePossessive = sol_norse_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WarGod
+				WarGodName = sol_norse_war_god_name
+				WarGodNamePossessive = sol_norse_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#TricksterGod
+				TricksterGodName = sol_norse_trickster_god_name
+				TricksterGodNamePossessive = sol_norse_trickster_god_name_possessive
+				TricksterGodSheHe = CHARACTER_SHEHE_SHE
+				TricksterGodHerHis = CHARACTER_HERHIS_HER
+				TricksterGodHerHim = CHARACTER_HERHIM_HER
+
+				#NightGod
+				NightGodName = sol_norse_night_god_name
+				NightGodNamePossessive = sol_norse_night_god_name_possessive
+				NightGodSheHe = CHARACTER_SHEHE_SHE
+				NightGodHerHis = CHARACTER_HERHIS_HER
+				NightGodHerHim = CHARACTER_HERHIM_HER
+
+				#WaterGod
+				WaterGodName = sol_norse_water_god_name
+				WaterGodNamePossessive = sol_norse_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+
+				#GoodGod
+				GoodGodNames = {
+					sol_norse_high_god_name
+				}
+				DevilName = sol_norse_devil_name
+				DevilNamePossessive = sol_norse_devil_name_possessive
+				DevilSheHe = CHARACTER_SHEHE_THEY
+				DevilHerHis = CHARACTER_HERHIS_THEIR
+				DevilHerselfHimself = CHARACTER_THEMSELF
+				EvilGodNames = {
+					sol_norse_devil_name
+				}
+				ReligiousText = sol_norse_religious_text
+				ReligiousSymbol = solar_religious_symbol_solar_cross
+			}
+		}
+
+		sol_slav = {
+			color = { 149 208 179 }
+			icon = sol_slav
+			reformed_icon = sol_slav_reformed
+
+			holy_site = kiev
+			holy_site = novgorod
+			holy_site = barlad
+			holy_site = plock
+			holy_site = constantinople
+
+			reserved_male_names = {
+				Afanasiy Alexandr Alexei Andrei Boris Briachislav Daniil Dmitriy Feodor Gleb Grigoriy Igor Iliya Ingvar Ivan Iziaslav Kirill Konstantin Koz_ma Lev Mstislav Nikita Oleg Putiata Radoslav Rodislav Rogvolod Roman Rostislav Rurik Ruslan Simeon Stanislav Sudislav Svetozar Sviatopolk Sviatoslav Terentiy Trifon Vasiliy Vasilko Viacheslav Vladimir Vladislav Voislav Volodar Vseslav Vsevolod Vyshata Vysheslav Yaropolk Yaroslav Yefimiy Yelisey Yemelyan Yeremey Yevstafiy Yuriy Aristarkh
+			}
+			reserved_female_names = {
+				Agafya Agrafena Alexandra Anastasia Anna Boleslava Darya Dobrava Dobronega Dobroslava Yefimia Yefrosinia Yekaterina Yelizaveta Yevdokia Yevpraxia Feodora Feodosia Fevronia Gorislava Gradislava Gremislava Irina Xenia Liubava Liudmila Malfrida Malusha Maria Marina Olena Olga Pereyaslava Praskovya Praxida Prebrana Predslava Premyslava Pribislava Rogneda Rostislava Sbyslava Sofia Sviatoslava Tatyana Ulita Ulyana Varvara Vasilisa Veleslava Verkhoslava Vseslava Viacheslava Yaroslava Zabava Zvenislava
+			}
+
+			holy_order_maa = { druzhina }
+
+			# Faith Aspects
+			doctrine = lux_doctrine_folk_ascendant
+			doctrine = lux_doctrine_statist_soul
+			
+			doctrine = unreformed_faith_doctrine
+
+			# Tenets
+			doctrine = tenet_sun_worship
+			doctrine = tenet_ritual_celebrations
+			doctrine = tenet_communal_identity
+
+			# Main Group
+			doctrine = doctrine_gender_male_dominated
+			doctrine = doctrine_pluralism_pluralistic
+			doctrine = doctrine_theocracy_temporal
+
+			# Marriage
+			doctrine = doctrine_concubines
+			doctrine = doctrine_divorce_allowed
+			doctrine = doctrine_bastardry_legitimization
+			doctrine = doctrine_consanguinity_cousins
+
+			# Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_adultery_men_shunned
+			doctrine = doctrine_adultery_women_shunned
+			doctrine = doctrine_kinslaying_shunned
+			doctrine = doctrine_deviancy_shunned
+			doctrine = doctrine_witchcraft_shunned
+
+			# Clerical Functions
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_clerical_gender_either
+			doctrine = doctrine_clerical_marriage_allowed
+			doctrine = doctrine_clerical_succession_temporal_appointment
+
+			# Funeral tradition
+			doctrine = doctrine_funeral_cremation
+
+			holy_order_names = {
+				{ name = "holy_order_warriors_of_dawn" }
+				{ name = "holy_order_faithful_of_highgod" }
+				{ name = "holy_order_warriors_of_the_symbol" }
+			}
+
+			localization = {
+				#HighGod
+				HighGodName = sol_slav_high_god_name
+				HighGodName2 = sol_slav_high_god_name_2
+				HighGodName3 = sol_slav_high_god_name_2
+				HighGodNamePossessive = sol_slav_high_god_name_possessive
+				HighGodNameSheHe = CHARACTER_SHEHE_HE
+				HighGodHerselfHimself = CHARACTER_HIMSELF
+				HighGodHerHis = CHARACTER_HERHIS_HIS
+				HighGodNameAlternate = sol_slav_high_god_name_alternate
+				HighGodNameAlternatePossessive = sol_slav_high_god_name_alternate_possessive
+
+				#Creator
+				CreatorName = sol_slav_creator_god_name
+				CreatorNamePossessive = sol_slav_creator_god_name_possessive
+				CreatorSheHe = CHARACTER_SHEHE_HE
+				CreatorHerHis = CHARACTER_HERHIS_HIS
+				CreatorHerHim = CHARACTER_HERHIM_HIM
+
+				#HealthGod
+				HealthGodName = sol_slav_health_god_name
+				HealthGodNamePossessive = sol_slav_health_god_name_possessive
+				HealthGodSheHe = CHARACTER_SHEHE_HE
+				HealthGodHerHis = CHARACTER_HERHIS_HIS
+				HealthGodHerHim = CHARACTER_HERHIM_HIM
+				
+				#FertilityGod
+				FertilityGodName = sol_slav_fertility_god_name
+				FertilityGodNamePossessive = sol_slav_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_HE
+				FertilityGodHerHis = CHARACTER_HERHIS_HIS
+				FertilityGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WealthGod
+				WealthGodName = sol_slav_wealth_god_name
+				WealthGodNamePossessive = sol_slav_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = sol_slav_household_god_name
+				HouseholdGodNamePossessive = sol_slav_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#FateGod
+				FateGodName = sol_slav_fate_god_name
+				FateGodNamePossessive = sol_slav_fate_god_name_possessive
+				FateGodSheHe = CHARACTER_SHEHE_HE
+				FateGodHerHis = CHARACTER_HERHIS_HIS
+				FateGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = sol_slav_knowledge_god_name
+				KnowledgeGodNamePossessive = sol_slav_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WarGod
+				WarGodName = sol_slav_war_god_name
+				WarGodNamePossessive = sol_slav_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#TricksterGod
+				TricksterGodName = sol_slav_trickster_god_name
+				TricksterGodNamePossessive = sol_slav_trickster_god_name_possessive
+				TricksterGodSheHe = CHARACTER_SHEHE_HE
+				TricksterGodHerHis = CHARACTER_HERHIS_HIS
+				TricksterGodHerHim = CHARACTER_HERHIM_HIM
+
+				#NightGod
+				NightGodName = sol_slav_night_god_name
+				NightGodNamePossessive = sol_slav_night_god_name_possessive
+				NightGodSheHe = CHARACTER_SHEHE_HE
+				NightGodHerHis = CHARACTER_HERHIS_HIS
+				NightGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = sol_slav_water_god_name
+				WaterGodNamePossessive = sol_slav_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+
+				#GoodGod
+				GoodGodNames = {
+					sol_slav_high_god_name
+				}
+				DevilName = sol_slav_devil_name
+				DevilNamePossessive = sol_slav_devil_name_possessive
+				DevilSheHe = CHARACTER_SHEHE_HE
+				DevilHerHis = CHARACTER_HERHIS_HIS
+				DevilHerselfHimself = CHARACTER_HIMSELF
+				EvilGodNames = {
+					sol_slav_devil_name
+				}
+				ReligiousSymbol = sol_slav_religious_symbol
+			}
+		}
+
+		sol_sahara = {
+			color = { 182 120 0 }
+			icon = sol_sahara
+			religious_head = d_sol_sahara
+
+			holy_site = el_fasher
+			holy_site = jerusalem
+			holy_site = siwa
+			holy_site = carthage
+			holy_site = napata
+
+			# Faith Aspects
+			doctrine = lux_doctrine_archaic_ascendant
+			doctrine = lux_doctrine_messianic_soul
+
+			doctrine = unreformed_faith_doctrine
+
+			#Main Group
+			doctrine = doctrine_no_head
+			doctrine = doctrine_pluralism_pluralistic
+			doctrine = doctrine_theocracy_temporal
+
+			#Marriage
+
+			#Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_adultery_men_crime
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_kinslaying_close_kin_crime
+			doctrine = doctrine_deviancy_shunned
+			doctrine = doctrine_witchcraft_crime
+
+			#Clerical Functions
+			doctrine = doctrine_clerical_function_taxation
+			doctrine = doctrine_clerical_gender_either
+			doctrine = doctrine_clerical_succession_temporal_appointment
+
+			#Tenets
+			doctrine = tenet_sun_worship
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_communal_identity
+
+			holy_order_names = {
+				{ name = "holy_order_champions_of_the_red_sun" }
+			}
+		}
+
+		sol_tsahay = {
+			color = { 163 72 116 }
+			icon = sol_tsahay
+
+			holy_site = siwa
+			holy_site = kaffa
+			holy_site = antioch
+			holy_site = aksum
+			holy_site = napata
+
+			# Faith Aspects
+			doctrine = lux_doctrine_archaic_ascendant
+			doctrine = lux_doctrine_martial_soul
+
+			#Tenets
+			doctrine = tenet_sun_worship
+			doctrine = tenet_warmonger
+			doctrine = tenet_communal_identity
+
+			#Main Group
+			doctrine = doctrine_no_head
+			doctrine = doctrine_pluralism_pluralistic
+
+			#Marriage
+			doctrine = doctrine_concubines
+
+			#Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_adultery_men_crime
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_kinslaying_close_kin_crime
+			doctrine = doctrine_deviancy_shunned
+			doctrine = doctrine_witchcraft_crime
+
+			#Clerical Functions
+			doctrine = doctrine_clerical_function_recruitment
+			
+			#Funeral tradition
+			doctrine = doctrine_funeral_stoic
+
+			holy_order_names = {
+				{ name = "holy_order_sons_of_mahrem" }
+			}
+
+			localization = {
+				#HighGod
+				HighGodName = sol_tsahay_high_god_name
+				HighGodName2 = sol_tsahay_high_god_name_2
+				HighGodName3 = sol_tsahay_high_god_name_2
+				HighGodNamePossessive = sol_tsahay_high_god_name_possessive
+				HighGodNameSheHe = CHARACTER_SHEHE_HE
+				HighGodHerselfHimself = CHARACTER_HIMSELF
+				HighGodHerHis = CHARACTER_HERHIS_HIS
+				HighGodNameAlternate = sol_tsahay_high_god_name_alternate
+				HighGodNameAlternatePossessive = sol_tsahay_high_god_name_alternate_possessive
+
+				#Creator
+				CreatorName = sol_tsahay_creator_god_name
+				CreatorNamePossessive = sol_tsahay_creator_god_name_possessive
+				CreatorSheHe = CHARACTER_SHEHE_HE
+				CreatorHerHis = CHARACTER_HERHIS_HIS
+				CreatorHerHim = CHARACTER_HERHIM_HIM
+
+				#HealthGod
+				HealthGodName = sol_tsahay_health_god_name
+				HealthGodNamePossessive = sol_tsahay_health_god_name_possessive
+				HealthGodSheHe = CHARACTER_SHEHE_HE
+				HealthGodHerHis = CHARACTER_HERHIS_HIS
+				HealthGodHerHim = CHARACTER_HERHIM_HIM
+				
+				#FertilityGod
+				FertilityGodName = sol_tsahay_fertility_god_name
+				FertilityGodNamePossessive = sol_tsahay_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_HE
+				FertilityGodHerHis = CHARACTER_HERHIS_HIS
+				FertilityGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WealthGod
+				WealthGodName = sol_tsahay_wealth_god_name
+				WealthGodNamePossessive = sol_tsahay_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = sol_tsahay_household_god_name
+				HouseholdGodNamePossessive = sol_tsahay_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#FateGod
+				FateGodName = sol_tsahay_fate_god_name
+				FateGodNamePossessive = sol_tsahay_fate_god_name_possessive
+				FateGodSheHe = CHARACTER_SHEHE_HE
+				FateGodHerHis = CHARACTER_HERHIS_HIS
+				FateGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = sol_tsahay_knowledge_god_name
+				KnowledgeGodNamePossessive = sol_tsahay_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WarGod
+				WarGodName = sol_tsahay_war_god_name
+				WarGodNamePossessive = sol_tsahay_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#TricksterGod
+				TricksterGodName = sol_tsahay_trickster_god_name
+				TricksterGodNamePossessive = sol_tsahay_trickster_god_name_possessive
+				TricksterGodSheHe = CHARACTER_SHEHE_SHE
+				TricksterGodHerHis = CHARACTER_HERHIS_HER
+				TricksterGodHerHim = CHARACTER_HERHIM_HER
+
+				#NightGod
+				NightGodName = sol_tsahay_night_god_name
+				NightGodNamePossessive = sol_tsahay_night_god_name_possessive
+				NightGodSheHe = CHARACTER_SHEHE_SHE
+				NightGodHerHis = CHARACTER_HERHIS_HER
+				NightGodHerHim = CHARACTER_HERHIM_HER
+
+				#WaterGod
+				WaterGodName = sol_tsahay_water_god_name
+				WaterGodNamePossessive = sol_tsahay_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+
+				#GoodGod
+				GoodGodNames = {
+					sol_tsahay_high_god_name
+				}
+				DevilName = sol_tsahay_devil_name
+				DevilNamePossessive = sol_tsahay_devil_name_possessive
+				DevilSheHe = CHARACTER_SHEHE_THEY
+				DevilHerHis = CHARACTER_HERHIS_THEIR
+				DevilHerselfHimself = CHARACTER_THEMSELF
+				EvilGodNames = {
+					sol_tsahay_devil_name
+				}
+			}
+		}
+
 		sol_victor = {
 			color = { 185 90 60 }
 			graphical_faith = "catholic_gfx"
@@ -1564,35 +1754,45 @@
 			##Faith Aspects
 			doctrine = lux_doctrine_martial_soul
 			doctrine = lux_doctrine_christian_ascendant
-			doctrine = doctrine_monotheist
 
 			#Main Group
+			doctrine = doctrine_monotheist
+			doctrine = doctrine_spiritual_head
 			doctrine = doctrine_pluralism_fundamentalist
+			doctrine = doctrine_theocracy_temporal
 
 			#Marriage
+			doctrine = doctrine_monogamy
 			doctrine = doctrine_divorce_approval
 
 			#Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_kinslaying_accepted
 
 			#Clerical Functions
-			doctrine = doctrine_spiritual_head
-			doctrine = doctrine_theocracy_temporal
 			doctrine = doctrine_clerical_function_recruitment
 			doctrine = doctrine_clerical_succession_spiritual_appointment
 			doctrine = doctrine_clerical_marriage_allowed
+			
+			#Funeral Tradition
+			doctrine = doctrine_funeral_stoic
+			doctrine = doctrine_anointment_permitted
 
 			#Tenets
 			doctrine = tenet_sun_worship
 			doctrine = tenet_human_sacrifice
 			doctrine = tenet_pursuit_of_power
-			
-			doctrine = doctrine_funeral_bewailment # Keening
+
+			holy_order_names = {
+				{ name = "holy_order_legio_solis_victor" }
+				{ name = "holy_order_ordo_draconis" }
+			}
 
 			localization = {
 				#HighGod
 				HighGodName = sol_victor_good_god_name_christ
 				HighGodName2 = sol_christ_high_god_name_2
-				#HighGodName3 = sol_christ_high_god_name_3
+				HighGodName3 = sol_christ_high_god_name_3
 				HighGodNamePossessive = sol_christ_high_god_name_possessive
 				HighGodNameSheHe = CHARACTER_SHEHE_HE
 				HighGodHerselfHimself = CHARACTER_HIMSELF

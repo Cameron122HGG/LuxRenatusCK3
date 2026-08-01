@@ -1021,7 +1021,7 @@ FR_le_Char_P = {
 	text = {
 		trigger = { # queen_mother (Reine mère)
 			is_female = yes
-			has_government = feudal_government
+			has_government = western_feudal_government
 			any_child = { primary_title.tier = tier_kingdom }
 			primary_title.tier < tier_kingdom
 		}
@@ -1033,12 +1033,12 @@ FR_le_Char_P = {
 				AND = { # prince_male_iberian_group (Infant), prince_female_iberian_group (Infante)
 					primary_title.tier < tier_kingdom
 					culture = { has_cultural_pillar = heritage_iberian }
-					has_government = feudal_government
+					has_government = western_feudal_government
 					any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 				}
 				AND = { # empress_mother (Impératrice mère)
 					is_female = yes
-					has_government = feudal_government
+					has_government = western_feudal_government
 					any_child = { primary_title.tier = tier_empire }
 					primary_title.tier < tier_empire
 				}
@@ -1051,8 +1051,8 @@ FR_le_Char_P = {
 			is_female = no
 			primary_title.tier < tier_kingdom
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				has_government = western_feudal_government
+				has_government = iqta_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1063,8 +1063,8 @@ FR_le_Char_P = {
 			is_female = yes
 			primary_title.tier < tier_kingdom
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				has_government = western_feudal_government
+				has_government = iqta_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1096,8 +1096,8 @@ FR_le_Char = {
 							culture = { has_name_list = name_list_greek } # Basileus
 							AND = { # emperor_feudal_male_altaic_group (Khagan)
 								OR = {
-									has_government = feudal_government
-									has_government = clan_government
+									has_government = western_feudal_government
+									has_government = iqta_government
 									has_government = tribal_government
 								}
 								OR = {
@@ -1128,8 +1128,8 @@ FR_le_Char = {
 					highest_held_title_tier = tier_kingdom
 					culture = { has_name_list = name_list_uyghur }
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 						has_government = tribal_government
 					}
 				}
@@ -1140,8 +1140,8 @@ FR_le_Char = {
 							exists = top_liege
 							top_liege = {
 								OR = {
-									has_government = feudal_government
-									has_government = clan_government
+									has_government = western_feudal_government
+									has_government = iqta_government
 								}
 								culture = { has_name_list = name_list_turkish }
 							}
@@ -1149,8 +1149,8 @@ FR_le_Char = {
 						AND = {
 							NOT = { exists = top_liege }
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 							}
 							culture = { has_name_list = name_list_turkish }
 						}
@@ -1161,8 +1161,8 @@ FR_le_Char = {
 					culture = { has_name_list = name_list_sogdian }
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 				}
 				AND = {
@@ -1176,8 +1176,8 @@ FR_le_Char = {
 								culture = { has_name_list = name_list_beja } # duke_feudal_male_beja (Émir), duke_feudal_female_beja (Émiresse)
 							}
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 								has_government = tribal_government
 							}
 						}
@@ -1188,8 +1188,8 @@ FR_le_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 						has_government = tribal_government
 					}
 				}
@@ -1203,8 +1203,8 @@ FR_le_Char = {
 								culture = { has_cultural_pillar = heritage_arabic }
 							}
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 							}
 						}
 					}
@@ -1213,8 +1213,8 @@ FR_le_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 				}
 				AND = { # duke_clan_male_iberian_group (Émir), duke_clan_female_iberian_group (Émiresse)
@@ -1224,7 +1224,7 @@ FR_le_Char = {
 						}
 						top_liege = {
 							culture = { has_cultural_pillar = heritage_iberian }
-							has_government = clan_government
+							has_government = iqta_government
 						}
 					}
 					OR = {
@@ -1232,7 +1232,7 @@ FR_le_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = clan_government
+						has_government = iqta_government
 					}
 				}
 				# AND = {
@@ -1240,7 +1240,7 @@ FR_le_Char = {
 				# 	highest_held_title_tier = tier_county
 				# 	OR = {
 				# 		AND = { # count_feudal_male_english (Earl)
-				# 			has_government = feudal_government
+				# 			has_government = western_feudal_government
 				# 			primary_title = { 
 				# 				target_is_de_jure_liege_or_above = title:e_britannia
 				# 				NOT = { target_is_de_jure_liege_or_above = title:k_wales } # count_feudal_male_k_wales (Lord)
@@ -1248,7 +1248,7 @@ FR_le_Char = {
 				# 		}
 				# 		AND = { # count_feudal_male_e_britannia (Earl)
 				# 			OR = {
-				# 				has_government = feudal_government
+				# 				has_government = western_feudal_government
 				# 				has_government = tribal_government
 				# 			}
 				# 			culture = { has_name_list = name_list_english }
@@ -1283,8 +1283,8 @@ FR_le_Char = {
 				AND = { # baron_feudal_male_iranian_group (Argbadh)
 					highest_held_title_tier = tier_barony
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 					culture = { has_cultural_pillar = heritage_iranian }
 				}
@@ -1405,7 +1405,7 @@ FR_du_Char_P = {
 	text = {
 		trigger = { # queen_mother (Reine mère)
 			is_female = yes
-			has_government = feudal_government
+			has_government = western_feudal_government
 			any_child = { primary_title.tier = tier_kingdom }
 			primary_title.tier < tier_kingdom
 		}
@@ -1417,12 +1417,12 @@ FR_du_Char_P = {
 				AND = { # prince_male_iberian_group (Infant), prince_female_iberian_group (Infante)
 					primary_title.tier < tier_kingdom
 					culture = { has_cultural_pillar = heritage_iberian }
-					has_government = feudal_government
+					has_government = western_feudal_government
 					any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 				}
 				AND = { # empress_mother (Impératrice mère)
 					is_female = yes
-					has_government = feudal_government
+					has_government = western_feudal_government
 					any_child = { primary_title.tier = tier_empire }
 					primary_title.tier < tier_empire
 				}
@@ -1435,8 +1435,8 @@ FR_du_Char_P = {
 			is_female = no
 			primary_title.tier < tier_kingdom
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				has_government = western_feudal_government
+				has_government = iqta_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1447,8 +1447,8 @@ FR_du_Char_P = {
 			is_female = yes
 			primary_title.tier < tier_kingdom
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				has_government = western_feudal_government
+				has_government = iqta_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1480,8 +1480,8 @@ FR_du_Char = {
 							culture = { has_name_list = name_list_greek } # Basileus
 							AND = { # emperor_feudal_male_altaic_group (Khagan)
 								OR = {
-									has_government = feudal_government
-									has_government = clan_government
+									has_government = western_feudal_government
+									has_government = iqta_government
 									has_government = tribal_government
 								}
 								OR = {
@@ -1512,8 +1512,8 @@ FR_du_Char = {
 					highest_held_title_tier = tier_kingdom
 					culture = { has_name_list = name_list_uyghur }
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 						has_government = tribal_government
 					}
 				}
@@ -1524,8 +1524,8 @@ FR_du_Char = {
 							exists = top_liege
 							top_liege = {
 								OR = {
-									has_government = feudal_government
-									has_government = clan_government
+									has_government = western_feudal_government
+									has_government = iqta_government
 								}
 								culture = { has_name_list = name_list_turkish }
 							}
@@ -1533,8 +1533,8 @@ FR_du_Char = {
 						AND = {
 							NOT = { exists = top_liege }
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 							}
 							culture = { has_name_list = name_list_turkish }
 						}
@@ -1545,8 +1545,8 @@ FR_du_Char = {
 					culture = { has_name_list = name_list_sogdian }
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 				}
 				AND = {
@@ -1560,8 +1560,8 @@ FR_du_Char = {
 								culture = { has_name_list = name_list_beja } # duke_feudal_male_beja (Émir), duke_feudal_female_beja (Émiresse)
 							}
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 								has_government = tribal_government
 							}
 						}
@@ -1572,8 +1572,8 @@ FR_du_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 						has_government = tribal_government
 					}
 				}
@@ -1587,8 +1587,8 @@ FR_du_Char = {
 								culture = { has_cultural_pillar = heritage_arabic }
 							}
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 							}
 						}
 					}
@@ -1597,8 +1597,8 @@ FR_du_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 				}
 				AND = { # duke_clan_male_iberian_group (Émir), duke_clan_female_iberian_group (Émiresse)
@@ -1608,7 +1608,7 @@ FR_du_Char = {
 						}
 						top_liege = {
 							culture = { has_cultural_pillar = heritage_iberian }
-							has_government = clan_government
+							has_government = iqta_government
 						}
 					}
 					OR = {
@@ -1616,7 +1616,7 @@ FR_du_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = clan_government
+						has_government = iqta_government
 					}
 				}
 				# AND = {
@@ -1624,7 +1624,7 @@ FR_du_Char = {
 				# 	highest_held_title_tier = tier_county
 				# 	OR = {
 				# 		AND = { # count_feudal_male_english (Earl)
-				# 			has_government = feudal_government
+				# 			has_government = western_feudal_government
 				# 			primary_title = { 
 				# 				target_is_de_jure_liege_or_above = title:e_britannia
 				# 				NOT = { target_is_de_jure_liege_or_above = title:k_wales } # count_feudal_male_k_wales (Lord)
@@ -1632,7 +1632,7 @@ FR_du_Char = {
 				# 		}
 				# 		AND = { # count_feudal_male_e_britannia (Earl)
 				# 			OR = {
-				# 				has_government = feudal_government
+				# 				has_government = western_feudal_government
 				# 				has_government = tribal_government
 				# 			}
 				# 			culture = { has_name_list = name_list_english }
@@ -1667,8 +1667,8 @@ FR_du_Char = {
 				AND = { # baron_feudal_male_iranian_group (Argbadh)
 					highest_held_title_tier = tier_barony
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 					culture = { has_cultural_pillar = heritage_iranian }
 				}
@@ -1789,7 +1789,7 @@ FR_au_Char_P = {
 	text = {
 		trigger = { # queen_mother (Reine mère)
 			is_female = yes
-			has_government = feudal_government
+			has_government = western_feudal_government
 			any_child = { primary_title.tier = tier_kingdom }
 			primary_title.tier < tier_kingdom
 		}
@@ -1801,12 +1801,12 @@ FR_au_Char_P = {
 				AND = { # prince_male_iberian_group (Infant), prince_female_iberian_group (Infante)
 					primary_title.tier < tier_kingdom
 					culture = { has_cultural_pillar = heritage_iberian }
-					has_government = feudal_government
+					has_government = western_feudal_government
 					any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 				}
 				AND = { # empress_mother (Impératrice mère)
 					is_female = yes
-					has_government = feudal_government
+					has_government = western_feudal_government
 					any_child = { primary_title.tier = tier_empire }
 					primary_title.tier < tier_empire
 				}
@@ -1819,8 +1819,8 @@ FR_au_Char_P = {
 			is_female = no
 			primary_title.tier < tier_kingdom
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				has_government = western_feudal_government
+				has_government = iqta_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1831,8 +1831,8 @@ FR_au_Char_P = {
 			is_female = yes
 			primary_title.tier < tier_kingdom
 			OR = {
-				has_government = feudal_government
-				has_government = clan_government
+				has_government = western_feudal_government
+				has_government = iqta_government
 			}
 			any_parent = { even_if_dead = yes primary_title.tier >= tier_kingdom }
 		}
@@ -1864,8 +1864,8 @@ FR_au_Char = {
 							culture = { has_name_list = name_list_greek } # Basileus
 							AND = { # emperor_feudal_male_altaic_group (Khagan)
 								OR = {
-									has_government = feudal_government
-									has_government = clan_government
+									has_government = western_feudal_government
+									has_government = iqta_government
 									has_government = tribal_government
 								}
 								OR = {
@@ -1896,8 +1896,8 @@ FR_au_Char = {
 					highest_held_title_tier = tier_kingdom
 					culture = { has_name_list = name_list_uyghur }
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 						has_government = tribal_government
 					}
 				}
@@ -1908,8 +1908,8 @@ FR_au_Char = {
 							exists = top_liege
 							top_liege = {
 								OR = {
-									has_government = feudal_government
-									has_government = clan_government
+									has_government = western_feudal_government
+									has_government = iqta_government
 								}
 								culture = { has_name_list = name_list_turkish }
 							}
@@ -1917,8 +1917,8 @@ FR_au_Char = {
 						AND = {
 							NOT = { exists = top_liege }
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 							}
 							culture = { has_name_list = name_list_turkish }
 						}
@@ -1929,8 +1929,8 @@ FR_au_Char = {
 					culture = { has_name_list = name_list_sogdian }
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 				}
 				AND = {
@@ -1944,8 +1944,8 @@ FR_au_Char = {
 								culture = { has_name_list = name_list_beja } # duke_feudal_male_beja (Émir), duke_feudal_female_beja (Émiresse)
 							}
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 								has_government = tribal_government
 							}
 						}
@@ -1956,8 +1956,8 @@ FR_au_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 						has_government = tribal_government
 					}
 				}
@@ -1971,8 +1971,8 @@ FR_au_Char = {
 								culture = { has_cultural_pillar = heritage_arabic }
 							}
 							OR = {
-								has_government = feudal_government
-								has_government = clan_government
+								has_government = western_feudal_government
+								has_government = iqta_government
 							}
 						}
 					}
@@ -1981,8 +1981,8 @@ FR_au_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 				}
 				AND = { # duke_clan_male_iberian_group (Émir), duke_clan_female_iberian_group (Émiresse)
@@ -1992,7 +1992,7 @@ FR_au_Char = {
 						}
 						top_liege = {
 							culture = { has_cultural_pillar = heritage_iberian }
-							has_government = clan_government
+							has_government = iqta_government
 						}
 					}
 					OR = {
@@ -2000,7 +2000,7 @@ FR_au_Char = {
 					}
 					highest_held_title_tier = tier_duchy
 					OR = {
-						has_government = clan_government
+						has_government = iqta_government
 					}
 				}
 				# AND = {
@@ -2008,7 +2008,7 @@ FR_au_Char = {
 				# 	highest_held_title_tier = tier_county
 				# 	OR = {
 				# 		AND = { # count_feudal_male_english (Earl)
-				# 			has_government = feudal_government
+				# 			has_government = western_feudal_government
 				# 			primary_title = { 
 				# 				target_is_de_jure_liege_or_above = title:e_britannia
 				# 				NOT = { target_is_de_jure_liege_or_above = title:k_wales } # count_feudal_male_k_wales (Lord)
@@ -2016,7 +2016,7 @@ FR_au_Char = {
 				# 		}
 				# 		AND = { # count_feudal_male_e_britannia (Earl)
 				# 			OR = {
-				# 				has_government = feudal_government
+				# 				has_government = western_feudal_government
 				# 				has_government = tribal_government
 				# 			}
 				# 			culture = { has_name_list = name_list_english }
@@ -2051,8 +2051,8 @@ FR_au_Char = {
 				AND = { # baron_feudal_male_iranian_group (Argbadh)
 					highest_held_title_tier = tier_barony
 					OR = {
-						has_government = feudal_government
-						has_government = clan_government
+						has_government = western_feudal_government
+						has_government = iqta_government
 					}
 					culture = { has_cultural_pillar = heritage_iranian }
 				}

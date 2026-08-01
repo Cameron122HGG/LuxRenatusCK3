@@ -2265,7 +2265,7 @@ quarterly_playable_pulse = {
 		mpo_tributary_check_pulse
 	}
 	random_on_action = {
-		chance_to_happen = 75
+		chance_to_happen = 50
 		chance_of_no_event = { # Fewer events for the AI
 			value = 0
 			if = {
@@ -2279,6 +2279,8 @@ quarterly_playable_pulse = {
 	}
 }
 
+# Called from code once a year for all "playable" characters, at a random point that year (individually for each character). Different time from the random_yearly_everyone_pulse (coincides by random 1 time out of 365)
+# Root is the character
 # Called from code once a year for all "playable" characters, at a random point that year (individually for each character). Different time from the random_yearly_everyone_pulse (coincides by random 1 time out of 365)
 # Root is the character
 random_yearly_playable_pulse = {
@@ -2313,12 +2315,11 @@ random_yearly_playable_pulse = {
 		5 = fp1_yearly_events
 		4 = fp2_yearly_events
 		4 = fp3_yearly_events
-		2 = bp1_yearly_events
-		#6 = ep3_yearly_events_byzantium
+		#2 = bp1_yearly_events # Retired on purpose; contents are all in on_yearly_events
 		6 = ep3_yearly_events_admin
 		6 = tgp_japan_yearly_events
 		6 = tgp_china_yearly_events
-		6 = tgp_mandala_yearly_events
+		3 = tgp_mandala_yearly_events
 		6 = ongoing_house_feud_events
 		10 = mpo_yearly_events_nomads
 	}
@@ -2415,13 +2416,12 @@ random_yearly_playable_pulse = {
 		delay = { days = { 181 240 } }
 		bp2_child_pulse
 		delay = { days = { 181 240 } }
-		#bp2_parent_guardian_hostage_taker_pulse
-		delay = { days = { 241 290 } }
 		bp2_adult_followups
 		delay = { days = { 291 310 } }
 		court_scholar_ongoing
 		delay = { days = { 25 44 } }
 		clan_events_on_action
+		delay = { days = { 14 310 } }
 		ep3_akolouthos_on_action
 		delay = { days = { 25 44 } }
 		mpo_migration_contract

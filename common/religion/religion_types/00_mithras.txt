@@ -21,7 +21,7 @@ mithras_religion = {
 	doctrine = doctrine_theocracy_temporal
 
 	#Marriage
-	doctrine = doctrine_monogamy
+	doctrine = doctrine_concubines
 	doctrine = doctrine_divorce_allowed
 	doctrine = doctrine_bastardry_legitimization
 	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
@@ -29,7 +29,7 @@ mithras_religion = {
 	#Crimes
 	doctrine = doctrine_homosexuality_accepted
 	doctrine = doctrine_adultery_men_shunned
-	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_adultery_women_crime
 	doctrine = doctrine_kinslaying_close_kin_crime
 	doctrine = doctrine_deviancy_shunned
 	doctrine = doctrine_witchcraft_shunned
@@ -43,14 +43,22 @@ mithras_religion = {
 	#Allow pilgrimages
 	doctrine = doctrine_pilgrimage_encouraged
 
-	#Funeral tradition
-	doctrine = doctrine_funeral_bewailment # Ancient Greeks were encouraged to grieve publicly
-	doctrine = doctrine_no_anointment # Greek kings were not anointed
+	#Funeral Tradition
+	doctrine = doctrine_funeral_cremation
 
+	#Coronation Tradition
+	doctrine = doctrine_no_anointment # Greek kings were not anointed
 
 	traits = {
 		virtues = { generous just temperate }
 		sins = { greedy arbitrary gluttonous }
+	}
+
+	reserved_male_names = {
+		Marcus Gaius Publius Sextus Appius Gnaeus Caius Agrippa Titus Vitus Albus Tiberius Lucius Nero Antonius Felix Atticus Cassius Aurelius Aloysius Rufus Remus Romulus Marius Maximus Cornelius Cato Brutus Septimus Silvanus Junius Flavius Vitus Antoninus Livius Mithraius
+	}
+		reserved_female_names = {
+        Fabia Hadriana Agrippina Julia-Agrippina Julia Mariana Octavia Valentina Tiberia Antonia Aemilia Amanda Camilla Caecilia Claudia Clelia Flavia Fulvia Iulia Iris Laura Lucia Sabina Serena Silvana Titiana Tullia Valeria Martia Paula Domitia Domitilla Drusilla Fabricia Ennia Iuliana Iustina Romana Severa Servia Virginia Ursula Ulpia Tosca Rosa
 	}
 
 	custom_faith_icons = {
@@ -58,8 +66,8 @@ mithras_religion = {
 	}
 
 	holy_order_names = {
-		{ name = "holy_order_myrmidons" }
-		{ name = "holy_order_priesthood_of_ares" }
+        { name = "holy_order_swords_of_mithras" }
+        { name = "holy_order_taurobolians"}
 	}
 
 	holy_order_maa = { praetorian }
@@ -68,6 +76,7 @@ mithras_religion = {
 		#High God Name
 		HighGodName = mithras_high_god_name
 		HighGodName2 = mithras_high_god_name_2
+		HighGodName3 = mithras_high_god_name_2
 		HighGodNamePossessive = mithras_high_god_name_possessive
 		HighGodNameSheHe = CHARACTER_SHEHE_HE
 		HighGodHerselfHimself = CHARACTER_HIMSELF
@@ -238,119 +247,69 @@ mithras_religion = {
 			holy_site = carthage
 			holy_site = takht-e_soleyman
 
-			reserved_male_names = {
-				Marcus Gaius Publius Sextus Appius Gnaeus Caius Agrippa Titus Vitus Albus Tiberius Lucius Nero Antonius Felix Atticus Cassius Aurelius Aloysius Rufus Remus Romulus Marius Maximus Cornelius Cato Brutus Septimus Silvanus Junius Flavius Vitus Antoninus Livius Mithraius
-			}
-			reserved_female_names = {
-                Fabia Hadriana Agrippina Julia-Agrippina Julia Mariana Octavia Valentina Tiberia Antonia Aemilia Amanda Camilla Caecilia Claudia Clelia Flavia Fulvia Iulia Iris Laura Lucia Sabina Serena Silvana Titiana Tullia Valeria Martia Paula Domitia Domitilla Drusilla Fabricia Ennia Iuliana Iustina Romana Severa Servia Virginia Ursula Ulpia Tosca Rosa
-			}
-
+			# Faith Aspects
 			doctrine = lux_doctrine_dualist_ascendant
 			doctrine = lux_doctrine_martial_soul
 
+			# Tenets
             doctrine = tenet_esotericism
 			doctrine = tenet_household_gods
             doctrine = tenet_warmonger
-            
-            doctrine = doctrine_pilgrimage_encouraged
-            doctrine = doctrine_funeral_cremation
-            
-            #Main Group
-            doctrine = doctrine_spiritual_head
-            doctrine = doctrine_gender_male_dominated
-            doctrine = doctrine_pluralism_righteous
-            doctrine = doctrine_theocracy_temporal
-
-            #Marriage 
-            doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
-            doctrine = doctrine_bastardry_legitimization
-            doctrine = doctrine_monogamy
-            doctrine = doctrine_divorce_allowed
-
-            #Crimes
-            doctrine = doctrine_homosexuality_accepted
-            doctrine = doctrine_adultery_men_shunned
-            doctrine = doctrine_adultery_women_shunned
-            doctrine = doctrine_kinslaying_close_kin_crime
-            doctrine = doctrine_deviancy_crime
-            doctrine = doctrine_witchcraft_shunned
-
-            #Clerical Functions
-            doctrine = doctrine_clerical_function_taxation
-            doctrine = doctrine_clerical_gender_male_only 
-            doctrine = doctrine_clerical_marriage_allowed
-            doctrine = doctrine_clerical_succession_temporal_fixed_appointment
 
             holy_order_names = {
-                { name = "holy_order_protectors_of_mithras" }
-                { name = "holy_order_herculiani"}
-                { name = "holy_order_joviani"}
+                { name = "holy_order_swords_of_mithras" }
+                { name = "holy_order_taurobolians"}
             }
         }
 
         mithras_christ = {
             color = { 245 75 45 }
             icon = mithras_christ
+            religious_head = k_mithras_christ
 
 			holy_site = rome
 			holy_site = takht-e_soleyman
 			holy_site = alexandria
 			holy_site = cartagena
-			holy_site = jerusalem            
-            religious_head = k_mithras_christ
+			holy_site = jerusalem
 
-			reserved_male_names = {
-				Marcus Gaius Publius Sextus Appius Gnaeus Caius Agrippa Titus Vitus Albus Tiberius Lucius Nero Antonius
-		        Felix Atticus Cassius Aurelius Aloysius Rufus Remus Romulus Marius Maximus Cornelius Cato Brutus Septimus Silvanus Junius Flavius Vitus Antoninus
-		        Livius
-			}
-			reserved_female_names = {
-                Fabia Hadriana Agrippina Julia-Agrippina Julia Mariana Octavia Valentina Tiberia Antonia Aemilia Amanda Camilla Caecilia Claudia 
-                Clelia Flavia Fulvia Iulia Iris Laura Lucia Sabina Serena Silvana Titiana Tullia Valeria Martia Paula Domitia Domitilla Drusilla Fabricia  
-                Ennia Iuliana Iustina Romana Severa Servia Virginia Ursula Ulpia Tosca Rosa
-			}
-
+			# Faith Aspects 
 			doctrine = lux_doctrine_christian_ascendant
 			doctrine = lux_doctrine_martial_soul
 
-            doctrine = tenet_esotericism
-            doctrine = tenet_armed_pilgrimages
-            doctrine = tenet_unrelenting_faith
-            
-            doctrine = doctrine_pilgrimage_encouraged
-            doctrine = doctrine_funeral_cremation
-            doctrine = doctrine_anointment_permitted
+            # Tenets
+			doctrine = tenet_esotericism
+			doctrine = tenet_armed_pilgrimages
+			doctrine = tenet_unrelenting_faith
             
             #Main Group
-            doctrine = doctrine_spiritual_head
-            doctrine = doctrine_gender_male_dominated
-            doctrine = doctrine_pluralism_fundamentalist
+			doctrine = doctrine_pluralism_fundamentalist
 
             #Marriage 
-            doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
-            doctrine = doctrine_bastardry_legitimization
-            doctrine = doctrine_monogamy
-            doctrine = doctrine_divorce_allowed
+			doctrine = doctrine_monogamy
+			doctrine = doctrine_divorce_approval
 
-            #Crimes
-            doctrine = doctrine_homosexuality_shunned
-            doctrine = doctrine_adultery_women_crime
+			#Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_adultery_women_crime
 
-            #Clerical Functions
-            doctrine = doctrine_clerical_function_recruitment
-            doctrine = doctrine_clerical_gender_male_only 
-            doctrine = doctrine_clerical_marriage_allowed
-            doctrine = doctrine_clerical_succession_temporal_fixed_appointment
+			#Clerical Functions
+			doctrine = doctrine_clerical_succession_spiritual_appointment
+
+			# Funeral Tradition
+			doctrine = doctrine_funeral_cremation
+			doctrine = doctrine_anointment_permitted
 
             holy_order_names = {
-                { name = "holy_order_protectors_of_mithras" }
-                { name = "holy_order_herculiani"}
-                { name = "holy_order_joviani"}
+                { name = "holy_order_sacred_cross_of_mithra" }
+                { name = "holy_order_order_of_saint_miles"}
             }
+
             localization = { # Utilizes 'Mithraic' saints, partially named after the ranks of Mithraic initiates.
 				#High God Name, Mithras Christos
 				HighGodName = mithras_christ_high_god_name
 				HighGodName2 = mithras_christ_high_god_name_2
+				HighGodName3 = mithras_christ_high_god_name_2
 				HighGodNamePossessive = mithras_christ_high_god_name_possessive
 				HighGodNameSheHe = CHARACTER_SHEHE_HE
 				HighGodHerselfHimself = CHARACTER_HIMSELF
@@ -484,55 +443,51 @@ mithras_religion = {
 			holy_site = yazd
 
 			reserved_male_names = {
-				Marcus Gaius Publius Sextus Appius Gnaeus Caius Agrippa Titus Vitus Albus Tiberius Lucius Nero Antonius
-		        Felix Atticus Cassius Aurelius Aloysius Rufus Remus Romulus Marius Maximus Cornelius Cato Brutus Septimus Silvanus Junius Flavius Vitus Antoninus
-		        Livius
-			}
-			reserved_female_names = {
-                Fabia Hadriana Agrippina Julia-Agrippina Julia Mariana Octavia Valentina Tiberia Antonia Aemilia Amanda Camilla Caecilia Claudia 
-                Clelia Flavia Fulvia Iulia Iris Laura Lucia Sabina Serena Silvana Titiana Tullia Valeria Martia Paula Domitia Domitilla Drusilla Fabricia  
-                Ennia Iuliana Iustina Romana Severa Servia Virginia Ursula Ulpia Tosca Rosa
+				Hormazd Maziar Shapur Vandad Zartosht
 			}
 
+			# Faith Aspects 
+			doctrine = lux_doctrine_persian_ascendant
+			doctrine = lux_doctrine_martial_soul
+
+			# Tenets
             doctrine = tenet_unrelenting_faith
             doctrine = tenet_reincarnation
             doctrine = tenet_warmonger
-
-            doctrine = doctrine_pilgrimage_encouraged
-            doctrine = doctrine_funeral_cremation
-            doctrine = doctrine_no_anointment
-
-            doctrine = lux_doctrine_persian_ascendant
-			doctrine = lux_doctrine_martial_soul
 			
             #Main Group
-            doctrine = doctrine_spiritual_head
             doctrine = doctrine_gender_male_dominated
             doctrine = doctrine_pluralism_pluralistic
-            doctrine = doctrine_theocracy_lay_clergy
+            doctrine = doctrine_theocracy_temporal
 
             #Marriage 
-            doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
-            doctrine = doctrine_bastardry_legitimization
             doctrine = doctrine_monogamy
             doctrine = doctrine_divorce_allowed
+            doctrine = doctrine_bastardry_none
 
             #Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_kinslaying_any_dynasty_member_crime
 
             #Clerical Functions
-            doctrine = doctrine_clerical_function_taxation
-            doctrine = doctrine_clerical_gender_male_only 
-            doctrine = doctrine_clerical_marriage_allowed
-            doctrine = doctrine_clerical_succession_temporal_fixed_appointment
+			doctrine = doctrine_clerical_gender_either
+            doctrine = doctrine_clerical_succession_spiritual_appointment
+			
+			# Funeral Tradition
+            doctrine = doctrine_funeral_stoic
+
+			#Coronation tradition
+			doctrine = doctrine_anointment_permitted
 
             holy_order_names = {
-                { name = "holy_order_herculiani"}
-                { name = "holy_order_joviani"}
+                { name = "holy_order_ordo_theoi_agema"}
             }
+
             localization = { # Manichean Gods
 				#HighGodName
 				HighGodName = mani_mithras_high_god_name
 				HighGodName2 = mani_mithras_high_god_name_2
+				HighGodName3 = mani_mithras_high_god_name_2
 				HighGodNamePossessive = mani_mithras_high_god_name_possessive
 				HighGodNameSheHe = CHARACTER_SHEHE_HE
 				HighGodHerselfHimself = CHARACTER_HIMSELF
@@ -644,30 +599,45 @@ mithras_religion = {
 			holy_site = hattusa
 			holy_site = rome
 			holy_site = constantinople
-            
-			#Special Tolerance
 
-			doctrine = lux_doctrine_graeco_roman_ascendant
+			reserved_male_names = {
+				Alexandros Adonis Aniketos Antiochos Apollinaris Apollodotos Apollodoros Arkadios Artemidoros Attikos Khrysos Khrysanthos Kleitos Kleisthenes Diodoros Diodotos Diogenes Diokles Dionysios Eirenaios Erastos Eustathios Euthymios Eutropios Eutychios Heliodoros Heliodotos Herakleios Herakleitos Iason Isidoros Leontios Lysandros Menandros Metrophanes Miltiades Neoptolemos Nikandros Nikodemos Pankratios Pantaleon Philippos Philadelphos Polydoros Ptolemaios Pyrrhos Seleukos Serapion Sophronides Telemachos Timaios Xanthos Zagreus Zenon Zephyros
+			}
+
+			reserved_female_names = {
+				Alexandra Aristomache Arsinoe Anthousa Antigone Apollonia Arete Berenike Cleopatra Dorothea Eirene Eudokia Euphemia Eurydice Eutychia Helene Hypatia Lysandra Lysistrate Melissa Nymphodora Olympias Parthena Philippa Pyrrha Roxana Sappho Sophia Stateira Timarete Xanthe Xenia Zenais Zenobia Zoe
+			}
+
+			# Faith Aspects
+			doctrine = lux_doctrine_dualist_ascendant
 			doctrine = lux_doctrine_martial_soul
-
-			#Main Group
-			#doctrine = unreformed_faith_doctrine
-
-            doctrine = doctrine_pluralism_fundamentalist
 
 			#Tenets
 			doctrine = tenet_sun_worship
 			doctrine = tenet_household_gods
-			doctrine = tenet_armed_pilgrimages
+			doctrine = tenet_warmonger
+
+			# Main Group
+            doctrine = doctrine_pluralism_fundamentalist
+
+			#Crimes
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_adultery_men_shunned
+			doctrine = doctrine_adultery_women_shunned
+
+			#Clerical Functions
+			doctrine = doctrine_clerical_gender_either
 
 			holy_order_names = {
-				{ name = "holy_order_order_of_saint_anthony" }
+				{ name = "holy_order_ordo_luciferi_illuminatoris" }
+				{ name = "holy_order_ordo_lightbringers_chosen" }
 			}
 
 			localization = {
                 #HighGodName
 				HighGodName = mithras_sol_high_god_name
 				HighGodName2 = mithras_sol_high_god_name_2
+				HighGodName3 = mithras_sol_high_god_name_2
 				HighGodNamePossessive = mithras_sol_high_god_name_possessive
 				HighGodNameSheHe = CHARACTER_SHEHE_HE
 				HighGodHerselfHimself = CHARACTER_HIMSELF

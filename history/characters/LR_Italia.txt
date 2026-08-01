@@ -30,7 +30,7 @@
 	faith = sol_imperial
 	culture = greek
 	trait = bloodline_julianos
-	give_nickname = nick_the_apostate
+	give_nickname = nick_the_philosopher
 	5315.1.1 = {
 		birth = 5315.1.1
 	}
@@ -53,7 +53,7 @@
 		death = 5442.1.1
 	}
 }
-12546 = {
+12546 = { # Aurelian II
 	name = Aurelianos
 	dynasty = eastern_roman_julianos
 	father = 1710712
@@ -64,24 +64,31 @@
 		birth = 5889.1.1
 	}
 	5960.1.1 = {
-		death = 5960.1.1
+		death = {
+			death_reason = death_sol_desert # Went into the Desert
+		}
 	}
 }
-12547 = {
+12547 = { # Julian IV
 	name = Ioulianos
 	dynasty = eastern_roman_julianos
 	faith = sol_imperial
 	culture = greek
 	father = 12546
 	trait = bloodline_julianos
+	trait = seducer
+	trait = rakish
+
 	5933.1.1 = {
 		birth = 5933.1.1
 	}
 	5993.1.1 = {
-		death = 5993.1.1
+		death = {
+			death_reason = death_sol_desert # Went into the Desert
+		}
 	}
 }
-12548 = {
+12548 = { # Julian V
 	name = Ioulianos
 	dynasty = eastern_roman_julianos
 	faith = sol_imperial
@@ -92,10 +99,13 @@
 		birth = 5968.1.1
 	}
 	6018.1.1 = {
-		death = 6018.1.1
+		death = {
+			death_reason = death_assassination
+			killer = 12549
+		}
 	}
 }
-12549 = {
+12549 = { # Julian VI
 	name = Ioulianos
 	dynasty = eastern_roman_julianos
 	faith = sol_imperial
@@ -106,10 +116,12 @@
 		birth = 5999.1.1
 	}
 	6020.1.1 = {
-		death = 6020.1.1
+		death = {
+			death_reason = death_assassination
+		}
 	}
 }
-12550 = {
+12550 = { # Julian VII
 	name = Ioulianos
 	dynasty = eastern_roman_julianos
 	faith = sol_imperial
@@ -120,7 +132,9 @@
 		birth = 6017.1.1
 	}
 	6060.1.1 = {
-		death = 6060.1.1
+		death = {
+			death_reason = death_assassinated_by_soldiers
+		}
 	}
 }
 
@@ -609,11 +623,11 @@
 		death = "5306.1.2"
 	}
 }
-#succeeded by Konstantios, ID = 11100
+#succeeded by Konstantios, ID = Constantine_The_Great
 1710691 = {
 	name = "Constantinus" #Crispus, Julian-s father (Julian = 12519 )
 	dynasty = dynasty_roman_constantinian
-	father = 11100
+	father = Constantine_The_Great
 	faith = sol_imperial 
 	culture = "roman" 
 	5299.1.1 = {
@@ -626,7 +640,7 @@
 1710692 = {
 	name = "Constantius" #the other one, father of imperial cultists in Trebizond
 	dynasty = dynasty_roman_constantinian
-	father = 11100
+	father = Constantine_The_Great
 	faith = "roman_caesar_cult" 
 	culture = "roman" 
 	5305.1.1 = {
@@ -1061,7 +1075,10 @@
 		birth = 5668.1.1
 	}
 	5714.12.11 = {
-		death = 5714.12.11
+		death = {
+			death_reason = death_assassination
+			killer = 14001
+		}
 	}
 }
 1712501 = {
@@ -1398,14 +1415,19 @@
 	health = 8
 	faith = sol_imperial
 	culture = greek
-	trait = ambitious
 	trait = bloodline_augustus
 	father = 1712480
+
+	trait = education_diplomacy_4
+	trait = ambitious
+	trait = arrogant
+	trait = impatient
+
 	6045.1.1 = {
 		birth = 6045.1.1
 	}
 	6060.1.1 = {
-		add_pressed_claim = title:k_byzantium
+		#add_pressed_claim = title:k_byzantium
 		add_pressed_claim = title:e_byzantium
 	}
 	6100.1.2 = {
@@ -1427,13 +1449,12 @@
 	}
 }
 11518 = {
-	name = Alexandros # Grandson of Alexandros XVII
+	name = Alexandros # Alexandros XVIII
 	dynasty = dynasty_roman_julio_argeadai
 	faith = sol_imperial
 	culture = greek
 	father = 1712464
 	trait = bloodline_augustus
-	give_nickname = nick_the_unlucky
 	5701.1.1 = {
 		birth = 5701.1.1
 	}
@@ -1454,7 +1475,9 @@
 		birth = 4964.5.31
 	}
 	5036.1.1 = {
-		death = 5036.1.1
+		death = {
+			death_reason = death_battle
+		}
 	}
 }
 12502 = {
@@ -1472,36 +1495,44 @@
 		birth = 5016.1.1
 	}
 	5069.1.1 = {
-		death = 5069.1.1
+		death = {
+			death_reason = death_assassination
+		}
 	}
 }
 12532 = {
-	name = Alexandros
+	name = Alexandros # Alexandros XVI 'Oinochous'
 	dynasty = dynasty_roman_julio_argeadai
 	faith = sol_imperial
 	culture = greek
 	father = 1712463
 	trait = bloodline_augustus
+	give_nickname = nick_oinochous
 	5632.1.1 = {
 		birth = 5632.1.1
 	}
 	5681.1.1 = {
-		death = 5681.1.1
+		death = {
+			death_reason = death_ripped_apart_limb_by_limb
+			killer = 14000
+		}
 	}
 }
 12533 = {
-	name = Alexandros #Alexandros XVII
+	name = Alexandros # Alexandros XVII 'Dystyches'
 	dynasty = dynasty_roman_julio_argeadai
 	faith = sol_imperial
 	culture = greek
 	father = 12532
 	trait = bloodline_augustus
-	give_nickname = nick_oinochous
+	give_nickname = nick_the_unlucky
 	5646.1.1 = {
 		birth = 5646.1.1
 	}
 	5682.1.1 = {
-		death = 5682.1.1
+		death = {
+			death_reason = death_battle
+		}
 	}
 }
 1712443 = {
@@ -1969,8 +2000,8 @@
 	6028.1.1 = {
 		birth = "6028.1.1"
 	}
-	6060.1.2 = {
-		death = "6060.1.2"
+	6060.1.1 = {
+		death = "6060.1.1"
 	}
 }
 1830121 = {
@@ -4792,7 +4823,9 @@ aurelia_aurelii_cassiodoria_ii = {
 		birth = 5051.10.24
 	}
 	5096.9.18 = {
-		death = 5096.9.18
+		death = {
+			death_reason = death_assassination
+		}
 	}
 }
 1711947 = {

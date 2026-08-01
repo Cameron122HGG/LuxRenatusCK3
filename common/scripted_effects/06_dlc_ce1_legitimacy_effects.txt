@@ -124,26 +124,26 @@ add_legitimacy_attacker_defeat_effect = {
 
 war_end_legitimacy_effect = {
 	# Special rewards for Temüjin vs Jamukha
-	#if = {
-	#	limit = {
-	#		scope:attacker = {
-	#			OR = {
-	#				this = character:dynamic_mongol_1
-	#				this = character:mpo_mongol_1
-	#			}
-	#			has_variable = temujin_jamukha_war_var
-	#		}
-	#		scope:defender = {
-	#			OR = {
-	#				this = character:dynamic_mongol_1
-	#				this = character:mpo_mongol_1
-	#			}
-	#		}
-	#	}
-	#	scope:attacker = {
-	#		add_legitimacy = 500
-	#	}
-	# }
+	if = {
+		limit = {
+			scope:attacker = {
+				OR = {
+					this = character:125501
+					this = character:mpo_mongol_1
+				}
+				has_variable = temujin_jamukha_war_var
+			}
+			scope:defender = {
+				OR = {
+					this = character:125501
+					this = character:mpo_mongol_1
+				}
+			}
+		}
+		scope:attacker = {
+			add_legitimacy = 500
+		}
+	}
 	else = {
 		if = {
 			limit = {

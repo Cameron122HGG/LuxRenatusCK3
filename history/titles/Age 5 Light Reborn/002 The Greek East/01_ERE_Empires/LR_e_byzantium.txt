@@ -1,9 +1,4 @@
 ﻿e_byzantium = {
-	4959.1.1 = { #temporary
-		liege = h_mark_antony_roman_republic
-		holder = 1712371
-		government = alexandrian_administrative_government
-	}
 	4974.1.16 = { # Octavian
 		holder = 12500
 		government = roman_administrative_government
@@ -706,7 +701,7 @@
 		}
 	}
 	5330.1.1 = {
-		holder = 11100 #Constantine The Great OTL
+		holder = Constantine_The_Great #Constantine The Great OTL
 		government = roman_administrative_government
 		succession_laws = {
 			acclamation_succession_law
@@ -1178,9 +1173,8 @@
 	5702.1.1 = { holder = 12535 }
 	5707.1.1 = { holder = 12534 }
 	5714.12.11 = { holder = 14001 } #Tervel 
-	5716.1.1 = { holder = 12536 }
-	5727.1.1 = { holder = 11518 } #Alexandros XVIII Julio-Argead 
-	5730.1.1 = { holder = 12537 }
+	5716.1.1 = { holder = 12536 } # Leo III
+	5740.12.25 = { holder = 12537 } # Leo Constantine
 	5775.1.1 = { holder = 12538 }
 	5795.1.1 = { holder = 12539 }
 	5809.1.1 = { holder = 12540 }
@@ -1200,22 +1194,16 @@
 	6018.1.1 = { holder = 12549 }
 	6020.1.1 = { holder = 12550 }
 	6060.1.1 = { holder = 1 }
-	6066.9.15 = { holder = 0 }
+	6066.3.15 = { holder = 0 }
 }
 
 k_byzantium = {
-	5001.1.1 = { change_development_level = 24 }
-	#5001.1.10 = {
-	#	holder = 12500
-	#}
-	#5014.1.1 = { 
-	#	holder = 12501 
-	#}
-	#5036.1.1 = { 
-	#	holder = 12502 
-	#}
-	
-	6066.9.15 = { #warlord startdate
+	5001.1.1 = { change_development_level = 24 }	
+	6066.1.1 = { #Renata 1066
+		holder = 0
+
+	}
+	6066.3.15 = { #invicta warlord startdate is 9.26.6066
 		holder = 71
 		government = roman_administrative_government
 		succession_laws = {
@@ -1276,7 +1264,7 @@ d_thrace = {
 			}		
 		}		
 	}
-	6066.9.15 = {
+	6066.3.15 = {
 		liege = k_byzantium
 		holder = 71
 	}
@@ -1287,154 +1275,14 @@ d_philippopolis = {
 	6062.1.1 = {
 		holder = 71
 	}
-	6066.9.15 = {
+	6066.3.15 = {
 		liege = k_byzantium
 		holder = 71
 	}
 
 }
 
-c_byzantion = {
-	5200.1.1 = {
-		liege = e_byzantium
-	}
-	6060.1.1 = {
-		liege = e_byzantium
-		holder = 1
-		
-	}
-	6066.9.15 = { #warlord startdate
-		liege = k_byzantium
-		holder = 71
-		government = roman_administrative_government
-		succession_laws = {
-			acclamation_succession_law
-		}
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					has_government = roman_administrative_government
-				}
-				set_state_faith = faith:sol_imperial
-			}
-			if = {
-				limit = {
-					exists = holder
-					has_dlc_feature = royal_court
-				}
-				holder = {
-					set_court_type = court_warlike
-				}
-			}
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-					add_realm_law_skip_effects = single_heir_succession_law
-				}
-			}
-		}
-	}
-}
 
-# C Kalliopolis
-c_kalliopolis = {
-	6060.1.1 = {
-		liege = e_byzantium
-		holder = 1
-		government = roman_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-					add_realm_law_skip_effects = single_heir_succession_law
-				}
-			}		
-		}		
-	}
-	6066.9.15 = { #warlord startdate
-		liege = k_byzantium
-		holder = 71
-		government = roman_administrative_government
-		succession_laws = {
-			acclamation_succession_law
-		}
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					has_government = roman_administrative_government
-				}
-				set_state_faith = faith:sol_imperial
-			}
-			if = {
-				limit = {
-					exists = holder
-					has_dlc_feature = royal_court
-				}
-				holder = {
-					set_court_type = court_warlike
-				}
-			}
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-					add_realm_law_skip_effects = single_heir_succession_law
-				}
-			}
-		}
-	}
-}
-
-# C Brysis
-c_brysis = {
-	6057.5.22 = {
-		liege = d_thrace
-		holder = 50
-		government = roman_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-					add_realm_law_skip_effects = single_heir_succession_law
-				}
-			}		
-		}		
-	}
-	6066.9.15 = {
-		liege = d_thrace
-		holder = 50
-		government = roman_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-					add_realm_law_skip_effects = single_heir_succession_law
-				}
-			}		
-		}		
-	}
-}
 
 
 
@@ -1541,7 +1389,7 @@ d_opsikion = {
 			}
 		}
 	}
-	6066.9.15 = {
+	6066.3.15 = {
 		liege = 0
 		holder = 2
 		government = roman_administrative_government
@@ -1661,7 +1509,7 @@ d_phrygia = {
 			}
 		}
 	}
-	6066.9.15 = {
+	6066.3.15 = {
 		liege = 0
 		holder = 2
 		government = roman_administrative_government
@@ -1679,33 +1527,9 @@ d_phrygia = {
 	}
 }
 
-# C Nikaea
-c_nikaea = {
 
 
-}
 
-# C Pacatiana
-c_pacatiana = {
-
-}
-
-# C Abydos
-c_abydos = {
-
-}
-
-# C Mysia
-c_mysia = {
-
-}
-
-# C Prusa
-c_prusa = {
-
-}
-
-# C Phrygia
 
 
 # D Optimatoi
@@ -1726,7 +1550,7 @@ d_optimatoi = {
 			}
 		}
 	}
-	6066.9.15 = { #warlord startdate
+	6066.3.15 = { #warlord startdate
 		liege = k_byzantium
 		holder = 71
 		government = roman_administrative_government
@@ -1808,7 +1632,7 @@ d_athens = {
 		#	contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 	#	end_tributary = yes
 	#}
 }
@@ -1817,27 +1641,7 @@ d_thessaly = {
 		holder = 49
 	}
 }
-c_neopatras = {
-	5867.1.1 = { change_development_level = 10 }
-	6066.1.1 = { change_development_level = 15 }
-	6178.1.1 = { change_development_level = 20 }
-	
-	6060.1.1 = {
-		liege = d_athens
-		holder = 7
-	}
-}
 
-c_attica = {
-	6178.1.1 = { change_development_level = 27 }
-
-	5330.1.1 = {
-		liege = 0
-	}
-	6060.1.1 = {
-		holder = 7
-	}
-}
 
 d_aegean_islands = {
 	5330.1.1 = {
@@ -1885,7 +1689,7 @@ c_lesbos = {
 		#	contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 	#	end_tributary = yes
 	#}
 }
@@ -1918,114 +1722,12 @@ c_chios = {
 		#	contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 	#	end_tributary = yes
 	#}
 }
 
-c_euboea = {
-	5330.1.1 = {
-		liege = 0
-		government = roman_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-				}
-			}
-		}
-	}
-	6060.1.1 = {
-		liege = d_aegean_islands
-		holder = 449
-	}
-}
-c_eretria = {
-	6066.1.1 = {
-		holder = 449
-		liege = d_aegean_islands
-	}
-}
-c_skyros = {
-	6066.1.1 = {
-		holder = 449
-		liege = d_aegean_islands
-	}
-}
-c_demetrias = {
-	5330.1.1 = {
-		liege = 0
-		government = roman_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-				}
-			}
-		}
-	}
-	6060.1.1 = {
-		liege = d_aegean_islands
-		holder = 449
-	}
-}
 
-c_thessalia = {
-	5867.1.1 = { change_development_level = 10 }
-	6066.1.1 = { change_development_level = 15 }
-	6178.1.1 = { change_development_level = 20 }
-
-	6060.1.1 = {
-		liege = d_thessalonika
-		government = alexandrian_administrative_government
-		holder = 49
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-				}
-			}
-		}
-		
-	}
-}
-
-c_thessaliotis = {
-	5867.1.1 = { change_development_level = 10 }
-	6066.1.1 = { change_development_level = 15 }
-	6178.1.1 = { change_development_level = 20 }
-	
-	5330.1.1 = {
-		government = alexandrian_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-				}
-			}
-		}
-	}
-	6060.1.1 = {
-		liege = 0
-		holder = 49
-	}
-}
 
 k_macedonia = {
 	5867.1.1 = { change_development_level = 7 }
@@ -2146,7 +1848,51 @@ k_macedonia = {
 }
 
 d_macedonia = {
-	6066.1.1 = { 
+	5001.1.10 = {
+		holder=12500
+	}
+	5014.9.19 = { holder = 12501 }
+	5036.1.1 = { holder = 12502 }
+	5069.1.1 = { holder = 1712443 }
+	5087.1.1 = { holder = 1712444 }
+	5112.1.1 = { holder = 1712445 }
+	5141.1.2 = { holder = 1712446 }
+	5201.1.2 = { holder = 1712447 }
+	5242.1.2 = { holder = 1712448 }
+	5278.1.2 = { holder = 1712449 }
+	5302.1.2 = { holder = 1712450 }
+	5361.1.2 = { holder = 1712451 }
+	5409.1.2 = { holder = 1712452 }
+	5418.1.2 = { holder = 1712453 }
+	5465.1.2 = { holder = 1712454 }
+	5522.1.2 = { holder = 1712455 }
+	5534.1.2 = { holder = 1712456 }
+	5547.1.2 = { holder = 1712457 }
+	5561.1.2 = { holder = 1712458 }
+	5572.1.2 = { holder = 1712459 }
+	5580.1.2 = { holder = 1712460 }
+	5598.1.2 = { holder = 1712461 }
+	5627.1.2 = { holder = 1712462 }
+	5642.1.2 = { holder = 1712463 }
+	5650.1.2 = { holder = 12532 }
+	5681.1.1 = { holder = 12533 }
+	5682.1.1 = { holder = 1712464 }
+	5708.1.2 = { holder = 11518 }
+	5735.1.1 = { holder = 1712467 }
+	5780.1.2 = { holder = 1712468 }
+	5786.1.2 = { holder = 1712469 }
+	5830.1.2 = { holder = 1712470 }
+	5876.1.2 = { holder = 1712471 }
+	5881.1.2 = { holder = 1712472 }
+	5923.1.2 = { holder = 1712473 } 
+	5937.1.2 = { holder = 1712474 }
+	5958.1.2 = { holder = 1712475 }
+	5994.1.2 = { holder = 1712476 } 
+	6008.1.2 = { holder = 1712477 }
+	6015.1.2 = { holder = 1712478 }
+	6022.1.2 = { holder = 1712479 }
+	6033.1.2 = { holder = 1712480 }
+	6060.1.1 = { 
 		liege = k_julio_argedai_byz
 		holder = 71
 		government = roman_administrative_government
@@ -2171,46 +1917,7 @@ d_strymon = {
 		}
 	}
 }
-c_zherkovo = {
-	6066.1.1 = {
-		liege = k_julio_argedai_byz
-		holder = 71
-		government = roman_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-				}
-			}
-		}
-	}
-	6066.9.15 = {
-		liege = k_byzantium
-		holder = 71
-	}
-}
-c_serres = {
-	
-	#Kakatiyas
-	6066.1.1 = {
-		liege = d_strymon
-		holder = 48 #Durjaya Kakatiya
-	}
-}
-c_mosynopolis = {
-	6066.1.1 = {
-		holder = 71 #Poranti Venna
-		liege = k_julio_argedai_byz
-	}
-	6066.9.15 = {
-		holder = 71 #Poranti Venna
-		liege = k_byzantium
-	}
-}
+
 
 d_thessalonika = {
 	6060.1.1 = {
@@ -2235,24 +1942,7 @@ d_thessalonika = {
 	#}	
 	
 }
-c_thessalonika = {
-	6060.1.1 = {
-		liege = d_thessalonika
-		holder = 49
-		government = alexandrian_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-				}
-			}
-		}
-	}
-}
+
 
 d_lykandos = {
 	6066.1.1 = {
@@ -2358,7 +2048,7 @@ k_galatia = {
 		#	contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 		#end_tributary = yes
 	#}
 }
@@ -2450,15 +2140,7 @@ d_cappadocia = {
 	}
 }
 
-# C Cappadocia
-c_cappadocia = {
 
-}
-
-# C Kyzistra
-c_kyzistra = {
-
-}
 
 # D Charsianon
 d_charsianon = {
@@ -2549,48 +2231,14 @@ d_charsianon = {
 
 
 
-# C Charsianon
-c_charsianon = {
-	6060.1.1 = {
-		liege = d_charsianon
-		holder = 53
-	}
 
-}
-
-# C Kaisereia
-c_kaisereia = {
-	6060.1.1 = {
-		liege = d_charsianon
-		holder = 53
-	}
-
-}
 
 # D Bucellaria
 d_bucellaria = {
 
 }
 
-# C Galatia
-c_galatia = {
 
-}
-
-# C Galatia Salutaris
-c_galatia_salutaris = {
-
-}
-
-# C Lower Galatia
-c_lower_galatia = {
-
-}
-
-# C Hadrianopolis
-c_hadrianopolis = {
-
-}
 
 k_epirus = {
 	5867.1.1 = { change_development_level = 5 }
@@ -2676,37 +2324,7 @@ d_epirus = {
 	}
 }
 
-# C Nicopolis
-c_nicopolis = {
-	6060.1.1 = {
-		liege = d_epirus
-		holder = 6
-	}
-}
 
-# C Epeiros
-c_epeiros = {
-	6060.1.1 = {
-		liege = d_epirus
-		holder = 6
-	}
-}
-
-# C Aetolia
-c_aetolia = {
-	6060.1.1 = {
-		liege = d_epirus
-		holder = 6
-	}
-}
-
-# C Metzovo
-c_metzovo = {
-	6060.1.1 = {
-		liege = d_epirus
-		holder = 6
-	}
-}
 
 # D Dyrrachion
 d_dyrrachion = {
@@ -2718,24 +2336,6 @@ d_dyrrachion = {
 		liege = k_epirus
 		holder = 51
 	}
-}
-
-# C Dyrrachion
-c_dyrrachion = {
-	6060.1.1 = {
-		liege = d_dyrrachion
-		holder = 51
-	}
-}
-
-# C Arbanon
-c_arbanon = {
-	6060.1.1 = {
-		liege = k_titular_dioclea
-		holder = 70
-		government = roman_administrative_government
-	}
-	
 }
 
 # C Debar
@@ -2823,21 +2423,7 @@ d_cephalonia = {
 	}
 }
 
-# C Cephalonia
-c_cephalonia = {
-	6060.1.1 = {
-		liege = d_cephalonia
-		holder = 101
-	}
-}
 
-# C Buthrotum
-c_buthrotum = {
-	6060.1.1 = {
-		liege = d_cephalonia
-		holder = 101
-	}
-}
 
 k_cyprus = {
 	5867.1.1 = { change_development_level = 24 }
@@ -2904,19 +2490,7 @@ d_cyprus = {
 	}
 }
 
-# C Nicosia
-c_nicosia = {
-	6060.1.1 = { 
-		holder = 19 
-	}
-}
 
-# C Famagusta
-c_famagusta = {
-	6060.1.1 = { 
-		holder = 19 
-	}
-}
 
 k_sparta = {
 	6178.1.1 = { change_development_level = 24 }
@@ -3493,7 +3067,7 @@ d_achaia = {
 			#contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 	#	end_tributary = yes
 	#}
 }
@@ -3510,7 +3084,7 @@ d_morea = {
 			#contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 	#	end_tributary = yes
 	#}
 }
@@ -3518,74 +3092,7 @@ d_morea = {
 
 
 
-c_achaia = {
-	5330.1.1 = {
-		liege = 0
-	}
-	6060.1.1 = {
-		liege = k_titular_morea
-		holder = 8
-	}
-}
 
-
-c_korinthos = {
-	5330.1.1 = {
-		liege = 0
-	}
-	6060.1.1 = {
-		liege = k_titular_morea
-		holder = 8
-	}	
-}
-
-
-c_messenia = {
-	5330.1.1 = {
-		liege = 0
-		government = alexandrian_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-				}
-			}
-		}
-	}
-
-	6060.1.1 = {
-		holder = 63
-	}
-}
-
-c_laconia = {
-	5867.1.1 = { change_development_level = 8 }
-	6066.1.1 = { change_development_level = 12 }
-	6178.1.1 = { change_development_level = 14 }
-	
-	5330.1.1 = {
-		liege = 0
-		government = alexandrian_administrative_government
-		effect = {
-			if = {
-				limit = {
-					exists = holder
-					NOT = { has_dlc_feature = roads_to_power }
-				}
-				holder = {
-					change_government = classical_government
-				}
-			}
-		}
-	}
-	6060.1.1 = {
-		holder = 63
-	}
-}
 
 k_pergamon = {
 	5867.1.1 = { change_development_level = 5 }
@@ -3654,7 +3161,7 @@ k_pergamon = {
 		#	contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 	#	end_tributary = yes
 	#}
 }
@@ -3674,35 +3181,7 @@ d_diyarrabia = {
 	}
 }
 
-# C Mosul
-c_mosul = {
 
-}
-
-# C Ninive
-c_ninive = {
-
-}
-
-# C Sinjar
-c_sinjar = {
-
-}
-
-# C Nasibin
-c_nasibin = {
-
-}
-
-# C Khabur
-c_khabur = {
-
-}
-
-# C Upper Khabur
-c_upper_khabur = {
-
-}
 
 # D Diyarmudar
 d_diyarmudar = {
@@ -3713,20 +3192,7 @@ d_diyarmudar = {
 	}
 }
 
-# C Raqqa
-c_raqqa = {
 
-}
-
-# C Harran
-c_harran = {
-
-}
-
-# C Dausar
-c_dausar = {
-
-}
 
 # D Diyarbakr
 d_diyarbakr = {
@@ -3738,57 +3204,7 @@ d_diyarbakr = {
 	}
 }
 
-# C Amida
-c_amida = {
-	6060.1.1 = {
-		liege = d_diyarbakr
-		holder = 69
-		government = despotic_government
-		change_development_level = 10
-	}
-}
 
-# C Tall Basma
-c_tall_basma = {
-	6060.1.1 = {
-		liege = d_diyarbakr
-		holder = 69
-		government = despotic_government
-		change_development_level = 10
-	}
-}
-
-# C Hakkari
-c_hakkari = {
-	6060.1.1 = {
-		liege = d_diyarbakr
-		holder = 69
-		government = despotic_government
-		change_development_level = 10
-	}
-}
-
-# C Mayyafariqin
-c_mayyafariqin = {
-	6060.1.1 = {
-		liege = d_diyarbakr
-		holder = 69
-		government = despotic_government
-		change_development_level = 10
-	}
-
-}
-
-# C Bakriya
-c_bakriya = {
-	6060.1.1 = {
-		liege = d_diyarbakr
-		holder = 69
-		government = despotic_government
-		change_development_level = 10
-	}
-
-}
 
 # D Kurdistan
 d_kurdistan = {
@@ -3798,20 +3214,7 @@ d_kurdistan = {
 	}
 }
 
-# C Irbil
-c_irbil = {
 
-}
-
-# C Kurdistan
-c_kurdistan = {
-
-}
-
-# C Shahrazur
-c_shahrazur = {
-
-}
 
 k_krete = {
 	5867.1.1 = { change_development_level = 24 }
@@ -3862,8 +3265,31 @@ k_anatolia = {
 	5867.1.1 = {
 		change_development_level = 6
 	}
-	
-	6060.1.1 = {
+	5463.1.2 = { holder=12524 } #formation of the Isaurian Guard, Leo I
+	5474.1.2 = { holder=1710848 } #Zenon
+	5491.1.2 = { holder=12526 } #Leo II 
+	5518.1.2 = { holder=1710849 } #Zenon II, ultimately just client-king and not emperor
+	5567.1.2 = { holder=1710850 }
+	5589.1.2 = { holder=1710851 }
+	5611.1.2 = { holder=1710852 }
+	5642.1.2 = { holder=1710853 }
+	5679.1.2 = { holder=1710854 }
+	5691.1.2 = { holder=12536 } #Leo III, Emperor
+	5740.12.25 = { holder=12537 } #Leo IV
+	5775.1.2 = { holder=12538 } #Leo V
+	5795.1.2 = { holder=1710855 } #Leo VI, back to client-king
+	5832.1.2 = { holder=1710856 }
+	5865.1.2 = { holder=1710857 }
+	5891.1.2 = { holder=1710858 }
+	5923.1.2 = { holder=1710859 } 
+	5937.1.2 = { holder=1710860 }
+	5958.1.2 = { holder=1710861 }
+	5994.1.2 = { holder=1710862 }
+	6008.1.2 = { holder=1710863 }
+	6015.1.2 = { holder=1710864 }
+	6022.1.2 = { holder=1710865 }
+	6033.1.2 = { holder=1710866 } 
+	6060.1.2 = {
 		liege = 0
 		holder = 11
 		government = roman_administrative_government #despotism
@@ -3872,7 +3298,7 @@ k_anatolia = {
 		#	suzerain = e_byzantium
 		#	contract_group = tributary_byzantine
 		#}
-		#6066.9.15 = {
+		#6066.3.15 = {
 		#	end_tributary = yes
 		#}
 	}
@@ -3924,34 +3350,12 @@ d_cilicia = {
 		#	contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 	#	end_tributary = yes
 	#}
 }
 
-# C Cilicia
-c_cilicia = {
-	6060.1.1 = {
-		liege = d_cilicia
-		holder = 1710385
-	}
-}
 
-# C Lycandus
-c_lycandus = {
-	6060.1.1 = {
-		liege = d_cilicia
-		holder = 1710385
-	}
-}
-
-# C Tall Hamid
-c_tall_hamid = {
-	6060.1.1 = {
-		liege = d_cilicia
-		holder = 1710385
-	}
-}
 
 # D Mesopotamia
 d_mesopotamia = {
@@ -3968,7 +3372,7 @@ d_mesopotamia = {
 		#	contract_group = tributary_byzantine
 		#}		
 	}
-	#6066.9.15 = {
+	#6066.3.15 = {
 	#	end_tributary = yes
 	#}
 }
@@ -3991,7 +3395,7 @@ d_edessa = {
 		#	contract_group = tributary_byzantine
 		#}		
 	}
-	6066.9.15 = {
+	6066.3.15 = {
 		liege = 0
 		holder = 952
 		government = roman_administrative_government
@@ -4000,9 +3404,9 @@ d_edessa = {
 	#		contract_group = tributary_byzantine
 	#	}		
 	}
-	6067.9.15 = {
+	6066.3.15 = {
 		effect = {
-			destroy_landless_title_no_dlc_effect = { DATE = 6066.9.15 }
+			destroy_landless_title_no_dlc_effect = { DATE = 6066.3.15 }
 		}
 	}
 }
@@ -4010,160 +3414,7 @@ d_edessa = {
 
 
 
-# C Edessa
-c_edessa = {
-   4907.1.1 = {
-        holder = Manu_I_Abgarid
-    }
-    4909.1.1 = {
-        holder = Abgar_I_Abgarid
-    }
-    4933.1.1 = {
-        holder = Abgar_II_Abgarid
-    }
-    4948.1.1 = {
-        holder = Manu_II_Abgarid
-    }
-    4967.1.1 = {
-        holder = Paqor_I_Abgarid
-    }
-    4972.1.1 = {
-        holder = Abgar_VIV_Abgarid
-    }
-    4975.1.1 = {
-        holder = Abgar_X_Abgarid
-    }
-    4978.1.1 = {
-        holder = Manu_III_Abgarid
-    }
-    4997.1.1 = {
-        holder = Abgar_III_Abgarid
-    }
-    5007.1.1 = {
-        holder = Manu_IV_Abgarid
-    }
-    5013.1.1 = {
-        holder = Abgar_III_Abgarid
-    }
-    5050.1.1 = {
-        holder = Manu_V_Abgarid
-    }
-    5057.1.1 = {
-        holder = Manu_VI_Abgarid
-    }
-    5071.1.1 = {
-        holder = Abgar_IV_Abgarid
-    }
-    5091.1.1 = {
-        holder = Abgar_V_Abgarid
-    }
-    5123.1.1 = {
-        holder = Manu_VII_Abgarid
-    }
-    5139.1.1 = {
-        holder = Manu_VIII_Abgarid
-    }
-    5163.1.1 = {
-        holder = Wa'el_I_Abgarid
-    }
-    5165.1.1 = {
-        holder = Manu_VIII_Abgarid
-    }
-    5177.1.1 = {
-        holder = Abgar_VI_Abgarid
-    }
-    5212.1.1 = {
-        holder = Abgar_VII_Abgarid
-    }
-    5230.1.1 = {
-        holder = Manu_VIV_Abgarid
-    }
-    5240.1.1 = {
-        holder = Abgar_XI_Abgarid
-    }
-    5270.1.1 = {
-        holder = Abgar_XII_Abgarid
-    }
-    5332.1.1 = {
-        holder = Manu_X_Abgarid
-    }
-    5360.1.1 = {
-        holder = Manu_XI_Abgarid
-    }
-    5364.1.1 = {
-        holder = Paqor_II_Abgarid
-    }
-    5402.1.1 = {
-        holder = Manu_XII_Abgarid
-    }
-    5404.1.1 = {
-        holder = Ishoyahb_I_Abgarid
-    }
-    5410.1.1 = {
-        holder = Thomas_I_Abgarid
-    }
-    5460.1.1 = {
-        holder = Abgar_XIII_Abgarid
-    }
-    5492.1.1 = {
-        holder = Thomas_II_Abgarid
-    }
-    5560.1.1 = {
-        holder = Abgar_XV_Abgarid
-    }
-    5603.1.1 = {
-        holder = Manu_XIII_Abgarid
-    }
-    5624.1.1 = {
-        holder = Manu_XIV_Abgarid
-    }
-    5675.1.1 = {
-        holder = John_I_Abgarid
-    }
-    5709.1.1 = {
-        holder = Abgar_XVI_Abgarid
-    }
-    5712.1.1 = {
-        holder = Thomas_III_Abgarid
-    }
-    5720.1.1 = {
-        holder = Abgar_XVI_Abgarid
-    }
-    5770.1.1 = {
-        holder = Lazar_I_Abgarid
-    }
-    5800.1.1 = {
-        holder = Abgar_XVII_Abgarid
-    }
-    5820.1.1 = {
-        holder = John_III_Abgarid
-    }
-    5862.1.1 = {
-        holder = Manu_XV_Abgarid
-    }
-    5880.1.1 = {
-        holder = Manu_XVI_Abgarid
-    }
-    5910.1.1 = {
-        holder = Peter_I_Abgarid
-    }
-    5938.1.1 = {
-        holder = John_IV_Abgarid
-    }
-    5955.1.1 = {
-        holder = Abgar_XVIII_Abgarid
-    }
-    6008.1.1 = {
-        holder = Abgar_XVIV_Abgarid
-    }
-    6030.1.1 = {
-        holder = 1830115
-    }
-    6065.1.1 = {
-		liege = d_edessa
-		holder = 952
-    }
-}
+
 
 # C Samosata
 
@@ -4214,53 +3465,6 @@ d_turnovo = {
 	}
 }
 
-
-
-# C Turnovo
-c_turnovo = {
-	6060.1.1 = {
-		liege = k_bulgaria
-		holder = 3
-	}
-
-}
-
-# C Nikopolis
-c_nikopolis = {
-	6060.1.1 = {
-		liege = k_bulgaria
-		holder = 3
-	}
-
-}
-
-# C Dorostorum
-c_dorostorum = {
-	6060.1.1 = {
-		liege = k_bulgaria
-		holder = 3
-	}
-
-}
-
-# C Vratsa
-c_vratsa = {
-	6060.1.1 = {
-		liege = k_bulgaria
-		holder = 3
-	}
-
-}
-
-# C Aytos
-c_aytos = {
-	6060.1.1 = {
-		liege = k_bulgaria
-		holder = 3
-	}
-
-}
-
 # D Karvuna
 d_dobrudja = {
 	6041.1.1 = {
@@ -4270,23 +3474,7 @@ d_dobrudja = {
 
 }
 
-# C Constanta
-c_constanta = {
-	6041.1.1 = {
-		liege = k_bulgaria
-		holder = 4
-	}
 
-}
-
-# C Mesembria
-c_mesembria = {
-	6041.1.1 = {
-		liege = k_bulgaria
-		holder = 4
-	}
-
-}
 
 # K Tylis
 k_titular_tylis = {
@@ -4446,34 +3634,6 @@ k_titular_tylis = {
 	}
 }
 
-c_sredets = {
-	6060.1.1 = {
-		liege = 0
-		holder = 64
-	}
 
-}
 
-c_kran = {
-	6060.1.1 = {
-		liege = 0
-		holder = 64
-	}
 
-}
-
-c_philippopolis = {
-	6060.1.1 = {
-		liege = 0
-		holder = 64
-	}
-
-}
-
-c_beroe = {
-	6060.1.1 = {
-		liege = 0
-		holder = 64
-	}
-
-}
