@@ -13613,7 +13613,9 @@ e_byzantium = {
 		d_morea = {
 			color = { 139 0 0 }
 			capital = c_laconia
-			name_list_greek = lx_lakedaimon
+			cultural_names = {
+				name_list_greek = lx_lakedaimon
+			}
 			c_messenia = { #Messenia
 				color = { 150 26 0 }
 
@@ -27757,7 +27759,7 @@ e_levant = {
 				} 
 				b_daphne_antioch = { #Gardens of Daphne, the Oracle of Apollo and Artemis.
 					color = { 142 126 84 }
-					province = 13271
+					province = 13272
 
 					cultural_names = {
 						name_list_hellenistic = lx_daphne
@@ -27784,37 +27786,6 @@ e_levant = {
 						name_list_swedish = lx_tafni
 						name_list_danish = lx_tafni
 						name_list_norwegian = lx_tafni
-					}
-				} 
-				b_charandama = {
-					color = { 142 126 84 }
-					province = 13272
-
-					cultural_names = {
-						name_list_hellenistic = lx_charandama
-						name_list_greek = lx_charandama
-
-						name_list_roman = lx_charandama
-						name_list_gallo_roman = lx_charandama
-						name_list_romano_gothic = lx_charandama
-
-						name_list_assyrian = lx_charandama
-						name_list_radhanite = lx_charandama
-
-						name_list_persian = lx_kharandam
-						name_list_kurdish = lx_kharandam
-
-						name_list_armenian = lx_charandam
-						name_list_georgian = lx_charandama
-
-						name_list_frankish = lx_carandame
-						name_list_french = lx_carandame
-						name_list_occitan = lx_carandama
-
-						name_list_norse = lx_karandama
-						name_list_swedish = lx_karandama
-						name_list_danish = lx_karandama
-						name_list_norwegian = lx_karandama
 					}
 				} 
 				b_lysias = {
@@ -64198,7 +64169,26 @@ e_south_slavia = {
 			add = @correct_culture_primary_score
 		}
 	}
+	k_garberia = {
+		color = { 122 46 58 }
+		capital = c_vukovar
 
+		cultural_names = {
+			name_list_garbarian = lx_garber
+			name_list_illyrian = lx_autariata
+			name_list_vardian = lx_autarrica
+			name_list_liburnian = lx_autariata
+			name_list_roman = lx_autariata
+		}
+		ai_primary_priority = {
+			if = {
+				limit = {
+					culture = culture:garbarian
+				}
+				add = @correct_culture_primary_score
+			}
+		}
+	}
 	k_croatia = {
 		color = { 122 46 58 }
 		capital = c_zadar
@@ -64235,6 +64225,15 @@ e_south_slavia = {
 				b_zadar = {
 					color = { 71 7 53 }
 					province = 465
+
+					cultural_names = {
+						name_list_cisalpine = cn_zara
+						name_list_greek = cn_diadora
+						name_list_italian = cn_zara
+						name_list_roman = cn_diadora
+						name_list_sardinian = cn_zara
+						name_list_sicilian = cn_zara
+					}
 				}
 
 				b_nin = {
@@ -64292,6 +64291,14 @@ e_south_slavia = {
 				b_split = {
 					color = { 111 37 60 }
 					province = 467
+					cultural_names = {
+						name_list_cisalpine = cn_spalato
+						name_list_greek = cn_spalathos
+						name_list_italian = cn_spalato
+						name_list_roman = cn_spalato
+						name_list_sardinian = cn_spalato
+						name_list_sicilian = cn_spalato
+					}
 				}
 
 				b_solin = {
@@ -64301,7 +64308,7 @@ e_south_slavia = {
 			}
 		}
 
-		d_croatia = {
+		d_croatia = { #Dalmatia?
 			color = { 104 31 58 }
 			capital = c_gacka
 
@@ -64387,7 +64394,7 @@ e_south_slavia = {
 			}
 		}
 
-		d_slavonia = {
+		d_slavonia = { #Chrobatia
 			color = { 116 41 58 }
 
 			cultural_names = {
