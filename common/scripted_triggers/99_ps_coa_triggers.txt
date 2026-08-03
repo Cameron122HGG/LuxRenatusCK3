@@ -1,0 +1,212 @@
+﻿# CoA trigger tests
+
+coa_switch_to_mena_trigger = {
+	holder = {
+		NOT = {
+			faith.religion = religion:christianity_religion
+		}
+		OR = {
+			faith.religion = religion:islam_religion
+			OR = {			
+				culture = { has_coa_gfx = arabic_group_coa_gfx }
+				culture = { has_coa_gfx = berber_group_coa_gfx }
+			}
+		}
+	}
+}
+
+coa_switch_to_islamic_trigger = {
+	holder = {
+		faith.religion = religion:islam_religion
+	}
+}
+
+coa_switch_reconquista_trigger = {
+	holder = {
+		NOT = {
+			faith.religion = religion:islam_religion
+		}	
+		faith.religion = religion:christianity_religion
+	}
+}
+
+ps_coa_venetian_trigger = { # Maybe limit to Venice rather than cisalpine
+	OR = {
+		scope:culture = { has_coa_gfx = latin_group_coa_gfx }
+		AND = {
+			exists = scope:title
+			scope:title = {
+				any_this_title_or_de_jure_above = {
+					this = title:k_venice
+				}
+			}
+		}
+	}
+}
+
+ps_coa_western_heraldry_trigger = {
+	scope:culture = {
+		OR = {
+			has_coa_gfx = english_coa_gfx
+			has_coa_gfx = frankish_group_coa_gfx
+			has_coa_gfx = latin_group_coa_gfx
+			has_coa_gfx = iberian_group_coa_gfx
+			has_coa_gfx = breton_coa_gfx
+			has_coa_gfx = welsh_coa_gfx
+			has_coa_gfx = irish_coa_gfx
+			has_coa_gfx = scottish_coa_gfx
+			has_coa_gfx = german_group_coa_gfx
+		}
+	}
+}
+
+ps_coa_small_geometrical_trigger = {
+	scope:culture = {
+		OR = {
+			has_coa_gfx = norman_coa_gfx
+			has_coa_gfx = breton_coa_gfx
+			has_coa_gfx = irish_coa_gfx
+			has_coa_gfx = scottish_coa_gfx
+			has_coa_gfx = frankish_group_coa_gfx
+			has_coa_gfx = english_coa_gfx
+			has_coa_gfx = iberian_group_coa_gfx
+		}
+	}
+}
+
+ps_coa_furs_high_frequency_trigger = {
+	scope:culture = {
+		OR = {
+			has_coa_gfx = norman_coa_gfx
+			has_coa_gfx = breton_coa_gfx
+			has_coa_gfx = irish_coa_gfx
+			has_coa_gfx = french_coa_gfx
+			has_coa_gfx = english_coa_gfx
+		}
+	}
+}
+
+ps_coa_furs_med_frequency_trigger = {
+	scope:culture = {
+		OR = {
+			has_coa_gfx = anglo_saxon_coa_gfx
+			has_coa_gfx = occitan_coa_gfx
+			has_coa_gfx = scottish_coa_gfx
+			has_coa_gfx = frisian_coa_gfx
+			has_coa_gfx = welsh_coa_gfx
+		}
+	}
+}
+
+ps_coa_furs_lower_frequency_trigger = {
+	scope:culture = {
+		OR = {
+			has_coa_gfx = latin_group_coa_gfx
+			has_coa_gfx = iberian_group_coa_gfx
+			has_coa_gfx = german_group_coa_gfx
+		}
+	}
+}
+
+ps_coa_furs_ermine_add_trigger = {
+	scope:culture = {
+		OR = {
+			has_coa_gfx = breton_coa_gfx
+			has_coa_gfx = irish_coa_gfx
+		}
+	}
+}
+
+ps_coa_french_trigger = {
+	scope:culture = {
+		has_coa_gfx = french_coa_gfx
+	}
+}
+
+ps_coa_french_group_trigger = {
+	scope:culture = {
+		OR = {
+			has_coa_gfx = breton_coa_gfx
+			has_coa_gfx = french_coa_gfx
+			has_coa_gfx = occitan_coa_gfx
+			has_coa_gfx = norman_coa_gfx			
+		}
+	}
+}
+
+ps_coa_german_group_trigger = {
+	scope:culture = {
+		has_coa_gfx = german_group_coa_gfx
+	}
+}
+
+ps_coa_iberian_group_trigger = {
+	scope:culture = {
+		has_coa_gfx = iberian_group_coa_gfx
+	}
+}
+
+ps_coa_byzantine_group_trigger = {
+	OR = {
+		scope:culture = { has_coa_gfx = byzantine_group_coa_gfx }
+		AND = {
+			exists = scope:title
+			scope:title = {
+				any_this_title_or_de_jure_above = {
+					this = title:e_byzantium
+				}
+			}
+		}
+	}
+}
+
+ps_coa_anglo_norman_trigger = {
+	OR = {
+		scope:culture = { has_coa_gfx = norman_coa_gfx }
+		scope:culture = { has_coa_gfx = english_coa_gfx }
+		scope:culture = { has_coa_gfx = scottish_coa_gfx }
+	}
+}
+
+ps_coa_theocratic_trigger = {
+	exists = scope:title
+	scope:title = {
+		government_has_flag = government_is_theocracy
+	}
+}
+
+ps_coa_switch_to_pagan_trigger = {
+	holder = {
+		NOT = {
+			OR = {
+				faith.religion = religion:christianity_religion
+				faith.religion = religion:germanic_religion
+				culture = { has_coa_gfx = norse_coa_gfx }
+			}
+		}	
+		OR = {
+			faith.religion = religion:paganism_religion
+			faith.religion = religion:finno_ugric_religion
+			faith.religion = religion:baltic_religion
+			faith.religion = religion:slavic_religion
+		}
+	}
+}
+
+ps_coa_switch_to_norse_trigger = {
+	holder = {
+		NOT = {
+			OR = {		
+				faith.religion = religion:christianity_religion
+				faith.religion = religion:paganism_religion
+				faith.religion = religion:finno_ugric_religion
+				faith.religion = religion:baltic_religion
+				faith.religion = religion:slavic_religion
+			}
+		}
+		OR = {
+			faith.religion = religion:germanic_religion
+			culture = { has_coa_gfx = norse_coa_gfx }
+		}
+	}
+}
