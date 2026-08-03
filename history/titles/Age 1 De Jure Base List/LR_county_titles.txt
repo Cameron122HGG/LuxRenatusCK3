@@ -3809,57 +3809,6 @@ c_sumadija = {
 	}
 }
 
-c_calafat = {
-	5928.9.1 = {
-		holder = mundo_mundin_illyria
-		liege = k_serbia
-	}
-
-	5954.7.6 = {
-		holder = hunawils_mundin_illyria
-	}
-
-	5981.10.19 = {
-		holder = hunareiks_mundin_illyria
-	}
-
-	6009.3.12 = {
-		holder = elemunds_mundin_illyria
-	}
-
-	6039.8.26 = {
-		holder = hunimunds_mundin_illyria
-	}
-
-	6051.1.1 = {
-		holder = asbad_mundin_illyria
-		liege=k_serbia
-	}
-}
-
-c_severin = {
-	5924.5.1 = {
-		holder = mundo_mundin_illyria
-		liege = k_serbia
-	}
-
-	5954.7.6 = {
-		holder = hunawils_mundin_illyria
-	}
-
-	5981.10.19 = {
-		holder = hunareiks_mundin_illyria
-	}
-
-	6009.3.12 = {
-		holder = elemunds_mundin_illyria
-	}
-
-	6039.8.26 = {
-		holder = hunimunds_mundin_illyria
-	}
-}
-
 c_hvosno = {
 	5943.7.9 = {
 		holder = thurisinds_late_thurisindin_illyria
@@ -5129,25 +5078,21 @@ c_aytos = {
 }
 
 c_ohrid = {
-	5921.7.8 = {
-		holder = giesmus_late_giesmin_illyria
-		liege = k_serbia
-	}
-
-	5963.6.18 = {
-		holder = gesimunds_giesmin_illyria
-	}
-
-	5994.10.19 = {
-		holder = sigireiks_giesmin_illyria
-	}
-
-	6024.8.26 = {
-		holder = bairhtareiks_giesmin_illyria
-	}
-
-	6058.7.4 = {
-		holder = sauilareiks_giesmin_illyria
+	6066.1.1 = {
+		liege = k_epirus
+		holder = 51
+		government = roman_administrative_government
+		effect = {
+			if = {
+				limit = {
+					exists = holder
+					NOT = { has_dlc_feature = roads_to_power }
+				}
+				holder = {
+					change_government = classical_feudal_government
+				}
+			}
+		}
 	}
 }
 
