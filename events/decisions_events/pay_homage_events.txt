@@ -6,14 +6,28 @@
 # 0201 -> vassal learns of result (end)
 # 0601 -> homage invalidated info
 
+scripted_trigger pay_homage_auto_accept_for_player_liege_trigger = { # Skip the letter-event prompt for player lieges unless rivalry makes refusal interesting
+	is_ai = no
+	scope:homage_vassal = { is_ai = yes }
+	NOR = {
+		has_relation_potential_rival = scope:homage_vassal
+		has_relation_rival = scope:homage_vassal
+	}
+}
+
 pay_homage.9999 = {
 	hidden = yes
 	immediate = {
 		if = {
 			limit = {
-				scope:homage_liege = {
-					OR = {
-						is_alive = no 
+				OR = {
+					scope:homage_liege = {
+						OR = {
+							is_alive = no
+							is_imprisoned = yes
+						}
+					}
+					scope:homage_vassal = {
 						is_imprisoned = yes
 					}
 				}
@@ -42,12 +56,18 @@ pay_homage.9999 = {
 			trigger_event = pay_homage.0601
 		}
 		else = {
-			scope:homage_liege = {
-				trigger_event = pay_homage.0001
+			current_travel_plan ?= {
+				delay_travel_plan = { days = 90 }
 			}
-		}
-		current_travel_plan ?= {
-			delay_travel_plan = { days = 90 }
+			scope:homage_liege = {
+				if = {
+					limit = { pay_homage_auto_accept_for_player_liege_trigger = yes }
+					trigger_event = pay_homage.0101
+				}
+				else = {
+					trigger_event = pay_homage.0001
+				}
+			}
 		}
 	}
 }
@@ -103,7 +123,7 @@ pay_homage.0001 = {
 	}
 	sender = scope:homage_vassal
 
-	trigger ={
+	trigger = {
 		scope:homage_vassal = {
 			is_alive = yes
 			is_imprisoned = no
@@ -113,7 +133,7 @@ pay_homage.0001 = {
 	on_trigger_fail = {
 		scope:homage_vassal = {
 			if = {
-				limit = { is_alive = no }
+				limit = { is_alive = yes }
 				trigger_event = pay_homage.9999
 			}
 		}
@@ -170,6 +190,13 @@ pay_homage.0001 = {
 		}
 		else = {
 			stress_impact = { base = medium_stress_impact_loss }
+			if = {
+				limit = {
+					is_ai = no
+					scope:homage_vassal = { is_ai = yes }
+				}
+				scope:homage_vassal = { add_stress = medium_stress_gain }
+			}
 		}
 		ai_chance = {
 			base = 0
@@ -719,19 +746,31 @@ pay_homage.0101 = {
 			desc = pay_homage.0101.desc.success
 		}
 	}
-	theme = realm
+	theme = crown
 	override_sound = { reference = "event:/SFX/Events/Themes/sfx_event_theme_type_duty" }
-	left_portrait = scope:homage_liege
+	left_portrait = {
+		character = scope:homage_liege
+		animation = war_over_win
+		camera = camera_event_very_left
+	}
 	right_portrait = {
 		character = scope:homage_vassal
 		animation = throne_room_bow_1
 	}
 
 	trigger ={
-		#is_available = yes
 		scope:homage_vassal = {
 			is_alive = yes
 			is_imprisoned = no
+		}
+	}
+
+	on_trigger_fail = {
+		scope:homage_vassal = {
+			if = {
+				limit = { is_alive = yes }
+				trigger_event = pay_homage.9999
+			}
 		}
 	}
 

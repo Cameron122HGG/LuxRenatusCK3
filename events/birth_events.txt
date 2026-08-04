@@ -1343,15 +1343,14 @@ birth.1003 = {
 	desc = {
 		#Do I care about the mother?
 		first_valid = {
-			#Lux Renata TBA
 			# Borte's first child
-			#triggered_desc = {
-			#	trigger = {
-			#		this = character:125501
-			#		scope:mother = { has_variable = borte_first_child_var }
-			#	}
-			#	desc = secret_bastard.0001.assumed_father
-			#}
+			triggered_desc = {
+				trigger = {
+					this = character:125501
+					scope:mother = { has_variable = borte_first_child_var }
+				}
+				desc = secret_bastard.0001.assumed_father
+			}
 			triggered_desc = {
 				trigger = {
 					OR = {
@@ -1383,15 +1382,14 @@ birth.1003 = {
 		}
 		#What did I get?
 		first_valid = {
-			#Lux Renata TBA
 			# Borte's first child
-			#triggered_desc = {
-			#	trigger = {
-			#		this = character:125501
-			#		scope:mother = { has_variable = borte_first_child_var }
-			#	}
-			#	desc = birth.1003.desc.empty
-			#}
+			triggered_desc = {
+				trigger = {
+					this = character:125501
+					scope:mother = { has_variable = borte_first_child_var }
+				}
+				desc = birth.1003.desc.empty
+			}
 			triggered_desc = {
 				trigger = {
 					scope:child = {
@@ -1424,15 +1422,14 @@ birth.1003 = {
 		}
 		#Conclusion
 		first_valid = {
-			#Lux Renata TBA
 			# Borte's first child
-			#triggered_desc = {
-			#	trigger = {
-			#		this = character:125501
-			#		scope:mother = { has_variable = borte_first_child_var }
-			#	}
-			#	desc = birth.1003.desc.borte
-			#}
+			triggered_desc = {
+				trigger = {
+					this = character:125501
+					scope:mother = { has_variable = borte_first_child_var }
+				}
+				desc = birth.1003.desc.borte
+			}
 			# Mystical Birthright
 			triggered_desc = {
 				trigger = {
@@ -1502,8 +1499,8 @@ birth.1003 = {
 		character = scope:second_adult
 		animation = newborn
 	}
-	lower_left_portrait =  scope:child
-	lower_center_portrait =  scope:child_2
+	lower_center_portrait =  scope:child
+	lower_right_portrait =  scope:child_2
 	trigger = {
 		OR = {
 			scope:father = scope:real_father
@@ -1513,10 +1510,8 @@ birth.1003 = {
 					NOT = {
 						any_known_secret = {
 							secret_owner = scope:mother
-							AND = {
-								secret_type = secret_disputed_heritage
-								secret_target = scope:child
-							}
+							secret_type = secret_disputed_heritage
+							secret_target = scope:child
 						}
 					}
 				}
@@ -1729,24 +1724,23 @@ birth.1003 = {
 	option = {
 		name = birth.1003.a
 		trigger = { scope:child = { NOT = { has_trait = twin } } }
-		#Lux Renata TBA
-		#if = {
-		#	limit = {
-		#		scope:mother = {
-		#			this = character:172004
-		#			has_variable = borte_first_child_var
-		#		}
-		#	}
-		#	scope:child = { add_trait = wild_oat }
-		#	scope:child = {
-		#		add_secret = {
-		#			type = secret_disputed_heritage
-		#			target = scope:child
-		#		}
-		#	}
-		#	scope:new_secret = { reveal_to = root }
-		#	scope:mother = { remove_variable = borte_first_child_var }
-		#}
+		if = {
+			limit = {
+				scope:mother = {
+					this = character:172004
+					has_variable = borte_first_child_var
+				}
+			}
+			scope:child = { add_trait = wild_oat }
+			scope:child = {
+				add_secret = {
+					type = secret_disputed_heritage
+					target = scope:child
+				}
+			}
+			scope:new_secret = { reveal_to = root }
+			scope:mother = { remove_variable = borte_first_child_var }
+		}
 	}
 
 	option = {
