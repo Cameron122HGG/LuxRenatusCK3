@@ -15,6 +15,7 @@
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
 		court_grandeur_baseline_add = 6
+		monthly_dynasty_prestige_mult = 0.05
 	}
 
 	unique = yes
@@ -45,10 +46,13 @@ babr_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		culture = { has_cultural_pillar = heritage_iranian }
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 6
+		monthly_dynasty_prestige_mult = 0.05
 	}
 
 	unique = yes
@@ -68,10 +72,19 @@ justinian_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		OR = {
+			culture = { has_cultural_pillar = heritage_byzantine }
+			is_roman_emperor_trigger = yes
+			any_liege_or_above = {
+				is_roman_emperor_trigger = yes
+			}
+		}
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 4
+		monthly_dynasty_prestige_mult = 0.05
 	}
 
 	unique = yes
@@ -102,6 +115,7 @@ papal_tiara_template = {
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 4
 		monthly_prestige = 1
 	}
 
@@ -115,7 +129,12 @@ al_taj_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
-		has_title = title:d_shiite
+		OR = {
+			has_title = title:d_shiite
+			any_liege_or_above = {
+				has_title = title:d_shiite
+			}
+		}
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
@@ -134,10 +153,13 @@ cup_jamshid_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		culture = { has_cultural_pillar = heritage_iranian }
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 5
+		enemy_hostile_scheme_success_chance_add = -10
 	}
 
 	unique = yes
@@ -150,10 +172,18 @@ david_harp_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		OR = {
+			judaism_or_syncretic_with_judaism_trigger = { CHARACTER = root }
+			christianity_or_syncretic_with_christianity_trigger = { CHARACTER = root }
+			islam_or_syncretic_with_islam_trigger = { CHARACTER = root }
+		}
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 6
+		monthly_prestige_gain_mult = 0.04
+		attraction_opinion = 10
 	}
 
 	unique = yes
@@ -161,15 +191,26 @@ david_harp_template = {
 
 crown_iron_template = {
 	can_equip = {
-		always = yes
+		trigger_if = {
+			limit = {
+				has_ach_dlc_trigger = yes
+				coronation_proper_artifact_crown_trigger = yes
+				NOT = { scope:artifact = { category = court } }
+			}
+			NOT = { has_realm_law = uncrowned }
+		}
 	}
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		christianity_or_syncretic_with_christianity_trigger = { CHARACTER = root }
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 6
+		monthly_dynasty_prestige_mult = 0.05
+		monthly_prestige_gain_mult = 0.04
 	}
 
 	unique = yes
@@ -189,11 +230,22 @@ reichskrone_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		OR = {
+			has_title = title:e_hre
+			any_liege_or_above = {
+				has_title = title:e_hre
+			}
+			is_roman_emperor_trigger = yes
+			any_liege_or_above = {
+				is_roman_emperor_trigger = yes
+			}
+		}
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
-
+		court_grandeur_baseline_add = 6
+		monthly_dynasty_prestige_mult = 0.05
 	}
 
 	unique = yes
@@ -206,10 +258,17 @@ throne_charlemagne_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		OR = {
+			christianity_or_syncretic_with_christianity_trigger = { CHARACTER = root }
+			islam_or_syncretic_with_islam_trigger = { CHARACTER = root }
+		}
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 2
+		monthly_dynasty_prestige = 0.02
+		monthly_prestige = 0.3
 	}
 
 	unique = yes
@@ -232,6 +291,8 @@ throne_solomon_template = {
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
 		court_grandeur_baseline_add = 3
+		monthly_dynasty_prestige = 0.02
+		monthly_prestige = 0.15
 	}
 
 	unique = yes
@@ -253,6 +314,7 @@ byz_throne_template = {
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
 		court_grandeur_baseline_add = 4
+		monthly_prestige = 0.3
 	}
 
 	unique = yes
@@ -265,10 +327,18 @@ throne_scone_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		OR = {
+			culture = { has_cultural_pillar = heritage_west_germanic }
+			culture = { has_cultural_pillar = heritage_goidelic }
+			culture = { has_cultural_pillar = heritage_brythonic }
+		}
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 3
+		monthly_dynasty_prestige = 0.02
+		monthly_prestige = 0.1
 	}
 
 	unique = yes
@@ -286,8 +356,9 @@ kaviani_template = {
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
-		courtier_and_guest_opinion = 10
 		court_grandeur_baseline_add = 3
+		monthly_dynasty_prestige = 0.04
+		monthly_prestige = 0.25
 	}
 
 	unique = yes
@@ -318,12 +389,14 @@ tizona_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		culture = { has_cultural_pillar = heritage_iberian }
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
 		prowess = 3
 		monthly_prestige = 0.2
+		monthly_dynasty_prestige_mult = 0.02
 	}
 
 	unique = yes
@@ -429,10 +502,13 @@ attila_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		unreformed_or_syncretic_with_unreformed_trigger = { CHARACTER = root }
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 4
+		dread_baseline_add = 5
 	}
 
 	unique = yes
@@ -445,10 +521,19 @@ pentapyrgion_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
+		OR = {
+			is_roman_emperor_trigger = yes
+			liege ?= {
+				is_roman_emperor_trigger = yes
+			}
+			culture = { has_cultural_pillar = heritage_byzantine }
+		}
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
 	fallback = {
+		court_grandeur_baseline_add = 3
+		monthly_dynasty_prestige = 0.04
 	}
 
 	unique = yes
@@ -461,7 +546,7 @@ branch_zoroastr_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
-		has_religion = religion:zoroastrianism_religion
+		zoroastrian_or_syncretic_with_eastern_trigger = { CHARACTER = root }
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
@@ -533,7 +618,7 @@ branch_hinduism_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
-		has_religion = religion:hinduism_religion
+		hindu_or_syncretic_with_eastern_trigger = { CHARACTER = root }
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
@@ -569,7 +654,7 @@ jainism_artifact_template = {
 
 	# can this character benefit from the full modifiers of the artifact?
 	can_benefit = {
-		has_religion = religion:jainism_religion
+		jain_or_syncretic_with_eastern_trigger = { CHARACTER = root }
 	}
 
 	# if a given character does not pass the "can_benefit" trigger then this modifier will be applied instead.
@@ -727,7 +812,7 @@ saintly_bones_template = {
 	}
 
 	fallback = {
-
+		monthly_prestige = 0.1
 	}
 }
 
