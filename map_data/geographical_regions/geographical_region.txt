@@ -1,5 +1,7 @@
 ﻿# Geographical regions
 # Regions can be declared with one or more of the following fields:
+#	hegemonies = { }, takes de-jure hegemony title names declared in landed_titles.txts 
+#	empires = { }, takes de-jure empire title names declared in landed_titles.txts 
 #	kingdoms = { }, takes de-jure kingdom title names declared in landed_titles.txts 
 #	duchies = { }, takes de-jure duchy title names declared in landed_titles.txt
 #	counties = { }, takes de-jure county title names declared in landed_titles.txt
@@ -48,6 +50,7 @@
 # >> world_africa_north_east
 # > world_africa_west
 # > world_africa_east
+# > world_africa_sahara
 
 # world_steppe
 # > world_steppe_tarim
@@ -63,18 +66,23 @@
 # > custom_arakan_mountains
 
 # world_asia
-# > world_asia_north_east
-# > world_asia_korea
-# > world_asia_china
+# > world_asia_east
+# >> world_asia_korea
+# >> world_asia_china
+# >> world_asia_japan
+# >> world_asia_sakhalin_hokkaido
 # > world_asia_southeast
-# > world_asia_japan
-# > world_asia_sakhalin_hokkaido
 # >> world_asia_southeast_mainland
+# >>> world_asia_vietnam
+# >>> world_asia_cambodia
+# >>> world_asia_thailand
+# >>> world_asia_malaysia
 # >> world_asia_southeast_islands
 # >>> world_asia_philippines
 # >>> world_asia_borneo
 # >>> world_asia_sulawesi_maluku
 # >>> world_asia_indonesia
+# > world_asia_north_east
 
 # sea_atlantic_ocean
 # > sea_north_atlantic
@@ -520,7 +528,7 @@ world_himalaya = {
 world_burma = {
 	duchies = {
 		#Pagan
-		d_pagan d_tagaung d_sriksetra d_arakan d_ramannadesa 
+		d_pagan d_tagaung d_sriksetra d_arakan d_ramannadesa d_tengchong 
 		# d_mongnai is also in Burma, but uses the graphics of SE Asia, so it must remain omitted here
 	}
 }
@@ -597,19 +605,23 @@ world_asia_southeast = {
 	}
 }
 world_asia_southeast_mainland = {
+	regions = {
+ 		world_asia_thailand world_asia_cambodia world_asia_vietnam world_asia_malaysia
+	}
+}
+world_asia_vietnam = {
 	duchies = {
-		d_tengchong d_hai_dong d_nghe_an d_lam_tay d_thang_long d_ratanakiri d_mongnai d_sipsongpanna d_haripunjaya d_lop_buri d_sukhothai d_mukdahan 
-		d_muang_sua d_baigaur d_vyadhapura d_angkor d_vijaya d_indrapura d_yongchang
-		d_angkor_borey d_phonsavan
-		#Malaysia
-		d_MAL_langkasuka d_MAL_pahang d_tun_sun
+		d_hai_dong d_thang_long d_lam_tay d_nghe_an d_indrapura d_vijaya d_baigaur
+	}
+}
+world_asia_cambodia = {
+	duchies = {
+		d_angkor d_vyadhapura d_ratanakiri d_angkor_borey
 	}
 }
 world_asia_thailand = {
 	duchies = {
-		d_mongnai d_sipsongpanna d_haripunjaya d_lop_buri d_sukhothai d_mukdahan d_muang_sua d_yongchang d_phonsavan d_nghe_an
-		#Malaysia
-		d_MAL_langkasuka d_MAL_pahang d_tun_sun
+		d_mongnai d_sipsongpanna d_haripunjaya d_lop_buri d_sukhothai d_mukdahan d_muang_sua d_yongchang d_phonsavan
 	}
 }
 world_asia_malaysia = {
@@ -1291,6 +1303,11 @@ custom_lotharingia = {
 		d_luxembourg d_brabant d_julich d_upper_lorraine d_lower_lorraine
 	}
 }
+custom_bavaria = {
+	duchies = {
+		d_bavaria d_nordgau d_salzburg d_augsburg d_steyermark d_osterreich d_tyrol d_carinthia d_krain d_istria
+	}
+}
 custom_germany = {
 	duchies = {
 		d_east_franconia d_west_franconia d_hesse d_currezia d_alsace d_swabia
@@ -1655,7 +1672,7 @@ custom_normandy_and_adjacent = {
 }
 
 custom_ireland = {
-	#generate_modifiers = yes
+	generate_modifiers = yes
 	duchies = {
 		#Ireland
 		d_ulster d_connacht d_meath d_leinster d_munster
@@ -1890,6 +1907,53 @@ custom_beth_nahrain = {
 		d_diyarrabia d_diyarmudar d_diyarbakr d_euphrates
 		#Mesopotamia
 		d_kermanshah d_basra d_baghdad d_samarra d_kurdistan d_wasit d_kufa
+	}
+}
+
+custom_carthaginian_empire = {
+	generate_modifiers = yes
+	regions = {
+		custom_carthage
+		custom_tripolitania
+		custom_mauretania
+		custom_carthago_nova
+	}
+}
+
+custom_carthage = {
+	duchies = {
+		#Tunis
+		d_tunis d_gabes d_kairouan d_kroumerie d_jerid
+		#Scicili & Sardinia
+		d_sicily d_sardinia
+	}
+}
+
+custom_tripolitania = {
+	duchies = {
+		d_tripolitania d_syrte
+	}
+}
+
+custom_mauretania = {
+	duchies = {
+		d_bejaia d_zab d_alger d_tlemcen d_rif
+	}
+}
+
+custom_carthago_nova = {
+	duchies = {
+		d_sevilla d_granada d_murcia d_valencia
+	}	
+}
+
+custom_cumbria = {
+	generate_modifiers = yes
+	duchies = {
+		d_galloway
+	}
+	counties = {
+		c_westmorland c_cumberland c_lanarkshire
 	}
 }
 
@@ -4654,7 +4718,10 @@ dlc_tgp_silk_road_route_central_asia = {
 		c_kumtag
 		c_dafang
 		c_luobupo
-		# c_hongliuyuan
+		c_hehe
+		c_shazhou
+		c_guazhou
+		c_xincheng
 		c_yumen
 	# Kashgar to Dunhuang, southern route
 		# c_kashgar
@@ -4666,10 +4733,6 @@ dlc_tgp_silk_road_route_central_asia = {
 		c_cherchen
 		c_charkliq
 		c_dunhuang
-		c_hehe
-		c_jiuquan
-		c_jiankang
-		c_liaoquan
 		# c_luobupo
 	# Yumen to Lanzhou
 		c_ganzhou
@@ -5177,7 +5240,7 @@ hunt_animal_antelope_region = {
 		# Africa
 		world_africa
 		# Asia
-		world_middle_east world_steppe world_tibet world_india world_asia_china world_asia_southeast_mainland
+		world_middle_east world_steppe world_tibet world_india world_asia_china world_asia_southeast_mainland world_burma
 	}
 }
 
@@ -5729,53 +5792,6 @@ tgp_china_tributary_region = {
 
 paddy_fields_region = {
 	regions = {
-		graphical_east_asia
-		custom_viet_lands	
-	}
-}
-
-custom_carthaginian_empire = {
-	generate_modifiers = yes
-	regions = {
-		custom_carthage
-		custom_tripolitania
-		custom_mauretania
-		custom_carthago_nova
-	}
-}
-
-custom_carthage = {
-	duchies = {
-		#Tunis
-		d_tunis d_gabes d_kairouan d_kroumerie d_jerid
-		#Scicili & Sardinia
-		d_sicily d_sardinia
-	}
-}
-
-custom_tripolitania = {
-	duchies = {
-		d_tripolitania d_syrte
-	}
-}
-
-custom_mauretania = {
-	duchies = {
-		d_bejaia d_zab d_alger d_tlemcen d_rif
-	}
-}
-
-custom_carthago_nova = {
-	duchies = {
-		d_sevilla d_granada d_murcia d_valencia
-	}	
-}
-custom_cumbria = {
-	generate_modifiers = yes
-	duchies = {
-		d_galloway
-	}
-	counties = {
-		c_westmorland c_cumberland c_lanarkshire
+		graphical_east_asia	
 	}
 }
