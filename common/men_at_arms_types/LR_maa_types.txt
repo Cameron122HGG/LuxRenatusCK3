@@ -259,7 +259,42 @@ ere_foederatii = { # Symmachoi
 	buy_cost = { gold = huscarls_recruitment_cost }
 	low_maintenance_cost = { gold = huscarls_low_maint_cost }
 	high_maintenance_cost = { gold = huscarls_high_maint_cost }
-	provision_cost = @provisions_cost_infantry_cheap
+	provision_cost = @
+
+roman_comitatenses = { # Comitatenses
+	type = heavy_infantry
+	
+	damage = 36
+	toughness = 32
+	pursuit = 0
+	screen = 6
+
+	counters = {
+		pikemen = 1
+		archers = 1
+		skirmishers = 1
+	}
+	
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_latin
+			}
+		}
+	}
+	
+	buy_cost = { gold = mubarizun_recruitment_cost }
+	low_maintenance_cost = { gold = mubarizun_low_maint_cost }
+	high_maintenance_cost = { gold = mubarizun_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_moderate
+
+	ai_quality = {
+		value = counter_synergy_ai_weight_archers
+	}
+	
+	stack = 100
+	icon = roman_comitatenses
+}
 
 	stack = 100
 	ai_quality = { value = 100 }
@@ -1008,7 +1043,7 @@ baaallistarii = {
 	buy_cost = { gold = crossbowmen_recruitment_cost }
 	low_maintenance_cost = { gold = crossbowmen_low_maint_cost }
 	high_maintenance_cost = { gold = crossbowmen_high_maint_cost }
-	provision_cost = @provisions_cost_infantry_cheap
+	provision_cost = @provisions_cost_infantry_moderate
 	
 	stack = 100
 	ai_quality = { value = culture_ai_weight_crossbowmen }
@@ -1049,8 +1084,8 @@ gothic_gadrauhts = {
 	}
 	
 	buy_cost = { gold = schiltron_recruitment_cost }
-	low_maintenance_cost = { gold = schiltron__low_maint_cost }
-	high_maintenance_cost = { gold = schiltron__high_maint_cost }
+	low_maintenance_cost = { gold = schiltron_low_maint_cost }
+	high_maintenance_cost = { gold = schiltron_high_maint_cost }
 	provision_cost = @provisions_cost_infantry_expensive
 	
 	stack = 100
@@ -1102,6 +1137,7 @@ vandal_raiders = {
 	icon = jomsviking_pirates
 }
 
+# Add Vandal horsemen
 
 ## Sarmatian ##
 
@@ -1138,7 +1174,7 @@ sarmatian_cavalry = {
 	buy_cost = { gold = teulu_recruitment_cost }
 	low_maintenance_cost = { gold = teulu_low_maint_cost }
 	high_maintenance_cost = { gold = teulu_high_maint_cost }
-	provision_cost = @provisions_cost_infantry_cheap
+	provision_cost = @provisions_cost_cavalry_moderate
 	
 	stack = 100
 	ai_quality = { value = @cultural_maa_extra_ai_score }
@@ -1194,3 +1230,200 @@ sarmatian_cataphracts = {
 }
 
 # Galatian #
+
+galatian_kuarothoroi = {
+	type = pikemen
+	
+	damage = 36
+	toughness = 28
+	pursuit = 0
+	screen = 0
+	
+	terrain_bonus = {
+		mountains = { toughness = 12 }
+		desert_mountains = { toughness = 12 }
+		hills = { toughness = 8 }
+		plains = { damage = 8 }
+	}
+
+	counters = {
+		light_cavalry = 1
+		heavy_cavalry = 1
+		camel_cavalry = 1
+		elephant_cavalry = 1
+		skirmishers = 1
+	}
+	
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_brythonic
+			}
+		}
+	}
+	
+	buy_cost = { gold = schiltron_recruitment_cost }
+	low_maintenance_cost = { gold = schiltron_low_maint_cost }
+	high_maintenance_cost = { gold = schiltron_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_expensive
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = pikemen
+}
+
+galatian_legionaries = {
+	type = heavy_infantry
+	
+	damage = 36
+	toughness = 32
+	pursuit = 0
+	screen = 6
+
+	counters = {
+		pikemen = 1
+		archers = 1
+		skirmishers = 1
+	}
+	
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_brythonic
+			}
+		}
+	}
+	
+	buy_cost = { gold = mubarizun_recruitment_cost }
+	low_maintenance_cost = { gold = mubarizun_low_maint_cost }
+	high_maintenance_cost = { gold = mubarizun_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_moderate
+
+	ai_quality = {
+		value = counter_synergy_ai_weight_archers
+	}
+	
+	stack = 100
+	icon = heavy_infantry
+}
+
+# Frankish #
+
+ frankish_antrustions = { 
+	type = heavy_infantry
+
+	damage = 45
+	toughness = 25
+	pursuit = 0
+	screen = 12
+	
+	counters = {
+		skirmishers = 1
+		pikemen = 1
+		archers = 1
+		peasant_militia = 2
+	}
+
+
+	# To be restricted to the holders of the Sacral Kingdom / Mayorship
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_frankish
+			}
+		}
+	}
+
+	buy_cost = { gold = varangian_veterans_recruitment_cost }
+	low_maintenance_cost = { gold = varangian_veterans_low_maint_cost }
+	high_maintenance_cost = { gold = varangian_veterans_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_expensive
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = heavy_infatry
+}
+
+# Lusitanian #
+
+ lusitanian_aventuros = {
+	type = pikemen
+	
+	damage = 36
+	toughness = 28
+	pursuit = 0
+	screen = 0
+	
+	terrain_bonus = {
+		mountains = { toughness = 12 }
+		desert_mountains = { toughness = 12 }
+		hills = { toughness = 8 }
+		plains = { damage = 8 }
+	}
+
+	counters = {
+		light_cavalry = 1
+		heavy_cavalry = 1
+		camel_cavalry = 1
+		elephant_cavalry = 1
+		skirmishers = 1
+	}
+	
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_iberian
+			}
+		}
+	}
+	
+	buy_cost = { gold = schiltron_recruitment_cost }
+	low_maintenance_cost = { gold = schiltron_low_maint_cost }
+	high_maintenance_cost = { gold = schiltron_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_expensive
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = pikemen
+}
+
+lusitanian_jinetes = {
+	type = light_cavalry
+
+	damage = 25
+	toughness = 25
+	pursuit = 35
+	screen = 30
+	
+	terrain_bonus = {
+		hills = { pursuit = 5 toughness = 10 }
+		forest = { pursuit = 5 toughness = 10 }
+		plains = { pursuit = 5 damage = 10 toughness = 10 }
+		wetlands = { damage = -15 toughness = -10 pursuit = -30 screen = -30 }
+		mountains = { damage = -10 pursuit = -20 }
+		desert_mountains = { damage = -15 pursuit = -20 }
+	}
+	
+	counters = {
+		archers = 1
+		gunpowder = 1
+	}
+
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_iberian
+			}
+		}
+	}
+	
+	buy_cost = { gold = teulu_recruitment_cost }
+	low_maintenance_cost = { gold = teulu_low_maint_cost }
+	high_maintenance_cost = { gold = teulu_high_maint_cost }
+	provision_cost = @provisions_cost_cavalry_moderate
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+
+	icon = ayrudzi
+}
