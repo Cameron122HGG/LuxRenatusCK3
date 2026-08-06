@@ -257,12 +257,12 @@ gallic_regent_admin_house_past_gallic_regent_admin_value_actual = {
 }
 
 # Number of House children with Imperial dynasty parents
-gallic_regent_admin_house_imperial_parent_score_value = {
+gallic_regent_admin_house_sacral_parent_score_value = {
 	value = 5
-	multiply = gallic_regent_admin_house_imperial_parent_value
+	multiply = gallic_regent_admin_house_sacral_parent_value
 }
 
-gallic_regent_admin_house_imperial_parent_value = {
+gallic_regent_admin_house_sacral_parent_value = {
 	value = 0
 	add = {
 		value = 0
@@ -271,13 +271,13 @@ gallic_regent_admin_house_imperial_parent_value = {
 				exists = house
 				exists = top_liege.primary_title.var:administrative_ui_special_title.holder.house
 			}
-			top_liege.primary_title.var:administrative_ui_special_title.holder.house = { save_temporary_scope_as = imperial_house_temp }
+			top_liege.primary_title.var:administrative_ui_special_title.holder.house = { save_temporary_scope_as = sacral_house_temp }
 			house = {
 				every_house_member = {
 					limit = {
 						any_parent = {
 							even_if_dead = yes
-							house ?= scope:imperial_house_temp
+							house ?= scope:sacral_house_temp
 						}
 					}
 					add = 1
@@ -287,18 +287,18 @@ gallic_regent_admin_house_imperial_parent_value = {
 	}
 }
 
-gallic_regent_admin_house_imperial_parent_value_actual = {
-	value = gallic_regent_admin_house_imperial_parent_value
+gallic_regent_admin_house_sacral_parent_value_actual = {
+	value = gallic_regent_admin_house_sacral_parent_value
 	multiply = 3
 }
 
 # Number of Imperial dynasty members with House parents
-gallic_regent_admin_house_imperial_child_score_value = {
+gallic_regent_admin_house_sacral_child_score_value = {
 	value = 5
-	multiply = gallic_regent_admin_house_imperial_child_value
+	multiply = gallic_regent_admin_house_sacral_child_value
 }
 
-gallic_regent_admin_house_imperial_child_value = {
+gallic_regent_admin_house_sacral_child_value = {
 	value = 0
 	add = {
 		value = 0
@@ -351,12 +351,12 @@ gallic_regent_admin_imperial_spouse_value = {
 }
 
 # Number of Imperial dynasty members married to House members
-gallic_regent_admin_house_imperial_spouse_score_value = {
+gallic_regent_admin_house_sacral_spouse_score_value = {
 	value = 5
-	multiply = gallic_regent_admin_house_imperial_spouse_value
+	multiply = gallic_regent_admin_house_sacral_spouse_value
 }
 
-gallic_regent_admin_house_imperial_spouse_value = {
+gallic_regent_admin_house_sacral_spouse_value = {
 	value = 0
 	add = {
 		value = 0
