@@ -3,7 +3,7 @@
 # LR_tgp_gaul_establish_house_fief_decision
 
 scripted_effect tgp_establish_house_fief_save_scopes_effect = {
-	top_liege ?= { save_scope_as = regent }
+	top_liege ?= { save_scope_as = gallic_regent_admin }
 	save_scope_as = new_head
 	house = {
 		save_scope_as = old_house
@@ -70,12 +70,12 @@ LR_tgp_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 		character = scope:old_head
 		trigger = {
 			NOR = {
-				scope:regent ?= this
+				scope:gallic_regent_admin ?= this
 				root = this
 			}
 		}
 	}
-	lower_right_portrait =  scope:regent
+	lower_right_portrait =  scope:gallic_regent_admin
 
 	#NAMING WIDGET
 	widget = {
@@ -1491,7 +1491,7 @@ LR_tgp_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 	}
 
 	immediate = {
-		top_liege = { save_scope_as = regent }
+		top_liege = { save_scope_as = gallic_regent_admin }
 		save_scope_as = new_head
 		save_scope_as = new_house_head # don't ask
 		house = {
@@ -1773,7 +1773,7 @@ LR_tgp_gaul_decision.9002 = { # SAME CLAN EVENT - NO WIDGET
 		character = root
 		animation = thinking
 	}
-	lower_right_portrait =  scope:regent
+	lower_right_portrait =  scope:gallic_regent_admin
 
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_adopting_feudal_government"
@@ -1819,11 +1819,11 @@ LR_tgp_gaul_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
 				change_government = gaul_feudal_government
 				if = {
 					limit = {
-						NOT = { var:petition_liege_house_fief_allowed_flag ?= scope:regent }
+						NOT = { var:petition_liege_house_fief_allowed_flag ?= scope:gallic_regent_admin }
 					}
 					reverse_add_opinion = {
 						modifier = admin_manorial_conquest_crime
-						target = scope:regent
+						target = scope:gallic_regent_admin
 					}
 				}
 			}

@@ -49,7 +49,7 @@ types PatronWindow {
 					}
 				}
 			}
-			patron_select_confirm = { }
+			patron_god_select_confirm = { }
 		}
 		
 	}
@@ -235,9 +235,9 @@ types PatronWindow {
 		}
 	}
 
-	type patron_select_confirm = widget 
+	type patron_god_select_confirm = widget 
 	{
-		name = "patron_select_confirm"
+		name = "patron_god_select_confirm"
 
 		visible = "[And(GetVariableSystem.HasValue('show_patron_god_select_confirm','true'), Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, GetVariableSystem.Get('selected_patron_god'))))]"
 
@@ -313,7 +313,7 @@ types PatronWindow {
 				margin_left = 40
 				margin_right = 40
 				button_primary_big = {
-					text = patron_select_confirm
+					text = patron_god_select_confirm
 					
 					onclick = "[GetScriptedGui('choose_patron_god_generic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('patron_god_name', MakeScopeFlag(GetVariableSystem.Get('selected_patron_god'))).End )]"
 					onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'false')]"

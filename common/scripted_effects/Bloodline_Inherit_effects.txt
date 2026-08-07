@@ -1,0 +1,193 @@
+﻿historical_bloodlines_inherit_effect = {
+    historical_character_bloodlines_inherit_effect = yes
+    historical_family_bloodlines_inherit_effect = yes
+
+}
+
+historical_character_bloodlines_inherit_effect = {
+    if = {
+        limit = { has_game_rule = ck2 }
+        #父系继承
+        father ={
+      every_character_trait ={
+          limit = {
+        has_trait_flag = historical_bloodline
+        has_trait_flag = male_character_bloodline
+          }
+          ROOT = { add_trait = prev }
+      }
+        }
+        #母系继承
+        mother ={
+      every_character_trait ={
+          limit = {
+        has_trait_flag = historical_bloodline
+        #has_trait_flag = female_character_bloodline
+          }
+          ROOT = { add_trait = prev }
+      }
+        }
+        #入赘继承
+        every_parent ={
+      limit = { matrilinear_marriage = yes }
+      every_character_trait ={
+          limit = { 
+        has_trait_flag = historical_bloodline
+        #OR = {
+         #   has_trait_flag = male_character_bloodline 
+          #  has_trait_flag = female_character_bloodline
+        #}
+          }
+          ROOT = { add_trait = prev }
+      }
+        }
+    }
+    else_if = {
+        limit = { has_game_rule = ck2_realfather }
+        #父系继承
+        real_father ={
+      if = {
+          limit = { matrilinear_marriage = yes }
+          every_character_trait ={
+        limit = { 
+            has_trait_flag = historical_bloodline
+            #OR = {
+                #has_trait_flag = male_character_bloodline 
+                #has_trait_flag = female_character_bloodline
+            }
+        }
+        ROOT = { add_trait = prev }
+          }
+      }
+      else = {
+          every_character_trait ={
+        limit = { 
+            has_trait_flag = historical_bloodline
+            has_trait_flag = male_character_bloodline
+        }
+        ROOT = { add_trait = prev }
+          }
+      }
+        }
+        #母系继承
+        mother ={
+      if = {
+          limit = { matrilinear_marriage = yes }
+          every_character_trait ={
+        limit = { 
+            has_trait_flag = historical_bloodline
+            #OR = {
+               # has_trait_flag = male_character_bloodline 
+                #has_trait_flag = female_character_bloodline
+            #}
+        }
+        ROOT = { add_trait = prev }
+          }
+      }
+      else = {
+          every_character_trait ={
+        limit = { 
+            has_trait_flag = historical_bloodline
+            #has_trait_flag = female_character_bloodline 
+        }
+        ROOT = { add_trait = prev }
+          }
+      }
+        }
+    else_if = {
+        limit = { has_game_rule = all_descendants }
+        every_parent ={
+      every_character_trait ={
+          limit = { 
+        has_trait_flag = historical_bloodline
+        #OR = { 
+           # has_trait_flag = male_character_bloodline 
+            #has_trait_flag = female_character_bloodline
+        #}
+          }
+          ROOT = { add_trait = prev }
+      }
+        }
+    }
+    else_if = {
+        limit = { has_game_rule = all_descendants_realfather }
+        real_father ={
+      every_character_trait ={
+          limit = { 
+        has_trait_flag = historical_bloodline
+        #OR = {
+            #has_trait_flag = male_character_bloodline 
+            #has_trait_flag = female_character_bloodline
+        #}
+          }
+          ROOT = { add_trait = prev }
+      }
+        }
+        mother ={
+      every_character_trait ={
+          limit = { 
+        has_trait_flag = historical_bloodline
+        #OR = {
+         #   has_trait_flag = male_character_bloodline 
+          #  has_trait_flag = female_character_bloodline
+        #}
+          }
+          ROOT = { add_trait = prev }
+      }
+        }
+    }
+}
+
+
+historical_family_bloodlines_inherit_effect = {
+    if = {
+        limit = {
+      OR = {
+          has_game_rule = ck2
+          has_game_rule = all_descendants
+      }
+        }
+        every_parent ={
+      limit = { house ?= root.house }
+      every_character_trait ={
+          limit = { 
+        has_trait_flag = historical_bloodline
+        #has_trait_flag = family_bloodline
+          }
+          ROOT = { add_trait = prev }
+      }
+        }
+    }
+    else_if = {
+        limit = {
+      OR = {
+          has_game_rule = ck2_realfather
+          has_game_rule = all_descendants_realfather
+      }
+        }
+        real_father ={
+      if = {
+          limit = { house ?= root.house }
+          every_character_trait ={
+        limit = { 
+            has_trait_flag = historical_bloodline
+            #has_trait_flag = family_bloodline
+        }
+        ROOT = { add_trait = prev }
+          }
+      }
+        }
+        mother = {
+      if = {
+          limit = { house ?= root.house }
+          every_character_trait ={
+        limit = { 
+            has_trait_flag = historical_bloodline
+            #has_trait_flag = family_bloodline
+        }
+        ROOT = { add_trait = prev }
+          }
+      }
+        }
+    }
+}

@@ -1,0 +1,1163 @@
+﻿# standard costs
+#@maa_buy_cost = 150
+#@maa_low_maintenance_cost = 1.0
+#@maa_high_maintenance_cost = 5.0
+#@cultural_maa_extra_ai_score = 80 # Equivalent to having 8 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
+
+# Must be synced between files with the values located at "# Provisions Costs #".
+#@provisions_cost_infantry_cheap = 3
+#@provisions_cost_infantry_moderate = 7
+#@provisions_cost_infantry_expensive = 12
+#@provisions_cost_infantry_bankrupting = 15
+
+#@provisions_cost_cavalry_cheap = 7
+#@provisions_cost_cavalry_moderate = 15
+#@provisions_cost_cavalry_expensive = 21
+#@provisions_cost_cavalry_bankrupting = 30
+
+#@provisions_cost_special_cheap = 6
+#@provisions_cost_special_moderate = 12
+#@provisions_cost_special_expensive = 18
+#@provisions_cost_special_bankrupting = 24
+
+# Late Iron Age units to be commented out until Silk and Silver. 
+
+#peltast = {
+#	type = skirmishers
+#
+#	damage = 10
+#	toughness = 14
+#	pursuit = 12
+#	screen = 18
+#
+#	terrain_bonus = {
+#		mountains = { damage = 10 toughness = 10 }
+#		desert_mountains = { damage = 6 toughness = 6 }
+#		hills = { damage = 6 toughness = 6 }
+#		forest = { toughness = 4 }
+#		wetlands = { toughness = 4 }
+#	}
+#
+#	counters = {
+#		heavy_infantry = 1
+#	}
+#
+#	can_recruit = {
+#		valid_for_maa_trigger = { PARAMETER = unlock_maa_peltast }
+#	}
+#
+#	buy_cost = { gold = skirmisher_recruitment_cost }
+#	low_maintenance_cost = { gold = skirmisher_low_maint_cost }
+#	high_maintenance_cost = { gold = skirmisher_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	stack = 100
+#	ai_quality = { value = @[cultural_maa_extra_ai_score - 90] }
+#	icon = akritai
+#}
+
+#ballistrai = {
+#	type = archers
+#
+#	damage = 27
+#	toughness = 12
+#	pursuit = 0
+#	screen = 12
+#
+#	siege_value = 0.1
+#
+#	terrain_bonus = {
+#		farmlands = { damage = 8 toughness = 6 }
+#		plains = { damage = 8 }
+#		hills = { damage = 8 }
+#	}
+#
+#	counters = {
+#		pikemen = 0.5
+#		heavy_infantry = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_latin
+#			}
+#		}
+#	}
+#
+#	#can_recruit = {
+#	#	valid_for_maa_trigger = { PARAMETER = unlock_maa_ballistrai }
+#	#}
+#
+#	buy_cost = { gold = ballistrai_recruitment_cost }
+#	low_maintenance_cost = { gold = ballistrai_low_maint_cost }
+#	high_maintenance_cost = { gold = ballistrai_high_maint_cost }
+#	provision_cost = @provisions_cost_special_moderate
+#
+#	stack = 50
+#	ai_quality = { value = @[cultural_maa_extra_ai_score + 200] }
+#	icon = ballistrai
+#}
+
+#hoplite = {
+#	type = pikemen
+#
+#	damage = 22
+#	toughness = 26
+#	pursuit = 0
+#	screen = 0
+#
+#	terrain_bonus = {
+#		mountains = { toughness = 8 }
+#		desert_mountains = { toughness = 8 }
+#		hills = { toughness = 8 }
+#		plains = { damage = 8 }
+#	}
+#
+#	counters = {
+#		light_cavalry = 1
+#		heavy_cavalry = 1
+#		camel_cavalry = 1
+#		elephant_cavalry = 1
+#	}
+#
+#	can_recruit = {
+#		valid_for_maa_trigger = { PARAMETER = unlock_maa_hoplite }
+#	}
+#
+#	buy_cost = { gold = pikemen_recruitment_cost }
+#	low_maintenance_cost = { gold = pikemen_low_maint_cost }
+#	high_maintenance_cost = { gold = pikemen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_moderate
+#
+#	stack = 100
+#	ai_quality = {
+#		value = @[cultural_maa_extra_ai_score + 20]
+#		add = counter_synergy_ai_weight_pikemen
+#	}
+#	icon = skoutatoi
+#}
+
+#companion_guards = {
+#	type = heavy_infantry
+#
+#	damage = 45
+#	toughness = 32
+#	pursuit = 0
+#	screen = 0
+#
+#	can_recruit = {
+#		exists = scope:title
+#		scope:title = {
+#			has_variable = founded_companion_guard
+#		}
+#	}
+#
+#	terrain_bonus = {
+#		farmlands = { damage = 12 toughness = 8 }
+#		plains = { damage = 6 toughness = 4 }
+#		hills = { damage = 6 toughness = 4 }
+#	}
+#
+#	counters = {
+#		pikemen = 1
+#		heavy_cavalry = 1
+#	}
+#
+#	winter_bonus = {
+#		normal_winter = { toughness = 6 screen = 6 }
+#		harsh_winter = { toughness = 6 screen = 6 }
+#	}
+#
+#	buy_cost = { gold = varangian_guards_recruitment_cost } #companion_guards_recruitment_cost
+#	low_maintenance_cost = { gold = varangian_guards_low_maint_cost }
+#	high_maintenance_cost = { gold = varangian_guards_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_moderate
+#
+#	stack = 100
+#	ai_quality = {
+#		value = @[cultural_maa_extra_ai_score + 40]
+#		add = counter_synergy_ai_weight_heavy_infantry
+#	}
+#	icon = varangian_guard
+#}
+
+#funditores = {
+#	type = archers
+#	
+#	damage = 25
+#	toughness = 10
+#	pursuit = 5
+#	screen = 10
+#
+#	counters = {
+#		heavy_infantry = 1
+#		heavy_cavalry = 1
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_hellenistic_greek
+#			}
+#		}
+#	}
+#	
+#	#can_recruit = {
+#	#	culture = { has_cultural_parameter = unlock_maa_western_roman }
+#	#}
+#
+#	buy_cost = { gold = bowmen_recruitment_cost }
+#	low_maintenance_cost = { gold = bowmen_low_maint_cost }
+#	high_maintenance_cost = { gold = bowmen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	ai_quality = {
+#		value = counter_synergy_ai_weight_archers
+#	}
+#	
+#	holy_order_fallback = yes
+#	
+#	stack = 100
+#	icon = funditores
+#}
+
+
+###Icci Maas#####
+##Roma SPQR##
+#archer_auxilia = {
+#	type = archers
+#	
+#	damage = 26
+#	toughness = 13
+#	pursuit = 10
+#	screen = 10
+#
+#	counters = {
+#		pikemen = 1
+#		skirmishers = 1
+#		peasant_militia = 2
+#	}
+#	
+#	can_recruit = {location = {geographical_region = LR_icci_spqr_early_units}}
+#
+#	buy_cost = { gold = bowmen_recruitment_cost }
+#	low_maintenance_cost = { gold = bowmen_low_maint_cost }
+#	high_maintenance_cost = { gold = bowmen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	ai_quality = {
+#		value = counter_synergy_ai_weight_archers
+#	}
+#	
+#	stack = 100
+#	icon = archer_auxilia
+#}
+
+#roman_principes = {
+#	type = heavy_infantry
+#	
+#	damage = 28
+#	toughness = 23
+#	pursuit = 0
+#	screen = 15
+#	
+#	counters = {
+#		pikemen = 1
+#		archers = 1
+#		heavy_infantry = 0.5
+#		peasant_militia = 4
+#	}
+#	
+#	can_recruit = {location = {geographical_region = LR_icci_spqr_early_units}}
+#	
+#	buy_cost = { gold = praetorian_recruitment_cost }
+#	low_maintenance_cost = { gold = praetorian_low_maint_cost }
+#	high_maintenance_cost = { gold = praetorian_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_bankrupting
+#	
+#	stack = 100
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = roman_principes
+#}
+
+#roman_hastati = {
+#	type = heavy_infantry
+#	
+#	damage = 23
+#	toughness = 13
+#	pursuit = 0
+#	screen = 0
+#
+#	counters = {
+#		pikemen = 1
+#		archers = 1
+#	}
+#	
+#	can_recruit = {location = {geographical_region = LR_icci_spqr_early_units}}
+#
+#	buy_cost = { gold = picchieri_recruitment_cost }
+#	low_maintenance_cost = { gold = picchieri_low_maint_cost }
+#	high_maintenance_cost = { gold = picchieri_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	ai_quality = {
+#		value = counter_synergy_ai_weight_archers
+#	}
+#	
+#	holy_order_fallback = yes
+#	
+#	stack = 100
+#	icon = roman_hastati
+#}
+
+#roman_velites = {
+#	type = skirmishers
+#	
+#	damage = 15
+#	toughness = 5
+#	pursuit = 30
+#	screen = 20
+#
+#	counters = {
+#		skirmishers = 1
+#		peasant_militia = 1
+#		pikemen = 0.5
+#	}
+#	
+#	can_recruit = {location = {geographical_region = LR_icci_spqr_early_units}}
+#
+#	buy_cost = { gold = skirmisher_recruitment_cost }
+#	low_maintenance_cost = { gold = skirmisher_low_maint_cost }
+#	high_maintenance_cost = { gold = skirmisher_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	ai_quality = {
+#		value = counter_synergy_ai_weight_archers
+#	}
+#	
+#	holy_order_fallback = yes
+#	
+#	stack = 100
+#	icon = roman_velites
+#}
+
+#roman_triarii = {
+#	type = pikemen
+#	
+#	damage = 28
+#	toughness = 33
+#	pursuit = 0
+#	screen = 0
+#	
+#	counters = {
+#		pikemen = 1
+#		light_cavalry = 2
+#		heavy_cavalry = 1
+#		peasant_militia = 4
+#	}
+#	
+#	can_recruit = {location = {geographical_region = LR_icci_spqr_early_units}}
+#	
+#	buy_cost = { gold = pikemen_recruitment_cost }
+#	low_maintenance_cost = { gold = pikemen_low_maint_cost }
+#	high_maintenance_cost = { gold = pikemen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_expensive
+#	
+#	stack = 100
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = roman_triarii
+#}
+
+##Late WRE Romans##
+
+#roman_equites = { # Equites Promoti
+#	type = light_cavalry
+#	
+#	damage = 25
+#	toughness = 17
+#	pursuit = 30
+#	screen = 30
+#	
+#	counters = {
+#		heavy_infantry = 0.5
+#		light_cavalry = 0.5
+#		peasant_militia = 4
+#	}
+#	
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_latin
+#			}
+#		}
+#	}
+#	
+#	buy_cost = { gold = light_cavalry_recruitment_cost }
+#	low_maintenance_cost = { gold = light_cavalry_low_maint_cost }
+#	high_maintenance_cost = { gold = light_cavalry_high_maint_cost }
+#	provision_cost = @provisions_cost_cavalry_cheap
+#	
+#	stack = 100
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = roman_equites
+#}
+
+## Eastern Rome ##
+
+#ere_slingers = { # Sphendonetai
+#	type = skirmishers
+#
+#	damage = 20
+#	toughness = 10
+#	pursuit = 10
+#	screen = 10
+#
+#	terrain_bonus = {
+#
+#	}
+#
+#	counters = {
+#		archers = 1
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = skirmisher_recruitment_cost }
+#	low_maintenance_cost = { gold = skirmisher_low_maint_cost }
+#	high_maintenance_cost = { gold = skirmisher_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_slingers
+#}
+
+#ere_archers = { # Toxotai
+#	type = archers
+#	
+#	damage = 20
+#	toughness = 15
+#	pursuit = 0
+#	screen = 16
+#	
+#	terrain_bonus = {
+#
+#	}
+#
+#	counters = {
+#		skirmishers = 1
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = bowmen_recruitment_cost }
+#	low_maintenance_cost = { gold = bowmen_low_maint_cost }
+#	high_maintenance_cost = { gold = bowmen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_moderate
+#	
+#	
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_archers
+#}
+
+#ere_skutatoi = { # Skutatoi
+#	type = heavy_infantry
+#
+#	damage = 30
+#	toughness = 25
+#	pursuit = 0
+#	screen = 0
+#
+#	counters = {
+#		pikemen = 1
+#		peasant_militia = 2
+#		skirmishers = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = heavy_infantry_recruitment_cost }
+#	low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+#	high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_moderate
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_skutatoi
+#}
+
+#ere_spearmen = { # Kontaratoi
+#	type = pikemen
+#
+#	damage = 30
+#	toughness = 28
+#	pursuit = 0
+#	screen = 0
+#
+#	terrain_bonus = {
+#
+#	}
+#
+#	counters = {
+#		light_cavalry = 2
+#		heavy_cavalry = 1
+#		camel_cavalry = 1
+#		elephant_cavalry = 1
+#		archer_cavalry = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = pikemen_recruitment_cost }
+#	low_maintenance_cost = { gold = pikemen_low_maint_cost }
+#	high_maintenance_cost = { gold = pikemen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_expensive
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_spearmen
+#}
+
+#ere_praeventores = { # Prokoursatores
+#	type = heavy_infantry
+#
+#	damage = 30
+#	toughness = 20
+#	pursuit = 0
+#	screen = 0
+#
+#	counters = {
+#		pikemen = 1
+#		peasant_militia = 3
+#		light_cavalry = 2
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = huscarls_recruitment_cost }
+#	low_maintenance_cost = { gold = huscarls_low_maint_cost }
+#	high_maintenance_cost = { gold = huscarls_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_praeventores
+#}
+
+#ere_buccellarii = { # Bucellarian Guard
+#	type = heavy_infantry
+#
+#	damage = 38
+#	toughness = 35
+#	pursuit = 0
+#	screen = 0
+#
+#	counters = {
+#		skirmishers = 2
+#		peasant_militia = 3
+#		light_cavalry = 1
+#		gunpowder = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = ayyar_recruitment_cost }
+#	low_maintenance_cost = { gold = ayyar_low_maint_cost }
+#	high_maintenance_cost = { gold = ayyar_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_expensive
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_buccellarii
+#}
+
+#ere_horse_toxotai = { # Hippo Toxotai
+#	type = archer_cavalry
+#	
+#	damage = 60
+#	toughness = 5
+#	pursuit = 40
+#	screen = 20
+#	
+#	terrain_bonus = {
+#
+#	}
+#
+#	counters = {
+#		pikemen = 2
+#		peasant_militia = 2
+#		heavy_infantry = 1
+#		skirmishers = 1
+#	}
+#	
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = mangudai_recruitment_cost }
+#	low_maintenance_cost = { gold = mangudai_low_maint_cost }
+#	high_maintenance_cost = { gold = mangudai_high_maint_cost }
+#	provision_cost = @provisions_cost_cavalry_cheap
+#	
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_horse_toxotai
+#}
+
+#ere_equites = { # Kavallarioi
+#	type = light_cavalry
+#	
+#	damage = 30
+#	toughness = 15
+#	pursuit = 20
+#	screen = 20
+#	
+#	terrain_bonus = {
+#		}
+#
+#	counters = {
+#		archers = 1
+#		skirmishers = 2
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = mulaththamun_recruitment_cost }
+#	low_maintenance_cost = { gold = mulaththamun_low_maint_cost }
+#	high_maintenance_cost = { gold = mulaththamun_high_maint_cost }
+#	provision_cost = @provisions_cost_cavalry_cheap
+#	
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = ere_equites
+#}
+
+#ere_clibanarii = { # Klibanophoroi
+#	type = heavy_cavalry
+#	
+#	damage = 110
+#	toughness = 40
+#	pursuit = 30
+#	screen = 20
+#	
+#	terrain_bonus = {
+#	}
+#
+#	counters = {
+#		archers = 1
+#		heavy_infantry = 2
+#		light_cavalry = 2
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_byzantine
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = gendarme_recruitment_cost }
+#	low_maintenance_cost = { gold = gendarme_low_maint_cost }
+#	high_maintenance_cost = { gold = gendarme_high_maint_cost }
+#	provision_cost = @provisions_cost_cavalry_expensive
+#	
+#	stack = 50
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = ere_clibanarii
+#}
+
+##Egypt##
+
+#egypt_spearmen = {
+#	type = pikemen
+#	
+#	damage = 10
+#	toughness = 25
+#	pursuit = 0
+#	screen = 0
+#	
+#	terrain_bonus = {
+#		
+#	}
+#
+#	counters = {
+#		light_cavalry = 1
+#		heavy_cavalry = 1
+#		camel_cavalry = 1
+#		elephant_cavalry = 1
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_egyptian
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = pikemen_recruitment_cost }
+#	low_maintenance_cost = { gold = pikemen_low_maint_cost }
+#	high_maintenance_cost = { gold = pikemen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#	
+#	stack = 100
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = egypt_spearmen
+#}
+
+#egypt_infantry = {
+#	type = heavy_infantry
+#
+#	damage = 25
+#	toughness = 20
+#	pursuit = 0
+#	screen = 0
+#
+#	counters = {
+#		pikemen = 1
+#		peasant_militia = 2
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_egyptian
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = heavy_infantry_recruitment_cost }
+#	low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+#	high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_moderate
+#
+#	holy_order_fallback = yes
+#
+#	stack = 100
+#	ai_quality = {
+#		value = culture_ai_weight_heavy_infantry
+#		add = counter_synergy_ai_weight_heavy_infantry
+#	}
+#	icon = egypt_infantry
+#}
+
+##Iranian##
+
+#iran_light_warriors = {
+#	type = heavy_infantry
+#
+#	damage = 20
+#	toughness = 15
+#	pursuit = 5
+#	screen = 5
+#	
+#	counters = {
+#		heavy_infantry = 0.5
+#		pikemen = 1
+#		archers = 1
+#	}
+#
+#	can_recruit = {location = {geographical_region = LR_icci_custom_sassanid }}
+#	
+#	buy_cost = { gold = heavy_infantry_recruitment_cost }
+#	low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+#	high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_moderate
+#	
+#	stack = 100
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = iran_light_warriors
+#}
+
+#iran_warriors = {
+#	type = heavy_infantry
+#
+#	damage = 26
+#	toughness = 18
+#	pursuit = 0
+#	screen = 0
+#	
+#	counters = {
+#		heavy_infantry = 1
+#		pikemen = 1
+#		archers = 1
+#		skirmishers = 1
+#	}
+#
+#	can_recruit = {location = {geographical_region = LR_icci_custom_sassanid }}
+#	
+#	buy_cost = { gold = heavy_infantry_recruitment_cost }
+#	low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+#	high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_moderate
+#	
+#	stack = 100
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = iran_warriors
+#}
+
+#iran_bowmen = {
+#	type = archers
+#
+#	damage = 25
+#	toughness = 15
+#	pursuit = 10
+#	screen = 10
+#	
+#	terrain_bonus = {
+#
+#	}
+#
+#	counters = {
+#		skirmishers = 1
+#		light_cavalry = 1
+#	}
+#	
+#	can_recruit = {location = {geographical_region = LR_icci_custom_sassanid }}
+#
+#	buy_cost = { gold = jomsviking_pirates_recruitment_cost }
+#	low_maintenance_cost = { gold = jomsviking_pirates_low_maint_cost }
+#	high_maintenance_cost = { gold = jomsviking_pirates_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#	
+#	stack = 50
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = iran_bowmen
+#}
+
+#kurdish_bowmen = {
+#	type = archers
+#
+#	damage = 30
+#	toughness = 20
+#	pursuit = 15
+#	screen = 15
+#	
+#	terrain_bonus = {
+#	
+#	}
+#
+#	counters = {
+#		skirmishers = 1
+#		heavy_infantry = 1
+#		heavy_cavalry = 1
+#	}
+#	
+#	can_recruit = {location = {geographical_region = LR_icci_custom_sassanid }}
+#
+#	buy_cost = { gold = jomsviking_pirates_recruitment_cost }
+#	low_maintenance_cost = { gold = jomsviking_pirates_low_maint_cost }
+#	high_maintenance_cost = { gold = jomsviking_pirates_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#	
+#	stack = 50
+#	ai_quality = { value = @cultural_maa_extra_ai_score }
+#	icon = kurdish_bowmen
+#}
+
+##Germania##
+
+## Greek States ##
+
+
+#greek_peltasts = {
+#	type = skirmishers
+#
+#	damage = 20
+#	toughness = 12
+#	pursuit = 16
+#	screen = 20
+#
+#	terrain_bonus = {
+#	}
+#
+#	counters = {
+#		archers = 1
+#		peasant_militia = 1
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_hellenistic_greek
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = skirmisher_recruitment_cost }
+#	low_maintenance_cost = { gold = skirmisher_low_maint_cost }
+#	high_maintenance_cost = { gold = skirmisher_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = greek_peltasts
+#}
+
+#greek_slingers = {
+#	type = skirmishers
+#
+#	damage = 30
+#	toughness = 0
+#	pursuit = 40
+#	screen = 40
+#
+#	terrain_bonus = {
+#	}
+#
+#	counters = {
+#		archers = 1
+#		light_cavalry = 0.5
+#		heavy_infantry = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_hellenistic_greek
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = skirmisher_recruitment_cost }
+#	low_maintenance_cost = { gold = skirmisher_low_maint_cost }
+#	high_maintenance_cost = { gold = skirmisher_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = greek_slingers
+#}
+
+#citizen_hoplites = {
+#	type = skirmishers
+#
+#	damage = 50
+#	toughness = 0
+#	pursuit = 0
+#	screen = 0
+#
+#	terrain_bonus = {
+#	}
+#
+#	counters = {
+#		archers = 1
+#		peasant_militia = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_hellenistic_greek
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = skirmisher_recruitment_cost }
+#	low_maintenance_cost = { gold = skirmisher_low_maint_cost }
+#	high_maintenance_cost = { gold = skirmisher_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = citizen_hoplites
+#}
+
+#militia_hoplites = {
+#	type = pikemen
+#
+#	damage = 55
+#	toughness = 15
+#	pursuit = 0
+#	screen = 0
+#
+#	terrain_bonus = {
+#
+#	}
+#
+#	counters = {
+#		light_cavalry = 1
+#		heavy_cavalry = 1
+#		camel_cavalry = 1
+#		elephant_cavalry = 1
+#		heavy_infantry = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_hellenistic_greek
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = pikemen_recruitment_cost }
+#	low_maintenance_cost = { gold = pikemen_low_maint_cost }
+#	high_maintenance_cost = { gold = pikemen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_expensive
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = militia_hoplites
+#}
+
+#greek_hoplites = {
+#	type = pikemen
+#
+#	damage = 20
+#	toughness = 30
+#	pursuit = 0
+#	screen = 0
+#
+#	terrain_bonus = {
+#
+#	}
+#
+#	counters = {
+#		light_cavalry = 1
+#		heavy_cavalry = 1
+#		camel_cavalry = 1
+#		elephant_cavalry = 1
+#		heavy_infantry = 0.5
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_hellenistic_greek
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = pikemen_recruitment_cost }
+#	low_maintenance_cost = { gold = pikemen_low_maint_cost }
+#	high_maintenance_cost = { gold = pikemen_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_expensive
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = greek_hoplites
+#}
+
+#thorax_greek_hoplites = {
+#	type = pikemen
+#
+#	damage = 27
+#	toughness = 35
+#	pursuit = 0
+#	screen = 0
+#
+#	terrain_bonus = {
+#	}
+#
+#	counters = {
+#		heavy_infantry = 2
+#		peasant_militia = 2
+#		heavy_cavalry = 1
+#		light_cavalry = 1
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_hellenistic_greek
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = skirmisher_recruitment_cost }
+#	low_maintenance_cost = { gold = skirmisher_low_maint_cost }
+#	high_maintenance_cost = { gold = skirmisher_high_maint_cost }
+#	provision_cost = @provisions_cost_infantry_cheap
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = thorax_greek_hoplites
+#}
+
+#greek_citizen_cavalry = {
+#	type = light_cavalry
+#
+#	damage = 45
+#	toughness = 10
+#	pursuit = 30
+#	screen = 30
+#
+#	terrain_bonus = {
+#
+#	}
+#
+#	counters = {
+#		archers = 1
+#		heavy_infantry = 0.5
+#		peasant_militia = 2
+#	}
+#
+#	can_recruit = {
+#		culture = {
+#			OR = {
+#				has_cultural_pillar = heritage_hellenistic_greek
+#			}
+#		}
+#	}
+#
+#	buy_cost = { gold = light_cavalry_recruitment_cost }
+#	low_maintenance_cost = { gold = light_cavalry_low_maint_cost }
+#	high_maintenance_cost = { gold = light_cavalry_high_maint_cost }
+#	provision_cost = @provisions_cost_cavalry_cheap
+#
+#	holy_order_fallback = yes
+#
+#	stack = 100
+#	ai_quality = { value = 100 }
+#	icon = greek_citizen_cavalry
+#}

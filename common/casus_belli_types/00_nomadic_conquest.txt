@@ -50,17 +50,17 @@
 		}
 		
 		#Declaring war on the frankokratia leader can really ruin the whole thing
-		#if = {
-		#	limit = {
-		#		scope:defender = {
-		#			any_owned_story = {
-		#				story_type = frankokratia_story
-		#				NOT = { has_variable = franko_war_complete }
-		#			}
-		#		}
-		#	}
-		#	multiply = 0
-		#}
+		if = {
+			limit = {
+				scope:defender = {
+					any_owned_story = {
+						story_type = frankokratia_story
+						NOT = { has_variable = franko_war_complete }
+					}
+				}
+			}
+			multiply = 0
+		}
 	}
 
 	allowed_for_character_display_regardless = {
@@ -342,11 +342,8 @@ nomadic_conquest_duchy_cb = {
 					OR = {
 						is_landed = no
 						capital_county = {
-							any_county_situation = {
-								any_situation_sub_region = {
-									sub_region_current_phase = situation_steppe_havsarsan_zud_season
-									situation_sub_region_has_county = scope:attacker.capital_county
-								}
+							any_county_situation_sub_region = {
+								sub_region_current_phase = situation_steppe_havsarsan_zud_season
 							}
 						}
 					}
@@ -362,17 +359,17 @@ nomadic_conquest_duchy_cb = {
 		multiply = muslim_invasions_prefer_nonmuslims_ai_score_value
 
 		#Declaring war on the frankokratia leader can really ruin the whole thing
-		#if = {
-		#	limit = {
-		#		scope:defender = {
-		#			any_owned_story = {
-		#				story_type = frankokratia_story
-		#				NOT = { has_variable = franko_war_complete }
-		#			}
-		#		}
-		#	}
-		#	multiply = 0
-		#}
+		if = {
+			limit = {
+				scope:defender = {
+					any_owned_story = {
+						story_type = frankokratia_story
+						NOT = { has_variable = franko_war_complete }
+					}
+				}
+			}
+			multiply = 0
+		}
 	}
 
 	allowed_for_character_display_regardless = {
