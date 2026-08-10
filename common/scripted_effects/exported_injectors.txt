@@ -135,29 +135,29 @@ random_type_simple = { # TYPE, APPLY = simple_assign
 }
 
 ##############################################################
-#### Main key: patron_god_name: Iteration key: PATRON
+#### Main key: patron_god_name: Iteration key: PATRON_GOD
 ##############################################################
-# Execute APPLY for the PATRON key passed as a flag:FLAG.
-# parse_patron_god_name_flag_complex = {PATRON = flag APPLY = scripted_effect}
-# parse_patron_god_name_flag_simple  = {PATRON = flag APPLY = simple_effect}
-parse_patron_god_name_flag_complex   = {parse_type_flag_complex  = {TYPE = patron_god_name APPLY = $APPLY$ FLAG = $PATRON$  KEY = PATRON}}
-parse_patron_god_name_flag_simple    = {parse_type_flag_simple   = {TYPE = patron_god_name APPLY = $APPLY$ FLAG = $PATRON$}}
+# Execute APPLY for the PATRON_GOD key passed as a flag:FLAG.
+# parse_patron_god_name_flag_complex = {PATRON_GOD = flag APPLY = scripted_effect}
+# parse_patron_god_name_flag_simple  = {PATRON_GOD = flag APPLY = simple_effect}
+parse_patron_god_name_flag_complex   = {parse_type_flag_complex  = {TYPE = patron_god_name APPLY = $APPLY$ FLAG = $PATRON_GOD$  KEY = PATRON_GOD}}
+parse_patron_god_name_flag_simple    = {parse_type_flag_simple   = {TYPE = patron_god_name APPLY = $APPLY$ FLAG = $PATRON_GOD$}}
 # Execute APPLY in a switch statement for the keys
 # switch_patron_god_name_complex     = {APPLY = scripted_effect TRIGGER = simple_trigger}
 # switch_patron_god_name_simple      = {APPLY = simple_effect   TRIGGER = simple_trigger}
-switch_patron_god_name_complex       = {switch_type_complex      = {TYPE = patron_god_name APPLY = $APPLY$ TRIGGER = $TRIGGER$  KEY = PATRON}}
+switch_patron_god_name_complex       = {switch_type_complex      = {TYPE = patron_god_name APPLY = $APPLY$ TRIGGER = $TRIGGER$  KEY = PATRON_GOD}}
 switch_patron_god_name_simple        = {switch_type_simple       = {TYPE = patron_god_name APPLY = $APPLY$ TRIGGER = $TRIGGER$}}
 # Execute APPLY for every patron_god_name key
 # every_patron_god_name_complex      = {APPLY = scripted_effect}
 # every_patron_god_name_simple       = {APPLY = simple_effect}
-every_patron_god_name_complex        = {every_type_complex       = {TYPE = patron_god_name APPLY = $APPLY$ KEY = PATRON}}
+every_patron_god_name_complex        = {every_type_complex       = {TYPE = patron_god_name APPLY = $APPLY$ KEY = PATRON_GOD}}
 every_patron_god_name_simple         = {every_type_simple        = {TYPE = patron_god_name APPLY = $APPLY$}}
 # Execute APPLY for a random patron_god_name key
 # random_patron_god_name_complex     = {APPLY = scripted_effect}
 # random_patron_god_name_simple      = {APPLY = simple_effect}
-random_patron_god_name_complex       = {random_type_complex      = {TYPE = patron_god_name APPLY = $APPLY$ KEY = PATRON}}
+random_patron_god_name_complex       = {random_type_complex      = {TYPE = patron_god_name APPLY = $APPLY$ KEY = PATRON_GOD}}
 random_patron_god_name_simple        = {random_type_simple       = {TYPE = patron_god_name APPLY = $APPLY$}}
-### Hypercomplex iterator for unscoped type "patron_god_name" over PATRON:
+### Hypercomplex iterator for unscoped type "patron_god_name" over PATRON_GOD:
 patron_god_name_hypercomplex = {
 	$CONTROLLER$ = {
 		$PRESTATEMENT_KEY$ = $PRESTATEMENT_ARG$
