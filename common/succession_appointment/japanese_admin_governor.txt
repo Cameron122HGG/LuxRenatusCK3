@@ -1,4 +1,4 @@
-﻿gallic_governor = {
+﻿japanese_governor = {
 	allow_children = no
 
 	default_candidates = { holder_close_family landed_vassal holder_councilor holder_court_position }
@@ -445,10 +445,10 @@
 			}
 			# PERKS
 			if = {
-				limit = { has_title = title:e_sacral_kingdom_gaul }
+				limit = { has_title = title:e_japan }
 				add = {
 					value = -1000
-					desc = is_mayor_tt
+					desc = is_kampaku_tt
 				}
 			}
 			# Age
@@ -458,7 +458,7 @@
 					value = 50
 					subtract = age
 					multiply = -2
-					desc = gallic_regent_admin_age_desc
+					desc = japanese_kampaku_age_desc
 				}
 			}
 			else = {
@@ -466,7 +466,7 @@
 					value = age
 					subtract = 50
 					multiply = 2
-					desc = gallic_regent_admin_age_desc
+					desc = japanese_kampaku_age_desc
 				}
 			}
 			# CLIMBING TOO EARLY - AT END
@@ -590,7 +590,7 @@
 					desc = ceremonial_liege_desc
 				}
 			}
-			# Top liege (emperor/mayor)
+			# Top liege (emperor/kampaku)
 			if = {
 				limit = { is_independent_ruler = yes }
 				multiply = {
@@ -602,7 +602,7 @@
 	}
 }
 
-gallic_military_governor = {
+japanese_military_governor = {
 	allow_children = no
 
 	default_candidates = { holder_close_family landed_vassal holder_councilor holder_court_position }
@@ -1119,7 +1119,7 @@ gallic_military_governor = {
 					desc = ceremonial_liege_desc
 				}
 			}
-			# Top liege (emperor/mayor)
+			# Top liege (emperor/kampaku)
 			if = {
 				limit = { is_independent_ruler = yes }
 				multiply = {
