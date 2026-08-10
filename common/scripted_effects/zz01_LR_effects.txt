@@ -70,23 +70,23 @@ LR_random_title_granting_on_start = {
 			#	save_temporary_scope_as = local_warlord
 			#}
 			if = {
-				limit = { root.faith = { has_doctrine = doctrine_gender_male_dominated } }
+				limit = { scope:overlord_to_grant.faith = { has_doctrine = doctrine_gender_male_dominated } }
 				create_character = {
 					gender = male
 					location = scope:current_county.title_province
-					faith = root.faith
-					culture = root.culture
+					faith = scope:overlord_to_grant.faith
+					culture = scope:province_for_culture.culture
 					dynasty = generate
 					save_temporary_scope_as = local_warlord
 				}
 			}
 			else_if = {
-				limit = { root.faith = { has_doctrine = doctrine_gender_female_dominated } }
+				limit = { scope:overlord_to_grant.faith = { has_doctrine = doctrine_gender_female_dominated } }
 				create_character = {
 					gender = female
 					location = scope:current_county.title_province
-					faith = root.faith
-					culture = root.culture
+					faith = scope:overlord_to_grant.faith
+					culture = scope:province_for_culture.culture
 					dynasty = generate
 					save_temporary_scope_as = local_warlord
 				}
@@ -97,8 +97,8 @@ LR_random_title_granting_on_start = {
 						create_character = {
 							gender = male
 							location = scope:current_county.title_province
-							faith = root.faith
-							culture = root.culture
+							faith = scope:overlord_to_grant.faith
+							culture = scope:province_for_culture.culture
 							dynasty = generate
 							save_temporary_scope_as = local_warlord
 						}
@@ -107,8 +107,8 @@ LR_random_title_granting_on_start = {
 						create_character = {
 							gender = female
 							location = scope:current_county.title_province
-							faith = root.faith
-							culture = root.culture
+							faith = scope:overlord_to_grant.faith
+							culture = scope:province_for_culture.culture
 							dynasty = generate
 							save_temporary_scope_as = local_warlord
 						}
@@ -190,7 +190,7 @@ LR_random_title_granting_on_start = {
 			#	save_temporary_scope_as = local_warlord
 			#}
 			if = {
-				limit = { root.faith = { has_doctrine = doctrine_gender_male_dominated } }
+				limit = { scope:overlord_to_grant.faith = { has_doctrine = doctrine_gender_male_dominated } }
 				create_character = {
 					gender = male
 					location = scope:current_county.title_province
@@ -201,7 +201,7 @@ LR_random_title_granting_on_start = {
 				}
 			}
 			else_if = {
-				limit = { root.faith = { has_doctrine = doctrine_gender_female_dominated } }
+				limit = { scope:overlord_to_grant.faith = { has_doctrine = doctrine_gender_female_dominated } }
 				create_character = {
 					gender = female
 					location = scope:current_county.title_province
