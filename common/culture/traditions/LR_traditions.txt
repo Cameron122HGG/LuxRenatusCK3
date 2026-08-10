@@ -222,23 +222,29 @@ lux_tradition_western_roman = {
 
 	is_shown = {
 		OR = {
-			has_cultural_pillar = heritage_latin
-			#has_cultural_pillar = heritage_byzantine
-			OR = {
-				has_title = title:e_spqr
-				has_title = title:h_western_roman_empire
-				has_title = title:h_roman_empire
+			this = culture:roman
+			any_parent_culture_or_above = {
+				this = culture:roman
 			}
+			has_cultural_pillar = heritage_latin
+			scope:character = {
+				OR = {
+					has_title = title:e_spqr
+					has_title = title:h_western_roman_empire
+					has_title = title:h_roman_empire
+				}
+			}
+		}
+		# DLC check.
+		has_ep3_dlc_trigger = yes
+		NOT = {
+			has_cultural_tradition = tradition_byzantine_succession
+			has_cultural_tradition = tradition_ep3_palace_politics
 		}
 	}
 	can_pick = {
 		OR = {
 			has_cultural_pillar = heritage_latin
-		}
-		NOT = {
-			has_cultural_tradition = tradition_byzantine_succession
-			has_cultural_tradition = tradition_ep3_palace_politics
-			this = culture:greek
 		}
 	}
 
