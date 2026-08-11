@@ -1,0 +1,88 @@
+﻿###################################
+#
+# ANCIENT RELIGIONS
+# - Hellenic Flavour Events
+#
+###################################
+
+# Written by Patrick Marchand, adapted for CK3 Lux Renata by Jim Stannum
+
+namespace = hellenic_flavor
+
+# Augur hit by lightning
+hellenic_flavor.0001 = {
+    type = character_event
+    title = hellenic_flavor.0001.t
+    desc = hellenic_flavor.0001.desc
+    theme = faith
+
+    left_portrait = {
+        character = root
+        animation = shock
+    }
+
+    trigger = {
+        is_landed = yes
+        is_travelling = no
+        OR = {
+            religion = {
+                is_in_family = rf_graeco_roman
+            }
+            #add other religions here if necessary
+        }
+    }
+
+    weight_multiplier = {
+        base = 1
+        modifier = {
+            factor = 2
+            has_trait = zealous
+        }
+        modifier = {
+            factor = 0.5
+            has_trait = cynical
+        }
+        modifier = {
+            factor = 2
+            has_trait = paranoid
+        }
+        modifier = {
+            factor = 2
+            has_trait = mystic
+        }
+        modifier = {
+            factor = 2
+            has_trait = ambitious
+        }
+        modifier = {
+            factor = 0.67
+            has_trait = content
+        }
+    }
+
+    option = {
+		name = hellenic_flavor.0001.a
+		trigger = {
+			NOT = { has_trait = paranoid }
+		}
+		add_piety = 25
+	}
+	
+	option = {
+		name = hellenic_flavor.0001.b
+		trigger = {
+			has_trait = paranoid
+		}
+		tooltip_info = paranoid
+		add_piety = 50
+		random_list = {
+			50 = {
+				add_piety = 25
+			}
+			15 = {
+				add_stress = 25
+			}
+			35 = {}
+		}
+	}
+}
