@@ -604,7 +604,7 @@ tgp_is_ceremonial_regent_trigger = {
 	tgp_has_ceremonial_liege_title_trigger = no
 }
 
-should_become_classical_admin_trigger = {
+should_become_roman_admin_trigger = {
 	has_ep3_dlc_trigger = yes
 	OR = {
 		top_liege = {
@@ -631,6 +631,23 @@ should_become_alexandrian_admin_trigger = {
 			liege = {
 				NOT = {
 					government_has_flag = government_is_alexandrian_administrative
+				}
+			}
+		}
+	}
+}
+
+should_become_western_admin_trigger = {
+	has_ep3_dlc_trigger = yes
+	OR = {
+		top_liege = {
+			has_government = western_administrative_government
+		}
+		OR = {
+			is_independent_ruler = yes
+			liege = {
+				NOT = {
+					government_has_flag = government_is_western_administrative
 				}
 			}
 		}
