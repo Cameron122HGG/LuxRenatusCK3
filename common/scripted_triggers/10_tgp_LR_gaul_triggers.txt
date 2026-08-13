@@ -156,7 +156,7 @@ LR_tgp_gaul_offensive_wars_ban_trigger = {
 	}
 }
 
-LR_tgp_gaul_tgp_is_ceremonial_liege_or_direct_heir_trigger = {
+LR_tgp_gaul_is_ceremonial_liege_or_direct_heir_trigger = {
 	save_temporary_scope_as = char_temp
 	top_liege.primary_title.var:administrative_ui_special_title ?= {
 		OR = {
@@ -174,7 +174,7 @@ LR_tgp_gaul_tgp_is_ceremonial_liege_or_direct_heir_trigger = {
 	}
 }
 
-LR_tgp_gaul_tgp_ceremonial_candidacy_restriction_trigger = {
+LR_tgp_gaul_ceremonial_candidacy_restriction_trigger = {
 	trigger_if = {
 		limit = {
 			exists = scope:target
@@ -635,7 +635,7 @@ LR_tgp_roman_or_frank_trigger = {
 		text = soryo_or_bushido_trigger
 		OR = {
 			government_has_flag = government_is_gaul_feudal
-			culture = { has_cultural_tradition = tradition_tgp_bushido_gaul }
+			culture = { has_cultural_tradition = lux_tradition_tgp_sacred_chivalry }
 		}
 	}
 }
@@ -684,7 +684,7 @@ gaul_government_gaul_kingdom_restriction_trigger = {
 			OR = {
 				is_independent_ruler = no
 				AND = {
-					NOT = { highest_held_title_tier = tier_empire }
+					NOT = { highest_held_title_tier = tier_kingdom }
 					has_title = title:e_sacral_kingdom_gaul
 				}
 			}
@@ -703,7 +703,7 @@ gaul_government_gaul_duchy_restriction_trigger = {
 				government_has_flag = government_is_gaul_administrative
 				AND = { # Manorial can create Kingdoms if they're already a King
 					government_has_flag = government_is_gaul_feudal
-					primary_title.tier = tier_duchy
+					primary_title.tier = tier_county
 				}
 			}
 			NAND = {

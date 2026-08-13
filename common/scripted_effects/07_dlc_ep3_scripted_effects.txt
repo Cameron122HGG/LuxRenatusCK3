@@ -1,4 +1,7 @@
-﻿##################################################
+﻿#LUX RENATA GOVERNMENT WORK#
+#THIS MEANS THIS IS PART OF THE GOV WORK FLOW#
+
+##################################################
 # Laamps
 ##################################################
 
@@ -3459,6 +3462,17 @@ create_noble_family_effect = {
 							tier = county
 							article = DEFAULT_TITLE_NAME_ARTICLE
 							government = alexandrian_administrative_government
+							save_scope_as = new_title
+						}
+					}
+				}
+				western_administrative_government = {
+					scope:new_noble_family_holder = {
+						give_noble_family_title = {
+							name = noble_family_name
+							tier = county
+							article = DEFAULT_TITLE_NAME_ARTICLE
+							government = western_administrative_government
 							save_scope_as = new_title
 						}
 					}
@@ -11878,35 +11892,35 @@ ep3_camp_party_visit_holding_skills_boost = {
 }
 
 #Setting up the Fens as a pseudo-custom region
-ep3_the_fens_list_effect = {
-	province:1525 = { add_to_list = the_fens } #b_lynn
-	province:1534 = { add_to_list = the_fens } #b_cambridgeshire
-	province:1535 = { add_to_list = the_fens } #b_radfield
-	province:1536 = { add_to_list = the_fens } #b_papworth
-	province:1537 = { add_to_list = the_fens } #b_ely
-	province:1541 = { add_to_list = the_fens } #b_hurstingstone
-	province:1542 = { add_to_list = the_fens } #b_norman_cross
-	province:1584 = { add_to_list = the_fens } #b_stamford
-	province:1585 = { add_to_list = the_fens } #b_boston
-	province:1601 = { add_to_list = the_fens } #b_peterborough
-}
+#ep3_the_fens_list_effect = {
+#	province:1525 = { add_to_list = the_fens } #b_lynn
+#	province:1534 = { add_to_list = the_fens } #b_cambridgeshire
+#	province:1535 = { add_to_list = the_fens } #b_radfield
+#	province:1536 = { add_to_list = the_fens } #b_papworth
+#	province:1537 = { add_to_list = the_fens } #b_ely
+#	province:1541 = { add_to_list = the_fens } #b_hurstingstone
+#	province:1542 = { add_to_list = the_fens } #b_norman_cross
+#	province:1584 = { add_to_list = the_fens } #b_stamford
+#	province:1585 = { add_to_list = the_fens } #b_boston
+#	province:1601 = { add_to_list = the_fens } #b_peterborough
+#}
 
 #Used for setting up the Harrying of the North widget for events
 #Requires use of ep3_harrying_widget_clear_effect in the 'after' as well
-ep3_harrying_widget_setup_effect = {
-	global_var:harrying_of_the_north = { save_scope_as = story }
-	## First, identify our widget character.
-	save_scope_as = scope_character
-	## Then transfer over some suitable variables for the UI.
-	set_variable = {
-		name = pacification_gui
-		value = scope:story.var:pacification
-	}
-	set_variable = {
-		name = resistance_gui
-		value = scope:story.var:resistance
-	}
-}
+#ep3_harrying_widget_setup_effect = {
+#	global_var:harrying_of_the_north = { save_scope_as = story }
+#	## First, identify our widget character.
+#	save_scope_as = scope_character
+#	## Then transfer over some suitable variables for the UI.
+#	set_variable = {
+#		name = pacification_gui
+#		value = scope:story.var:pacification
+#	}
+#	set_variable = {
+#		name = resistance_gui
+#		value = scope:story.var:resistance
+#	}
+#}
 
 #Increase pacification
 ep3_increase_pacification_effect = {
