@@ -30,6 +30,30 @@ types CoatOfArmsDesignerTypes
 							layoutpolicy_horizontal = expanding
 						}
 					}
+					
+					# PS TOP Control buttons
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 8
+
+						vbox_coa_designer_top_controls = {
+							layoutpolicy_vertical = expanding
+							layoutpolicy_horizontal = expanding
+						}
+					}					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 8
+						margin_left = -4
+						
+						vbox_coa_designer_top_controls_02 = {
+							layoutpolicy_vertical = expanding
+							layoutpolicy_horizontal = expanding
+						}
+					}					
+
+					# END PS Controls
 
 					expand = {}
 
@@ -152,11 +176,31 @@ types CoatOfArmsDesignerTypes
 			margin = { 20 10 }
 			spacing = 10
 
-			ps_coa_preview_title_big_crown = {
-				name = "title"
+			# ps_coa_preview_title_big_crown = {
+			#	name = "title"
+			#	visible = "[AND(GetVariableSystem.Exists('is_shield_frame_type')), (Not(GetVariableSystem.Exists('is_grid_overlay_active')))]"
+			#	datacontext = "[CoatOfArmsDesigner.GetPreviewCoA.GetCoA]"
+			#}
+			
+			
+			ps_coa_preview_title_big_crown_grid = {
+				name = "title_black_grid"
+				# visible = "[AND(GetVariableSystem.Exists('is_grid_overlay_active')),(GetVariableSystem.Exists('is_shield_frame_type'))]"
+				# "[Or(GetVariableSystem.Exists('guide_v'), GetVariableSystem.Exists('guide_h'))]"
+				
+				visible = "[GetVariableSystem.Exists('is_shield_frame_type')]"
 				datacontext = "[CoatOfArmsDesigner.GetPreviewCoA.GetCoA]"
+			}			
+			
+			ps_coa_designer_preview_house_frame_grid = { # TODO big type
+				name = "dynasty_center"
+				# visible = "[Not(GetVariableSystem.Exists('is_shield_frame_type')),Not(GetVariableSystem.Exists('is_grid_overlay_active'))]"
+				visible = "[Not(GetVariableSystem.Exists('is_shield_frame_type'))]"
+				datacontext = "[CoatOfArmsDesigner.GetPreviewCoA.GetCoA]"
+				datacontext = "[CoatOfArmsDesigner.GetSelectedCulture]"
 			}
-
+			
+	
 
 		}
 
@@ -164,12 +208,15 @@ types CoatOfArmsDesignerTypes
 
 	}
 
+	# Vanilla top left
+	
 	type vbox_coa_designer_top_left_buttons = vbox
 	{
 		name = "coa_designer_top_left_buttons"
 		visible = "[Not(VariableSystem.HasValue('coa_designer_page', 'start'))]"
 
 		using = Animation_Tab_Switch
+		
 
 		hbox = {
 			layoutpolicy_horizontal = expanding
@@ -213,11 +260,136 @@ types CoatOfArmsDesignerTypes
 			}
 
 			expand = {}
+			
 		}
 
 		expand = {}
 	}
 
+	# PS Controls
+	
+	type vbox_coa_designer_top_controls = vbox
+	{
+		name = "coa_designer_controls"
+		visible = "[Not(VariableSystem.HasValue('coa_designer_page', 'start'))]"
+
+		using = Animation_Tab_Switch
+		
+
+		hbox = {
+			layoutpolicy_horizontal = expanding	
+			
+			button_checkbox_label = {
+				name = "shield_frame_toggle_button"
+				tooltip = "PS_COA_DESIGNER_SWITCH_SHIELD_FRAME_DESC"
+				size = { 40 40 }
+
+				onclick = "[GetVariableSystem.Toggle('is_shield_frame_type')]"
+
+				blockoverride "checkbox"
+				{
+					checked = "[GetVariableSystem.Exists('is_shield_frame_type')]"
+				}
+
+				blockoverride "text"
+				{
+					text = "PS_COA_DESIGNER_SWITCH_SHIELD_FRAME_BOX"
+				}
+			}
+			
+			spacer = { size = { 10 0 } }
+
+			button_checkbox_label = {
+				name = "grid_toggle_button"
+				tooltip = "PS_COA_DESIGNER_GRID_DESC"
+				size = { 40 40 }
+
+				onclick = "[GetVariableSystem.Toggle('is_grid_overlay_active')]"
+
+				blockoverride "checkbox"
+				{
+					checked = "[GetVariableSystem.Exists('is_grid_overlay_active')]"
+				}
+
+				blockoverride "text"
+				{
+					text = "PS_COA_DESIGNER_GRID_BOX"
+				}
+			}			
+	
+			expand = {}
+			
+		}
+
+		expand = {}
+	}
+	
+	type vbox_coa_designer_top_controls_02 = vbox
+	{
+		name = "coa_designer_controls"
+		visible = "[Not(VariableSystem.HasValue('coa_designer_page', 'start'))]"
+
+		using = Animation_Tab_Switch
+		
+
+		hbox = {
+			layoutpolicy_horizontal = expanding	
+
+			icon = {
+				visible = "[GetVariableSystem.Exists('is_grid_overlay_active')]"
+				size = { 20 20 }
+				texture = "gfx/interface/icons/flat_icons/arrow.dds"
+			}		
+
+			button_checkbox_label = {
+				name = "grid_neg_toggle_button"
+				tooltip = "PS_COA_DESIGNER_GRID_NEGATIVE_DESC"
+				size = { 40 40 }
+
+				visible = "[GetVariableSystem.Exists('is_grid_overlay_active')]"
+				onclick = "[GetVariableSystem.Toggle('is_grid_overlay_negative')]"
+
+				blockoverride "checkbox"
+				{
+					checked = "[GetVariableSystem.Exists('is_grid_overlay_negative')]"
+				}
+
+				blockoverride "text"
+				{
+					text = "PS_COA_DESIGNER_GRID_NEGATIVE_BOX"
+				}
+			}		
+
+			spacer = { size = { 10 0 } }
+			
+			button_checkbox_label = {
+				name = "grid_leg_toggle_button"
+				tooltip = "PS_COA_DESIGNER_GRID_LEGEND_DESC"
+				size = { 40 40 }
+
+				visible = "[GetVariableSystem.Exists('is_grid_overlay_active')]"
+				onclick = "[GetVariableSystem.Toggle('is_grid_legend_active')]"
+
+				blockoverride "checkbox"
+				{
+					checked = "[GetVariableSystem.Exists('is_grid_legend_active')]"
+				}
+
+				blockoverride "text"
+				{
+					text = "PS_COA_DESIGNER_GRID_LEGEND_BOX"
+				}
+			}		
+	
+			expand = {}
+			
+		}
+
+		expand = {}
+	}
+	
+	# END PS TOP Controls boxes
+	
 	type vbox_coa_designer_tabs = vbox
 	{
 		name = "coa_designer_tabs"
@@ -1554,7 +1726,7 @@ types CoatOfArmsDesignerTypes
 			divider_light = {
 				layoutpolicy_horizontal = expanding
 			}
-
+			# Charge colour button
 			hbox = {
 				name = "color_button_tabs"
 				layoutpolicy_horizontal = expanding
@@ -1616,7 +1788,7 @@ types CoatOfArmsDesignerTypes
 					{
 						tintcolor = "[CoatOfArmsDesignerEmblemInstancesPanel.GetColor( '(int32)3' )]"
 					}
-				}
+				}			
 
 				expand = {}
 			}
