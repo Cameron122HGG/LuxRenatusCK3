@@ -1070,7 +1070,7 @@ tgp_assign_china_realm_name_options_effect = {
 		}
 		0 = { # Han 汉
 			modifier = {
-				add = 1000
+				add = 10000
 				has_title = title:e_shu_han
 			}
 			modifier = {
@@ -1082,8 +1082,11 @@ tgp_assign_china_realm_name_options_effect = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
+				AND = {
 					is_title_localization_key_used = dynn_title_han
+					NOT = {
+						has_title = title:e_shu_han
+					}
 					is_target_in_variable_list = { name = realm_title_names target = flag:dynn_title_han }
 				}
 			}
@@ -1385,6 +1388,10 @@ tgp_assign_china_realm_name_options_effect = {
 		}
 		0 = { # Min 闽
 			modifier = {
+				add = 1000
+				has_title = title:e_great_min
+			}
+			modifier = {
 				add = 100
 				OR = {
 					capital_province ?= { geographical_region = tgp_min_region }
@@ -1393,8 +1400,11 @@ tgp_assign_china_realm_name_options_effect = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
+				AND = {
 					is_title_localization_key_used = dynn_title_min
+					NOT = {
+						has_title = title:e_great_min
+					}
 					is_target_in_variable_list = { name = realm_title_names target = flag:dynn_title_min }
 				}
 			}
@@ -1506,6 +1516,7 @@ tgp_assign_china_realm_name_options_effect = {
 				factor = 0
 				OR = {
 					is_title_localization_key_used = dynn_title_qin
+					has_title = title:e_heavenly_qin
 					is_target_in_variable_list = { name = realm_title_names target = flag:dynn_title_qin }
 				}
 			}
@@ -1640,8 +1651,11 @@ tgp_assign_china_realm_name_options_effect = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
+				AND = {
 					is_title_localization_key_used = dynn_title_tang
+					NOT = {
+						has_title = title:e_great_tang
+					}
 					is_target_in_variable_list = { name = realm_title_names target = flag:dynn_title_tang }
 				}
 			}
@@ -1719,8 +1733,11 @@ tgp_assign_china_realm_name_options_effect = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
+				AND = {
 					is_title_localization_key_used = dynn_title_wu
+					NOT = {
+						has_title = title:e_great_wu
+					}
 					is_target_in_variable_list = { name = realm_title_names target = flag:dynn_title_wu }
 				}
 			}
@@ -1838,8 +1855,11 @@ tgp_assign_china_realm_name_options_effect = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
+				AND = {
 					is_title_localization_key_used = dynn_title_yan
+					NOT = {
+						has_title = title:e_great_yan
+					}
 					is_target_in_variable_list = { name = realm_title_names target = flag:dynn_title_yan }
 				}
 			}
@@ -2048,6 +2068,10 @@ tgp_assign_china_realm_name_options_effect = {
 		}
 		0 = { # Zhou 周
 			modifier = {
+				add = 1000
+				has_title = title:e_wu_zhou
+			}
+			modifier = {
 				add = 100
 				OR = {
 					capital_province ?= { geographical_region = tgp_zhou_region }
@@ -2056,8 +2080,11 @@ tgp_assign_china_realm_name_options_effect = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
+				AND = {
 					is_title_localization_key_used = dynn_title_zhou
+					NOT = {
+						has_title = title:e_great_zhou
+					}
 					is_target_in_variable_list = { name = realm_title_names target = flag:dynn_title_zhou }
 				}
 			}
