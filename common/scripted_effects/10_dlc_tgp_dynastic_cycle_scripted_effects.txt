@@ -318,6 +318,11 @@ tgp_claim_mandate_of_heaven_effect = {
 					target_is_de_jure_liege_or_above = title:h_china
 				}
 				NOT = {	government_has_flag = cannot_be_vassal_or_liege }
+				NOT = { 
+					primary_title = {
+						tier = tier_empire
+					}
+				}
 				OR = {
 					government_has_flag = government_is_celestial
 					culture = {
@@ -373,6 +378,16 @@ tgp_claim_mandate_of_heaven_effect = {
 		}
 		# Make sure ministers are assigned correctly
 		fill_the_ministry_effect = yes
+		if = {
+			limit = {
+				primary_title = {
+					has_custom_title_name = yes
+				}
+			}
+			trigger_event = {
+					id = tgp_dynastic_cycle.9002
+			}
+		}
 	}
 	situation:dynastic_cycle = {
 		if = {
@@ -1596,6 +1611,10 @@ tgp_assign_china_realm_name_options_effect = {
 		}
 		0 = { # Song 宋
 			modifier = {
+				add = 10000
+				has_title = title:e_great_song
+			}
+			modifier = {
 				add = 100
 				OR = {
 					capital_province ?= { geographical_region = tgp_song_region }
@@ -1606,6 +1625,7 @@ tgp_assign_china_realm_name_options_effect = {
 				factor = 0
 				OR = {
 					is_title_localization_key_used = dynn_title_song
+					has_title = title:e_great_song
 					is_target_in_variable_list = { name = realm_title_names target = flag:dynn_title_song }
 				}
 			}

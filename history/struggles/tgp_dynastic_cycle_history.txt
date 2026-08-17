@@ -280,19 +280,25 @@
 	}
 }
 
-6066.1.1 = { #was 6066.1.1
+5993.1.1 = { #was 6066.1.1
 	effect = {
 		if = {
 			limit = { has_tgp_dlc_trigger = yes }
 			situation:dynastic_cycle = {
-				situation_top_sub_region = {
+				record_situation_special_event = {
+					key = cycle_history_key_decline_of_the_song
+					phase = situation_dynastic_cycle_phase_chaos
 					change_phase = { phase = situation_dynastic_cycle_phase_chaos }
 				}
 			}
-		}		
+			situation:dynastic_cycle = {
+					situation_top_sub_region = {
+					change_phase = { phase = situation_dynastic_cycle_phase_chaos }
+				}
+			}
+		}
 	}
 }
-
 6127.1.9 = { #was 1127.1.9
 	effect = {
 		if = {
