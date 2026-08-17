@@ -220,12 +220,15 @@ LR_choose_epithet = {
 		item = { # Voulgaropoulos (Mostly for the funny.)
 			value = choose_epithet_voulgaropoulos
 			is_shown = {
-				OR = {
-					father.culture = {
+					limit = {
 						OR = {
-							this = culture:bulgarian
-							any_parent_culture_or_above = {
-								this = culture:bulgarian
+							father.culture = {
+								OR = {
+									this = culture:bulgarian
+									any_parent_culture_or_above = {
+										this = culture:bulgarian
+									}
+								}
 							}
 						}
 					}
