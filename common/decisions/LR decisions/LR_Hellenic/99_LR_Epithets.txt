@@ -34,27 +34,28 @@ LR_choose_epithet = {
 			value = choose_epithet_nicator
 			current_description = choose_epithet_nicator_desc
 			localization = choose_epithet_nicator
-			ai_value = {
-				base = 10
-				modifier = {
-					factor = 1.1
-					has_trait = brave
+			ai_chance = {
+				value = 10
+
+				if = {
+					limit = { has_trait = brave }
+					multiply = 1.1
 				}
-				modifier = {
-					factor = 1.05
-					has_trait = wrathful
+				if = {
+					limit = { has_trait = wrathful }
+					multiply = 1.05
 				}
-				modifier = {
-					factor = 1.05
-					has_trait = ambitious
+				if = {
+					limit = { has_trait = ambitious }
+					multiply = 1.05
 				}
-				modifier = {
-					factor = 1.2
-					has_trait = education_martial
+				if = {
+					limit = { has_trait = education_martial }
+					multiply = 1.2
 				}
-				modifier = {
-					factor = 1.1
-					has_trait = strategist
+				if = {
+					limit = { has_trait = strategist }
+					multiply = 1.1
 				}
 			}
 		}
