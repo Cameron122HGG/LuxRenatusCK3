@@ -381,7 +381,7 @@ e_london = {
 e_england = {
 	color = { 202 26 26 }
 	definite_form = yes
-	capital = c_kent
+	capital = c_middlesex
 
 	ai_primary_priority = {
 		if = {
@@ -488,6 +488,25 @@ k_hk_britons = {
 		}
 	}	
 }
+
+k_england = {
+	color = { 202 26 26 }
+	capital = c_middlesex
+
+	ai_primary_priority = {
+		if = {
+			limit = {
+				OR = {
+					culture = culture:english
+					culture = culture:anglo_saxon
+
+				}
+			}
+			add = @correct_culture_primary_score
+		}
+	}
+}
+
 k_hk_anglo_danes = {
 	color = { 20 60 65 }
 	capital = c_north_riding
