@@ -40,7 +40,7 @@ LR_diadochi_seleukid_kingdom_decision = {
 		is_imprisoned = no
 		is_independent_ruler = yes
 		is_at_war = no
-		culture = { has_cultural_pillar = heritage_hellenistic_greek }
+		culture = { has_cultural_pillar = heritage_hellenistic }
 		OR = {
 		   NOT = { has_title = title:e_byzantium }
 		   NOT = { exists = title:e_byzantium.holder }
@@ -131,7 +131,7 @@ LR_diadochi_ptolemaic_kingdom_decision = {
 		is_imprisoned = no
 		is_independent_ruler = yes
 		is_at_war = no
-		culture = { has_cultural_pillar = heritage_hellenistic_greek }
+		culture = { has_cultural_pillar = heritage_hellenistic }
 		OR = {
 		   NOT = { has_title = title:e_byzantium }
 		   NOT = { exists = title:e_byzantium.holder }
@@ -230,7 +230,7 @@ LR_diadochi_antigonid_kingdom_decision = {
 		is_imprisoned = no
 		is_independent_ruler = yes
 		is_at_war = no
-		culture = { has_cultural_pillar = heritage_hellenistic_greek }
+		culture = { has_cultural_pillar = heritage_hellenistic }
 		OR = {
 		   NOT = { has_title = title:e_byzantium }
 		   NOT = { exists = title:e_byzantium.holder }
@@ -304,13 +304,13 @@ LR_create_alexander_hegemony_decision = {
 	is_shown = {
 		highest_held_title_tier = tier_empire
 		OR = {
-			culture = { has_cultural_pillar = heritage_hellenistic_greek }
+			culture = { has_cultural_pillar = heritage_hellenistic }
 			culture = { has_cultural_pillar = heritage_indo_hellenic }
 		}
 		NOT = { has_global_variable = created_alexanders_hegemony }
 		OR = {
 			capital_province = { geographical_region = world_alexanders_empire }
-			culture = { has_cultural_pillar = heritage_hellenistic_greek }
+			culture = { has_cultural_pillar = heritage_hellenistic }
 			culture = { has_cultural_pillar = heritage_indo_hellenic }
 		}
 	}
@@ -340,14 +340,14 @@ LR_create_alexander_hegemony_decision = {
 	effect = {
 		save_scope_as = new_hegemon
 		show_as_tooltip = {
-			get_title = title:h_alexander_empire
+			get_title = title:h_hellenistic_empire
 		}
 		add_prestige = 5000
 		dynasty ?= { add_dynasty_prestige = 5000 }		
 		
 		hidden_effect = {
 			scope:new_hegemon = {
-				get_title = title:h_alexander_empire
+				get_title = title:h_hellenistic_empire
 			}
 			if = {
 				limit = {  
@@ -370,7 +370,7 @@ LR_create_alexander_hegemony_decision = {
 					#tier = tier_empire
 					title_capital_county.title_province = { geographical_region = world_alexanders_empire }
 				}
-				set_de_jure_liege_title = title:h_alexander_empire
+				set_de_jure_liege_title = title:h_hellenistic_empire
 			}			
 		}
 		
@@ -396,7 +396,7 @@ LR_create_alexander_hegemony_decision = {
 	}
 
 	ai_potential = {
-		culture = { has_cultural_pillar = heritage_hellenistic_greek }
+		culture = { has_cultural_pillar = heritage_hellenistic }
 	}
 
 	ai_will_do = {
