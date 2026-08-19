@@ -1,0 +1,41 @@
+﻿#######################################################################
+# Structure 
+#######################################################################
+#The Lux Renata government system required a refactoring of CK3's flavorization file structure. 
+#The flavorization system is now split into various folders, mostly heritage based but with some other categories for the regions of the mod with more bespoke flavorization needs such as the Sacral Kingdom of Gaul.
+#Within each folder include flavorization files separated by government type. 
+
+#Some of these files at first blush won't make sense, such as a file for a heritage to use a government type that is not available to them, but this is to allow for the possibility of future expansions to the system and for localization to be more easily managed and not break during self correction.
+
+#The majority of governments are separted into tiers based on administrative complexity and the number of titles that can be held by a single character. Increases in tier also correspond to a more specialized and complex government system.
+
+#For example the first two tiers of government is the Tribal and High Tribal government, which is the most basic and which do not depend on anything specific like cultural heritage 
+
+#The second tier is the Patrimonial style government, which are the forms of government most like vanilla ck3 and are basically clones of one another with some minor differences in mechanics and title holding. Classical Government and Despotic governments are examples of this tier.
+
+#The third tier is the Administrative style government, which is a more complex form of government that begins to use mechanics that are more specific to the heritage of the character and the titles they hold. Roman Administrative and Alexandrian Administrative governments, which are more complex and have more specific mechanics than the Classical Government.
+
+#The fourth tier is the Imperial style government, which is a more complex form of government that begins to use mechanics that are more specific to the heritage of the character and the titles they hold. Roman Imperial and Hellenistic governments, which are more complex and have more specific mechanics than the Roman Administrative or Alexandrian Administrative they stem from.
+#######################################################################
+# Example 
+#######################################################################
+
+# This example will add the flavourization "Badass Queen" to the Queen 
+# of Norway if she holds the kingdom title herself while she is 
+# independent and feudal. 
+#
+my_example_flavourization = {
+	type = character
+	gender = female
+	priority = 1000
+	titles = { k_norway }
+	governments = { feudal_government }
+	
+	flavourization_rules = {
+		only_independent = yes
+		only_holder = yes
+	}
+}
+my_example_flavourization: "Badass Queen"
+
+
