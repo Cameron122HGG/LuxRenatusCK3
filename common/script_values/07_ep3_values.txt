@@ -2010,6 +2010,48 @@ governor_efficiency = {
 				divide = 100
 			}
 		}
+		##LR - Alexandrian Land Ownership impact on gov efficiency
+		if = {
+			limit = {
+				OR = {
+					vassal_contract_has_flag = state_ownership_20
+					vassal_contract_has_flag = state_ownership_30
+					vassal_contract_has_flag = state_ownership_40
+					vassal_contract_has_flag = state_ownership_50
+				} 
+			}
+			add = {
+				add = {
+					if = {
+						limit = {
+							vassal_contract_has_flag = state_ownership_20 
+						}
+						add = 10
+					}
+					if = {
+						limit = {
+							vassal_contract_has_flag = state_ownership_30
+						}
+						add = 0
+					}	
+					if = {
+						limit = {
+							vassal_contract_has_flag = state_ownership_40
+						}
+						add = -10
+					}
+					if = {
+						limit = {
+							vassal_contract_has_flag = state_ownership_50
+						}
+						add = -25
+					}
+					desc = gov_eff_land_ownership_impact
+				}
+				divide = 100
+			}
+		}
+		##
 
 		# TGP DYNASTIC CYCLE
 		if = {
