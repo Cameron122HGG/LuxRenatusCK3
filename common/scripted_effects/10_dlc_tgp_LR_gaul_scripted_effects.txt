@@ -462,21 +462,21 @@ add_random_internal_gallic_manor_building = {
 }
 
 gaul_clear_flavour_flags_effect = {
-	remove_global_variable = gallic_dictatorship_established
+	remove_global_variable = sacral_dictatorship_established
 	remove_global_variable = sacral_king_gaul_restored
-	remove_character_flag = gallic_dictator_flag
+	remove_character_flag = sacral_dictator_flag
 	remove_character_flag = ceremonial_liege_flag
 	remove_character_flag = low_king_flag
 }
 
-become_gallic_dictator_reward_effect = {
+become_sacral_dictator_reward_effect = {
 	# Setup
 	gaul_clear_flavour_flags_effect = yes
 	set_global_variable = {
-		name = gallic_dictatorship_established
+		name = sacral_dictatorship_established
 		value = yes
 	}
-	add_character_flag = gallic_dictator_flag
+	add_character_flag = sacral_dictator_flag
 
 	# Rewards
 	if = {
@@ -699,9 +699,9 @@ LR_tgp_gaul_schoolhouse_education_boost_effect = {
 	}
 }
 
-LR_tgp_restore_gallic_monarchy_decision_effect = {
-	save_scope_as = gallic_regent_admin
-	LR_tgp_restore_gallic_monarchy_merovingian_scion_effect = yes
+LR_tgp_restore_sacral_monarchy_decision_effect = {
+	save_scope_as = sacral_majordomo
+	LR_tgp_restore_sacral_monarchy_merovingian_scion_effect = yes
 	add_prestige = major_prestige_value
 	if = {
 		limit = { government_allows = administrative }
@@ -709,36 +709,36 @@ LR_tgp_restore_gallic_monarchy_decision_effect = {
 	}
 	else = { add_piety = medium_piety_value }
 	if = {
-		limit = { exists = scope:gaul_scion }
+		limit = { exists = scope:sacral_scion }
 		add_hook = {
 			type = strong_favor_hook
-			target = scope:gaul_scion
+			target = scope:sacral_scion
 		}
 	}
-	else = { custom_tooltip = LR_tgp_restore_gallic_monarchy_decision_hook_tt }
+	else = { custom_tooltip = LR_tgp_restore_sacral_monarchy_decision_hook_tt }
 }
 
-LR_tgp_restore_gallic_monarchy_merovingian_scion_effect = {
+LR_tgp_restore_sacral_monarchy_merovingian_scion_effect = {
 	title:k_sacral_king_gaul_throne.previous_holder ?= { save_scope_as = last_sacral_king_gaul }
 	dynasty:frankish_merovingian.dynasty_founder.house ?= {
 		save_scope_as = house_merovingian
 		if = {
-			limit = { this = scope:gallic_regent_admin.house }
+			limit = { this = scope:sacral_majordomo.house }
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_created_tt
+				limit = { NOT = { exists = scope:sacral_scion } }
+				custom_tooltip = LR_tgp_restore_sacral_monarchy_merovingian_scion_created_tt
 			}
-			scope:gallic_regent_admin = { save_scope_as = gaul_scion }
+			scope:sacral_majordomo = { save_scope_as = sacral_scion }
 		}
 		else_if = {
 			limit = {
 				scope:last_sacral_king_gaul ?= { LR_tgp_gaul_valid_restore_monarchy_scion_trigger = yes }
 			}
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_last_tt
+				limit = { NOT = { exists = scope:sacral_scion } }
+				custom_tooltip = LR_tgp_restore_sacral_monarchy_merovingian_scion_last_tt
 			}
-			scope:last_sacral_king_gaul = { save_scope_as = gaul_scion }
+			scope:last_sacral_king_gaul = { save_scope_as = sacral_scion }
 		}
 		else_if = {
 			limit = {
@@ -747,8 +747,8 @@ LR_tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 				}
 			}
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_last_child_tt
+				limit = { NOT = { exists = scope:sacral_scion } }
+				custom_tooltip = LR_tgp_restore_sacral_monarchy_merovingian_scion_last_child_tt
 			}
 			scope:last_sacral_king_gaul = {
 				ordered_child = {
@@ -765,8 +765,8 @@ LR_tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 				}
 			}
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_last_close_family_tt
+				limit = { NOT = { exists = scope:sacral_scion } }
+				custom_tooltip = LR_tgp_restore_sacral_monarchy_merovingian_scion_last_close_family_tt
 			}
 			scope:last_sacral_king_gaul = {
 				ordered_close_family_member = {
@@ -785,8 +785,8 @@ LR_tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 				}
 			}
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_found_tt
+				limit = { NOT = { exists = scope:sacral_scion } }
+				custom_tooltip = LR_tgp_restore_sacral_monarchy_merovingian_scion_found_tt
 			}
 			ordered_house_member = {
 				limit = {
@@ -800,35 +800,35 @@ LR_tgp_restore_gallic_monarchy_merovingian_scion_effect = {
 			}
 		}
 		else = {
-			LR_tgp_restore_gallic_monarchy_merovingian_creation_effect = yes
+			LR_tgp_restore_sacral_monarchy_merovingian_creation_effect = yes
 			if = { # Avoid display of short tooltips after creation
-				limit = { NOT = { exists = scope:gaul_scion } }
-				custom_tooltip = LR_tgp_restore_gallic_monarchy_merovingian_scion_created_tt
+				limit = { NOT = { exists = scope:sacral_scion } }
+				custom_tooltip = LR_tgp_restore_sacral_monarchy_merovingian_scion_created_tt
 			}
 		}
 		# Save children for portraits
-		scope:gaul_scion = {
+		scope:sacral_scion = {
 			save_scope_as = background_throne_room_scope
 			ordered_child = {
-				limit = { house = scope:gaul_scion.house }
+				limit = { house = scope:sacral_scion.house }
 				max = 3
 				check_range_bounds = no
 				order_by = age
 				switch = {
 					trigger = exists
-					scope:gaul_scion_child_2 = { save_scope_as = gaul_scion_child_3 }
-					scope:gaul_scion_child_1 = { save_scope_as = gaul_scion_child_2 }
-					fallback = { save_scope_as = gaul_scion_child_1 }
+					scope:sacral_scion_child_2 = { save_scope_as = sacral_scion_child_3 }
+					scope:sacral_scion_child_1 = { save_scope_as = sacral_scion_child_2 }
+					fallback = { save_scope_as = sacral_scion_child_1 }
 				}
 			}
 		}
 	}
 }
 
-LR_tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
-	add_character_flag = LR_tgp_gaul_restore_gallic_monarchy_flag
+LR_tgp_restore_sacral_monarchy_merovingian_restoration_effect = {
+	add_character_flag = LR_tgp_gaul_restore_sacral_monarchy_flag
 	if = {
-		limit = { exists = scope:gaul_scion }
+		limit = { exists = scope:sacral_scion }
 		if = {
 			limit = { exists = title:k_sacral_king_gaul_throne.holder }
 			create_title_and_vassal_change = {
@@ -845,27 +845,27 @@ LR_tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 		}
 		title:k_sacral_king_gaul_throne ?= {
 			change_title_holder = {
-				holder = scope:gaul_scion
+				holder = scope:sacral_scion
 				change = scope:change
 			}
 		}
 		if = {
 			limit = {
-				scope:gaul_scion.liege != scope:gallic_regent_admin
-				scope:gaul_scion != scope:gallic_regent_admin
+				scope:sacral_scion.liege != scope:sacral_majordomo
+				scope:sacral_scion != scope:sacral_majordomo
 			}
-			scope:gaul_scion ?= {
+			scope:sacral_scion ?= {
 				change_liege = {
-					liege = scope:gallic_regent_admin
+					liege = scope:sacral_majordomo
 					change = scope:change
 				}
 			}
 		}
 		resolve_title_and_vassal_change = scope:change
 	}
-	remove_character_flag = LR_tgp_gaul_restore_gallic_monarchy_flag
+	remove_character_flag = LR_tgp_gaul_restore_sacral_monarchy_flag
 	hidden_effect = {
-		scope:gaul_scion = {
+		scope:sacral_scion = {
 			if = {
 				limit = {
 					NOT = { government_has_flag = government_is_gaul_administrative }
@@ -876,63 +876,63 @@ LR_tgp_restore_gallic_monarchy_merovingian_restoration_effect = {
 	}
 }
 
-LR_tgp_restore_gallic_monarchy_merovingian_creation_effect = {
+LR_tgp_restore_sacral_monarchy_merovingian_creation_effect = {
 	create_character = {
-		template = LR_tgp_gaul_imperial_scion_template
-		location = scope:gallic_regent_admin.capital_province
+		template = LR_tgp_gaul_sacral_scion_template
+		location = scope:sacral_majordomo.capital_province
 		age = { 16 38 }
 		save_scope_as = scion
 	}
-	scope:gaul_scion ?= {
+	scope:sacral_scion ?= {
 		if = {
 			limit = { is_female = yes }
 			create_character = {
-				template = LR_tgp_gaul_imperial_scion_template
-				location = scope:gallic_regent_admin.capital_province
-				mother = scope:gaul_scion
+				template = LR_tgp_gaul_sacral_scion_template
+				location = scope:sacral_majordomo.capital_province
+				mother = scope:sacral_scion
 				age = { 11 12 }
 			}
 			create_character = {
-				template = LR_tgp_gaul_imperial_scion_template
-				location = scope:gallic_regent_admin.capital_province
-				mother = scope:gaul_scion
+				template = LR_tgp_gaul_sacral_scion_template
+				location = scope:sacral_majordomo.capital_province
+				mother = scope:sacral_scion
 				age = { 7 8 }
 			}
 			create_character = {
-				template = LR_tgp_gaul_imperial_scion_template
-				location = scope:gallic_regent_admin.capital_province
-				mother = scope:gaul_scion
+				template = LR_tgp_gaul_sacral_scion_template
+				location = scope:sacral_majordomo.capital_province
+				mother = scope:sacral_scion
 				age = { 3 4  }
 			}
 		}
 		else = {
 			create_character = {
-				template = LR_tgp_gaul_imperial_scion_template
-				location = scope:gallic_regent_admin.capital_province
-				father = scope:gaul_scion
+				template = LR_tgp_gaul_sacral_scion_template
+				location = scope:sacral_majordomo.capital_province
+				father = scope:sacral_scion
 				age = { 11 12 }
 			}
 			create_character = {
-				template = LR_tgp_gaul_imperial_scion_template
-				location = scope:gallic_regent_admin.capital_province
-				father = scope:gaul_scion
+				template = LR_tgp_gaul_sacral_scion_template
+				location = scope:sacral_majordomo.capital_province
+				father = scope:sacral_scion
 				age = { 7 8 }
 			}
 			create_character = {
-				template = LR_tgp_gaul_imperial_scion_template
-				location = scope:gallic_regent_admin.capital_province
-				father = scope:gaul_scion
+				template = LR_tgp_gaul_sacral_scion_template
+				location = scope:sacral_majordomo.capital_province
+				father = scope:sacral_scion
 				age = { 3 4 }
 			}
 		}
 	}
 }
 
-LR_tgp_restore_gallic_government_decision_effect = {
+LR_tgp_restore_sacral_government_decision_effect = {
 	gaul_clear_flavour_flags_effect = yes
-	save_scope_as = gallic_regent_admin
+	save_scope_as = sacral_majordomo
 	save_scope_as = background_throne_room_scope
-	add_character_flag = LR_tgp_gaul_restore_gallic_government_flag
+	add_character_flag = LR_tgp_gaul_restore_sacral_government_flag
 	# Change government if relevant
 	change_government = gaul_administrative_government
 	if = {
@@ -946,13 +946,13 @@ LR_tgp_restore_gallic_government_decision_effect = {
 		custom = every_gaul_feudal_vassal_custom
 		limit = { government_has_flag = government_is_gaul_feudal }
 		add_opinion = {
-			target = scope:gallic_regent_admin
+			target = scope:sacral_majordomo
 			modifier = restored_palatine_opinion
 		}
 	}
 	if = {
 		limit = { NOT = { exists = scope:vassal } }
-		custom_tooltip = LR_tgp_gaul_restore_gallic_government_decision_civil_war_tt
+		custom_tooltip = LR_tgp_gaul_restore_sacral_government_decision_civil_war_tt
 	}
 	hidden_effect = {
 		ordered_powerful_vassal = {
@@ -960,15 +960,15 @@ LR_tgp_restore_gallic_government_decision_effect = {
 				is_ai = yes
 				NOR = {
 					government_allows = administrative
-					is_allied_to = scope:gallic_regent_admin
+					is_allied_to = scope:sacral_majordomo
 				}
 				opinion = {
-					target = scope:gallic_regent_admin
+					target = scope:sacral_majordomo
 					value < 25
 				}
 				save_temporary_scope_as = vassal_temp
 				NOT = {
-					scope:gallic_regent_admin = { has_usable_hook = scope:vassal_temp }
+					scope:sacral_majordomo = { has_usable_hook = scope:vassal_temp }
 				}
 			}
 			order_by = military_power
@@ -983,12 +983,12 @@ LR_tgp_restore_gallic_government_decision_effect = {
 					is_ai = yes
 					NOT = { government_allows = administrative }
 					opinion = {
-						target = scope:gallic_regent_admin
+						target = scope:sacral_majordomo
 						value < 25
 					}
 					save_temporary_scope_as = vassal_temp
 					NOT = {
-						scope:gallic_regent_admin = { has_usable_hook = scope:vassal_temp }
+						scope:sacral_majordomo = { has_usable_hook = scope:vassal_temp }
 					}
 				}
 				order_by = military_power
@@ -999,16 +999,16 @@ LR_tgp_restore_gallic_government_decision_effect = {
 			limit = { exists = scope:rebel }
 			tgp_restore_palatine_civil_war_effect = {
 				REBEL = scope:rebel
-				LIEGE = scope:gallic_regent_admin
+				LIEGE = scope:sacral_majordomo
 			}
 		}
 	}
 	custom_tooltip = {
-		text = LR_tgp_gaul_restore_gallic_government_decision_vassal_tt
+		text = LR_tgp_gaul_restore_sacral_government_decision_vassal_tt
 		every_vassal_or_below = {
 			limit = {
 				primary_title.tier >= tier_county
-				culture = { has_same_culture_heritage = scope:gallic_regent_admin.culture }
+				culture = { has_same_culture_heritage = scope:sacral_majordomo.culture }
 			}
 			trigger_event = {
 				id = LR_tgp_gaul_decision.9912
@@ -1016,7 +1016,7 @@ LR_tgp_restore_gallic_government_decision_effect = {
 			}
 		}
 	}
-	remove_character_flag = LR_tgp_gaul_restore_gallic_government_flag
+	remove_character_flag = LR_tgp_gaul_restore_sacral_government_flag
 }
 
 gallic_tgp_destroy_ceremonial_throne_effect = {
@@ -1290,7 +1290,7 @@ tgp_restore_palatine_civil_war_effect = {
 LR_tgp_gaul_assert_regional_dominion_government_decision_effect = {
 	save_scope_as = super_manorial
 	scope:super_manorial.primary_title.duchy ?= { save_scope_as = title_scope }
-	# Crime to gallic_regent_admin
+	# Crime to sacral_majordomo
 	if = {
 		limit = {
 			top_liege = { government_allows = administrative }

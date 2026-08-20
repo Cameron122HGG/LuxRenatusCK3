@@ -1,4 +1,4 @@
-﻿principate_obligations = {
+﻿decayed_principate_obligations = {
 	obligation_levels = {
 		default = {
 			levies = {
@@ -14,16 +14,16 @@
 	}
 }
 
-### brief: principate_themes
+### brief: decayed_principate_themes
 # This is referenced in code. 
 #
-principate_themes = {
+decayed_principate_themes = {
 	display_mode = radiobutton
 	is_shown = {
 		scope:subject.primary_title.tier >= tier_duchy
 	}
 	obligation_levels = {
-		principate_theme_balanced = {
+		decayed_principate_theme_balanced = {
 			default = yes
 			position = { 0 0 }
 			icon = "gfx/interface/icons/theme_administration_types/icon_balanced_administration.dds"
@@ -48,9 +48,9 @@ principate_themes = {
 				governor_xp_gain_mult = 0.2
 			}
 			
-			flag = principate_theme_balanced
+			flag = decayed_principate_theme_balanced
 		}
-		principate_theme_civilian = {
+		decayed_principate_theme_civilian = {
 			position = { 2 0 }
 			icon = "gfx/interface/icons/theme_administration_types/icon_civilian_administration.dds"
 			
@@ -96,13 +96,13 @@ principate_themes = {
 				men_at_arms_title_cap = -2
 			}
 			
-			flag = principate_stewardship_obligation_bonus
-			flag = principate_influence_construction_bonus
-			flag = principate_ai_is_builder
-			flag = principate_theme_civilian
+			flag = decayed_principate_stewardship_obligation_bonus
+			flag = decayed_principate_influence_construction_bonus
+			flag = decayed_principate_ai_is_builder
+			flag = decayed_principate_theme_civilian
 			flag = obligation_high_taxes
 		}
-		principate_theme_military = {
+		decayed_principate_theme_military = {
 			position = { 1 0 }
 			icon = "gfx/interface/icons/theme_administration_types/icon_military_administration.dds"
 			
@@ -150,11 +150,11 @@ principate_themes = {
 				men_at_arms_maintenance = -0.2
 			}
 			
-			flag = principate_martial_obligation_bonus
-			flag = principate_theme_military
+			flag = decayed_principate_martial_obligation_bonus
+			flag = decayed_principate_theme_military
 			flag = obligation_high_levies
 		}
-		principate_theme_frontier = {
+		decayed_principate_theme_frontier = {
 			position = { 0 1 }
 			icon = "gfx/interface/icons/theme_administration_types/icon_frontier_administration.dds"
 			
@@ -176,7 +176,7 @@ principate_themes = {
 			
 			is_valid = {
 				custom_tooltip = {
-					text = principate_theme_frontier_valid_desc
+					text = decayed_principate_theme_frontier_valid_desc
 					scope:subject = {
 						any_sub_realm_county = {
 							any_neighboring_county = {
@@ -202,13 +202,13 @@ principate_themes = {
 				ai_rationality = -15
 			}
 			
-			flag = principate_prowess_obligation_bonus
-			flag = principate_duchy_expansion_unlocked
-			flag = principate_ai_is_warlike
-			flag = principate_theme_frontier
-			flag = principate_theme_can_raid
+			flag = decayed_principate_prowess_obligation_bonus
+			flag = decayed_principate_duchy_expansion_unlocked
+			flag = decayed_principate_ai_is_warlike
+			flag = decayed_principate_theme_frontier
+			flag = decayed_principate_theme_can_raid
 		}
-		principate_theme_imperial = {
+		decayed_principate_theme_imperial = {
 			position = { 1 1 }
 			icon = "gfx/interface/icons/theme_administration_types/icon_imperial_administration.dds"
 			
@@ -218,7 +218,7 @@ principate_themes = {
 					limit = {
 						scope:liege = {
 							NOT = {
-								any_vassal = { vassal_contract_has_flag = principate_theme_imperial }
+								any_vassal = { vassal_contract_has_flag = decayed_principate_theme_imperial }
 							}
 						}
 						scope:subject = {
@@ -248,19 +248,19 @@ principate_themes = {
 					highest_held_title_tier = tier_empire
 				}
 				custom_tooltip = {
-					text = principate_theme_imperial_valid_desc
+					text = decayed_principate_theme_imperial_valid_desc
 					OR = {
 						scope:liege = {
 							NOT = {
-								any_vassal = { vassal_contract_has_flag = principate_theme_imperial }
+								any_vassal = { vassal_contract_has_flag = decayed_principate_theme_imperial }
 							}
 						}
 						AND = {
-							scope:subject = { vassal_contract_has_flag = principate_theme_imperial }
+							scope:subject = { vassal_contract_has_flag = decayed_principate_theme_imperial }
 							scope:liege = {
 								any_vassal = {
 									count = 1
-									vassal_contract_has_flag = principate_theme_imperial
+									vassal_contract_has_flag = decayed_principate_theme_imperial
 								}
 							}
 						}
@@ -280,12 +280,12 @@ principate_themes = {
 				monthly_influence = 0.25
 			}
 			
-			flag = principate_theme_imperial
-			flag = principate_prestige_obligation_bonus
-			flag = principate_cannot_revoke_titles_without_cause
+			flag = decayed_principate_theme_imperial
+			flag = decayed_principate_prestige_obligation_bonus
+			flag = decayed_principate_cannot_revoke_titles_without_cause
 			flag = obligation_high_taxes
 		}
-		principate_theme_naval = {
+		decayed_principate_theme_naval = {
 			position = { 2 1 }
 			icon = "gfx/interface/icons/theme_administration_types/icon_naval_administration.dds"
 			
@@ -306,7 +306,7 @@ principate_themes = {
 							scope:liege = { # But don't go overboard with naval themes
 								any_vassal = {
 									percent < 0.15
-									vassal_contract_has_flag = principate_theme_naval
+									vassal_contract_has_flag = decayed_principate_theme_naval
 								}
 							}
 						}
@@ -345,7 +345,7 @@ principate_themes = {
 			
 			is_valid = {
 				custom_tooltip = {
-					text = principate_theme_naval_valid_desc
+					text = decayed_principate_theme_naval_valid_desc
 					scope:subject = {
 						any_sub_realm_county = {
 							is_coastal_county = yes
@@ -369,9 +369,9 @@ principate_themes = {
 				development_growth_factor = 0.1
 			}
 			
-			flag = principate_naval_duchy_expansion_unlocked
-			flag = principate_tradeport_obligation_bonus
-			flag = principate_theme_naval
+			flag = decayed_principate_naval_duchy_expansion_unlocked
+			flag = decayed_principate_tradeport_obligation_bonus
+			flag = decayed_principate_theme_naval
 		}
 	}
 }

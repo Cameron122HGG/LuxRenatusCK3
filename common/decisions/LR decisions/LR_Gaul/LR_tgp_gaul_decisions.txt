@@ -183,9 +183,9 @@ LR_tgp_gaul_establish_house_fief_decision = {
 							}
 						}
 						random_list = {
-							1 = { set_house_aspiration = { type = determination } }
-							1 = { set_house_aspiration = { type = prosperity } }
-							1 = { set_house_aspiration = { type = strength } }
+							1 = { set_house_aspiration = { type = gallic_determination } }
+							1 = { set_house_aspiration = { type = gallic_prosperity } }
+							1 = { set_house_aspiration = { type = gallic_strength } }
 						}
 					}
 				}
@@ -580,7 +580,7 @@ LR_tgp_gaul_establish_manorial_administration_decision = {
 		government_is_gallic_trigger = yes
 		NOR = { 
 			government_has_flag = government_is_gaul_feudal 
-			has_global_variable = gallic_dictatorship_established
+			has_global_variable = sacral_dictatorship_established
 		}
 	}
 
@@ -644,11 +644,11 @@ LR_tgp_gaul_establish_manorial_administration_decision = {
 
 # Become Shogun
 ### Formalize [ROOT.Char.GetHouse.GetNameNoTooltip] Shōgunate ###
-LR_tgp_gaul_become_gallic_dictator_decision = {
+LR_tgp_gaul_become_sacral_dictator_decision = {
 	decision_group_type = major
-	title = LR_tgp_gaul_become_gallic_dictator_decision
-	desc = LR_tgp_gaul_become_gallic_dictator_decision_desc
-	selection_tooltip = LR_tgp_gaul_become_gallic_dictator_decision_tooltip
+	title = LR_tgp_gaul_become_sacral_dictator_decision
+	desc = LR_tgp_gaul_become_sacral_dictator_decision_desc
+	selection_tooltip = LR_tgp_gaul_become_sacral_dictator_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds" }
 	sort_order = 80
 
@@ -664,7 +664,7 @@ LR_tgp_gaul_become_gallic_dictator_decision = {
 		government_has_flag = government_is_gaul_feudal
 		top_liege = { has_title = title:e_sacral_kingdom_gaul }
 		NOR = {
-			has_global_variable = gallic_dictatorship_established
+			has_global_variable = sacral_dictatorship_established
 			has_global_variable = sacral_king_gaul_restored
 		}
 	}
@@ -672,7 +672,7 @@ LR_tgp_gaul_become_gallic_dictator_decision = {
 	is_valid = {
 		# Is Regent
 		custom_tooltip = {
-			text = LR_tgp_gaul_become_gallic_dictator_decision_top_liege_trigger
+			text = LR_tgp_gaul_become_sacral_dictator_decision_top_liege_trigger
 			has_title = title:e_sacral_kingdom_gaul
 		}
 		prestige_level >= 4
@@ -680,7 +680,7 @@ LR_tgp_gaul_become_gallic_dictator_decision = {
 		is_independent_ruler = yes
 		has_government = gaul_feudal_government
 		custom_tooltip = {
-			text = LR_tgp_gaul_become_gallic_dictator_decision_centralization_trigger
+			text = LR_tgp_gaul_become_sacral_dictator_decision_centralization_trigger
 			OR = {
 				has_realm_law = gallic_bureaucracy_2
 				has_realm_law = gallic_bureaucracy_3
@@ -688,7 +688,7 @@ LR_tgp_gaul_become_gallic_dictator_decision = {
 		}
 		is_at_war = no
 		custom_tooltip = {
-			text = LR_tgp_gaul_become_gallic_dictator_decision_land_trigger
+			text = LR_tgp_gaul_become_sacral_dictator_decision_land_trigger
 			top_liege = {
 				completely_controls = title:d_orleans
 				completely_controls = title:d_valois
@@ -705,7 +705,7 @@ LR_tgp_gaul_become_gallic_dictator_decision = {
 
 	effect = {
 		trigger_event = LR_tgp_gaul_decision.9101
-		show_as_tooltip = { become_gallic_dictator_reward_effect = yes }
+		show_as_tooltip = { become_sacral_dictator_reward_effect = yes }
 		if = {
 			limit = {
 				is_ai = no
@@ -763,7 +763,7 @@ LR_tgp_gaul_sacral_king_restoration_decision = {
 		has_title = title:e_sacral_kingdom_gaul
 		tgp_has_ceremonial_liege_title_trigger = yes
 		custom_tooltip = {
-			text = LR_tgp_gaul_become_gallic_dictator_decision_centralization_trigger
+			text = LR_tgp_gaul_become_sacral_dictator_decision_centralization_trigger
 			OR = {
 				has_realm_law = gallic_bureaucracy_2
 				has_realm_law = gallic_bureaucracy_3
@@ -937,7 +937,7 @@ LR_tgp_gaul_train_with_troops_decision = {
 			type = event_toast_effect_good
 			left_icon = root
 			add_character_modifier = {
-				modifier = tgp_japan_train_with_troops_modifier
+				modifier = LR_tgp_gaul_train_with_troops_modifier
 				years = 10
 			}
 		}
@@ -1160,11 +1160,11 @@ LR_tgp_gaul_become_a_monk_decision = {
 
 # Restore Chrysanthemum Throne
 ### Restore a Yamato Ten'nō ###
-LR_tgp_gaul_restore_gallic_monarchy_decision = {
+LR_tgp_gaul_restore_sacral_monarchy_decision = {
 	decision_group_type = major
-	title = LR_tgp_gaul_restore_gallic_monarchy_decision
-	desc = LR_tgp_gaul_restore_gallic_monarchy_decision_desc
-	selection_tooltip = LR_tgp_gaul_restore_gallic_monarchy_decision_tooltip
+	title = LR_tgp_gaul_restore_sacral_monarchy_decision
+	desc = LR_tgp_gaul_restore_sacral_monarchy_decision_desc
+	selection_tooltip = LR_tgp_gaul_restore_sacral_monarchy_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/event_story/tgp_dynastic_cycle_stability.dds" }
 	sort_order = 80
 
@@ -1190,7 +1190,7 @@ LR_tgp_gaul_restore_gallic_monarchy_decision = {
 		has_title = title:e_sacral_kingdom_gaul
 		completely_controls = title:c_ile_de_france # Kyoto
 		custom_tooltip = { # Chrysanthemum destroyed or no longer part of gaul
-			text = LR_tgp_gaul_restore_gallic_monarchy_decision_title_tt
+			text = LR_tgp_gaul_restore_sacral_monarchy_decision_title_tt
 			trigger_if = {
 				limit = { exists = title:k_sacral_king_gaul_throne.holder.top_liege }
 				NOT = { title:e_sacral_kingdom_gaul.holder ?= title:k_sacral_king_gaul_throne.holder.top_liege }
@@ -1204,7 +1204,7 @@ LR_tgp_gaul_restore_gallic_monarchy_decision = {
 	}
 
 	effect = {
-		LR_tgp_restore_gallic_monarchy_decision_effect = yes
+		LR_tgp_restore_sacral_monarchy_decision_effect = yes
 		trigger_event = LR_tgp_gaul_decision.9901
 	}
 	
@@ -1222,11 +1222,11 @@ LR_tgp_gaul_restore_gallic_monarchy_decision = {
 
 # Restore Palatine
 ### Restore Ritsuryō Bureaucracy ###
-LR_tgp_gaul_restore_gallic_government_decision = {
+LR_tgp_gaul_restore_sacral_government_decision = {
 	decision_group_type = major
-	title = LR_tgp_gaul_restore_gallic_government_decision
-	desc = LR_tgp_gaul_restore_gallic_government_decision_desc
-	selection_tooltip = LR_tgp_gaul_restore_gallic_government_decision_tooltip
+	title = LR_tgp_gaul_restore_sacral_government_decision
+	desc = LR_tgp_gaul_restore_sacral_government_decision_desc
+	selection_tooltip = LR_tgp_gaul_restore_sacral_government_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/event_story/tgp_dynastic_cycle_stability.dds" }
 	sort_order = 85
 
@@ -1273,7 +1273,7 @@ LR_tgp_gaul_restore_gallic_government_decision = {
 	}
 
 	effect = {
-		show_as_tooltip = { LR_tgp_restore_gallic_government_decision_effect = yes }
+		show_as_tooltip = { LR_tgp_restore_sacral_government_decision_effect = yes }
 		trigger_event = LR_tgp_gaul_decision.9911
 	}
 	
@@ -1299,9 +1299,9 @@ LR_tgp_gaul_assert_regional_dominion_government_decision = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					has_global_variable = gallic_dictatorship_established
+					has_global_variable = sacral_dictatorship_established
 				}
-				desc = LR_tgp_gaul_assert_regional_dominion_government_decision_gallic_dictator_desc
+				desc = LR_tgp_gaul_assert_regional_dominion_government_decision_sacral_dictator_desc
 			}
 			desc = LR_tgp_gaul_assert_regional_dominion_government_decision_desc
 		}
@@ -1451,11 +1451,11 @@ LR_tgp_gaul_assert_regional_dominion_government_decision = {
 
 # Establish New dictatorship Court Decision
 ### Move dictatorship Court Decision ###
-move_gallic_dictatorship_court_decision = {
+move_sacral_dictatorship_court_decision = {
 	decision_group_type = major
-	title = LR_tgp_gaul_move_gallic_dictatorship_court_decision
-	desc = LR_tgp_gaul_move_gallic_dictatorship_court_decision_desc
-	selection_tooltip = LR_tgp_gaul_move_gallic_dictatorship_court_decision_tooltip
+	title = LR_tgp_gaul_move_sacral_dictatorship_court_decision
+	desc = LR_tgp_gaul_move_sacral_dictatorship_court_decision_desc
+	selection_tooltip = LR_tgp_gaul_move_sacral_dictatorship_court_decision_tooltip
 	picture = { reference = "gfx/interface/illustrations/event_story/tgp_japanese_shogunate.dds" }
 
 	cost = {
@@ -1470,7 +1470,7 @@ move_gallic_dictatorship_court_decision = {
 	is_shown = {
 		has_tgp_dlc_trigger = yes
 		is_landed = yes
-		has_global_variable = gallic_dictatorship_established
+		has_global_variable = sacral_dictatorship_established
 		NOT = { has_variable = moved_dictatorship_court }
 		domain_size > 1
 		capital_county = title:c_lyon
@@ -1512,7 +1512,7 @@ move_gallic_dictatorship_court_decision = {
 	
 	ai_potential = {
 		is_playable_character = yes
-		has_global_variable = gallic_dictatorship_established
+		has_global_variable = sacral_dictatorship_established
 	}
 
 	ai_check_interval_by_tier = {
@@ -1529,7 +1529,7 @@ move_gallic_dictatorship_court_decision = {
 	}
 }
 
-# high_king Starting a Ceremonial Monarch War
+# Merovingian Starting a Ceremonial Monarch War
 ### Begin the Restoration War ###
 
 #Become King of the Franks

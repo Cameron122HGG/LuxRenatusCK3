@@ -3,7 +3,7 @@
 # LR_tgp_gaul_establish_house_fief_decision
 
 scripted_effect tgp_establish_house_fief_save_scopes_effect = {
-	top_liege ?= { save_scope_as = gallic_regent_admin }
+	top_liege ?= { save_scope_as = sacral_majordomo }
 	save_scope_as = new_head
 	house = {
 		save_scope_as = old_house
@@ -70,12 +70,12 @@ LR_tgp_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 		character = scope:old_head
 		trigger = {
 			NOR = {
-				scope:gallic_regent_admin ?= this
+				scope:sacral_majordomo ?= this
 				root = this
 			}
 		}
 	}
-	lower_right_portrait =  scope:gallic_regent_admin
+	lower_right_portrait =  scope:sacral_majordomo
 
 	#NAMING WIDGET
 	widget = {
@@ -1491,7 +1491,7 @@ LR_tgp_gaul_decision.9001 = { # CHOOSE HOUSE NAME EVENT - WITH WIDGET
 	}
 
 	immediate = {
-		top_liege = { save_scope_as = gallic_regent_admin }
+		top_liege = { save_scope_as = sacral_majordomo }
 		save_scope_as = new_head
 		save_scope_as = new_house_head # don't ask
 		house = {
@@ -1773,7 +1773,7 @@ LR_tgp_gaul_decision.9002 = { # SAME CLAN EVENT - NO WIDGET
 		character = root
 		animation = thinking
 	}
-	lower_right_portrait =  scope:gallic_regent_admin
+	lower_right_portrait =  scope:sacral_majordomo
 
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_adopting_feudal_government"
@@ -1819,11 +1819,11 @@ LR_tgp_gaul_decision.9005 = { # NOTIFICATION FOR OLD HOUSE HEADS
 				change_government = gaul_feudal_government
 				if = {
 					limit = {
-						NOT = { var:petition_liege_house_fief_allowed_flag ?= scope:gallic_regent_admin }
+						NOT = { var:petition_liege_house_fief_allowed_flag ?= scope:sacral_majordomo }
 					}
 					reverse_add_opinion = {
 						modifier = admin_manorial_conquest_crime
-						target = scope:gallic_regent_admin
+						target = scope:sacral_majordomo
 					}
 				}
 			}
@@ -1858,7 +1858,7 @@ LR_tgp_gaul_decision.9101 = {
 	}
 
 	immediate = {
-		save_scope_as = gallic_dictator
+		save_scope_as = sacral_dictator
 		tgp_save_realm_ceremonial_liege_effect = yes
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
 		if = {
@@ -1869,7 +1869,7 @@ LR_tgp_gaul_decision.9101 = {
 					highest_held_title_tier >= tier_duchy
 				}
 			}
-			custom_tooltip = LR_tgp_gaul_become_gallic_dictator_decision_vassal_revocation_effect
+			custom_tooltip = LR_tgp_gaul_become_sacral_dictator_decision_vassal_revocation_effect
 		}
 		# Inform Vassals
 		every_vassal_or_below = {
@@ -1879,7 +1879,7 @@ LR_tgp_gaul_decision.9101 = {
 			trigger_event = LR_tgp_gaul_decision.9102
 		}
 		# Rewards
-		become_gallic_dictator_reward_effect = yes
+		become_sacral_dictator_reward_effect = yes
 	}
 
 	option = {
@@ -2122,7 +2122,7 @@ LR_tgp_gaul_decision.9601 = {
 	hidden = yes
 
 	immediate = {
-		save_scope_as = gallic_regent_feudal
+		save_scope_as = sacral_magister_militum
 		# Inform Vassals
 		every_vassal = {
 			limit = {
@@ -2130,9 +2130,9 @@ LR_tgp_gaul_decision.9601 = {
 				is_landed = yes
 				# Exclude members of bloc, allies, prisoners
 				NOR = {
-					house.house_confederation ?= scope:gallic_regent_feudal.house.house_confederation
-					is_allied_to = scope:gallic_regent_feudal
-					is_imprisoned_by = scope:gallic_regent_feudal
+					house.house_confederation ?= scope:sacral_magister_militum.house.house_confederation
+					is_allied_to = scope:sacral_magister_militum
+					is_imprisoned_by = scope:sacral_magister_militum
 				}
 			}
 			trigger_event = LR_tgp_gaul_decision.9602
@@ -2153,7 +2153,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 
 	on_trigger_fail = { # Create player list to handle separately
 		save_temporary_scope_as = war_joiner_temp
-		scope:gallic_regent_feudal = {
+		scope:sacral_magister_militum = {
 			add_to_variable_list = {
 				name = war_players
 				target = scope:war_joiner_temp
@@ -2189,14 +2189,14 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 				}
 				modifier = {
 					add = 30
-					has_relation_rival = scope:gallic_regent_feudal
+					has_relation_rival = scope:sacral_magister_militum
 				}
 				modifier = {
 					add = 30
 					house = {
 						any_house_relation = {
 							has_house_relation_level = feud
-							any_relation_house = { this = scope:gallic_regent_feudal.house }
+							any_relation_house = { this = scope:sacral_magister_militum.house }
 						}
 					}
 				}
@@ -2205,7 +2205,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = rivalry
-							any_relation_house = { this = scope:gallic_regent_feudal.house }
+							any_relation_house = { this = scope:sacral_magister_militum.house }
 						}
 					}
 				}
@@ -2214,7 +2214,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = quarrel
-							any_relation_house = { this = scope:gallic_regent_feudal.house }
+							any_relation_house = { this = scope:sacral_magister_militum.house }
 						}
 					}
 				}
@@ -2223,7 +2223,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 					government_allows = administrative
 				}
 				save_temporary_scope_as = war_joiner_temp
-				scope:gallic_regent_feudal = {
+				scope:sacral_magister_militum = {
 					add_to_variable_list = {
 						name = war_joiners
 						target = scope:war_joiner_temp
@@ -2242,7 +2242,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 								house.house_confederation ?= root.house.house_confederation
 							}
 							save_temporary_scope_as = war_joiner_temp
-							scope:gallic_regent_feudal = {
+							scope:sacral_magister_militum = {
 								add_to_variable_list = {
 									name = war_joiners
 									target = scope:war_joiner_temp
@@ -2255,7 +2255,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 			}
 			10 = { # Don't join war
 				opinion_modifier = {
-					opinion_target = scope:gallic_regent_feudal
+					opinion_target = scope:sacral_magister_militum
 					multiplier = -0.1
 				}
 				ai_value_modifier = {
@@ -2266,7 +2266,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = amity
-							any_relation_house = { this = scope:gallic_regent_feudal.house }
+							any_relation_house = { this = scope:sacral_magister_militum.house }
 						}
 					}
 				}
@@ -2275,7 +2275,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = friendly
-							any_relation_house = { this = scope:gallic_regent_feudal.house }
+							any_relation_house = { this = scope:sacral_magister_militum.house }
 						}
 					}
 				}
@@ -2284,7 +2284,7 @@ LR_tgp_gaul_decision.9602 = { # Vassal AI event
 					house = {
 						any_house_relation = {
 							has_house_relation_level = cordial
-							any_relation_house = { this = scope:gallic_regent_feudal.house }
+							any_relation_house = { this = scope:sacral_magister_militum.house }
 						}
 					}
 				}
@@ -2306,7 +2306,7 @@ LR_tgp_gaul_decision.9603 = { # Vassal player event
 	theme = war
 
 	left_portrait = {
-		character = scope:gallic_regent_feudal
+		character = scope:sacral_magister_militum
 		animation = japanese_war_fan
 	}
 	lower_left_portrait = scope:leader
@@ -2320,7 +2320,7 @@ LR_tgp_gaul_decision.9603 = { # Vassal player event
 	immediate = {
 		play_sound_effect = "event:/DLC/EP4/SFX/Stingers/Japan/tgp_mx_sting_become_japanese_shogun"
 		show_as_tooltip = {
-			scope:gallic_regent_feudal = {
+			scope:sacral_magister_militum = {
 				custom_description_no_bullet = { text = if_you_win_effect }
 				show_as_tooltip = { gallic_establish_manorial_administration_reward_effect = yes }
 			}
@@ -2441,12 +2441,12 @@ LR_tgp_gaul_decision.9604 = { # War setup
 			scope:leader ?= {
 				start_war = {
 					cb = gaul_establish_manorial_administration_cb
-					target = scope:gallic_regent_feudal
+					target = scope:sacral_magister_militum
 				}
 				random_character_war = {
 					limit = {
 						primary_attacker = scope:leader
-						primary_defender = scope:gallic_regent_feudal
+						primary_defender = scope:sacral_magister_militum
 						using_cb = gaul_establish_manorial_administration_cb
 					}
 					save_scope_as = war
@@ -2521,7 +2521,7 @@ LR_tgp_gaul_decision.9605 = { # War start event
 	theme = war
 
 	left_portrait = {
-		character = scope:gallic_regent_feudal
+		character = scope:sacral_magister_militum
 		animation = japanese_war_fan
 	}
 	lower_left_portrait = scope:leader
@@ -2567,8 +2567,8 @@ LR_tgp_gaul_decision.9605 = { # War start event
 		gallic_establish_manorial_administration_reward_effect = yes
 		every_player = {
 			limit = {
-				top_liege = scope:gallic_regent_feudal
-				NOT = { this = scope:gallic_regent_feudal }
+				top_liege = scope:sacral_magister_militum
+				NOT = { this = scope:sacral_magister_militum }
 			}
 			trigger_event = LR_tgp_gaul_decision.9607
 		}
@@ -2594,7 +2594,7 @@ LR_tgp_gaul_decision.9606 = { # War won event
 	theme = war
 
 	left_portrait = {
-		character = scope:gallic_regent_feudal
+		character = scope:sacral_magister_militum
 		animation = japanese_war_fan
 	}
 	right_portrait = {
@@ -2619,8 +2619,8 @@ LR_tgp_gaul_decision.9606 = { # War won event
 	after = {
 		every_player = {
 			limit = {
-				top_liege = scope:gallic_regent_feudal
-				NOT = { this = scope:gallic_regent_feudal }
+				top_liege = scope:sacral_magister_militum
+				NOT = { this = scope:sacral_magister_militum }
 			}
 			trigger_event = LR_tgp_gaul_decision.9607
 		}
@@ -2634,7 +2634,7 @@ LR_tgp_gaul_decision.9607 = { # War won vassal event
 	theme = war
 
 	left_portrait = {
-		character = scope:gallic_regent_feudal
+		character = scope:sacral_magister_militum
 		animation = war_over_win
 	}
 	right_portrait = {
@@ -2657,7 +2657,7 @@ LR_tgp_gaul_decision.9607 = { # War won vassal event
 	}
 }
 
-# LR_tgp_gaul_restore_gallic_monarchy_decision
+# LR_tgp_gaul_restore_sacral_monarchy_decision
 
 LR_tgp_gaul_decision.9901 = {
 	type = character_event
@@ -2665,7 +2665,7 @@ LR_tgp_gaul_decision.9901 = {
 	desc = LR_tgp_gaul_decision.9901.desc
 	theme = realm
 	left_portrait = {
-		character = scope:gallic_regent_admin
+		character = scope:sacral_majordomo
 		triggered_animation = {
 			trigger = { this = scope:scion }
 			animation = war_over_tie
@@ -2675,14 +2675,14 @@ LR_tgp_gaul_decision.9901 = {
 	right_portrait = {
 		character = scope:scion
 		animation = war_over_tie
-		trigger = { this != scope:gallic_regent_admin }
+		trigger = { this != scope:sacral_majordomo }
 	}
 	override_background = { reference = throne_room_scope }
 
 	immediate = {
 		play_music_cue = "mx_cue_sacredrite"
-		show_as_tooltip = { LR_tgp_restore_gallic_monarchy_decision_effect = yes }
-		LR_tgp_restore_gallic_monarchy_merovingian_restoration_effect = yes
+		show_as_tooltip = { LR_tgp_restore_sacral_monarchy_decision_effect = yes }
+		LR_tgp_restore_sacral_monarchy_merovingian_restoration_effect = yes
 		every_player = {
 			limit = { is_vassal_or_below_of = root }
 			trigger_event = LR_tgp_gaul_decision.9902
@@ -2707,7 +2707,7 @@ LR_tgp_gaul_decision.9902 = {
 	desc = LR_tgp_gaul_decision.9902.desc
 	theme = family
 	left_portrait = {
-		character = scope:gallic_regent_admin
+		character = scope:sacral_majordomo
 		triggered_animation = {
 			trigger = { this = scope:scion }
 			animation = war_over_tie
@@ -2717,16 +2717,16 @@ LR_tgp_gaul_decision.9902 = {
 	right_portrait = {
 		character = scope:scion
 		animation = war_over_tie
-		trigger = { this != scope:gallic_regent_admin }
+		trigger = { this != scope:sacral_majordomo }
 	}
 	override_background = { reference = throne_room_scope }
 
 	immediate = {
 		play_music_cue = "mx_cue_sacredrite"
 		show_as_tooltip = {
-			scope:gallic_regent_admin = {
-				LR_tgp_restore_gallic_monarchy_decision_effect = yes
-				LR_tgp_restore_gallic_monarchy_merovingian_restoration_effect = yes
+			scope:sacral_majordomo = {
+				LR_tgp_restore_sacral_monarchy_decision_effect = yes
+				LR_tgp_restore_sacral_monarchy_merovingian_restoration_effect = yes
 			}
 		}
 	}
@@ -2736,7 +2736,7 @@ LR_tgp_gaul_decision.9902 = {
 	}
 }
 
-# LR_tgp_gaul_restore_gallic_government_decision
+# LR_tgp_gaul_restore_sacral_government_decision
 
 LR_tgp_gaul_decision.9911 = {
 	type = character_event
@@ -2750,7 +2750,7 @@ LR_tgp_gaul_decision.9911 = {
 	}
 	theme = crown
 	left_portrait = {
-		character = scope:gallic_regent_admin
+		character = scope:sacral_majordomo
 		animation = chaplain
 	}
 	right_portrait = {
@@ -2762,7 +2762,7 @@ LR_tgp_gaul_decision.9911 = {
 
 	immediate = {
 		tgp_save_realm_ceremonial_liege_effect = yes
-		LR_tgp_restore_gallic_government_decision_effect = yes
+		LR_tgp_restore_sacral_government_decision_effect = yes
 	}
 
 	option = { # Yay
@@ -2782,18 +2782,18 @@ LR_tgp_gaul_decision.9912 = {
 	}
 	theme = realm
 	left_portrait = {
-		character = scope:gallic_regent_admin
+		character = scope:sacral_majordomo
 		animation = war_over_tie
 	}
 	override_background = { reference = throne_room_scope }
 
 	trigger = {
-		NOT = { is_at_war_with = scope:gallic_regent_admin }
+		NOT = { is_at_war_with = scope:sacral_majordomo }
 	}
 
 	immediate = {
 		show_as_tooltip = {
-			scope:gallic_regent_admin = { LR_tgp_restore_gallic_government_decision_effect = yes }
+			scope:sacral_majordomo = { LR_tgp_restore_sacral_government_decision_effect = yes }
 		}
 	}
 
@@ -2812,7 +2812,7 @@ LR_tgp_gaul_decision.9912 = {
 		trigger = {
 			is_ai = no
 			NOR = {
-				is_at_war_with = scope:gallic_regent_admin
+				is_at_war_with = scope:sacral_majordomo
 				has_government = gaul_administrative_government
 			}
 		}
@@ -2825,7 +2825,7 @@ LR_tgp_gaul_decision.9912 = {
 			add_attacker = root
 		}
 		reverse_add_opinion = {
-			target = scope:gallic_regent_admin
+			target = scope:sacral_majordomo
 			modifier = rebellious_vassal_opinion
 		}
 	}
