@@ -1380,21 +1380,7 @@ ep3_laamp_invasion_base_piety_cost = {
 # End result should be a multiplier, but we add larger values to present it better in the breakdown. E.g. we add 10, but divide it with 100 to make it 0.1.
 governor_efficiency = {
 	value = {
-		###MOD LR - added tooltip for uncapped gov eff, for players convinience; it is first added then subtracted so that it is only visible as localisation, and don't actualy impact the game
-		##TODO - figure out how to move the values above "Base: -100"
-		add = {
-			value = governor_efficiency_uncapped_tooltip
-			multiply = 100
-			add = -100
-			desc = governor_efficiency_uncapped_tooltip_tt
-		}
-		subtract = {
-			value = governor_efficiency_uncapped_tooltip
-			multiply = 100
-			add = -100
-		}
-		##For proper display, if changing values in here change values in "governor_efficiency_uncapped_tooltip" too!
-
+		##MOD LR - For proper uncapped display, if changing values in here change values in "governor_efficiency_uncapped_tooltip" too!
 		# Everyone will calculate their Efficiency according to the following:
 		# Skills
 		add = {
@@ -2201,6 +2187,20 @@ governor_efficiency = {
 				desc = SERVICE_BLOC_COHESION_DESC
 			}
 		}
+
+		###MOD LR - added tooltip for uncapped gov eff, for players convinience; it is first added then subtracted so that it is only visible as localisation, and don't actualy impact the game
+		add = {
+			value = governor_efficiency_uncapped_tooltip
+			multiply = 100
+			add = -100
+			desc = governor_efficiency_uncapped_tooltip_tt
+		}
+		subtract = {
+			value = governor_efficiency_uncapped_tooltip
+			multiply = 100
+			add = -100
+		}
+		##
 
 		min = 0.5 # Can't go lower than -50%
 		max = 1.5 # Can't go higher than +50%
@@ -6512,7 +6512,7 @@ liquidate_camp_external_value_6 = 60
 liquidate_camp_internal_value = 10
 
 ###MOD LR - script value used to show uncapped governor_efficiency; localization only
-##For proper display change values here if values in the manin "governor_efficiency" are changed
+##For proper display change values here if values in the main "governor_efficiency" are changed
 governor_efficiency_uncapped_tooltip = {
 	value = {
 		# Everyone will calculate their Efficiency according to the following:
