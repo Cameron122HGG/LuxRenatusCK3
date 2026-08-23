@@ -325,14 +325,14 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 	else_if = {
 		limit = {
 			any_realm_county = {
-				duchy = title:c_ragusa
+				duchy = title:d_ragusa
 				NOT = { is_in_list = financier_sate_titles }
 			}
 			OR = {
 				#The duchy can be created
-				NOT = { exists = title:c_ragusa.holder }
+				NOT = { exists = title:d_ragusa.holder }
 				#The duchy can be taken
-				title:c_ragusa.holder = {
+				title:d_ragusa.holder = {
 					is_vassal_or_below_of = title:e_byzantium.holder
 					is_ai = yes
 					NOT = { is_powerful_vassal_of = title:e_byzantium.holder }
@@ -491,7 +491,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		limit = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
-				duchy = title:c_ragusa
+				duchy = title:d_ragusa
 				has_coastal_province = yes
 				holder = {
 					is_ai = yes
@@ -502,7 +502,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		random_realm_county = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
-				duchy = title:c_ragusa
+				duchy = title:d_ragusa
 				has_coastal_province = yes
 				holder = {
 					is_ai = yes
