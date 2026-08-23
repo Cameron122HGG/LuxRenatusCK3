@@ -342,7 +342,7 @@
  EDUCATE_ME_OPTION_ZEAL_LIKELY_EFFECT: "I am #P likely#! to become #high [GetTrait('zealous').GetName(GetNullCharacter)]#!"
  EDUCATE_CHILD_OPTION_ZEAL_UNLIKELY_EFFECT_LOW: "Is #N unlikely#! to become #high [GetTrait('zealous').GetName(GetNullCharacter)]#!"
  EDUCATE_ME_OPTION_ZEAL_UNLIKELY_EFFECT_LOW: "I am #N unlikely#! to become #high [GetTrait('zealous').GetName(GetNullCharacter)]#!"
- EDUCATION_UNIVERSITY_AVAILABLE:0 "Send to University"
+ EDUCATION_UNIVERSITY:0 "Send to University"
  EDUCATION_UNIVERSITY_HIGHLIGHTED: "Access to University at [recipient.GetShortUINamePossessive] [recipient.Custom('GetCourtConcept')] allows a [ward|E] to get a better [education_trait|E]"
  studying_confucian_education_modifier: "Studying Confucian Works"
  studying_confucian_education_modifier_desc: "This Character has a chance to get [GetTrait('confucian_education').GetName(GetNullCharacter)] [trait|E] and [trait_level_track_xp|E] when becoming an [adult|E]."
@@ -540,7 +540,6 @@
  NOT_SECONDARY_RECIPIENT_CAN_MARRY:0 "[TARGET_CHARACTER.GetShortUIName|U] is NOT available to marry [CHARACTER.GetShortUIName]"
  RECIPIENT_CAN_MARRY:0 "No one in [TARGET_CHARACTER.GetShortUINamePossessive] court is available for marriage"
  NOT_I_RECENTLY_DIVORCED:1 "You recently divorced [TARGET_CHARACTER.GetShortUIName]"
- I_RECENTLY_DIVORCED:1 "[CHARACTER.GetShortUIName|U] recently divorced [TARGET_CHARACTER.GetShortUIName]"
  SECONDARY_ACTOR_CAN_BETROTH:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] can get betrothed"
  NOT_SECONDARY_ACTOR_CAN_BETROTH:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] #bold cannot#! get betrothed"
  SECONDARY_RECIPIENT_CAN_BETROTH:0 "[TARGET_CHARACTER.GetShortUIName|U] and [CHARACTER.GetShortUIName] can get betrothed"
@@ -555,7 +554,7 @@
  I_CANNOT_CALL_A_LIEGE_AS_ALLY:0 "You cannot call your [liege|E] into your own wars as an [ally|E]"
  I_CANNOT_CALL_LIEGE_AGAINST_FELLOW_VASSAL:1 "You cannot call your [liege|E] as an [ally|E] against a fellow [vassal|E]"
  I_AM_RECIPIENTS_PLAYER_HEIR:1 "You are the [player_heir|E] of [TARGET_CHARACTER.GetShortUIName]"
- IS_PLAYER_HEIR_OF_ACTOR:1 "[CHARACTER.GetShortUIName|U] is [TARGET_CHARACTER.GetNamePossessiveOrMy] [player_heir|E]"
+ IS_PLAYER_HEIR_OF_ACTOR:1 "[CHARACTER.GetShortUIName|U] is [TARGET_CHARACTER.GetShortUINamePossessiveOrMy] [player_heir|E]"
  THEY_CAN_EDUCATE:0 "[TARGET_CHARACTER.GetShortUIName|U] can educate [CHARACTER.GetShortUIName]"
  NOT_I_HAVE_VALID_VASSAL_TO_TRANSFER:1 "You do not have any valid [vassal|E] to transfer to [TARGET_CHARACTER.GetShortUIName]"
  NOT_HAS_VASSAL_TO_RETRACT:2 "[CHARACTER.GetShortUIName|U] does not have any [vassals|E] you can retract"
@@ -664,7 +663,7 @@
 
  lift_excommunication_interaction:0 "Lift Excommunication"
  lift_excommunication_interaction_desc:0 "[recipient.GetFirstName] has sufficiently repented for [recipient.GetHerHis] misdeeds, and will be welcomed back into the [actor.GetFaith.GetAdjective] [faith|E]."
- lift_excommunication_interaction_desc.tt:0 "[recipient.GetFirstName] welcomed back into [actor.GetFaith.GetName]"
+ lift_excommunication_interaction_desc.tt:0 "[recipient.GetFirstName] welcomed back into [actor.GetFaithGetName]"
  lift_excommunicate_interaction_desc.tt:0 "Excommunication Lifted"
 
  request_excommunication_interaction:0 "Request Excommunication"
@@ -995,13 +994,13 @@
  call_ally.0101.desc:0 "Regrettably, I am in no position to get entangled in your wars."
  call_ally.0101.a:0 "What a [recipient.Custom2('InsultAdjective', ROOT.Char)] [recipient.Custom2('InsultNoun', ROOT.Char)]!"
 
- char_interaction.0001.opening:1 "[recipient.Custom2('AppropriateGreeting', ROOT.Char )]"
+ char_interaction.0001.opening:1 "[recipient.Custom2('AppropriateGreeting', actor )]"
  char_interaction.0001.desc:0 "I accept your gracious offer of vassalization. My liege!"
 
  char_interaction.0002.desc:0 "I do not need your protection and prefer to keep the bounty of my Realm to myself."
  char_interaction.0002.a:0 "I shall have to explore other options..."
 
- char_interaction.0010.opening:0 "[recipient.Custom2('AppropriateGreetingPositive', ROOT.Char )]"
+ char_interaction.0010.opening:0 "[recipient.Custom2('AppropriateGreetingPositive', actor )]"
  char_interaction.0010.desc: "[actor.GetFirstName], I think this is the beginning of a beautiful vassalship!"
  char_interaction.0010.a: "My liege!"
  
@@ -1268,7 +1267,7 @@
  I_HAVE_BEFRIEND_COOLDOWN_ON_THIS_CHARACTER:1 "You cannot befriend [TARGET_CHARACTER.GetShortUIName] again for a long while"
 
  I_AM_BLOCKED_FROM_SWAYING_THIS_CHARACTER:1 "You cannot sway [TARGET_CHARACTER.GetShortUIName] while [TARGET_CHARACTER.GetSheHe] is irritated at me"
- HOLDER_HAS_TOO_MANY_WARDS:1 "You cannot take [TARGET_CHARACTER.GetShortUIName] as a ward because [TARGET_CHARACTER.GetSheHe] already has too many wards"
+
  MODIFY_VASSAL_CONTRACT_SELECT_DIFFERENT_OBLIGATION_LEVEL:2 "You must propose a change for a new [vassal_contract|E]"
  VASSAL_MODIFY_VASSAL_CONTRACT_CANNOT_INCREASE_OBLIGATION_LEVEL:2 "You must propose an equal exchange in obligations and [hooks|E], current changes in favor of [SelectLocalization( GreaterThan_CFixedPoint( '(CFixedPoint)$VALUE|q$', '(CFixedPoint)0.0' ), CHARACTER.GetShortUIName, TARGET_CHARACTER.GetShortUIName )]: [Abs_CFixedPoint( '(CFixedPoint)$VALUE|q$' )|V0]"
  vassal_modify_vassal_contract_obligation_change_limit:0 "You cannot propose more than #V [EmptyScope.ScriptValue('max_contract_changes')|0]#! changes at once"
@@ -2252,6 +2251,3 @@
 
  noble_family_head_cannot_refuse_your_power: "They are not [landed|E] and are powerless before your inexolerable authority"
  you_are_the_minister_of_justice: "You are the [minister_of_justice|E] and your authority cannot be denied"
- ACTOR_IS_THE_HOUSE_HEAD: "You are the [house_head|E]"
-
- I_HOLD_KING_TIER_TITLE_OR_HIGHER: "You hold a [kingdom|E] or higher"
