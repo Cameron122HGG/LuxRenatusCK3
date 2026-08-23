@@ -1372,7 +1372,7 @@ restore_dumnonia_decision_scripted_effect = {
 		save_scope_as = title_change
 		add_claim_on_loss = no
 	}
-	title:k_dumnonia = {
+	title:k_petty_dumnonia = {
 		change_title_holder = {
 			holder = root
 			change = scope:title_change
@@ -1383,18 +1383,18 @@ restore_dumnonia_decision_scripted_effect = {
 	hidden_effect = {
 		title:d_belgarum = { save_scope_as = cornwall_somerset }
 		title:d_gloucester = { save_scope_as = cornwall_gloucester }
-		title:d_cornwall = { set_de_jure_liege_title = title:k_dumnonia }
+		title:d_cornwall = { set_de_jure_liege_title = title:k_petty_dumnonia }
 		if = {	#If owned, annex Somerset/Wessex.
 			limit = {
 				title:d_belgarum = { holder = root }
 			}
-			title:d_belgarum = { set_de_jure_liege_title = title:k_dumnonia }
+			title:d_belgarum = { set_de_jure_liege_title = title:k_petty_dumnonia }
 		}
 		if = {	#If owned, annex Gloucestershire/Hwicce.
 			limit = {
 				title:d_gloucester = { holder = root }
 			}
-			title:d_gloucester = { set_de_jure_liege_title = title:k_dumnonia }
+			title:d_gloucester = { set_de_jure_liege_title = title:k_petty_dumnonia }
 		}
 	}
 	custom_tooltip = restore_dumnonia_decision_effects_de_jure_tt
