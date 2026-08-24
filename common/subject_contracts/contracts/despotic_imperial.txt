@@ -35,6 +35,19 @@ despotic_administrative_themes = {
 					}
 					add = 1
 				}
+				if = {
+					limit = {
+						scope:liege = {
+							is_independent_ruler = no
+							OR = {
+								vassal_contract_has_flag = despotic_administrative_theme_balanced
+								vassal_contract_has_flag = despotic_administrative_theme_imperial
+								vassal_contract_has_flag = despotic_administrative_theme_naval
+							}
+						}
+					}
+					add = 100
+				}				
 			}
 			ai_subject_desire = 0
 			
@@ -77,6 +90,15 @@ despotic_administrative_themes = {
 					}
 					add = 1
 				}
+				if = {
+					limit = {
+						scope:liege = {
+							is_independent_ruler = no
+							vassal_contract_has_flag = despotic_administrative_theme_civilian
+						}
+					}
+					add = 100
+				}				
 			}
 			ai_subject_desire = 0
 			
@@ -130,6 +152,18 @@ despotic_administrative_themes = {
 					}
 					add = 1
 				}
+				if = {
+					limit = {
+						scope:liege = {
+							is_independent_ruler = no
+							OR = {
+								vassal_contract_has_flag = despotic_administrative_theme_military
+								vassal_contract_has_flag = despotic_administrative_theme_frontier
+							}
+						}
+					}
+					add = 100
+				}				
 			}
 			ai_subject_desire = 0
 			
@@ -165,6 +199,18 @@ despotic_administrative_themes = {
 					}
 					add = 5
 				}
+				#if = {
+				#	limit = {
+				#		scope:liege = {
+				#			is_independent_ruler = no
+				#			OR = {
+				#				vassal_contract_has_flag = admin_theme_military
+				#				vassal_contract_has_flag = admin_theme_frontier
+				#			}
+				#		}
+				#	}
+				#	add = 100
+				#}				
 			}
 			ai_subject_desire = 0
 			
@@ -242,7 +288,8 @@ despotic_administrative_themes = {
 			
 			is_valid = {
 				scope:liege = {
-					highest_held_title_tier = tier_empire
+					is_independent_ruler = yes	
+					highest_held_title_tier >= tier_empire
 				}
 				custom_tooltip = {
 					text = despotic_administrative_theme_imperial_valid_desc
@@ -364,6 +411,7 @@ despotic_administrative_themes = {
 				no_disembark_penalty = yes
 				coastal_advantage = 10
 				development_growth_factor = 0.1
+				monthly_treasury_from_military_budget_base = 1
 			}
 			
 			flag = despotic_naval_duchy_expansion_unlocked

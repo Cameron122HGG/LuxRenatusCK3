@@ -39,6 +39,19 @@ administrative_themes = {
 					}
 					add = 1
 				}
+				if = {
+					limit = {
+						scope:liege = {
+							is_independent_ruler = no
+							OR = {
+								vassal_contract_has_flag = admin_theme_balanced
+								vassal_contract_has_flag = admin_theme_imperial
+								vassal_contract_has_flag = admin_theme_naval
+							}
+						}
+					}
+					add = 100
+				}				
 			}
 			ai_subject_desire = 0
 			
@@ -81,6 +94,15 @@ administrative_themes = {
 						}
 					}
 					add = 1
+				}
+				if = {
+					limit = {
+						scope:liege = {
+							is_independent_ruler = no
+							vassal_contract_has_flag = admin_theme_civilian
+						}
+					}
+					add = 100
 				}
 			}
 			ai_subject_desire = 0
@@ -136,6 +158,18 @@ administrative_themes = {
 					}
 					add = 1
 				}
+				if = {
+					limit = {
+						scope:liege = {
+							is_independent_ruler = no
+							OR = {
+								vassal_contract_has_flag = admin_theme_military
+								vassal_contract_has_flag = admin_theme_frontier
+							}
+						}
+					}
+					add = 100
+				}
 			}
 			ai_subject_desire = 0
 			
@@ -172,6 +206,18 @@ administrative_themes = {
 					}
 					add = 5
 				}
+				#if = {
+				#	limit = {
+				#		scope:liege = {
+				#			is_independent_ruler = no
+				#			OR = {
+				#				vassal_contract_has_flag = admin_theme_military
+				#				vassal_contract_has_flag = admin_theme_frontier
+				#			}
+				#		}
+				#	}
+				#	add = 100
+				#}				
 			}
 			ai_subject_desire = 0
 			
@@ -251,6 +297,7 @@ administrative_themes = {
 			
 			is_valid = {
 				scope:liege = {
+					is_independent_ruler = yes
 					highest_held_title_tier >= tier_empire
 				}
 				custom_tooltip = {
