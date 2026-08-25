@@ -136,3 +136,119 @@ restore_indo_hellenic_hegemony_decision = {
 	}
 }
 
+establish_bactrian_supremacy_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_sunder.dds"
+	}
+	decision_group_type = major
+	desc = establish_bactrian_supremacy_decision_desc
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 120
+		empire = 120
+		hegemony = 120
+	}
+
+	is_shown = {
+		highest_held_title_tier >= tier_county
+		culture = {
+			OR = {
+				this = culture:afghan
+				this = culture:tajik
+				any_parent_culture_or_above = {
+					OR = {
+						this = culture:tajik
+						this = culture:afghan
+					}
+				}
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:establish_bactrian_supremacy_decision
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls_region = custom_bactria
+		custom_description = {
+			text = "is_king_or_emperor"
+			highest_held_title_tier >= tier_kingdom
+		}
+		OR = {
+			religion = religion:zoroastrianism_religion
+			religion = religion:buddhism_religion
+			faith = faith:manichean
+		}
+		prestige_level >= 3
+		OR = {
+			government_has_flag = government_is_feudal
+			government_has_flag = government_is_clan
+			government_allows = administrative
+			government_has_flag = government_is_landless_adventurer
+		}
+		capital_province = {
+			geographical_region = custom_bactria
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_landed = yes
+		is_adult = yes
+		is_available = yes
+		top_liege = this
+	}
+
+	cost = {
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = no
+				}
+				add = massive_gold_value
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = yes
+				}
+				add = massive_gold_value
+			}
+		}
+		prestige = {
+			value = major_prestige_value
+		}
+	}
+
+	effect = {
+		gain_heroic_legend_seed_tooltip_effect = yes
+		#Can only happen once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:establish_bactrian_supremacy_decision
+		}
+
+		save_scope_as = bactrian_emperor
+
+		show_as_tooltip = {
+			establish_bactrian_supremacy_effect = yes
+		}
+		trigger_event = central_asia.0011
+
+		add_to_list = notification_sent
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+

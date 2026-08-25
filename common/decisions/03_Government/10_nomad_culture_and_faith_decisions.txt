@@ -576,3 +576,115 @@ enforce_traditions_decision = {
 		base = 100
 	}
 }
+##########
+#Become Genghis Khan
+# by Petter Vilberg
+### Become Greatest of Khans ###
+become_greatest_of_khans_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+	desc = become_greatest_of_khans_decision_desc
+
+	ai_check_interval = 0
+	sort_order = 200
+
+	is_shown = {
+		highest_held_title_tier >= tier_duchy
+		is_playable_character = yes
+		culture = { has_cultural_pillar = heritage_mongolic }
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:become_greatest_of_khans_decision
+			}
+		}
+		#TRUE DLC-OWNING NOMADS HAVE THEIR OWN PATH
+		has_mpo_dlc_trigger = no
+	}
+
+	is_valid = {
+		prestige_level >= 4
+		highest_held_title_tier = tier_empire
+		sub_realm_size >= greatest_of_khans_target_counties
+		capital_province = {
+			geographical_region = world_steppe
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_landed = yes
+		is_adult = yes
+		is_available = yes
+		top_liege = this
+	}
+
+	cost = {
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = no
+				}
+				add = massive_gold_value
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = yes
+				}
+				add = massive_gold_value
+			}
+		}
+		prestige = {
+			value = major_prestige_value
+		}
+	}
+
+	effect = {
+		gain_heroic_legend_seed_tooltip_effect = yes
+		#Can only happen once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:become_greatest_of_khans_decision
+		}
+
+		show_as_tooltip = {
+			add_trait = greatest_of_khans
+			give_nickname = nick_genghis_khan
+			if = {
+				limit = {
+					prestige_level < 5
+				}
+				add_prestige_level = 1
+			}
+			custom_tooltip = become_greatest_of_khans_decision_enable_mongol_invasion_cb
+			custom_tooltip = become_greatest_of_khans_decision_gain_mongol_empire
+			add_realm_law_skip_effects = high_partition_succession_law
+			#spawn_mongol_troops_condensed_effect = yes
+		}
+
+		save_scope_as = genghis_khan
+
+		trigger_event = central_asia.0001 #I became the Genghis Khan
+		add_to_temporary_list = received_notification
+
+		every_vassal_or_below = {
+			trigger_event = central_asia.0002 #My ruler became the Genghis Khan
+			add_to_temporary_list = received_notification
+		}
+
+		every_ruler = {
+			limit = {
+				NOT = {
+					is_in_list = received_notification
+				}
+			}
+
+			trigger_event = central_asia.0003 #Someone has become Genghis Khan
+		}
+	}
+}
