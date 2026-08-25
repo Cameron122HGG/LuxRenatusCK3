@@ -22,5 +22,6 @@ replace_path="map_data"
 replace_path="common/traits"
 replace_path="common/culture"
 replace_path="common/decisions"
+replace_path="common/dlc_decisions"
 
 supported_version="1.19.*"
