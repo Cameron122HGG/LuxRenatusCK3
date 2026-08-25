@@ -67,7 +67,7 @@ LR_random_title_granting_on_start = {
 			#create_character = {
 			#	location = scope:current_county.title_province
 			#	template = nomadic_chieftain_character
-			#	save_temporary_scope_as = local_warlord
+			#	save_temporary_scope_as =  lux_temp_vassal
 			#}
 			if = {
 				limit = { scope:overlord_to_grant.faith = { has_doctrine = doctrine_gender_male_dominated } }
@@ -77,7 +77,7 @@ LR_random_title_granting_on_start = {
 					faith = scope:overlord_to_grant.faith
 					culture = scope:province_for_culture.culture
 					dynasty = generate
-					save_temporary_scope_as = local_warlord
+					save_temporary_scope_as =  lux_temp_vassal
 				}
 			}
 			else_if = {
@@ -88,7 +88,7 @@ LR_random_title_granting_on_start = {
 					faith = scope:overlord_to_grant.faith
 					culture = scope:province_for_culture.culture
 					dynasty = generate
-					save_temporary_scope_as = local_warlord
+					save_temporary_scope_as =  lux_temp_vassal
 				}
 			}
 			else = {
@@ -100,7 +100,7 @@ LR_random_title_granting_on_start = {
 							faith = scope:overlord_to_grant.faith
 							culture = scope:province_for_culture.culture
 							dynasty = generate
-							save_temporary_scope_as = local_warlord
+							save_temporary_scope_as =  lux_temp_vassal
 						}
 					}
 					50 = {
@@ -110,7 +110,7 @@ LR_random_title_granting_on_start = {
 							faith = scope:overlord_to_grant.faith
 							culture = scope:province_for_culture.culture
 							dynasty = generate
-							save_temporary_scope_as = local_warlord
+							save_temporary_scope_as =  lux_temp_vassal
 						}
 					}					
 				}
@@ -127,7 +127,7 @@ LR_random_title_granting_on_start = {
 						add_claim_on_loss = no
 					}				
 					change_title_holder_include_vassals = {
-						holder = scope:local_warlord
+						holder = scope: lux_temp_vassal
 						change = scope:change
 						take_baronies = no
 						government_base = scope:overlord_to_grant
@@ -144,14 +144,14 @@ LR_random_title_granting_on_start = {
 					add_claim_on_loss = no
 				}				
 				change_title_holder_include_vassals = {
-					holder = scope:local_warlord
+					holder = scope: lux_temp_vassal
 					change = scope:change
 					take_baronies = no
 					government_base = scope:overlord_to_grant
 				}
 				resolve_title_and_vassal_change = scope:change				
 			}
-			scope:local_warlord = {
+			scope: lux_temp_vassal = {
 				create_title_and_vassal_change = {
 					type = granted
 					save_scope_as = change2
@@ -187,7 +187,7 @@ LR_random_title_granting_on_start = {
 			#create_character = {
 			#	location = scope:current_county.title_province
 			#	template = nomadic_chieftain_character
-			#	save_temporary_scope_as = local_warlord
+			#	save_temporary_scope_as =  lux_temp_vassal
 			#}
 			if = {
 				limit = { scope:overlord_to_grant.faith = { has_doctrine = doctrine_gender_male_dominated } }
@@ -197,7 +197,7 @@ LR_random_title_granting_on_start = {
 					faith = scope:current_county.faith
 					culture = scope:current_county.culture
 					dynasty = generate
-					save_temporary_scope_as = local_warlord
+					save_temporary_scope_as =  lux_temp_vassal
 				}
 			}
 			else_if = {
@@ -208,7 +208,7 @@ LR_random_title_granting_on_start = {
 					faith = scope:current_county.faith
 					culture = scope:current_county.culture
 					dynasty = generate
-					save_temporary_scope_as = local_warlord
+					save_temporary_scope_as =  lux_temp_vassal
 				}
 			}
 			else = {
@@ -220,7 +220,7 @@ LR_random_title_granting_on_start = {
 							faith = scope:current_county.faith
 							culture = scope:current_county.culture
 							dynasty = generate
-							save_temporary_scope_as = local_warlord
+							save_temporary_scope_as =  lux_temp_vassal
 						}
 					}
 					50 = {
@@ -230,7 +230,7 @@ LR_random_title_granting_on_start = {
 							faith = scope:current_county.faith
 							culture = scope:current_county.culture
 							dynasty = generate
-							save_temporary_scope_as = local_warlord
+							save_temporary_scope_as =  lux_temp_vassal
 						}
 					}					
 				}
@@ -243,14 +243,14 @@ LR_random_title_granting_on_start = {
 			}
 			scope:current_county = {
 				change_title_holder = {
-					holder = scope:local_warlord
+					holder = scope: lux_temp_vassal
 					change = scope:change
 					take_baronies = no
 					government_base = scope:overlord_to_grant
 				}
 			}
 			resolve_title_and_vassal_change = scope:change
-			scope:local_warlord = {
+			scope: lux_temp_vassal = {
 				create_title_and_vassal_change = {
 					type = granted
 					save_scope_as = change2
