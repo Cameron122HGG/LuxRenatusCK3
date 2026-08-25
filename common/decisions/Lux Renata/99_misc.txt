@@ -1,0 +1,688 @@
+﻿###DECISIONS LIST###
+
+#decision_solve_the_journals
+
+decision_solve_the_journals = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 180
+		kingdom = 180
+		empire = 180
+		hegemony = 180
+	}
+	desc = decision_solve_the_journals_desc
+	cooldown = { years = 1 }
+
+	is_shown = {
+		any_owned_story = {
+			type = story_cycle_mysterious_journal
+			NOT = { exists = var:journal_complete_solved }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+	}
+
+	is_valid = {
+		custom_tooltip = {
+			text = you_have_journal_1_tt
+			any_owned_story = {
+				type = story_cycle_mysterious_journal
+				exists = var:mysterious_journal.var:secret_journal
+			}
+		}
+		custom_tooltip = {
+			text = you_have_journal_2_tt
+			any_owned_story = {
+				type = story_cycle_mysterious_journal
+				exists = var:mysterious_journal.var:secret_puzzle
+			}
+		}
+		custom_tooltip = {
+			text = you_have_journal_3_tt
+			any_owned_story = {
+				type = story_cycle_mysterious_journal
+				exists = var:mysterious_journal.var:secret_cipher
+			}
+		}
+	}
+
+	effect = {
+		hidden_effect = {
+			random_owned_story = {
+				type = story_cycle_mysterious_journal
+				var:mysterious_journal = { save_scope_as = mysterious_journal }
+			}
+		}
+		duel = {
+			skill = learning
+			value = high_skill_rating
+			50 = { # You solve the puzzle!
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				custom_tooltip = {
+					text = open_the_journal_tt
+					trigger_event = tour_general.5010
+				}
+			}
+			50 = { # You fail
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -0.5
+				}
+				show_as_tooltip = {
+					add_stress = major_stress_gain
+				}
+				hidden_effect = {
+					trigger_event = tour_general.5000
+				}
+			}
+		}
+	}
+	
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+### Invite Knights ###
+invite_knights_decision = {
+	picture = {
+		trigger = { government_is_japanese_trigger = yes }
+		reference = "gfx/interface/illustrations/men_at_arms_big/japanese_horse_archers.dds"
+	}
+	picture = {
+		trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
+		reference = "gfx/interface/illustrations/men_at_arms_big/heavy_cavalry_asia.dds"
+	}
+	picture = {
+		trigger = { culture = { has_graphical_india_culture_group_trigger = yes } }
+		reference = "gfx/interface/illustrations/decisions/hindu_soldiers.dds"
+	}
+	picture = {
+		trigger = {
+			NOT = { government_has_flag = government_is_nomadic }
+		}
+		reference = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
+	}
+	picture = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+		}
+		reference = "gfx/interface/illustrations/decisions/mpo_decision_confederation.dds"
+	}
+	desc = invite_knights_decision_desc
+	ai_check_interval = 0
+	decision_group_type = courtier
+	
+	cooldown = { years = invite_knights_decision_cooldown_value }
+
+	is_shown = { 
+		is_landless_adventurer = no 
+		max_number_of_knights > 0
+	}
+
+	is_valid = {
+		trigger_if = {
+			limit = {
+				government_has_flag = government_is_nomadic
+			}
+			domicile ?= {
+				has_domicile_building_or_higher = character_warfare_yurt_01
+			}
+		}
+	}
+
+	effect = {
+		#A flag to increase weights for knights in regular guest invites
+		add_character_flag = {
+			flag = invite_knights_decision_active
+			years = 3
+		}
+		#A counter for the free "extra knights", will be reduced by 1 for every extra knight and extra knights stops when it reaches 0
+		set_variable = {
+			name = number_of_invite_knights_countdown
+			value = 3 #If this number changes make sure the tooltips change
+			days = 1000
+		}
+		if = {
+			limit = {
+				culture = {
+					has_cultural_parameter = frugal_blacksmith_better_invite_knight_decision
+				}
+			}
+			change_variable = {
+				name = number_of_invite_knights_countdown
+				add = 2
+			}
+		}
+		trigger_event = {
+			id = minor_decisions.0001
+			days = { 20 40 }
+		}
+
+		#Effect tooltip
+		if = {
+			limit = { culture = { has_cultural_parameter = martial_custom_male_only_combatant } }
+			custom_tooltip = invite_knights_decision.men.tt
+		}
+		else_if = {
+			limit = { culture = { has_cultural_parameter = martial_custom_female_only_combatant } }
+			custom_tooltip = invite_knights_decision.women.tt
+		}
+		else = {
+			custom_tooltip = invite_knights_decision.warriors.tt
+		}
+	}
+
+	cost = {
+		prestige = {
+			value = medium_prestige_value
+			if = {
+				limit = {
+					root.culture = { 
+						has_cultural_parameter = frugal_blacksmith_cheaper_invite_knight_decision
+					}
+				}
+				multiply = 0.5
+			}
+			# Dynasty Legacies
+			if = {
+				limit = {
+					dynasty ?= { has_dynasty_perk = ep2_activities_legacy_5 }
+					involved_activity ?= { has_activity_type = activity_tournament }
+				}
+				multiply = 0
+			}
+		}
+	}	
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
+
+### Invite Claimants ###
+invite_claimants_decision = {
+	picture = {
+		trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
+		reference = "gfx/interface/illustrations/event_scenes/tgp_asia_estate.dds"
+	}
+	picture = {
+		trigger = { culture = { has_graphical_india_culture_group_trigger = yes } }
+		reference = "gfx/interface/illustrations/decisions/hindu_religious.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	ai_check_interval = 0
+	desc = invite_claimants_decision_desc
+	decision_group_type = courtier
+
+	cooldown = { days = 3650 }
+	
+	is_shown = {
+		is_landed_or_landless_administrative = yes
+		primary_title.tier > tier_county
+		NOT = { government_has_flag = government_is_nomadic }
+	}
+
+	effect = {
+		#A flag to increase weights for claimants in regular guest invites
+		add_character_flag = {
+			flag = invite_claimants_decision_active
+			days = 1825
+		}
+		#A counter for the free "extra claimants", will be reduced by 1 for every extra claimant and extra claimants stops when it reaches 0
+		set_variable = {
+			name = number_of_invite_claimants_countdown
+			value = 3 #If this number changes make sure the tooltips change
+			days = 1825
+		}
+		trigger_event = {
+			id = minor_decisions.0002
+			days = { 20 40 }
+		}
+
+		#Effect tooltip
+		custom_tooltip = invite_claimants_decision.tt
+	}
+
+	cost = { prestige = invite_claimants_decision_prestige_value }	
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
+
+### Scrape the Barrel ###
+scrape_the_barrel_decision = {
+	picture = {
+		trigger = {
+			NOR = {
+				government_has_flag = government_is_tribal
+				government_has_flag = government_is_theocracy
+				top_liege ?= { government_has_flag = government_is_tribal }
+				top_liege ?= { government_has_flag = government_is_theocracy }
+			}
+			OR = {
+				culture = { has_cultural_pillar = heritage_byzantine }
+				top_liege ?= {
+					OR = {
+						culture = { has_cultural_pillar = heritage_byzantine }
+						capital_barony ?= title:b_constantinople
+						is_roman_emperor_primary_title_trigger = yes
+					}
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/decisions/ep3_cerimonial_decision.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
+	}
+	ai_check_interval = 0
+	sort_order = 80
+	desc = scrape_the_barrel_decision_desc
+	decision_group_type = courtier
+
+	cooldown = { years = 2 }
+
+	is_shown = {
+		is_landed_or_landless_administrative = yes
+		has_royal_court = yes
+		has_dlc_feature = royal_court
+		court_grandeur_current_level <= 4
+	}
+
+	effect = {
+		trigger_event = minor_decisions.0003
+
+		#Effect tooltip
+		custom_tooltip = scrape_the_barrel_decision.tt
+	}
+
+	cost = { prestige = 150 }	
+
+	ai_potential = {
+		OR = {
+			has_trait = humble
+			has_trait = ambitious
+			has_trait = deviant
+			has_trait = intellect_bad
+		}
+	}
+
+	ai_will_do = {
+		base = 10
+		modifier = {
+			add = 10
+			has_trait = humble
+		}
+		modifier = {
+			add = 10
+			has_trait = ambitious
+		}
+		modifier = {
+			add = 10
+			has_trait = deviant
+		}
+		modifier = {
+			add = 10
+			has_trait = intellect_bad
+		}
+	}
+}
+
+### Invite Poets ###
+invite_poets_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+	}
+	desc = invite_poets_decision_desc
+	ai_check_interval = 0
+	decision_group_type = courtier
+
+	cooldown = { years = 10 }
+
+	is_shown = { 
+		employs_court_position = laureate_camp_officer
+	}
+
+	effect = {
+		#A counter for the free "extra poets", will be reduced by 1 for every extra poet and extra poets stops when it reaches 0
+		set_variable = {
+			name = number_of_invite_poets_countdown
+			value = 3 #If this number changes make sure the tooltips change
+			days = 1000
+		}
+		trigger_event = {
+			id = minor_decisions.0004
+			days = { 1 2 }
+		}
+
+		#Effect tooltip
+		custom_tooltip = invite_poets_decision.tt
+	}
+
+	cost = {
+		prestige = {
+			value = minor_prestige_value
+		}
+		gold = {
+			value = minor_gold_value
+		}
+	}	
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
+
+################
+####   VALUES  ####
+###################
+
+@deceitful_progress_hostile_schemes_cooldown_time = 1095
+@diligent_development_focus_cooldown_time = 3650
+@impatient_rushing_all_schemes_cooldown_time = 1825
+@vengeful_fabricate_hook_rivals_cooldown_time = 3665
+
+###################
+#### DECISIONS ####
+###################
+
+#Deceitful improving hostile schemes
+### Study the Art of Scheming ###
+deceitful_progress_hostile_schemes_decision = {
+	ai_check_interval = 0
+	picture = {
+		trigger = {
+			culture = {
+				has_graphical_east_asia_culture_group_trigger = yes
+			}
+		}
+		reference = "gfx/interface/illustrations/decisions/tgp_poet.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	}
+	sort_order = 60
+
+	desc = deceitful_progress_hostile_schemes_decision_desc
+
+	selection_tooltip = deceitful_progress_hostile_schemes_decision_tooltip
+
+	cooldown = { days = @deceitful_progress_hostile_schemes_cooldown_time }
+
+	is_shown = {
+		OR = {
+			has_trait = deceitful
+			any_character_struggle = {
+				has_struggle_phase_parameter = unlocks_expedite_scheme_decision
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		custom_description = {
+			stress_level >= 1
+			text = not_enough_stress
+		}
+		custom_description = {
+			text = "deceitful_progress_hostile_schemes_decision_missing_scheme"
+			any_scheme = {
+				hostile_scheme_trigger = yes
+			}
+		}
+	}
+
+
+	effect = {
+		if = {
+			limit = {
+				any_scheme = {
+					hostile_scheme_trigger = yes
+					count > 0
+				}
+			}
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = msg_deceitful_progress_hostile_schemes
+				left_icon = root
+
+				every_scheme = {
+					limit = {
+						hostile_scheme_trigger = yes
+					}
+					add_scheme_modifier = {
+						type = deceitful_progress_hostile_schemes_modifier
+					}
+				}
+			}
+		}
+		else = {
+			custom_tooltip = deceitful_progress_hostile_schemes_decision_missing_scheme_effect
+		}
+		
+	}
+	
+	ai_potential = {
+		OR = {
+			has_trait = deceitful
+			has_trait = vengeful
+			has_trait = sadistic
+			has_trait = schemer
+			has_trait = impatient
+			has_trait = ambitious
+			has_trait = diligent
+			has_trait = arbitrary
+		}
+		NOR = {
+			has_trait = calm
+			has_trait = patient
+		}
+		any_scheme = {
+			is_hostile = yes
+			save_temporary_scope_as = current_hostile_scheme
+		}
+		exists = scope:current_hostile_scheme
+		has_relation_rival = scope:current_hostile_scheme.scheme_target_character
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+#Diligent overwork
+### Develop Capital ###
+diligent_development_focus_decision = {
+	ai_check_interval = 0
+
+	picture = {
+		trigger = { government_has_flag = government_is_japan_feudal }
+		reference = "gfx/interface/illustrations/holding_types/tgp_castle_japan.dds"
+	}
+	picture = {
+		trigger = { government_has_flag = government_is_japan_administrative }
+		reference = "gfx/interface/illustrations/holding_types/tgp_city_japan.dds"
+	}
+	picture = {
+		trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
+		reference = "gfx/interface/illustrations/decisions/tgp_great_project.dds"
+	}
+	picture = {
+		trigger = { culture = { has_graphical_india_culture_group_trigger = yes } }
+		reference = "gfx/interface/illustrations/holding_types/tgp_castle_se_asia.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	}
+	sort_order = 60
+
+	desc = diligent_development_focus_decision_desc
+
+	selection_tooltip = diligent_development_focus_decision_tooltip
+
+	cooldown = { days = @diligent_development_focus_cooldown_time }
+
+	is_shown = {
+		OR = {
+			has_trait = diligent
+			top_participant_group:dynastic_cycle ?= {
+				participant_group_type = advancement_movement
+			}
+		}
+		is_landed = yes
+		NOT = { government_has_flag = government_is_nomadic } # They use develop_fertility_decision
+	}
+
+	is_valid_showing_failures_only = {
+		is_at_war = no
+		is_adult = yes
+	}
+
+	effect = {
+
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = msg_diligent_development_focus
+			left_icon = root
+			
+			if = {
+				limit = {
+					government_allows = merit
+				}
+				change_merit = medium_merit_gain
+			}
+
+			add_character_modifier = {
+ 				modifier = diligent_development_focus
+				years = 10
+			}
+		}
+		
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			stress_impact = {
+				diligent = medium_stress_impact_gain
+			}
+		}
+		else = {
+			stress_impact = {
+				base = medium_stress_impact_gain
+			}
+		}
+	}
+	
+	ai_potential = {
+		has_trait = diligent
+		NOT = {
+			has_trait = temperate
+		}
+	}
+
+	ai_will_do = {
+		base = 100
+
+		modifier = {
+			factor = 0
+			stress >= 50
+		}
+	}
+}
+
+#Impatient rushing all schemes
+### Expedite Schemes ###
+impatient_rushing_all_schemes_decision = {
+	ai_check_interval = 0
+	picture = {
+		trigger = {
+			OR = {
+				culture = { has_graphical_east_asia_culture_group_trigger = yes }
+				culture = { has_graphical_india_culture_group_trigger = yes }
+			}
+		}
+		reference = "gfx/interface/illustrations/decisions/tgp_retire.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	}
+	sort_order = 60
+
+	desc = impatient_rushing_all_schemes_decision_desc
+
+	selection_tooltip = impatient_rushing_all_schemes_decision_tooltip
+
+	cooldown = { days = @impatient_rushing_all_schemes_cooldown_time }
+
+	is_shown = {
+		has_trait = impatient
+	}
+
+	is_valid_showing_failures_only = {
+		custom_description = {
+			stress_level >= 1
+			text = not_enough_stress
+		}
+		custom_description = {
+			text = "impatient_rushing_all_schemes_decision_missing_scheme"
+			any_scheme = { }
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				any_scheme = { }
+			}
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = msg_impatient_rushing_all_schemes
+				left_icon = root
+
+				every_scheme = {
+					change_opportunities = 2
+				}
+			}
+		}
+		else = {
+			custom_tooltip = impatient_rushing_all_schemes_decision_missing_scheme_effect
+		}		
+	}
+	
+	ai_potential = {
+		has_trait = impatient
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
