@@ -216,99 +216,59 @@
 						visible = "[BookmarkCharacter.ShouldDisplay]"
 						position = "[BookmarkCharacter.GetGuiPosition]"
 
-						flowcontainer = {
+						button_group_map_character_selection = {
 							visible = "[Not( GameSetup.IsCharacterSelected( BookmarkCharacter.Self ) )]"
-							resizeparent = yes
-							allow_outside = yes
-							filter_mouse = all
+							onclick = "[PdxGuiTriggerAllAnimations('bookmark_character_change')]"
+							onclick = "[GameSetup.SetSelectedCharacter( BookmarkCharacter.Self )]"
+							onclick = "[GetVariableSystem.Set( 'show_character_info', 'true' )]"
+							alwaystransparent = "[GameSetup.IsCharacterSelected( BookmarkCharacter.Self )]"
 
 							state = {
 								name = _mouse_hierarchy_enter
-								on_start = "[PdxGuiWidget.FindChild('bookmark_character_selection_button').TriggerAnimation('bookmark_character_container_hover_enter')]"
-								on_start = "[PdxGuiWidget.FindChild('bookmark_character_selection_button').TriggerAnimation('bookmark_character_container_hover_enter_asia')]"
+								on_start = "[GameSetup.SetHoveredBookmarkCharacter( BookmarkCharacter.Self )]"
+								on_start = "[PdxGuiWidget.FindChild('banner_hover_glow').TriggerAnimation('bookmark_character_hover_enter')]"
+								on_start = "[PdxGuiWidget.FindChild('size_widget').TriggerAnimation('bookmark_character_hover_enter')]"
+								position = { 0 -6 }
+								duration = 0.05
+								using = Animation_Curve_Default
 							}
 
 							state = {
 								name = _mouse_hierarchy_leave
-								on_start = "[PdxGuiWidget.FindChild('bookmark_character_selection_button').TriggerAnimation('bookmark_character_container_hover_leave')]"
-								on_start = "[PdxGuiWidget.FindChild('bookmark_character_selection_button').TriggerAnimation('bookmark_character_container_hover_leave_asia')]"
+								on_start = "[GameSetup.DeselectHoveredBookmarkCharacter]"
+								on_start = "[PdxGuiWidget.FindChild('banner_hover_glow').TriggerAnimation('bookmark_character_hover_leave')]"
+								on_start = "[PdxGuiWidget.FindChild('size_widget').TriggerAnimation('bookmark_character_hover_leave')]"
+								position = { 0 0 }
+								duration = 0.2
+								using = Animation_Curve_Default
 							}
 
-							button_group_map_character_selection = {
-								name = "bookmark_character_selection_button"
-								onclick = "[PdxGuiTriggerAllAnimations('bookmark_character_change')]"
-								onclick = "[GameSetup.SetSelectedCharacter( BookmarkCharacter.Self )]"
-								onclick = "[GetVariableSystem.Set( 'show_character_info', 'true' )]"
-								alwaystransparent = "[GameSetup.IsCharacterSelected( BookmarkCharacter.Self )]"
-								using = MenuShortcut
+							state = {
+								name = "bookmarks_game_start"
+								duration = 0.2
+								using = Animation_Curve_Default
+								alpha = 0
+							}
+
+							state = {
+								name = "bookmarks_reset"
+								duration = 0.2
+								using = Animation_Curve_Default
+								alpha = 1
+							}
+
+							widget = {
+								name = "size_widget"
+								size = { 100% 195 }
 
 								state = {
-									name = "bookmark_character_container_hover_enter"
-									on_start = "[GameSetup.SetHoveredBookmarkCharacter( BookmarkCharacter.Self )]"
-									on_start = "[PdxGuiWidget.FindChild('bookmark_character_visual_stack').TriggerAnimation('bookmark_character_visual_hover_enter')]"
-									on_start = "[PdxGuiWidget.FindChild('banner_hover_glow').TriggerAnimation('bookmark_character_hover_enter')]"
-									on_start = "[PdxGuiWidget.FindChild('size_widget').TriggerAnimation('bookmark_character_hover_enter')]"
-									duration = 0.05
-									using = Animation_Curve_Default
+									name = "bookmark_character_hover_enter"
+									position = { 0 60 }
 								}
 
 								state = {
-									name = "bookmark_character_container_hover_leave"
-									on_start = "[GameSetup.DeselectHoveredBookmarkCharacter]"
-									on_start = "[PdxGuiWidget.FindChild('bookmark_character_visual_stack').TriggerAnimation('bookmark_character_visual_hover_leave')]"
-									on_start = "[PdxGuiWidget.FindChild('banner_hover_glow').TriggerAnimation('bookmark_character_hover_leave')]"
-									on_start = "[PdxGuiWidget.FindChild('size_widget').TriggerAnimation('bookmark_character_hover_leave')]"
-									duration = 0.2
-									using = Animation_Curve_Default
-								}
-
-								state = {
-									name = "bookmark_character_container_hover_enter_asia"
-									on_start = "[GameSetup.SetHoveredBookmarkCharacter( BookmarkCharacter.Self )]"
-									on_start = "[PdxGuiWidget.FindChild('bookmark_character_visual_stack').TriggerAnimation('bookmark_character_visual_hover_enter')]"
-									on_start = "[PdxGuiWidget.FindChild('banner_hover_glow_asia').TriggerAnimation('bookmark_character_hover_enter_asia')]"
-									on_start = "[PdxGuiWidget.FindChild('size_widget').TriggerAnimation('bookmark_character_hover_enter_asia')]"
-									duration = 0.05
-									using = Animation_Curve_Default
-								}
-
-								state = {
-									name = "bookmark_character_container_hover_leave_asia"
-									on_start = "[GameSetup.DeselectHoveredBookmarkCharacter]"
-									on_start = "[PdxGuiWidget.FindChild('bookmark_character_visual_stack').TriggerAnimation('bookmark_character_visual_hover_leave')]"
-									on_start = "[PdxGuiWidget.FindChild('banner_hover_glow_asia').TriggerAnimation('bookmark_character_hover_leave_asia')]"
-									on_start = "[PdxGuiWidget.FindChild('size_widget').TriggerAnimation('bookmark_character_hover_leave_asia')]"
-									duration = 0.2
-									using = Animation_Curve_Default
-								}
-
-								state = {
-									name = "bookmarks_game_start"
-									duration = 0.2
-									using = Animation_Curve_Default
-									alpha = 0
-								}
-
-								state = {
-									name = "bookmarks_reset"
-									duration = 0.2
-									using = Animation_Curve_Default
-									alpha = 1
-								}
-
-								widget = {
-									name = "size_widget"
-									size = { 100% 195 }
-
-									state = {
-										name = "bookmark_character_hover_enter"
-										position = { 0 60 }
-									}
-
-									state = {
-										name = "bookmark_character_hover_leave"
-										position = { 0 0 }
-									}
+									name = "bookmark_character_hover_leave"
+									position = { 0 0 }
 								}
 							}
 						}
@@ -1477,7 +1437,7 @@
 
 								background = {
 									visible = "[Not(GameSetup.HasSelectedCharacter)]"
-									texture = "[GameSetup.GetSelectedBookmark.GetButtonIcon]"
+									texture = "[GameSetup.GetSelectedBookmark.GetButtonIconBig]"
 									alpha = 0.8
 									fittype = end
 
@@ -2473,13 +2433,13 @@ types BookmarkPortraits
 			parentanchor = top|hcenter
 			position = { 0 5 }
 			size = { 100% 100% }
-			
+
 			onclick = "[GameSetup.SetSelectedBookmark( Bookmark.Self )]"
 			onclick = "[GameSetup.ClearSelectedBookmarkGroup]"
 			onclick = "[PdxGuiTriggerAllAnimations('bookmark_group_reset')]"
 			onclick = "[PdxGuiInterruptThenTriggerAllAnimations('bookmark_change','bookmark_change')]"
 			onclick = "[PdxGuiInterruptThenTriggerAllAnimations('map_characters_appear','map_characters_appear')]"
-			
+
 			down = "[GameSetup.IsBookmarkSelected( Bookmark.Self )]"
 			alwaystransparent = "[GameSetup.IsBookmarkSelected( Bookmark.Self )]"
 
@@ -2685,7 +2645,7 @@ types BookmarkPortraits
 					size = { 100% 100% }
 					spriteborder = { 30 30 }
 					spriteType = corneredStretched
-					#texture = "gfx/interface/buttons/button_stone_glass_frame.dds"
+					texture = "gfx/interface/buttons/button_stone_glass_frame.dds"
 					texture_density = 2
 
 					modify_texture = {
@@ -2841,7 +2801,6 @@ types BookmarkPortraits
 
 		button_normal = {
 			parentanchor = top|hcenter
-			using = TabShortcut
 			position = { 0 5 }
 			size = { 100% 100% }
 			onclick = "[GameSetup.SelectBookmarkGroup( BookmarkGroup.Self )]"
@@ -2852,7 +2811,7 @@ types BookmarkPortraits
 			onclick = "[GetVariableSystem.Clear( 'show_character_info' )]"
 			down = "[GameSetup.IsBookmarkGroupSelected( BookmarkGroup.Self )]"
 			alwaystransparent = "[GameSetup.IsBookmarkGroupSelected( BookmarkGroup.Self )]"
-			#enabled = "[Or(InDebugMode, Or(EqualTo_string( BookmarkGroup.GetName, '1298' ), EqualTo_string( BookmarkGroup.GetName, '1254' )))]"
+			enabled = "[Or(InDebugMode, Or(EqualTo_string( BookmarkGroup.GetName, '1298' ), EqualTo_string( BookmarkGroup.GetName, '1254' )))]"
 
 			state = {
 				name = "_mouse_enter"
@@ -2896,6 +2855,14 @@ types BookmarkPortraits
 				texture = "gfx/interface/component_tiles/tile_window_background_no_edge.dds"
 
 				# GH ADDITION: The below is necessary for unique bookmark decision icons
+
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '37' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_viking_battle_oldgods.dds"
+					blend_mode = normal
+					
+					alpha = 0.5
+				}
 				modify_texture = {
 					visible = "[EqualTo_string( BookmarkGroup.GetName, '67' )]"
 					texture = "gfx/interface/illustrations/event_scenes/docks.dds"
@@ -2909,8 +2876,26 @@ types BookmarkPortraits
 					alpha = 0.5
 				}
 				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '114' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_comet.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '144' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_battle_cataphracts_saracen.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
 					visible = "[EqualTo_string( BookmarkGroup.GetName, '156' )]"
 					texture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '201' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_bishop_preaching_from_a_pulpit_muslim.dds"
 					blend_mode = normal
 					alpha = 0.5
 				}
@@ -2946,18 +2931,18 @@ types BookmarkPortraits
 				}
 				modify_texture = {
 					visible = "[EqualTo_string( BookmarkGroup.GetName, '442' )]"
-					texture = "gfx/interface/illustrations/decisions/decision_restore_gallic_empire.dds"
+					texture = "gfx/interface/illustrations/decisions/decision_lich_battle.dds"
 					blend_mode = normal
 					alpha = 0.5
 				}
 				modify_texture = {
-					visible = "[EqualTo_string( BookmarkGroup.GetName, 'warlords' )]"
-					texture = "gfx/interface/illustrations/loading_screens/load_0.dds"
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '569' )]"
+					texture = "gfx/interface/illustrations/decisions/fp1_decisons_hold_bolt.dds"
 					blend_mode = normal
 					alpha = 0.5
 				}
 				modify_texture = {
-					visible = "[EqualTo_string( BookmarkGroup.GetName, '6066' )]"
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '600' )]"
 					texture = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
 					blend_mode = normal
 					alpha = 0.5
@@ -2975,14 +2960,56 @@ types BookmarkPortraits
 					alpha = 0.5
 				}
 				modify_texture = {
-					visible = "[EqualTo_string( BookmarkGroup.GetName, 'BC' )]"
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '723' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_battle_scene.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '764' )]"
 					texture = "gfx/interface/illustrations/decisions/decision_activity.dds"
 					blend_mode = normal
 					alpha = 0.5
 				}
 				modify_texture = {
-					visible = "[EqualTo_string( BookmarkGroup.GetName, 'AD' )]"
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '802' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_battle_cataphracts_saracen.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '834' )]"
 					texture = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '878' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_bloody_knife_hf.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '899' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_longbowman.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '939' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_bier_with_dead_character.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '999' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_arson_hf.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '1094' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ck2_bishop_preaching_from_a_pulpit.dds"
 					blend_mode = normal
 					alpha = 0.5
 				}
@@ -2999,14 +3026,50 @@ types BookmarkPortraits
 					alpha = 0.5
 				}
 				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '1169' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_magi.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
 					visible = "[EqualTo_string( BookmarkGroup.GetName, '1181' )]"
 					texture = "gfx/interface/illustrations/decisions/fp3/fp3_decision_strength.dds"
 					blend_mode = normal
 					alpha = 0.5
 				}
 				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '1186' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '1200' )]"
+					texture = "gfx/interface/illustrations/men_at_arms_big/fog_spirits.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
 					visible = "[EqualTo_string( BookmarkGroup.GetName, '1217' )]"
 					texture = "gfx/interface/illustrations/army_status/retreating.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '1228' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_war_green.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '1254' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_mayikprolollan_invasion.dds"
+					blend_mode = normal
+					alpha = 0.5
+				}
+				modify_texture = {
+					visible = "[EqualTo_string( BookmarkGroup.GetName, '1298' )]"
+					texture = "gfx/interface/illustrations/decisions/decision_ruins.dds"
 					blend_mode = normal
 					alpha = 0.5
 				}
@@ -3282,7 +3345,7 @@ types BookmarkPortraits
 
 						text_single = {
 							name = "year"
-							raw_text = "[Localize(Concatenate('bm_group_', Localize(Concatenate(BookmarkGroup.GetName,'_year'))))]"
+							raw_text = "[BookmarkGroup.GetName] IS"
 							default_format = "#high;bold;glow_color:{0,0,0,1}"
 							using = Font_Size_Big
 							using = Font_Type_Flavor
@@ -3297,7 +3360,7 @@ types BookmarkPortraits
 						}
 						text_single = {
 							name = "bm_group_name"
-							text = "[Localize(Concatenate('bm_group_', Localize(Concatenate(BookmarkGroup.GetName,'_subtitle'))))]"
+							text = "[Localize(Concatenate('bm_group_', Localize(Concatenate(BookmarkGroup.GetName,'_title'))))]"
 							default_format = "#clickable;bold;glow_color:{0.2,0.2,0.2,1}"
 							fontsize = 15
 							using = Font_Type_Flavor
@@ -3315,9 +3378,10 @@ types BookmarkPortraits
 			}
 		}
 	}
+
 	type bookmark_button = button_normal {
 		size = { 100% 100% }
-		position = { -60 0}
+
 		onclick = "[PdxGuiInterruptThenTriggerAllAnimations('bookmark_change','bookmark_change')]"
 		onclick = "[PdxGuiTriggerAllAnimations('bookmark_tab_reset')]"
 		onclick = "[PdxGuiInterruptThenTriggerAllAnimations('map_characters_appear','map_characters_appear')]"
@@ -3325,8 +3389,6 @@ types BookmarkPortraits
 		onclick = "[GetVariableSystem.Clear( 'show_character_info' )]"
 		down = "[GameSetup.IsBookmarkSelected( Bookmark.Self )]"
 		alwaystransparent = "[GameSetup.IsBookmarkSelected( Bookmark.Self )]"
-		using = SubTabShortcut
-		
 
 		state = {
 			name = "_mouse_enter"
@@ -3338,15 +3400,25 @@ types BookmarkPortraits
 			name = "_mouse_leave"
 		}
 
+		#GH ADDITION
+		state = { 
+			name = _show
+			duration = 0.3
+			using = Animation_Curve_Default
+
+			position_y = -25
+		} 
+		#GH END
+		
 		state = {
 			name = "button_selection"
 			trigger_when = "[GameSetup.IsBookmarkSelected( Bookmark.Self )]"
 			on_start = "[PdxGuiWidget.InterruptAnimation('bookmark_tab_reset')]"
-			delay = 0.3
+			delay = 0.05
 			duration = 0.1
 			using = Animation_Curve_Default
 
-			position_x = -20
+			position_y = 0
 		}
 
 		state = {
@@ -3354,7 +3426,7 @@ types BookmarkPortraits
 			duration = 0.3
 			using = Animation_Curve_Default
 
-			position_x = -60
+			position_y = -25
 		}
 
 		state = {
@@ -3362,9 +3434,15 @@ types BookmarkPortraits
 			duration = 0.3
 			using = Animation_Curve_Default
 
-			position_x = -60
+			position_y = -25
 		}
-
+		###DDDD
+				state = {
+					name = "bookmarks_game_start"
+					using = Animation_Curve_Default
+					position_y = -25
+				}
+				
 		icon = {
 			name = "bookmarks_button"
 			parentanchor = bottom|hcenter
@@ -3541,19 +3619,15 @@ types BookmarkPortraits
 
 				hbox = {
 					margin = { 5 0 }
-					spacing = 7
+					spacing = 2
 					expand = {}
-
-					widget ={
-						size = {20 20}
-					}
 
 					text_single = {
 						text = "[Bookmark.GetName]"
 						default_format = "#high;glow_color:{0,0,0,1}"
-						align = nobaseline
+						align = center
+						max_width = 190
 						using = Font_Size_Medium
-						max_width = 220
 					}
 
 					icon = {
@@ -3591,34 +3665,16 @@ types BookmarkPortraits
 			size = { 100% 100% }
 			parentanchor = bottom|hcenter
 			background = {
-				texture = "gfx/interface/icons/bookmark_buttons/bookmark_tab_frame.dds"
+				texture = "gfx/interface/icons/bookmark_buttons/year_tab_frame.dds"
 			}
 		}
 	}
-	type button_group_map_character_selection = button_group {
-		allow_outside = yes
 
+	type button_group_map_character_selection = button_group {
 		flowcontainer = {
-			name = "bookmark_character_visual_stack"
-			resizeparent = yes
 			margin = { -15 0 }
 			margin_top = 120
 			margin_bottom = -95
-			alwaystransparent = yes
-
-			state = {
-				name = "bookmark_character_visual_hover_enter"
-				position = { 0 -6 }
-				duration = 0.05
-				using = Animation_Curve_Default
-			}
-
-			state = {
-				name = "bookmark_character_visual_hover_leave"
-				position = { 0 0 }
-				duration = 0.2
-				using = Animation_Curve_Default
-			}
 
 			container = {
 				alwaystransparent = yes
@@ -4496,9 +4552,14 @@ types GameSetupTypes
 		texture = "[Dlc.GetIcon]"
 		onclick = "[DlcItem.ShowInStore]"
 		tooltip = "DLC_BUTTON_TOOLTIP"
+		using = tooltip_nw
 
+		#GH CHANGE: Add GH DLC to list
 		modify_texture = {
-			visible = "[Not( Dlc.IsEnabled )]"
+	        # CfV
+			visible = "[And( Not( DlcItem.GetDlc.IsEnabled ), Not( EqualTo_string(DlcItem.GetDlc.GetName, Localize('dlc_gh') ) ) )]"
+	        #visible = "[Not( DlcItem.GetDlc.IsEnabled )]"
+	        # CfV end
 			texture = "gfx/interface/colors/black.dds"
 			blend_mode = normal
 			alpha = 0.4
