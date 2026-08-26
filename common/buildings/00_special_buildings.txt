@@ -1109,7 +1109,6 @@ holy_site_great_mosque_of_mecca_01 = {
 ##########
 # Great Mosque of Cordoba
 ##########
-
 holy_site_great_mosque_of_cordoba_01 = {
 	effect_desc = {
 		triggered_desc = {
@@ -1117,11 +1116,8 @@ holy_site_great_mosque_of_cordoba_01 = {
 			desc = building_funeral_effect_desc
 		}
 	}
-
-	asset = {
-		type = pdxmesh
-		name = "monument_mezquita_de_cordoba_mesh"
-	}
+	asset = { type = pdxmesh name = great_mosque_of_cordoba_mesh }
+	asset = { type = pdxmesh name = great_cathedral_of_cordoba_mesh graphical_faiths = { "catholic_gfx" "orthodox_gfx" } }
 
 	construction_time = very_slow_construction_time
 
@@ -1149,7 +1145,7 @@ holy_site_great_mosque_of_cordoba_01 = {
 	
 	cost_gold = 1000
 
-	character_modifier = {
+	county_holder_character_modifier = {
 		different_culture_opinion = 5
 		character_capital_county_monthly_development_growth_add = 0.2
 		monthly_piety = 0.5
@@ -2217,32 +2213,25 @@ iron_pillar_of_delhi_01 = {
 }
 
 
-
 ##########
 # Iron Pillar of Dhar
 ##########
-
 iron_pillar_of_dhar_01 = {
 	construction_time = very_slow_construction_time
-
 	type_icon = "icon_structure_iron_pillar_of_dhar.dds"
-	
+	asset = { type = pdxmesh name = iron_pillar_dhar_mesh }
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
-	
 	cost_gold = 2000
-
-	character_modifier = {
+	county_holder_character_modifier = {
 		advantage = 5
 		monthly_dynasty_prestige_mult = 0.05
 	}
-	
 	county_modifier = {
 		development_growth = 0.2
 		levy_size = 0.15
 	}
-	
 	ai_value = {
 		base = 100
 		modifier = { # Fill all building slots before going for special buildings
@@ -2250,9 +2239,7 @@ iron_pillar_of_dhar_01 = {
 			free_building_slots > 0
 		}
 	}
-	
 	type = special
-
 	flag = travel_point_of_interest_economic
 }
 
@@ -3313,7 +3300,7 @@ palace_of_aachen_01 = {
 
 	asset = {
 		type = pdxmesh
-		name = "building_special_palace_of_aachen_mesh"
+		name = "aachen_palace_mesh"
 	}
 
 	construction_time = very_slow_construction_time
@@ -3328,7 +3315,7 @@ palace_of_aachen_01 = {
 	
 	cost_gold = 1000
 
-	character_modifier = {
+	county_holder_character_modifier = {
 		powerful_vassal_opinion = 5
 		clergy_opinion = 5
 		monthly_prestige_gain_per_happy_powerful_vassal_add = 0.1
@@ -3356,7 +3343,6 @@ palace_of_aachen_01 = {
 ##########
 # Hagia Sophia
 ##########
-
 hagia_sophia_01 = {
 	effect_desc = {
 		triggered_desc = {
@@ -3367,7 +3353,7 @@ hagia_sophia_01 = {
 
 	asset = {
 		type = pdxmesh
-		name = "building_special_hagia_sophia_mesh"
+		name = "hagia_sophia_mesh"
 	}
 	construction_time = very_slow_construction_time
 
@@ -3390,7 +3376,7 @@ hagia_sophia_01 = {
 	
 	cost_gold = 1000
 
-	character_modifier = {
+	county_holder_character_modifier = {
 		monthly_piety_gain_per_knight_add = 0.1
 		intrigue_per_prestige_level = 2
 		learning = 2
@@ -3425,7 +3411,6 @@ hagia_sophia_01 = {
 	flag = holy_building
 	flag = religious_studies_location
 }
-
 hagia_sophia_02 = {
 	effect_desc = {
 		triggered_desc = {
@@ -3436,7 +3421,7 @@ hagia_sophia_02 = {
 
 	asset = {
 		type = pdxmesh
-		name = "building_special_hagia_sophia_minarets_mesh"
+		name = "hagia_sophia_minarets_mesh"
 	}
 
 	construction_time = very_slow_construction_time
@@ -3471,7 +3456,7 @@ hagia_sophia_02 = {
 	cost_gold = 1000
 	cost_piety = 1000
 
-	character_modifier = {
+	county_holder_character_modifier = {
 		monthly_piety_gain_per_knight_add = 0.1
 		intrigue_per_prestige_level = 2
 		learning = 2
@@ -3500,7 +3485,6 @@ hagia_sophia_02 = {
 ##########
 # Dome of the Rock / Temple in Jerusalem
 ##########
-
 dome_of_the_rock_01 = {
 	effect_desc = {
 		triggered_desc = {
@@ -3510,6 +3494,7 @@ dome_of_the_rock_01 = {
 	}
 	construction_time = very_slow_construction_time
 
+	asset = { type = pdxmesh name = dome_of_the_rock_mesh }
 	type_icon = "icon_structure_dome_of_the_rock.dds"
 	
 	can_construct_potential = {
@@ -3523,16 +3508,14 @@ dome_of_the_rock_01 = {
 				is_holy_site_of = scope:holder.faith
 			}
 		}
-		NOT = { 
-			judaism_or_syncretic_with_judaism_trigger = { CHARACTER = scope:holder }
-		}
+		NOT = { scope:holder.religion = religion:judaism_religion }
 	}
 	
 	show_disabled = yes
 	
 	cost_gold = 1000
 
-	character_modifier = {
+	county_holder_character_modifier = {
 		monthly_piety_gain_per_knight_mult = 0.03
 		monthly_dynasty_prestige_mult = 0.05
 		monthly_county_control_growth_factor = 0.1
@@ -3570,8 +3553,8 @@ dome_of_the_rock_01 = {
 
 	flag = travel_point_of_interest_religious
 	flag = holy_building
+	flag = holy_building
 }
-
 temple_in_jerusalem_01 = {
 	effect_desc = {
 		triggered_desc = {
@@ -3580,6 +3563,8 @@ temple_in_jerusalem_01 = {
 		}
 	}
 	construction_time = very_slow_construction_time
+
+	asset = { type = pdxmesh name = temple_in_jerusalem_mesh }
 
 	type_icon = "icon_structure_temple_in_jerusalem.dds"
 	
@@ -3594,7 +3579,7 @@ temple_in_jerusalem_01 = {
 				is_holy_site_of = scope:holder.faith
 			}
 		}
-		judaism_or_syncretic_with_judaism_trigger = { CHARACTER = scope:holder }
+		scope:holder.religion = religion:judaism_religion
 	}
 	
 	is_enabled = {
@@ -3607,7 +3592,9 @@ temple_in_jerusalem_01 = {
 						is_holy_site_of = scope:holder.faith
 					}
 				}
-				judaism_or_syncretic_with_judaism_trigger = { CHARACTER = scope:holder }
+				scope:holder = {
+					religion = religion:judaism_religion
+				}
 			}
 		}
 	}
@@ -3617,7 +3604,7 @@ temple_in_jerusalem_01 = {
 	cost_gold = 1000
 	cost_piety = 1000
 
-	character_modifier = {
+	county_holder_character_modifier = {
 		monthly_piety_gain_per_knight_mult = 0.03
 		monthly_dynasty_prestige_mult = 0.05
 		monthly_county_control_growth_factor = 0.1
@@ -3655,7 +3642,7 @@ temple_in_jerusalem_01 = {
 
 	flag = travel_point_of_interest_religious
 	flag = holy_building
-	flag = religious_studies_location
+	flag = holy_building
 }
 
 ##########
@@ -4334,7 +4321,8 @@ golden_gate_of_kiev_01 = {
 	construction_time = very_slow_construction_time
 	
 	type_icon = "icon_structure_golden_gate_of_kiev.dds"
-	
+	asset = { type = pdxmesh name = golden_gate_kyiv_mesh }
+
 	can_construct_potential = {
 		building_requirement_tribal = no
 	}
@@ -4819,7 +4807,7 @@ aljaferia_palace_01 = {
 	
 	asset = {
 		type = pdxmesh
-		name = "fp2_building_special_aljaferia_mesh"
+		name = "MA_palace_arechis"
 	}
 
 	construction_time = very_slow_construction_time
