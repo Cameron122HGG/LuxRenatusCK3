@@ -49,7 +49,7 @@
 	flag = special_university
 }
 honorius_palace_01 = {
-	asset = { type = entity name = MA_st_nicholas }
+	asset = { type = entity name = st_nicholas_mesh }
 	construction_time = very_slow_construction_time
 	
 	type_icon = "icon_structure_palace_of_achen.dds"
@@ -351,7 +351,7 @@ LR_oracle_delphi = {
 		name = "ep3_monument_parthenon_01_a_mesh"
 	}
 
-	type_icon = "LR_oracle_delphi.dds"
+	type_icon = "icon_structure_parthenon.dds"
 
 	construction_time = very_slow_construction_time
 	cost_gold = 2000
@@ -397,7 +397,7 @@ LR_panepeiroteion = {
 		name = ep3_hagios_demetrios_01_a_mesh
 	}
 
-	type_icon = "LR_panepeiroteion.dds"
+	type_icon = "icon_structure_parthenon_theotokos.dds"
 
 	construction_time = very_slow_construction_time
 	cost_gold = 1500
@@ -435,7 +435,7 @@ LR_panepeiroteion = {
 ##########
 
 LR_oracle_dodona = {
-	type_icon = "LR_oracle_dodona.dds"
+	type_icon = "icon_structure_parthenon.dds"
 
 	construction_time = very_slow_construction_time
 	cost_gold = 1000
@@ -481,7 +481,7 @@ LR_oracle_didyma = {
 		name = "ep3_monument_parthenon_01_a_mesh"
 	}
 
-	type_icon = "LR_oracle_deidyma.dds"
+	type_icon = "icon_structure_parthenon.dds"
 
 	construction_time = very_slow_construction_time
 	cost_gold = 1000
@@ -789,7 +789,7 @@ LR_diplotaphos_troy = {
 		name = "thracian_tomb_mesh"
 	}
 
-	type_icon = "LR_diplotaphos_achilles.dds"
+	type_icon = "MA_thracian_tomb.dds"
 
 	construction_time = very_slow_construction_time
 	cost_gold = 1000
@@ -934,7 +934,7 @@ LR_phosphoretai_ankyra = {
 		type = entity
 		name = "dakhma_entity"
 	}
-	type_icon = "LR_phosphoretai_ankyra.dds"
+	type_icon = "MA_dakhma.dds"
 
 	construction_time = very_slow_construction_time
 	cost_gold = 1000
@@ -980,7 +980,7 @@ LR_medaurion = {
 		name = "romuliana_mesh"
 	}
 
-	type_icon = "LR_medaurion_kotor.dds"
+	type_icon = "MA_dakhma.dds"
 
 	construction_time = slow_construction_time
 	cost_gold = 1000
@@ -1147,21 +1147,6 @@ MA_ile_de_la_cite2 = {
 	type = special
 	flag = travel_point_of_interest_diplomatic
 }
-#Olympus
-MA_olympus = {
-	type_icon = "MA_olympus.dds"
-	asset = { type = pdxmesh name = olympus_mesh }
-	cost_gold = main_building_tier_1_cost
-	construction_time = slow_construction_time
-	character_faith_modifier = { parameter = divine_the_stars_active monthly_piety_gain_mult = 0.1 vassal_opinion = 10 }
-	county_holder_character_modifier = { monthly_dynasty_prestige_mult = 0.05 learning = 2 }
-	county_modifier = { hostile_raid_time = 0.5 defender_holding_advantage = 4 }
-	ai_value = { base = 100 }
-	type = special
-	flag = travel_point_of_interest_natural_feature
-}
-
-
 #Walls of Nikaea
 MA_nikaea_walls = {
 	type_icon = "MA_nikaea_walls.dds"
@@ -1220,18 +1205,6 @@ MA_vatican = {
 	flag = travel_point_of_interest_religious
 	flag = holy_building
 	flag = religious_studies_location
-}
-MA_diocletian_palace = {
-	type_icon = "MA_diocletian_palace.dds"
-	asset = { type = pdxmesh name = diocletian_palace_mesh }
-	cost_gold = main_building_tier_1_cost
-	construction_time = slow_construction_time
-	county_holder_character_modifier = { monthly_prestige = 3 monthly_dynasty_prestige = 0.3 barons_and_minor_landholders_tax_contribution_mult = 0.1 }
-	county_modifier = { development_growth_factor = 0.2 development_growth = 0.2 }
-	province_modifier = { defender_holding_advantage = 4 garrison_size = 0.2 }
-	ai_value = { base = 100 }
-	type = special
-	flag = travel_point_of_interest_wonder
 }
 #Aetna
 MA_aetna = {
@@ -2804,10 +2777,10 @@ heptapyrgian_mithraeum_01 = {
 LR_mallorca_norse_palace = {
 	asset = {
 		type = pdxmesh
-		name = lejre_hall_mesh
+		name = fp2_building_special_aljaferia_mesh
 	}
 
-	type_icon = "fp2_building_special_aljaferia_mesh.dds"
+	type_icon = "aljaferia.dds"
 
 	construction_time = very_slow_construction_time
 	cost_gold = 1000
@@ -2837,4 +2810,72 @@ LR_mallorca_norse_palace = {
 
 	flag = travel_point_of_interest_diplomatic
 	flag = travel_point_of_interest_martial
+}
+#Axum Stelae Field
+MA_axum_stelae = {
+	type_icon = "MA_axum_stelae.dds"
+	asset = { type = pdxmesh name = axum_stelae_mesh }
+	cost_gold = main_building_tier_1_cost
+	construction_time = slow_construction_time
+	county_holder_character_modifier = { monthly_dynasty_prestige_mult = 0.05 legitimacy_gain_mult = 0.1 close_relative_opinion = 5 }
+	county_modifier = { monthly_county_control_growth_factor = 0.1 county_opinion_add = 10 }
+	ai_value = { base = 100 }
+	type = special
+	flag = travel_point_of_interest_wonder
+}
+#Rock of Cashel
+MA_rock_cashel = {
+	type_icon = "MA_rock_cashel.dds"
+	asset = { type = pdxmesh name = rock_cashel_mesh }
+	cost_gold = main_building_tier_1_cost
+	construction_time = slow_construction_time
+	can_construct = { required_culture_era = { ERA = high } }
+	county_holder_character_modifier = { same_culture_opinion = 5 legitimacy_gain_mult = 0.1 }
+	county_modifier = { tax_mult = 0.1 monthly_county_control_growth_factor = 0.1 }
+	province_modifier = { fort_level = 4 defender_holding_advantage = 4 }
+	ai_value = { base = 100 }
+	type = special
+	flag = travel_point_of_interest_martial
+}
+#Duomo Brescia
+MA_duomo_brescia = {
+	type_icon = "MA_duomo_brescia.dds"
+	asset = { type = pdxmesh name = duomo_brescia_mesh }
+	cost_gold = main_building_tier_1_cost
+	construction_time = slow_construction_time
+	can_construct = { required_culture_era = { ERA = high } required_religion = { RELIGION = christianity } }
+	is_enabled = { required_religion = { RELIGION = christianity } }
+	county_holder_character_modifier = { monthly_piety_gain_per_happy_powerful_vassal_add = 0.1 parochial_opinion = 5 zealot_opinion = 5 }
+	county_modifier = { development_growth_factor = 0.2 development_growth = 0.3 }
+	province_modifier = { monthly_income = 2 }
+	type = special
+	flag = travel_point_of_interest_religious
+	flag = holy_building
+}
+#Rock of Canossa
+MA_rock_canossa = {
+	type_icon = "MA_rock_canossa.dds"
+	asset = { type = pdxmesh name = rock_canossa_mesh }
+	can_construct = { required_culture_era = { ERA = early } }
+	cost_gold = main_building_tier_1_cost
+	construction_time = slow_construction_time
+	county_holder_character_modifier = { monthly_piety_gain_per_happy_powerful_vassal_add = 0.1 }
+	county_modifier = { monthly_county_control_growth_factor = 0.3 levy_size = 0.3 }
+	province_modifier = { fort_level = 3 garrison_size = 0.3 }
+	ai_value = { base = 100 }
+	type = special
+	flag = travel_point_of_interest_martial
+}
+#Tower of Pisa
+MA_tower_pisa = {
+	type_icon = "MA_tower_pisa.dds"
+	asset = { type = pdxmesh name = tower_pisa_mesh }
+	can_construct = { required_culture_era = { ERA = high } }
+	cost_gold = main_building_tier_1_cost
+	construction_time = slow_construction_time
+	county_holder_character_modifier = { monthly_prestige_gain_mult = 0.05 city_holding_build_gold_cost = -0.1 parochial_opinion = 5 }
+	county_modifier = { development_growth_factor = 0.2 tax_mult = 0.2 }
+	ai_value = { base = 100 }
+	type = special
+	flag = travel_point_of_interest_learning
 }
