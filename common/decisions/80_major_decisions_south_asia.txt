@@ -33,8 +33,6 @@ become_chakravarti_decision = {
 			religion = religion:hinduism_religion
 			religion = religion:buddhism_religion
 			religion = religion:jainism_religion
-			faith = { has_doctrine = tenet_eastern_syncretism }
-			faith = { has_doctrine = lux_doctrine_eastern_ascendant }
 		}
 		highest_held_title_tier >= tier_kingdom
 		capital_province = {
@@ -50,11 +48,9 @@ become_chakravarti_decision = {
 	}
 
 	is_valid = {
-		#completely_controls_region = world_india
 		completely_controls = title:e_rajastan
 		completely_controls = title:e_deccan
 		completely_controls = title:e_bengal
-		completely_controls = title:e_punjab
 		piety_level >= 5
 	}
 
@@ -413,105 +409,7 @@ form_bene_israel_decision = {
 ######################################
 
 ### Spread the [ROOT.Char.GetFaith.GetNameNoTooltip] Faith ###
-spread_theravada_faith_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/hindu_religious.dds"
-	}
-	decision_group_type = major
-	title = spread_theravada_faith_decision
-	desc = spread_theravada_faith_decision_desc
-	confirm_text = spread_theravada_faith_decision_confirm # had to use an override for some reason
-	selection_tooltip = spread_theravada_faith_decision_tooltip # same here
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
-	cooldown = { days = 365 }
-
-	is_shown = {
-		highest_held_title_tier >= tier_kingdom
-		faith = faith:theravada
-
-		OR = {
-			culture = culture:burmese
-			culture = culture:mon
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:spread_theravada_faith_flag
-			}
-		}
-		any_vassal = { #so that potential later events don't break
-			has_faith = faith:ari
-			is_powerful_vassal = yes
-		}
-		exists = cp:councillor_court_chaplain
-	}
-
-	is_valid = {
-		highest_held_title_tier >= tier_kingdom
-		faith = faith:theravada
-
-		OR = {
-			culture = culture:burmese
-			culture = culture:mon
-		}
-		prestige_level >= 3
-		piety_level >= 2
-	}
-	
-	is_valid_showing_failures_only = {
-		is_landed = yes
-	}
-
-	cost = {
-		piety = {
-			value = major_piety_value
-		}
-		gold = {
-			value = 0
-			if = {
-				limit = {
-					has_treasury = no
-				}
-				add = medium_gold_value
-			}
-		}
-		treasury = {
-			value = 0
-			if = {
-				limit = {
-					has_treasury = yes
-				}
-				add = medium_gold_value
-			}
-		}
-		prestige = {
-			value = massive_prestige_value
-		}
-	}
-
-	effect = {
-
-		show_as_tooltip = {
-			custom_tooltip = spread_theravada_faith_decision_cus_tt
-		}
-
-		trigger_event = {
-			id = south_asia.0030
-		}
-	}
-
-	ai_will_do = {
-		base = 100
-	}
-}
 
 ######################################
 ##	Found the empire of Hindustan	##

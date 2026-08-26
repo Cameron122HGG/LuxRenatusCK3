@@ -1,0 +1,270 @@
+﻿unop_total_friends = {
+	value = 0
+	every_relation = {
+		type = friend
+		limit = { NOT = { has_character_flag = about_to_die_but_not_dead_yet_flag  } }
+		add = 1
+	}
+}
+
+lifestyle_blademaster_xp_gain_miniscule_value = {
+	value = { 1 3 }
+}
+
+#Minor is already defined (3-7)
+
+lifestyle_blademaster_xp_gain_medium_value = {
+	value = { 8 12 }
+}
+
+lifestyle_blademaster_xp_gain_major_value = {
+	value = { 13 17 }
+}
+
+lifestyle_blademaster_xp_gain_massive_value = {
+	value = 20
+}
+
+lifestyle_blademaster_xp_loss_minor_value = {
+	value = -5
+}
+
+lifestyle_blademaster_xp_loss_medium_value = {
+	value = -10
+}
+
+lifestyle_blademaster_xp_loss_major_value = {
+	value = -15
+}
+
+opinion_of_prev = {
+	value = 0
+	if = {
+		limit = { save_temporary_opinion_value_as = { name = temp_op target = prev } }
+		add = scope:temp_op
+	}
+}
+
+opinion_of_root = {
+	value = 0
+	if = {
+		limit = { save_temporary_opinion_value_as = { name = temp_op target = root } }
+		add = scope:temp_op
+	}
+}
+
+root_opinion = {
+	value = 0
+	if = {
+		limit = { root = { save_temporary_opinion_value_as = { name = temp_op target = prev } } }
+		add = scope:temp_op
+	}
+}
+
+activity_host_soldier_female_chance = {
+	if = {
+		limit = {
+			NOT = { dummy_female = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:activity.activity_host } } }
+			dummy_male = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:activity.activity_host } }
+		}
+		add =  0
+	}
+	else_if = {
+		limit = {
+			dummy_female = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:activity.activity_host } }
+			NOT = { dummy_male = { can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:activity.activity_host } } }
+		}
+		add =  100
+	}
+	else = {
+	 	add = 50
+	}
+}
+
+unop_current_situation_gold_increased_ransom = {
+	if = {
+		limit = {
+			NOT = {
+				exists = liege
+			}
+		}
+		add = gold
+	}
+	else_if = {
+		limit = {
+			is_ruler = no
+		}
+		add = liege.gold
+	}
+	else = {
+		add = gold
+	}
+	max = increased_ransom_cost_value
+}
+
+unop_court3031_number_of_counties_of_culture = {
+	value = 0
+	every_sub_realm_county = {
+		limit = {
+			culture = root.var:unop_court_3031_culture
+		}
+		add = 1
+	}
+}
+
+unop_favour_the_countryside_basques_decision_counties_to_control_current_value = {
+	value = 0
+	every_county_in_region = {
+		region = dlc_fp2_old_vasconia
+		limit = {
+			root = { completely_controls = prev }
+		}
+		add = 1
+	}
+}
+
+unop_paiza_merchant_distance_modifier_value = {
+	save_temporary_scope_as = merchant_origin_province
+	value = 0
+	if = {
+		limit = { "scope:merchant_origin_province.squared_distance(root.domicile.domicile_location)" <= squared_distance_small }
+		add = 200
+	}
+	else_if = {
+		limit = { "scope:merchant_origin_province.squared_distance(root.domicile.domicile_location)" <= squared_distance_medium }
+		add = 100
+	}
+	else_if = {
+		limit = { "scope:merchant_origin_province.squared_distance(root.domicile.domicile_location)" <= squared_distance_large }
+		add = 50
+	}
+	else_if = {
+		limit = { "scope:merchant_origin_province.squared_distance(root.domicile.domicile_location)" <= squared_distance_huge }
+		add = 20
+	}
+	else_if = {
+		limit = { "scope:merchant_origin_province.squared_distance(root.domicile.domicile_location)" <= squared_distance_almost_massive }
+		add = 10
+	}
+	else_if = {
+		limit = { "scope:merchant_origin_province.squared_distance(root.domicile.domicile_location)" <= squared_distance_massive }
+		add = 5
+	}
+}
+
+khlon_glan_improve_court_value = {
+	value = 0
+	if = {
+		limit = {
+			aptitude = {
+				court_position = khlon_glan_court_position
+				value = 4
+			}
+		}
+		value = 10
+	}
+	else_if = {
+		limit = {
+			aptitude = {
+				court_position = khlon_glan_court_position
+				value = 3
+			}
+		}
+		value = 7
+	}
+	else_if = {
+		limit = {
+			aptitude = {
+				court_position = khlon_glan_court_position
+				value = 2
+			}
+		}
+		value = 5
+	}
+	else_if = {
+		limit = {
+			aptitude = {
+				court_position = khlon_glan_court_position
+				value = 1
+			}
+		}
+		value = 3
+	}
+	else_if = {
+		limit = {
+			aptitude = {
+				court_position = khlon_glan_court_position
+				value = 0
+			}
+		}
+		value = 2
+	}
+}
+
+# Decision influence costs
+unop_ask_western_help_influence_cost = {
+	value = massive_influence_value
+	multiply = 2
+}
+
+unop_foster_integration_influence_cost = {
+	value = major_influence_value
+	multiply = 2
+}
+
+unop_gather_faction_support_influence_cost = {
+	value = massive_influence_value
+	multiply = 2
+}
+
+unop_soryo_administration_influence_cost = {
+	value = monumental_influence_gain
+	multiply = 2
+}
+
+unop_house_head_consults_heaven_influence_cost = {
+	value = 2000
+	add = {
+		value = 0
+		every_close_or_extended_family_member = {
+			limit = { is_governor = yes }
+			add = 10
+		}
+		multiply = -1
+	}
+	add = {
+		value = 0
+		every_close_or_extended_family_member = {
+			limit = { merit_level >= 4 }
+			add = 10
+		}
+		multiply = -1
+	}
+	if = {
+		limit = { scope:discount_none ?= yes }
+		multiply = 0.5
+	}
+	min = 100
+}
+
+# Those are the values that were used before the nerf made after community hatred of the harm events
+unop_old_harm_event_random_list_low_odd_success_value = 20
+unop_old_harm_event_random_list_low_odd_failure_value = 80
+unop_old_harm_event_random_list_medium_odd_success_value = 50
+unop_old_harm_event_random_list_medium_odd_failure_value = 50
+unop_old_harm_event_random_list_high_odd_success_value = 60
+unop_old_harm_event_random_list_high_odd_failure_value = 40
+
+unop_landed_title_faith_dominant_gender_female_chance = {
+	if = {
+		limit = { faith = { has_doctrine = doctrine_gender_male_dominated } }
+		add = 0
+	}
+	else_if = {
+		limit = { faith = { has_doctrine = doctrine_gender_female_dominated } }
+		add = 100
+	}
+	else = {
+		add = 50
+	}
+}
