@@ -1,0 +1,14 @@
+﻿###################
+#SCRIPTED TRIGGERS#
+required_innovation = {
+	scope:holder.culture = { has_innovation = innovation_$INNOVATION$ }
+}
+required_culture_era = {
+	scope:holder.culture = { has_cultural_era_or_later = culture_era_$ERA$_medieval }
+}
+required_religion = {
+	OR = {
+		scope:holder.religion = religion:$RELIGION$_religion
+		custom_description = { text = holy_site_building_trigger barony = { is_holy_site_of = scope:holder.faith } }
+	}
+}
