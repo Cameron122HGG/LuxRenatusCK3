@@ -1,0 +1,133 @@
+﻿l_english:
+#Alexandrian Administration
+ alexandrian_administrative_government: "Alexandrian Administrative"
+ alexandrian_administrative_icon_concept: "@government_type_alexandrian_administrative!"
+ alexandrian_administrative_government_with_icon: "@government_type_alexandrian_administrative! $alexandrian_administrative_government$"
+ alexandrian_administrative_government_adjective: "Alexandrian Administrative"
+ alexandrian_administrative_government_realm: "Alexandrian Realm"
+ alexandrian_administrative_government_desc: "\n$game_concept_alexandrian_administrative_desc$\n\n#F The Alexandrian Administrative Monarchy is a form of government inspired by the Hellenistic Successor Kingdoms left in the wake of Alexander the Great's Empire. It emphasizes strong rule by the monarch, with a well-developed administrative system taking inspirations from both Greek and Near Eastern World. This government type allows for efficient governance, urban development, and strong military organization, reflecting the principles of Enlightened Monarchy. #!"
+ alexandrian_administrative_government_vassals_label: "Alexandrian [obligations|E] are based on [GetPlayer.Custom('GetProvinceAdministrationConcept')]"
+ alexandrian_admin_vassal: "Alexandrian Administrative"
+ alexandrian_admin_vassal_desc: "$game_concept_alexandrian_administrative_desc$"
+ alexandrian_administrative_obligations: "Alexandrian Administrative Obligations"
+ alexandrian_administrative_themes: "Available Administration Types"
+ alexandrian_administrative_theme_balanced: "@balanced_administration! Balanced Administration"
+ alexandrian_administrative_theme_balanced_short: "@balanced_administration! Balanced"
+ alexandrian_administrative_theme_balanced_text_icon: "@balanced_administration!"
+ alexandrian_administrative_theme_balanced_desc: "#flavor A well balanced administration seeks moderation to ensure equal attention in all areas of governance.#!"
+ alexandrian_administrative_theme_military: "@military_administration! Military Administration"
+ alexandrian_administrative_theme_military_short: "@military_administration! Military"
+ alexandrian_administrative_theme_military_text_icon: "@military_administration!"
+ alexandrian_administrative_theme_military_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!"
+ alexandrian_administrative_theme_military_desc: "#flavor A military administration puts all energy on recruiting and training formidable troops for the imperial army.#!"
+ alexandrian_administrative_theme_civilian: "@civilian_administration! Civilian Administration"
+ alexandrian_administrative_theme_civilian_short: "@civilian_administration! Civilian"
+ alexandrian_administrative_theme_civilian_text_icon: "@civilian_administration!"
+ alexandrian_administrative_theme_civilian_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [stewardship|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\n[influence|E] gained from constructing [buildings|E] in held [counties|E] is increased"
+ alexandrian_administrative_theme_civilian_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+ alexandrian_administrative_theme_frontier: "@frontier_administration! Frontier Administration"
+ alexandrian_administrative_theme_frontier_short: "@frontier_administration! Frontier"
+ alexandrian_administrative_theme_frontier_text_icon: "@frontier_administration!"
+ alexandrian_administrative_theme_frontier_benefits: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [prowess|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\nUnlocks the #high $EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]\nEnables [raiding|E]"
+ alexandrian_administrative_theme_frontier_desc: "#flavor One cannot leave the borders undefended. A frontier administration will ensure the realm's defenses and stand ready to repel any potential invaders.#!"
+ alexandrian_administrative_theme_imperial: "@imperial_administration! Imperial Administration"
+ alexandrian_administrative_theme_imperial_short: "@imperial_administration! Imperial"
+ alexandrian_administrative_theme_imperial_text_icon: "@imperial_administration!"
+ alexandrian_administrative_theme_imperial_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [prestige_level|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_currency_level_increase_value')|+0%/] for each level#!#!\nIncreases [powerful_family|E] Rating\nCannot have appointment revoked without a [revoke_title_reason|E]"
+ alexandrian_administrative_theme_imperial_desc: "#flavor An imperial administration provides a significant level of autonomy and freedom from many regular responsibilities. It is the most prestigious administration one can have.#!"
+ alexandrian_administrative_theme_naval: "@naval_administration! Naval Administration"
+ alexandrian_administrative_theme_naval_short: "@naval_administration! Naval"
+ alexandrian_administrative_theme_naval_text_icon: "@naval_administration!"
+ alexandrian_administrative_theme_naval_benefits: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] for every controlled #high [GetBuilding('common_tradeport_01').GetTypeName]#!#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_building_increase_value')|+0%/] for each [GetBuilding('common_tradeport_01').GetTypeName]#!#!\nUnlocks the #high $NAVAL_EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]"
+ alexandrian_administrative_theme_naval_desc: "#flavor The navy is the backbone of any expansive realm. With a dedicated naval administration, safety and efficiency at sea will be highly increased.#!"
+ ALEXANDRIAN_ADMINISTRATIVE_CONTRACT: "[Character.Custom( 'GetProvinceConceptNoTooltip' )] Appointment"
+ alexandrian_administrative_theme_frontier_valid_desc: "The [subject.Custom( 'GetProvinceConceptNoTooltip' )] must border another [realm|E]"
+ alexandrian_administrative_theme_imperial_valid_desc: "Only one [subject.Custom( 'GetProvinceConceptNoTooltip' )] can have this administration active"
+ alexandrian_administrative_theme_naval_valid_desc: "The [subject.Custom( 'GetProvinceConceptNoTooltip' )] must be Coastal"
+ alexandrian_administrative_forbids_revocation_desc: "You cannot revoke [titles|E] or Appointments from a [subject|E] governing with the [GetSubjectContractType( 'alexandrian_administrative_themes' ).GetObligationName( 'alexandrian_administrative_theme_imperial' )] unless you have a [revoke_title_reason|E]"
+ 
+ alexandrian_admin_state_ownership: "@civilian_administration! State Land Ownership"
+ 
+ alexandrian_admin_state_ownership_20: "Minor"
+ alexandrian_admin_state_ownership_20_short: "Minor"
+ alexandrian_admin_state_ownership_20_text_icon: "@civilian_administration!"
+ alexandrian_admin_state_ownership_20_benefits: "$EFFECT_LIST_BULLET$ Raises [governor_efficiency|E] by $10|P$"
+ #alexandrian_admin_state_ownership_20_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+
+ alexandrian_admin_state_ownership_30: "Sizeable"
+ alexandrian_admin_state_ownership_30_short: "Sizeable"
+ alexandrian_admin_state_ownership_30_text_icon: "@civilian_administration!"
+ alexandrian_admin_state_ownership_30_benefits: "$EFFECT_LIST_BULLET$ [governor_efficiency|E] is $Unchanged|Z$"
+ #alexandrian_admin_state_ownership_30_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+
+ alexandrian_admin_state_ownership_40: "Extensive"
+ alexandrian_admin_state_ownership_40_short: "Extensive"
+ alexandrian_admin_state_ownership_40_text_icon: "@civilian_administration!"
+ alexandrian_admin_state_ownership_40_benefits: "$EFFECT_LIST_BULLET$ Lowers [governor_efficiency|E] by $10|N$"
+ #alexandrian_admin_state_ownership_40_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+
+ alexandrian_admin_state_ownership_50: "Dominant"
+ alexandrian_admin_state_ownership_50_short: "Dominant"
+ alexandrian_admin_state_ownership_50_text_icon: "@civilian_administration!"
+ alexandrian_admin_state_ownership_50_benefits: "$EFFECT_LIST_BULLET$ Lowers [governor_efficiency|E] by $25|N$"
+ #alexandrian_admin_state_ownership_50_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+
+
+ ##
+ alexandrian_admin_citizenship: "@imperial_administration! Citizenship Inclusion Policy"
+ 
+ alexandrian_admin_citizenship_1: "Minimal"
+ alexandrian_admin_citizenship_1_short: "Minimal"
+ alexandrian_admin_citizenship_1_text_icon: "@imperial_administration!"
+ alexandrian_admin_citizenship_1_benefits: ""
+
+ alexandrian_admin_citizenship_2: "Limited"
+ alexandrian_admin_citizenship_2_short: "Limited"
+ alexandrian_admin_citizenship_2_text_icon: "@imperial_administration!"
+ alexandrian_admin_citizenship_2_benefits: "" 
+
+ alexandrian_admin_citizenship_3: "Full"
+ alexandrian_admin_citizenship_3_short: "Full"
+ alexandrian_admin_citizenship_3_text_icon: "@imperial_administration!"
+ alexandrian_admin_citizenship_3_benefits: ""  
+ 
+ ##
+ alexandrian_admin_military_designation: "@frontier_administration! Province Militarization"
+ 
+ alexandrian_admin_military_designation_1: "Minimal"
+ alexandrian_admin_military_designation_1_short: " Minimal"
+ alexandrian_admin_military_designation_1_text_icon: "@frontier_administration!"
+ alexandrian_admin_military_designation_1_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\n$EFFECT_LIST_BULLET$ Increases [governor_efficiency|E] based on [stewardship|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\n[influence|E] gained from constructing [buildings|E] in held [counties|E] is increased"
+ alexandrian_admin_military_designation_1_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!" 
+ 
+ alexandrian_admin_military_designation_2: "Limited"
+ alexandrian_admin_military_designation_2_short: "Limited"
+ alexandrian_admin_military_designation_2_text_icon: "@frontier_administration!"
+ alexandrian_admin_military_designation_2_desc: "#flavor A well balanced administration seeks moderation to ensure equal attention in all areas of governance.#!" 
+ 
+ alexandrian_admin_military_designation_3: "Full"
+ alexandrian_admin_military_designation_3_short: "Full"
+ alexandrian_admin_military_designation_3_text_icon: "@frontier_administration!"
+ alexandrian_admin_military_designation_3_benefits: "#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!"
+ alexandrian_admin_military_designation_3_desc: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [subject|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [subject|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\nUnlocks the #high $EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]\nEnables [raiding|E]"
+
+ ##
+ alexandrian_admin_hereditary_appointment: "@government_type_feudal! Governor Appointment" 
+ 
+ alexandrian_admin_hereditary_appointment_no: "Open"
+ alexandrian_admin_hereditary_appointment_no_short: "Open"
+ alexandrian_admin_hereditary_appointment_no_text_icon: "@government_type_feudal!"
+ alexandrian_admin_hereditary_appointment_no_benefits: "" 
+ 
+ alexandrian_admin_hereditary_appointment_yes: "Hereditary"
+ alexandrian_admin_hereditary_appointment_yes_short: "Hereditary"
+ alexandrian_admin_hereditary_appointment_yes_text_icon: "@government_type_feudal!"
+ alexandrian_admin_hereditary_appointment_yes_benefits: "$EFFECT_LIST_BULLET$ Gives current Governor's children and [house|E] primacy in appointment to this Governorship" 
+  
+ alexandrian_admin_count_dev_fund: "The amount of [development|E] the province contributes to the liege's realm is determined by the [GetPlayer.Custom('GetProvinceAdministrationConcept')] of the province. The higher the contribution, the more obligations the province has towards its liege, but also the more benefits it receives in return."
+ alexandrian_admin_count_dev_fund_count: "Low Rank"
+ alexandrian_admin_count_dev_fund_count_short: "Low"
+ alexandrian_admin_count_dev_fund_none: "None"
+ alexandrian_admin_count_dev_fund_none_short: "None"
+
+
