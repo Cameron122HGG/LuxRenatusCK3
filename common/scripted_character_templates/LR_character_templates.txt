@@ -45,3 +45,51 @@ LR_tgp_gaul_sacral_scion_template = {
 		}
 	}
 }
+
+LR_tgp_gaul_yearly_events_pearl_diver_template = {
+	age = { 18 70 }
+	dynasty = none
+	#Force the character to always be brave and calm
+	trait = brave
+	trait = calm
+	#Have it either be diligent or patient
+	random_traits_list = {
+		count = 1
+		diligent = {}
+		patient = {}
+	}
+	#Have it either be whole of body or athletic
+	random_traits_list = {
+		count = 1
+		whole_of_body = {}
+		athletic = {}
+	}
+	random_traits = no
+	prowess = { 7 10 }
+	diplomacy = { 6 10 }
+	martial = { 6 8 }
+	stewardship = { 5 8 }
+	intrigue = { 2 5 }
+	learning = { 8 12 }
+	faith = root.location.faith
+	culture = root.location.culture
+
+	#Majority of the divers were female
+	gender_female_chance = {
+		if = {
+			limit = { 
+				root.location.faith = { has_doctrine = doctrine_gender_male_dominated } 
+			}
+			add = 90
+		}
+		else_if = {
+			limit = { 
+				root.location.faith = { has_doctrine = doctrine_gender_female_dominated } 
+			}
+			add = 10
+		}
+		else = {
+			add = 50
+		}
+	}
+}
