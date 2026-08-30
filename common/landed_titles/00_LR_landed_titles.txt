@@ -36418,63 +36418,63 @@ e_pontus = {
 		}
 	}
 
-		k_trebizond = {
-			color = { 102 97 97 }
-			capital = c_trebizond
-			cultural_names = {
-				name_list_greek = lx_trapezounta
-				name_list_hellenistic = lx_trapezous
-				name_list_roman = lx_trebizond
-			}
+	k_trebizond = {
+		color = { 102 97 97 }
+		capital = c_trebizond
+		cultural_names = {
+			name_list_greek = lx_trapezounta
+			name_list_hellenistic = lx_trapezous
+			name_list_roman = lx_trebizond
+		}
 
-			ai_primary_priority = {
-				if = {
-					limit = {
+		ai_primary_priority = {
+			if = {
+				limit = {
+					culture = culture:greek
+				}
+				add = @correct_culture_primary_score
+			}
+			if = {
+				limit = {
+					NOT = {
 						culture = culture:greek
 					}
-					add = @correct_culture_primary_score
-				}
-				if = {
-					limit = {
-						NOT = {
-							culture = culture:greek
-						}
-						culture = {
-							OR = {
-								has_cultural_pillar = heritage_byzantine
-								has_cultural_pillar = heritage_caucasian
-							}
+					culture = {
+						OR = {
+							has_cultural_pillar = heritage_byzantine
+							has_cultural_pillar = heritage_caucasian
 						}
 					}
-					add = @better_than_the_alternatives_score
+				}
+				add = @better_than_the_alternatives_score
+			}
+		}
+
+		d_sebasteia  = {
+			color = { 78 74 75 }
+			capital = c_sebasteia
+
+			#cultural_names = {
+				#name_list_greek = lx_armenia_minor
+			#}
+
+			c_sebasteia = {
+				color = { 63 59 61 }
+
+				cultural_names = {
+					name_list_turkish = cn_sivas
+				}
+
+				b_sebasteia = {
+					color = { 63 59 61 }
+					province = 5602
+				}
+
+				b_malandra = {
+					color = { 63 59 61 }
+					province = 5603
 				}
 			}
-
-			d_sebasteia  = {
-				color = { 78 74 75 }
-				capital = c_sebasteia
-
-				#cultural_names = {
-					#name_list_greek = lx_armenia_minor
-				#}
-
-				c_sebasteia = {
-					color = { 63 59 61 }
-
-					cultural_names = {
-						name_list_turkish = cn_sivas
-					}
-
-					b_sebasteia = {
-						color = { 63 59 61 }
-						province = 5602
-					}
-
-					b_malandra = {
-						color = { 63 59 61 }
-						province = 5603
-					}
-				}
 
 				c_sebastopolis = {
 					color = { 70 66 68 }
@@ -36815,11 +36815,10 @@ e_pontus = {
 					}
 				}
 			}
-		}
-
+	}
 	k_pontus = {
 		color = { 10 81 243 }
-		capital = c_helenopontus
+		capital = c_honorias
 
 			cultural_names = {
 				name_list_greek = lx_pontos
@@ -37516,7 +37515,6 @@ e_pontus = {
 			}
 		}
 	}
-
 	k_armenian_principality = {
 		color = { 223 96 96 }
 		capital = c_hayk
@@ -37533,7 +37531,6 @@ e_pontus = {
 			}
 		}
 	}
-
 	k_old_armenia = {
 		color = { 223 96 96 }
 		capital = c_hayk
@@ -37551,9 +37548,6 @@ e_pontus = {
 			}
 		}
 	}
-
-
-
 	k_georgia = {
 		color = { 200 193 193 }
 		capital = c_tbilisi
