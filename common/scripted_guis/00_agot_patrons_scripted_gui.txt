@@ -22,9 +22,19 @@ choose_patron_god_generic = {
 	}
 
 	is_valid = {
-		piety >= minor_piety_value
+		trigger_if = {
+			limit = {
+				has_perk = zealous_proselytizer_perk
+			}
+			piety >= 20
+		}
+		trigger_else = {
+			piety >= minor_piety_value
+		}
 		var:selected_faith = faith
-	}
+	}	
+	
+	
 
 	effect = {
 		parse_patron_god_name_flag_complex = { PATRON_GOD = scope:patron_god_name APPLY = agot_set_patron_god_effect }
