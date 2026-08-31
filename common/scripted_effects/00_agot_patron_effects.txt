@@ -4,7 +4,7 @@ agot_set_patron_god_effect = {
 	if = {
 		limit = {
 			NOT = {
-				has_character_modifier = $PATRON_GOD$_modifier
+				has_character_modifier = patron_god_$PATRON_GOD$_modifier
 			}
 		}
 
@@ -27,7 +27,7 @@ agot_set_patron_god_effect = {
 			name = patron_god
 			value = flag:$PATRON_GOD$
 		}
-		add_character_modifier = $PATRON_GOD$_modifier
+		add_character_modifier = patron_god_$PATRON_GOD$_modifier
 		set_variable = { name = recent_patron_god_selected value = yes years = 5 }
 	}
 }
@@ -39,7 +39,7 @@ agot_clear_patron_god = {
 }
 
 agot_remove_patron_god_modifier = {
-	remove_character_modifier = $PATRON_GOD$_modifier
+	remove_character_modifier = patron_god_$PATRON_GOD$_modifier
 }
 debug_log_patron_choice = {
 	debug_log = "DEBUG: Patron confirm button clicked"
