@@ -14,13 +14,10 @@ widget = {
 				size = { 200 30 }
 				fontsize = 20
 				font = StandardGameFont
-				default_format = "#color_white;italic"
+				default_format = "#medium;glow_color:{0.2,0.2,0.2,1}"
 				align = left|nobaseline
 
 				text = "[ProgressInterface.GetProgress]"
-				background = {
-					using = Background_Area_Dark
-				}
 			}
 		}
 
@@ -31,6 +28,7 @@ widget = {
 			margin = { 50 25 }
 			autoresize = yes
 			min_width = 600
+			visible = "[Not(StringIsEmpty(GetLoadTip))]"
 
 			text = "[GetLoadTip]"
 			default_format = "#color_white;italic"
