@@ -93,3 +93,97 @@ LR_tgp_gaul_yearly_events_pearl_diver_template = {
 		}
 	}
 }
+
+LR_tgp_gaul_yearly_events_tengu_warrior_template = {
+	age = { 35 70 }
+	dynasty = none
+	gender_female_chance = root_soldier_female_chance
+	trait = reclusive
+	trait = lifestyle_blademaster
+
+	#Give two of the following personality traits
+	random_traits_list = {
+		count = 2
+		brave = {}
+		calm = {}
+		content = {}
+		diligent = {}
+		just = {}
+		patient = {}
+		impatient = {}
+		temperate = {}
+		zealous = {}
+	}
+	
+	#Give one of the following personality traits
+	random_traits_list = {
+		count = 1
+		wrathful = {}
+		vengeful = {}
+		humble = {}
+		arrogant = {}
+		arbitrary = {}
+		cynical = {}
+		callous = {}
+		stubborn = {}
+	}
+
+	#Give one of the following character traits
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+		education_martial_2 = {}
+		education_martial_3 = {}
+	}
+
+	#Give one of the following commander traits
+	random_traits_list = {
+		count = 1
+		aggressive_attacker = {}
+		flexible_leader = {}
+		forder = {}
+		organizer = {}
+		unyielding_defender = {}
+	}
+
+	#Give one of the following health/physical traits
+	random_traits_list = {
+		count = 1
+		one_eyed = {}
+		scarred = {}
+	}
+
+	#Give random experience to the blademaster/scarred traits
+	after_creation = {
+		add_random_tiered_trait_xp_effect = {
+			TRAIT = lifestyle_blademaster
+			LEVEL_1 = yes
+			LEVEL_3 = yes
+		}
+		add_random_tiered_trait_xp_effect = {
+			TRAIT = scarred
+			LEVEL_1 = yes
+			LEVEL_3 = yes
+		}
+	}
+
+	random_traits = no
+	stewardship = { 3 7 }
+	intrigue = { 2 8 }
+	learning = { 3 10 }
+
+	diplomacy = {
+		min_template_decent_skill
+		max_template_medium_skill
+	}
+	martial = {
+		min_template_decent_skill
+		max_template_high_skill
+	}
+	prowess = {
+		min_template_decent_skill
+		max_template_high_skill
+	}
+	faith = root.location.faith
+	culture = root.location.culture
+}
