@@ -104,7 +104,7 @@ types PatronWindow
 					}
 				}
 			}
-			patron_god_select_confirm = { }
+			patron_select_confirm = { }
 		}
 		
 	}
@@ -158,7 +158,7 @@ types PatronWindow
 			tooltip = PATRON_GOD_SELECTION_TOOLTIP
 			tooltip_visible = "[Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, Scope.GetFlagName))]"
 			onclick = "[GetVariableSystem.Set('selected_patron_god', Scope.GetFlagName)]"
-			onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'true')]"
+			onclick = "[GetVariableSystem.Set('show_patron_select_confirm', 'true')]"
 			onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'patron_god_name', MakeScopeFlag( GetVariableSystem.Get( 'selected_patron_god' ))).End )]"
 
 			hbox = {
@@ -290,11 +290,11 @@ types PatronWindow
 		}
 	}
 
-	type patron_god_select_confirm = widget 
+	type patron_select_confirm = widget 
 	{
-		name = "patron_god_select_confirm"
+		name = "patron_select_confirm"
 
-		visible = "[And(GetVariableSystem.HasValue('show_patron_god_select_confirm','true'), Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, GetVariableSystem.Get('selected_patron_god'))))]"
+		visible = "[And(GetVariableSystem.HasValue('show_patron_select_confirm','true'), Not(EqualTo_string(GetPlayer.MakeScope.Var('patron_god').GetFlagName, GetVariableSystem.Get('selected_patron_god'))))]"
 
 		datacontext = "[GetVariableSystem]"
 		datacontext = "[GetScriptedGui('choose_patron_god_generic')]"
@@ -327,7 +327,7 @@ types PatronWindow
 			header_pattern = {
 				layoutpolicy_horizontal = expanding
 				blockoverride "button_close" {
-					onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'false')]"
+					onclick = "[GetVariableSystem.Set('show_patron_select_confirm', 'false')]"
 				}
 				blockoverride "header_text" {
 					text = "[Localize(Concatenate('patron_god_', GetVariableSystem.Get('selected_patron_god')))]"
@@ -368,10 +368,10 @@ types PatronWindow
 				margin_left = 40
 				margin_right = 40
 				button_primary_big = {
-					text = patron_god_select_confirm
+					text = patron_select_confirm
 					
 					onclick = "[GetScriptedGui('choose_patron_god_generic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('patron_god_name', MakeScopeFlag(GetVariableSystem.Get('selected_patron_god'))).End )]"
-					onclick = "[GetVariableSystem.Set('show_patron_god_select_confirm', 'false')]"
+					onclick = "[GetVariableSystem.Set('show_patron_select_confirm', 'false')]"
 				}
 
 				
