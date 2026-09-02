@@ -39,7 +39,7 @@ template agot_faith_window_state_changes
 		next = _show
 
 		on_start = "[GetVariableSystem.Set('faith_view_tabs', 'beliefs')]"
-		trigger_when = "[And(GetVariableSystem.HasValue('faith_view_tabs', 'patron'), Not(GetScriptedGui('religion_has_patron_gods').IsShown(GuiScope.SetRoot(FaithWindow.GetFaith.MakeScope).End)))]"
+		trigger_when = "[And(GetVariableSystem.HasValue('faith_view_tabs', 'patron_gods'), Not(GetScriptedGui('religion_has_patron_gods').IsShown(GuiScope.SetRoot(FaithWindow.GetFaith.MakeScope).End)))]"
 		on_finish = "[GetScriptedGui('clear_patron_god_list').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 	}
 	state = {
@@ -56,8 +56,8 @@ types PatronWindow
 {
 	type agot_patron_tab_button = button_tab {
 		layoutpolicy_horizontal = expanding
-		onclick = "[GetVariableSystem.Set( 'faith_view_tabs', 'patron' )]"
-		down = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'patron' )]"
+		onclick = "[GetVariableSystem.Set( 'faith_view_tabs', 'patron_gods' )]"
+		down = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'patron_gods' )]"
 		visible = "[GetScriptedGui('religion_has_patron_gods').IsShown(GuiScope.SetRoot(FaithWindow.GetFaith.MakeScope).End)]"
 		
 		raw_text = "[Localize( Concatenate( 'GetMajorPatronTabText_', FaithWindow.GetFaith.GetReligion.GetAdjectiveNoTooltip ))]"
@@ -394,7 +394,7 @@ types PatronWindow
 				button_standard_hover = {
 					layoutpolicy_horizontal = expanding
 					size = { 30 30 }
-					onclick = "[GetVariableSystem.Set( 'faith_view_tabs', 'patron' )]"
+					onclick = "[GetVariableSystem.Set( 'faith_view_tabs', 'patron_gods' )]"
 					onclick = "[OpenGameViewData( 'faith', GetPlayer.GetFaith.GetID )]"
 					onclick = "[GetScriptedGui('get_patron_god_list').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('faith', FaithWindow.GetFaith.MakeScope).End)]"
 					default_format = "#clickable;italic"
@@ -516,7 +516,7 @@ types PatronWindow
 
 	type window_faith_major_patron_tab = vbox {
 		name = "tab_patron"
-		visible = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'patron' )]"
+		visible = "[GetVariableSystem.HasValue( 'faith_view_tabs', 'patron_gods' )]"
 		layoutpolicy_horizontal = expanding
 		layoutpolicy_vertical = expanding
 		datacontext = "[GetIllustration( 'religion_holding' )]"
