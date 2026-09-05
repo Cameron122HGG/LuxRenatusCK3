@@ -1199,6 +1199,170 @@ middle_east_decisions.0013 = {
 ##################################################
 # Create Sultanate of Rum
 ##################################################
+
+middle_east_decisions.0014 = {
+	type = character_event
+	title = middle_east_decisions.0014.t
+	desc = middle_east_decisions.0014.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	right_portrait = {
+		character = scope:roman_emperor
+		animation = disbelief
+	}
+	lower_left_portrait = scope:former_liege
+
+	immediate = {
+		play_music_cue = "mx_cue_positive_effect"
+		save_scope_as = scoped_ruler
+		if = {
+			limit = { top_liege != this }
+			liege = { save_scope_as = former_liege }
+		}
+		if = {
+			limit = { exists = title:e_byzantium.holder }
+			title:e_byzantium.holder = { save_scope_as = roman_emperor }
+		}
+		else_if = {
+			limit = { exists = title:h_roman_empire.holder }
+			title:h_roman_empire.holder = { save_scope_as = roman_emperor }
+		}
+		else_if = {
+			limit = { exists = title:h_eastern_roman_empire.holder }
+			title:h_eastern_roman_empire.holder = { save_scope_as = roman_emperor }
+		}
+
+		legend_seed_new_title_effect = yes
+		# De jure shifts.
+
+		# k_anatolia: d_cilicia d_cibyrrhaeot d_anatolia d_cappadocia
+		# k_pontus: d_paphlagonia d_armeniac d_sebasteia d_charsianon d_chaldia
+		# k_armenia: d_greater_armenia d_vaspurakan d_mesopotamia d_edessa
+		hidden_effect = {
+			title:d_cilicia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_cibyrrhaeot = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_anatolia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_cappadocia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_paphlagonia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_armeniac = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_sebasteia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_charsianon = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_chaldia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			every_held_title = { # Should shift all dejure of all Duchies owned at the time.
+				title_tier = duchy
+				set_de_jure_liege_title = title:k_rum
+			}
+		}
+	}
+
+	option = {
+		name = middle_east_decisions.0014.a
+		create_rum_scripted_effect = yes
+		# Send narrative fluff to other players (if any).
+		every_player = {
+			limit = {
+				this != root
+				OR = {
+					top_liege = scope:former_liege
+					is_roman_emperor_trigger = yes
+				}
+			}
+			trigger_event = middle_east_decisions.0015
+		}
+	}
+}
+
+middle_east_decisions.0015 = {
+	type = character_event
+	title = middle_east_decisions.0014.t
+	desc = {
+		first_valid = {
+			# Liege's reaction.
+			triggered_desc = {
+				trigger = {
+					this = scope:former_liege
+				}
+				desc = middle_east_decisions.0015.desc.liege
+			}
+			triggered_desc = {
+				trigger = {
+					is_roman_emperor_trigger = yes
+				}
+				desc = middle_east_decisions.0015.desc.romans
+			}
+			# Everybody else's.
+			triggered_desc = {
+				trigger = {
+					this != scope:former_liege
+				}
+				desc = middle_east_decisions.0015.desc.others
+			}
+		}
+	}
+	theme = realm
+	left_portrait = {
+		character = scope:scoped_ruler
+		animation = personality_greedy
+	}
+	right_portrait = {
+		character = scope:former_liege
+		animation = shock
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				this = scope:former_liege
+			}
+			show_as_tooltip = {
+				add_prestige = major_prestige_loss
+				add_unpressed_claim = title:k_rum #Give chance to retaliate
+				add_opinion = {
+					target = scope:scoped_ruler
+					modifier = pretender_opinion
+				}
+			}
+		}
+	}
+
+	option = {
+		name = middle_east_decisions.0015.a
+		trigger = {
+			OR = {
+				this = scope:former_liege
+				is_roman_emperor_trigger = yes
+			}
+		}
+	}
+	option = {
+		name = middle_east_decisions.0015.b
+		trigger = {
+			this != scope:former_liege
+		}
+	}
+}
+
 ################
 # Revive the Armenian Empire
 # by Ewan Cowhig Croft

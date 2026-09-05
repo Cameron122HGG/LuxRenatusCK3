@@ -91,9 +91,6 @@
  nomad_regency_diarchy_type: "[nomadic|E] [regency|E]"
  nomad_regency_diarch_title: "$regency_diarch_title$"
 
- ephorate_diarchy_type: "Ephorate"
- ephorate_diarch_title: "Protoephor"
-
  ##################################################
  # #Mandates
  fill_coffers_mandate:0 "Fill Coffers"
@@ -248,6 +245,10 @@
 
  diarch_can_appoint_self_co_emperor: "[SelectLocalization( IsAdministrativeRuler( GetPlayer ), '', '#WEAK Inactive for this Government: ')][regents|E] may appoint themselves [co_emperor|E][SelectLocalization( IsAdministrativeRuler( GetPlayer ), '', '#!')]"
 
+ ##################################################
+ # #Succession Loc
+
+ # Categories.
  diarch_succession_score.category.familial_ties:0 "Familial Ties"
  diarch_succession_score.category.personal_ties:0 "Personal Ties"
  diarch_succession_score.category.societal_bonds:0 "Societal Bonds"
@@ -388,11 +389,11 @@
  diarch_succession_score.disqualifiers.child:0 "Is a [child|E]"
  diarch_succession_score.disqualifiers.imprisoned:0 "Is [imprisoned|E]"
  diarch_succession_score.disqualifiers.incapable_or_infirm:0 "Is [GetTrait('incapable').GetName( ROOT.Char )] or [GetTrait('infirm').GetName( ROOT.Char )]"
- diarch_succession_score.disqualifiers.right_gendered_for_liege:0 "Gender does not match [liege|E]'s [faith|E] requirements"
- diarch_succession_score.disqualifiers.count_or_above:0 "Holds a title higher than a [barony|E]"
- diarch_succession_score.disqualifiers.event_filters.incumbent_politicking:0 "Is Currently politicking"
+ diarch_succession_score.disqualifiers.right_gendered_for_liege: "Gender does not match [liege|E]'s [faith|E] requirements"
+ diarch_succession_score.disqualifiers.count_or_above: "Holds a title higher than a [barony|E]"
 
  ##################################################
+ # #Loyalty Loc
  diarch_loyalty_score.regency.opinion_of_you:0 "[opinion|E] of [ROOT.Char.GetLiege.Custom('GetLiegeYou')]"
  diarch_loyalty_score.regency.liege_legitimacy: "[legitimacy|E] of [ROOT.Char.GetLiege.Custom('GetLiegeYou')]"
  diarch_loyalty_score.regency.pro_hegemon: "Member of [GetSituation('dynastic_cycle').GetTopParticipantGroupByKey( 'pro_hegemon_movement' ).GetName]"
