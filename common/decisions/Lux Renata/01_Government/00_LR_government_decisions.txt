@@ -903,7 +903,7 @@ convert_to_administrative_decision = {
 		item = { # Administrative
 			value = go_administrative_government
 			is_shown = {
-				has_ep3_dlc_trigger = yes
+				{ always = no }
 			}
 			is_valid = {
 				top_liege = {
@@ -912,8 +912,8 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = subroman_administrative_government
-						has_government = despotic_administrative_government
+						has_government = roman_administrative_government
+						has_government = persianate_administrative_government
 						has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
@@ -938,8 +938,8 @@ convert_to_administrative_decision = {
 						#has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = subroman_administrative_government
-						has_government = despotic_administrative_government
+						has_government = roman_administrative_government
+						has_government = persianate_administrative_government
 						has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
@@ -968,8 +968,8 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						#has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = subroman_administrative_government
-						has_government = despotic_administrative_government
+						has_government = roman_administrative_government
+						has_government = persianate_administrative_government
 						has_government = alexandrian_administrative_government
 					}
 				}
@@ -997,8 +997,8 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						#has_government = japan_administrative_government
-						has_government = subroman_administrative_government
-						has_government = despotic_administrative_government
+						has_government = roman_administrative_government
+						has_government = persianate_administrative_government
 						has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
@@ -1017,7 +1017,7 @@ convert_to_administrative_decision = {
 		}#LR Gov
 		
 		item = { # Classical Admin Roman branch
-			value = go_subroman_administrative_government
+			value = go_roman_administrative_government
 			is_shown = {
 				#religion = religion:islam_religion
 				has_ep3_dlc_trigger = yes
@@ -1029,13 +1029,13 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						#has_government = subroman_administrative_government
-						has_government = despotic_administrative_government
+						#has_government = roman_administrative_government
+						has_government = persianate_administrative_government
 						has_government = alexandrian_administrative_government
 					}
 				}
 			}
-			localization = go_subroman_administrative_government_name
+			localization = go_roman_administrative_government_name
 			icon = "gfx/interface/icons/government_types/roman_administrative_government.dds"
 			ai_chance = {
 				value = 20
@@ -1054,8 +1054,8 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = subroman_administrative_government
-						has_government = despotic_administrative_government
+						has_government = roman_administrative_government
+						has_government = persianate_administrative_government
 						#has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
@@ -1069,7 +1069,7 @@ convert_to_administrative_decision = {
 		}
 
 		item = { # Despotic Admin
-			value = go_despotic_administrative_government
+			value = go_persianate_administrative_government
 			is_shown = {
 				has_ep3_dlc_trigger = yes
 			}
@@ -1080,15 +1080,15 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = subroman_administrative_government
-						has_government = despotic_administrative_government
+						has_government = roman_administrative_government
+						has_government = persianate_administrative_government
 						#has_government = alexandrian_administrative_government
 						has_government = gaul_administrative_government
 					}
 				}
 			}
-			localization = go_despotic_administrative_government_name
-			icon = "gfx/interface/icons/government_types/alexandrian_administrative_government.dds"
+			localization = go_persianate_administrative_government_name
+			icon = "gfx/interface/icons/government_types/persianate_administrative_government.dds"
 			ai_chance = {
 				value = 20
 			}
@@ -1109,15 +1109,15 @@ convert_to_administrative_decision = {
 						has_government = celestial_government
 						has_government = meritocratic_government
 						has_government = japan_administrative_government
-						has_government = subroman_administrative_government
-						has_government = despotic_administrative_government
+						has_government = roman_administrative_government
+						has_government = persianate_administrative_government
 						has_government = alexandrian_administrative_government
 						#has_government = gaul_administrative_government
 					}
 				}
 				custom_tooltip = {
 					text = convert_to_administrative_japanese_desc
-					tgp_can_become_japan_administrative_trigger = yes
+					LR_tgp_can_become_gaul_administrative_trigger = yes
 				}
 			}
 			current_description = go_gaul_administrative_government_desc
@@ -1135,7 +1135,7 @@ convert_to_administrative_decision = {
 			limit = {
 				scope:go_administrative_government = yes
 			}
-			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:western_administrative }
+			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:administrative }
 		}
 		else_if = {
 			limit = { scope:go_celestial_government = yes }
@@ -1150,7 +1150,7 @@ convert_to_administrative_decision = {
 			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:japan_administrative }
 		}
 		else_if = {
-			limit = { scope:go_subroman_administrative_government = yes }
+			limit = { scope:go_roman_administrative_government = yes }
 			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:subroman_administrative }
 		}
 		else_if = {
